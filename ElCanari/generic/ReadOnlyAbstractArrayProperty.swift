@@ -27,8 +27,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func update <T : AnyObject> (currentSet ioCurrentSet : inout EBReferenceSet <T>,
-                                         fromNewArray inNewArray : [T],
-                                         oldArray inOldArray : [T]) -> (Bool, EBReferenceSet <T>, EBReferenceSet <T>) {
+                                         fromNewArray inNewArray : EBReferenceArray <T>,
+                                         oldArray inOldArray : EBReferenceArray <T>) -> (Bool, EBReferenceSet <T>, EBReferenceSet <T>) {
   var addedSet = EBReferenceSet <T> ()
   var removedSet = EBReferenceSet <T> ()
 //--- Model did change ?
@@ -42,7 +42,7 @@ fileprivate func update <T : AnyObject> (currentSet ioCurrentSet : inout EBRefer
   if !modelsAreEqual {
     var setAreEqual = ioCurrentSet.count == inNewArray.count
     var newSet = EBReferenceSet <T> (minimumCapacity: inNewArray.count)
-    for object in inNewArray {
+    for object in inNewArray.values {
       newSet.insert (object)
       if !ioCurrentSet.contains (object) {
         setAreEqual = false
@@ -72,7 +72,7 @@ class ReadOnlyAbstractArrayProperty <T : AnyObject> : ReadOnlyAbstractGenericRel
 
   //····················································································································
 
-  var propval : [T] { return [] } // Abstract method
+  var propval : EBReferenceArray <T> { return EBReferenceArray () } // Abstract method
 
   //····················································································································
 
@@ -86,7 +86,7 @@ class ReadOnlyAbstractArrayProperty <T : AnyObject> : ReadOnlyAbstractGenericRel
 
   private final var mInternalSetValue = EBReferenceSet <T> () // Requires T to be hashable
 
-  internal final var mInternalArrayValue = [T] () {
+  internal final var mInternalArrayValue = EBReferenceArray <T> () {
     didSet {
       let (equalModels, addedSet, removedSet) = update (currentSet: &self.mInternalSetValue, fromNewArray: self.mInternalArrayValue, oldArray: oldValue)
       if !equalModels {
@@ -105,7 +105,7 @@ class ReadOnlyAbstractArrayProperty <T : AnyObject> : ReadOnlyAbstractGenericRel
 
   //····················································································································
 
-  internal func notifyModelDidChangeFrom (oldValue inOldValue : [T]) {
+  internal func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <T>) {
   }
 
   //····················································································································

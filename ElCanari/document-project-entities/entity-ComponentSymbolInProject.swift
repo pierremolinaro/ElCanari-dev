@@ -362,7 +362,7 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final var mPoints : [PointInSchematic] {
+  final var mPoints : EBReferenceArray  <PointInSchematic> {
     get { return self.mPoints_property.propval }
     set { self.mPoints_property.setProp (newValue) }
   }
@@ -989,7 +989,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mPoints = []
+    self.mPoints.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1034,7 +1034,7 @@ final class ComponentSymbolInProject : SchematicObject,
     self.mDisplayComponentValueOffsetY_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentValueOffsetY")
   //--- To many property: mPoints
     self.store (
-      managedObjectArray: self.mPoints_property.propval,
+      managedObjectArray: self.mPoints_property.propval.values,
       relationshipName: "mPoints",
       intoDictionary: ioDictionary
     )
@@ -1048,11 +1048,19 @@ final class ComponentSymbolInProject : SchematicObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mPoints
-    self.mPoints_property.setProp (readEntityArrayFromDictionary (
+/*    self.mPoints_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPoints",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [PointInSchematic])
+    ) as! [PointInSchematic]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mPoints",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [PointInSchematic]
+      self.mPoints_property.setProp (EBReferenceArray (array))
+    }
   //--- To one property: mComponent
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -1159,7 +1167,7 @@ final class ComponentSymbolInProject : SchematicObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mPoints {
+      for object in self.mPoints.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1240,7 +1248,7 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mPoints"], range.length > 0 {
-        var relationshipArray = [PointInSchematic] ()
+        var relationshipArray = EBReferenceArray  <PointInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
@@ -1258,7 +1266,7 @@ final class ComponentSymbolInProject : SchematicObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mPoints
-    for managedObject in self.mPoints {
+    for managedObject in self.mPoints.values {
       objects.append (managedObject)
     }
   //--- To one property: mComponent
@@ -1274,7 +1282,7 @@ final class ComponentSymbolInProject : SchematicObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mPoints
-    for managedObject in self.mPoints {
+    for managedObject in self.mPoints.values {
       objects.append (managedObject)
     }
   //--- To one property: mComponent

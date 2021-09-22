@@ -21,7 +21,7 @@ extension MergerDocument {
   //--- Selected set
     let selectedSet = self.mBoardInstanceController.selectedSet
   //--- Non selected set
-    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval).subtracting (selectedSet)
+    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (selectedSet)
   //---
     var deltaY = boardHeight
     for selectedInstance in selectedSet.values {
@@ -60,7 +60,7 @@ extension MergerDocument {
   //--- Selected set
     let selectedSet = self.mBoardInstanceController.selectedSet
   //--- Non selected set
-    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval).subtracting (selectedSet)
+    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (selectedSet)
   //---
     var deltaY = -boardHeight
     for selectedInstance in selectedSet.values {
@@ -104,7 +104,7 @@ extension MergerDocument {
   //--- Selected set
     let selectedSet = self.mBoardInstanceController.selectedSet
   //--- Non selected set
-    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval).subtracting (selectedSet)
+    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (selectedSet)
   //---
     var deltaX = boardWidth
     for selectedInstance in selectedSet.values {
@@ -148,7 +148,7 @@ extension MergerDocument {
   //--- Selected set
     let selectedSet = self.mBoardInstanceController.selectedSet
   //--- Non selected set
-    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval).subtracting (selectedSet)
+    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (selectedSet)
   //---
     var deltaX = -boardWidth
     for selectedInstance in selectedSet.values {

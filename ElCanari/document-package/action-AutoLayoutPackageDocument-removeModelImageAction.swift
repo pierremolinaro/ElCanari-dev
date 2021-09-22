@@ -21,7 +21,7 @@ extension AutoLayoutPackageDocument {
     self.rootObject.reset_mPointsAreLocked_toDefaultValue ()
     self.rootObject.reset_mModelPointsCircleRadius_toDefaultValue ()
     self.rootObject.mModelImageDoublePoint = nil
-    self.rootObject.mModelImageObjects = []
+    self.rootObject.mModelImageObjects = EBReferenceArray ()
 //--- END OF USER ZONE 2
   }
 }

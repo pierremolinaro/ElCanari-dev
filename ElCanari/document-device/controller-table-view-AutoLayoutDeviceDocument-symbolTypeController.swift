@@ -96,11 +96,11 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBSwiftBa
 
   //····················································································································
 
-  var selectedArray : [SymbolTypeInDevice] { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray  <SymbolTypeInDevice> { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedSet : EBReferenceSet <SymbolTypeInDevice> { return EBReferenceSet (self.selectedArray_property.propval) }
+  var selectedSet : EBReferenceSet <SymbolTypeInDevice> { return EBReferenceSet (self.selectedArray_property.propval.values) }
 
   //····················································································································
 
@@ -108,11 +108,13 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBSwiftBa
     let selectedObjectSet = self.selectedSet
     var result = Set <Int> ()
     var idx = 0
-    for object in self.mModel?.propval ?? [] {
-      if selectedObjectSet.contains (object) {
-        result.insert (idx)
+    if let model = self.mModel {
+      for object in model.propval.values {
+        if selectedObjectSet.contains (object) {
+          result.insert (idx)
+        }
+        idx += 1
       }
-      idx += 1
     }
     return result
   }
@@ -262,7 +264,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBSwiftBa
     case .empty, .multiple :
       ()
     case .single (let v) :
-      var newSelectedObjects = [ SymbolTypeInDevice] ()
+      var newSelectedObjects = EBReferenceArray  <SymbolTypeInDevice> ()
       for index in inSelectedRows {
         newSelectedObjects.append (v [index])
       }
@@ -294,11 +296,11 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBSwiftBa
         ()
       case .single (let v) :
         let newObject = SymbolTypeInDevice (self.ebUndoManager)
-        var array = v
+        var array = EBReferenceArray  (v)
         array.append (newObject)
         model.setProp (array)
       //--- New object is the selection
-        self.mInternalSelectedArrayProperty.setProp ([newObject])
+        self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (newObject))
       }
     }
   }
@@ -360,7 +362,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBSwiftBa
         //--- Sort in reverse order
           selectedObjectIndexArray.sort { $1 < $0 }
         //--- Remove objects, in reverse of order of their index
-          var newObjectArray = model_prop
+          var newObjectArray = EBReferenceArray  (model_prop)
           for index in selectedObjectIndexArray {
             newObjectArray.remove (at: index)
           }
@@ -368,9 +370,9 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBSwiftBa
           model.setProp (newObjectArray)
         //----------------------------------------- Set new selection
           if let object = newSelectedObject {
-            self.mInternalSelectedArrayProperty.setProp ([object])
+            self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (object))
           }else{
-            self.mInternalSelectedArrayProperty.setProp ([])
+            self.mInternalSelectedArrayProperty.setProp (EBReferenceArray ())
           }
         }
       }

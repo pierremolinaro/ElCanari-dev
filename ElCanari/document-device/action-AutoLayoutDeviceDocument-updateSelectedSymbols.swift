@@ -30,7 +30,7 @@ extension AutoLayoutDeviceDocument {
           }else{
             let strokeBezierPathes = NSBezierPath ()
             let filledBezierPathes = NSBezierPath ()
-            var newSymbolPinTypes = [SymbolPinTypeInDevice] ()
+            var newSymbolPinTypes = EBReferenceArray <SymbolPinTypeInDevice> ()
             symbolRoot.accumulate (
               withUndoManager: self.ebUndoManager,
               strokeBezierPathes: strokeBezierPathes,

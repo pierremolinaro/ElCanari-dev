@@ -265,7 +265,7 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final var boardModels : [BoardModel] {
+  final var boardModels : EBReferenceArray  <BoardModel> {
     get { return self.boardModels_property.propval }
     set { self.boardModels_property.setProp (newValue) }
   }
@@ -280,7 +280,7 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final var boardInstances : [MergerBoardInstance] {
+  final var boardInstances : EBReferenceArray  <MergerBoardInstance> {
     get { return self.boardInstances_property.propval }
     set { self.boardInstances_property.setProp (newValue) }
   }
@@ -872,13 +872,13 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var fileGenerationParameterArray : [ArtworkFileGenerationParameters] {
+  var fileGenerationParameterArray : EBReferenceArray  <ArtworkFileGenerationParameters> {
     get {
       switch self.fileGenerationParameterArray_property.selection {
       case .empty, .multiple :
-        return []
+        return EBReferenceArray  ()
       case .single (let v) :
-        return v
+        return EBReferenceArray  (v)
       }
     }
     set {
@@ -1892,8 +1892,8 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.boardModels = []
-    self.boardInstances = []
+    self.boardModels.removeAll ()
+    self.boardInstances.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1916,13 +1916,13 @@ final class MergerRoot : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- To many property: boardModels
     self.store (
-      managedObjectArray: self.boardModels_property.propval,
+      managedObjectArray: self.boardModels_property.propval.values,
       relationshipName: "boardModels",
       intoDictionary: ioDictionary
     )
   //--- To many property: boardInstances
     self.store (
-      managedObjectArray: self.boardInstances_property.propval,
+      managedObjectArray: self.boardInstances_property.propval.values,
       relationshipName: "boardInstances",
       intoDictionary: ioDictionary
     )
@@ -1978,17 +1978,33 @@ final class MergerRoot : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: boardModels
-    self.boardModels_property.setProp (readEntityArrayFromDictionary (
+/*    self.boardModels_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "boardModels",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModel])
+    ) as! [BoardModel]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "boardModels",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [BoardModel]
+      self.boardModels_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: boardInstances
-    self.boardInstances_property.setProp (readEntityArrayFromDictionary (
+/*    self.boardInstances_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "boardInstances",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [MergerBoardInstance])
+    ) as! [MergerBoardInstance]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "boardInstances",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [MergerBoardInstance]
+      self.boardInstances_property.setProp (EBReferenceArray (array))
+    }
   //--- To one property: mArtwork
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -2136,7 +2152,7 @@ final class MergerRoot : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.boardModels {
+      for object in self.boardModels.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -2167,7 +2183,7 @@ final class MergerRoot : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.boardInstances {
+      for object in self.boardInstances.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -2272,7 +2288,7 @@ final class MergerRoot : EBManagedObject,
       }
     //--- To many relationships
       if let range = inDictionary ["boardModels"], range.length > 0 {
-        var relationshipArray = [BoardModel] ()
+        var relationshipArray = EBReferenceArray  <BoardModel> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardModel)
@@ -2280,7 +2296,7 @@ final class MergerRoot : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.boardModels = relationshipArray }
       }
       if let range = inDictionary ["boardInstances"], range.length > 0 {
-        var relationshipArray = [MergerBoardInstance] ()
+        var relationshipArray = EBReferenceArray  <MergerBoardInstance> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)
@@ -2298,11 +2314,11 @@ final class MergerRoot : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: boardModels
-    for managedObject in self.boardModels {
+    for managedObject in self.boardModels.values {
       objects.append (managedObject)
     }
   //--- To many property: boardInstances
-    for managedObject in self.boardInstances {
+    for managedObject in self.boardInstances.values {
       objects.append (managedObject)
     }
   //--- To one property: mArtwork
@@ -2318,11 +2334,11 @@ final class MergerRoot : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: boardModels
-    for managedObject in self.boardModels {
+    for managedObject in self.boardModels.values {
       objects.append (managedObject)
     }
   //--- To many property: boardInstances
-    for managedObject in self.boardInstances {
+    for managedObject in self.boardInstances.values {
       objects.append (managedObject)
     }
   //--- To one property: mArtwork

@@ -261,7 +261,7 @@ final class DeviceMasterPadInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mSlavePads : [DeviceSlavePadInProject] {
+  final var mSlavePads : EBReferenceArray  <DeviceSlavePadInProject> {
     get { return self.mSlavePads_property.propval }
     set { self.mSlavePads_property.setProp (newValue) }
   }
@@ -494,7 +494,7 @@ final class DeviceMasterPadInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mSlavePads = []
+    self.mSlavePads.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -534,7 +534,7 @@ final class DeviceMasterPadInProject : EBManagedObject,
     self.mName_property.storeIn (dictionary: ioDictionary, forKey: "mName")
   //--- To many property: mSlavePads
     self.store (
-      managedObjectArray: self.mSlavePads_property.propval,
+      managedObjectArray: self.mSlavePads_property.propval.values,
       relationshipName: "mSlavePads",
       intoDictionary: ioDictionary
     )
@@ -548,11 +548,19 @@ final class DeviceMasterPadInProject : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mSlavePads
-    self.mSlavePads_property.setProp (readEntityArrayFromDictionary (
+/*    self.mSlavePads_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mSlavePads",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [DeviceSlavePadInProject])
+    ) as! [DeviceSlavePadInProject]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mSlavePads",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [DeviceSlavePadInProject]
+      self.mSlavePads_property.setProp (EBReferenceArray (array))
+    }
   }
 
   //····················································································································
@@ -633,7 +641,7 @@ final class DeviceMasterPadInProject : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mSlavePads {
+      for object in self.mSlavePads.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -704,7 +712,7 @@ final class DeviceMasterPadInProject : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mSlavePads"], range.length > 0 {
-        var relationshipArray = [DeviceSlavePadInProject] ()
+        var relationshipArray = EBReferenceArray  <DeviceSlavePadInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceSlavePadInProject)
@@ -722,7 +730,7 @@ final class DeviceMasterPadInProject : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mSlavePads
-    for managedObject in self.mSlavePads {
+    for managedObject in self.mSlavePads.values {
       objects.append (managedObject)
     }
   }
@@ -734,7 +742,7 @@ final class DeviceMasterPadInProject : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mSlavePads
-    for managedObject in self.mSlavePads {
+    for managedObject in self.mSlavePads.values {
       objects.append (managedObject)
     }
   }

@@ -70,7 +70,7 @@ final class ProjectSheetController : EBOutletEvent {
     self.mSheetUpButton?.isEnabled = false
     self.mSheetDownButton?.isEnabled = false
     let selectedSheet = self.mDocument?.rootObject.mSelectedSheet
-    let sheets = self.mDocument?.rootObject.mSheets ?? []
+    let sheets = self.mDocument?.rootObject.mSheets.values ?? []
     var idx = 0
     for sheet in sheets {
     //--- Build title
@@ -110,7 +110,7 @@ final class ProjectSheetController : EBOutletEvent {
 
   @objc func selectionDidChangeAction (_ inSender : NSMenuItem) {
     let selectedIndex = inSender.tag
-    let sheets = self.mDocument?.rootObject.mSheets ?? []
+    let sheets = self.mDocument?.rootObject.mSheets.values ?? []
     self.mDocument?.rootObject.mSelectedSheet = sheets [selectedIndex]
   }
 

@@ -52,7 +52,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : [SymbolText] { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray  <SymbolText> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION

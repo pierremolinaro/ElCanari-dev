@@ -45,7 +45,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
   private var mPrivateSelectedSet = EBReferenceSet <PackageInDevice> () {
     didSet {
       self.selectedArray_property.postEvent ()
-      self.mInternalSelectedArrayProperty.setProp (Array (self.mPrivateSelectedSet.values))
+      self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (Array (self.mPrivateSelectedSet.values)))
     }
   }
 
@@ -62,7 +62,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
 
   //····················································································································
 
-  var selectedArray : [PackageInDevice] { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray  <PackageInDevice> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   Init
@@ -174,17 +174,17 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
     super.notifyModelDidChange ()
     let currentSelectedSet = self.selectedSet
     let objectArray = self.objectArray
-    let newSelectedSet = currentSelectedSet.intersection (objectArray)
-    self.mInternalSelectedArrayProperty.setProp (Array (newSelectedSet.values))
+    let newSelectedSet = currentSelectedSet.intersection (objectArray.values)
+    self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (Array (newSelectedSet.values)))
   }
 
    //····················································································································
 
-   var objectArray : [PackageInDevice] {
+   var objectArray : EBReferenceArray  <PackageInDevice> {
      if let values = self.mModel?.propval {
        return values
      }else{
-       return []
+       return EBReferenceArray  ()
      }
    }
 
@@ -203,7 +203,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
   var selectedIndexesSet : Set <Int> {
     var result = Set <Int> ()
     var idx = 0
-    for object in self.objectArray {
+    for object in self.objectArray.values {
       if self.selectedArray_property.propset.contains (object) {
         result.insert (idx)
       }
@@ -225,7 +225,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
   var selectedGraphicObjectSet : EBReferenceSet <EBGraphicManagedObject> {
   //  return self.selectedArray_property.propset // Faudrait faire mieux !
     var result = EBReferenceSet <EBGraphicManagedObject> (minimumCapacity: self.selectedArray_property.propval.count)
-    for object in self.selectedArray_property.propval {
+    for object in self.selectedArray_property.propval.values {
       result.insert (object)
     }
     return result
@@ -234,8 +234,8 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
    //····················································································································
 
    var graphicObjectArray : [EBGraphicManagedObject] {
-     if let values = self.mModel?.propval {
-       return values
+     if let v = self.mModel?.propval {
+       return v.values
      }else{
        return []
      }
@@ -259,7 +259,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
 
   func computeSelectionShape () {
     var selectionDisplayArray = [EBShape] ()
-    for object in self.objectArray {
+    for object in self.objectArray.values {
       if !self.selectedArray_property.propset.contains (object) {
         selectionDisplayArray.append (EBShape ())
       }else if let shape = object.selectionDisplay {
@@ -305,7 +305,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
 
   func updateObjectDisplay () {
     var displayArray = [EBShape] ()
-    for object in self.objectArray {
+    for object in self.objectArray.values {
       if let shape = object.objectDisplay {
         displayArray.append (shape)
       }else{
@@ -323,7 +323,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
 
   func alignmentPointSetArray () -> [Set<CanariPoint>] {
     var result = [Set<CanariPoint>] ()
-    for object in self.objectArray {
+    for object in self.objectArray.values {
       result.append (object.alignmentPoints ().points)
     }
     return result
@@ -423,7 +423,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
     let selectedObjects = self.selectedArray_property.propset
     let indexSet = NSMutableIndexSet ()
     for object in selectedObjects.values {
-      if let index = modelObjects.firstIndex(of: object) {
+      if let index = modelObjects.firstIndex (of: object) {
         indexSet.add (index)
       }
     }
@@ -458,7 +458,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
         break
       case .single (let v) :
         let newObject = PackageInDevice (self.ebUndoManager)
-        var array = v
+        var array = EBReferenceArray  (v)
         array.append (newObject)
       //--- New object is the selection
         self.selectedSet = EBReferenceSet ([newObject])
@@ -522,7 +522,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
       //--- Sort in reverse order
         selectedObjectIndexArray.sort { $1 < $0 }
       //--- Remove objects, in reverse of order of their index
-        var newObjectArray = model_prop
+        var newObjectArray = EBReferenceArray  (model_prop)
         for index in selectedObjectIndexArray {
           newObjectArray.remove (at: index)
         }
@@ -660,7 +660,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
       for dictionary in dictionaryArray {
         if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageInDevice {
           if errorMessage == "" {
-            errorMessage = object.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx], objectArray: self.objectArray)
+            errorMessage = object.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx], objectArray: self.objectArray.values)
           }
           idx += 1
           if errorMessage == "" {
@@ -728,8 +728,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
   //····················································································································
 
   func selectAllObjects () {
-    let objects = self.objectArray
-    self.selectedSet = EBReferenceSet (objects)
+    self.selectedSet = EBReferenceSet (self.objectArray.values)
   }
 
   //····················································································································
@@ -845,7 +844,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
   func sendToBack () {
     var objects = self.objectArray
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
-    var newObjectArray = [PackageInDevice] ()
+    var newObjectArray = EBReferenceArray  <PackageInDevice> ()
     for idx in sortedIndexArray.reversed () {
       let object = objects [idx]
       objects.remove (at: idx)
@@ -1101,7 +1100,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
         self.mCurrentAttachedView = tf
       }else{
         var selectionTypes = Set <ObjectIdentifier> ()
-        for object in self.selectedArray {
+        for object in self.selectedArray.values {
           let T = ObjectIdentifier (type (of: object))
           selectionTypes.insert (T)
         }

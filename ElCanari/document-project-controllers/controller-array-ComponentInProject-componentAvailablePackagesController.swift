@@ -32,7 +32,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   private var mPrivateSelectedSet = EBReferenceSet <DevicePackageInProject> () {
     didSet {
       self.selectedArray_property.postEvent ()
-      self.mInternalSelectedArrayProperty.setProp (Array (self.mPrivateSelectedSet.values))
+      self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (Array (self.mPrivateSelectedSet.values)))
     }
   }
 
@@ -49,7 +49,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
   //····················································································································
 
-  var selectedArray : [DevicePackageInProject] { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray  <DevicePackageInProject> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   Init
@@ -92,17 +92,17 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
     super.notifyModelDidChange ()
     let currentSelectedSet = self.selectedSet
     let objectArray = self.objectArray
-    let newSelectedSet = currentSelectedSet.intersection (objectArray)
-    self.mInternalSelectedArrayProperty.setProp (Array (newSelectedSet.values))
+    let newSelectedSet = currentSelectedSet.intersection (objectArray.values)
+    self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (Array (newSelectedSet.values)))
   }
 
    //····················································································································
 
-   var objectArray : [DevicePackageInProject] {
+   var objectArray : EBReferenceArray  <DevicePackageInProject> {
      if let values = self.mModel?.propval {
        return values
      }else{
-       return []
+       return EBReferenceArray  ()
      }
    }
 
@@ -121,7 +121,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   var selectedIndexesSet : Set <Int> {
     var result = Set <Int> ()
     var idx = 0
-    for object in self.objectArray {
+    for object in self.objectArray.values {
       if self.selectedArray_property.propset.contains (object) {
         result.insert (idx)
       }
@@ -150,7 +150,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
     let selectedObjects = self.selectedArray_property.propset
     let indexSet = NSMutableIndexSet ()
     for object in selectedObjects.values {
-      if let index = modelObjects.firstIndex(of: object) {
+      if let index = modelObjects.firstIndex (of: object) {
         indexSet.add (index)
       }
     }
@@ -185,7 +185,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
         break
       case .single (let v) :
         let newObject = DevicePackageInProject (self.ebUndoManager)
-        var array = v
+        var array = EBReferenceArray  (v)
         array.append (newObject)
       //--- New object is the selection
         self.selectedSet = EBReferenceSet ([newObject])
@@ -249,7 +249,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
       //--- Sort in reverse order
         selectedObjectIndexArray.sort { $1 < $0 }
       //--- Remove objects, in reverse of order of their index
-        var newObjectArray = model_prop
+        var newObjectArray = EBReferenceArray  (model_prop)
         for index in selectedObjectIndexArray {
           newObjectArray.remove (at: index)
         }
@@ -318,7 +318,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
         self.mCurrentAttachedView = tf
       }else{
         var selectionTypes = Set <ObjectIdentifier> ()
-        for object in self.selectedArray {
+        for object in self.selectedArray.values {
           let T = ObjectIdentifier (type (of: object))
           selectionTypes.insert (T)
         }

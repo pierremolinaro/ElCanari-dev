@@ -498,7 +498,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var frontLegendLines : [SegmentEntity] {
+  final var frontLegendLines : EBReferenceArray  <SegmentEntity> {
     get { return self.frontLegendLines_property.propval }
     set { self.frontLegendLines_property.setProp (newValue) }
   }
@@ -513,7 +513,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var backLegendLines : [SegmentEntity] {
+  final var backLegendLines : EBReferenceArray  <SegmentEntity> {
     get { return self.backLegendLines_property.propval }
     set { self.backLegendLines_property.setProp (newValue) }
   }
@@ -528,7 +528,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var frontLegendTexts : [SegmentEntity] {
+  final var frontLegendTexts : EBReferenceArray  <SegmentEntity> {
     get { return self.frontLegendTexts_property.propval }
     set { self.frontLegendTexts_property.setProp (newValue) }
   }
@@ -543,7 +543,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var frontLayoutTexts : [SegmentEntity] {
+  final var frontLayoutTexts : EBReferenceArray  <SegmentEntity> {
     get { return self.frontLayoutTexts_property.propval }
     set { self.frontLayoutTexts_property.setProp (newValue) }
   }
@@ -558,7 +558,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var backLegendTexts : [SegmentEntity] {
+  final var backLegendTexts : EBReferenceArray  <SegmentEntity> {
     get { return self.backLegendTexts_property.propval }
     set { self.backLegendTexts_property.setProp (newValue) }
   }
@@ -573,7 +573,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var backLayoutTexts : [SegmentEntity] {
+  final var backLayoutTexts : EBReferenceArray  <SegmentEntity> {
     get { return self.backLayoutTexts_property.propval }
     set { self.backLayoutTexts_property.setProp (newValue) }
   }
@@ -588,7 +588,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var internalBoardsLimits : [SegmentEntity] {
+  final var internalBoardsLimits : EBReferenceArray  <SegmentEntity> {
     get { return self.internalBoardsLimits_property.propval }
     set { self.internalBoardsLimits_property.setProp (newValue) }
   }
@@ -603,7 +603,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var drills : [SegmentEntity] {
+  final var drills : EBReferenceArray  <SegmentEntity> {
     get { return self.drills_property.propval }
     set { self.drills_property.setProp (newValue) }
   }
@@ -618,7 +618,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var vias : [BoardModelVia] {
+  final var vias : EBReferenceArray  <BoardModelVia> {
     get { return self.vias_property.propval }
     set { self.vias_property.setProp (newValue) }
   }
@@ -633,7 +633,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var frontPads : [BoardModelPad] {
+  final var frontPads : EBReferenceArray  <BoardModelPad> {
     get { return self.frontPads_property.propval }
     set { self.frontPads_property.setProp (newValue) }
   }
@@ -648,7 +648,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var backPads : [BoardModelPad] {
+  final var backPads : EBReferenceArray  <BoardModelPad> {
     get { return self.backPads_property.propval }
     set { self.backPads_property.setProp (newValue) }
   }
@@ -701,7 +701,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var backComponentNames : [SegmentEntity] {
+  final var backComponentNames : EBReferenceArray  <SegmentEntity> {
     get { return self.backComponentNames_property.propval }
     set { self.backComponentNames_property.setProp (newValue) }
   }
@@ -716,7 +716,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var frontComponentNames : [SegmentEntity] {
+  final var frontComponentNames : EBReferenceArray  <SegmentEntity> {
     get { return self.frontComponentNames_property.propval }
     set { self.frontComponentNames_property.setProp (newValue) }
   }
@@ -731,7 +731,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var frontComponentValues : [SegmentEntity] {
+  final var frontComponentValues : EBReferenceArray  <SegmentEntity> {
     get { return self.frontComponentValues_property.propval }
     set { self.frontComponentValues_property.setProp (newValue) }
   }
@@ -746,7 +746,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var backComponentValues : [SegmentEntity] {
+  final var backComponentValues : EBReferenceArray  <SegmentEntity> {
     get { return self.backComponentValues_property.propval }
     set { self.backComponentValues_property.setProp (newValue) }
   }
@@ -761,7 +761,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var backTracks : [SegmentEntity] {
+  final var backTracks : EBReferenceArray  <SegmentEntity> {
     get { return self.backTracks_property.propval }
     set { self.backTracks_property.setProp (newValue) }
   }
@@ -776,7 +776,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var frontTracks : [SegmentEntity] {
+  final var frontTracks : EBReferenceArray  <SegmentEntity> {
     get { return self.frontTracks_property.propval }
     set { self.frontTracks_property.setProp (newValue) }
   }
@@ -791,7 +791,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var frontPackages : [SegmentEntity] {
+  final var frontPackages : EBReferenceArray  <SegmentEntity> {
     get { return self.frontPackages_property.propval }
     set { self.frontPackages_property.setProp (newValue) }
   }
@@ -806,7 +806,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var backPackages : [SegmentEntity] {
+  final var backPackages : EBReferenceArray  <SegmentEntity> {
     get { return self.backPackages_property.propval }
     set { self.backPackages_property.setProp (newValue) }
   }
@@ -840,7 +840,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final var myInstances : [MergerBoardInstance] {
+  final var myInstances : EBReferenceArray  <MergerBoardInstance> {
     get { return self.myInstances_property.propval }
     set { self.myInstances_property.setProp (newValue) }
   }
@@ -3442,26 +3442,26 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.frontLegendLines = []
-    self.backLegendLines = []
-    self.frontLegendTexts = []
-    self.frontLayoutTexts = []
-    self.backLegendTexts = []
-    self.backLayoutTexts = []
-    self.internalBoardsLimits = []
-    self.drills = []
-    self.vias = []
-    self.frontPads = []
-    self.backPads = []
-    self.backComponentNames = []
-    self.frontComponentNames = []
-    self.frontComponentValues = []
-    self.backComponentValues = []
-    self.backTracks = []
-    self.frontTracks = []
-    self.frontPackages = []
-    self.backPackages = []
-    self.myInstances = []
+    self.frontLegendLines.removeAll ()
+    self.backLegendLines.removeAll ()
+    self.frontLegendTexts.removeAll ()
+    self.frontLayoutTexts.removeAll ()
+    self.backLegendTexts.removeAll ()
+    self.backLayoutTexts.removeAll ()
+    self.internalBoardsLimits.removeAll ()
+    self.drills.removeAll ()
+    self.vias.removeAll ()
+    self.frontPads.removeAll ()
+    self.backPads.removeAll ()
+    self.backComponentNames.removeAll ()
+    self.frontComponentNames.removeAll ()
+    self.frontComponentValues.removeAll ()
+    self.backComponentValues.removeAll ()
+    self.backTracks.removeAll ()
+    self.frontTracks.removeAll ()
+    self.frontPackages.removeAll ()
+    self.backPackages.removeAll ()
+    self.myInstances.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -3495,67 +3495,67 @@ final class BoardModel : EBManagedObject,
     self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
   //--- To many property: frontLegendLines
     self.store (
-      managedObjectArray: self.frontLegendLines_property.propval,
+      managedObjectArray: self.frontLegendLines_property.propval.values,
       relationshipName: "frontLegendLines",
       intoDictionary: ioDictionary
     )
   //--- To many property: backLegendLines
     self.store (
-      managedObjectArray: self.backLegendLines_property.propval,
+      managedObjectArray: self.backLegendLines_property.propval.values,
       relationshipName: "backLegendLines",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontLegendTexts
     self.store (
-      managedObjectArray: self.frontLegendTexts_property.propval,
+      managedObjectArray: self.frontLegendTexts_property.propval.values,
       relationshipName: "frontLegendTexts",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontLayoutTexts
     self.store (
-      managedObjectArray: self.frontLayoutTexts_property.propval,
+      managedObjectArray: self.frontLayoutTexts_property.propval.values,
       relationshipName: "frontLayoutTexts",
       intoDictionary: ioDictionary
     )
   //--- To many property: backLegendTexts
     self.store (
-      managedObjectArray: self.backLegendTexts_property.propval,
+      managedObjectArray: self.backLegendTexts_property.propval.values,
       relationshipName: "backLegendTexts",
       intoDictionary: ioDictionary
     )
   //--- To many property: backLayoutTexts
     self.store (
-      managedObjectArray: self.backLayoutTexts_property.propval,
+      managedObjectArray: self.backLayoutTexts_property.propval.values,
       relationshipName: "backLayoutTexts",
       intoDictionary: ioDictionary
     )
   //--- To many property: internalBoardsLimits
     self.store (
-      managedObjectArray: self.internalBoardsLimits_property.propval,
+      managedObjectArray: self.internalBoardsLimits_property.propval.values,
       relationshipName: "internalBoardsLimits",
       intoDictionary: ioDictionary
     )
   //--- To many property: drills
     self.store (
-      managedObjectArray: self.drills_property.propval,
+      managedObjectArray: self.drills_property.propval.values,
       relationshipName: "drills",
       intoDictionary: ioDictionary
     )
   //--- To many property: vias
     self.store (
-      managedObjectArray: self.vias_property.propval,
+      managedObjectArray: self.vias_property.propval.values,
       relationshipName: "vias",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontPads
     self.store (
-      managedObjectArray: self.frontPads_property.propval,
+      managedObjectArray: self.frontPads_property.propval.values,
       relationshipName: "frontPads",
       intoDictionary: ioDictionary
     )
   //--- To many property: backPads
     self.store (
-      managedObjectArray: self.backPads_property.propval,
+      managedObjectArray: self.backPads_property.propval.values,
       relationshipName: "backPads",
       intoDictionary: ioDictionary
     )
@@ -3565,49 +3565,49 @@ final class BoardModel : EBManagedObject,
     self.modelLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidthUnit")
   //--- To many property: backComponentNames
     self.store (
-      managedObjectArray: self.backComponentNames_property.propval,
+      managedObjectArray: self.backComponentNames_property.propval.values,
       relationshipName: "backComponentNames",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontComponentNames
     self.store (
-      managedObjectArray: self.frontComponentNames_property.propval,
+      managedObjectArray: self.frontComponentNames_property.propval.values,
       relationshipName: "frontComponentNames",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontComponentValues
     self.store (
-      managedObjectArray: self.frontComponentValues_property.propval,
+      managedObjectArray: self.frontComponentValues_property.propval.values,
       relationshipName: "frontComponentValues",
       intoDictionary: ioDictionary
     )
   //--- To many property: backComponentValues
     self.store (
-      managedObjectArray: self.backComponentValues_property.propval,
+      managedObjectArray: self.backComponentValues_property.propval.values,
       relationshipName: "backComponentValues",
       intoDictionary: ioDictionary
     )
   //--- To many property: backTracks
     self.store (
-      managedObjectArray: self.backTracks_property.propval,
+      managedObjectArray: self.backTracks_property.propval.values,
       relationshipName: "backTracks",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontTracks
     self.store (
-      managedObjectArray: self.frontTracks_property.propval,
+      managedObjectArray: self.frontTracks_property.propval.values,
       relationshipName: "frontTracks",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontPackages
     self.store (
-      managedObjectArray: self.frontPackages_property.propval,
+      managedObjectArray: self.frontPackages_property.propval.values,
       relationshipName: "frontPackages",
       intoDictionary: ioDictionary
     )
   //--- To many property: backPackages
     self.store (
-      managedObjectArray: self.backPackages_property.propval,
+      managedObjectArray: self.backPackages_property.propval.values,
       relationshipName: "backPackages",
       intoDictionary: ioDictionary
     )
@@ -3615,7 +3615,7 @@ final class BoardModel : EBManagedObject,
     self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
   //--- To many property: myInstances
     self.store (
-      managedObjectArray: self.myInstances_property.propval,
+      managedObjectArray: self.myInstances_property.propval.values,
       relationshipName: "myInstances",
       intoDictionary: ioDictionary
     )
@@ -3629,125 +3629,285 @@ final class BoardModel : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: frontLegendLines
-    self.frontLegendLines_property.setProp (readEntityArrayFromDictionary (
+/*    self.frontLegendLines_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontLegendLines",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "frontLegendLines",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.frontLegendLines_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: backLegendLines
-    self.backLegendLines_property.setProp (readEntityArrayFromDictionary (
+/*    self.backLegendLines_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backLegendLines",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "backLegendLines",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.backLegendLines_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: frontLegendTexts
-    self.frontLegendTexts_property.setProp (readEntityArrayFromDictionary (
+/*    self.frontLegendTexts_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontLegendTexts",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "frontLegendTexts",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.frontLegendTexts_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: frontLayoutTexts
-    self.frontLayoutTexts_property.setProp (readEntityArrayFromDictionary (
+/*    self.frontLayoutTexts_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontLayoutTexts",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "frontLayoutTexts",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.frontLayoutTexts_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: backLegendTexts
-    self.backLegendTexts_property.setProp (readEntityArrayFromDictionary (
+/*    self.backLegendTexts_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backLegendTexts",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "backLegendTexts",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.backLegendTexts_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: backLayoutTexts
-    self.backLayoutTexts_property.setProp (readEntityArrayFromDictionary (
+/*    self.backLayoutTexts_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backLayoutTexts",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "backLayoutTexts",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.backLayoutTexts_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: internalBoardsLimits
-    self.internalBoardsLimits_property.setProp (readEntityArrayFromDictionary (
+/*    self.internalBoardsLimits_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "internalBoardsLimits",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "internalBoardsLimits",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.internalBoardsLimits_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: drills
-    self.drills_property.setProp (readEntityArrayFromDictionary (
+/*    self.drills_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "drills",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "drills",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.drills_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: vias
-    self.vias_property.setProp (readEntityArrayFromDictionary (
+/*    self.vias_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "vias",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelVia])
+    ) as! [BoardModelVia]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "vias",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [BoardModelVia]
+      self.vias_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: frontPads
-    self.frontPads_property.setProp (readEntityArrayFromDictionary (
+/*    self.frontPads_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontPads",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelPad])
+    ) as! [BoardModelPad]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "frontPads",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [BoardModelPad]
+      self.frontPads_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: backPads
-    self.backPads_property.setProp (readEntityArrayFromDictionary (
+/*    self.backPads_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backPads",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelPad])
+    ) as! [BoardModelPad]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "backPads",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [BoardModelPad]
+      self.backPads_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: backComponentNames
-    self.backComponentNames_property.setProp (readEntityArrayFromDictionary (
+/*    self.backComponentNames_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backComponentNames",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "backComponentNames",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.backComponentNames_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: frontComponentNames
-    self.frontComponentNames_property.setProp (readEntityArrayFromDictionary (
+/*    self.frontComponentNames_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontComponentNames",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "frontComponentNames",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.frontComponentNames_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: frontComponentValues
-    self.frontComponentValues_property.setProp (readEntityArrayFromDictionary (
+/*    self.frontComponentValues_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontComponentValues",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "frontComponentValues",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.frontComponentValues_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: backComponentValues
-    self.backComponentValues_property.setProp (readEntityArrayFromDictionary (
+/*    self.backComponentValues_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backComponentValues",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "backComponentValues",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.backComponentValues_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: backTracks
-    self.backTracks_property.setProp (readEntityArrayFromDictionary (
+/*    self.backTracks_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backTracks",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "backTracks",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.backTracks_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: frontTracks
-    self.frontTracks_property.setProp (readEntityArrayFromDictionary (
+/*    self.frontTracks_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontTracks",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "frontTracks",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.frontTracks_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: frontPackages
-    self.frontPackages_property.setProp (readEntityArrayFromDictionary (
+/*    self.frontPackages_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontPackages",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "frontPackages",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.frontPackages_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: backPackages
-    self.backPackages_property.setProp (readEntityArrayFromDictionary (
+/*    self.backPackages_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backPackages",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity])
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "backPackages",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.backPackages_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: myInstances
-    self.myInstances_property.setProp (readEntityArrayFromDictionary (
+/*    self.myInstances_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "myInstances",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [MergerBoardInstance])
+    ) as! [MergerBoardInstance]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "myInstances",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [MergerBoardInstance]
+      self.myInstances_property.setProp (EBReferenceArray (array))
+    }
   }
 
   //····················································································································
@@ -3847,7 +4007,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.frontLegendLines {
+      for object in self.frontLegendLines.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -3878,7 +4038,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.backLegendLines {
+      for object in self.backLegendLines.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -3909,7 +4069,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.frontLegendTexts {
+      for object in self.frontLegendTexts.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -3940,7 +4100,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.frontLayoutTexts {
+      for object in self.frontLayoutTexts.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -3971,7 +4131,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.backLegendTexts {
+      for object in self.backLegendTexts.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4002,7 +4162,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.backLayoutTexts {
+      for object in self.backLayoutTexts.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4033,7 +4193,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.internalBoardsLimits {
+      for object in self.internalBoardsLimits.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4064,7 +4224,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.drills {
+      for object in self.drills.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4095,7 +4255,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.vias {
+      for object in self.vias.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4126,7 +4286,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.frontPads {
+      for object in self.frontPads.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4157,7 +4317,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.backPads {
+      for object in self.backPads.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4188,7 +4348,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.backComponentNames {
+      for object in self.backComponentNames.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4219,7 +4379,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.frontComponentNames {
+      for object in self.frontComponentNames.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4250,7 +4410,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.frontComponentValues {
+      for object in self.frontComponentValues.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4281,7 +4441,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.backComponentValues {
+      for object in self.backComponentValues.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4312,7 +4472,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.backTracks {
+      for object in self.backTracks.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4343,7 +4503,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.frontTracks {
+      for object in self.frontTracks.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4374,7 +4534,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.frontPackages {
+      for object in self.frontPackages.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4405,7 +4565,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.backPackages {
+      for object in self.backPackages.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4436,7 +4596,7 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.myInstances {
+      for object in self.myInstances.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -4507,7 +4667,7 @@ final class BoardModel : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["frontLegendLines"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4515,7 +4675,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontLegendLines = relationshipArray }
       }
       if let range = inDictionary ["backLegendLines"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4523,7 +4683,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backLegendLines = relationshipArray }
       }
       if let range = inDictionary ["frontLegendTexts"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4531,7 +4691,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontLegendTexts = relationshipArray }
       }
       if let range = inDictionary ["frontLayoutTexts"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4539,7 +4699,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontLayoutTexts = relationshipArray }
       }
       if let range = inDictionary ["backLegendTexts"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4547,7 +4707,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backLegendTexts = relationshipArray }
       }
       if let range = inDictionary ["backLayoutTexts"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4555,7 +4715,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backLayoutTexts = relationshipArray }
       }
       if let range = inDictionary ["internalBoardsLimits"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4563,7 +4723,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.internalBoardsLimits = relationshipArray }
       }
       if let range = inDictionary ["drills"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4571,7 +4731,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.drills = relationshipArray }
       }
       if let range = inDictionary ["vias"], range.length > 0 {
-        var relationshipArray = [BoardModelVia] ()
+        var relationshipArray = EBReferenceArray  <BoardModelVia> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardModelVia)
@@ -4579,7 +4739,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.vias = relationshipArray }
       }
       if let range = inDictionary ["frontPads"], range.length > 0 {
-        var relationshipArray = [BoardModelPad] ()
+        var relationshipArray = EBReferenceArray  <BoardModelPad> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
@@ -4587,7 +4747,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontPads = relationshipArray }
       }
       if let range = inDictionary ["backPads"], range.length > 0 {
-        var relationshipArray = [BoardModelPad] ()
+        var relationshipArray = EBReferenceArray  <BoardModelPad> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
@@ -4595,7 +4755,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backPads = relationshipArray }
       }
       if let range = inDictionary ["backComponentNames"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4603,7 +4763,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backComponentNames = relationshipArray }
       }
       if let range = inDictionary ["frontComponentNames"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4611,7 +4771,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontComponentNames = relationshipArray }
       }
       if let range = inDictionary ["frontComponentValues"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4619,7 +4779,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontComponentValues = relationshipArray }
       }
       if let range = inDictionary ["backComponentValues"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4627,7 +4787,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backComponentValues = relationshipArray }
       }
       if let range = inDictionary ["backTracks"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4635,7 +4795,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backTracks = relationshipArray }
       }
       if let range = inDictionary ["frontTracks"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4643,7 +4803,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontTracks = relationshipArray }
       }
       if let range = inDictionary ["frontPackages"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4651,7 +4811,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontPackages = relationshipArray }
       }
       if let range = inDictionary ["backPackages"], range.length > 0 {
-        var relationshipArray = [SegmentEntity] ()
+        var relationshipArray = EBReferenceArray  <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
@@ -4659,7 +4819,7 @@ final class BoardModel : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backPackages = relationshipArray }
       }
       if let range = inDictionary ["myInstances"], range.length > 0 {
-        var relationshipArray = [MergerBoardInstance] ()
+        var relationshipArray = EBReferenceArray  <MergerBoardInstance> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)
@@ -4677,83 +4837,83 @@ final class BoardModel : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: frontLegendLines
-    for managedObject in self.frontLegendLines {
+    for managedObject in self.frontLegendLines.values {
       objects.append (managedObject)
     }
   //--- To many property: backLegendLines
-    for managedObject in self.backLegendLines {
+    for managedObject in self.backLegendLines.values {
       objects.append (managedObject)
     }
   //--- To many property: frontLegendTexts
-    for managedObject in self.frontLegendTexts {
+    for managedObject in self.frontLegendTexts.values {
       objects.append (managedObject)
     }
   //--- To many property: frontLayoutTexts
-    for managedObject in self.frontLayoutTexts {
+    for managedObject in self.frontLayoutTexts.values {
       objects.append (managedObject)
     }
   //--- To many property: backLegendTexts
-    for managedObject in self.backLegendTexts {
+    for managedObject in self.backLegendTexts.values {
       objects.append (managedObject)
     }
   //--- To many property: backLayoutTexts
-    for managedObject in self.backLayoutTexts {
+    for managedObject in self.backLayoutTexts.values {
       objects.append (managedObject)
     }
   //--- To many property: internalBoardsLimits
-    for managedObject in self.internalBoardsLimits {
+    for managedObject in self.internalBoardsLimits.values {
       objects.append (managedObject)
     }
   //--- To many property: drills
-    for managedObject in self.drills {
+    for managedObject in self.drills.values {
       objects.append (managedObject)
     }
   //--- To many property: vias
-    for managedObject in self.vias {
+    for managedObject in self.vias.values {
       objects.append (managedObject)
     }
   //--- To many property: frontPads
-    for managedObject in self.frontPads {
+    for managedObject in self.frontPads.values {
       objects.append (managedObject)
     }
   //--- To many property: backPads
-    for managedObject in self.backPads {
+    for managedObject in self.backPads.values {
       objects.append (managedObject)
     }
   //--- To many property: backComponentNames
-    for managedObject in self.backComponentNames {
+    for managedObject in self.backComponentNames.values {
       objects.append (managedObject)
     }
   //--- To many property: frontComponentNames
-    for managedObject in self.frontComponentNames {
+    for managedObject in self.frontComponentNames.values {
       objects.append (managedObject)
     }
   //--- To many property: frontComponentValues
-    for managedObject in self.frontComponentValues {
+    for managedObject in self.frontComponentValues.values {
       objects.append (managedObject)
     }
   //--- To many property: backComponentValues
-    for managedObject in self.backComponentValues {
+    for managedObject in self.backComponentValues.values {
       objects.append (managedObject)
     }
   //--- To many property: backTracks
-    for managedObject in self.backTracks {
+    for managedObject in self.backTracks.values {
       objects.append (managedObject)
     }
   //--- To many property: frontTracks
-    for managedObject in self.frontTracks {
+    for managedObject in self.frontTracks.values {
       objects.append (managedObject)
     }
   //--- To many property: frontPackages
-    for managedObject in self.frontPackages {
+    for managedObject in self.frontPackages.values {
       objects.append (managedObject)
     }
   //--- To many property: backPackages
-    for managedObject in self.backPackages {
+    for managedObject in self.backPackages.values {
       objects.append (managedObject)
     }
   //--- To many property: myInstances
-    for managedObject in self.myInstances {
+    for managedObject in self.myInstances.values {
       objects.append (managedObject)
     }
   }
@@ -4765,83 +4925,83 @@ final class BoardModel : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: frontLegendLines
-    for managedObject in self.frontLegendLines {
+    for managedObject in self.frontLegendLines.values {
       objects.append (managedObject)
     }
   //--- To many property: backLegendLines
-    for managedObject in self.backLegendLines {
+    for managedObject in self.backLegendLines.values {
       objects.append (managedObject)
     }
   //--- To many property: frontLegendTexts
-    for managedObject in self.frontLegendTexts {
+    for managedObject in self.frontLegendTexts.values {
       objects.append (managedObject)
     }
   //--- To many property: frontLayoutTexts
-    for managedObject in self.frontLayoutTexts {
+    for managedObject in self.frontLayoutTexts.values {
       objects.append (managedObject)
     }
   //--- To many property: backLegendTexts
-    for managedObject in self.backLegendTexts {
+    for managedObject in self.backLegendTexts.values {
       objects.append (managedObject)
     }
   //--- To many property: backLayoutTexts
-    for managedObject in self.backLayoutTexts {
+    for managedObject in self.backLayoutTexts.values {
       objects.append (managedObject)
     }
   //--- To many property: internalBoardsLimits
-    for managedObject in self.internalBoardsLimits {
+    for managedObject in self.internalBoardsLimits.values {
       objects.append (managedObject)
     }
   //--- To many property: drills
-    for managedObject in self.drills {
+    for managedObject in self.drills.values {
       objects.append (managedObject)
     }
   //--- To many property: vias
-    for managedObject in self.vias {
+    for managedObject in self.vias.values {
       objects.append (managedObject)
     }
   //--- To many property: frontPads
-    for managedObject in self.frontPads {
+    for managedObject in self.frontPads.values {
       objects.append (managedObject)
     }
   //--- To many property: backPads
-    for managedObject in self.backPads {
+    for managedObject in self.backPads.values {
       objects.append (managedObject)
     }
   //--- To many property: backComponentNames
-    for managedObject in self.backComponentNames {
+    for managedObject in self.backComponentNames.values {
       objects.append (managedObject)
     }
   //--- To many property: frontComponentNames
-    for managedObject in self.frontComponentNames {
+    for managedObject in self.frontComponentNames.values {
       objects.append (managedObject)
     }
   //--- To many property: frontComponentValues
-    for managedObject in self.frontComponentValues {
+    for managedObject in self.frontComponentValues.values {
       objects.append (managedObject)
     }
   //--- To many property: backComponentValues
-    for managedObject in self.backComponentValues {
+    for managedObject in self.backComponentValues.values {
       objects.append (managedObject)
     }
   //--- To many property: backTracks
-    for managedObject in self.backTracks {
+    for managedObject in self.backTracks.values {
       objects.append (managedObject)
     }
   //--- To many property: frontTracks
-    for managedObject in self.frontTracks {
+    for managedObject in self.frontTracks.values {
       objects.append (managedObject)
     }
   //--- To many property: frontPackages
-    for managedObject in self.frontPackages {
+    for managedObject in self.frontPackages.values {
       objects.append (managedObject)
     }
   //--- To many property: backPackages
-    for managedObject in self.backPackages {
+    for managedObject in self.backPackages.values {
       objects.append (managedObject)
     }
   //--- To many property: myInstances
-    for managedObject in self.myInstances {
+    for managedObject in self.myInstances.values {
       objects.append (managedObject)
     }
   }

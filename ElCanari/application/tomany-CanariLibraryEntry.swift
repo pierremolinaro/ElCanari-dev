@@ -374,7 +374,7 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = []
+        self.mInternalArrayValue = EBReferenceArray  ()
       }
     }
   }
@@ -403,25 +403,25 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : [CanariLibraryEntry]
+      let newArray : EBReferenceArray  <CanariLibraryEntry>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
+            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = v
+            newArray = EBReferenceArray  (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = []
+        newArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -436,7 +436,7 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -444,7 +444,7 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
 
   //····················································································································
 
-  override var propval : [CanariLibraryEntry] {
+  override var propval : EBReferenceArray  <CanariLibraryEntry> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -498,25 +498,25 @@ final class TransientArrayOfSuperOf_CanariLibraryEntry <SUPER : EBManagedObject>
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : [SUPER]
+      var newModelArray : EBReferenceArray  <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = v
+          newModelArray = EBReferenceArray  (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
-      var newArray = [CanariLibraryEntry] ()
-      for superObject in newModelArray {
+      var newArray = EBReferenceArray  <CanariLibraryEntry> ()
+      for superObject in newModelArray.values {
         if let object = superObject as? CanariLibraryEntry {
           newArray.append (object)
         }
@@ -533,7 +533,7 @@ final class TransientArrayOfSuperOf_CanariLibraryEntry <SUPER : EBManagedObject>
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -541,7 +541,7 @@ final class TransientArrayOfSuperOf_CanariLibraryEntry <SUPER : EBManagedObject>
 
   //····················································································································
 
-  override var propval : [CanariLibraryEntry] {
+  override var propval : EBReferenceArray  <CanariLibraryEntry> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -558,7 +558,7 @@ class ReadWriteArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
   //····················································································································
 
-  func setProp (_ value :  [CanariLibraryEntry]) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray  <CanariLibraryEntry>) { } // Abstract method
 
   //····················································································································
 
@@ -587,18 +587,18 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : [CanariLibraryEntry]
+    let newModelArray : EBReferenceArray  <CanariLibraryEntry>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
       case .single (let v) :
-        newModelArray = v
-       case .multiple :
-        newModelArray = []
+        newModelArray = EBReferenceArray  <CanariLibraryEntry> (v)
+      case .multiple :
+        newModelArray = EBReferenceArray  ()
       }
     }else{
-      newModelArray = []
+      newModelArray = EBReferenceArray  ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -606,7 +606,7 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : [CanariLibraryEntry]) {
+  override func setProp (_ inArrayValue : EBReferenceArray  <CanariLibraryEntry>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -622,16 +622,16 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
 
   //····················································································································
 
-  override var propval : [CanariLibraryEntry] {
+  override var propval : EBReferenceArray  <CanariLibraryEntry> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return []
+        return EBReferenceArray  ()
       case .single (let v) :
-        return v
+        return EBReferenceArray  (v)
       }
     }else{
-      return []
+      return EBReferenceArray  ()
     }
   }
 
@@ -698,7 +698,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : [CanariLibraryEntry]) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <CanariLibraryEntry>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -712,7 +712,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
   override func notifyModelDidChange () {
   //--- Update explorer
     if let valueExplorer = self.mValueExplorer {
-      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue.values, popUpButton: valueExplorer)
     }
   //--- Notify observers
     self.postEvent ()
@@ -745,15 +745,15 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
 
   //····················································································································
 
-  override final var selection : EBSelection < [CanariLibraryEntry] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [CanariLibraryEntry] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [CanariLibraryEntry]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <CanariLibraryEntry>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : [CanariLibraryEntry] { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray  <CanariLibraryEntry> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -807,7 +807,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc
@@ -834,15 +834,15 @@ final class StandAloneArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibrar
 
   //····················································································································
 
-  override var selection : EBSelection < [CanariLibraryEntry] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [CanariLibraryEntry] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [CanariLibraryEntry]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <CanariLibraryEntry>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : [CanariLibraryEntry] { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray  <CanariLibraryEntry> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -888,7 +888,7 @@ final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryE
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [CanariLibraryEntry] ()
+      var objectArray = EBReferenceArray  <CanariLibraryEntry> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "CanariLibraryEntry") as? CanariLibraryEntry {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
@@ -908,7 +908,7 @@ final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryE
 
   private func writeInPreferences () {
     var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       let d = NSMutableDictionary ()
       object.saveIntoDictionary (d)
       d [ENTITY_KEY] = nil // Remove entity key, not used in preferences

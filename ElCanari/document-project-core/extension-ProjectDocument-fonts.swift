@@ -54,7 +54,7 @@ extension ProjectDocument {
 
   //····················································································································
 
-  internal func updateFonts (_ inFonts : [FontInProject], _ ioMessages : inout [String]) {
+  internal func updateFonts (_ inFonts : EBReferenceArray <FontInProject>, _ ioMessages : inout [String]) {
     for font in inFonts {
       let pathes = fontFilePathInLibraries (font.mFontName)
       if pathes.count == 0 {

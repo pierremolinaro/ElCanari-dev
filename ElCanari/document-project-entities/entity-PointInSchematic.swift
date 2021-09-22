@@ -144,7 +144,7 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var mLabels : [LabelInSchematic] {
+  final var mLabels : EBReferenceArray  <LabelInSchematic> {
     get { return self.mLabels_property.propval }
     set { self.mLabels_property.setProp (newValue) }
   }
@@ -197,7 +197,7 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var mWiresP2s : [WireInSchematic] {
+  final var mWiresP2s : EBReferenceArray  <WireInSchematic> {
     get { return self.mWiresP2s_property.propval }
     set { self.mWiresP2s_property.setProp (newValue) }
   }
@@ -212,7 +212,7 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var mWiresP1s : [WireInSchematic] {
+  final var mWiresP1s : EBReferenceArray  <WireInSchematic> {
     get { return self.mWiresP1s_property.propval }
     set { self.mWiresP1s_property.setProp (newValue) }
   }
@@ -1103,9 +1103,9 @@ final class PointInSchematic : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mLabels = []
-    self.mWiresP2s = []
-    self.mWiresP1s = []
+    self.mLabels.removeAll ()
+    self.mWiresP2s.removeAll ()
+    self.mWiresP1s.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1133,7 +1133,7 @@ final class PointInSchematic : EBManagedObject,
     self.mSymbolPinName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolPinName")
   //--- To many property: mLabels
     self.store (
-      managedObjectArray: self.mLabels_property.propval,
+      managedObjectArray: self.mLabels_property.propval.values,
       relationshipName: "mLabels",
       intoDictionary: ioDictionary
     )
@@ -1143,13 +1143,13 @@ final class PointInSchematic : EBManagedObject,
     self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   //--- To many property: mWiresP2s
     self.store (
-      managedObjectArray: self.mWiresP2s_property.propval,
+      managedObjectArray: self.mWiresP2s_property.propval.values,
       relationshipName: "mWiresP2s",
       intoDictionary: ioDictionary
     )
   //--- To many property: mWiresP1s
     self.store (
-      managedObjectArray: self.mWiresP1s_property.propval,
+      managedObjectArray: self.mWiresP1s_property.propval.values,
       relationshipName: "mWiresP1s",
       intoDictionary: ioDictionary
     )
@@ -1167,23 +1167,47 @@ final class PointInSchematic : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mLabels
-    self.mLabels_property.setProp (readEntityArrayFromDictionary (
+/*    self.mLabels_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mLabels",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [LabelInSchematic])
+    ) as! [LabelInSchematic]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mLabels",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [LabelInSchematic]
+      self.mLabels_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: mWiresP2s
-    self.mWiresP2s_property.setProp (readEntityArrayFromDictionary (
+/*    self.mWiresP2s_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mWiresP2s",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [WireInSchematic])
+    ) as! [WireInSchematic]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mWiresP2s",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [WireInSchematic]
+      self.mWiresP2s_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: mWiresP1s
-    self.mWiresP1s_property.setProp (readEntityArrayFromDictionary (
+/*    self.mWiresP1s_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mWiresP1s",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [WireInSchematic])
+    ) as! [WireInSchematic]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mWiresP1s",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [WireInSchematic]
+      self.mWiresP1s_property.setProp (EBReferenceArray (array))
+    }
   //--- To one property: mSymbol
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -1300,7 +1324,7 @@ final class PointInSchematic : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mLabels {
+      for object in self.mLabels.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1331,7 +1355,7 @@ final class PointInSchematic : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mWiresP2s {
+      for object in self.mWiresP2s.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1362,7 +1386,7 @@ final class PointInSchematic : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mWiresP1s {
+      for object in self.mWiresP1s.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1431,7 +1455,7 @@ final class PointInSchematic : EBManagedObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mLabels"], range.length > 0 {
-        var relationshipArray = [LabelInSchematic] ()
+        var relationshipArray = EBReferenceArray  <LabelInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! LabelInSchematic)
@@ -1439,7 +1463,7 @@ final class PointInSchematic : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mLabels = relationshipArray }
       }
       if let range = inDictionary ["mWiresP2s"], range.length > 0 {
-        var relationshipArray = [WireInSchematic] ()
+        var relationshipArray = EBReferenceArray  <WireInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
@@ -1447,7 +1471,7 @@ final class PointInSchematic : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mWiresP2s = relationshipArray }
       }
       if let range = inDictionary ["mWiresP1s"], range.length > 0 {
-        var relationshipArray = [WireInSchematic] ()
+        var relationshipArray = EBReferenceArray  <WireInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
@@ -1465,15 +1489,15 @@ final class PointInSchematic : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mLabels
-    for managedObject in self.mLabels {
+    for managedObject in self.mLabels.values {
       objects.append (managedObject)
     }
   //--- To many property: mWiresP2s
-    for managedObject in self.mWiresP2s {
+    for managedObject in self.mWiresP2s.values {
       objects.append (managedObject)
     }
   //--- To many property: mWiresP1s
-    for managedObject in self.mWiresP1s {
+    for managedObject in self.mWiresP1s.values {
       objects.append (managedObject)
     }
   //--- To one property: mSymbol
@@ -1501,15 +1525,15 @@ final class PointInSchematic : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mLabels
-    for managedObject in self.mLabels {
+    for managedObject in self.mLabels.values {
       objects.append (managedObject)
     }
   //--- To many property: mWiresP2s
-    for managedObject in self.mWiresP2s {
+    for managedObject in self.mWiresP2s.values {
       objects.append (managedObject)
     }
   //--- To many property: mWiresP1s
-    for managedObject in self.mWiresP1s {
+    for managedObject in self.mWiresP1s.values {
       objects.append (managedObject)
     }
   //--- To one property: mSymbol

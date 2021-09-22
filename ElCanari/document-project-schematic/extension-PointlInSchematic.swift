@@ -21,7 +21,7 @@ extension PointInSchematic {
     var exploreArray = [self]
     while let point = exploreArray.last {
       exploreArray.removeLast ()
-      for wire in point.mWiresP1s + point.mWiresP2s {
+      for wire in point.mWiresP1s.values + point.mWiresP2s.values {
         let p1 = wire.mP1!
         if !reachedPointSet.contains (p1) {
           reachedPointSet.insert (p1)

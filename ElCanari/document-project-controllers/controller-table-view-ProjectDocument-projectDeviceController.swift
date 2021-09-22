@@ -25,7 +25,7 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
 
   //····················································································································
 
-  var sortedArray : [DeviceInProject] { return self.sortedArray_property.propval }
+  var sortedArray : EBReferenceArray  <DeviceInProject> { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -39,11 +39,11 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
 
   //····················································································································
 
-  var objects : [DeviceInProject] {
+  var objects : EBReferenceArray  <DeviceInProject> {
     if let objects = self.mModel?.propval {
       return objects
     }else{
-      return []
+      return EBReferenceArray  ()
     }
   }
 
@@ -120,7 +120,7 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
     super.notifyModelDidChange ()
     // NSLog ("self.sortedArray \(self.sortedArray.count)")
     let oldSelectionSet = self.selectedSet
-    var newSelectedArray = [DeviceInProject] ()
+    var newSelectedArray = EBReferenceArray  <DeviceInProject> ()
     for object in self.sortedArray {
       if oldSelectionSet.contains (object) {
         newSelectedArray.append (object)
@@ -148,11 +148,11 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
 
   //····················································································································
 
-  var selectedArray : [DeviceInProject] { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray  <DeviceInProject> { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedSet : EBReferenceSet <DeviceInProject> { return EBReferenceSet (self.selectedArray) }
+  var selectedSet : EBReferenceSet <DeviceInProject> { return EBReferenceSet (self.selectedArray.values) }
 
   //····················································································································
 
@@ -171,7 +171,7 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
   //····················································································································
 
   func setSelection (_ inObjects : [DeviceInProject]) {
-    self.mInternalSelectedArrayProperty.setProp (inObjects)
+    self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObjects))
   }
 
   //····················································································································
@@ -319,7 +319,7 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjects = [DeviceInProject] ()
+      var newSelectedObjects = EBReferenceArray  <DeviceInProject> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjects.append (v [index])
       }
@@ -408,7 +408,7 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          self.mInternalSelectedArrayProperty.setProp ([inObject])
+          self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObject))
         }
       }
     }
@@ -425,11 +425,11 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
         break
       case .single (let v) :
         let newObject = DeviceInProject (self.ebUndoManager)
-        var array = v
+        var array = EBReferenceArray  (v)
         array.append (newObject)
         model.setProp (array)
       //--- New object is the selection
-        self.mInternalSelectedArrayProperty.setProp ([newObject])
+        self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (newObject))
       }
     }
   }
@@ -493,7 +493,7 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
         //--- Sort in reverse order
           selectedObjectIndexArray.sort { $1 < $0 }
         //--- Remove objects, in reverse of order of their index
-          var newObjectArray = model_prop
+          var newObjectArray = EBReferenceArray  (model_prop)
           for index in selectedObjectIndexArray {
             newObjectArray.remove (at: index)
           }
@@ -501,9 +501,9 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
           model.setProp (newObjectArray)
         //----------------------------------------- Set new selection
           if let object = newSelectedObject {
-            self.mInternalSelectedArrayProperty.setProp ([object])
+            self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (object))
           }else{
-            self.mInternalSelectedArrayProperty.setProp ([])
+            self.mInternalSelectedArrayProperty.setProp (EBReferenceArray ())
           }
         }
       }

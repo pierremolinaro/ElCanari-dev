@@ -42,7 +42,7 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
 
   @IBAction func newAutomaticNetNameFromSelectedWireAction (_ sender : NSObject?) { // Bound in IB
      var netSet = Set <NetInProject> ()
-     for wire in self.wireInSchematicSelectionController.selectedArray {
+     for wire in self.wireInSchematicSelectionController.selectedArray.values {
        if let net = wire.mP1?.mNet {
          netSet.insert (net)
        }
@@ -81,7 +81,7 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
 
   @IBAction func renameNetFromSelectedLabelAction (_ sender : NSObject?) { // Bound in IB
      let selectedLabels = self.schematicLabelSelectionController.selectedArray
-     if selectedLabels.count == 1, let net = selectedLabels [0].mPoint?.mNet {
+     if selectedLabels.count == 1, let net = selectedLabels.values [0].mPoint?.mNet {
        self.dialogForRenaming (net: net)
      }
   }
@@ -90,7 +90,7 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
 
   @IBAction func newAutomaticNetNameFromSelectedLabelAction (_ sender : NSObject?) { // Bound in IB
      var netSet = Set <NetInProject> ()
-     for label in self.schematicLabelSelectionController.selectedArray {
+     for label in self.schematicLabelSelectionController.selectedArray.values {
        if let net = label.mPoint?.mNet {
          netSet.insert (net)
        }
@@ -131,27 +131,27 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
   //····················································································································
 
   internal func removeUnusedNets () {
-    for netClass in self.rootObject.mNetClasses {
-      for net in netClass.mNets {
+    for netClass in self.rootObject.mNetClasses.values {
+      for net in netClass.mNets.values {
         var suppressNet = true
-        for point in net.mPoints {
+        for point in net.mPoints.values {
           if point.mSheet != nil {
             suppressNet = false
           }else{ // Suppress point
             point.mNet = nil
-            point.mWiresP1s = []
-            point.mWiresP2s = []
+            point.mWiresP1s = EBReferenceArray ()
+            point.mWiresP2s = EBReferenceArray ()
           }
         }
-        for tracks in net.mTracks {
+        for tracks in net.mTracks.values {
           if tracks.mRoot != nil {
             suppressNet = false
             break
           }
         }
         if suppressNet {
-          net.mPoints = []
-          net.mTracks = []
+          net.mPoints = EBReferenceArray ()
+          net.mTracks = EBReferenceArray ()
           net.mNetClass = nil
         }
       }
@@ -164,8 +164,8 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
 
   internal func updateSelectedNetForRastnetDisplay () {
     var netNameSet = Set <String> ()
-    for netClass in self.rootObject.mNetClasses {
-      for net in netClass.mNets {
+    for netClass in self.rootObject.mNetClasses.values {
+      for net in netClass.mNets.values {
         netNameSet.insert (net.mNetName)
       }
     }
@@ -184,8 +184,8 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
 //    NSLog ("inNetName \(inNetName)")
   //--- Find net from its name
     var possibleNetForRenamingOperation : NetInProject? = nil
-    for netClass in self.rootObject.mNetClasses {
-      for net in netClass.mNets {
+    for netClass in self.rootObject.mNetClasses.values {
+      for net in netClass.mNets.values {
         if net.mNetName == inNetName {
           possibleNetForRenamingOperation = net
         }
@@ -240,8 +240,8 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
         self.mRenameNetOkButton?.title = "Rename"
       }else{
         var nameIsUnique = true
-        for netClass in self.rootObject.mNetClasses {
-          for net in netClass.mNets {
+        for netClass in self.rootObject.mNetClasses.values {
+          for net in netClass.mNets.values {
             if net !== netForRenamingOperation, net.mNetName == newNetName {
               nameIsUnique = false
             }
@@ -272,8 +272,8 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
       popup.removeAllItems ()
       panel.makeFirstResponder (popup)
       var nets = [NetInProject] ()
-      for netClass in self.rootObject.mNetClasses {
-        for net in netClass.mNets {
+      for netClass in self.rootObject.mNetClasses.values {
+        for net in netClass.mNets.values {
           nets.append (net)
         }
       }

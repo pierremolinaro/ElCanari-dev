@@ -14,7 +14,7 @@ extension AutoLayoutDeviceDocument {
   @objc func addSymbolFromLibraryAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
    var currentSymbolNames = Set <String> ()
-   for symbolType in self.rootObject.mSymbolTypes {
+   for symbolType in self.rootObject.mSymbolTypes.values {
      currentSymbolNames.insert (symbolType.mTypeName)
    }
    gOpenSymbolInLibrary?.loadDocumentFromLibrary (

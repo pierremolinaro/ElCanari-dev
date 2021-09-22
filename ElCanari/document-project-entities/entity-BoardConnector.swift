@@ -299,7 +299,7 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mTracksP2 : [BoardTrack] {
+  final var mTracksP2 : EBReferenceArray  <BoardTrack> {
     get { return self.mTracksP2_property.propval }
     set { self.mTracksP2_property.setProp (newValue) }
   }
@@ -466,7 +466,7 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mTracksP1 : [BoardTrack] {
+  final var mTracksP1 : EBReferenceArray  <BoardTrack> {
     get { return self.mTracksP1_property.propval }
     set { self.mTracksP1_property.setProp (newValue) }
   }
@@ -1438,8 +1438,8 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mTracksP2 = []
-    self.mTracksP1 = []
+    self.mTracksP2.removeAll ()
+    self.mTracksP1.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1470,7 +1470,7 @@ final class BoardConnector : BoardObject,
     self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   //--- To many property: mTracksP2
     self.store (
-      managedObjectArray: self.mTracksP2_property.propval,
+      managedObjectArray: self.mTracksP2_property.propval.values,
       relationshipName: "mTracksP2",
       intoDictionary: ioDictionary
     )
@@ -1492,7 +1492,7 @@ final class BoardConnector : BoardObject,
     self.mUsesCustomPadDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mUsesCustomPadDiameter")
   //--- To many property: mTracksP1
     self.store (
-      managedObjectArray: self.mTracksP1_property.propval,
+      managedObjectArray: self.mTracksP1_property.propval.values,
       relationshipName: "mTracksP1",
       intoDictionary: ioDictionary
     )
@@ -1506,17 +1506,33 @@ final class BoardConnector : BoardObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mTracksP2
-    self.mTracksP2_property.setProp (readEntityArrayFromDictionary (
+/*    self.mTracksP2_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mTracksP2",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardTrack])
+    ) as! [BoardTrack]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mTracksP2",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [BoardTrack]
+      self.mTracksP2_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: mTracksP1
-    self.mTracksP1_property.setProp (readEntityArrayFromDictionary (
+/*    self.mTracksP1_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mTracksP1",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardTrack])
+    ) as! [BoardTrack]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mTracksP1",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [BoardTrack]
+      self.mTracksP1_property.setProp (EBReferenceArray (array))
+    }
   //--- To one property: mComponent
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -1629,7 +1645,7 @@ final class BoardConnector : BoardObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mTracksP2 {
+      for object in self.mTracksP2.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1660,7 +1676,7 @@ final class BoardConnector : BoardObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mTracksP1 {
+      for object in self.mTracksP1.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1744,7 +1760,7 @@ final class BoardConnector : BoardObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mTracksP2"], range.length > 0 {
-        var relationshipArray = [BoardTrack] ()
+        var relationshipArray = EBReferenceArray  <BoardTrack> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)
@@ -1752,7 +1768,7 @@ final class BoardConnector : BoardObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mTracksP2 = relationshipArray }
       }
       if let range = inDictionary ["mTracksP1"], range.length > 0 {
-        var relationshipArray = [BoardTrack] ()
+        var relationshipArray = EBReferenceArray  <BoardTrack> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)
@@ -1770,11 +1786,11 @@ final class BoardConnector : BoardObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mTracksP2
-    for managedObject in self.mTracksP2 {
+    for managedObject in self.mTracksP2.values {
       objects.append (managedObject)
     }
   //--- To many property: mTracksP1
-    for managedObject in self.mTracksP1 {
+    for managedObject in self.mTracksP1.values {
       objects.append (managedObject)
     }
   //--- To one property: mComponent
@@ -1790,11 +1806,11 @@ final class BoardConnector : BoardObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mTracksP2
-    for managedObject in self.mTracksP2 {
+    for managedObject in self.mTracksP2.values {
       objects.append (managedObject)
     }
   //--- To many property: mTracksP1
-    for managedObject in self.mTracksP1 {
+    for managedObject in self.mTracksP1.values {
       objects.append (managedObject)
     }
   //--- To one property: mComponent

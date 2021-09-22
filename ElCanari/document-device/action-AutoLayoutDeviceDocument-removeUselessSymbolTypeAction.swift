@@ -16,10 +16,10 @@ extension AutoLayoutDeviceDocument {
     if self.symbolTypeController.selectedArray.count == 1 {
       let selectedSymbolType = self.symbolTypeController.selectedArray [0]
       if let instanceCount = selectedSymbolType.instanceCount, instanceCount == 0 {
-        var newSymbolTypes = [SymbolTypeInDevice] ()
+        var newSymbolTypes = EBReferenceArray <SymbolTypeInDevice> ()
         for symbolType in self.rootObject.mSymbolTypes {
           if symbolType === selectedSymbolType {
-            selectedSymbolType.mPinTypes = []
+            selectedSymbolType.mPinTypes = EBReferenceArray ()
           }else{
             newSymbolTypes.append (symbolType)
           }

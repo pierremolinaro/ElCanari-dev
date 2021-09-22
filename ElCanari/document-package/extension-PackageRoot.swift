@@ -16,7 +16,7 @@ extension PackageRoot {
 
   func accumulate (withUndoManager inUndoManager : EBUndoManager,
                    strokeBezierPathes : inout EBBezierPath,
-                   masterPads : inout [MasterPadInDevice]) {
+                   masterPads : inout EBReferenceArray <MasterPadInDevice>) {
     var masterPadDictionary = [PackagePad : MasterPadInDevice] ()
     for object in self.packageObjects_property.propval {
       if let segment = object as? PackageSegment, let bp = segment.strokeBezierPath {

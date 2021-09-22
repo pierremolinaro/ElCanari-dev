@@ -59,7 +59,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
     right.mNext = top
     top.mNext = left
     left.mNext = bottom
-    self.rootObject.mBorderCurves = [bottom, right, top, left]
+    self.rootObject.mBorderCurves = EBReferenceArray ([bottom, right, top, left])
     left.setControlPointsDefaultValuesForLine ()
     right.setControlPointsDefaultValuesForLine ()
     bottom.setControlPointsDefaultValuesForLine ()

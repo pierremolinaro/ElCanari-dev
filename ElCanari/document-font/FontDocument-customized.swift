@@ -122,7 +122,7 @@ let PMFontComment = "PMFontComment"
     }
   //--- Update segments
     if let currentCharacter = possibleCurrentCharacter {
-      var newSegmentEntityArray = [SegmentForFontCharacter] ()
+      var newSegmentEntityArray = EBReferenceArray <SegmentForFontCharacter> ()
       for segment in inSegments {
         let newSegment = SegmentForFontCharacter (self.ebUndoManager)
         newSegment.x1 = segment.x1
@@ -156,7 +156,7 @@ let PMFontComment = "PMFontComment"
       let newCharacter = FontCharacter (self.ebUndoManager)
       newCharacter.codePoint = codePoint
       characterSet.append (newCharacter)
-      characterSet = characterSet.sorted { $0.codePoint < $1.codePoint }
+      characterSet.sort { $0.codePoint < $1.codePoint }
       self.rootObject.characters_property.setProp (characterSet)
       self.mSelectedCharacterController.select (object: newCharacter)
     }

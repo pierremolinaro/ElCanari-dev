@@ -225,7 +225,7 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mMasterPads : [MasterPadInDevice] {
+  final var mMasterPads : EBReferenceArray  <MasterPadInDevice> {
     get { return self.mMasterPads_property.propval }
     set { self.mMasterPads_property.setProp (newValue) }
   }
@@ -732,7 +732,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mMasterPads = []
+    self.mMasterPads.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -767,7 +767,7 @@ final class PackageInDevice : EBGraphicManagedObject,
     self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   //--- To many property: mMasterPads
     self.store (
-      managedObjectArray: self.mMasterPads_property.propval,
+      managedObjectArray: self.mMasterPads_property.propval.values,
       relationshipName: "mMasterPads",
       intoDictionary: ioDictionary
     )
@@ -781,11 +781,19 @@ final class PackageInDevice : EBGraphicManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mMasterPads
-    self.mMasterPads_property.setProp (readEntityArrayFromDictionary (
+/*    self.mMasterPads_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mMasterPads",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [MasterPadInDevice])
+    ) as! [MasterPadInDevice]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mMasterPads",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [MasterPadInDevice]
+      self.mMasterPads_property.setProp (EBReferenceArray (array))
+    }
   //--- To one property: mRoot
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -867,7 +875,7 @@ final class PackageInDevice : EBGraphicManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mMasterPads {
+      for object in self.mMasterPads.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -933,7 +941,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mMasterPads"], range.length > 0 {
-        var relationshipArray = [MasterPadInDevice] ()
+        var relationshipArray = EBReferenceArray  <MasterPadInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! MasterPadInDevice)
@@ -951,7 +959,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mMasterPads
-    for managedObject in self.mMasterPads {
+    for managedObject in self.mMasterPads.values {
       objects.append (managedObject)
     }
   //--- To one property: mRoot
@@ -967,7 +975,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mMasterPads
-    for managedObject in self.mMasterPads {
+    for managedObject in self.mMasterPads.values {
       objects.append (managedObject)
     }
   //--- To one property: mRoot

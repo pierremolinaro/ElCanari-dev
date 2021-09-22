@@ -24,10 +24,10 @@ extension AutoLayoutPackageDocument {
       self.rootObject.reset_mPointsAreLocked_toDefaultValue ()
       self.rootObject.reset_mModelPointsCircleRadius_toDefaultValue ()
       self.rootObject.mModelImageDoublePoint = nil
-      self.rootObject.mModelImageObjects = []
+      self.rootObject.mModelImageObjects = EBReferenceArray ()
       let pp = PackageModelImageDoublePoint (self.ebUndoManager)
       self.rootObject.mModelImageDoublePoint = pp
-      self.rootObject.mModelImageObjects = [pp]
+      self.rootObject.mModelImageObjects = EBReferenceArray (pp)
       self.rootObject.mModelImagePageZoom = 0
     }
 

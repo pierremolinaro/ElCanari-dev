@@ -31,7 +31,7 @@ extension ProjectDocument {
 
   //····················································································································
 
-  internal func updateDevices (_ inDevices : [DeviceInProject], _ ioMessages : inout [String]) {
+  internal func updateDevices (_ inDevices : EBReferenceArray <DeviceInProject>, _ ioMessages : inout [String]) {
     for deviceInProject in inDevices {
       let pathes = deviceFilePathInLibraries (deviceInProject.mDeviceName)
       if pathes.count == 0 {
@@ -248,7 +248,7 @@ extension ProjectDocument {
     inCurrentDeviceInProject.mPrefix = inCandidateDeviceRoot.mPrefix
   //--- Remove current packages
     let currentPackages = inCurrentDeviceInProject.mPackages
-    inCurrentDeviceInProject.mPackages = []
+    inCurrentDeviceInProject.mPackages = EBReferenceArray ()
     for p in currentPackages {
       p.removeRecursivelyAllRelationsShips ()
     }
@@ -297,7 +297,7 @@ extension ProjectDocument {
     }
   //--- Remove current symbols
     let currentSymbols = inCurrentDeviceInProject.mSymbols
-    inCurrentDeviceInProject.mSymbols = []
+    inCurrentDeviceInProject.mSymbols = EBReferenceArray ()
     for s in currentSymbols {
       s.removeRecursivelyAllRelationsShips ()
     }
@@ -334,7 +334,7 @@ extension ProjectDocument {
       }
     }
   //--- Append pin/pad assignments
-    inCurrentDeviceInProject.mPadAssignments = []
+    inCurrentDeviceInProject.mPadAssignments = EBReferenceArray ()
     for pinPadAssignmentInDevice in inCandidateDeviceRoot.mPadProxies {
       let assignment = DevicePadAssignmentInProject (self.ebUndoManager)
       let padName = pinPadAssignmentInDevice.mPadName

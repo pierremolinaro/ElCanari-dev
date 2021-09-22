@@ -17,7 +17,7 @@ extension SymbolRoot {
   func accumulate (withUndoManager inUndoManager : EBUndoManager,
                    strokeBezierPathes : NSBezierPath,
                    filledBezierPathes : NSBezierPath,
-                   symbolPins : inout [SymbolPinTypeInDevice]) {
+                   symbolPins : inout EBReferenceArray <SymbolPinTypeInDevice>) {
     for symbolObject in self.symbolObjects {
       if let object = symbolObject as? SymbolPin, let bp = object.filledBezierPath {
         filledBezierPathes.append (bp)

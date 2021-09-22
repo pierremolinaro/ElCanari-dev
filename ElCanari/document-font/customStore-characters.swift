@@ -24,7 +24,7 @@ func customStore_FontCharacter_characters (_ inCharacters : [FontCharacter], int
     s += char.mWarnsWhenNoSegment ? "1" : "0"
     var x = Int.min
     var y = Int.min
-    for segment in char.segments_property.propval {
+    for segment in char.segments_property.propval.values {
       if (segment.x1 == x) && (segment.y1 == y) {
         s += ">\(segment.x2) \(segment.y2)"
       }else if (segment.x1 == segment.x2) && (segment.y1 == segment.y2) {
@@ -60,7 +60,7 @@ func customRead_FontCharacter_characters (from inDictionary : NSDictionary, with
       scanner.myCheckString (":", &ok)
       newCharacter.mWarnsWhenNoSegment = scanner.myScanInt (&ok) != 0
     //--- Segments
-      var segments = [SegmentForFontCharacter] ()
+      var segments = EBReferenceArray <SegmentForFontCharacter> ()
       while ok && scanner.myTestString (",") {
         var x = scanner.myScanInt (&ok)
         var y = scanner.myScanInt (&ok)

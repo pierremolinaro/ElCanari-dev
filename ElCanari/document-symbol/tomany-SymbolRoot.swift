@@ -740,7 +740,7 @@ final class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = []
+        self.mInternalArrayValue = EBReferenceArray  ()
       }
     }
   }
@@ -769,25 +769,25 @@ final class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : [SymbolRoot]
+      let newArray : EBReferenceArray  <SymbolRoot>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
+            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = v
+            newArray = EBReferenceArray  (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = []
+        newArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -802,7 +802,7 @@ final class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -810,7 +810,7 @@ final class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
 
   //····················································································································
 
-  override var propval : [SymbolRoot] {
+  override var propval : EBReferenceArray  <SymbolRoot> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -864,25 +864,25 @@ final class TransientArrayOfSuperOf_SymbolRoot <SUPER : EBManagedObject> : ReadO
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : [SUPER]
+      var newModelArray : EBReferenceArray  <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = v
+          newModelArray = EBReferenceArray  (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
-      var newArray = [SymbolRoot] ()
-      for superObject in newModelArray {
+      var newArray = EBReferenceArray  <SymbolRoot> ()
+      for superObject in newModelArray.values {
         if let object = superObject as? SymbolRoot {
           newArray.append (object)
         }
@@ -899,7 +899,7 @@ final class TransientArrayOfSuperOf_SymbolRoot <SUPER : EBManagedObject> : ReadO
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -907,7 +907,7 @@ final class TransientArrayOfSuperOf_SymbolRoot <SUPER : EBManagedObject> : ReadO
 
   //····················································································································
 
-  override var propval : [SymbolRoot] {
+  override var propval : EBReferenceArray  <SymbolRoot> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -924,7 +924,7 @@ class ReadWriteArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
 
   //····················································································································
 
-  func setProp (_ value :  [SymbolRoot]) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray  <SymbolRoot>) { } // Abstract method
 
   //····················································································································
 
@@ -953,18 +953,18 @@ final class ProxyArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : [SymbolRoot]
+    let newModelArray : EBReferenceArray  <SymbolRoot>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
       case .single (let v) :
-        newModelArray = v
-       case .multiple :
-        newModelArray = []
+        newModelArray = EBReferenceArray  <SymbolRoot> (v)
+      case .multiple :
+        newModelArray = EBReferenceArray  ()
       }
     }else{
-      newModelArray = []
+      newModelArray = EBReferenceArray  ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -972,7 +972,7 @@ final class ProxyArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot {
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : [SymbolRoot]) {
+  override func setProp (_ inArrayValue : EBReferenceArray  <SymbolRoot>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -988,16 +988,16 @@ final class ProxyArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot {
 
   //····················································································································
 
-  override var propval : [SymbolRoot] {
+  override var propval : EBReferenceArray  <SymbolRoot> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return []
+        return EBReferenceArray  ()
       case .single (let v) :
-        return v
+        return EBReferenceArray  (v)
       }
     }else{
-      return []
+      return EBReferenceArray  ()
     }
   }
 
@@ -1064,7 +1064,7 @@ class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserve
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : [SymbolRoot]) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <SymbolRoot>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -1078,7 +1078,7 @@ class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserve
   override func notifyModelDidChange () {
   //--- Update explorer
     if let valueExplorer = self.mValueExplorer {
-      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue.values, popUpButton: valueExplorer)
     }
   //--- Notify observers
     self.postEvent ()
@@ -1111,15 +1111,15 @@ class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserve
 
   //····················································································································
 
-  override final var selection : EBSelection < [SymbolRoot] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [SymbolRoot] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [SymbolRoot]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <SymbolRoot>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : [SymbolRoot] { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray  <SymbolRoot> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1173,7 +1173,7 @@ class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserve
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc
@@ -1200,15 +1200,15 @@ final class StandAloneArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot {
 
   //····················································································································
 
-  override var selection : EBSelection < [SymbolRoot] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [SymbolRoot] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [SymbolRoot]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <SymbolRoot>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : [SymbolRoot] { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray  <SymbolRoot> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1254,7 +1254,7 @@ final class PreferencesArrayOf_SymbolRoot : StoredArrayOf_SymbolRoot {
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SymbolRoot] ()
+      var objectArray = EBReferenceArray  <SymbolRoot> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolRoot") as? SymbolRoot {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
@@ -1280,7 +1280,7 @@ final class PreferencesArrayOf_SymbolRoot : StoredArrayOf_SymbolRoot {
 
   private func writeInPreferences () {
     var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       let d = NSMutableDictionary ()
       object.saveIntoDictionary (d)
       d [ENTITY_KEY] = nil // Remove entity key, not used in preferences

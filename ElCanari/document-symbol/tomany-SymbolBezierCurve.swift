@@ -792,7 +792,7 @@ final class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCur
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = []
+        self.mInternalArrayValue = EBReferenceArray  ()
       }
     }
   }
@@ -821,25 +821,25 @@ final class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCur
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : [SymbolBezierCurve]
+      let newArray : EBReferenceArray  <SymbolBezierCurve>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
+            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = v
+            newArray = EBReferenceArray  (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = []
+        newArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -854,7 +854,7 @@ final class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCur
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -862,7 +862,7 @@ final class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCur
 
   //····················································································································
 
-  override var propval : [SymbolBezierCurve] {
+  override var propval : EBReferenceArray  <SymbolBezierCurve> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -916,25 +916,25 @@ final class TransientArrayOfSuperOf_SymbolBezierCurve <SUPER : EBManagedObject> 
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : [SUPER]
+      var newModelArray : EBReferenceArray  <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = v
+          newModelArray = EBReferenceArray  (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
-      var newArray = [SymbolBezierCurve] ()
-      for superObject in newModelArray {
+      var newArray = EBReferenceArray  <SymbolBezierCurve> ()
+      for superObject in newModelArray.values {
         if let object = superObject as? SymbolBezierCurve {
           newArray.append (object)
         }
@@ -951,7 +951,7 @@ final class TransientArrayOfSuperOf_SymbolBezierCurve <SUPER : EBManagedObject> 
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -959,7 +959,7 @@ final class TransientArrayOfSuperOf_SymbolBezierCurve <SUPER : EBManagedObject> 
 
   //····················································································································
 
-  override var propval : [SymbolBezierCurve] {
+  override var propval : EBReferenceArray  <SymbolBezierCurve> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -976,7 +976,7 @@ class ReadWriteArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 
   //····················································································································
 
-  func setProp (_ value :  [SymbolBezierCurve]) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray  <SymbolBezierCurve>) { } // Abstract method
 
   //····················································································································
 
@@ -1005,18 +1005,18 @@ final class ProxyArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve 
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : [SymbolBezierCurve]
+    let newModelArray : EBReferenceArray  <SymbolBezierCurve>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
       case .single (let v) :
-        newModelArray = v
-       case .multiple :
-        newModelArray = []
+        newModelArray = EBReferenceArray  <SymbolBezierCurve> (v)
+      case .multiple :
+        newModelArray = EBReferenceArray  ()
       }
     }else{
-      newModelArray = []
+      newModelArray = EBReferenceArray  ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -1024,7 +1024,7 @@ final class ProxyArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve 
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : [SymbolBezierCurve]) {
+  override func setProp (_ inArrayValue : EBReferenceArray  <SymbolBezierCurve>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -1040,16 +1040,16 @@ final class ProxyArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve 
 
   //····················································································································
 
-  override var propval : [SymbolBezierCurve] {
+  override var propval : EBReferenceArray  <SymbolBezierCurve> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return []
+        return EBReferenceArray  ()
       case .single (let v) :
-        return v
+        return EBReferenceArray  (v)
       }
     }else{
-      return []
+      return EBReferenceArray  ()
     }
   }
 
@@ -1116,7 +1116,7 @@ class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSi
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : [SymbolBezierCurve]) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <SymbolBezierCurve>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -1130,7 +1130,7 @@ class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSi
   override func notifyModelDidChange () {
   //--- Update explorer
     if let valueExplorer = self.mValueExplorer {
-      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue.values, popUpButton: valueExplorer)
     }
   //--- Notify observers
     self.postEvent ()
@@ -1163,15 +1163,15 @@ class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSi
 
   //····················································································································
 
-  override final var selection : EBSelection < [SymbolBezierCurve] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [SymbolBezierCurve] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [SymbolBezierCurve]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <SymbolBezierCurve>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : [SymbolBezierCurve] { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray  <SymbolBezierCurve> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1225,7 +1225,7 @@ class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSi
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc
@@ -1252,15 +1252,15 @@ final class StandAloneArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierC
 
   //····················································································································
 
-  override var selection : EBSelection < [SymbolBezierCurve] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [SymbolBezierCurve] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [SymbolBezierCurve]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <SymbolBezierCurve>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : [SymbolBezierCurve] { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray  <SymbolBezierCurve> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1306,7 +1306,7 @@ final class PreferencesArrayOf_SymbolBezierCurve : StoredArrayOf_SymbolBezierCur
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SymbolBezierCurve] ()
+      var objectArray = EBReferenceArray  <SymbolBezierCurve> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolBezierCurve") as? SymbolBezierCurve {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
@@ -1330,7 +1330,7 @@ final class PreferencesArrayOf_SymbolBezierCurve : StoredArrayOf_SymbolBezierCur
 
   private func writeInPreferences () {
     var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       let d = NSMutableDictionary ()
       object.saveIntoDictionary (d)
       d [ENTITY_KEY] = nil // Remove entity key, not used in preferences

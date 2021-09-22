@@ -109,7 +109,7 @@ extension ProjectDocument {
     try self.removeAndCreateDirectory (atPath: gerberDirPath)
   //--- Write gerber files
     try self.writeGerberDrillFile (atPath: generatedGerberFilePath + inArtwork.drillDataFileExtension, productData)
-    for productDescriptor in inArtwork.fileGenerationParameterArray {
+    for productDescriptor in inArtwork.fileGenerationParameterArray .values{
       try self.writeGerberProductFile (atPath: generatedGerberFilePath,
                                        productDescriptor,
                                        inArtwork.layerConfiguration,
@@ -121,7 +121,7 @@ extension ProjectDocument {
     try self.removeAndCreateDirectory (atPath: pdfDirPath)
   //--- Write PDF files
     try self.writePDFDrillFile (atPath: generatedPDFFilePath + inArtwork.drillDataFileExtension + ".pdf", productData)
-    for productDescriptor in inArtwork.fileGenerationParameterArray {
+    for productDescriptor in inArtwork.fileGenerationParameterArray.values {
       try self.writePDFProductFile (atPath: generatedPDFFilePath, productDescriptor, inArtwork.layerConfiguration, productData)
     }
   //--- Write board archive

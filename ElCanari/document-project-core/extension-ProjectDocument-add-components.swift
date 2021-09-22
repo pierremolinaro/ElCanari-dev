@@ -74,7 +74,7 @@ extension ProjectDocument {
       newComponent.mNameFont = self.rootObject.mFonts [0]
       newComponent.mValueFont = self.rootObject.mFonts [0]
     //--- Set symbols
-      var componentSymbols = [ComponentSymbolInProject] ()
+      var componentSymbols = EBReferenceArray <ComponentSymbolInProject> ()
       for symbolInDevice in deviceInProject.mSymbols {
         let newSymbolInProject = ComponentSymbolInProject (self.ebUndoManager)
         newSymbolInProject.mSymbolTypeName = symbolInDevice.mSymbolType!.mSymbolTypeName

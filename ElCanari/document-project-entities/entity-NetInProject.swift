@@ -76,7 +76,7 @@ final class NetInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mPoints : [PointInSchematic] {
+  final var mPoints : EBReferenceArray  <PointInSchematic> {
     get { return self.mPoints_property.propval }
     set { self.mPoints_property.setProp (newValue) }
   }
@@ -110,7 +110,7 @@ final class NetInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mTracks : [BoardTrack] {
+  final var mTracks : EBReferenceArray  <BoardTrack> {
     get { return self.mTracks_property.propval }
     set { self.mTracks_property.setProp (newValue) }
   }
@@ -558,8 +558,8 @@ final class NetInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mPoints = []
-    self.mTracks = []
+    self.mPoints.removeAll ()
+    self.mTracks.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -582,7 +582,7 @@ final class NetInProject : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- To many property: mPoints
     self.store (
-      managedObjectArray: self.mPoints_property.propval,
+      managedObjectArray: self.mPoints_property.propval.values,
       relationshipName: "mPoints",
       intoDictionary: ioDictionary
     )
@@ -590,7 +590,7 @@ final class NetInProject : EBManagedObject,
     self.mNetName_property.storeIn (dictionary: ioDictionary, forKey: "mNetName")
   //--- To many property: mTracks
     self.store (
-      managedObjectArray: self.mTracks_property.propval,
+      managedObjectArray: self.mTracks_property.propval.values,
       relationshipName: "mTracks",
       intoDictionary: ioDictionary
     )
@@ -604,17 +604,33 @@ final class NetInProject : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mPoints
-    self.mPoints_property.setProp (readEntityArrayFromDictionary (
+/*    self.mPoints_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPoints",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [PointInSchematic])
+    ) as! [PointInSchematic]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mPoints",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [PointInSchematic]
+      self.mPoints_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: mTracks
-    self.mTracks_property.setProp (readEntityArrayFromDictionary (
+/*    self.mTracks_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mTracks",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardTrack])
+    ) as! [BoardTrack]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mTracks",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [BoardTrack]
+      self.mTracks_property.setProp (EBReferenceArray (array))
+    }
   //--- To one property: mNetClass
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -672,7 +688,7 @@ final class NetInProject : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mPoints {
+      for object in self.mPoints.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -703,7 +719,7 @@ final class NetInProject : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mTracks {
+      for object in self.mTracks.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -754,7 +770,7 @@ final class NetInProject : EBManagedObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mPoints"], range.length > 0 {
-        var relationshipArray = [PointInSchematic] ()
+        var relationshipArray = EBReferenceArray  <PointInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
@@ -762,7 +778,7 @@ final class NetInProject : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPoints = relationshipArray }
       }
       if let range = inDictionary ["mTracks"], range.length > 0 {
-        var relationshipArray = [BoardTrack] ()
+        var relationshipArray = EBReferenceArray  <BoardTrack> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)
@@ -780,11 +796,11 @@ final class NetInProject : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mPoints
-    for managedObject in self.mPoints {
+    for managedObject in self.mPoints.values {
       objects.append (managedObject)
     }
   //--- To many property: mTracks
-    for managedObject in self.mTracks {
+    for managedObject in self.mTracks.values {
       objects.append (managedObject)
     }
   //--- To one property: mNetClass
@@ -800,11 +816,11 @@ final class NetInProject : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mPoints
-    for managedObject in self.mPoints {
+    for managedObject in self.mPoints.values {
       objects.append (managedObject)
     }
   //--- To many property: mTracks
-    for managedObject in self.mTracks {
+    for managedObject in self.mTracks.values {
       objects.append (managedObject)
     }
   //--- To one property: mNetClass

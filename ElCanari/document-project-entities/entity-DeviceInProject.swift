@@ -187,7 +187,7 @@ final class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mPackages : [DevicePackageInProject] {
+  final var mPackages : EBReferenceArray  <DevicePackageInProject> {
     get { return self.mPackages_property.propval }
     set { self.mPackages_property.setProp (newValue) }
   }
@@ -202,7 +202,7 @@ final class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mSymbols : [DeviceSymbolInstanceInProject] {
+  final var mSymbols : EBReferenceArray  <DeviceSymbolInstanceInProject> {
     get { return self.mSymbols_property.propval }
     set { self.mSymbols_property.setProp (newValue) }
   }
@@ -217,7 +217,7 @@ final class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mComponents : [ComponentInProject] {
+  final var mComponents : EBReferenceArray  <ComponentInProject> {
     get { return self.mComponents_property.propval }
     set { self.mComponents_property.setProp (newValue) }
   }
@@ -232,7 +232,7 @@ final class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mPadAssignments : [DevicePadAssignmentInProject] {
+  final var mPadAssignments : EBReferenceArray  <DevicePadAssignmentInProject> {
     get { return self.mPadAssignments_property.propval }
     set { self.mPadAssignments_property.setProp (newValue) }
   }
@@ -770,10 +770,10 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mPackages = []
-    self.mSymbols = []
-    self.mComponents = []
-    self.mPadAssignments = []
+    self.mPackages.removeAll ()
+    self.mSymbols.removeAll ()
+    self.mComponents.removeAll ()
+    self.mPadAssignments.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -803,25 +803,25 @@ final class DeviceInProject : EBManagedObject,
     self.mDeviceFileData_property.storeIn (dictionary: ioDictionary, forKey: "mDeviceFileData")
   //--- To many property: mPackages
     self.store (
-      managedObjectArray: self.mPackages_property.propval,
+      managedObjectArray: self.mPackages_property.propval.values,
       relationshipName: "mPackages",
       intoDictionary: ioDictionary
     )
   //--- To many property: mSymbols
     self.store (
-      managedObjectArray: self.mSymbols_property.propval,
+      managedObjectArray: self.mSymbols_property.propval.values,
       relationshipName: "mSymbols",
       intoDictionary: ioDictionary
     )
   //--- To many property: mComponents
     self.store (
-      managedObjectArray: self.mComponents_property.propval,
+      managedObjectArray: self.mComponents_property.propval.values,
       relationshipName: "mComponents",
       intoDictionary: ioDictionary
     )
   //--- To many property: mPadAssignments
     self.store (
-      managedObjectArray: self.mPadAssignments_property.propval,
+      managedObjectArray: self.mPadAssignments_property.propval.values,
       relationshipName: "mPadAssignments",
       intoDictionary: ioDictionary
     )
@@ -835,29 +835,61 @@ final class DeviceInProject : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mPackages
-    self.mPackages_property.setProp (readEntityArrayFromDictionary (
+/*    self.mPackages_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPackages",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [DevicePackageInProject])
+    ) as! [DevicePackageInProject]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mPackages",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [DevicePackageInProject]
+      self.mPackages_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: mSymbols
-    self.mSymbols_property.setProp (readEntityArrayFromDictionary (
+/*    self.mSymbols_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mSymbols",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [DeviceSymbolInstanceInProject])
+    ) as! [DeviceSymbolInstanceInProject]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mSymbols",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [DeviceSymbolInstanceInProject]
+      self.mSymbols_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: mComponents
-    self.mComponents_property.setProp (readEntityArrayFromDictionary (
+/*    self.mComponents_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mComponents",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [ComponentInProject])
+    ) as! [ComponentInProject]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mComponents",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [ComponentInProject]
+      self.mComponents_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: mPadAssignments
-    self.mPadAssignments_property.setProp (readEntityArrayFromDictionary (
+/*    self.mPadAssignments_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPadAssignments",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [DevicePadAssignmentInProject])
+    ) as! [DevicePadAssignmentInProject]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mPadAssignments",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [DevicePadAssignmentInProject]
+      self.mPadAssignments_property.setProp (EBReferenceArray (array))
+    }
   }
 
   //····················································································································
@@ -916,7 +948,7 @@ final class DeviceInProject : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mPackages {
+      for object in self.mPackages.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -947,7 +979,7 @@ final class DeviceInProject : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mSymbols {
+      for object in self.mSymbols.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -978,7 +1010,7 @@ final class DeviceInProject : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mComponents {
+      for object in self.mComponents.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1009,7 +1041,7 @@ final class DeviceInProject : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mPadAssignments {
+      for object in self.mPadAssignments.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1065,7 +1097,7 @@ final class DeviceInProject : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mPackages"], range.length > 0 {
-        var relationshipArray = [DevicePackageInProject] ()
+        var relationshipArray = EBReferenceArray  <DevicePackageInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DevicePackageInProject)
@@ -1073,7 +1105,7 @@ final class DeviceInProject : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPackages = relationshipArray }
       }
       if let range = inDictionary ["mSymbols"], range.length > 0 {
-        var relationshipArray = [DeviceSymbolInstanceInProject] ()
+        var relationshipArray = EBReferenceArray  <DeviceSymbolInstanceInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceSymbolInstanceInProject)
@@ -1081,7 +1113,7 @@ final class DeviceInProject : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSymbols = relationshipArray }
       }
       if let range = inDictionary ["mComponents"], range.length > 0 {
-        var relationshipArray = [ComponentInProject] ()
+        var relationshipArray = EBReferenceArray  <ComponentInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
@@ -1089,7 +1121,7 @@ final class DeviceInProject : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mComponents = relationshipArray }
       }
       if let range = inDictionary ["mPadAssignments"], range.length > 0 {
-        var relationshipArray = [DevicePadAssignmentInProject] ()
+        var relationshipArray = EBReferenceArray  <DevicePadAssignmentInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DevicePadAssignmentInProject)
@@ -1107,19 +1139,19 @@ final class DeviceInProject : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mPackages
-    for managedObject in self.mPackages {
+    for managedObject in self.mPackages.values {
       objects.append (managedObject)
     }
   //--- To many property: mSymbols
-    for managedObject in self.mSymbols {
+    for managedObject in self.mSymbols.values {
       objects.append (managedObject)
     }
   //--- To many property: mComponents
-    for managedObject in self.mComponents {
+    for managedObject in self.mComponents.values {
       objects.append (managedObject)
     }
   //--- To many property: mPadAssignments
-    for managedObject in self.mPadAssignments {
+    for managedObject in self.mPadAssignments.values {
       objects.append (managedObject)
     }
   }
@@ -1131,19 +1163,19 @@ final class DeviceInProject : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mPackages
-    for managedObject in self.mPackages {
+    for managedObject in self.mPackages.values {
       objects.append (managedObject)
     }
   //--- To many property: mSymbols
-    for managedObject in self.mSymbols {
+    for managedObject in self.mSymbols.values {
       objects.append (managedObject)
     }
   //--- To many property: mComponents
-    for managedObject in self.mComponents {
+    for managedObject in self.mComponents.values {
       objects.append (managedObject)
     }
   //--- To many property: mPadAssignments
-    for managedObject in self.mPadAssignments {
+    for managedObject in self.mPadAssignments.values {
       objects.append (managedObject)
     }
   }

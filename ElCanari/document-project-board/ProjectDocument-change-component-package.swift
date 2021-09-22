@@ -51,7 +51,7 @@ extension ProjectDocument {
         if inResponse == .stop, let newPackageName = self.mChangePackagePopUpButton?.titleOfSelectedItem {
           for component in selectedComponents {
             var newPossiblePackage : DevicePackageInProject? = nil
-            for candidatePackage in component.mDevice?.mPackages ?? [] {
+            for candidatePackage in component.mDevice?.mPackages.values ?? [] {
               if candidatePackage.mPackageName == newPackageName {
                 newPossiblePackage = candidatePackage
               }

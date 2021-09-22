@@ -911,7 +911,7 @@ final class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = []
+        self.mInternalArrayValue = EBReferenceArray  ()
       }
     }
   }
@@ -940,25 +940,25 @@ final class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : [PackageSegment]
+      let newArray : EBReferenceArray  <PackageSegment>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
+            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = v
+            newArray = EBReferenceArray  (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = []
+        newArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -973,7 +973,7 @@ final class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -981,7 +981,7 @@ final class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
 
   //····················································································································
 
-  override var propval : [PackageSegment] {
+  override var propval : EBReferenceArray  <PackageSegment> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -1035,25 +1035,25 @@ final class TransientArrayOfSuperOf_PackageSegment <SUPER : EBManagedObject> : R
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : [SUPER]
+      var newModelArray : EBReferenceArray  <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = v
+          newModelArray = EBReferenceArray  (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
-      var newArray = [PackageSegment] ()
-      for superObject in newModelArray {
+      var newArray = EBReferenceArray  <PackageSegment> ()
+      for superObject in newModelArray.values {
         if let object = superObject as? PackageSegment {
           newArray.append (object)
         }
@@ -1070,7 +1070,7 @@ final class TransientArrayOfSuperOf_PackageSegment <SUPER : EBManagedObject> : R
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -1078,7 +1078,7 @@ final class TransientArrayOfSuperOf_PackageSegment <SUPER : EBManagedObject> : R
 
   //····················································································································
 
-  override var propval : [PackageSegment] {
+  override var propval : EBReferenceArray  <PackageSegment> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -1095,7 +1095,7 @@ class ReadWriteArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
 
   //····················································································································
 
-  func setProp (_ value :  [PackageSegment]) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray  <PackageSegment>) { } // Abstract method
 
   //····················································································································
 
@@ -1124,18 +1124,18 @@ final class ProxyArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : [PackageSegment]
+    let newModelArray : EBReferenceArray  <PackageSegment>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
       case .single (let v) :
-        newModelArray = v
-       case .multiple :
-        newModelArray = []
+        newModelArray = EBReferenceArray  <PackageSegment> (v)
+      case .multiple :
+        newModelArray = EBReferenceArray  ()
       }
     }else{
-      newModelArray = []
+      newModelArray = EBReferenceArray  ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -1143,7 +1143,7 @@ final class ProxyArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment {
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : [PackageSegment]) {
+  override func setProp (_ inArrayValue : EBReferenceArray  <PackageSegment>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -1159,16 +1159,16 @@ final class ProxyArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment {
 
   //····················································································································
 
-  override var propval : [PackageSegment] {
+  override var propval : EBReferenceArray  <PackageSegment> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return []
+        return EBReferenceArray  ()
       case .single (let v) :
-        return v
+        return EBReferenceArray  (v)
       }
     }else{
-      return []
+      return EBReferenceArray  ()
     }
   }
 
@@ -1235,7 +1235,7 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : [PackageSegment]) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <PackageSegment>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -1249,7 +1249,7 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
   override func notifyModelDidChange () {
   //--- Update explorer
     if let valueExplorer = self.mValueExplorer {
-      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue.values, popUpButton: valueExplorer)
     }
   //--- Notify observers
     self.postEvent ()
@@ -1282,15 +1282,15 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
 
   //····················································································································
 
-  override final var selection : EBSelection < [PackageSegment] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [PackageSegment] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [PackageSegment]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <PackageSegment>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : [PackageSegment] { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray  <PackageSegment> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1344,7 +1344,7 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc
@@ -1371,15 +1371,15 @@ final class StandAloneArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment {
 
   //····················································································································
 
-  override var selection : EBSelection < [PackageSegment] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [PackageSegment] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [PackageSegment]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <PackageSegment>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : [PackageSegment] { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray  <PackageSegment> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1425,7 +1425,7 @@ final class PreferencesArrayOf_PackageSegment : StoredArrayOf_PackageSegment {
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [PackageSegment] ()
+      var objectArray = EBReferenceArray  <PackageSegment> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageSegment") as? PackageSegment {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
@@ -1450,7 +1450,7 @@ final class PreferencesArrayOf_PackageSegment : StoredArrayOf_PackageSegment {
 
   private func writeInPreferences () {
     var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       let d = NSMutableDictionary ()
       object.saveIntoDictionary (d)
       d [ENTITY_KEY] = nil // Remove entity key, not used in preferences

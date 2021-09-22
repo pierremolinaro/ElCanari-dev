@@ -108,7 +108,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : [PackageDimension] { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray  <PackageDimension> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION

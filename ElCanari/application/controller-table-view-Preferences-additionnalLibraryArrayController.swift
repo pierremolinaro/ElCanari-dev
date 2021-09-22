@@ -25,7 +25,7 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
 
   //····················································································································
 
-  var sortedArray : [CanariLibraryEntry] { return self.sortedArray_property.propval }
+  var sortedArray : EBReferenceArray  <CanariLibraryEntry> { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -39,11 +39,11 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
 
   //····················································································································
 
-  var objects : [CanariLibraryEntry] {
+  var objects : EBReferenceArray  <CanariLibraryEntry> {
     if let objects = self.mModel?.propval {
       return objects
     }else{
-      return []
+      return EBReferenceArray  ()
     }
   }
 
@@ -108,7 +108,7 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
     super.notifyModelDidChange ()
     // NSLog ("self.sortedArray \(self.sortedArray.count)")
     let oldSelectionSet = self.selectedSet
-    var newSelectedArray = [CanariLibraryEntry] ()
+    var newSelectedArray = EBReferenceArray  <CanariLibraryEntry> ()
     for object in self.sortedArray {
       if oldSelectionSet.contains (object) {
         newSelectedArray.append (object)
@@ -136,11 +136,11 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
 
   //····················································································································
 
-  var selectedArray : [CanariLibraryEntry] { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray  <CanariLibraryEntry> { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedSet : EBReferenceSet <CanariLibraryEntry> { return EBReferenceSet (self.selectedArray) }
+  var selectedSet : EBReferenceSet <CanariLibraryEntry> { return EBReferenceSet (self.selectedArray.values) }
 
   //····················································································································
 
@@ -159,7 +159,7 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
   //····················································································································
 
   func setSelection (_ inObjects : [CanariLibraryEntry]) {
-    self.mInternalSelectedArrayProperty.setProp (inObjects)
+    self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObjects))
   }
 
   //····················································································································
@@ -280,7 +280,7 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjects = [CanariLibraryEntry] ()
+      var newSelectedObjects = EBReferenceArray  <CanariLibraryEntry> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjects.append (v [index])
       }
@@ -366,7 +366,7 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          self.mInternalSelectedArrayProperty.setProp ([inObject])
+          self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObject))
         }
       }
     }
@@ -383,11 +383,11 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
         break
       case .single (let v) :
         let newObject = CanariLibraryEntry (self.ebUndoManager)
-        var array = v
+        var array = EBReferenceArray  (v)
         array.append (newObject)
         model.setProp (array)
       //--- New object is the selection
-        self.mInternalSelectedArrayProperty.setProp ([newObject])
+        self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (newObject))
       }
     }
   }
@@ -451,7 +451,7 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
         //--- Sort in reverse order
           selectedObjectIndexArray.sort { $1 < $0 }
         //--- Remove objects, in reverse of order of their index
-          var newObjectArray = model_prop
+          var newObjectArray = EBReferenceArray  (model_prop)
           for index in selectedObjectIndexArray {
             newObjectArray.remove (at: index)
           }
@@ -459,9 +459,9 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
           model.setProp (newObjectArray)
         //----------------------------------------- Set new selection
           if let object = newSelectedObject {
-            self.mInternalSelectedArrayProperty.setProp ([object])
+            self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (object))
           }else{
-            self.mInternalSelectedArrayProperty.setProp ([])
+            self.mInternalSelectedArrayProperty.setProp (EBReferenceArray ())
           }
         }
       }

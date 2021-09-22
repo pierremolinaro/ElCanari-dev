@@ -223,13 +223,13 @@ extension SheetInProject {
         self.mPoints.append (newPoint)
         for point in inPoints {
           let wireP1s = point.mWiresP1s
-          point.mWiresP1s = []
+          point.mWiresP1s = EBReferenceArray ()
           newPoint.mWiresP1s += wireP1s
           let wireP2s = point.mWiresP2s
-          point.mWiresP2s = []
+          point.mWiresP2s = EBReferenceArray ()
           newPoint.mWiresP2s += wireP2s
           let labels = point.mLabels
-          point.mLabels = []
+          point.mLabels = EBReferenceArray ()
           newPoint.mLabels += labels
           point.mNet = nil
         }

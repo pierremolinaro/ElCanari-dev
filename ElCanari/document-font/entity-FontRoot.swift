@@ -205,7 +205,7 @@ final class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  final var characters : [FontCharacter] {
+  final var characters : EBReferenceArray  <FontCharacter> {
     get { return self.characters_property.propval }
     set { self.characters_property.setProp (newValue) }
   }
@@ -642,7 +642,7 @@ final class FontRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.characters = []
+    self.characters.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -673,7 +673,7 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: currentCharacterCodePoint
     self.currentCharacterCodePoint_property.storeIn (dictionary: ioDictionary, forKey: "currentCharacterCodePoint")
   //--- To many property: characters (Custom store)
-    customStore_FontCharacter_characters (self.characters_property.propval, intoDictionary: ioDictionary)
+    customStore_FontCharacter_characters (self.characters_property.propval.values, intoDictionary: ioDictionary)
   }
 
   //····················································································································
@@ -684,7 +684,7 @@ final class FontRoot : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: characters (Custom store)
-    self.characters_property.setProp (customRead_FontCharacter_characters (from: inDictionary, with: self.ebUndoManager))
+    self.characters_property.setProp (EBReferenceArray (customRead_FontCharacter_characters (from: inDictionary, with: self.ebUndoManager)))
   }
 
   //····················································································································
@@ -745,7 +745,7 @@ final class FontRoot : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.characters {
+      for object in self.characters.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -804,7 +804,7 @@ final class FontRoot : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["characters"], range.length > 0 {
-        var relationshipArray = [FontCharacter] ()
+        var relationshipArray = EBReferenceArray  <FontCharacter> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! FontCharacter)
@@ -822,7 +822,7 @@ final class FontRoot : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: characters
-    for managedObject in self.characters {
+    for managedObject in self.characters.values {
       objects.append (managedObject)
     }
   }
@@ -834,7 +834,7 @@ final class FontRoot : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: characters (custom store)
-    /* for managedObject in self.characters_property.propval {
+    /* for managedObject in self.characters_property.propval.values {
       objects.append (managedObject)
     } */
   }

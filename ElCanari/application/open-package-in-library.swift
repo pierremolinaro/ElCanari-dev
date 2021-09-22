@@ -41,7 +41,7 @@ final class OpenPackageInLibrary : OpenInLibrary {
     super.buildTableViewDataSource (extension: "ElCanariPackage", alreadyLoadedDocuments: inNames) { (_ inRootObject : EBManagedObject?) -> NSImage? in
       var partShape = EBShape ()
       if let packageRoot = inRootObject as? PackageRoot {
-        for object in packageRoot.packageObjects_property.propval {
+        for object in packageRoot.packageObjects_property.propval.values {
           if !(object is PackageGuide), !(object is PackageDimension), let shape = object.objectDisplay {
             partShape.add (shape)
           }

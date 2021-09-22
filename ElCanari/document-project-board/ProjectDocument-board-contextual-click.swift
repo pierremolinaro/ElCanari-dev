@@ -98,10 +98,10 @@ extension CustomizedProjectDocument {
     for c in inOtherConnectors {
       if ObjectIdentifier (c) != ObjectIdentifier (inRetainedConnector) {
         let tracksP1 = c.mTracksP1
-        c.mTracksP1 = []
+        c.mTracksP1 = EBReferenceArray ()
         inRetainedConnector.mTracksP1 += tracksP1
         let tracksP2 = c.mTracksP2
-        c.mTracksP2 = []
+        c.mTracksP2 = EBReferenceArray ()
         inRetainedConnector.mTracksP2 += tracksP2
         c.mRoot = nil // Remove from board objects
       }
@@ -222,7 +222,7 @@ extension CustomizedProjectDocument {
             newConnector.mRoot = self.rootObject
             newConnector.mX = location.x
             newConnector.mY = location.y
-            newConnector.mTracksP1 = [track]
+            newConnector.mTracksP1 = EBReferenceArray (track)
           }
         }
         for track in c.mTracksP2 {
@@ -232,7 +232,7 @@ extension CustomizedProjectDocument {
             newConnector.mRoot = self.rootObject
             newConnector.mX = location.x
             newConnector.mY = location.y
-            newConnector.mTracksP2 = [track]
+            newConnector.mTracksP2 = EBReferenceArray (track)
           }
         }
         if (c.mComponent == nil) && (c.mTracksP1.count == 0) && (c.mTracksP2.count == 0) {

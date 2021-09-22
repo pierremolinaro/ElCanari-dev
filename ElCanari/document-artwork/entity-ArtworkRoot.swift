@@ -393,7 +393,7 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final var fileGenerationParameterArray : [ArtworkFileGenerationParameters] {
+  final var fileGenerationParameterArray : EBReferenceArray  <ArtworkFileGenerationParameters> {
     get { return self.fileGenerationParameterArray_property.propval }
     set { self.fileGenerationParameterArray_property.setProp (newValue) }
   }
@@ -856,7 +856,7 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.fileGenerationParameterArray = []
+    self.fileGenerationParameterArray.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -904,7 +904,7 @@ final class ArtworkRoot : EBManagedObject,
     self.drillDataFileExtension_property.storeIn (dictionary: ioDictionary, forKey: "drillDataFileExtension")
   //--- To many property: fileGenerationParameterArray
     self.store (
-      managedObjectArray: self.fileGenerationParameterArray_property.propval,
+      managedObjectArray: self.fileGenerationParameterArray_property.propval.values,
       relationshipName: "fileGenerationParameterArray",
       intoDictionary: ioDictionary
     )
@@ -918,11 +918,19 @@ final class ArtworkRoot : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: fileGenerationParameterArray
-    self.fileGenerationParameterArray_property.setProp (readEntityArrayFromDictionary (
+/*    self.fileGenerationParameterArray_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "fileGenerationParameterArray",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [ArtworkFileGenerationParameters])
+    ) as! [ArtworkFileGenerationParameters]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "fileGenerationParameterArray",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [ArtworkFileGenerationParameters]
+      self.fileGenerationParameterArray_property.setProp (EBReferenceArray (array))
+    }
   }
 
   //····················································································································
@@ -1023,7 +1031,7 @@ final class ArtworkRoot : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.fileGenerationParameterArray {
+      for object in self.fileGenerationParameterArray.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1106,7 +1114,7 @@ final class ArtworkRoot : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["fileGenerationParameterArray"], range.length > 0 {
-        var relationshipArray = [ArtworkFileGenerationParameters] ()
+        var relationshipArray = EBReferenceArray  <ArtworkFileGenerationParameters> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ArtworkFileGenerationParameters)
@@ -1124,7 +1132,7 @@ final class ArtworkRoot : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: fileGenerationParameterArray
-    for managedObject in self.fileGenerationParameterArray {
+    for managedObject in self.fileGenerationParameterArray.values {
       objects.append (managedObject)
     }
   }
@@ -1136,7 +1144,7 @@ final class ArtworkRoot : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: fileGenerationParameterArray
-    for managedObject in self.fileGenerationParameterArray {
+    for managedObject in self.fileGenerationParameterArray.values {
       objects.append (managedObject)
     }
   }

@@ -1179,7 +1179,7 @@ final class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImageObjects : [PackageModelImageDoublePoint] {
+  final var mModelImageObjects : EBReferenceArray  <PackageModelImageDoublePoint> {
     get { return self.mModelImageObjects_property.propval }
     set { self.mModelImageObjects_property.setProp (newValue) }
   }
@@ -1194,7 +1194,7 @@ final class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var packageObjects : [PackageObject] {
+  final var packageObjects : EBReferenceArray  <PackageObject> {
     get { return self.packageObjects_property.propval }
     set { self.packageObjects_property.setProp (newValue) }
   }
@@ -1207,7 +1207,7 @@ final class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var packagePads : [PackagePad] {
+  final var packagePads : EBReferenceArray  <PackagePad> {
     get { return self.packagePads_property.propval }
   }
 
@@ -1219,7 +1219,7 @@ final class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var packageSlavePads : [PackageSlavePad] {
+  final var packageSlavePads : EBReferenceArray  <PackageSlavePad> {
     get { return self.packageSlavePads_property.propval }
   }
 
@@ -1231,7 +1231,7 @@ final class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var packageZones : [PackageZone] {
+  final var packageZones : EBReferenceArray  <PackageZone> {
     get { return self.packageZones_property.propval }
   }
 
@@ -2661,8 +2661,8 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mModelImageObjects = []
-    self.packageObjects = []
+    self.mModelImageObjects.removeAll ()
+    self.packageObjects.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -2765,13 +2765,13 @@ final class PackageRoot : EBGraphicManagedObject,
     self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "yPlacardUnit")
   //--- To many property: mModelImageObjects
     self.store (
-      managedObjectArray: self.mModelImageObjects_property.propval,
+      managedObjectArray: self.mModelImageObjects_property.propval.values,
       relationshipName: "mModelImageObjects",
       intoDictionary: ioDictionary
     )
   //--- To many property: packageObjects
     self.store (
-      managedObjectArray: self.packageObjects_property.propval,
+      managedObjectArray: self.packageObjects_property.propval.values,
       relationshipName: "packageObjects",
       intoDictionary: ioDictionary
     )
@@ -2791,17 +2791,33 @@ final class PackageRoot : EBGraphicManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mModelImageObjects
-    self.mModelImageObjects_property.setProp (readEntityArrayFromDictionary (
+/*    self.mModelImageObjects_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mModelImageObjects",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [PackageModelImageDoublePoint])
+    ) as! [PackageModelImageDoublePoint]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mModelImageObjects",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [PackageModelImageDoublePoint]
+      self.mModelImageObjects_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: packageObjects
-    self.packageObjects_property.setProp (readEntityArrayFromDictionary (
+/*    self.packageObjects_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "packageObjects",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [PackageObject])
+    ) as! [PackageObject]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "packageObjects",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [PackageObject]
+      self.packageObjects_property.setProp (EBReferenceArray (array))
+    }
   //--- To one property: mModelImageDoublePoint
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -3062,7 +3078,7 @@ final class PackageRoot : EBGraphicManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mModelImageObjects {
+      for object in self.mModelImageObjects.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -3093,7 +3109,7 @@ final class PackageRoot : EBGraphicManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.packageObjects {
+      for object in self.packageObjects.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -3264,7 +3280,7 @@ final class PackageRoot : EBGraphicManagedObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mModelImageObjects"], range.length > 0 {
-        var relationshipArray = [PackageModelImageDoublePoint] ()
+        var relationshipArray = EBReferenceArray  <PackageModelImageDoublePoint> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageModelImageDoublePoint)
@@ -3272,7 +3288,7 @@ final class PackageRoot : EBGraphicManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mModelImageObjects = relationshipArray }
       }
       if let range = inDictionary ["packageObjects"], range.length > 0 {
-        var relationshipArray = [PackageObject] ()
+        var relationshipArray = EBReferenceArray  <PackageObject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageObject)
@@ -3290,23 +3306,23 @@ final class PackageRoot : EBGraphicManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mModelImageObjects
-    for managedObject in self.mModelImageObjects {
+    for managedObject in self.mModelImageObjects.values {
       objects.append (managedObject)
     }
   //--- To many property: packageObjects
-    for managedObject in self.packageObjects {
+    for managedObject in self.packageObjects.values {
       objects.append (managedObject)
     }
   //--- To many property: packagePads
-    for managedObject in self.packagePads {
+    for managedObject in self.packagePads.values {
       objects.append (managedObject)
     }
   //--- To many property: packageSlavePads
-    for managedObject in self.packageSlavePads {
+    for managedObject in self.packageSlavePads.values {
       objects.append (managedObject)
     }
   //--- To many property: packageZones
-    for managedObject in self.packageZones {
+    for managedObject in self.packageZones.values {
       objects.append (managedObject)
     }
   //--- To one property: mModelImageDoublePoint
@@ -3322,23 +3338,23 @@ final class PackageRoot : EBGraphicManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mModelImageObjects
-    for managedObject in self.mModelImageObjects {
+    for managedObject in self.mModelImageObjects.values {
       objects.append (managedObject)
     }
   //--- To many property: packageObjects
-    for managedObject in self.packageObjects {
+    for managedObject in self.packageObjects.values {
       objects.append (managedObject)
     }
   //--- To many property: packagePads
-    for managedObject in self.packagePads {
+    for managedObject in self.packagePads.values {
       objects.append (managedObject)
     }
   //--- To many property: packageSlavePads
-    for managedObject in self.packageSlavePads {
+    for managedObject in self.packageSlavePads.values {
       objects.append (managedObject)
     }
   //--- To many property: packageZones
-    for managedObject in self.packageZones {
+    for managedObject in self.packageZones.values {
       objects.append (managedObject)
     }
   //--- To one property: mModelImageDoublePoint

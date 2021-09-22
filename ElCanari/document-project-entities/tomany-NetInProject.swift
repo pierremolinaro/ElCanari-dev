@@ -539,7 +539,7 @@ final class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = []
+        self.mInternalArrayValue = EBReferenceArray  ()
       }
     }
   }
@@ -568,25 +568,25 @@ final class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : [NetInProject]
+      let newArray : EBReferenceArray  <NetInProject>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
+            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = v
+            newArray = EBReferenceArray  (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = []
+        newArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -601,7 +601,7 @@ final class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -609,7 +609,7 @@ final class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
 
   //····················································································································
 
-  override var propval : [NetInProject] {
+  override var propval : EBReferenceArray  <NetInProject> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -663,25 +663,25 @@ final class TransientArrayOfSuperOf_NetInProject <SUPER : EBManagedObject> : Rea
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : [SUPER]
+      var newModelArray : EBReferenceArray  <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = v
+          newModelArray = EBReferenceArray  (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
-      var newArray = [NetInProject] ()
-      for superObject in newModelArray {
+      var newArray = EBReferenceArray  <NetInProject> ()
+      for superObject in newModelArray.values {
         if let object = superObject as? NetInProject {
           newArray.append (object)
         }
@@ -698,7 +698,7 @@ final class TransientArrayOfSuperOf_NetInProject <SUPER : EBManagedObject> : Rea
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -706,7 +706,7 @@ final class TransientArrayOfSuperOf_NetInProject <SUPER : EBManagedObject> : Rea
 
   //····················································································································
 
-  override var propval : [NetInProject] {
+  override var propval : EBReferenceArray  <NetInProject> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -723,7 +723,7 @@ class ReadWriteArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
 
   //····················································································································
 
-  func setProp (_ value :  [NetInProject]) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray  <NetInProject>) { } // Abstract method
 
   //····················································································································
 
@@ -752,18 +752,18 @@ final class ProxyArrayOf_NetInProject : ReadWriteArrayOf_NetInProject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : [NetInProject]
+    let newModelArray : EBReferenceArray  <NetInProject>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
       case .single (let v) :
-        newModelArray = v
-       case .multiple :
-        newModelArray = []
+        newModelArray = EBReferenceArray  <NetInProject> (v)
+      case .multiple :
+        newModelArray = EBReferenceArray  ()
       }
     }else{
-      newModelArray = []
+      newModelArray = EBReferenceArray  ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -771,7 +771,7 @@ final class ProxyArrayOf_NetInProject : ReadWriteArrayOf_NetInProject {
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : [NetInProject]) {
+  override func setProp (_ inArrayValue : EBReferenceArray  <NetInProject>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -787,16 +787,16 @@ final class ProxyArrayOf_NetInProject : ReadWriteArrayOf_NetInProject {
 
   //····················································································································
 
-  override var propval : [NetInProject] {
+  override var propval : EBReferenceArray  <NetInProject> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return []
+        return EBReferenceArray  ()
       case .single (let v) :
-        return v
+        return EBReferenceArray  (v)
       }
     }else{
-      return []
+      return EBReferenceArray  ()
     }
   }
 
@@ -863,7 +863,7 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : [NetInProject]) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <NetInProject>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -877,7 +877,7 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
   override func notifyModelDidChange () {
   //--- Update explorer
     if let valueExplorer = self.mValueExplorer {
-      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue.values, popUpButton: valueExplorer)
     }
   //--- Notify observers
     self.postEvent ()
@@ -910,15 +910,15 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
 
   //····················································································································
 
-  override final var selection : EBSelection < [NetInProject] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [NetInProject] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [NetInProject]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <NetInProject>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : [NetInProject] { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray  <NetInProject> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -972,7 +972,7 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc
@@ -999,15 +999,15 @@ final class StandAloneArrayOf_NetInProject : ReadWriteArrayOf_NetInProject {
 
   //····················································································································
 
-  override var selection : EBSelection < [NetInProject] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [NetInProject] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [NetInProject]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <NetInProject>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : [NetInProject] { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray  <NetInProject> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1053,7 +1053,7 @@ final class PreferencesArrayOf_NetInProject : StoredArrayOf_NetInProject {
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [NetInProject] ()
+      var objectArray = EBReferenceArray  <NetInProject> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "NetInProject") as? NetInProject {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
@@ -1070,7 +1070,7 @@ final class PreferencesArrayOf_NetInProject : StoredArrayOf_NetInProject {
 
   private func writeInPreferences () {
     var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       let d = NSMutableDictionary ()
       object.saveIntoDictionary (d)
       d [ENTITY_KEY] = nil // Remove entity key, not used in preferences

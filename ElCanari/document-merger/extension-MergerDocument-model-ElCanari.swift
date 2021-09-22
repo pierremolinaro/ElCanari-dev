@@ -76,7 +76,7 @@ extension MergerDocument {
       height: canariUnitToMillimeter (boardModel.modelHeight)
     )
   //--- Internal boards limits
-    var internalBoardsLimitsEntities = [SegmentEntity] ()
+    var internalBoardsLimitsEntities = EBReferenceArray <SegmentEntity> ()
     let internalBoardsLimits = optionalStringArray (fromDict: inBoardArchiveDict, key: "INTERNAL-BOARDS-LIMITS", &errorArray)
   //  NSLog ("internalBoardsLimits.count \(internalBoardsLimits.count)")
     for str in internalBoardsLimits {
@@ -91,7 +91,7 @@ extension MergerDocument {
     }
     boardModel.internalBoardsLimits = internalBoardsLimitsEntities
   //--- Front tracks
-    var frontTrackEntities = [SegmentEntity] ()
+    var frontTrackEntities = EBReferenceArray <SegmentEntity> ()
     let frontTracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-FRONT", &errorArray)
     for str in frontTracks {
       let track = SegmentEntity (self.ebUndoManager)
@@ -105,7 +105,7 @@ extension MergerDocument {
     }
     boardModel.frontTracks = frontTrackEntities
   //--- Back tracks
-    var backTrackEntities = [SegmentEntity] ()
+    var backTrackEntities = EBReferenceArray <SegmentEntity> ()
     let backTracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-BACK", &errorArray)
     for str in backTracks {
       let track = SegmentEntity (self.ebUndoManager)
@@ -119,7 +119,7 @@ extension MergerDocument {
     }
     boardModel.backTracks = backTrackEntities
   //--- Vias
-    var viaEntities = [BoardModelVia] ()
+    var viaEntities = EBReferenceArray <BoardModelVia> ()
     let vias = stringArray (fromDict: inBoardArchiveDict, key: "VIAS", &errorArray)
     for str in vias {
       let via = BoardModelVia (self.ebUndoManager)
@@ -131,7 +131,7 @@ extension MergerDocument {
     }
     boardModel.vias = viaEntities
   //--- Back Legend texts
-    var backLegendLinesEntities = [SegmentEntity] ()
+    var backLegendLinesEntities = EBReferenceArray <SegmentEntity> ()
     let backLegendLines = stringArray (fromDict: inBoardArchiveDict, key: "LINES-BACK", &errorArray)
     for str in backLegendLines {
       let ints = array5int (fromString: str, &errorArray)
@@ -148,7 +148,7 @@ extension MergerDocument {
     }
     boardModel.backLegendLines = backLegendLinesEntities
   //--- Front Legend texts
-    var frontLegendLinesEntities = [SegmentEntity] ()
+    var frontLegendLinesEntities = EBReferenceArray <SegmentEntity> ()
     let frontLegendLines = stringArray (fromDict: inBoardArchiveDict, key: "LINES-FRONT", &errorArray)
     for str in frontLegendLines {
       let ints = array5int (fromString: str, &errorArray)
@@ -165,7 +165,7 @@ extension MergerDocument {
     }
     boardModel.frontLegendLines = frontLegendLinesEntities
   //--- Front Layout texts
-    var frontLayoutTextEntities = [SegmentEntity] ()
+    var frontLayoutTextEntities = EBReferenceArray <SegmentEntity> ()
     let frontLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LAYOUT-FRONT", &errorArray)
     for str in frontLayoutTexts {
       let segment = SegmentEntity (self.ebUndoManager)
@@ -179,7 +179,7 @@ extension MergerDocument {
     }
     boardModel.frontLayoutTexts = frontLayoutTextEntities
   //--- Back Layout texts
-    var backLayoutTextEntities = [SegmentEntity] ()
+    var backLayoutTextEntities = EBReferenceArray <SegmentEntity> ()
     let backLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LAYOUT-BACK", &errorArray)
     for str in backLayoutTexts {
       let segment = SegmentEntity (self.ebUndoManager)
@@ -193,7 +193,7 @@ extension MergerDocument {
     }
     boardModel.backLayoutTexts = backLayoutTextEntities
   //--- Back Legend texts
-    var backLegendTextEntities = [SegmentEntity] ()
+    var backLegendTextEntities = EBReferenceArray <SegmentEntity> ()
     let backLegendTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LEGEND-BACK", &errorArray)
     for str in backLegendTexts {
       let ints = array5int (fromString: str, &errorArray)
@@ -210,7 +210,7 @@ extension MergerDocument {
     }
     boardModel.backLegendTexts = backLegendTextEntities
   //--- Front Legend texts
-    var frontLegendTextEntities = [SegmentEntity] ()
+    var frontLegendTextEntities = EBReferenceArray <SegmentEntity> ()
     let frontTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LEGEND-FRONT", &errorArray)
     for str in frontTexts {
       let ints = array5int (fromString: str, &errorArray)
@@ -227,7 +227,7 @@ extension MergerDocument {
     }
     boardModel.frontLegendTexts = frontLegendTextEntities
   //--- Back packages
-    var backPackagesEntities = [SegmentEntity] ()
+    var backPackagesEntities = EBReferenceArray <SegmentEntity> ()
     let backPackages = stringArray (fromDict: inBoardArchiveDict, key: "PACKAGES-BACK", &errorArray)
     for str in backPackages {
       let ints = array5int (fromString: str, &errorArray)
@@ -244,7 +244,7 @@ extension MergerDocument {
     }
     boardModel.backPackages = backPackagesEntities
   //--- Front packages
-    var frontPackagesEntities = [SegmentEntity] ()
+    var frontPackagesEntities = EBReferenceArray <SegmentEntity> ()
     let frontPackages = stringArray (fromDict: inBoardArchiveDict, key: "PACKAGES-FRONT", &errorArray)
     for str in frontPackages {
       let ints = array5int (fromString: str, &errorArray)
@@ -261,7 +261,7 @@ extension MergerDocument {
     }
     boardModel.frontPackages = frontPackagesEntities
   //--- Back component names
-    var backComponentNamesEntities = [SegmentEntity] ()
+    var backComponentNamesEntities = EBReferenceArray <SegmentEntity> ()
     let backComponentNames = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-NAMES-BACK", &errorArray)
     for str in backComponentNames {
       let ints = array5int (fromString: str, &errorArray)
@@ -278,7 +278,7 @@ extension MergerDocument {
     }
     boardModel.backComponentNames = backComponentNamesEntities
   //--- Front component names
-    var frontComponentNamesEntities = [SegmentEntity] ()
+    var frontComponentNamesEntities = EBReferenceArray <SegmentEntity> ()
     let frontComponentNames = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-NAMES-FRONT", &errorArray)
     for str in frontComponentNames {
       let ints = array5int (fromString: str, &errorArray)
@@ -295,7 +295,7 @@ extension MergerDocument {
     }
     boardModel.frontComponentNames = frontComponentNamesEntities
   //--- Front component values
-    var frontComponentValuesEntities = [SegmentEntity] ()
+    var frontComponentValuesEntities = EBReferenceArray <SegmentEntity> ()
     let frontComponentValues = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-VALUES-FRONT", &errorArray)
     for str in frontComponentValues {
       let ints = array5int (fromString: str, &errorArray)
@@ -312,7 +312,7 @@ extension MergerDocument {
     }
     boardModel.frontComponentValues = frontComponentValuesEntities
   //--- Back component values
-    var backComponentValuesEntities = [SegmentEntity] ()
+    var backComponentValuesEntities = EBReferenceArray <SegmentEntity> ()
     let backComponentValues = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-VALUES-BACK", &errorArray)
     for str in backComponentValues {
       let ints = array5int (fromString: str, &errorArray)
@@ -329,7 +329,7 @@ extension MergerDocument {
     }
     boardModel.backComponentValues = backComponentValuesEntities
   //--- Drills
-    var drillEntities = [SegmentEntity] ()
+    var drillEntities = EBReferenceArray <SegmentEntity> ()
     let drills = stringArray (fromDict: inBoardArchiveDict, key: "DRILLS", &errorArray)
     for str in drills {
       let segment = SegmentEntity (self.ebUndoManager)
@@ -343,7 +343,7 @@ extension MergerDocument {
     }
     boardModel.drills = drillEntities
   //--- Front pads
-    var backPadEntities = [BoardModelPad] ()
+    var backPadEntities = EBReferenceArray <BoardModelPad> ()
     let backPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS-BACK", &errorArray)
     for padDict in backPadDictArray {
       let pad = BoardModelPad (self.ebUndoManager)
@@ -366,7 +366,7 @@ extension MergerDocument {
     }
     boardModel.backPads = backPadEntities
   //--- Front pads
-    var frontPadEntities = [BoardModelPad] ()
+    var frontPadEntities = EBReferenceArray <BoardModelPad> ()
     let frontPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS-FRONT", &errorArray)
     for padDict in frontPadDictArray {
       let pad = BoardModelPad (self.ebUndoManager)

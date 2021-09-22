@@ -152,7 +152,7 @@ final class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-  final var segments : [SegmentForFontCharacter] {
+  final var segments : EBReferenceArray  <SegmentForFontCharacter> {
     get { return self.segments_property.propval }
     set { self.segments_property.setProp (newValue) }
   }
@@ -457,7 +457,7 @@ final class FontCharacter : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.segments = []
+    self.segments.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -487,7 +487,7 @@ final class FontCharacter : EBManagedObject,
     self.mWarnsWhenAdvanceIsZero_property.storeIn (dictionary: ioDictionary, forKey: "mWarnsWhenAdvanceIsZero")
   //--- To many property: segments
     self.store (
-      managedObjectArray: self.segments_property.propval,
+      managedObjectArray: self.segments_property.propval.values,
       relationshipName: "segments",
       intoDictionary: ioDictionary
     )
@@ -501,11 +501,19 @@ final class FontCharacter : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: segments
-    self.segments_property.setProp (readEntityArrayFromDictionary (
+/*    self.segments_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "segments",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentForFontCharacter])
+    ) as! [SegmentForFontCharacter]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "segments",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentForFontCharacter]
+      self.segments_property.setProp (EBReferenceArray (array))
+    }
   }
 
   //····················································································································
@@ -561,7 +569,7 @@ final class FontCharacter : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.segments {
+      for object in self.segments.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -617,7 +625,7 @@ final class FontCharacter : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["segments"], range.length > 0 {
-        var relationshipArray = [SegmentForFontCharacter] ()
+        var relationshipArray = EBReferenceArray  <SegmentForFontCharacter> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentForFontCharacter)
@@ -635,7 +643,7 @@ final class FontCharacter : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: segments
-    for managedObject in self.segments {
+    for managedObject in self.segments.values {
       objects.append (managedObject)
     }
   }
@@ -647,7 +655,7 @@ final class FontCharacter : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: segments
-    for managedObject in self.segments {
+    for managedObject in self.segments.values {
       objects.append (managedObject)
     }
   }

@@ -10,7 +10,7 @@ extension ProjectDocument {
           symbol.mSheet = nil
           symbol.operationBeforeRemoving ()
         }
-        component.mSymbols = []
+        component.mSymbols = EBReferenceArray ()
      //--- Remove package from board
         component.operationBeforeRemoving ()
         component.mSelectedPackage = nil

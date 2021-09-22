@@ -62,7 +62,7 @@ final class SheetInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mObjects : [SchematicObject] {
+  final var mObjects : EBReferenceArray  <SchematicObject> {
     get { return self.mObjects_property.propval }
     set { self.mObjects_property.setProp (newValue) }
   }
@@ -77,7 +77,7 @@ final class SheetInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mPoints : [PointInSchematic] {
+  final var mPoints : EBReferenceArray  <PointInSchematic> {
     get { return self.mPoints_property.propval }
     set { self.mPoints_property.setProp (newValue) }
   }
@@ -462,8 +462,8 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mObjects = []
-    self.mPoints = []
+    self.mObjects.removeAll ()
+    self.mPoints.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -486,13 +486,13 @@ final class SheetInProject : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- To many property: mObjects
     self.store (
-      managedObjectArray: self.mObjects_property.propval,
+      managedObjectArray: self.mObjects_property.propval.values,
       relationshipName: "mObjects",
       intoDictionary: ioDictionary
     )
   //--- To many property: mPoints
     self.store (
-      managedObjectArray: self.mPoints_property.propval,
+      managedObjectArray: self.mPoints_property.propval.values,
       relationshipName: "mPoints",
       intoDictionary: ioDictionary
     )
@@ -508,17 +508,33 @@ final class SheetInProject : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mObjects
-    self.mObjects_property.setProp (readEntityArrayFromDictionary (
+/*    self.mObjects_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mObjects",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SchematicObject])
+    ) as! [SchematicObject]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mObjects",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SchematicObject]
+      self.mObjects_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: mPoints
-    self.mPoints_property.setProp (readEntityArrayFromDictionary (
+/*    self.mPoints_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPoints",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [PointInSchematic])
+    ) as! [PointInSchematic]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mPoints",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [PointInSchematic]
+      self.mPoints_property.setProp (EBReferenceArray (array))
+    }
   //--- To one property: mRoot
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -576,7 +592,7 @@ final class SheetInProject : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mObjects {
+      for object in self.mObjects.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -607,7 +623,7 @@ final class SheetInProject : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mPoints {
+      for object in self.mPoints.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -658,7 +674,7 @@ final class SheetInProject : EBManagedObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mObjects"], range.length > 0 {
-        var relationshipArray = [SchematicObject] ()
+        var relationshipArray = EBReferenceArray  <SchematicObject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SchematicObject)
@@ -666,7 +682,7 @@ final class SheetInProject : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mObjects = relationshipArray }
       }
       if let range = inDictionary ["mPoints"], range.length > 0 {
-        var relationshipArray = [PointInSchematic] ()
+        var relationshipArray = EBReferenceArray  <PointInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
@@ -684,11 +700,11 @@ final class SheetInProject : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mObjects
-    for managedObject in self.mObjects {
+    for managedObject in self.mObjects.values {
       objects.append (managedObject)
     }
   //--- To many property: mPoints
-    for managedObject in self.mPoints {
+    for managedObject in self.mPoints.values {
       objects.append (managedObject)
     }
   //--- To one property: mRoot
@@ -704,11 +720,11 @@ final class SheetInProject : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mObjects
-    for managedObject in self.mObjects {
+    for managedObject in self.mObjects.values {
       objects.append (managedObject)
     }
   //--- To many property: mPoints
-    for managedObject in self.mPoints {
+    for managedObject in self.mPoints.values {
       objects.append (managedObject)
     }
   //--- To one property: mRoot

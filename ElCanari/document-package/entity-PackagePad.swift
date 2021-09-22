@@ -527,7 +527,7 @@ final class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var slaves : [PackageSlavePad] {
+  final var slaves : EBReferenceArray  <PackageSlavePad> {
     get { return self.slaves_property.propval }
     set { self.slaves_property.setProp (newValue) }
   }
@@ -1425,7 +1425,7 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.slaves = []
+    self.slaves.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1480,7 +1480,7 @@ final class PackagePad : PackageObject,
     self.annularRingUnit_property.storeIn (dictionary: ioDictionary, forKey: "annularRingUnit")
   //--- To many property: slaves
     self.store (
-      managedObjectArray: self.slaves_property.propval,
+      managedObjectArray: self.slaves_property.propval.values,
       relationshipName: "slaves",
       intoDictionary: ioDictionary
     )
@@ -1498,11 +1498,19 @@ final class PackagePad : PackageObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: slaves
-    self.slaves_property.setProp (readEntityArrayFromDictionary (
+/*    self.slaves_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "slaves",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [PackageSlavePad])
+    ) as! [PackageSlavePad]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "slaves",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [PackageSlavePad]
+      self.slaves_property.setProp (EBReferenceArray (array))
+    }
   //--- To one property: zone
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -1634,7 +1642,7 @@ final class PackagePad : PackageObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.slaves {
+      for object in self.slaves.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1730,7 +1738,7 @@ final class PackagePad : PackageObject,
       }
     //--- To many relationships
       if let range = inDictionary ["slaves"], range.length > 0 {
-        var relationshipArray = [PackageSlavePad] ()
+        var relationshipArray = EBReferenceArray  <PackageSlavePad> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageSlavePad)
@@ -1748,7 +1756,7 @@ final class PackagePad : PackageObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: slaves
-    for managedObject in self.slaves {
+    for managedObject in self.slaves.values {
       objects.append (managedObject)
     }
   //--- To one property: zone
@@ -1764,7 +1772,7 @@ final class PackagePad : PackageObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: slaves
-    for managedObject in self.slaves {
+    for managedObject in self.slaves.values {
       objects.append (managedObject)
     }
   //--- To one property: zone

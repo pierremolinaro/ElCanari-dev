@@ -11,26 +11,26 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate struct TemporaryBoardModel {
-  var mFrontPackagesEntities = [SegmentEntity] ()
-  var mBackPackagesEntities = [SegmentEntity] ()
+  var mFrontPackagesEntities = EBReferenceArray <SegmentEntity> ()
+  var mBackPackagesEntities = EBReferenceArray <SegmentEntity> ()
 
-  var mDrillEntities = [SegmentEntity] ()
-  var mViaEntities = [BoardModelVia] ()
+  var mDrillEntities = EBReferenceArray <SegmentEntity> ()
+  var mViaEntities = EBReferenceArray <BoardModelVia> ()
 
-  var mFrontPadEntities = [BoardModelPad] ()
-  var mBackPadEntities = [BoardModelPad] ()
+  var mFrontPadEntities = EBReferenceArray <BoardModelPad> ()
+  var mBackPadEntities = EBReferenceArray <BoardModelPad> ()
 
-  var mFrontComponentNamesEntities = [SegmentEntity] ()
-  var mBackComponentNamesEntities = [SegmentEntity] ()
+  var mFrontComponentNamesEntities = EBReferenceArray <SegmentEntity> ()
+  var mBackComponentNamesEntities = EBReferenceArray <SegmentEntity> ()
 
-  var mFrontComponentValuesEntities = [SegmentEntity] ()
-  var mBackComponentValuesEntities = [SegmentEntity] ()
+  var mFrontComponentValuesEntities = EBReferenceArray <SegmentEntity> ()
+  var mBackComponentValuesEntities = EBReferenceArray <SegmentEntity> ()
 
-  var mFrontTrackEntities = [SegmentEntity] ()
-  var mBackTrackEntities = [SegmentEntity] ()
+  var mFrontTrackEntities = EBReferenceArray <SegmentEntity> ()
+  var mBackTrackEntities = EBReferenceArray <SegmentEntity> ()
 
-  var mFrontLayoutTextEntities = [SegmentEntity] ()
-  var mBackLayoutTextEntities = [SegmentEntity] ()
+  var mFrontLayoutTextEntities = EBReferenceArray <SegmentEntity> ()
+  var mBackLayoutTextEntities = EBReferenceArray <SegmentEntity> ()
 
   let mBoardRect_mm : NSRect
   let mKicadFont : [UInt32 : BoardFontCharacter]

@@ -268,7 +268,7 @@ final class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  final var symbolObjects : [SymbolObject] {
+  final var symbolObjects : EBReferenceArray  <SymbolObject> {
     get { return self.symbolObjects_property.propval }
     set { self.symbolObjects_property.setProp (newValue) }
   }
@@ -281,7 +281,7 @@ final class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  final var symbolPins : [SymbolPin] {
+  final var symbolPins : EBReferenceArray  <SymbolPin> {
     get { return self.symbolPins_property.propval }
   }
 
@@ -546,7 +546,7 @@ final class SymbolRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.symbolObjects = []
+    self.symbolObjects.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -586,7 +586,7 @@ final class SymbolRoot : EBManagedObject,
     self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "yPlacardUnit")
   //--- To many property: symbolObjects
     self.store (
-      managedObjectArray: self.symbolObjects_property.propval,
+      managedObjectArray: self.symbolObjects_property.propval.values,
       relationshipName: "symbolObjects",
       intoDictionary: ioDictionary
     )
@@ -602,11 +602,19 @@ final class SymbolRoot : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: symbolObjects
-    self.symbolObjects_property.setProp (readEntityArrayFromDictionary (
+/*    self.symbolObjects_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "symbolObjects",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SymbolObject])
+    ) as! [SymbolObject]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "symbolObjects",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SymbolObject]
+      self.symbolObjects_property.setProp (EBReferenceArray (array))
+    }
   }
 
   //····················································································································
@@ -693,7 +701,7 @@ final class SymbolRoot : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.symbolObjects {
+      for object in self.symbolObjects.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -767,7 +775,7 @@ final class SymbolRoot : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["symbolObjects"], range.length > 0 {
-        var relationshipArray = [SymbolObject] ()
+        var relationshipArray = EBReferenceArray  <SymbolObject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolObject)
@@ -785,11 +793,11 @@ final class SymbolRoot : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: symbolObjects
-    for managedObject in self.symbolObjects {
+    for managedObject in self.symbolObjects.values {
       objects.append (managedObject)
     }
   //--- To many property: symbolPins
-    for managedObject in self.symbolPins {
+    for managedObject in self.symbolPins.values {
       objects.append (managedObject)
     }
   }
@@ -801,11 +809,11 @@ final class SymbolRoot : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: symbolObjects
-    for managedObject in self.symbolObjects {
+    for managedObject in self.symbolObjects.values {
       objects.append (managedObject)
     }
   //--- To many property: symbolPins
-    for managedObject in self.symbolPins {
+    for managedObject in self.symbolPins.values {
       objects.append (managedObject)
     }
   }

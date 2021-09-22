@@ -27,7 +27,7 @@ extension FontDocument {
           let newCharacter = FontCharacter (self.ebUndoManager)
           newCharacter.codePoint = codePoint
           characterSet.append (newCharacter)
-          characterSet = characterSet.sorted {$0.codePoint < $1.codePoint}
+          characterSet.sort {$0.codePoint < $1.codePoint}
           self.rootObject.characters_property.setProp (characterSet)
           self.rootObject.currentCharacterCodePoint = codePoint
         }

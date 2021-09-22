@@ -452,7 +452,7 @@ final class PackageZone : PackageObject,
 
   //····················································································································
 
-  final var forbiddenPadNumbers : [ForbiddenPadNumber] {
+  final var forbiddenPadNumbers : EBReferenceArray  <ForbiddenPadNumber> {
     get { return self.forbiddenPadNumbers_property.propval }
     set { self.forbiddenPadNumbers_property.setProp (newValue) }
   }
@@ -986,7 +986,7 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.forbiddenPadNumbers = []
+    self.forbiddenPadNumbers.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1038,7 +1038,7 @@ final class PackageZone : PackageObject,
     self.zoneNumbering_property.storeIn (dictionary: ioDictionary, forKey: "zoneNumbering")
   //--- To many property: forbiddenPadNumbers
     self.store (
-      managedObjectArray: self.forbiddenPadNumbers_property.propval,
+      managedObjectArray: self.forbiddenPadNumbers_property.propval.values,
       relationshipName: "forbiddenPadNumbers",
       intoDictionary: ioDictionary
     )
@@ -1052,11 +1052,19 @@ final class PackageZone : PackageObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: forbiddenPadNumbers
-    self.forbiddenPadNumbers_property.setProp (readEntityArrayFromDictionary (
+/*    self.forbiddenPadNumbers_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "forbiddenPadNumbers",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [ForbiddenPadNumber])
+    ) as! [ForbiddenPadNumber]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "forbiddenPadNumbers",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [ForbiddenPadNumber]
+      self.forbiddenPadNumbers_property.setProp (EBReferenceArray (array))
+    }
   }
 
   //····················································································································
@@ -1167,7 +1175,7 @@ final class PackageZone : PackageObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.forbiddenPadNumbers {
+      for object in self.forbiddenPadNumbers.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1256,7 +1264,7 @@ final class PackageZone : PackageObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["forbiddenPadNumbers"], range.length > 0 {
-        var relationshipArray = [ForbiddenPadNumber] ()
+        var relationshipArray = EBReferenceArray  <ForbiddenPadNumber> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ForbiddenPadNumber)
@@ -1274,7 +1282,7 @@ final class PackageZone : PackageObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: forbiddenPadNumbers
-    for managedObject in self.forbiddenPadNumbers {
+    for managedObject in self.forbiddenPadNumbers.values {
       objects.append (managedObject)
     }
   }
@@ -1286,7 +1294,7 @@ final class PackageZone : PackageObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: forbiddenPadNumbers
-    for managedObject in self.forbiddenPadNumbers {
+    for managedObject in self.forbiddenPadNumbers.values {
       objects.append (managedObject)
     }
   }

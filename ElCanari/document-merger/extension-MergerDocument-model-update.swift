@@ -54,79 +54,79 @@ extension MergerDocument {
               updatedBoardModel.zoom = newTemporaryBoardModel.zoom
 
               var newArray = newTemporaryBoardModel.backPackages
-              newTemporaryBoardModel.backPackages = []
+              newTemporaryBoardModel.backPackages = EBReferenceArray ()
               updatedBoardModel.backPackages = newArray
 
               newArray = newTemporaryBoardModel.frontPackages
-              newTemporaryBoardModel.frontPackages = []
+              newTemporaryBoardModel.frontPackages = EBReferenceArray ()
               updatedBoardModel.frontPackages = newArray
 
               newArray = newTemporaryBoardModel.frontTracks
-              newTemporaryBoardModel.frontTracks = []
+              newTemporaryBoardModel.frontTracks = EBReferenceArray ()
               updatedBoardModel.frontTracks = newArray
 
               newArray = newTemporaryBoardModel.backTracks
-              newTemporaryBoardModel.backTracks = []
+              newTemporaryBoardModel.backTracks = EBReferenceArray ()
               updatedBoardModel.backTracks = newArray
 
               newArray = newTemporaryBoardModel.backComponentValues
-              newTemporaryBoardModel.backComponentValues = []
+              newTemporaryBoardModel.backComponentValues = EBReferenceArray ()
               updatedBoardModel.backComponentValues = newArray
 
               newArray = newTemporaryBoardModel.frontComponentValues
-              newTemporaryBoardModel.frontComponentValues = []
+              newTemporaryBoardModel.frontComponentValues = EBReferenceArray ()
               updatedBoardModel.frontComponentValues = newArray
 
               newArray = newTemporaryBoardModel.frontComponentNames
-              newTemporaryBoardModel.frontComponentNames = []
+              newTemporaryBoardModel.frontComponentNames = EBReferenceArray ()
               updatedBoardModel.frontComponentNames = newArray
 
               newArray = newTemporaryBoardModel.backComponentNames
-              newTemporaryBoardModel.backComponentNames = []
+              newTemporaryBoardModel.backComponentNames = EBReferenceArray ()
               updatedBoardModel.backComponentNames = newArray
 
               let newBackPadArray = newTemporaryBoardModel.backPads
-              newTemporaryBoardModel.backPads = []
+              newTemporaryBoardModel.backPads = EBReferenceArray ()
               updatedBoardModel.backPads = newBackPadArray
 
               let newFrontPadArray = newTemporaryBoardModel.frontPads
-              newTemporaryBoardModel.frontPads = []
+              newTemporaryBoardModel.frontPads = EBReferenceArray ()
               updatedBoardModel.frontPads = newFrontPadArray
 
               let newViaArray = newTemporaryBoardModel.vias
-              newTemporaryBoardModel.vias = []
+              newTemporaryBoardModel.vias = EBReferenceArray ()
               updatedBoardModel.vias = newViaArray
 
               let newDrillArray = newTemporaryBoardModel.drills
-              newTemporaryBoardModel.drills = []
+              newTemporaryBoardModel.drills = EBReferenceArray ()
               updatedBoardModel.drills = newDrillArray
 
               newArray = newTemporaryBoardModel.backLayoutTexts
-              newTemporaryBoardModel.backLayoutTexts = []
+              newTemporaryBoardModel.backLayoutTexts = EBReferenceArray ()
               updatedBoardModel.backLayoutTexts = newArray
 
               newArray = newTemporaryBoardModel.backLegendTexts
-              newTemporaryBoardModel.backLegendTexts = []
+              newTemporaryBoardModel.backLegendTexts = EBReferenceArray ()
               updatedBoardModel.backLegendTexts = newArray
 
               newArray = newTemporaryBoardModel.frontLayoutTexts
-              newTemporaryBoardModel.frontLayoutTexts = []
+              newTemporaryBoardModel.frontLayoutTexts = EBReferenceArray ()
               updatedBoardModel.frontLayoutTexts = newArray
 
               newArray = newTemporaryBoardModel.frontLegendTexts
-              newTemporaryBoardModel.frontLegendTexts = []
+              newTemporaryBoardModel.frontLegendTexts = EBReferenceArray ()
               updatedBoardModel.frontLegendTexts = newArray
 
               newArray = newTemporaryBoardModel.backLegendLines
-              newTemporaryBoardModel.backLegendLines = []
+              newTemporaryBoardModel.backLegendLines = EBReferenceArray ()
               updatedBoardModel.backLegendLines = newArray
 
               newArray = newTemporaryBoardModel.frontLegendLines
-              newTemporaryBoardModel.frontLegendLines = []
+              newTemporaryBoardModel.frontLegendLines = EBReferenceArray ()
               updatedBoardModel.frontLegendLines = newArray
 
               newArray = newTemporaryBoardModel.internalBoardsLimits
-              newTemporaryBoardModel.internalBoardsLimits = []
+              newTemporaryBoardModel.internalBoardsLimits = EBReferenceArray ()
               updatedBoardModel.internalBoardsLimits = newArray
             }
           }else{ // Cannot read file

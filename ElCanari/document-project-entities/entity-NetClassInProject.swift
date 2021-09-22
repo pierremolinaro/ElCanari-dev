@@ -475,7 +475,7 @@ final class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mNets : [NetInProject] {
+  final var mNets : EBReferenceArray  <NetInProject> {
     get { return self.mNets_property.propval }
     set { self.mNets_property.setProp (newValue) }
   }
@@ -1276,7 +1276,7 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mNets = []
+    self.mNets.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1326,7 +1326,7 @@ final class NetClassInProject : EBManagedObject,
     self.mAllowTracksOnInner4Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner4Layer")
   //--- To many property: mNets
     self.store (
-      managedObjectArray: self.mNets_property.propval,
+      managedObjectArray: self.mNets_property.propval.values,
       relationshipName: "mNets",
       intoDictionary: ioDictionary
     )
@@ -1340,11 +1340,19 @@ final class NetClassInProject : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mNets
-    self.mNets_property.setProp (readEntityArrayFromDictionary (
+/*    self.mNets_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mNets",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [NetInProject])
+    ) as! [NetInProject]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mNets",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [NetInProject]
+      self.mNets_property.setProp (EBReferenceArray (array))
+    }
   }
 
   //····················································································································
@@ -1450,7 +1458,7 @@ final class NetClassInProject : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mNets {
+      for object in self.mNets.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1536,7 +1544,7 @@ final class NetClassInProject : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mNets"], range.length > 0 {
-        var relationshipArray = [NetInProject] ()
+        var relationshipArray = EBReferenceArray  <NetInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! NetInProject)
@@ -1554,7 +1562,7 @@ final class NetClassInProject : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mNets
-    for managedObject in self.mNets {
+    for managedObject in self.mNets.values {
       objects.append (managedObject)
     }
   }
@@ -1566,7 +1574,7 @@ final class NetClassInProject : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mNets
-    for managedObject in self.mNets {
+    for managedObject in self.mNets.values {
       objects.append (managedObject)
     }
   }

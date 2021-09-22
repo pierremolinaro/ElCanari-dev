@@ -480,7 +480,7 @@ final class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mDocs : [DeviceDocumentation] {
+  final var mDocs : EBReferenceArray  <DeviceDocumentation> {
     get { return self.mDocs_property.propval }
     set { self.mDocs_property.setProp (newValue) }
   }
@@ -495,7 +495,7 @@ final class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mSymbolInstances : [SymbolInstanceInDevice] {
+  final var mSymbolInstances : EBReferenceArray  <SymbolInstanceInDevice> {
     get { return self.mSymbolInstances_property.propval }
     set { self.mSymbolInstances_property.setProp (newValue) }
   }
@@ -510,7 +510,7 @@ final class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mPackages : [PackageInDevice] {
+  final var mPackages : EBReferenceArray  <PackageInDevice> {
     get { return self.mPackages_property.propval }
     set { self.mPackages_property.setProp (newValue) }
   }
@@ -525,7 +525,7 @@ final class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mSymbolTypes : [SymbolTypeInDevice] {
+  final var mSymbolTypes : EBReferenceArray  <SymbolTypeInDevice> {
     get { return self.mSymbolTypes_property.propval }
     set { self.mSymbolTypes_property.setProp (newValue) }
   }
@@ -540,7 +540,7 @@ final class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mPadProxies : [PadProxyInDevice] {
+  final var mPadProxies : EBReferenceArray  <PadProxyInDevice> {
     get { return self.mPadProxies_property.propval }
     set { self.mPadProxies_property.setProp (newValue) }
   }
@@ -1305,11 +1305,11 @@ final class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mDocs = []
-    self.mSymbolInstances = []
-    self.mPackages = []
-    self.mSymbolTypes = []
-    self.mPadProxies = []
+    self.mDocs.removeAll ()
+    self.mSymbolInstances.removeAll ()
+    self.mPackages.removeAll ()
+    self.mSymbolTypes.removeAll ()
+    self.mPadProxies.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1361,31 +1361,31 @@ final class DeviceRoot : EBGraphicManagedObject,
     self.mSymbolDisplayVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolDisplayVerticalFlip")
   //--- To many property: mDocs
     self.store (
-      managedObjectArray: self.mDocs_property.propval,
+      managedObjectArray: self.mDocs_property.propval.values,
       relationshipName: "mDocs",
       intoDictionary: ioDictionary
     )
   //--- To many property: mSymbolInstances
     self.store (
-      managedObjectArray: self.mSymbolInstances_property.propval,
+      managedObjectArray: self.mSymbolInstances_property.propval.values,
       relationshipName: "mSymbolInstances",
       intoDictionary: ioDictionary
     )
   //--- To many property: mPackages
     self.store (
-      managedObjectArray: self.mPackages_property.propval,
+      managedObjectArray: self.mPackages_property.propval.values,
       relationshipName: "mPackages",
       intoDictionary: ioDictionary
     )
   //--- To many property: mSymbolTypes
     self.store (
-      managedObjectArray: self.mSymbolTypes_property.propval,
+      managedObjectArray: self.mSymbolTypes_property.propval.values,
       relationshipName: "mSymbolTypes",
       intoDictionary: ioDictionary
     )
   //--- To many property: mPadProxies
     self.store (
-      managedObjectArray: self.mPadProxies_property.propval,
+      managedObjectArray: self.mPadProxies_property.propval.values,
       relationshipName: "mPadProxies",
       intoDictionary: ioDictionary
     )
@@ -1399,35 +1399,75 @@ final class DeviceRoot : EBGraphicManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mDocs
-    self.mDocs_property.setProp (readEntityArrayFromDictionary (
+/*    self.mDocs_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mDocs",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [DeviceDocumentation])
+    ) as! [DeviceDocumentation]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mDocs",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [DeviceDocumentation]
+      self.mDocs_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: mSymbolInstances
-    self.mSymbolInstances_property.setProp (readEntityArrayFromDictionary (
+/*    self.mSymbolInstances_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mSymbolInstances",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SymbolInstanceInDevice])
+    ) as! [SymbolInstanceInDevice]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mSymbolInstances",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SymbolInstanceInDevice]
+      self.mSymbolInstances_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: mPackages
-    self.mPackages_property.setProp (readEntityArrayFromDictionary (
+/*    self.mPackages_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPackages",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [PackageInDevice])
+    ) as! [PackageInDevice]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mPackages",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [PackageInDevice]
+      self.mPackages_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: mSymbolTypes
-    self.mSymbolTypes_property.setProp (readEntityArrayFromDictionary (
+/*    self.mSymbolTypes_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mSymbolTypes",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SymbolTypeInDevice])
+    ) as! [SymbolTypeInDevice]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mSymbolTypes",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SymbolTypeInDevice]
+      self.mSymbolTypes_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: mPadProxies
-    self.mPadProxies_property.setProp (readEntityArrayFromDictionary (
+/*    self.mPadProxies_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPadProxies",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [PadProxyInDevice])
+    ) as! [PadProxyInDevice]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mPadProxies",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [PadProxyInDevice]
+      self.mPadProxies_property.setProp (EBReferenceArray (array))
+    }
   }
 
   //····················································································································
@@ -1542,7 +1582,7 @@ final class DeviceRoot : EBGraphicManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mDocs {
+      for object in self.mDocs.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1573,7 +1613,7 @@ final class DeviceRoot : EBGraphicManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mSymbolInstances {
+      for object in self.mSymbolInstances.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1604,7 +1644,7 @@ final class DeviceRoot : EBGraphicManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mPackages {
+      for object in self.mPackages.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1635,7 +1675,7 @@ final class DeviceRoot : EBGraphicManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mSymbolTypes {
+      for object in self.mSymbolTypes.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1666,7 +1706,7 @@ final class DeviceRoot : EBGraphicManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mPadProxies {
+      for object in self.mPadProxies.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -1755,7 +1795,7 @@ final class DeviceRoot : EBGraphicManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mDocs"], range.length > 0 {
-        var relationshipArray = [DeviceDocumentation] ()
+        var relationshipArray = EBReferenceArray  <DeviceDocumentation> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceDocumentation)
@@ -1763,7 +1803,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mDocs = relationshipArray }
       }
       if let range = inDictionary ["mSymbolInstances"], range.length > 0 {
-        var relationshipArray = [SymbolInstanceInDevice] ()
+        var relationshipArray = EBReferenceArray  <SymbolInstanceInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
@@ -1771,7 +1811,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSymbolInstances = relationshipArray }
       }
       if let range = inDictionary ["mPackages"], range.length > 0 {
-        var relationshipArray = [PackageInDevice] ()
+        var relationshipArray = EBReferenceArray  <PackageInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageInDevice)
@@ -1779,7 +1819,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPackages = relationshipArray }
       }
       if let range = inDictionary ["mSymbolTypes"], range.length > 0 {
-        var relationshipArray = [SymbolTypeInDevice] ()
+        var relationshipArray = EBReferenceArray  <SymbolTypeInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolTypeInDevice)
@@ -1787,7 +1827,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSymbolTypes = relationshipArray }
       }
       if let range = inDictionary ["mPadProxies"], range.length > 0 {
-        var relationshipArray = [PadProxyInDevice] ()
+        var relationshipArray = EBReferenceArray  <PadProxyInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PadProxyInDevice)
@@ -1805,23 +1845,23 @@ final class DeviceRoot : EBGraphicManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mDocs
-    for managedObject in self.mDocs {
+    for managedObject in self.mDocs.values {
       objects.append (managedObject)
     }
   //--- To many property: mSymbolInstances
-    for managedObject in self.mSymbolInstances {
+    for managedObject in self.mSymbolInstances.values {
       objects.append (managedObject)
     }
   //--- To many property: mPackages
-    for managedObject in self.mPackages {
+    for managedObject in self.mPackages.values {
       objects.append (managedObject)
     }
   //--- To many property: mSymbolTypes
-    for managedObject in self.mSymbolTypes {
+    for managedObject in self.mSymbolTypes.values {
       objects.append (managedObject)
     }
   //--- To many property: mPadProxies
-    for managedObject in self.mPadProxies {
+    for managedObject in self.mPadProxies.values {
       objects.append (managedObject)
     }
   }
@@ -1833,23 +1873,23 @@ final class DeviceRoot : EBGraphicManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mDocs
-    for managedObject in self.mDocs {
+    for managedObject in self.mDocs.values {
       objects.append (managedObject)
     }
   //--- To many property: mSymbolInstances
-    for managedObject in self.mSymbolInstances {
+    for managedObject in self.mSymbolInstances.values {
       objects.append (managedObject)
     }
   //--- To many property: mPackages
-    for managedObject in self.mPackages {
+    for managedObject in self.mPackages.values {
       objects.append (managedObject)
     }
   //--- To many property: mSymbolTypes
-    for managedObject in self.mSymbolTypes {
+    for managedObject in self.mSymbolTypes.values {
       objects.append (managedObject)
     }
   //--- To many property: mPadProxies
-    for managedObject in self.mPadProxies {
+    for managedObject in self.mPadProxies.values {
       objects.append (managedObject)
     }
   }

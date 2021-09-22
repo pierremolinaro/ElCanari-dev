@@ -21,7 +21,7 @@ extension AutoLayoutDeviceDocument {
       ok = true
       let strokeBezierPathes = NSBezierPath ()
       let filledBezierPathes = NSBezierPath ()
-      var symbolPinTypes = [SymbolPinTypeInDevice] ()
+      var symbolPinTypes = EBReferenceArray <SymbolPinTypeInDevice> ()
       symbolRoot.accumulate (
         withUndoManager: self.ebUndoManager,
         strokeBezierPathes: strokeBezierPathes,
@@ -85,7 +85,7 @@ extension AutoLayoutDeviceDocument {
           }else{
             let strokeBezierPathes = NSBezierPath ()
             let filledBezierPathes = NSBezierPath ()
-            var newSymbolPinTypes = [SymbolPinTypeInDevice] ()
+            var newSymbolPinTypes = EBReferenceArray <SymbolPinTypeInDevice> ()
             symbolRoot.accumulate (
               withUndoManager: self.ebUndoManager,
               strokeBezierPathes: strokeBezierPathes,
@@ -150,7 +150,7 @@ extension AutoLayoutDeviceDocument {
        let packageRoot = documentData.documentRootObject as? PackageRoot {
       ok = true
       var strokeBezierPathes = EBBezierPath ()
-      var masterPads = [MasterPadInDevice] ()
+      var masterPads = EBReferenceArray <MasterPadInDevice> ()
       packageRoot.accumulate (
         withUndoManager: self.ebUndoManager,
         strokeBezierPathes: &strokeBezierPathes,
@@ -188,7 +188,7 @@ extension AutoLayoutDeviceDocument {
 
   //····················································································································
 
-  internal func performPackagesUpdate (_ inPackages : [PackageInDevice],
+  internal func performPackagesUpdate (_ inPackages : EBReferenceArray <PackageInDevice>,
                                        _ ioOkMessages : inout [String],
                                        _ ioErrorMessages : inout [String]) {
 //--- START OF USER ZONE 2
@@ -206,7 +206,7 @@ extension AutoLayoutDeviceDocument {
             ioOkMessages.append ("Package \(package.mName) is up-to-date.")
           }else{
             var strokeBezierPathes = EBBezierPath ()
-            var masterPads = [MasterPadInDevice] ()
+            var masterPads = EBReferenceArray <MasterPadInDevice> ()
             packageRoot.accumulate (
               withUndoManager: self.ebUndoManager,
               strokeBezierPathes: &strokeBezierPathes,

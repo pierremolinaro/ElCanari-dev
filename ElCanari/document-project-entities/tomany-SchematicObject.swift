@@ -420,7 +420,7 @@ final class TransientArrayOf_SchematicObject : ReadOnlyArrayOf_SchematicObject {
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = []
+        self.mInternalArrayValue = EBReferenceArray  ()
       }
     }
   }
@@ -449,25 +449,25 @@ final class TransientArrayOf_SchematicObject : ReadOnlyArrayOf_SchematicObject {
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : [SchematicObject]
+      let newArray : EBReferenceArray  <SchematicObject>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
+            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = v
+            newArray = EBReferenceArray  (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = []
+        newArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -482,7 +482,7 @@ final class TransientArrayOf_SchematicObject : ReadOnlyArrayOf_SchematicObject {
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -490,7 +490,7 @@ final class TransientArrayOf_SchematicObject : ReadOnlyArrayOf_SchematicObject {
 
   //····················································································································
 
-  override var propval : [SchematicObject] {
+  override var propval : EBReferenceArray  <SchematicObject> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -544,25 +544,25 @@ final class TransientArrayOfSuperOf_SchematicObject <SUPER : EBManagedObject> : 
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : [SUPER]
+      var newModelArray : EBReferenceArray  <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = v
+          newModelArray = EBReferenceArray  (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
-      var newArray = [SchematicObject] ()
-      for superObject in newModelArray {
+      var newArray = EBReferenceArray  <SchematicObject> ()
+      for superObject in newModelArray.values {
         if let object = superObject as? SchematicObject {
           newArray.append (object)
         }
@@ -579,7 +579,7 @@ final class TransientArrayOfSuperOf_SchematicObject <SUPER : EBManagedObject> : 
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -587,7 +587,7 @@ final class TransientArrayOfSuperOf_SchematicObject <SUPER : EBManagedObject> : 
 
   //····················································································································
 
-  override var propval : [SchematicObject] {
+  override var propval : EBReferenceArray  <SchematicObject> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -604,7 +604,7 @@ class ReadWriteArrayOf_SchematicObject : ReadOnlyArrayOf_SchematicObject {
 
   //····················································································································
 
-  func setProp (_ value :  [SchematicObject]) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray  <SchematicObject>) { } // Abstract method
 
   //····················································································································
 
@@ -633,18 +633,18 @@ final class ProxyArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : [SchematicObject]
+    let newModelArray : EBReferenceArray  <SchematicObject>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
       case .single (let v) :
-        newModelArray = v
-       case .multiple :
-        newModelArray = []
+        newModelArray = EBReferenceArray  <SchematicObject> (v)
+      case .multiple :
+        newModelArray = EBReferenceArray  ()
       }
     }else{
-      newModelArray = []
+      newModelArray = EBReferenceArray  ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -652,7 +652,7 @@ final class ProxyArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject {
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : [SchematicObject]) {
+  override func setProp (_ inArrayValue : EBReferenceArray  <SchematicObject>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -668,16 +668,16 @@ final class ProxyArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject {
 
   //····················································································································
 
-  override var propval : [SchematicObject] {
+  override var propval : EBReferenceArray  <SchematicObject> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return []
+        return EBReferenceArray  ()
       case .single (let v) :
-        return v
+        return EBReferenceArray  (v)
       }
     }else{
-      return []
+      return EBReferenceArray  ()
     }
   }
 
@@ -744,7 +744,7 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : [SchematicObject]) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <SchematicObject>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -758,7 +758,7 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
   override func notifyModelDidChange () {
   //--- Update explorer
     if let valueExplorer = self.mValueExplorer {
-      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue.values, popUpButton: valueExplorer)
     }
   //--- Notify observers
     self.postEvent ()
@@ -791,15 +791,15 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
 
   //····················································································································
 
-  override final var selection : EBSelection < [SchematicObject] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [SchematicObject] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [SchematicObject]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <SchematicObject>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : [SchematicObject] { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray  <SchematicObject> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -853,7 +853,7 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc
@@ -880,15 +880,15 @@ final class StandAloneArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject
 
   //····················································································································
 
-  override var selection : EBSelection < [SchematicObject] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [SchematicObject] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [SchematicObject]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <SchematicObject>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : [SchematicObject] { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray  <SchematicObject> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -934,7 +934,7 @@ final class PreferencesArrayOf_SchematicObject : StoredArrayOf_SchematicObject {
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SchematicObject] ()
+      var objectArray = EBReferenceArray  <SchematicObject> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SchematicObject") as? SchematicObject {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
@@ -950,7 +950,7 @@ final class PreferencesArrayOf_SchematicObject : StoredArrayOf_SchematicObject {
 
   private func writeInPreferences () {
     var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       let d = NSMutableDictionary ()
       object.saveIntoDictionary (d)
       d [ENTITY_KEY] = nil // Remove entity key, not used in preferences

@@ -83,7 +83,7 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mInstances : [SymbolInstanceInDevice] {
+  final var mInstances : EBReferenceArray  <SymbolInstanceInDevice> {
     get { return self.mInstances_property.propval }
     set { self.mInstances_property.setProp (newValue) }
   }
@@ -193,7 +193,7 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mPinTypes : [SymbolPinTypeInDevice] {
+  final var mPinTypes : EBReferenceArray  <SymbolPinTypeInDevice> {
     get { return self.mPinTypes_property.propval }
     set { self.mPinTypes_property.setProp (newValue) }
   }
@@ -517,8 +517,8 @@ final class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mInstances = []
-    self.mPinTypes = []
+    self.mInstances.removeAll ()
+    self.mPinTypes.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -540,7 +540,7 @@ final class SymbolTypeInDevice : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- To many property: mInstances
     self.store (
-      managedObjectArray: self.mInstances_property.propval,
+      managedObjectArray: self.mInstances_property.propval.values,
       relationshipName: "mInstances",
       intoDictionary: ioDictionary
     )
@@ -556,7 +556,7 @@ final class SymbolTypeInDevice : EBManagedObject,
     self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mFilledBezierPath")
   //--- To many property: mPinTypes
     self.store (
-      managedObjectArray: self.mPinTypes_property.propval,
+      managedObjectArray: self.mPinTypes_property.propval.values,
       relationshipName: "mPinTypes",
       intoDictionary: ioDictionary
     )
@@ -570,17 +570,33 @@ final class SymbolTypeInDevice : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mInstances
-    self.mInstances_property.setProp (readEntityArrayFromDictionary (
+/*    self.mInstances_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mInstances",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SymbolInstanceInDevice])
+    ) as! [SymbolInstanceInDevice]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mInstances",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SymbolInstanceInDevice]
+      self.mInstances_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: mPinTypes
-    self.mPinTypes_property.setProp (readEntityArrayFromDictionary (
+/*    self.mPinTypes_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPinTypes",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SymbolPinTypeInDevice])
+    ) as! [SymbolPinTypeInDevice]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mPinTypes",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SymbolPinTypeInDevice]
+      self.mPinTypes_property.setProp (EBReferenceArray (array))
+    }
   }
 
   //····················································································································
@@ -642,7 +658,7 @@ final class SymbolTypeInDevice : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mInstances {
+      for object in self.mInstances.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -673,7 +689,7 @@ final class SymbolTypeInDevice : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mPinTypes {
+      for object in self.mPinTypes.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -732,7 +748,7 @@ final class SymbolTypeInDevice : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mInstances"], range.length > 0 {
-        var relationshipArray = [SymbolInstanceInDevice] ()
+        var relationshipArray = EBReferenceArray  <SymbolInstanceInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
@@ -740,7 +756,7 @@ final class SymbolTypeInDevice : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mInstances = relationshipArray }
       }
       if let range = inDictionary ["mPinTypes"], range.length > 0 {
-        var relationshipArray = [SymbolPinTypeInDevice] ()
+        var relationshipArray = EBReferenceArray  <SymbolPinTypeInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinTypeInDevice)
@@ -758,11 +774,11 @@ final class SymbolTypeInDevice : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mInstances
-    for managedObject in self.mInstances {
+    for managedObject in self.mInstances.values {
       objects.append (managedObject)
     }
   //--- To many property: mPinTypes
-    for managedObject in self.mPinTypes {
+    for managedObject in self.mPinTypes.values {
       objects.append (managedObject)
     }
   }
@@ -774,11 +790,11 @@ final class SymbolTypeInDevice : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mInstances
-    for managedObject in self.mInstances {
+    for managedObject in self.mInstances.values {
       objects.append (managedObject)
     }
   //--- To many property: mPinTypes
-    for managedObject in self.mPinTypes {
+    for managedObject in self.mPinTypes.values {
       objects.append (managedObject)
     }
   }

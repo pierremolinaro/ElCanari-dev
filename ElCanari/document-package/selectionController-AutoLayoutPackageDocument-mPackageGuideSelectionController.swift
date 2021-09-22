@@ -72,7 +72,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageGuideSelection
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : [PackageGuide] { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray  <PackageGuide> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION

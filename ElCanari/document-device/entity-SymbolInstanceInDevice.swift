@@ -76,7 +76,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mPinInstances : [SymbolPinInstanceInDevice] {
+  final var mPinInstances : EBReferenceArray  <SymbolPinInstanceInDevice> {
     get { return self.mPinInstances_property.propval }
     set { self.mPinInstances_property.setProp (newValue) }
   }
@@ -508,7 +508,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mPinInstances = []
+    self.mPinInstances.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -531,7 +531,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- To many property: mPinInstances
     self.store (
-      managedObjectArray: self.mPinInstances_property.propval,
+      managedObjectArray: self.mPinInstances_property.propval.values,
       relationshipName: "mPinInstances",
       intoDictionary: ioDictionary
     )
@@ -551,11 +551,19 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mPinInstances
-    self.mPinInstances_property.setProp (readEntityArrayFromDictionary (
+/*    self.mPinInstances_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPinInstances",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SymbolPinInstanceInDevice])
+    ) as! [SymbolPinInstanceInDevice]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mPinInstances",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SymbolPinInstanceInDevice]
+      self.mPinInstances_property.setProp (EBReferenceArray (array))
+    }
   //--- To one property: mType
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -622,7 +630,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mPinInstances {
+      for object in self.mPinInstances.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -679,7 +687,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mPinInstances"], range.length > 0 {
-        var relationshipArray = [SymbolPinInstanceInDevice] ()
+        var relationshipArray = EBReferenceArray  <SymbolPinInstanceInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
@@ -697,7 +705,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mPinInstances
-    for managedObject in self.mPinInstances {
+    for managedObject in self.mPinInstances.values {
       objects.append (managedObject)
     }
   //--- To one property: mType
@@ -713,7 +721,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mPinInstances
-    for managedObject in self.mPinInstances {
+    for managedObject in self.mPinInstances.values {
       objects.append (managedObject)
     }
   //--- To one property: mType

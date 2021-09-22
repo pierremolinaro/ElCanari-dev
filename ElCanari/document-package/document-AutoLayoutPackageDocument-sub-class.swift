@@ -108,7 +108,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
         for dictionary in dictionaryArray {
           if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageObject {
             if errorMessage == "" {
-              errorMessage = newObject.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx], objectArray: self.rootObject.packageObjects)
+              errorMessage = newObject.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx], objectArray: self.rootObject.packageObjects.values)
             }
             idx += 1
             if errorMessage == "" {
@@ -363,7 +363,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     for pad in allPads {
       pad.zone_property.setProp (nil)
     }
-    self.performPadNumbering (allPads, self.rootObject.padNumbering, [])
+    self.performPadNumbering (allPads.values, self.rootObject.padNumbering, [])
   //--- Link slave pads to any pad
     let allSlavePads = self.rootObject.packageSlavePads_property.propval
     for slavePad in allSlavePads {

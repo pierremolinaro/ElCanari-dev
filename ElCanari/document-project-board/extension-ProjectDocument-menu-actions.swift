@@ -24,7 +24,7 @@ extension CustomizedProjectDocument {
 
   internal func removeAllViasAndTracks () {
   //--- Remove all tracks
-    var conservedObjects = [BoardObject] ()
+    var conservedObjects = EBReferenceArray <BoardObject> ()
     for object in self.rootObject.mBoardObjects {
       if let track = object as? BoardTrack {
         let optionalNet = track.mNet
@@ -52,17 +52,17 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @IBAction func sortBoardObjectsFollowingBoardLayersAction (_ inUnusedSender : Any?) {
-    var backTracks = [BoardObject] ()
-    var backComponents = [BoardObject] ()
-    var others = [BoardObject] ()
-    var frontComponents = [BoardObject] ()
-    var inner1Tracks = [BoardObject] ()
-    var inner2Tracks = [BoardObject] ()
-    var inner3Tracks = [BoardObject] ()
-    var inner4Tracks = [BoardObject] ()
-    var frontTracks = [BoardObject] ()
-    var restrictRectangles = [BoardObject] ()
-    var connectors = [BoardObject] ()
+    var backTracks = EBReferenceArray <BoardObject> ()
+    var backComponents = EBReferenceArray <BoardObject> ()
+    var others = EBReferenceArray <BoardObject> ()
+    var frontComponents = EBReferenceArray <BoardObject> ()
+    var inner1Tracks = EBReferenceArray <BoardObject> ()
+    var inner2Tracks = EBReferenceArray <BoardObject> ()
+    var inner3Tracks = EBReferenceArray <BoardObject> ()
+    var inner4Tracks = EBReferenceArray <BoardObject> ()
+    var frontTracks = EBReferenceArray <BoardObject> ()
+    var restrictRectangles = EBReferenceArray <BoardObject> ()
+    var connectors = EBReferenceArray <BoardObject> ()
     for object in self.rootObject.mBoardObjects {
       if let connector = object as? BoardConnector {
         connectors.append (connector)
@@ -94,7 +94,19 @@ extension CustomizedProjectDocument {
         others.append (object)
       }
     }
-    self.rootObject.mBoardObjects = backComponents + backTracks + inner4Tracks + inner3Tracks + inner2Tracks + inner1Tracks + others + frontTracks + frontComponents + restrictRectangles + connectors
+//    self.rootObject.mBoardObjects = backComponents + backTracks + inner4Tracks + inner3Tracks + inner2Tracks + inner1Tracks + others + frontTracks + frontComponents + restrictRectangles + connectors
+    var array = backComponents
+    array += backTracks
+    array += inner4Tracks
+    array += inner3Tracks
+    array += inner2Tracks
+    array += inner1Tracks
+    array += others
+    array += frontTracks
+    array += frontComponents
+    array += restrictRectangles
+    array += connectors
+    self.rootObject.mBoardObjects = array
   }
 
   //····················································································································

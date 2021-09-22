@@ -253,7 +253,7 @@ extension AutoLayoutPackageDocument {
   private func scanDimension (_ inString : [UnicodeScalar],
                               _ ioIndex : inout Int,
                               _ ioOk : inout Bool,
-                              _ ioObjects : inout [PackageObject]) {
+                              _ ioObjects : inout EBReferenceArray <PackageObject>) {
     let ((x1, x1Unit), (y1, y1Unit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkName ("to", inString, &ioIndex, &ioOk)
     let ((x2, x2Unit), (y2, y2Unit)) = self.scanPoint (inString, &ioIndex, &ioOk)
@@ -284,7 +284,7 @@ extension AutoLayoutPackageDocument {
   private func scanZone (_ inString : [UnicodeScalar],
                          _ ioIndex : inout Int,
                          _ ioOk : inout Bool,
-                         _ ioObjects : inout [PackageObject]) {
+                         _ ioObjects : inout EBReferenceArray <PackageObject>) {
     let ((x, xUnit), (y, yUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkName ("size", inString, &ioIndex, &ioOk)
     let ((width, widthUnit), (height, heightUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
@@ -325,7 +325,7 @@ extension AutoLayoutPackageDocument {
   private func scanSlavePad (_ inString : [UnicodeScalar],
                              _ ioIndex : inout Int,
                              _ ioOk : inout Bool,
-                             _ ioObjects : inout [PackageObject],
+                             _ ioObjects : inout EBReferenceArray <PackageObject>,
                              _ ioSlavePadArray : inout [(PackageSlavePad, Int, Int)]) {
     let ((xCenter, xCenterUnit), (yCenter, yCenterUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkName ("size", inString, &ioIndex, &ioOk)
@@ -380,7 +380,7 @@ extension AutoLayoutPackageDocument {
   private func scanPad (_ inString : [UnicodeScalar],
                         _ ioIndex : inout Int,
                         _ ioOk : inout Bool,
-                        _ ioObjects : inout [PackageObject],
+                        _ ioObjects : inout EBReferenceArray <PackageObject>,
                         _ ioMasterPadDictionary : inout [Int : PackagePad]) {
     let ((xCenter, xCenterUnit), (yCenter, yCenterUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkName ("size", inString, &ioIndex, &ioOk)
@@ -436,7 +436,7 @@ extension AutoLayoutPackageDocument {
   private func scanGuide (_ inString : [UnicodeScalar],
                           _ ioIndex : inout Int,
                           _ ioOk : inout Bool,
-                          _ ioObjects : inout [PackageObject]) {
+                          _ ioObjects : inout EBReferenceArray <PackageObject>) {
     let ((x1, x1Unit), (y1, y1Unit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkName ("to", inString, &ioIndex, &ioOk)
     let ((x2, x2Unit), (y2, y2Unit)) = self.scanPoint (inString, &ioIndex, &ioOk)
@@ -458,7 +458,7 @@ extension AutoLayoutPackageDocument {
   private func scanBezier (_ inString : [UnicodeScalar],
                            _ ioIndex : inout Int,
                            _ ioOk : inout Bool,
-                           _ ioObjects : inout [PackageObject]) {
+                           _ ioObjects : inout EBReferenceArray <PackageObject>) {
     let ((x1, x1Unit), (y1, y1Unit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkName ("to", inString, &ioIndex, &ioOk)
     let ((x2, x2Unit), (y2, y2Unit)) = self.scanPoint (inString, &ioIndex, &ioOk)
@@ -492,7 +492,7 @@ extension AutoLayoutPackageDocument {
   private func scanArc (_ inString : [UnicodeScalar],
                            _ ioIndex : inout Int,
                            _ ioOk : inout Bool,
-                           _ ioObjects : inout [PackageObject]) {
+                           _ ioObjects : inout EBReferenceArray <PackageObject>) {
     let ((xCenter, xCenterUnit), (yCenter, yCenterUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkName ("radius", inString, &ioIndex, &ioOk)
     let (radius, radiusUnit) = self.scanNumberWithUnit (inString, &ioIndex, &ioOk)
@@ -526,7 +526,7 @@ extension AutoLayoutPackageDocument {
   private func scanOval (_ inString : [UnicodeScalar],
                          _ ioIndex : inout Int,
                          _ ioOk : inout Bool,
-                         _ ioObjects : inout [PackageObject]) {
+                         _ ioObjects : inout EBReferenceArray <PackageObject>) {
     let ((originX, originXUnit), (originY, originYUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkName ("size", inString, &ioIndex, &ioOk)
     let ((width, widthUnit), (height, heightUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
@@ -548,7 +548,7 @@ extension AutoLayoutPackageDocument {
   private func scanSegment (_ inString : [UnicodeScalar],
                             _ ioIndex : inout Int,
                             _ ioOk : inout Bool,
-                            _ ioObjects : inout [PackageObject]) {
+                            _ ioObjects : inout EBReferenceArray <PackageObject>) {
     let ((p1X, p1XUnit), (p1Y, p1YUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkName ("to", inString, &ioIndex, &ioOk)
     let ((p2X, p2XUnit), (p2Y, p2YUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
@@ -604,7 +604,7 @@ extension AutoLayoutPackageDocument {
       var idx = 0
       var ok = true
       var loop = true
-      var objects = [PackageObject] ()
+      var objects = EBReferenceArray <PackageObject> ()
       var masterPadDictionary = [Int : PackagePad] ()
       var slavePadArray = [(PackageSlavePad, Int, Int)] () // Slavre Pad, id, errorLocation
       while loop && ok {

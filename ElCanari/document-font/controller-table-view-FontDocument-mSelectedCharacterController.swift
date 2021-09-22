@@ -25,7 +25,7 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
 
   //····················································································································
 
-  var sortedArray : [FontCharacter] { return self.sortedArray_property.propval }
+  var sortedArray : EBReferenceArray  <FontCharacter> { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -39,11 +39,11 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
 
   //····················································································································
 
-  var objects : [FontCharacter] {
+  var objects : EBReferenceArray  <FontCharacter> {
     if let objects = self.mModel?.propval {
       return objects
     }else{
-      return []
+      return EBReferenceArray  ()
     }
   }
 
@@ -108,7 +108,7 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
     super.notifyModelDidChange ()
     // NSLog ("self.sortedArray \(self.sortedArray.count)")
     let oldSelectionSet = self.selectedSet
-    var newSelectedArray = [FontCharacter] ()
+    var newSelectedArray = EBReferenceArray  <FontCharacter> ()
     for object in self.sortedArray {
       if oldSelectionSet.contains (object) {
         newSelectedArray.append (object)
@@ -136,11 +136,11 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
 
   //····················································································································
 
-  var selectedArray : [FontCharacter] { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray  <FontCharacter> { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedSet : EBReferenceSet <FontCharacter> { return EBReferenceSet (self.selectedArray) }
+  var selectedSet : EBReferenceSet <FontCharacter> { return EBReferenceSet (self.selectedArray.values) }
 
   //····················································································································
 
@@ -159,7 +159,7 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
   //····················································································································
 
   func setSelection (_ inObjects : [FontCharacter]) {
-    self.mInternalSelectedArrayProperty.setProp (inObjects)
+    self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObjects))
   }
 
   //····················································································································
@@ -262,7 +262,7 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjects = [FontCharacter] ()
+      var newSelectedObjects = EBReferenceArray  <FontCharacter> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjects.append (v [index])
       }
@@ -306,7 +306,7 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          self.mInternalSelectedArrayProperty.setProp ([inObject])
+          self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObject))
         }
       }
     }
@@ -323,11 +323,11 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
         break
       case .single (let v) :
         let newObject = FontCharacter (self.ebUndoManager)
-        var array = v
+        var array = EBReferenceArray  (v)
         array.append (newObject)
         model.setProp (array)
       //--- New object is the selection
-        self.mInternalSelectedArrayProperty.setProp ([newObject])
+        self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (newObject))
       }
     }
   }
@@ -391,7 +391,7 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
         //--- Sort in reverse order
           selectedObjectIndexArray.sort { $1 < $0 }
         //--- Remove objects, in reverse of order of their index
-          var newObjectArray = model_prop
+          var newObjectArray = EBReferenceArray  (model_prop)
           for index in selectedObjectIndexArray {
             newObjectArray.remove (at: index)
           }
@@ -399,9 +399,9 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
           model.setProp (newObjectArray)
         //----------------------------------------- Set new selection
           if let object = newSelectedObject {
-            self.mInternalSelectedArrayProperty.setProp ([object])
+            self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (object))
           }else{
-            self.mInternalSelectedArrayProperty.setProp ([])
+            self.mInternalSelectedArrayProperty.setProp (EBReferenceArray ())
           }
         }
       }

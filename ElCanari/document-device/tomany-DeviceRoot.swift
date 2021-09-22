@@ -1567,7 +1567,7 @@ final class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = []
+        self.mInternalArrayValue = EBReferenceArray  ()
       }
     }
   }
@@ -1596,25 +1596,25 @@ final class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : [DeviceRoot]
+      let newArray : EBReferenceArray  <DeviceRoot>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
+            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = v
+            newArray = EBReferenceArray  (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = []
+        newArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -1629,7 +1629,7 @@ final class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -1637,7 +1637,7 @@ final class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 
   //····················································································································
 
-  override var propval : [DeviceRoot] {
+  override var propval : EBReferenceArray  <DeviceRoot> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -1691,25 +1691,25 @@ final class TransientArrayOfSuperOf_DeviceRoot <SUPER : EBManagedObject> : ReadO
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : [SUPER]
+      var newModelArray : EBReferenceArray  <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = v
+          newModelArray = EBReferenceArray  (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
-      var newArray = [DeviceRoot] ()
-      for superObject in newModelArray {
+      var newArray = EBReferenceArray  <DeviceRoot> ()
+      for superObject in newModelArray.values {
         if let object = superObject as? DeviceRoot {
           newArray.append (object)
         }
@@ -1726,7 +1726,7 @@ final class TransientArrayOfSuperOf_DeviceRoot <SUPER : EBManagedObject> : ReadO
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -1734,7 +1734,7 @@ final class TransientArrayOfSuperOf_DeviceRoot <SUPER : EBManagedObject> : ReadO
 
   //····················································································································
 
-  override var propval : [DeviceRoot] {
+  override var propval : EBReferenceArray  <DeviceRoot> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -1751,7 +1751,7 @@ class ReadWriteArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 
   //····················································································································
 
-  func setProp (_ value :  [DeviceRoot]) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray  <DeviceRoot>) { } // Abstract method
 
   //····················································································································
 
@@ -1780,18 +1780,18 @@ final class ProxyArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : [DeviceRoot]
+    let newModelArray : EBReferenceArray  <DeviceRoot>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
       case .single (let v) :
-        newModelArray = v
-       case .multiple :
-        newModelArray = []
+        newModelArray = EBReferenceArray  <DeviceRoot> (v)
+      case .multiple :
+        newModelArray = EBReferenceArray  ()
       }
     }else{
-      newModelArray = []
+      newModelArray = EBReferenceArray  ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -1799,7 +1799,7 @@ final class ProxyArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : [DeviceRoot]) {
+  override func setProp (_ inArrayValue : EBReferenceArray  <DeviceRoot>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -1815,16 +1815,16 @@ final class ProxyArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
 
   //····················································································································
 
-  override var propval : [DeviceRoot] {
+  override var propval : EBReferenceArray  <DeviceRoot> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return []
+        return EBReferenceArray  ()
       case .single (let v) :
-        return v
+        return EBReferenceArray  (v)
       }
     }else{
-      return []
+      return EBReferenceArray  ()
     }
   }
 
@@ -1891,7 +1891,7 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : [DeviceRoot]) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <DeviceRoot>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -1905,7 +1905,7 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
   override func notifyModelDidChange () {
   //--- Update explorer
     if let valueExplorer = self.mValueExplorer {
-      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue.values, popUpButton: valueExplorer)
     }
   //--- Notify observers
     self.postEvent ()
@@ -1938,15 +1938,15 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
 
   //····················································································································
 
-  override final var selection : EBSelection < [DeviceRoot] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [DeviceRoot] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [DeviceRoot]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <DeviceRoot>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : [DeviceRoot] { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray  <DeviceRoot> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -2000,7 +2000,7 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc
@@ -2027,15 +2027,15 @@ final class StandAloneArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
 
   //····················································································································
 
-  override var selection : EBSelection < [DeviceRoot] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [DeviceRoot] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [DeviceRoot]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <DeviceRoot>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : [DeviceRoot] { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray  <DeviceRoot> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -2081,7 +2081,7 @@ final class PreferencesArrayOf_DeviceRoot : StoredArrayOf_DeviceRoot {
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [DeviceRoot] ()
+      var objectArray = EBReferenceArray  <DeviceRoot> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DeviceRoot") as? DeviceRoot {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
@@ -2112,7 +2112,7 @@ final class PreferencesArrayOf_DeviceRoot : StoredArrayOf_DeviceRoot {
 
   private func writeInPreferences () {
     var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       let d = NSMutableDictionary ()
       object.saveIntoDictionary (d)
       d [ENTITY_KEY] = nil // Remove entity key, not used in preferences

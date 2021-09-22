@@ -132,7 +132,7 @@ extension MergerDocument {
        modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
       myModel?.drillSegments?.add (toArchiveArray: &drills, dx: board.x, dy: board.y,
        modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
-      for via in myModel?.vias_property.propval ?? [] {
+      for via in myModel?.vias_property.propval.values ?? [] {
         var viaX = board.x
         var viaY = board.y
         switch instanceRotation {
@@ -151,7 +151,7 @@ extension MergerDocument {
         }
         vias.append ("\(viaX) \(viaY) \(via.padDiameter)")
       }
-      for pad in myModel?.frontPads_property.propval ?? [] {
+      for pad in myModel?.frontPads_property.propval.values ?? [] {
         let d = NSMutableDictionary ()
         d ["HEIGHT"] = pad.height
         d ["ROTATION"] = (pad.rotation + instanceRotation.rawValue * 90_000) % 360_000
@@ -180,7 +180,7 @@ extension MergerDocument {
         }
         frontPads.append (d)
       }
-      for pad in myModel?.backPads_property.propval ?? [] {
+      for pad in myModel?.backPads_property.propval.values ?? [] {
         let d = NSMutableDictionary ()
         d ["HEIGHT"] = pad.height
         d ["ROTATION"] = (pad.rotation + instanceRotation.rawValue * 90_000) % 360_000
@@ -245,7 +245,7 @@ extension MergerDocument {
   fileprivate func generatePDFfiles (atPath inFilePath : String) throws {
     if let cocoaBoardRect : NSRect = self.rootObject.boardRect?.cocoaRect {
       let boardWidth = self.rootObject.boardWidth ?? 0
-      for product in self.rootObject.mArtwork_property.propval?.fileGenerationParameterArray_property.propval ?? [] {
+      for product in self.rootObject.mArtwork_property.propval?.fileGenerationParameterArray_property.propval.values ?? [] {
         let horizontalMirror = product.horizontalMirror
         let filePath = inFilePath + "." + product.fileExtension + ".pdf"
         self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
@@ -506,7 +506,7 @@ extension MergerDocument {
 
   fileprivate func generateGerberFiles (atPath inFilePath : String) throws {
     let boardWidth = self.rootObject.boardWidth!
-    for product in self.rootObject.mArtwork_property.propval?.fileGenerationParameterArray_property.propval ?? [] {
+    for product in self.rootObject.mArtwork_property.propval?.fileGenerationParameterArray_property.propval.values ?? [] {
       let horizontalMirror = product.horizontalMirror
       let filePath = inFilePath + "." + product.fileExtension
       self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")

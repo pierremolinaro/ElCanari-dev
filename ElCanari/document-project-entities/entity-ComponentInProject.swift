@@ -428,7 +428,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var mConnectors : [BoardConnector] {
+  final var mConnectors : EBReferenceArray  <BoardConnector> {
     get { return self.mConnectors_property.propval }
     set { self.mConnectors_property.setProp (newValue) }
   }
@@ -443,7 +443,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var mSymbols : [ComponentSymbolInProject] {
+  final var mSymbols : EBReferenceArray  <ComponentSymbolInProject> {
     get { return self.mSymbols_property.propval }
     set { self.mSymbols_property.setProp (newValue) }
   }
@@ -749,13 +749,13 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mPackages : [DevicePackageInProject] {
+  var mPackages : EBReferenceArray  <DevicePackageInProject> {
     get {
       switch self.mPackages_property.selection {
       case .empty, .multiple :
-        return []
+        return EBReferenceArray  ()
       case .single (let v) :
-        return v
+        return EBReferenceArray  (v)
       }
     }
     set {
@@ -2252,8 +2252,8 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mConnectors = []
-    self.mSymbols = []
+    self.mConnectors.removeAll ()
+    self.mSymbols.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -2291,13 +2291,13 @@ final class ComponentInProject : BoardObject,
     self.mDisplayLegend_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayLegend")
   //--- To many property: mConnectors
     self.store (
-      managedObjectArray: self.mConnectors_property.propval,
+      managedObjectArray: self.mConnectors_property.propval.values,
       relationshipName: "mConnectors",
       intoDictionary: ioDictionary
     )
   //--- To many property: mSymbols
     self.store (
-      managedObjectArray: self.mSymbols_property.propval,
+      managedObjectArray: self.mSymbols_property.propval.values,
       relationshipName: "mSymbols",
       intoDictionary: ioDictionary
     )
@@ -2345,17 +2345,33 @@ final class ComponentInProject : BoardObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mConnectors
-    self.mConnectors_property.setProp (readEntityArrayFromDictionary (
+/*    self.mConnectors_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mConnectors",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardConnector])
+    ) as! [BoardConnector]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mConnectors",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [BoardConnector]
+      self.mConnectors_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: mSymbols
-    self.mSymbols_property.setProp (readEntityArrayFromDictionary (
+/*    self.mSymbols_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mSymbols",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [ComponentSymbolInProject])
+    ) as! [ComponentSymbolInProject]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mSymbols",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [ComponentSymbolInProject]
+      self.mSymbols_property.setProp (EBReferenceArray (array))
+    }
   //--- To one property: mDevice
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -2561,7 +2577,7 @@ final class ComponentInProject : BoardObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mConnectors {
+      for object in self.mConnectors.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -2592,7 +2608,7 @@ final class ComponentInProject : BoardObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mSymbols {
+      for object in self.mSymbols.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -2715,7 +2731,7 @@ final class ComponentInProject : BoardObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mConnectors"], range.length > 0 {
-        var relationshipArray = [BoardConnector] ()
+        var relationshipArray = EBReferenceArray  <BoardConnector> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardConnector)
@@ -2723,7 +2739,7 @@ final class ComponentInProject : BoardObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mConnectors = relationshipArray }
       }
       if let range = inDictionary ["mSymbols"], range.length > 0 {
-        var relationshipArray = [ComponentSymbolInProject] ()
+        var relationshipArray = EBReferenceArray  <ComponentSymbolInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentSymbolInProject)
@@ -2741,11 +2757,11 @@ final class ComponentInProject : BoardObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mConnectors
-    for managedObject in self.mConnectors {
+    for managedObject in self.mConnectors.values {
       objects.append (managedObject)
     }
   //--- To many property: mSymbols
-    for managedObject in self.mSymbols {
+    for managedObject in self.mSymbols.values {
       objects.append (managedObject)
     }
   //--- To one property: mDevice
@@ -2773,11 +2789,11 @@ final class ComponentInProject : BoardObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mConnectors
-    for managedObject in self.mConnectors {
+    for managedObject in self.mConnectors.values {
       objects.append (managedObject)
     }
   //--- To many property: mSymbols
-    for managedObject in self.mSymbols {
+    for managedObject in self.mSymbols.values {
       objects.append (managedObject)
     }
   //--- To one property: mDevice

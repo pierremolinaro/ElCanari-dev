@@ -792,7 +792,7 @@ final class TransientArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = []
+        self.mInternalArrayValue = EBReferenceArray  ()
       }
     }
   }
@@ -821,25 +821,25 @@ final class TransientArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : [PackageOval]
+      let newArray : EBReferenceArray  <PackageOval>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
+            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = v
+            newArray = EBReferenceArray  (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = []
+          newArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = []
+        newArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -854,7 +854,7 @@ final class TransientArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -862,7 +862,7 @@ final class TransientArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
 
   //····················································································································
 
-  override var propval : [PackageOval] {
+  override var propval : EBReferenceArray  <PackageOval> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -916,25 +916,25 @@ final class TransientArrayOfSuperOf_PackageOval <SUPER : EBManagedObject> : Read
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : [SUPER]
+      var newModelArray : EBReferenceArray  <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = v
+          newModelArray = EBReferenceArray  (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = []
+          newModelArray = EBReferenceArray  ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
         self.mTransientKind = .empty
       }
-      var newArray = [PackageOval] ()
-      for superObject in newModelArray {
+      var newArray = EBReferenceArray  <PackageOval> ()
+      for superObject in newModelArray.values {
         if let object = superObject as? PackageOval {
           newArray.append (object)
         }
@@ -951,7 +951,7 @@ final class TransientArrayOfSuperOf_PackageOval <SUPER : EBManagedObject> : Read
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue)
+      return .single (self.mInternalArrayValue.values)
     case .multiple :
       return .multiple
     }
@@ -959,7 +959,7 @@ final class TransientArrayOfSuperOf_PackageOval <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  override var propval : [PackageOval] {
+  override var propval : EBReferenceArray  <PackageOval> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -976,7 +976,7 @@ class ReadWriteArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
 
   //····················································································································
 
-  func setProp (_ value :  [PackageOval]) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray  <PackageOval>) { } // Abstract method
 
   //····················································································································
 
@@ -1005,18 +1005,18 @@ final class ProxyArrayOf_PackageOval : ReadWriteArrayOf_PackageOval {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : [PackageOval]
+    let newModelArray : EBReferenceArray  <PackageOval>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = []
+        newModelArray = EBReferenceArray  ()
       case .single (let v) :
-        newModelArray = v
-       case .multiple :
-        newModelArray = []
+        newModelArray = EBReferenceArray  <PackageOval> (v)
+      case .multiple :
+        newModelArray = EBReferenceArray  ()
       }
     }else{
-      newModelArray = []
+      newModelArray = EBReferenceArray  ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -1024,7 +1024,7 @@ final class ProxyArrayOf_PackageOval : ReadWriteArrayOf_PackageOval {
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : [PackageOval]) {
+  override func setProp (_ inArrayValue : EBReferenceArray  <PackageOval>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -1040,16 +1040,16 @@ final class ProxyArrayOf_PackageOval : ReadWriteArrayOf_PackageOval {
 
   //····················································································································
 
-  override var propval : [PackageOval] {
+  override var propval : EBReferenceArray  <PackageOval> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return []
+        return EBReferenceArray  ()
       case .single (let v) :
-        return v
+        return EBReferenceArray  (v)
       }
     }else{
-      return []
+      return EBReferenceArray  ()
     }
   }
 
@@ -1116,7 +1116,7 @@ class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatureObser
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : [PackageOval]) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <PackageOval>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -1130,7 +1130,7 @@ class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatureObser
   override func notifyModelDidChange () {
   //--- Update explorer
     if let valueExplorer = self.mValueExplorer {
-      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue.values, popUpButton: valueExplorer)
     }
   //--- Notify observers
     self.postEvent ()
@@ -1163,15 +1163,15 @@ class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatureObser
 
   //····················································································································
 
-  override final var selection : EBSelection < [PackageOval] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [PackageOval] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [PackageOval]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <PackageOval>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : [PackageOval] { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray  <PackageOval> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1225,7 +1225,7 @@ class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatureObser
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc
@@ -1252,15 +1252,15 @@ final class StandAloneArrayOf_PackageOval : ReadWriteArrayOf_PackageOval {
 
   //····················································································································
 
-  override var selection : EBSelection < [PackageOval] > { return .single (self.mInternalArrayValue) }
+  override var selection : EBSelection < [PackageOval] > { return .single (self.mInternalArrayValue.values) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [PackageOval]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray  <PackageOval>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : [PackageOval] { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray  <PackageOval> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1306,7 +1306,7 @@ final class PreferencesArrayOf_PackageOval : StoredArrayOf_PackageOval {
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [PackageOval] ()
+      var objectArray = EBReferenceArray  <PackageOval> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageOval") as? PackageOval {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
@@ -1330,7 +1330,7 @@ final class PreferencesArrayOf_PackageOval : StoredArrayOf_PackageOval {
 
   private func writeInPreferences () {
     var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue {
+    for object in self.mInternalArrayValue.values {
       let d = NSMutableDictionary ()
       object.saveIntoDictionary (d)
       d [ENTITY_KEY] = nil // Remove entity key, not used in preferences

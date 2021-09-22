@@ -49,7 +49,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : [LabelInSchematic] { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray  <LabelInSchematic> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION

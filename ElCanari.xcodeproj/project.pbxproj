@@ -172,6 +172,9 @@
 		CF15D7632273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D7622273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift */; };
 		CF15D7642273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D7622273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift */; };
 		CF15ED8225E907EC00DE99D3 /* AutoLayoutFontButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15ED8125E907EC00DE99D3 /* AutoLayoutFontButton.swift */; };
+		CF171D8A26FB999B00A1BCB2 /* EBReferenceArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF171D8926FB999A00A1BCB2 /* EBReferenceArray.swift */; };
+		CF171D8B26FB999B00A1BCB2 /* EBReferenceArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF171D8926FB999A00A1BCB2 /* EBReferenceArray.swift */; };
+		CF171D8C26FB999B00A1BCB2 /* EBReferenceArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF171D8926FB999A00A1BCB2 /* EBReferenceArray.swift */; };
 		CF186B031B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF186B021B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift */; };
 		CF1893A82202EEC600EF2308 /* library-repository-status.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1893A72202EEC600EF2308 /* library-repository-status.swift */; };
 		CF1893A92202EEC600EF2308 /* library-repository-status.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1893A72202EEC600EF2308 /* library-repository-status.swift */; };
@@ -4450,6 +4453,7 @@
 		CF154D6125C80D35004CEDB6 /* enum-TrackCreationDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-TrackCreationDirection.swift"; sourceTree = "<group>"; };
 		CF15D7622273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-add-edit-net-class.swift"; sourceTree = "<group>"; };
 		CF15ED8125E907EC00DE99D3 /* AutoLayoutFontButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutFontButton.swift; sourceTree = "<group>"; };
+		CF171D8926FB999A00A1BCB2 /* EBReferenceArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBReferenceArray.swift; sourceTree = "<group>"; };
 		CF186B021B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-addLibraryEntryAction.swift"; sourceTree = "<group>"; };
 		CF1893A72202EEC600EF2308 /* library-repository-status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "library-repository-status.swift"; sourceTree = "<group>"; };
 		CF18963521F9E9C000F94354 /* button-LibraryUpdateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "button-LibraryUpdateButton.swift"; sourceTree = "<group>"; };
@@ -6465,6 +6469,7 @@
 				CF4C8F3825262ADC0046F831 /* EBObservableObjectProtocol.swift */,
 				CF07780D23521A8300F56EAB /* EBPropertyProtocol.swift */,
 				CF8BE7542351166A00F95B3A /* EBReadOnlyPropertyController.swift */,
+				CF171D8926FB999A00A1BCB2 /* EBReferenceArray.swift */,
 				CFC1325E26FB4EBB0027AC93 /* EBReferenceSet.swift */,
 				CF07781123521CB800F56EAB /* EBSelection.swift */,
 				CF8BE73923510FEC00F95B3A /* EBSignatureObserverProtocol.swift */,
@@ -8522,6 +8527,7 @@
 				CF2B9CE221C2A8D100EE5683 /* entity-PackageRoot.swift in Sources */,
 				CF4EA9FE26F671C500F01746 /* transient-NetClassInProject-allowTracksOnInner3LayerString.swift in Sources */,
 				CF8560D42677A34B00B62608 /* AutoLayoutSegmentedControlWithPages.swift in Sources */,
+				CF171D8A26FB999B00A1BCB2 /* EBReferenceArray.swift in Sources */,
 				CF968B0621BBDA320010175E /* EBGraphicView-binding-gridStyle.swift in Sources */,
 				CF968AF421BBD40B0010175E /* EBGraphicView-binding-backColor.swift in Sources */,
 				CF7AA01821BDB72900AC0FC7 /* extension-NSTextView.swift in Sources */,
@@ -9914,6 +9920,7 @@
 				CF9D4B33227F796C006E2035 /* action-ProjectDocument-newSheetAction.swift in Sources */,
 				CF4EA9FF26F671C500F01746 /* transient-NetClassInProject-allowTracksOnInner3LayerString.swift in Sources */,
 				CFEB7B51233A25EC0060A97A /* transient-ComponentInProject-componentPadDictionary.swift in Sources */,
+				CF171D8B26FB999B00A1BCB2 /* EBReferenceArray.swift in Sources */,
 				CF8116D0233A59FC0078E9E5 /* transient-ProjectDocument-rastnetShape.swift in Sources */,
 				CFC6325922F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift in Sources */,
 				CFB7D86F2683A61C007B9D3B /* action-AutoLayoutPackageDocument-loadDIL16ModelImageFromResourcesAction.swift in Sources */,
@@ -11306,6 +11313,7 @@
 				CF9C61CD25CABE5C00A00D5C /* transient-ProjectDocument-unplacedPackageCount.swift in Sources */,
 				CF4EAA0026F671C500F01746 /* transient-NetClassInProject-allowTracksOnInner3LayerString.swift in Sources */,
 				CFB7D8C72683A61D007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageSlavePadSelectionController.swift in Sources */,
+				CF171D8C26FB999B00A1BCB2 /* EBReferenceArray.swift in Sources */,
 				CF9C61CE25CABE5C00A00D5C /* ReadOnlyAbstractArrayProperty.swift in Sources */,
 				CF9C61CF25CABE5C00A00D5C /* toone-SymbolInstanceInDevice.swift in Sources */,
 				CF9C61D025CABE5C00A00D5C /* transient-ProjectRoot-trackCountString.swift in Sources */,
