@@ -8,7 +8,16 @@ import Cocoa
 //    Table View Controller ProjectDocument netClassController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
+final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate {
+
+  private var mDelegate = Delegate_ProjectDocument_netClassController ()
+  
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mDelegate.setController (self)
+  }
 
   //····················································································································
   //    Constant properties
@@ -29,7 +38,7 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
 
   //····················································································································
 
-  private var mSortDescriptorArray = [NSSortDescriptor] ()
+  fileprivate var mSortDescriptorArray = [NSSortDescriptor] ()
 
   //····················································································································
   //    Model
@@ -128,7 +137,7 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_NetClassInProject ()
+  fileprivate let mInternalSelectedArrayProperty = StandAloneArrayOf_NetClassInProject ()
 
   //····················································································································
 
@@ -175,7 +184,7 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
 
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
-  private var mTableViewArray = [EBTableView] ()
+  fileprivate var mTableViewArray = [EBTableView] ()
 
   //····················································································································
 
@@ -183,8 +192,8 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
     if let tableView = inTableView {
       tableView.allowsEmptySelection = allowsEmptySelection
       tableView.allowsMultipleSelection = allowsMultipleSelection
-      tableView.dataSource = self
-      tableView.delegate = self
+      tableView.dataSource = self.mDelegate
+      tableView.delegate = self.mDelegate
     //--- Set table view data source controller
       let dataSourceTableViewController = DataSource_EBTableView_controller (delegate:self, tableView:tableView)
       self.sortedArray_property.addEBObserver (dataSourceTableViewController)
@@ -312,163 +321,6 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
   }
 
   //····················································································································
-  //    T A B L E V I E W    D A T A S O U R C E : numberOfRows (in:)
-  //····················································································································
-
-  func numberOfRows (in _ : NSTableView) -> Int {
-    switch self.sortedArray_property.selection {
-    case .empty, .multiple :
-      return 0
-    case .single (let v) :
-      return v.count
-    }
-  }
-
-  //····················································································································
-  //    T A B L E V I E W    D E L E G A T E : tableViewSelectionDidChange:
-  //····················································································································
-
-  func tableViewSelectionDidChange (_ notification : Notification) {
-    switch self.sortedArray_property.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      let tableView = notification.object as! EBTableView
-      var newSelectedObjects = EBReferenceArray <NetClassInProject> ()
-      for index in tableView.selectedRowIndexes {
-        newSelectedObjects.append (v [index])
-      }
-      self.mInternalSelectedArrayProperty.setProp (newSelectedObjects)
-    }
-  }
-
-  //····················································································································
-  //    T A B L E V I E W    S O U R C E : tableView:sortDescriptorsDidChange:
-  //····················································································································
-
-  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
-    self.mSortDescriptorArray = tableView.sortDescriptors
-/*    for s in tableView.sortDescriptors {
-      Swift.print ("key \(s.key), ascending \(s.ascending)")
-    } */
-    for tableView in self.mTableViewArray {
-      tableView.sortDescriptors = self.mSortDescriptorArray
-    }
-    self.sortedArray_property.notifyModelDidChange ()
-  }
-
-  //····················································································································
-  //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:row:
-  //····················································································································
-
-  func tableView (_ tableView : NSTableView,
-                  viewFor inTableColumn: NSTableColumn?,
-                  row inRowIndex: Int) -> NSView? {
-    switch self.sortedArray_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      if let tableColumnIdentifier = inTableColumn?.identifier,
-         let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
-        if !reuseTableViewCells () {
-          result.identifier = nil // So result cannot be reused, will be freed
-        }
-        let object = v [inRowIndex]
-        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mNetClassName_property)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "netcolor", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_backColor ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_backColor (object.mNetClassColor_property)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "width", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.trackWidthString_property)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "hole", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.viaHoleDiameter_property)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "pad", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.viaPadDiameter_property)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "used", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.netUsage_property)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "onFront", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnFrontSideString_property)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "onBack", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnBackSideString_property)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "onInner1", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnInner1LayerString_property)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "onInner2", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnInner2LayerString_property)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "onInner3", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnInner3LayerString_property)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "onInner4", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnInner4LayerString_property)
-          cell.update ()
-        }else{
-          NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
-        }
-        return result
-      }else{
-        return nil
-      }
-    }
-  }
-
-  //····················································································································
   //   Select a single object
   //····················································································································
 
@@ -578,6 +430,193 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
           }
         }
       }
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate final class Delegate_ProjectDocument_netClassController : EBObjcBaseObject, NSTableViewDataSource, NSTableViewDelegate {
+
+  //····················································································································
+
+  weak var mController : Controller_ProjectDocument_netClassController? = nil
+
+  //····················································································································
+
+  func setController (_ inController : Controller_ProjectDocument_netClassController) {
+    self.mController = inController
+  }
+
+  //····················································································································
+  //    T A B L E V I E W    D A T A S O U R C E : numberOfRows (in:)
+  //····················································································································
+
+  func numberOfRows (in _ : NSTableView) -> Int {
+    if let controller = self.mController {
+      switch controller.sortedArray_property.selection {
+      case .empty, .multiple :
+        return 0
+      case .single (let v) :
+        return v.count
+      }
+    }else{
+      return 0
+    }
+  }
+
+  //····················································································································
+  //    T A B L E V I E W    D E L E G A T E : tableViewSelectionDidChange:
+  //····················································································································
+
+  func tableViewSelectionDidChange (_ notification : Notification) {
+    if let controller = self.mController {
+      switch controller.sortedArray_property.selection {
+      case .empty, .multiple :
+        break
+      case .single (let v) :
+        let tableView = notification.object as! EBTableView
+        var newSelectedObjects = EBReferenceArray <NetClassInProject> ()
+        for index in tableView.selectedRowIndexes {
+          newSelectedObjects.append (v [index])
+        }
+        controller.mInternalSelectedArrayProperty.setProp (newSelectedObjects)
+      }
+    }
+  }
+
+  //····················································································································
+  //    T A B L E V I E W    S O U R C E : tableView:sortDescriptorsDidChange:
+  //····················································································································
+
+  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
+    if let controller = self.mController {
+      controller.mSortDescriptorArray = tableView.sortDescriptors
+  /*    for s in tableView.sortDescriptors {
+        Swift.print ("key \(s.key), ascending \(s.ascending)")
+      } */
+      for tableView in controller.mTableViewArray {
+        tableView.sortDescriptors = controller.mSortDescriptorArray
+      }
+      controller.sortedArray_property.notifyModelDidChange ()
+    }
+  }
+
+  //····················································································································
+  //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:row:
+  //····················································································································
+
+  func tableView (_ tableView : NSTableView,
+                  viewFor inTableColumn: NSTableColumn?,
+                  row inRowIndex: Int) -> NSView? {
+    if let controller = self.mController {
+      switch controller.sortedArray_property.selection {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        if let tableColumnIdentifier = inTableColumn?.identifier,
+          let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
+          if !reuseTableViewCells () {
+            result.identifier = nil // So result cannot be reused, will be freed
+          }
+          let object = v [inRowIndex]
+          if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextObserverField_TableViewCell {
+            cell.mUnbindFunction = { [weak cell] in
+              cell?.mCellOutlet?.unbind_valueObserver ()
+            }
+            cell.mUnbindFunction? ()
+            cell.mCellOutlet?.bind_valueObserver (object.mNetClassName_property)
+            cell.update ()
+          }else if tableColumnIdentifier.rawValue == "netcolor", let cell = result as? EBTextObserverField_TableViewCell {
+            cell.mUnbindFunction = { [weak cell] in
+              cell?.mCellOutlet?.unbind_backColor ()
+            }
+            cell.mUnbindFunction? ()
+            cell.mCellOutlet?.bind_backColor (object.mNetClassColor_property)
+            cell.update ()
+          }else if tableColumnIdentifier.rawValue == "width", let cell = result as? EBTextObserverField_TableViewCell {
+            cell.mUnbindFunction = { [weak cell] in
+              cell?.mCellOutlet?.unbind_valueObserver ()
+            }
+            cell.mUnbindFunction? ()
+            cell.mCellOutlet?.bind_valueObserver (object.trackWidthString_property)
+            cell.update ()
+          }else if tableColumnIdentifier.rawValue == "hole", let cell = result as? EBTextObserverField_TableViewCell {
+            cell.mUnbindFunction = { [weak cell] in
+              cell?.mCellOutlet?.unbind_valueObserver ()
+            }
+            cell.mUnbindFunction? ()
+            cell.mCellOutlet?.bind_valueObserver (object.viaHoleDiameter_property)
+            cell.update ()
+          }else if tableColumnIdentifier.rawValue == "pad", let cell = result as? EBTextObserverField_TableViewCell {
+            cell.mUnbindFunction = { [weak cell] in
+              cell?.mCellOutlet?.unbind_valueObserver ()
+            }
+            cell.mUnbindFunction? ()
+            cell.mCellOutlet?.bind_valueObserver (object.viaPadDiameter_property)
+            cell.update ()
+          }else if tableColumnIdentifier.rawValue == "used", let cell = result as? EBTextObserverField_TableViewCell {
+            cell.mUnbindFunction = { [weak cell] in
+              cell?.mCellOutlet?.unbind_valueObserver ()
+            }
+            cell.mUnbindFunction? ()
+            cell.mCellOutlet?.bind_valueObserver (object.netUsage_property)
+            cell.update ()
+          }else if tableColumnIdentifier.rawValue == "onFront", let cell = result as? EBTextObserverField_TableViewCell {
+            cell.mUnbindFunction = { [weak cell] in
+              cell?.mCellOutlet?.unbind_valueObserver ()
+            }
+            cell.mUnbindFunction? ()
+            cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnFrontSideString_property)
+            cell.update ()
+          }else if tableColumnIdentifier.rawValue == "onBack", let cell = result as? EBTextObserverField_TableViewCell {
+            cell.mUnbindFunction = { [weak cell] in
+              cell?.mCellOutlet?.unbind_valueObserver ()
+            }
+            cell.mUnbindFunction? ()
+            cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnBackSideString_property)
+            cell.update ()
+          }else if tableColumnIdentifier.rawValue == "onInner1", let cell = result as? EBTextObserverField_TableViewCell {
+            cell.mUnbindFunction = { [weak cell] in
+              cell?.mCellOutlet?.unbind_valueObserver ()
+            }
+            cell.mUnbindFunction? ()
+            cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnInner1LayerString_property)
+            cell.update ()
+          }else if tableColumnIdentifier.rawValue == "onInner2", let cell = result as? EBTextObserverField_TableViewCell {
+            cell.mUnbindFunction = { [weak cell] in
+              cell?.mCellOutlet?.unbind_valueObserver ()
+            }
+            cell.mUnbindFunction? ()
+            cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnInner2LayerString_property)
+            cell.update ()
+          }else if tableColumnIdentifier.rawValue == "onInner3", let cell = result as? EBTextObserverField_TableViewCell {
+            cell.mUnbindFunction = { [weak cell] in
+              cell?.mCellOutlet?.unbind_valueObserver ()
+            }
+            cell.mUnbindFunction? ()
+            cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnInner3LayerString_property)
+            cell.update ()
+          }else if tableColumnIdentifier.rawValue == "onInner4", let cell = result as? EBTextObserverField_TableViewCell {
+            cell.mUnbindFunction = { [weak cell] in
+              cell?.mCellOutlet?.unbind_valueObserver ()
+            }
+            cell.mUnbindFunction? ()
+            cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnInner4LayerString_property)
+            cell.update ()
+          }else{
+            NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
+          }
+          return result
+        }else{
+          return nil
+        }
+      }
+    }else{
+      return nil
     }
   }
 

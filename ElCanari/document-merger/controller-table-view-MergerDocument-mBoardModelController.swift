@@ -10,10 +10,11 @@ import Cocoa
 
 final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate {
 
+  private var mDelegate = Delegate_MergerDocument_mBoardModelController ()
+  
   //····················································································································
 
   override init () {
-    self.mDelegate = Delegate_MergerDocument_mBoardModelController ()
     super.init ()
     self.mDelegate.setController (self)
   }
@@ -44,7 +45,6 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
   //····················································································································
 
   private var mModel : ReadWriteArrayOf_BoardModel? = nil
-  private var mDelegate : Delegate_MergerDocument_mBoardModelController
 
   //····················································································································
 
@@ -273,86 +273,6 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
   }
 
   //····················································································································
-  //    T A B L E V I E W    D A T A S O U R C E : numberOfRows (in:)
-  //····················································································································
-
-//  func numberOfRows (in _ : NSTableView) -> Int {
-//    switch self.sortedArray_property.selection {
-//    case .empty, .multiple :
-//      return 0
-//    case .single (let v) :
-//      return v.count
-//    }
-//  }
-
-  //····················································································································
-  //    T A B L E V I E W    D E L E G A T E : tableViewSelectionDidChange:
-  //····················································································································
-
-//  func tableViewSelectionDidChange (_ notification : Notification) {
-//    switch self.sortedArray_property.selection {
-//    case .empty, .multiple :
-//      break
-//    case .single (let v) :
-//      let tableView = notification.object as! EBTableView
-//      var newSelectedObjects = EBReferenceArray <BoardModel> ()
-//      for index in tableView.selectedRowIndexes {
-//        newSelectedObjects.append (v [index])
-//      }
-//      self.mInternalSelectedArrayProperty.setProp (newSelectedObjects)
-//    }
-//  }
-
-  //····················································································································
-  //    T A B L E V I E W    S O U R C E : tableView:sortDescriptorsDidChange:
-  //····················································································································
-
-//  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
-//    self.mSortDescriptorArray = tableView.sortDescriptors
-///*    for s in tableView.sortDescriptors {
-//      Swift.print ("key \(s.key), ascending \(s.ascending)")
-//    } */
-//    for tableView in self.mTableViewArray {
-//      tableView.sortDescriptors = self.mSortDescriptorArray
-//    }
-//    self.sortedArray_property.notifyModelDidChange ()
-//  }
-
-  //····················································································································
-  //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:row:
-  //····················································································································
-
-//  func tableView (_ tableView : NSTableView,
-//                  viewFor inTableColumn: NSTableColumn?,
-//                  row inRowIndex: Int) -> NSView? {
-//    switch self.sortedArray_property.selection {
-//    case .empty, .multiple :
-//      return nil
-//    case .single (let v) :
-//      if let tableColumnIdentifier = inTableColumn?.identifier,
-//         let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
-//        if !reuseTableViewCells () {
-//          result.identifier = nil // So result cannot be reused, will be freed
-//        }
-//        let object = v [inRowIndex]
-//        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextField_TableViewCell {
-//          cell.mUnbindFunction = { [weak cell] in
-//            cell?.mCellOutlet?.unbind_value ()
-//          }
-//          cell.mUnbindFunction? ()
-//          cell.mCellOutlet?.bind_value (object.name_property, sendContinously:false)
-//          cell.update ()
-//        }else{
-//          NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
-//        }
-//        return result
-//      }else{
-//        return nil
-//      }
-//    }
-//  }
-
-  //····················································································································
   //   Select a single object
   //····················································································································
 
@@ -471,12 +391,11 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Delegate_MergerDocument_mBoardModelController : EBObjcBaseObject, NSTableViewDataSource, NSTableViewDelegate {
+fileprivate final class Delegate_MergerDocument_mBoardModelController : EBObjcBaseObject, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
   weak var mController : Controller_MergerDocument_mBoardModelController? = nil
-//  private var mSortDescriptorArray = [NSSortDescriptor] ()
 
   //····················································································································
 
@@ -551,7 +470,7 @@ final class Delegate_MergerDocument_mBoardModelController : EBObjcBaseObject, NS
         return nil
       case .single (let v) :
         if let tableColumnIdentifier = inTableColumn?.identifier,
-           let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
+          let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
           if !reuseTableViewCells () {
             result.identifier = nil // So result cannot be reused, will be freed
           }

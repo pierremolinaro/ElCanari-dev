@@ -90,7 +90,7 @@ class EBTableView : NSTableView, EBUserClassNameProtocol {
 //    EBTableViewDelegate
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol EBTableViewDelegate : NSTableViewDelegate {
+protocol EBTableViewDelegate {
   func selectedObjectIndexSet () -> NSIndexSet
 }
 

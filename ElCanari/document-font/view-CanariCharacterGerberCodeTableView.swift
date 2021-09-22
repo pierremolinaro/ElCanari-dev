@@ -56,23 +56,23 @@ private let DEBUG_EVENT = false
 //   Controller Controller_CanariCharacterGerberCodeTableView_characterGerberCode
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariCharacterGerberCodeTableView_characterGerberCode :
-EBReadOnlyPropertyController, NSTableViewDataSource, NSTableViewDelegate {
+final class Controller_CanariCharacterGerberCodeTableView_characterGerberCode : EBReadOnlyPropertyController {
 
-  private let mObject : EBReadOnlyProperty_CharacterGerberCodeClass
+  fileprivate let mObject : EBReadOnlyProperty_CharacterGerberCodeClass
   private let mTableView : CanariCharacterGerberCodeTableView
+  private var mDelegate = Delegate_CanariCharacterGerberCodeTableView_characterGerberCode ()
 
   //····················································································································
   //   When init is called, table view delegate and data source are set
   //····················································································································
   
-  init (object:EBReadOnlyProperty_CharacterGerberCodeClass, tableView:CanariCharacterGerberCodeTableView) {
-    mTableView = tableView
-    mObject = object
+  init (object : EBReadOnlyProperty_CharacterGerberCodeClass, tableView : CanariCharacterGerberCodeTableView) {
+    self.mTableView = tableView
+    self.mObject = object
     super.init (observedObjects:[object], callBack: { tableView.reloadData () })
-    tableView.delegate = self
-    tableView.dataSource = self
-//    self.mEventCallBack = { tableView.reloadData () }
+    self.mDelegate.setController (self)
+    tableView.delegate = self.mDelegate
+    tableView.dataSource = self.mDelegate
   }
 
   //····················································································································
@@ -83,29 +83,38 @@ EBReadOnlyPropertyController, NSTableViewDataSource, NSTableViewDelegate {
     mTableView.dataSource = nil
   }
 
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate final class Delegate_CanariCharacterGerberCodeTableView_characterGerberCode : EBObjcBaseObject, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
-//  
-//  private func updateOutlet () {
-//    if DEBUG_EVENT {
-//      print ("Controller_CanariCharacterGerberCodeTableView_characterGerberCode::\(#function)")
-//    }
-//    mTableView.reloadData ()
-//  }
+
+  private weak var mController : Controller_CanariCharacterGerberCodeTableView_characterGerberCode? = nil
+
+  //····················································································································
+
+  func setController (_ inController : Controller_CanariCharacterGerberCodeTableView_characterGerberCode) {
+    self.mController = inController
+  }
 
   //····················································································································
   //    T A B L E V I E W    D A T A S O U R C E : numberOfRowsInTableView
   //····················································································································
 
   func numberOfRows (in _ : NSTableView) -> Int {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
-    switch mObject.selection {
-    case .empty, .multiple :
+    if let controller = self.mController {
+      switch controller.mObject.selection {
+      case .empty, .multiple :
+        return 0
+      case .single (let v) :
+        return v.code.count
+      }
+    }else{
       return 0
-    case .single (let v) :
-      return v.code.count
     }
   }
 
@@ -116,31 +125,32 @@ EBReadOnlyPropertyController, NSTableViewDataSource, NSTableViewDelegate {
   func tableView (_ tableView : NSTableView,
                   viewFor inTableColumn: NSTableColumn?,
                   row inRowIndex: Int) -> NSView? {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
-    switch mObject.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      let columnIdentifier = inTableColumn!.identifier.rawValue
-      let result : NSTableCellView = tableView.makeView (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: columnIdentifier), owner:self) as! NSTableCellView
-      if !reuseTableViewCells () {
-        result.identifier = nil // So result cannot be reused, will be freed
-      }
-      if let textField = result.textField {
-        let object = v.code [inRowIndex]
-        if columnIdentifier == "code" {
-          textField.stringValue = object.codeString ()
-        }else if columnIdentifier == "comment" {
-          textField.stringValue = object.comment ()
-        }else{
-          NSLog ("No text field for column '\(columnIdentifier)'")
+    if let controller = self.mController {
+      switch controller.mObject.selection {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        let columnIdentifier = inTableColumn!.identifier.rawValue
+        let result : NSTableCellView = tableView.makeView (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: columnIdentifier), owner:self) as! NSTableCellView
+        if !reuseTableViewCells () {
+          result.identifier = nil // So result cannot be reused, will be freed
         }
-      }else{
-        NSLog ("Unknown column '\(columnIdentifier)'")
+        if let textField = result.textField {
+          let object = v.code [inRowIndex]
+          if columnIdentifier == "code" {
+            textField.stringValue = object.codeString ()
+          }else if columnIdentifier == "comment" {
+            textField.stringValue = object.comment ()
+          }else{
+            NSLog ("No text field for column '\(columnIdentifier)'")
+          }
+        }else{
+          NSLog ("Unknown column '\(columnIdentifier)'")
+        }
+        return result
       }
-      return result
+    }else{
+      return nil
     }
   }
  
