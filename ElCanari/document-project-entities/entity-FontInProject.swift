@@ -76,7 +76,7 @@ final class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mTexts : EBReferenceArray  <BoardText> {
+  final var mTexts : EBReferenceArray <BoardText> {
     get { return self.mTexts_property.propval }
     set { self.mTexts_property.setProp (newValue) }
   }
@@ -167,7 +167,7 @@ final class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mComponentNames : EBReferenceArray  <ComponentInProject> {
+  final var mComponentNames : EBReferenceArray <ComponentInProject> {
     get { return self.mComponentNames_property.propval }
     set { self.mComponentNames_property.setProp (newValue) }
   }
@@ -182,7 +182,7 @@ final class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mComponentValues : EBReferenceArray  <ComponentInProject> {
+  final var mComponentValues : EBReferenceArray <ComponentInProject> {
     get { return self.mComponentValues_property.propval }
     set { self.mComponentValues_property.setProp (newValue) }
   }
@@ -787,7 +787,7 @@ final class FontInProject : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mTexts"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <BoardText> ()
+        var relationshipArray = EBReferenceArray <BoardText> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardText)
@@ -795,7 +795,7 @@ final class FontInProject : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mTexts = relationshipArray }
       }
       if let range = inDictionary ["mComponentNames"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <ComponentInProject> ()
+        var relationshipArray = EBReferenceArray <ComponentInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
@@ -803,7 +803,7 @@ final class FontInProject : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mComponentNames = relationshipArray }
       }
       if let range = inDictionary ["mComponentValues"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <ComponentInProject> ()
+        var relationshipArray = EBReferenceArray <ComponentInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)

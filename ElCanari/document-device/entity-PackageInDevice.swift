@@ -225,7 +225,7 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mMasterPads : EBReferenceArray  <MasterPadInDevice> {
+  final var mMasterPads : EBReferenceArray <MasterPadInDevice> {
     get { return self.mMasterPads_property.propval }
     set { self.mMasterPads_property.setProp (newValue) }
   }
@@ -941,7 +941,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mMasterPads"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <MasterPadInDevice> ()
+        var relationshipArray = EBReferenceArray <MasterPadInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! MasterPadInDevice)

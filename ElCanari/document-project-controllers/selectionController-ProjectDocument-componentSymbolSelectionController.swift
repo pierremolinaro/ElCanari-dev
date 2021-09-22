@@ -117,7 +117,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : EBReferenceArray  <ComponentSymbolInProject> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <ComponentSymbolInProject> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION

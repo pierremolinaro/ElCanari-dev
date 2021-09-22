@@ -527,7 +527,7 @@ final class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var slaves : EBReferenceArray  <PackageSlavePad> {
+  final var slaves : EBReferenceArray <PackageSlavePad> {
     get { return self.slaves_property.propval }
     set { self.slaves_property.setProp (newValue) }
   }
@@ -1738,7 +1738,7 @@ final class PackagePad : PackageObject,
       }
     //--- To many relationships
       if let range = inDictionary ["slaves"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <PackageSlavePad> ()
+        var relationshipArray = EBReferenceArray <PackageSlavePad> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageSlavePad)

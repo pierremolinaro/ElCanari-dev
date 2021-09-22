@@ -25,7 +25,7 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
 
   //····················································································································
 
-  var sortedArray : EBReferenceArray  <NetClassInProject> { return self.sortedArray_property.propval }
+  var sortedArray : EBReferenceArray <NetClassInProject> { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -39,11 +39,11 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
 
   //····················································································································
 
-  var objects : EBReferenceArray  <NetClassInProject> {
+  var objects : EBReferenceArray <NetClassInProject> {
     if let objects = self.mModel?.propval {
       return objects
     }else{
-      return EBReferenceArray  ()
+      return EBReferenceArray ()
     }
   }
 
@@ -108,7 +108,7 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
     super.notifyModelDidChange ()
     // NSLog ("self.sortedArray \(self.sortedArray.count)")
     let oldSelectionSet = self.selectedSet
-    var newSelectedArray = EBReferenceArray  <NetClassInProject> ()
+    var newSelectedArray = EBReferenceArray <NetClassInProject> ()
     for object in self.sortedArray {
       if oldSelectionSet.contains (object) {
         newSelectedArray.append (object)
@@ -136,7 +136,7 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
 
   //····················································································································
 
-  var selectedArray : EBReferenceArray  <NetClassInProject> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <NetClassInProject> { return self.selectedArray_property.propval }
 
   //····················································································································
 
@@ -334,7 +334,7 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjects = EBReferenceArray  <NetClassInProject> ()
+      var newSelectedObjects = EBReferenceArray <NetClassInProject> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjects.append (v [index])
       }
@@ -496,7 +496,7 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
         break
       case .single (let v) :
         let newObject = NetClassInProject (self.ebUndoManager)
-        var array = EBReferenceArray  (v)
+        var array = EBReferenceArray (v)
         array.append (newObject)
         model.setProp (array)
       //--- New object is the selection
@@ -564,7 +564,7 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
         //--- Sort in reverse order
           selectedObjectIndexArray.sort { $1 < $0 }
         //--- Remove objects, in reverse of order of their index
-          var newObjectArray = EBReferenceArray  (model_prop)
+          var newObjectArray = EBReferenceArray (model_prop)
           for index in selectedObjectIndexArray {
             newObjectArray.remove (at: index)
           }

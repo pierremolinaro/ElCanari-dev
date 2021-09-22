@@ -152,7 +152,7 @@ final class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-  final var segments : EBReferenceArray  <SegmentForFontCharacter> {
+  final var segments : EBReferenceArray <SegmentForFontCharacter> {
     get { return self.segments_property.propval }
     set { self.segments_property.setProp (newValue) }
   }
@@ -625,7 +625,7 @@ final class FontCharacter : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["segments"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <SegmentForFontCharacter> ()
+        var relationshipArray = EBReferenceArray <SegmentForFontCharacter> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentForFontCharacter)

@@ -90,7 +90,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseOb
 
   //····················································································································
 
-  var selectedArray : EBReferenceArray  <ArtworkFileGenerationParameters> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <ArtworkFileGenerationParameters> { return self.selectedArray_property.propval }
 
   //····················································································································
 
@@ -226,7 +226,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseOb
     case .empty, .multiple :
       ()
     case .single (let v) :
-      var newSelectedObjects = EBReferenceArray  <ArtworkFileGenerationParameters> ()
+      var newSelectedObjects = EBReferenceArray <ArtworkFileGenerationParameters> ()
       for index in inSelectedRows {
         newSelectedObjects.append (v [index])
       }
@@ -258,7 +258,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseOb
         ()
       case .single (let v) :
         let newObject = ArtworkFileGenerationParameters (self.ebUndoManager)
-        var array = EBReferenceArray  (v)
+        var array = EBReferenceArray (v)
         array.append (newObject)
         model.setProp (array)
       //--- New object is the selection
@@ -324,7 +324,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseOb
         //--- Sort in reverse order
           selectedObjectIndexArray.sort { $1 < $0 }
         //--- Remove objects, in reverse of order of their index
-          var newObjectArray = EBReferenceArray  (model_prop)
+          var newObjectArray = EBReferenceArray (model_prop)
           for index in selectedObjectIndexArray {
             newObjectArray.remove (at: index)
           }

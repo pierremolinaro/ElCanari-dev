@@ -475,7 +475,7 @@ final class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mNets : EBReferenceArray  <NetInProject> {
+  final var mNets : EBReferenceArray <NetInProject> {
     get { return self.mNets_property.propval }
     set { self.mNets_property.setProp (newValue) }
   }
@@ -1544,7 +1544,7 @@ final class NetClassInProject : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mNets"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <NetInProject> ()
+        var relationshipArray = EBReferenceArray <NetInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! NetInProject)

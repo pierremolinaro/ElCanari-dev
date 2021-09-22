@@ -61,7 +61,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : EBReferenceArray  <CommentInSchematic> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <CommentInSchematic> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION

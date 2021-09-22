@@ -2630,7 +2630,7 @@ final class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInPro
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = EBReferenceArray  ()
+        self.mInternalArrayValue = EBReferenceArray ()
       }
     }
   }
@@ -2659,25 +2659,25 @@ final class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInPro
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : EBReferenceArray  <ComponentInProject>
+      let newArray : EBReferenceArray <ComponentInProject>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
+            newArray = EBReferenceArray (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = EBReferenceArray  (v)
+            newArray = EBReferenceArray (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = EBReferenceArray  ()
+        newArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -2700,7 +2700,7 @@ final class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInPro
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <ComponentInProject> {
+  override var propval : EBReferenceArray <ComponentInProject> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -2754,24 +2754,24 @@ final class TransientArrayOfSuperOf_ComponentInProject <SUPER : EBManagedObject>
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray  <SUPER>
+      var newModelArray : EBReferenceArray <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = EBReferenceArray  (v)
+          newModelArray = EBReferenceArray (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
-      var newArray = EBReferenceArray  <ComponentInProject> ()
+      var newArray = EBReferenceArray <ComponentInProject> ()
       for superObject in newModelArray.values {
         if let object = superObject as? ComponentInProject {
           newArray.append (object)
@@ -2797,7 +2797,7 @@ final class TransientArrayOfSuperOf_ComponentInProject <SUPER : EBManagedObject>
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <ComponentInProject> {
+  override var propval : EBReferenceArray <ComponentInProject> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -2814,7 +2814,7 @@ class ReadWriteArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
 
   //····················································································································
 
-  func setProp (_ value :  EBReferenceArray  <ComponentInProject>) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray <ComponentInProject>) { } // Abstract method
 
   //····················································································································
 
@@ -2843,18 +2843,18 @@ final class ProxyArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProjec
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray  <ComponentInProject>
+    let newModelArray : EBReferenceArray <ComponentInProject>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       case .single (let v) :
-        newModelArray = EBReferenceArray  <ComponentInProject> (v)
+        newModelArray = EBReferenceArray <ComponentInProject> (v)
       case .multiple :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       }
     }else{
-      newModelArray = EBReferenceArray  ()
+      newModelArray = EBReferenceArray ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -2862,7 +2862,7 @@ final class ProxyArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProjec
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : EBReferenceArray  <ComponentInProject>) {
+  override func setProp (_ inArrayValue : EBReferenceArray <ComponentInProject>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -2878,16 +2878,16 @@ final class ProxyArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProjec
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <ComponentInProject> {
+  override var propval : EBReferenceArray <ComponentInProject> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }else{
-      return EBReferenceArray  ()
+      return EBReferenceArray ()
     }
   }
 
@@ -2954,7 +2954,7 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <ComponentInProject>) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <ComponentInProject>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -3005,11 +3005,11 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <ComponentInProject>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <ComponentInProject>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : EBReferenceArray  <ComponentInProject> { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray <ComponentInProject> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -3094,11 +3094,11 @@ final class StandAloneArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInP
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <ComponentInProject>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <ComponentInProject>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <ComponentInProject> { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray <ComponentInProject> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -3144,7 +3144,7 @@ final class PreferencesArrayOf_ComponentInProject : StoredArrayOf_ComponentInPro
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray  <ComponentInProject> ()
+      var objectArray = EBReferenceArray <ComponentInProject> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ComponentInProject") as? ComponentInProject {
           object.setUpAtomicPropertiesWithDictionary (dictionary)

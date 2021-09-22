@@ -1179,7 +1179,7 @@ final class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImageObjects : EBReferenceArray  <PackageModelImageDoublePoint> {
+  final var mModelImageObjects : EBReferenceArray <PackageModelImageDoublePoint> {
     get { return self.mModelImageObjects_property.propval }
     set { self.mModelImageObjects_property.setProp (newValue) }
   }
@@ -1194,7 +1194,7 @@ final class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var packageObjects : EBReferenceArray  <PackageObject> {
+  final var packageObjects : EBReferenceArray <PackageObject> {
     get { return self.packageObjects_property.propval }
     set { self.packageObjects_property.setProp (newValue) }
   }
@@ -1207,7 +1207,7 @@ final class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var packagePads : EBReferenceArray  <PackagePad> {
+  final var packagePads : EBReferenceArray <PackagePad> {
     get { return self.packagePads_property.propval }
   }
 
@@ -1219,7 +1219,7 @@ final class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var packageSlavePads : EBReferenceArray  <PackageSlavePad> {
+  final var packageSlavePads : EBReferenceArray <PackageSlavePad> {
     get { return self.packageSlavePads_property.propval }
   }
 
@@ -1231,7 +1231,7 @@ final class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var packageZones : EBReferenceArray  <PackageZone> {
+  final var packageZones : EBReferenceArray <PackageZone> {
     get { return self.packageZones_property.propval }
   }
 
@@ -3280,7 +3280,7 @@ final class PackageRoot : EBGraphicManagedObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mModelImageObjects"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <PackageModelImageDoublePoint> ()
+        var relationshipArray = EBReferenceArray <PackageModelImageDoublePoint> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageModelImageDoublePoint)
@@ -3288,7 +3288,7 @@ final class PackageRoot : EBGraphicManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mModelImageObjects = relationshipArray }
       }
       if let range = inDictionary ["packageObjects"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <PackageObject> ()
+        var relationshipArray = EBReferenceArray <PackageObject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageObject)

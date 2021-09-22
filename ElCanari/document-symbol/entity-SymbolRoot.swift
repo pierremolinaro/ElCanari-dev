@@ -268,7 +268,7 @@ final class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  final var symbolObjects : EBReferenceArray  <SymbolObject> {
+  final var symbolObjects : EBReferenceArray <SymbolObject> {
     get { return self.symbolObjects_property.propval }
     set { self.symbolObjects_property.setProp (newValue) }
   }
@@ -281,7 +281,7 @@ final class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  final var symbolPins : EBReferenceArray  <SymbolPin> {
+  final var symbolPins : EBReferenceArray <SymbolPin> {
     get { return self.symbolPins_property.propval }
   }
 
@@ -775,7 +775,7 @@ final class SymbolRoot : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["symbolObjects"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <SymbolObject> ()
+        var relationshipArray = EBReferenceArray <SymbolObject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolObject)

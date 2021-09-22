@@ -1280,7 +1280,7 @@ final class TransientArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = EBReferenceArray  ()
+        self.mInternalArrayValue = EBReferenceArray ()
       }
     }
   }
@@ -1309,25 +1309,25 @@ final class TransientArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : EBReferenceArray  <PackageBezier>
+      let newArray : EBReferenceArray <PackageBezier>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
+            newArray = EBReferenceArray (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = EBReferenceArray  (v)
+            newArray = EBReferenceArray (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = EBReferenceArray  ()
+        newArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -1350,7 +1350,7 @@ final class TransientArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <PackageBezier> {
+  override var propval : EBReferenceArray <PackageBezier> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -1404,24 +1404,24 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray  <SUPER>
+      var newModelArray : EBReferenceArray <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = EBReferenceArray  (v)
+          newModelArray = EBReferenceArray (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
-      var newArray = EBReferenceArray  <PackageBezier> ()
+      var newArray = EBReferenceArray <PackageBezier> ()
       for superObject in newModelArray.values {
         if let object = superObject as? PackageBezier {
           newArray.append (object)
@@ -1447,7 +1447,7 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <PackageBezier> {
+  override var propval : EBReferenceArray <PackageBezier> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -1464,7 +1464,7 @@ class ReadWriteArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
 
   //····················································································································
 
-  func setProp (_ value :  EBReferenceArray  <PackageBezier>) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray <PackageBezier>) { } // Abstract method
 
   //····················································································································
 
@@ -1493,18 +1493,18 @@ final class ProxyArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray  <PackageBezier>
+    let newModelArray : EBReferenceArray <PackageBezier>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       case .single (let v) :
-        newModelArray = EBReferenceArray  <PackageBezier> (v)
+        newModelArray = EBReferenceArray <PackageBezier> (v)
       case .multiple :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       }
     }else{
-      newModelArray = EBReferenceArray  ()
+      newModelArray = EBReferenceArray ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -1512,7 +1512,7 @@ final class ProxyArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : EBReferenceArray  <PackageBezier>) {
+  override func setProp (_ inArrayValue : EBReferenceArray <PackageBezier>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -1528,16 +1528,16 @@ final class ProxyArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <PackageBezier> {
+  override var propval : EBReferenceArray <PackageBezier> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }else{
-      return EBReferenceArray  ()
+      return EBReferenceArray ()
     }
   }
 
@@ -1604,7 +1604,7 @@ class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSignatureO
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <PackageBezier>) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <PackageBezier>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -1655,11 +1655,11 @@ class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSignatureO
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <PackageBezier>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <PackageBezier>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : EBReferenceArray  <PackageBezier> { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray <PackageBezier> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1744,11 +1744,11 @@ final class StandAloneArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <PackageBezier>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <PackageBezier>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <PackageBezier> { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray <PackageBezier> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1794,7 +1794,7 @@ final class PreferencesArrayOf_PackageBezier : StoredArrayOf_PackageBezier {
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray  <PackageBezier> ()
+      var objectArray = EBReferenceArray <PackageBezier> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageBezier") as? PackageBezier {
           object.setUpAtomicPropertiesWithDictionary (dictionary)

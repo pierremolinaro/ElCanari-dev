@@ -609,7 +609,7 @@ final class TransientArrayOf_SymbolTypeInDevice : ReadOnlyArrayOf_SymbolTypeInDe
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = EBReferenceArray  ()
+        self.mInternalArrayValue = EBReferenceArray ()
       }
     }
   }
@@ -638,25 +638,25 @@ final class TransientArrayOf_SymbolTypeInDevice : ReadOnlyArrayOf_SymbolTypeInDe
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : EBReferenceArray  <SymbolTypeInDevice>
+      let newArray : EBReferenceArray <SymbolTypeInDevice>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
+            newArray = EBReferenceArray (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = EBReferenceArray  (v)
+            newArray = EBReferenceArray (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = EBReferenceArray  ()
+        newArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -679,7 +679,7 @@ final class TransientArrayOf_SymbolTypeInDevice : ReadOnlyArrayOf_SymbolTypeInDe
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <SymbolTypeInDevice> {
+  override var propval : EBReferenceArray <SymbolTypeInDevice> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -733,24 +733,24 @@ final class TransientArrayOfSuperOf_SymbolTypeInDevice <SUPER : EBManagedObject>
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray  <SUPER>
+      var newModelArray : EBReferenceArray <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = EBReferenceArray  (v)
+          newModelArray = EBReferenceArray (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
-      var newArray = EBReferenceArray  <SymbolTypeInDevice> ()
+      var newArray = EBReferenceArray <SymbolTypeInDevice> ()
       for superObject in newModelArray.values {
         if let object = superObject as? SymbolTypeInDevice {
           newArray.append (object)
@@ -776,7 +776,7 @@ final class TransientArrayOfSuperOf_SymbolTypeInDevice <SUPER : EBManagedObject>
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <SymbolTypeInDevice> {
+  override var propval : EBReferenceArray <SymbolTypeInDevice> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -793,7 +793,7 @@ class ReadWriteArrayOf_SymbolTypeInDevice : ReadOnlyArrayOf_SymbolTypeInDevice {
 
   //····················································································································
 
-  func setProp (_ value :  EBReferenceArray  <SymbolTypeInDevice>) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray <SymbolTypeInDevice>) { } // Abstract method
 
   //····················································································································
 
@@ -822,18 +822,18 @@ final class ProxyArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevic
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray  <SymbolTypeInDevice>
+    let newModelArray : EBReferenceArray <SymbolTypeInDevice>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       case .single (let v) :
-        newModelArray = EBReferenceArray  <SymbolTypeInDevice> (v)
+        newModelArray = EBReferenceArray <SymbolTypeInDevice> (v)
       case .multiple :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       }
     }else{
-      newModelArray = EBReferenceArray  ()
+      newModelArray = EBReferenceArray ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -841,7 +841,7 @@ final class ProxyArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevic
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : EBReferenceArray  <SymbolTypeInDevice>) {
+  override func setProp (_ inArrayValue : EBReferenceArray <SymbolTypeInDevice>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -857,16 +857,16 @@ final class ProxyArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevic
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <SymbolTypeInDevice> {
+  override var propval : EBReferenceArray <SymbolTypeInDevice> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }else{
-      return EBReferenceArray  ()
+      return EBReferenceArray ()
     }
   }
 
@@ -933,7 +933,7 @@ class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EB
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <SymbolTypeInDevice>) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <SymbolTypeInDevice>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -984,11 +984,11 @@ class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EB
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <SymbolTypeInDevice>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <SymbolTypeInDevice>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : EBReferenceArray  <SymbolTypeInDevice> { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray <SymbolTypeInDevice> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1073,11 +1073,11 @@ final class StandAloneArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeIn
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <SymbolTypeInDevice>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <SymbolTypeInDevice>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <SymbolTypeInDevice> { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray <SymbolTypeInDevice> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1123,7 +1123,7 @@ final class PreferencesArrayOf_SymbolTypeInDevice : StoredArrayOf_SymbolTypeInDe
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray  <SymbolTypeInDevice> ()
+      var objectArray = EBReferenceArray <SymbolTypeInDevice> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolTypeInDevice") as? SymbolTypeInDevice {
           object.setUpAtomicPropertiesWithDictionary (dictionary)

@@ -133,7 +133,7 @@ final class TransientArrayOf_ForbiddenPadNumber : ReadOnlyArrayOf_ForbiddenPadNu
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = EBReferenceArray  ()
+        self.mInternalArrayValue = EBReferenceArray ()
       }
     }
   }
@@ -162,25 +162,25 @@ final class TransientArrayOf_ForbiddenPadNumber : ReadOnlyArrayOf_ForbiddenPadNu
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : EBReferenceArray  <ForbiddenPadNumber>
+      let newArray : EBReferenceArray <ForbiddenPadNumber>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
+            newArray = EBReferenceArray (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = EBReferenceArray  (v)
+            newArray = EBReferenceArray (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = EBReferenceArray  ()
+        newArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -203,7 +203,7 @@ final class TransientArrayOf_ForbiddenPadNumber : ReadOnlyArrayOf_ForbiddenPadNu
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <ForbiddenPadNumber> {
+  override var propval : EBReferenceArray <ForbiddenPadNumber> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -257,24 +257,24 @@ final class TransientArrayOfSuperOf_ForbiddenPadNumber <SUPER : EBManagedObject>
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray  <SUPER>
+      var newModelArray : EBReferenceArray <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = EBReferenceArray  (v)
+          newModelArray = EBReferenceArray (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
-      var newArray = EBReferenceArray  <ForbiddenPadNumber> ()
+      var newArray = EBReferenceArray <ForbiddenPadNumber> ()
       for superObject in newModelArray.values {
         if let object = superObject as? ForbiddenPadNumber {
           newArray.append (object)
@@ -300,7 +300,7 @@ final class TransientArrayOfSuperOf_ForbiddenPadNumber <SUPER : EBManagedObject>
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <ForbiddenPadNumber> {
+  override var propval : EBReferenceArray <ForbiddenPadNumber> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -317,7 +317,7 @@ class ReadWriteArrayOf_ForbiddenPadNumber : ReadOnlyArrayOf_ForbiddenPadNumber {
 
   //····················································································································
 
-  func setProp (_ value :  EBReferenceArray  <ForbiddenPadNumber>) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray <ForbiddenPadNumber>) { } // Abstract method
 
   //····················································································································
 
@@ -346,18 +346,18 @@ final class ProxyArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumbe
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray  <ForbiddenPadNumber>
+    let newModelArray : EBReferenceArray <ForbiddenPadNumber>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       case .single (let v) :
-        newModelArray = EBReferenceArray  <ForbiddenPadNumber> (v)
+        newModelArray = EBReferenceArray <ForbiddenPadNumber> (v)
       case .multiple :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       }
     }else{
-      newModelArray = EBReferenceArray  ()
+      newModelArray = EBReferenceArray ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -365,7 +365,7 @@ final class ProxyArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumbe
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : EBReferenceArray  <ForbiddenPadNumber>) {
+  override func setProp (_ inArrayValue : EBReferenceArray <ForbiddenPadNumber>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -381,16 +381,16 @@ final class ProxyArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumbe
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <ForbiddenPadNumber> {
+  override var propval : EBReferenceArray <ForbiddenPadNumber> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }else{
-      return EBReferenceArray  ()
+      return EBReferenceArray ()
     }
   }
 
@@ -457,7 +457,7 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <ForbiddenPadNumber>) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <ForbiddenPadNumber>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -508,11 +508,11 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <ForbiddenPadNumber>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <ForbiddenPadNumber>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : EBReferenceArray  <ForbiddenPadNumber> { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray <ForbiddenPadNumber> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -597,11 +597,11 @@ final class StandAloneArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPad
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <ForbiddenPadNumber>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <ForbiddenPadNumber>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <ForbiddenPadNumber> { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray <ForbiddenPadNumber> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -647,7 +647,7 @@ final class PreferencesArrayOf_ForbiddenPadNumber : StoredArrayOf_ForbiddenPadNu
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray  <ForbiddenPadNumber> ()
+      var objectArray = EBReferenceArray <ForbiddenPadNumber> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ForbiddenPadNumber") as? ForbiddenPadNumber {
           object.setUpAtomicPropertiesWithDictionary (dictionary)

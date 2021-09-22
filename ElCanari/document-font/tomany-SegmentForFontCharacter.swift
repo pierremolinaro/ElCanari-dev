@@ -432,7 +432,7 @@ final class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentFo
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = EBReferenceArray  ()
+        self.mInternalArrayValue = EBReferenceArray ()
       }
     }
   }
@@ -461,25 +461,25 @@ final class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentFo
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : EBReferenceArray  <SegmentForFontCharacter>
+      let newArray : EBReferenceArray <SegmentForFontCharacter>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
+            newArray = EBReferenceArray (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = EBReferenceArray  (v)
+            newArray = EBReferenceArray (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = EBReferenceArray  ()
+        newArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -502,7 +502,7 @@ final class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentFo
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <SegmentForFontCharacter> {
+  override var propval : EBReferenceArray <SegmentForFontCharacter> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -556,24 +556,24 @@ final class TransientArrayOfSuperOf_SegmentForFontCharacter <SUPER : EBManagedOb
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray  <SUPER>
+      var newModelArray : EBReferenceArray <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = EBReferenceArray  (v)
+          newModelArray = EBReferenceArray (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
-      var newArray = EBReferenceArray  <SegmentForFontCharacter> ()
+      var newArray = EBReferenceArray <SegmentForFontCharacter> ()
       for superObject in newModelArray.values {
         if let object = superObject as? SegmentForFontCharacter {
           newArray.append (object)
@@ -599,7 +599,7 @@ final class TransientArrayOfSuperOf_SegmentForFontCharacter <SUPER : EBManagedOb
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <SegmentForFontCharacter> {
+  override var propval : EBReferenceArray <SegmentForFontCharacter> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -616,7 +616,7 @@ class ReadWriteArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
 
   //····················································································································
 
-  func setProp (_ value :  EBReferenceArray  <SegmentForFontCharacter>) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray <SegmentForFontCharacter>) { } // Abstract method
 
   //····················································································································
 
@@ -645,18 +645,18 @@ final class ProxyArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFo
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray  <SegmentForFontCharacter>
+    let newModelArray : EBReferenceArray <SegmentForFontCharacter>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       case .single (let v) :
-        newModelArray = EBReferenceArray  <SegmentForFontCharacter> (v)
+        newModelArray = EBReferenceArray <SegmentForFontCharacter> (v)
       case .multiple :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       }
     }else{
-      newModelArray = EBReferenceArray  ()
+      newModelArray = EBReferenceArray ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -664,7 +664,7 @@ final class ProxyArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFo
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : EBReferenceArray  <SegmentForFontCharacter>) {
+  override func setProp (_ inArrayValue : EBReferenceArray <SegmentForFontCharacter>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -680,16 +680,16 @@ final class ProxyArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFo
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <SegmentForFontCharacter> {
+  override var propval : EBReferenceArray <SegmentForFontCharacter> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }else{
-      return EBReferenceArray  ()
+      return EBReferenceArray ()
     }
   }
 
@@ -756,7 +756,7 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <SegmentForFontCharacter>) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <SegmentForFontCharacter>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -807,11 +807,11 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <SegmentForFontCharacter>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <SegmentForFontCharacter>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : EBReferenceArray  <SegmentForFontCharacter> { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray <SegmentForFontCharacter> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -896,11 +896,11 @@ final class StandAloneArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_Segment
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <SegmentForFontCharacter>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <SegmentForFontCharacter>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <SegmentForFontCharacter> { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray <SegmentForFontCharacter> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -946,7 +946,7 @@ final class PreferencesArrayOf_SegmentForFontCharacter : StoredArrayOf_SegmentFo
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray  <SegmentForFontCharacter> ()
+      var objectArray = EBReferenceArray <SegmentForFontCharacter> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SegmentForFontCharacter") as? SegmentForFontCharacter {
           object.setUpAtomicPropertiesWithDictionary (dictionary)

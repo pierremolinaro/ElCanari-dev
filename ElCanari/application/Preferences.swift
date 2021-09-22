@@ -2320,7 +2320,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
 //····················································································································
 
-  var preferences_additionnalLibraryArray : EBReferenceArray  <CanariLibraryEntry> {
+  var preferences_additionnalLibraryArray : EBReferenceArray <CanariLibraryEntry> {
     get { return preferences_additionnalLibraryArray_property.propval }
     set { preferences_additionnalLibraryArray_property.setProp (newValue) }
   }

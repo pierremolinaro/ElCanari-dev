@@ -480,7 +480,7 @@ final class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mDocs : EBReferenceArray  <DeviceDocumentation> {
+  final var mDocs : EBReferenceArray <DeviceDocumentation> {
     get { return self.mDocs_property.propval }
     set { self.mDocs_property.setProp (newValue) }
   }
@@ -495,7 +495,7 @@ final class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mSymbolInstances : EBReferenceArray  <SymbolInstanceInDevice> {
+  final var mSymbolInstances : EBReferenceArray <SymbolInstanceInDevice> {
     get { return self.mSymbolInstances_property.propval }
     set { self.mSymbolInstances_property.setProp (newValue) }
   }
@@ -510,7 +510,7 @@ final class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mPackages : EBReferenceArray  <PackageInDevice> {
+  final var mPackages : EBReferenceArray <PackageInDevice> {
     get { return self.mPackages_property.propval }
     set { self.mPackages_property.setProp (newValue) }
   }
@@ -525,7 +525,7 @@ final class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mSymbolTypes : EBReferenceArray  <SymbolTypeInDevice> {
+  final var mSymbolTypes : EBReferenceArray <SymbolTypeInDevice> {
     get { return self.mSymbolTypes_property.propval }
     set { self.mSymbolTypes_property.setProp (newValue) }
   }
@@ -540,7 +540,7 @@ final class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mPadProxies : EBReferenceArray  <PadProxyInDevice> {
+  final var mPadProxies : EBReferenceArray <PadProxyInDevice> {
     get { return self.mPadProxies_property.propval }
     set { self.mPadProxies_property.setProp (newValue) }
   }
@@ -1795,7 +1795,7 @@ final class DeviceRoot : EBGraphicManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mDocs"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <DeviceDocumentation> ()
+        var relationshipArray = EBReferenceArray <DeviceDocumentation> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceDocumentation)
@@ -1803,7 +1803,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mDocs = relationshipArray }
       }
       if let range = inDictionary ["mSymbolInstances"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <SymbolInstanceInDevice> ()
+        var relationshipArray = EBReferenceArray <SymbolInstanceInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
@@ -1811,7 +1811,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSymbolInstances = relationshipArray }
       }
       if let range = inDictionary ["mPackages"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <PackageInDevice> ()
+        var relationshipArray = EBReferenceArray <PackageInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageInDevice)
@@ -1819,7 +1819,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPackages = relationshipArray }
       }
       if let range = inDictionary ["mSymbolTypes"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <SymbolTypeInDevice> ()
+        var relationshipArray = EBReferenceArray <SymbolTypeInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolTypeInDevice)
@@ -1827,7 +1827,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSymbolTypes = relationshipArray }
       }
       if let range = inDictionary ["mPadProxies"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <PadProxyInDevice> ()
+        var relationshipArray = EBReferenceArray <PadProxyInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PadProxyInDevice)

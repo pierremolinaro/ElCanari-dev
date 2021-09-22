@@ -428,7 +428,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var mConnectors : EBReferenceArray  <BoardConnector> {
+  final var mConnectors : EBReferenceArray <BoardConnector> {
     get { return self.mConnectors_property.propval }
     set { self.mConnectors_property.setProp (newValue) }
   }
@@ -443,7 +443,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var mSymbols : EBReferenceArray  <ComponentSymbolInProject> {
+  final var mSymbols : EBReferenceArray <ComponentSymbolInProject> {
     get { return self.mSymbols_property.propval }
     set { self.mSymbols_property.setProp (newValue) }
   }
@@ -749,13 +749,13 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  var mPackages : EBReferenceArray  <DevicePackageInProject> {
+  var mPackages : EBReferenceArray <DevicePackageInProject> {
     get {
       switch self.mPackages_property.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }
     set {
@@ -2731,7 +2731,7 @@ final class ComponentInProject : BoardObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mConnectors"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <BoardConnector> ()
+        var relationshipArray = EBReferenceArray <BoardConnector> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardConnector)
@@ -2739,7 +2739,7 @@ final class ComponentInProject : BoardObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mConnectors = relationshipArray }
       }
       if let range = inDictionary ["mSymbols"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <ComponentSymbolInProject> ()
+        var relationshipArray = EBReferenceArray <ComponentSymbolInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentSymbolInProject)

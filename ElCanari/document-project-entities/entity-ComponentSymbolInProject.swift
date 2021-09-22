@@ -362,7 +362,7 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final var mPoints : EBReferenceArray  <PointInSchematic> {
+  final var mPoints : EBReferenceArray <PointInSchematic> {
     get { return self.mPoints_property.propval }
     set { self.mPoints_property.setProp (newValue) }
   }
@@ -1248,7 +1248,7 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mPoints"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <PointInSchematic> ()
+        var relationshipArray = EBReferenceArray <PointInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)

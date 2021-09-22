@@ -205,7 +205,7 @@ final class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  final var characters : EBReferenceArray  <FontCharacter> {
+  final var characters : EBReferenceArray <FontCharacter> {
     get { return self.characters_property.propval }
     set { self.characters_property.setProp (newValue) }
   }
@@ -804,7 +804,7 @@ final class FontRoot : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["characters"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <FontCharacter> ()
+        var relationshipArray = EBReferenceArray <FontCharacter> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! FontCharacter)

@@ -187,7 +187,7 @@ final class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mPackages : EBReferenceArray  <DevicePackageInProject> {
+  final var mPackages : EBReferenceArray <DevicePackageInProject> {
     get { return self.mPackages_property.propval }
     set { self.mPackages_property.setProp (newValue) }
   }
@@ -202,7 +202,7 @@ final class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mSymbols : EBReferenceArray  <DeviceSymbolInstanceInProject> {
+  final var mSymbols : EBReferenceArray <DeviceSymbolInstanceInProject> {
     get { return self.mSymbols_property.propval }
     set { self.mSymbols_property.setProp (newValue) }
   }
@@ -217,7 +217,7 @@ final class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mComponents : EBReferenceArray  <ComponentInProject> {
+  final var mComponents : EBReferenceArray <ComponentInProject> {
     get { return self.mComponents_property.propval }
     set { self.mComponents_property.setProp (newValue) }
   }
@@ -232,7 +232,7 @@ final class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mPadAssignments : EBReferenceArray  <DevicePadAssignmentInProject> {
+  final var mPadAssignments : EBReferenceArray <DevicePadAssignmentInProject> {
     get { return self.mPadAssignments_property.propval }
     set { self.mPadAssignments_property.setProp (newValue) }
   }
@@ -1097,7 +1097,7 @@ final class DeviceInProject : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mPackages"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <DevicePackageInProject> ()
+        var relationshipArray = EBReferenceArray <DevicePackageInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DevicePackageInProject)
@@ -1105,7 +1105,7 @@ final class DeviceInProject : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPackages = relationshipArray }
       }
       if let range = inDictionary ["mSymbols"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <DeviceSymbolInstanceInProject> ()
+        var relationshipArray = EBReferenceArray <DeviceSymbolInstanceInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceSymbolInstanceInProject)
@@ -1113,7 +1113,7 @@ final class DeviceInProject : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSymbols = relationshipArray }
       }
       if let range = inDictionary ["mComponents"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <ComponentInProject> ()
+        var relationshipArray = EBReferenceArray <ComponentInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
@@ -1121,7 +1121,7 @@ final class DeviceInProject : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mComponents = relationshipArray }
       }
       if let range = inDictionary ["mPadAssignments"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <DevicePadAssignmentInProject> ()
+        var relationshipArray = EBReferenceArray <DevicePadAssignmentInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DevicePadAssignmentInProject)

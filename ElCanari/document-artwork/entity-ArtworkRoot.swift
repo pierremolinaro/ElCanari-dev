@@ -393,7 +393,7 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final var fileGenerationParameterArray : EBReferenceArray  <ArtworkFileGenerationParameters> {
+  final var fileGenerationParameterArray : EBReferenceArray <ArtworkFileGenerationParameters> {
     get { return self.fileGenerationParameterArray_property.propval }
     set { self.fileGenerationParameterArray_property.setProp (newValue) }
   }
@@ -1114,7 +1114,7 @@ final class ArtworkRoot : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["fileGenerationParameterArray"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <ArtworkFileGenerationParameters> ()
+        var relationshipArray = EBReferenceArray <ArtworkFileGenerationParameters> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ArtworkFileGenerationParameters)

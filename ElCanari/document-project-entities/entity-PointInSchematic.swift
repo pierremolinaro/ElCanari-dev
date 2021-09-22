@@ -144,7 +144,7 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var mLabels : EBReferenceArray  <LabelInSchematic> {
+  final var mLabels : EBReferenceArray <LabelInSchematic> {
     get { return self.mLabels_property.propval }
     set { self.mLabels_property.setProp (newValue) }
   }
@@ -197,7 +197,7 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var mWiresP2s : EBReferenceArray  <WireInSchematic> {
+  final var mWiresP2s : EBReferenceArray <WireInSchematic> {
     get { return self.mWiresP2s_property.propval }
     set { self.mWiresP2s_property.setProp (newValue) }
   }
@@ -212,7 +212,7 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var mWiresP1s : EBReferenceArray  <WireInSchematic> {
+  final var mWiresP1s : EBReferenceArray <WireInSchematic> {
     get { return self.mWiresP1s_property.propval }
     set { self.mWiresP1s_property.setProp (newValue) }
   }
@@ -1455,7 +1455,7 @@ final class PointInSchematic : EBManagedObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mLabels"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <LabelInSchematic> ()
+        var relationshipArray = EBReferenceArray <LabelInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! LabelInSchematic)
@@ -1463,7 +1463,7 @@ final class PointInSchematic : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mLabels = relationshipArray }
       }
       if let range = inDictionary ["mWiresP2s"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <WireInSchematic> ()
+        var relationshipArray = EBReferenceArray <WireInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
@@ -1471,7 +1471,7 @@ final class PointInSchematic : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mWiresP2s = relationshipArray }
       }
       if let range = inDictionary ["mWiresP1s"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <WireInSchematic> ()
+        var relationshipArray = EBReferenceArray <WireInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! WireInSchematic)

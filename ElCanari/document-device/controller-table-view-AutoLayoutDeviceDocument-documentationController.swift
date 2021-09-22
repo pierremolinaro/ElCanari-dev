@@ -92,7 +92,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBSwif
 
   //····················································································································
 
-  var selectedArray : EBReferenceArray  <DeviceDocumentation> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <DeviceDocumentation> { return self.selectedArray_property.propval }
 
   //····················································································································
 
@@ -230,7 +230,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBSwif
     case .empty, .multiple :
       ()
     case .single (let v) :
-      var newSelectedObjects = EBReferenceArray  <DeviceDocumentation> ()
+      var newSelectedObjects = EBReferenceArray <DeviceDocumentation> ()
       for index in inSelectedRows {
         newSelectedObjects.append (v [index])
       }
@@ -262,7 +262,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBSwif
         ()
       case .single (let v) :
         let newObject = DeviceDocumentation (self.ebUndoManager)
-        var array = EBReferenceArray  (v)
+        var array = EBReferenceArray (v)
         array.append (newObject)
         model.setProp (array)
       //--- New object is the selection
@@ -328,7 +328,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBSwif
         //--- Sort in reverse order
           selectedObjectIndexArray.sort { $1 < $0 }
         //--- Remove objects, in reverse of order of their index
-          var newObjectArray = EBReferenceArray  (model_prop)
+          var newObjectArray = EBReferenceArray (model_prop)
           for index in selectedObjectIndexArray {
             newObjectArray.remove (at: index)
           }

@@ -94,7 +94,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : EBReferenceArray  <SymbolPin> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <SymbolPin> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION

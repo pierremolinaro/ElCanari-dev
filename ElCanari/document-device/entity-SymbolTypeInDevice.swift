@@ -83,7 +83,7 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mInstances : EBReferenceArray  <SymbolInstanceInDevice> {
+  final var mInstances : EBReferenceArray <SymbolInstanceInDevice> {
     get { return self.mInstances_property.propval }
     set { self.mInstances_property.setProp (newValue) }
   }
@@ -193,7 +193,7 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mPinTypes : EBReferenceArray  <SymbolPinTypeInDevice> {
+  final var mPinTypes : EBReferenceArray <SymbolPinTypeInDevice> {
     get { return self.mPinTypes_property.propval }
     set { self.mPinTypes_property.setProp (newValue) }
   }
@@ -748,7 +748,7 @@ final class SymbolTypeInDevice : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mInstances"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <SymbolInstanceInDevice> ()
+        var relationshipArray = EBReferenceArray <SymbolInstanceInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
@@ -756,7 +756,7 @@ final class SymbolTypeInDevice : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mInstances = relationshipArray }
       }
       if let range = inDictionary ["mPinTypes"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <SymbolPinTypeInDevice> ()
+        var relationshipArray = EBReferenceArray <SymbolPinTypeInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinTypeInDevice)

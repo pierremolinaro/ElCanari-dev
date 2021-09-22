@@ -62,7 +62,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : EBReferenceArray  <BoardRestrictRectangle> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <BoardRestrictRectangle> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION

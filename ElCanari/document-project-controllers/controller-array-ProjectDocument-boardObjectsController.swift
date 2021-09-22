@@ -62,7 +62,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
 
   //····················································································································
 
-  var selectedArray : EBReferenceArray  <BoardObject> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <BoardObject> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   Init
@@ -180,11 +180,11 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
 
    //····················································································································
 
-   var objectArray : EBReferenceArray  <BoardObject> {
+   var objectArray : EBReferenceArray <BoardObject> {
      if let values = self.mModel?.propval {
        return values
      }else{
-       return EBReferenceArray  ()
+       return EBReferenceArray ()
      }
    }
 
@@ -458,7 +458,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
         break
       case .single (let v) :
         let newObject = BoardObject (self.ebUndoManager)
-        var array = EBReferenceArray  (v)
+        var array = EBReferenceArray (v)
         array.append (newObject)
       //--- New object is the selection
         self.selectedSet = EBReferenceSet ([newObject])
@@ -522,7 +522,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
       //--- Sort in reverse order
         selectedObjectIndexArray.sort { $1 < $0 }
       //--- Remove objects, in reverse of order of their index
-        var newObjectArray = EBReferenceArray  (model_prop)
+        var newObjectArray = EBReferenceArray (model_prop)
         for index in selectedObjectIndexArray {
           newObjectArray.remove (at: index)
         }
@@ -844,7 +844,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
   func sendToBack () {
     var objects = self.objectArray
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
-    var newObjectArray = EBReferenceArray  <BoardObject> ()
+    var newObjectArray = EBReferenceArray <BoardObject> ()
     for idx in sortedIndexArray.reversed () {
       let object = objects [idx]
       objects.remove (at: idx)

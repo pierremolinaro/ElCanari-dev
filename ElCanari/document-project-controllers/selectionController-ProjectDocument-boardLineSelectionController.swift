@@ -81,7 +81,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : EBReferenceArray  <BoardLine> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <BoardLine> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION

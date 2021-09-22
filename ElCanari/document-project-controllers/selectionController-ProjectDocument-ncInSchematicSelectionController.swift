@@ -31,7 +31,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : EBReferenceArray  <NCInSchematic> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <NCInSchematic> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION

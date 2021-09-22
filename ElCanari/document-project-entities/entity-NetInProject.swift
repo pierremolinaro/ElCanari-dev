@@ -76,7 +76,7 @@ final class NetInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mPoints : EBReferenceArray  <PointInSchematic> {
+  final var mPoints : EBReferenceArray <PointInSchematic> {
     get { return self.mPoints_property.propval }
     set { self.mPoints_property.setProp (newValue) }
   }
@@ -110,7 +110,7 @@ final class NetInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mTracks : EBReferenceArray  <BoardTrack> {
+  final var mTracks : EBReferenceArray <BoardTrack> {
     get { return self.mTracks_property.propval }
     set { self.mTracks_property.setProp (newValue) }
   }
@@ -770,7 +770,7 @@ final class NetInProject : EBManagedObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mPoints"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <PointInSchematic> ()
+        var relationshipArray = EBReferenceArray <PointInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
@@ -778,7 +778,7 @@ final class NetInProject : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPoints = relationshipArray }
       }
       if let range = inDictionary ["mTracks"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <BoardTrack> ()
+        var relationshipArray = EBReferenceArray <BoardTrack> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)

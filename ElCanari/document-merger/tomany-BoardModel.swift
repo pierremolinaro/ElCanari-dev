@@ -3115,7 +3115,7 @@ final class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = EBReferenceArray  ()
+        self.mInternalArrayValue = EBReferenceArray ()
       }
     }
   }
@@ -3144,25 +3144,25 @@ final class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : EBReferenceArray  <BoardModel>
+      let newArray : EBReferenceArray <BoardModel>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
+            newArray = EBReferenceArray (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = EBReferenceArray  (v)
+            newArray = EBReferenceArray (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = EBReferenceArray  ()
+        newArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -3185,7 +3185,7 @@ final class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <BoardModel> {
+  override var propval : EBReferenceArray <BoardModel> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -3239,24 +3239,24 @@ final class TransientArrayOfSuperOf_BoardModel <SUPER : EBManagedObject> : ReadO
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray  <SUPER>
+      var newModelArray : EBReferenceArray <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = EBReferenceArray  (v)
+          newModelArray = EBReferenceArray (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
-      var newArray = EBReferenceArray  <BoardModel> ()
+      var newArray = EBReferenceArray <BoardModel> ()
       for superObject in newModelArray.values {
         if let object = superObject as? BoardModel {
           newArray.append (object)
@@ -3282,7 +3282,7 @@ final class TransientArrayOfSuperOf_BoardModel <SUPER : EBManagedObject> : ReadO
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <BoardModel> {
+  override var propval : EBReferenceArray <BoardModel> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -3299,7 +3299,7 @@ class ReadWriteArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 
   //····················································································································
 
-  func setProp (_ value :  EBReferenceArray  <BoardModel>) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray <BoardModel>) { } // Abstract method
 
   //····················································································································
 
@@ -3328,18 +3328,18 @@ final class ProxyArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray  <BoardModel>
+    let newModelArray : EBReferenceArray <BoardModel>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       case .single (let v) :
-        newModelArray = EBReferenceArray  <BoardModel> (v)
+        newModelArray = EBReferenceArray <BoardModel> (v)
       case .multiple :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       }
     }else{
-      newModelArray = EBReferenceArray  ()
+      newModelArray = EBReferenceArray ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -3347,7 +3347,7 @@ final class ProxyArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : EBReferenceArray  <BoardModel>) {
+  override func setProp (_ inArrayValue : EBReferenceArray <BoardModel>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -3363,16 +3363,16 @@ final class ProxyArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <BoardModel> {
+  override var propval : EBReferenceArray <BoardModel> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }else{
-      return EBReferenceArray  ()
+      return EBReferenceArray ()
     }
   }
 
@@ -3439,7 +3439,7 @@ class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserve
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <BoardModel>) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <BoardModel>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -3490,11 +3490,11 @@ class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserve
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <BoardModel>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <BoardModel>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : EBReferenceArray  <BoardModel> { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray <BoardModel> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -3579,11 +3579,11 @@ final class StandAloneArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <BoardModel>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <BoardModel>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <BoardModel> { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray <BoardModel> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -3629,7 +3629,7 @@ final class PreferencesArrayOf_BoardModel : StoredArrayOf_BoardModel {
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray  <BoardModel> ()
+      var objectArray = EBReferenceArray <BoardModel> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "BoardModel") as? BoardModel {
           object.setUpAtomicPropertiesWithDictionary (dictionary)

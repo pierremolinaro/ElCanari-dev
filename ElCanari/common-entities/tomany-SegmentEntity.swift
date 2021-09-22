@@ -377,7 +377,7 @@ final class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = EBReferenceArray  ()
+        self.mInternalArrayValue = EBReferenceArray ()
       }
     }
   }
@@ -406,25 +406,25 @@ final class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : EBReferenceArray  <SegmentEntity>
+      let newArray : EBReferenceArray <SegmentEntity>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
+            newArray = EBReferenceArray (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = EBReferenceArray  (v)
+            newArray = EBReferenceArray (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = EBReferenceArray  ()
+        newArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -447,7 +447,7 @@ final class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <SegmentEntity> {
+  override var propval : EBReferenceArray <SegmentEntity> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -501,24 +501,24 @@ final class TransientArrayOfSuperOf_SegmentEntity <SUPER : EBManagedObject> : Re
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray  <SUPER>
+      var newModelArray : EBReferenceArray <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = EBReferenceArray  (v)
+          newModelArray = EBReferenceArray (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
-      var newArray = EBReferenceArray  <SegmentEntity> ()
+      var newArray = EBReferenceArray <SegmentEntity> ()
       for superObject in newModelArray.values {
         if let object = superObject as? SegmentEntity {
           newArray.append (object)
@@ -544,7 +544,7 @@ final class TransientArrayOfSuperOf_SegmentEntity <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <SegmentEntity> {
+  override var propval : EBReferenceArray <SegmentEntity> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -561,7 +561,7 @@ class ReadWriteArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
-  func setProp (_ value :  EBReferenceArray  <SegmentEntity>) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray <SegmentEntity>) { } // Abstract method
 
   //····················································································································
 
@@ -590,18 +590,18 @@ final class ProxyArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray  <SegmentEntity>
+    let newModelArray : EBReferenceArray <SegmentEntity>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       case .single (let v) :
-        newModelArray = EBReferenceArray  <SegmentEntity> (v)
+        newModelArray = EBReferenceArray <SegmentEntity> (v)
       case .multiple :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       }
     }else{
-      newModelArray = EBReferenceArray  ()
+      newModelArray = EBReferenceArray ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -609,7 +609,7 @@ final class ProxyArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity {
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : EBReferenceArray  <SegmentEntity>) {
+  override func setProp (_ inArrayValue : EBReferenceArray <SegmentEntity>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -625,16 +625,16 @@ final class ProxyArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity {
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <SegmentEntity> {
+  override var propval : EBReferenceArray <SegmentEntity> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }else{
-      return EBReferenceArray  ()
+      return EBReferenceArray ()
     }
   }
 
@@ -701,7 +701,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <SegmentEntity>) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <SegmentEntity>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -752,11 +752,11 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <SegmentEntity>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <SegmentEntity>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : EBReferenceArray  <SegmentEntity> { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray <SegmentEntity> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -841,11 +841,11 @@ final class StandAloneArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity {
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <SegmentEntity>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <SegmentEntity>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <SegmentEntity> { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray <SegmentEntity> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -891,7 +891,7 @@ final class PreferencesArrayOf_SegmentEntity : StoredArrayOf_SegmentEntity {
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray  <SegmentEntity> ()
+      var objectArray = EBReferenceArray <SegmentEntity> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SegmentEntity") as? SegmentEntity {
           object.setUpAtomicPropertiesWithDictionary (dictionary)

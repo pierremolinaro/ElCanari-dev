@@ -44,7 +44,7 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : EBReferenceArray  <WireInSchematic> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <WireInSchematic> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION

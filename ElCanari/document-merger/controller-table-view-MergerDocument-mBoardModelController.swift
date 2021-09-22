@@ -8,7 +8,15 @@ import Cocoa
 //    Table View Controller MergerDocument mBoardModelController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
+final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate {
+
+  //····················································································································
+
+  override init () {
+    self.mDelegate = Delegate_MergerDocument_mBoardModelController ()
+    super.init ()
+    self.mDelegate.setController (self)
+  }
 
   //····················································································································
   //    Constant properties
@@ -25,25 +33,26 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
 
   //····················································································································
 
-  var sortedArray : EBReferenceArray  <BoardModel> { return self.sortedArray_property.propval }
+  var sortedArray : EBReferenceArray <BoardModel> { return self.sortedArray_property.propval }
 
   //····················································································································
 
-  private var mSortDescriptorArray = [NSSortDescriptor] ()
+  fileprivate var mSortDescriptorArray = [NSSortDescriptor] ()
 
   //····················································································································
   //    Model
   //····················································································································
 
   private var mModel : ReadWriteArrayOf_BoardModel? = nil
+  private var mDelegate : Delegate_MergerDocument_mBoardModelController
 
   //····················································································································
 
-  var objects : EBReferenceArray  <BoardModel> {
+  var objects : EBReferenceArray <BoardModel> {
     if let objects = self.mModel?.propval {
       return objects
     }else{
-      return EBReferenceArray  ()
+      return EBReferenceArray ()
     }
   }
 
@@ -111,7 +120,7 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
     super.notifyModelDidChange ()
     // NSLog ("self.sortedArray \(self.sortedArray.count)")
     let oldSelectionSet = self.selectedSet
-    var newSelectedArray = EBReferenceArray  <BoardModel> ()
+    var newSelectedArray = EBReferenceArray <BoardModel> ()
     for object in self.sortedArray {
       if oldSelectionSet.contains (object) {
         newSelectedArray.append (object)
@@ -131,7 +140,7 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_BoardModel ()
+  fileprivate let mInternalSelectedArrayProperty = StandAloneArrayOf_BoardModel ()
 
   //····················································································································
 
@@ -139,7 +148,7 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
 
   //····················································································································
 
-  var selectedArray : EBReferenceArray  <BoardModel> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <BoardModel> { return self.selectedArray_property.propval }
 
   //····················································································································
 
@@ -193,7 +202,7 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
 
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
-  private var mTableViewArray = [EBTableView] ()
+  fileprivate var mTableViewArray = [EBTableView] ()
 
   //····················································································································
 
@@ -201,8 +210,8 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
     if let tableView = inTableView {
       tableView.allowsEmptySelection = allowsEmptySelection
       tableView.allowsMultipleSelection = allowsMultipleSelection
-      tableView.dataSource = self
-      tableView.delegate = self
+      tableView.dataSource = self.mDelegate
+      tableView.delegate = self.mDelegate
     //--- Set table view data source controller
       let dataSourceTableViewController = DataSource_EBTableView_controller (delegate:self, tableView:tableView)
       self.sortedArray_property.addEBObserver (dataSourceTableViewController)
@@ -267,81 +276,81 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
   //    T A B L E V I E W    D A T A S O U R C E : numberOfRows (in:)
   //····················································································································
 
-  func numberOfRows (in _ : NSTableView) -> Int {
-    switch self.sortedArray_property.selection {
-    case .empty, .multiple :
-      return 0
-    case .single (let v) :
-      return v.count
-    }
-  }
+//  func numberOfRows (in _ : NSTableView) -> Int {
+//    switch self.sortedArray_property.selection {
+//    case .empty, .multiple :
+//      return 0
+//    case .single (let v) :
+//      return v.count
+//    }
+//  }
 
   //····················································································································
   //    T A B L E V I E W    D E L E G A T E : tableViewSelectionDidChange:
   //····················································································································
 
-  func tableViewSelectionDidChange (_ notification : Notification) {
-    switch self.sortedArray_property.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      let tableView = notification.object as! EBTableView
-      var newSelectedObjects = EBReferenceArray  <BoardModel> ()
-      for index in tableView.selectedRowIndexes {
-        newSelectedObjects.append (v [index])
-      }
-      self.mInternalSelectedArrayProperty.setProp (newSelectedObjects)
-    }
-  }
+//  func tableViewSelectionDidChange (_ notification : Notification) {
+//    switch self.sortedArray_property.selection {
+//    case .empty, .multiple :
+//      break
+//    case .single (let v) :
+//      let tableView = notification.object as! EBTableView
+//      var newSelectedObjects = EBReferenceArray <BoardModel> ()
+//      for index in tableView.selectedRowIndexes {
+//        newSelectedObjects.append (v [index])
+//      }
+//      self.mInternalSelectedArrayProperty.setProp (newSelectedObjects)
+//    }
+//  }
 
   //····················································································································
   //    T A B L E V I E W    S O U R C E : tableView:sortDescriptorsDidChange:
   //····················································································································
 
-  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
-    self.mSortDescriptorArray = tableView.sortDescriptors
-/*    for s in tableView.sortDescriptors {
-      Swift.print ("key \(s.key), ascending \(s.ascending)")
-    } */
-    for tableView in self.mTableViewArray {
-      tableView.sortDescriptors = self.mSortDescriptorArray
-    }
-    self.sortedArray_property.notifyModelDidChange ()
-  }
+//  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
+//    self.mSortDescriptorArray = tableView.sortDescriptors
+///*    for s in tableView.sortDescriptors {
+//      Swift.print ("key \(s.key), ascending \(s.ascending)")
+//    } */
+//    for tableView in self.mTableViewArray {
+//      tableView.sortDescriptors = self.mSortDescriptorArray
+//    }
+//    self.sortedArray_property.notifyModelDidChange ()
+//  }
 
   //····················································································································
   //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:row:
   //····················································································································
 
-  func tableView (_ tableView : NSTableView,
-                  viewFor inTableColumn: NSTableColumn?,
-                  row inRowIndex: Int) -> NSView? {
-    switch self.sortedArray_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      if let tableColumnIdentifier = inTableColumn?.identifier,
-         let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
-        if !reuseTableViewCells () {
-          result.identifier = nil // So result cannot be reused, will be freed
-        }
-        let object = v [inRowIndex]
-        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_value ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_value (object.name_property, sendContinously:false)
-          cell.update ()
-        }else{
-          NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
-        }
-        return result
-      }else{
-        return nil
-      }
-    }
-  }
+//  func tableView (_ tableView : NSTableView,
+//                  viewFor inTableColumn: NSTableColumn?,
+//                  row inRowIndex: Int) -> NSView? {
+//    switch self.sortedArray_property.selection {
+//    case .empty, .multiple :
+//      return nil
+//    case .single (let v) :
+//      if let tableColumnIdentifier = inTableColumn?.identifier,
+//         let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
+//        if !reuseTableViewCells () {
+//          result.identifier = nil // So result cannot be reused, will be freed
+//        }
+//        let object = v [inRowIndex]
+//        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextField_TableViewCell {
+//          cell.mUnbindFunction = { [weak cell] in
+//            cell?.mCellOutlet?.unbind_value ()
+//          }
+//          cell.mUnbindFunction? ()
+//          cell.mCellOutlet?.bind_value (object.name_property, sendContinously:false)
+//          cell.update ()
+//        }else{
+//          NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
+//        }
+//        return result
+//      }else{
+//        return nil
+//      }
+//    }
+//  }
 
   //····················································································································
   //   Select a single object
@@ -371,7 +380,7 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
         break
       case .single (let v) :
         let newObject = BoardModel (self.ebUndoManager)
-        var array = EBReferenceArray  (v)
+        var array = EBReferenceArray (v)
         array.append (newObject)
         model.setProp (array)
       //--- New object is the selection
@@ -439,7 +448,7 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
         //--- Sort in reverse order
           selectedObjectIndexArray.sort { $1 < $0 }
         //--- Remove objects, in reverse of order of their index
-          var newObjectArray = EBReferenceArray  (model_prop)
+          var newObjectArray = EBReferenceArray (model_prop)
           for index in selectedObjectIndexArray {
             newObjectArray.remove (at: index)
           }
@@ -453,6 +462,117 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
           }
         }
       }
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class Delegate_MergerDocument_mBoardModelController : EBObjcBaseObject, NSTableViewDataSource, NSTableViewDelegate {
+
+  //····················································································································
+
+  weak var mController : Controller_MergerDocument_mBoardModelController? = nil
+//  private var mSortDescriptorArray = [NSSortDescriptor] ()
+
+  //····················································································································
+
+  func setController (_ inController : Controller_MergerDocument_mBoardModelController) {
+    self.mController = inController
+  }
+
+  //····················································································································
+  //    T A B L E V I E W    D A T A S O U R C E : numberOfRows (in:)
+  //····················································································································
+
+  func numberOfRows (in _ : NSTableView) -> Int {
+    if let controller = self.mController {
+      switch controller.sortedArray_property.selection {
+      case .empty, .multiple :
+        return 0
+      case .single (let v) :
+        return v.count
+      }
+    }else{
+      return 0
+    }
+  }
+
+  //····················································································································
+  //    T A B L E V I E W    D E L E G A T E : tableViewSelectionDidChange:
+  //····················································································································
+
+  func tableViewSelectionDidChange (_ notification : Notification) {
+    if let controller = self.mController {
+      switch controller.sortedArray_property.selection {
+      case .empty, .multiple :
+        break
+      case .single (let v) :
+        let tableView = notification.object as! EBTableView
+        var newSelectedObjects = EBReferenceArray <BoardModel> ()
+        for index in tableView.selectedRowIndexes {
+          newSelectedObjects.append (v [index])
+        }
+        controller.mInternalSelectedArrayProperty.setProp (newSelectedObjects)
+      }
+    }
+  }
+
+  //····················································································································
+  //    T A B L E V I E W    S O U R C E : tableView:sortDescriptorsDidChange:
+  //····················································································································
+
+  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
+    if let controller = self.mController {
+      controller.mSortDescriptorArray = tableView.sortDescriptors
+  /*    for s in tableView.sortDescriptors {
+        Swift.print ("key \(s.key), ascending \(s.ascending)")
+      } */
+      for tableView in controller.mTableViewArray {
+        tableView.sortDescriptors = controller.mSortDescriptorArray
+      }
+      controller.sortedArray_property.notifyModelDidChange ()
+    }
+  }
+
+  //····················································································································
+  //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:row:
+  //····················································································································
+
+  func tableView (_ tableView : NSTableView,
+                  viewFor inTableColumn: NSTableColumn?,
+                  row inRowIndex: Int) -> NSView? {
+    if let controller = self.mController {
+      switch controller.sortedArray_property.selection {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        if let tableColumnIdentifier = inTableColumn?.identifier,
+           let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
+          if !reuseTableViewCells () {
+            result.identifier = nil // So result cannot be reused, will be freed
+          }
+          let object = v [inRowIndex]
+          if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextField_TableViewCell {
+            cell.mUnbindFunction = { [weak cell] in
+              cell?.mCellOutlet?.unbind_value ()
+            }
+            cell.mUnbindFunction? ()
+            cell.mCellOutlet?.bind_value (object.name_property, sendContinously:false)
+            cell.update ()
+          }else{
+            NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
+          }
+          return result
+        }else{
+          return nil
+        }
+      }
+    }else{
+      return nil
     }
   }
 

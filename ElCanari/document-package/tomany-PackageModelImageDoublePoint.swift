@@ -554,7 +554,7 @@ final class TransientArrayOf_PackageModelImageDoublePoint : ReadOnlyArrayOf_Pack
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = EBReferenceArray  ()
+        self.mInternalArrayValue = EBReferenceArray ()
       }
     }
   }
@@ -583,25 +583,25 @@ final class TransientArrayOf_PackageModelImageDoublePoint : ReadOnlyArrayOf_Pack
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : EBReferenceArray  <PackageModelImageDoublePoint>
+      let newArray : EBReferenceArray <PackageModelImageDoublePoint>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
+            newArray = EBReferenceArray (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = EBReferenceArray  (v)
+            newArray = EBReferenceArray (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = EBReferenceArray  ()
+        newArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -624,7 +624,7 @@ final class TransientArrayOf_PackageModelImageDoublePoint : ReadOnlyArrayOf_Pack
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <PackageModelImageDoublePoint> {
+  override var propval : EBReferenceArray <PackageModelImageDoublePoint> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -678,24 +678,24 @@ final class TransientArrayOfSuperOf_PackageModelImageDoublePoint <SUPER : EBMana
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray  <SUPER>
+      var newModelArray : EBReferenceArray <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = EBReferenceArray  (v)
+          newModelArray = EBReferenceArray (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
-      var newArray = EBReferenceArray  <PackageModelImageDoublePoint> ()
+      var newArray = EBReferenceArray <PackageModelImageDoublePoint> ()
       for superObject in newModelArray.values {
         if let object = superObject as? PackageModelImageDoublePoint {
           newArray.append (object)
@@ -721,7 +721,7 @@ final class TransientArrayOfSuperOf_PackageModelImageDoublePoint <SUPER : EBMana
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <PackageModelImageDoublePoint> {
+  override var propval : EBReferenceArray <PackageModelImageDoublePoint> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -738,7 +738,7 @@ class ReadWriteArrayOf_PackageModelImageDoublePoint : ReadOnlyArrayOf_PackageMod
 
   //····················································································································
 
-  func setProp (_ value :  EBReferenceArray  <PackageModelImageDoublePoint>) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray <PackageModelImageDoublePoint>) { } // Abstract method
 
   //····················································································································
 
@@ -767,18 +767,18 @@ final class ProxyArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_Package
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray  <PackageModelImageDoublePoint>
+    let newModelArray : EBReferenceArray <PackageModelImageDoublePoint>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       case .single (let v) :
-        newModelArray = EBReferenceArray  <PackageModelImageDoublePoint> (v)
+        newModelArray = EBReferenceArray <PackageModelImageDoublePoint> (v)
       case .multiple :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       }
     }else{
-      newModelArray = EBReferenceArray  ()
+      newModelArray = EBReferenceArray ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -786,7 +786,7 @@ final class ProxyArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_Package
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : EBReferenceArray  <PackageModelImageDoublePoint>) {
+  override func setProp (_ inArrayValue : EBReferenceArray <PackageModelImageDoublePoint>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -802,16 +802,16 @@ final class ProxyArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_Package
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <PackageModelImageDoublePoint> {
+  override var propval : EBReferenceArray <PackageModelImageDoublePoint> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }else{
-      return EBReferenceArray  ()
+      return EBReferenceArray ()
     }
   }
 
@@ -878,7 +878,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <PackageModelImageDoublePoint>) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <PackageModelImageDoublePoint>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -929,11 +929,11 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <PackageModelImageDoublePoint>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <PackageModelImageDoublePoint>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : EBReferenceArray  <PackageModelImageDoublePoint> { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray <PackageModelImageDoublePoint> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1018,11 +1018,11 @@ final class StandAloneArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_Pa
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <PackageModelImageDoublePoint>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <PackageModelImageDoublePoint>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <PackageModelImageDoublePoint> { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray <PackageModelImageDoublePoint> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1068,7 +1068,7 @@ final class PreferencesArrayOf_PackageModelImageDoublePoint : StoredArrayOf_Pack
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray  <PackageModelImageDoublePoint> ()
+      var objectArray = EBReferenceArray <PackageModelImageDoublePoint> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageModelImageDoublePoint") as? PackageModelImageDoublePoint {
           object.setUpAtomicPropertiesWithDictionary (dictionary)

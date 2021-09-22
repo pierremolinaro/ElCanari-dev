@@ -62,7 +62,7 @@ final class SheetInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mObjects : EBReferenceArray  <SchematicObject> {
+  final var mObjects : EBReferenceArray <SchematicObject> {
     get { return self.mObjects_property.propval }
     set { self.mObjects_property.setProp (newValue) }
   }
@@ -77,7 +77,7 @@ final class SheetInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mPoints : EBReferenceArray  <PointInSchematic> {
+  final var mPoints : EBReferenceArray <PointInSchematic> {
     get { return self.mPoints_property.propval }
     set { self.mPoints_property.setProp (newValue) }
   }
@@ -674,7 +674,7 @@ final class SheetInProject : EBManagedObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mObjects"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <SchematicObject> ()
+        var relationshipArray = EBReferenceArray <SchematicObject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SchematicObject)
@@ -682,7 +682,7 @@ final class SheetInProject : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mObjects = relationshipArray }
       }
       if let range = inDictionary ["mPoints"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <PointInSchematic> ()
+        var relationshipArray = EBReferenceArray <PointInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)

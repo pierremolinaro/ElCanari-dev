@@ -118,7 +118,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : EBReferenceArray  <PackageBezier> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <PackageBezier> { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION

@@ -265,7 +265,7 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final var boardModels : EBReferenceArray  <BoardModel> {
+  final var boardModels : EBReferenceArray <BoardModel> {
     get { return self.boardModels_property.propval }
     set { self.boardModels_property.setProp (newValue) }
   }
@@ -280,7 +280,7 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final var boardInstances : EBReferenceArray  <MergerBoardInstance> {
+  final var boardInstances : EBReferenceArray <MergerBoardInstance> {
     get { return self.boardInstances_property.propval }
     set { self.boardInstances_property.setProp (newValue) }
   }
@@ -872,13 +872,13 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var fileGenerationParameterArray : EBReferenceArray  <ArtworkFileGenerationParameters> {
+  var fileGenerationParameterArray : EBReferenceArray <ArtworkFileGenerationParameters> {
     get {
       switch self.fileGenerationParameterArray_property.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }
     set {
@@ -2288,7 +2288,7 @@ final class MergerRoot : EBManagedObject,
       }
     //--- To many relationships
       if let range = inDictionary ["boardModels"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <BoardModel> ()
+        var relationshipArray = EBReferenceArray <BoardModel> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardModel)
@@ -2296,7 +2296,7 @@ final class MergerRoot : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.boardModels = relationshipArray }
       }
       if let range = inDictionary ["boardInstances"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <MergerBoardInstance> ()
+        var relationshipArray = EBReferenceArray <MergerBoardInstance> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)

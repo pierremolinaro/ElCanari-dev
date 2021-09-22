@@ -452,7 +452,7 @@ final class PackageZone : PackageObject,
 
   //····················································································································
 
-  final var forbiddenPadNumbers : EBReferenceArray  <ForbiddenPadNumber> {
+  final var forbiddenPadNumbers : EBReferenceArray <ForbiddenPadNumber> {
     get { return self.forbiddenPadNumbers_property.propval }
     set { self.forbiddenPadNumbers_property.setProp (newValue) }
   }
@@ -1264,7 +1264,7 @@ final class PackageZone : PackageObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["forbiddenPadNumbers"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <ForbiddenPadNumber> ()
+        var relationshipArray = EBReferenceArray <ForbiddenPadNumber> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ForbiddenPadNumber)

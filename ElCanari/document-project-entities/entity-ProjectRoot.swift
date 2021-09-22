@@ -1972,7 +1972,7 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSheets : EBReferenceArray  <SheetInProject> {
+  final var mSheets : EBReferenceArray <SheetInProject> {
     get { return self.mSheets_property.propval }
     set { self.mSheets_property.setProp (newValue) }
   }
@@ -2272,7 +2272,7 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mNetClasses : EBReferenceArray  <NetClassInProject> {
+  final var mNetClasses : EBReferenceArray <NetClassInProject> {
     get { return self.mNetClasses_property.propval }
     set { self.mNetClasses_property.setProp (newValue) }
   }
@@ -2287,7 +2287,7 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mFonts : EBReferenceArray  <FontInProject> {
+  final var mFonts : EBReferenceArray <FontInProject> {
     get { return self.mFonts_property.propval }
     set { self.mFonts_property.setProp (newValue) }
   }
@@ -2302,7 +2302,7 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mDevices : EBReferenceArray  <DeviceInProject> {
+  final var mDevices : EBReferenceArray <DeviceInProject> {
     get { return self.mDevices_property.propval }
     set { self.mDevices_property.setProp (newValue) }
   }
@@ -2336,7 +2336,7 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBorderCurves : EBReferenceArray  <BorderCurve> {
+  final var mBorderCurves : EBReferenceArray <BorderCurve> {
     get { return self.mBorderCurves_property.propval }
     set { self.mBorderCurves_property.setProp (newValue) }
   }
@@ -2351,7 +2351,7 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mBoardObjects : EBReferenceArray  <BoardObject> {
+  final var mBoardObjects : EBReferenceArray <BoardObject> {
     get { return self.mBoardObjects_property.propval }
     set { self.mBoardObjects_property.setProp (newValue) }
   }
@@ -2423,7 +2423,7 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mComponents : EBReferenceArray  <ComponentInProject> {
+  final var mComponents : EBReferenceArray <ComponentInProject> {
     get { return self.mComponents_property.propval }
     set { self.mComponents_property.setProp (newValue) }
   }
@@ -2726,13 +2726,13 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var selectedSheetObjects : EBReferenceArray  <SchematicObject> {
+  var selectedSheetObjects : EBReferenceArray <SchematicObject> {
     get {
       switch self.selectedSheetObjects_property.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }
     set {
@@ -2750,13 +2750,13 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  var fileGenerationParameterArray : EBReferenceArray  <ArtworkFileGenerationParameters> {
+  var fileGenerationParameterArray : EBReferenceArray <ArtworkFileGenerationParameters> {
     get {
       switch self.fileGenerationParameterArray_property.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }
     set {
@@ -7802,7 +7802,7 @@ final class ProjectRoot : EBManagedObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mSheets"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <SheetInProject> ()
+        var relationshipArray = EBReferenceArray <SheetInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SheetInProject)
@@ -7810,7 +7810,7 @@ final class ProjectRoot : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSheets = relationshipArray }
       }
       if let range = inDictionary ["mNetClasses"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <NetClassInProject> ()
+        var relationshipArray = EBReferenceArray <NetClassInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! NetClassInProject)
@@ -7818,7 +7818,7 @@ final class ProjectRoot : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mNetClasses = relationshipArray }
       }
       if let range = inDictionary ["mFonts"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <FontInProject> ()
+        var relationshipArray = EBReferenceArray <FontInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! FontInProject)
@@ -7826,7 +7826,7 @@ final class ProjectRoot : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mFonts = relationshipArray }
       }
       if let range = inDictionary ["mDevices"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <DeviceInProject> ()
+        var relationshipArray = EBReferenceArray <DeviceInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceInProject)
@@ -7834,7 +7834,7 @@ final class ProjectRoot : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mDevices = relationshipArray }
       }
       if let range = inDictionary ["mBorderCurves"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <BorderCurve> ()
+        var relationshipArray = EBReferenceArray <BorderCurve> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BorderCurve)
@@ -7842,7 +7842,7 @@ final class ProjectRoot : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mBorderCurves = relationshipArray }
       }
       if let range = inDictionary ["mBoardObjects"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <BoardObject> ()
+        var relationshipArray = EBReferenceArray <BoardObject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardObject)
@@ -7850,7 +7850,7 @@ final class ProjectRoot : EBManagedObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mBoardObjects = relationshipArray }
       }
       if let range = inDictionary ["mComponents"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <ComponentInProject> ()
+        var relationshipArray = EBReferenceArray <ComponentInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)

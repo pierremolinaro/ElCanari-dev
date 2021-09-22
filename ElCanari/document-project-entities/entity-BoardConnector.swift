@@ -299,7 +299,7 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mTracksP2 : EBReferenceArray  <BoardTrack> {
+  final var mTracksP2 : EBReferenceArray <BoardTrack> {
     get { return self.mTracksP2_property.propval }
     set { self.mTracksP2_property.setProp (newValue) }
   }
@@ -466,7 +466,7 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mTracksP1 : EBReferenceArray  <BoardTrack> {
+  final var mTracksP1 : EBReferenceArray <BoardTrack> {
     get { return self.mTracksP1_property.propval }
     set { self.mTracksP1_property.setProp (newValue) }
   }
@@ -1760,7 +1760,7 @@ final class BoardConnector : BoardObject,
       }
     //--- To many relationships
       if let range = inDictionary ["mTracksP2"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <BoardTrack> ()
+        var relationshipArray = EBReferenceArray <BoardTrack> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)
@@ -1768,7 +1768,7 @@ final class BoardConnector : BoardObject,
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mTracksP2 = relationshipArray }
       }
       if let range = inDictionary ["mTracksP1"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <BoardTrack> ()
+        var relationshipArray = EBReferenceArray <BoardTrack> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)

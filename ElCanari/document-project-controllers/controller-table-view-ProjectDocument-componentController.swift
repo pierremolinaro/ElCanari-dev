@@ -25,7 +25,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
 
   //····················································································································
 
-  var sortedArray : EBReferenceArray  <ComponentInProject> { return self.sortedArray_property.propval }
+  var sortedArray : EBReferenceArray <ComponentInProject> { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -39,11 +39,11 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
 
   //····················································································································
 
-  var objects : EBReferenceArray  <ComponentInProject> {
+  var objects : EBReferenceArray <ComponentInProject> {
     if let objects = self.mModel?.propval {
       return objects
     }else{
-      return EBReferenceArray  ()
+      return EBReferenceArray ()
     }
   }
 
@@ -126,7 +126,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
     super.notifyModelDidChange ()
     // NSLog ("self.sortedArray \(self.sortedArray.count)")
     let oldSelectionSet = self.selectedSet
-    var newSelectedArray = EBReferenceArray  <ComponentInProject> ()
+    var newSelectedArray = EBReferenceArray <ComponentInProject> ()
     for object in self.sortedArray {
       if oldSelectionSet.contains (object) {
         newSelectedArray.append (object)
@@ -154,7 +154,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
 
   //····················································································································
 
-  var selectedArray : EBReferenceArray  <ComponentInProject> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <ComponentInProject> { return self.selectedArray_property.propval }
 
   //····················································································································
 
@@ -341,7 +341,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjects = EBReferenceArray  <ComponentInProject> ()
+      var newSelectedObjects = EBReferenceArray <ComponentInProject> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjects.append (v [index])
       }
@@ -461,7 +461,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
         break
       case .single (let v) :
         let newObject = ComponentInProject (self.ebUndoManager)
-        var array = EBReferenceArray  (v)
+        var array = EBReferenceArray (v)
         array.append (newObject)
         model.setProp (array)
       //--- New object is the selection
@@ -529,7 +529,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
         //--- Sort in reverse order
           selectedObjectIndexArray.sort { $1 < $0 }
         //--- Remove objects, in reverse of order of their index
-          var newObjectArray = EBReferenceArray  (model_prop)
+          var newObjectArray = EBReferenceArray (model_prop)
           for index in selectedObjectIndexArray {
             newObjectArray.remove (at: index)
           }

@@ -14,8 +14,17 @@ struct EBShape : Hashable {
   //  Equatable Protocol
   //····················································································································
 
-  static func == (lhs: EBShape, rhs: EBShape) -> Bool {
+  static func == (lhs : EBShape, rhs : EBShape) -> Bool {
     return lhs.mSharedObject === rhs.mSharedObject
+  }
+
+  //····················································································································
+  //  Hashable Protocol
+  //····················································································································
+
+   func hash (into hasher: inout Hasher) {
+    let address : Int = unsafeBitCast (mSharedObject, to: Int.self)
+    address.hash (into: &hasher)
   }
 
   //····················································································································
@@ -295,52 +304,32 @@ struct EBShape : Hashable {
 //    EBShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class EBShapeObject : Hashable {
+fileprivate final class EBShapeObject {
 
   //····················································································································
   //  Properties
   //····················································································································
 
-  private var mElements : [EBShapeElement]
+  private var mElements : EBReferenceArray <EBShapeElement>
   private var mToolTips : [EBToolTip]
   private var mCachedBoundingBox : NSRect
-
-  //····················································································································
-  //  Equatable Protocol
-  //····················································································································
-
-  static func == (lhs: EBShapeObject, rhs: EBShapeObject) -> Bool {
-    return (lhs.mCachedBoundingBox == rhs.mCachedBoundingBox)
-        && (lhs.mToolTips == rhs.mToolTips)
-        && (lhs.mElements == rhs.mElements)
-  }
-
-  //····················································································································
-  // Hashable Protocol
-  //····················································································································
-
-   func hash (into hasher: inout Hasher) {
-    self.mElements.hash (into: &hasher)
-    self.mToolTips.hash (into: &hasher)
-    self.mCachedBoundingBox.hash (into: &hasher)
-  }
 
   //····················································································································
   //  init
   //····················································································································
 
   init () {
-    mElements = [EBShapeElement] ()
-    mToolTips = [EBToolTip] ()
-    mCachedBoundingBox = NSRect.null
+    self.mElements = EBReferenceArray <EBShapeElement> ()
+    self.mToolTips = [EBToolTip] ()
+    self.mCachedBoundingBox = NSRect.null
   }
 
   //····················································································································
 
   init (_ inSource : EBShapeObject) {
-    mElements = inSource.mElements
-    mToolTips = inSource.mToolTips
-    mCachedBoundingBox = inSource.mCachedBoundingBox
+    self.mElements = inSource.mElements
+    self.mToolTips = inSource.mToolTips
+    self.mCachedBoundingBox = inSource.mCachedBoundingBox
   }
 
   //····················································································································
@@ -692,7 +681,7 @@ enum EBKnobKind {
 //    EBToolTip
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate struct EBToolTip : Hashable {
+fileprivate struct EBToolTip {
   let path : EBBezierPath
   let string : String
 }
@@ -701,7 +690,7 @@ fileprivate struct EBToolTip : Hashable {
 //    EBClipRule
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum EBClipRule : Hashable {
+enum EBClipRule {
   case none
   case inside (EBBezierPath)
   case outside (EBBezierPath)
@@ -711,7 +700,7 @@ enum EBClipRule : Hashable {
 //    EBPathKind
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum EBPathKind : Hashable {
+enum EBPathKind {
   case strokeThinnestLine
   case fill
 }
@@ -720,7 +709,7 @@ enum EBPathKind : Hashable {
 // EBShapeElement
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class EBShapeElement : Hashable {
+fileprivate final class EBShapeElement {
 
   //····················································································································
   // Properties
@@ -752,34 +741,34 @@ fileprivate final class EBShapeElement : Hashable {
   // Hashable
   //····················································································································
 
-   func hash (into hasher: inout Hasher) {
-    self.mKind.hash (into: &hasher)
-    self.mColor?.hash (into: &hasher)
-    self.mKnobIndex?.hash (into: &hasher)
-    self.mClipRule.hash (into: &hasher)
-    self.mPathes.hash (into: &hasher)
-  }
+//   func hash (into hasher: inout Hasher) {
+//    self.mKind.hash (into: &hasher)
+//    self.mColor?.hash (into: &hasher)
+//    self.mKnobIndex?.hash (into: &hasher)
+//    self.mClipRule.hash (into: &hasher)
+//    self.mPathes.hash (into: &hasher)
+//  }
 
   //····················································································································
   // Equatable
   //····················································································································
 
-  static func == (lhs: EBShapeElement, rhs: EBShapeElement) -> Bool {
-    var result = lhs.mKind == rhs.mKind
-    if result {
-      result = lhs.mColor == rhs.mColor
-    }
-    if result {
-      result = lhs.mKnobIndex == rhs.mKnobIndex
-    }
-    if result {
-      result = lhs.mClipRule == rhs.mClipRule
-    }
-    if result {
-      result = lhs.mPathes == rhs.mPathes
-    }
-    return result
-  }
+//  static func == (lhs: EBShapeElement, rhs: EBShapeElement) -> Bool {
+//    var result = lhs.mKind == rhs.mKind
+//    if result {
+//      result = lhs.mColor == rhs.mColor
+//    }
+//    if result {
+//      result = lhs.mKnobIndex == rhs.mKnobIndex
+//    }
+//    if result {
+//      result = lhs.mClipRule == rhs.mClipRule
+//    }
+//    if result {
+//      result = lhs.mPathes == rhs.mPathes
+//    }
+//    return result
+//  }
 
   //····················································································································
   //  Draw Rect

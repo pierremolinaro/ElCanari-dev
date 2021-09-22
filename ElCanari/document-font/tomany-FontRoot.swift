@@ -783,7 +783,7 @@ final class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = EBReferenceArray  ()
+        self.mInternalArrayValue = EBReferenceArray ()
       }
     }
   }
@@ -812,25 +812,25 @@ final class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : EBReferenceArray  <FontRoot>
+      let newArray : EBReferenceArray <FontRoot>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
+            newArray = EBReferenceArray (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = EBReferenceArray  (v)
+            newArray = EBReferenceArray (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = EBReferenceArray  ()
+        newArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -853,7 +853,7 @@ final class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <FontRoot> {
+  override var propval : EBReferenceArray <FontRoot> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -907,24 +907,24 @@ final class TransientArrayOfSuperOf_FontRoot <SUPER : EBManagedObject> : ReadOnl
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray  <SUPER>
+      var newModelArray : EBReferenceArray <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = EBReferenceArray  (v)
+          newModelArray = EBReferenceArray (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
-      var newArray = EBReferenceArray  <FontRoot> ()
+      var newArray = EBReferenceArray <FontRoot> ()
       for superObject in newModelArray.values {
         if let object = superObject as? FontRoot {
           newArray.append (object)
@@ -950,7 +950,7 @@ final class TransientArrayOfSuperOf_FontRoot <SUPER : EBManagedObject> : ReadOnl
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <FontRoot> {
+  override var propval : EBReferenceArray <FontRoot> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -967,7 +967,7 @@ class ReadWriteArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 
   //····················································································································
 
-  func setProp (_ value :  EBReferenceArray  <FontRoot>) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray <FontRoot>) { } // Abstract method
 
   //····················································································································
 
@@ -996,18 +996,18 @@ final class ProxyArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray  <FontRoot>
+    let newModelArray : EBReferenceArray <FontRoot>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       case .single (let v) :
-        newModelArray = EBReferenceArray  <FontRoot> (v)
+        newModelArray = EBReferenceArray <FontRoot> (v)
       case .multiple :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       }
     }else{
-      newModelArray = EBReferenceArray  ()
+      newModelArray = EBReferenceArray ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -1015,7 +1015,7 @@ final class ProxyArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : EBReferenceArray  <FontRoot>) {
+  override func setProp (_ inArrayValue : EBReferenceArray <FontRoot>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -1031,16 +1031,16 @@ final class ProxyArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <FontRoot> {
+  override var propval : EBReferenceArray <FontRoot> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }else{
-      return EBReferenceArray  ()
+      return EBReferenceArray ()
     }
   }
 
@@ -1107,7 +1107,7 @@ class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObserverPro
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <FontRoot>) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <FontRoot>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -1158,11 +1158,11 @@ class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObserverPro
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <FontRoot>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <FontRoot>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : EBReferenceArray  <FontRoot> { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray <FontRoot> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1247,11 +1247,11 @@ final class StandAloneArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <FontRoot>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <FontRoot>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <FontRoot> { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray <FontRoot> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1297,7 +1297,7 @@ final class PreferencesArrayOf_FontRoot : StoredArrayOf_FontRoot {
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray  <FontRoot> ()
+      var objectArray = EBReferenceArray <FontRoot> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "FontRoot") as? FontRoot {
           object.setUpAtomicPropertiesWithDictionary (dictionary)

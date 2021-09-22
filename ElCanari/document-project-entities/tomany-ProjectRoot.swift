@@ -8223,7 +8223,7 @@ final class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = EBReferenceArray  ()
+        self.mInternalArrayValue = EBReferenceArray ()
       }
     }
   }
@@ -8252,25 +8252,25 @@ final class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : EBReferenceArray  <ProjectRoot>
+      let newArray : EBReferenceArray <ProjectRoot>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
+            newArray = EBReferenceArray (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = EBReferenceArray  (v)
+            newArray = EBReferenceArray (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = EBReferenceArray  ()
+        newArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -8293,7 +8293,7 @@ final class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <ProjectRoot> {
+  override var propval : EBReferenceArray <ProjectRoot> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -8347,24 +8347,24 @@ final class TransientArrayOfSuperOf_ProjectRoot <SUPER : EBManagedObject> : Read
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray  <SUPER>
+      var newModelArray : EBReferenceArray <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = EBReferenceArray  (v)
+          newModelArray = EBReferenceArray (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
-      var newArray = EBReferenceArray  <ProjectRoot> ()
+      var newArray = EBReferenceArray <ProjectRoot> ()
       for superObject in newModelArray.values {
         if let object = superObject as? ProjectRoot {
           newArray.append (object)
@@ -8390,7 +8390,7 @@ final class TransientArrayOfSuperOf_ProjectRoot <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <ProjectRoot> {
+  override var propval : EBReferenceArray <ProjectRoot> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -8407,7 +8407,7 @@ class ReadWriteArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 
   //····················································································································
 
-  func setProp (_ value :  EBReferenceArray  <ProjectRoot>) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray <ProjectRoot>) { } // Abstract method
 
   //····················································································································
 
@@ -8436,18 +8436,18 @@ final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray  <ProjectRoot>
+    let newModelArray : EBReferenceArray <ProjectRoot>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       case .single (let v) :
-        newModelArray = EBReferenceArray  <ProjectRoot> (v)
+        newModelArray = EBReferenceArray <ProjectRoot> (v)
       case .multiple :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       }
     }else{
-      newModelArray = EBReferenceArray  ()
+      newModelArray = EBReferenceArray ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -8455,7 +8455,7 @@ final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : EBReferenceArray  <ProjectRoot>) {
+  override func setProp (_ inArrayValue : EBReferenceArray <ProjectRoot>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -8471,16 +8471,16 @@ final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <ProjectRoot> {
+  override var propval : EBReferenceArray <ProjectRoot> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }else{
-      return EBReferenceArray  ()
+      return EBReferenceArray ()
     }
   }
 
@@ -8547,7 +8547,7 @@ class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatureObser
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <ProjectRoot>) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <ProjectRoot>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -8598,11 +8598,11 @@ class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatureObser
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <ProjectRoot>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <ProjectRoot>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : EBReferenceArray  <ProjectRoot> { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray <ProjectRoot> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -8687,11 +8687,11 @@ final class StandAloneArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <ProjectRoot>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <ProjectRoot>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <ProjectRoot> { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray <ProjectRoot> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -8737,7 +8737,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray  <ProjectRoot> ()
+      var objectArray = EBReferenceArray <ProjectRoot> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectRoot") as? ProjectRoot {
           object.setUpAtomicPropertiesWithDictionary (dictionary)

@@ -2208,7 +2208,7 @@ final class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
           removeSortObserversCallback: inRemoveSortObserversCallback
         )
       }else{
-        self.mInternalArrayValue = EBReferenceArray  ()
+        self.mInternalArrayValue = EBReferenceArray ()
       }
     }
   }
@@ -2237,25 +2237,25 @@ final class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      let newArray : EBReferenceArray  <MergerRoot>
+      let newArray : EBReferenceArray <MergerRoot>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
           if let sortFunction = self.mIsOrderedBefore {
-            newArray = EBReferenceArray  (v.sorted { sortFunction ($0, $1) })
+            newArray = EBReferenceArray (v.sorted { sortFunction ($0, $1) })
           }else{
-            newArray = EBReferenceArray  (v)
+            newArray = EBReferenceArray (v)
           }
           self.mTransientKind = .single
         case .multiple :
-          newArray = EBReferenceArray  ()
+          newArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newArray = EBReferenceArray  ()
+        newArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
       self.mInternalArrayValue = newArray
@@ -2278,7 +2278,7 @@ final class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <MergerRoot> {
+  override var propval : EBReferenceArray <MergerRoot> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -2332,24 +2332,24 @@ final class TransientArrayOfSuperOf_MergerRoot <SUPER : EBManagedObject> : ReadO
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray  <SUPER>
+      var newModelArray : EBReferenceArray <SUPER>
       if let dataProvider = self.mDataProvider {
         switch dataProvider.selection {
         case .empty :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .empty
         case .single (let v) :
-          newModelArray = EBReferenceArray  (v)
+          newModelArray = EBReferenceArray (v)
           self.mTransientKind = .single
          case .multiple :
-          newModelArray = EBReferenceArray  ()
+          newModelArray = EBReferenceArray ()
           self.mTransientKind = .multiple
         }
       }else{
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
-      var newArray = EBReferenceArray  <MergerRoot> ()
+      var newArray = EBReferenceArray <MergerRoot> ()
       for superObject in newModelArray.values {
         if let object = superObject as? MergerRoot {
           newArray.append (object)
@@ -2375,7 +2375,7 @@ final class TransientArrayOfSuperOf_MergerRoot <SUPER : EBManagedObject> : ReadO
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <MergerRoot> {
+  override var propval : EBReferenceArray <MergerRoot> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -2392,7 +2392,7 @@ class ReadWriteArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   //····················································································································
 
-  func setProp (_ value :  EBReferenceArray  <MergerRoot>) { } // Abstract method
+  func setProp (_ value :  EBReferenceArray <MergerRoot>) { } // Abstract method
 
   //····················································································································
 
@@ -2421,18 +2421,18 @@ final class ProxyArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray  <MergerRoot>
+    let newModelArray : EBReferenceArray <MergerRoot>
     if let model = self.mModel {
       switch model.selection {
       case .empty :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       case .single (let v) :
-        newModelArray = EBReferenceArray  <MergerRoot> (v)
+        newModelArray = EBReferenceArray <MergerRoot> (v)
       case .multiple :
-        newModelArray = EBReferenceArray  ()
+        newModelArray = EBReferenceArray ()
       }
     }else{
-      newModelArray = EBReferenceArray  ()
+      newModelArray = EBReferenceArray ()
     }
     self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
@@ -2440,7 +2440,7 @@ final class ProxyArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot {
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : EBReferenceArray  <MergerRoot>) {
+  override func setProp (_ inArrayValue : EBReferenceArray <MergerRoot>) {
     self.mModel?.setProp (inArrayValue)
   }
 
@@ -2456,16 +2456,16 @@ final class ProxyArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot {
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <MergerRoot> {
+  override var propval : EBReferenceArray <MergerRoot> {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        return EBReferenceArray  ()
+        return EBReferenceArray ()
       case .single (let v) :
-        return EBReferenceArray  (v)
+        return EBReferenceArray (v)
       }
     }else{
-      return EBReferenceArray  ()
+      return EBReferenceArray ()
     }
   }
 
@@ -2532,7 +2532,7 @@ class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserve
   // Model will change
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray  <MergerRoot>) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <MergerRoot>) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
@@ -2583,11 +2583,11 @@ class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserve
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <MergerRoot>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <MergerRoot>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override final var propval : EBReferenceArray  <MergerRoot> { return self.mInternalArrayValue }
+  override final var propval : EBReferenceArray <MergerRoot> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -2672,11 +2672,11 @@ final class StandAloneArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot {
 
   //····················································································································
 
-  override func setProp (_ inValue : EBReferenceArray  <MergerRoot>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <MergerRoot>) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : EBReferenceArray  <MergerRoot> { return self.mInternalArrayValue }
+  override var propval : EBReferenceArray <MergerRoot> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -2722,7 +2722,7 @@ final class PreferencesArrayOf_MergerRoot : StoredArrayOf_MergerRoot {
     self.mPrefKey = prefKey
     super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray  <MergerRoot> ()
+      var objectArray = EBReferenceArray <MergerRoot> ()
       for dictionary in array {
         if let object = newInstanceOfEntityNamed (self.ebUndoManager, "MergerRoot") as? MergerRoot {
           object.setUpAtomicPropertiesWithDictionary (dictionary)

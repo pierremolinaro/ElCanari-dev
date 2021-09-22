@@ -287,7 +287,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mInstances : EBReferenceArray  <SymbolPinInstanceInDevice> {
+  final var mInstances : EBReferenceArray <SymbolPinInstanceInDevice> {
     get { return self.mInstances_property.propval }
     set { self.mInstances_property.setProp (newValue) }
   }
@@ -780,7 +780,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
     //--- To one relationships
     //--- To many relationships
       if let range = inDictionary ["mInstances"], range.length > 0 {
-        var relationshipArray = EBReferenceArray  <SymbolPinInstanceInDevice> ()
+        var relationshipArray = EBReferenceArray <SymbolPinInstanceInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
