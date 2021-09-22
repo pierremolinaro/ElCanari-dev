@@ -126,15 +126,17 @@ extension EBGraphicView {
   final fileprivate func dragSelection (_ proposedTranslation: CanariPoint, _ lastMouseDraggedLocation : CanariPoint) {
     var dx = proposedTranslation.x
     var dy = proposedTranslation.y
-    for object in self.viewController?.selectedGraphicObjectSet ?? [] {
-      let p = object.acceptedTranslation (xBy: dx, yBy: dy)
-      dx = p.x
-      dy = p.y
-    }
-    if (dx != 0) || (dy != 0) {
-      let userSet = ObjcObjectSet ()
-      for object in self.viewController?.selectedGraphicObjectSet ?? [] {
-        object.translate (xBy: dx, yBy: dy, userSet: userSet)
+    if let controller = self.viewController {
+      for object in controller.selectedGraphicObjectSet.values {
+        let p = object.acceptedTranslation (xBy: dx, yBy: dy)
+        dx = p.x
+        dy = p.y
+      }
+      if (dx != 0) || (dy != 0) {
+        let userSet = ObjcObjectSet ()
+        for object in controller.selectedGraphicObjectSet.values {
+          object.translate (xBy: dx, yBy: dy, userSet: userSet)
+        }
       }
     }
   }

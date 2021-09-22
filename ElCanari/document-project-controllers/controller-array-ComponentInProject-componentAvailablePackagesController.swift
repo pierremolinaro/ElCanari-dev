@@ -18,7 +18,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
   //····················································································································
 
-  var selectedSet : Set <DevicePackageInProject> {
+  var selectedSet : EBReferenceSet <DevicePackageInProject> {
     set (newValue) {
       self.mPrivateSelectedSet = newValue
     }
@@ -29,10 +29,10 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
   //····················································································································
 
-  private var mPrivateSelectedSet = Set <DevicePackageInProject> () {
+  private var mPrivateSelectedSet = EBReferenceSet <DevicePackageInProject> () {
     didSet {
       self.selectedArray_property.postEvent ()
-      self.mInternalSelectedArrayProperty.setProp (Array (self.mPrivateSelectedSet))
+      self.mInternalSelectedArrayProperty.setProp (Array (self.mPrivateSelectedSet.values))
     }
   }
 
@@ -81,7 +81,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
   final func unbind_model () {
     self.mModel?.detachClient (self)
-    self.selectedSet = Set ()
+    self.selectedSet = EBReferenceSet ()
     self.mModel = nil
     self.mUndoManager = nil
  }
@@ -93,7 +93,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
     let currentSelectedSet = self.selectedSet
     let objectArray = self.objectArray
     let newSelectedSet = currentSelectedSet.intersection (objectArray)
-    self.mInternalSelectedArrayProperty.setProp (Array (newSelectedSet))
+    self.mInternalSelectedArrayProperty.setProp (Array (newSelectedSet.values))
   }
 
    //····················································································································
@@ -133,7 +133,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   //····················································································································
 
   func setSelection (_ inObjects : [DevicePackageInProject]) {
-    self.selectedSet = Set (inObjects)
+    self.selectedSet = EBReferenceSet (inObjects)
   }
 
   //····················································································································
@@ -149,7 +149,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
     let modelObjects = self.objectArray
     let selectedObjects = self.selectedArray_property.propset
     let indexSet = NSMutableIndexSet ()
-    for object in selectedObjects {
+    for object in selectedObjects.values {
       if let index = modelObjects.firstIndex(of: object) {
         indexSet.add (index)
       }
@@ -168,7 +168,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-           self.selectedSet = Set ([inObject])
+           self.selectedSet = EBReferenceSet ([inObject])
         }
       }
     }
@@ -188,7 +188,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        self.selectedSet = Set ([newObject])
+        self.selectedSet = EBReferenceSet ([newObject])
         model.setProp (array)
       }
     }
@@ -211,7 +211,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
           sortedObjectDictionary [object] = index
         }
         var indexArrayOfSelectedObjects = [Int] ()
-        for object in self.selectedArray_property.propset {
+        for object in self.selectedArray_property.propset.values {
           let index = sortedObjectDictionary [object]
           if let idx = index {
             indexArrayOfSelectedObjects.append (idx)
@@ -240,7 +240,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
         }
       //--- Build selected objects index array
         var selectedObjectIndexArray = [Int] ()
-        for object in self.selectedArray_property.propset {
+        for object in self.selectedArray_property.propset.values {
           let index = objectDictionary [object]
           if let idx = index {
             selectedObjectIndexArray.append (idx)
@@ -254,7 +254,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
           newObjectArray.remove (at: index)
         }
       //----------------------------------------- Set new selection
-        var newSelectionSet = Set <DevicePackageInProject> ()
+        var newSelectionSet = EBReferenceSet <DevicePackageInProject> ()
         if let object = newSelectedObject {
           newSelectionSet.insert (object)
         }

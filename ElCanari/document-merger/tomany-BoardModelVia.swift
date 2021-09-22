@@ -12,7 +12,8 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <BoardModelVia>, addedSet inAddedSet : Set <BoardModelVia>) {
+  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardModelVia>,
+                                          addedSet inAddedSet : EBReferenceSet <BoardModelVia>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_y_fromElementsOfSet (inRemovedSet) // Stored property
@@ -62,9 +63,9 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   //····················································································································
 
-  final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set <BoardModelVia>) {
+  final func addEBObserversOf_y_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
     if !self.mObserversOf_y.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_y.apply { (_ observer : EBEvent) in
           managedObject.y_property.addEBObserver (observer)
         }
@@ -74,10 +75,10 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   //····················································································································
 
-  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set <BoardModelVia>) {
+  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
     self.mObserversOf_y.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.y_property.removeEBObserver (observer)
       }
     }
@@ -121,9 +122,9 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   //····················································································································
 
-  final func addEBObserversOf_padDiameter_toElementsOfSet (_ inSet : Set <BoardModelVia>) {
+  final func addEBObserversOf_padDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
     if !self.mObserversOf_padDiameter.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_padDiameter.apply { (_ observer : EBEvent) in
           managedObject.padDiameter_property.addEBObserver (observer)
         }
@@ -133,10 +134,10 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   //····················································································································
 
-  final func removeEBObserversOf_padDiameter_fromElementsOfSet (_ inSet : Set <BoardModelVia>) {
+  final func removeEBObserversOf_padDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
     self.mObserversOf_padDiameter.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.padDiameter_property.removeEBObserver (observer)
       }
     }
@@ -180,9 +181,9 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   //····················································································································
 
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set <BoardModelVia>) {
+  final func addEBObserversOf_x_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
     if !self.mObserversOf_x.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_x.apply { (_ observer : EBEvent) in
           managedObject.x_property.addEBObserver (observer)
         }
@@ -192,10 +193,10 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   //····················································································································
 
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set <BoardModelVia>) {
+  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
     self.mObserversOf_x.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.x_property.removeEBObserver (observer)
       }
     }
@@ -604,15 +605,16 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
   // Update observers
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : Set <BoardModelVia>, addedSet inAddedSet : Set <BoardModelVia>) {
-    for managedObject in inRemovedSet {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardModelVia>,
+                                 addedSet inAddedSet : EBReferenceSet <BoardModelVia>) {
+    for managedObject in inRemovedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
-    for managedObject in inAddedSet {
+    for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }

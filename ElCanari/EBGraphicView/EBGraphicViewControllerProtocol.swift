@@ -27,7 +27,7 @@ protocol EBGraphicViewControllerProtocol : AnyObject {
 
   var selectedArrayDidChange_property : EBAbstractProperty { get }
 
-  var selectedGraphicObjectSet : Set <EBGraphicManagedObject> { get }
+  var selectedGraphicObjectSet : EBReferenceSet <EBGraphicManagedObject> { get }
 
   var selectedIndexesSet : Set <Int> { get }
 

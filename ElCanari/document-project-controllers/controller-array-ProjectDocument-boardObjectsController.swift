@@ -18,15 +18,15 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
 
   //····················································································································
 
-  var selectedSet : Set <BoardObject> {
+  var selectedSet : EBReferenceSet <BoardObject> {
     set (newValue) {
     //--- Add observers to newly selected set
-      for object in newValue.subtracting (self.mPrivateSelectedSet) {
+      for object in newValue.subtracting (self.mPrivateSelectedSet).values {
         object.selectionDisplay_property.addEBObserver (self.mObjectSelectionObserver)
       }
     //--- Remove observers to deselected set
       let deselectedSet = self.mPrivateSelectedSet.subtracting (newValue)
-      for object in deselectedSet {
+      for object in deselectedSet.values {
         object.selectionDisplay_property.removeEBObserver (self.mObjectSelectionObserver)
       }
       if deselectedSet.count > 0 {
@@ -42,10 +42,10 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
 
   //····················································································································
 
-  private var mPrivateSelectedSet = Set <BoardObject> () {
+  private var mPrivateSelectedSet = EBReferenceSet <BoardObject> () {
     didSet {
       self.selectedArray_property.postEvent ()
-      self.mInternalSelectedArrayProperty.setProp (Array (self.mPrivateSelectedSet))
+      self.mInternalSelectedArrayProperty.setProp (Array (self.mPrivateSelectedSet.values))
     }
   }
 
@@ -163,7 +163,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
     self.stopObservingSelectionShape ()
     self.inspectorViewManagerStopsObservingSelection ()
     self.mModel?.detachClient (self)
-    self.selectedSet = Set ()
+    self.selectedSet = EBReferenceSet ()
     self.mModel = nil
     self.mUndoManager = nil
  }
@@ -175,7 +175,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
     let currentSelectedSet = self.selectedSet
     let objectArray = self.objectArray
     let newSelectedSet = currentSelectedSet.intersection (objectArray)
-    self.mInternalSelectedArrayProperty.setProp (Array (newSelectedSet))
+    self.mInternalSelectedArrayProperty.setProp (Array (newSelectedSet.values))
   }
 
    //····················································································································
@@ -215,15 +215,20 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
   //····················································································································
 
   func setSelection (_ inObjects : [BoardObject]) {
-    self.selectedSet = Set (inObjects)
+    self.selectedSet = EBReferenceSet (inObjects)
   }
 
   //····················································································································
   //  Graphic view interface
   //····················································································································
 
-  var selectedGraphicObjectSet : Set <EBGraphicManagedObject> {
-    return self.selectedArray_property.propset
+  var selectedGraphicObjectSet : EBReferenceSet <EBGraphicManagedObject> {
+  //  return self.selectedArray_property.propset // Faudrait faire mieux !
+    var result = EBReferenceSet <EBGraphicManagedObject> (minimumCapacity: self.selectedArray_property.propval.count)
+    for object in self.selectedArray_property.propval {
+      result.insert (object)
+    }
+    return result
   }
 
    //····················································································································
@@ -417,7 +422,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
     let modelObjects = self.objectArray
     let selectedObjects = self.selectedArray_property.propset
     let indexSet = NSMutableIndexSet ()
-    for object in selectedObjects {
+    for object in selectedObjects.values {
       if let index = modelObjects.firstIndex(of: object) {
         indexSet.add (index)
       }
@@ -436,7 +441,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-           self.selectedSet = Set ([inObject])
+           self.selectedSet = EBReferenceSet ([inObject])
         }
       }
     }
@@ -456,7 +461,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        self.selectedSet = Set ([newObject])
+        self.selectedSet = EBReferenceSet ([newObject])
         model.setProp (array)
       }
     }
@@ -479,7 +484,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
           sortedObjectDictionary [object] = index
         }
         var indexArrayOfSelectedObjects = [Int] ()
-        for object in self.selectedArray_property.propset {
+        for object in self.selectedArray_property.propset.values {
           let index = sortedObjectDictionary [object]
           if let idx = index {
             indexArrayOfSelectedObjects.append (idx)
@@ -508,7 +513,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
         }
       //--- Build selected objects index array
         var selectedObjectIndexArray = [Int] ()
-        for object in self.selectedArray_property.propset {
+        for object in self.selectedArray_property.propset.values {
           let index = objectDictionary [object]
           if let idx = index {
             selectedObjectIndexArray.append (idx)
@@ -522,7 +527,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
           newObjectArray.remove (at: index)
         }
       //----------------------------------------- Set new selection
-        var newSelectionSet = Set <BoardObject> ()
+        var newSelectionSet = EBReferenceSet <BoardObject> ()
         if let object = newSelectedObject {
           newSelectionSet.insert (object)
         }
@@ -540,7 +545,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
   private func sortedIndexArrayOfSelectedObjects () -> [Int] {
     var result = [Int] ()
     let objects = self.objectArray
-    for object in self.selectedArray_property.propset {
+    for object in self.selectedArray_property.propset.values {
       let idx = objects.firstIndex (of: object)!
       result.append (idx)
     }
@@ -555,7 +560,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
     if (inPasteboardType == nil) || (self.selectedArray_property.propset.count == 0) {
       return false
     }else{
-      for object in self.selectedArray_property.propset {
+      for object in self.selectedArray_property.propset.values {
         if !object.canCopyAndPaste () || !object.canBeDeleted () {
           return false
         }
@@ -668,7 +673,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
         var objects = self.objectArray
         objects += newObjects
         self.mModel?.setProp (objects)
-        self.selectedSet = Set (newObjects)
+        self.selectedSet = EBReferenceSet (newObjects)
       }else{
          let alert = NSAlert ()
          alert.messageText = errorMessage
@@ -686,7 +691,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
     if self.selectedArray_property.propset.count == 0 {
       return false
     }else{
-      for object in self.selectedArray_property.propset {
+      for object in self.selectedArray_property.propset.values {
         if !object.canBeDeleted () {
           return false
         }
@@ -705,7 +710,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
     if self.canDelete (), let model = self.mModel {
     //--- Remove selected objects
       let objectsToRemove = self.selectedArray_property.propset
-      for object in objectsToRemove {
+      for object in objectsToRemove.values {
         object.operationBeforeRemoving ()
         var objects = model.propval
         if let idx = objects.firstIndex (of: object) {
@@ -724,7 +729,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
 
   func selectAllObjects () {
     let objects = self.objectArray
-    self.selectedSet = Set (objects)
+    self.selectedSet = EBReferenceSet (objects)
   }
 
   //····················································································································
@@ -874,7 +879,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
   //····················································································································
 
   func snapToGrid (_ inGrid : Int) {
-    for object in self.selectedArray_property.propset {
+    for object in self.selectedArray_property.propset.values {
       object.snapToGrid (inGrid)
     }
   }
@@ -882,7 +887,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
   //····················································································································
 
   func canSnapToGrid (_ inGrid : Int) -> Bool {
-    for object in self.selectedArray_property.propset {
+    for object in self.selectedArray_property.propset.values {
       if object.canSnapToGrid (inGrid) {
         return true
       }
@@ -901,7 +906,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
   //····················································································································
 
   func flipHorizontally () {
-    for object in self.selectedArray_property.propset {
+    for object in self.selectedArray_property.propset.values {
       object.flipHorizontally ()
     }
   }
@@ -909,7 +914,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
   //····················································································································
 
   var canFlipHorizontally : Bool {
-    for object in self.selectedArray_property.propset {
+    for object in self.selectedArray_property.propset.values {
       if !object.canFlipHorizontally () {
         return false
       }
@@ -927,7 +932,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
   //····················································································································
 
   func flipVertically () {
-    for object in self.selectedArray_property.propset {
+    for object in self.selectedArray_property.propset.values {
       object.flipVertically ()
     }
   }
@@ -935,7 +940,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
   //····················································································································
 
   var canFlipVertically : Bool {
-    for object in self.selectedArray_property.propset {
+    for object in self.selectedArray_property.propset.values {
       if !object.canFlipVertically () {
         return false
       }
@@ -1028,7 +1033,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
   //····················································································································
 
   func clearSelection () {
-    self.selectedSet = []
+    self.selectedSet = EBReferenceSet ()
   }
 
   //····················································································································
@@ -1040,7 +1045,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
       let newSelectedObject = objects [index]
       selectedObjects.append (newSelectedObject)
     }
-    self.selectedSet = Set (selectedObjects)
+    self.selectedSet = EBReferenceSet (selectedObjects)
   }
 
   //····················································································································

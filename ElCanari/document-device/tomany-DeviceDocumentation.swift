@@ -12,7 +12,8 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <DeviceDocumentation>, addedSet inAddedSet : Set <DeviceDocumentation>) {
+  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <DeviceDocumentation>,
+                                          addedSet inAddedSet : EBReferenceSet <DeviceDocumentation>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mFileName_fromElementsOfSet (inRemovedSet) // Stored property
@@ -62,9 +63,9 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func addEBObserversOf_mFileName_toElementsOfSet (_ inSet : Set <DeviceDocumentation>) {
+  final func addEBObserversOf_mFileName_toElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
     if !self.mObserversOf_mFileName.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mFileName.apply { (_ observer : EBEvent) in
           managedObject.mFileName_property.addEBObserver (observer)
         }
@@ -74,10 +75,10 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func removeEBObserversOf_mFileName_fromElementsOfSet (_ inSet : Set <DeviceDocumentation>) {
+  final func removeEBObserversOf_mFileName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
     self.mObserversOf_mFileName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mFileName_property.removeEBObserver (observer)
       }
     }
@@ -121,9 +122,9 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func addEBObserversOf_mFileData_toElementsOfSet (_ inSet : Set <DeviceDocumentation>) {
+  final func addEBObserversOf_mFileData_toElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
     if !self.mObserversOf_mFileData.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
           managedObject.mFileData_property.addEBObserver (observer)
         }
@@ -133,10 +134,10 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : Set <DeviceDocumentation>) {
+  final func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
     self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mFileData_property.removeEBObserver (observer)
       }
     }
@@ -180,8 +181,8 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func addEBObserversOf_fileSize_toElementsOfSet (_ inSet : Set <DeviceDocumentation>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_fileSize_toElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
+    for managedObject in inSet.values {
       self.mObserversOf_fileSize.apply { (_ observer : EBEvent) in
         managedObject.fileSize_property.addEBObserver (observer)
       }
@@ -190,8 +191,8 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func removeEBObserversOf_fileSize_fromElementsOfSet (_ inSet : Set <DeviceDocumentation>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_fileSize_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
+    for managedObject in inSet.values {
       self.mObserversOf_fileSize.apply { (_ observer : EBEvent) in
         managedObject.fileSize_property.removeEBObserver (observer)
       }
@@ -601,15 +602,16 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
   // Update observers
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : Set <DeviceDocumentation>, addedSet inAddedSet : Set <DeviceDocumentation>) {
-    for managedObject in inRemovedSet {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <DeviceDocumentation>,
+                                 addedSet inAddedSet : EBReferenceSet <DeviceDocumentation>) {
+    for managedObject in inRemovedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
-    for managedObject in inAddedSet {
+    for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }

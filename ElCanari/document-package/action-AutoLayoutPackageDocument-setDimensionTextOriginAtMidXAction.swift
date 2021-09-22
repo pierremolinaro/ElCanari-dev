@@ -13,7 +13,7 @@ import Cocoa
 extension AutoLayoutPackageDocument {
   @objc func setDimensionTextOriginAtMidXAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    for object in self.mPackageObjectsController.selectedGraphicObjectSet {
+    for object in self.mPackageObjectsController.selectedGraphicObjectSet.values {
       if let dim = object as? PackageDimension {
         dim.xDimension = 0
       }

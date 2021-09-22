@@ -12,7 +12,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <BoardConnector>, addedSet inAddedSet : Set <BoardConnector>) {
+  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardConnector>,
+                                          addedSet inAddedSet : EBReferenceSet <BoardConnector>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mComponentPadName_fromElementsOfSet (inRemovedSet) // Stored property
@@ -114,9 +115,9 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_mComponentPadName_toElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func addEBObserversOf_mComponentPadName_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     if !self.mObserversOf_mComponentPadName.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mComponentPadName.apply { (_ observer : EBEvent) in
           managedObject.mComponentPadName_property.addEBObserver (observer)
         }
@@ -126,10 +127,10 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_mComponentPadName_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func removeEBObserversOf_mComponentPadName_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mComponentPadName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mComponentPadName_property.removeEBObserver (observer)
       }
     }
@@ -173,9 +174,9 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_mPadIndex_toElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func addEBObserversOf_mPadIndex_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     if !self.mObserversOf_mPadIndex.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mPadIndex.apply { (_ observer : EBEvent) in
           managedObject.mPadIndex_property.addEBObserver (observer)
         }
@@ -185,10 +186,10 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_mPadIndex_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func removeEBObserversOf_mPadIndex_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mPadIndex.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mPadIndex_property.removeEBObserver (observer)
       }
     }
@@ -232,9 +233,9 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     if !self.mObserversOf_mX.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mX.apply { (_ observer : EBEvent) in
           managedObject.mX_property.addEBObserver (observer)
         }
@@ -244,10 +245,10 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mX_property.removeEBObserver (observer)
       }
     }
@@ -291,9 +292,9 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     if !self.mObserversOf_mY.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mY.apply { (_ observer : EBEvent) in
           managedObject.mY_property.addEBObserver (observer)
         }
@@ -303,10 +304,10 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mY_property.removeEBObserver (observer)
       }
     }
@@ -350,9 +351,9 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_mDefaultHoleDiameterUnit_toElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func addEBObserversOf_mDefaultHoleDiameterUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     if !self.mObserversOf_mDefaultHoleDiameterUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mDefaultHoleDiameterUnit.apply { (_ observer : EBEvent) in
           managedObject.mDefaultHoleDiameterUnit_property.addEBObserver (observer)
         }
@@ -362,10 +363,10 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_mDefaultHoleDiameterUnit_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func removeEBObserversOf_mDefaultHoleDiameterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mDefaultHoleDiameterUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mDefaultHoleDiameterUnit_property.removeEBObserver (observer)
       }
     }
@@ -409,9 +410,9 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_mCustomHoleDiameter_toElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func addEBObserversOf_mCustomHoleDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     if !self.mObserversOf_mCustomHoleDiameter.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mCustomHoleDiameter.apply { (_ observer : EBEvent) in
           managedObject.mCustomHoleDiameter_property.addEBObserver (observer)
         }
@@ -421,10 +422,10 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_mCustomHoleDiameter_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func removeEBObserversOf_mCustomHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mCustomHoleDiameter.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mCustomHoleDiameter_property.removeEBObserver (observer)
       }
     }
@@ -468,9 +469,9 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_mCustomHoleDiameterUnit_toElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func addEBObserversOf_mCustomHoleDiameterUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     if !self.mObserversOf_mCustomHoleDiameterUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mCustomHoleDiameterUnit.apply { (_ observer : EBEvent) in
           managedObject.mCustomHoleDiameterUnit_property.addEBObserver (observer)
         }
@@ -480,10 +481,10 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_mCustomHoleDiameterUnit_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func removeEBObserversOf_mCustomHoleDiameterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mCustomHoleDiameterUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mCustomHoleDiameterUnit_property.removeEBObserver (observer)
       }
     }
@@ -527,9 +528,9 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_mUsesCustomHoleDiameter_toElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func addEBObserversOf_mUsesCustomHoleDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     if !self.mObserversOf_mUsesCustomHoleDiameter.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mUsesCustomHoleDiameter.apply { (_ observer : EBEvent) in
           managedObject.mUsesCustomHoleDiameter_property.addEBObserver (observer)
         }
@@ -539,10 +540,10 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_mUsesCustomHoleDiameter_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func removeEBObserversOf_mUsesCustomHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mUsesCustomHoleDiameter.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mUsesCustomHoleDiameter_property.removeEBObserver (observer)
       }
     }
@@ -586,9 +587,9 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_mDefaultPadDiameterUnit_toElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func addEBObserversOf_mDefaultPadDiameterUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     if !self.mObserversOf_mDefaultPadDiameterUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mDefaultPadDiameterUnit.apply { (_ observer : EBEvent) in
           managedObject.mDefaultPadDiameterUnit_property.addEBObserver (observer)
         }
@@ -598,10 +599,10 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_mDefaultPadDiameterUnit_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func removeEBObserversOf_mDefaultPadDiameterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mDefaultPadDiameterUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mDefaultPadDiameterUnit_property.removeEBObserver (observer)
       }
     }
@@ -645,9 +646,9 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_mCustomPadDiameter_toElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func addEBObserversOf_mCustomPadDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     if !self.mObserversOf_mCustomPadDiameter.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mCustomPadDiameter.apply { (_ observer : EBEvent) in
           managedObject.mCustomPadDiameter_property.addEBObserver (observer)
         }
@@ -657,10 +658,10 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_mCustomPadDiameter_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func removeEBObserversOf_mCustomPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mCustomPadDiameter.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mCustomPadDiameter_property.removeEBObserver (observer)
       }
     }
@@ -704,9 +705,9 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_mCustomPadDiameterUnit_toElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func addEBObserversOf_mCustomPadDiameterUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     if !self.mObserversOf_mCustomPadDiameterUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mCustomPadDiameterUnit.apply { (_ observer : EBEvent) in
           managedObject.mCustomPadDiameterUnit_property.addEBObserver (observer)
         }
@@ -716,10 +717,10 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_mCustomPadDiameterUnit_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func removeEBObserversOf_mCustomPadDiameterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mCustomPadDiameterUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mCustomPadDiameterUnit_property.removeEBObserver (observer)
       }
     }
@@ -763,9 +764,9 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_mUsesCustomPadDiameter_toElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func addEBObserversOf_mUsesCustomPadDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     if !self.mObserversOf_mUsesCustomPadDiameter.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mUsesCustomPadDiameter.apply { (_ observer : EBEvent) in
           managedObject.mUsesCustomPadDiameter_property.addEBObserver (observer)
         }
@@ -775,10 +776,10 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_mUsesCustomPadDiameter_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
+  final func removeEBObserversOf_mUsesCustomPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mUsesCustomPadDiameter.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mUsesCustomPadDiameter_property.removeEBObserver (observer)
       }
     }
@@ -822,8 +823,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_isConnectedToSomePad_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_isConnectedToSomePad_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_isConnectedToSomePad.apply { (_ observer : EBEvent) in
         managedObject.isConnectedToSomePad_property.addEBObserver (observer)
       }
@@ -832,8 +833,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_isConnectedToSomePad_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_isConnectedToSomePad_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_isConnectedToSomePad.apply { (_ observer : EBEvent) in
         managedObject.isConnectedToSomePad_property.removeEBObserver (observer)
       }
@@ -878,8 +879,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_location_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_location_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_location.apply { (_ observer : EBEvent) in
         managedObject.location_property.addEBObserver (observer)
       }
@@ -888,8 +889,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_location_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_location_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_location.apply { (_ observer : EBEvent) in
         managedObject.location_property.removeEBObserver (observer)
       }
@@ -934,8 +935,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_netNameFromComponentPad_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_netNameFromComponentPad_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_netNameFromComponentPad.apply { (_ observer : EBEvent) in
         managedObject.netNameFromComponentPad_property.addEBObserver (observer)
       }
@@ -944,8 +945,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_netNameFromComponentPad_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_netNameFromComponentPad_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_netNameFromComponentPad.apply { (_ observer : EBEvent) in
         managedObject.netNameFromComponentPad_property.removeEBObserver (observer)
       }
@@ -990,8 +991,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_netNameAndPadLocation_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_netNameAndPadLocation_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBEvent) in
         managedObject.netNameAndPadLocation_property.addEBObserver (observer)
       }
@@ -1000,8 +1001,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBEvent) in
         managedObject.netNameAndPadLocation_property.removeEBObserver (observer)
       }
@@ -1046,8 +1047,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_side_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_side_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_side.apply { (_ observer : EBEvent) in
         managedObject.side_property.addEBObserver (observer)
       }
@@ -1056,8 +1057,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_side_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_side_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_side.apply { (_ observer : EBEvent) in
         managedObject.side_property.removeEBObserver (observer)
       }
@@ -1102,8 +1103,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_isVia_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_isVia_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_isVia.apply { (_ observer : EBEvent) in
         managedObject.isVia_property.addEBObserver (observer)
       }
@@ -1112,8 +1113,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_isVia_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_isVia_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_isVia.apply { (_ observer : EBEvent) in
         managedObject.isVia_property.removeEBObserver (observer)
       }
@@ -1158,8 +1159,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
       }
@@ -1168,8 +1169,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
       }
@@ -1214,8 +1215,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_viaDefaultHoleDiameter_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_viaDefaultHoleDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_viaDefaultHoleDiameter.apply { (_ observer : EBEvent) in
         managedObject.viaDefaultHoleDiameter_property.addEBObserver (observer)
       }
@@ -1224,8 +1225,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_viaDefaultHoleDiameter_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_viaDefaultHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_viaDefaultHoleDiameter.apply { (_ observer : EBEvent) in
         managedObject.viaDefaultHoleDiameter_property.removeEBObserver (observer)
       }
@@ -1270,8 +1271,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_viaDefaultPadDiameter_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_viaDefaultPadDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_viaDefaultPadDiameter.apply { (_ observer : EBEvent) in
         managedObject.viaDefaultPadDiameter_property.addEBObserver (observer)
       }
@@ -1280,8 +1281,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_viaDefaultPadDiameter_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_viaDefaultPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_viaDefaultPadDiameter.apply { (_ observer : EBEvent) in
         managedObject.viaDefaultPadDiameter_property.removeEBObserver (observer)
       }
@@ -1326,8 +1327,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_netNameFromTracks_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_netNameFromTracks_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_netNameFromTracks.apply { (_ observer : EBEvent) in
         managedObject.netNameFromTracks_property.addEBObserver (observer)
       }
@@ -1336,8 +1337,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_netNameFromTracks_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_netNameFromTracks_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_netNameFromTracks.apply { (_ observer : EBEvent) in
         managedObject.netNameFromTracks_property.removeEBObserver (observer)
       }
@@ -1382,8 +1383,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
         managedObject.netClassName_property.addEBObserver (observer)
       }
@@ -1392,8 +1393,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
         managedObject.netClassName_property.removeEBObserver (observer)
       }
@@ -1438,8 +1439,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_connectedToComponent_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_connectedToComponent_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_connectedToComponent.apply { (_ observer : EBEvent) in
         managedObject.connectedToComponent_property.addEBObserver (observer)
       }
@@ -1448,8 +1449,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_connectedToComponent_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_connectedToComponent_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_connectedToComponent.apply { (_ observer : EBEvent) in
         managedObject.connectedToComponent_property.removeEBObserver (observer)
       }
@@ -1494,8 +1495,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_actualHoleDiameter_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_actualHoleDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_actualHoleDiameter.apply { (_ observer : EBEvent) in
         managedObject.actualHoleDiameter_property.addEBObserver (observer)
       }
@@ -1504,8 +1505,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_actualHoleDiameter_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_actualHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_actualHoleDiameter.apply { (_ observer : EBEvent) in
         managedObject.actualHoleDiameter_property.removeEBObserver (observer)
       }
@@ -1550,8 +1551,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_actualPadDiameter_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_actualPadDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_actualPadDiameter.apply { (_ observer : EBEvent) in
         managedObject.actualPadDiameter_property.addEBObserver (observer)
       }
@@ -1560,8 +1561,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_actualPadDiameter_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_actualPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_actualPadDiameter.apply { (_ observer : EBEvent) in
         managedObject.actualPadDiameter_property.removeEBObserver (observer)
       }
@@ -1606,8 +1607,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
@@ -1616,8 +1617,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
@@ -1662,8 +1663,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
@@ -1672,8 +1673,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
@@ -1718,8 +1719,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
         managedObject.signatureForERCChecking_property.addEBObserver (observer)
       }
@@ -1728,8 +1729,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set <BoardConnector>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inSet.values {
       self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
         managedObject.signatureForERCChecking_property.removeEBObserver (observer)
       }
@@ -2139,15 +2140,16 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
   // Update observers
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : Set <BoardConnector>, addedSet inAddedSet : Set <BoardConnector>) {
-    for managedObject in inRemovedSet {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardConnector>,
+                                 addedSet inAddedSet : EBReferenceSet <BoardConnector>) {
+    for managedObject in inRemovedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
-    for managedObject in inAddedSet {
+    for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }

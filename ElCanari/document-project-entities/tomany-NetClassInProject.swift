@@ -12,7 +12,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <NetClassInProject>, addedSet inAddedSet : Set <NetClassInProject>) {
+  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <NetClassInProject>,
+                                          addedSet inAddedSet : EBReferenceSet <NetClassInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mNetClassName_fromElementsOfSet (inRemovedSet) // Stored property
@@ -110,9 +111,9 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_mNetClassName_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func addEBObserversOf_mNetClassName_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     if !self.mObserversOf_mNetClassName.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mNetClassName.apply { (_ observer : EBEvent) in
           managedObject.mNetClassName_property.addEBObserver (observer)
         }
@@ -122,10 +123,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_mNetClassName_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func removeEBObserversOf_mNetClassName_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     self.mObserversOf_mNetClassName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mNetClassName_property.removeEBObserver (observer)
       }
     }
@@ -169,9 +170,9 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_mNetClassColor_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func addEBObserversOf_mNetClassColor_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     if !self.mObserversOf_mNetClassColor.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mNetClassColor.apply { (_ observer : EBEvent) in
           managedObject.mNetClassColor_property.addEBObserver (observer)
         }
@@ -181,10 +182,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_mNetClassColor_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func removeEBObserversOf_mNetClassColor_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     self.mObserversOf_mNetClassColor.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mNetClassColor_property.removeEBObserver (observer)
       }
     }
@@ -228,9 +229,9 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_mTrackWidth_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func addEBObserversOf_mTrackWidth_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     if !self.mObserversOf_mTrackWidth.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mTrackWidth.apply { (_ observer : EBEvent) in
           managedObject.mTrackWidth_property.addEBObserver (observer)
         }
@@ -240,10 +241,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_mTrackWidth_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func removeEBObserversOf_mTrackWidth_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     self.mObserversOf_mTrackWidth.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mTrackWidth_property.removeEBObserver (observer)
       }
     }
@@ -287,9 +288,9 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_mTrackWidthUnit_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func addEBObserversOf_mTrackWidthUnit_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     if !self.mObserversOf_mTrackWidthUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mTrackWidthUnit.apply { (_ observer : EBEvent) in
           managedObject.mTrackWidthUnit_property.addEBObserver (observer)
         }
@@ -299,10 +300,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_mTrackWidthUnit_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func removeEBObserversOf_mTrackWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     self.mObserversOf_mTrackWidthUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mTrackWidthUnit_property.removeEBObserver (observer)
       }
     }
@@ -346,9 +347,9 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_mViaHoleDiameter_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func addEBObserversOf_mViaHoleDiameter_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     if !self.mObserversOf_mViaHoleDiameter.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mViaHoleDiameter.apply { (_ observer : EBEvent) in
           managedObject.mViaHoleDiameter_property.addEBObserver (observer)
         }
@@ -358,10 +359,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_mViaHoleDiameter_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func removeEBObserversOf_mViaHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     self.mObserversOf_mViaHoleDiameter.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mViaHoleDiameter_property.removeEBObserver (observer)
       }
     }
@@ -405,9 +406,9 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_mViaHoleDiameterUnit_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func addEBObserversOf_mViaHoleDiameterUnit_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     if !self.mObserversOf_mViaHoleDiameterUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mViaHoleDiameterUnit.apply { (_ observer : EBEvent) in
           managedObject.mViaHoleDiameterUnit_property.addEBObserver (observer)
         }
@@ -417,10 +418,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_mViaHoleDiameterUnit_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func removeEBObserversOf_mViaHoleDiameterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     self.mObserversOf_mViaHoleDiameterUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mViaHoleDiameterUnit_property.removeEBObserver (observer)
       }
     }
@@ -464,9 +465,9 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_mViaPadDiameter_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func addEBObserversOf_mViaPadDiameter_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     if !self.mObserversOf_mViaPadDiameter.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mViaPadDiameter.apply { (_ observer : EBEvent) in
           managedObject.mViaPadDiameter_property.addEBObserver (observer)
         }
@@ -476,10 +477,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_mViaPadDiameter_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func removeEBObserversOf_mViaPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     self.mObserversOf_mViaPadDiameter.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mViaPadDiameter_property.removeEBObserver (observer)
       }
     }
@@ -523,9 +524,9 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_mViaPadDiameterUnit_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func addEBObserversOf_mViaPadDiameterUnit_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     if !self.mObserversOf_mViaPadDiameterUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mViaPadDiameterUnit.apply { (_ observer : EBEvent) in
           managedObject.mViaPadDiameterUnit_property.addEBObserver (observer)
         }
@@ -535,10 +536,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_mViaPadDiameterUnit_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func removeEBObserversOf_mViaPadDiameterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     self.mObserversOf_mViaPadDiameterUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mViaPadDiameterUnit_property.removeEBObserver (observer)
       }
     }
@@ -582,9 +583,9 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_mAllowTracksOnFrontSide_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func addEBObserversOf_mAllowTracksOnFrontSide_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     if !self.mObserversOf_mAllowTracksOnFrontSide.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mAllowTracksOnFrontSide.apply { (_ observer : EBEvent) in
           managedObject.mAllowTracksOnFrontSide_property.addEBObserver (observer)
         }
@@ -594,10 +595,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_mAllowTracksOnFrontSide_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func removeEBObserversOf_mAllowTracksOnFrontSide_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     self.mObserversOf_mAllowTracksOnFrontSide.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mAllowTracksOnFrontSide_property.removeEBObserver (observer)
       }
     }
@@ -641,9 +642,9 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_mAllowTracksOnBackSide_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func addEBObserversOf_mAllowTracksOnBackSide_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     if !self.mObserversOf_mAllowTracksOnBackSide.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mAllowTracksOnBackSide.apply { (_ observer : EBEvent) in
           managedObject.mAllowTracksOnBackSide_property.addEBObserver (observer)
         }
@@ -653,10 +654,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_mAllowTracksOnBackSide_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func removeEBObserversOf_mAllowTracksOnBackSide_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     self.mObserversOf_mAllowTracksOnBackSide.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mAllowTracksOnBackSide_property.removeEBObserver (observer)
       }
     }
@@ -700,9 +701,9 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_mAllowTracksOnInner1Layer_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func addEBObserversOf_mAllowTracksOnInner1Layer_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     if !self.mObserversOf_mAllowTracksOnInner1Layer.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mAllowTracksOnInner1Layer.apply { (_ observer : EBEvent) in
           managedObject.mAllowTracksOnInner1Layer_property.addEBObserver (observer)
         }
@@ -712,10 +713,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_mAllowTracksOnInner1Layer_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func removeEBObserversOf_mAllowTracksOnInner1Layer_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     self.mObserversOf_mAllowTracksOnInner1Layer.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mAllowTracksOnInner1Layer_property.removeEBObserver (observer)
       }
     }
@@ -759,9 +760,9 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_mAllowTracksOnInner2Layer_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func addEBObserversOf_mAllowTracksOnInner2Layer_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     if !self.mObserversOf_mAllowTracksOnInner2Layer.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mAllowTracksOnInner2Layer.apply { (_ observer : EBEvent) in
           managedObject.mAllowTracksOnInner2Layer_property.addEBObserver (observer)
         }
@@ -771,10 +772,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_mAllowTracksOnInner2Layer_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func removeEBObserversOf_mAllowTracksOnInner2Layer_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     self.mObserversOf_mAllowTracksOnInner2Layer.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mAllowTracksOnInner2Layer_property.removeEBObserver (observer)
       }
     }
@@ -818,9 +819,9 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_mAllowTracksOnInner3Layer_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func addEBObserversOf_mAllowTracksOnInner3Layer_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     if !self.mObserversOf_mAllowTracksOnInner3Layer.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mAllowTracksOnInner3Layer.apply { (_ observer : EBEvent) in
           managedObject.mAllowTracksOnInner3Layer_property.addEBObserver (observer)
         }
@@ -830,10 +831,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_mAllowTracksOnInner3Layer_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func removeEBObserversOf_mAllowTracksOnInner3Layer_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     self.mObserversOf_mAllowTracksOnInner3Layer.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mAllowTracksOnInner3Layer_property.removeEBObserver (observer)
       }
     }
@@ -877,9 +878,9 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_mAllowTracksOnInner4Layer_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func addEBObserversOf_mAllowTracksOnInner4Layer_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     if !self.mObserversOf_mAllowTracksOnInner4Layer.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mAllowTracksOnInner4Layer.apply { (_ observer : EBEvent) in
           managedObject.mAllowTracksOnInner4Layer_property.addEBObserver (observer)
         }
@@ -889,10 +890,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_mAllowTracksOnInner4Layer_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+  final func removeEBObserversOf_mAllowTracksOnInner4Layer_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
     self.mObserversOf_mAllowTracksOnInner4Layer.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mAllowTracksOnInner4Layer_property.removeEBObserver (observer)
       }
     }
@@ -936,8 +937,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_trackWidthString_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_trackWidthString_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_trackWidthString.apply { (_ observer : EBEvent) in
         managedObject.trackWidthString_property.addEBObserver (observer)
       }
@@ -946,8 +947,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_trackWidthString_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_trackWidthString_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_trackWidthString.apply { (_ observer : EBEvent) in
         managedObject.trackWidthString_property.removeEBObserver (observer)
       }
@@ -992,8 +993,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_viaHoleDiameter_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_viaHoleDiameter_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_viaHoleDiameter.apply { (_ observer : EBEvent) in
         managedObject.viaHoleDiameter_property.addEBObserver (observer)
       }
@@ -1002,8 +1003,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_viaHoleDiameter_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_viaHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_viaHoleDiameter.apply { (_ observer : EBEvent) in
         managedObject.viaHoleDiameter_property.removeEBObserver (observer)
       }
@@ -1048,8 +1049,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_viaPadDiameter_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_viaPadDiameter_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_viaPadDiameter.apply { (_ observer : EBEvent) in
         managedObject.viaPadDiameter_property.addEBObserver (observer)
       }
@@ -1058,8 +1059,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_viaPadDiameter_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_viaPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_viaPadDiameter.apply { (_ observer : EBEvent) in
         managedObject.viaPadDiameter_property.removeEBObserver (observer)
       }
@@ -1104,8 +1105,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_allowTracksOnFrontSideString_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_allowTracksOnFrontSideString_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_allowTracksOnFrontSideString.apply { (_ observer : EBEvent) in
         managedObject.allowTracksOnFrontSideString_property.addEBObserver (observer)
       }
@@ -1114,8 +1115,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_allowTracksOnFrontSideString_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_allowTracksOnFrontSideString_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_allowTracksOnFrontSideString.apply { (_ observer : EBEvent) in
         managedObject.allowTracksOnFrontSideString_property.removeEBObserver (observer)
       }
@@ -1160,8 +1161,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_allowTracksOnBackSideString_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_allowTracksOnBackSideString_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_allowTracksOnBackSideString.apply { (_ observer : EBEvent) in
         managedObject.allowTracksOnBackSideString_property.addEBObserver (observer)
       }
@@ -1170,8 +1171,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_allowTracksOnBackSideString_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_allowTracksOnBackSideString_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_allowTracksOnBackSideString.apply { (_ observer : EBEvent) in
         managedObject.allowTracksOnBackSideString_property.removeEBObserver (observer)
       }
@@ -1216,8 +1217,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_allowTracksOnInner1LayerString_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_allowTracksOnInner1LayerString_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_allowTracksOnInner1LayerString.apply { (_ observer : EBEvent) in
         managedObject.allowTracksOnInner1LayerString_property.addEBObserver (observer)
       }
@@ -1226,8 +1227,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_allowTracksOnInner1LayerString_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_allowTracksOnInner1LayerString_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_allowTracksOnInner1LayerString.apply { (_ observer : EBEvent) in
         managedObject.allowTracksOnInner1LayerString_property.removeEBObserver (observer)
       }
@@ -1272,8 +1273,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_allowTracksOnInner2LayerString_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_allowTracksOnInner2LayerString_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_allowTracksOnInner2LayerString.apply { (_ observer : EBEvent) in
         managedObject.allowTracksOnInner2LayerString_property.addEBObserver (observer)
       }
@@ -1282,8 +1283,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_allowTracksOnInner2LayerString_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_allowTracksOnInner2LayerString_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_allowTracksOnInner2LayerString.apply { (_ observer : EBEvent) in
         managedObject.allowTracksOnInner2LayerString_property.removeEBObserver (observer)
       }
@@ -1328,8 +1329,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_allowTracksOnInner3LayerString_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_allowTracksOnInner3LayerString_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_allowTracksOnInner3LayerString.apply { (_ observer : EBEvent) in
         managedObject.allowTracksOnInner3LayerString_property.addEBObserver (observer)
       }
@@ -1338,8 +1339,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_allowTracksOnInner3LayerString_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_allowTracksOnInner3LayerString_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_allowTracksOnInner3LayerString.apply { (_ observer : EBEvent) in
         managedObject.allowTracksOnInner3LayerString_property.removeEBObserver (observer)
       }
@@ -1384,8 +1385,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_allowTracksOnInner4LayerString_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_allowTracksOnInner4LayerString_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_allowTracksOnInner4LayerString.apply { (_ observer : EBEvent) in
         managedObject.allowTracksOnInner4LayerString_property.addEBObserver (observer)
       }
@@ -1394,8 +1395,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_allowTracksOnInner4LayerString_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_allowTracksOnInner4LayerString_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_allowTracksOnInner4LayerString.apply { (_ observer : EBEvent) in
         managedObject.allowTracksOnInner4LayerString_property.removeEBObserver (observer)
       }
@@ -1440,8 +1441,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_canRemove_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_canRemove_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
         managedObject.canRemove_property.addEBObserver (observer)
       }
@@ -1450,8 +1451,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_canRemove_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_canRemove_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
         managedObject.canRemove_property.removeEBObserver (observer)
       }
@@ -1496,8 +1497,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_netUsage_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_netUsage_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_netUsage.apply { (_ observer : EBEvent) in
         managedObject.netUsage_property.addEBObserver (observer)
       }
@@ -1506,8 +1507,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_netUsage_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_netUsage_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_netUsage.apply { (_ observer : EBEvent) in
         managedObject.netUsage_property.removeEBObserver (observer)
       }
@@ -1552,8 +1553,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_netsDescription_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_netsDescription_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
         managedObject.netsDescription_property.addEBObserver (observer)
       }
@@ -1562,8 +1563,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_netsDescription_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_netsDescription_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
         managedObject.netsDescription_property.removeEBObserver (observer)
       }
@@ -1608,8 +1609,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserversOf_netWarningCount_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_netWarningCount_toElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_netWarningCount.apply { (_ observer : EBEvent) in
         managedObject.netWarningCount_property.addEBObserver (observer)
       }
@@ -1618,8 +1619,8 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserversOf_netWarningCount_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_netWarningCount_fromElementsOfSet (_ inSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_netWarningCount.apply { (_ observer : EBEvent) in
         managedObject.netWarningCount_property.removeEBObserver (observer)
       }
@@ -2029,15 +2030,16 @@ class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSi
   // Update observers
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : Set <NetClassInProject>, addedSet inAddedSet : Set <NetClassInProject>) {
-    for managedObject in inRemovedSet {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <NetClassInProject>,
+                                 addedSet inAddedSet : EBReferenceSet <NetClassInProject>) {
+    for managedObject in inRemovedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
-    for managedObject in inAddedSet {
+    for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }

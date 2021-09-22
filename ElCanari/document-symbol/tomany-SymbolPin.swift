@@ -12,7 +12,8 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <SymbolPin>, addedSet inAddedSet : Set <SymbolPin>) {
+  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolPin>,
+                                          addedSet inAddedSet : EBReferenceSet <SymbolPin>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_yPin_fromElementsOfSet (inRemovedSet) // Stored property
@@ -86,9 +87,9 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_yPin_toElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func addEBObserversOf_yPin_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_yPin.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_yPin.apply { (_ observer : EBEvent) in
           managedObject.yPin_property.addEBObserver (observer)
         }
@@ -98,10 +99,10 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_yPin_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func removeEBObserversOf_yPin_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_yPin.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.yPin_property.removeEBObserver (observer)
       }
     }
@@ -145,9 +146,9 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_xName_toElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func addEBObserversOf_xName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_xName.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_xName.apply { (_ observer : EBEvent) in
           managedObject.xName_property.addEBObserver (observer)
         }
@@ -157,10 +158,10 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_xName_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func removeEBObserversOf_xName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_xName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.xName_property.removeEBObserver (observer)
       }
     }
@@ -204,9 +205,9 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_yName_toElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func addEBObserversOf_yName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_yName.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_yName.apply { (_ observer : EBEvent) in
           managedObject.yName_property.addEBObserver (observer)
         }
@@ -216,10 +217,10 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_yName_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func removeEBObserversOf_yName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_yName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.yName_property.removeEBObserver (observer)
       }
     }
@@ -263,9 +264,9 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_xNumber_toElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func addEBObserversOf_xNumber_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_xNumber.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_xNumber.apply { (_ observer : EBEvent) in
           managedObject.xNumber_property.addEBObserver (observer)
         }
@@ -275,10 +276,10 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_xNumber_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func removeEBObserversOf_xNumber_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_xNumber.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.xNumber_property.removeEBObserver (observer)
       }
     }
@@ -322,9 +323,9 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_yNumber_toElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func addEBObserversOf_yNumber_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_yNumber.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_yNumber.apply { (_ observer : EBEvent) in
           managedObject.yNumber_property.addEBObserver (observer)
         }
@@ -334,10 +335,10 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_yNumber_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func removeEBObserversOf_yNumber_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_yNumber.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.yNumber_property.removeEBObserver (observer)
       }
     }
@@ -381,9 +382,9 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_name_toElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func addEBObserversOf_name_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_name.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_name.apply { (_ observer : EBEvent) in
           managedObject.name_property.addEBObserver (observer)
         }
@@ -393,10 +394,10 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_name_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func removeEBObserversOf_name_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_name.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.name_property.removeEBObserver (observer)
       }
     }
@@ -440,9 +441,9 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_nameHorizontalAlignment.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_nameHorizontalAlignment.apply { (_ observer : EBEvent) in
           managedObject.nameHorizontalAlignment_property.addEBObserver (observer)
         }
@@ -452,10 +453,10 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_nameHorizontalAlignment.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.nameHorizontalAlignment_property.removeEBObserver (observer)
       }
     }
@@ -499,9 +500,9 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_numberHorizontalAlignment.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_numberHorizontalAlignment.apply { (_ observer : EBEvent) in
           managedObject.numberHorizontalAlignment_property.addEBObserver (observer)
         }
@@ -511,10 +512,10 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_numberHorizontalAlignment.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.numberHorizontalAlignment_property.removeEBObserver (observer)
       }
     }
@@ -558,9 +559,9 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_pinNameIsDisplayedInSchematics.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_pinNameIsDisplayedInSchematics.apply { (_ observer : EBEvent) in
           managedObject.pinNameIsDisplayedInSchematics_property.addEBObserver (observer)
         }
@@ -570,10 +571,10 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_pinNameIsDisplayedInSchematics.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.pinNameIsDisplayedInSchematics_property.removeEBObserver (observer)
       }
     }
@@ -617,9 +618,9 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_xPin_toElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func addEBObserversOf_xPin_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_xPin.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_xPin.apply { (_ observer : EBEvent) in
           managedObject.xPin_property.addEBObserver (observer)
         }
@@ -629,10 +630,10 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_xPin_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
+  final func removeEBObserversOf_xPin_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_xPin.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.xPin_property.removeEBObserver (observer)
       }
     }
@@ -676,8 +677,8 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_filledBezierPath_toElementsOfSet (_ inSet : Set <SymbolPin>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_filledBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
+    for managedObject in inSet.values {
       self.mObserversOf_filledBezierPath.apply { (_ observer : EBEvent) in
         managedObject.filledBezierPath_property.addEBObserver (observer)
       }
@@ -686,8 +687,8 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_filledBezierPath_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_filledBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
+    for managedObject in inSet.values {
       self.mObserversOf_filledBezierPath.apply { (_ observer : EBEvent) in
         managedObject.filledBezierPath_property.removeEBObserver (observer)
       }
@@ -732,8 +733,8 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set <SymbolPin>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
+    for managedObject in inSet.values {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
@@ -742,8 +743,8 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
+    for managedObject in inSet.values {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
@@ -788,8 +789,8 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set <SymbolPin>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
+    for managedObject in inSet.values {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
@@ -798,8 +799,8 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
+    for managedObject in inSet.values {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
@@ -844,8 +845,8 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set <SymbolPin>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
+    for managedObject in inSet.values {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
       }
@@ -854,8 +855,8 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
+    for managedObject in inSet.values {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
       }
@@ -900,8 +901,8 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserversOf_nameRect_toElementsOfSet (_ inSet : Set <SymbolPin>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_nameRect_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
+    for managedObject in inSet.values {
       self.mObserversOf_nameRect.apply { (_ observer : EBEvent) in
         managedObject.nameRect_property.addEBObserver (observer)
       }
@@ -910,8 +911,8 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func removeEBObserversOf_nameRect_fromElementsOfSet (_ inSet : Set <SymbolPin>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_nameRect_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
+    for managedObject in inSet.values {
       self.mObserversOf_nameRect.apply { (_ observer : EBEvent) in
         managedObject.nameRect_property.removeEBObserver (observer)
       }
@@ -1321,15 +1322,16 @@ class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverP
   // Update observers
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : Set <SymbolPin>, addedSet inAddedSet : Set <SymbolPin>) {
-    for managedObject in inRemovedSet {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolPin>,
+                                 addedSet inAddedSet : EBReferenceSet <SymbolPin>) {
+    for managedObject in inRemovedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
-    for managedObject in inAddedSet {
+    for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }

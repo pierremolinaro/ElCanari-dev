@@ -12,7 +12,8 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <SegmentEntity>, addedSet inAddedSet : Set <SegmentEntity>) {
+  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SegmentEntity>,
+                                          addedSet inAddedSet : EBReferenceSet <SegmentEntity>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_y1_fromElementsOfSet (inRemovedSet) // Stored property
@@ -66,9 +67,9 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set <SegmentEntity>) {
+  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     if !self.mObserversOf_y1.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_y1.apply { (_ observer : EBEvent) in
           managedObject.y1_property.addEBObserver (observer)
         }
@@ -78,10 +79,10 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set <SegmentEntity>) {
+  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     self.mObserversOf_y1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.y1_property.removeEBObserver (observer)
       }
     }
@@ -125,9 +126,9 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set <SegmentEntity>) {
+  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     if !self.mObserversOf_x2.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_x2.apply { (_ observer : EBEvent) in
           managedObject.x2_property.addEBObserver (observer)
         }
@@ -137,10 +138,10 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set <SegmentEntity>) {
+  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     self.mObserversOf_x2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.x2_property.removeEBObserver (observer)
       }
     }
@@ -184,9 +185,9 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set <SegmentEntity>) {
+  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     if !self.mObserversOf_y2.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_y2.apply { (_ observer : EBEvent) in
           managedObject.y2_property.addEBObserver (observer)
         }
@@ -196,10 +197,10 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set <SegmentEntity>) {
+  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     self.mObserversOf_y2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.y2_property.removeEBObserver (observer)
       }
     }
@@ -243,9 +244,9 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set <SegmentEntity>) {
+  final func addEBObserversOf_width_toElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     if !self.mObserversOf_width.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_width.apply { (_ observer : EBEvent) in
           managedObject.width_property.addEBObserver (observer)
         }
@@ -255,10 +256,10 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set <SegmentEntity>) {
+  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     self.mObserversOf_width.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.width_property.removeEBObserver (observer)
       }
     }
@@ -302,9 +303,9 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set <SegmentEntity>) {
+  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     if !self.mObserversOf_x1.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_x1.apply { (_ observer : EBEvent) in
           managedObject.x1_property.addEBObserver (observer)
         }
@@ -314,10 +315,10 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set <SegmentEntity>) {
+  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     self.mObserversOf_x1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.x1_property.removeEBObserver (observer)
       }
     }
@@ -726,15 +727,16 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
   // Update observers
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : Set <SegmentEntity>, addedSet inAddedSet : Set <SegmentEntity>) {
-    for managedObject in inRemovedSet {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SegmentEntity>,
+                                 addedSet inAddedSet : EBReferenceSet <SegmentEntity>) {
+    for managedObject in inRemovedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
-    for managedObject in inAddedSet {
+    for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }

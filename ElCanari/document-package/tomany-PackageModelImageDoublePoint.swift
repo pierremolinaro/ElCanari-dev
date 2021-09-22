@@ -12,7 +12,8 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <PackageModelImageDoublePoint>, addedSet inAddedSet : Set <PackageModelImageDoublePoint>) {
+  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageModelImageDoublePoint>,
+                                          addedSet inAddedSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mFirstX_fromElementsOfSet (inRemovedSet) // Stored property
@@ -72,9 +73,9 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_mFirstX_toElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
+  final func addEBObserversOf_mFirstX_toElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     if !self.mObserversOf_mFirstX.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mFirstX.apply { (_ observer : EBEvent) in
           managedObject.mFirstX_property.addEBObserver (observer)
         }
@@ -84,10 +85,10 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_mFirstX_fromElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
+  final func removeEBObserversOf_mFirstX_fromElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     self.mObserversOf_mFirstX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mFirstX_property.removeEBObserver (observer)
       }
     }
@@ -131,9 +132,9 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_mFirstY_toElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
+  final func addEBObserversOf_mFirstY_toElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     if !self.mObserversOf_mFirstY.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mFirstY.apply { (_ observer : EBEvent) in
           managedObject.mFirstY_property.addEBObserver (observer)
         }
@@ -143,10 +144,10 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_mFirstY_fromElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
+  final func removeEBObserversOf_mFirstY_fromElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     self.mObserversOf_mFirstY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mFirstY_property.removeEBObserver (observer)
       }
     }
@@ -190,9 +191,9 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_mFirstColor_toElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
+  final func addEBObserversOf_mFirstColor_toElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     if !self.mObserversOf_mFirstColor.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mFirstColor.apply { (_ observer : EBEvent) in
           managedObject.mFirstColor_property.addEBObserver (observer)
         }
@@ -202,10 +203,10 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_mFirstColor_fromElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
+  final func removeEBObserversOf_mFirstColor_fromElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     self.mObserversOf_mFirstColor.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mFirstColor_property.removeEBObserver (observer)
       }
     }
@@ -249,9 +250,9 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_mSecondDx_toElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
+  final func addEBObserversOf_mSecondDx_toElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     if !self.mObserversOf_mSecondDx.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mSecondDx.apply { (_ observer : EBEvent) in
           managedObject.mSecondDx_property.addEBObserver (observer)
         }
@@ -261,10 +262,10 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_mSecondDx_fromElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
+  final func removeEBObserversOf_mSecondDx_fromElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     self.mObserversOf_mSecondDx.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mSecondDx_property.removeEBObserver (observer)
       }
     }
@@ -308,9 +309,9 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_mSecondDy_toElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
+  final func addEBObserversOf_mSecondDy_toElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     if !self.mObserversOf_mSecondDy.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mSecondDy.apply { (_ observer : EBEvent) in
           managedObject.mSecondDy_property.addEBObserver (observer)
         }
@@ -320,10 +321,10 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_mSecondDy_fromElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
+  final func removeEBObserversOf_mSecondDy_fromElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     self.mObserversOf_mSecondDy.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mSecondDy_property.removeEBObserver (observer)
       }
     }
@@ -367,9 +368,9 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_mSecondColor_toElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
+  final func addEBObserversOf_mSecondColor_toElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     if !self.mObserversOf_mSecondColor.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mSecondColor.apply { (_ observer : EBEvent) in
           managedObject.mSecondColor_property.addEBObserver (observer)
         }
@@ -379,10 +380,10 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_mSecondColor_fromElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
+  final func removeEBObserversOf_mSecondColor_fromElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     self.mObserversOf_mSecondColor.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mSecondColor_property.removeEBObserver (observer)
       }
     }
@@ -426,8 +427,8 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
+    for managedObject in inSet.values {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
@@ -436,8 +437,8 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
+    for managedObject in inSet.values {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
@@ -482,8 +483,8 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
+    for managedObject in inSet.values {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
@@ -492,8 +493,8 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set <PackageModelImageDoublePoint>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
+    for managedObject in inSet.values {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
@@ -903,15 +904,16 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
   // Update observers
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : Set <PackageModelImageDoublePoint>, addedSet inAddedSet : Set <PackageModelImageDoublePoint>) {
-    for managedObject in inRemovedSet {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageModelImageDoublePoint>,
+                                 addedSet inAddedSet : EBReferenceSet <PackageModelImageDoublePoint>) {
+    for managedObject in inRemovedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
-    for managedObject in inAddedSet {
+    for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }

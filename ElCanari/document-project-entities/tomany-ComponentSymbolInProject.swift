@@ -12,7 +12,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <ComponentSymbolInProject>, addedSet inAddedSet : Set <ComponentSymbolInProject>) {
+  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ComponentSymbolInProject>,
+                                          addedSet inAddedSet : EBReferenceSet <ComponentSymbolInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mCenterX_fromElementsOfSet (inRemovedSet) // Stored property
@@ -92,9 +93,9 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_mCenterX_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func addEBObserversOf_mCenterX_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     if !self.mObserversOf_mCenterX.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mCenterX.apply { (_ observer : EBEvent) in
           managedObject.mCenterX_property.addEBObserver (observer)
         }
@@ -104,10 +105,10 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_mCenterX_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func removeEBObserversOf_mCenterX_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     self.mObserversOf_mCenterX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mCenterX_property.removeEBObserver (observer)
       }
     }
@@ -151,9 +152,9 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_mCenterY_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func addEBObserversOf_mCenterY_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     if !self.mObserversOf_mCenterY.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mCenterY.apply { (_ observer : EBEvent) in
           managedObject.mCenterY_property.addEBObserver (observer)
         }
@@ -163,10 +164,10 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_mCenterY_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func removeEBObserversOf_mCenterY_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     self.mObserversOf_mCenterY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mCenterY_property.removeEBObserver (observer)
       }
     }
@@ -210,9 +211,9 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_mRotation_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func addEBObserversOf_mRotation_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     if !self.mObserversOf_mRotation.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mRotation.apply { (_ observer : EBEvent) in
           managedObject.mRotation_property.addEBObserver (observer)
         }
@@ -222,10 +223,10 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_mRotation_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func removeEBObserversOf_mRotation_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     self.mObserversOf_mRotation.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mRotation_property.removeEBObserver (observer)
       }
     }
@@ -269,9 +270,9 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_mMirror_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func addEBObserversOf_mMirror_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     if !self.mObserversOf_mMirror.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mMirror.apply { (_ observer : EBEvent) in
           managedObject.mMirror_property.addEBObserver (observer)
         }
@@ -281,10 +282,10 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_mMirror_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func removeEBObserversOf_mMirror_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     self.mObserversOf_mMirror.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mMirror_property.removeEBObserver (observer)
       }
     }
@@ -328,9 +329,9 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_mSymbolInstanceName_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func addEBObserversOf_mSymbolInstanceName_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     if !self.mObserversOf_mSymbolInstanceName.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mSymbolInstanceName.apply { (_ observer : EBEvent) in
           managedObject.mSymbolInstanceName_property.addEBObserver (observer)
         }
@@ -340,10 +341,10 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     self.mObserversOf_mSymbolInstanceName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mSymbolInstanceName_property.removeEBObserver (observer)
       }
     }
@@ -387,9 +388,9 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_mSymbolTypeName_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func addEBObserversOf_mSymbolTypeName_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     if !self.mObserversOf_mSymbolTypeName.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
           managedObject.mSymbolTypeName_property.addEBObserver (observer)
         }
@@ -399,10 +400,10 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mSymbolTypeName_property.removeEBObserver (observer)
       }
     }
@@ -446,9 +447,9 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     if !self.mObserversOf_mDisplayComponentNameOffsetX.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mDisplayComponentNameOffsetX.apply { (_ observer : EBEvent) in
           managedObject.mDisplayComponentNameOffsetX_property.addEBObserver (observer)
         }
@@ -458,10 +459,10 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     self.mObserversOf_mDisplayComponentNameOffsetX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mDisplayComponentNameOffsetX_property.removeEBObserver (observer)
       }
     }
@@ -505,9 +506,9 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_mDisplayComponentNameOffsetY_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func addEBObserversOf_mDisplayComponentNameOffsetY_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     if !self.mObserversOf_mDisplayComponentNameOffsetY.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mDisplayComponentNameOffsetY.apply { (_ observer : EBEvent) in
           managedObject.mDisplayComponentNameOffsetY_property.addEBObserver (observer)
         }
@@ -517,10 +518,10 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_mDisplayComponentNameOffsetY_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func removeEBObserversOf_mDisplayComponentNameOffsetY_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     self.mObserversOf_mDisplayComponentNameOffsetY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mDisplayComponentNameOffsetY_property.removeEBObserver (observer)
       }
     }
@@ -564,9 +565,9 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_mDisplayComponentValue_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func addEBObserversOf_mDisplayComponentValue_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     if !self.mObserversOf_mDisplayComponentValue.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mDisplayComponentValue.apply { (_ observer : EBEvent) in
           managedObject.mDisplayComponentValue_property.addEBObserver (observer)
         }
@@ -576,10 +577,10 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_mDisplayComponentValue_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func removeEBObserversOf_mDisplayComponentValue_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     self.mObserversOf_mDisplayComponentValue.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mDisplayComponentValue_property.removeEBObserver (observer)
       }
     }
@@ -623,9 +624,9 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_mDisplayComponentValueOffsetX_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func addEBObserversOf_mDisplayComponentValueOffsetX_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     if !self.mObserversOf_mDisplayComponentValueOffsetX.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mDisplayComponentValueOffsetX.apply { (_ observer : EBEvent) in
           managedObject.mDisplayComponentValueOffsetX_property.addEBObserver (observer)
         }
@@ -635,10 +636,10 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_mDisplayComponentValueOffsetX_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func removeEBObserversOf_mDisplayComponentValueOffsetX_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     self.mObserversOf_mDisplayComponentValueOffsetX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mDisplayComponentValueOffsetX_property.removeEBObserver (observer)
       }
     }
@@ -682,9 +683,9 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_mDisplayComponentValueOffsetY_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func addEBObserversOf_mDisplayComponentValueOffsetY_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     if !self.mObserversOf_mDisplayComponentValueOffsetY.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mDisplayComponentValueOffsetY.apply { (_ observer : EBEvent) in
           managedObject.mDisplayComponentValueOffsetY_property.addEBObserver (observer)
         }
@@ -694,10 +695,10 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_mDisplayComponentValueOffsetY_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func removeEBObserversOf_mDisplayComponentValueOffsetY_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     self.mObserversOf_mDisplayComponentValueOffsetY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mDisplayComponentValueOffsetY_property.removeEBObserver (observer)
       }
     }
@@ -741,8 +742,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_componentValueProxy_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_componentValueProxy_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_componentValueProxy.apply { (_ observer : EBEvent) in
         managedObject.componentValueProxy_property.addEBObserver (observer)
       }
@@ -751,10 +752,10 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_componentValueProxy_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
+  final func removeEBObserversOf_componentValueProxy_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
     self.mObserversOf_componentValueProxy.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.componentValueProxy_property.removeEBObserver (observer)
       }
     }
@@ -798,8 +799,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_componentName_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_componentName_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_componentName.apply { (_ observer : EBEvent) in
         managedObject.componentName_property.addEBObserver (observer)
       }
@@ -808,8 +809,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_componentName_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_componentName_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_componentName.apply { (_ observer : EBEvent) in
         managedObject.componentName_property.removeEBObserver (observer)
       }
@@ -854,8 +855,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_deviceName_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_deviceName_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_deviceName.apply { (_ observer : EBEvent) in
         managedObject.deviceName_property.addEBObserver (observer)
       }
@@ -864,8 +865,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_deviceName_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_deviceName_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_deviceName.apply { (_ observer : EBEvent) in
         managedObject.deviceName_property.removeEBObserver (observer)
       }
@@ -910,8 +911,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_symbolInfo_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_symbolInfo_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_symbolInfo.apply { (_ observer : EBEvent) in
         managedObject.symbolInfo_property.addEBObserver (observer)
       }
@@ -920,8 +921,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_symbolInfo_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_symbolInfo_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_symbolInfo.apply { (_ observer : EBEvent) in
         managedObject.symbolInfo_property.removeEBObserver (observer)
       }
@@ -966,8 +967,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_pinPadAssignments_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_pinPadAssignments_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_pinPadAssignments.apply { (_ observer : EBEvent) in
         managedObject.pinPadAssignments_property.addEBObserver (observer)
       }
@@ -976,8 +977,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_pinPadAssignments_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_pinPadAssignments_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_pinPadAssignments.apply { (_ observer : EBEvent) in
         managedObject.pinPadAssignments_property.removeEBObserver (observer)
       }
@@ -1022,8 +1023,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
@@ -1032,8 +1033,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
@@ -1078,8 +1079,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
@@ -1088,8 +1089,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
@@ -1134,8 +1135,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserversOf_symbolInSchematic_toElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_symbolInSchematic_toElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_symbolInSchematic.apply { (_ observer : EBEvent) in
         managedObject.symbolInSchematic_property.addEBObserver (observer)
       }
@@ -1144,8 +1145,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func removeEBObserversOf_symbolInSchematic_fromElementsOfSet (_ inSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_symbolInSchematic_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_symbolInSchematic.apply { (_ observer : EBEvent) in
         managedObject.symbolInSchematic_property.removeEBObserver (observer)
       }
@@ -1555,15 +1556,16 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
   // Update observers
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : Set <ComponentSymbolInProject>, addedSet inAddedSet : Set <ComponentSymbolInProject>) {
-    for managedObject in inRemovedSet {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ComponentSymbolInProject>,
+                                 addedSet inAddedSet : EBReferenceSet <ComponentSymbolInProject>) {
+    for managedObject in inRemovedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
-    for managedObject in inAddedSet {
+    for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }

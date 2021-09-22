@@ -21,10 +21,10 @@ extension MergerDocument {
   //--- Selected set
     let selectedSet = self.mBoardInstanceController.selectedSet
   //--- Non selected set
-    let nonSelectedSet = Set (self.rootObject.boardInstances_property.propval).subtracting (selectedSet)
+    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval).subtracting (selectedSet)
   //---
     var deltaY = boardHeight
-    for selectedInstance in selectedSet {
+    for selectedInstance in selectedSet.values {
       let instanceRect = getInstanceRect (selectedInstance)
       let instanceLimit = getInstanceLimit (selectedInstance)
       var testRect = CanariRect (
@@ -33,7 +33,7 @@ extension MergerDocument {
         width:instanceRect.width,
         height:boardHeight - instanceRect.top
       )
-      for nonSelectedInstance in nonSelectedSet {
+      for nonSelectedInstance in nonSelectedSet.values {
         let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
         let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
         if !intersection.isEmpty {
@@ -47,7 +47,7 @@ extension MergerDocument {
       }
     }
     if deltaY > 0 {
-      for selectedInstance in selectedSet {
+      for selectedInstance in selectedSet.values {
         selectedInstance.y += deltaY
       }
     }
@@ -60,10 +60,10 @@ extension MergerDocument {
   //--- Selected set
     let selectedSet = self.mBoardInstanceController.selectedSet
   //--- Non selected set
-    let nonSelectedSet = Set (self.rootObject.boardInstances_property.propval).subtracting (selectedSet)
+    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval).subtracting (selectedSet)
   //---
     var deltaY = -boardHeight
-    for selectedInstance in selectedSet {
+    for selectedInstance in selectedSet.values {
       let instanceRect = getInstanceRect (selectedInstance)
       let instanceLimit = getInstanceLimit (selectedInstance)
       var testRect = CanariRect (
@@ -72,7 +72,7 @@ extension MergerDocument {
         width:instanceRect.width,
         height:instanceRect.bottom
       )
-      for nonSelectedInstance in nonSelectedSet {
+      for nonSelectedInstance in nonSelectedSet.values {
         let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
         let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
         if !intersection.isEmpty {
@@ -91,7 +91,7 @@ extension MergerDocument {
       }
     }
     if deltaY < 0 {
-      for selectedInstance in selectedSet {
+      for selectedInstance in selectedSet.values {
         selectedInstance.y += deltaY
       }
     }
@@ -104,10 +104,10 @@ extension MergerDocument {
   //--- Selected set
     let selectedSet = self.mBoardInstanceController.selectedSet
   //--- Non selected set
-    let nonSelectedSet = Set (self.rootObject.boardInstances_property.propval).subtracting (selectedSet)
+    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval).subtracting (selectedSet)
   //---
     var deltaX = boardWidth
-    for selectedInstance in selectedSet {
+    for selectedInstance in selectedSet.values {
       let instanceRect = getInstanceRect (selectedInstance)
       let instanceLimit = getInstanceLimit (selectedInstance)
       var testRect = CanariRect (
@@ -116,7 +116,7 @@ extension MergerDocument {
         width:boardWidth - instanceRect.right,
         height:instanceRect.height
       )
-      for nonSelectedInstance in nonSelectedSet {
+      for nonSelectedInstance in nonSelectedSet.values {
         let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
         let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
         if !intersection.isEmpty {
@@ -135,7 +135,7 @@ extension MergerDocument {
       }
     }
     if deltaX > 0 {
-      for selectedInstance in selectedSet {
+      for selectedInstance in selectedSet.values {
         selectedInstance.x += deltaX
       }
     }
@@ -148,10 +148,10 @@ extension MergerDocument {
   //--- Selected set
     let selectedSet = self.mBoardInstanceController.selectedSet
   //--- Non selected set
-    let nonSelectedSet = Set (self.rootObject.boardInstances_property.propval).subtracting (selectedSet)
+    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval).subtracting (selectedSet)
   //---
     var deltaX = -boardWidth
-    for selectedInstance in selectedSet {
+    for selectedInstance in selectedSet.values {
       let instanceRect = getInstanceRect (selectedInstance)
       let instanceLimit = getInstanceLimit (selectedInstance)
       var testRect = CanariRect (
@@ -160,7 +160,7 @@ extension MergerDocument {
         width:instanceRect.left,
         height:instanceRect.height
       )
-      for nonSelectedInstance in nonSelectedSet {
+      for nonSelectedInstance in nonSelectedSet.values {
         let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
         let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
         if !intersection.isEmpty {
@@ -179,7 +179,7 @@ extension MergerDocument {
       }
     }
     if deltaX < 0 {
-      for selectedInstance in selectedSet {
+      for selectedInstance in selectedSet.values {
         selectedInstance.x += deltaX
       }
     }

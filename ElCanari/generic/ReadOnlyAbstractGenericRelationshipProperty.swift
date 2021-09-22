@@ -14,7 +14,7 @@ class ReadOnlyAbstractGenericRelationshipProperty : EBAbstractProperty {
   //  Data clients
   //····················································································································
 
-  private final var mClients = Set <ReadOnlyAbstractGenericRelationshipProperty> ()
+  private final var mClients = EBReferenceSet <ReadOnlyAbstractGenericRelationshipProperty> ()
 
   //····················································································································
 
@@ -32,7 +32,7 @@ class ReadOnlyAbstractGenericRelationshipProperty : EBAbstractProperty {
   //····················································································································
 
   internal func notifyModelDidChange () {
-    for client in self.mClients {
+    for client in self.mClients.values {
       client.notifyModelDidChange ()
     }
   }

@@ -140,7 +140,7 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
 
   //····················································································································
 
-  var selectedSet : Set <FontInProject> { return Set (self.selectedArray) }
+  var selectedSet : EBReferenceSet <FontInProject> { return EBReferenceSet (self.selectedArray) }
 
   //····················································································································
 
@@ -266,7 +266,7 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
         objectDictionary [object] = index
       }
       let indexSet = NSMutableIndexSet ()
-      for object in self.selectedSet {
+      for object in self.selectedSet.values {
         if let index = objectDictionary [object] {
           indexSet.add (index)
         }
@@ -448,7 +448,7 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
             sortedObjectDictionary [object] = index
           }
           var indexArrayOfSelectedObjects = [Int] ()
-          for object in self.selectedSet {
+          for object in self.selectedSet.values {
             let index = sortedObjectDictionary [object]
             if let idx = index {
               indexArrayOfSelectedObjects.append (idx)
@@ -477,7 +477,7 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
           }
         //--- Build selected objects index array
           var selectedObjectIndexArray = [Int] ()
-          for object in self.selectedSet {
+          for object in self.selectedSet.values {
             let index = objectDictionary [object]
             if let idx = index {
               selectedObjectIndexArray.append (idx)

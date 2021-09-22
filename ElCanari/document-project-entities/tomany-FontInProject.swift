@@ -12,7 +12,8 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <FontInProject>, addedSet inAddedSet : Set <FontInProject>) {
+  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <FontInProject>,
+                                          addedSet inAddedSet : EBReferenceSet <FontInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mNominalSize_fromElementsOfSet (inRemovedSet) // Stored property
@@ -72,9 +73,9 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserversOf_mNominalSize_toElementsOfSet (_ inSet : Set <FontInProject>) {
+  final func addEBObserversOf_mNominalSize_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     if !self.mObserversOf_mNominalSize.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mNominalSize.apply { (_ observer : EBEvent) in
           managedObject.mNominalSize_property.addEBObserver (observer)
         }
@@ -84,10 +85,10 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserversOf_mNominalSize_fromElementsOfSet (_ inSet : Set <FontInProject>) {
+  final func removeEBObserversOf_mNominalSize_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     self.mObserversOf_mNominalSize.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mNominalSize_property.removeEBObserver (observer)
       }
     }
@@ -131,9 +132,9 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserversOf_mFontName_toElementsOfSet (_ inSet : Set <FontInProject>) {
+  final func addEBObserversOf_mFontName_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     if !self.mObserversOf_mFontName.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mFontName.apply { (_ observer : EBEvent) in
           managedObject.mFontName_property.addEBObserver (observer)
         }
@@ -143,10 +144,10 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserversOf_mFontName_fromElementsOfSet (_ inSet : Set <FontInProject>) {
+  final func removeEBObserversOf_mFontName_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     self.mObserversOf_mFontName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mFontName_property.removeEBObserver (observer)
       }
     }
@@ -190,9 +191,9 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserversOf_mFontVersion_toElementsOfSet (_ inSet : Set <FontInProject>) {
+  final func addEBObserversOf_mFontVersion_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     if !self.mObserversOf_mFontVersion.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mFontVersion.apply { (_ observer : EBEvent) in
           managedObject.mFontVersion_property.addEBObserver (observer)
         }
@@ -202,10 +203,10 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserversOf_mFontVersion_fromElementsOfSet (_ inSet : Set <FontInProject>) {
+  final func removeEBObserversOf_mFontVersion_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     self.mObserversOf_mFontVersion.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mFontVersion_property.removeEBObserver (observer)
       }
     }
@@ -249,9 +250,9 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserversOf_mDescriptiveString_toElementsOfSet (_ inSet : Set <FontInProject>) {
+  final func addEBObserversOf_mDescriptiveString_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     if !self.mObserversOf_mDescriptiveString.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mDescriptiveString.apply { (_ observer : EBEvent) in
           managedObject.mDescriptiveString_property.addEBObserver (observer)
         }
@@ -261,10 +262,10 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserversOf_mDescriptiveString_fromElementsOfSet (_ inSet : Set <FontInProject>) {
+  final func removeEBObserversOf_mDescriptiveString_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     self.mObserversOf_mDescriptiveString.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mDescriptiveString_property.removeEBObserver (observer)
       }
     }
@@ -308,8 +309,8 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set <FontInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
         managedObject.versionString_property.addEBObserver (observer)
       }
@@ -318,8 +319,8 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set <FontInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
         managedObject.versionString_property.removeEBObserver (observer)
       }
@@ -364,8 +365,8 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : Set <FontInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_sizeString.apply { (_ observer : EBEvent) in
         managedObject.sizeString_property.addEBObserver (observer)
       }
@@ -374,8 +375,8 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : Set <FontInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_sizeString.apply { (_ observer : EBEvent) in
         managedObject.sizeString_property.removeEBObserver (observer)
       }
@@ -420,8 +421,8 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : Set <FontInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
         managedObject.descriptor_property.addEBObserver (observer)
       }
@@ -430,8 +431,8 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : Set <FontInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
         managedObject.descriptor_property.removeEBObserver (observer)
       }
@@ -476,8 +477,8 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserversOf_canRemoveFont_toElementsOfSet (_ inSet : Set <FontInProject>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_canRemoveFont_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_canRemoveFont.apply { (_ observer : EBEvent) in
         managedObject.canRemoveFont_property.addEBObserver (observer)
       }
@@ -486,8 +487,8 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserversOf_canRemoveFont_fromElementsOfSet (_ inSet : Set <FontInProject>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_canRemoveFont_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inSet.values {
       self.mObserversOf_canRemoveFont.apply { (_ observer : EBEvent) in
         managedObject.canRemoveFont_property.removeEBObserver (observer)
       }
@@ -897,15 +898,16 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
   // Update observers
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : Set <FontInProject>, addedSet inAddedSet : Set <FontInProject>) {
-    for managedObject in inRemovedSet {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <FontInProject>,
+                                 addedSet inAddedSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inRemovedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
-    for managedObject in inAddedSet {
+    for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }

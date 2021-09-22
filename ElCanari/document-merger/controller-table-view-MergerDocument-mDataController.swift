@@ -143,7 +143,7 @@ final class Controller_MergerDocument_mDataController : ReadOnlyAbstractGenericR
 
   //····················································································································
 
-  var selectedSet : Set <ArtworkFileGenerationParameters> { return Set (self.selectedArray) }
+  var selectedSet : EBReferenceSet <ArtworkFileGenerationParameters> { return EBReferenceSet (self.selectedArray) }
 
   //····················································································································
 
@@ -254,7 +254,7 @@ final class Controller_MergerDocument_mDataController : ReadOnlyAbstractGenericR
         objectDictionary [object] = index
       }
       let indexSet = NSMutableIndexSet ()
-      for object in self.selectedSet {
+      for object in self.selectedSet.values {
         if let index = objectDictionary [object] {
           indexSet.add (index)
         }
@@ -401,7 +401,7 @@ final class Controller_MergerDocument_mDataController : ReadOnlyAbstractGenericR
             sortedObjectDictionary [object] = index
           }
           var indexArrayOfSelectedObjects = [Int] ()
-          for object in self.selectedSet {
+          for object in self.selectedSet.values {
             let index = sortedObjectDictionary [object]
             if let idx = index {
               indexArrayOfSelectedObjects.append (idx)
@@ -430,7 +430,7 @@ final class Controller_MergerDocument_mDataController : ReadOnlyAbstractGenericR
           }
         //--- Build selected objects index array
           var selectedObjectIndexArray = [Int] ()
-          for object in self.selectedSet {
+          for object in self.selectedSet.values {
             let index = objectDictionary [object]
             if let idx = index {
               selectedObjectIndexArray.append (idx)

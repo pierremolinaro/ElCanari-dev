@@ -12,7 +12,8 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <ArtworkRoot>, addedSet inAddedSet : Set <ArtworkRoot>) {
+  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ArtworkRoot>,
+                                          addedSet inAddedSet : EBReferenceSet <ArtworkRoot>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_layerConfiguration_fromElementsOfSet (inRemovedSet) // Stored property
@@ -92,9 +93,9 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_layerConfiguration_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func addEBObserversOf_layerConfiguration_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     if !self.mObserversOf_layerConfiguration.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_layerConfiguration.apply { (_ observer : EBEvent) in
           managedObject.layerConfiguration_property.addEBObserver (observer)
         }
@@ -104,10 +105,10 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_layerConfiguration_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func removeEBObserversOf_layerConfiguration_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_layerConfiguration.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.layerConfiguration_property.removeEBObserver (observer)
       }
     }
@@ -151,9 +152,9 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_selectedTab_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func addEBObserversOf_selectedTab_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     if !self.mObserversOf_selectedTab.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_selectedTab.apply { (_ observer : EBEvent) in
           managedObject.selectedTab_property.addEBObserver (observer)
         }
@@ -163,10 +164,10 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_selectedTab_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func removeEBObserversOf_selectedTab_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_selectedTab.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.selectedTab_property.removeEBObserver (observer)
       }
     }
@@ -210,9 +211,9 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     if !self.mObserversOf_comments.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_comments.apply { (_ observer : EBEvent) in
           managedObject.comments_property.addEBObserver (observer)
         }
@@ -222,10 +223,10 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_comments.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.comments_property.removeEBObserver (observer)
       }
     }
@@ -269,9 +270,9 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     if !self.mObserversOf_minPPTPTTTWdisplayUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_minPPTPTTTWdisplayUnit.apply { (_ observer : EBEvent) in
           managedObject.minPPTPTTTWdisplayUnit_property.addEBObserver (observer)
         }
@@ -281,10 +282,10 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minPPTPTTTWdisplayUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.minPPTPTTTWdisplayUnit_property.removeEBObserver (observer)
       }
     }
@@ -328,9 +329,9 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_minPPTPTTTW_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func addEBObserversOf_minPPTPTTTW_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     if !self.mObserversOf_minPPTPTTTW.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_minPPTPTTTW.apply { (_ observer : EBEvent) in
           managedObject.minPPTPTTTW_property.addEBObserver (observer)
         }
@@ -340,10 +341,10 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minPPTPTTTW.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.minPPTPTTTW_property.removeEBObserver (observer)
       }
     }
@@ -387,9 +388,9 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     if !self.mObserversOf_minValueForOARdisplayUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_minValueForOARdisplayUnit.apply { (_ observer : EBEvent) in
           managedObject.minValueForOARdisplayUnit_property.addEBObserver (observer)
         }
@@ -399,10 +400,10 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minValueForOARdisplayUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.minValueForOARdisplayUnit_property.removeEBObserver (observer)
       }
     }
@@ -446,9 +447,9 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     if !self.mObserversOf_minValueForOARinEBUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_minValueForOARinEBUnit.apply { (_ observer : EBEvent) in
           managedObject.minValueForOARinEBUnit_property.addEBObserver (observer)
         }
@@ -458,10 +459,10 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minValueForOARinEBUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.minValueForOARinEBUnit_property.removeEBObserver (observer)
       }
     }
@@ -505,9 +506,9 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     if !self.mObserversOf_minValueForPHDdisplayUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_minValueForPHDdisplayUnit.apply { (_ observer : EBEvent) in
           managedObject.minValueForPHDdisplayUnit_property.addEBObserver (observer)
         }
@@ -517,10 +518,10 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minValueForPHDdisplayUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.minValueForPHDdisplayUnit_property.removeEBObserver (observer)
       }
     }
@@ -564,9 +565,9 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     if !self.mObserversOf_minValueForPHDinEBUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_minValueForPHDinEBUnit.apply { (_ observer : EBEvent) in
           managedObject.minValueForPHDinEBUnit_property.addEBObserver (observer)
         }
@@ -576,10 +577,10 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minValueForPHDinEBUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.minValueForPHDinEBUnit_property.removeEBObserver (observer)
       }
     }
@@ -623,9 +624,9 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     if !self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.apply { (_ observer : EBEvent) in
           managedObject.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (observer)
         }
@@ -635,10 +636,10 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (observer)
       }
     }
@@ -682,9 +683,9 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     if !self.mObserversOf_minValueForBoardLimitWidth.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_minValueForBoardLimitWidth.apply { (_ observer : EBEvent) in
           managedObject.minValueForBoardLimitWidth_property.addEBObserver (observer)
         }
@@ -694,10 +695,10 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minValueForBoardLimitWidth.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.minValueForBoardLimitWidth_property.removeEBObserver (observer)
       }
     }
@@ -741,9 +742,9 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_title_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func addEBObserversOf_title_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     if !self.mObserversOf_title.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_title.apply { (_ observer : EBEvent) in
           managedObject.title_property.addEBObserver (observer)
         }
@@ -753,10 +754,10 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_title_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func removeEBObserversOf_title_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_title.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.title_property.removeEBObserver (observer)
       }
     }
@@ -800,9 +801,9 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_drillDataFileExtension_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func addEBObserversOf_drillDataFileExtension_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     if !self.mObserversOf_drillDataFileExtension.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBEvent) in
           managedObject.drillDataFileExtension_property.addEBObserver (observer)
         }
@@ -812,10 +813,10 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+  final func removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.drillDataFileExtension_property.removeEBObserver (observer)
       }
     }
@@ -859,8 +860,8 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_hasInnerElements_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_hasInnerElements_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
+    for managedObject in inSet.values {
       self.mObserversOf_hasInnerElements.apply { (_ observer : EBEvent) in
         managedObject.hasInnerElements_property.addEBObserver (observer)
       }
@@ -869,8 +870,8 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_hasInnerElements_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_hasInnerElements_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
+    for managedObject in inSet.values {
       self.mObserversOf_hasInnerElements.apply { (_ observer : EBEvent) in
         managedObject.hasInnerElements_property.removeEBObserver (observer)
       }
@@ -915,8 +916,8 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_hasSixLayers_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_hasSixLayers_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
+    for managedObject in inSet.values {
       self.mObserversOf_hasSixLayers.apply { (_ observer : EBEvent) in
         managedObject.hasSixLayers_property.addEBObserver (observer)
       }
@@ -925,8 +926,8 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_hasSixLayers_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_hasSixLayers_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
+    for managedObject in inSet.values {
       self.mObserversOf_hasSixLayers.apply { (_ observer : EBEvent) in
         managedObject.hasSixLayers_property.removeEBObserver (observer)
       }
@@ -971,8 +972,8 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_hasDataWarning_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_hasDataWarning_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
+    for managedObject in inSet.values {
       self.mObserversOf_hasDataWarning.apply { (_ observer : EBEvent) in
         managedObject.hasDataWarning_property.addEBObserver (observer)
       }
@@ -981,8 +982,8 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_hasDataWarning_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_hasDataWarning_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
+    for managedObject in inSet.values {
       self.mObserversOf_hasDataWarning.apply { (_ observer : EBEvent) in
         managedObject.hasDataWarning_property.removeEBObserver (observer)
       }
@@ -1027,8 +1028,8 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_emptyDrillFileExtension_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_emptyDrillFileExtension_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
+    for managedObject in inSet.values {
       self.mObserversOf_emptyDrillFileExtension.apply { (_ observer : EBEvent) in
         managedObject.emptyDrillFileExtension_property.addEBObserver (observer)
       }
@@ -1037,8 +1038,8 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_emptyDrillFileExtension_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_emptyDrillFileExtension_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
+    for managedObject in inSet.values {
       self.mObserversOf_emptyDrillFileExtension.apply { (_ observer : EBEvent) in
         managedObject.emptyDrillFileExtension_property.removeEBObserver (observer)
       }
@@ -1083,8 +1084,8 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
+    for managedObject in inSet.values {
       self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
         managedObject.signatureForERCChecking_property.addEBObserver (observer)
       }
@@ -1093,8 +1094,8 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
+    for managedObject in inSet.values {
       self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
         managedObject.signatureForERCChecking_property.removeEBObserver (observer)
       }
@@ -1504,15 +1505,16 @@ class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatureObser
   // Update observers
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : Set <ArtworkRoot>, addedSet inAddedSet : Set <ArtworkRoot>) {
-    for managedObject in inRemovedSet {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ArtworkRoot>,
+                                 addedSet inAddedSet : EBReferenceSet <ArtworkRoot>) {
+    for managedObject in inRemovedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
-    for managedObject in inAddedSet {
+    for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }

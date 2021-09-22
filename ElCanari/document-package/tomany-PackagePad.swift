@@ -12,7 +12,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <PackagePad>, addedSet inAddedSet : Set <PackagePad>) {
+  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackagePad>,
+                                          addedSet inAddedSet : EBReferenceSet <PackagePad>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_xCenter_fromElementsOfSet (inRemovedSet) // Stored property
@@ -114,9 +115,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_xCenter_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_xCenter_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_xCenter.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_xCenter.apply { (_ observer : EBEvent) in
           managedObject.xCenter_property.addEBObserver (observer)
         }
@@ -126,10 +127,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_xCenter_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_xCenter_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_xCenter.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.xCenter_property.removeEBObserver (observer)
       }
     }
@@ -173,9 +174,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_yCenter_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_yCenter_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_yCenter.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_yCenter.apply { (_ observer : EBEvent) in
           managedObject.yCenter_property.addEBObserver (observer)
         }
@@ -185,10 +186,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_yCenter_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_yCenter_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_yCenter.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.yCenter_property.removeEBObserver (observer)
       }
     }
@@ -232,9 +233,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_width_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_width.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_width.apply { (_ observer : EBEvent) in
           managedObject.width_property.addEBObserver (observer)
         }
@@ -244,10 +245,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_width.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.width_property.removeEBObserver (observer)
       }
     }
@@ -291,9 +292,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_height_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_height.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_height.apply { (_ observer : EBEvent) in
           managedObject.height_property.addEBObserver (observer)
         }
@@ -303,10 +304,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_height.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.height_property.removeEBObserver (observer)
       }
     }
@@ -350,9 +351,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_holeWidth_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_holeWidth_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_holeWidth.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_holeWidth.apply { (_ observer : EBEvent) in
           managedObject.holeWidth_property.addEBObserver (observer)
         }
@@ -362,10 +363,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_holeWidth_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_holeWidth_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_holeWidth.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.holeWidth_property.removeEBObserver (observer)
       }
     }
@@ -409,9 +410,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_holeHeight_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_holeHeight_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_holeHeight.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_holeHeight.apply { (_ observer : EBEvent) in
           managedObject.holeHeight_property.addEBObserver (observer)
         }
@@ -421,10 +422,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_holeHeight_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_holeHeight_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_holeHeight.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.holeHeight_property.removeEBObserver (observer)
       }
     }
@@ -468,9 +469,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_padShape_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_padShape_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_padShape.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_padShape.apply { (_ observer : EBEvent) in
           managedObject.padShape_property.addEBObserver (observer)
         }
@@ -480,10 +481,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_padShape_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_padShape_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_padShape.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.padShape_property.removeEBObserver (observer)
       }
     }
@@ -527,9 +528,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_padStyle_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_padStyle_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_padStyle.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_padStyle.apply { (_ observer : EBEvent) in
           managedObject.padStyle_property.addEBObserver (observer)
         }
@@ -539,10 +540,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_padStyle_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_padStyle_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_padStyle.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.padStyle_property.removeEBObserver (observer)
       }
     }
@@ -586,9 +587,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_padNumber_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_padNumber_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_padNumber.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_padNumber.apply { (_ observer : EBEvent) in
           managedObject.padNumber_property.addEBObserver (observer)
         }
@@ -598,10 +599,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_padNumber_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_padNumber_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_padNumber.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.padNumber_property.removeEBObserver (observer)
       }
     }
@@ -645,9 +646,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_xCenterUnit_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_xCenterUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_xCenterUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_xCenterUnit.apply { (_ observer : EBEvent) in
           managedObject.xCenterUnit_property.addEBObserver (observer)
         }
@@ -657,10 +658,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_xCenterUnit_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_xCenterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_xCenterUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.xCenterUnit_property.removeEBObserver (observer)
       }
     }
@@ -704,9 +705,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_yCenterUnit_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_yCenterUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_yCenterUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_yCenterUnit.apply { (_ observer : EBEvent) in
           managedObject.yCenterUnit_property.addEBObserver (observer)
         }
@@ -716,10 +717,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_yCenterUnit_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_yCenterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_yCenterUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.yCenterUnit_property.removeEBObserver (observer)
       }
     }
@@ -763,9 +764,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_widthUnit_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_widthUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_widthUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_widthUnit.apply { (_ observer : EBEvent) in
           managedObject.widthUnit_property.addEBObserver (observer)
         }
@@ -775,10 +776,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_widthUnit_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_widthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_widthUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.widthUnit_property.removeEBObserver (observer)
       }
     }
@@ -822,9 +823,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_heightUnit_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_heightUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_heightUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_heightUnit.apply { (_ observer : EBEvent) in
           managedObject.heightUnit_property.addEBObserver (observer)
         }
@@ -834,10 +835,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_heightUnit_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_heightUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_heightUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.heightUnit_property.removeEBObserver (observer)
       }
     }
@@ -881,9 +882,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_holeWidthUnit_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_holeWidthUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_holeWidthUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_holeWidthUnit.apply { (_ observer : EBEvent) in
           managedObject.holeWidthUnit_property.addEBObserver (observer)
         }
@@ -893,10 +894,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_holeWidthUnit_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_holeWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_holeWidthUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.holeWidthUnit_property.removeEBObserver (observer)
       }
     }
@@ -940,9 +941,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_holeHeightUnit_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_holeHeightUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_holeHeightUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_holeHeightUnit.apply { (_ observer : EBEvent) in
           managedObject.holeHeightUnit_property.addEBObserver (observer)
         }
@@ -952,10 +953,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_holeHeightUnit_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_holeHeightUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_holeHeightUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.holeHeightUnit_property.removeEBObserver (observer)
       }
     }
@@ -999,9 +1000,9 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_annularRingUnit_toElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func addEBObserversOf_annularRingUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     if !self.mObserversOf_annularRingUnit.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_annularRingUnit.apply { (_ observer : EBEvent) in
           managedObject.annularRingUnit_property.addEBObserver (observer)
         }
@@ -1011,10 +1012,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_annularRingUnit_fromElementsOfSet (_ inSet : Set <PackagePad>) {
+  final func removeEBObserversOf_annularRingUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
     self.mObserversOf_annularRingUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.annularRingUnit_property.removeEBObserver (observer)
       }
     }
@@ -1058,8 +1059,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
@@ -1068,8 +1069,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
@@ -1114,8 +1115,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
@@ -1124,8 +1125,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
@@ -1170,8 +1171,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_padNameForDisplay_toElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_padNameForDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_padNameForDisplay.apply { (_ observer : EBEvent) in
         managedObject.padNameForDisplay_property.addEBObserver (observer)
       }
@@ -1180,8 +1181,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_padNameForDisplay_fromElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_padNameForDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_padNameForDisplay.apply { (_ observer : EBEvent) in
         managedObject.padNameForDisplay_property.removeEBObserver (observer)
       }
@@ -1226,8 +1227,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
       }
@@ -1236,8 +1237,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
       }
@@ -1282,8 +1283,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_padIsTraversing_toElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_padIsTraversing_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_padIsTraversing.apply { (_ observer : EBEvent) in
         managedObject.padIsTraversing_property.addEBObserver (observer)
       }
@@ -1292,8 +1293,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_padIsTraversing_fromElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_padIsTraversing_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_padIsTraversing.apply { (_ observer : EBEvent) in
         managedObject.padIsTraversing_property.removeEBObserver (observer)
       }
@@ -1338,8 +1339,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_annularRing_toElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_annularRing_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_annularRing.apply { (_ observer : EBEvent) in
         managedObject.annularRing_property.addEBObserver (observer)
       }
@@ -1348,8 +1349,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_annularRing_fromElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_annularRing_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_annularRing.apply { (_ observer : EBEvent) in
         managedObject.annularRing_property.removeEBObserver (observer)
       }
@@ -1394,8 +1395,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_padNameWithZoneName_toElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_padNameWithZoneName_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_padNameWithZoneName.apply { (_ observer : EBEvent) in
         managedObject.padNameWithZoneName_property.addEBObserver (observer)
       }
@@ -1404,8 +1405,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_padNameWithZoneName_fromElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_padNameWithZoneName_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_padNameWithZoneName.apply { (_ observer : EBEvent) in
         managedObject.padNameWithZoneName_property.removeEBObserver (observer)
       }
@@ -1450,8 +1451,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_zoneName_toElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_zoneName_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_zoneName.apply { (_ observer : EBEvent) in
         managedObject.zoneName_property.addEBObserver (observer)
       }
@@ -1460,8 +1461,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_zoneName_fromElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_zoneName_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_zoneName.apply { (_ observer : EBEvent) in
         managedObject.zoneName_property.removeEBObserver (observer)
       }
@@ -1506,8 +1507,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_noZone_toElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_noZone_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_noZone.apply { (_ observer : EBEvent) in
         managedObject.noZone_property.addEBObserver (observer)
       }
@@ -1516,8 +1517,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_noZone_fromElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_noZone_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_noZone.apply { (_ observer : EBEvent) in
         managedObject.noZone_property.removeEBObserver (observer)
       }
@@ -1562,8 +1563,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_zoneAllowsManualRenumbering_toElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_zoneAllowsManualRenumbering_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_zoneAllowsManualRenumbering.apply { (_ observer : EBEvent) in
         managedObject.zoneAllowsManualRenumbering_property.addEBObserver (observer)
       }
@@ -1572,8 +1573,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_zoneAllowsManualRenumbering_fromElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_zoneAllowsManualRenumbering_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_zoneAllowsManualRenumbering.apply { (_ observer : EBEvent) in
         managedObject.zoneAllowsManualRenumbering_property.removeEBObserver (observer)
       }
@@ -1618,8 +1619,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_slavePadCount_toElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_slavePadCount_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_slavePadCount.apply { (_ observer : EBEvent) in
         managedObject.slavePadCount_property.addEBObserver (observer)
       }
@@ -1628,8 +1629,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_slavePadCount_fromElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_slavePadCount_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_slavePadCount.apply { (_ observer : EBEvent) in
         managedObject.slavePadCount_property.removeEBObserver (observer)
       }
@@ -1674,8 +1675,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_masterPadObjectIndex_toElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_masterPadObjectIndex_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_masterPadObjectIndex.apply { (_ observer : EBEvent) in
         managedObject.masterPadObjectIndex_property.addEBObserver (observer)
       }
@@ -1684,8 +1685,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_masterPadObjectIndex_fromElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_masterPadObjectIndex_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_masterPadObjectIndex.apply { (_ observer : EBEvent) in
         managedObject.masterPadObjectIndex_property.removeEBObserver (observer)
       }
@@ -1730,8 +1731,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserversOf_padNumberDisplay_toElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_padNumberDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
         managedObject.padNumberDisplay_property.addEBObserver (observer)
       }
@@ -1740,8 +1741,8 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserversOf_padNumberDisplay_fromElementsOfSet (_ inSet : Set <PackagePad>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_padNumberDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inSet.values {
       self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
         managedObject.padNumberDisplay_property.removeEBObserver (observer)
       }
@@ -2151,15 +2152,16 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
   // Update observers
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : Set <PackagePad>, addedSet inAddedSet : Set <PackagePad>) {
-    for managedObject in inRemovedSet {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackagePad>,
+                                 addedSet inAddedSet : EBReferenceSet <PackagePad>) {
+    for managedObject in inRemovedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
-    for managedObject in inAddedSet {
+    for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }

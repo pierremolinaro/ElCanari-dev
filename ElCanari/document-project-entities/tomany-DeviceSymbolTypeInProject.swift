@@ -12,7 +12,8 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <DeviceSymbolTypeInProject>, addedSet inAddedSet : Set <DeviceSymbolTypeInProject>) {
+  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <DeviceSymbolTypeInProject>,
+                                          addedSet inAddedSet : EBReferenceSet <DeviceSymbolTypeInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (inRemovedSet) // Stored property
@@ -62,9 +63,9 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserversOf_mSymbolTypeName_toElementsOfSet (_ inSet : Set <DeviceSymbolTypeInProject>) {
+  final func addEBObserversOf_mSymbolTypeName_toElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolTypeInProject>) {
     if !self.mObserversOf_mSymbolTypeName.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
           managedObject.mSymbolTypeName_property.addEBObserver (observer)
         }
@@ -74,10 +75,10 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (_ inSet : Set <DeviceSymbolTypeInProject>) {
+  final func removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolTypeInProject>) {
     self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mSymbolTypeName_property.removeEBObserver (observer)
       }
     }
@@ -121,9 +122,9 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : Set <DeviceSymbolTypeInProject>) {
+  final func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolTypeInProject>) {
     if !self.mObserversOf_mStrokeBezierPath.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
           managedObject.mStrokeBezierPath_property.addEBObserver (observer)
         }
@@ -133,10 +134,10 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : Set <DeviceSymbolTypeInProject>) {
+  final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolTypeInProject>) {
     self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
       }
     }
@@ -180,9 +181,9 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserversOf_mFilledBezierPath_toElementsOfSet (_ inSet : Set <DeviceSymbolTypeInProject>) {
+  final func addEBObserversOf_mFilledBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolTypeInProject>) {
     if !self.mObserversOf_mFilledBezierPath.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_mFilledBezierPath.apply { (_ observer : EBEvent) in
           managedObject.mFilledBezierPath_property.addEBObserver (observer)
         }
@@ -192,10 +193,10 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (_ inSet : Set <DeviceSymbolTypeInProject>) {
+  final func removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolTypeInProject>) {
     self.mObserversOf_mFilledBezierPath.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.mFilledBezierPath_property.removeEBObserver (observer)
       }
     }
@@ -604,15 +605,16 @@ class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSymbolTyp
   // Update observers
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : Set <DeviceSymbolTypeInProject>, addedSet inAddedSet : Set <DeviceSymbolTypeInProject>) {
-    for managedObject in inRemovedSet {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <DeviceSymbolTypeInProject>,
+                                 addedSet inAddedSet : EBReferenceSet <DeviceSymbolTypeInProject>) {
+    for managedObject in inRemovedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
-    for managedObject in inAddedSet {
+    for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }

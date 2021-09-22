@@ -12,7 +12,8 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <ForbiddenPadNumber>, addedSet inAddedSet : Set <ForbiddenPadNumber>) {
+  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ForbiddenPadNumber>,
+                                          addedSet inAddedSet : EBReferenceSet <ForbiddenPadNumber>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_padNumber_fromElementsOfSet (inRemovedSet) // Stored property
@@ -58,9 +59,9 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
 
   //····················································································································
 
-  final func addEBObserversOf_padNumber_toElementsOfSet (_ inSet : Set <ForbiddenPadNumber>) {
+  final func addEBObserversOf_padNumber_toElementsOfSet (_ inSet : EBReferenceSet <ForbiddenPadNumber>) {
     if !self.mObserversOf_padNumber.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_padNumber.apply { (_ observer : EBEvent) in
           managedObject.padNumber_property.addEBObserver (observer)
         }
@@ -70,10 +71,10 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
 
   //····················································································································
 
-  final func removeEBObserversOf_padNumber_fromElementsOfSet (_ inSet : Set <ForbiddenPadNumber>) {
+  final func removeEBObserversOf_padNumber_fromElementsOfSet (_ inSet : EBReferenceSet <ForbiddenPadNumber>) {
     self.mObserversOf_padNumber.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.padNumber_property.removeEBObserver (observer)
       }
     }
@@ -482,15 +483,16 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
   // Update observers
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : Set <ForbiddenPadNumber>, addedSet inAddedSet : Set <ForbiddenPadNumber>) {
-    for managedObject in inRemovedSet {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ForbiddenPadNumber>,
+                                 addedSet inAddedSet : EBReferenceSet <ForbiddenPadNumber>) {
+    for managedObject in inRemovedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
-    for managedObject in inAddedSet {
+    for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }

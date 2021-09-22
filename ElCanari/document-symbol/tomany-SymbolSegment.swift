@@ -12,7 +12,8 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <SymbolSegment>, addedSet inAddedSet : Set <SymbolSegment>) {
+  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolSegment>,
+                                          addedSet inAddedSet : EBReferenceSet <SymbolSegment>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_y1_fromElementsOfSet (inRemovedSet) // Stored property
@@ -72,9 +73,9 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set <SymbolSegment>) {
+  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
     if !self.mObserversOf_y1.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_y1.apply { (_ observer : EBEvent) in
           managedObject.y1_property.addEBObserver (observer)
         }
@@ -84,10 +85,10 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set <SymbolSegment>) {
+  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
     self.mObserversOf_y1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.y1_property.removeEBObserver (observer)
       }
     }
@@ -131,9 +132,9 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set <SymbolSegment>) {
+  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
     if !self.mObserversOf_x2.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_x2.apply { (_ observer : EBEvent) in
           managedObject.x2_property.addEBObserver (observer)
         }
@@ -143,10 +144,10 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set <SymbolSegment>) {
+  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
     self.mObserversOf_x2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.x2_property.removeEBObserver (observer)
       }
     }
@@ -190,9 +191,9 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set <SymbolSegment>) {
+  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
     if !self.mObserversOf_y2.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_y2.apply { (_ observer : EBEvent) in
           managedObject.y2_property.addEBObserver (observer)
         }
@@ -202,10 +203,10 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set <SymbolSegment>) {
+  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
     self.mObserversOf_y2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.y2_property.removeEBObserver (observer)
       }
     }
@@ -249,9 +250,9 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set <SymbolSegment>) {
+  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
     if !self.mObserversOf_x1.isEmpty {
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         self.mObserversOf_x1.apply { (_ observer : EBEvent) in
           managedObject.x1_property.addEBObserver (observer)
         }
@@ -261,10 +262,10 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set <SymbolSegment>) {
+  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
     self.mObserversOf_x1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
-      for managedObject in inSet {
+      for managedObject in inSet.values {
         managedObject.x1_property.removeEBObserver (observer)
       }
     }
@@ -308,8 +309,8 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set <SymbolSegment>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
+    for managedObject in inSet.values {
       self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
         managedObject.strokeBezierPath_property.addEBObserver (observer)
       }
@@ -318,8 +319,8 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set <SymbolSegment>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
+    for managedObject in inSet.values {
       self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
         managedObject.strokeBezierPath_property.removeEBObserver (observer)
       }
@@ -364,8 +365,8 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set <SymbolSegment>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
+    for managedObject in inSet.values {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
@@ -374,8 +375,8 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set <SymbolSegment>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
+    for managedObject in inSet.values {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
@@ -420,8 +421,8 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set <SymbolSegment>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
+    for managedObject in inSet.values {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
@@ -430,8 +431,8 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set <SymbolSegment>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
+    for managedObject in inSet.values {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
@@ -476,8 +477,8 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set <SymbolSegment>) {
-    for managedObject in inSet {
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
+    for managedObject in inSet.values {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
       }
@@ -486,8 +487,8 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set <SymbolSegment>) {
-    for managedObject in inSet {
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolSegment>) {
+    for managedObject in inSet.values {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
       }
@@ -897,15 +898,16 @@ class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSignatureO
   // Update observers
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : Set <SymbolSegment>, addedSet inAddedSet : Set <SymbolSegment>) {
-    for managedObject in inRemovedSet {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolSegment>,
+                                 addedSet inAddedSet : EBReferenceSet <SymbolSegment>) {
+    for managedObject in inRemovedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
-    for managedObject in inAddedSet {
+    for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }

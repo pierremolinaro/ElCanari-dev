@@ -26,22 +26,22 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func update <T : Hashable> (currentSet ioCurrentSet : inout Set <T>,
-                                        fromNewArray inNewArray : [T],
-                                        oldArray inOldArray : [T]) -> (Bool, Set <T>, Set <T>) {
-  var addedSet = Set <T> ()
-  var removedSet = Set <T> ()
+fileprivate func update <T : AnyObject> (currentSet ioCurrentSet : inout EBReferenceSet <T>,
+                                         fromNewArray inNewArray : [T],
+                                         oldArray inOldArray : [T]) -> (Bool, EBReferenceSet <T>, EBReferenceSet <T>) {
+  var addedSet = EBReferenceSet <T> ()
+  var removedSet = EBReferenceSet <T> ()
 //--- Model did change ?
   var modelsAreEqual = inNewArray.count == inOldArray.count
   var idx = 0
   while modelsAreEqual && (idx < inNewArray.count) {
-    modelsAreEqual = inNewArray [idx] == inOldArray [idx]
+    modelsAreEqual = inNewArray [idx] === inOldArray [idx]
     idx += 1
   }
 //---
   if !modelsAreEqual {
     var setAreEqual = ioCurrentSet.count == inNewArray.count
-    var newSet = Set <T> (minimumCapacity: inNewArray.count)
+    var newSet = EBReferenceSet <T> (minimumCapacity: inNewArray.count)
     for object in inNewArray {
       newSet.insert (object)
       if !ioCurrentSet.contains (object) {
@@ -62,7 +62,7 @@ fileprivate func update <T : Hashable> (currentSet ioCurrentSet : inout Set <T>,
 //    ReadOnlyAbstractArrayProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericRelationshipProperty {
+class ReadOnlyAbstractArrayProperty <T : AnyObject> : ReadOnlyAbstractGenericRelationshipProperty {
 
   //····················································································································
   // Abstract methods
@@ -76,15 +76,15 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericRela
 
   //····················································································································
 
-  final var propset : Set <T> { return self.mInternalSetValue }
+  final var propset : EBReferenceSet <T> { return self.mInternalSetValue }
 
   //····················································································································
   //  Internal value
   //····················································································································
 
-  final var internalSetValue : Set <T> { return self.mInternalSetValue }
+  final var internalSetValue : EBReferenceSet <T> { return self.mInternalSetValue }
 
-  private final var mInternalSetValue = Set <T> () // Requires T to be hashable
+  private final var mInternalSetValue = EBReferenceSet <T> () // Requires T to be hashable
 
   internal final var mInternalArrayValue = [T] () {
     didSet {
@@ -96,18 +96,9 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericRela
         self.postEvent ()
         self.notifyModelDidChangeFrom (oldValue: oldValue)
         self.notifyModelDidChange ()
-   //     let (modelDidChange, addedSet, removedSet) = update (currentSet: &self.mInternalSetValue, fromNewArray: self.mInternalArrayValue, oldArray: oldValue)
         if !addedSet.isEmpty || !removedSet.isEmpty {
           self.updateObservers (removedSet: removedSet, addedSet: addedSet)
         }
-//        let newSet = Set (self.mInternalArrayValue)
-//        if self.mInternalSetValue != newSet {
-//          let oldSet = self.mInternalSetValue
-//          self.mInternalSetValue = newSet
-//          let removedSet = oldSet.subtracting (newSet)
-//          let addedSet = newSet.subtracting (oldSet)
-//          self.updateObservers (removedSet: removedSet, addedSet: addedSet)
-//        }
       }
     }
   }
@@ -119,7 +110,7 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericRela
 
   //····················································································································
 
-  internal func updateObservers (removedSet inRemovedSet : Set <T>, addedSet inAddedSet : Set <T>) {
+  internal func updateObservers (removedSet inRemovedSet : EBReferenceSet <T>, addedSet inAddedSet : EBReferenceSet <T>) {
   }
 
   //····················································································································

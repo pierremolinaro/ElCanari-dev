@@ -98,7 +98,7 @@ final class Controller_AutoLayoutDeviceDocument_packageController : EBSwiftBaseO
 
   //····················································································································
 
-  var selectedSet : Set <PackageInDevice> { return Set (self.selectedArray_property.propval) }
+  var selectedSet : EBReferenceSet <PackageInDevice> { return EBReferenceSet (self.selectedArray_property.propval) }
 
   //····················································································································
 
@@ -305,7 +305,7 @@ final class Controller_AutoLayoutDeviceDocument_packageController : EBSwiftBaseO
             sortedObjectDictionary [object] = index
           }
           var indexArrayOfSelectedObjects = [Int] ()
-          for object in self.selectedSet {
+          for object in self.selectedSet.values {
             let index = sortedObjectDictionary [object]
             if let idx = index {
               indexArrayOfSelectedObjects.append (idx)
@@ -334,7 +334,7 @@ final class Controller_AutoLayoutDeviceDocument_packageController : EBSwiftBaseO
           }
         //--- Build selected objects index array
           var selectedObjectIndexArray = [Int] ()
-          for object in self.selectedSet {
+          for object in self.selectedSet.values {
             let index = objectDictionary [object]
             if let idx = index {
               selectedObjectIndexArray.append (idx)

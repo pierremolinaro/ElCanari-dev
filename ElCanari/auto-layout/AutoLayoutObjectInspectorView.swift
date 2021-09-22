@@ -74,7 +74,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
     if let selectedObjectSet = self.mGraphicController?.selectedGraphicObjectSet {
       var selectedObjectsInspectorViewSet = Set <AutoLayoutAbstractStackView> ()
       var someSelectedObjectsHasNoInspector = false
-      for selectedObject in selectedObjectSet {
+      for selectedObject in selectedObjectSet.values {
         var objectHasInspector = false
         for (candidateType, candidateInspectorView) in self.mInspectors {
           if type (of: selectedObject) == candidateType {

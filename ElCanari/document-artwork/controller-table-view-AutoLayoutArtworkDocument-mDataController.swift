@@ -94,7 +94,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseOb
 
   //····················································································································
 
-  var selectedSet : Set <ArtworkFileGenerationParameters> { return Set (self.selectedArray_property.propval) }
+  var selectedSet : EBReferenceSet <ArtworkFileGenerationParameters> { return EBReferenceSet (self.selectedArray_property.propval) }
 
   //····················································································································
 
@@ -284,7 +284,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseOb
             sortedObjectDictionary [object] = index
           }
           var indexArrayOfSelectedObjects = [Int] ()
-          for object in self.selectedSet {
+          for object in self.selectedSet.values {
             let index = sortedObjectDictionary [object]
             if let idx = index {
               indexArrayOfSelectedObjects.append (idx)
@@ -313,7 +313,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseOb
           }
         //--- Build selected objects index array
           var selectedObjectIndexArray = [Int] ()
-          for object in self.selectedSet {
+          for object in self.selectedSet.values {
             let index = objectDictionary [object]
             if let idx = index {
               selectedObjectIndexArray.append (idx)
