@@ -423,7 +423,7 @@ import Cocoa
       self.mPackagePadSelectionController.addExplorer (name: "mPackagePadSelectionController", y:&y, view:view)
     //--- Selection controller property: mPackageSlavePadSelectionController
       self.mPackageSlavePadSelectionController.addExplorer (name: "mPackageSlavePadSelectionController", y:&y, view:view)
-.   //---
+   //---
       super.populateExplorerWindow (&y, view:view)
     }
   #endif

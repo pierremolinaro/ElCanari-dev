@@ -12671,7 +12671,7 @@
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "";
-				"OTHER_SWIFT_FLAGS[arch=*]" = "-DBUILD_OBJECT_EXPLORERz";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-DBUILD_OBJECT_EXPLORER";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
 				STRIP_SWIFT_SYMBOLS = NO;

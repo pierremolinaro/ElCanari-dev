@@ -323,7 +323,7 @@ import Cocoa
       self.mSymbolTextSelectionController.addExplorer (name: "mSymbolTextSelectionController", y:&y, view:view)
     //--- Selection controller property: mSymbolPinSelectionController
       self.mSymbolPinSelectionController.addExplorer (name: "mSymbolPinSelectionController", y:&y, view:view)
-.   //---
+   //---
       super.populateExplorerWindow (&y, view:view)
     }
   #endif

@@ -159,7 +159,7 @@ import Cocoa
       self.mDataController.addExplorer (name: "mDataController", y:&y, view:view)
     //--- Selection controller property: mDataSelection
       self.mDataSelection.addExplorer (name: "mDataSelection", y:&y, view:view)
-.   //---
+   //---
       super.populateExplorerWindow (&y, view:view)
     }
   #endif

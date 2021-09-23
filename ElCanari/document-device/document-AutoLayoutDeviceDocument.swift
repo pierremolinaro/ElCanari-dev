@@ -253,7 +253,7 @@ import Cocoa
       self.symbolTypeController.addExplorer (name: "symbolTypeController", y:&y, view:view)
     //--- Selection controller property: symbolTypeSelection
       self.symbolTypeSelection.addExplorer (name: "symbolTypeSelection", y:&y, view:view)
-.   //---
+   //---
       super.populateExplorerWindow (&y, view:view)
     }
   #endif
