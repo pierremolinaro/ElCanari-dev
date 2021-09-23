@@ -100,9 +100,9 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mZoomDidChangeCallback : Optional <(_ inZoom : Int) -> Void> = nil
+  final internal var mZoomDidChangeCallback : Optional < (_ inZoom : Int) -> Void > = nil
   final var mHelperStringForOptionModifier : String? = nil
-  final internal var mHelperStringDidChangeCallback : Optional <(_ inString : String) -> Void> = nil
+  final internal var mHelperStringDidChangeCallback : Optional < (_ inString : String) -> Void > = nil
   final internal var mXYwindow : NSWindow? = nil
 
   //····················································································································

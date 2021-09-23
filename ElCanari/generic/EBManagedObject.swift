@@ -115,7 +115,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
 
   func removeRecursivelyAllRelationsShips () {
   //--- Find all reachable entities
-    var reachableObjectSet = Set <EBManagedObject> ()
+    var reachableObjectSet = EBReferenceSet <EBManagedObject> ()
     reachableObjectSet.insert (self)
     var objectsToExploreArray = [EBManagedObject] ()
     objectsToExploreArray.append (self)
@@ -131,7 +131,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
       }
     }
   //--- Remove relationships
-    for object in reachableObjectSet {
+    for object in reachableObjectSet.values {
       object.removeAllObservers ()
       object.cleanUpToOneRelationships ()
       object.cleanUpToManyRelationships ()

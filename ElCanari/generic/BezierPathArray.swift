@@ -54,37 +54,47 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
 
   //····················································································································
 
-  public static func == (lhs: BezierPathArray, rhs: BezierPathArray) -> Bool {
-    var equal = lhs.mPathes.count == rhs.mPathes.count
-    if equal {
-      var idx = 0
-      while idx < lhs.mPathes.count {
-        if lhs.mPathes [idx] != rhs.mPathes [idx] {
-          equal = false
-          idx = lhs.mPathes.count // For exiting loop
-        }
-        idx += 1
-      }
-    }
-    return equal
-  }
+//  public static func == (lhs: BezierPathArray, rhs: BezierPathArray) -> Bool {
+//    var equal = lhs.mPathes.count == rhs.mPathes.count
+//    if equal {
+//      var idx = 0
+//      while idx < lhs.mPathes.count {
+//        if lhs.mPathes [idx] != rhs.mPathes [idx] {
+//          equal = false
+//          idx = lhs.mPathes.count // For exiting loop
+//        }
+//        idx += 1
+//      }
+//    }
+//    return equal
+//  }
 
   //····················································································································
 
   public static func < (lhs: BezierPathArray, rhs: BezierPathArray) -> Bool {
     var inferior = lhs.mPathes.count < rhs.mPathes.count
     if lhs.mPathes.count == rhs.mPathes.count {
-      let leftData = NSMutableData ()
-      let leftArchiver = NSKeyedArchiver (forWritingWith: leftData)
-      leftArchiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
-      leftArchiver.finishEncoding ()
-      // let leftData  = NSKeyedArchiver.archivedData (withRootObject: lhs.mPathes)
-      let rightData = NSMutableData ()
-      let rightArchiver = NSKeyedArchiver (forWritingWith: rightData)
-      rightArchiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
-      rightArchiver.finishEncoding ()
-      // let rightData = NSKeyedArchiver.archivedData (withRootObject: rhs.mPathes)
-      inferior = (leftData as Data) < (rightData as Data)
+      var idx = 0
+      while idx < lhs.mPathes.count {
+        if lhs.mPathes [idx] >= rhs.mPathes [idx] {
+          inferior = false
+          idx = lhs.mPathes.count // For exiting loop
+        }
+        idx += 1
+      }
+
+
+//      let leftData = NSMutableData ()
+//      let leftArchiver = NSKeyedArchiver (forWritingWith: leftData)
+//      leftArchiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+//      leftArchiver.finishEncoding ()
+//      // let leftData  = NSKeyedArchiver.archivedData (withRootObject: lhs.mPathes)
+//      let rightData = NSMutableData ()
+//      let rightArchiver = NSKeyedArchiver (forWritingWith: rightData)
+//      rightArchiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+//      rightArchiver.finishEncoding ()
+//      // let rightData = NSKeyedArchiver.archivedData (withRootObject: rhs.mPathes)
+//      inferior = (leftData as Data) < (rightData as Data)
     }
     return inferior
   }
