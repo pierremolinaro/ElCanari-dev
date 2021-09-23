@@ -372,92 +372,96 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "pinName",
-      idx: self.pinName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.pinName_property.mObserverExplorer,
-      valueExplorer: &self.pinName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "symbolName",
-      idx: self.symbolName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.symbolName_property.mObserverExplorer,
-      valueExplorer: &self.symbolName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "pinQualifiedName",
-      idx: self.pinQualifiedName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.pinQualifiedName_property.mObserverExplorer,
-      valueExplorer: &self.pinQualifiedName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "isConnected",
-      idx: self.isConnected_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.isConnected_property.mObserverExplorer,
-      valueExplorer: &self.isConnected_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "numberShape",
-      idx: self.numberShape_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.numberShape_property.mObserverExplorer,
-      valueExplorer: &self.numberShape_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mSymbolInstance",
-      idx:self.mSymbolInstance_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mSymbolInstance_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mType",
-      idx:self.mType_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mType_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mPadProxy",
-      idx:self.mPadProxy_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mPadProxy_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "pinName",
+        idx: self.pinName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.pinName_property.mObserverExplorer,
+        valueExplorer: &self.pinName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "symbolName",
+        idx: self.symbolName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.symbolName_property.mObserverExplorer,
+        valueExplorer: &self.symbolName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "pinQualifiedName",
+        idx: self.pinQualifiedName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.pinQualifiedName_property.mObserverExplorer,
+        valueExplorer: &self.pinQualifiedName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "isConnected",
+        idx: self.isConnected_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.isConnected_property.mObserverExplorer,
+        valueExplorer: &self.isConnected_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "numberShape",
+        idx: self.numberShape_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.numberShape_property.mObserverExplorer,
+        valueExplorer: &self.numberShape_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mSymbolInstance",
+        idx:self.mSymbolInstance_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mSymbolInstance_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mType",
+        idx:self.mType_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mType_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mPadProxy",
+        idx:self.mPadProxy_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mPadProxy_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
-  //--- To one property: mSymbolInstance
-    self.mSymbolInstance_property.mObserverExplorer = nil
-    self.mSymbolInstance_property.mValueExplorer = nil
-  //--- To one property: mType
-    self.mType_property.mObserverExplorer = nil
-    self.mType_property.mValueExplorer = nil
-  //--- To one property: mPadProxy
-    self.mPadProxy_property.mObserverExplorer = nil
-    self.mPadProxy_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
+    //--- To one property: mSymbolInstance
+      self.mSymbolInstance_property.mObserverExplorer = nil
+      self.mSymbolInstance_property.mValueExplorer = nil
+    //--- To one property: mType
+      self.mType_property.mObserverExplorer = nil
+      self.mType_property.mValueExplorer = nil
+    //--- To one property: mPadProxy
+      self.mPadProxy_property.mObserverExplorer = nil
+      self.mPadProxy_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships

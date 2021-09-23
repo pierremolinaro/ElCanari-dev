@@ -403,114 +403,117 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mPinX",
-      idx: self.mPinX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mPinX_property.mObserverExplorer,
-      valueExplorer: &self.mPinX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mPinY",
-      idx: self.mPinY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mPinY_property.mObserverExplorer,
-      valueExplorer: &self.mPinY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mXName",
-      idx: self.mXName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mXName_property.mObserverExplorer,
-      valueExplorer: &self.mXName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mYName",
-      idx: self.mYName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mYName_property.mObserverExplorer,
-      valueExplorer: &self.mYName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mName",
-      idx: self.mName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mName_property.mObserverExplorer,
-      valueExplorer: &self.mName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mNameHorizontalAlignment",
-      idx: self.mNameHorizontalAlignment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNameHorizontalAlignment_property.mObserverExplorer,
-      valueExplorer: &self.mNameHorizontalAlignment_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mPinNameIsDisplayedInSchematics",
-      idx: self.mPinNameIsDisplayedInSchematics_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mPinNameIsDisplayedInSchematics_property.mObserverExplorer,
-      valueExplorer: &self.mPinNameIsDisplayedInSchematics_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mXNumber",
-      idx: self.mXNumber_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mXNumber_property.mObserverExplorer,
-      valueExplorer: &self.mXNumber_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mYNumber",
-      idx: self.mYNumber_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mYNumber_property.mObserverExplorer,
-      valueExplorer: &self.mYNumber_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mNumberHorizontalAlignment",
-      idx: self.mNumberHorizontalAlignment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNumberHorizontalAlignment_property.mObserverExplorer,
-      valueExplorer: &self.mNumberHorizontalAlignment_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "nameShape",
-      idx: self.nameShape_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.nameShape_property.mObserverExplorer,
-      valueExplorer: &self.nameShape_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mInstances",
-      idx:mInstances_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mInstances_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mPinX",
+        idx: self.mPinX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mPinX_property.mObserverExplorer,
+        valueExplorer: &self.mPinX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mPinY",
+        idx: self.mPinY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mPinY_property.mObserverExplorer,
+        valueExplorer: &self.mPinY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mXName",
+        idx: self.mXName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mXName_property.mObserverExplorer,
+        valueExplorer: &self.mXName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mYName",
+        idx: self.mYName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mYName_property.mObserverExplorer,
+        valueExplorer: &self.mYName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mName",
+        idx: self.mName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mName_property.mObserverExplorer,
+        valueExplorer: &self.mName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mNameHorizontalAlignment",
+        idx: self.mNameHorizontalAlignment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNameHorizontalAlignment_property.mObserverExplorer,
+        valueExplorer: &self.mNameHorizontalAlignment_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mPinNameIsDisplayedInSchematics",
+        idx: self.mPinNameIsDisplayedInSchematics_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mPinNameIsDisplayedInSchematics_property.mObserverExplorer,
+        valueExplorer: &self.mPinNameIsDisplayedInSchematics_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mXNumber",
+        idx: self.mXNumber_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mXNumber_property.mObserverExplorer,
+        valueExplorer: &self.mXNumber_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mYNumber",
+        idx: self.mYNumber_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mYNumber_property.mObserverExplorer,
+        valueExplorer: &self.mYNumber_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mNumberHorizontalAlignment",
+        idx: self.mNumberHorizontalAlignment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNumberHorizontalAlignment_property.mObserverExplorer,
+        valueExplorer: &self.mNumberHorizontalAlignment_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "nameShape",
+        idx: self.nameShape_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.nameShape_property.mObserverExplorer,
+        valueExplorer: &self.nameShape_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mInstances",
+        idx:mInstances_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mInstances_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mPinX
     self.mPinX_property.mObserverExplorer = nil
     self.mPinX_property.mValueExplorer = nil
@@ -541,11 +544,12 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //--- Atomic property: mNumberHorizontalAlignment
     self.mNumberHorizontalAlignment_property.mObserverExplorer = nil
     self.mNumberHorizontalAlignment_property.mValueExplorer = nil
-  //--- To many property: mInstances
-    self.mInstances_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: mInstances
+      self.mInstances_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -572,26 +576,26 @@ final class SymbolPinTypeInDevice : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mPinX
-    self.mPinX_property.storeIn (dictionary: ioDictionary, forKey: "mPinX")
-  //--- Atomic property: mPinY
-    self.mPinY_property.storeIn (dictionary: ioDictionary, forKey: "mPinY")
-  //--- Atomic property: mXName
-    self.mXName_property.storeIn (dictionary: ioDictionary, forKey: "mXName")
-  //--- Atomic property: mYName
-    self.mYName_property.storeIn (dictionary: ioDictionary, forKey: "mYName")
-  //--- Atomic property: mName
-    self.mName_property.storeIn (dictionary: ioDictionary, forKey: "mName")
-  //--- Atomic property: mNameHorizontalAlignment
-    self.mNameHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mNameHorizontalAlignment")
-  //--- Atomic property: mPinNameIsDisplayedInSchematics
-    self.mPinNameIsDisplayedInSchematics_property.storeIn (dictionary: ioDictionary, forKey: "mPinNameIsDisplayedInSchematics")
-  //--- Atomic property: mXNumber
-    self.mXNumber_property.storeIn (dictionary: ioDictionary, forKey: "mXNumber")
-  //--- Atomic property: mYNumber
-    self.mYNumber_property.storeIn (dictionary: ioDictionary, forKey: "mYNumber")
-  //--- Atomic property: mNumberHorizontalAlignment
-    self.mNumberHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mNumberHorizontalAlignment")
+    //--- Atomic property: mPinX
+      self.mPinX_property.storeIn (dictionary: ioDictionary, forKey: "mPinX")
+    //--- Atomic property: mPinY
+      self.mPinY_property.storeIn (dictionary: ioDictionary, forKey: "mPinY")
+    //--- Atomic property: mXName
+      self.mXName_property.storeIn (dictionary: ioDictionary, forKey: "mXName")
+    //--- Atomic property: mYName
+      self.mYName_property.storeIn (dictionary: ioDictionary, forKey: "mYName")
+    //--- Atomic property: mName
+      self.mName_property.storeIn (dictionary: ioDictionary, forKey: "mName")
+    //--- Atomic property: mNameHorizontalAlignment
+      self.mNameHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mNameHorizontalAlignment")
+    //--- Atomic property: mPinNameIsDisplayedInSchematics
+      self.mPinNameIsDisplayedInSchematics_property.storeIn (dictionary: ioDictionary, forKey: "mPinNameIsDisplayedInSchematics")
+    //--- Atomic property: mXNumber
+      self.mXNumber_property.storeIn (dictionary: ioDictionary, forKey: "mXNumber")
+    //--- Atomic property: mYNumber
+      self.mYNumber_property.storeIn (dictionary: ioDictionary, forKey: "mYNumber")
+    //--- Atomic property: mNumberHorizontalAlignment
+      self.mNumberHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mNumberHorizontalAlignment")
   //--- To many property: mInstances
     self.store (
       managedObjectArray: self.mInstances_property.propval.values,

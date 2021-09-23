@@ -188,59 +188,62 @@ final class CanariLibraryEntry : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mPath",
-      idx: self.mPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mPath_property.mObserverExplorer,
-      valueExplorer: &self.mPath_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mUses",
-      idx: self.mUses_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mUses_property.mObserverExplorer,
-      valueExplorer: &self.mUses_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mLibraryRepositoryURL",
-      idx: self.mLibraryRepositoryURL_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mLibraryRepositoryURL_property.mObserverExplorer,
-      valueExplorer: &self.mLibraryRepositoryURL_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mUserAndPasswordTag",
-      idx: self.mUserAndPasswordTag_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mUserAndPasswordTag_property.mObserverExplorer,
-      valueExplorer: &self.mUserAndPasswordTag_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "mStatusImage",
-      idx: self.mStatusImage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mStatusImage_property.mObserverExplorer,
-      valueExplorer: &self.mStatusImage_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mPath",
+        idx: self.mPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mPath_property.mObserverExplorer,
+        valueExplorer: &self.mPath_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mUses",
+        idx: self.mUses_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mUses_property.mObserverExplorer,
+        valueExplorer: &self.mUses_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mLibraryRepositoryURL",
+        idx: self.mLibraryRepositoryURL_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mLibraryRepositoryURL_property.mObserverExplorer,
+        valueExplorer: &self.mLibraryRepositoryURL_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mUserAndPasswordTag",
+        idx: self.mUserAndPasswordTag_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mUserAndPasswordTag_property.mObserverExplorer,
+        valueExplorer: &self.mUserAndPasswordTag_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "mStatusImage",
+        idx: self.mStatusImage_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mStatusImage_property.mObserverExplorer,
+        valueExplorer: &self.mStatusImage_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mPath
     self.mPath_property.mObserverExplorer = nil
     self.mPath_property.mValueExplorer = nil
@@ -253,9 +256,10 @@ final class CanariLibraryEntry : EBManagedObject,
   //--- Atomic property: mUserAndPasswordTag
     self.mUserAndPasswordTag_property.mObserverExplorer = nil
     self.mUserAndPasswordTag_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -281,14 +285,14 @@ final class CanariLibraryEntry : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mPath
-    self.mPath_property.storeIn (dictionary: ioDictionary, forKey: "mPath")
-  //--- Atomic property: mUses
-    self.mUses_property.storeIn (dictionary: ioDictionary, forKey: "mUses")
-  //--- Atomic property: mLibraryRepositoryURL
-    self.mLibraryRepositoryURL_property.storeIn (dictionary: ioDictionary, forKey: "mLibraryRepositoryURL")
-  //--- Atomic property: mUserAndPasswordTag
-    self.mUserAndPasswordTag_property.storeIn (dictionary: ioDictionary, forKey: "mUserAndPasswordTag")
+    //--- Atomic property: mPath
+      self.mPath_property.storeIn (dictionary: ioDictionary, forKey: "mPath")
+    //--- Atomic property: mUses
+      self.mUses_property.storeIn (dictionary: ioDictionary, forKey: "mUses")
+    //--- Atomic property: mLibraryRepositoryURL
+      self.mLibraryRepositoryURL_property.storeIn (dictionary: ioDictionary, forKey: "mLibraryRepositoryURL")
+    //--- Atomic property: mUserAndPasswordTag
+      self.mUserAndPasswordTag_property.storeIn (dictionary: ioDictionary, forKey: "mUserAndPasswordTag")
   }
 
   //····················································································································

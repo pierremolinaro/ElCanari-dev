@@ -987,242 +987,245 @@ final class NetClassInProject : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mNetClassName",
-      idx: self.mNetClassName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNetClassName_property.mObserverExplorer,
-      valueExplorer: &self.mNetClassName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mNetClassColor",
-      idx: self.mNetClassColor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNetClassColor_property.mObserverExplorer,
-      valueExplorer: &self.mNetClassColor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mTrackWidth",
-      idx: self.mTrackWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mTrackWidth_property.mObserverExplorer,
-      valueExplorer: &self.mTrackWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mTrackWidthUnit",
-      idx: self.mTrackWidthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mTrackWidthUnit_property.mObserverExplorer,
-      valueExplorer: &self.mTrackWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mViaHoleDiameter",
-      idx: self.mViaHoleDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mViaHoleDiameter_property.mObserverExplorer,
-      valueExplorer: &self.mViaHoleDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mViaHoleDiameterUnit",
-      idx: self.mViaHoleDiameterUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mViaHoleDiameterUnit_property.mObserverExplorer,
-      valueExplorer: &self.mViaHoleDiameterUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mViaPadDiameter",
-      idx: self.mViaPadDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mViaPadDiameter_property.mObserverExplorer,
-      valueExplorer: &self.mViaPadDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mViaPadDiameterUnit",
-      idx: self.mViaPadDiameterUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mViaPadDiameterUnit_property.mObserverExplorer,
-      valueExplorer: &self.mViaPadDiameterUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mAllowTracksOnFrontSide",
-      idx: self.mAllowTracksOnFrontSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mAllowTracksOnFrontSide_property.mObserverExplorer,
-      valueExplorer: &self.mAllowTracksOnFrontSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mAllowTracksOnBackSide",
-      idx: self.mAllowTracksOnBackSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mAllowTracksOnBackSide_property.mObserverExplorer,
-      valueExplorer: &self.mAllowTracksOnBackSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mAllowTracksOnInner1Layer",
-      idx: self.mAllowTracksOnInner1Layer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mAllowTracksOnInner1Layer_property.mObserverExplorer,
-      valueExplorer: &self.mAllowTracksOnInner1Layer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mAllowTracksOnInner2Layer",
-      idx: self.mAllowTracksOnInner2Layer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mAllowTracksOnInner2Layer_property.mObserverExplorer,
-      valueExplorer: &self.mAllowTracksOnInner2Layer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mAllowTracksOnInner3Layer",
-      idx: self.mAllowTracksOnInner3Layer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mAllowTracksOnInner3Layer_property.mObserverExplorer,
-      valueExplorer: &self.mAllowTracksOnInner3Layer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mAllowTracksOnInner4Layer",
-      idx: self.mAllowTracksOnInner4Layer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mAllowTracksOnInner4Layer_property.mObserverExplorer,
-      valueExplorer: &self.mAllowTracksOnInner4Layer_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "trackWidthString",
-      idx: self.trackWidthString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.trackWidthString_property.mObserverExplorer,
-      valueExplorer: &self.trackWidthString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "viaHoleDiameter",
-      idx: self.viaHoleDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.viaHoleDiameter_property.mObserverExplorer,
-      valueExplorer: &self.viaHoleDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "viaPadDiameter",
-      idx: self.viaPadDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.viaPadDiameter_property.mObserverExplorer,
-      valueExplorer: &self.viaPadDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "allowTracksOnFrontSideString",
-      idx: self.allowTracksOnFrontSideString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.allowTracksOnFrontSideString_property.mObserverExplorer,
-      valueExplorer: &self.allowTracksOnFrontSideString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "allowTracksOnBackSideString",
-      idx: self.allowTracksOnBackSideString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.allowTracksOnBackSideString_property.mObserverExplorer,
-      valueExplorer: &self.allowTracksOnBackSideString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "allowTracksOnInner1LayerString",
-      idx: self.allowTracksOnInner1LayerString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.allowTracksOnInner1LayerString_property.mObserverExplorer,
-      valueExplorer: &self.allowTracksOnInner1LayerString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "allowTracksOnInner2LayerString",
-      idx: self.allowTracksOnInner2LayerString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.allowTracksOnInner2LayerString_property.mObserverExplorer,
-      valueExplorer: &self.allowTracksOnInner2LayerString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "allowTracksOnInner3LayerString",
-      idx: self.allowTracksOnInner3LayerString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.allowTracksOnInner3LayerString_property.mObserverExplorer,
-      valueExplorer: &self.allowTracksOnInner3LayerString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "allowTracksOnInner4LayerString",
-      idx: self.allowTracksOnInner4LayerString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.allowTracksOnInner4LayerString_property.mObserverExplorer,
-      valueExplorer: &self.allowTracksOnInner4LayerString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "canRemove",
-      idx: self.canRemove_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.canRemove_property.mObserverExplorer,
-      valueExplorer: &self.canRemove_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netUsage",
-      idx: self.netUsage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netUsage_property.mObserverExplorer,
-      valueExplorer: &self.netUsage_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netsDescription",
-      idx: self.netsDescription_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netsDescription_property.mObserverExplorer,
-      valueExplorer: &self.netsDescription_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netWarningCount",
-      idx: self.netWarningCount_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netWarningCount_property.mObserverExplorer,
-      valueExplorer: &self.netWarningCount_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mNets",
-      idx:mNets_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mNets_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mNetClassName",
+        idx: self.mNetClassName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNetClassName_property.mObserverExplorer,
+        valueExplorer: &self.mNetClassName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mNetClassColor",
+        idx: self.mNetClassColor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNetClassColor_property.mObserverExplorer,
+        valueExplorer: &self.mNetClassColor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mTrackWidth",
+        idx: self.mTrackWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mTrackWidth_property.mObserverExplorer,
+        valueExplorer: &self.mTrackWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mTrackWidthUnit",
+        idx: self.mTrackWidthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mTrackWidthUnit_property.mObserverExplorer,
+        valueExplorer: &self.mTrackWidthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mViaHoleDiameter",
+        idx: self.mViaHoleDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mViaHoleDiameter_property.mObserverExplorer,
+        valueExplorer: &self.mViaHoleDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mViaHoleDiameterUnit",
+        idx: self.mViaHoleDiameterUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mViaHoleDiameterUnit_property.mObserverExplorer,
+        valueExplorer: &self.mViaHoleDiameterUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mViaPadDiameter",
+        idx: self.mViaPadDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mViaPadDiameter_property.mObserverExplorer,
+        valueExplorer: &self.mViaPadDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mViaPadDiameterUnit",
+        idx: self.mViaPadDiameterUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mViaPadDiameterUnit_property.mObserverExplorer,
+        valueExplorer: &self.mViaPadDiameterUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mAllowTracksOnFrontSide",
+        idx: self.mAllowTracksOnFrontSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mAllowTracksOnFrontSide_property.mObserverExplorer,
+        valueExplorer: &self.mAllowTracksOnFrontSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mAllowTracksOnBackSide",
+        idx: self.mAllowTracksOnBackSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mAllowTracksOnBackSide_property.mObserverExplorer,
+        valueExplorer: &self.mAllowTracksOnBackSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mAllowTracksOnInner1Layer",
+        idx: self.mAllowTracksOnInner1Layer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mAllowTracksOnInner1Layer_property.mObserverExplorer,
+        valueExplorer: &self.mAllowTracksOnInner1Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mAllowTracksOnInner2Layer",
+        idx: self.mAllowTracksOnInner2Layer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mAllowTracksOnInner2Layer_property.mObserverExplorer,
+        valueExplorer: &self.mAllowTracksOnInner2Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mAllowTracksOnInner3Layer",
+        idx: self.mAllowTracksOnInner3Layer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mAllowTracksOnInner3Layer_property.mObserverExplorer,
+        valueExplorer: &self.mAllowTracksOnInner3Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mAllowTracksOnInner4Layer",
+        idx: self.mAllowTracksOnInner4Layer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mAllowTracksOnInner4Layer_property.mObserverExplorer,
+        valueExplorer: &self.mAllowTracksOnInner4Layer_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "trackWidthString",
+        idx: self.trackWidthString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.trackWidthString_property.mObserverExplorer,
+        valueExplorer: &self.trackWidthString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "viaHoleDiameter",
+        idx: self.viaHoleDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.viaHoleDiameter_property.mObserverExplorer,
+        valueExplorer: &self.viaHoleDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "viaPadDiameter",
+        idx: self.viaPadDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.viaPadDiameter_property.mObserverExplorer,
+        valueExplorer: &self.viaPadDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "allowTracksOnFrontSideString",
+        idx: self.allowTracksOnFrontSideString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.allowTracksOnFrontSideString_property.mObserverExplorer,
+        valueExplorer: &self.allowTracksOnFrontSideString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "allowTracksOnBackSideString",
+        idx: self.allowTracksOnBackSideString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.allowTracksOnBackSideString_property.mObserverExplorer,
+        valueExplorer: &self.allowTracksOnBackSideString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "allowTracksOnInner1LayerString",
+        idx: self.allowTracksOnInner1LayerString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.allowTracksOnInner1LayerString_property.mObserverExplorer,
+        valueExplorer: &self.allowTracksOnInner1LayerString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "allowTracksOnInner2LayerString",
+        idx: self.allowTracksOnInner2LayerString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.allowTracksOnInner2LayerString_property.mObserverExplorer,
+        valueExplorer: &self.allowTracksOnInner2LayerString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "allowTracksOnInner3LayerString",
+        idx: self.allowTracksOnInner3LayerString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.allowTracksOnInner3LayerString_property.mObserverExplorer,
+        valueExplorer: &self.allowTracksOnInner3LayerString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "allowTracksOnInner4LayerString",
+        idx: self.allowTracksOnInner4LayerString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.allowTracksOnInner4LayerString_property.mObserverExplorer,
+        valueExplorer: &self.allowTracksOnInner4LayerString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "canRemove",
+        idx: self.canRemove_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.canRemove_property.mObserverExplorer,
+        valueExplorer: &self.canRemove_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netUsage",
+        idx: self.netUsage_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netUsage_property.mObserverExplorer,
+        valueExplorer: &self.netUsage_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netsDescription",
+        idx: self.netsDescription_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netsDescription_property.mObserverExplorer,
+        valueExplorer: &self.netsDescription_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netWarningCount",
+        idx: self.netWarningCount_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netWarningCount_property.mObserverExplorer,
+        valueExplorer: &self.netWarningCount_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mNets",
+        idx:mNets_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mNets_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mNetClassName
     self.mNetClassName_property.mObserverExplorer = nil
     self.mNetClassName_property.mValueExplorer = nil
@@ -1265,11 +1268,12 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: mAllowTracksOnInner4Layer
     self.mAllowTracksOnInner4Layer_property.mObserverExplorer = nil
     self.mAllowTracksOnInner4Layer_property.mValueExplorer = nil
-  //--- To many property: mNets
-    self.mNets_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: mNets
+      self.mNets_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -1296,34 +1300,34 @@ final class NetClassInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mNetClassName
-    self.mNetClassName_property.storeIn (dictionary: ioDictionary, forKey: "mNetClassName")
-  //--- Atomic property: mNetClassColor
-    self.mNetClassColor_property.storeIn (dictionary: ioDictionary, forKey: "mNetClassColor")
-  //--- Atomic property: mTrackWidth
-    self.mTrackWidth_property.storeIn (dictionary: ioDictionary, forKey: "mTrackWidth")
-  //--- Atomic property: mTrackWidthUnit
-    self.mTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mTrackWidthUnit")
-  //--- Atomic property: mViaHoleDiameter
-    self.mViaHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mViaHoleDiameter")
-  //--- Atomic property: mViaHoleDiameterUnit
-    self.mViaHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mViaHoleDiameterUnit")
-  //--- Atomic property: mViaPadDiameter
-    self.mViaPadDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mViaPadDiameter")
-  //--- Atomic property: mViaPadDiameterUnit
-    self.mViaPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mViaPadDiameterUnit")
-  //--- Atomic property: mAllowTracksOnFrontSide
-    self.mAllowTracksOnFrontSide_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnFrontSide")
-  //--- Atomic property: mAllowTracksOnBackSide
-    self.mAllowTracksOnBackSide_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnBackSide")
-  //--- Atomic property: mAllowTracksOnInner1Layer
-    self.mAllowTracksOnInner1Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner1Layer")
-  //--- Atomic property: mAllowTracksOnInner2Layer
-    self.mAllowTracksOnInner2Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner2Layer")
-  //--- Atomic property: mAllowTracksOnInner3Layer
-    self.mAllowTracksOnInner3Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner3Layer")
-  //--- Atomic property: mAllowTracksOnInner4Layer
-    self.mAllowTracksOnInner4Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner4Layer")
+    //--- Atomic property: mNetClassName
+      self.mNetClassName_property.storeIn (dictionary: ioDictionary, forKey: "mNetClassName")
+    //--- Atomic property: mNetClassColor
+      self.mNetClassColor_property.storeIn (dictionary: ioDictionary, forKey: "mNetClassColor")
+    //--- Atomic property: mTrackWidth
+      self.mTrackWidth_property.storeIn (dictionary: ioDictionary, forKey: "mTrackWidth")
+    //--- Atomic property: mTrackWidthUnit
+      self.mTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mTrackWidthUnit")
+    //--- Atomic property: mViaHoleDiameter
+      self.mViaHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mViaHoleDiameter")
+    //--- Atomic property: mViaHoleDiameterUnit
+      self.mViaHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mViaHoleDiameterUnit")
+    //--- Atomic property: mViaPadDiameter
+      self.mViaPadDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mViaPadDiameter")
+    //--- Atomic property: mViaPadDiameterUnit
+      self.mViaPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mViaPadDiameterUnit")
+    //--- Atomic property: mAllowTracksOnFrontSide
+      self.mAllowTracksOnFrontSide_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnFrontSide")
+    //--- Atomic property: mAllowTracksOnBackSide
+      self.mAllowTracksOnBackSide_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnBackSide")
+    //--- Atomic property: mAllowTracksOnInner1Layer
+      self.mAllowTracksOnInner1Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner1Layer")
+    //--- Atomic property: mAllowTracksOnInner2Layer
+      self.mAllowTracksOnInner2Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner2Layer")
+    //--- Atomic property: mAllowTracksOnInner3Layer
+      self.mAllowTracksOnInner3Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner3Layer")
+    //--- Atomic property: mAllowTracksOnInner4Layer
+      self.mAllowTracksOnInner4Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner4Layer")
   //--- To many property: mNets
     self.store (
       managedObjectArray: self.mNets_property.propval.values,

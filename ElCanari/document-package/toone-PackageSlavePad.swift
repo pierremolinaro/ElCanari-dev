@@ -789,20 +789,22 @@ final class StoredObject_PackageSlavePad : ReadWriteObject_PackageSlavePad, EBSi
 
   //····················································································································
 
-  var mValueExplorer : NSButton? {
-    didSet {
-      if let unwrappedExplorer = self.mValueExplorer {
-        switch self.selection {
-        case .empty, .multiple :
-          break ;
-        case .single (let v) :
-          updateManagedObjectToOneRelationshipDisplay (object: v, button: unwrappedExplorer)
+  #if BUILD_OBJECT_EXPLORER
+    var mValueExplorer : NSButton? {
+      didSet {
+        if let unwrappedExplorer = self.mValueExplorer {
+          switch self.selection {
+          case .empty, .multiple :
+            break ;
+          case .single (let v) :
+            updateManagedObjectToOneRelationshipDisplay (object: v, button: unwrappedExplorer)
+          }
         }
       }
     }
-  }
-
- //····················································································································
+  #endif
+  
+  //····················································································································
   // Model will change
   //····················································································································
 
@@ -833,9 +835,11 @@ final class StoredObject_PackageSlavePad : ReadWriteObject_PackageSlavePad, EBSi
 
   override func notifyModelDidChange () {
   //--- Update explorer
-    if let valueExplorer = self.mValueExplorer {
-      updateManagedObjectToOneRelationshipDisplay (object: self.mInternalValue, button: valueExplorer)
-    }
+    #if BUILD_OBJECT_EXPLORER
+      if let valueExplorer = self.mValueExplorer {
+        updateManagedObjectToOneRelationshipDisplay (object: self.mInternalValue, button: valueExplorer)
+      }
+    #endif
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()

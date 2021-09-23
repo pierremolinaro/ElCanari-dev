@@ -397,114 +397,117 @@ final class SymbolRoot : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "selectedInspector",
-      idx: self.selectedInspector_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectedInspector_property.mObserverExplorer,
-      valueExplorer: &self.selectedInspector_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "comments",
-      idx: self.comments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.comments_property.mObserverExplorer,
-      valueExplorer: &self.comments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "horizontalFlip",
-      idx: self.horizontalFlip_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.horizontalFlip_property.mObserverExplorer,
-      valueExplorer: &self.horizontalFlip_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "verticalFlip",
-      idx: self.verticalFlip_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.verticalFlip_property.mObserverExplorer,
-      valueExplorer: &self.verticalFlip_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "gridStyle",
-      idx: self.gridStyle_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.gridStyle_property.mObserverExplorer,
-      valueExplorer: &self.gridStyle_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "gridDisplay",
-      idx: self.gridDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.gridDisplay_property.mObserverExplorer,
-      valueExplorer: &self.gridDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "zoom",
-      idx: self.zoom_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.zoom_property.mObserverExplorer,
-      valueExplorer: &self.zoom_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xPlacardUnit",
-      idx: self.xPlacardUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.xPlacardUnit_property.mObserverExplorer,
-      valueExplorer: &self.xPlacardUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yPlacardUnit",
-      idx: self.yPlacardUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.yPlacardUnit_property.mObserverExplorer,
-      valueExplorer: &self.yPlacardUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectedPageIndex",
-      idx: self.selectedPageIndex_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectedPageIndex_property.mObserverExplorer,
-      valueExplorer: &self.selectedPageIndex_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "symbolObjects",
-      idx:symbolObjects_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&symbolObjects_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "selectedInspector",
+        idx: self.selectedInspector_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectedInspector_property.mObserverExplorer,
+        valueExplorer: &self.selectedInspector_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "comments",
+        idx: self.comments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.comments_property.mObserverExplorer,
+        valueExplorer: &self.comments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "horizontalFlip",
+        idx: self.horizontalFlip_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.horizontalFlip_property.mObserverExplorer,
+        valueExplorer: &self.horizontalFlip_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "verticalFlip",
+        idx: self.verticalFlip_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.verticalFlip_property.mObserverExplorer,
+        valueExplorer: &self.verticalFlip_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "gridStyle",
+        idx: self.gridStyle_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.gridStyle_property.mObserverExplorer,
+        valueExplorer: &self.gridStyle_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "gridDisplay",
+        idx: self.gridDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.gridDisplay_property.mObserverExplorer,
+        valueExplorer: &self.gridDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "zoom",
+        idx: self.zoom_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.zoom_property.mObserverExplorer,
+        valueExplorer: &self.zoom_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "xPlacardUnit",
+        idx: self.xPlacardUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.xPlacardUnit_property.mObserverExplorer,
+        valueExplorer: &self.xPlacardUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "yPlacardUnit",
+        idx: self.yPlacardUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.yPlacardUnit_property.mObserverExplorer,
+        valueExplorer: &self.yPlacardUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectedPageIndex",
+        idx: self.selectedPageIndex_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectedPageIndex_property.mObserverExplorer,
+        valueExplorer: &self.selectedPageIndex_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "symbolObjects",
+        idx:symbolObjects_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&symbolObjects_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.mObserverExplorer = nil
     self.selectedInspector_property.mValueExplorer = nil
@@ -532,14 +535,15 @@ final class SymbolRoot : EBManagedObject,
   //--- Atomic property: yPlacardUnit
     self.yPlacardUnit_property.mObserverExplorer = nil
     self.yPlacardUnit_property.mValueExplorer = nil
-  //--- To many property: symbolObjects
-    self.symbolObjects_property.mValueExplorer = nil
+    //--- To many property: symbolObjects
+      self.symbolObjects_property.mValueExplorer = nil
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.mObserverExplorer = nil
     self.selectedPageIndex_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -566,32 +570,32 @@ final class SymbolRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: selectedInspector
-    self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
-  //--- Atomic property: comments
-    self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
-  //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "horizontalFlip")
-  //--- Atomic property: verticalFlip
-    self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "verticalFlip")
-  //--- Atomic property: gridStyle
-    self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey: "gridStyle")
-  //--- Atomic property: gridDisplay
-    self.gridDisplay_property.storeIn (dictionary: ioDictionary, forKey: "gridDisplay")
-  //--- Atomic property: zoom
-    self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
-  //--- Atomic property: xPlacardUnit
-    self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "xPlacardUnit")
-  //--- Atomic property: yPlacardUnit
-    self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "yPlacardUnit")
+    //--- Atomic property: selectedInspector
+      self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
+    //--- Atomic property: comments
+      self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
+    //--- Atomic property: horizontalFlip
+      self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "horizontalFlip")
+    //--- Atomic property: verticalFlip
+      self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "verticalFlip")
+    //--- Atomic property: gridStyle
+      self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey: "gridStyle")
+    //--- Atomic property: gridDisplay
+      self.gridDisplay_property.storeIn (dictionary: ioDictionary, forKey: "gridDisplay")
+    //--- Atomic property: zoom
+      self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
+    //--- Atomic property: xPlacardUnit
+      self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "xPlacardUnit")
+    //--- Atomic property: yPlacardUnit
+      self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "yPlacardUnit")
   //--- To many property: symbolObjects
     self.store (
       managedObjectArray: self.symbolObjects_property.propval.values,
       relationshipName: "symbolObjects",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
+    //--- Atomic property: selectedPageIndex
+      self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
   }
 
   //····················································································································

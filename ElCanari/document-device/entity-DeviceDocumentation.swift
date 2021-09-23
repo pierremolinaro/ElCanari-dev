@@ -136,52 +136,56 @@ final class DeviceDocumentation : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mFileName",
-      idx: self.mFileName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mFileName_property.mObserverExplorer,
-      valueExplorer: &self.mFileName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mFileData",
-      idx: self.mFileData_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mFileData_property.mObserverExplorer,
-      valueExplorer: &self.mFileData_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "fileSize",
-      idx: self.fileSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.fileSize_property.mObserverExplorer,
-      valueExplorer: &self.fileSize_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mFileName",
+        idx: self.mFileName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mFileName_property.mObserverExplorer,
+        valueExplorer: &self.mFileName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mFileData",
+        idx: self.mFileData_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mFileData_property.mObserverExplorer,
+        valueExplorer: &self.mFileData_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "fileSize",
+        idx: self.fileSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.fileSize_property.mObserverExplorer,
+        valueExplorer: &self.fileSize_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mFileName
     self.mFileName_property.mObserverExplorer = nil
     self.mFileName_property.mValueExplorer = nil
   //--- Atomic property: mFileData
     self.mFileData_property.mObserverExplorer = nil
     self.mFileData_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -207,10 +211,10 @@ final class DeviceDocumentation : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mFileName
-    self.mFileName_property.storeIn (dictionary: ioDictionary, forKey: "mFileName")
-  //--- Atomic property: mFileData
-    self.mFileData_property.storeIn (dictionary: ioDictionary, forKey: "mFileData")
+    //--- Atomic property: mFileName
+      self.mFileName_property.storeIn (dictionary: ioDictionary, forKey: "mFileName")
+    //--- Atomic property: mFileData
+      self.mFileData_property.storeIn (dictionary: ioDictionary, forKey: "mFileData")
   }
 
   //····················································································································

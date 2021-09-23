@@ -768,177 +768,180 @@ final class ComponentSymbolInProject : SchematicObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mCenterX",
-      idx: self.mCenterX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCenterX_property.mObserverExplorer,
-      valueExplorer: &self.mCenterX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCenterY",
-      idx: self.mCenterY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCenterY_property.mObserverExplorer,
-      valueExplorer: &self.mCenterY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRotation",
-      idx: self.mRotation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRotation_property.mObserverExplorer,
-      valueExplorer: &self.mRotation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mMirror",
-      idx: self.mMirror_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mMirror_property.mObserverExplorer,
-      valueExplorer: &self.mMirror_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSymbolInstanceName",
-      idx: self.mSymbolInstanceName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSymbolInstanceName_property.mObserverExplorer,
-      valueExplorer: &self.mSymbolInstanceName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSymbolTypeName",
-      idx: self.mSymbolTypeName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSymbolTypeName_property.mObserverExplorer,
-      valueExplorer: &self.mSymbolTypeName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDisplayComponentNameOffsetX",
-      idx: self.mDisplayComponentNameOffsetX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDisplayComponentNameOffsetX_property.mObserverExplorer,
-      valueExplorer: &self.mDisplayComponentNameOffsetX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDisplayComponentNameOffsetY",
-      idx: self.mDisplayComponentNameOffsetY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDisplayComponentNameOffsetY_property.mObserverExplorer,
-      valueExplorer: &self.mDisplayComponentNameOffsetY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDisplayComponentValue",
-      idx: self.mDisplayComponentValue_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDisplayComponentValue_property.mObserverExplorer,
-      valueExplorer: &self.mDisplayComponentValue_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDisplayComponentValueOffsetX",
-      idx: self.mDisplayComponentValueOffsetX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDisplayComponentValueOffsetX_property.mObserverExplorer,
-      valueExplorer: &self.mDisplayComponentValueOffsetX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDisplayComponentValueOffsetY",
-      idx: self.mDisplayComponentValueOffsetY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDisplayComponentValueOffsetY_property.mObserverExplorer,
-      valueExplorer: &self.mDisplayComponentValueOffsetY_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "componentName",
-      idx: self.componentName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.componentName_property.mObserverExplorer,
-      valueExplorer: &self.componentName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "deviceName",
-      idx: self.deviceName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.deviceName_property.mObserverExplorer,
-      valueExplorer: &self.deviceName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "symbolInfo",
-      idx: self.symbolInfo_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.symbolInfo_property.mObserverExplorer,
-      valueExplorer: &self.symbolInfo_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "pinPadAssignments",
-      idx: self.pinPadAssignments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.pinPadAssignments_property.mObserverExplorer,
-      valueExplorer: &self.pinPadAssignments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "symbolInSchematic",
-      idx: self.symbolInSchematic_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.symbolInSchematic_property.mObserverExplorer,
-      valueExplorer: &self.symbolInSchematic_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mPoints",
-      idx:mPoints_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mPoints_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mComponent",
-      idx:self.mComponent_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mComponent_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mCenterX",
+        idx: self.mCenterX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCenterX_property.mObserverExplorer,
+        valueExplorer: &self.mCenterX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCenterY",
+        idx: self.mCenterY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCenterY_property.mObserverExplorer,
+        valueExplorer: &self.mCenterY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRotation",
+        idx: self.mRotation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRotation_property.mObserverExplorer,
+        valueExplorer: &self.mRotation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mMirror",
+        idx: self.mMirror_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mMirror_property.mObserverExplorer,
+        valueExplorer: &self.mMirror_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSymbolInstanceName",
+        idx: self.mSymbolInstanceName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSymbolInstanceName_property.mObserverExplorer,
+        valueExplorer: &self.mSymbolInstanceName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSymbolTypeName",
+        idx: self.mSymbolTypeName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSymbolTypeName_property.mObserverExplorer,
+        valueExplorer: &self.mSymbolTypeName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDisplayComponentNameOffsetX",
+        idx: self.mDisplayComponentNameOffsetX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDisplayComponentNameOffsetX_property.mObserverExplorer,
+        valueExplorer: &self.mDisplayComponentNameOffsetX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDisplayComponentNameOffsetY",
+        idx: self.mDisplayComponentNameOffsetY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDisplayComponentNameOffsetY_property.mObserverExplorer,
+        valueExplorer: &self.mDisplayComponentNameOffsetY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDisplayComponentValue",
+        idx: self.mDisplayComponentValue_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDisplayComponentValue_property.mObserverExplorer,
+        valueExplorer: &self.mDisplayComponentValue_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDisplayComponentValueOffsetX",
+        idx: self.mDisplayComponentValueOffsetX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDisplayComponentValueOffsetX_property.mObserverExplorer,
+        valueExplorer: &self.mDisplayComponentValueOffsetX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDisplayComponentValueOffsetY",
+        idx: self.mDisplayComponentValueOffsetY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDisplayComponentValueOffsetY_property.mObserverExplorer,
+        valueExplorer: &self.mDisplayComponentValueOffsetY_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "componentName",
+        idx: self.componentName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.componentName_property.mObserverExplorer,
+        valueExplorer: &self.componentName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "deviceName",
+        idx: self.deviceName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.deviceName_property.mObserverExplorer,
+        valueExplorer: &self.deviceName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "symbolInfo",
+        idx: self.symbolInfo_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.symbolInfo_property.mObserverExplorer,
+        valueExplorer: &self.symbolInfo_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "pinPadAssignments",
+        idx: self.pinPadAssignments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.pinPadAssignments_property.mObserverExplorer,
+        valueExplorer: &self.pinPadAssignments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "symbolInSchematic",
+        idx: self.symbolInSchematic_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.symbolInSchematic_property.mObserverExplorer,
+        valueExplorer: &self.symbolInSchematic_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mPoints",
+        idx:mPoints_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mPoints_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mComponent",
+        idx:self.mComponent_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mComponent_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mCenterX
     self.mCenterX_property.mObserverExplorer = nil
     self.mCenterX_property.mValueExplorer = nil
@@ -972,17 +975,18 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: mDisplayComponentValueOffsetY
     self.mDisplayComponentValueOffsetY_property.mObserverExplorer = nil
     self.mDisplayComponentValueOffsetY_property.mValueExplorer = nil
-  //--- To many property: mPoints
-    self.mPoints_property.mValueExplorer = nil
-  //--- Atomic proxy property: componentValueProxy
-    self.componentValueProxy_property.mObserverExplorer = nil
-    self.componentValueProxy_property.mValueExplorer = nil
-  //--- To one property: mComponent
-    self.mComponent_property.mObserverExplorer = nil
-    self.mComponent_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: mPoints
+      self.mPoints_property.mValueExplorer = nil
+    //--- Atomic proxy property: componentValueProxy
+      self.componentValueProxy_property.mObserverExplorer = nil
+      self.componentValueProxy_property.mValueExplorer = nil
+    //--- To one property: mComponent
+      self.mComponent_property.mObserverExplorer = nil
+      self.mComponent_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -1010,28 +1014,28 @@ final class ComponentSymbolInProject : SchematicObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mCenterX
-    self.mCenterX_property.storeIn (dictionary: ioDictionary, forKey: "mCenterX")
-  //--- Atomic property: mCenterY
-    self.mCenterY_property.storeIn (dictionary: ioDictionary, forKey: "mCenterY")
-  //--- Atomic property: mRotation
-    self.mRotation_property.storeIn (dictionary: ioDictionary, forKey: "mRotation")
-  //--- Atomic property: mMirror
-    self.mMirror_property.storeIn (dictionary: ioDictionary, forKey: "mMirror")
-  //--- Atomic property: mSymbolInstanceName
-    self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolInstanceName")
-  //--- Atomic property: mSymbolTypeName
-    self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolTypeName")
-  //--- Atomic property: mDisplayComponentNameOffsetX
-    self.mDisplayComponentNameOffsetX_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentNameOffsetX")
-  //--- Atomic property: mDisplayComponentNameOffsetY
-    self.mDisplayComponentNameOffsetY_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentNameOffsetY")
-  //--- Atomic property: mDisplayComponentValue
-    self.mDisplayComponentValue_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentValue")
-  //--- Atomic property: mDisplayComponentValueOffsetX
-    self.mDisplayComponentValueOffsetX_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentValueOffsetX")
-  //--- Atomic property: mDisplayComponentValueOffsetY
-    self.mDisplayComponentValueOffsetY_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentValueOffsetY")
+    //--- Atomic property: mCenterX
+      self.mCenterX_property.storeIn (dictionary: ioDictionary, forKey: "mCenterX")
+    //--- Atomic property: mCenterY
+      self.mCenterY_property.storeIn (dictionary: ioDictionary, forKey: "mCenterY")
+    //--- Atomic property: mRotation
+      self.mRotation_property.storeIn (dictionary: ioDictionary, forKey: "mRotation")
+    //--- Atomic property: mMirror
+      self.mMirror_property.storeIn (dictionary: ioDictionary, forKey: "mMirror")
+    //--- Atomic property: mSymbolInstanceName
+      self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolInstanceName")
+    //--- Atomic property: mSymbolTypeName
+      self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolTypeName")
+    //--- Atomic property: mDisplayComponentNameOffsetX
+      self.mDisplayComponentNameOffsetX_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentNameOffsetX")
+    //--- Atomic property: mDisplayComponentNameOffsetY
+      self.mDisplayComponentNameOffsetY_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentNameOffsetY")
+    //--- Atomic property: mDisplayComponentValue
+      self.mDisplayComponentValue_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentValue")
+    //--- Atomic property: mDisplayComponentValueOffsetX
+      self.mDisplayComponentValueOffsetX_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentValueOffsetX")
+    //--- Atomic property: mDisplayComponentValueOffsetY
+      self.mDisplayComponentValueOffsetY_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentValueOffsetY")
   //--- To many property: mPoints
     self.store (
       managedObjectArray: self.mPoints_property.propval.values,

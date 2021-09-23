@@ -406,115 +406,118 @@ final class PackageOval : PackageObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "y",
-      idx: self.y_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y_property.mObserverExplorer,
-      valueExplorer: &self.y_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "width",
-      idx: self.width_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.width_property.mObserverExplorer,
-      valueExplorer: &self.width_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "height",
-      idx: self.height_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.height_property.mObserverExplorer,
-      valueExplorer: &self.height_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xUnit",
-      idx: self.xUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.xUnit_property.mObserverExplorer,
-      valueExplorer: &self.xUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yUnit",
-      idx: self.yUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.yUnit_property.mObserverExplorer,
-      valueExplorer: &self.yUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "widthUnit",
-      idx: self.widthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.widthUnit_property.mObserverExplorer,
-      valueExplorer: &self.widthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "heightUnit",
-      idx: self.heightUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.heightUnit_property.mObserverExplorer,
-      valueExplorer: &self.heightUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x",
-      idx: self.x_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x_property.mObserverExplorer,
-      valueExplorer: &self.x_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "strokeBezierPath",
-      idx: self.strokeBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.strokeBezierPath_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "y",
+        idx: self.y_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y_property.mObserverExplorer,
+        valueExplorer: &self.y_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "width",
+        idx: self.width_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.width_property.mObserverExplorer,
+        valueExplorer: &self.width_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "height",
+        idx: self.height_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.height_property.mObserverExplorer,
+        valueExplorer: &self.height_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "xUnit",
+        idx: self.xUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.xUnit_property.mObserverExplorer,
+        valueExplorer: &self.xUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "yUnit",
+        idx: self.yUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.yUnit_property.mObserverExplorer,
+        valueExplorer: &self.yUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "widthUnit",
+        idx: self.widthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.widthUnit_property.mObserverExplorer,
+        valueExplorer: &self.widthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "heightUnit",
+        idx: self.heightUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.heightUnit_property.mObserverExplorer,
+        valueExplorer: &self.heightUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x",
+        idx: self.x_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x_property.mObserverExplorer,
+        valueExplorer: &self.x_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "strokeBezierPath",
+        idx: self.strokeBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.strokeBezierPath_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: y
     self.y_property.mObserverExplorer = nil
     self.y_property.mValueExplorer = nil
@@ -539,9 +542,10 @@ final class PackageOval : PackageObject,
   //--- Atomic property: x
     self.x_property.mObserverExplorer = nil
     self.x_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -567,22 +571,22 @@ final class PackageOval : PackageObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
-  //--- Atomic property: width
-    self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
-  //--- Atomic property: height
-    self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
-  //--- Atomic property: xUnit
-    self.xUnit_property.storeIn (dictionary: ioDictionary, forKey: "xUnit")
-  //--- Atomic property: yUnit
-    self.yUnit_property.storeIn (dictionary: ioDictionary, forKey: "yUnit")
-  //--- Atomic property: widthUnit
-    self.widthUnit_property.storeIn (dictionary: ioDictionary, forKey: "widthUnit")
-  //--- Atomic property: heightUnit
-    self.heightUnit_property.storeIn (dictionary: ioDictionary, forKey: "heightUnit")
-  //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
+    //--- Atomic property: y
+      self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
+    //--- Atomic property: width
+      self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
+    //--- Atomic property: height
+      self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
+    //--- Atomic property: xUnit
+      self.xUnit_property.storeIn (dictionary: ioDictionary, forKey: "xUnit")
+    //--- Atomic property: yUnit
+      self.yUnit_property.storeIn (dictionary: ioDictionary, forKey: "yUnit")
+    //--- Atomic property: widthUnit
+      self.widthUnit_property.storeIn (dictionary: ioDictionary, forKey: "widthUnit")
+    //--- Atomic property: heightUnit
+      self.heightUnit_property.storeIn (dictionary: ioDictionary, forKey: "heightUnit")
+    //--- Atomic property: x
+      self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
   }
 
   //····················································································································

@@ -662,179 +662,182 @@ final class PackageBezier : PackageObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "y1",
-      idx: self.y1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y1_property.mObserverExplorer,
-      valueExplorer: &self.y1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x2",
-      idx: self.x2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x2_property.mObserverExplorer,
-      valueExplorer: &self.x2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y2",
-      idx: self.y2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y2_property.mObserverExplorer,
-      valueExplorer: &self.y2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cpx1",
-      idx: self.cpx1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.cpx1_property.mObserverExplorer,
-      valueExplorer: &self.cpx1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cpy1",
-      idx: self.cpy1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.cpy1_property.mObserverExplorer,
-      valueExplorer: &self.cpy1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cpx2",
-      idx: self.cpx2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.cpx2_property.mObserverExplorer,
-      valueExplorer: &self.cpx2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cpy2",
-      idx: self.cpy2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.cpy2_property.mObserverExplorer,
-      valueExplorer: &self.cpy2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x1Unit",
-      idx: self.x1Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x1Unit_property.mObserverExplorer,
-      valueExplorer: &self.x1Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y1Unit",
-      idx: self.y1Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y1Unit_property.mObserverExplorer,
-      valueExplorer: &self.y1Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x2Unit",
-      idx: self.x2Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x2Unit_property.mObserverExplorer,
-      valueExplorer: &self.x2Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y2Unit",
-      idx: self.y2Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y2Unit_property.mObserverExplorer,
-      valueExplorer: &self.y2Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cpx1Unit",
-      idx: self.cpx1Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.cpx1Unit_property.mObserverExplorer,
-      valueExplorer: &self.cpx1Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cpy1Unit",
-      idx: self.cpy1Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.cpy1Unit_property.mObserverExplorer,
-      valueExplorer: &self.cpy1Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cpx2Unit",
-      idx: self.cpx2Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.cpx2Unit_property.mObserverExplorer,
-      valueExplorer: &self.cpx2Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cpy2Unit",
-      idx: self.cpy2Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.cpy2Unit_property.mObserverExplorer,
-      valueExplorer: &self.cpy2Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x1",
-      idx: self.x1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x1_property.mObserverExplorer,
-      valueExplorer: &self.x1_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "strokeBezierPath",
-      idx: self.strokeBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.strokeBezierPath_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "y1",
+        idx: self.y1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y1_property.mObserverExplorer,
+        valueExplorer: &self.y1_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x2",
+        idx: self.x2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x2_property.mObserverExplorer,
+        valueExplorer: &self.x2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "y2",
+        idx: self.y2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y2_property.mObserverExplorer,
+        valueExplorer: &self.y2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "cpx1",
+        idx: self.cpx1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.cpx1_property.mObserverExplorer,
+        valueExplorer: &self.cpx1_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "cpy1",
+        idx: self.cpy1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.cpy1_property.mObserverExplorer,
+        valueExplorer: &self.cpy1_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "cpx2",
+        idx: self.cpx2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.cpx2_property.mObserverExplorer,
+        valueExplorer: &self.cpx2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "cpy2",
+        idx: self.cpy2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.cpy2_property.mObserverExplorer,
+        valueExplorer: &self.cpy2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x1Unit",
+        idx: self.x1Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x1Unit_property.mObserverExplorer,
+        valueExplorer: &self.x1Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "y1Unit",
+        idx: self.y1Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y1Unit_property.mObserverExplorer,
+        valueExplorer: &self.y1Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x2Unit",
+        idx: self.x2Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x2Unit_property.mObserverExplorer,
+        valueExplorer: &self.x2Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "y2Unit",
+        idx: self.y2Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y2Unit_property.mObserverExplorer,
+        valueExplorer: &self.y2Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "cpx1Unit",
+        idx: self.cpx1Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.cpx1Unit_property.mObserverExplorer,
+        valueExplorer: &self.cpx1Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "cpy1Unit",
+        idx: self.cpy1Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.cpy1Unit_property.mObserverExplorer,
+        valueExplorer: &self.cpy1Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "cpx2Unit",
+        idx: self.cpx2Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.cpx2Unit_property.mObserverExplorer,
+        valueExplorer: &self.cpx2Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "cpy2Unit",
+        idx: self.cpy2Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.cpy2Unit_property.mObserverExplorer,
+        valueExplorer: &self.cpy2Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x1",
+        idx: self.x1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x1_property.mObserverExplorer,
+        valueExplorer: &self.x1_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "strokeBezierPath",
+        idx: self.strokeBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.strokeBezierPath_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: y1
     self.y1_property.mObserverExplorer = nil
     self.y1_property.mValueExplorer = nil
@@ -883,9 +886,10 @@ final class PackageBezier : PackageObject,
   //--- Atomic property: x1
     self.x1_property.mObserverExplorer = nil
     self.x1_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -911,38 +915,38 @@ final class PackageBezier : PackageObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: y1
-    self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
-  //--- Atomic property: x2
-    self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
-  //--- Atomic property: y2
-    self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
-  //--- Atomic property: cpx1
-    self.cpx1_property.storeIn (dictionary: ioDictionary, forKey: "cpx1")
-  //--- Atomic property: cpy1
-    self.cpy1_property.storeIn (dictionary: ioDictionary, forKey: "cpy1")
-  //--- Atomic property: cpx2
-    self.cpx2_property.storeIn (dictionary: ioDictionary, forKey: "cpx2")
-  //--- Atomic property: cpy2
-    self.cpy2_property.storeIn (dictionary: ioDictionary, forKey: "cpy2")
-  //--- Atomic property: x1Unit
-    self.x1Unit_property.storeIn (dictionary: ioDictionary, forKey: "x1Unit")
-  //--- Atomic property: y1Unit
-    self.y1Unit_property.storeIn (dictionary: ioDictionary, forKey: "y1Unit")
-  //--- Atomic property: x2Unit
-    self.x2Unit_property.storeIn (dictionary: ioDictionary, forKey: "x2Unit")
-  //--- Atomic property: y2Unit
-    self.y2Unit_property.storeIn (dictionary: ioDictionary, forKey: "y2Unit")
-  //--- Atomic property: cpx1Unit
-    self.cpx1Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpx1Unit")
-  //--- Atomic property: cpy1Unit
-    self.cpy1Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpy1Unit")
-  //--- Atomic property: cpx2Unit
-    self.cpx2Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpx2Unit")
-  //--- Atomic property: cpy2Unit
-    self.cpy2Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpy2Unit")
-  //--- Atomic property: x1
-    self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
+    //--- Atomic property: y1
+      self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
+    //--- Atomic property: x2
+      self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
+    //--- Atomic property: y2
+      self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
+    //--- Atomic property: cpx1
+      self.cpx1_property.storeIn (dictionary: ioDictionary, forKey: "cpx1")
+    //--- Atomic property: cpy1
+      self.cpy1_property.storeIn (dictionary: ioDictionary, forKey: "cpy1")
+    //--- Atomic property: cpx2
+      self.cpx2_property.storeIn (dictionary: ioDictionary, forKey: "cpx2")
+    //--- Atomic property: cpy2
+      self.cpy2_property.storeIn (dictionary: ioDictionary, forKey: "cpy2")
+    //--- Atomic property: x1Unit
+      self.x1Unit_property.storeIn (dictionary: ioDictionary, forKey: "x1Unit")
+    //--- Atomic property: y1Unit
+      self.y1Unit_property.storeIn (dictionary: ioDictionary, forKey: "y1Unit")
+    //--- Atomic property: x2Unit
+      self.x2Unit_property.storeIn (dictionary: ioDictionary, forKey: "x2Unit")
+    //--- Atomic property: y2Unit
+      self.y2Unit_property.storeIn (dictionary: ioDictionary, forKey: "y2Unit")
+    //--- Atomic property: cpx1Unit
+      self.cpx1Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpx1Unit")
+    //--- Atomic property: cpy1Unit
+      self.cpy1Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpy1Unit")
+    //--- Atomic property: cpx2Unit
+      self.cpx2Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpx2Unit")
+    //--- Atomic property: cpy2Unit
+      self.cpy2Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpy2Unit")
+    //--- Atomic property: x1
+      self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
   }
 
   //····················································································································

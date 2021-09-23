@@ -200,169 +200,181 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //    Explorer
   //····················································································································
 
-  private var mValueExplorer : NSButton?
-  private var mExplorerWindow : NSWindow?
+  #if BUILD_OBJECT_EXPLORER
+    private var mValueExplorer : NSButton?
+    private var mExplorerWindow : NSWindow?
+  #endif
 
   //····················································································································
 
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-    let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-    let tf = NSTextField (frame:secondColumn (y))
-    tf.isEnabled = true
-    tf.isEditable = false
-    tf.stringValue = name
-    tf.font = font
-    view.addSubview (tf)
-    let valueExplorer = NSButton (frame: thirdColumn (y))
-    valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionController.showObjectWindowFromExplorerButton(_:))
-    view.addSubview (valueExplorer)
-    self.mValueExplorer = valueExplorer
-    y += EXPLORER_ROW_HEIGHT
-  }
+  #if BUILD_OBJECT_EXPLORER
+    final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
+      let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+      let tf = NSTextField (frame:secondColumn (y))
+      tf.isEnabled = true
+      tf.isEditable = false
+      tf.stringValue = name
+      tf.font = font
+      view.addSubview (tf)
+      let valueExplorer = NSButton (frame: thirdColumn (y))
+      valueExplorer.font = font
+      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.target = self
+      valueExplorer.action = #selector(SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionController.showObjectWindowFromExplorerButton(_:))
+      view.addSubview (valueExplorer)
+      self.mValueExplorer = valueExplorer
+      y += EXPLORER_ROW_HEIGHT
+    }
+  #endif
 
   //····················································································································
 
-  func buildExplorerWindow () {
-  //-------------------------------------------------- Create Window
-    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
-    self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
-  //-------------------------------------------------- Adding properties
-    let view = NSView (frame: r)
-    var y : CGFloat = 0.0
-    createEntryForPropertyNamed (
-      "yPin",
-      idx: self.yPin_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.yPin_property.mObserverExplorer,
-      valueExplorer: &self.yPin_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xName",
-      idx: self.xName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.xName_property.mObserverExplorer,
-      valueExplorer: &self.xName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yName",
-      idx: self.yName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.yName_property.mObserverExplorer,
-      valueExplorer: &self.yName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xNumber",
-      idx: self.xNumber_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.xNumber_property.mObserverExplorer,
-      valueExplorer: &self.xNumber_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yNumber",
-      idx: self.yNumber_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.yNumber_property.mObserverExplorer,
-      valueExplorer: &self.yNumber_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "name",
-      idx: self.name_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.name_property.mObserverExplorer,
-      valueExplorer: &self.name_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "nameHorizontalAlignment",
-      idx: self.nameHorizontalAlignment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.nameHorizontalAlignment_property.mObserverExplorer,
-      valueExplorer: &self.nameHorizontalAlignment_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "numberHorizontalAlignment",
-      idx: self.numberHorizontalAlignment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.numberHorizontalAlignment_property.mObserverExplorer,
-      valueExplorer: &self.numberHorizontalAlignment_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "pinNameIsDisplayedInSchematics",
-      idx: self.pinNameIsDisplayedInSchematics_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.pinNameIsDisplayedInSchematics_property.mObserverExplorer,
-      valueExplorer: &self.pinNameIsDisplayedInSchematics_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xPin",
-      idx: self.xPin_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.xPin_property.mObserverExplorer,
-      valueExplorer: &self.xPin_property.mValueExplorer
-    )
-  //-------------------------------------------------- Finish Window construction
-  //--- Resize View
-    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    view.frame = viewFrame
-  //--- Set content size
-    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
-  //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionController.deleteSelectionControllerWindowAction(_:))
-  //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    self.mExplorerWindow!.title = windowTitle
-  //--- Add Scroll view
-    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    let sw = NSScrollView (frame: frame)
-    sw.hasVerticalScroller = true
-    sw.documentView = view
-    self.mExplorerWindow!.contentView = sw
-  }
-
+  #if BUILD_OBJECT_EXPLORER
+    func buildExplorerWindow () {
+    //-------------------------------------------------- Create Window
+      let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
+      self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
+    //-------------------------------------------------- Adding properties
+      let view = NSView (frame: r)
+      var y : CGFloat = 0.0
+      createEntryForPropertyNamed (
+        "yPin",
+        idx: self.yPin_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.yPin_property.mObserverExplorer,
+        valueExplorer: &self.yPin_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "xName",
+        idx: self.xName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.xName_property.mObserverExplorer,
+        valueExplorer: &self.xName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "yName",
+        idx: self.yName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.yName_property.mObserverExplorer,
+        valueExplorer: &self.yName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "xNumber",
+        idx: self.xNumber_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.xNumber_property.mObserverExplorer,
+        valueExplorer: &self.xNumber_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "yNumber",
+        idx: self.yNumber_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.yNumber_property.mObserverExplorer,
+        valueExplorer: &self.yNumber_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "name",
+        idx: self.name_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.name_property.mObserverExplorer,
+        valueExplorer: &self.name_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "nameHorizontalAlignment",
+        idx: self.nameHorizontalAlignment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.nameHorizontalAlignment_property.mObserverExplorer,
+        valueExplorer: &self.nameHorizontalAlignment_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "numberHorizontalAlignment",
+        idx: self.numberHorizontalAlignment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.numberHorizontalAlignment_property.mObserverExplorer,
+        valueExplorer: &self.numberHorizontalAlignment_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "pinNameIsDisplayedInSchematics",
+        idx: self.pinNameIsDisplayedInSchematics_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.pinNameIsDisplayedInSchematics_property.mObserverExplorer,
+        valueExplorer: &self.pinNameIsDisplayedInSchematics_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "xPin",
+        idx: self.xPin_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.xPin_property.mObserverExplorer,
+        valueExplorer: &self.xPin_property.mValueExplorer
+      )
+    //-------------------------------------------------- Finish Window construction
+    //--- Resize View
+      let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      view.frame = viewFrame
+    //--- Set content size
+      self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
+    //--- Set close button as 'remove window' button
+      let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
+      closeButton?.target = self
+      closeButton?.action = #selector(SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionController.deleteSelectionControllerWindowAction(_:))
+    //--- Set window title
+      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      self.mExplorerWindow!.title = windowTitle
+    //--- Add Scroll view
+      let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      let sw = NSScrollView (frame: frame)
+      sw.hasVerticalScroller = true
+      sw.documentView = view
+      self.mExplorerWindow!.contentView = sw
+    }
+  #endif
+  
   //····················································································································
   //   showObjectWindowFromExplorerButton
   //····················································································································
 
-  @objc func showObjectWindowFromExplorerButton (_ : Any) {
-    if self.mExplorerWindow == nil {
-      self.buildExplorerWindow ()
+  #if BUILD_OBJECT_EXPLORER
+    @objc func showObjectWindowFromExplorerButton (_ : Any) {
+      if self.mExplorerWindow == nil {
+        self.buildExplorerWindow ()
+      }
+      self.mExplorerWindow?.makeKeyAndOrderFront (nil)
     }
-    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
-  }
-
+  #endif
+  
   //····················································································································
   //   deleteSelectionControllerWindowAction
   //····················································································································
 
-  @objc func deleteSelectionControllerWindowAction (_ : Any) {
-    self.clearObjectExplorer ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    @objc func deleteSelectionControllerWindowAction (_ : Any) {
+      self.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //   clearObjectExplorer
   //····················································································································
 
-  func clearObjectExplorer () {
-    if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
-      closeButton.target = nil
+  #if BUILD_OBJECT_EXPLORER
+    func clearObjectExplorer () {
+      if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
+        closeButton.target = nil
+      }
+      self.mExplorerWindow?.orderOut (nil)
+      self.mExplorerWindow = nil
     }
-    self.mExplorerWindow?.orderOut (nil)
-    self.mExplorerWindow = nil
-  }
+  #endif
 
   //····················································································································
 

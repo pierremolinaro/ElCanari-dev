@@ -1062,274 +1062,277 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "drawBoardLimits",
-      idx: self.drawBoardLimits_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawBoardLimits_property.mObserverExplorer,
-      valueExplorer: &self.drawBoardLimits_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawInternalBoardLimits",
-      idx: self.drawInternalBoardLimits_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawInternalBoardLimits_property.mObserverExplorer,
-      valueExplorer: &self.drawInternalBoardLimits_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawComponentNamesTopSide",
-      idx: self.drawComponentNamesTopSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawComponentNamesTopSide_property.mObserverExplorer,
-      valueExplorer: &self.drawComponentNamesTopSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawComponentNamesBottomSide",
-      idx: self.drawComponentNamesBottomSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawComponentNamesBottomSide_property.mObserverExplorer,
-      valueExplorer: &self.drawComponentNamesBottomSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawComponentValuesTopSide",
-      idx: self.drawComponentValuesTopSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawComponentValuesTopSide_property.mObserverExplorer,
-      valueExplorer: &self.drawComponentValuesTopSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawComponentValuesBottomSide",
-      idx: self.drawComponentValuesBottomSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawComponentValuesBottomSide_property.mObserverExplorer,
-      valueExplorer: &self.drawComponentValuesBottomSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPackageLegendTopSide",
-      idx: self.drawPackageLegendTopSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawPackageLegendTopSide_property.mObserverExplorer,
-      valueExplorer: &self.drawPackageLegendTopSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPackageLegendBottomSide",
-      idx: self.drawPackageLegendBottomSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawPackageLegendBottomSide_property.mObserverExplorer,
-      valueExplorer: &self.drawPackageLegendBottomSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPadHolesInPDF",
-      idx: self.drawPadHolesInPDF_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawPadHolesInPDF_property.mObserverExplorer,
-      valueExplorer: &self.drawPadHolesInPDF_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPadsTopSide",
-      idx: self.drawPadsTopSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawPadsTopSide_property.mObserverExplorer,
-      valueExplorer: &self.drawPadsTopSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPadsBottomSide",
-      idx: self.drawPadsBottomSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawPadsBottomSide_property.mObserverExplorer,
-      valueExplorer: &self.drawPadsBottomSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTextsLayoutTopSide",
-      idx: self.drawTextsLayoutTopSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTextsLayoutTopSide_property.mObserverExplorer,
-      valueExplorer: &self.drawTextsLayoutTopSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTextsLayoutBottomSide",
-      idx: self.drawTextsLayoutBottomSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTextsLayoutBottomSide_property.mObserverExplorer,
-      valueExplorer: &self.drawTextsLayoutBottomSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTextsLegendTopSide",
-      idx: self.drawTextsLegendTopSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTextsLegendTopSide_property.mObserverExplorer,
-      valueExplorer: &self.drawTextsLegendTopSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTextsLegendBottomSide",
-      idx: self.drawTextsLegendBottomSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTextsLegendBottomSide_property.mObserverExplorer,
-      valueExplorer: &self.drawTextsLegendBottomSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTracksTopSide",
-      idx: self.drawTracksTopSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTracksTopSide_property.mObserverExplorer,
-      valueExplorer: &self.drawTracksTopSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTracksInner1Layer",
-      idx: self.drawTracksInner1Layer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTracksInner1Layer_property.mObserverExplorer,
-      valueExplorer: &self.drawTracksInner1Layer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTracksInner2Layer",
-      idx: self.drawTracksInner2Layer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTracksInner2Layer_property.mObserverExplorer,
-      valueExplorer: &self.drawTracksInner2Layer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTracksInner3Layer",
-      idx: self.drawTracksInner3Layer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTracksInner3Layer_property.mObserverExplorer,
-      valueExplorer: &self.drawTracksInner3Layer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTracksInner4Layer",
-      idx: self.drawTracksInner4Layer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTracksInner4Layer_property.mObserverExplorer,
-      valueExplorer: &self.drawTracksInner4Layer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTracksBottomSide",
-      idx: self.drawTracksBottomSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTracksBottomSide_property.mObserverExplorer,
-      valueExplorer: &self.drawTracksBottomSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTraversingPads",
-      idx: self.drawTraversingPads_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTraversingPads_property.mObserverExplorer,
-      valueExplorer: &self.drawTraversingPads_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawVias",
-      idx: self.drawVias_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawVias_property.mObserverExplorer,
-      valueExplorer: &self.drawVias_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "fileExtension",
-      idx: self.fileExtension_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.fileExtension_property.mObserverExplorer,
-      valueExplorer: &self.fileExtension_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "horizontalMirror",
-      idx: self.horizontalMirror_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.horizontalMirror_property.mObserverExplorer,
-      valueExplorer: &self.horizontalMirror_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "name",
-      idx: self.name_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.name_property.mObserverExplorer,
-      valueExplorer: &self.name_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "measurementUnitForPadHoleInPDF",
-      idx: self.measurementUnitForPadHoleInPDF_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.measurementUnitForPadHoleInPDF_property.mObserverExplorer,
-      valueExplorer: &self.measurementUnitForPadHoleInPDF_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "padHoleDiameterInPDF",
-      idx: self.padHoleDiameterInPDF_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.padHoleDiameterInPDF_property.mObserverExplorer,
-      valueExplorer: &self.padHoleDiameterInPDF_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "hasNoData",
-      idx: self.hasNoData_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.hasNoData_property.mObserverExplorer,
-      valueExplorer: &self.hasNoData_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "parameterStatusImage",
-      idx: self.parameterStatusImage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.parameterStatusImage_property.mObserverExplorer,
-      valueExplorer: &self.parameterStatusImage_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "emptyFileExtensionImage",
-      idx: self.emptyFileExtensionImage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.emptyFileExtensionImage_property.mObserverExplorer,
-      valueExplorer: &self.emptyFileExtensionImage_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mArtwork",
-      idx:self.mArtwork_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mArtwork_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "drawBoardLimits",
+        idx: self.drawBoardLimits_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawBoardLimits_property.mObserverExplorer,
+        valueExplorer: &self.drawBoardLimits_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawInternalBoardLimits",
+        idx: self.drawInternalBoardLimits_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawInternalBoardLimits_property.mObserverExplorer,
+        valueExplorer: &self.drawInternalBoardLimits_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawComponentNamesTopSide",
+        idx: self.drawComponentNamesTopSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawComponentNamesTopSide_property.mObserverExplorer,
+        valueExplorer: &self.drawComponentNamesTopSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawComponentNamesBottomSide",
+        idx: self.drawComponentNamesBottomSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawComponentNamesBottomSide_property.mObserverExplorer,
+        valueExplorer: &self.drawComponentNamesBottomSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawComponentValuesTopSide",
+        idx: self.drawComponentValuesTopSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawComponentValuesTopSide_property.mObserverExplorer,
+        valueExplorer: &self.drawComponentValuesTopSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawComponentValuesBottomSide",
+        idx: self.drawComponentValuesBottomSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawComponentValuesBottomSide_property.mObserverExplorer,
+        valueExplorer: &self.drawComponentValuesBottomSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawPackageLegendTopSide",
+        idx: self.drawPackageLegendTopSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawPackageLegendTopSide_property.mObserverExplorer,
+        valueExplorer: &self.drawPackageLegendTopSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawPackageLegendBottomSide",
+        idx: self.drawPackageLegendBottomSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawPackageLegendBottomSide_property.mObserverExplorer,
+        valueExplorer: &self.drawPackageLegendBottomSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawPadHolesInPDF",
+        idx: self.drawPadHolesInPDF_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawPadHolesInPDF_property.mObserverExplorer,
+        valueExplorer: &self.drawPadHolesInPDF_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawPadsTopSide",
+        idx: self.drawPadsTopSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawPadsTopSide_property.mObserverExplorer,
+        valueExplorer: &self.drawPadsTopSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawPadsBottomSide",
+        idx: self.drawPadsBottomSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawPadsBottomSide_property.mObserverExplorer,
+        valueExplorer: &self.drawPadsBottomSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTextsLayoutTopSide",
+        idx: self.drawTextsLayoutTopSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTextsLayoutTopSide_property.mObserverExplorer,
+        valueExplorer: &self.drawTextsLayoutTopSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTextsLayoutBottomSide",
+        idx: self.drawTextsLayoutBottomSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTextsLayoutBottomSide_property.mObserverExplorer,
+        valueExplorer: &self.drawTextsLayoutBottomSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTextsLegendTopSide",
+        idx: self.drawTextsLegendTopSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTextsLegendTopSide_property.mObserverExplorer,
+        valueExplorer: &self.drawTextsLegendTopSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTextsLegendBottomSide",
+        idx: self.drawTextsLegendBottomSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTextsLegendBottomSide_property.mObserverExplorer,
+        valueExplorer: &self.drawTextsLegendBottomSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTracksTopSide",
+        idx: self.drawTracksTopSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTracksTopSide_property.mObserverExplorer,
+        valueExplorer: &self.drawTracksTopSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTracksInner1Layer",
+        idx: self.drawTracksInner1Layer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTracksInner1Layer_property.mObserverExplorer,
+        valueExplorer: &self.drawTracksInner1Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTracksInner2Layer",
+        idx: self.drawTracksInner2Layer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTracksInner2Layer_property.mObserverExplorer,
+        valueExplorer: &self.drawTracksInner2Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTracksInner3Layer",
+        idx: self.drawTracksInner3Layer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTracksInner3Layer_property.mObserverExplorer,
+        valueExplorer: &self.drawTracksInner3Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTracksInner4Layer",
+        idx: self.drawTracksInner4Layer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTracksInner4Layer_property.mObserverExplorer,
+        valueExplorer: &self.drawTracksInner4Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTracksBottomSide",
+        idx: self.drawTracksBottomSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTracksBottomSide_property.mObserverExplorer,
+        valueExplorer: &self.drawTracksBottomSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTraversingPads",
+        idx: self.drawTraversingPads_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTraversingPads_property.mObserverExplorer,
+        valueExplorer: &self.drawTraversingPads_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawVias",
+        idx: self.drawVias_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawVias_property.mObserverExplorer,
+        valueExplorer: &self.drawVias_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "fileExtension",
+        idx: self.fileExtension_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.fileExtension_property.mObserverExplorer,
+        valueExplorer: &self.fileExtension_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "horizontalMirror",
+        idx: self.horizontalMirror_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.horizontalMirror_property.mObserverExplorer,
+        valueExplorer: &self.horizontalMirror_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "name",
+        idx: self.name_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.name_property.mObserverExplorer,
+        valueExplorer: &self.name_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "measurementUnitForPadHoleInPDF",
+        idx: self.measurementUnitForPadHoleInPDF_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.measurementUnitForPadHoleInPDF_property.mObserverExplorer,
+        valueExplorer: &self.measurementUnitForPadHoleInPDF_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "padHoleDiameterInPDF",
+        idx: self.padHoleDiameterInPDF_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.padHoleDiameterInPDF_property.mObserverExplorer,
+        valueExplorer: &self.padHoleDiameterInPDF_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "hasNoData",
+        idx: self.hasNoData_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.hasNoData_property.mObserverExplorer,
+        valueExplorer: &self.hasNoData_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "parameterStatusImage",
+        idx: self.parameterStatusImage_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.parameterStatusImage_property.mObserverExplorer,
+        valueExplorer: &self.parameterStatusImage_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "emptyFileExtensionImage",
+        idx: self.emptyFileExtensionImage_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.emptyFileExtensionImage_property.mObserverExplorer,
+        valueExplorer: &self.emptyFileExtensionImage_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mArtwork",
+        idx:self.mArtwork_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mArtwork_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: drawBoardLimits
     self.drawBoardLimits_property.mObserverExplorer = nil
     self.drawBoardLimits_property.mValueExplorer = nil
@@ -1414,12 +1417,13 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //--- Atomic property: padHoleDiameterInPDF
     self.padHoleDiameterInPDF_property.mObserverExplorer = nil
     self.padHoleDiameterInPDF_property.mValueExplorer = nil
-  //--- To one property: mArtwork
-    self.mArtwork_property.mObserverExplorer = nil
-    self.mArtwork_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To one property: mArtwork
+      self.mArtwork_property.mObserverExplorer = nil
+      self.mArtwork_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -1446,62 +1450,62 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: drawBoardLimits
-    self.drawBoardLimits_property.storeIn (dictionary: ioDictionary, forKey: "drawBoardLimits")
-  //--- Atomic property: drawInternalBoardLimits
-    self.drawInternalBoardLimits_property.storeIn (dictionary: ioDictionary, forKey: "drawInternalBoardLimits")
-  //--- Atomic property: drawComponentNamesTopSide
-    self.drawComponentNamesTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesTopSide")
-  //--- Atomic property: drawComponentNamesBottomSide
-    self.drawComponentNamesBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesBottomSide")
-  //--- Atomic property: drawComponentValuesTopSide
-    self.drawComponentValuesTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesTopSide")
-  //--- Atomic property: drawComponentValuesBottomSide
-    self.drawComponentValuesBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesBottomSide")
-  //--- Atomic property: drawPackageLegendTopSide
-    self.drawPackageLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendTopSide")
-  //--- Atomic property: drawPackageLegendBottomSide
-    self.drawPackageLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendBottomSide")
-  //--- Atomic property: drawPadHolesInPDF
-    self.drawPadHolesInPDF_property.storeIn (dictionary: ioDictionary, forKey: "drawPadHolesInPDF")
-  //--- Atomic property: drawPadsTopSide
-    self.drawPadsTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPadsTopSide")
-  //--- Atomic property: drawPadsBottomSide
-    self.drawPadsBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPadsBottomSide")
-  //--- Atomic property: drawTextsLayoutTopSide
-    self.drawTextsLayoutTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutTopSide")
-  //--- Atomic property: drawTextsLayoutBottomSide
-    self.drawTextsLayoutBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutBottomSide")
-  //--- Atomic property: drawTextsLegendTopSide
-    self.drawTextsLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendTopSide")
-  //--- Atomic property: drawTextsLegendBottomSide
-    self.drawTextsLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendBottomSide")
-  //--- Atomic property: drawTracksTopSide
-    self.drawTracksTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksTopSide")
-  //--- Atomic property: drawTracksInner1Layer
-    self.drawTracksInner1Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner1Layer")
-  //--- Atomic property: drawTracksInner2Layer
-    self.drawTracksInner2Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner2Layer")
-  //--- Atomic property: drawTracksInner3Layer
-    self.drawTracksInner3Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner3Layer")
-  //--- Atomic property: drawTracksInner4Layer
-    self.drawTracksInner4Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner4Layer")
-  //--- Atomic property: drawTracksBottomSide
-    self.drawTracksBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksBottomSide")
-  //--- Atomic property: drawTraversingPads
-    self.drawTraversingPads_property.storeIn (dictionary: ioDictionary, forKey: "drawTraversingPads")
-  //--- Atomic property: drawVias
-    self.drawVias_property.storeIn (dictionary: ioDictionary, forKey: "drawVias")
-  //--- Atomic property: fileExtension
-    self.fileExtension_property.storeIn (dictionary: ioDictionary, forKey: "fileExtension")
-  //--- Atomic property: horizontalMirror
-    self.horizontalMirror_property.storeIn (dictionary: ioDictionary, forKey: "horizontalMirror")
-  //--- Atomic property: name
-    self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
-  //--- Atomic property: measurementUnitForPadHoleInPDF
-    self.measurementUnitForPadHoleInPDF_property.storeIn (dictionary: ioDictionary, forKey: "measurementUnitForPadHoleInPDF")
-  //--- Atomic property: padHoleDiameterInPDF
-    self.padHoleDiameterInPDF_property.storeIn (dictionary: ioDictionary, forKey: "padHoleDiameterInPDF")
+    //--- Atomic property: drawBoardLimits
+      self.drawBoardLimits_property.storeIn (dictionary: ioDictionary, forKey: "drawBoardLimits")
+    //--- Atomic property: drawInternalBoardLimits
+      self.drawInternalBoardLimits_property.storeIn (dictionary: ioDictionary, forKey: "drawInternalBoardLimits")
+    //--- Atomic property: drawComponentNamesTopSide
+      self.drawComponentNamesTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesTopSide")
+    //--- Atomic property: drawComponentNamesBottomSide
+      self.drawComponentNamesBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesBottomSide")
+    //--- Atomic property: drawComponentValuesTopSide
+      self.drawComponentValuesTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesTopSide")
+    //--- Atomic property: drawComponentValuesBottomSide
+      self.drawComponentValuesBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesBottomSide")
+    //--- Atomic property: drawPackageLegendTopSide
+      self.drawPackageLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendTopSide")
+    //--- Atomic property: drawPackageLegendBottomSide
+      self.drawPackageLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendBottomSide")
+    //--- Atomic property: drawPadHolesInPDF
+      self.drawPadHolesInPDF_property.storeIn (dictionary: ioDictionary, forKey: "drawPadHolesInPDF")
+    //--- Atomic property: drawPadsTopSide
+      self.drawPadsTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPadsTopSide")
+    //--- Atomic property: drawPadsBottomSide
+      self.drawPadsBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPadsBottomSide")
+    //--- Atomic property: drawTextsLayoutTopSide
+      self.drawTextsLayoutTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutTopSide")
+    //--- Atomic property: drawTextsLayoutBottomSide
+      self.drawTextsLayoutBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutBottomSide")
+    //--- Atomic property: drawTextsLegendTopSide
+      self.drawTextsLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendTopSide")
+    //--- Atomic property: drawTextsLegendBottomSide
+      self.drawTextsLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendBottomSide")
+    //--- Atomic property: drawTracksTopSide
+      self.drawTracksTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksTopSide")
+    //--- Atomic property: drawTracksInner1Layer
+      self.drawTracksInner1Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner1Layer")
+    //--- Atomic property: drawTracksInner2Layer
+      self.drawTracksInner2Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner2Layer")
+    //--- Atomic property: drawTracksInner3Layer
+      self.drawTracksInner3Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner3Layer")
+    //--- Atomic property: drawTracksInner4Layer
+      self.drawTracksInner4Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner4Layer")
+    //--- Atomic property: drawTracksBottomSide
+      self.drawTracksBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksBottomSide")
+    //--- Atomic property: drawTraversingPads
+      self.drawTraversingPads_property.storeIn (dictionary: ioDictionary, forKey: "drawTraversingPads")
+    //--- Atomic property: drawVias
+      self.drawVias_property.storeIn (dictionary: ioDictionary, forKey: "drawVias")
+    //--- Atomic property: fileExtension
+      self.fileExtension_property.storeIn (dictionary: ioDictionary, forKey: "fileExtension")
+    //--- Atomic property: horizontalMirror
+      self.horizontalMirror_property.storeIn (dictionary: ioDictionary, forKey: "horizontalMirror")
+    //--- Atomic property: name
+      self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
+    //--- Atomic property: measurementUnitForPadHoleInPDF
+      self.measurementUnitForPadHoleInPDF_property.storeIn (dictionary: ioDictionary, forKey: "measurementUnitForPadHoleInPDF")
+    //--- Atomic property: padHoleDiameterInPDF
+      self.padHoleDiameterInPDF_property.storeIn (dictionary: ioDictionary, forKey: "padHoleDiameterInPDF")
   }
 
   //····················································································································

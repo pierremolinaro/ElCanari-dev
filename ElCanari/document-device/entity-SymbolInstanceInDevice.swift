@@ -394,99 +394,102 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mInstanceName",
-      idx: self.mInstanceName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mInstanceName_property.mObserverExplorer,
-      valueExplorer: &self.mInstanceName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "symbolQualifiedName",
-      idx: self.symbolQualifiedName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.symbolQualifiedName_property.mObserverExplorer,
-      valueExplorer: &self.symbolQualifiedName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "symbolTypeName",
-      idx: self.symbolTypeName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.symbolTypeName_property.mObserverExplorer,
-      valueExplorer: &self.symbolTypeName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "unconnectedPins",
-      idx: self.unconnectedPins_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.unconnectedPins_property.mObserverExplorer,
-      valueExplorer: &self.unconnectedPins_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mPinInstances",
-      idx:mPinInstances_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mPinInstances_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mType",
-      idx:self.mType_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mType_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mInstanceName",
+        idx: self.mInstanceName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mInstanceName_property.mObserverExplorer,
+        valueExplorer: &self.mInstanceName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mX",
+        idx: self.mX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX_property.mObserverExplorer,
+        valueExplorer: &self.mX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY",
+        idx: self.mY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY_property.mObserverExplorer,
+        valueExplorer: &self.mY_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "symbolQualifiedName",
+        idx: self.symbolQualifiedName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.symbolQualifiedName_property.mObserverExplorer,
+        valueExplorer: &self.symbolQualifiedName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "symbolTypeName",
+        idx: self.symbolTypeName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.symbolTypeName_property.mObserverExplorer,
+        valueExplorer: &self.symbolTypeName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "unconnectedPins",
+        idx: self.unconnectedPins_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.unconnectedPins_property.mObserverExplorer,
+        valueExplorer: &self.unconnectedPins_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mPinInstances",
+        idx:mPinInstances_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mPinInstances_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mType",
+        idx:self.mType_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mType_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
-  //--- To many property: mPinInstances
-    self.mPinInstances_property.mValueExplorer = nil
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
+    //--- To many property: mPinInstances
+      self.mPinInstances_property.mValueExplorer = nil
   //--- Atomic property: mInstanceName
     self.mInstanceName_property.mObserverExplorer = nil
     self.mInstanceName_property.mValueExplorer = nil
@@ -496,12 +499,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- Atomic property: mY
     self.mY_property.mObserverExplorer = nil
     self.mY_property.mValueExplorer = nil
-  //--- To one property: mType
-    self.mType_property.mObserverExplorer = nil
-    self.mType_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To one property: mType
+      self.mType_property.mObserverExplorer = nil
+      self.mType_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -535,12 +539,12 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       relationshipName: "mPinInstances",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mInstanceName
-    self.mInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mInstanceName")
-  //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
-  //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+    //--- Atomic property: mInstanceName
+      self.mInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mInstanceName")
+    //--- Atomic property: mX
+      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+    //--- Atomic property: mY
+      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   }
 
   //····················································································································

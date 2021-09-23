@@ -164,59 +164,63 @@ final class NCInSchematic : SchematicObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mOrientation",
-      idx: self.mOrientation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mOrientation_property.mObserverExplorer,
-      valueExplorer: &self.mOrientation_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mPoint",
-      idx:self.mPoint_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mPoint_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mOrientation",
+        idx: self.mOrientation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mOrientation_property.mObserverExplorer,
+        valueExplorer: &self.mOrientation_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mPoint",
+        idx:self.mPoint_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mPoint_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mOrientation
     self.mOrientation_property.mObserverExplorer = nil
     self.mOrientation_property.mValueExplorer = nil
-  //--- To one property: mPoint
-    self.mPoint_property.mObserverExplorer = nil
-    self.mPoint_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To one property: mPoint
+      self.mPoint_property.mObserverExplorer = nil
+      self.mPoint_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -243,8 +247,8 @@ final class NCInSchematic : SchematicObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mOrientation
-    self.mOrientation_property.storeIn (dictionary: ioDictionary, forKey: "mOrientation")
+    //--- Atomic property: mOrientation
+      self.mOrientation_property.storeIn (dictionary: ioDictionary, forKey: "mOrientation")
   //--- To one property: mPoint // Opposite is toOne mNC
     self.store (managedObject:self.mPoint_property.propval,
       relationshipName: "mPoint",

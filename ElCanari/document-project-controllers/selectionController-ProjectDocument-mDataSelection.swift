@@ -405,312 +405,323 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
   //    Explorer
   //····················································································································
 
-  private var mValueExplorer : NSButton?
-  private var mExplorerWindow : NSWindow?
+  #if BUILD_OBJECT_EXPLORER
+    private var mValueExplorer : NSButton?
+    private var mExplorerWindow : NSWindow?
+  #endif
 
   //····················································································································
 
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-    let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-    let tf = NSTextField (frame:secondColumn (y))
-    tf.isEnabled = true
-    tf.isEditable = false
-    tf.stringValue = name
-    tf.font = font
-    view.addSubview (tf)
-    let valueExplorer = NSButton (frame:thirdColumn (y))
-    valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_ProjectDocument_mDataSelection.showObjectWindowFromExplorerButton(_:))
-    view.addSubview (valueExplorer)
-    mValueExplorer = valueExplorer
-    y += EXPLORER_ROW_HEIGHT
-  }
+  #if BUILD_OBJECT_EXPLORER
+    final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
+      let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+      let tf = NSTextField (frame:secondColumn (y))
+      tf.isEnabled = true
+      tf.isEditable = false
+      tf.stringValue = name
+      tf.font = font
+      view.addSubview (tf)
+      let valueExplorer = NSButton (frame:thirdColumn (y))
+      valueExplorer.font = font
+      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.target = self
+      valueExplorer.action = #selector(SelectionController_ProjectDocument_mDataSelection.showObjectWindowFromExplorerButton(_:))
+      view.addSubview (valueExplorer)
+      mValueExplorer = valueExplorer
+      y += EXPLORER_ROW_HEIGHT
+    }
+  #endif
 
   //····················································································································
 
-  func buildExplorerWindow () {
-  //-------------------------------------------------- Create Window
-    let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
-    mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
-  //-------------------------------------------------- Adding properties
-    let view = NSView (frame:r)
-    var y : CGFloat = 0.0
-    createEntryForPropertyNamed (
-      "drawBoardLimits",
-      idx: self.drawBoardLimits_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawBoardLimits_property.mObserverExplorer,
-      valueExplorer: &self.drawBoardLimits_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawComponentNamesBottomSide",
-      idx: self.drawComponentNamesBottomSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawComponentNamesBottomSide_property.mObserverExplorer,
-      valueExplorer: &self.drawComponentNamesBottomSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawComponentNamesTopSide",
-      idx: self.drawComponentNamesTopSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawComponentNamesTopSide_property.mObserverExplorer,
-      valueExplorer: &self.drawComponentNamesTopSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawComponentValuesBottomSide",
-      idx: self.drawComponentValuesBottomSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawComponentValuesBottomSide_property.mObserverExplorer,
-      valueExplorer: &self.drawComponentValuesBottomSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawComponentValuesTopSide",
-      idx: self.drawComponentValuesTopSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawComponentValuesTopSide_property.mObserverExplorer,
-      valueExplorer: &self.drawComponentValuesTopSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawInternalBoardLimits",
-      idx: self.drawInternalBoardLimits_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawInternalBoardLimits_property.mObserverExplorer,
-      valueExplorer: &self.drawInternalBoardLimits_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPackageLegendBottomSide",
-      idx: self.drawPackageLegendBottomSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawPackageLegendBottomSide_property.mObserverExplorer,
-      valueExplorer: &self.drawPackageLegendBottomSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPackageLegendTopSide",
-      idx: self.drawPackageLegendTopSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawPackageLegendTopSide_property.mObserverExplorer,
-      valueExplorer: &self.drawPackageLegendTopSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPadHolesInPDF",
-      idx: self.drawPadHolesInPDF_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawPadHolesInPDF_property.mObserverExplorer,
-      valueExplorer: &self.drawPadHolesInPDF_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPadsBottomSide",
-      idx: self.drawPadsBottomSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawPadsBottomSide_property.mObserverExplorer,
-      valueExplorer: &self.drawPadsBottomSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPadsTopSide",
-      idx: self.drawPadsTopSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawPadsTopSide_property.mObserverExplorer,
-      valueExplorer: &self.drawPadsTopSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTextsLayoutBottomSide",
-      idx: self.drawTextsLayoutBottomSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTextsLayoutBottomSide_property.mObserverExplorer,
-      valueExplorer: &self.drawTextsLayoutBottomSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTextsLayoutTopSide",
-      idx: self.drawTextsLayoutTopSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTextsLayoutTopSide_property.mObserverExplorer,
-      valueExplorer: &self.drawTextsLayoutTopSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTextsLegendBottomSide",
-      idx: self.drawTextsLegendBottomSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTextsLegendBottomSide_property.mObserverExplorer,
-      valueExplorer: &self.drawTextsLegendBottomSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTextsLegendTopSide",
-      idx: self.drawTextsLegendTopSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTextsLegendTopSide_property.mObserverExplorer,
-      valueExplorer: &self.drawTextsLegendTopSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTracksBottomSide",
-      idx: self.drawTracksBottomSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTracksBottomSide_property.mObserverExplorer,
-      valueExplorer: &self.drawTracksBottomSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTracksInner1Layer",
-      idx: self.drawTracksInner1Layer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTracksInner1Layer_property.mObserverExplorer,
-      valueExplorer: &self.drawTracksInner1Layer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTracksInner2Layer",
-      idx: self.drawTracksInner2Layer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTracksInner2Layer_property.mObserverExplorer,
-      valueExplorer: &self.drawTracksInner2Layer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTracksInner3Layer",
-      idx: self.drawTracksInner3Layer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTracksInner3Layer_property.mObserverExplorer,
-      valueExplorer: &self.drawTracksInner3Layer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTracksInner4Layer",
-      idx: self.drawTracksInner4Layer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTracksInner4Layer_property.mObserverExplorer,
-      valueExplorer: &self.drawTracksInner4Layer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTracksTopSide",
-      idx: self.drawTracksTopSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTracksTopSide_property.mObserverExplorer,
-      valueExplorer: &self.drawTracksTopSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTraversingPads",
-      idx: self.drawTraversingPads_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawTraversingPads_property.mObserverExplorer,
-      valueExplorer: &self.drawTraversingPads_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawVias",
-      idx: self.drawVias_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawVias_property.mObserverExplorer,
-      valueExplorer: &self.drawVias_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "fileExtension",
-      idx: self.fileExtension_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.fileExtension_property.mObserverExplorer,
-      valueExplorer: &self.fileExtension_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "horizontalMirror",
-      idx: self.horizontalMirror_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.horizontalMirror_property.mObserverExplorer,
-      valueExplorer: &self.horizontalMirror_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "measurementUnitForPadHoleInPDF",
-      idx: self.measurementUnitForPadHoleInPDF_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.measurementUnitForPadHoleInPDF_property.mObserverExplorer,
-      valueExplorer: &self.measurementUnitForPadHoleInPDF_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "name",
-      idx: self.name_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.name_property.mObserverExplorer,
-      valueExplorer: &self.name_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "padHoleDiameterInPDF",
-      idx: self.padHoleDiameterInPDF_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.padHoleDiameterInPDF_property.mObserverExplorer,
-      valueExplorer: &self.padHoleDiameterInPDF_property.mValueExplorer
-    )
-  //-------------------------------------------------- Finish Window construction
-  //--- Resize View
-    let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    view.frame = viewFrame
-  //--- Set content size
-    mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
-  //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_ProjectDocument_mDataSelection.deleteSelectionControllerWindowAction(_:))
-  //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    mExplorerWindow!.title = windowTitle
-  //--- Add Scroll view
-    let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    let sw = NSScrollView (frame:frame)
-    sw.hasVerticalScroller = true
-    sw.documentView = view
-    mExplorerWindow!.contentView = sw
-  }
-
+  #if BUILD_OBJECT_EXPLORER
+    func buildExplorerWindow () {
+    //-------------------------------------------------- Create Window
+      let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
+      mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
+    //-------------------------------------------------- Adding properties
+      let view = NSView (frame:r)
+      var y : CGFloat = 0.0
+      createEntryForPropertyNamed (
+        "drawBoardLimits",
+        idx: self.drawBoardLimits_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawBoardLimits_property.mObserverExplorer,
+        valueExplorer: &self.drawBoardLimits_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawComponentNamesBottomSide",
+        idx: self.drawComponentNamesBottomSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawComponentNamesBottomSide_property.mObserverExplorer,
+        valueExplorer: &self.drawComponentNamesBottomSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawComponentNamesTopSide",
+        idx: self.drawComponentNamesTopSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawComponentNamesTopSide_property.mObserverExplorer,
+        valueExplorer: &self.drawComponentNamesTopSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawComponentValuesBottomSide",
+        idx: self.drawComponentValuesBottomSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawComponentValuesBottomSide_property.mObserverExplorer,
+        valueExplorer: &self.drawComponentValuesBottomSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawComponentValuesTopSide",
+        idx: self.drawComponentValuesTopSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawComponentValuesTopSide_property.mObserverExplorer,
+        valueExplorer: &self.drawComponentValuesTopSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawInternalBoardLimits",
+        idx: self.drawInternalBoardLimits_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawInternalBoardLimits_property.mObserverExplorer,
+        valueExplorer: &self.drawInternalBoardLimits_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawPackageLegendBottomSide",
+        idx: self.drawPackageLegendBottomSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawPackageLegendBottomSide_property.mObserverExplorer,
+        valueExplorer: &self.drawPackageLegendBottomSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawPackageLegendTopSide",
+        idx: self.drawPackageLegendTopSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawPackageLegendTopSide_property.mObserverExplorer,
+        valueExplorer: &self.drawPackageLegendTopSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawPadHolesInPDF",
+        idx: self.drawPadHolesInPDF_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawPadHolesInPDF_property.mObserverExplorer,
+        valueExplorer: &self.drawPadHolesInPDF_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawPadsBottomSide",
+        idx: self.drawPadsBottomSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawPadsBottomSide_property.mObserverExplorer,
+        valueExplorer: &self.drawPadsBottomSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawPadsTopSide",
+        idx: self.drawPadsTopSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawPadsTopSide_property.mObserverExplorer,
+        valueExplorer: &self.drawPadsTopSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTextsLayoutBottomSide",
+        idx: self.drawTextsLayoutBottomSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTextsLayoutBottomSide_property.mObserverExplorer,
+        valueExplorer: &self.drawTextsLayoutBottomSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTextsLayoutTopSide",
+        idx: self.drawTextsLayoutTopSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTextsLayoutTopSide_property.mObserverExplorer,
+        valueExplorer: &self.drawTextsLayoutTopSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTextsLegendBottomSide",
+        idx: self.drawTextsLegendBottomSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTextsLegendBottomSide_property.mObserverExplorer,
+        valueExplorer: &self.drawTextsLegendBottomSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTextsLegendTopSide",
+        idx: self.drawTextsLegendTopSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTextsLegendTopSide_property.mObserverExplorer,
+        valueExplorer: &self.drawTextsLegendTopSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTracksBottomSide",
+        idx: self.drawTracksBottomSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTracksBottomSide_property.mObserverExplorer,
+        valueExplorer: &self.drawTracksBottomSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTracksInner1Layer",
+        idx: self.drawTracksInner1Layer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTracksInner1Layer_property.mObserverExplorer,
+        valueExplorer: &self.drawTracksInner1Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTracksInner2Layer",
+        idx: self.drawTracksInner2Layer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTracksInner2Layer_property.mObserverExplorer,
+        valueExplorer: &self.drawTracksInner2Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTracksInner3Layer",
+        idx: self.drawTracksInner3Layer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTracksInner3Layer_property.mObserverExplorer,
+        valueExplorer: &self.drawTracksInner3Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTracksInner4Layer",
+        idx: self.drawTracksInner4Layer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTracksInner4Layer_property.mObserverExplorer,
+        valueExplorer: &self.drawTracksInner4Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTracksTopSide",
+        idx: self.drawTracksTopSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTracksTopSide_property.mObserverExplorer,
+        valueExplorer: &self.drawTracksTopSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawTraversingPads",
+        idx: self.drawTraversingPads_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawTraversingPads_property.mObserverExplorer,
+        valueExplorer: &self.drawTraversingPads_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawVias",
+        idx: self.drawVias_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawVias_property.mObserverExplorer,
+        valueExplorer: &self.drawVias_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "fileExtension",
+        idx: self.fileExtension_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.fileExtension_property.mObserverExplorer,
+        valueExplorer: &self.fileExtension_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "horizontalMirror",
+        idx: self.horizontalMirror_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.horizontalMirror_property.mObserverExplorer,
+        valueExplorer: &self.horizontalMirror_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "measurementUnitForPadHoleInPDF",
+        idx: self.measurementUnitForPadHoleInPDF_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.measurementUnitForPadHoleInPDF_property.mObserverExplorer,
+        valueExplorer: &self.measurementUnitForPadHoleInPDF_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "name",
+        idx: self.name_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.name_property.mObserverExplorer,
+        valueExplorer: &self.name_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "padHoleDiameterInPDF",
+        idx: self.padHoleDiameterInPDF_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.padHoleDiameterInPDF_property.mObserverExplorer,
+        valueExplorer: &self.padHoleDiameterInPDF_property.mValueExplorer
+      )
+    //-------------------------------------------------- Finish Window construction
+    //--- Resize View
+      let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
+      view.frame = viewFrame
+    //--- Set content size
+      mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
+    //--- Set close button as 'remove window' button
+      let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
+      closeButton?.target = self
+      closeButton?.action = #selector(SelectionController_ProjectDocument_mDataSelection.deleteSelectionControllerWindowAction(_:))
+    //--- Set window title
+      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      mExplorerWindow!.title = windowTitle
+    //--- Add Scroll view
+      let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
+      let sw = NSScrollView (frame:frame)
+      sw.hasVerticalScroller = true
+      sw.documentView = view
+      mExplorerWindow!.contentView = sw
+    }
+  #endif
   //····················································································································
   //   showObjectWindowFromExplorerButton
   //····················································································································
 
-  @objc func showObjectWindowFromExplorerButton (_ : Any) {
-    if mExplorerWindow == nil {
-      buildExplorerWindow ()
+  #if BUILD_OBJECT_EXPLORER
+    @objc func showObjectWindowFromExplorerButton (_ : Any) {
+      if mExplorerWindow == nil {
+        buildExplorerWindow ()
+      }
+      mExplorerWindow?.makeKeyAndOrderFront(nil)
     }
-    mExplorerWindow?.makeKeyAndOrderFront(nil)
-  }
+  #endif
 
   //····················································································································
   //   deleteSelectionControllerWindowAction
   //····················································································································
 
-  @objc func deleteSelectionControllerWindowAction (_ : Any) {
-    clearObjectExplorer ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    @objc func deleteSelectionControllerWindowAction (_ : Any) {
+      clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //   clearObjectExplorer
   //····················································································································
 
-  func clearObjectExplorer () {
-    let closeButton = mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton!.target = nil
-    mExplorerWindow?.orderOut (nil)
-    mExplorerWindow = nil
-  }
+  #if BUILD_OBJECT_EXPLORER
+    func clearObjectExplorer () {
+      let closeButton = mExplorerWindow?.standardWindowButton (.closeButton)
+      closeButton!.target = nil
+      mExplorerWindow?.orderOut (nil)
+      mExplorerWindow = nil
+    }
+  #endif
 
   //···················································································································*
 

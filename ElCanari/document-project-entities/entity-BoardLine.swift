@@ -408,123 +408,126 @@ final class BoardLine : BoardObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mWidthUnit",
-      idx: self.mWidthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mWidthUnit_property.mObserverExplorer,
-      valueExplorer: &self.mWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mX1",
-      idx: self.mX1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX1_property.mObserverExplorer,
-      valueExplorer: &self.mX1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mX1Unit",
-      idx: self.mX1Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX1Unit_property.mObserverExplorer,
-      valueExplorer: &self.mX1Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY1",
-      idx: self.mY1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY1_property.mObserverExplorer,
-      valueExplorer: &self.mY1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY1Unit",
-      idx: self.mY1Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY1Unit_property.mObserverExplorer,
-      valueExplorer: &self.mY1Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mX2",
-      idx: self.mX2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX2_property.mObserverExplorer,
-      valueExplorer: &self.mX2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mX2Unit",
-      idx: self.mX2Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX2Unit_property.mObserverExplorer,
-      valueExplorer: &self.mX2Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY2",
-      idx: self.mY2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY2_property.mObserverExplorer,
-      valueExplorer: &self.mY2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY2Unit",
-      idx: self.mY2Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY2Unit_property.mObserverExplorer,
-      valueExplorer: &self.mY2Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mLayer",
-      idx: self.mLayer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mLayer_property.mObserverExplorer,
-      valueExplorer: &self.mLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mWidth",
-      idx: self.mWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mWidth_property.mObserverExplorer,
-      valueExplorer: &self.mWidth_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mWidthUnit",
+        idx: self.mWidthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mWidthUnit_property.mObserverExplorer,
+        valueExplorer: &self.mWidthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mX1",
+        idx: self.mX1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX1_property.mObserverExplorer,
+        valueExplorer: &self.mX1_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mX1Unit",
+        idx: self.mX1Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX1Unit_property.mObserverExplorer,
+        valueExplorer: &self.mX1Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY1",
+        idx: self.mY1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY1_property.mObserverExplorer,
+        valueExplorer: &self.mY1_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY1Unit",
+        idx: self.mY1Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY1Unit_property.mObserverExplorer,
+        valueExplorer: &self.mY1Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mX2",
+        idx: self.mX2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX2_property.mObserverExplorer,
+        valueExplorer: &self.mX2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mX2Unit",
+        idx: self.mX2Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX2Unit_property.mObserverExplorer,
+        valueExplorer: &self.mX2Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY2",
+        idx: self.mY2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY2_property.mObserverExplorer,
+        valueExplorer: &self.mY2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY2Unit",
+        idx: self.mY2Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY2Unit_property.mObserverExplorer,
+        valueExplorer: &self.mY2Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mLayer",
+        idx: self.mLayer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mLayer_property.mObserverExplorer,
+        valueExplorer: &self.mLayer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mWidth",
+        idx: self.mWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mWidth_property.mObserverExplorer,
+        valueExplorer: &self.mWidth_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mWidthUnit
     self.mWidthUnit_property.mObserverExplorer = nil
     self.mWidthUnit_property.mValueExplorer = nil
@@ -558,9 +561,10 @@ final class BoardLine : BoardObject,
   //--- Atomic property: mWidth
     self.mWidth_property.mObserverExplorer = nil
     self.mWidth_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -586,28 +590,28 @@ final class BoardLine : BoardObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mWidthUnit
-    self.mWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mWidthUnit")
-  //--- Atomic property: mX1
-    self.mX1_property.storeIn (dictionary: ioDictionary, forKey: "mX1")
-  //--- Atomic property: mX1Unit
-    self.mX1Unit_property.storeIn (dictionary: ioDictionary, forKey: "mX1Unit")
-  //--- Atomic property: mY1
-    self.mY1_property.storeIn (dictionary: ioDictionary, forKey: "mY1")
-  //--- Atomic property: mY1Unit
-    self.mY1Unit_property.storeIn (dictionary: ioDictionary, forKey: "mY1Unit")
-  //--- Atomic property: mX2
-    self.mX2_property.storeIn (dictionary: ioDictionary, forKey: "mX2")
-  //--- Atomic property: mX2Unit
-    self.mX2Unit_property.storeIn (dictionary: ioDictionary, forKey: "mX2Unit")
-  //--- Atomic property: mY2
-    self.mY2_property.storeIn (dictionary: ioDictionary, forKey: "mY2")
-  //--- Atomic property: mY2Unit
-    self.mY2Unit_property.storeIn (dictionary: ioDictionary, forKey: "mY2Unit")
-  //--- Atomic property: mLayer
-    self.mLayer_property.storeIn (dictionary: ioDictionary, forKey: "mLayer")
-  //--- Atomic property: mWidth
-    self.mWidth_property.storeIn (dictionary: ioDictionary, forKey: "mWidth")
+    //--- Atomic property: mWidthUnit
+      self.mWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mWidthUnit")
+    //--- Atomic property: mX1
+      self.mX1_property.storeIn (dictionary: ioDictionary, forKey: "mX1")
+    //--- Atomic property: mX1Unit
+      self.mX1Unit_property.storeIn (dictionary: ioDictionary, forKey: "mX1Unit")
+    //--- Atomic property: mY1
+      self.mY1_property.storeIn (dictionary: ioDictionary, forKey: "mY1")
+    //--- Atomic property: mY1Unit
+      self.mY1Unit_property.storeIn (dictionary: ioDictionary, forKey: "mY1Unit")
+    //--- Atomic property: mX2
+      self.mX2_property.storeIn (dictionary: ioDictionary, forKey: "mX2")
+    //--- Atomic property: mX2Unit
+      self.mX2Unit_property.storeIn (dictionary: ioDictionary, forKey: "mX2Unit")
+    //--- Atomic property: mY2
+      self.mY2_property.storeIn (dictionary: ioDictionary, forKey: "mY2")
+    //--- Atomic property: mY2Unit
+      self.mY2Unit_property.storeIn (dictionary: ioDictionary, forKey: "mY2Unit")
+    //--- Atomic property: mLayer
+      self.mLayer_property.storeIn (dictionary: ioDictionary, forKey: "mLayer")
+    //--- Atomic property: mWidth
+      self.mWidth_property.storeIn (dictionary: ioDictionary, forKey: "mWidth")
   }
 
   //····················································································································

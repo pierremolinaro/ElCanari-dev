@@ -213,67 +213,70 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "x1",
-      idx: self.x1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x1_property.mObserverExplorer,
-      valueExplorer: &self.x1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y1",
-      idx: self.y1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y1_property.mObserverExplorer,
-      valueExplorer: &self.y1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x2",
-      idx: self.x2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x2_property.mObserverExplorer,
-      valueExplorer: &self.x2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y2",
-      idx: self.y2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y2_property.mObserverExplorer,
-      valueExplorer: &self.y2_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "x1",
+        idx: self.x1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x1_property.mObserverExplorer,
+        valueExplorer: &self.x1_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "y1",
+        idx: self.y1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y1_property.mObserverExplorer,
+        valueExplorer: &self.y1_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x2",
+        idx: self.x2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x2_property.mObserverExplorer,
+        valueExplorer: &self.x2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "y2",
+        idx: self.y2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y2_property.mObserverExplorer,
+        valueExplorer: &self.y2_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: x1
     self.x1_property.mObserverExplorer = nil
     self.x1_property.mValueExplorer = nil
@@ -286,9 +289,10 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //--- Atomic property: y2
     self.y2_property.mObserverExplorer = nil
     self.y2_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -314,14 +318,14 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: x1
-    self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
-  //--- Atomic property: y1
-    self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
-  //--- Atomic property: x2
-    self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
-  //--- Atomic property: y2
-    self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
+    //--- Atomic property: x1
+      self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
+    //--- Atomic property: y1
+      self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
+    //--- Atomic property: x2
+      self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
+    //--- Atomic property: y2
+      self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
   }
 
   //····················································································································

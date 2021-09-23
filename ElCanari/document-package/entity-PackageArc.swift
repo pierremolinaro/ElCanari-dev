@@ -571,155 +571,158 @@ final class PackageArc : PackageObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "yCenter",
-      idx: self.yCenter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.yCenter_property.mObserverExplorer,
-      valueExplorer: &self.yCenter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "radius",
-      idx: self.radius_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.radius_property.mObserverExplorer,
-      valueExplorer: &self.radius_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "startAngle",
-      idx: self.startAngle_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.startAngle_property.mObserverExplorer,
-      valueExplorer: &self.startAngle_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "arcAngle",
-      idx: self.arcAngle_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.arcAngle_property.mObserverExplorer,
-      valueExplorer: &self.arcAngle_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "startTangent",
-      idx: self.startTangent_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.startTangent_property.mObserverExplorer,
-      valueExplorer: &self.startTangent_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "endTangent",
-      idx: self.endTangent_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.endTangent_property.mObserverExplorer,
-      valueExplorer: &self.endTangent_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "pathIsClosed",
-      idx: self.pathIsClosed_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.pathIsClosed_property.mObserverExplorer,
-      valueExplorer: &self.pathIsClosed_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xCenterUnit",
-      idx: self.xCenterUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.xCenterUnit_property.mObserverExplorer,
-      valueExplorer: &self.xCenterUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yCenterUnit",
-      idx: self.yCenterUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.yCenterUnit_property.mObserverExplorer,
-      valueExplorer: &self.yCenterUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "radiusUnit",
-      idx: self.radiusUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.radiusUnit_property.mObserverExplorer,
-      valueExplorer: &self.radiusUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "startTangentUnit",
-      idx: self.startTangentUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.startTangentUnit_property.mObserverExplorer,
-      valueExplorer: &self.startTangentUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "endTangentUnit",
-      idx: self.endTangentUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.endTangentUnit_property.mObserverExplorer,
-      valueExplorer: &self.endTangentUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xCenter",
-      idx: self.xCenter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.xCenter_property.mObserverExplorer,
-      valueExplorer: &self.xCenter_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "strokeBezierPath",
-      idx: self.strokeBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.strokeBezierPath_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "yCenter",
+        idx: self.yCenter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.yCenter_property.mObserverExplorer,
+        valueExplorer: &self.yCenter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "radius",
+        idx: self.radius_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.radius_property.mObserverExplorer,
+        valueExplorer: &self.radius_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "startAngle",
+        idx: self.startAngle_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.startAngle_property.mObserverExplorer,
+        valueExplorer: &self.startAngle_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "arcAngle",
+        idx: self.arcAngle_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.arcAngle_property.mObserverExplorer,
+        valueExplorer: &self.arcAngle_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "startTangent",
+        idx: self.startTangent_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.startTangent_property.mObserverExplorer,
+        valueExplorer: &self.startTangent_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "endTangent",
+        idx: self.endTangent_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.endTangent_property.mObserverExplorer,
+        valueExplorer: &self.endTangent_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "pathIsClosed",
+        idx: self.pathIsClosed_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.pathIsClosed_property.mObserverExplorer,
+        valueExplorer: &self.pathIsClosed_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "xCenterUnit",
+        idx: self.xCenterUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.xCenterUnit_property.mObserverExplorer,
+        valueExplorer: &self.xCenterUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "yCenterUnit",
+        idx: self.yCenterUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.yCenterUnit_property.mObserverExplorer,
+        valueExplorer: &self.yCenterUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "radiusUnit",
+        idx: self.radiusUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.radiusUnit_property.mObserverExplorer,
+        valueExplorer: &self.radiusUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "startTangentUnit",
+        idx: self.startTangentUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.startTangentUnit_property.mObserverExplorer,
+        valueExplorer: &self.startTangentUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "endTangentUnit",
+        idx: self.endTangentUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.endTangentUnit_property.mObserverExplorer,
+        valueExplorer: &self.endTangentUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "xCenter",
+        idx: self.xCenter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.xCenter_property.mObserverExplorer,
+        valueExplorer: &self.xCenter_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "strokeBezierPath",
+        idx: self.strokeBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.strokeBezierPath_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: yCenter
     self.yCenter_property.mObserverExplorer = nil
     self.yCenter_property.mValueExplorer = nil
@@ -759,9 +762,10 @@ final class PackageArc : PackageObject,
   //--- Atomic property: xCenter
     self.xCenter_property.mObserverExplorer = nil
     self.xCenter_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -787,32 +791,32 @@ final class PackageArc : PackageObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: yCenter
-    self.yCenter_property.storeIn (dictionary: ioDictionary, forKey: "yCenter")
-  //--- Atomic property: radius
-    self.radius_property.storeIn (dictionary: ioDictionary, forKey: "radius")
-  //--- Atomic property: startAngle
-    self.startAngle_property.storeIn (dictionary: ioDictionary, forKey: "startAngle")
-  //--- Atomic property: arcAngle
-    self.arcAngle_property.storeIn (dictionary: ioDictionary, forKey: "arcAngle")
-  //--- Atomic property: startTangent
-    self.startTangent_property.storeIn (dictionary: ioDictionary, forKey: "startTangent")
-  //--- Atomic property: endTangent
-    self.endTangent_property.storeIn (dictionary: ioDictionary, forKey: "endTangent")
-  //--- Atomic property: pathIsClosed
-    self.pathIsClosed_property.storeIn (dictionary: ioDictionary, forKey: "pathIsClosed")
-  //--- Atomic property: xCenterUnit
-    self.xCenterUnit_property.storeIn (dictionary: ioDictionary, forKey: "xCenterUnit")
-  //--- Atomic property: yCenterUnit
-    self.yCenterUnit_property.storeIn (dictionary: ioDictionary, forKey: "yCenterUnit")
-  //--- Atomic property: radiusUnit
-    self.radiusUnit_property.storeIn (dictionary: ioDictionary, forKey: "radiusUnit")
-  //--- Atomic property: startTangentUnit
-    self.startTangentUnit_property.storeIn (dictionary: ioDictionary, forKey: "startTangentUnit")
-  //--- Atomic property: endTangentUnit
-    self.endTangentUnit_property.storeIn (dictionary: ioDictionary, forKey: "endTangentUnit")
-  //--- Atomic property: xCenter
-    self.xCenter_property.storeIn (dictionary: ioDictionary, forKey: "xCenter")
+    //--- Atomic property: yCenter
+      self.yCenter_property.storeIn (dictionary: ioDictionary, forKey: "yCenter")
+    //--- Atomic property: radius
+      self.radius_property.storeIn (dictionary: ioDictionary, forKey: "radius")
+    //--- Atomic property: startAngle
+      self.startAngle_property.storeIn (dictionary: ioDictionary, forKey: "startAngle")
+    //--- Atomic property: arcAngle
+      self.arcAngle_property.storeIn (dictionary: ioDictionary, forKey: "arcAngle")
+    //--- Atomic property: startTangent
+      self.startTangent_property.storeIn (dictionary: ioDictionary, forKey: "startTangent")
+    //--- Atomic property: endTangent
+      self.endTangent_property.storeIn (dictionary: ioDictionary, forKey: "endTangent")
+    //--- Atomic property: pathIsClosed
+      self.pathIsClosed_property.storeIn (dictionary: ioDictionary, forKey: "pathIsClosed")
+    //--- Atomic property: xCenterUnit
+      self.xCenterUnit_property.storeIn (dictionary: ioDictionary, forKey: "xCenterUnit")
+    //--- Atomic property: yCenterUnit
+      self.yCenterUnit_property.storeIn (dictionary: ioDictionary, forKey: "yCenterUnit")
+    //--- Atomic property: radiusUnit
+      self.radiusUnit_property.storeIn (dictionary: ioDictionary, forKey: "radiusUnit")
+    //--- Atomic property: startTangentUnit
+      self.startTangentUnit_property.storeIn (dictionary: ioDictionary, forKey: "startTangentUnit")
+    //--- Atomic property: endTangentUnit
+      self.endTangentUnit_property.storeIn (dictionary: ioDictionary, forKey: "endTangentUnit")
+    //--- Atomic property: xCenter
+      self.xCenter_property.storeIn (dictionary: ioDictionary, forKey: "xCenter")
   }
 
   //····················································································································

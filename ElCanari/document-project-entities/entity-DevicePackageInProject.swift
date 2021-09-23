@@ -149,61 +149,65 @@ final class DevicePackageInProject : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mPackageName",
-      idx: self.mPackageName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mPackageName_property.mObserverExplorer,
-      valueExplorer: &self.mPackageName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mStrokeBezierPath",
-      idx: self.mStrokeBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "packagePadDictionary",
-      idx: self.packagePadDictionary_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.packagePadDictionary_property.mObserverExplorer,
-      valueExplorer: &self.packagePadDictionary_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mMasterPads",
-      idx:mMasterPads_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mMasterPads_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mPackageName",
+        idx: self.mPackageName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mPackageName_property.mObserverExplorer,
+        valueExplorer: &self.mPackageName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mStrokeBezierPath",
+        idx: self.mStrokeBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "packagePadDictionary",
+        idx: self.packagePadDictionary_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.packagePadDictionary_property.mObserverExplorer,
+        valueExplorer: &self.packagePadDictionary_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mMasterPads",
+        idx:mMasterPads_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mMasterPads_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
-  //--- To many property: mMasterPads
-    self.mMasterPads_property.mValueExplorer = nil
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
+    //--- To many property: mMasterPads
+      self.mMasterPads_property.mValueExplorer = nil
   //--- Atomic property: mPackageName
     self.mPackageName_property.mObserverExplorer = nil
     self.mPackageName_property.mValueExplorer = nil
   //--- Atomic property: mStrokeBezierPath
     self.mStrokeBezierPath_property.mObserverExplorer = nil
     self.mStrokeBezierPath_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -236,10 +240,10 @@ final class DevicePackageInProject : EBManagedObject,
       relationshipName: "mMasterPads",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mPackageName
-    self.mPackageName_property.storeIn (dictionary: ioDictionary, forKey: "mPackageName")
-  //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
+    //--- Atomic property: mPackageName
+      self.mPackageName_property.storeIn (dictionary: ioDictionary, forKey: "mPackageName")
+    //--- Atomic property: mStrokeBezierPath
+      self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
   }
 
   //····················································································································

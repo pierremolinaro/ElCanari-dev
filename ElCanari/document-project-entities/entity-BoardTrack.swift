@@ -1322,272 +1322,275 @@ final class BoardTrack : BoardObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mSide",
-      idx: self.mSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSide_property.mObserverExplorer,
-      valueExplorer: &self.mSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDefaultTrackWidthUnit",
-      idx: self.mDefaultTrackWidthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDefaultTrackWidthUnit_property.mObserverExplorer,
-      valueExplorer: &self.mDefaultTrackWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCustomTrackWidth",
-      idx: self.mCustomTrackWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCustomTrackWidth_property.mObserverExplorer,
-      valueExplorer: &self.mCustomTrackWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCustomTrackWidthUnit",
-      idx: self.mCustomTrackWidthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCustomTrackWidthUnit_property.mObserverExplorer,
-      valueExplorer: &self.mCustomTrackWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mUsesCustomTrackWidth",
-      idx: self.mUsesCustomTrackWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mUsesCustomTrackWidth_property.mObserverExplorer,
-      valueExplorer: &self.mUsesCustomTrackWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mIsPreservedByAutoRouter",
-      idx: self.mIsPreservedByAutoRouter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mIsPreservedByAutoRouter_property.mObserverExplorer,
-      valueExplorer: &self.mIsPreservedByAutoRouter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mP1XUnit",
-      idx: self.mP1XUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mP1XUnit_property.mObserverExplorer,
-      valueExplorer: &self.mP1XUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mP1YUnit",
-      idx: self.mP1YUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mP1YUnit_property.mObserverExplorer,
-      valueExplorer: &self.mP1YUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mP2XUnit",
-      idx: self.mP2XUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mP2XUnit_property.mObserverExplorer,
-      valueExplorer: &self.mP2XUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mP2YUnit",
-      idx: self.mP2YUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mP2YUnit_property.mObserverExplorer,
-      valueExplorer: &self.mP2YUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mManualLockP1",
-      idx: self.mManualLockP1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mManualLockP1_property.mObserverExplorer,
-      valueExplorer: &self.mManualLockP1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mManualLockP2",
-      idx: self.mManualLockP2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mManualLockP2_property.mObserverExplorer,
-      valueExplorer: &self.mManualLockP2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDirectionLockOnKnobDragging",
-      idx: self.mDirectionLockOnKnobDragging_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDirectionLockOnKnobDragging_property.mObserverExplorer,
-      valueExplorer: &self.mDirectionLockOnKnobDragging_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "actualTrackWidth",
-      idx: self.actualTrackWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.actualTrackWidth_property.mObserverExplorer,
-      valueExplorer: &self.actualTrackWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netName",
-      idx: self.netName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netName_property.mObserverExplorer,
-      valueExplorer: &self.netName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netClassName",
-      idx: self.netClassName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netClassName_property.mObserverExplorer,
-      valueExplorer: &self.netClassName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netClassTrackWidth",
-      idx: self.netClassTrackWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netClassTrackWidth_property.mObserverExplorer,
-      valueExplorer: &self.netClassTrackWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netClassViaHoleDiameter",
-      idx: self.netClassViaHoleDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netClassViaHoleDiameter_property.mObserverExplorer,
-      valueExplorer: &self.netClassViaHoleDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netClassViaPadDiameter",
-      idx: self.netClassViaPadDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netClassViaPadDiameter_property.mObserverExplorer,
-      valueExplorer: &self.netClassViaPadDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "trackLengthInCanariUnit",
-      idx: self.trackLengthInCanariUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.trackLengthInCanariUnit_property.mObserverExplorer,
-      valueExplorer: &self.trackLengthInCanariUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "trackSide",
-      idx: self.trackSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.trackSide_property.mObserverExplorer,
-      valueExplorer: &self.trackSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "signatureForERCChecking",
-      idx: self.signatureForERCChecking_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
-      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "p1ConnectedToSomePad",
-      idx: self.p1ConnectedToSomePad_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.p1ConnectedToSomePad_property.mObserverExplorer,
-      valueExplorer: &self.p1ConnectedToSomePad_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "p2ConnectedToSomePad",
-      idx: self.p2ConnectedToSomePad_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.p2ConnectedToSomePad_property.mObserverExplorer,
-      valueExplorer: &self.p2ConnectedToSomePad_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "p1CanMove",
-      idx: self.p1CanMove_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.p1CanMove_property.mObserverExplorer,
-      valueExplorer: &self.p1CanMove_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "p2CanMove",
-      idx: self.p2CanMove_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.p2CanMove_property.mObserverExplorer,
-      valueExplorer: &self.p2CanMove_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "trackCanRotate",
-      idx: self.trackCanRotate_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.trackCanRotate_property.mObserverExplorer,
-      valueExplorer: &self.trackCanRotate_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mConnectorP1",
-      idx:self.mConnectorP1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mConnectorP1_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mConnectorP2",
-      idx:self.mConnectorP2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mConnectorP2_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mNet",
-      idx:self.mNet_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mNet_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mSide",
+        idx: self.mSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSide_property.mObserverExplorer,
+        valueExplorer: &self.mSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDefaultTrackWidthUnit",
+        idx: self.mDefaultTrackWidthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDefaultTrackWidthUnit_property.mObserverExplorer,
+        valueExplorer: &self.mDefaultTrackWidthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCustomTrackWidth",
+        idx: self.mCustomTrackWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCustomTrackWidth_property.mObserverExplorer,
+        valueExplorer: &self.mCustomTrackWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCustomTrackWidthUnit",
+        idx: self.mCustomTrackWidthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCustomTrackWidthUnit_property.mObserverExplorer,
+        valueExplorer: &self.mCustomTrackWidthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mUsesCustomTrackWidth",
+        idx: self.mUsesCustomTrackWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mUsesCustomTrackWidth_property.mObserverExplorer,
+        valueExplorer: &self.mUsesCustomTrackWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsPreservedByAutoRouter",
+        idx: self.mIsPreservedByAutoRouter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsPreservedByAutoRouter_property.mObserverExplorer,
+        valueExplorer: &self.mIsPreservedByAutoRouter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mP1XUnit",
+        idx: self.mP1XUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mP1XUnit_property.mObserverExplorer,
+        valueExplorer: &self.mP1XUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mP1YUnit",
+        idx: self.mP1YUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mP1YUnit_property.mObserverExplorer,
+        valueExplorer: &self.mP1YUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mP2XUnit",
+        idx: self.mP2XUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mP2XUnit_property.mObserverExplorer,
+        valueExplorer: &self.mP2XUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mP2YUnit",
+        idx: self.mP2YUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mP2YUnit_property.mObserverExplorer,
+        valueExplorer: &self.mP2YUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mManualLockP1",
+        idx: self.mManualLockP1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mManualLockP1_property.mObserverExplorer,
+        valueExplorer: &self.mManualLockP1_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mManualLockP2",
+        idx: self.mManualLockP2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mManualLockP2_property.mObserverExplorer,
+        valueExplorer: &self.mManualLockP2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDirectionLockOnKnobDragging",
+        idx: self.mDirectionLockOnKnobDragging_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDirectionLockOnKnobDragging_property.mObserverExplorer,
+        valueExplorer: &self.mDirectionLockOnKnobDragging_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "actualTrackWidth",
+        idx: self.actualTrackWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.actualTrackWidth_property.mObserverExplorer,
+        valueExplorer: &self.actualTrackWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netName",
+        idx: self.netName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netName_property.mObserverExplorer,
+        valueExplorer: &self.netName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netClassName",
+        idx: self.netClassName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netClassName_property.mObserverExplorer,
+        valueExplorer: &self.netClassName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netClassTrackWidth",
+        idx: self.netClassTrackWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netClassTrackWidth_property.mObserverExplorer,
+        valueExplorer: &self.netClassTrackWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netClassViaHoleDiameter",
+        idx: self.netClassViaHoleDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netClassViaHoleDiameter_property.mObserverExplorer,
+        valueExplorer: &self.netClassViaHoleDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netClassViaPadDiameter",
+        idx: self.netClassViaPadDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netClassViaPadDiameter_property.mObserverExplorer,
+        valueExplorer: &self.netClassViaPadDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "trackLengthInCanariUnit",
+        idx: self.trackLengthInCanariUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.trackLengthInCanariUnit_property.mObserverExplorer,
+        valueExplorer: &self.trackLengthInCanariUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "trackSide",
+        idx: self.trackSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.trackSide_property.mObserverExplorer,
+        valueExplorer: &self.trackSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "signatureForERCChecking",
+        idx: self.signatureForERCChecking_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+        valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "p1ConnectedToSomePad",
+        idx: self.p1ConnectedToSomePad_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.p1ConnectedToSomePad_property.mObserverExplorer,
+        valueExplorer: &self.p1ConnectedToSomePad_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "p2ConnectedToSomePad",
+        idx: self.p2ConnectedToSomePad_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.p2ConnectedToSomePad_property.mObserverExplorer,
+        valueExplorer: &self.p2ConnectedToSomePad_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "p1CanMove",
+        idx: self.p1CanMove_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.p1CanMove_property.mObserverExplorer,
+        valueExplorer: &self.p1CanMove_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "p2CanMove",
+        idx: self.p2CanMove_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.p2CanMove_property.mObserverExplorer,
+        valueExplorer: &self.p2CanMove_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "trackCanRotate",
+        idx: self.trackCanRotate_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.trackCanRotate_property.mObserverExplorer,
+        valueExplorer: &self.trackCanRotate_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mConnectorP1",
+        idx:self.mConnectorP1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mConnectorP1_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mConnectorP2",
+        idx:self.mConnectorP2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mConnectorP2_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mNet",
+        idx:self.mNet_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mNet_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mSide
     self.mSide_property.mObserverExplorer = nil
     self.mSide_property.mValueExplorer = nil
@@ -1627,18 +1630,19 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: mDirectionLockOnKnobDragging
     self.mDirectionLockOnKnobDragging_property.mObserverExplorer = nil
     self.mDirectionLockOnKnobDragging_property.mValueExplorer = nil
-  //--- To one property: mConnectorP1
-    self.mConnectorP1_property.mObserverExplorer = nil
-    self.mConnectorP1_property.mValueExplorer = nil
-  //--- To one property: mConnectorP2
-    self.mConnectorP2_property.mObserverExplorer = nil
-    self.mConnectorP2_property.mValueExplorer = nil
-  //--- To one property: mNet
-    self.mNet_property.mObserverExplorer = nil
-    self.mNet_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To one property: mConnectorP1
+      self.mConnectorP1_property.mObserverExplorer = nil
+      self.mConnectorP1_property.mValueExplorer = nil
+    //--- To one property: mConnectorP2
+      self.mConnectorP2_property.mObserverExplorer = nil
+      self.mConnectorP2_property.mValueExplorer = nil
+    //--- To one property: mNet
+      self.mNet_property.mObserverExplorer = nil
+      self.mNet_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -1667,32 +1671,32 @@ final class BoardTrack : BoardObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mSide
-    self.mSide_property.storeIn (dictionary: ioDictionary, forKey: "mSide")
-  //--- Atomic property: mDefaultTrackWidthUnit
-    self.mDefaultTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultTrackWidthUnit")
-  //--- Atomic property: mCustomTrackWidth
-    self.mCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey: "mCustomTrackWidth")
-  //--- Atomic property: mCustomTrackWidthUnit
-    self.mCustomTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mCustomTrackWidthUnit")
-  //--- Atomic property: mUsesCustomTrackWidth
-    self.mUsesCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey: "mUsesCustomTrackWidth")
-  //--- Atomic property: mIsPreservedByAutoRouter
-    self.mIsPreservedByAutoRouter_property.storeIn (dictionary: ioDictionary, forKey: "mIsPreservedByAutoRouter")
-  //--- Atomic property: mP1XUnit
-    self.mP1XUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP1XUnit")
-  //--- Atomic property: mP1YUnit
-    self.mP1YUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP1YUnit")
-  //--- Atomic property: mP2XUnit
-    self.mP2XUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP2XUnit")
-  //--- Atomic property: mP2YUnit
-    self.mP2YUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP2YUnit")
-  //--- Atomic property: mManualLockP1
-    self.mManualLockP1_property.storeIn (dictionary: ioDictionary, forKey: "mManualLockP1")
-  //--- Atomic property: mManualLockP2
-    self.mManualLockP2_property.storeIn (dictionary: ioDictionary, forKey: "mManualLockP2")
-  //--- Atomic property: mDirectionLockOnKnobDragging
-    self.mDirectionLockOnKnobDragging_property.storeIn (dictionary: ioDictionary, forKey: "mDirectionLockOnKnobDragging")
+    //--- Atomic property: mSide
+      self.mSide_property.storeIn (dictionary: ioDictionary, forKey: "mSide")
+    //--- Atomic property: mDefaultTrackWidthUnit
+      self.mDefaultTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultTrackWidthUnit")
+    //--- Atomic property: mCustomTrackWidth
+      self.mCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey: "mCustomTrackWidth")
+    //--- Atomic property: mCustomTrackWidthUnit
+      self.mCustomTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mCustomTrackWidthUnit")
+    //--- Atomic property: mUsesCustomTrackWidth
+      self.mUsesCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey: "mUsesCustomTrackWidth")
+    //--- Atomic property: mIsPreservedByAutoRouter
+      self.mIsPreservedByAutoRouter_property.storeIn (dictionary: ioDictionary, forKey: "mIsPreservedByAutoRouter")
+    //--- Atomic property: mP1XUnit
+      self.mP1XUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP1XUnit")
+    //--- Atomic property: mP1YUnit
+      self.mP1YUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP1YUnit")
+    //--- Atomic property: mP2XUnit
+      self.mP2XUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP2XUnit")
+    //--- Atomic property: mP2YUnit
+      self.mP2YUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP2YUnit")
+    //--- Atomic property: mManualLockP1
+      self.mManualLockP1_property.storeIn (dictionary: ioDictionary, forKey: "mManualLockP1")
+    //--- Atomic property: mManualLockP2
+      self.mManualLockP2_property.storeIn (dictionary: ioDictionary, forKey: "mManualLockP2")
+    //--- Atomic property: mDirectionLockOnKnobDragging
+      self.mDirectionLockOnKnobDragging_property.storeIn (dictionary: ioDictionary, forKey: "mDirectionLockOnKnobDragging")
   }
 
   //····················································································································

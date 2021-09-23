@@ -136,137 +136,149 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   //    Explorer
   //····················································································································
 
-  private var mValueExplorer : NSButton?
-  private var mExplorerWindow : NSWindow?
+  #if BUILD_OBJECT_EXPLORER
+    private var mValueExplorer : NSButton?
+    private var mExplorerWindow : NSWindow?
+  #endif
 
   //····················································································································
 
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-    let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-    let tf = NSTextField (frame:secondColumn (y))
-    tf.isEnabled = true
-    tf.isEditable = false
-    tf.stringValue = name
-    tf.font = font
-    view.addSubview (tf)
-    let valueExplorer = NSButton (frame: thirdColumn (y))
-    valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_ProjectDocument_restrictRectangleSelectionController.showObjectWindowFromExplorerButton(_:))
-    view.addSubview (valueExplorer)
-    self.mValueExplorer = valueExplorer
-    y += EXPLORER_ROW_HEIGHT
-  }
+  #if BUILD_OBJECT_EXPLORER
+    final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
+      let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+      let tf = NSTextField (frame:secondColumn (y))
+      tf.isEnabled = true
+      tf.isEditable = false
+      tf.stringValue = name
+      tf.font = font
+      view.addSubview (tf)
+      let valueExplorer = NSButton (frame: thirdColumn (y))
+      valueExplorer.font = font
+      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.target = self
+      valueExplorer.action = #selector(SelectionController_ProjectDocument_restrictRectangleSelectionController.showObjectWindowFromExplorerButton(_:))
+      view.addSubview (valueExplorer)
+      self.mValueExplorer = valueExplorer
+      y += EXPLORER_ROW_HEIGHT
+    }
+  #endif
 
   //····················································································································
 
-  func buildExplorerWindow () {
-  //-------------------------------------------------- Create Window
-    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
-    self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
-  //-------------------------------------------------- Adding properties
-    let view = NSView (frame: r)
-    var y : CGFloat = 0.0
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mWidth",
-      idx: self.mWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mWidth_property.mObserverExplorer,
-      valueExplorer: &self.mWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mHeight",
-      idx: self.mHeight_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mHeight_property.mObserverExplorer,
-      valueExplorer: &self.mHeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mIsInFrontLayer",
-      idx: self.mIsInFrontLayer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mIsInFrontLayer_property.mObserverExplorer,
-      valueExplorer: &self.mIsInFrontLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mIsInBackLayer",
-      idx: self.mIsInBackLayer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mIsInBackLayer_property.mObserverExplorer,
-      valueExplorer: &self.mIsInBackLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-  //-------------------------------------------------- Finish Window construction
-  //--- Resize View
-    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    view.frame = viewFrame
-  //--- Set content size
-    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
-  //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_ProjectDocument_restrictRectangleSelectionController.deleteSelectionControllerWindowAction(_:))
-  //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    self.mExplorerWindow!.title = windowTitle
-  //--- Add Scroll view
-    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    let sw = NSScrollView (frame: frame)
-    sw.hasVerticalScroller = true
-    sw.documentView = view
-    self.mExplorerWindow!.contentView = sw
-  }
-
+  #if BUILD_OBJECT_EXPLORER
+    func buildExplorerWindow () {
+    //-------------------------------------------------- Create Window
+      let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
+      self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
+    //-------------------------------------------------- Adding properties
+      let view = NSView (frame: r)
+      var y : CGFloat = 0.0
+      createEntryForPropertyNamed (
+        "mY",
+        idx: self.mY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY_property.mObserverExplorer,
+        valueExplorer: &self.mY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mWidth",
+        idx: self.mWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mWidth_property.mObserverExplorer,
+        valueExplorer: &self.mWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mHeight",
+        idx: self.mHeight_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mHeight_property.mObserverExplorer,
+        valueExplorer: &self.mHeight_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsInFrontLayer",
+        idx: self.mIsInFrontLayer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsInFrontLayer_property.mObserverExplorer,
+        valueExplorer: &self.mIsInFrontLayer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsInBackLayer",
+        idx: self.mIsInBackLayer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsInBackLayer_property.mObserverExplorer,
+        valueExplorer: &self.mIsInBackLayer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mX",
+        idx: self.mX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX_property.mObserverExplorer,
+        valueExplorer: &self.mX_property.mValueExplorer
+      )
+    //-------------------------------------------------- Finish Window construction
+    //--- Resize View
+      let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      view.frame = viewFrame
+    //--- Set content size
+      self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
+    //--- Set close button as 'remove window' button
+      let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
+      closeButton?.target = self
+      closeButton?.action = #selector(SelectionController_ProjectDocument_restrictRectangleSelectionController.deleteSelectionControllerWindowAction(_:))
+    //--- Set window title
+      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      self.mExplorerWindow!.title = windowTitle
+    //--- Add Scroll view
+      let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      let sw = NSScrollView (frame: frame)
+      sw.hasVerticalScroller = true
+      sw.documentView = view
+      self.mExplorerWindow!.contentView = sw
+    }
+  #endif
+  
   //····················································································································
   //   showObjectWindowFromExplorerButton
   //····················································································································
 
-  @objc func showObjectWindowFromExplorerButton (_ : Any) {
-    if self.mExplorerWindow == nil {
-      self.buildExplorerWindow ()
+  #if BUILD_OBJECT_EXPLORER
+    @objc func showObjectWindowFromExplorerButton (_ : Any) {
+      if self.mExplorerWindow == nil {
+        self.buildExplorerWindow ()
+      }
+      self.mExplorerWindow?.makeKeyAndOrderFront (nil)
     }
-    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
-  }
-
+  #endif
+  
   //····················································································································
   //   deleteSelectionControllerWindowAction
   //····················································································································
 
-  @objc func deleteSelectionControllerWindowAction (_ : Any) {
-    self.clearObjectExplorer ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    @objc func deleteSelectionControllerWindowAction (_ : Any) {
+      self.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //   clearObjectExplorer
   //····················································································································
 
-  func clearObjectExplorer () {
-    if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
-      closeButton.target = nil
+  #if BUILD_OBJECT_EXPLORER
+    func clearObjectExplorer () {
+      if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
+        closeButton.target = nil
+      }
+      self.mExplorerWindow?.orderOut (nil)
+      self.mExplorerWindow = nil
     }
-    self.mExplorerWindow?.orderOut (nil)
-    self.mExplorerWindow = nil
-  }
+  #endif
 
   //····················································································································
 

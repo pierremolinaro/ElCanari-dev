@@ -390,107 +390,110 @@ final class SymbolTypeInDevice : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mTypeName",
-      idx: self.mTypeName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mTypeName_property.mObserverExplorer,
-      valueExplorer: &self.mTypeName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mVersion",
-      idx: self.mVersion_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mVersion_property.mObserverExplorer,
-      valueExplorer: &self.mVersion_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mFileData",
-      idx: self.mFileData_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mFileData_property.mObserverExplorer,
-      valueExplorer: &self.mFileData_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mStrokeBezierPath",
-      idx: self.mStrokeBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mFilledBezierPath",
-      idx: self.mFilledBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mFilledBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.mFilledBezierPath_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "versionString",
-      idx: self.versionString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.versionString_property.mObserverExplorer,
-      valueExplorer: &self.versionString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "instanceCount",
-      idx: self.instanceCount_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.instanceCount_property.mObserverExplorer,
-      valueExplorer: &self.instanceCount_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "documentSize",
-      idx: self.documentSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.documentSize_property.mObserverExplorer,
-      valueExplorer: &self.documentSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "pinNameShape",
-      idx: self.pinNameShape_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.pinNameShape_property.mObserverExplorer,
-      valueExplorer: &self.pinNameShape_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mInstances",
-      idx:mInstances_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mInstances_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mPinTypes",
-      idx:mPinTypes_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mPinTypes_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mTypeName",
+        idx: self.mTypeName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mTypeName_property.mObserverExplorer,
+        valueExplorer: &self.mTypeName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mVersion",
+        idx: self.mVersion_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mVersion_property.mObserverExplorer,
+        valueExplorer: &self.mVersion_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mFileData",
+        idx: self.mFileData_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mFileData_property.mObserverExplorer,
+        valueExplorer: &self.mFileData_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mStrokeBezierPath",
+        idx: self.mStrokeBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mFilledBezierPath",
+        idx: self.mFilledBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mFilledBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.mFilledBezierPath_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "versionString",
+        idx: self.versionString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.versionString_property.mObserverExplorer,
+        valueExplorer: &self.versionString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "instanceCount",
+        idx: self.instanceCount_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.instanceCount_property.mObserverExplorer,
+        valueExplorer: &self.instanceCount_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "documentSize",
+        idx: self.documentSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.documentSize_property.mObserverExplorer,
+        valueExplorer: &self.documentSize_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "pinNameShape",
+        idx: self.pinNameShape_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.pinNameShape_property.mObserverExplorer,
+        valueExplorer: &self.pinNameShape_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mInstances",
+        idx:mInstances_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mInstances_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mPinTypes",
+        idx:mPinTypes_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mPinTypes_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
-  //--- To many property: mInstances
-    self.mInstances_property.mValueExplorer = nil
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
+    //--- To many property: mInstances
+      self.mInstances_property.mValueExplorer = nil
   //--- Atomic property: mTypeName
     self.mTypeName_property.mObserverExplorer = nil
     self.mTypeName_property.mValueExplorer = nil
@@ -506,11 +509,12 @@ final class SymbolTypeInDevice : EBManagedObject,
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.mObserverExplorer = nil
     self.mFilledBezierPath_property.mValueExplorer = nil
-  //--- To many property: mPinTypes
-    self.mPinTypes_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: mPinTypes
+      self.mPinTypes_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -544,16 +548,16 @@ final class SymbolTypeInDevice : EBManagedObject,
       relationshipName: "mInstances",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mTypeName
-    self.mTypeName_property.storeIn (dictionary: ioDictionary, forKey: "mTypeName")
-  //--- Atomic property: mVersion
-    self.mVersion_property.storeIn (dictionary: ioDictionary, forKey: "mVersion")
-  //--- Atomic property: mFileData
-    self.mFileData_property.storeIn (dictionary: ioDictionary, forKey: "mFileData")
-  //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
-  //--- Atomic property: mFilledBezierPath
-    self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mFilledBezierPath")
+    //--- Atomic property: mTypeName
+      self.mTypeName_property.storeIn (dictionary: ioDictionary, forKey: "mTypeName")
+    //--- Atomic property: mVersion
+      self.mVersion_property.storeIn (dictionary: ioDictionary, forKey: "mVersion")
+    //--- Atomic property: mFileData
+      self.mFileData_property.storeIn (dictionary: ioDictionary, forKey: "mFileData")
+    //--- Atomic property: mStrokeBezierPath
+      self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
+    //--- Atomic property: mFilledBezierPath
+      self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mFilledBezierPath")
   //--- To many property: mPinTypes
     self.store (
       managedObjectArray: self.mPinTypes_property.propval.values,

@@ -361,101 +361,105 @@ final class SheetInProject : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mSheetTitle",
-      idx: self.mSheetTitle_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSheetTitle_property.mObserverExplorer,
-      valueExplorer: &self.mSheetTitle_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "connectedPoints",
-      idx: self.connectedPoints_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.connectedPoints_property.mObserverExplorer,
-      valueExplorer: &self.connectedPoints_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "connexionWarnings",
-      idx: self.connexionWarnings_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.connexionWarnings_property.mObserverExplorer,
-      valueExplorer: &self.connexionWarnings_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "connexionErrors",
-      idx: self.connexionErrors_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.connexionErrors_property.mObserverExplorer,
-      valueExplorer: &self.connexionErrors_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "sheetDescriptor",
-      idx: self.sheetDescriptor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.sheetDescriptor_property.mObserverExplorer,
-      valueExplorer: &self.sheetDescriptor_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mObjects",
-      idx:mObjects_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mObjects_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mPoints",
-      idx:mPoints_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mPoints_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mRoot",
-      idx:self.mRoot_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mRoot_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mSheetTitle",
+        idx: self.mSheetTitle_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSheetTitle_property.mObserverExplorer,
+        valueExplorer: &self.mSheetTitle_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "connectedPoints",
+        idx: self.connectedPoints_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.connectedPoints_property.mObserverExplorer,
+        valueExplorer: &self.connectedPoints_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "connexionWarnings",
+        idx: self.connexionWarnings_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.connexionWarnings_property.mObserverExplorer,
+        valueExplorer: &self.connexionWarnings_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "connexionErrors",
+        idx: self.connexionErrors_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.connexionErrors_property.mObserverExplorer,
+        valueExplorer: &self.connexionErrors_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "sheetDescriptor",
+        idx: self.sheetDescriptor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.sheetDescriptor_property.mObserverExplorer,
+        valueExplorer: &self.sheetDescriptor_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mObjects",
+        idx:mObjects_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mObjects_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mPoints",
+        idx:mPoints_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mPoints_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mRoot",
+        idx:self.mRoot_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mRoot_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
-  //--- To many property: mObjects
-    self.mObjects_property.mValueExplorer = nil
-  //--- To many property: mPoints
-    self.mPoints_property.mValueExplorer = nil
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
+    //--- To many property: mObjects
+      self.mObjects_property.mValueExplorer = nil
+    //--- To many property: mPoints
+      self.mPoints_property.mValueExplorer = nil
   //--- Atomic property: mSheetTitle
     self.mSheetTitle_property.mObserverExplorer = nil
     self.mSheetTitle_property.mValueExplorer = nil
-  //--- To one property: mRoot
-    self.mRoot_property.mObserverExplorer = nil
-    self.mRoot_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To one property: mRoot
+      self.mRoot_property.mObserverExplorer = nil
+      self.mRoot_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -496,8 +500,8 @@ final class SheetInProject : EBManagedObject,
       relationshipName: "mPoints",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mSheetTitle
-    self.mSheetTitle_property.storeIn (dictionary: ioDictionary, forKey: "mSheetTitle")
+    //--- Atomic property: mSheetTitle
+      self.mSheetTitle_property.storeIn (dictionary: ioDictionary, forKey: "mSheetTitle")
   }
 
   //····················································································································

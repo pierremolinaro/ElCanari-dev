@@ -1103,52 +1103,54 @@ import Cocoa
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-  //--- Array controller property: netClassController
-    self.netClassController.addExplorer (name: "netClassController", y:&y, view:view)
-  //--- Array controller property: projectFontController
-    self.projectFontController.addExplorer (name: "projectFontController", y:&y, view:view)
-  //--- Array controller property: projectDeviceController
-    self.projectDeviceController.addExplorer (name: "projectDeviceController", y:&y, view:view)
-  //--- Array controller property: schematicObjectsController
-    self.schematicObjectsController.addExplorer (name: "schematicObjectsController", y:&y, view:view)
-  //--- Selection controller property: wireInSchematicSelectionController
-    self.wireInSchematicSelectionController.addExplorer (name: "wireInSchematicSelectionController", y:&y, view:view)
-  //--- Selection controller property: ncInSchematicSelectionController
-    self.ncInSchematicSelectionController.addExplorer (name: "ncInSchematicSelectionController", y:&y, view:view)
-  //--- Selection controller property: commentInSchematicSelectionController
-    self.commentInSchematicSelectionController.addExplorer (name: "commentInSchematicSelectionController", y:&y, view:view)
-  //--- Selection controller property: schematicLabelSelectionController
-    self.schematicLabelSelectionController.addExplorer (name: "schematicLabelSelectionController", y:&y, view:view)
-  //--- Selection controller property: componentSymbolSelectionController
-    self.componentSymbolSelectionController.addExplorer (name: "componentSymbolSelectionController", y:&y, view:view)
-  //--- Array controller property: boardCurveObjectsController
-    self.boardCurveObjectsController.addExplorer (name: "boardCurveObjectsController", y:&y, view:view)
-  //--- Selection controller property: boardCurveSelectionController
-    self.boardCurveSelectionController.addExplorer (name: "boardCurveSelectionController", y:&y, view:view)
-  //--- Array controller property: boardObjectsController
-    self.boardObjectsController.addExplorer (name: "boardObjectsController", y:&y, view:view)
-  //--- Selection controller property: boardTrackSelectionController
-    self.boardTrackSelectionController.addExplorer (name: "boardTrackSelectionController", y:&y, view:view)
-  //--- Selection controller property: boardConnectorSelectionController
-    self.boardConnectorSelectionController.addExplorer (name: "boardConnectorSelectionController", y:&y, view:view)
-  //--- Selection controller property: boardLineSelectionController
-    self.boardLineSelectionController.addExplorer (name: "boardLineSelectionController", y:&y, view:view)
-  //--- Selection controller property: restrictRectangleSelectionController
-    self.restrictRectangleSelectionController.addExplorer (name: "restrictRectangleSelectionController", y:&y, view:view)
-  //--- Selection controller property: boardTextSelectionController
-    self.boardTextSelectionController.addExplorer (name: "boardTextSelectionController", y:&y, view:view)
-  //--- Selection controller property: componentInBoardSelectionController
-    self.componentInBoardSelectionController.addExplorer (name: "componentInBoardSelectionController", y:&y, view:view)
-  //--- Array controller property: mDataController
-    self.mDataController.addExplorer (name: "mDataController", y:&y, view:view)
-  //--- Array controller property: componentController
-    self.componentController.addExplorer (name: "componentController", y:&y, view:view)
-  //--- Selection controller property: mDataSelection
-    self.mDataSelection.addExplorer (name: "mDataSelection", y:&y, view:view)
-  //---
-    super.populateExplorerWindow (&y, view:view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    //--- Array controller property: netClassController
+      self.netClassController.addExplorer (name: "netClassController", y:&y, view:view)
+    //--- Array controller property: projectFontController
+      self.projectFontController.addExplorer (name: "projectFontController", y:&y, view:view)
+    //--- Array controller property: projectDeviceController
+      self.projectDeviceController.addExplorer (name: "projectDeviceController", y:&y, view:view)
+    //--- Array controller property: schematicObjectsController
+      self.schematicObjectsController.addExplorer (name: "schematicObjectsController", y:&y, view:view)
+    //--- Selection controller property: wireInSchematicSelectionController
+      self.wireInSchematicSelectionController.addExplorer (name: "wireInSchematicSelectionController", y:&y, view:view)
+    //--- Selection controller property: ncInSchematicSelectionController
+      self.ncInSchematicSelectionController.addExplorer (name: "ncInSchematicSelectionController", y:&y, view:view)
+    //--- Selection controller property: commentInSchematicSelectionController
+      self.commentInSchematicSelectionController.addExplorer (name: "commentInSchematicSelectionController", y:&y, view:view)
+    //--- Selection controller property: schematicLabelSelectionController
+      self.schematicLabelSelectionController.addExplorer (name: "schematicLabelSelectionController", y:&y, view:view)
+    //--- Selection controller property: componentSymbolSelectionController
+      self.componentSymbolSelectionController.addExplorer (name: "componentSymbolSelectionController", y:&y, view:view)
+    //--- Array controller property: boardCurveObjectsController
+      self.boardCurveObjectsController.addExplorer (name: "boardCurveObjectsController", y:&y, view:view)
+    //--- Selection controller property: boardCurveSelectionController
+      self.boardCurveSelectionController.addExplorer (name: "boardCurveSelectionController", y:&y, view:view)
+    //--- Array controller property: boardObjectsController
+      self.boardObjectsController.addExplorer (name: "boardObjectsController", y:&y, view:view)
+    //--- Selection controller property: boardTrackSelectionController
+      self.boardTrackSelectionController.addExplorer (name: "boardTrackSelectionController", y:&y, view:view)
+    //--- Selection controller property: boardConnectorSelectionController
+      self.boardConnectorSelectionController.addExplorer (name: "boardConnectorSelectionController", y:&y, view:view)
+    //--- Selection controller property: boardLineSelectionController
+      self.boardLineSelectionController.addExplorer (name: "boardLineSelectionController", y:&y, view:view)
+    //--- Selection controller property: restrictRectangleSelectionController
+      self.restrictRectangleSelectionController.addExplorer (name: "restrictRectangleSelectionController", y:&y, view:view)
+    //--- Selection controller property: boardTextSelectionController
+      self.boardTextSelectionController.addExplorer (name: "boardTextSelectionController", y:&y, view:view)
+    //--- Selection controller property: componentInBoardSelectionController
+      self.componentInBoardSelectionController.addExplorer (name: "componentInBoardSelectionController", y:&y, view:view)
+    //--- Array controller property: mDataController
+      self.mDataController.addExplorer (name: "mDataController", y:&y, view:view)
+    //--- Array controller property: componentController
+      self.componentController.addExplorer (name: "componentController", y:&y, view:view)
+    //--- Selection controller property: mDataSelection
+      self.mDataSelection.addExplorer (name: "mDataSelection", y:&y, view:view)
+    //---
+      super.populateExplorerWindow (&y, view:view)
+    }
+  #endif
 
   //····················································································································
   //    windowNibName

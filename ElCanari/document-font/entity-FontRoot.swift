@@ -500,122 +500,125 @@ final class FontRoot : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "comments",
-      idx: self.comments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.comments_property.mObserverExplorer,
-      valueExplorer: &self.comments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "nominalSize",
-      idx: self.nominalSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.nominalSize_property.mObserverExplorer,
-      valueExplorer: &self.nominalSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectedTab",
-      idx: self.selectedTab_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectedTab_property.mObserverExplorer,
-      valueExplorer: &self.selectedTab_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectedInspector",
-      idx: self.selectedInspector_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectedInspector_property.mObserverExplorer,
-      valueExplorer: &self.selectedInspector_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "currentCharacterCodePoint",
-      idx: self.currentCharacterCodePoint_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.currentCharacterCodePoint_property.mObserverExplorer,
-      valueExplorer: &self.currentCharacterCodePoint_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "currentCharacterCodePointString",
-      idx: self.currentCharacterCodePointString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.currentCharacterCodePointString_property.mObserverExplorer,
-      valueExplorer: &self.currentCharacterCodePointString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "sampleStringBezierPath",
-      idx: self.sampleStringBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.sampleStringBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.sampleStringBezierPath_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "sampleStringBezierPathWidth",
-      idx: self.sampleStringBezierPathWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.sampleStringBezierPathWidth_property.mObserverExplorer,
-      valueExplorer: &self.sampleStringBezierPathWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "sampleStringBezierPathAscent",
-      idx: self.sampleStringBezierPathAscent_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.sampleStringBezierPathAscent_property.mObserverExplorer,
-      valueExplorer: &self.sampleStringBezierPathAscent_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "sampleStringBezierPathDescent",
-      idx: self.sampleStringBezierPathDescent_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.sampleStringBezierPathDescent_property.mObserverExplorer,
-      valueExplorer: &self.sampleStringBezierPathDescent_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "definedCharacters",
-      idx: self.definedCharacters_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.definedCharacters_property.mObserverExplorer,
-      valueExplorer: &self.definedCharacters_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "characters",
-      idx:characters_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&characters_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "comments",
+        idx: self.comments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.comments_property.mObserverExplorer,
+        valueExplorer: &self.comments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "nominalSize",
+        idx: self.nominalSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.nominalSize_property.mObserverExplorer,
+        valueExplorer: &self.nominalSize_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectedTab",
+        idx: self.selectedTab_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectedTab_property.mObserverExplorer,
+        valueExplorer: &self.selectedTab_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectedInspector",
+        idx: self.selectedInspector_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectedInspector_property.mObserverExplorer,
+        valueExplorer: &self.selectedInspector_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "currentCharacterCodePoint",
+        idx: self.currentCharacterCodePoint_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.currentCharacterCodePoint_property.mObserverExplorer,
+        valueExplorer: &self.currentCharacterCodePoint_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "currentCharacterCodePointString",
+        idx: self.currentCharacterCodePointString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.currentCharacterCodePointString_property.mObserverExplorer,
+        valueExplorer: &self.currentCharacterCodePointString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "sampleStringBezierPath",
+        idx: self.sampleStringBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.sampleStringBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.sampleStringBezierPath_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "sampleStringBezierPathWidth",
+        idx: self.sampleStringBezierPathWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.sampleStringBezierPathWidth_property.mObserverExplorer,
+        valueExplorer: &self.sampleStringBezierPathWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "sampleStringBezierPathAscent",
+        idx: self.sampleStringBezierPathAscent_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.sampleStringBezierPathAscent_property.mObserverExplorer,
+        valueExplorer: &self.sampleStringBezierPathAscent_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "sampleStringBezierPathDescent",
+        idx: self.sampleStringBezierPathDescent_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.sampleStringBezierPathDescent_property.mObserverExplorer,
+        valueExplorer: &self.sampleStringBezierPathDescent_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "definedCharacters",
+        idx: self.definedCharacters_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.definedCharacters_property.mObserverExplorer,
+        valueExplorer: &self.definedCharacters_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "characters",
+        idx:characters_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&characters_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: comments
     self.comments_property.mObserverExplorer = nil
     self.comments_property.mValueExplorer = nil
@@ -631,11 +634,12 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: currentCharacterCodePoint
     self.currentCharacterCodePoint_property.mObserverExplorer = nil
     self.currentCharacterCodePoint_property.mValueExplorer = nil
-  //--- To many property: characters
-    self.characters_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: characters
+      self.characters_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -662,16 +666,16 @@ final class FontRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: comments
-    self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
-  //--- Atomic property: nominalSize
-    self.nominalSize_property.storeIn (dictionary: ioDictionary, forKey: "nominalSize")
-  //--- Atomic property: selectedTab
-    self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
-  //--- Atomic property: selectedInspector
-    self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
-  //--- Atomic property: currentCharacterCodePoint
-    self.currentCharacterCodePoint_property.storeIn (dictionary: ioDictionary, forKey: "currentCharacterCodePoint")
+    //--- Atomic property: comments
+      self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
+    //--- Atomic property: nominalSize
+      self.nominalSize_property.storeIn (dictionary: ioDictionary, forKey: "nominalSize")
+    //--- Atomic property: selectedTab
+      self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
+    //--- Atomic property: selectedInspector
+      self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
+    //--- Atomic property: currentCharacterCodePoint
+      self.currentCharacterCodePoint_property.storeIn (dictionary: ioDictionary, forKey: "currentCharacterCodePoint")
   //--- To many property: characters (Custom store)
     customStore_FontCharacter_characters (self.characters_property.propval.values, intoDictionary: ioDictionary)
   }

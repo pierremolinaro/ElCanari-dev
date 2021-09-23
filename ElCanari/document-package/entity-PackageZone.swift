@@ -742,194 +742,197 @@ final class PackageZone : PackageObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "x",
-      idx: self.x_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x_property.mObserverExplorer,
-      valueExplorer: &self.x_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y",
-      idx: self.y_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y_property.mObserverExplorer,
-      valueExplorer: &self.y_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "width",
-      idx: self.width_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.width_property.mObserverExplorer,
-      valueExplorer: &self.width_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "height",
-      idx: self.height_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.height_property.mObserverExplorer,
-      valueExplorer: &self.height_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xUnit",
-      idx: self.xUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.xUnit_property.mObserverExplorer,
-      valueExplorer: &self.xUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yUnit",
-      idx: self.yUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.yUnit_property.mObserverExplorer,
-      valueExplorer: &self.yUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "widthUnit",
-      idx: self.widthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.widthUnit_property.mObserverExplorer,
-      valueExplorer: &self.widthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "heightUnit",
-      idx: self.heightUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.heightUnit_property.mObserverExplorer,
-      valueExplorer: &self.heightUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "zoneName",
-      idx: self.zoneName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.zoneName_property.mObserverExplorer,
-      valueExplorer: &self.zoneName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "displayZoneName",
-      idx: self.displayZoneName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.displayZoneName_property.mObserverExplorer,
-      valueExplorer: &self.displayZoneName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xName",
-      idx: self.xName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.xName_property.mObserverExplorer,
-      valueExplorer: &self.xName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yName",
-      idx: self.yName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.yName_property.mObserverExplorer,
-      valueExplorer: &self.yName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xNameUnit",
-      idx: self.xNameUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.xNameUnit_property.mObserverExplorer,
-      valueExplorer: &self.xNameUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yNameUnit",
-      idx: self.yNameUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.yNameUnit_property.mObserverExplorer,
-      valueExplorer: &self.yNameUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "zoneNumbering",
-      idx: self.zoneNumbering_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.zoneNumbering_property.mObserverExplorer,
-      valueExplorer: &self.zoneNumbering_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "rect",
-      idx: self.rect_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.rect_property.mObserverExplorer,
-      valueExplorer: &self.rect_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "forbiddenPadArray",
-      idx: self.forbiddenPadArray_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.forbiddenPadArray_property.mObserverExplorer,
-      valueExplorer: &self.forbiddenPadArray_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "emptyForbiddenPadArray",
-      idx: self.emptyForbiddenPadArray_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.emptyForbiddenPadArray_property.mObserverExplorer,
-      valueExplorer: &self.emptyForbiddenPadArray_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "forbiddenPadNumbers",
-      idx:forbiddenPadNumbers_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&forbiddenPadNumbers_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "x",
+        idx: self.x_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x_property.mObserverExplorer,
+        valueExplorer: &self.x_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "y",
+        idx: self.y_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y_property.mObserverExplorer,
+        valueExplorer: &self.y_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "width",
+        idx: self.width_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.width_property.mObserverExplorer,
+        valueExplorer: &self.width_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "height",
+        idx: self.height_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.height_property.mObserverExplorer,
+        valueExplorer: &self.height_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "xUnit",
+        idx: self.xUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.xUnit_property.mObserverExplorer,
+        valueExplorer: &self.xUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "yUnit",
+        idx: self.yUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.yUnit_property.mObserverExplorer,
+        valueExplorer: &self.yUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "widthUnit",
+        idx: self.widthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.widthUnit_property.mObserverExplorer,
+        valueExplorer: &self.widthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "heightUnit",
+        idx: self.heightUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.heightUnit_property.mObserverExplorer,
+        valueExplorer: &self.heightUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "zoneName",
+        idx: self.zoneName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.zoneName_property.mObserverExplorer,
+        valueExplorer: &self.zoneName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayZoneName",
+        idx: self.displayZoneName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayZoneName_property.mObserverExplorer,
+        valueExplorer: &self.displayZoneName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "xName",
+        idx: self.xName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.xName_property.mObserverExplorer,
+        valueExplorer: &self.xName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "yName",
+        idx: self.yName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.yName_property.mObserverExplorer,
+        valueExplorer: &self.yName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "xNameUnit",
+        idx: self.xNameUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.xNameUnit_property.mObserverExplorer,
+        valueExplorer: &self.xNameUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "yNameUnit",
+        idx: self.yNameUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.yNameUnit_property.mObserverExplorer,
+        valueExplorer: &self.yNameUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "zoneNumbering",
+        idx: self.zoneNumbering_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.zoneNumbering_property.mObserverExplorer,
+        valueExplorer: &self.zoneNumbering_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "rect",
+        idx: self.rect_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.rect_property.mObserverExplorer,
+        valueExplorer: &self.rect_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "forbiddenPadArray",
+        idx: self.forbiddenPadArray_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.forbiddenPadArray_property.mObserverExplorer,
+        valueExplorer: &self.forbiddenPadArray_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "emptyForbiddenPadArray",
+        idx: self.emptyForbiddenPadArray_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.emptyForbiddenPadArray_property.mObserverExplorer,
+        valueExplorer: &self.emptyForbiddenPadArray_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "forbiddenPadNumbers",
+        idx:forbiddenPadNumbers_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&forbiddenPadNumbers_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: x
     self.x_property.mObserverExplorer = nil
     self.x_property.mValueExplorer = nil
@@ -975,11 +978,12 @@ final class PackageZone : PackageObject,
   //--- Atomic property: zoneNumbering
     self.zoneNumbering_property.mObserverExplorer = nil
     self.zoneNumbering_property.mValueExplorer = nil
-  //--- To many property: forbiddenPadNumbers
-    self.forbiddenPadNumbers_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: forbiddenPadNumbers
+      self.forbiddenPadNumbers_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -1006,36 +1010,36 @@ final class PackageZone : PackageObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
-  //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
-  //--- Atomic property: width
-    self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
-  //--- Atomic property: height
-    self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
-  //--- Atomic property: xUnit
-    self.xUnit_property.storeIn (dictionary: ioDictionary, forKey: "xUnit")
-  //--- Atomic property: yUnit
-    self.yUnit_property.storeIn (dictionary: ioDictionary, forKey: "yUnit")
-  //--- Atomic property: widthUnit
-    self.widthUnit_property.storeIn (dictionary: ioDictionary, forKey: "widthUnit")
-  //--- Atomic property: heightUnit
-    self.heightUnit_property.storeIn (dictionary: ioDictionary, forKey: "heightUnit")
-  //--- Atomic property: zoneName
-    self.zoneName_property.storeIn (dictionary: ioDictionary, forKey: "zoneName")
-  //--- Atomic property: displayZoneName
-    self.displayZoneName_property.storeIn (dictionary: ioDictionary, forKey: "displayZoneName")
-  //--- Atomic property: xName
-    self.xName_property.storeIn (dictionary: ioDictionary, forKey: "xName")
-  //--- Atomic property: yName
-    self.yName_property.storeIn (dictionary: ioDictionary, forKey: "yName")
-  //--- Atomic property: xNameUnit
-    self.xNameUnit_property.storeIn (dictionary: ioDictionary, forKey: "xNameUnit")
-  //--- Atomic property: yNameUnit
-    self.yNameUnit_property.storeIn (dictionary: ioDictionary, forKey: "yNameUnit")
-  //--- Atomic property: zoneNumbering
-    self.zoneNumbering_property.storeIn (dictionary: ioDictionary, forKey: "zoneNumbering")
+    //--- Atomic property: x
+      self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
+    //--- Atomic property: y
+      self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
+    //--- Atomic property: width
+      self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
+    //--- Atomic property: height
+      self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
+    //--- Atomic property: xUnit
+      self.xUnit_property.storeIn (dictionary: ioDictionary, forKey: "xUnit")
+    //--- Atomic property: yUnit
+      self.yUnit_property.storeIn (dictionary: ioDictionary, forKey: "yUnit")
+    //--- Atomic property: widthUnit
+      self.widthUnit_property.storeIn (dictionary: ioDictionary, forKey: "widthUnit")
+    //--- Atomic property: heightUnit
+      self.heightUnit_property.storeIn (dictionary: ioDictionary, forKey: "heightUnit")
+    //--- Atomic property: zoneName
+      self.zoneName_property.storeIn (dictionary: ioDictionary, forKey: "zoneName")
+    //--- Atomic property: displayZoneName
+      self.displayZoneName_property.storeIn (dictionary: ioDictionary, forKey: "displayZoneName")
+    //--- Atomic property: xName
+      self.xName_property.storeIn (dictionary: ioDictionary, forKey: "xName")
+    //--- Atomic property: yName
+      self.yName_property.storeIn (dictionary: ioDictionary, forKey: "yName")
+    //--- Atomic property: xNameUnit
+      self.xNameUnit_property.storeIn (dictionary: ioDictionary, forKey: "xNameUnit")
+    //--- Atomic property: yNameUnit
+      self.yNameUnit_property.storeIn (dictionary: ioDictionary, forKey: "yNameUnit")
+    //--- Atomic property: zoneNumbering
+      self.zoneNumbering_property.storeIn (dictionary: ioDictionary, forKey: "zoneNumbering")
   //--- To many property: forbiddenPadNumbers
     self.store (
       managedObjectArray: self.forbiddenPadNumbers_property.propval.values,

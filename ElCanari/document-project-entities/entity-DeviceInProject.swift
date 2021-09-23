@@ -596,151 +596,154 @@ final class DeviceInProject : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mDeviceName",
-      idx: self.mDeviceName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDeviceName_property.mObserverExplorer,
-      valueExplorer: &self.mDeviceName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mPrefix",
-      idx: self.mPrefix_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mPrefix_property.mObserverExplorer,
-      valueExplorer: &self.mPrefix_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDeviceVersion",
-      idx: self.mDeviceVersion_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDeviceVersion_property.mObserverExplorer,
-      valueExplorer: &self.mDeviceVersion_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDeviceFileData",
-      idx: self.mDeviceFileData_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDeviceFileData_property.mObserverExplorer,
-      valueExplorer: &self.mDeviceFileData_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "versionString",
-      idx: self.versionString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.versionString_property.mObserverExplorer,
-      valueExplorer: &self.versionString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "sizeString",
-      idx: self.sizeString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.sizeString_property.mObserverExplorer,
-      valueExplorer: &self.sizeString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "canExport",
-      idx: self.canExport_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.canExport_property.mObserverExplorer,
-      valueExplorer: &self.canExport_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "packageNames",
-      idx: self.packageNames_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.packageNames_property.mObserverExplorer,
-      valueExplorer: &self.packageNames_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "deviceComponentCountString",
-      idx: self.deviceComponentCountString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.deviceComponentCountString_property.mObserverExplorer,
-      valueExplorer: &self.deviceComponentCountString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "canRemove",
-      idx: self.canRemove_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.canRemove_property.mObserverExplorer,
-      valueExplorer: &self.canRemove_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "symbolAndTypesNames",
-      idx: self.symbolAndTypesNames_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.symbolAndTypesNames_property.mObserverExplorer,
-      valueExplorer: &self.symbolAndTypesNames_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "pinPadAssignments",
-      idx: self.pinPadAssignments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.pinPadAssignments_property.mObserverExplorer,
-      valueExplorer: &self.pinPadAssignments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "deviceSymbolDictionary",
-      idx: self.deviceSymbolDictionary_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.deviceSymbolDictionary_property.mObserverExplorer,
-      valueExplorer: &self.deviceSymbolDictionary_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mPackages",
-      idx:mPackages_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mPackages_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mSymbols",
-      idx:mSymbols_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mSymbols_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mComponents",
-      idx:mComponents_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mComponents_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mPadAssignments",
-      idx:mPadAssignments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mPadAssignments_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mDeviceName",
+        idx: self.mDeviceName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDeviceName_property.mObserverExplorer,
+        valueExplorer: &self.mDeviceName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mPrefix",
+        idx: self.mPrefix_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mPrefix_property.mObserverExplorer,
+        valueExplorer: &self.mPrefix_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDeviceVersion",
+        idx: self.mDeviceVersion_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDeviceVersion_property.mObserverExplorer,
+        valueExplorer: &self.mDeviceVersion_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDeviceFileData",
+        idx: self.mDeviceFileData_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDeviceFileData_property.mObserverExplorer,
+        valueExplorer: &self.mDeviceFileData_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "versionString",
+        idx: self.versionString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.versionString_property.mObserverExplorer,
+        valueExplorer: &self.versionString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "sizeString",
+        idx: self.sizeString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.sizeString_property.mObserverExplorer,
+        valueExplorer: &self.sizeString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "canExport",
+        idx: self.canExport_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.canExport_property.mObserverExplorer,
+        valueExplorer: &self.canExport_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "packageNames",
+        idx: self.packageNames_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.packageNames_property.mObserverExplorer,
+        valueExplorer: &self.packageNames_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "deviceComponentCountString",
+        idx: self.deviceComponentCountString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.deviceComponentCountString_property.mObserverExplorer,
+        valueExplorer: &self.deviceComponentCountString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "canRemove",
+        idx: self.canRemove_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.canRemove_property.mObserverExplorer,
+        valueExplorer: &self.canRemove_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "symbolAndTypesNames",
+        idx: self.symbolAndTypesNames_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.symbolAndTypesNames_property.mObserverExplorer,
+        valueExplorer: &self.symbolAndTypesNames_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "pinPadAssignments",
+        idx: self.pinPadAssignments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.pinPadAssignments_property.mObserverExplorer,
+        valueExplorer: &self.pinPadAssignments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "deviceSymbolDictionary",
+        idx: self.deviceSymbolDictionary_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.deviceSymbolDictionary_property.mObserverExplorer,
+        valueExplorer: &self.deviceSymbolDictionary_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mPackages",
+        idx:mPackages_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mPackages_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mSymbols",
+        idx:mSymbols_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mSymbols_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mComponents",
+        idx:mComponents_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mComponents_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mPadAssignments",
+        idx:mPadAssignments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mPadAssignments_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mDeviceName
     self.mDeviceName_property.mObserverExplorer = nil
     self.mDeviceName_property.mValueExplorer = nil
@@ -753,17 +756,18 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: mDeviceFileData
     self.mDeviceFileData_property.mObserverExplorer = nil
     self.mDeviceFileData_property.mValueExplorer = nil
-  //--- To many property: mPackages
-    self.mPackages_property.mValueExplorer = nil
-  //--- To many property: mSymbols
-    self.mSymbols_property.mValueExplorer = nil
-  //--- To many property: mComponents
-    self.mComponents_property.mValueExplorer = nil
-  //--- To many property: mPadAssignments
-    self.mPadAssignments_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: mPackages
+      self.mPackages_property.mValueExplorer = nil
+    //--- To many property: mSymbols
+      self.mSymbols_property.mValueExplorer = nil
+    //--- To many property: mComponents
+      self.mComponents_property.mValueExplorer = nil
+    //--- To many property: mPadAssignments
+      self.mPadAssignments_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -793,14 +797,14 @@ final class DeviceInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mDeviceName
-    self.mDeviceName_property.storeIn (dictionary: ioDictionary, forKey: "mDeviceName")
-  //--- Atomic property: mPrefix
-    self.mPrefix_property.storeIn (dictionary: ioDictionary, forKey: "mPrefix")
-  //--- Atomic property: mDeviceVersion
-    self.mDeviceVersion_property.storeIn (dictionary: ioDictionary, forKey: "mDeviceVersion")
-  //--- Atomic property: mDeviceFileData
-    self.mDeviceFileData_property.storeIn (dictionary: ioDictionary, forKey: "mDeviceFileData")
+    //--- Atomic property: mDeviceName
+      self.mDeviceName_property.storeIn (dictionary: ioDictionary, forKey: "mDeviceName")
+    //--- Atomic property: mPrefix
+      self.mPrefix_property.storeIn (dictionary: ioDictionary, forKey: "mPrefix")
+    //--- Atomic property: mDeviceVersion
+      self.mDeviceVersion_property.storeIn (dictionary: ioDictionary, forKey: "mDeviceVersion")
+    //--- Atomic property: mDeviceFileData
+      self.mDeviceFileData_property.storeIn (dictionary: ioDictionary, forKey: "mDeviceFileData")
   //--- To many property: mPackages
     self.store (
       managedObjectArray: self.mPackages_property.propval.values,

@@ -190,169 +190,181 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //    Explorer
   //····················································································································
 
-  private var mValueExplorer : NSButton?
-  private var mExplorerWindow : NSWindow?
+  #if BUILD_OBJECT_EXPLORER
+    private var mValueExplorer : NSButton?
+    private var mExplorerWindow : NSWindow?
+  #endif
 
   //····················································································································
 
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-    let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-    let tf = NSTextField (frame:secondColumn (y))
-    tf.isEnabled = true
-    tf.isEditable = false
-    tf.stringValue = name
-    tf.font = font
-    view.addSubview (tf)
-    let valueExplorer = NSButton (frame: thirdColumn (y))
-    valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_ProjectDocument_boardTextSelectionController.showObjectWindowFromExplorerButton(_:))
-    view.addSubview (valueExplorer)
-    self.mValueExplorer = valueExplorer
-    y += EXPLORER_ROW_HEIGHT
-  }
+  #if BUILD_OBJECT_EXPLORER
+    final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
+      let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+      let tf = NSTextField (frame:secondColumn (y))
+      tf.isEnabled = true
+      tf.isEditable = false
+      tf.stringValue = name
+      tf.font = font
+      view.addSubview (tf)
+      let valueExplorer = NSButton (frame: thirdColumn (y))
+      valueExplorer.font = font
+      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.target = self
+      valueExplorer.action = #selector(SelectionController_ProjectDocument_boardTextSelectionController.showObjectWindowFromExplorerButton(_:))
+      view.addSubview (valueExplorer)
+      self.mValueExplorer = valueExplorer
+      y += EXPLORER_ROW_HEIGHT
+    }
+  #endif
 
   //····················································································································
 
-  func buildExplorerWindow () {
-  //-------------------------------------------------- Create Window
-    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
-    self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
-  //-------------------------------------------------- Adding properties
-    let view = NSView (frame: r)
-    var y : CGFloat = 0.0
-    createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mFontSize",
-      idx: self.mFontSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mFontSize_property.mObserverExplorer,
-      valueExplorer: &self.mFontSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mLayer",
-      idx: self.mLayer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mLayer_property.mObserverExplorer,
-      valueExplorer: &self.mLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mText",
-      idx: self.mText_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mText_property.mObserverExplorer,
-      valueExplorer: &self.mText_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mHorizontalAlignment",
-      idx: self.mHorizontalAlignment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mHorizontalAlignment_property.mObserverExplorer,
-      valueExplorer: &self.mHorizontalAlignment_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mVerticalAlignment",
-      idx: self.mVerticalAlignment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mVerticalAlignment_property.mObserverExplorer,
-      valueExplorer: &self.mVerticalAlignment_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRotation",
-      idx: self.mRotation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRotation_property.mObserverExplorer,
-      valueExplorer: &self.mRotation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mWeight",
-      idx: self.mWeight_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mWeight_property.mObserverExplorer,
-      valueExplorer: &self.mWeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mOblique",
-      idx: self.mOblique_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mOblique_property.mObserverExplorer,
-      valueExplorer: &self.mOblique_property.mValueExplorer
-    )
-  //-------------------------------------------------- Finish Window construction
-  //--- Resize View
-    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    view.frame = viewFrame
-  //--- Set content size
-    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
-  //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_ProjectDocument_boardTextSelectionController.deleteSelectionControllerWindowAction(_:))
-  //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    self.mExplorerWindow!.title = windowTitle
-  //--- Add Scroll view
-    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    let sw = NSScrollView (frame: frame)
-    sw.hasVerticalScroller = true
-    sw.documentView = view
-    self.mExplorerWindow!.contentView = sw
-  }
-
+  #if BUILD_OBJECT_EXPLORER
+    func buildExplorerWindow () {
+    //-------------------------------------------------- Create Window
+      let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
+      self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
+    //-------------------------------------------------- Adding properties
+      let view = NSView (frame: r)
+      var y : CGFloat = 0.0
+      createEntryForPropertyNamed (
+        "mX",
+        idx: self.mX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX_property.mObserverExplorer,
+        valueExplorer: &self.mX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY",
+        idx: self.mY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY_property.mObserverExplorer,
+        valueExplorer: &self.mY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mFontSize",
+        idx: self.mFontSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mFontSize_property.mObserverExplorer,
+        valueExplorer: &self.mFontSize_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mLayer",
+        idx: self.mLayer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mLayer_property.mObserverExplorer,
+        valueExplorer: &self.mLayer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mText",
+        idx: self.mText_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mText_property.mObserverExplorer,
+        valueExplorer: &self.mText_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mHorizontalAlignment",
+        idx: self.mHorizontalAlignment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mHorizontalAlignment_property.mObserverExplorer,
+        valueExplorer: &self.mHorizontalAlignment_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mVerticalAlignment",
+        idx: self.mVerticalAlignment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mVerticalAlignment_property.mObserverExplorer,
+        valueExplorer: &self.mVerticalAlignment_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRotation",
+        idx: self.mRotation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRotation_property.mObserverExplorer,
+        valueExplorer: &self.mRotation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mWeight",
+        idx: self.mWeight_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mWeight_property.mObserverExplorer,
+        valueExplorer: &self.mWeight_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mOblique",
+        idx: self.mOblique_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mOblique_property.mObserverExplorer,
+        valueExplorer: &self.mOblique_property.mValueExplorer
+      )
+    //-------------------------------------------------- Finish Window construction
+    //--- Resize View
+      let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      view.frame = viewFrame
+    //--- Set content size
+      self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
+    //--- Set close button as 'remove window' button
+      let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
+      closeButton?.target = self
+      closeButton?.action = #selector(SelectionController_ProjectDocument_boardTextSelectionController.deleteSelectionControllerWindowAction(_:))
+    //--- Set window title
+      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      self.mExplorerWindow!.title = windowTitle
+    //--- Add Scroll view
+      let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      let sw = NSScrollView (frame: frame)
+      sw.hasVerticalScroller = true
+      sw.documentView = view
+      self.mExplorerWindow!.contentView = sw
+    }
+  #endif
+  
   //····················································································································
   //   showObjectWindowFromExplorerButton
   //····················································································································
 
-  @objc func showObjectWindowFromExplorerButton (_ : Any) {
-    if self.mExplorerWindow == nil {
-      self.buildExplorerWindow ()
+  #if BUILD_OBJECT_EXPLORER
+    @objc func showObjectWindowFromExplorerButton (_ : Any) {
+      if self.mExplorerWindow == nil {
+        self.buildExplorerWindow ()
+      }
+      self.mExplorerWindow?.makeKeyAndOrderFront (nil)
     }
-    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
-  }
-
+  #endif
+  
   //····················································································································
   //   deleteSelectionControllerWindowAction
   //····················································································································
 
-  @objc func deleteSelectionControllerWindowAction (_ : Any) {
-    self.clearObjectExplorer ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    @objc func deleteSelectionControllerWindowAction (_ : Any) {
+      self.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //   clearObjectExplorer
   //····················································································································
 
-  func clearObjectExplorer () {
-    if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
-      closeButton.target = nil
+  #if BUILD_OBJECT_EXPLORER
+    func clearObjectExplorer () {
+      if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
+        closeButton.target = nil
+      }
+      self.mExplorerWindow?.orderOut (nil)
+      self.mExplorerWindow = nil
     }
-    self.mExplorerWindow?.orderOut (nil)
-    self.mExplorerWindow = nil
-  }
+  #endif
 
   //····················································································································
 

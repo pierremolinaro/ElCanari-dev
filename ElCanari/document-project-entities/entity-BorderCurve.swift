@@ -742,144 +742,147 @@ final class BorderCurve : EBGraphicManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCPX1",
-      idx: self.mCPX1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCPX1_property.mObserverExplorer,
-      valueExplorer: &self.mCPX1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCPY1",
-      idx: self.mCPY1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCPY1_property.mObserverExplorer,
-      valueExplorer: &self.mCPY1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCPX2",
-      idx: self.mCPX2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCPX2_property.mObserverExplorer,
-      valueExplorer: &self.mCPX2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCPY2",
-      idx: self.mCPY2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCPY2_property.mObserverExplorer,
-      valueExplorer: &self.mCPY2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mShape",
-      idx: self.mShape_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mShape_property.mObserverExplorer,
-      valueExplorer: &self.mShape_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "p2Xstring",
-      idx: self.p2Xstring_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.p2Xstring_property.mObserverExplorer,
-      valueExplorer: &self.p2Xstring_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "p2Ystring",
-      idx: self.p2Ystring_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.p2Ystring_property.mObserverExplorer,
-      valueExplorer: &self.p2Ystring_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "descriptor",
-      idx: self.descriptor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.descriptor_property.mObserverExplorer,
-      valueExplorer: &self.descriptor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "isLine",
-      idx: self.isLine_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.isLine_property.mObserverExplorer,
-      valueExplorer: &self.isLine_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mRoot",
-      idx:self.mRoot_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mRoot_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mNext",
-      idx:self.mNext_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mNext_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mPrevious",
-      idx:self.mPrevious_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mPrevious_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mX",
+        idx: self.mX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX_property.mObserverExplorer,
+        valueExplorer: &self.mX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY",
+        idx: self.mY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY_property.mObserverExplorer,
+        valueExplorer: &self.mY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCPX1",
+        idx: self.mCPX1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCPX1_property.mObserverExplorer,
+        valueExplorer: &self.mCPX1_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCPY1",
+        idx: self.mCPY1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCPY1_property.mObserverExplorer,
+        valueExplorer: &self.mCPY1_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCPX2",
+        idx: self.mCPX2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCPX2_property.mObserverExplorer,
+        valueExplorer: &self.mCPX2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCPY2",
+        idx: self.mCPY2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCPY2_property.mObserverExplorer,
+        valueExplorer: &self.mCPY2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mShape",
+        idx: self.mShape_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mShape_property.mObserverExplorer,
+        valueExplorer: &self.mShape_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "p2Xstring",
+        idx: self.p2Xstring_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.p2Xstring_property.mObserverExplorer,
+        valueExplorer: &self.p2Xstring_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "p2Ystring",
+        idx: self.p2Ystring_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.p2Ystring_property.mObserverExplorer,
+        valueExplorer: &self.p2Ystring_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "descriptor",
+        idx: self.descriptor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.descriptor_property.mObserverExplorer,
+        valueExplorer: &self.descriptor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "isLine",
+        idx: self.isLine_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.isLine_property.mObserverExplorer,
+        valueExplorer: &self.isLine_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mRoot",
+        idx:self.mRoot_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mRoot_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mNext",
+        idx:self.mNext_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mNext_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mPrevious",
+        idx:self.mPrevious_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mPrevious_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mX
     self.mX_property.mObserverExplorer = nil
     self.mX_property.mValueExplorer = nil
@@ -901,24 +904,25 @@ final class BorderCurve : EBGraphicManagedObject,
   //--- Atomic property: mShape
     self.mShape_property.mObserverExplorer = nil
     self.mShape_property.mValueExplorer = nil
-  //--- Atomic proxy property: mNextX
-    self.mNextX_property.mObserverExplorer = nil
-    self.mNextX_property.mValueExplorer = nil
-  //--- Atomic proxy property: mNextY
-    self.mNextY_property.mObserverExplorer = nil
-    self.mNextY_property.mValueExplorer = nil
-  //--- To one property: mRoot
-    self.mRoot_property.mObserverExplorer = nil
-    self.mRoot_property.mValueExplorer = nil
-  //--- To one property: mNext
-    self.mNext_property.mObserverExplorer = nil
-    self.mNext_property.mValueExplorer = nil
-  //--- To one property: mPrevious
-    self.mPrevious_property.mObserverExplorer = nil
-    self.mPrevious_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- Atomic proxy property: mNextX
+      self.mNextX_property.mObserverExplorer = nil
+      self.mNextX_property.mValueExplorer = nil
+    //--- Atomic proxy property: mNextY
+      self.mNextY_property.mObserverExplorer = nil
+      self.mNextY_property.mValueExplorer = nil
+    //--- To one property: mRoot
+      self.mRoot_property.mObserverExplorer = nil
+      self.mRoot_property.mValueExplorer = nil
+    //--- To one property: mNext
+      self.mNext_property.mObserverExplorer = nil
+      self.mNext_property.mValueExplorer = nil
+    //--- To one property: mPrevious
+      self.mPrevious_property.mObserverExplorer = nil
+      self.mPrevious_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -947,20 +951,20 @@ final class BorderCurve : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
-  //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
-  //--- Atomic property: mCPX1
-    self.mCPX1_property.storeIn (dictionary: ioDictionary, forKey: "mCPX1")
-  //--- Atomic property: mCPY1
-    self.mCPY1_property.storeIn (dictionary: ioDictionary, forKey: "mCPY1")
-  //--- Atomic property: mCPX2
-    self.mCPX2_property.storeIn (dictionary: ioDictionary, forKey: "mCPX2")
-  //--- Atomic property: mCPY2
-    self.mCPY2_property.storeIn (dictionary: ioDictionary, forKey: "mCPY2")
-  //--- Atomic property: mShape
-    self.mShape_property.storeIn (dictionary: ioDictionary, forKey: "mShape")
+    //--- Atomic property: mX
+      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+    //--- Atomic property: mY
+      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+    //--- Atomic property: mCPX1
+      self.mCPX1_property.storeIn (dictionary: ioDictionary, forKey: "mCPX1")
+    //--- Atomic property: mCPY1
+      self.mCPY1_property.storeIn (dictionary: ioDictionary, forKey: "mCPY1")
+    //--- Atomic property: mCPX2
+      self.mCPX2_property.storeIn (dictionary: ioDictionary, forKey: "mCPX2")
+    //--- Atomic property: mCPY2
+      self.mCPY2_property.storeIn (dictionary: ioDictionary, forKey: "mCPY2")
+    //--- Atomic property: mShape
+      self.mShape_property.storeIn (dictionary: ioDictionary, forKey: "mShape")
   //--- To one property: mNext // Opposite is toOne mPrevious
     self.store (managedObject:self.mNext_property.propval,
       relationshipName: "mNext",

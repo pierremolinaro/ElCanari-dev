@@ -546,138 +546,141 @@ final class BoardText : BoardObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mFontSize",
-      idx: self.mFontSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mFontSize_property.mObserverExplorer,
-      valueExplorer: &self.mFontSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mLayer",
-      idx: self.mLayer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mLayer_property.mObserverExplorer,
-      valueExplorer: &self.mLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mText",
-      idx: self.mText_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mText_property.mObserverExplorer,
-      valueExplorer: &self.mText_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mHorizontalAlignment",
-      idx: self.mHorizontalAlignment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mHorizontalAlignment_property.mObserverExplorer,
-      valueExplorer: &self.mHorizontalAlignment_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mVerticalAlignment",
-      idx: self.mVerticalAlignment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mVerticalAlignment_property.mObserverExplorer,
-      valueExplorer: &self.mVerticalAlignment_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRotation",
-      idx: self.mRotation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRotation_property.mObserverExplorer,
-      valueExplorer: &self.mRotation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mWeight",
-      idx: self.mWeight_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mWeight_property.mObserverExplorer,
-      valueExplorer: &self.mWeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mOblique",
-      idx: self.mOblique_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mOblique_property.mObserverExplorer,
-      valueExplorer: &self.mOblique_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "fontName",
-      idx: self.fontName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.fontName_property.mObserverExplorer,
-      valueExplorer: &self.fontName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "signatureForERCChecking",
-      idx: self.signatureForERCChecking_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
-      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mFont",
-      idx:self.mFont_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mFont_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mX",
+        idx: self.mX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX_property.mObserverExplorer,
+        valueExplorer: &self.mX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY",
+        idx: self.mY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY_property.mObserverExplorer,
+        valueExplorer: &self.mY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mFontSize",
+        idx: self.mFontSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mFontSize_property.mObserverExplorer,
+        valueExplorer: &self.mFontSize_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mLayer",
+        idx: self.mLayer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mLayer_property.mObserverExplorer,
+        valueExplorer: &self.mLayer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mText",
+        idx: self.mText_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mText_property.mObserverExplorer,
+        valueExplorer: &self.mText_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mHorizontalAlignment",
+        idx: self.mHorizontalAlignment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mHorizontalAlignment_property.mObserverExplorer,
+        valueExplorer: &self.mHorizontalAlignment_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mVerticalAlignment",
+        idx: self.mVerticalAlignment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mVerticalAlignment_property.mObserverExplorer,
+        valueExplorer: &self.mVerticalAlignment_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRotation",
+        idx: self.mRotation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRotation_property.mObserverExplorer,
+        valueExplorer: &self.mRotation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mWeight",
+        idx: self.mWeight_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mWeight_property.mObserverExplorer,
+        valueExplorer: &self.mWeight_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mOblique",
+        idx: self.mOblique_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mOblique_property.mObserverExplorer,
+        valueExplorer: &self.mOblique_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "fontName",
+        idx: self.fontName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.fontName_property.mObserverExplorer,
+        valueExplorer: &self.fontName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "signatureForERCChecking",
+        idx: self.signatureForERCChecking_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+        valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mFont",
+        idx:self.mFont_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mFont_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mX
     self.mX_property.mObserverExplorer = nil
     self.mX_property.mValueExplorer = nil
@@ -708,12 +711,13 @@ final class BoardText : BoardObject,
   //--- Atomic property: mOblique
     self.mOblique_property.mObserverExplorer = nil
     self.mOblique_property.mValueExplorer = nil
-  //--- To one property: mFont
-    self.mFont_property.mObserverExplorer = nil
-    self.mFont_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To one property: mFont
+      self.mFont_property.mObserverExplorer = nil
+      self.mFont_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -740,26 +744,26 @@ final class BoardText : BoardObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
-  //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
-  //--- Atomic property: mFontSize
-    self.mFontSize_property.storeIn (dictionary: ioDictionary, forKey: "mFontSize")
-  //--- Atomic property: mLayer
-    self.mLayer_property.storeIn (dictionary: ioDictionary, forKey: "mLayer")
-  //--- Atomic property: mText
-    self.mText_property.storeIn (dictionary: ioDictionary, forKey: "mText")
-  //--- Atomic property: mHorizontalAlignment
-    self.mHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mHorizontalAlignment")
-  //--- Atomic property: mVerticalAlignment
-    self.mVerticalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mVerticalAlignment")
-  //--- Atomic property: mRotation
-    self.mRotation_property.storeIn (dictionary: ioDictionary, forKey: "mRotation")
-  //--- Atomic property: mWeight
-    self.mWeight_property.storeIn (dictionary: ioDictionary, forKey: "mWeight")
-  //--- Atomic property: mOblique
-    self.mOblique_property.storeIn (dictionary: ioDictionary, forKey: "mOblique")
+    //--- Atomic property: mX
+      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+    //--- Atomic property: mY
+      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+    //--- Atomic property: mFontSize
+      self.mFontSize_property.storeIn (dictionary: ioDictionary, forKey: "mFontSize")
+    //--- Atomic property: mLayer
+      self.mLayer_property.storeIn (dictionary: ioDictionary, forKey: "mLayer")
+    //--- Atomic property: mText
+      self.mText_property.storeIn (dictionary: ioDictionary, forKey: "mText")
+    //--- Atomic property: mHorizontalAlignment
+      self.mHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mHorizontalAlignment")
+    //--- Atomic property: mVerticalAlignment
+      self.mVerticalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mVerticalAlignment")
+    //--- Atomic property: mRotation
+      self.mRotation_property.storeIn (dictionary: ioDictionary, forKey: "mRotation")
+    //--- Atomic property: mWeight
+      self.mWeight_property.storeIn (dictionary: ioDictionary, forKey: "mWeight")
+    //--- Atomic property: mOblique
+      self.mOblique_property.storeIn (dictionary: ioDictionary, forKey: "mOblique")
   }
 
   //····················································································································

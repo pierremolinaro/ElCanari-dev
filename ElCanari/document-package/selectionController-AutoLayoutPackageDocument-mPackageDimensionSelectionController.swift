@@ -234,201 +234,213 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
   //    Explorer
   //····················································································································
 
-  private var mValueExplorer : NSButton?
-  private var mExplorerWindow : NSWindow?
+  #if BUILD_OBJECT_EXPLORER
+    private var mValueExplorer : NSButton?
+    private var mExplorerWindow : NSWindow?
+  #endif
 
   //····················································································································
 
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-    let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-    let tf = NSTextField (frame:secondColumn (y))
-    tf.isEnabled = true
-    tf.isEditable = false
-    tf.stringValue = name
-    tf.font = font
-    view.addSubview (tf)
-    let valueExplorer = NSButton (frame: thirdColumn (y))
-    valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController.showObjectWindowFromExplorerButton(_:))
-    view.addSubview (valueExplorer)
-    self.mValueExplorer = valueExplorer
-    y += EXPLORER_ROW_HEIGHT
-  }
+  #if BUILD_OBJECT_EXPLORER
+    final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
+      let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+      let tf = NSTextField (frame:secondColumn (y))
+      tf.isEnabled = true
+      tf.isEditable = false
+      tf.stringValue = name
+      tf.font = font
+      view.addSubview (tf)
+      let valueExplorer = NSButton (frame: thirdColumn (y))
+      valueExplorer.font = font
+      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.target = self
+      valueExplorer.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController.showObjectWindowFromExplorerButton(_:))
+      view.addSubview (valueExplorer)
+      self.mValueExplorer = valueExplorer
+      y += EXPLORER_ROW_HEIGHT
+    }
+  #endif
 
   //····················································································································
 
-  func buildExplorerWindow () {
-  //-------------------------------------------------- Create Window
-    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
-    self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
-  //-------------------------------------------------- Adding properties
-    let view = NSView (frame: r)
-    var y : CGFloat = 0.0
-    createEntryForPropertyNamed (
-      "y1",
-      idx: self.y1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y1_property.mObserverExplorer,
-      valueExplorer: &self.y1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x2",
-      idx: self.x2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x2_property.mObserverExplorer,
-      valueExplorer: &self.x2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y2",
-      idx: self.y2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y2_property.mObserverExplorer,
-      valueExplorer: &self.y2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xDimension",
-      idx: self.xDimension_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.xDimension_property.mObserverExplorer,
-      valueExplorer: &self.xDimension_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yDimension",
-      idx: self.yDimension_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.yDimension_property.mObserverExplorer,
-      valueExplorer: &self.yDimension_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x1Unit",
-      idx: self.x1Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x1Unit_property.mObserverExplorer,
-      valueExplorer: &self.x1Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y1Unit",
-      idx: self.y1Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y1Unit_property.mObserverExplorer,
-      valueExplorer: &self.y1Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x2Unit",
-      idx: self.x2Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x2Unit_property.mObserverExplorer,
-      valueExplorer: &self.x2Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y2Unit",
-      idx: self.y2Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y2Unit_property.mObserverExplorer,
-      valueExplorer: &self.y2Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xDimensionUnit",
-      idx: self.xDimensionUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.xDimensionUnit_property.mObserverExplorer,
-      valueExplorer: &self.xDimensionUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yDimensionUnit",
-      idx: self.yDimensionUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.yDimensionUnit_property.mObserverExplorer,
-      valueExplorer: &self.yDimensionUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "distanceUnit",
-      idx: self.distanceUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.distanceUnit_property.mObserverExplorer,
-      valueExplorer: &self.distanceUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawDimensionBackground",
-      idx: self.drawDimensionBackground_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drawDimensionBackground_property.mObserverExplorer,
-      valueExplorer: &self.drawDimensionBackground_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x1",
-      idx: self.x1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x1_property.mObserverExplorer,
-      valueExplorer: &self.x1_property.mValueExplorer
-    )
-  //-------------------------------------------------- Finish Window construction
-  //--- Resize View
-    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    view.frame = viewFrame
-  //--- Set content size
-    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
-  //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController.deleteSelectionControllerWindowAction(_:))
-  //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    self.mExplorerWindow!.title = windowTitle
-  //--- Add Scroll view
-    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    let sw = NSScrollView (frame: frame)
-    sw.hasVerticalScroller = true
-    sw.documentView = view
-    self.mExplorerWindow!.contentView = sw
-  }
-
+  #if BUILD_OBJECT_EXPLORER
+    func buildExplorerWindow () {
+    //-------------------------------------------------- Create Window
+      let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
+      self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
+    //-------------------------------------------------- Adding properties
+      let view = NSView (frame: r)
+      var y : CGFloat = 0.0
+      createEntryForPropertyNamed (
+        "y1",
+        idx: self.y1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y1_property.mObserverExplorer,
+        valueExplorer: &self.y1_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x2",
+        idx: self.x2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x2_property.mObserverExplorer,
+        valueExplorer: &self.x2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "y2",
+        idx: self.y2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y2_property.mObserverExplorer,
+        valueExplorer: &self.y2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "xDimension",
+        idx: self.xDimension_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.xDimension_property.mObserverExplorer,
+        valueExplorer: &self.xDimension_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "yDimension",
+        idx: self.yDimension_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.yDimension_property.mObserverExplorer,
+        valueExplorer: &self.yDimension_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x1Unit",
+        idx: self.x1Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x1Unit_property.mObserverExplorer,
+        valueExplorer: &self.x1Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "y1Unit",
+        idx: self.y1Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y1Unit_property.mObserverExplorer,
+        valueExplorer: &self.y1Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x2Unit",
+        idx: self.x2Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x2Unit_property.mObserverExplorer,
+        valueExplorer: &self.x2Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "y2Unit",
+        idx: self.y2Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y2Unit_property.mObserverExplorer,
+        valueExplorer: &self.y2Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "xDimensionUnit",
+        idx: self.xDimensionUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.xDimensionUnit_property.mObserverExplorer,
+        valueExplorer: &self.xDimensionUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "yDimensionUnit",
+        idx: self.yDimensionUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.yDimensionUnit_property.mObserverExplorer,
+        valueExplorer: &self.yDimensionUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "distanceUnit",
+        idx: self.distanceUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.distanceUnit_property.mObserverExplorer,
+        valueExplorer: &self.distanceUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drawDimensionBackground",
+        idx: self.drawDimensionBackground_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawDimensionBackground_property.mObserverExplorer,
+        valueExplorer: &self.drawDimensionBackground_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x1",
+        idx: self.x1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x1_property.mObserverExplorer,
+        valueExplorer: &self.x1_property.mValueExplorer
+      )
+    //-------------------------------------------------- Finish Window construction
+    //--- Resize View
+      let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      view.frame = viewFrame
+    //--- Set content size
+      self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
+    //--- Set close button as 'remove window' button
+      let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
+      closeButton?.target = self
+      closeButton?.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController.deleteSelectionControllerWindowAction(_:))
+    //--- Set window title
+      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      self.mExplorerWindow!.title = windowTitle
+    //--- Add Scroll view
+      let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      let sw = NSScrollView (frame: frame)
+      sw.hasVerticalScroller = true
+      sw.documentView = view
+      self.mExplorerWindow!.contentView = sw
+    }
+  #endif
+  
   //····················································································································
   //   showObjectWindowFromExplorerButton
   //····················································································································
 
-  @objc func showObjectWindowFromExplorerButton (_ : Any) {
-    if self.mExplorerWindow == nil {
-      self.buildExplorerWindow ()
+  #if BUILD_OBJECT_EXPLORER
+    @objc func showObjectWindowFromExplorerButton (_ : Any) {
+      if self.mExplorerWindow == nil {
+        self.buildExplorerWindow ()
+      }
+      self.mExplorerWindow?.makeKeyAndOrderFront (nil)
     }
-    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
-  }
-
+  #endif
+  
   //····················································································································
   //   deleteSelectionControllerWindowAction
   //····················································································································
 
-  @objc func deleteSelectionControllerWindowAction (_ : Any) {
-    self.clearObjectExplorer ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    @objc func deleteSelectionControllerWindowAction (_ : Any) {
+      self.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //   clearObjectExplorer
   //····················································································································
 
-  func clearObjectExplorer () {
-    if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
-      closeButton.target = nil
+  #if BUILD_OBJECT_EXPLORER
+    func clearObjectExplorer () {
+      if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
+        closeButton.target = nil
+      }
+      self.mExplorerWindow?.orderOut (nil)
+      self.mExplorerWindow = nil
     }
-    self.mExplorerWindow?.orderOut (nil)
-    self.mExplorerWindow = nil
-  }
+  #endif
 
   //····················································································································
 

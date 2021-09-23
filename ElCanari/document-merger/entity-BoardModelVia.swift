@@ -118,43 +118,46 @@ final class BoardModelVia : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "y",
-      idx: self.y_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y_property.mObserverExplorer,
-      valueExplorer: &self.y_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "padDiameter",
-      idx: self.padDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.padDiameter_property.mObserverExplorer,
-      valueExplorer: &self.padDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x",
-      idx: self.x_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x_property.mObserverExplorer,
-      valueExplorer: &self.x_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "y",
+        idx: self.y_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y_property.mObserverExplorer,
+        valueExplorer: &self.y_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "padDiameter",
+        idx: self.padDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.padDiameter_property.mObserverExplorer,
+        valueExplorer: &self.padDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x",
+        idx: self.x_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x_property.mObserverExplorer,
+        valueExplorer: &self.x_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: y
     self.y_property.mObserverExplorer = nil
     self.y_property.mValueExplorer = nil
@@ -164,9 +167,10 @@ final class BoardModelVia : EBManagedObject,
   //--- Atomic property: x
     self.x_property.mObserverExplorer = nil
     self.x_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -192,12 +196,12 @@ final class BoardModelVia : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
-  //--- Atomic property: padDiameter
-    self.padDiameter_property.storeIn (dictionary: ioDictionary, forKey: "padDiameter")
-  //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
+    //--- Atomic property: y
+      self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
+    //--- Atomic property: padDiameter
+      self.padDiameter_property.storeIn (dictionary: ioDictionary, forKey: "padDiameter")
+    //--- Atomic property: x
+      self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
   }
 
   //····················································································································

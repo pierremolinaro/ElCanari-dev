@@ -118,43 +118,46 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mSymbolTypeName",
-      idx: self.mSymbolTypeName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSymbolTypeName_property.mObserverExplorer,
-      valueExplorer: &self.mSymbolTypeName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mStrokeBezierPath",
-      idx: self.mStrokeBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mFilledBezierPath",
-      idx: self.mFilledBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mFilledBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.mFilledBezierPath_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mSymbolTypeName",
+        idx: self.mSymbolTypeName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSymbolTypeName_property.mObserverExplorer,
+        valueExplorer: &self.mSymbolTypeName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mStrokeBezierPath",
+        idx: self.mStrokeBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mFilledBezierPath",
+        idx: self.mFilledBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mFilledBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.mFilledBezierPath_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mSymbolTypeName
     self.mSymbolTypeName_property.mObserverExplorer = nil
     self.mSymbolTypeName_property.mValueExplorer = nil
@@ -164,9 +167,10 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.mObserverExplorer = nil
     self.mFilledBezierPath_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -192,12 +196,12 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mSymbolTypeName
-    self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolTypeName")
-  //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
-  //--- Atomic property: mFilledBezierPath
-    self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mFilledBezierPath")
+    //--- Atomic property: mSymbolTypeName
+      self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolTypeName")
+    //--- Atomic property: mStrokeBezierPath
+      self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
+    //--- Atomic property: mFilledBezierPath
+      self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mFilledBezierPath")
   }
 
   //····················································································································

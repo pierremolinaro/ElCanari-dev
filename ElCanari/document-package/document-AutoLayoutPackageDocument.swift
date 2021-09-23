@@ -399,32 +399,34 @@ import Cocoa
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-  //--- Array controller property: mModelImageObjectsController
-    self.mModelImageObjectsController.addExplorer (name: "mModelImageObjectsController", y:&y, view:view)
-  //--- Array controller property: mPackageObjectsController
-    self.mPackageObjectsController.addExplorer (name: "mPackageObjectsController", y:&y, view:view)
-  //--- Selection controller property: mPackageSegmentSelectionController
-    self.mPackageSegmentSelectionController.addExplorer (name: "mPackageSegmentSelectionController", y:&y, view:view)
-  //--- Selection controller property: mPackageBezierCurveSelectionController
-    self.mPackageBezierCurveSelectionController.addExplorer (name: "mPackageBezierCurveSelectionController", y:&y, view:view)
-  //--- Selection controller property: mPackageOvalSelectionController
-    self.mPackageOvalSelectionController.addExplorer (name: "mPackageOvalSelectionController", y:&y, view:view)
-  //--- Selection controller property: mPackageArcSelectionController
-    self.mPackageArcSelectionController.addExplorer (name: "mPackageArcSelectionController", y:&y, view:view)
-  //--- Selection controller property: mPackageGuideSelectionController
-    self.mPackageGuideSelectionController.addExplorer (name: "mPackageGuideSelectionController", y:&y, view:view)
-  //--- Selection controller property: mPackageDimensionSelectionController
-    self.mPackageDimensionSelectionController.addExplorer (name: "mPackageDimensionSelectionController", y:&y, view:view)
-  //--- Selection controller property: mPackageZoneSelectionController
-    self.mPackageZoneSelectionController.addExplorer (name: "mPackageZoneSelectionController", y:&y, view:view)
-  //--- Selection controller property: mPackagePadSelectionController
-    self.mPackagePadSelectionController.addExplorer (name: "mPackagePadSelectionController", y:&y, view:view)
-  //--- Selection controller property: mPackageSlavePadSelectionController
-    self.mPackageSlavePadSelectionController.addExplorer (name: "mPackageSlavePadSelectionController", y:&y, view:view)
-  //---
-    super.populateExplorerWindow (&y, view:view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    //--- Array controller property: mModelImageObjectsController
+      self.mModelImageObjectsController.addExplorer (name: "mModelImageObjectsController", y:&y, view:view)
+    //--- Array controller property: mPackageObjectsController
+      self.mPackageObjectsController.addExplorer (name: "mPackageObjectsController", y:&y, view:view)
+    //--- Selection controller property: mPackageSegmentSelectionController
+      self.mPackageSegmentSelectionController.addExplorer (name: "mPackageSegmentSelectionController", y:&y, view:view)
+    //--- Selection controller property: mPackageBezierCurveSelectionController
+      self.mPackageBezierCurveSelectionController.addExplorer (name: "mPackageBezierCurveSelectionController", y:&y, view:view)
+    //--- Selection controller property: mPackageOvalSelectionController
+      self.mPackageOvalSelectionController.addExplorer (name: "mPackageOvalSelectionController", y:&y, view:view)
+    //--- Selection controller property: mPackageArcSelectionController
+      self.mPackageArcSelectionController.addExplorer (name: "mPackageArcSelectionController", y:&y, view:view)
+    //--- Selection controller property: mPackageGuideSelectionController
+      self.mPackageGuideSelectionController.addExplorer (name: "mPackageGuideSelectionController", y:&y, view:view)
+    //--- Selection controller property: mPackageDimensionSelectionController
+      self.mPackageDimensionSelectionController.addExplorer (name: "mPackageDimensionSelectionController", y:&y, view:view)
+    //--- Selection controller property: mPackageZoneSelectionController
+      self.mPackageZoneSelectionController.addExplorer (name: "mPackageZoneSelectionController", y:&y, view:view)
+    //--- Selection controller property: mPackagePadSelectionController
+      self.mPackagePadSelectionController.addExplorer (name: "mPackagePadSelectionController", y:&y, view:view)
+    //--- Selection controller property: mPackageSlavePadSelectionController
+      self.mPackageSlavePadSelectionController.addExplorer (name: "mPackageSlavePadSelectionController", y:&y, view:view)
+.   //---
+      super.populateExplorerWindow (&y, view:view)
+    }
+  #endif
 
   //····················································································································
   //    rootEntityClassName

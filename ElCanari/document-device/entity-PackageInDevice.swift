@@ -569,137 +569,140 @@ final class PackageInDevice : EBGraphicManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mFileData",
-      idx: self.mFileData_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mFileData_property.mObserverExplorer,
-      valueExplorer: &self.mFileData_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mName",
-      idx: self.mName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mName_property.mObserverExplorer,
-      valueExplorer: &self.mName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mVersion",
-      idx: self.mVersion_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mVersion_property.mObserverExplorer,
-      valueExplorer: &self.mVersion_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mStrokeBezierPath",
-      idx: self.mStrokeBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "versionString",
-      idx: self.versionString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.versionString_property.mObserverExplorer,
-      valueExplorer: &self.versionString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "documentSize",
-      idx: self.documentSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.documentSize_property.mObserverExplorer,
-      valueExplorer: &self.documentSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontSidePadFilledBezierPathArray",
-      idx: self.frontSidePadFilledBezierPathArray_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontSidePadFilledBezierPathArray_property.mObserverExplorer,
-      valueExplorer: &self.frontSidePadFilledBezierPathArray_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backSidePadFilledBezierPathArray",
-      idx: self.backSidePadFilledBezierPathArray_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backSidePadFilledBezierPathArray_property.mObserverExplorer,
-      valueExplorer: &self.backSidePadFilledBezierPathArray_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "padNameSet",
-      idx: self.padNameSet_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.padNameSet_property.mObserverExplorer,
-      valueExplorer: &self.padNameSet_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mMasterPads",
-      idx:mMasterPads_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mMasterPads_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mRoot",
-      idx:self.mRoot_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mRoot_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mFileData",
+        idx: self.mFileData_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mFileData_property.mObserverExplorer,
+        valueExplorer: &self.mFileData_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mName",
+        idx: self.mName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mName_property.mObserverExplorer,
+        valueExplorer: &self.mName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mVersion",
+        idx: self.mVersion_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mVersion_property.mObserverExplorer,
+        valueExplorer: &self.mVersion_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mStrokeBezierPath",
+        idx: self.mStrokeBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mX",
+        idx: self.mX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX_property.mObserverExplorer,
+        valueExplorer: &self.mX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY",
+        idx: self.mY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY_property.mObserverExplorer,
+        valueExplorer: &self.mY_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "versionString",
+        idx: self.versionString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.versionString_property.mObserverExplorer,
+        valueExplorer: &self.versionString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "documentSize",
+        idx: self.documentSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.documentSize_property.mObserverExplorer,
+        valueExplorer: &self.documentSize_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontSidePadFilledBezierPathArray",
+        idx: self.frontSidePadFilledBezierPathArray_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontSidePadFilledBezierPathArray_property.mObserverExplorer,
+        valueExplorer: &self.frontSidePadFilledBezierPathArray_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backSidePadFilledBezierPathArray",
+        idx: self.backSidePadFilledBezierPathArray_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backSidePadFilledBezierPathArray_property.mObserverExplorer,
+        valueExplorer: &self.backSidePadFilledBezierPathArray_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "padNameSet",
+        idx: self.padNameSet_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.padNameSet_property.mObserverExplorer,
+        valueExplorer: &self.padNameSet_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mMasterPads",
+        idx:mMasterPads_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mMasterPads_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mRoot",
+        idx:self.mRoot_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mRoot_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mFileData
     self.mFileData_property.mObserverExplorer = nil
     self.mFileData_property.mValueExplorer = nil
@@ -718,14 +721,15 @@ final class PackageInDevice : EBGraphicManagedObject,
   //--- Atomic property: mY
     self.mY_property.mObserverExplorer = nil
     self.mY_property.mValueExplorer = nil
-  //--- To many property: mMasterPads
-    self.mMasterPads_property.mValueExplorer = nil
-  //--- To one property: mRoot
-    self.mRoot_property.mObserverExplorer = nil
-    self.mRoot_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: mMasterPads
+      self.mMasterPads_property.mValueExplorer = nil
+    //--- To one property: mRoot
+      self.mRoot_property.mObserverExplorer = nil
+      self.mRoot_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -753,18 +757,18 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mFileData
-    self.mFileData_property.storeIn (dictionary: ioDictionary, forKey: "mFileData")
-  //--- Atomic property: mName
-    self.mName_property.storeIn (dictionary: ioDictionary, forKey: "mName")
-  //--- Atomic property: mVersion
-    self.mVersion_property.storeIn (dictionary: ioDictionary, forKey: "mVersion")
-  //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
-  //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
-  //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+    //--- Atomic property: mFileData
+      self.mFileData_property.storeIn (dictionary: ioDictionary, forKey: "mFileData")
+    //--- Atomic property: mName
+      self.mName_property.storeIn (dictionary: ioDictionary, forKey: "mName")
+    //--- Atomic property: mVersion
+      self.mVersion_property.storeIn (dictionary: ioDictionary, forKey: "mVersion")
+    //--- Atomic property: mStrokeBezierPath
+      self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
+    //--- Atomic property: mX
+      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+    //--- Atomic property: mY
+      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   //--- To many property: mMasterPads
     self.store (
       managedObjectArray: self.mMasterPads_property.propval.values,

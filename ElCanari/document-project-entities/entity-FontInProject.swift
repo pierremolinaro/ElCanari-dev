@@ -388,106 +388,109 @@ final class FontInProject : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mNominalSize",
-      idx: self.mNominalSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNominalSize_property.mObserverExplorer,
-      valueExplorer: &self.mNominalSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mFontName",
-      idx: self.mFontName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mFontName_property.mObserverExplorer,
-      valueExplorer: &self.mFontName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mFontVersion",
-      idx: self.mFontVersion_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mFontVersion_property.mObserverExplorer,
-      valueExplorer: &self.mFontVersion_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDescriptiveString",
-      idx: self.mDescriptiveString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDescriptiveString_property.mObserverExplorer,
-      valueExplorer: &self.mDescriptiveString_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "versionString",
-      idx: self.versionString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.versionString_property.mObserverExplorer,
-      valueExplorer: &self.versionString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "sizeString",
-      idx: self.sizeString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.sizeString_property.mObserverExplorer,
-      valueExplorer: &self.sizeString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "descriptor",
-      idx: self.descriptor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.descriptor_property.mObserverExplorer,
-      valueExplorer: &self.descriptor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "canRemoveFont",
-      idx: self.canRemoveFont_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.canRemoveFont_property.mObserverExplorer,
-      valueExplorer: &self.canRemoveFont_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mTexts",
-      idx:mTexts_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mTexts_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mComponentNames",
-      idx:mComponentNames_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mComponentNames_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mComponentValues",
-      idx:mComponentValues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mComponentValues_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mNominalSize",
+        idx: self.mNominalSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNominalSize_property.mObserverExplorer,
+        valueExplorer: &self.mNominalSize_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mFontName",
+        idx: self.mFontName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mFontName_property.mObserverExplorer,
+        valueExplorer: &self.mFontName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mFontVersion",
+        idx: self.mFontVersion_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mFontVersion_property.mObserverExplorer,
+        valueExplorer: &self.mFontVersion_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDescriptiveString",
+        idx: self.mDescriptiveString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDescriptiveString_property.mObserverExplorer,
+        valueExplorer: &self.mDescriptiveString_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "versionString",
+        idx: self.versionString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.versionString_property.mObserverExplorer,
+        valueExplorer: &self.versionString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "sizeString",
+        idx: self.sizeString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.sizeString_property.mObserverExplorer,
+        valueExplorer: &self.sizeString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "descriptor",
+        idx: self.descriptor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.descriptor_property.mObserverExplorer,
+        valueExplorer: &self.descriptor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "canRemoveFont",
+        idx: self.canRemoveFont_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.canRemoveFont_property.mObserverExplorer,
+        valueExplorer: &self.canRemoveFont_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mTexts",
+        idx:mTexts_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mTexts_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mComponentNames",
+        idx:mComponentNames_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mComponentNames_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mComponentValues",
+        idx:mComponentValues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mComponentValues_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
-  //--- To many property: mTexts
-    self.mTexts_property.mValueExplorer = nil
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
+    //--- To many property: mTexts
+      self.mTexts_property.mValueExplorer = nil
   //--- Atomic property: mNominalSize
     self.mNominalSize_property.mObserverExplorer = nil
     self.mNominalSize_property.mValueExplorer = nil
@@ -500,13 +503,14 @@ final class FontInProject : EBManagedObject,
   //--- Atomic property: mDescriptiveString
     self.mDescriptiveString_property.mObserverExplorer = nil
     self.mDescriptiveString_property.mValueExplorer = nil
-  //--- To many property: mComponentNames
-    self.mComponentNames_property.mValueExplorer = nil
-  //--- To many property: mComponentValues
-    self.mComponentValues_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: mComponentNames
+      self.mComponentNames_property.mValueExplorer = nil
+    //--- To many property: mComponentValues
+      self.mComponentValues_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -541,14 +545,14 @@ final class FontInProject : EBManagedObject,
       relationshipName: "mTexts",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mNominalSize
-    self.mNominalSize_property.storeIn (dictionary: ioDictionary, forKey: "mNominalSize")
-  //--- Atomic property: mFontName
-    self.mFontName_property.storeIn (dictionary: ioDictionary, forKey: "mFontName")
-  //--- Atomic property: mFontVersion
-    self.mFontVersion_property.storeIn (dictionary: ioDictionary, forKey: "mFontVersion")
-  //--- Atomic property: mDescriptiveString
-    self.mDescriptiveString_property.storeIn (dictionary: ioDictionary, forKey: "mDescriptiveString")
+    //--- Atomic property: mNominalSize
+      self.mNominalSize_property.storeIn (dictionary: ioDictionary, forKey: "mNominalSize")
+    //--- Atomic property: mFontName
+      self.mFontName_property.storeIn (dictionary: ioDictionary, forKey: "mFontName")
+    //--- Atomic property: mFontVersion
+      self.mFontVersion_property.storeIn (dictionary: ioDictionary, forKey: "mFontVersion")
+    //--- Atomic property: mDescriptiveString
+      self.mDescriptiveString_property.storeIn (dictionary: ioDictionary, forKey: "mDescriptiveString")
   //--- To many property: mComponentNames
     self.store (
       managedObjectArray: self.mComponentNames_property.propval.values,

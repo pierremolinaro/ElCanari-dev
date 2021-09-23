@@ -199,67 +199,70 @@ final class BoardModelPad : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "y",
-      idx: self.y_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y_property.mObserverExplorer,
-      valueExplorer: &self.y_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "width",
-      idx: self.width_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.width_property.mObserverExplorer,
-      valueExplorer: &self.width_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "height",
-      idx: self.height_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.height_property.mObserverExplorer,
-      valueExplorer: &self.height_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "shape",
-      idx: self.shape_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.shape_property.mObserverExplorer,
-      valueExplorer: &self.shape_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "rotation",
-      idx: self.rotation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.rotation_property.mObserverExplorer,
-      valueExplorer: &self.rotation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x",
-      idx: self.x_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x_property.mObserverExplorer,
-      valueExplorer: &self.x_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "y",
+        idx: self.y_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y_property.mObserverExplorer,
+        valueExplorer: &self.y_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "width",
+        idx: self.width_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.width_property.mObserverExplorer,
+        valueExplorer: &self.width_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "height",
+        idx: self.height_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.height_property.mObserverExplorer,
+        valueExplorer: &self.height_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "shape",
+        idx: self.shape_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.shape_property.mObserverExplorer,
+        valueExplorer: &self.shape_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "rotation",
+        idx: self.rotation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.rotation_property.mObserverExplorer,
+        valueExplorer: &self.rotation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x",
+        idx: self.x_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x_property.mObserverExplorer,
+        valueExplorer: &self.x_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: y
     self.y_property.mObserverExplorer = nil
     self.y_property.mValueExplorer = nil
@@ -278,9 +281,10 @@ final class BoardModelPad : EBManagedObject,
   //--- Atomic property: x
     self.x_property.mObserverExplorer = nil
     self.x_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -306,18 +310,18 @@ final class BoardModelPad : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
-  //--- Atomic property: width
-    self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
-  //--- Atomic property: height
-    self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
-  //--- Atomic property: shape
-    self.shape_property.storeIn (dictionary: ioDictionary, forKey: "shape")
-  //--- Atomic property: rotation
-    self.rotation_property.storeIn (dictionary: ioDictionary, forKey: "rotation")
-  //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
+    //--- Atomic property: y
+      self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
+    //--- Atomic property: width
+      self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
+    //--- Atomic property: height
+      self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
+    //--- Atomic property: shape
+      self.shape_property.storeIn (dictionary: ioDictionary, forKey: "shape")
+    //--- Atomic property: rotation
+      self.rotation_property.storeIn (dictionary: ioDictionary, forKey: "rotation")
+    //--- Atomic property: x
+      self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
   }
 
   //····················································································································

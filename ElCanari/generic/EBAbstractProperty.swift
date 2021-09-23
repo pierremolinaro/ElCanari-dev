@@ -16,7 +16,9 @@ class EBAbstractProperty : EBEvent {
 
   final func addEBObserver (_ inObserver : EBEvent) {
     self.mObservers.insert (inObserver)
-    self.updateObserverExplorer ()
+    #if BUILD_OBJECT_EXPLORER
+      self.updateObserverExplorer ()
+    #endif
     inObserver.postEvent ()
   }
 
@@ -28,7 +30,9 @@ class EBAbstractProperty : EBEvent {
         self.mObservers.insert (observer)
         observer.postEvent ()
       }
-      self.updateObserverExplorer ()
+      #if BUILD_OBJECT_EXPLORER
+        self.updateObserverExplorer ()
+      #endif
     }
   }
 
@@ -36,7 +40,9 @@ class EBAbstractProperty : EBEvent {
 
   final func removeEBObserver (_ inObserver : EBEvent) {
     self.mObservers.remove (inObserver)
-    self.updateObserverExplorer ()
+    #if BUILD_OBJECT_EXPLORER
+      self.updateObserverExplorer ()
+    #endif
   }
 
   //····················································································································
@@ -46,7 +52,9 @@ class EBAbstractProperty : EBEvent {
       ioObserverSet.apply {(_ observer : EBEvent) in
         self.mObservers.remove (observer)
       }
-      self.updateObserverExplorer ()
+      #if BUILD_OBJECT_EXPLORER
+        self.updateObserverExplorer ()
+      #endif
     }
   }
 
@@ -58,26 +66,29 @@ class EBAbstractProperty : EBEvent {
 
   //····················································································································
 
-  final var mObserverExplorer : NSPopUpButton? {
-    didSet {
-      self.updateObserverExplorer ()
+  #if BUILD_OBJECT_EXPLORER
+    final var mObserverExplorer : NSPopUpButton? {
+      didSet {
+        self.updateObserverExplorer ()
+      }
     }
-  }
-
+  #endif
   //····················································································································
 
-  final func updateObserverExplorer () {
-    if let observerExplorer = self.mObserverExplorer {
-      observerExplorer.removeAllItems ()
-      let observerCount = self.mObservers.nonNilEntryCount
-      observerExplorer.addItem (withTitle: String (observerCount))
-      observerExplorer.isEnabled = observerCount > 0
-      self.mObservers.apply ( {(_ observer : EBEvent) in
-        let stringValue = explorerIndexString (observer.ebObjectIndex) + " - " + String (describing: type (of: observer))
-        observerExplorer.addItem (withTitle: stringValue)
-      })
+  #if BUILD_OBJECT_EXPLORER
+    final func updateObserverExplorer () {
+      if let observerExplorer = self.mObserverExplorer {
+        observerExplorer.removeAllItems ()
+        let observerCount = self.mObservers.nonNilEntryCount
+        observerExplorer.addItem (withTitle: String (observerCount))
+        observerExplorer.isEnabled = observerCount > 0
+        self.mObservers.apply ( {(_ observer : EBEvent) in
+          let stringValue = explorerIndexString (observer.ebObjectIndex) + " - " + String (describing: type (of: observer))
+          observerExplorer.addItem (withTitle: stringValue)
+        })
+      }
     }
-  }
+  #endif
 
   //····················································································································
 

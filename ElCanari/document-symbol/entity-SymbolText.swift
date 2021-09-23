@@ -247,75 +247,78 @@ final class SymbolText : SymbolObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "y",
-      idx: self.y_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y_property.mObserverExplorer,
-      valueExplorer: &self.y_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "text",
-      idx: self.text_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.text_property.mObserverExplorer,
-      valueExplorer: &self.text_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "horizontalAlignment",
-      idx: self.horizontalAlignment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.horizontalAlignment_property.mObserverExplorer,
-      valueExplorer: &self.horizontalAlignment_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x",
-      idx: self.x_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x_property.mObserverExplorer,
-      valueExplorer: &self.x_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "y",
+        idx: self.y_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y_property.mObserverExplorer,
+        valueExplorer: &self.y_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "text",
+        idx: self.text_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.text_property.mObserverExplorer,
+        valueExplorer: &self.text_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "horizontalAlignment",
+        idx: self.horizontalAlignment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.horizontalAlignment_property.mObserverExplorer,
+        valueExplorer: &self.horizontalAlignment_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x",
+        idx: self.x_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x_property.mObserverExplorer,
+        valueExplorer: &self.x_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: y
     self.y_property.mObserverExplorer = nil
     self.y_property.mValueExplorer = nil
@@ -328,9 +331,10 @@ final class SymbolText : SymbolObject,
   //--- Atomic property: x
     self.x_property.mObserverExplorer = nil
     self.x_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -356,14 +360,14 @@ final class SymbolText : SymbolObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
-  //--- Atomic property: text
-    self.text_property.storeIn (dictionary: ioDictionary, forKey: "text")
-  //--- Atomic property: horizontalAlignment
-    self.horizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "horizontalAlignment")
-  //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
+    //--- Atomic property: y
+      self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
+    //--- Atomic property: text
+      self.text_property.storeIn (dictionary: ioDictionary, forKey: "text")
+    //--- Atomic property: horizontalAlignment
+      self.horizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "horizontalAlignment")
+    //--- Atomic property: x
+      self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
   }
 
   //····················································································································

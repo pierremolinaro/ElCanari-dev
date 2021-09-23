@@ -387,97 +387,100 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "x",
-      idx: self.x_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x_property.mObserverExplorer,
-      valueExplorer: &self.x_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y",
-      idx: self.y_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y_property.mObserverExplorer,
-      valueExplorer: &self.y_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "instanceRotation",
-      idx: self.instanceRotation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.instanceRotation_property.mObserverExplorer,
-      valueExplorer: &self.instanceRotation_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "instanceRect",
-      idx: self.instanceRect_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.instanceRect_property.mObserverExplorer,
-      valueExplorer: &self.instanceRect_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "modelName",
-      idx: self.modelName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.modelName_property.mObserverExplorer,
-      valueExplorer: &self.modelName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardLimitWidth",
-      idx: self.boardLimitWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardLimitWidth_property.mObserverExplorer,
-      valueExplorer: &self.boardLimitWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "myModel",
-      idx:self.myModel_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.myModel_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "myRoot",
-      idx:self.myRoot_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.myRoot_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "x",
+        idx: self.x_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x_property.mObserverExplorer,
+        valueExplorer: &self.x_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "y",
+        idx: self.y_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y_property.mObserverExplorer,
+        valueExplorer: &self.y_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "instanceRotation",
+        idx: self.instanceRotation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.instanceRotation_property.mObserverExplorer,
+        valueExplorer: &self.instanceRotation_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "instanceRect",
+        idx: self.instanceRect_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.instanceRect_property.mObserverExplorer,
+        valueExplorer: &self.instanceRect_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "modelName",
+        idx: self.modelName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.modelName_property.mObserverExplorer,
+        valueExplorer: &self.modelName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardLimitWidth",
+        idx: self.boardLimitWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardLimitWidth_property.mObserverExplorer,
+        valueExplorer: &self.boardLimitWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "myModel",
+        idx:self.myModel_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.myModel_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "myRoot",
+        idx:self.myRoot_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.myRoot_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: x
     self.x_property.mObserverExplorer = nil
     self.x_property.mValueExplorer = nil
@@ -487,15 +490,16 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //--- Atomic property: instanceRotation
     self.instanceRotation_property.mObserverExplorer = nil
     self.instanceRotation_property.mValueExplorer = nil
-  //--- To one property: myModel
-    self.myModel_property.mObserverExplorer = nil
-    self.myModel_property.mValueExplorer = nil
-  //--- To one property: myRoot
-    self.myRoot_property.mObserverExplorer = nil
-    self.myRoot_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To one property: myModel
+      self.myModel_property.mObserverExplorer = nil
+      self.myModel_property.mValueExplorer = nil
+    //--- To one property: myRoot
+      self.myRoot_property.mObserverExplorer = nil
+      self.myRoot_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -523,12 +527,12 @@ final class MergerBoardInstance : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
-  //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
-  //--- Atomic property: instanceRotation
-    self.instanceRotation_property.storeIn (dictionary: ioDictionary, forKey: "instanceRotation")
+    //--- Atomic property: x
+      self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
+    //--- Atomic property: y
+      self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
+    //--- Atomic property: instanceRotation
+      self.instanceRotation_property.storeIn (dictionary: ioDictionary, forKey: "instanceRotation")
   }
 
   //····················································································································

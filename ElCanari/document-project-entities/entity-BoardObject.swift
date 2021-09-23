@@ -341,120 +341,124 @@ class BoardObject : EBGraphicManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "isPlacedInBoard",
-      idx: self.isPlacedInBoard_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.isPlacedInBoard_property.mObserverExplorer,
-      valueExplorer: &self.isPlacedInBoard_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "isVia",
-      idx: self.isVia_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.isVia_property.mObserverExplorer,
-      valueExplorer: &self.isVia_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "trackLengthInCanariUnit",
-      idx: self.trackLengthInCanariUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.trackLengthInCanariUnit_property.mObserverExplorer,
-      valueExplorer: &self.trackLengthInCanariUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "signatureForERCChecking",
-      idx: self.signatureForERCChecking_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
-      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netNameAndPadLocation",
-      idx: self.netNameAndPadLocation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netNameAndPadLocation_property.mObserverExplorer,
-      valueExplorer: &self.netNameAndPadLocation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "componentName",
-      idx: self.componentName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.componentName_property.mObserverExplorer,
-      valueExplorer: &self.componentName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "errorOrWarningIssueSize",
-      idx: self.errorOrWarningIssueSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.errorOrWarningIssueSize_property.mObserverExplorer,
-      valueExplorer: &self.errorOrWarningIssueSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "trackSide",
-      idx: self.trackSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.trackSide_property.mObserverExplorer,
-      valueExplorer: &self.trackSide_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mRoot",
-      idx:self.mRoot_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mRoot_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "isPlacedInBoard",
+        idx: self.isPlacedInBoard_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.isPlacedInBoard_property.mObserverExplorer,
+        valueExplorer: &self.isPlacedInBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "isVia",
+        idx: self.isVia_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.isVia_property.mObserverExplorer,
+        valueExplorer: &self.isVia_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "trackLengthInCanariUnit",
+        idx: self.trackLengthInCanariUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.trackLengthInCanariUnit_property.mObserverExplorer,
+        valueExplorer: &self.trackLengthInCanariUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "signatureForERCChecking",
+        idx: self.signatureForERCChecking_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+        valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netNameAndPadLocation",
+        idx: self.netNameAndPadLocation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netNameAndPadLocation_property.mObserverExplorer,
+        valueExplorer: &self.netNameAndPadLocation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "componentName",
+        idx: self.componentName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.componentName_property.mObserverExplorer,
+        valueExplorer: &self.componentName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "errorOrWarningIssueSize",
+        idx: self.errorOrWarningIssueSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.errorOrWarningIssueSize_property.mObserverExplorer,
+        valueExplorer: &self.errorOrWarningIssueSize_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "trackSide",
+        idx: self.trackSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.trackSide_property.mObserverExplorer,
+        valueExplorer: &self.trackSide_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mRoot",
+        idx:self.mRoot_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mRoot_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
-  //--- To one property: mRoot
-    self.mRoot_property.mObserverExplorer = nil
-    self.mRoot_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
+    //--- To one property: mRoot
+      self.mRoot_property.mObserverExplorer = nil
+      self.mRoot_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships

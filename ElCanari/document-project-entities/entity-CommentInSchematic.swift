@@ -300,91 +300,94 @@ final class CommentInSchematic : SchematicObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mColor",
-      idx: self.mColor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mColor_property.mObserverExplorer,
-      valueExplorer: &self.mColor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSize",
-      idx: self.mSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSize_property.mObserverExplorer,
-      valueExplorer: &self.mSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mHorizontalAlignment",
-      idx: self.mHorizontalAlignment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mHorizontalAlignment_property.mObserverExplorer,
-      valueExplorer: &self.mHorizontalAlignment_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mVerticalAlignment",
-      idx: self.mVerticalAlignment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mVerticalAlignment_property.mObserverExplorer,
-      valueExplorer: &self.mVerticalAlignment_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mComment",
-      idx: self.mComment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mComment_property.mObserverExplorer,
-      valueExplorer: &self.mComment_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mColor",
+        idx: self.mColor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mColor_property.mObserverExplorer,
+        valueExplorer: &self.mColor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSize",
+        idx: self.mSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSize_property.mObserverExplorer,
+        valueExplorer: &self.mSize_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mHorizontalAlignment",
+        idx: self.mHorizontalAlignment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mHorizontalAlignment_property.mObserverExplorer,
+        valueExplorer: &self.mHorizontalAlignment_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mVerticalAlignment",
+        idx: self.mVerticalAlignment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mVerticalAlignment_property.mObserverExplorer,
+        valueExplorer: &self.mVerticalAlignment_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mX",
+        idx: self.mX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX_property.mObserverExplorer,
+        valueExplorer: &self.mX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY",
+        idx: self.mY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY_property.mObserverExplorer,
+        valueExplorer: &self.mY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mComment",
+        idx: self.mComment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mComment_property.mObserverExplorer,
+        valueExplorer: &self.mComment_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mColor
     self.mColor_property.mObserverExplorer = nil
     self.mColor_property.mValueExplorer = nil
@@ -406,9 +409,10 @@ final class CommentInSchematic : SchematicObject,
   //--- Atomic property: mComment
     self.mComment_property.mObserverExplorer = nil
     self.mComment_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -434,20 +438,20 @@ final class CommentInSchematic : SchematicObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mColor
-    self.mColor_property.storeIn (dictionary: ioDictionary, forKey: "mColor")
-  //--- Atomic property: mSize
-    self.mSize_property.storeIn (dictionary: ioDictionary, forKey: "mSize")
-  //--- Atomic property: mHorizontalAlignment
-    self.mHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mHorizontalAlignment")
-  //--- Atomic property: mVerticalAlignment
-    self.mVerticalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mVerticalAlignment")
-  //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
-  //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
-  //--- Atomic property: mComment
-    self.mComment_property.storeIn (dictionary: ioDictionary, forKey: "mComment")
+    //--- Atomic property: mColor
+      self.mColor_property.storeIn (dictionary: ioDictionary, forKey: "mColor")
+    //--- Atomic property: mSize
+      self.mSize_property.storeIn (dictionary: ioDictionary, forKey: "mSize")
+    //--- Atomic property: mHorizontalAlignment
+      self.mHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mHorizontalAlignment")
+    //--- Atomic property: mVerticalAlignment
+      self.mVerticalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mVerticalAlignment")
+    //--- Atomic property: mX
+      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+    //--- Atomic property: mY
+      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+    //--- Atomic property: mComment
+      self.mComment_property.storeIn (dictionary: ioDictionary, forKey: "mComment")
   }
 
   //····················································································································

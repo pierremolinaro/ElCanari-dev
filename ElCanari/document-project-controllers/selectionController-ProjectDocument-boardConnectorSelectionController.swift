@@ -342,185 +342,197 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //    Explorer
   //····················································································································
 
-  private var mValueExplorer : NSButton?
-  private var mExplorerWindow : NSWindow?
+  #if BUILD_OBJECT_EXPLORER
+    private var mValueExplorer : NSButton?
+    private var mExplorerWindow : NSWindow?
+  #endif
 
   //····················································································································
 
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-    let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-    let tf = NSTextField (frame:secondColumn (y))
-    tf.isEnabled = true
-    tf.isEditable = false
-    tf.stringValue = name
-    tf.font = font
-    view.addSubview (tf)
-    let valueExplorer = NSButton (frame: thirdColumn (y))
-    valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_ProjectDocument_boardConnectorSelectionController.showObjectWindowFromExplorerButton(_:))
-    view.addSubview (valueExplorer)
-    self.mValueExplorer = valueExplorer
-    y += EXPLORER_ROW_HEIGHT
-  }
+  #if BUILD_OBJECT_EXPLORER
+    final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
+      let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+      let tf = NSTextField (frame:secondColumn (y))
+      tf.isEnabled = true
+      tf.isEditable = false
+      tf.stringValue = name
+      tf.font = font
+      view.addSubview (tf)
+      let valueExplorer = NSButton (frame: thirdColumn (y))
+      valueExplorer.font = font
+      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.target = self
+      valueExplorer.action = #selector(SelectionController_ProjectDocument_boardConnectorSelectionController.showObjectWindowFromExplorerButton(_:))
+      view.addSubview (valueExplorer)
+      self.mValueExplorer = valueExplorer
+      y += EXPLORER_ROW_HEIGHT
+    }
+  #endif
 
   //····················································································································
 
-  func buildExplorerWindow () {
-  //-------------------------------------------------- Create Window
-    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
-    self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
-  //-------------------------------------------------- Adding properties
-    let view = NSView (frame: r)
-    var y : CGFloat = 0.0
-    createEntryForPropertyNamed (
-      "mComponentPadName",
-      idx: self.mComponentPadName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mComponentPadName_property.mObserverExplorer,
-      valueExplorer: &self.mComponentPadName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mPadIndex",
-      idx: self.mPadIndex_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mPadIndex_property.mObserverExplorer,
-      valueExplorer: &self.mPadIndex_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDefaultHoleDiameterUnit",
-      idx: self.mDefaultHoleDiameterUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDefaultHoleDiameterUnit_property.mObserverExplorer,
-      valueExplorer: &self.mDefaultHoleDiameterUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCustomHoleDiameter",
-      idx: self.mCustomHoleDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCustomHoleDiameter_property.mObserverExplorer,
-      valueExplorer: &self.mCustomHoleDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCustomHoleDiameterUnit",
-      idx: self.mCustomHoleDiameterUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCustomHoleDiameterUnit_property.mObserverExplorer,
-      valueExplorer: &self.mCustomHoleDiameterUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mUsesCustomHoleDiameter",
-      idx: self.mUsesCustomHoleDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mUsesCustomHoleDiameter_property.mObserverExplorer,
-      valueExplorer: &self.mUsesCustomHoleDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDefaultPadDiameterUnit",
-      idx: self.mDefaultPadDiameterUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDefaultPadDiameterUnit_property.mObserverExplorer,
-      valueExplorer: &self.mDefaultPadDiameterUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCustomPadDiameter",
-      idx: self.mCustomPadDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCustomPadDiameter_property.mObserverExplorer,
-      valueExplorer: &self.mCustomPadDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCustomPadDiameterUnit",
-      idx: self.mCustomPadDiameterUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCustomPadDiameterUnit_property.mObserverExplorer,
-      valueExplorer: &self.mCustomPadDiameterUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mUsesCustomPadDiameter",
-      idx: self.mUsesCustomPadDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mUsesCustomPadDiameter_property.mObserverExplorer,
-      valueExplorer: &self.mUsesCustomPadDiameter_property.mValueExplorer
-    )
-  //-------------------------------------------------- Finish Window construction
-  //--- Resize View
-    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    view.frame = viewFrame
-  //--- Set content size
-    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
-  //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_ProjectDocument_boardConnectorSelectionController.deleteSelectionControllerWindowAction(_:))
-  //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    self.mExplorerWindow!.title = windowTitle
-  //--- Add Scroll view
-    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    let sw = NSScrollView (frame: frame)
-    sw.hasVerticalScroller = true
-    sw.documentView = view
-    self.mExplorerWindow!.contentView = sw
-  }
-
+  #if BUILD_OBJECT_EXPLORER
+    func buildExplorerWindow () {
+    //-------------------------------------------------- Create Window
+      let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
+      self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
+    //-------------------------------------------------- Adding properties
+      let view = NSView (frame: r)
+      var y : CGFloat = 0.0
+      createEntryForPropertyNamed (
+        "mComponentPadName",
+        idx: self.mComponentPadName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mComponentPadName_property.mObserverExplorer,
+        valueExplorer: &self.mComponentPadName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mPadIndex",
+        idx: self.mPadIndex_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mPadIndex_property.mObserverExplorer,
+        valueExplorer: &self.mPadIndex_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mX",
+        idx: self.mX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX_property.mObserverExplorer,
+        valueExplorer: &self.mX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY",
+        idx: self.mY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY_property.mObserverExplorer,
+        valueExplorer: &self.mY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDefaultHoleDiameterUnit",
+        idx: self.mDefaultHoleDiameterUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDefaultHoleDiameterUnit_property.mObserverExplorer,
+        valueExplorer: &self.mDefaultHoleDiameterUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCustomHoleDiameter",
+        idx: self.mCustomHoleDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCustomHoleDiameter_property.mObserverExplorer,
+        valueExplorer: &self.mCustomHoleDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCustomHoleDiameterUnit",
+        idx: self.mCustomHoleDiameterUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCustomHoleDiameterUnit_property.mObserverExplorer,
+        valueExplorer: &self.mCustomHoleDiameterUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mUsesCustomHoleDiameter",
+        idx: self.mUsesCustomHoleDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mUsesCustomHoleDiameter_property.mObserverExplorer,
+        valueExplorer: &self.mUsesCustomHoleDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDefaultPadDiameterUnit",
+        idx: self.mDefaultPadDiameterUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDefaultPadDiameterUnit_property.mObserverExplorer,
+        valueExplorer: &self.mDefaultPadDiameterUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCustomPadDiameter",
+        idx: self.mCustomPadDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCustomPadDiameter_property.mObserverExplorer,
+        valueExplorer: &self.mCustomPadDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCustomPadDiameterUnit",
+        idx: self.mCustomPadDiameterUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCustomPadDiameterUnit_property.mObserverExplorer,
+        valueExplorer: &self.mCustomPadDiameterUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mUsesCustomPadDiameter",
+        idx: self.mUsesCustomPadDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mUsesCustomPadDiameter_property.mObserverExplorer,
+        valueExplorer: &self.mUsesCustomPadDiameter_property.mValueExplorer
+      )
+    //-------------------------------------------------- Finish Window construction
+    //--- Resize View
+      let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      view.frame = viewFrame
+    //--- Set content size
+      self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
+    //--- Set close button as 'remove window' button
+      let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
+      closeButton?.target = self
+      closeButton?.action = #selector(SelectionController_ProjectDocument_boardConnectorSelectionController.deleteSelectionControllerWindowAction(_:))
+    //--- Set window title
+      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      self.mExplorerWindow!.title = windowTitle
+    //--- Add Scroll view
+      let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      let sw = NSScrollView (frame: frame)
+      sw.hasVerticalScroller = true
+      sw.documentView = view
+      self.mExplorerWindow!.contentView = sw
+    }
+  #endif
+  
   //····················································································································
   //   showObjectWindowFromExplorerButton
   //····················································································································
 
-  @objc func showObjectWindowFromExplorerButton (_ : Any) {
-    if self.mExplorerWindow == nil {
-      self.buildExplorerWindow ()
+  #if BUILD_OBJECT_EXPLORER
+    @objc func showObjectWindowFromExplorerButton (_ : Any) {
+      if self.mExplorerWindow == nil {
+        self.buildExplorerWindow ()
+      }
+      self.mExplorerWindow?.makeKeyAndOrderFront (nil)
     }
-    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
-  }
-
+  #endif
+  
   //····················································································································
   //   deleteSelectionControllerWindowAction
   //····················································································································
 
-  @objc func deleteSelectionControllerWindowAction (_ : Any) {
-    self.clearObjectExplorer ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    @objc func deleteSelectionControllerWindowAction (_ : Any) {
+      self.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //   clearObjectExplorer
   //····················································································································
 
-  func clearObjectExplorer () {
-    if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
-      closeButton.target = nil
+  #if BUILD_OBJECT_EXPLORER
+    func clearObjectExplorer () {
+      if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
+        closeButton.target = nil
+      }
+      self.mExplorerWindow?.orderOut (nil)
+      self.mExplorerWindow = nil
     }
-    self.mExplorerWindow?.orderOut (nil)
-    self.mExplorerWindow = nil
-  }
+  #endif
 
   //····················································································································
 

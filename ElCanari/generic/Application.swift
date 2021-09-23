@@ -92,11 +92,13 @@ class EBEvent : EBSwiftBaseObject {
   override func sendEvent (_ event: NSEvent) {
     super.sendEvent (event)
     flushModelEvents ()
-    for doc in NSDocumentController.shared.documents {
-      if let document = doc as? EBManagedXibDocument {
-        document.updateReachableEntitiesPopUpButton ()
+    #if BUILD_OBJECT_EXPLORER
+      for doc in NSDocumentController.shared.documents {
+        if let document = doc as? EBManagedXibDocument {
+          document.updateReachableEntitiesPopUpButton ()
+        }
       }
-    }
+    #endif
     flushOutletEvents ()
   }
 

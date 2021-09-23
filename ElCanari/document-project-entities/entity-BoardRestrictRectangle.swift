@@ -311,91 +311,94 @@ final class BoardRestrictRectangle : BoardObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mWidth",
-      idx: self.mWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mWidth_property.mObserverExplorer,
-      valueExplorer: &self.mWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mHeight",
-      idx: self.mHeight_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mHeight_property.mObserverExplorer,
-      valueExplorer: &self.mHeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mIsInFrontLayer",
-      idx: self.mIsInFrontLayer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mIsInFrontLayer_property.mObserverExplorer,
-      valueExplorer: &self.mIsInFrontLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mIsInBackLayer",
-      idx: self.mIsInBackLayer_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mIsInBackLayer_property.mObserverExplorer,
-      valueExplorer: &self.mIsInBackLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "signatureForERCChecking",
-      idx: self.signatureForERCChecking_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
-      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mY",
+        idx: self.mY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY_property.mObserverExplorer,
+        valueExplorer: &self.mY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mWidth",
+        idx: self.mWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mWidth_property.mObserverExplorer,
+        valueExplorer: &self.mWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mHeight",
+        idx: self.mHeight_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mHeight_property.mObserverExplorer,
+        valueExplorer: &self.mHeight_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsInFrontLayer",
+        idx: self.mIsInFrontLayer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsInFrontLayer_property.mObserverExplorer,
+        valueExplorer: &self.mIsInFrontLayer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsInBackLayer",
+        idx: self.mIsInBackLayer_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsInBackLayer_property.mObserverExplorer,
+        valueExplorer: &self.mIsInBackLayer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mX",
+        idx: self.mX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX_property.mObserverExplorer,
+        valueExplorer: &self.mX_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "signatureForERCChecking",
+        idx: self.signatureForERCChecking_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+        valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mY
     self.mY_property.mObserverExplorer = nil
     self.mY_property.mValueExplorer = nil
@@ -414,9 +417,10 @@ final class BoardRestrictRectangle : BoardObject,
   //--- Atomic property: mX
     self.mX_property.mObserverExplorer = nil
     self.mX_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -442,18 +446,18 @@ final class BoardRestrictRectangle : BoardObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
-  //--- Atomic property: mWidth
-    self.mWidth_property.storeIn (dictionary: ioDictionary, forKey: "mWidth")
-  //--- Atomic property: mHeight
-    self.mHeight_property.storeIn (dictionary: ioDictionary, forKey: "mHeight")
-  //--- Atomic property: mIsInFrontLayer
-    self.mIsInFrontLayer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInFrontLayer")
-  //--- Atomic property: mIsInBackLayer
-    self.mIsInBackLayer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInBackLayer")
-  //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+    //--- Atomic property: mY
+      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+    //--- Atomic property: mWidth
+      self.mWidth_property.storeIn (dictionary: ioDictionary, forKey: "mWidth")
+    //--- Atomic property: mHeight
+      self.mHeight_property.storeIn (dictionary: ioDictionary, forKey: "mHeight")
+    //--- Atomic property: mIsInFrontLayer
+      self.mIsInFrontLayer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInFrontLayer")
+    //--- Atomic property: mIsInBackLayer
+      self.mIsInBackLayer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInBackLayer")
+    //--- Atomic property: mX
+      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
   }
 
   //····················································································································

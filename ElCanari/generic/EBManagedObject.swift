@@ -45,7 +45,9 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
   private weak final var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
   final var savingIndex = 0
 
-  final var mExplorerWindow : NSWindow? = nil
+  #if BUILD_OBJECT_EXPLORER
+    final var mExplorerWindow : NSWindow? = nil
+  #endif
 
   //····················································································································
   //  init
@@ -102,12 +104,14 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
   //   showExplorerWindow
   //····················································································································
 
-  final func showExplorerWindow () {
-    if self.mExplorerWindow == nil {
-      self.createAndPopulateObjectExplorerWindow ()
+  #if BUILD_OBJECT_EXPLORER
+    final func showExplorerWindow () {
+      if self.mExplorerWindow == nil {
+        self.createAndPopulateObjectExplorerWindow ()
+      }
+      self.mExplorerWindow?.makeKeyAndOrderFront (nil)
     }
-    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
-  }
+  #endif
 
   //····················································································································
   //  reachableObjects
@@ -157,7 +161,9 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
   //····················································································································
 
   final func cleanUpRelationshipsAndRemoveAllObservers () {
-    self.clearObjectExplorer ()
+    #if BUILD_OBJECT_EXPLORER
+      self.clearObjectExplorer ()
+    #endif
     self.removeAllObservers ()
     self.cleanUpToManyRelationships ()
     self.cleanUpToOneRelationships ()
@@ -214,69 +220,77 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
   //   createAndPopulateObjectExplorerWindow
   //····················································································································
 
-  func createAndPopulateObjectExplorerWindow () {
-  //-------------------------------------------------- Create Window
-    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
-    self.mExplorerWindow = NSWindow (
-      contentRect: r,
-      styleMask: [.titled, .closable],
-      backing: .buffered,
-      defer: true,
-      screen: nil
-    )
-  //-------------------------------------------------- Adding properties
-    let view = NSView (frame: r)
-    var y : CGFloat = 0.0
-    populateExplorerWindow (&y, view: view)
-  //-------------------------------------------------- Finish Window construction
-  //--- Resize View
-    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    view.frame = viewFrame
-  //--- Set content size
-    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
-  //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton?.target = self
-    closeButton?.action = #selector (EBManagedObject.deleteWindowAction(_:))
-  //--- Set window title
-    let windowTitle = explorerIndexString (self.ebObjectIndex) + " " + className
-    self.mExplorerWindow!.title = windowTitle
-  //--- Add Scroll view
-    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    let sw = NSScrollView (frame: frame)
-    sw.hasVerticalScroller = true
-    sw.documentView = view
-    mExplorerWindow!.contentView = sw
-  }
+  #if BUILD_OBJECT_EXPLORER
+    func createAndPopulateObjectExplorerWindow () {
+    //-------------------------------------------------- Create Window
+      let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
+      self.mExplorerWindow = NSWindow (
+        contentRect: r,
+        styleMask: [.titled, .closable],
+        backing: .buffered,
+        defer: true,
+        screen: nil
+      )
+    //-------------------------------------------------- Adding properties
+      let view = NSView (frame: r)
+      var y : CGFloat = 0.0
+      populateExplorerWindow (&y, view: view)
+    //-------------------------------------------------- Finish Window construction
+    //--- Resize View
+      let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      view.frame = viewFrame
+    //--- Set content size
+      self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
+    //--- Set close button as 'remove window' button
+      let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
+      closeButton?.target = self
+      closeButton?.action = #selector (EBManagedObject.deleteWindowAction(_:))
+    //--- Set window title
+      let windowTitle = explorerIndexString (self.ebObjectIndex) + " " + className
+      self.mExplorerWindow!.title = windowTitle
+    //--- Add Scroll view
+      let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      let sw = NSScrollView (frame: frame)
+      sw.hasVerticalScroller = true
+      sw.documentView = view
+      self.mExplorerWindow?.contentView = sw
+    }
+  #endif
 
   //····················································································································
   //   showObjectWindowFromExplorerButton
   //····················································································································
 
-  @objc func showObjectWindowFromExplorerButton (_ : Any) {
-    self.showExplorerWindow ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    @objc func showObjectWindowFromExplorerButton (_ : Any) {
+      self.showExplorerWindow ()
+    }
+  #endif
 
   //····················································································································
   //   deleteWindowAction
   //····················································································································
 
-  @objc func deleteWindowAction (_ : Any) {
-    self.clearObjectExplorer ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    @objc func deleteWindowAction (_ : Any) {
+      self.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //   clearObjectExplorer
   //····················································································································
 
-  func clearObjectExplorer () {
-    if let explorerWindow = self.mExplorerWindow {
-      let closeButton = explorerWindow.standardWindowButton (.closeButton)
-      closeButton?.target = nil
-      explorerWindow.orderOut (nil)
-      self.mExplorerWindow = nil
+  #if BUILD_OBJECT_EXPLORER
+    func clearObjectExplorer () {
+      if let explorerWindow = self.mExplorerWindow {
+        let closeButton = explorerWindow.standardWindowButton (.closeButton)
+        closeButton?.target = nil
+        explorerWindow.orderOut (nil)
+        self.mExplorerWindow = nil
+      }
     }
-  }
+  #endif
 
   //····················································································································
   //   appendPropertyNamesTo
@@ -413,44 +427,48 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
 //   updateManagedObjectToOneRelationshipDisplay
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func updateManagedObjectToOneRelationshipDisplay (object : EBManagedObject?, button : NSButton?) {
-  if let unwrappedObject = object {
-    let stringValue = explorerIndexString (unwrappedObject.ebObjectIndex) + " " + unwrappedObject.className
-    button?.isEnabled = true
-    button?.title = stringValue
-    button?.toolTip = stringValue
-    button?.target = object
-    button?.action = #selector (EBManagedObject.showObjectWindowFromExplorerButton(_:))
-  }else{
-    button?.isEnabled = false
-    button?.title = "nil"
-    button?.toolTip = "nil"
-    button?.target = nil
-    button?.action = nil
+#if BUILD_OBJECT_EXPLORER
+  func updateManagedObjectToOneRelationshipDisplay (object : EBManagedObject?, button : NSButton?) {
+    if let unwrappedObject = object {
+      let stringValue = explorerIndexString (unwrappedObject.ebObjectIndex) + " " + unwrappedObject.className
+      button?.isEnabled = true
+      button?.title = stringValue
+      button?.toolTip = stringValue
+      button?.target = object
+      button?.action = #selector (EBManagedObject.showObjectWindowFromExplorerButton(_:))
+    }else{
+      button?.isEnabled = false
+      button?.title = "nil"
+      button?.toolTip = "nil"
+      button?.target = nil
+      button?.action = nil
+    }
   }
-}
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   updateManagedObjectToManyRelationshipDisplay
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func updateManagedObjectToManyRelationshipDisplay (objectArray : [EBManagedObject], popUpButton : NSPopUpButton?) {
-  var title = "No Object" ;
-  if objectArray.count == 1 {
-    title = "1 Object" ;
-  }else if objectArray.count > 1 {
-    title = "\(objectArray.count) objects"
+#if BUILD_OBJECT_EXPLORER
+  func updateManagedObjectToManyRelationshipDisplay (objectArray : [EBManagedObject], popUpButton : NSPopUpButton?) {
+    var title = "No Object" ;
+    if objectArray.count == 1 {
+      title = "1 Object" ;
+    }else if objectArray.count > 1 {
+      title = "\(objectArray.count) objects"
+    }
+    popUpButton?.removeAllItems ()
+    popUpButton?.addItem (withTitle: title)
+    popUpButton?.isEnabled = objectArray.count > 0
+    for object in objectArray {
+      let stringValue = explorerIndexString (object.ebObjectIndex) + " " + object.className
+      popUpButton?.addItem (withTitle: stringValue)
+      let item = popUpButton?.lastItem
+      item?.target = object
+      item?.action = #selector(EBManagedObject.showObjectWindowFromExplorerButton(_:))
+    }
   }
-  popUpButton?.removeAllItems ()
-  popUpButton?.addItem (withTitle: title)
-  popUpButton?.isEnabled = objectArray.count > 0
-  for object in objectArray {
-    let stringValue = explorerIndexString (object.ebObjectIndex) + " " + object.className
-    popUpButton?.addItem (withTitle: stringValue)
-    let item = popUpButton?.lastItem
-    item?.target = object
-    item?.action = #selector(EBManagedObject.showObjectWindowFromExplorerButton(_:))
-  }
-}
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

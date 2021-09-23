@@ -206,14 +206,16 @@ import Cocoa
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-  //--- Array controller property: mSelectedCharacterController
-    self.mSelectedCharacterController.addExplorer (name: "mSelectedCharacterController", y:&y, view:view)
-  //--- Selection controller property: mCharacterSelection
-    self.mCharacterSelection.addExplorer (name: "mCharacterSelection", y:&y, view:view)
-  //---
-    super.populateExplorerWindow (&y, view:view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    //--- Array controller property: mSelectedCharacterController
+      self.mSelectedCharacterController.addExplorer (name: "mSelectedCharacterController", y:&y, view:view)
+    //--- Selection controller property: mCharacterSelection
+      self.mCharacterSelection.addExplorer (name: "mCharacterSelection", y:&y, view:view)
+    //---
+      super.populateExplorerWindow (&y, view:view)
+    }
+  #endif
 
   //····················································································································
   //    windowNibName

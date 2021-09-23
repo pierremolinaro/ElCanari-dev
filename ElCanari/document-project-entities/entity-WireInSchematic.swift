@@ -300,82 +300,86 @@ final class WireInSchematic : SchematicObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netName",
-      idx: self.netName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netName_property.mObserverExplorer,
-      valueExplorer: &self.netName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netClassName",
-      idx: self.netClassName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netClassName_property.mObserverExplorer,
-      valueExplorer: &self.netClassName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "hasNet",
-      idx: self.hasNet_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.hasNet_property.mObserverExplorer,
-      valueExplorer: &self.hasNet_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mP1",
-      idx:self.mP1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mP1_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mP2",
-      idx:self.mP2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mP2_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netName",
+        idx: self.netName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netName_property.mObserverExplorer,
+        valueExplorer: &self.netName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netClassName",
+        idx: self.netClassName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netClassName_property.mObserverExplorer,
+        valueExplorer: &self.netClassName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "hasNet",
+        idx: self.hasNet_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.hasNet_property.mObserverExplorer,
+        valueExplorer: &self.hasNet_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mP1",
+        idx:self.mP1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mP1_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mP2",
+        idx:self.mP2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mP2_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
-  //--- To one property: mP1
-    self.mP1_property.mObserverExplorer = nil
-    self.mP1_property.mValueExplorer = nil
-  //--- To one property: mP2
-    self.mP2_property.mObserverExplorer = nil
-    self.mP2_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
+    //--- To one property: mP1
+      self.mP1_property.mObserverExplorer = nil
+      self.mP1_property.mValueExplorer = nil
+    //--- To one property: mP2
+      self.mP2_property.mObserverExplorer = nil
+      self.mP2_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships

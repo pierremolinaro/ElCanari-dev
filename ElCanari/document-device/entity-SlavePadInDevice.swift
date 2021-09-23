@@ -468,114 +468,117 @@ final class SlavePadInDevice : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mCenterX",
-      idx: self.mCenterX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCenterX_property.mObserverExplorer,
-      valueExplorer: &self.mCenterX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCenterY",
-      idx: self.mCenterY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCenterY_property.mObserverExplorer,
-      valueExplorer: &self.mCenterY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mWidth",
-      idx: self.mWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mWidth_property.mObserverExplorer,
-      valueExplorer: &self.mWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mHeight",
-      idx: self.mHeight_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mHeight_property.mObserverExplorer,
-      valueExplorer: &self.mHeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mHoleWidth",
-      idx: self.mHoleWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mHoleWidth_property.mObserverExplorer,
-      valueExplorer: &self.mHoleWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mHoleHeight",
-      idx: self.mHoleHeight_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mHoleHeight_property.mObserverExplorer,
-      valueExplorer: &self.mHoleHeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mShape",
-      idx: self.mShape_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mShape_property.mObserverExplorer,
-      valueExplorer: &self.mShape_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mStyle",
-      idx: self.mStyle_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mStyle_property.mObserverExplorer,
-      valueExplorer: &self.mStyle_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "frontSideFilledBezierPath",
-      idx: self.frontSideFilledBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontSideFilledBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.frontSideFilledBezierPath_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backSideFilledBezierPath",
-      idx: self.backSideFilledBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backSideFilledBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.backSideFilledBezierPath_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "padNumberDisplay",
-      idx: self.padNumberDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.padNumberDisplay_property.mObserverExplorer,
-      valueExplorer: &self.padNumberDisplay_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mMasterPad",
-      idx:self.mMasterPad_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mMasterPad_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mCenterX",
+        idx: self.mCenterX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCenterX_property.mObserverExplorer,
+        valueExplorer: &self.mCenterX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCenterY",
+        idx: self.mCenterY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCenterY_property.mObserverExplorer,
+        valueExplorer: &self.mCenterY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mWidth",
+        idx: self.mWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mWidth_property.mObserverExplorer,
+        valueExplorer: &self.mWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mHeight",
+        idx: self.mHeight_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mHeight_property.mObserverExplorer,
+        valueExplorer: &self.mHeight_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mHoleWidth",
+        idx: self.mHoleWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mHoleWidth_property.mObserverExplorer,
+        valueExplorer: &self.mHoleWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mHoleHeight",
+        idx: self.mHoleHeight_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mHoleHeight_property.mObserverExplorer,
+        valueExplorer: &self.mHoleHeight_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mShape",
+        idx: self.mShape_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mShape_property.mObserverExplorer,
+        valueExplorer: &self.mShape_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mStyle",
+        idx: self.mStyle_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mStyle_property.mObserverExplorer,
+        valueExplorer: &self.mStyle_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "frontSideFilledBezierPath",
+        idx: self.frontSideFilledBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontSideFilledBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.frontSideFilledBezierPath_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backSideFilledBezierPath",
+        idx: self.backSideFilledBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backSideFilledBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.backSideFilledBezierPath_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "padNumberDisplay",
+        idx: self.padNumberDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.padNumberDisplay_property.mObserverExplorer,
+        valueExplorer: &self.padNumberDisplay_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mMasterPad",
+        idx:self.mMasterPad_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mMasterPad_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mCenterX
     self.mCenterX_property.mObserverExplorer = nil
     self.mCenterX_property.mValueExplorer = nil
@@ -600,12 +603,13 @@ final class SlavePadInDevice : EBManagedObject,
   //--- Atomic property: mStyle
     self.mStyle_property.mObserverExplorer = nil
     self.mStyle_property.mValueExplorer = nil
-  //--- To one property: mMasterPad
-    self.mMasterPad_property.mObserverExplorer = nil
-    self.mMasterPad_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To one property: mMasterPad
+      self.mMasterPad_property.mObserverExplorer = nil
+      self.mMasterPad_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -632,22 +636,22 @@ final class SlavePadInDevice : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mCenterX
-    self.mCenterX_property.storeIn (dictionary: ioDictionary, forKey: "mCenterX")
-  //--- Atomic property: mCenterY
-    self.mCenterY_property.storeIn (dictionary: ioDictionary, forKey: "mCenterY")
-  //--- Atomic property: mWidth
-    self.mWidth_property.storeIn (dictionary: ioDictionary, forKey: "mWidth")
-  //--- Atomic property: mHeight
-    self.mHeight_property.storeIn (dictionary: ioDictionary, forKey: "mHeight")
-  //--- Atomic property: mHoleWidth
-    self.mHoleWidth_property.storeIn (dictionary: ioDictionary, forKey: "mHoleWidth")
-  //--- Atomic property: mHoleHeight
-    self.mHoleHeight_property.storeIn (dictionary: ioDictionary, forKey: "mHoleHeight")
-  //--- Atomic property: mShape
-    self.mShape_property.storeIn (dictionary: ioDictionary, forKey: "mShape")
-  //--- Atomic property: mStyle
-    self.mStyle_property.storeIn (dictionary: ioDictionary, forKey: "mStyle")
+    //--- Atomic property: mCenterX
+      self.mCenterX_property.storeIn (dictionary: ioDictionary, forKey: "mCenterX")
+    //--- Atomic property: mCenterY
+      self.mCenterY_property.storeIn (dictionary: ioDictionary, forKey: "mCenterY")
+    //--- Atomic property: mWidth
+      self.mWidth_property.storeIn (dictionary: ioDictionary, forKey: "mWidth")
+    //--- Atomic property: mHeight
+      self.mHeight_property.storeIn (dictionary: ioDictionary, forKey: "mHeight")
+    //--- Atomic property: mHoleWidth
+      self.mHoleWidth_property.storeIn (dictionary: ioDictionary, forKey: "mHoleWidth")
+    //--- Atomic property: mHoleHeight
+      self.mHoleHeight_property.storeIn (dictionary: ioDictionary, forKey: "mHoleHeight")
+    //--- Atomic property: mShape
+      self.mShape_property.storeIn (dictionary: ioDictionary, forKey: "mShape")
+    //--- Atomic property: mStyle
+      self.mStyle_property.storeIn (dictionary: ioDictionary, forKey: "mStyle")
   }
 
   //····················································································································

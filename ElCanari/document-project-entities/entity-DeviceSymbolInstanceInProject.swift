@@ -268,75 +268,79 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mSymbolInstanceName",
-      idx: self.mSymbolInstanceName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSymbolInstanceName_property.mObserverExplorer,
-      valueExplorer: &self.mSymbolInstanceName_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "symbolAndTypeName",
-      idx: self.symbolAndTypeName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.symbolAndTypeName_property.mObserverExplorer,
-      valueExplorer: &self.symbolAndTypeName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "symbolTypeName",
-      idx: self.symbolTypeName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.symbolTypeName_property.mObserverExplorer,
-      valueExplorer: &self.symbolTypeName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "filledBezierPath",
-      idx: self.filledBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.filledBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.filledBezierPath_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "strokeBezierPath",
-      idx: self.strokeBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.strokeBezierPath_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mSymbolType",
-      idx:self.mSymbolType_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mSymbolType_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mSymbolInstanceName",
+        idx: self.mSymbolInstanceName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSymbolInstanceName_property.mObserverExplorer,
+        valueExplorer: &self.mSymbolInstanceName_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "symbolAndTypeName",
+        idx: self.symbolAndTypeName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.symbolAndTypeName_property.mObserverExplorer,
+        valueExplorer: &self.symbolAndTypeName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "symbolTypeName",
+        idx: self.symbolTypeName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.symbolTypeName_property.mObserverExplorer,
+        valueExplorer: &self.symbolTypeName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "filledBezierPath",
+        idx: self.filledBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.filledBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.filledBezierPath_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "strokeBezierPath",
+        idx: self.strokeBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.strokeBezierPath_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mSymbolType",
+        idx:self.mSymbolType_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mSymbolType_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.mObserverExplorer = nil
     self.mSymbolInstanceName_property.mValueExplorer = nil
-  //--- To one property: mSymbolType
-    self.mSymbolType_property.mObserverExplorer = nil
-    self.mSymbolType_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To one property: mSymbolType
+      self.mSymbolType_property.mObserverExplorer = nil
+      self.mSymbolType_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -363,8 +367,8 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mSymbolInstanceName
-    self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolInstanceName")
+    //--- Atomic property: mSymbolInstanceName
+      self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolInstanceName")
   //--- To one property: mSymbolType
     self.store (managedObject:self.mSymbolType_property.propval,
       relationshipName: "mSymbolType",

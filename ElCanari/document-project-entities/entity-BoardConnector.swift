@@ -1120,272 +1120,275 @@ final class BoardConnector : BoardObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mComponentPadName",
-      idx: self.mComponentPadName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mComponentPadName_property.mObserverExplorer,
-      valueExplorer: &self.mComponentPadName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mPadIndex",
-      idx: self.mPadIndex_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mPadIndex_property.mObserverExplorer,
-      valueExplorer: &self.mPadIndex_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDefaultHoleDiameterUnit",
-      idx: self.mDefaultHoleDiameterUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDefaultHoleDiameterUnit_property.mObserverExplorer,
-      valueExplorer: &self.mDefaultHoleDiameterUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCustomHoleDiameter",
-      idx: self.mCustomHoleDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCustomHoleDiameter_property.mObserverExplorer,
-      valueExplorer: &self.mCustomHoleDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCustomHoleDiameterUnit",
-      idx: self.mCustomHoleDiameterUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCustomHoleDiameterUnit_property.mObserverExplorer,
-      valueExplorer: &self.mCustomHoleDiameterUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mUsesCustomHoleDiameter",
-      idx: self.mUsesCustomHoleDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mUsesCustomHoleDiameter_property.mObserverExplorer,
-      valueExplorer: &self.mUsesCustomHoleDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDefaultPadDiameterUnit",
-      idx: self.mDefaultPadDiameterUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDefaultPadDiameterUnit_property.mObserverExplorer,
-      valueExplorer: &self.mDefaultPadDiameterUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCustomPadDiameter",
-      idx: self.mCustomPadDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCustomPadDiameter_property.mObserverExplorer,
-      valueExplorer: &self.mCustomPadDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCustomPadDiameterUnit",
-      idx: self.mCustomPadDiameterUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCustomPadDiameterUnit_property.mObserverExplorer,
-      valueExplorer: &self.mCustomPadDiameterUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mUsesCustomPadDiameter",
-      idx: self.mUsesCustomPadDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mUsesCustomPadDiameter_property.mObserverExplorer,
-      valueExplorer: &self.mUsesCustomPadDiameter_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "isConnectedToSomePad",
-      idx: self.isConnectedToSomePad_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.isConnectedToSomePad_property.mObserverExplorer,
-      valueExplorer: &self.isConnectedToSomePad_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "location",
-      idx: self.location_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.location_property.mObserverExplorer,
-      valueExplorer: &self.location_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netNameFromComponentPad",
-      idx: self.netNameFromComponentPad_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netNameFromComponentPad_property.mObserverExplorer,
-      valueExplorer: &self.netNameFromComponentPad_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netNameAndPadLocation",
-      idx: self.netNameAndPadLocation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netNameAndPadLocation_property.mObserverExplorer,
-      valueExplorer: &self.netNameAndPadLocation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "side",
-      idx: self.side_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.side_property.mObserverExplorer,
-      valueExplorer: &self.side_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "isVia",
-      idx: self.isVia_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.isVia_property.mObserverExplorer,
-      valueExplorer: &self.isVia_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "viaDefaultHoleDiameter",
-      idx: self.viaDefaultHoleDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.viaDefaultHoleDiameter_property.mObserverExplorer,
-      valueExplorer: &self.viaDefaultHoleDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "viaDefaultPadDiameter",
-      idx: self.viaDefaultPadDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.viaDefaultPadDiameter_property.mObserverExplorer,
-      valueExplorer: &self.viaDefaultPadDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netNameFromTracks",
-      idx: self.netNameFromTracks_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netNameFromTracks_property.mObserverExplorer,
-      valueExplorer: &self.netNameFromTracks_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netClassName",
-      idx: self.netClassName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netClassName_property.mObserverExplorer,
-      valueExplorer: &self.netClassName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "connectedToComponent",
-      idx: self.connectedToComponent_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.connectedToComponent_property.mObserverExplorer,
-      valueExplorer: &self.connectedToComponent_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "actualHoleDiameter",
-      idx: self.actualHoleDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.actualHoleDiameter_property.mObserverExplorer,
-      valueExplorer: &self.actualHoleDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "actualPadDiameter",
-      idx: self.actualPadDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.actualPadDiameter_property.mObserverExplorer,
-      valueExplorer: &self.actualPadDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "signatureForERCChecking",
-      idx: self.signatureForERCChecking_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
-      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mTracksP2",
-      idx:mTracksP2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mTracksP2_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mTracksP1",
-      idx:mTracksP1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mTracksP1_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mComponent",
-      idx:self.mComponent_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mComponent_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mComponentPadName",
+        idx: self.mComponentPadName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mComponentPadName_property.mObserverExplorer,
+        valueExplorer: &self.mComponentPadName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mPadIndex",
+        idx: self.mPadIndex_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mPadIndex_property.mObserverExplorer,
+        valueExplorer: &self.mPadIndex_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mX",
+        idx: self.mX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX_property.mObserverExplorer,
+        valueExplorer: &self.mX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY",
+        idx: self.mY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY_property.mObserverExplorer,
+        valueExplorer: &self.mY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDefaultHoleDiameterUnit",
+        idx: self.mDefaultHoleDiameterUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDefaultHoleDiameterUnit_property.mObserverExplorer,
+        valueExplorer: &self.mDefaultHoleDiameterUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCustomHoleDiameter",
+        idx: self.mCustomHoleDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCustomHoleDiameter_property.mObserverExplorer,
+        valueExplorer: &self.mCustomHoleDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCustomHoleDiameterUnit",
+        idx: self.mCustomHoleDiameterUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCustomHoleDiameterUnit_property.mObserverExplorer,
+        valueExplorer: &self.mCustomHoleDiameterUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mUsesCustomHoleDiameter",
+        idx: self.mUsesCustomHoleDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mUsesCustomHoleDiameter_property.mObserverExplorer,
+        valueExplorer: &self.mUsesCustomHoleDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDefaultPadDiameterUnit",
+        idx: self.mDefaultPadDiameterUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDefaultPadDiameterUnit_property.mObserverExplorer,
+        valueExplorer: &self.mDefaultPadDiameterUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCustomPadDiameter",
+        idx: self.mCustomPadDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCustomPadDiameter_property.mObserverExplorer,
+        valueExplorer: &self.mCustomPadDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCustomPadDiameterUnit",
+        idx: self.mCustomPadDiameterUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCustomPadDiameterUnit_property.mObserverExplorer,
+        valueExplorer: &self.mCustomPadDiameterUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mUsesCustomPadDiameter",
+        idx: self.mUsesCustomPadDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mUsesCustomPadDiameter_property.mObserverExplorer,
+        valueExplorer: &self.mUsesCustomPadDiameter_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "isConnectedToSomePad",
+        idx: self.isConnectedToSomePad_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.isConnectedToSomePad_property.mObserverExplorer,
+        valueExplorer: &self.isConnectedToSomePad_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "location",
+        idx: self.location_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.location_property.mObserverExplorer,
+        valueExplorer: &self.location_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netNameFromComponentPad",
+        idx: self.netNameFromComponentPad_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netNameFromComponentPad_property.mObserverExplorer,
+        valueExplorer: &self.netNameFromComponentPad_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netNameAndPadLocation",
+        idx: self.netNameAndPadLocation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netNameAndPadLocation_property.mObserverExplorer,
+        valueExplorer: &self.netNameAndPadLocation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "side",
+        idx: self.side_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.side_property.mObserverExplorer,
+        valueExplorer: &self.side_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "isVia",
+        idx: self.isVia_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.isVia_property.mObserverExplorer,
+        valueExplorer: &self.isVia_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "viaDefaultHoleDiameter",
+        idx: self.viaDefaultHoleDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.viaDefaultHoleDiameter_property.mObserverExplorer,
+        valueExplorer: &self.viaDefaultHoleDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "viaDefaultPadDiameter",
+        idx: self.viaDefaultPadDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.viaDefaultPadDiameter_property.mObserverExplorer,
+        valueExplorer: &self.viaDefaultPadDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netNameFromTracks",
+        idx: self.netNameFromTracks_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netNameFromTracks_property.mObserverExplorer,
+        valueExplorer: &self.netNameFromTracks_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netClassName",
+        idx: self.netClassName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netClassName_property.mObserverExplorer,
+        valueExplorer: &self.netClassName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "connectedToComponent",
+        idx: self.connectedToComponent_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.connectedToComponent_property.mObserverExplorer,
+        valueExplorer: &self.connectedToComponent_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "actualHoleDiameter",
+        idx: self.actualHoleDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.actualHoleDiameter_property.mObserverExplorer,
+        valueExplorer: &self.actualHoleDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "actualPadDiameter",
+        idx: self.actualPadDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.actualPadDiameter_property.mObserverExplorer,
+        valueExplorer: &self.actualPadDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "signatureForERCChecking",
+        idx: self.signatureForERCChecking_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+        valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mTracksP2",
+        idx:mTracksP2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mTracksP2_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mTracksP1",
+        idx:mTracksP1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mTracksP1_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mComponent",
+        idx:self.mComponent_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mComponent_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mComponentPadName
     self.mComponentPadName_property.mObserverExplorer = nil
     self.mComponentPadName_property.mValueExplorer = nil
@@ -1398,8 +1401,8 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: mY
     self.mY_property.mObserverExplorer = nil
     self.mY_property.mValueExplorer = nil
-  //--- To many property: mTracksP2
-    self.mTracksP2_property.mValueExplorer = nil
+    //--- To many property: mTracksP2
+      self.mTracksP2_property.mValueExplorer = nil
   //--- Atomic property: mDefaultHoleDiameterUnit
     self.mDefaultHoleDiameterUnit_property.mObserverExplorer = nil
     self.mDefaultHoleDiameterUnit_property.mValueExplorer = nil
@@ -1424,14 +1427,15 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: mUsesCustomPadDiameter
     self.mUsesCustomPadDiameter_property.mObserverExplorer = nil
     self.mUsesCustomPadDiameter_property.mValueExplorer = nil
-  //--- To many property: mTracksP1
-    self.mTracksP1_property.mValueExplorer = nil
-  //--- To one property: mComponent
-    self.mComponent_property.mObserverExplorer = nil
-    self.mComponent_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: mTracksP1
+      self.mTracksP1_property.mValueExplorer = nil
+    //--- To one property: mComponent
+      self.mComponent_property.mObserverExplorer = nil
+      self.mComponent_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -1460,36 +1464,36 @@ final class BoardConnector : BoardObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mComponentPadName
-    self.mComponentPadName_property.storeIn (dictionary: ioDictionary, forKey: "mComponentPadName")
-  //--- Atomic property: mPadIndex
-    self.mPadIndex_property.storeIn (dictionary: ioDictionary, forKey: "mPadIndex")
-  //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
-  //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+    //--- Atomic property: mComponentPadName
+      self.mComponentPadName_property.storeIn (dictionary: ioDictionary, forKey: "mComponentPadName")
+    //--- Atomic property: mPadIndex
+      self.mPadIndex_property.storeIn (dictionary: ioDictionary, forKey: "mPadIndex")
+    //--- Atomic property: mX
+      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+    //--- Atomic property: mY
+      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   //--- To many property: mTracksP2
     self.store (
       managedObjectArray: self.mTracksP2_property.propval.values,
       relationshipName: "mTracksP2",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mDefaultHoleDiameterUnit
-    self.mDefaultHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultHoleDiameterUnit")
-  //--- Atomic property: mCustomHoleDiameter
-    self.mCustomHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mCustomHoleDiameter")
-  //--- Atomic property: mCustomHoleDiameterUnit
-    self.mCustomHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mCustomHoleDiameterUnit")
-  //--- Atomic property: mUsesCustomHoleDiameter
-    self.mUsesCustomHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mUsesCustomHoleDiameter")
-  //--- Atomic property: mDefaultPadDiameterUnit
-    self.mDefaultPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultPadDiameterUnit")
-  //--- Atomic property: mCustomPadDiameter
-    self.mCustomPadDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mCustomPadDiameter")
-  //--- Atomic property: mCustomPadDiameterUnit
-    self.mCustomPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mCustomPadDiameterUnit")
-  //--- Atomic property: mUsesCustomPadDiameter
-    self.mUsesCustomPadDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mUsesCustomPadDiameter")
+    //--- Atomic property: mDefaultHoleDiameterUnit
+      self.mDefaultHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultHoleDiameterUnit")
+    //--- Atomic property: mCustomHoleDiameter
+      self.mCustomHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mCustomHoleDiameter")
+    //--- Atomic property: mCustomHoleDiameterUnit
+      self.mCustomHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mCustomHoleDiameterUnit")
+    //--- Atomic property: mUsesCustomHoleDiameter
+      self.mUsesCustomHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mUsesCustomHoleDiameter")
+    //--- Atomic property: mDefaultPadDiameterUnit
+      self.mDefaultPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultPadDiameterUnit")
+    //--- Atomic property: mCustomPadDiameter
+      self.mCustomPadDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mCustomPadDiameter")
+    //--- Atomic property: mCustomPadDiameterUnit
+      self.mCustomPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mCustomPadDiameterUnit")
+    //--- Atomic property: mUsesCustomPadDiameter
+      self.mUsesCustomPadDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mUsesCustomPadDiameter")
   //--- To many property: mTracksP1
     self.store (
       managedObjectArray: self.mTracksP1_property.propval.values,

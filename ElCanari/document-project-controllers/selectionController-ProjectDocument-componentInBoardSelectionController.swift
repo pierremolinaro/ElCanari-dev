@@ -487,257 +487,269 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //    Explorer
   //····················································································································
 
-  private var mValueExplorer : NSButton?
-  private var mExplorerWindow : NSWindow?
+  #if BUILD_OBJECT_EXPLORER
+    private var mValueExplorer : NSButton?
+    private var mExplorerWindow : NSWindow?
+  #endif
 
   //····················································································································
 
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-    let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-    let tf = NSTextField (frame:secondColumn (y))
-    tf.isEnabled = true
-    tf.isEditable = false
-    tf.stringValue = name
-    tf.font = font
-    view.addSubview (tf)
-    let valueExplorer = NSButton (frame: thirdColumn (y))
-    valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_ProjectDocument_componentInBoardSelectionController.showObjectWindowFromExplorerButton(_:))
-    view.addSubview (valueExplorer)
-    self.mValueExplorer = valueExplorer
-    y += EXPLORER_ROW_HEIGHT
-  }
+  #if BUILD_OBJECT_EXPLORER
+    final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
+      let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+      let tf = NSTextField (frame:secondColumn (y))
+      tf.isEnabled = true
+      tf.isEditable = false
+      tf.stringValue = name
+      tf.font = font
+      view.addSubview (tf)
+      let valueExplorer = NSButton (frame: thirdColumn (y))
+      valueExplorer.font = font
+      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.target = self
+      valueExplorer.action = #selector(SelectionController_ProjectDocument_componentInBoardSelectionController.showObjectWindowFromExplorerButton(_:))
+      view.addSubview (valueExplorer)
+      self.mValueExplorer = valueExplorer
+      y += EXPLORER_ROW_HEIGHT
+    }
+  #endif
 
   //····················································································································
 
-  func buildExplorerWindow () {
-  //-------------------------------------------------- Create Window
-    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
-    self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
-  //-------------------------------------------------- Adding properties
-    let view = NSView (frame: r)
-    var y : CGFloat = 0.0
-    createEntryForPropertyNamed (
-      "mSlavePadsShouldBeRouted",
-      idx: self.mSlavePadsShouldBeRouted_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSlavePadsShouldBeRouted_property.mObserverExplorer,
-      valueExplorer: &self.mSlavePadsShouldBeRouted_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRotation",
-      idx: self.mRotation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRotation_property.mObserverExplorer,
-      valueExplorer: &self.mRotation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSide",
-      idx: self.mSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSide_property.mObserverExplorer,
-      valueExplorer: &self.mSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDisplayLegend",
-      idx: self.mDisplayLegend_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDisplayLegend_property.mObserverExplorer,
-      valueExplorer: &self.mDisplayLegend_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mNameIsVisibleInBoard",
-      idx: self.mNameIsVisibleInBoard_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNameIsVisibleInBoard_property.mObserverExplorer,
-      valueExplorer: &self.mNameIsVisibleInBoard_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mXName",
-      idx: self.mXName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mXName_property.mObserverExplorer,
-      valueExplorer: &self.mXName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mYName",
-      idx: self.mYName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mYName_property.mObserverExplorer,
-      valueExplorer: &self.mYName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mNameFontSize",
-      idx: self.mNameFontSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNameFontSize_property.mObserverExplorer,
-      valueExplorer: &self.mNameFontSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mNameRotation",
-      idx: self.mNameRotation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNameRotation_property.mObserverExplorer,
-      valueExplorer: &self.mNameRotation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mValueIsVisibleInBoard",
-      idx: self.mValueIsVisibleInBoard_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mValueIsVisibleInBoard_property.mObserverExplorer,
-      valueExplorer: &self.mValueIsVisibleInBoard_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mXValue",
-      idx: self.mXValue_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mXValue_property.mObserverExplorer,
-      valueExplorer: &self.mXValue_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mYValue",
-      idx: self.mYValue_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mYValue_property.mObserverExplorer,
-      valueExplorer: &self.mYValue_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mValueFontSize",
-      idx: self.mValueFontSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mValueFontSize_property.mObserverExplorer,
-      valueExplorer: &self.mValueFontSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mValueRotation",
-      idx: self.mValueRotation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mValueRotation_property.mObserverExplorer,
-      valueExplorer: &self.mValueRotation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mComponentValue",
-      idx: self.mComponentValue_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mComponentValue_property.mObserverExplorer,
-      valueExplorer: &self.mComponentValue_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mNamePrefix",
-      idx: self.mNamePrefix_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNamePrefix_property.mObserverExplorer,
-      valueExplorer: &self.mNamePrefix_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mNameIndex",
-      idx: self.mNameIndex_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNameIndex_property.mObserverExplorer,
-      valueExplorer: &self.mNameIndex_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mXUnit",
-      idx: self.mXUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mXUnit_property.mObserverExplorer,
-      valueExplorer: &self.mXUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mYUnit",
-      idx: self.mYUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mYUnit_property.mObserverExplorer,
-      valueExplorer: &self.mYUnit_property.mValueExplorer
-    )
-  //-------------------------------------------------- Finish Window construction
-  //--- Resize View
-    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    view.frame = viewFrame
-  //--- Set content size
-    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
-  //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_ProjectDocument_componentInBoardSelectionController.deleteSelectionControllerWindowAction(_:))
-  //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    self.mExplorerWindow!.title = windowTitle
-  //--- Add Scroll view
-    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    let sw = NSScrollView (frame: frame)
-    sw.hasVerticalScroller = true
-    sw.documentView = view
-    self.mExplorerWindow!.contentView = sw
-  }
-
+  #if BUILD_OBJECT_EXPLORER
+    func buildExplorerWindow () {
+    //-------------------------------------------------- Create Window
+      let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
+      self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
+    //-------------------------------------------------- Adding properties
+      let view = NSView (frame: r)
+      var y : CGFloat = 0.0
+      createEntryForPropertyNamed (
+        "mSlavePadsShouldBeRouted",
+        idx: self.mSlavePadsShouldBeRouted_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSlavePadsShouldBeRouted_property.mObserverExplorer,
+        valueExplorer: &self.mSlavePadsShouldBeRouted_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mX",
+        idx: self.mX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX_property.mObserverExplorer,
+        valueExplorer: &self.mX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY",
+        idx: self.mY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY_property.mObserverExplorer,
+        valueExplorer: &self.mY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRotation",
+        idx: self.mRotation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRotation_property.mObserverExplorer,
+        valueExplorer: &self.mRotation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSide",
+        idx: self.mSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSide_property.mObserverExplorer,
+        valueExplorer: &self.mSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDisplayLegend",
+        idx: self.mDisplayLegend_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDisplayLegend_property.mObserverExplorer,
+        valueExplorer: &self.mDisplayLegend_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mNameIsVisibleInBoard",
+        idx: self.mNameIsVisibleInBoard_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNameIsVisibleInBoard_property.mObserverExplorer,
+        valueExplorer: &self.mNameIsVisibleInBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mXName",
+        idx: self.mXName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mXName_property.mObserverExplorer,
+        valueExplorer: &self.mXName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mYName",
+        idx: self.mYName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mYName_property.mObserverExplorer,
+        valueExplorer: &self.mYName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mNameFontSize",
+        idx: self.mNameFontSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNameFontSize_property.mObserverExplorer,
+        valueExplorer: &self.mNameFontSize_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mNameRotation",
+        idx: self.mNameRotation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNameRotation_property.mObserverExplorer,
+        valueExplorer: &self.mNameRotation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mValueIsVisibleInBoard",
+        idx: self.mValueIsVisibleInBoard_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mValueIsVisibleInBoard_property.mObserverExplorer,
+        valueExplorer: &self.mValueIsVisibleInBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mXValue",
+        idx: self.mXValue_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mXValue_property.mObserverExplorer,
+        valueExplorer: &self.mXValue_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mYValue",
+        idx: self.mYValue_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mYValue_property.mObserverExplorer,
+        valueExplorer: &self.mYValue_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mValueFontSize",
+        idx: self.mValueFontSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mValueFontSize_property.mObserverExplorer,
+        valueExplorer: &self.mValueFontSize_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mValueRotation",
+        idx: self.mValueRotation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mValueRotation_property.mObserverExplorer,
+        valueExplorer: &self.mValueRotation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mComponentValue",
+        idx: self.mComponentValue_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mComponentValue_property.mObserverExplorer,
+        valueExplorer: &self.mComponentValue_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mNamePrefix",
+        idx: self.mNamePrefix_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNamePrefix_property.mObserverExplorer,
+        valueExplorer: &self.mNamePrefix_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mNameIndex",
+        idx: self.mNameIndex_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNameIndex_property.mObserverExplorer,
+        valueExplorer: &self.mNameIndex_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mXUnit",
+        idx: self.mXUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mXUnit_property.mObserverExplorer,
+        valueExplorer: &self.mXUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mYUnit",
+        idx: self.mYUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mYUnit_property.mObserverExplorer,
+        valueExplorer: &self.mYUnit_property.mValueExplorer
+      )
+    //-------------------------------------------------- Finish Window construction
+    //--- Resize View
+      let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      view.frame = viewFrame
+    //--- Set content size
+      self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
+    //--- Set close button as 'remove window' button
+      let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
+      closeButton?.target = self
+      closeButton?.action = #selector(SelectionController_ProjectDocument_componentInBoardSelectionController.deleteSelectionControllerWindowAction(_:))
+    //--- Set window title
+      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      self.mExplorerWindow!.title = windowTitle
+    //--- Add Scroll view
+      let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      let sw = NSScrollView (frame: frame)
+      sw.hasVerticalScroller = true
+      sw.documentView = view
+      self.mExplorerWindow!.contentView = sw
+    }
+  #endif
+  
   //····················································································································
   //   showObjectWindowFromExplorerButton
   //····················································································································
 
-  @objc func showObjectWindowFromExplorerButton (_ : Any) {
-    if self.mExplorerWindow == nil {
-      self.buildExplorerWindow ()
+  #if BUILD_OBJECT_EXPLORER
+    @objc func showObjectWindowFromExplorerButton (_ : Any) {
+      if self.mExplorerWindow == nil {
+        self.buildExplorerWindow ()
+      }
+      self.mExplorerWindow?.makeKeyAndOrderFront (nil)
     }
-    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
-  }
-
+  #endif
+  
   //····················································································································
   //   deleteSelectionControllerWindowAction
   //····················································································································
 
-  @objc func deleteSelectionControllerWindowAction (_ : Any) {
-    self.clearObjectExplorer ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    @objc func deleteSelectionControllerWindowAction (_ : Any) {
+      self.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //   clearObjectExplorer
   //····················································································································
 
-  func clearObjectExplorer () {
-    if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
-      closeButton.target = nil
+  #if BUILD_OBJECT_EXPLORER
+    func clearObjectExplorer () {
+      if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
+        closeButton.target = nil
+      }
+      self.mExplorerWindow?.orderOut (nil)
+      self.mExplorerWindow = nil
     }
-    self.mExplorerWindow?.orderOut (nil)
-    self.mExplorerWindow = nil
-  }
+  #endif
 
   //····················································································································
 

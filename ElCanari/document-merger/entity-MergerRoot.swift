@@ -1553,244 +1553,247 @@ final class MergerRoot : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "selectedPageIndex",
-      idx: self.selectedPageIndex_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectedPageIndex_property.mObserverExplorer,
-      valueExplorer: &self.selectedPageIndex_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "zoom",
-      idx: self.zoom_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.zoom_property.mObserverExplorer,
-      valueExplorer: &self.zoom_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "automaticBoardSize",
-      idx: self.automaticBoardSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.automaticBoardSize_property.mObserverExplorer,
-      valueExplorer: &self.automaticBoardSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardManualWidth",
-      idx: self.boardManualWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardManualWidth_property.mObserverExplorer,
-      valueExplorer: &self.boardManualWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardManualHeight",
-      idx: self.boardManualHeight_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardManualHeight_property.mObserverExplorer,
-      valueExplorer: &self.boardManualHeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardWidthUnit",
-      idx: self.boardWidthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardWidthUnit_property.mObserverExplorer,
-      valueExplorer: &self.boardWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardHeightUnit",
-      idx: self.boardHeightUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardHeightUnit_property.mObserverExplorer,
-      valueExplorer: &self.boardHeightUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "overlapingArrangment",
-      idx: self.overlapingArrangment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.overlapingArrangment_property.mObserverExplorer,
-      valueExplorer: &self.overlapingArrangment_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectedBoardXUnit",
-      idx: self.selectedBoardXUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectedBoardXUnit_property.mObserverExplorer,
-      valueExplorer: &self.selectedBoardXUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectedBoardYUnit",
-      idx: self.selectedBoardYUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectedBoardYUnit_property.mObserverExplorer,
-      valueExplorer: &self.selectedBoardYUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardLimitWidth",
-      idx: self.boardLimitWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardLimitWidth_property.mObserverExplorer,
-      valueExplorer: &self.boardLimitWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardLimitWidthUnit",
-      idx: self.boardLimitWidthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardLimitWidthUnit_property.mObserverExplorer,
-      valueExplorer: &self.boardLimitWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "arrowMagnitude",
-      idx: self.arrowMagnitude_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.arrowMagnitude_property.mObserverExplorer,
-      valueExplorer: &self.arrowMagnitude_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "arrowMagnitudeUnit",
-      idx: self.arrowMagnitudeUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.arrowMagnitudeUnit_property.mObserverExplorer,
-      valueExplorer: &self.arrowMagnitudeUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "shiftArrowMagnitude",
-      idx: self.shiftArrowMagnitude_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.shiftArrowMagnitude_property.mObserverExplorer,
-      valueExplorer: &self.shiftArrowMagnitude_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "shiftArrowMagnitudeUnit",
-      idx: self.shiftArrowMagnitudeUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.shiftArrowMagnitudeUnit_property.mObserverExplorer,
-      valueExplorer: &self.shiftArrowMagnitudeUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mPDFBoardBackgroundColor",
-      idx: self.mPDFBoardBackgroundColor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mPDFBoardBackgroundColor_property.mObserverExplorer,
-      valueExplorer: &self.mPDFBoardBackgroundColor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mArtworkName",
-      idx: self.mArtworkName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mArtworkName_property.mObserverExplorer,
-      valueExplorer: &self.mArtworkName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mArtworkVersion",
-      idx: self.mArtworkVersion_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mArtworkVersion_property.mObserverExplorer,
-      valueExplorer: &self.mArtworkVersion_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "modelNames",
-      idx: self.modelNames_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.modelNames_property.mObserverExplorer,
-      valueExplorer: &self.modelNames_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardRect",
-      idx: self.boardRect_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardRect_property.mObserverExplorer,
-      valueExplorer: &self.boardRect_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardDisplayRect",
-      idx: self.boardDisplayRect_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardDisplayRect_property.mObserverExplorer,
-      valueExplorer: &self.boardDisplayRect_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardWidth",
-      idx: self.boardWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardWidth_property.mObserverExplorer,
-      valueExplorer: &self.boardWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardHeight",
-      idx: self.boardHeight_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardHeight_property.mObserverExplorer,
-      valueExplorer: &self.boardHeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardOutlineRectDisplay",
-      idx: self.boardOutlineRectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardOutlineRectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.boardOutlineRectDisplay_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "boardModels",
-      idx:boardModels_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&boardModels_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "boardInstances",
-      idx:boardInstances_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&boardInstances_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mArtwork",
-      idx:self.mArtwork_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mArtwork_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "selectedPageIndex",
+        idx: self.selectedPageIndex_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectedPageIndex_property.mObserverExplorer,
+        valueExplorer: &self.selectedPageIndex_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "zoom",
+        idx: self.zoom_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.zoom_property.mObserverExplorer,
+        valueExplorer: &self.zoom_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "automaticBoardSize",
+        idx: self.automaticBoardSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.automaticBoardSize_property.mObserverExplorer,
+        valueExplorer: &self.automaticBoardSize_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardManualWidth",
+        idx: self.boardManualWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardManualWidth_property.mObserverExplorer,
+        valueExplorer: &self.boardManualWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardManualHeight",
+        idx: self.boardManualHeight_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardManualHeight_property.mObserverExplorer,
+        valueExplorer: &self.boardManualHeight_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardWidthUnit",
+        idx: self.boardWidthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardWidthUnit_property.mObserverExplorer,
+        valueExplorer: &self.boardWidthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardHeightUnit",
+        idx: self.boardHeightUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardHeightUnit_property.mObserverExplorer,
+        valueExplorer: &self.boardHeightUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "overlapingArrangment",
+        idx: self.overlapingArrangment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.overlapingArrangment_property.mObserverExplorer,
+        valueExplorer: &self.overlapingArrangment_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectedBoardXUnit",
+        idx: self.selectedBoardXUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectedBoardXUnit_property.mObserverExplorer,
+        valueExplorer: &self.selectedBoardXUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectedBoardYUnit",
+        idx: self.selectedBoardYUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectedBoardYUnit_property.mObserverExplorer,
+        valueExplorer: &self.selectedBoardYUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardLimitWidth",
+        idx: self.boardLimitWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardLimitWidth_property.mObserverExplorer,
+        valueExplorer: &self.boardLimitWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardLimitWidthUnit",
+        idx: self.boardLimitWidthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardLimitWidthUnit_property.mObserverExplorer,
+        valueExplorer: &self.boardLimitWidthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "arrowMagnitude",
+        idx: self.arrowMagnitude_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.arrowMagnitude_property.mObserverExplorer,
+        valueExplorer: &self.arrowMagnitude_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "arrowMagnitudeUnit",
+        idx: self.arrowMagnitudeUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.arrowMagnitudeUnit_property.mObserverExplorer,
+        valueExplorer: &self.arrowMagnitudeUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "shiftArrowMagnitude",
+        idx: self.shiftArrowMagnitude_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.shiftArrowMagnitude_property.mObserverExplorer,
+        valueExplorer: &self.shiftArrowMagnitude_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "shiftArrowMagnitudeUnit",
+        idx: self.shiftArrowMagnitudeUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.shiftArrowMagnitudeUnit_property.mObserverExplorer,
+        valueExplorer: &self.shiftArrowMagnitudeUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mPDFBoardBackgroundColor",
+        idx: self.mPDFBoardBackgroundColor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mPDFBoardBackgroundColor_property.mObserverExplorer,
+        valueExplorer: &self.mPDFBoardBackgroundColor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mArtworkName",
+        idx: self.mArtworkName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mArtworkName_property.mObserverExplorer,
+        valueExplorer: &self.mArtworkName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mArtworkVersion",
+        idx: self.mArtworkVersion_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mArtworkVersion_property.mObserverExplorer,
+        valueExplorer: &self.mArtworkVersion_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "modelNames",
+        idx: self.modelNames_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.modelNames_property.mObserverExplorer,
+        valueExplorer: &self.modelNames_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardRect",
+        idx: self.boardRect_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardRect_property.mObserverExplorer,
+        valueExplorer: &self.boardRect_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardDisplayRect",
+        idx: self.boardDisplayRect_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardDisplayRect_property.mObserverExplorer,
+        valueExplorer: &self.boardDisplayRect_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardWidth",
+        idx: self.boardWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardWidth_property.mObserverExplorer,
+        valueExplorer: &self.boardWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardHeight",
+        idx: self.boardHeight_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardHeight_property.mObserverExplorer,
+        valueExplorer: &self.boardHeight_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardOutlineRectDisplay",
+        idx: self.boardOutlineRectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardOutlineRectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.boardOutlineRectDisplay_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "boardModels",
+        idx:boardModels_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&boardModels_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "boardInstances",
+        idx:boardInstances_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&boardInstances_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mArtwork",
+        idx:self.mArtwork_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mArtwork_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
-  //--- To many property: boardModels
-    self.boardModels_property.mValueExplorer = nil
-  //--- To many property: boardInstances
-    self.boardInstances_property.mValueExplorer = nil
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
+    //--- To many property: boardModels
+      self.boardModels_property.mValueExplorer = nil
+    //--- To many property: boardInstances
+      self.boardInstances_property.mValueExplorer = nil
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.mObserverExplorer = nil
     self.selectedPageIndex_property.mValueExplorer = nil
@@ -1848,44 +1851,45 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: mArtworkVersion
     self.mArtworkVersion_property.mObserverExplorer = nil
     self.mArtworkVersion_property.mValueExplorer = nil
-  //--- Atomic proxy property: minPPTPTTTWdisplayUnit
-    self.minPPTPTTTWdisplayUnit_property.mObserverExplorer = nil
-    self.minPPTPTTTWdisplayUnit_property.mValueExplorer = nil
-  //--- Atomic proxy property: minPPTPTTTW
-    self.minPPTPTTTW_property.mObserverExplorer = nil
-    self.minPPTPTTTW_property.mValueExplorer = nil
-  //--- Atomic proxy property: minValueForOARdisplayUnit
-    self.minValueForOARdisplayUnit_property.mObserverExplorer = nil
-    self.minValueForOARdisplayUnit_property.mValueExplorer = nil
-  //--- Atomic proxy property: minValueForOARinEBUnit
-    self.minValueForOARinEBUnit_property.mObserverExplorer = nil
-    self.minValueForOARinEBUnit_property.mValueExplorer = nil
-  //--- Atomic proxy property: minValueForPHDdisplayUnit
-    self.minValueForPHDdisplayUnit_property.mObserverExplorer = nil
-    self.minValueForPHDdisplayUnit_property.mValueExplorer = nil
-  //--- Atomic proxy property: minValueForPHDinEBUnit
-    self.minValueForPHDinEBUnit_property.mObserverExplorer = nil
-    self.minValueForPHDinEBUnit_property.mValueExplorer = nil
-  //--- Atomic proxy property: minValueForBoardLimitWidth
-    self.minValueForBoardLimitWidth_property.mObserverExplorer = nil
-    self.minValueForBoardLimitWidth_property.mValueExplorer = nil
-  //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
-    self.minValueForBoardLimitWidthDisplayUnit_property.mObserverExplorer = nil
-    self.minValueForBoardLimitWidthDisplayUnit_property.mValueExplorer = nil
-  //--- Atomic proxy property: drillDataFileExtension
-    self.drillDataFileExtension_property.mObserverExplorer = nil
-    self.drillDataFileExtension_property.mValueExplorer = nil
-  //--- ToMany proxy: fileGenerationParameterArray
-    self.fileGenerationParameterArray_property.mObserverExplorer = nil
-  //--- Atomic proxy property: comments
-    self.comments_property.mObserverExplorer = nil
-    self.comments_property.mValueExplorer = nil
-  //--- To one property: mArtwork
-    self.mArtwork_property.mObserverExplorer = nil
-    self.mArtwork_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- Atomic proxy property: minPPTPTTTWdisplayUnit
+      self.minPPTPTTTWdisplayUnit_property.mObserverExplorer = nil
+      self.minPPTPTTTWdisplayUnit_property.mValueExplorer = nil
+    //--- Atomic proxy property: minPPTPTTTW
+      self.minPPTPTTTW_property.mObserverExplorer = nil
+      self.minPPTPTTTW_property.mValueExplorer = nil
+    //--- Atomic proxy property: minValueForOARdisplayUnit
+      self.minValueForOARdisplayUnit_property.mObserverExplorer = nil
+      self.minValueForOARdisplayUnit_property.mValueExplorer = nil
+    //--- Atomic proxy property: minValueForOARinEBUnit
+      self.minValueForOARinEBUnit_property.mObserverExplorer = nil
+      self.minValueForOARinEBUnit_property.mValueExplorer = nil
+    //--- Atomic proxy property: minValueForPHDdisplayUnit
+      self.minValueForPHDdisplayUnit_property.mObserverExplorer = nil
+      self.minValueForPHDdisplayUnit_property.mValueExplorer = nil
+    //--- Atomic proxy property: minValueForPHDinEBUnit
+      self.minValueForPHDinEBUnit_property.mObserverExplorer = nil
+      self.minValueForPHDinEBUnit_property.mValueExplorer = nil
+    //--- Atomic proxy property: minValueForBoardLimitWidth
+      self.minValueForBoardLimitWidth_property.mObserverExplorer = nil
+      self.minValueForBoardLimitWidth_property.mValueExplorer = nil
+    //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
+      self.minValueForBoardLimitWidthDisplayUnit_property.mObserverExplorer = nil
+      self.minValueForBoardLimitWidthDisplayUnit_property.mValueExplorer = nil
+    //--- Atomic proxy property: drillDataFileExtension
+      self.drillDataFileExtension_property.mObserverExplorer = nil
+      self.drillDataFileExtension_property.mValueExplorer = nil
+    //--- ToMany proxy: fileGenerationParameterArray
+      self.fileGenerationParameterArray_property.mObserverExplorer = nil
+    //--- Atomic proxy property: comments
+      self.comments_property.mObserverExplorer = nil
+      self.comments_property.mValueExplorer = nil
+    //--- To one property: mArtwork
+      self.mArtwork_property.mObserverExplorer = nil
+      self.mArtwork_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -1926,44 +1930,44 @@ final class MergerRoot : EBManagedObject,
       relationshipName: "boardInstances",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
-  //--- Atomic property: zoom
-    self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
-  //--- Atomic property: automaticBoardSize
-    self.automaticBoardSize_property.storeIn (dictionary: ioDictionary, forKey: "automaticBoardSize")
-  //--- Atomic property: boardManualWidth
-    self.boardManualWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardManualWidth")
-  //--- Atomic property: boardManualHeight
-    self.boardManualHeight_property.storeIn (dictionary: ioDictionary, forKey: "boardManualHeight")
-  //--- Atomic property: boardWidthUnit
-    self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
-  //--- Atomic property: boardHeightUnit
-    self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
-  //--- Atomic property: overlapingArrangment
-    self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey: "overlapingArrangment")
-  //--- Atomic property: selectedBoardXUnit
-    self.selectedBoardXUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardXUnit")
-  //--- Atomic property: selectedBoardYUnit
-    self.selectedBoardYUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardYUnit")
-  //--- Atomic property: boardLimitWidth
-    self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidth")
-  //--- Atomic property: boardLimitWidthUnit
-    self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidthUnit")
-  //--- Atomic property: arrowMagnitude
-    self.arrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitude")
-  //--- Atomic property: arrowMagnitudeUnit
-    self.arrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitudeUnit")
-  //--- Atomic property: shiftArrowMagnitude
-    self.shiftArrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitude")
-  //--- Atomic property: shiftArrowMagnitudeUnit
-    self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitudeUnit")
-  //--- Atomic property: mPDFBoardBackgroundColor
-    self.mPDFBoardBackgroundColor_property.storeIn (dictionary: ioDictionary, forKey: "mPDFBoardBackgroundColor")
-  //--- Atomic property: mArtworkName
-    self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkName")
-  //--- Atomic property: mArtworkVersion
-    self.mArtworkVersion_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkVersion")
+    //--- Atomic property: selectedPageIndex
+      self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
+    //--- Atomic property: zoom
+      self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
+    //--- Atomic property: automaticBoardSize
+      self.automaticBoardSize_property.storeIn (dictionary: ioDictionary, forKey: "automaticBoardSize")
+    //--- Atomic property: boardManualWidth
+      self.boardManualWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardManualWidth")
+    //--- Atomic property: boardManualHeight
+      self.boardManualHeight_property.storeIn (dictionary: ioDictionary, forKey: "boardManualHeight")
+    //--- Atomic property: boardWidthUnit
+      self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
+    //--- Atomic property: boardHeightUnit
+      self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
+    //--- Atomic property: overlapingArrangment
+      self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey: "overlapingArrangment")
+    //--- Atomic property: selectedBoardXUnit
+      self.selectedBoardXUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardXUnit")
+    //--- Atomic property: selectedBoardYUnit
+      self.selectedBoardYUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardYUnit")
+    //--- Atomic property: boardLimitWidth
+      self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidth")
+    //--- Atomic property: boardLimitWidthUnit
+      self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidthUnit")
+    //--- Atomic property: arrowMagnitude
+      self.arrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitude")
+    //--- Atomic property: arrowMagnitudeUnit
+      self.arrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitudeUnit")
+    //--- Atomic property: shiftArrowMagnitude
+      self.shiftArrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitude")
+    //--- Atomic property: shiftArrowMagnitudeUnit
+      self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitudeUnit")
+    //--- Atomic property: mPDFBoardBackgroundColor
+      self.mPDFBoardBackgroundColor_property.storeIn (dictionary: ioDictionary, forKey: "mPDFBoardBackgroundColor")
+    //--- Atomic property: mArtworkName
+      self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkName")
+    //--- Atomic property: mArtworkVersion
+      self.mArtworkVersion_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkVersion")
   //--- To one property: mArtwork
     self.store (managedObject:self.mArtwork_property.propval,
       relationshipName: "mArtwork",

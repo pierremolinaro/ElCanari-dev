@@ -127,120 +127,131 @@ final class SelectionController_FontDocument_mCharacterSelection : EBSwiftBaseOb
   //    Explorer
   //····················································································································
 
-  private var mValueExplorer : NSButton?
-  private var mExplorerWindow : NSWindow?
+  #if BUILD_OBJECT_EXPLORER
+    private var mValueExplorer : NSButton?
+    private var mExplorerWindow : NSWindow?
+  #endif
 
   //····················································································································
 
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-    let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-    let tf = NSTextField (frame:secondColumn (y))
-    tf.isEnabled = true
-    tf.isEditable = false
-    tf.stringValue = name
-    tf.font = font
-    view.addSubview (tf)
-    let valueExplorer = NSButton (frame:thirdColumn (y))
-    valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_FontDocument_mCharacterSelection.showObjectWindowFromExplorerButton(_:))
-    view.addSubview (valueExplorer)
-    mValueExplorer = valueExplorer
-    y += EXPLORER_ROW_HEIGHT
-  }
+  #if BUILD_OBJECT_EXPLORER
+    final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
+      let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+      let tf = NSTextField (frame:secondColumn (y))
+      tf.isEnabled = true
+      tf.isEditable = false
+      tf.stringValue = name
+      tf.font = font
+      view.addSubview (tf)
+      let valueExplorer = NSButton (frame:thirdColumn (y))
+      valueExplorer.font = font
+      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.target = self
+      valueExplorer.action = #selector(SelectionController_FontDocument_mCharacterSelection.showObjectWindowFromExplorerButton(_:))
+      view.addSubview (valueExplorer)
+      mValueExplorer = valueExplorer
+      y += EXPLORER_ROW_HEIGHT
+    }
+  #endif
 
   //····················································································································
 
-  func buildExplorerWindow () {
-  //-------------------------------------------------- Create Window
-    let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
-    mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
-  //-------------------------------------------------- Adding properties
-    let view = NSView (frame:r)
-    var y : CGFloat = 0.0
-    createEntryForPropertyNamed (
-      "advance",
-      idx: self.advance_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.advance_property.mObserverExplorer,
-      valueExplorer: &self.advance_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "codePoint",
-      idx: self.codePoint_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.codePoint_property.mObserverExplorer,
-      valueExplorer: &self.codePoint_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mWarnsWhenAdvanceIsZero",
-      idx: self.mWarnsWhenAdvanceIsZero_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer,
-      valueExplorer: &self.mWarnsWhenAdvanceIsZero_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mWarnsWhenNoSegment",
-      idx: self.mWarnsWhenNoSegment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mWarnsWhenNoSegment_property.mObserverExplorer,
-      valueExplorer: &self.mWarnsWhenNoSegment_property.mValueExplorer
-    )
-  //-------------------------------------------------- Finish Window construction
-  //--- Resize View
-    let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    view.frame = viewFrame
-  //--- Set content size
-    mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
-  //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_FontDocument_mCharacterSelection.deleteSelectionControllerWindowAction(_:))
-  //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    mExplorerWindow!.title = windowTitle
-  //--- Add Scroll view
-    let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    let sw = NSScrollView (frame:frame)
-    sw.hasVerticalScroller = true
-    sw.documentView = view
-    mExplorerWindow!.contentView = sw
-  }
-
+  #if BUILD_OBJECT_EXPLORER
+    func buildExplorerWindow () {
+    //-------------------------------------------------- Create Window
+      let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
+      mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
+    //-------------------------------------------------- Adding properties
+      let view = NSView (frame:r)
+      var y : CGFloat = 0.0
+      createEntryForPropertyNamed (
+        "advance",
+        idx: self.advance_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.advance_property.mObserverExplorer,
+        valueExplorer: &self.advance_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "codePoint",
+        idx: self.codePoint_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.codePoint_property.mObserverExplorer,
+        valueExplorer: &self.codePoint_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mWarnsWhenAdvanceIsZero",
+        idx: self.mWarnsWhenAdvanceIsZero_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer,
+        valueExplorer: &self.mWarnsWhenAdvanceIsZero_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mWarnsWhenNoSegment",
+        idx: self.mWarnsWhenNoSegment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mWarnsWhenNoSegment_property.mObserverExplorer,
+        valueExplorer: &self.mWarnsWhenNoSegment_property.mValueExplorer
+      )
+    //-------------------------------------------------- Finish Window construction
+    //--- Resize View
+      let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
+      view.frame = viewFrame
+    //--- Set content size
+      mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
+    //--- Set close button as 'remove window' button
+      let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
+      closeButton?.target = self
+      closeButton?.action = #selector(SelectionController_FontDocument_mCharacterSelection.deleteSelectionControllerWindowAction(_:))
+    //--- Set window title
+      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      mExplorerWindow!.title = windowTitle
+    //--- Add Scroll view
+      let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
+      let sw = NSScrollView (frame:frame)
+      sw.hasVerticalScroller = true
+      sw.documentView = view
+      mExplorerWindow!.contentView = sw
+    }
+  #endif
   //····················································································································
   //   showObjectWindowFromExplorerButton
   //····················································································································
 
-  @objc func showObjectWindowFromExplorerButton (_ : Any) {
-    if mExplorerWindow == nil {
-      buildExplorerWindow ()
+  #if BUILD_OBJECT_EXPLORER
+    @objc func showObjectWindowFromExplorerButton (_ : Any) {
+      if mExplorerWindow == nil {
+        buildExplorerWindow ()
+      }
+      mExplorerWindow?.makeKeyAndOrderFront(nil)
     }
-    mExplorerWindow?.makeKeyAndOrderFront(nil)
-  }
+  #endif
 
   //····················································································································
   //   deleteSelectionControllerWindowAction
   //····················································································································
 
-  @objc func deleteSelectionControllerWindowAction (_ : Any) {
-    clearObjectExplorer ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    @objc func deleteSelectionControllerWindowAction (_ : Any) {
+      clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //   clearObjectExplorer
   //····················································································································
 
-  func clearObjectExplorer () {
-    let closeButton = mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton!.target = nil
-    mExplorerWindow?.orderOut (nil)
-    mExplorerWindow = nil
-  }
+  #if BUILD_OBJECT_EXPLORER
+    func clearObjectExplorer () {
+      let closeButton = mExplorerWindow?.standardWindowButton (.closeButton)
+      closeButton!.target = nil
+      mExplorerWindow?.orderOut (nil)
+      mExplorerWindow = nil
+    }
+  #endif
 
   //···················································································································*
 

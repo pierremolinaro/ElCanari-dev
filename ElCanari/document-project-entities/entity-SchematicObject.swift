@@ -221,80 +221,84 @@ class SchematicObject : EBGraphicManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "connectedPoints",
-      idx: self.connectedPoints_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.connectedPoints_property.mObserverExplorer,
-      valueExplorer: &self.connectedPoints_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "sheetDescriptor",
-      idx: self.sheetDescriptor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.sheetDescriptor_property.mObserverExplorer,
-      valueExplorer: &self.sheetDescriptor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "isPlacedInSchematic",
-      idx: self.isPlacedInSchematic_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.isPlacedInSchematic_property.mObserverExplorer,
-      valueExplorer: &self.isPlacedInSchematic_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mSheet",
-      idx:self.mSheet_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mSheet_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "connectedPoints",
+        idx: self.connectedPoints_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.connectedPoints_property.mObserverExplorer,
+        valueExplorer: &self.connectedPoints_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "sheetDescriptor",
+        idx: self.sheetDescriptor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.sheetDescriptor_property.mObserverExplorer,
+        valueExplorer: &self.sheetDescriptor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "isPlacedInSchematic",
+        idx: self.isPlacedInSchematic_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.isPlacedInSchematic_property.mObserverExplorer,
+        valueExplorer: &self.isPlacedInSchematic_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mSheet",
+        idx:self.mSheet_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mSheet_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
-  //--- To one property: mSheet
-    self.mSheet_property.mObserverExplorer = nil
-    self.mSheet_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
+    //--- To one property: mSheet
+      self.mSheet_property.mObserverExplorer = nil
+      self.mSheet_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships

@@ -1771,397 +1771,400 @@ final class ComponentInProject : BoardObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mSlavePadsShouldBeRouted",
-      idx: self.mSlavePadsShouldBeRouted_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSlavePadsShouldBeRouted_property.mObserverExplorer,
-      valueExplorer: &self.mSlavePadsShouldBeRouted_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRotation",
-      idx: self.mRotation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRotation_property.mObserverExplorer,
-      valueExplorer: &self.mRotation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSide",
-      idx: self.mSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSide_property.mObserverExplorer,
-      valueExplorer: &self.mSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDisplayLegend",
-      idx: self.mDisplayLegend_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDisplayLegend_property.mObserverExplorer,
-      valueExplorer: &self.mDisplayLegend_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mNameIsVisibleInBoard",
-      idx: self.mNameIsVisibleInBoard_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNameIsVisibleInBoard_property.mObserverExplorer,
-      valueExplorer: &self.mNameIsVisibleInBoard_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mXName",
-      idx: self.mXName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mXName_property.mObserverExplorer,
-      valueExplorer: &self.mXName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mYName",
-      idx: self.mYName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mYName_property.mObserverExplorer,
-      valueExplorer: &self.mYName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mNameFontSize",
-      idx: self.mNameFontSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNameFontSize_property.mObserverExplorer,
-      valueExplorer: &self.mNameFontSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mNameRotation",
-      idx: self.mNameRotation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNameRotation_property.mObserverExplorer,
-      valueExplorer: &self.mNameRotation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mValueIsVisibleInBoard",
-      idx: self.mValueIsVisibleInBoard_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mValueIsVisibleInBoard_property.mObserverExplorer,
-      valueExplorer: &self.mValueIsVisibleInBoard_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mXValue",
-      idx: self.mXValue_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mXValue_property.mObserverExplorer,
-      valueExplorer: &self.mXValue_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mYValue",
-      idx: self.mYValue_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mYValue_property.mObserverExplorer,
-      valueExplorer: &self.mYValue_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mValueFontSize",
-      idx: self.mValueFontSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mValueFontSize_property.mObserverExplorer,
-      valueExplorer: &self.mValueFontSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mValueRotation",
-      idx: self.mValueRotation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mValueRotation_property.mObserverExplorer,
-      valueExplorer: &self.mValueRotation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mComponentValue",
-      idx: self.mComponentValue_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mComponentValue_property.mObserverExplorer,
-      valueExplorer: &self.mComponentValue_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mNamePrefix",
-      idx: self.mNamePrefix_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNamePrefix_property.mObserverExplorer,
-      valueExplorer: &self.mNamePrefix_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mNameIndex",
-      idx: self.mNameIndex_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNameIndex_property.mObserverExplorer,
-      valueExplorer: &self.mNameIndex_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mXUnit",
-      idx: self.mXUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mXUnit_property.mObserverExplorer,
-      valueExplorer: &self.mXUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mYUnit",
-      idx: self.mYUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mYUnit_property.mObserverExplorer,
-      valueExplorer: &self.mYUnit_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "deviceName",
-      idx: self.deviceName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.deviceName_property.mObserverExplorer,
-      valueExplorer: &self.deviceName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "signatureForERCChecking",
-      idx: self.signatureForERCChecking_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
-      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "packagePadDictionary",
-      idx: self.packagePadDictionary_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.packagePadDictionary_property.mObserverExplorer,
-      valueExplorer: &self.packagePadDictionary_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectedPackageName",
-      idx: self.selectedPackageName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectedPackageName_property.mObserverExplorer,
-      valueExplorer: &self.selectedPackageName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "availablePackages",
-      idx: self.availablePackages_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.availablePackages_property.mObserverExplorer,
-      valueExplorer: &self.availablePackages_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "componentIsPlacedInBoard",
-      idx: self.componentIsPlacedInBoard_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.componentIsPlacedInBoard_property.mObserverExplorer,
-      valueExplorer: &self.componentIsPlacedInBoard_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "componentIsPlacedInBoardString",
-      idx: self.componentIsPlacedInBoardString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.componentIsPlacedInBoardString_property.mObserverExplorer,
-      valueExplorer: &self.componentIsPlacedInBoardString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "strokeBezierPath",
-      idx: self.strokeBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.strokeBezierPath_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "pinPadAssignments",
-      idx: self.pinPadAssignments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.pinPadAssignments_property.mObserverExplorer,
-      valueExplorer: &self.pinPadAssignments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "hasSlavePads",
-      idx: self.hasSlavePads_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.hasSlavePads_property.mObserverExplorer,
-      valueExplorer: &self.hasSlavePads_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "placementInSchematic",
-      idx: self.placementInSchematic_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.placementInSchematic_property.mObserverExplorer,
-      valueExplorer: &self.placementInSchematic_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "deviceSymbolDictionary",
-      idx: self.deviceSymbolDictionary_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.deviceSymbolDictionary_property.mObserverExplorer,
-      valueExplorer: &self.deviceSymbolDictionary_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "componentNameFontName",
-      idx: self.componentNameFontName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.componentNameFontName_property.mObserverExplorer,
-      valueExplorer: &self.componentNameFontName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "componentValueFontName",
-      idx: self.componentValueFontName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.componentValueFontName_property.mObserverExplorer,
-      valueExplorer: &self.componentValueFontName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "componentPadDictionary",
-      idx: self.componentPadDictionary_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.componentPadDictionary_property.mObserverExplorer,
-      valueExplorer: &self.componentPadDictionary_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "padNetDictionary",
-      idx: self.padNetDictionary_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.padNetDictionary_property.mObserverExplorer,
-      valueExplorer: &self.padNetDictionary_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "componentName",
-      idx: self.componentName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.componentName_property.mObserverExplorer,
-      valueExplorer: &self.componentName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "unplacedSymbols",
-      idx: self.unplacedSymbols_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.unplacedSymbols_property.mObserverExplorer,
-      valueExplorer: &self.unplacedSymbols_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mConnectors",
-      idx:mConnectors_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mConnectors_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mSymbols",
-      idx:mSymbols_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mSymbols_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mDevice",
-      idx:self.mDevice_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mDevice_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mSelectedPackage",
-      idx:self.mSelectedPackage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mSelectedPackage_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mNameFont",
-      idx:self.mNameFont_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mNameFont_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mValueFont",
-      idx:self.mValueFont_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mValueFont_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mSlavePadsShouldBeRouted",
+        idx: self.mSlavePadsShouldBeRouted_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSlavePadsShouldBeRouted_property.mObserverExplorer,
+        valueExplorer: &self.mSlavePadsShouldBeRouted_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mX",
+        idx: self.mX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX_property.mObserverExplorer,
+        valueExplorer: &self.mX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY",
+        idx: self.mY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY_property.mObserverExplorer,
+        valueExplorer: &self.mY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRotation",
+        idx: self.mRotation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRotation_property.mObserverExplorer,
+        valueExplorer: &self.mRotation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSide",
+        idx: self.mSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSide_property.mObserverExplorer,
+        valueExplorer: &self.mSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDisplayLegend",
+        idx: self.mDisplayLegend_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDisplayLegend_property.mObserverExplorer,
+        valueExplorer: &self.mDisplayLegend_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mNameIsVisibleInBoard",
+        idx: self.mNameIsVisibleInBoard_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNameIsVisibleInBoard_property.mObserverExplorer,
+        valueExplorer: &self.mNameIsVisibleInBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mXName",
+        idx: self.mXName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mXName_property.mObserverExplorer,
+        valueExplorer: &self.mXName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mYName",
+        idx: self.mYName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mYName_property.mObserverExplorer,
+        valueExplorer: &self.mYName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mNameFontSize",
+        idx: self.mNameFontSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNameFontSize_property.mObserverExplorer,
+        valueExplorer: &self.mNameFontSize_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mNameRotation",
+        idx: self.mNameRotation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNameRotation_property.mObserverExplorer,
+        valueExplorer: &self.mNameRotation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mValueIsVisibleInBoard",
+        idx: self.mValueIsVisibleInBoard_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mValueIsVisibleInBoard_property.mObserverExplorer,
+        valueExplorer: &self.mValueIsVisibleInBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mXValue",
+        idx: self.mXValue_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mXValue_property.mObserverExplorer,
+        valueExplorer: &self.mXValue_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mYValue",
+        idx: self.mYValue_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mYValue_property.mObserverExplorer,
+        valueExplorer: &self.mYValue_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mValueFontSize",
+        idx: self.mValueFontSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mValueFontSize_property.mObserverExplorer,
+        valueExplorer: &self.mValueFontSize_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mValueRotation",
+        idx: self.mValueRotation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mValueRotation_property.mObserverExplorer,
+        valueExplorer: &self.mValueRotation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mComponentValue",
+        idx: self.mComponentValue_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mComponentValue_property.mObserverExplorer,
+        valueExplorer: &self.mComponentValue_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mNamePrefix",
+        idx: self.mNamePrefix_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNamePrefix_property.mObserverExplorer,
+        valueExplorer: &self.mNamePrefix_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mNameIndex",
+        idx: self.mNameIndex_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNameIndex_property.mObserverExplorer,
+        valueExplorer: &self.mNameIndex_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mXUnit",
+        idx: self.mXUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mXUnit_property.mObserverExplorer,
+        valueExplorer: &self.mXUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mYUnit",
+        idx: self.mYUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mYUnit_property.mObserverExplorer,
+        valueExplorer: &self.mYUnit_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "deviceName",
+        idx: self.deviceName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.deviceName_property.mObserverExplorer,
+        valueExplorer: &self.deviceName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "signatureForERCChecking",
+        idx: self.signatureForERCChecking_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+        valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "packagePadDictionary",
+        idx: self.packagePadDictionary_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.packagePadDictionary_property.mObserverExplorer,
+        valueExplorer: &self.packagePadDictionary_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectedPackageName",
+        idx: self.selectedPackageName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectedPackageName_property.mObserverExplorer,
+        valueExplorer: &self.selectedPackageName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "availablePackages",
+        idx: self.availablePackages_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.availablePackages_property.mObserverExplorer,
+        valueExplorer: &self.availablePackages_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "componentIsPlacedInBoard",
+        idx: self.componentIsPlacedInBoard_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.componentIsPlacedInBoard_property.mObserverExplorer,
+        valueExplorer: &self.componentIsPlacedInBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "componentIsPlacedInBoardString",
+        idx: self.componentIsPlacedInBoardString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.componentIsPlacedInBoardString_property.mObserverExplorer,
+        valueExplorer: &self.componentIsPlacedInBoardString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "strokeBezierPath",
+        idx: self.strokeBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.strokeBezierPath_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "pinPadAssignments",
+        idx: self.pinPadAssignments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.pinPadAssignments_property.mObserverExplorer,
+        valueExplorer: &self.pinPadAssignments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "hasSlavePads",
+        idx: self.hasSlavePads_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.hasSlavePads_property.mObserverExplorer,
+        valueExplorer: &self.hasSlavePads_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "placementInSchematic",
+        idx: self.placementInSchematic_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.placementInSchematic_property.mObserverExplorer,
+        valueExplorer: &self.placementInSchematic_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "deviceSymbolDictionary",
+        idx: self.deviceSymbolDictionary_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.deviceSymbolDictionary_property.mObserverExplorer,
+        valueExplorer: &self.deviceSymbolDictionary_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "componentNameFontName",
+        idx: self.componentNameFontName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.componentNameFontName_property.mObserverExplorer,
+        valueExplorer: &self.componentNameFontName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "componentValueFontName",
+        idx: self.componentValueFontName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.componentValueFontName_property.mObserverExplorer,
+        valueExplorer: &self.componentValueFontName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "componentPadDictionary",
+        idx: self.componentPadDictionary_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.componentPadDictionary_property.mObserverExplorer,
+        valueExplorer: &self.componentPadDictionary_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "padNetDictionary",
+        idx: self.padNetDictionary_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.padNetDictionary_property.mObserverExplorer,
+        valueExplorer: &self.padNetDictionary_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "componentName",
+        idx: self.componentName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.componentName_property.mObserverExplorer,
+        valueExplorer: &self.componentName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "unplacedSymbols",
+        idx: self.unplacedSymbols_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.unplacedSymbols_property.mObserverExplorer,
+        valueExplorer: &self.unplacedSymbols_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mConnectors",
+        idx:mConnectors_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mConnectors_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mSymbols",
+        idx:mSymbols_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mSymbols_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mDevice",
+        idx:self.mDevice_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mDevice_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mSelectedPackage",
+        idx:self.mSelectedPackage_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mSelectedPackage_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mNameFont",
+        idx:self.mNameFont_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mNameFont_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mValueFont",
+        idx:self.mValueFont_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mValueFont_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mSlavePadsShouldBeRouted
     self.mSlavePadsShouldBeRouted_property.mObserverExplorer = nil
     self.mSlavePadsShouldBeRouted_property.mValueExplorer = nil
@@ -2180,10 +2183,10 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: mDisplayLegend
     self.mDisplayLegend_property.mObserverExplorer = nil
     self.mDisplayLegend_property.mValueExplorer = nil
-  //--- To many property: mConnectors
-    self.mConnectors_property.mValueExplorer = nil
-  //--- To many property: mSymbols
-    self.mSymbols_property.mValueExplorer = nil
+    //--- To many property: mConnectors
+      self.mConnectors_property.mValueExplorer = nil
+    //--- To many property: mSymbols
+      self.mSymbols_property.mValueExplorer = nil
   //--- Atomic property: mNameIsVisibleInBoard
     self.mNameIsVisibleInBoard_property.mObserverExplorer = nil
     self.mNameIsVisibleInBoard_property.mValueExplorer = nil
@@ -2229,23 +2232,24 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: mYUnit
     self.mYUnit_property.mObserverExplorer = nil
     self.mYUnit_property.mValueExplorer = nil
-  //--- ToMany proxy: mPackages
-    self.mPackages_property.mObserverExplorer = nil
-  //--- To one property: mDevice
-    self.mDevice_property.mObserverExplorer = nil
-    self.mDevice_property.mValueExplorer = nil
-  //--- To one property: mSelectedPackage
-    self.mSelectedPackage_property.mObserverExplorer = nil
-    self.mSelectedPackage_property.mValueExplorer = nil
-  //--- To one property: mNameFont
-    self.mNameFont_property.mObserverExplorer = nil
-    self.mNameFont_property.mValueExplorer = nil
-  //--- To one property: mValueFont
-    self.mValueFont_property.mObserverExplorer = nil
-    self.mValueFont_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- ToMany proxy: mPackages
+      self.mPackages_property.mObserverExplorer = nil
+    //--- To one property: mDevice
+      self.mDevice_property.mObserverExplorer = nil
+      self.mDevice_property.mValueExplorer = nil
+    //--- To one property: mSelectedPackage
+      self.mSelectedPackage_property.mObserverExplorer = nil
+      self.mSelectedPackage_property.mValueExplorer = nil
+    //--- To one property: mNameFont
+      self.mNameFont_property.mObserverExplorer = nil
+      self.mNameFont_property.mValueExplorer = nil
+    //--- To one property: mValueFont
+      self.mValueFont_property.mObserverExplorer = nil
+      self.mValueFont_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -2277,18 +2281,18 @@ final class ComponentInProject : BoardObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mSlavePadsShouldBeRouted
-    self.mSlavePadsShouldBeRouted_property.storeIn (dictionary: ioDictionary, forKey: "mSlavePadsShouldBeRouted")
-  //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
-  //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
-  //--- Atomic property: mRotation
-    self.mRotation_property.storeIn (dictionary: ioDictionary, forKey: "mRotation")
-  //--- Atomic property: mSide
-    self.mSide_property.storeIn (dictionary: ioDictionary, forKey: "mSide")
-  //--- Atomic property: mDisplayLegend
-    self.mDisplayLegend_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayLegend")
+    //--- Atomic property: mSlavePadsShouldBeRouted
+      self.mSlavePadsShouldBeRouted_property.storeIn (dictionary: ioDictionary, forKey: "mSlavePadsShouldBeRouted")
+    //--- Atomic property: mX
+      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+    //--- Atomic property: mY
+      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+    //--- Atomic property: mRotation
+      self.mRotation_property.storeIn (dictionary: ioDictionary, forKey: "mRotation")
+    //--- Atomic property: mSide
+      self.mSide_property.storeIn (dictionary: ioDictionary, forKey: "mSide")
+    //--- Atomic property: mDisplayLegend
+      self.mDisplayLegend_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayLegend")
   //--- To many property: mConnectors
     self.store (
       managedObjectArray: self.mConnectors_property.propval.values,
@@ -2301,36 +2305,36 @@ final class ComponentInProject : BoardObject,
       relationshipName: "mSymbols",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mNameIsVisibleInBoard
-    self.mNameIsVisibleInBoard_property.storeIn (dictionary: ioDictionary, forKey: "mNameIsVisibleInBoard")
-  //--- Atomic property: mXName
-    self.mXName_property.storeIn (dictionary: ioDictionary, forKey: "mXName")
-  //--- Atomic property: mYName
-    self.mYName_property.storeIn (dictionary: ioDictionary, forKey: "mYName")
-  //--- Atomic property: mNameFontSize
-    self.mNameFontSize_property.storeIn (dictionary: ioDictionary, forKey: "mNameFontSize")
-  //--- Atomic property: mNameRotation
-    self.mNameRotation_property.storeIn (dictionary: ioDictionary, forKey: "mNameRotation")
-  //--- Atomic property: mValueIsVisibleInBoard
-    self.mValueIsVisibleInBoard_property.storeIn (dictionary: ioDictionary, forKey: "mValueIsVisibleInBoard")
-  //--- Atomic property: mXValue
-    self.mXValue_property.storeIn (dictionary: ioDictionary, forKey: "mXValue")
-  //--- Atomic property: mYValue
-    self.mYValue_property.storeIn (dictionary: ioDictionary, forKey: "mYValue")
-  //--- Atomic property: mValueFontSize
-    self.mValueFontSize_property.storeIn (dictionary: ioDictionary, forKey: "mValueFontSize")
-  //--- Atomic property: mValueRotation
-    self.mValueRotation_property.storeIn (dictionary: ioDictionary, forKey: "mValueRotation")
-  //--- Atomic property: mComponentValue
-    self.mComponentValue_property.storeIn (dictionary: ioDictionary, forKey: "mComponentValue")
-  //--- Atomic property: mNamePrefix
-    self.mNamePrefix_property.storeIn (dictionary: ioDictionary, forKey: "mNamePrefix")
-  //--- Atomic property: mNameIndex
-    self.mNameIndex_property.storeIn (dictionary: ioDictionary, forKey: "mNameIndex")
-  //--- Atomic property: mXUnit
-    self.mXUnit_property.storeIn (dictionary: ioDictionary, forKey: "mXUnit")
-  //--- Atomic property: mYUnit
-    self.mYUnit_property.storeIn (dictionary: ioDictionary, forKey: "mYUnit")
+    //--- Atomic property: mNameIsVisibleInBoard
+      self.mNameIsVisibleInBoard_property.storeIn (dictionary: ioDictionary, forKey: "mNameIsVisibleInBoard")
+    //--- Atomic property: mXName
+      self.mXName_property.storeIn (dictionary: ioDictionary, forKey: "mXName")
+    //--- Atomic property: mYName
+      self.mYName_property.storeIn (dictionary: ioDictionary, forKey: "mYName")
+    //--- Atomic property: mNameFontSize
+      self.mNameFontSize_property.storeIn (dictionary: ioDictionary, forKey: "mNameFontSize")
+    //--- Atomic property: mNameRotation
+      self.mNameRotation_property.storeIn (dictionary: ioDictionary, forKey: "mNameRotation")
+    //--- Atomic property: mValueIsVisibleInBoard
+      self.mValueIsVisibleInBoard_property.storeIn (dictionary: ioDictionary, forKey: "mValueIsVisibleInBoard")
+    //--- Atomic property: mXValue
+      self.mXValue_property.storeIn (dictionary: ioDictionary, forKey: "mXValue")
+    //--- Atomic property: mYValue
+      self.mYValue_property.storeIn (dictionary: ioDictionary, forKey: "mYValue")
+    //--- Atomic property: mValueFontSize
+      self.mValueFontSize_property.storeIn (dictionary: ioDictionary, forKey: "mValueFontSize")
+    //--- Atomic property: mValueRotation
+      self.mValueRotation_property.storeIn (dictionary: ioDictionary, forKey: "mValueRotation")
+    //--- Atomic property: mComponentValue
+      self.mComponentValue_property.storeIn (dictionary: ioDictionary, forKey: "mComponentValue")
+    //--- Atomic property: mNamePrefix
+      self.mNamePrefix_property.storeIn (dictionary: ioDictionary, forKey: "mNamePrefix")
+    //--- Atomic property: mNameIndex
+      self.mNameIndex_property.storeIn (dictionary: ioDictionary, forKey: "mNameIndex")
+    //--- Atomic property: mXUnit
+      self.mXUnit_property.storeIn (dictionary: ioDictionary, forKey: "mXUnit")
+    //--- Atomic property: mYUnit
+      self.mYUnit_property.storeIn (dictionary: ioDictionary, forKey: "mYUnit")
   //--- To one property: mSelectedPackage
     self.store (managedObject:self.mSelectedPackage_property.propval,
       relationshipName: "mSelectedPackage",

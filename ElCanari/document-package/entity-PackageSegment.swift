@@ -482,131 +482,134 @@ final class PackageSegment : PackageObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "y1",
-      idx: self.y1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y1_property.mObserverExplorer,
-      valueExplorer: &self.y1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x2",
-      idx: self.x2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x2_property.mObserverExplorer,
-      valueExplorer: &self.x2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y2",
-      idx: self.y2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y2_property.mObserverExplorer,
-      valueExplorer: &self.y2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x1Unit",
-      idx: self.x1Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x1Unit_property.mObserverExplorer,
-      valueExplorer: &self.x1Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y1Unit",
-      idx: self.y1Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y1Unit_property.mObserverExplorer,
-      valueExplorer: &self.y1Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x2Unit",
-      idx: self.x2Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x2Unit_property.mObserverExplorer,
-      valueExplorer: &self.x2Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y2Unit",
-      idx: self.y2Unit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.y2Unit_property.mObserverExplorer,
-      valueExplorer: &self.y2Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "lengthUnit",
-      idx: self.lengthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.lengthUnit_property.mObserverExplorer,
-      valueExplorer: &self.lengthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x1",
-      idx: self.x1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.x1_property.mObserverExplorer,
-      valueExplorer: &self.x1_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "strokeBezierPath",
-      idx: self.strokeBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.strokeBezierPath_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "lengthInCanariUnit",
-      idx: self.lengthInCanariUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.lengthInCanariUnit_property.mObserverExplorer,
-      valueExplorer: &self.lengthInCanariUnit_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "y1",
+        idx: self.y1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y1_property.mObserverExplorer,
+        valueExplorer: &self.y1_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x2",
+        idx: self.x2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x2_property.mObserverExplorer,
+        valueExplorer: &self.x2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "y2",
+        idx: self.y2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y2_property.mObserverExplorer,
+        valueExplorer: &self.y2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x1Unit",
+        idx: self.x1Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x1Unit_property.mObserverExplorer,
+        valueExplorer: &self.x1Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "y1Unit",
+        idx: self.y1Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y1Unit_property.mObserverExplorer,
+        valueExplorer: &self.y1Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x2Unit",
+        idx: self.x2Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x2Unit_property.mObserverExplorer,
+        valueExplorer: &self.x2Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "y2Unit",
+        idx: self.y2Unit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.y2Unit_property.mObserverExplorer,
+        valueExplorer: &self.y2Unit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "lengthUnit",
+        idx: self.lengthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.lengthUnit_property.mObserverExplorer,
+        valueExplorer: &self.lengthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "x1",
+        idx: self.x1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.x1_property.mObserverExplorer,
+        valueExplorer: &self.x1_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "strokeBezierPath",
+        idx: self.strokeBezierPath_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
+        valueExplorer: &self.strokeBezierPath_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "lengthInCanariUnit",
+        idx: self.lengthInCanariUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.lengthInCanariUnit_property.mObserverExplorer,
+        valueExplorer: &self.lengthInCanariUnit_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: y1
     self.y1_property.mObserverExplorer = nil
     self.y1_property.mValueExplorer = nil
@@ -634,9 +637,10 @@ final class PackageSegment : PackageObject,
   //--- Atomic property: x1
     self.x1_property.mObserverExplorer = nil
     self.x1_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -662,24 +666,24 @@ final class PackageSegment : PackageObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: y1
-    self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
-  //--- Atomic property: x2
-    self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
-  //--- Atomic property: y2
-    self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
-  //--- Atomic property: x1Unit
-    self.x1Unit_property.storeIn (dictionary: ioDictionary, forKey: "x1Unit")
-  //--- Atomic property: y1Unit
-    self.y1Unit_property.storeIn (dictionary: ioDictionary, forKey: "y1Unit")
-  //--- Atomic property: x2Unit
-    self.x2Unit_property.storeIn (dictionary: ioDictionary, forKey: "x2Unit")
-  //--- Atomic property: y2Unit
-    self.y2Unit_property.storeIn (dictionary: ioDictionary, forKey: "y2Unit")
-  //--- Atomic property: lengthUnit
-    self.lengthUnit_property.storeIn (dictionary: ioDictionary, forKey: "lengthUnit")
-  //--- Atomic property: x1
-    self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
+    //--- Atomic property: y1
+      self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
+    //--- Atomic property: x2
+      self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
+    //--- Atomic property: y2
+      self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
+    //--- Atomic property: x1Unit
+      self.x1Unit_property.storeIn (dictionary: ioDictionary, forKey: "x1Unit")
+    //--- Atomic property: y1Unit
+      self.y1Unit_property.storeIn (dictionary: ioDictionary, forKey: "y1Unit")
+    //--- Atomic property: x2Unit
+      self.x2Unit_property.storeIn (dictionary: ioDictionary, forKey: "x2Unit")
+    //--- Atomic property: y2Unit
+      self.y2Unit_property.storeIn (dictionary: ioDictionary, forKey: "y2Unit")
+    //--- Atomic property: lengthUnit
+      self.lengthUnit_property.storeIn (dictionary: ioDictionary, forKey: "lengthUnit")
+    //--- Atomic property: x1
+      self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
   }
 
   //····················································································································

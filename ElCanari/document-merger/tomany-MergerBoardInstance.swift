@@ -852,18 +852,20 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
 
   //····················································································································
 
-  final var mValueExplorer : NSPopUpButton? {
-    didSet {
-      if let unwrappedExplorer = self.mValueExplorer {
-        switch self.selection {
-        case .empty, .multiple :
-          break ;
-        case .single (let v) :
-          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
+  #if BUILD_OBJECT_EXPLORER
+    final var mValueExplorer : NSPopUpButton? {
+      didSet {
+        if let unwrappedExplorer = self.mValueExplorer {
+          switch self.selection {
+          case .empty, .multiple :
+            break ;
+          case .single (let v) :
+            updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
+          }
         }
       }
     }
-  }
+  #endif
 
   //····················································································································
   // Model will change
@@ -882,9 +884,11 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
 
   override func notifyModelDidChange () {
   //--- Update explorer
-    if let valueExplorer = self.mValueExplorer {
-      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue.values, popUpButton: valueExplorer)
-    }
+    #if BUILD_OBJECT_EXPLORER
+      if let valueExplorer = self.mValueExplorer {
+        updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue.values, popUpButton: valueExplorer)
+      }
+    #endif
   //--- Notify observers
     self.postEvent ()
   //---

@@ -248,66 +248,69 @@ final class PadProxyInDevice : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mPinInstanceName",
-      idx: self.mPinInstanceName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mPinInstanceName_property.mObserverExplorer,
-      valueExplorer: &self.mPinInstanceName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mPadName",
-      idx: self.mPadName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mPadName_property.mObserverExplorer,
-      valueExplorer: &self.mPadName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mIsNC",
-      idx: self.mIsNC_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mIsNC_property.mObserverExplorer,
-      valueExplorer: &self.mIsNC_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "isConnected",
-      idx: self.isConnected_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.isConnected_property.mObserverExplorer,
-      valueExplorer: &self.isConnected_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "symbolName",
-      idx: self.symbolName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.symbolName_property.mObserverExplorer,
-      valueExplorer: &self.symbolName_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mPinInstance",
-      idx:self.mPinInstance_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mPinInstance_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mPinInstanceName",
+        idx: self.mPinInstanceName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mPinInstanceName_property.mObserverExplorer,
+        valueExplorer: &self.mPinInstanceName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mPadName",
+        idx: self.mPadName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mPadName_property.mObserverExplorer,
+        valueExplorer: &self.mPadName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsNC",
+        idx: self.mIsNC_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsNC_property.mObserverExplorer,
+        valueExplorer: &self.mIsNC_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "isConnected",
+        idx: self.isConnected_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.isConnected_property.mObserverExplorer,
+        valueExplorer: &self.isConnected_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "symbolName",
+        idx: self.symbolName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.symbolName_property.mObserverExplorer,
+        valueExplorer: &self.symbolName_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mPinInstance",
+        idx:self.mPinInstance_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mPinInstance_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mPinInstanceName
     self.mPinInstanceName_property.mObserverExplorer = nil
     self.mPinInstanceName_property.mValueExplorer = nil
@@ -317,12 +320,13 @@ final class PadProxyInDevice : EBManagedObject,
   //--- Atomic property: mIsNC
     self.mIsNC_property.mObserverExplorer = nil
     self.mIsNC_property.mValueExplorer = nil
-  //--- To one property: mPinInstance
-    self.mPinInstance_property.mObserverExplorer = nil
-    self.mPinInstance_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To one property: mPinInstance
+      self.mPinInstance_property.mObserverExplorer = nil
+      self.mPinInstance_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -349,12 +353,12 @@ final class PadProxyInDevice : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mPinInstanceName
-    self.mPinInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mPinInstanceName")
-  //--- Atomic property: mPadName
-    self.mPadName_property.storeIn (dictionary: ioDictionary, forKey: "mPadName")
-  //--- Atomic property: mIsNC
-    self.mIsNC_property.storeIn (dictionary: ioDictionary, forKey: "mIsNC")
+    //--- Atomic property: mPinInstanceName
+      self.mPinInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mPinInstanceName")
+    //--- Atomic property: mPadName
+      self.mPadName_property.storeIn (dictionary: ioDictionary, forKey: "mPadName")
+    //--- Atomic property: mIsNC
+      self.mIsNC_property.storeIn (dictionary: ioDictionary, forKey: "mIsNC")
   //--- To one property: mPinInstance // Opposite is toOne mPadProxy
     self.store (managedObject:self.mPinInstance_property.propval,
       relationshipName: "mPinInstance",

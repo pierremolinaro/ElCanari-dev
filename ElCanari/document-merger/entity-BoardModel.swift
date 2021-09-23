@@ -2797,575 +2797,578 @@ final class BoardModel : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "name",
-      idx: self.name_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.name_property.mObserverExplorer,
-      valueExplorer: &self.name_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "modelWidth",
-      idx: self.modelWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.modelWidth_property.mObserverExplorer,
-      valueExplorer: &self.modelWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "modelWidthUnit",
-      idx: self.modelWidthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.modelWidthUnit_property.mObserverExplorer,
-      valueExplorer: &self.modelWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "modelHeight",
-      idx: self.modelHeight_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.modelHeight_property.mObserverExplorer,
-      valueExplorer: &self.modelHeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "modelHeightUnit",
-      idx: self.modelHeightUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.modelHeightUnit_property.mObserverExplorer,
-      valueExplorer: &self.modelHeightUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "zoom",
-      idx: self.zoom_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.zoom_property.mObserverExplorer,
-      valueExplorer: &self.zoom_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "modelLimitWidth",
-      idx: self.modelLimitWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.modelLimitWidth_property.mObserverExplorer,
-      valueExplorer: &self.modelLimitWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "modelLimitWidthUnit",
-      idx: self.modelLimitWidthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.modelLimitWidthUnit_property.mObserverExplorer,
-      valueExplorer: &self.modelLimitWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "artworkName",
-      idx: self.artworkName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.artworkName_property.mObserverExplorer,
-      valueExplorer: &self.artworkName_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "frontLegendLinesSegments",
-      idx: self.frontLegendLinesSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontLegendLinesSegments_property.mObserverExplorer,
-      valueExplorer: &self.frontLegendLinesSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backLegendLinesSegments",
-      idx: self.backLegendLinesSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backLegendLinesSegments_property.mObserverExplorer,
-      valueExplorer: &self.backLegendLinesSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backLegendLinesBezierPaths",
-      idx: self.backLegendLinesBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backLegendLinesBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.backLegendLinesBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontLegendTextsSegments",
-      idx: self.frontLegendTextsSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontLegendTextsSegments_property.mObserverExplorer,
-      valueExplorer: &self.frontLegendTextsSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontLegendTextsBezierPaths",
-      idx: self.frontLegendTextsBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontLegendTextsBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.frontLegendTextsBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontLayoutTextsSegments",
-      idx: self.frontLayoutTextsSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontLayoutTextsSegments_property.mObserverExplorer,
-      valueExplorer: &self.frontLayoutTextsSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontLayoutTextsBezierPaths",
-      idx: self.frontLayoutTextsBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontLayoutTextsBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.frontLayoutTextsBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backLegendTextsSegments",
-      idx: self.backLegendTextsSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backLegendTextsSegments_property.mObserverExplorer,
-      valueExplorer: &self.backLegendTextsSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backLegendTextsBezierPaths",
-      idx: self.backLegendTextsBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backLegendTextsBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.backLegendTextsBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backLayoutTextsSegments",
-      idx: self.backLayoutTextsSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backLayoutTextsSegments_property.mObserverExplorer,
-      valueExplorer: &self.backLayoutTextsSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backLayoutTextsBezierPaths",
-      idx: self.backLayoutTextsBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backLayoutTextsBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.backLayoutTextsBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "internalBoardsLimitsSegments",
-      idx: self.internalBoardsLimitsSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.internalBoardsLimitsSegments_property.mObserverExplorer,
-      valueExplorer: &self.internalBoardsLimitsSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "internalBoardsLimitsBezierPaths",
-      idx: self.internalBoardsLimitsBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.internalBoardsLimitsBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.internalBoardsLimitsBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drillSegments",
-      idx: self.drillSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.drillSegments_property.mObserverExplorer,
-      valueExplorer: &self.drillSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "holesBezierPaths",
-      idx: self.holesBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.holesBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.holesBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "viaShapes",
-      idx: self.viaShapes_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.viaShapes_property.mObserverExplorer,
-      valueExplorer: &self.viaShapes_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "viasBezierPaths",
-      idx: self.viasBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.viasBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.viasBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontPadArray",
-      idx: self.frontPadArray_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontPadArray_property.mObserverExplorer,
-      valueExplorer: &self.frontPadArray_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontPadsBezierPaths",
-      idx: self.frontPadsBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontPadsBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.frontPadsBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backPadArray",
-      idx: self.backPadArray_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backPadArray_property.mObserverExplorer,
-      valueExplorer: &self.backPadArray_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backPadsBezierPaths",
-      idx: self.backPadsBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backPadsBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.backPadsBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardLimits",
-      idx: self.boardLimits_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardLimits_property.mObserverExplorer,
-      valueExplorer: &self.boardLimits_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardLimitsBezierPaths",
-      idx: self.boardLimitsBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardLimitsBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.boardLimitsBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backComponentNameSegments",
-      idx: self.backComponentNameSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backComponentNameSegments_property.mObserverExplorer,
-      valueExplorer: &self.backComponentNameSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backComponentNamesBezierPaths",
-      idx: self.backComponentNamesBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backComponentNamesBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.backComponentNamesBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontComponentNameSegments",
-      idx: self.frontComponentNameSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontComponentNameSegments_property.mObserverExplorer,
-      valueExplorer: &self.frontComponentNameSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontComponentNamesBezierPaths",
-      idx: self.frontComponentNamesBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontComponentNamesBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.frontComponentNamesBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontComponentValueSegments",
-      idx: self.frontComponentValueSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontComponentValueSegments_property.mObserverExplorer,
-      valueExplorer: &self.frontComponentValueSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontComponentValuesBezierPaths",
-      idx: self.frontComponentValuesBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontComponentValuesBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.frontComponentValuesBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backComponentValueSegments",
-      idx: self.backComponentValueSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backComponentValueSegments_property.mObserverExplorer,
-      valueExplorer: &self.backComponentValueSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backComponentValuesBezierPaths",
-      idx: self.backComponentValuesBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backComponentValuesBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.backComponentValuesBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backTrackSegments",
-      idx: self.backTrackSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backTrackSegments_property.mObserverExplorer,
-      valueExplorer: &self.backTrackSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backTracksBezierPaths",
-      idx: self.backTracksBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backTracksBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.backTracksBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontTrackSegments",
-      idx: self.frontTrackSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontTrackSegments_property.mObserverExplorer,
-      valueExplorer: &self.frontTrackSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontTracksBezierPaths",
-      idx: self.frontTracksBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontTracksBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.frontTracksBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontPackagesSegments",
-      idx: self.frontPackagesSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontPackagesSegments_property.mObserverExplorer,
-      valueExplorer: &self.frontPackagesSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontPackagesBezierPaths",
-      idx: self.frontPackagesBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontPackagesBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.frontPackagesBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backPackagesSegments",
-      idx: self.backPackagesSegments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backPackagesSegments_property.mObserverExplorer,
-      valueExplorer: &self.backPackagesSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backPackagesBezierPaths",
-      idx: self.backPackagesBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backPackagesBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.backPackagesBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "instanceCount",
-      idx: self.instanceCount_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.instanceCount_property.mObserverExplorer,
-      valueExplorer: &self.instanceCount_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontLegendLinesBezierPaths",
-      idx: self.frontLegendLinesBezierPaths_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.frontLegendLinesBezierPaths_property.mObserverExplorer,
-      valueExplorer: &self.frontLegendLinesBezierPaths_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "imageForModel",
-      idx: self.imageForModel_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.imageForModel_property.mObserverExplorer,
-      valueExplorer: &self.imageForModel_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "imageForInstances",
-      idx: self.imageForInstances_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.imageForInstances_property.mObserverExplorer,
-      valueExplorer: &self.imageForInstances_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "frontLegendLines",
-      idx:frontLegendLines_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontLegendLines_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backLegendLines",
-      idx:backLegendLines_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backLegendLines_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontLegendTexts",
-      idx:frontLegendTexts_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontLegendTexts_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontLayoutTexts",
-      idx:frontLayoutTexts_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontLayoutTexts_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backLegendTexts",
-      idx:backLegendTexts_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backLegendTexts_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backLayoutTexts",
-      idx:backLayoutTexts_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backLayoutTexts_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "internalBoardsLimits",
-      idx:internalBoardsLimits_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&internalBoardsLimits_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "drills",
-      idx:drills_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&drills_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "vias",
-      idx:vias_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&vias_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontPads",
-      idx:frontPads_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontPads_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backPads",
-      idx:backPads_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backPads_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backComponentNames",
-      idx:backComponentNames_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backComponentNames_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontComponentNames",
-      idx:frontComponentNames_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontComponentNames_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontComponentValues",
-      idx:frontComponentValues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontComponentValues_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backComponentValues",
-      idx:backComponentValues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backComponentValues_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backTracks",
-      idx:backTracks_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backTracks_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontTracks",
-      idx:frontTracks_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontTracks_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontPackages",
-      idx:frontPackages_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontPackages_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backPackages",
-      idx:backPackages_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backPackages_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "myInstances",
-      idx:myInstances_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&myInstances_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "name",
+        idx: self.name_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.name_property.mObserverExplorer,
+        valueExplorer: &self.name_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "modelWidth",
+        idx: self.modelWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.modelWidth_property.mObserverExplorer,
+        valueExplorer: &self.modelWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "modelWidthUnit",
+        idx: self.modelWidthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.modelWidthUnit_property.mObserverExplorer,
+        valueExplorer: &self.modelWidthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "modelHeight",
+        idx: self.modelHeight_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.modelHeight_property.mObserverExplorer,
+        valueExplorer: &self.modelHeight_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "modelHeightUnit",
+        idx: self.modelHeightUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.modelHeightUnit_property.mObserverExplorer,
+        valueExplorer: &self.modelHeightUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "zoom",
+        idx: self.zoom_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.zoom_property.mObserverExplorer,
+        valueExplorer: &self.zoom_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "modelLimitWidth",
+        idx: self.modelLimitWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.modelLimitWidth_property.mObserverExplorer,
+        valueExplorer: &self.modelLimitWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "modelLimitWidthUnit",
+        idx: self.modelLimitWidthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.modelLimitWidthUnit_property.mObserverExplorer,
+        valueExplorer: &self.modelLimitWidthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "artworkName",
+        idx: self.artworkName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.artworkName_property.mObserverExplorer,
+        valueExplorer: &self.artworkName_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "frontLegendLinesSegments",
+        idx: self.frontLegendLinesSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontLegendLinesSegments_property.mObserverExplorer,
+        valueExplorer: &self.frontLegendLinesSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backLegendLinesSegments",
+        idx: self.backLegendLinesSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backLegendLinesSegments_property.mObserverExplorer,
+        valueExplorer: &self.backLegendLinesSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backLegendLinesBezierPaths",
+        idx: self.backLegendLinesBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backLegendLinesBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.backLegendLinesBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontLegendTextsSegments",
+        idx: self.frontLegendTextsSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontLegendTextsSegments_property.mObserverExplorer,
+        valueExplorer: &self.frontLegendTextsSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontLegendTextsBezierPaths",
+        idx: self.frontLegendTextsBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontLegendTextsBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.frontLegendTextsBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontLayoutTextsSegments",
+        idx: self.frontLayoutTextsSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontLayoutTextsSegments_property.mObserverExplorer,
+        valueExplorer: &self.frontLayoutTextsSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontLayoutTextsBezierPaths",
+        idx: self.frontLayoutTextsBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontLayoutTextsBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.frontLayoutTextsBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backLegendTextsSegments",
+        idx: self.backLegendTextsSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backLegendTextsSegments_property.mObserverExplorer,
+        valueExplorer: &self.backLegendTextsSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backLegendTextsBezierPaths",
+        idx: self.backLegendTextsBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backLegendTextsBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.backLegendTextsBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backLayoutTextsSegments",
+        idx: self.backLayoutTextsSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backLayoutTextsSegments_property.mObserverExplorer,
+        valueExplorer: &self.backLayoutTextsSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backLayoutTextsBezierPaths",
+        idx: self.backLayoutTextsBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backLayoutTextsBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.backLayoutTextsBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "internalBoardsLimitsSegments",
+        idx: self.internalBoardsLimitsSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.internalBoardsLimitsSegments_property.mObserverExplorer,
+        valueExplorer: &self.internalBoardsLimitsSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "internalBoardsLimitsBezierPaths",
+        idx: self.internalBoardsLimitsBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.internalBoardsLimitsBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.internalBoardsLimitsBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "drillSegments",
+        idx: self.drillSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drillSegments_property.mObserverExplorer,
+        valueExplorer: &self.drillSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "holesBezierPaths",
+        idx: self.holesBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.holesBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.holesBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "viaShapes",
+        idx: self.viaShapes_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.viaShapes_property.mObserverExplorer,
+        valueExplorer: &self.viaShapes_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "viasBezierPaths",
+        idx: self.viasBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.viasBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.viasBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontPadArray",
+        idx: self.frontPadArray_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontPadArray_property.mObserverExplorer,
+        valueExplorer: &self.frontPadArray_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontPadsBezierPaths",
+        idx: self.frontPadsBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontPadsBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.frontPadsBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backPadArray",
+        idx: self.backPadArray_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backPadArray_property.mObserverExplorer,
+        valueExplorer: &self.backPadArray_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backPadsBezierPaths",
+        idx: self.backPadsBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backPadsBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.backPadsBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardLimits",
+        idx: self.boardLimits_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardLimits_property.mObserverExplorer,
+        valueExplorer: &self.boardLimits_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardLimitsBezierPaths",
+        idx: self.boardLimitsBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardLimitsBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.boardLimitsBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backComponentNameSegments",
+        idx: self.backComponentNameSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backComponentNameSegments_property.mObserverExplorer,
+        valueExplorer: &self.backComponentNameSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backComponentNamesBezierPaths",
+        idx: self.backComponentNamesBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backComponentNamesBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.backComponentNamesBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontComponentNameSegments",
+        idx: self.frontComponentNameSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontComponentNameSegments_property.mObserverExplorer,
+        valueExplorer: &self.frontComponentNameSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontComponentNamesBezierPaths",
+        idx: self.frontComponentNamesBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontComponentNamesBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.frontComponentNamesBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontComponentValueSegments",
+        idx: self.frontComponentValueSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontComponentValueSegments_property.mObserverExplorer,
+        valueExplorer: &self.frontComponentValueSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontComponentValuesBezierPaths",
+        idx: self.frontComponentValuesBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontComponentValuesBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.frontComponentValuesBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backComponentValueSegments",
+        idx: self.backComponentValueSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backComponentValueSegments_property.mObserverExplorer,
+        valueExplorer: &self.backComponentValueSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backComponentValuesBezierPaths",
+        idx: self.backComponentValuesBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backComponentValuesBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.backComponentValuesBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backTrackSegments",
+        idx: self.backTrackSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backTrackSegments_property.mObserverExplorer,
+        valueExplorer: &self.backTrackSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backTracksBezierPaths",
+        idx: self.backTracksBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backTracksBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.backTracksBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontTrackSegments",
+        idx: self.frontTrackSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontTrackSegments_property.mObserverExplorer,
+        valueExplorer: &self.frontTrackSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontTracksBezierPaths",
+        idx: self.frontTracksBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontTracksBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.frontTracksBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontPackagesSegments",
+        idx: self.frontPackagesSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontPackagesSegments_property.mObserverExplorer,
+        valueExplorer: &self.frontPackagesSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontPackagesBezierPaths",
+        idx: self.frontPackagesBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontPackagesBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.frontPackagesBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backPackagesSegments",
+        idx: self.backPackagesSegments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backPackagesSegments_property.mObserverExplorer,
+        valueExplorer: &self.backPackagesSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backPackagesBezierPaths",
+        idx: self.backPackagesBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backPackagesBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.backPackagesBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "instanceCount",
+        idx: self.instanceCount_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.instanceCount_property.mObserverExplorer,
+        valueExplorer: &self.instanceCount_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "frontLegendLinesBezierPaths",
+        idx: self.frontLegendLinesBezierPaths_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.frontLegendLinesBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.frontLegendLinesBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "imageForModel",
+        idx: self.imageForModel_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.imageForModel_property.mObserverExplorer,
+        valueExplorer: &self.imageForModel_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "imageForInstances",
+        idx: self.imageForInstances_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.imageForInstances_property.mObserverExplorer,
+        valueExplorer: &self.imageForInstances_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "frontLegendLines",
+        idx:frontLegendLines_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&frontLegendLines_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "backLegendLines",
+        idx:backLegendLines_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&backLegendLines_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "frontLegendTexts",
+        idx:frontLegendTexts_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&frontLegendTexts_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "frontLayoutTexts",
+        idx:frontLayoutTexts_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&frontLayoutTexts_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "backLegendTexts",
+        idx:backLegendTexts_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&backLegendTexts_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "backLayoutTexts",
+        idx:backLayoutTexts_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&backLayoutTexts_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "internalBoardsLimits",
+        idx:internalBoardsLimits_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&internalBoardsLimits_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "drills",
+        idx:drills_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&drills_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "vias",
+        idx:vias_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&vias_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "frontPads",
+        idx:frontPads_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&frontPads_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "backPads",
+        idx:backPads_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&backPads_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "backComponentNames",
+        idx:backComponentNames_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&backComponentNames_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "frontComponentNames",
+        idx:frontComponentNames_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&frontComponentNames_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "frontComponentValues",
+        idx:frontComponentValues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&frontComponentValues_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "backComponentValues",
+        idx:backComponentValues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&backComponentValues_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "backTracks",
+        idx:backTracks_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&backTracks_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "frontTracks",
+        idx:frontTracks_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&frontTracks_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "frontPackages",
+        idx:frontPackages_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&frontPackages_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "backPackages",
+        idx:backPackages_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&backPackages_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "myInstances",
+        idx:myInstances_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&myInstances_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: name
     self.name_property.mObserverExplorer = nil
     self.name_property.mValueExplorer = nil
@@ -3384,58 +3387,59 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: zoom
     self.zoom_property.mObserverExplorer = nil
     self.zoom_property.mValueExplorer = nil
-  //--- To many property: frontLegendLines
-    self.frontLegendLines_property.mValueExplorer = nil
-  //--- To many property: backLegendLines
-    self.backLegendLines_property.mValueExplorer = nil
-  //--- To many property: frontLegendTexts
-    self.frontLegendTexts_property.mValueExplorer = nil
-  //--- To many property: frontLayoutTexts
-    self.frontLayoutTexts_property.mValueExplorer = nil
-  //--- To many property: backLegendTexts
-    self.backLegendTexts_property.mValueExplorer = nil
-  //--- To many property: backLayoutTexts
-    self.backLayoutTexts_property.mValueExplorer = nil
-  //--- To many property: internalBoardsLimits
-    self.internalBoardsLimits_property.mValueExplorer = nil
-  //--- To many property: drills
-    self.drills_property.mValueExplorer = nil
-  //--- To many property: vias
-    self.vias_property.mValueExplorer = nil
-  //--- To many property: frontPads
-    self.frontPads_property.mValueExplorer = nil
-  //--- To many property: backPads
-    self.backPads_property.mValueExplorer = nil
+    //--- To many property: frontLegendLines
+      self.frontLegendLines_property.mValueExplorer = nil
+    //--- To many property: backLegendLines
+      self.backLegendLines_property.mValueExplorer = nil
+    //--- To many property: frontLegendTexts
+      self.frontLegendTexts_property.mValueExplorer = nil
+    //--- To many property: frontLayoutTexts
+      self.frontLayoutTexts_property.mValueExplorer = nil
+    //--- To many property: backLegendTexts
+      self.backLegendTexts_property.mValueExplorer = nil
+    //--- To many property: backLayoutTexts
+      self.backLayoutTexts_property.mValueExplorer = nil
+    //--- To many property: internalBoardsLimits
+      self.internalBoardsLimits_property.mValueExplorer = nil
+    //--- To many property: drills
+      self.drills_property.mValueExplorer = nil
+    //--- To many property: vias
+      self.vias_property.mValueExplorer = nil
+    //--- To many property: frontPads
+      self.frontPads_property.mValueExplorer = nil
+    //--- To many property: backPads
+      self.backPads_property.mValueExplorer = nil
   //--- Atomic property: modelLimitWidth
     self.modelLimitWidth_property.mObserverExplorer = nil
     self.modelLimitWidth_property.mValueExplorer = nil
   //--- Atomic property: modelLimitWidthUnit
     self.modelLimitWidthUnit_property.mObserverExplorer = nil
     self.modelLimitWidthUnit_property.mValueExplorer = nil
-  //--- To many property: backComponentNames
-    self.backComponentNames_property.mValueExplorer = nil
-  //--- To many property: frontComponentNames
-    self.frontComponentNames_property.mValueExplorer = nil
-  //--- To many property: frontComponentValues
-    self.frontComponentValues_property.mValueExplorer = nil
-  //--- To many property: backComponentValues
-    self.backComponentValues_property.mValueExplorer = nil
-  //--- To many property: backTracks
-    self.backTracks_property.mValueExplorer = nil
-  //--- To many property: frontTracks
-    self.frontTracks_property.mValueExplorer = nil
-  //--- To many property: frontPackages
-    self.frontPackages_property.mValueExplorer = nil
-  //--- To many property: backPackages
-    self.backPackages_property.mValueExplorer = nil
+    //--- To many property: backComponentNames
+      self.backComponentNames_property.mValueExplorer = nil
+    //--- To many property: frontComponentNames
+      self.frontComponentNames_property.mValueExplorer = nil
+    //--- To many property: frontComponentValues
+      self.frontComponentValues_property.mValueExplorer = nil
+    //--- To many property: backComponentValues
+      self.backComponentValues_property.mValueExplorer = nil
+    //--- To many property: backTracks
+      self.backTracks_property.mValueExplorer = nil
+    //--- To many property: frontTracks
+      self.frontTracks_property.mValueExplorer = nil
+    //--- To many property: frontPackages
+      self.frontPackages_property.mValueExplorer = nil
+    //--- To many property: backPackages
+      self.backPackages_property.mValueExplorer = nil
   //--- Atomic property: artworkName
     self.artworkName_property.mObserverExplorer = nil
     self.artworkName_property.mValueExplorer = nil
-  //--- To many property: myInstances
-    self.myInstances_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: myInstances
+      self.myInstances_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -3481,18 +3485,18 @@ final class BoardModel : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: name
-    self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
-  //--- Atomic property: modelWidth
-    self.modelWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelWidth")
-  //--- Atomic property: modelWidthUnit
-    self.modelWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelWidthUnit")
-  //--- Atomic property: modelHeight
-    self.modelHeight_property.storeIn (dictionary: ioDictionary, forKey: "modelHeight")
-  //--- Atomic property: modelHeightUnit
-    self.modelHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelHeightUnit")
-  //--- Atomic property: zoom
-    self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
+    //--- Atomic property: name
+      self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
+    //--- Atomic property: modelWidth
+      self.modelWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelWidth")
+    //--- Atomic property: modelWidthUnit
+      self.modelWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelWidthUnit")
+    //--- Atomic property: modelHeight
+      self.modelHeight_property.storeIn (dictionary: ioDictionary, forKey: "modelHeight")
+    //--- Atomic property: modelHeightUnit
+      self.modelHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelHeightUnit")
+    //--- Atomic property: zoom
+      self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
   //--- To many property: frontLegendLines
     self.store (
       managedObjectArray: self.frontLegendLines_property.propval.values,
@@ -3559,10 +3563,10 @@ final class BoardModel : EBManagedObject,
       relationshipName: "backPads",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: modelLimitWidth
-    self.modelLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidth")
-  //--- Atomic property: modelLimitWidthUnit
-    self.modelLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidthUnit")
+    //--- Atomic property: modelLimitWidth
+      self.modelLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidth")
+    //--- Atomic property: modelLimitWidthUnit
+      self.modelLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidthUnit")
   //--- To many property: backComponentNames
     self.store (
       managedObjectArray: self.backComponentNames_property.propval.values,
@@ -3611,8 +3615,8 @@ final class BoardModel : EBManagedObject,
       relationshipName: "backPackages",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: artworkName
-    self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
+    //--- Atomic property: artworkName
+      self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
   //--- To many property: myInstances
     self.store (
       managedObjectArray: self.myInstances_property.propval.values,

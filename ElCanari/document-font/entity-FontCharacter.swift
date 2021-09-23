@@ -350,90 +350,93 @@ final class FontCharacter : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "codePoint",
-      idx: self.codePoint_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.codePoint_property.mObserverExplorer,
-      valueExplorer: &self.codePoint_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "advance",
-      idx: self.advance_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.advance_property.mObserverExplorer,
-      valueExplorer: &self.advance_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mWarnsWhenNoSegment",
-      idx: self.mWarnsWhenNoSegment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mWarnsWhenNoSegment_property.mObserverExplorer,
-      valueExplorer: &self.mWarnsWhenNoSegment_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mWarnsWhenAdvanceIsZero",
-      idx: self.mWarnsWhenAdvanceIsZero_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer,
-      valueExplorer: &self.mWarnsWhenAdvanceIsZero_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "segmentArrayForDrawing",
-      idx: self.segmentArrayForDrawing_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.segmentArrayForDrawing_property.mObserverExplorer,
-      valueExplorer: &self.segmentArrayForDrawing_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "gerberCode",
-      idx: self.gerberCode_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.gerberCode_property.mObserverExplorer,
-      valueExplorer: &self.gerberCode_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "gerberCodeInstructionCountMessage",
-      idx: self.gerberCodeInstructionCountMessage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.gerberCodeInstructionCountMessage_property.mObserverExplorer,
-      valueExplorer: &self.gerberCodeInstructionCountMessage_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "segments",
-      idx:segments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&segments_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "codePoint",
+        idx: self.codePoint_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.codePoint_property.mObserverExplorer,
+        valueExplorer: &self.codePoint_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "advance",
+        idx: self.advance_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.advance_property.mObserverExplorer,
+        valueExplorer: &self.advance_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mWarnsWhenNoSegment",
+        idx: self.mWarnsWhenNoSegment_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mWarnsWhenNoSegment_property.mObserverExplorer,
+        valueExplorer: &self.mWarnsWhenNoSegment_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mWarnsWhenAdvanceIsZero",
+        idx: self.mWarnsWhenAdvanceIsZero_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer,
+        valueExplorer: &self.mWarnsWhenAdvanceIsZero_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "segmentArrayForDrawing",
+        idx: self.segmentArrayForDrawing_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.segmentArrayForDrawing_property.mObserverExplorer,
+        valueExplorer: &self.segmentArrayForDrawing_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "gerberCode",
+        idx: self.gerberCode_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.gerberCode_property.mObserverExplorer,
+        valueExplorer: &self.gerberCode_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "gerberCodeInstructionCountMessage",
+        idx: self.gerberCodeInstructionCountMessage_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.gerberCodeInstructionCountMessage_property.mObserverExplorer,
+        valueExplorer: &self.gerberCodeInstructionCountMessage_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "segments",
+        idx:segments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&segments_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: codePoint
     self.codePoint_property.mObserverExplorer = nil
     self.codePoint_property.mValueExplorer = nil
@@ -446,11 +449,12 @@ final class FontCharacter : EBManagedObject,
   //--- Atomic property: mWarnsWhenAdvanceIsZero
     self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer = nil
     self.mWarnsWhenAdvanceIsZero_property.mValueExplorer = nil
-  //--- To many property: segments
-    self.segments_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: segments
+      self.segments_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -477,14 +481,14 @@ final class FontCharacter : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: codePoint
-    self.codePoint_property.storeIn (dictionary: ioDictionary, forKey: "codePoint")
-  //--- Atomic property: advance
-    self.advance_property.storeIn (dictionary: ioDictionary, forKey: "advance")
-  //--- Atomic property: mWarnsWhenNoSegment
-    self.mWarnsWhenNoSegment_property.storeIn (dictionary: ioDictionary, forKey: "mWarnsWhenNoSegment")
-  //--- Atomic property: mWarnsWhenAdvanceIsZero
-    self.mWarnsWhenAdvanceIsZero_property.storeIn (dictionary: ioDictionary, forKey: "mWarnsWhenAdvanceIsZero")
+    //--- Atomic property: codePoint
+      self.codePoint_property.storeIn (dictionary: ioDictionary, forKey: "codePoint")
+    //--- Atomic property: advance
+      self.advance_property.storeIn (dictionary: ioDictionary, forKey: "advance")
+    //--- Atomic property: mWarnsWhenNoSegment
+      self.mWarnsWhenNoSegment_property.storeIn (dictionary: ioDictionary, forKey: "mWarnsWhenNoSegment")
+    //--- Atomic property: mWarnsWhenAdvanceIsZero
+      self.mWarnsWhenAdvanceIsZero_property.storeIn (dictionary: ioDictionary, forKey: "mWarnsWhenAdvanceIsZero")
   //--- To many property: segments
     self.store (
       managedObjectArray: self.segments_property.propval.values,

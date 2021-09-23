@@ -309,90 +309,93 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mFirstX",
-      idx: self.mFirstX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mFirstX_property.mObserverExplorer,
-      valueExplorer: &self.mFirstX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mFirstY",
-      idx: self.mFirstY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mFirstY_property.mObserverExplorer,
-      valueExplorer: &self.mFirstY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mFirstColor",
-      idx: self.mFirstColor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mFirstColor_property.mObserverExplorer,
-      valueExplorer: &self.mFirstColor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSecondDx",
-      idx: self.mSecondDx_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSecondDx_property.mObserverExplorer,
-      valueExplorer: &self.mSecondDx_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSecondDy",
-      idx: self.mSecondDy_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSecondDy_property.mObserverExplorer,
-      valueExplorer: &self.mSecondDy_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSecondColor",
-      idx: self.mSecondColor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSecondColor_property.mObserverExplorer,
-      valueExplorer: &self.mSecondColor_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mRoot",
-      idx:self.mRoot_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mRoot_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mFirstX",
+        idx: self.mFirstX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mFirstX_property.mObserverExplorer,
+        valueExplorer: &self.mFirstX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mFirstY",
+        idx: self.mFirstY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mFirstY_property.mObserverExplorer,
+        valueExplorer: &self.mFirstY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mFirstColor",
+        idx: self.mFirstColor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mFirstColor_property.mObserverExplorer,
+        valueExplorer: &self.mFirstColor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSecondDx",
+        idx: self.mSecondDx_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSecondDx_property.mObserverExplorer,
+        valueExplorer: &self.mSecondDx_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSecondDy",
+        idx: self.mSecondDy_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSecondDy_property.mObserverExplorer,
+        valueExplorer: &self.mSecondDy_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSecondColor",
+        idx: self.mSecondColor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSecondColor_property.mObserverExplorer,
+        valueExplorer: &self.mSecondColor_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "objectDisplay",
+        idx: self.objectDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+        valueExplorer: &self.objectDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectionDisplay",
+        idx: self.selectionDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+        valueExplorer: &self.selectionDisplay_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mRoot",
+        idx:self.mRoot_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mRoot_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mFirstX
     self.mFirstX_property.mObserverExplorer = nil
     self.mFirstX_property.mValueExplorer = nil
@@ -411,12 +414,13 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //--- Atomic property: mSecondColor
     self.mSecondColor_property.mObserverExplorer = nil
     self.mSecondColor_property.mValueExplorer = nil
-  //--- To one property: mRoot
-    self.mRoot_property.mObserverExplorer = nil
-    self.mRoot_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To one property: mRoot
+      self.mRoot_property.mObserverExplorer = nil
+      self.mRoot_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -443,18 +447,18 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mFirstX
-    self.mFirstX_property.storeIn (dictionary: ioDictionary, forKey: "mFirstX")
-  //--- Atomic property: mFirstY
-    self.mFirstY_property.storeIn (dictionary: ioDictionary, forKey: "mFirstY")
-  //--- Atomic property: mFirstColor
-    self.mFirstColor_property.storeIn (dictionary: ioDictionary, forKey: "mFirstColor")
-  //--- Atomic property: mSecondDx
-    self.mSecondDx_property.storeIn (dictionary: ioDictionary, forKey: "mSecondDx")
-  //--- Atomic property: mSecondDy
-    self.mSecondDy_property.storeIn (dictionary: ioDictionary, forKey: "mSecondDy")
-  //--- Atomic property: mSecondColor
-    self.mSecondColor_property.storeIn (dictionary: ioDictionary, forKey: "mSecondColor")
+    //--- Atomic property: mFirstX
+      self.mFirstX_property.storeIn (dictionary: ioDictionary, forKey: "mFirstX")
+    //--- Atomic property: mFirstY
+      self.mFirstY_property.storeIn (dictionary: ioDictionary, forKey: "mFirstY")
+    //--- Atomic property: mFirstColor
+      self.mFirstColor_property.storeIn (dictionary: ioDictionary, forKey: "mFirstColor")
+    //--- Atomic property: mSecondDx
+      self.mSecondDx_property.storeIn (dictionary: ioDictionary, forKey: "mSecondDx")
+    //--- Atomic property: mSecondDy
+      self.mSecondDy_property.storeIn (dictionary: ioDictionary, forKey: "mSecondDy")
+    //--- Atomic property: mSecondColor
+      self.mSecondColor_property.storeIn (dictionary: ioDictionary, forKey: "mSecondColor")
   }
 
   //····················································································································

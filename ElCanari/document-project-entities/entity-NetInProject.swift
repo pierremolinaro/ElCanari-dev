@@ -441,117 +441,121 @@ final class NetInProject : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mNetName",
-      idx: self.mNetName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mNetName_property.mObserverExplorer,
-      valueExplorer: &self.mNetName_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "netClassName",
-      idx: self.netClassName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netClassName_property.mObserverExplorer,
-      valueExplorer: &self.netClassName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netClassTrackWidth",
-      idx: self.netClassTrackWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netClassTrackWidth_property.mObserverExplorer,
-      valueExplorer: &self.netClassTrackWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netClassViaHoleDiameter",
-      idx: self.netClassViaHoleDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netClassViaHoleDiameter_property.mObserverExplorer,
-      valueExplorer: &self.netClassViaHoleDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netClassViaPadDiameter",
-      idx: self.netClassViaPadDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netClassViaPadDiameter_property.mObserverExplorer,
-      valueExplorer: &self.netClassViaPadDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "wireColor",
-      idx: self.wireColor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.wireColor_property.mObserverExplorer,
-      valueExplorer: &self.wireColor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netSchematicPointsInfo",
-      idx: self.netSchematicPointsInfo_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netSchematicPointsInfo_property.mObserverExplorer,
-      valueExplorer: &self.netSchematicPointsInfo_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "trackCount",
-      idx: self.trackCount_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.trackCount_property.mObserverExplorer,
-      valueExplorer: &self.trackCount_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mPoints",
-      idx:mPoints_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mPoints_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mTracks",
-      idx:mTracks_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mTracks_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mNetClass",
-      idx:self.mNetClass_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mNetClass_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mNetName",
+        idx: self.mNetName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNetName_property.mObserverExplorer,
+        valueExplorer: &self.mNetName_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "netClassName",
+        idx: self.netClassName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netClassName_property.mObserverExplorer,
+        valueExplorer: &self.netClassName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netClassTrackWidth",
+        idx: self.netClassTrackWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netClassTrackWidth_property.mObserverExplorer,
+        valueExplorer: &self.netClassTrackWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netClassViaHoleDiameter",
+        idx: self.netClassViaHoleDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netClassViaHoleDiameter_property.mObserverExplorer,
+        valueExplorer: &self.netClassViaHoleDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netClassViaPadDiameter",
+        idx: self.netClassViaPadDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netClassViaPadDiameter_property.mObserverExplorer,
+        valueExplorer: &self.netClassViaPadDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "wireColor",
+        idx: self.wireColor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.wireColor_property.mObserverExplorer,
+        valueExplorer: &self.wireColor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netSchematicPointsInfo",
+        idx: self.netSchematicPointsInfo_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netSchematicPointsInfo_property.mObserverExplorer,
+        valueExplorer: &self.netSchematicPointsInfo_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "trackCount",
+        idx: self.trackCount_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.trackCount_property.mObserverExplorer,
+        valueExplorer: &self.trackCount_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mPoints",
+        idx:mPoints_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mPoints_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mTracks",
+        idx:mTracks_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mTracks_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mNetClass",
+        idx:self.mNetClass_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mNetClass_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
-  //--- To many property: mPoints
-    self.mPoints_property.mValueExplorer = nil
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
+    //--- To many property: mPoints
+      self.mPoints_property.mValueExplorer = nil
   //--- Atomic property: mNetName
     self.mNetName_property.mObserverExplorer = nil
     self.mNetName_property.mValueExplorer = nil
-  //--- To many property: mTracks
-    self.mTracks_property.mValueExplorer = nil
-  //--- To one property: mNetClass
-    self.mNetClass_property.mObserverExplorer = nil
-    self.mNetClass_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: mTracks
+      self.mTracks_property.mValueExplorer = nil
+    //--- To one property: mNetClass
+      self.mNetClass_property.mObserverExplorer = nil
+      self.mNetClass_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -586,8 +590,8 @@ final class NetInProject : EBManagedObject,
       relationshipName: "mPoints",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mNetName
-    self.mNetName_property.storeIn (dictionary: ioDictionary, forKey: "mNetName")
+    //--- Atomic property: mNetName
+      self.mNetName_property.storeIn (dictionary: ioDictionary, forKey: "mNetName")
   //--- To many property: mTracks
     self.store (
       managedObjectArray: self.mTracks_property.propval.values,

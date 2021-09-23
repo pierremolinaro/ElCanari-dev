@@ -2052,464 +2052,467 @@ final class PackageRoot : EBGraphicManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "selectedPageIndex",
-      idx: self.selectedPageIndex_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectedPageIndex_property.mObserverExplorer,
-      valueExplorer: &self.selectedPageIndex_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectedInspector",
-      idx: self.selectedInspector_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectedInspector_property.mObserverExplorer,
-      valueExplorer: &self.selectedInspector_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "comments",
-      idx: self.comments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.comments_property.mObserverExplorer,
-      valueExplorer: &self.comments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "program",
-      idx: self.program_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.program_property.mObserverExplorer,
-      valueExplorer: &self.program_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "horizontalFlip",
-      idx: self.horizontalFlip_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.horizontalFlip_property.mObserverExplorer,
-      valueExplorer: &self.horizontalFlip_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "verticalFlip",
-      idx: self.verticalFlip_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.verticalFlip_property.mObserverExplorer,
-      valueExplorer: &self.verticalFlip_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "gridStyle",
-      idx: self.gridStyle_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.gridStyle_property.mObserverExplorer,
-      valueExplorer: &self.gridStyle_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "gridStep",
-      idx: self.gridStep_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.gridStep_property.mObserverExplorer,
-      valueExplorer: &self.gridStep_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "gridStepUnit",
-      idx: self.gridStepUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.gridStepUnit_property.mObserverExplorer,
-      valueExplorer: &self.gridStepUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "gridDisplayFactor",
-      idx: self.gridDisplayFactor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.gridDisplayFactor_property.mObserverExplorer,
-      valueExplorer: &self.gridDisplayFactor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "zoom",
-      idx: self.zoom_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.zoom_property.mObserverExplorer,
-      valueExplorer: &self.zoom_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImageOpacity",
-      idx: self.mModelImageOpacity_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImageOpacity_property.mObserverExplorer,
-      valueExplorer: &self.mModelImageOpacity_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImagePageHorizontalFlip",
-      idx: self.mModelImagePageHorizontalFlip_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImagePageHorizontalFlip_property.mObserverExplorer,
-      valueExplorer: &self.mModelImagePageHorizontalFlip_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImagePageVerticalFlip",
-      idx: self.mModelImagePageVerticalFlip_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImagePageVerticalFlip_property.mObserverExplorer,
-      valueExplorer: &self.mModelImagePageVerticalFlip_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImagePageGridStyle",
-      idx: self.mModelImagePageGridStyle_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImagePageGridStyle_property.mObserverExplorer,
-      valueExplorer: &self.mModelImagePageGridStyle_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImagePageGridStep",
-      idx: self.mModelImagePageGridStep_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImagePageGridStep_property.mObserverExplorer,
-      valueExplorer: &self.mModelImagePageGridStep_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImagePageGridStepUnit",
-      idx: self.mModelImagePageGridStepUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImagePageGridStepUnit_property.mObserverExplorer,
-      valueExplorer: &self.mModelImagePageGridStepUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImagePageGridDisplayFactor",
-      idx: self.mModelImagePageGridDisplayFactor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImagePageGridDisplayFactor_property.mObserverExplorer,
-      valueExplorer: &self.mModelImagePageGridDisplayFactor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImagePageZoom",
-      idx: self.mModelImagePageZoom_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImagePageZoom_property.mObserverExplorer,
-      valueExplorer: &self.mModelImagePageZoom_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImagePageXPlacardUnit",
-      idx: self.mModelImagePageXPlacardUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImagePageXPlacardUnit_property.mObserverExplorer,
-      valueExplorer: &self.mModelImagePageXPlacardUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImagePageYPlacardUnit",
-      idx: self.mModelImagePageYPlacardUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImagePageYPlacardUnit_property.mObserverExplorer,
-      valueExplorer: &self.mModelImagePageYPlacardUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImageSecondPointXUnit",
-      idx: self.mModelImageSecondPointXUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImageSecondPointXUnit_property.mObserverExplorer,
-      valueExplorer: &self.mModelImageSecondPointXUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImageSecondPointYUnit",
-      idx: self.mModelImageSecondPointYUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImageSecondPointYUnit_property.mObserverExplorer,
-      valueExplorer: &self.mModelImageSecondPointYUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImageFirstPointXOnLock",
-      idx: self.mModelImageFirstPointXOnLock_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImageFirstPointXOnLock_property.mObserverExplorer,
-      valueExplorer: &self.mModelImageFirstPointXOnLock_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImageFirstPointYOnLock",
-      idx: self.mModelImageFirstPointYOnLock_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImageFirstPointYOnLock_property.mObserverExplorer,
-      valueExplorer: &self.mModelImageFirstPointYOnLock_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImagePointsDxOnLock",
-      idx: self.mModelImagePointsDxOnLock_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImagePointsDxOnLock_property.mObserverExplorer,
-      valueExplorer: &self.mModelImagePointsDxOnLock_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImagePointsDyOnLock",
-      idx: self.mModelImagePointsDyOnLock_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImagePointsDyOnLock_property.mObserverExplorer,
-      valueExplorer: &self.mModelImagePointsDyOnLock_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImageScale",
-      idx: self.mModelImageScale_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImageScale_property.mObserverExplorer,
-      valueExplorer: &self.mModelImageScale_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImageRotationInRadians",
-      idx: self.mModelImageRotationInRadians_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImageRotationInRadians_property.mObserverExplorer,
-      valueExplorer: &self.mModelImageRotationInRadians_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDimensionUnitFirstModelPointX",
-      idx: self.mDimensionUnitFirstModelPointX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDimensionUnitFirstModelPointX_property.mObserverExplorer,
-      valueExplorer: &self.mDimensionUnitFirstModelPointX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDimensionUnitFirstModelPointY",
-      idx: self.mDimensionUnitFirstModelPointY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDimensionUnitFirstModelPointY_property.mObserverExplorer,
-      valueExplorer: &self.mDimensionUnitFirstModelPointY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDimensionUnitSecondModelPointDx",
-      idx: self.mDimensionUnitSecondModelPointDx_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDimensionUnitSecondModelPointDx_property.mObserverExplorer,
-      valueExplorer: &self.mDimensionUnitSecondModelPointDx_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDimensionUnitSecondModelPointDy",
-      idx: self.mDimensionUnitSecondModelPointDy_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDimensionUnitSecondModelPointDy_property.mObserverExplorer,
-      valueExplorer: &self.mDimensionUnitSecondModelPointDy_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelPointsCircleRadius",
-      idx: self.mModelPointsCircleRadius_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelPointsCircleRadius_property.mObserverExplorer,
-      valueExplorer: &self.mModelPointsCircleRadius_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mPointsAreLocked",
-      idx: self.mPointsAreLocked_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mPointsAreLocked_property.mObserverExplorer,
-      valueExplorer: &self.mPointsAreLocked_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "knobSizeMultpliedByTen",
-      idx: self.knobSizeMultpliedByTen_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.knobSizeMultpliedByTen_property.mObserverExplorer,
-      valueExplorer: &self.knobSizeMultpliedByTen_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "padNumbering",
-      idx: self.padNumbering_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.padNumbering_property.mObserverExplorer,
-      valueExplorer: &self.padNumbering_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "counterClockNumberingStartAngle",
-      idx: self.counterClockNumberingStartAngle_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.counterClockNumberingStartAngle_property.mObserverExplorer,
-      valueExplorer: &self.counterClockNumberingStartAngle_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xPlacardUnit",
-      idx: self.xPlacardUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.xPlacardUnit_property.mObserverExplorer,
-      valueExplorer: &self.xPlacardUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yPlacardUnit",
-      idx: self.yPlacardUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.yPlacardUnit_property.mObserverExplorer,
-      valueExplorer: &self.yPlacardUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImageData",
-      idx: self.mModelImageData_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImageData_property.mObserverExplorer,
-      valueExplorer: &self.mModelImageData_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "freePadNumbering",
-      idx: self.freePadNumbering_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.freePadNumbering_property.mObserverExplorer,
-      valueExplorer: &self.freePadNumbering_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "counterClockNumbering",
-      idx: self.counterClockNumbering_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.counterClockNumbering_property.mObserverExplorer,
-      valueExplorer: &self.counterClockNumbering_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "gridStepMultipliedByDisplayFactor",
-      idx: self.gridStepMultipliedByDisplayFactor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.gridStepMultipliedByDisplayFactor_property.mObserverExplorer,
-      valueExplorer: &self.gridStepMultipliedByDisplayFactor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "secondPointX",
-      idx: self.secondPointX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.secondPointX_property.mObserverExplorer,
-      valueExplorer: &self.secondPointX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "secondPointY",
-      idx: self.secondPointY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.secondPointY_property.mObserverExplorer,
-      valueExplorer: &self.secondPointY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "lockImageView",
-      idx: self.lockImageView_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.lockImageView_property.mObserverExplorer,
-      valueExplorer: &self.lockImageView_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "padNumberDisplay",
-      idx: self.padNumberDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.padNumberDisplay_property.mObserverExplorer,
-      valueExplorer: &self.padNumberDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backgroundImagePageBackgroundDisplay",
-      idx: self.backgroundImagePageBackgroundDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backgroundImagePageBackgroundDisplay_property.mObserverExplorer,
-      valueExplorer: &self.backgroundImagePageBackgroundDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "modelImageSizeString",
-      idx: self.modelImageSizeString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.modelImageSizeString_property.mObserverExplorer,
-      valueExplorer: &self.modelImageSizeString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "hasModelImage",
-      idx: self.hasModelImage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.hasModelImage_property.mObserverExplorer,
-      valueExplorer: &self.hasModelImage_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "masterPadObjectIndexArray",
-      idx: self.masterPadObjectIndexArray_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.masterPadObjectIndexArray_property.mObserverExplorer,
-      valueExplorer: &self.masterPadObjectIndexArray_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mModelImageObjects",
-      idx:mModelImageObjects_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mModelImageObjects_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "packageObjects",
-      idx:packageObjects_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&packageObjects_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mModelImageDoublePoint",
-      idx:self.mModelImageDoublePoint_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mModelImageDoublePoint_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "selectedPageIndex",
+        idx: self.selectedPageIndex_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectedPageIndex_property.mObserverExplorer,
+        valueExplorer: &self.selectedPageIndex_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectedInspector",
+        idx: self.selectedInspector_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectedInspector_property.mObserverExplorer,
+        valueExplorer: &self.selectedInspector_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "comments",
+        idx: self.comments_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.comments_property.mObserverExplorer,
+        valueExplorer: &self.comments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "program",
+        idx: self.program_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.program_property.mObserverExplorer,
+        valueExplorer: &self.program_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "horizontalFlip",
+        idx: self.horizontalFlip_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.horizontalFlip_property.mObserverExplorer,
+        valueExplorer: &self.horizontalFlip_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "verticalFlip",
+        idx: self.verticalFlip_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.verticalFlip_property.mObserverExplorer,
+        valueExplorer: &self.verticalFlip_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "gridStyle",
+        idx: self.gridStyle_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.gridStyle_property.mObserverExplorer,
+        valueExplorer: &self.gridStyle_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "gridStep",
+        idx: self.gridStep_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.gridStep_property.mObserverExplorer,
+        valueExplorer: &self.gridStep_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "gridStepUnit",
+        idx: self.gridStepUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.gridStepUnit_property.mObserverExplorer,
+        valueExplorer: &self.gridStepUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "gridDisplayFactor",
+        idx: self.gridDisplayFactor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.gridDisplayFactor_property.mObserverExplorer,
+        valueExplorer: &self.gridDisplayFactor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "zoom",
+        idx: self.zoom_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.zoom_property.mObserverExplorer,
+        valueExplorer: &self.zoom_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImageOpacity",
+        idx: self.mModelImageOpacity_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImageOpacity_property.mObserverExplorer,
+        valueExplorer: &self.mModelImageOpacity_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImagePageHorizontalFlip",
+        idx: self.mModelImagePageHorizontalFlip_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImagePageHorizontalFlip_property.mObserverExplorer,
+        valueExplorer: &self.mModelImagePageHorizontalFlip_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImagePageVerticalFlip",
+        idx: self.mModelImagePageVerticalFlip_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImagePageVerticalFlip_property.mObserverExplorer,
+        valueExplorer: &self.mModelImagePageVerticalFlip_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImagePageGridStyle",
+        idx: self.mModelImagePageGridStyle_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImagePageGridStyle_property.mObserverExplorer,
+        valueExplorer: &self.mModelImagePageGridStyle_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImagePageGridStep",
+        idx: self.mModelImagePageGridStep_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImagePageGridStep_property.mObserverExplorer,
+        valueExplorer: &self.mModelImagePageGridStep_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImagePageGridStepUnit",
+        idx: self.mModelImagePageGridStepUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImagePageGridStepUnit_property.mObserverExplorer,
+        valueExplorer: &self.mModelImagePageGridStepUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImagePageGridDisplayFactor",
+        idx: self.mModelImagePageGridDisplayFactor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImagePageGridDisplayFactor_property.mObserverExplorer,
+        valueExplorer: &self.mModelImagePageGridDisplayFactor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImagePageZoom",
+        idx: self.mModelImagePageZoom_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImagePageZoom_property.mObserverExplorer,
+        valueExplorer: &self.mModelImagePageZoom_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImagePageXPlacardUnit",
+        idx: self.mModelImagePageXPlacardUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImagePageXPlacardUnit_property.mObserverExplorer,
+        valueExplorer: &self.mModelImagePageXPlacardUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImagePageYPlacardUnit",
+        idx: self.mModelImagePageYPlacardUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImagePageYPlacardUnit_property.mObserverExplorer,
+        valueExplorer: &self.mModelImagePageYPlacardUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImageSecondPointXUnit",
+        idx: self.mModelImageSecondPointXUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImageSecondPointXUnit_property.mObserverExplorer,
+        valueExplorer: &self.mModelImageSecondPointXUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImageSecondPointYUnit",
+        idx: self.mModelImageSecondPointYUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImageSecondPointYUnit_property.mObserverExplorer,
+        valueExplorer: &self.mModelImageSecondPointYUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImageFirstPointXOnLock",
+        idx: self.mModelImageFirstPointXOnLock_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImageFirstPointXOnLock_property.mObserverExplorer,
+        valueExplorer: &self.mModelImageFirstPointXOnLock_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImageFirstPointYOnLock",
+        idx: self.mModelImageFirstPointYOnLock_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImageFirstPointYOnLock_property.mObserverExplorer,
+        valueExplorer: &self.mModelImageFirstPointYOnLock_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImagePointsDxOnLock",
+        idx: self.mModelImagePointsDxOnLock_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImagePointsDxOnLock_property.mObserverExplorer,
+        valueExplorer: &self.mModelImagePointsDxOnLock_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImagePointsDyOnLock",
+        idx: self.mModelImagePointsDyOnLock_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImagePointsDyOnLock_property.mObserverExplorer,
+        valueExplorer: &self.mModelImagePointsDyOnLock_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImageScale",
+        idx: self.mModelImageScale_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImageScale_property.mObserverExplorer,
+        valueExplorer: &self.mModelImageScale_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImageRotationInRadians",
+        idx: self.mModelImageRotationInRadians_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImageRotationInRadians_property.mObserverExplorer,
+        valueExplorer: &self.mModelImageRotationInRadians_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDimensionUnitFirstModelPointX",
+        idx: self.mDimensionUnitFirstModelPointX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDimensionUnitFirstModelPointX_property.mObserverExplorer,
+        valueExplorer: &self.mDimensionUnitFirstModelPointX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDimensionUnitFirstModelPointY",
+        idx: self.mDimensionUnitFirstModelPointY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDimensionUnitFirstModelPointY_property.mObserverExplorer,
+        valueExplorer: &self.mDimensionUnitFirstModelPointY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDimensionUnitSecondModelPointDx",
+        idx: self.mDimensionUnitSecondModelPointDx_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDimensionUnitSecondModelPointDx_property.mObserverExplorer,
+        valueExplorer: &self.mDimensionUnitSecondModelPointDx_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDimensionUnitSecondModelPointDy",
+        idx: self.mDimensionUnitSecondModelPointDy_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDimensionUnitSecondModelPointDy_property.mObserverExplorer,
+        valueExplorer: &self.mDimensionUnitSecondModelPointDy_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelPointsCircleRadius",
+        idx: self.mModelPointsCircleRadius_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelPointsCircleRadius_property.mObserverExplorer,
+        valueExplorer: &self.mModelPointsCircleRadius_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mPointsAreLocked",
+        idx: self.mPointsAreLocked_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mPointsAreLocked_property.mObserverExplorer,
+        valueExplorer: &self.mPointsAreLocked_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "knobSizeMultpliedByTen",
+        idx: self.knobSizeMultpliedByTen_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.knobSizeMultpliedByTen_property.mObserverExplorer,
+        valueExplorer: &self.knobSizeMultpliedByTen_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "padNumbering",
+        idx: self.padNumbering_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.padNumbering_property.mObserverExplorer,
+        valueExplorer: &self.padNumbering_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "counterClockNumberingStartAngle",
+        idx: self.counterClockNumberingStartAngle_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.counterClockNumberingStartAngle_property.mObserverExplorer,
+        valueExplorer: &self.counterClockNumberingStartAngle_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "xPlacardUnit",
+        idx: self.xPlacardUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.xPlacardUnit_property.mObserverExplorer,
+        valueExplorer: &self.xPlacardUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "yPlacardUnit",
+        idx: self.yPlacardUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.yPlacardUnit_property.mObserverExplorer,
+        valueExplorer: &self.yPlacardUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mModelImageData",
+        idx: self.mModelImageData_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mModelImageData_property.mObserverExplorer,
+        valueExplorer: &self.mModelImageData_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "freePadNumbering",
+        idx: self.freePadNumbering_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.freePadNumbering_property.mObserverExplorer,
+        valueExplorer: &self.freePadNumbering_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "counterClockNumbering",
+        idx: self.counterClockNumbering_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.counterClockNumbering_property.mObserverExplorer,
+        valueExplorer: &self.counterClockNumbering_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "gridStepMultipliedByDisplayFactor",
+        idx: self.gridStepMultipliedByDisplayFactor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.gridStepMultipliedByDisplayFactor_property.mObserverExplorer,
+        valueExplorer: &self.gridStepMultipliedByDisplayFactor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "secondPointX",
+        idx: self.secondPointX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.secondPointX_property.mObserverExplorer,
+        valueExplorer: &self.secondPointX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "secondPointY",
+        idx: self.secondPointY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.secondPointY_property.mObserverExplorer,
+        valueExplorer: &self.secondPointY_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "lockImageView",
+        idx: self.lockImageView_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.lockImageView_property.mObserverExplorer,
+        valueExplorer: &self.lockImageView_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "padNumberDisplay",
+        idx: self.padNumberDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.padNumberDisplay_property.mObserverExplorer,
+        valueExplorer: &self.padNumberDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backgroundImagePageBackgroundDisplay",
+        idx: self.backgroundImagePageBackgroundDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backgroundImagePageBackgroundDisplay_property.mObserverExplorer,
+        valueExplorer: &self.backgroundImagePageBackgroundDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "modelImageSizeString",
+        idx: self.modelImageSizeString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.modelImageSizeString_property.mObserverExplorer,
+        valueExplorer: &self.modelImageSizeString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "hasModelImage",
+        idx: self.hasModelImage_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.hasModelImage_property.mObserverExplorer,
+        valueExplorer: &self.hasModelImage_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "masterPadObjectIndexArray",
+        idx: self.masterPadObjectIndexArray_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.masterPadObjectIndexArray_property.mObserverExplorer,
+        valueExplorer: &self.masterPadObjectIndexArray_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "issues",
+        idx: self.issues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.issues_property.mObserverExplorer,
+        valueExplorer: &self.issues_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mModelImageObjects",
+        idx:mModelImageObjects_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mModelImageObjects_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "packageObjects",
+        idx:packageObjects_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&packageObjects_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mModelImageDoublePoint",
+        idx:self.mModelImageDoublePoint_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mModelImageDoublePoint_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.mObserverExplorer = nil
     self.selectedPageIndex_property.mValueExplorer = nil
@@ -2630,31 +2633,32 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: yPlacardUnit
     self.yPlacardUnit_property.mObserverExplorer = nil
     self.yPlacardUnit_property.mValueExplorer = nil
-  //--- To many property: mModelImageObjects
-    self.mModelImageObjects_property.mValueExplorer = nil
-  //--- To many property: packageObjects
-    self.packageObjects_property.mValueExplorer = nil
+    //--- To many property: mModelImageObjects
+      self.mModelImageObjects_property.mValueExplorer = nil
+    //--- To many property: packageObjects
+      self.packageObjects_property.mValueExplorer = nil
   //--- Atomic property: mModelImageData
     self.mModelImageData_property.mObserverExplorer = nil
     self.mModelImageData_property.mValueExplorer = nil
-  //--- Atomic proxy property: mModelImageFirstPointX
-    self.mModelImageFirstPointX_property.mObserverExplorer = nil
-    self.mModelImageFirstPointX_property.mValueExplorer = nil
-  //--- Atomic proxy property: mModelImageFirstPointY
-    self.mModelImageFirstPointY_property.mObserverExplorer = nil
-    self.mModelImageFirstPointY_property.mValueExplorer = nil
-  //--- Atomic proxy property: mModelImageSecondPointDx
-    self.mModelImageSecondPointDx_property.mObserverExplorer = nil
-    self.mModelImageSecondPointDx_property.mValueExplorer = nil
-  //--- Atomic proxy property: mModelImageSecondPointDy
-    self.mModelImageSecondPointDy_property.mObserverExplorer = nil
-    self.mModelImageSecondPointDy_property.mValueExplorer = nil
-  //--- To one property: mModelImageDoublePoint
-    self.mModelImageDoublePoint_property.mObserverExplorer = nil
-    self.mModelImageDoublePoint_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- Atomic proxy property: mModelImageFirstPointX
+      self.mModelImageFirstPointX_property.mObserverExplorer = nil
+      self.mModelImageFirstPointX_property.mValueExplorer = nil
+    //--- Atomic proxy property: mModelImageFirstPointY
+      self.mModelImageFirstPointY_property.mObserverExplorer = nil
+      self.mModelImageFirstPointY_property.mValueExplorer = nil
+    //--- Atomic proxy property: mModelImageSecondPointDx
+      self.mModelImageSecondPointDx_property.mObserverExplorer = nil
+      self.mModelImageSecondPointDx_property.mValueExplorer = nil
+    //--- Atomic proxy property: mModelImageSecondPointDy
+      self.mModelImageSecondPointDy_property.mObserverExplorer = nil
+      self.mModelImageSecondPointDy_property.mValueExplorer = nil
+    //--- To one property: mModelImageDoublePoint
+      self.mModelImageDoublePoint_property.mObserverExplorer = nil
+      self.mModelImageDoublePoint_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -2683,86 +2687,86 @@ final class PackageRoot : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
-  //--- Atomic property: selectedInspector
-    self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
-  //--- Atomic property: comments
-    self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
-  //--- Atomic property: program
-    self.program_property.storeIn (dictionary: ioDictionary, forKey: "program")
-  //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "horizontalFlip")
-  //--- Atomic property: verticalFlip
-    self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "verticalFlip")
-  //--- Atomic property: gridStyle
-    self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey: "gridStyle")
-  //--- Atomic property: gridStep
-    self.gridStep_property.storeIn (dictionary: ioDictionary, forKey: "gridStep")
-  //--- Atomic property: gridStepUnit
-    self.gridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "gridStepUnit")
-  //--- Atomic property: gridDisplayFactor
-    self.gridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "gridDisplayFactor")
-  //--- Atomic property: zoom
-    self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
-  //--- Atomic property: mModelImageOpacity
-    self.mModelImageOpacity_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageOpacity")
-  //--- Atomic property: mModelImagePageHorizontalFlip
-    self.mModelImagePageHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageHorizontalFlip")
-  //--- Atomic property: mModelImagePageVerticalFlip
-    self.mModelImagePageVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageVerticalFlip")
-  //--- Atomic property: mModelImagePageGridStyle
-    self.mModelImagePageGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridStyle")
-  //--- Atomic property: mModelImagePageGridStep
-    self.mModelImagePageGridStep_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridStep")
-  //--- Atomic property: mModelImagePageGridStepUnit
-    self.mModelImagePageGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridStepUnit")
-  //--- Atomic property: mModelImagePageGridDisplayFactor
-    self.mModelImagePageGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridDisplayFactor")
-  //--- Atomic property: mModelImagePageZoom
-    self.mModelImagePageZoom_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageZoom")
-  //--- Atomic property: mModelImagePageXPlacardUnit
-    self.mModelImagePageXPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageXPlacardUnit")
-  //--- Atomic property: mModelImagePageYPlacardUnit
-    self.mModelImagePageYPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageYPlacardUnit")
-  //--- Atomic property: mModelImageSecondPointXUnit
-    self.mModelImageSecondPointXUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageSecondPointXUnit")
-  //--- Atomic property: mModelImageSecondPointYUnit
-    self.mModelImageSecondPointYUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageSecondPointYUnit")
-  //--- Atomic property: mModelImageFirstPointXOnLock
-    self.mModelImageFirstPointXOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageFirstPointXOnLock")
-  //--- Atomic property: mModelImageFirstPointYOnLock
-    self.mModelImageFirstPointYOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageFirstPointYOnLock")
-  //--- Atomic property: mModelImagePointsDxOnLock
-    self.mModelImagePointsDxOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePointsDxOnLock")
-  //--- Atomic property: mModelImagePointsDyOnLock
-    self.mModelImagePointsDyOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePointsDyOnLock")
-  //--- Atomic property: mModelImageScale
-    self.mModelImageScale_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageScale")
-  //--- Atomic property: mModelImageRotationInRadians
-    self.mModelImageRotationInRadians_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageRotationInRadians")
-  //--- Atomic property: mDimensionUnitFirstModelPointX
-    self.mDimensionUnitFirstModelPointX_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitFirstModelPointX")
-  //--- Atomic property: mDimensionUnitFirstModelPointY
-    self.mDimensionUnitFirstModelPointY_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitFirstModelPointY")
-  //--- Atomic property: mDimensionUnitSecondModelPointDx
-    self.mDimensionUnitSecondModelPointDx_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitSecondModelPointDx")
-  //--- Atomic property: mDimensionUnitSecondModelPointDy
-    self.mDimensionUnitSecondModelPointDy_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitSecondModelPointDy")
-  //--- Atomic property: mModelPointsCircleRadius
-    self.mModelPointsCircleRadius_property.storeIn (dictionary: ioDictionary, forKey: "mModelPointsCircleRadius")
-  //--- Atomic property: mPointsAreLocked
-    self.mPointsAreLocked_property.storeIn (dictionary: ioDictionary, forKey: "mPointsAreLocked")
-  //--- Atomic property: knobSizeMultpliedByTen
-    self.knobSizeMultpliedByTen_property.storeIn (dictionary: ioDictionary, forKey: "knobSizeMultpliedByTen")
-  //--- Atomic property: padNumbering
-    self.padNumbering_property.storeIn (dictionary: ioDictionary, forKey: "padNumbering")
-  //--- Atomic property: counterClockNumberingStartAngle
-    self.counterClockNumberingStartAngle_property.storeIn (dictionary: ioDictionary, forKey: "counterClockNumberingStartAngle")
-  //--- Atomic property: xPlacardUnit
-    self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "xPlacardUnit")
-  //--- Atomic property: yPlacardUnit
-    self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "yPlacardUnit")
+    //--- Atomic property: selectedPageIndex
+      self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
+    //--- Atomic property: selectedInspector
+      self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
+    //--- Atomic property: comments
+      self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
+    //--- Atomic property: program
+      self.program_property.storeIn (dictionary: ioDictionary, forKey: "program")
+    //--- Atomic property: horizontalFlip
+      self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "horizontalFlip")
+    //--- Atomic property: verticalFlip
+      self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "verticalFlip")
+    //--- Atomic property: gridStyle
+      self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey: "gridStyle")
+    //--- Atomic property: gridStep
+      self.gridStep_property.storeIn (dictionary: ioDictionary, forKey: "gridStep")
+    //--- Atomic property: gridStepUnit
+      self.gridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "gridStepUnit")
+    //--- Atomic property: gridDisplayFactor
+      self.gridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "gridDisplayFactor")
+    //--- Atomic property: zoom
+      self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
+    //--- Atomic property: mModelImageOpacity
+      self.mModelImageOpacity_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageOpacity")
+    //--- Atomic property: mModelImagePageHorizontalFlip
+      self.mModelImagePageHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageHorizontalFlip")
+    //--- Atomic property: mModelImagePageVerticalFlip
+      self.mModelImagePageVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageVerticalFlip")
+    //--- Atomic property: mModelImagePageGridStyle
+      self.mModelImagePageGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridStyle")
+    //--- Atomic property: mModelImagePageGridStep
+      self.mModelImagePageGridStep_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridStep")
+    //--- Atomic property: mModelImagePageGridStepUnit
+      self.mModelImagePageGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridStepUnit")
+    //--- Atomic property: mModelImagePageGridDisplayFactor
+      self.mModelImagePageGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridDisplayFactor")
+    //--- Atomic property: mModelImagePageZoom
+      self.mModelImagePageZoom_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageZoom")
+    //--- Atomic property: mModelImagePageXPlacardUnit
+      self.mModelImagePageXPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageXPlacardUnit")
+    //--- Atomic property: mModelImagePageYPlacardUnit
+      self.mModelImagePageYPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageYPlacardUnit")
+    //--- Atomic property: mModelImageSecondPointXUnit
+      self.mModelImageSecondPointXUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageSecondPointXUnit")
+    //--- Atomic property: mModelImageSecondPointYUnit
+      self.mModelImageSecondPointYUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageSecondPointYUnit")
+    //--- Atomic property: mModelImageFirstPointXOnLock
+      self.mModelImageFirstPointXOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageFirstPointXOnLock")
+    //--- Atomic property: mModelImageFirstPointYOnLock
+      self.mModelImageFirstPointYOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageFirstPointYOnLock")
+    //--- Atomic property: mModelImagePointsDxOnLock
+      self.mModelImagePointsDxOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePointsDxOnLock")
+    //--- Atomic property: mModelImagePointsDyOnLock
+      self.mModelImagePointsDyOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePointsDyOnLock")
+    //--- Atomic property: mModelImageScale
+      self.mModelImageScale_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageScale")
+    //--- Atomic property: mModelImageRotationInRadians
+      self.mModelImageRotationInRadians_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageRotationInRadians")
+    //--- Atomic property: mDimensionUnitFirstModelPointX
+      self.mDimensionUnitFirstModelPointX_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitFirstModelPointX")
+    //--- Atomic property: mDimensionUnitFirstModelPointY
+      self.mDimensionUnitFirstModelPointY_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitFirstModelPointY")
+    //--- Atomic property: mDimensionUnitSecondModelPointDx
+      self.mDimensionUnitSecondModelPointDx_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitSecondModelPointDx")
+    //--- Atomic property: mDimensionUnitSecondModelPointDy
+      self.mDimensionUnitSecondModelPointDy_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitSecondModelPointDy")
+    //--- Atomic property: mModelPointsCircleRadius
+      self.mModelPointsCircleRadius_property.storeIn (dictionary: ioDictionary, forKey: "mModelPointsCircleRadius")
+    //--- Atomic property: mPointsAreLocked
+      self.mPointsAreLocked_property.storeIn (dictionary: ioDictionary, forKey: "mPointsAreLocked")
+    //--- Atomic property: knobSizeMultpliedByTen
+      self.knobSizeMultpliedByTen_property.storeIn (dictionary: ioDictionary, forKey: "knobSizeMultpliedByTen")
+    //--- Atomic property: padNumbering
+      self.padNumbering_property.storeIn (dictionary: ioDictionary, forKey: "padNumbering")
+    //--- Atomic property: counterClockNumberingStartAngle
+      self.counterClockNumberingStartAngle_property.storeIn (dictionary: ioDictionary, forKey: "counterClockNumberingStartAngle")
+    //--- Atomic property: xPlacardUnit
+      self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "xPlacardUnit")
+    //--- Atomic property: yPlacardUnit
+      self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "yPlacardUnit")
   //--- To many property: mModelImageObjects
     self.store (
       managedObjectArray: self.mModelImageObjects_property.propval.values,
@@ -2775,8 +2779,8 @@ final class PackageRoot : EBGraphicManagedObject,
       relationshipName: "packageObjects",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mModelImageData
-    self.mModelImageData_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageData")
+    //--- Atomic property: mModelImageData
+      self.mModelImageData_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageData")
   //--- To one property: mModelImageDoublePoint
     self.store (managedObject:self.mModelImageDoublePoint_property.propval,
       relationshipName: "mModelImageDoublePoint",

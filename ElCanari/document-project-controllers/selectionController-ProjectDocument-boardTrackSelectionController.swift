@@ -403,193 +403,205 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //    Explorer
   //····················································································································
 
-  private var mValueExplorer : NSButton?
-  private var mExplorerWindow : NSWindow?
+  #if BUILD_OBJECT_EXPLORER
+    private var mValueExplorer : NSButton?
+    private var mExplorerWindow : NSWindow?
+  #endif
 
   //····················································································································
 
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-    let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-    let tf = NSTextField (frame:secondColumn (y))
-    tf.isEnabled = true
-    tf.isEditable = false
-    tf.stringValue = name
-    tf.font = font
-    view.addSubview (tf)
-    let valueExplorer = NSButton (frame: thirdColumn (y))
-    valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_ProjectDocument_boardTrackSelectionController.showObjectWindowFromExplorerButton(_:))
-    view.addSubview (valueExplorer)
-    self.mValueExplorer = valueExplorer
-    y += EXPLORER_ROW_HEIGHT
-  }
+  #if BUILD_OBJECT_EXPLORER
+    final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
+      let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+      let tf = NSTextField (frame:secondColumn (y))
+      tf.isEnabled = true
+      tf.isEditable = false
+      tf.stringValue = name
+      tf.font = font
+      view.addSubview (tf)
+      let valueExplorer = NSButton (frame: thirdColumn (y))
+      valueExplorer.font = font
+      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.target = self
+      valueExplorer.action = #selector(SelectionController_ProjectDocument_boardTrackSelectionController.showObjectWindowFromExplorerButton(_:))
+      view.addSubview (valueExplorer)
+      self.mValueExplorer = valueExplorer
+      y += EXPLORER_ROW_HEIGHT
+    }
+  #endif
 
   //····················································································································
 
-  func buildExplorerWindow () {
-  //-------------------------------------------------- Create Window
-    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
-    self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
-  //-------------------------------------------------- Adding properties
-    let view = NSView (frame: r)
-    var y : CGFloat = 0.0
-    createEntryForPropertyNamed (
-      "mSide",
-      idx: self.mSide_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSide_property.mObserverExplorer,
-      valueExplorer: &self.mSide_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDefaultTrackWidthUnit",
-      idx: self.mDefaultTrackWidthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDefaultTrackWidthUnit_property.mObserverExplorer,
-      valueExplorer: &self.mDefaultTrackWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCustomTrackWidth",
-      idx: self.mCustomTrackWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCustomTrackWidth_property.mObserverExplorer,
-      valueExplorer: &self.mCustomTrackWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCustomTrackWidthUnit",
-      idx: self.mCustomTrackWidthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCustomTrackWidthUnit_property.mObserverExplorer,
-      valueExplorer: &self.mCustomTrackWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mUsesCustomTrackWidth",
-      idx: self.mUsesCustomTrackWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mUsesCustomTrackWidth_property.mObserverExplorer,
-      valueExplorer: &self.mUsesCustomTrackWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mIsPreservedByAutoRouter",
-      idx: self.mIsPreservedByAutoRouter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mIsPreservedByAutoRouter_property.mObserverExplorer,
-      valueExplorer: &self.mIsPreservedByAutoRouter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mP1XUnit",
-      idx: self.mP1XUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mP1XUnit_property.mObserverExplorer,
-      valueExplorer: &self.mP1XUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mP1YUnit",
-      idx: self.mP1YUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mP1YUnit_property.mObserverExplorer,
-      valueExplorer: &self.mP1YUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mP2XUnit",
-      idx: self.mP2XUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mP2XUnit_property.mObserverExplorer,
-      valueExplorer: &self.mP2XUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mP2YUnit",
-      idx: self.mP2YUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mP2YUnit_property.mObserverExplorer,
-      valueExplorer: &self.mP2YUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mManualLockP1",
-      idx: self.mManualLockP1_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mManualLockP1_property.mObserverExplorer,
-      valueExplorer: &self.mManualLockP1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mManualLockP2",
-      idx: self.mManualLockP2_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mManualLockP2_property.mObserverExplorer,
-      valueExplorer: &self.mManualLockP2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDirectionLockOnKnobDragging",
-      idx: self.mDirectionLockOnKnobDragging_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDirectionLockOnKnobDragging_property.mObserverExplorer,
-      valueExplorer: &self.mDirectionLockOnKnobDragging_property.mValueExplorer
-    )
-  //-------------------------------------------------- Finish Window construction
-  //--- Resize View
-    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    view.frame = viewFrame
-  //--- Set content size
-    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
-  //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_ProjectDocument_boardTrackSelectionController.deleteSelectionControllerWindowAction(_:))
-  //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
-    self.mExplorerWindow!.title = windowTitle
-  //--- Add Scroll view
-    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-    let sw = NSScrollView (frame: frame)
-    sw.hasVerticalScroller = true
-    sw.documentView = view
-    self.mExplorerWindow!.contentView = sw
-  }
-
+  #if BUILD_OBJECT_EXPLORER
+    func buildExplorerWindow () {
+    //-------------------------------------------------- Create Window
+      let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
+      self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
+    //-------------------------------------------------- Adding properties
+      let view = NSView (frame: r)
+      var y : CGFloat = 0.0
+      createEntryForPropertyNamed (
+        "mSide",
+        idx: self.mSide_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSide_property.mObserverExplorer,
+        valueExplorer: &self.mSide_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDefaultTrackWidthUnit",
+        idx: self.mDefaultTrackWidthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDefaultTrackWidthUnit_property.mObserverExplorer,
+        valueExplorer: &self.mDefaultTrackWidthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCustomTrackWidth",
+        idx: self.mCustomTrackWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCustomTrackWidth_property.mObserverExplorer,
+        valueExplorer: &self.mCustomTrackWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCustomTrackWidthUnit",
+        idx: self.mCustomTrackWidthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCustomTrackWidthUnit_property.mObserverExplorer,
+        valueExplorer: &self.mCustomTrackWidthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mUsesCustomTrackWidth",
+        idx: self.mUsesCustomTrackWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mUsesCustomTrackWidth_property.mObserverExplorer,
+        valueExplorer: &self.mUsesCustomTrackWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsPreservedByAutoRouter",
+        idx: self.mIsPreservedByAutoRouter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsPreservedByAutoRouter_property.mObserverExplorer,
+        valueExplorer: &self.mIsPreservedByAutoRouter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mP1XUnit",
+        idx: self.mP1XUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mP1XUnit_property.mObserverExplorer,
+        valueExplorer: &self.mP1XUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mP1YUnit",
+        idx: self.mP1YUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mP1YUnit_property.mObserverExplorer,
+        valueExplorer: &self.mP1YUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mP2XUnit",
+        idx: self.mP2XUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mP2XUnit_property.mObserverExplorer,
+        valueExplorer: &self.mP2XUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mP2YUnit",
+        idx: self.mP2YUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mP2YUnit_property.mObserverExplorer,
+        valueExplorer: &self.mP2YUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mManualLockP1",
+        idx: self.mManualLockP1_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mManualLockP1_property.mObserverExplorer,
+        valueExplorer: &self.mManualLockP1_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mManualLockP2",
+        idx: self.mManualLockP2_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mManualLockP2_property.mObserverExplorer,
+        valueExplorer: &self.mManualLockP2_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDirectionLockOnKnobDragging",
+        idx: self.mDirectionLockOnKnobDragging_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDirectionLockOnKnobDragging_property.mObserverExplorer,
+        valueExplorer: &self.mDirectionLockOnKnobDragging_property.mValueExplorer
+      )
+    //-------------------------------------------------- Finish Window construction
+    //--- Resize View
+      let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      view.frame = viewFrame
+    //--- Set content size
+      self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
+    //--- Set close button as 'remove window' button
+      let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
+      closeButton?.target = self
+      closeButton?.action = #selector(SelectionController_ProjectDocument_boardTrackSelectionController.deleteSelectionControllerWindowAction(_:))
+    //--- Set window title
+      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      self.mExplorerWindow!.title = windowTitle
+    //--- Add Scroll view
+      let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+      let sw = NSScrollView (frame: frame)
+      sw.hasVerticalScroller = true
+      sw.documentView = view
+      self.mExplorerWindow!.contentView = sw
+    }
+  #endif
+  
   //····················································································································
   //   showObjectWindowFromExplorerButton
   //····················································································································
 
-  @objc func showObjectWindowFromExplorerButton (_ : Any) {
-    if self.mExplorerWindow == nil {
-      self.buildExplorerWindow ()
+  #if BUILD_OBJECT_EXPLORER
+    @objc func showObjectWindowFromExplorerButton (_ : Any) {
+      if self.mExplorerWindow == nil {
+        self.buildExplorerWindow ()
+      }
+      self.mExplorerWindow?.makeKeyAndOrderFront (nil)
     }
-    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
-  }
-
+  #endif
+  
   //····················································································································
   //   deleteSelectionControllerWindowAction
   //····················································································································
 
-  @objc func deleteSelectionControllerWindowAction (_ : Any) {
-    self.clearObjectExplorer ()
-  }
+  #if BUILD_OBJECT_EXPLORER
+    @objc func deleteSelectionControllerWindowAction (_ : Any) {
+      self.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //   clearObjectExplorer
   //····················································································································
 
-  func clearObjectExplorer () {
-    if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
-      closeButton.target = nil
+  #if BUILD_OBJECT_EXPLORER
+    func clearObjectExplorer () {
+      if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
+        closeButton.target = nil
+      }
+      self.mExplorerWindow?.orderOut (nil)
+      self.mExplorerWindow = nil
     }
-    self.mExplorerWindow?.orderOut (nil)
-    self.mExplorerWindow = nil
-  }
+  #endif
 
   //····················································································································
 

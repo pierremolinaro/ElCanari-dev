@@ -885,218 +885,222 @@ final class PointInSchematic : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mSymbolPinName",
-      idx: self.mSymbolPinName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSymbolPinName_property.mObserverExplorer,
-      valueExplorer: &self.mSymbolPinName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "location",
-      idx: self.location_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.location_property.mObserverExplorer,
-      valueExplorer: &self.location_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netName",
-      idx: self.netName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netName_property.mObserverExplorer,
-      valueExplorer: &self.netName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netClassName",
-      idx: self.netClassName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netClassName_property.mObserverExplorer,
-      valueExplorer: &self.netClassName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "hasNet",
-      idx: self.hasNet_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.hasNet_property.mObserverExplorer,
-      valueExplorer: &self.hasNet_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "canMove",
-      idx: self.canMove_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.canMove_property.mObserverExplorer,
-      valueExplorer: &self.canMove_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "wireColor",
-      idx: self.wireColor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.wireColor_property.mObserverExplorer,
-      valueExplorer: &self.wireColor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "symbolRotation",
-      idx: self.symbolRotation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.symbolRotation_property.mObserverExplorer,
-      valueExplorer: &self.symbolRotation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "symbolNameNetName",
-      idx: self.symbolNameNetName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.symbolNameNetName_property.mObserverExplorer,
-      valueExplorer: &self.symbolNameNetName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "isConnected",
-      idx: self.isConnected_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.isConnected_property.mObserverExplorer,
-      valueExplorer: &self.isConnected_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "status",
-      idx: self.status_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.status_property.mObserverExplorer,
-      valueExplorer: &self.status_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "connectedPoints",
-      idx: self.connectedPoints_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.connectedPoints_property.mObserverExplorer,
-      valueExplorer: &self.connectedPoints_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netInfoForPoint",
-      idx: self.netInfoForPoint_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netInfoForPoint_property.mObserverExplorer,
-      valueExplorer: &self.netInfoForPoint_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mLabels",
-      idx:mLabels_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mLabels_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mWiresP2s",
-      idx:mWiresP2s_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mWiresP2s_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mWiresP1s",
-      idx:mWiresP1s_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mWiresP1s_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mSymbol",
-      idx:self.mSymbol_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mSymbol_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mNet",
-      idx:self.mNet_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mNet_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mNC",
-      idx:self.mNC_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mNC_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mSheet",
-      idx:self.mSheet_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mSheet_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mSymbolPinName",
+        idx: self.mSymbolPinName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSymbolPinName_property.mObserverExplorer,
+        valueExplorer: &self.mSymbolPinName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mX",
+        idx: self.mX_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mX_property.mObserverExplorer,
+        valueExplorer: &self.mX_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mY",
+        idx: self.mY_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mY_property.mObserverExplorer,
+        valueExplorer: &self.mY_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "location",
+        idx: self.location_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.location_property.mObserverExplorer,
+        valueExplorer: &self.location_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netName",
+        idx: self.netName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netName_property.mObserverExplorer,
+        valueExplorer: &self.netName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netClassName",
+        idx: self.netClassName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netClassName_property.mObserverExplorer,
+        valueExplorer: &self.netClassName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "hasNet",
+        idx: self.hasNet_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.hasNet_property.mObserverExplorer,
+        valueExplorer: &self.hasNet_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "canMove",
+        idx: self.canMove_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.canMove_property.mObserverExplorer,
+        valueExplorer: &self.canMove_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "wireColor",
+        idx: self.wireColor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.wireColor_property.mObserverExplorer,
+        valueExplorer: &self.wireColor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "symbolRotation",
+        idx: self.symbolRotation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.symbolRotation_property.mObserverExplorer,
+        valueExplorer: &self.symbolRotation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "symbolNameNetName",
+        idx: self.symbolNameNetName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.symbolNameNetName_property.mObserverExplorer,
+        valueExplorer: &self.symbolNameNetName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "isConnected",
+        idx: self.isConnected_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.isConnected_property.mObserverExplorer,
+        valueExplorer: &self.isConnected_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "status",
+        idx: self.status_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.status_property.mObserverExplorer,
+        valueExplorer: &self.status_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "connectedPoints",
+        idx: self.connectedPoints_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.connectedPoints_property.mObserverExplorer,
+        valueExplorer: &self.connectedPoints_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netInfoForPoint",
+        idx: self.netInfoForPoint_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netInfoForPoint_property.mObserverExplorer,
+        valueExplorer: &self.netInfoForPoint_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mLabels",
+        idx:mLabels_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mLabels_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mWiresP2s",
+        idx:mWiresP2s_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mWiresP2s_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mWiresP1s",
+        idx:mWiresP1s_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mWiresP1s_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mSymbol",
+        idx:self.mSymbol_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mSymbol_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mNet",
+        idx:self.mNet_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mNet_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mNC",
+        idx:self.mNC_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mNC_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mSheet",
+        idx:self.mSheet_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mSheet_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mSymbolPinName
     self.mSymbolPinName_property.mObserverExplorer = nil
     self.mSymbolPinName_property.mValueExplorer = nil
-  //--- To many property: mLabels
-    self.mLabels_property.mValueExplorer = nil
+    //--- To many property: mLabels
+      self.mLabels_property.mValueExplorer = nil
   //--- Atomic property: mX
     self.mX_property.mObserverExplorer = nil
     self.mX_property.mValueExplorer = nil
   //--- Atomic property: mY
     self.mY_property.mObserverExplorer = nil
     self.mY_property.mValueExplorer = nil
-  //--- To many property: mWiresP2s
-    self.mWiresP2s_property.mValueExplorer = nil
-  //--- To many property: mWiresP1s
-    self.mWiresP1s_property.mValueExplorer = nil
-  //--- To one property: mSymbol
-    self.mSymbol_property.mObserverExplorer = nil
-    self.mSymbol_property.mValueExplorer = nil
-  //--- To one property: mNet
-    self.mNet_property.mObserverExplorer = nil
-    self.mNet_property.mValueExplorer = nil
-  //--- To one property: mNC
-    self.mNC_property.mObserverExplorer = nil
-    self.mNC_property.mValueExplorer = nil
-  //--- To one property: mSheet
-    self.mSheet_property.mObserverExplorer = nil
-    self.mSheet_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: mWiresP2s
+      self.mWiresP2s_property.mValueExplorer = nil
+    //--- To many property: mWiresP1s
+      self.mWiresP1s_property.mValueExplorer = nil
+    //--- To one property: mSymbol
+      self.mSymbol_property.mObserverExplorer = nil
+      self.mSymbol_property.mValueExplorer = nil
+    //--- To one property: mNet
+      self.mNet_property.mObserverExplorer = nil
+      self.mNet_property.mValueExplorer = nil
+    //--- To one property: mNC
+      self.mNC_property.mObserverExplorer = nil
+      self.mNC_property.mValueExplorer = nil
+    //--- To one property: mSheet
+      self.mSheet_property.mObserverExplorer = nil
+      self.mSheet_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -1129,18 +1133,18 @@ final class PointInSchematic : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mSymbolPinName
-    self.mSymbolPinName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolPinName")
+    //--- Atomic property: mSymbolPinName
+      self.mSymbolPinName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolPinName")
   //--- To many property: mLabels
     self.store (
       managedObjectArray: self.mLabels_property.propval.values,
       relationshipName: "mLabels",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
-  //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+    //--- Atomic property: mX
+      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+    //--- Atomic property: mY
+      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
   //--- To many property: mWiresP2s
     self.store (
       managedObjectArray: self.mWiresP2s_property.propval.values,

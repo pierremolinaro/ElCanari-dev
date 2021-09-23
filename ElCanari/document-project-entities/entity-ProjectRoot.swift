@@ -5246,1058 +5246,1061 @@ final class ProjectRoot : EBManagedObject,
   //    populateExplorerWindow
   //····················································································································
 
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mArtworkName",
-      idx: self.mArtworkName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mArtworkName_property.mObserverExplorer,
-      valueExplorer: &self.mArtworkName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mArtworkVersion",
-      idx: self.mArtworkVersion_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mArtworkVersion_property.mObserverExplorer,
-      valueExplorer: &self.mArtworkVersion_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mPDFBoardBackgroundColor",
-      idx: self.mPDFBoardBackgroundColor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mPDFBoardBackgroundColor_property.mObserverExplorer,
-      valueExplorer: &self.mPDFBoardBackgroundColor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mCheckClearanceBetweenPadsOfSameNet",
-      idx: self.mCheckClearanceBetweenPadsOfSameNet_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mCheckClearanceBetweenPadsOfSameNet_property.mObserverExplorer,
-      valueExplorer: &self.mCheckClearanceBetweenPadsOfSameNet_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mLastERCCheckingIsSuccess",
-      idx: self.mLastERCCheckingIsSuccess_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mLastERCCheckingIsSuccess_property.mObserverExplorer,
-      valueExplorer: &self.mLastERCCheckingIsSuccess_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mLastERCCheckingSignature",
-      idx: self.mLastERCCheckingSignature_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mLastERCCheckingSignature_property.mObserverExplorer,
-      valueExplorer: &self.mLastERCCheckingSignature_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mLayerConfiguration",
-      idx: self.mLayerConfiguration_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mLayerConfiguration_property.mObserverExplorer,
-      valueExplorer: &self.mLayerConfiguration_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardSideForNewTrack",
-      idx: self.mBoardSideForNewTrack_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardSideForNewTrack_property.mObserverExplorer,
-      valueExplorer: &self.mBoardSideForNewTrack_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDirectionForNewTrack",
-      idx: self.mDirectionForNewTrack_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDirectionForNewTrack_property.mObserverExplorer,
-      valueExplorer: &self.mDirectionForNewTrack_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardLayerForNewText",
-      idx: self.mBoardLayerForNewText_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardLayerForNewText_property.mObserverExplorer,
-      valueExplorer: &self.mBoardLayerForNewText_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardLayerForNewLine",
-      idx: self.mBoardLayerForNewLine_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardLayerForNewLine_property.mObserverExplorer,
-      valueExplorer: &self.mBoardLayerForNewLine_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardSideForNewRestrictRectangle",
-      idx: self.mBoardSideForNewRestrictRectangle_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardSideForNewRestrictRectangle_property.mObserverExplorer,
-      valueExplorer: &self.mBoardSideForNewRestrictRectangle_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mAutoRouterPreferredDirections",
-      idx: self.mAutoRouterPreferredDirections_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mAutoRouterPreferredDirections_property.mObserverExplorer,
-      valueExplorer: &self.mAutoRouterPreferredDirections_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mAutorouterSnapAngle",
-      idx: self.mAutorouterSnapAngle_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mAutorouterSnapAngle_property.mObserverExplorer,
-      valueExplorer: &self.mAutorouterSnapAngle_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRouteDirection",
-      idx: self.mRouteDirection_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRouteDirection_property.mObserverExplorer,
-      valueExplorer: &self.mRouteDirection_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRouteOrigin",
-      idx: self.mRouteOrigin_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRouteOrigin_property.mObserverExplorer,
-      valueExplorer: &self.mRouteOrigin_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mAutorouterInterfaceMode",
-      idx: self.mAutorouterInterfaceMode_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mAutorouterInterfaceMode_property.mObserverExplorer,
-      valueExplorer: &self.mAutorouterInterfaceMode_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mExportExistingTracksAndVias",
-      idx: self.mExportExistingTracksAndVias_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mExportExistingTracksAndVias_property.mObserverExplorer,
-      valueExplorer: &self.mExportExistingTracksAndVias_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mTrackLengthUnit",
-      idx: self.mTrackLengthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mTrackLengthUnit_property.mObserverExplorer,
-      valueExplorer: &self.mTrackLengthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mLayoutClearance",
-      idx: self.mLayoutClearance_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mLayoutClearance_property.mObserverExplorer,
-      valueExplorer: &self.mLayoutClearance_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mLayoutClearanceUnit",
-      idx: self.mLayoutClearanceUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mLayoutClearanceUnit_property.mObserverExplorer,
-      valueExplorer: &self.mLayoutClearanceUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardSelectedInspector",
-      idx: self.mBoardSelectedInspector_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardSelectedInspector_property.mObserverExplorer,
-      valueExplorer: &self.mBoardSelectedInspector_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardHorizontalFlip",
-      idx: self.mBoardHorizontalFlip_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardHorizontalFlip_property.mObserverExplorer,
-      valueExplorer: &self.mBoardHorizontalFlip_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardVerticalFlip",
-      idx: self.mBoardVerticalFlip_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardVerticalFlip_property.mObserverExplorer,
-      valueExplorer: &self.mBoardVerticalFlip_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardGridStyle",
-      idx: self.mBoardGridStyle_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardGridStyle_property.mObserverExplorer,
-      valueExplorer: &self.mBoardGridStyle_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardGridDisplayFactor",
-      idx: self.mBoardGridDisplayFactor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardGridDisplayFactor_property.mObserverExplorer,
-      valueExplorer: &self.mBoardGridDisplayFactor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardZoom",
-      idx: self.mBoardZoom_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardZoom_property.mObserverExplorer,
-      valueExplorer: &self.mBoardZoom_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardGridStep",
-      idx: self.mBoardGridStep_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardGridStep_property.mObserverExplorer,
-      valueExplorer: &self.mBoardGridStep_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardGridStepUnit",
-      idx: self.mBoardGridStepUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardGridStepUnit_property.mObserverExplorer,
-      valueExplorer: &self.mBoardGridStepUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mErrorOrWarningIssueSize",
-      idx: self.mErrorOrWarningIssueSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mErrorOrWarningIssueSize_property.mObserverExplorer,
-      valueExplorer: &self.mErrorOrWarningIssueSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mControlKeyHiliteDiameter",
-      idx: self.mControlKeyHiliteDiameter_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mControlKeyHiliteDiameter_property.mObserverExplorer,
-      valueExplorer: &self.mControlKeyHiliteDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDSNFileProposedName",
-      idx: self.mDSNFileProposedName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDSNFileProposedName_property.mObserverExplorer,
-      valueExplorer: &self.mDSNFileProposedName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardLimitsWidth",
-      idx: self.mBoardLimitsWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardLimitsWidth_property.mObserverExplorer,
-      valueExplorer: &self.mBoardLimitsWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardLimitsWidthUnit",
-      idx: self.mBoardLimitsWidthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardLimitsWidthUnit_property.mObserverExplorer,
-      valueExplorer: &self.mBoardLimitsWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardClearance",
-      idx: self.mBoardClearance_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardClearance_property.mObserverExplorer,
-      valueExplorer: &self.mBoardClearance_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardClearanceUnit",
-      idx: self.mBoardClearanceUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardClearanceUnit_property.mObserverExplorer,
-      valueExplorer: &self.mBoardClearanceUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardLimitsSelectedInspector",
-      idx: self.mBoardLimitsSelectedInspector_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardLimitsSelectedInspector_property.mObserverExplorer,
-      valueExplorer: &self.mBoardLimitsSelectedInspector_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardLimitsHorizontalFlip",
-      idx: self.mBoardLimitsHorizontalFlip_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardLimitsHorizontalFlip_property.mObserverExplorer,
-      valueExplorer: &self.mBoardLimitsHorizontalFlip_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardLimitsVerticalFlip",
-      idx: self.mBoardLimitsVerticalFlip_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardLimitsVerticalFlip_property.mObserverExplorer,
-      valueExplorer: &self.mBoardLimitsVerticalFlip_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardLimitsGridStyle",
-      idx: self.mBoardLimitsGridStyle_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardLimitsGridStyle_property.mObserverExplorer,
-      valueExplorer: &self.mBoardLimitsGridStyle_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardLimitsGridDisplayFactor",
-      idx: self.mBoardLimitsGridDisplayFactor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardLimitsGridDisplayFactor_property.mObserverExplorer,
-      valueExplorer: &self.mBoardLimitsGridDisplayFactor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardLimitsZoom",
-      idx: self.mBoardLimitsZoom_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardLimitsZoom_property.mObserverExplorer,
-      valueExplorer: &self.mBoardLimitsZoom_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardLimitsGridStep",
-      idx: self.mBoardLimitsGridStep_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardLimitsGridStep_property.mObserverExplorer,
-      valueExplorer: &self.mBoardLimitsGridStep_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardLimitsGridStepUnit",
-      idx: self.mBoardLimitsGridStepUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardLimitsGridStepUnit_property.mObserverExplorer,
-      valueExplorer: &self.mBoardLimitsGridStepUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardLimitsBoundingBoxUnit",
-      idx: self.mBoardLimitsBoundingBoxUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardLimitsBoundingBoxUnit_property.mObserverExplorer,
-      valueExplorer: &self.mBoardLimitsBoundingBoxUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardPointsBoundingBoxUnit",
-      idx: self.mBoardPointsBoundingBoxUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardPointsBoundingBoxUnit_property.mObserverExplorer,
-      valueExplorer: &self.mBoardPointsBoundingBoxUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardSelectedCurveDisplayUnit",
-      idx: self.mBoardSelectedCurveDisplayUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardSelectedCurveDisplayUnit_property.mObserverExplorer,
-      valueExplorer: &self.mBoardSelectedCurveDisplayUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardLimitControlPointsDisplayUnit",
-      idx: self.mBoardLimitControlPointsDisplayUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardLimitControlPointsDisplayUnit_property.mObserverExplorer,
-      valueExplorer: &self.mBoardLimitControlPointsDisplayUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mBoardShape",
-      idx: self.mBoardShape_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mBoardShape_property.mObserverExplorer,
-      valueExplorer: &self.mBoardShape_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRectangularBoardWidth",
-      idx: self.mRectangularBoardWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRectangularBoardWidth_property.mObserverExplorer,
-      valueExplorer: &self.mRectangularBoardWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRectangularBoardWidthUnit",
-      idx: self.mRectangularBoardWidthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRectangularBoardWidthUnit_property.mObserverExplorer,
-      valueExplorer: &self.mRectangularBoardWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRectangularBoardHeight",
-      idx: self.mRectangularBoardHeight_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRectangularBoardHeight_property.mObserverExplorer,
-      valueExplorer: &self.mRectangularBoardHeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRectangularBoardHeightUnit",
-      idx: self.mRectangularBoardHeightUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRectangularBoardHeightUnit_property.mObserverExplorer,
-      valueExplorer: &self.mRectangularBoardHeightUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDefaultNetClassName",
-      idx: self.mDefaultNetClassName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDefaultNetClassName_property.mObserverExplorer,
-      valueExplorer: &self.mDefaultNetClassName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSelectedPageIndex",
-      idx: self.mSelectedPageIndex_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSelectedPageIndex_property.mObserverExplorer,
-      valueExplorer: &self.mSelectedPageIndex_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSelectedSchematicInspector",
-      idx: self.mSelectedSchematicInspector_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSelectedSchematicInspector_property.mObserverExplorer,
-      valueExplorer: &self.mSelectedSchematicInspector_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSchematicTitle",
-      idx: self.mSchematicTitle_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSchematicTitle_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicTitle_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSchematicVersion",
-      idx: self.mSchematicVersion_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSchematicVersion_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicVersion_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSchematicDate",
-      idx: self.mSchematicDate_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSchematicDate_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicDate_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSchematicHorizontalFlip",
-      idx: self.mSchematicHorizontalFlip_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSchematicHorizontalFlip_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicHorizontalFlip_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSchematicVerticalFlip",
-      idx: self.mSchematicVerticalFlip_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSchematicVerticalFlip_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicVerticalFlip_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSchematicZoom",
-      idx: self.mSchematicZoom_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSchematicZoom_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicZoom_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSchematicGridStyle",
-      idx: self.mSchematicGridStyle_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSchematicGridStyle_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicGridStyle_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSchematicGridDisplayFactor",
-      idx: self.mSchematicGridDisplayFactor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSchematicGridDisplayFactor_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicGridDisplayFactor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSchematicCustomWidth",
-      idx: self.mSchematicCustomWidth_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSchematicCustomWidth_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicCustomWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSchematicCustomWidthUnit",
-      idx: self.mSchematicCustomWidthUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSchematicCustomWidthUnit_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicCustomWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSchematicCustomHeight",
-      idx: self.mSchematicCustomHeight_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSchematicCustomHeight_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicCustomHeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSchematicCustomHeightUnit",
-      idx: self.mSchematicCustomHeightUnit_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSchematicCustomHeightUnit_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicCustomHeightUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mSchematicSheetOrientation",
-      idx: self.mSchematicSheetOrientation_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSchematicSheetOrientation_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicSheetOrientation_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRastnetDisplay",
-      idx: self.mRastnetDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRastnetDisplay_property.mObserverExplorer,
-      valueExplorer: &self.mRastnetDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRastnetDisplayedNetName",
-      idx: self.mRastnetDisplayedNetName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRastnetDisplayedNetName_property.mObserverExplorer,
-      valueExplorer: &self.mRastnetDisplayedNetName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRastnetDisplayedComponentName",
-      idx: self.mRastnetDisplayedComponentName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRastnetDisplayedComponentName_property.mObserverExplorer,
-      valueExplorer: &self.mRastnetDisplayedComponentName_property.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "boardGridStepMultipliedByDisplayFactor",
-      idx: self.boardGridStepMultipliedByDisplayFactor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardGridStepMultipliedByDisplayFactor_property.mObserverExplorer,
-      valueExplorer: &self.boardGridStepMultipliedByDisplayFactor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardLimitsGridStepMultipliedByDisplayFactor",
-      idx: self.boardLimitsGridStepMultipliedByDisplayFactor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardLimitsGridStepMultipliedByDisplayFactor_property.mObserverExplorer,
-      valueExplorer: &self.boardLimitsGridStepMultipliedByDisplayFactor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardShapeIsRectangular",
-      idx: self.boardShapeIsRectangular_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardShapeIsRectangular_property.mObserverExplorer,
-      valueExplorer: &self.boardShapeIsRectangular_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectedSheetIssues",
-      idx: self.selectedSheetIssues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectedSheetIssues_property.mObserverExplorer,
-      valueExplorer: &self.selectedSheetIssues_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "connectedPoints",
-      idx: self.connectedPoints_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.connectedPoints_property.mObserverExplorer,
-      valueExplorer: &self.connectedPoints_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "connexionWarningString",
-      idx: self.connexionWarningString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.connexionWarningString_property.mObserverExplorer,
-      valueExplorer: &self.connexionWarningString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "connexionErrorString",
-      idx: self.connexionErrorString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.connexionErrorString_property.mObserverExplorer,
-      valueExplorer: &self.connexionErrorString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "sheetIndexes",
-      idx: self.sheetIndexes_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.sheetIndexes_property.mObserverExplorer,
-      valueExplorer: &self.sheetIndexes_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netsDescription",
-      idx: self.netsDescription_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netsDescription_property.mObserverExplorer,
-      valueExplorer: &self.netsDescription_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardIssues",
-      idx: self.boardIssues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardIssues_property.mObserverExplorer,
-      valueExplorer: &self.boardIssues_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "signatureForERCChecking",
-      idx: self.signatureForERCChecking_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
-      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "ercStatusImage",
-      idx: self.ercStatusImage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.ercStatusImage_property.mObserverExplorer,
-      valueExplorer: &self.ercStatusImage_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "ercStatusMessage",
-      idx: self.ercStatusMessage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.ercStatusMessage_property.mObserverExplorer,
-      valueExplorer: &self.ercStatusMessage_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "viaCountString",
-      idx: self.viaCountString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.viaCountString_property.mObserverExplorer,
-      valueExplorer: &self.viaCountString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "topSideTrackCountString",
-      idx: self.topSideTrackCountString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.topSideTrackCountString_property.mObserverExplorer,
-      valueExplorer: &self.topSideTrackCountString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backSideTrackCountString",
-      idx: self.backSideTrackCountString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.backSideTrackCountString_property.mObserverExplorer,
-      valueExplorer: &self.backSideTrackCountString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "inner1LayerTrackCountString",
-      idx: self.inner1LayerTrackCountString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.inner1LayerTrackCountString_property.mObserverExplorer,
-      valueExplorer: &self.inner1LayerTrackCountString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "inner2LayerTrackCountString",
-      idx: self.inner2LayerTrackCountString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.inner2LayerTrackCountString_property.mObserverExplorer,
-      valueExplorer: &self.inner2LayerTrackCountString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "inner3LayerTrackCountString",
-      idx: self.inner3LayerTrackCountString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.inner3LayerTrackCountString_property.mObserverExplorer,
-      valueExplorer: &self.inner3LayerTrackCountString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "inner4LayerTrackCountString",
-      idx: self.inner4LayerTrackCountString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.inner4LayerTrackCountString_property.mObserverExplorer,
-      valueExplorer: &self.inner4LayerTrackCountString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "trackCountString",
-      idx: self.trackCountString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.trackCountString_property.mObserverExplorer,
-      valueExplorer: &self.trackCountString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "trackLengthString",
-      idx: self.trackLengthString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.trackLengthString_property.mObserverExplorer,
-      valueExplorer: &self.trackLengthString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardStatusImage",
-      idx: self.boardStatusImage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardStatusImage_property.mObserverExplorer,
-      valueExplorer: &self.boardStatusImage_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardStatusMessage",
-      idx: self.boardStatusMessage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardStatusMessage_property.mObserverExplorer,
-      valueExplorer: &self.boardStatusMessage_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "interiorBoundBox",
-      idx: self.interiorBoundBox_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.interiorBoundBox_property.mObserverExplorer,
-      valueExplorer: &self.interiorBoundBox_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardBoundBox",
-      idx: self.boardBoundBox_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardBoundBox_property.mObserverExplorer,
-      valueExplorer: &self.boardBoundBox_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardInteriorTop",
-      idx: self.boardInteriorTop_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardInteriorTop_property.mObserverExplorer,
-      valueExplorer: &self.boardInteriorTop_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardInteriorBottom",
-      idx: self.boardInteriorBottom_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardInteriorBottom_property.mObserverExplorer,
-      valueExplorer: &self.boardInteriorBottom_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardInteriorLeft",
-      idx: self.boardInteriorLeft_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardInteriorLeft_property.mObserverExplorer,
-      valueExplorer: &self.boardInteriorLeft_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardInteriorRight",
-      idx: self.boardInteriorRight_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardInteriorRight_property.mObserverExplorer,
-      valueExplorer: &self.boardInteriorRight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardLimitBorderTop",
-      idx: self.boardLimitBorderTop_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardLimitBorderTop_property.mObserverExplorer,
-      valueExplorer: &self.boardLimitBorderTop_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardLimitBorderBottom",
-      idx: self.boardLimitBorderBottom_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardLimitBorderBottom_property.mObserverExplorer,
-      valueExplorer: &self.boardLimitBorderBottom_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardLimitBorderLeft",
-      idx: self.boardLimitBorderLeft_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardLimitBorderLeft_property.mObserverExplorer,
-      valueExplorer: &self.boardLimitBorderLeft_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardLimitBorderRight",
-      idx: self.boardLimitBorderRight_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardLimitBorderRight_property.mObserverExplorer,
-      valueExplorer: &self.boardLimitBorderRight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "borderElementCountString",
-      idx: self.borderElementCountString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.borderElementCountString_property.mObserverExplorer,
-      valueExplorer: &self.borderElementCountString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "borderOutlineBackground",
-      idx: self.borderOutlineBackground_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.borderOutlineBackground_property.mObserverExplorer,
-      valueExplorer: &self.borderOutlineBackground_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "borderViewBackground",
-      idx: self.borderViewBackground_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.borderViewBackground_property.mObserverExplorer,
-      valueExplorer: &self.borderViewBackground_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "deviceNames",
-      idx: self.deviceNames_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.deviceNames_property.mObserverExplorer,
-      valueExplorer: &self.deviceNames_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "allClassNames",
-      idx: self.allClassNames_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.allClassNames_property.mObserverExplorer,
-      valueExplorer: &self.allClassNames_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "sheetGeometry",
-      idx: self.sheetGeometry_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.sheetGeometry_property.mObserverExplorer,
-      valueExplorer: &self.sheetGeometry_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "schematicBackgroundDisplay",
-      idx: self.schematicBackgroundDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.schematicBackgroundDisplay_property.mObserverExplorer,
-      valueExplorer: &self.schematicBackgroundDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netWarningCount",
-      idx: self.netWarningCount_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netWarningCount_property.mObserverExplorer,
-      valueExplorer: &self.netWarningCount_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netNamesArray",
-      idx: self.netNamesArray_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.netNamesArray_property.mObserverExplorer,
-      valueExplorer: &self.netNamesArray_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "unplacedSymbols",
-      idx: self.unplacedSymbols_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.unplacedSymbols_property.mObserverExplorer,
-      valueExplorer: &self.unplacedSymbols_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "unplacedPackages",
-      idx: self.unplacedPackages_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.unplacedPackages_property.mObserverExplorer,
-      valueExplorer: &self.unplacedPackages_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "componentsPlacedInBoard",
-      idx: self.componentsPlacedInBoard_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.componentsPlacedInBoard_property.mObserverExplorer,
-      valueExplorer: &self.componentsPlacedInBoard_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "placedComponentNameArray",
-      idx: self.placedComponentNameArray_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.placedComponentNameArray_property.mObserverExplorer,
-      valueExplorer: &self.placedComponentNameArray_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "schematicHasErrorOrWarning",
-      idx: self.schematicHasErrorOrWarning_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.schematicHasErrorOrWarning_property.mObserverExplorer,
-      valueExplorer: &self.schematicHasErrorOrWarning_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "schematicStatusMessage",
-      idx: self.schematicStatusMessage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.schematicStatusMessage_property.mObserverExplorer,
-      valueExplorer: &self.schematicStatusMessage_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "schematicStatusImage",
-      idx: self.schematicStatusImage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.schematicStatusImage_property.mObserverExplorer,
-      valueExplorer: &self.schematicStatusImage_property.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mSheets",
-      idx:mSheets_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mSheets_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mNetClasses",
-      idx:mNetClasses_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mNetClasses_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mFonts",
-      idx:mFonts_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mFonts_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mDevices",
-      idx:mDevices_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mDevices_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mBorderCurves",
-      idx:mBorderCurves_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mBorderCurves_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mBoardObjects",
-      idx:mBoardObjects_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mBoardObjects_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mComponents",
-      idx:mComponents_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mComponents_property.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mSelectedSheet",
-      idx:self.mSelectedSheet_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mSelectedSheet_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mArtwork",
-      idx:self.mArtwork_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mArtwork_property.mValueExplorer
-    )
-    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mArtworkName",
+        idx: self.mArtworkName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mArtworkName_property.mObserverExplorer,
+        valueExplorer: &self.mArtworkName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mArtworkVersion",
+        idx: self.mArtworkVersion_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mArtworkVersion_property.mObserverExplorer,
+        valueExplorer: &self.mArtworkVersion_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mPDFBoardBackgroundColor",
+        idx: self.mPDFBoardBackgroundColor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mPDFBoardBackgroundColor_property.mObserverExplorer,
+        valueExplorer: &self.mPDFBoardBackgroundColor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mCheckClearanceBetweenPadsOfSameNet",
+        idx: self.mCheckClearanceBetweenPadsOfSameNet_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mCheckClearanceBetweenPadsOfSameNet_property.mObserverExplorer,
+        valueExplorer: &self.mCheckClearanceBetweenPadsOfSameNet_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mLastERCCheckingIsSuccess",
+        idx: self.mLastERCCheckingIsSuccess_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mLastERCCheckingIsSuccess_property.mObserverExplorer,
+        valueExplorer: &self.mLastERCCheckingIsSuccess_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mLastERCCheckingSignature",
+        idx: self.mLastERCCheckingSignature_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mLastERCCheckingSignature_property.mObserverExplorer,
+        valueExplorer: &self.mLastERCCheckingSignature_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mLayerConfiguration",
+        idx: self.mLayerConfiguration_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mLayerConfiguration_property.mObserverExplorer,
+        valueExplorer: &self.mLayerConfiguration_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardSideForNewTrack",
+        idx: self.mBoardSideForNewTrack_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardSideForNewTrack_property.mObserverExplorer,
+        valueExplorer: &self.mBoardSideForNewTrack_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDirectionForNewTrack",
+        idx: self.mDirectionForNewTrack_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDirectionForNewTrack_property.mObserverExplorer,
+        valueExplorer: &self.mDirectionForNewTrack_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardLayerForNewText",
+        idx: self.mBoardLayerForNewText_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardLayerForNewText_property.mObserverExplorer,
+        valueExplorer: &self.mBoardLayerForNewText_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardLayerForNewLine",
+        idx: self.mBoardLayerForNewLine_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardLayerForNewLine_property.mObserverExplorer,
+        valueExplorer: &self.mBoardLayerForNewLine_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardSideForNewRestrictRectangle",
+        idx: self.mBoardSideForNewRestrictRectangle_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardSideForNewRestrictRectangle_property.mObserverExplorer,
+        valueExplorer: &self.mBoardSideForNewRestrictRectangle_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mAutoRouterPreferredDirections",
+        idx: self.mAutoRouterPreferredDirections_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mAutoRouterPreferredDirections_property.mObserverExplorer,
+        valueExplorer: &self.mAutoRouterPreferredDirections_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mAutorouterSnapAngle",
+        idx: self.mAutorouterSnapAngle_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mAutorouterSnapAngle_property.mObserverExplorer,
+        valueExplorer: &self.mAutorouterSnapAngle_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRouteDirection",
+        idx: self.mRouteDirection_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRouteDirection_property.mObserverExplorer,
+        valueExplorer: &self.mRouteDirection_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRouteOrigin",
+        idx: self.mRouteOrigin_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRouteOrigin_property.mObserverExplorer,
+        valueExplorer: &self.mRouteOrigin_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mAutorouterInterfaceMode",
+        idx: self.mAutorouterInterfaceMode_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mAutorouterInterfaceMode_property.mObserverExplorer,
+        valueExplorer: &self.mAutorouterInterfaceMode_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mExportExistingTracksAndVias",
+        idx: self.mExportExistingTracksAndVias_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mExportExistingTracksAndVias_property.mObserverExplorer,
+        valueExplorer: &self.mExportExistingTracksAndVias_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mTrackLengthUnit",
+        idx: self.mTrackLengthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mTrackLengthUnit_property.mObserverExplorer,
+        valueExplorer: &self.mTrackLengthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mLayoutClearance",
+        idx: self.mLayoutClearance_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mLayoutClearance_property.mObserverExplorer,
+        valueExplorer: &self.mLayoutClearance_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mLayoutClearanceUnit",
+        idx: self.mLayoutClearanceUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mLayoutClearanceUnit_property.mObserverExplorer,
+        valueExplorer: &self.mLayoutClearanceUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardSelectedInspector",
+        idx: self.mBoardSelectedInspector_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardSelectedInspector_property.mObserverExplorer,
+        valueExplorer: &self.mBoardSelectedInspector_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardHorizontalFlip",
+        idx: self.mBoardHorizontalFlip_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardHorizontalFlip_property.mObserverExplorer,
+        valueExplorer: &self.mBoardHorizontalFlip_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardVerticalFlip",
+        idx: self.mBoardVerticalFlip_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardVerticalFlip_property.mObserverExplorer,
+        valueExplorer: &self.mBoardVerticalFlip_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardGridStyle",
+        idx: self.mBoardGridStyle_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardGridStyle_property.mObserverExplorer,
+        valueExplorer: &self.mBoardGridStyle_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardGridDisplayFactor",
+        idx: self.mBoardGridDisplayFactor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardGridDisplayFactor_property.mObserverExplorer,
+        valueExplorer: &self.mBoardGridDisplayFactor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardZoom",
+        idx: self.mBoardZoom_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardZoom_property.mObserverExplorer,
+        valueExplorer: &self.mBoardZoom_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardGridStep",
+        idx: self.mBoardGridStep_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardGridStep_property.mObserverExplorer,
+        valueExplorer: &self.mBoardGridStep_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardGridStepUnit",
+        idx: self.mBoardGridStepUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardGridStepUnit_property.mObserverExplorer,
+        valueExplorer: &self.mBoardGridStepUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mErrorOrWarningIssueSize",
+        idx: self.mErrorOrWarningIssueSize_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mErrorOrWarningIssueSize_property.mObserverExplorer,
+        valueExplorer: &self.mErrorOrWarningIssueSize_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mControlKeyHiliteDiameter",
+        idx: self.mControlKeyHiliteDiameter_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mControlKeyHiliteDiameter_property.mObserverExplorer,
+        valueExplorer: &self.mControlKeyHiliteDiameter_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDSNFileProposedName",
+        idx: self.mDSNFileProposedName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDSNFileProposedName_property.mObserverExplorer,
+        valueExplorer: &self.mDSNFileProposedName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardLimitsWidth",
+        idx: self.mBoardLimitsWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardLimitsWidth_property.mObserverExplorer,
+        valueExplorer: &self.mBoardLimitsWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardLimitsWidthUnit",
+        idx: self.mBoardLimitsWidthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardLimitsWidthUnit_property.mObserverExplorer,
+        valueExplorer: &self.mBoardLimitsWidthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardClearance",
+        idx: self.mBoardClearance_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardClearance_property.mObserverExplorer,
+        valueExplorer: &self.mBoardClearance_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardClearanceUnit",
+        idx: self.mBoardClearanceUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardClearanceUnit_property.mObserverExplorer,
+        valueExplorer: &self.mBoardClearanceUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardLimitsSelectedInspector",
+        idx: self.mBoardLimitsSelectedInspector_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardLimitsSelectedInspector_property.mObserverExplorer,
+        valueExplorer: &self.mBoardLimitsSelectedInspector_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardLimitsHorizontalFlip",
+        idx: self.mBoardLimitsHorizontalFlip_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardLimitsHorizontalFlip_property.mObserverExplorer,
+        valueExplorer: &self.mBoardLimitsHorizontalFlip_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardLimitsVerticalFlip",
+        idx: self.mBoardLimitsVerticalFlip_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardLimitsVerticalFlip_property.mObserverExplorer,
+        valueExplorer: &self.mBoardLimitsVerticalFlip_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardLimitsGridStyle",
+        idx: self.mBoardLimitsGridStyle_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardLimitsGridStyle_property.mObserverExplorer,
+        valueExplorer: &self.mBoardLimitsGridStyle_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardLimitsGridDisplayFactor",
+        idx: self.mBoardLimitsGridDisplayFactor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardLimitsGridDisplayFactor_property.mObserverExplorer,
+        valueExplorer: &self.mBoardLimitsGridDisplayFactor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardLimitsZoom",
+        idx: self.mBoardLimitsZoom_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardLimitsZoom_property.mObserverExplorer,
+        valueExplorer: &self.mBoardLimitsZoom_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardLimitsGridStep",
+        idx: self.mBoardLimitsGridStep_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardLimitsGridStep_property.mObserverExplorer,
+        valueExplorer: &self.mBoardLimitsGridStep_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardLimitsGridStepUnit",
+        idx: self.mBoardLimitsGridStepUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardLimitsGridStepUnit_property.mObserverExplorer,
+        valueExplorer: &self.mBoardLimitsGridStepUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardLimitsBoundingBoxUnit",
+        idx: self.mBoardLimitsBoundingBoxUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardLimitsBoundingBoxUnit_property.mObserverExplorer,
+        valueExplorer: &self.mBoardLimitsBoundingBoxUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardPointsBoundingBoxUnit",
+        idx: self.mBoardPointsBoundingBoxUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardPointsBoundingBoxUnit_property.mObserverExplorer,
+        valueExplorer: &self.mBoardPointsBoundingBoxUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardSelectedCurveDisplayUnit",
+        idx: self.mBoardSelectedCurveDisplayUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardSelectedCurveDisplayUnit_property.mObserverExplorer,
+        valueExplorer: &self.mBoardSelectedCurveDisplayUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardLimitControlPointsDisplayUnit",
+        idx: self.mBoardLimitControlPointsDisplayUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardLimitControlPointsDisplayUnit_property.mObserverExplorer,
+        valueExplorer: &self.mBoardLimitControlPointsDisplayUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mBoardShape",
+        idx: self.mBoardShape_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mBoardShape_property.mObserverExplorer,
+        valueExplorer: &self.mBoardShape_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRectangularBoardWidth",
+        idx: self.mRectangularBoardWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRectangularBoardWidth_property.mObserverExplorer,
+        valueExplorer: &self.mRectangularBoardWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRectangularBoardWidthUnit",
+        idx: self.mRectangularBoardWidthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRectangularBoardWidthUnit_property.mObserverExplorer,
+        valueExplorer: &self.mRectangularBoardWidthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRectangularBoardHeight",
+        idx: self.mRectangularBoardHeight_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRectangularBoardHeight_property.mObserverExplorer,
+        valueExplorer: &self.mRectangularBoardHeight_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRectangularBoardHeightUnit",
+        idx: self.mRectangularBoardHeightUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRectangularBoardHeightUnit_property.mObserverExplorer,
+        valueExplorer: &self.mRectangularBoardHeightUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mDefaultNetClassName",
+        idx: self.mDefaultNetClassName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mDefaultNetClassName_property.mObserverExplorer,
+        valueExplorer: &self.mDefaultNetClassName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSelectedPageIndex",
+        idx: self.mSelectedPageIndex_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSelectedPageIndex_property.mObserverExplorer,
+        valueExplorer: &self.mSelectedPageIndex_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSelectedSchematicInspector",
+        idx: self.mSelectedSchematicInspector_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSelectedSchematicInspector_property.mObserverExplorer,
+        valueExplorer: &self.mSelectedSchematicInspector_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSchematicTitle",
+        idx: self.mSchematicTitle_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicTitle_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicTitle_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSchematicVersion",
+        idx: self.mSchematicVersion_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicVersion_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicVersion_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSchematicDate",
+        idx: self.mSchematicDate_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicDate_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicDate_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSchematicHorizontalFlip",
+        idx: self.mSchematicHorizontalFlip_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicHorizontalFlip_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicHorizontalFlip_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSchematicVerticalFlip",
+        idx: self.mSchematicVerticalFlip_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicVerticalFlip_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicVerticalFlip_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSchematicZoom",
+        idx: self.mSchematicZoom_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicZoom_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicZoom_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSchematicGridStyle",
+        idx: self.mSchematicGridStyle_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicGridStyle_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicGridStyle_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSchematicGridDisplayFactor",
+        idx: self.mSchematicGridDisplayFactor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicGridDisplayFactor_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicGridDisplayFactor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSchematicCustomWidth",
+        idx: self.mSchematicCustomWidth_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicCustomWidth_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicCustomWidth_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSchematicCustomWidthUnit",
+        idx: self.mSchematicCustomWidthUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicCustomWidthUnit_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicCustomWidthUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSchematicCustomHeight",
+        idx: self.mSchematicCustomHeight_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicCustomHeight_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicCustomHeight_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSchematicCustomHeightUnit",
+        idx: self.mSchematicCustomHeightUnit_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicCustomHeightUnit_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicCustomHeightUnit_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mSchematicSheetOrientation",
+        idx: self.mSchematicSheetOrientation_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicSheetOrientation_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicSheetOrientation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRastnetDisplay",
+        idx: self.mRastnetDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRastnetDisplay_property.mObserverExplorer,
+        valueExplorer: &self.mRastnetDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRastnetDisplayedNetName",
+        idx: self.mRastnetDisplayedNetName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRastnetDisplayedNetName_property.mObserverExplorer,
+        valueExplorer: &self.mRastnetDisplayedNetName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRastnetDisplayedComponentName",
+        idx: self.mRastnetDisplayedComponentName_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRastnetDisplayedComponentName_property.mObserverExplorer,
+        valueExplorer: &self.mRastnetDisplayedComponentName_property.mValueExplorer
+      )
+      createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "boardGridStepMultipliedByDisplayFactor",
+        idx: self.boardGridStepMultipliedByDisplayFactor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardGridStepMultipliedByDisplayFactor_property.mObserverExplorer,
+        valueExplorer: &self.boardGridStepMultipliedByDisplayFactor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardLimitsGridStepMultipliedByDisplayFactor",
+        idx: self.boardLimitsGridStepMultipliedByDisplayFactor_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardLimitsGridStepMultipliedByDisplayFactor_property.mObserverExplorer,
+        valueExplorer: &self.boardLimitsGridStepMultipliedByDisplayFactor_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardShapeIsRectangular",
+        idx: self.boardShapeIsRectangular_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardShapeIsRectangular_property.mObserverExplorer,
+        valueExplorer: &self.boardShapeIsRectangular_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "selectedSheetIssues",
+        idx: self.selectedSheetIssues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.selectedSheetIssues_property.mObserverExplorer,
+        valueExplorer: &self.selectedSheetIssues_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "connectedPoints",
+        idx: self.connectedPoints_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.connectedPoints_property.mObserverExplorer,
+        valueExplorer: &self.connectedPoints_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "connexionWarningString",
+        idx: self.connexionWarningString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.connexionWarningString_property.mObserverExplorer,
+        valueExplorer: &self.connexionWarningString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "connexionErrorString",
+        idx: self.connexionErrorString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.connexionErrorString_property.mObserverExplorer,
+        valueExplorer: &self.connexionErrorString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "sheetIndexes",
+        idx: self.sheetIndexes_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.sheetIndexes_property.mObserverExplorer,
+        valueExplorer: &self.sheetIndexes_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netsDescription",
+        idx: self.netsDescription_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netsDescription_property.mObserverExplorer,
+        valueExplorer: &self.netsDescription_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardIssues",
+        idx: self.boardIssues_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardIssues_property.mObserverExplorer,
+        valueExplorer: &self.boardIssues_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "signatureForERCChecking",
+        idx: self.signatureForERCChecking_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+        valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "ercStatusImage",
+        idx: self.ercStatusImage_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.ercStatusImage_property.mObserverExplorer,
+        valueExplorer: &self.ercStatusImage_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "ercStatusMessage",
+        idx: self.ercStatusMessage_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.ercStatusMessage_property.mObserverExplorer,
+        valueExplorer: &self.ercStatusMessage_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "viaCountString",
+        idx: self.viaCountString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.viaCountString_property.mObserverExplorer,
+        valueExplorer: &self.viaCountString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "topSideTrackCountString",
+        idx: self.topSideTrackCountString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.topSideTrackCountString_property.mObserverExplorer,
+        valueExplorer: &self.topSideTrackCountString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "backSideTrackCountString",
+        idx: self.backSideTrackCountString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.backSideTrackCountString_property.mObserverExplorer,
+        valueExplorer: &self.backSideTrackCountString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "inner1LayerTrackCountString",
+        idx: self.inner1LayerTrackCountString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.inner1LayerTrackCountString_property.mObserverExplorer,
+        valueExplorer: &self.inner1LayerTrackCountString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "inner2LayerTrackCountString",
+        idx: self.inner2LayerTrackCountString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.inner2LayerTrackCountString_property.mObserverExplorer,
+        valueExplorer: &self.inner2LayerTrackCountString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "inner3LayerTrackCountString",
+        idx: self.inner3LayerTrackCountString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.inner3LayerTrackCountString_property.mObserverExplorer,
+        valueExplorer: &self.inner3LayerTrackCountString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "inner4LayerTrackCountString",
+        idx: self.inner4LayerTrackCountString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.inner4LayerTrackCountString_property.mObserverExplorer,
+        valueExplorer: &self.inner4LayerTrackCountString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "trackCountString",
+        idx: self.trackCountString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.trackCountString_property.mObserverExplorer,
+        valueExplorer: &self.trackCountString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "trackLengthString",
+        idx: self.trackLengthString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.trackLengthString_property.mObserverExplorer,
+        valueExplorer: &self.trackLengthString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardStatusImage",
+        idx: self.boardStatusImage_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardStatusImage_property.mObserverExplorer,
+        valueExplorer: &self.boardStatusImage_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardStatusMessage",
+        idx: self.boardStatusMessage_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardStatusMessage_property.mObserverExplorer,
+        valueExplorer: &self.boardStatusMessage_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "interiorBoundBox",
+        idx: self.interiorBoundBox_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.interiorBoundBox_property.mObserverExplorer,
+        valueExplorer: &self.interiorBoundBox_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardBoundBox",
+        idx: self.boardBoundBox_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardBoundBox_property.mObserverExplorer,
+        valueExplorer: &self.boardBoundBox_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardInteriorTop",
+        idx: self.boardInteriorTop_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardInteriorTop_property.mObserverExplorer,
+        valueExplorer: &self.boardInteriorTop_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardInteriorBottom",
+        idx: self.boardInteriorBottom_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardInteriorBottom_property.mObserverExplorer,
+        valueExplorer: &self.boardInteriorBottom_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardInteriorLeft",
+        idx: self.boardInteriorLeft_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardInteriorLeft_property.mObserverExplorer,
+        valueExplorer: &self.boardInteriorLeft_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardInteriorRight",
+        idx: self.boardInteriorRight_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardInteriorRight_property.mObserverExplorer,
+        valueExplorer: &self.boardInteriorRight_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardLimitBorderTop",
+        idx: self.boardLimitBorderTop_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardLimitBorderTop_property.mObserverExplorer,
+        valueExplorer: &self.boardLimitBorderTop_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardLimitBorderBottom",
+        idx: self.boardLimitBorderBottom_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardLimitBorderBottom_property.mObserverExplorer,
+        valueExplorer: &self.boardLimitBorderBottom_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardLimitBorderLeft",
+        idx: self.boardLimitBorderLeft_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardLimitBorderLeft_property.mObserverExplorer,
+        valueExplorer: &self.boardLimitBorderLeft_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardLimitBorderRight",
+        idx: self.boardLimitBorderRight_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardLimitBorderRight_property.mObserverExplorer,
+        valueExplorer: &self.boardLimitBorderRight_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "borderElementCountString",
+        idx: self.borderElementCountString_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.borderElementCountString_property.mObserverExplorer,
+        valueExplorer: &self.borderElementCountString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "borderOutlineBackground",
+        idx: self.borderOutlineBackground_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.borderOutlineBackground_property.mObserverExplorer,
+        valueExplorer: &self.borderOutlineBackground_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "borderViewBackground",
+        idx: self.borderViewBackground_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.borderViewBackground_property.mObserverExplorer,
+        valueExplorer: &self.borderViewBackground_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "deviceNames",
+        idx: self.deviceNames_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.deviceNames_property.mObserverExplorer,
+        valueExplorer: &self.deviceNames_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "allClassNames",
+        idx: self.allClassNames_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.allClassNames_property.mObserverExplorer,
+        valueExplorer: &self.allClassNames_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "sheetGeometry",
+        idx: self.sheetGeometry_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.sheetGeometry_property.mObserverExplorer,
+        valueExplorer: &self.sheetGeometry_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "schematicBackgroundDisplay",
+        idx: self.schematicBackgroundDisplay_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.schematicBackgroundDisplay_property.mObserverExplorer,
+        valueExplorer: &self.schematicBackgroundDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netWarningCount",
+        idx: self.netWarningCount_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netWarningCount_property.mObserverExplorer,
+        valueExplorer: &self.netWarningCount_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "netNamesArray",
+        idx: self.netNamesArray_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.netNamesArray_property.mObserverExplorer,
+        valueExplorer: &self.netNamesArray_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "unplacedSymbols",
+        idx: self.unplacedSymbols_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.unplacedSymbols_property.mObserverExplorer,
+        valueExplorer: &self.unplacedSymbols_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "unplacedPackages",
+        idx: self.unplacedPackages_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.unplacedPackages_property.mObserverExplorer,
+        valueExplorer: &self.unplacedPackages_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "componentsPlacedInBoard",
+        idx: self.componentsPlacedInBoard_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.componentsPlacedInBoard_property.mObserverExplorer,
+        valueExplorer: &self.componentsPlacedInBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "placedComponentNameArray",
+        idx: self.placedComponentNameArray_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.placedComponentNameArray_property.mObserverExplorer,
+        valueExplorer: &self.placedComponentNameArray_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "schematicHasErrorOrWarning",
+        idx: self.schematicHasErrorOrWarning_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.schematicHasErrorOrWarning_property.mObserverExplorer,
+        valueExplorer: &self.schematicHasErrorOrWarning_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "schematicStatusMessage",
+        idx: self.schematicStatusMessage_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.schematicStatusMessage_property.mObserverExplorer,
+        valueExplorer: &self.schematicStatusMessage_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "schematicStatusImage",
+        idx: self.schematicStatusImage_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        observerExplorer: &self.schematicStatusImage_property.mObserverExplorer,
+        valueExplorer: &self.schematicStatusImage_property.mValueExplorer
+      )
+      createEntryForTitle ("Transients", y: &y, view: view)
+      createEntryForToManyRelationshipNamed (
+        "mSheets",
+        idx:mSheets_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mSheets_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mNetClasses",
+        idx:mNetClasses_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mNetClasses_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mFonts",
+        idx:mFonts_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mFonts_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mDevices",
+        idx:mDevices_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mDevices_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mBorderCurves",
+        idx:mBorderCurves_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mBorderCurves_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mBoardObjects",
+        idx:mBoardObjects_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mBoardObjects_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mComponents",
+        idx:mComponents_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&mComponents_property.mValueExplorer
+      )
+      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+      createEntryForToOneRelationshipNamed (
+        "mSelectedSheet",
+        idx:self.mSelectedSheet_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mSelectedSheet_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mArtwork",
+        idx:self.mArtwork_property.ebObjectIndex,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mArtwork_property.mValueExplorer
+      )
+      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
+    }
+  #endif
 
   //····················································································································
   //    clearObjectExplorer
   //····················································································································
 
-  override func clearObjectExplorer () {
+  #if BUILD_OBJECT_EXPLORER
+    override func clearObjectExplorer () {
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.mObserverExplorer = nil
     self.mArtworkName_property.mValueExplorer = nil
@@ -6457,8 +6460,8 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: mRectangularBoardHeightUnit
     self.mRectangularBoardHeightUnit_property.mObserverExplorer = nil
     self.mRectangularBoardHeightUnit_property.mValueExplorer = nil
-  //--- To many property: mSheets
-    self.mSheets_property.mValueExplorer = nil
+    //--- To many property: mSheets
+      self.mSheets_property.mValueExplorer = nil
   //--- Atomic property: mDefaultNetClassName
     self.mDefaultNetClassName_property.mObserverExplorer = nil
     self.mDefaultNetClassName_property.mValueExplorer = nil
@@ -6504,19 +6507,19 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: mSchematicCustomHeightUnit
     self.mSchematicCustomHeightUnit_property.mObserverExplorer = nil
     self.mSchematicCustomHeightUnit_property.mValueExplorer = nil
-  //--- To many property: mNetClasses
-    self.mNetClasses_property.mValueExplorer = nil
-  //--- To many property: mFonts
-    self.mFonts_property.mValueExplorer = nil
-  //--- To many property: mDevices
-    self.mDevices_property.mValueExplorer = nil
+    //--- To many property: mNetClasses
+      self.mNetClasses_property.mValueExplorer = nil
+    //--- To many property: mFonts
+      self.mFonts_property.mValueExplorer = nil
+    //--- To many property: mDevices
+      self.mDevices_property.mValueExplorer = nil
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.mObserverExplorer = nil
     self.mSchematicSheetOrientation_property.mValueExplorer = nil
-  //--- To many property: mBorderCurves
-    self.mBorderCurves_property.mValueExplorer = nil
-  //--- To many property: mBoardObjects
-    self.mBoardObjects_property.mValueExplorer = nil
+    //--- To many property: mBorderCurves
+      self.mBorderCurves_property.mValueExplorer = nil
+    //--- To many property: mBoardObjects
+      self.mBoardObjects_property.mValueExplorer = nil
   //--- Atomic property: mRastnetDisplay
     self.mRastnetDisplay_property.mObserverExplorer = nil
     self.mRastnetDisplay_property.mValueExplorer = nil
@@ -6526,60 +6529,61 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: mRastnetDisplayedComponentName
     self.mRastnetDisplayedComponentName_property.mObserverExplorer = nil
     self.mRastnetDisplayedComponentName_property.mValueExplorer = nil
-  //--- To many property: mComponents
-    self.mComponents_property.mValueExplorer = nil
-  //--- Atomic proxy property: minPPTPTTTWdisplayUnit
-    self.minPPTPTTTWdisplayUnit_property.mObserverExplorer = nil
-    self.minPPTPTTTWdisplayUnit_property.mValueExplorer = nil
-  //--- Atomic proxy property: minPPTPTTTW
-    self.minPPTPTTTW_property.mObserverExplorer = nil
-    self.minPPTPTTTW_property.mValueExplorer = nil
-  //--- Atomic proxy property: minValueForOARdisplayUnit
-    self.minValueForOARdisplayUnit_property.mObserverExplorer = nil
-    self.minValueForOARdisplayUnit_property.mValueExplorer = nil
-  //--- Atomic proxy property: minValueForOARinEBUnit
-    self.minValueForOARinEBUnit_property.mObserverExplorer = nil
-    self.minValueForOARinEBUnit_property.mValueExplorer = nil
-  //--- Atomic proxy property: minValueForPHDdisplayUnit
-    self.minValueForPHDdisplayUnit_property.mObserverExplorer = nil
-    self.minValueForPHDdisplayUnit_property.mValueExplorer = nil
-  //--- Atomic proxy property: minValueForPHDinEBUnit
-    self.minValueForPHDinEBUnit_property.mObserverExplorer = nil
-    self.minValueForPHDinEBUnit_property.mValueExplorer = nil
-  //--- Atomic proxy property: minValueForBoardLimitWidth
-    self.minValueForBoardLimitWidth_property.mObserverExplorer = nil
-    self.minValueForBoardLimitWidth_property.mValueExplorer = nil
-  //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
-    self.minValueForBoardLimitWidthDisplayUnit_property.mObserverExplorer = nil
-    self.minValueForBoardLimitWidthDisplayUnit_property.mValueExplorer = nil
-  //--- Atomic proxy property: drillDataFileExtension
-    self.drillDataFileExtension_property.mObserverExplorer = nil
-    self.drillDataFileExtension_property.mValueExplorer = nil
-  //--- Atomic proxy property: artworkComments
-    self.artworkComments_property.mObserverExplorer = nil
-    self.artworkComments_property.mValueExplorer = nil
-  //--- Atomic proxy property: artworkTitle
-    self.artworkTitle_property.mObserverExplorer = nil
-    self.artworkTitle_property.mValueExplorer = nil
-  //--- Atomic proxy property: selectedSheetTitle
-    self.selectedSheetTitle_property.mObserverExplorer = nil
-    self.selectedSheetTitle_property.mValueExplorer = nil
-  //--- ToMany proxy: selectedSheetObjects
-    self.selectedSheetObjects_property.mObserverExplorer = nil
-  //--- ToMany proxy: fileGenerationParameterArray
-    self.fileGenerationParameterArray_property.mObserverExplorer = nil
-  //--- Atomic proxy property: artworkLayerConfiguration
-    self.artworkLayerConfiguration_property.mObserverExplorer = nil
-    self.artworkLayerConfiguration_property.mValueExplorer = nil
-  //--- To one property: mSelectedSheet
-    self.mSelectedSheet_property.mObserverExplorer = nil
-    self.mSelectedSheet_property.mValueExplorer = nil
-  //--- To one property: mArtwork
-    self.mArtwork_property.mObserverExplorer = nil
-    self.mArtwork_property.mValueExplorer = nil
-  //---
-    super.clearObjectExplorer ()
-  }
+    //--- To many property: mComponents
+      self.mComponents_property.mValueExplorer = nil
+    //--- Atomic proxy property: minPPTPTTTWdisplayUnit
+      self.minPPTPTTTWdisplayUnit_property.mObserverExplorer = nil
+      self.minPPTPTTTWdisplayUnit_property.mValueExplorer = nil
+    //--- Atomic proxy property: minPPTPTTTW
+      self.minPPTPTTTW_property.mObserverExplorer = nil
+      self.minPPTPTTTW_property.mValueExplorer = nil
+    //--- Atomic proxy property: minValueForOARdisplayUnit
+      self.minValueForOARdisplayUnit_property.mObserverExplorer = nil
+      self.minValueForOARdisplayUnit_property.mValueExplorer = nil
+    //--- Atomic proxy property: minValueForOARinEBUnit
+      self.minValueForOARinEBUnit_property.mObserverExplorer = nil
+      self.minValueForOARinEBUnit_property.mValueExplorer = nil
+    //--- Atomic proxy property: minValueForPHDdisplayUnit
+      self.minValueForPHDdisplayUnit_property.mObserverExplorer = nil
+      self.minValueForPHDdisplayUnit_property.mValueExplorer = nil
+    //--- Atomic proxy property: minValueForPHDinEBUnit
+      self.minValueForPHDinEBUnit_property.mObserverExplorer = nil
+      self.minValueForPHDinEBUnit_property.mValueExplorer = nil
+    //--- Atomic proxy property: minValueForBoardLimitWidth
+      self.minValueForBoardLimitWidth_property.mObserverExplorer = nil
+      self.minValueForBoardLimitWidth_property.mValueExplorer = nil
+    //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
+      self.minValueForBoardLimitWidthDisplayUnit_property.mObserverExplorer = nil
+      self.minValueForBoardLimitWidthDisplayUnit_property.mValueExplorer = nil
+    //--- Atomic proxy property: drillDataFileExtension
+      self.drillDataFileExtension_property.mObserverExplorer = nil
+      self.drillDataFileExtension_property.mValueExplorer = nil
+    //--- Atomic proxy property: artworkComments
+      self.artworkComments_property.mObserverExplorer = nil
+      self.artworkComments_property.mValueExplorer = nil
+    //--- Atomic proxy property: artworkTitle
+      self.artworkTitle_property.mObserverExplorer = nil
+      self.artworkTitle_property.mValueExplorer = nil
+    //--- Atomic proxy property: selectedSheetTitle
+      self.selectedSheetTitle_property.mObserverExplorer = nil
+      self.selectedSheetTitle_property.mValueExplorer = nil
+    //--- ToMany proxy: selectedSheetObjects
+      self.selectedSheetObjects_property.mObserverExplorer = nil
+    //--- ToMany proxy: fileGenerationParameterArray
+      self.fileGenerationParameterArray_property.mObserverExplorer = nil
+    //--- Atomic proxy property: artworkLayerConfiguration
+      self.artworkLayerConfiguration_property.mObserverExplorer = nil
+      self.artworkLayerConfiguration_property.mValueExplorer = nil
+    //--- To one property: mSelectedSheet
+      self.mSelectedSheet_property.mObserverExplorer = nil
+      self.mSelectedSheet_property.mValueExplorer = nil
+    //--- To one property: mArtwork
+      self.mArtwork_property.mObserverExplorer = nil
+      self.mArtwork_property.mValueExplorer = nil
+    //---
+      super.clearObjectExplorer ()
+    }
+  #endif
 
   //····················································································································
   //    cleanUpToManyRelationships
@@ -6614,148 +6618,148 @@ final class ProjectRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mArtworkName
-    self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkName")
-  //--- Atomic property: mArtworkVersion
-    self.mArtworkVersion_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkVersion")
-  //--- Atomic property: mPDFBoardBackgroundColor
-    self.mPDFBoardBackgroundColor_property.storeIn (dictionary: ioDictionary, forKey: "mPDFBoardBackgroundColor")
-  //--- Atomic property: mCheckClearanceBetweenPadsOfSameNet
-    self.mCheckClearanceBetweenPadsOfSameNet_property.storeIn (dictionary: ioDictionary, forKey: "mCheckClearanceBetweenPadsOfSameNet")
-  //--- Atomic property: mLastERCCheckingIsSuccess
-    self.mLastERCCheckingIsSuccess_property.storeIn (dictionary: ioDictionary, forKey: "mLastERCCheckingIsSuccess")
-  //--- Atomic property: mLastERCCheckingSignature
-    self.mLastERCCheckingSignature_property.storeIn (dictionary: ioDictionary, forKey: "mLastERCCheckingSignature")
-  //--- Atomic property: mLayerConfiguration
-    self.mLayerConfiguration_property.storeIn (dictionary: ioDictionary, forKey: "mLayerConfiguration")
-  //--- Atomic property: mBoardSideForNewTrack
-    self.mBoardSideForNewTrack_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSideForNewTrack")
-  //--- Atomic property: mDirectionForNewTrack
-    self.mDirectionForNewTrack_property.storeIn (dictionary: ioDictionary, forKey: "mDirectionForNewTrack")
-  //--- Atomic property: mBoardLayerForNewText
-    self.mBoardLayerForNewText_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLayerForNewText")
-  //--- Atomic property: mBoardLayerForNewLine
-    self.mBoardLayerForNewLine_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLayerForNewLine")
-  //--- Atomic property: mBoardSideForNewRestrictRectangle
-    self.mBoardSideForNewRestrictRectangle_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSideForNewRestrictRectangle")
-  //--- Atomic property: mAutoRouterPreferredDirections
-    self.mAutoRouterPreferredDirections_property.storeIn (dictionary: ioDictionary, forKey: "mAutoRouterPreferredDirections")
-  //--- Atomic property: mAutorouterSnapAngle
-    self.mAutorouterSnapAngle_property.storeIn (dictionary: ioDictionary, forKey: "mAutorouterSnapAngle")
-  //--- Atomic property: mRouteDirection
-    self.mRouteDirection_property.storeIn (dictionary: ioDictionary, forKey: "mRouteDirection")
-  //--- Atomic property: mRouteOrigin
-    self.mRouteOrigin_property.storeIn (dictionary: ioDictionary, forKey: "mRouteOrigin")
-  //--- Atomic property: mAutorouterInterfaceMode
-    self.mAutorouterInterfaceMode_property.storeIn (dictionary: ioDictionary, forKey: "mAutorouterInterfaceMode")
-  //--- Atomic property: mExportExistingTracksAndVias
-    self.mExportExistingTracksAndVias_property.storeIn (dictionary: ioDictionary, forKey: "mExportExistingTracksAndVias")
-  //--- Atomic property: mTrackLengthUnit
-    self.mTrackLengthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mTrackLengthUnit")
-  //--- Atomic property: mLayoutClearance
-    self.mLayoutClearance_property.storeIn (dictionary: ioDictionary, forKey: "mLayoutClearance")
-  //--- Atomic property: mLayoutClearanceUnit
-    self.mLayoutClearanceUnit_property.storeIn (dictionary: ioDictionary, forKey: "mLayoutClearanceUnit")
-  //--- Atomic property: mBoardSelectedInspector
-    self.mBoardSelectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSelectedInspector")
-  //--- Atomic property: mBoardHorizontalFlip
-    self.mBoardHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardHorizontalFlip")
-  //--- Atomic property: mBoardVerticalFlip
-    self.mBoardVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardVerticalFlip")
-  //--- Atomic property: mBoardGridStyle
-    self.mBoardGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridStyle")
-  //--- Atomic property: mBoardGridDisplayFactor
-    self.mBoardGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridDisplayFactor")
-  //--- Atomic property: mBoardZoom
-    self.mBoardZoom_property.storeIn (dictionary: ioDictionary, forKey: "mBoardZoom")
-  //--- Atomic property: mBoardGridStep
-    self.mBoardGridStep_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridStep")
-  //--- Atomic property: mBoardGridStepUnit
-    self.mBoardGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridStepUnit")
-  //--- Atomic property: mErrorOrWarningIssueSize
-    self.mErrorOrWarningIssueSize_property.storeIn (dictionary: ioDictionary, forKey: "mErrorOrWarningIssueSize")
-  //--- Atomic property: mControlKeyHiliteDiameter
-    self.mControlKeyHiliteDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mControlKeyHiliteDiameter")
-  //--- Atomic property: mDSNFileProposedName
-    self.mDSNFileProposedName_property.storeIn (dictionary: ioDictionary, forKey: "mDSNFileProposedName")
-  //--- Atomic property: mBoardLimitsWidth
-    self.mBoardLimitsWidth_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsWidth")
-  //--- Atomic property: mBoardLimitsWidthUnit
-    self.mBoardLimitsWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsWidthUnit")
-  //--- Atomic property: mBoardClearance
-    self.mBoardClearance_property.storeIn (dictionary: ioDictionary, forKey: "mBoardClearance")
-  //--- Atomic property: mBoardClearanceUnit
-    self.mBoardClearanceUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardClearanceUnit")
-  //--- Atomic property: mBoardLimitsSelectedInspector
-    self.mBoardLimitsSelectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsSelectedInspector")
-  //--- Atomic property: mBoardLimitsHorizontalFlip
-    self.mBoardLimitsHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsHorizontalFlip")
-  //--- Atomic property: mBoardLimitsVerticalFlip
-    self.mBoardLimitsVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsVerticalFlip")
-  //--- Atomic property: mBoardLimitsGridStyle
-    self.mBoardLimitsGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridStyle")
-  //--- Atomic property: mBoardLimitsGridDisplayFactor
-    self.mBoardLimitsGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridDisplayFactor")
-  //--- Atomic property: mBoardLimitsZoom
-    self.mBoardLimitsZoom_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsZoom")
-  //--- Atomic property: mBoardLimitsGridStep
-    self.mBoardLimitsGridStep_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridStep")
-  //--- Atomic property: mBoardLimitsGridStepUnit
-    self.mBoardLimitsGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridStepUnit")
-  //--- Atomic property: mBoardLimitsBoundingBoxUnit
-    self.mBoardLimitsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsBoundingBoxUnit")
-  //--- Atomic property: mBoardPointsBoundingBoxUnit
-    self.mBoardPointsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardPointsBoundingBoxUnit")
-  //--- Atomic property: mBoardSelectedCurveDisplayUnit
-    self.mBoardSelectedCurveDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSelectedCurveDisplayUnit")
-  //--- Atomic property: mBoardLimitControlPointsDisplayUnit
-    self.mBoardLimitControlPointsDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitControlPointsDisplayUnit")
-  //--- Atomic property: mBoardShape
-    self.mBoardShape_property.storeIn (dictionary: ioDictionary, forKey: "mBoardShape")
-  //--- Atomic property: mRectangularBoardWidth
-    self.mRectangularBoardWidth_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardWidth")
-  //--- Atomic property: mRectangularBoardWidthUnit
-    self.mRectangularBoardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardWidthUnit")
-  //--- Atomic property: mRectangularBoardHeight
-    self.mRectangularBoardHeight_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardHeight")
-  //--- Atomic property: mRectangularBoardHeightUnit
-    self.mRectangularBoardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardHeightUnit")
+    //--- Atomic property: mArtworkName
+      self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkName")
+    //--- Atomic property: mArtworkVersion
+      self.mArtworkVersion_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkVersion")
+    //--- Atomic property: mPDFBoardBackgroundColor
+      self.mPDFBoardBackgroundColor_property.storeIn (dictionary: ioDictionary, forKey: "mPDFBoardBackgroundColor")
+    //--- Atomic property: mCheckClearanceBetweenPadsOfSameNet
+      self.mCheckClearanceBetweenPadsOfSameNet_property.storeIn (dictionary: ioDictionary, forKey: "mCheckClearanceBetweenPadsOfSameNet")
+    //--- Atomic property: mLastERCCheckingIsSuccess
+      self.mLastERCCheckingIsSuccess_property.storeIn (dictionary: ioDictionary, forKey: "mLastERCCheckingIsSuccess")
+    //--- Atomic property: mLastERCCheckingSignature
+      self.mLastERCCheckingSignature_property.storeIn (dictionary: ioDictionary, forKey: "mLastERCCheckingSignature")
+    //--- Atomic property: mLayerConfiguration
+      self.mLayerConfiguration_property.storeIn (dictionary: ioDictionary, forKey: "mLayerConfiguration")
+    //--- Atomic property: mBoardSideForNewTrack
+      self.mBoardSideForNewTrack_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSideForNewTrack")
+    //--- Atomic property: mDirectionForNewTrack
+      self.mDirectionForNewTrack_property.storeIn (dictionary: ioDictionary, forKey: "mDirectionForNewTrack")
+    //--- Atomic property: mBoardLayerForNewText
+      self.mBoardLayerForNewText_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLayerForNewText")
+    //--- Atomic property: mBoardLayerForNewLine
+      self.mBoardLayerForNewLine_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLayerForNewLine")
+    //--- Atomic property: mBoardSideForNewRestrictRectangle
+      self.mBoardSideForNewRestrictRectangle_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSideForNewRestrictRectangle")
+    //--- Atomic property: mAutoRouterPreferredDirections
+      self.mAutoRouterPreferredDirections_property.storeIn (dictionary: ioDictionary, forKey: "mAutoRouterPreferredDirections")
+    //--- Atomic property: mAutorouterSnapAngle
+      self.mAutorouterSnapAngle_property.storeIn (dictionary: ioDictionary, forKey: "mAutorouterSnapAngle")
+    //--- Atomic property: mRouteDirection
+      self.mRouteDirection_property.storeIn (dictionary: ioDictionary, forKey: "mRouteDirection")
+    //--- Atomic property: mRouteOrigin
+      self.mRouteOrigin_property.storeIn (dictionary: ioDictionary, forKey: "mRouteOrigin")
+    //--- Atomic property: mAutorouterInterfaceMode
+      self.mAutorouterInterfaceMode_property.storeIn (dictionary: ioDictionary, forKey: "mAutorouterInterfaceMode")
+    //--- Atomic property: mExportExistingTracksAndVias
+      self.mExportExistingTracksAndVias_property.storeIn (dictionary: ioDictionary, forKey: "mExportExistingTracksAndVias")
+    //--- Atomic property: mTrackLengthUnit
+      self.mTrackLengthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mTrackLengthUnit")
+    //--- Atomic property: mLayoutClearance
+      self.mLayoutClearance_property.storeIn (dictionary: ioDictionary, forKey: "mLayoutClearance")
+    //--- Atomic property: mLayoutClearanceUnit
+      self.mLayoutClearanceUnit_property.storeIn (dictionary: ioDictionary, forKey: "mLayoutClearanceUnit")
+    //--- Atomic property: mBoardSelectedInspector
+      self.mBoardSelectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSelectedInspector")
+    //--- Atomic property: mBoardHorizontalFlip
+      self.mBoardHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardHorizontalFlip")
+    //--- Atomic property: mBoardVerticalFlip
+      self.mBoardVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardVerticalFlip")
+    //--- Atomic property: mBoardGridStyle
+      self.mBoardGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridStyle")
+    //--- Atomic property: mBoardGridDisplayFactor
+      self.mBoardGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridDisplayFactor")
+    //--- Atomic property: mBoardZoom
+      self.mBoardZoom_property.storeIn (dictionary: ioDictionary, forKey: "mBoardZoom")
+    //--- Atomic property: mBoardGridStep
+      self.mBoardGridStep_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridStep")
+    //--- Atomic property: mBoardGridStepUnit
+      self.mBoardGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridStepUnit")
+    //--- Atomic property: mErrorOrWarningIssueSize
+      self.mErrorOrWarningIssueSize_property.storeIn (dictionary: ioDictionary, forKey: "mErrorOrWarningIssueSize")
+    //--- Atomic property: mControlKeyHiliteDiameter
+      self.mControlKeyHiliteDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mControlKeyHiliteDiameter")
+    //--- Atomic property: mDSNFileProposedName
+      self.mDSNFileProposedName_property.storeIn (dictionary: ioDictionary, forKey: "mDSNFileProposedName")
+    //--- Atomic property: mBoardLimitsWidth
+      self.mBoardLimitsWidth_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsWidth")
+    //--- Atomic property: mBoardLimitsWidthUnit
+      self.mBoardLimitsWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsWidthUnit")
+    //--- Atomic property: mBoardClearance
+      self.mBoardClearance_property.storeIn (dictionary: ioDictionary, forKey: "mBoardClearance")
+    //--- Atomic property: mBoardClearanceUnit
+      self.mBoardClearanceUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardClearanceUnit")
+    //--- Atomic property: mBoardLimitsSelectedInspector
+      self.mBoardLimitsSelectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsSelectedInspector")
+    //--- Atomic property: mBoardLimitsHorizontalFlip
+      self.mBoardLimitsHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsHorizontalFlip")
+    //--- Atomic property: mBoardLimitsVerticalFlip
+      self.mBoardLimitsVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsVerticalFlip")
+    //--- Atomic property: mBoardLimitsGridStyle
+      self.mBoardLimitsGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridStyle")
+    //--- Atomic property: mBoardLimitsGridDisplayFactor
+      self.mBoardLimitsGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridDisplayFactor")
+    //--- Atomic property: mBoardLimitsZoom
+      self.mBoardLimitsZoom_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsZoom")
+    //--- Atomic property: mBoardLimitsGridStep
+      self.mBoardLimitsGridStep_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridStep")
+    //--- Atomic property: mBoardLimitsGridStepUnit
+      self.mBoardLimitsGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridStepUnit")
+    //--- Atomic property: mBoardLimitsBoundingBoxUnit
+      self.mBoardLimitsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsBoundingBoxUnit")
+    //--- Atomic property: mBoardPointsBoundingBoxUnit
+      self.mBoardPointsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardPointsBoundingBoxUnit")
+    //--- Atomic property: mBoardSelectedCurveDisplayUnit
+      self.mBoardSelectedCurveDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSelectedCurveDisplayUnit")
+    //--- Atomic property: mBoardLimitControlPointsDisplayUnit
+      self.mBoardLimitControlPointsDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitControlPointsDisplayUnit")
+    //--- Atomic property: mBoardShape
+      self.mBoardShape_property.storeIn (dictionary: ioDictionary, forKey: "mBoardShape")
+    //--- Atomic property: mRectangularBoardWidth
+      self.mRectangularBoardWidth_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardWidth")
+    //--- Atomic property: mRectangularBoardWidthUnit
+      self.mRectangularBoardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardWidthUnit")
+    //--- Atomic property: mRectangularBoardHeight
+      self.mRectangularBoardHeight_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardHeight")
+    //--- Atomic property: mRectangularBoardHeightUnit
+      self.mRectangularBoardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardHeightUnit")
   //--- To many property: mSheets
     self.store (
       managedObjectArray: self.mSheets_property.propval.values,
       relationshipName: "mSheets",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mDefaultNetClassName
-    self.mDefaultNetClassName_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultNetClassName")
-  //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedPageIndex")
-  //--- Atomic property: mSelectedSchematicInspector
-    self.mSelectedSchematicInspector_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedSchematicInspector")
-  //--- Atomic property: mSchematicTitle
-    self.mSchematicTitle_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicTitle")
-  //--- Atomic property: mSchematicVersion
-    self.mSchematicVersion_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicVersion")
-  //--- Atomic property: mSchematicDate
-    self.mSchematicDate_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicDate")
-  //--- Atomic property: mSchematicHorizontalFlip
-    self.mSchematicHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicHorizontalFlip")
-  //--- Atomic property: mSchematicVerticalFlip
-    self.mSchematicVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicVerticalFlip")
-  //--- Atomic property: mSchematicZoom
-    self.mSchematicZoom_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicZoom")
-  //--- Atomic property: mSchematicGridStyle
-    self.mSchematicGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicGridStyle")
-  //--- Atomic property: mSchematicGridDisplayFactor
-    self.mSchematicGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicGridDisplayFactor")
-  //--- Atomic property: mSchematicCustomWidth
-    self.mSchematicCustomWidth_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomWidth")
-  //--- Atomic property: mSchematicCustomWidthUnit
-    self.mSchematicCustomWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomWidthUnit")
-  //--- Atomic property: mSchematicCustomHeight
-    self.mSchematicCustomHeight_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomHeight")
-  //--- Atomic property: mSchematicCustomHeightUnit
-    self.mSchematicCustomHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomHeightUnit")
+    //--- Atomic property: mDefaultNetClassName
+      self.mDefaultNetClassName_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultNetClassName")
+    //--- Atomic property: mSelectedPageIndex
+      self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedPageIndex")
+    //--- Atomic property: mSelectedSchematicInspector
+      self.mSelectedSchematicInspector_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedSchematicInspector")
+    //--- Atomic property: mSchematicTitle
+      self.mSchematicTitle_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicTitle")
+    //--- Atomic property: mSchematicVersion
+      self.mSchematicVersion_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicVersion")
+    //--- Atomic property: mSchematicDate
+      self.mSchematicDate_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicDate")
+    //--- Atomic property: mSchematicHorizontalFlip
+      self.mSchematicHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicHorizontalFlip")
+    //--- Atomic property: mSchematicVerticalFlip
+      self.mSchematicVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicVerticalFlip")
+    //--- Atomic property: mSchematicZoom
+      self.mSchematicZoom_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicZoom")
+    //--- Atomic property: mSchematicGridStyle
+      self.mSchematicGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicGridStyle")
+    //--- Atomic property: mSchematicGridDisplayFactor
+      self.mSchematicGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicGridDisplayFactor")
+    //--- Atomic property: mSchematicCustomWidth
+      self.mSchematicCustomWidth_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomWidth")
+    //--- Atomic property: mSchematicCustomWidthUnit
+      self.mSchematicCustomWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomWidthUnit")
+    //--- Atomic property: mSchematicCustomHeight
+      self.mSchematicCustomHeight_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomHeight")
+    //--- Atomic property: mSchematicCustomHeightUnit
+      self.mSchematicCustomHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomHeightUnit")
   //--- To many property: mNetClasses
     self.store (
       managedObjectArray: self.mNetClasses_property.propval.values,
@@ -6774,8 +6778,8 @@ final class ProjectRoot : EBManagedObject,
       relationshipName: "mDevices",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mSchematicSheetOrientation
-    self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicSheetOrientation")
+    //--- Atomic property: mSchematicSheetOrientation
+      self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicSheetOrientation")
   //--- To many property: mBorderCurves
     self.store (
       managedObjectArray: self.mBorderCurves_property.propval.values,
@@ -6788,12 +6792,12 @@ final class ProjectRoot : EBManagedObject,
       relationshipName: "mBoardObjects",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mRastnetDisplay
-    self.mRastnetDisplay_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplay")
-  //--- Atomic property: mRastnetDisplayedNetName
-    self.mRastnetDisplayedNetName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedNetName")
-  //--- Atomic property: mRastnetDisplayedComponentName
-    self.mRastnetDisplayedComponentName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedComponentName")
+    //--- Atomic property: mRastnetDisplay
+      self.mRastnetDisplay_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplay")
+    //--- Atomic property: mRastnetDisplayedNetName
+      self.mRastnetDisplayedNetName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedNetName")
+    //--- Atomic property: mRastnetDisplayedComponentName
+      self.mRastnetDisplayedComponentName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedComponentName")
   //--- To many property: mComponents
     self.store (
       managedObjectArray: self.mComponents_property.propval.values,
