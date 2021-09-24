@@ -71,10 +71,10 @@ struct EBReferenceArray <T : AnyObject> : RangeReplaceableCollection {
   //····················································································································
 
   func firstIndex (of inObject : T) -> Int? {
-    let address : Int = unsafeBitCast (inObject, to: Int.self)
+    let address = ObjectAddress (inObject)
     var idx = 0
     while idx < self.mArray.count {
-      let p : Int = unsafeBitCast (self.mArray [idx], to: Int.self)
+      let p = ObjectAddress (self.mArray [idx])
       if address == p {
         return idx
       }

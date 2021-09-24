@@ -6,6 +6,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+struct ObjectAddress : Hashable {
+  private let address : Int
+
+  init (_ inObject : AnyObject?) {
+    self.address = unsafeBitCast (inObject, to: Int.self)
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ObjectIndexProtocol : AnyObject {
   var explorerIndexString : String { get }
 }

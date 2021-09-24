@@ -10,18 +10,18 @@ struct EBReferenceSet <T : AnyObject> {
 
   //····················································································································
 
-  private var mDictionary : Dictionary <Int, T>
+  private var mDictionary : Dictionary <ObjectAddress, T>
 
   //····················································································································
 
   init () {
-    self.mDictionary = Dictionary <Int, T> ()
+    self.mDictionary = Dictionary <ObjectAddress, T> ()
   }
 
   //····················································································································
 
   init (minimumCapacity inMinimumCapacity : Int) {
-    self.mDictionary = Dictionary <Int, T> (minimumCapacity: inMinimumCapacity)
+    self.mDictionary = Dictionary <ObjectAddress, T> (minimumCapacity: inMinimumCapacity)
   }
 
   //····················································································································
@@ -33,7 +33,7 @@ struct EBReferenceSet <T : AnyObject> {
   //····················································································································
 
   init (_ inObjects : [T]) {
-    self.mDictionary = Dictionary <Int, T> (minimumCapacity: inObjects.count)
+    self.mDictionary = Dictionary <ObjectAddress, T> (minimumCapacity: inObjects.count)
     for object in inObjects {
       self.insert (object)
     }
@@ -42,21 +42,21 @@ struct EBReferenceSet <T : AnyObject> {
   //····················································································································
 
   mutating func insert (_ inObject : T) {
-    let address : Int = unsafeBitCast (inObject, to: Int.self)
+    let address = ObjectAddress (inObject)
     self.mDictionary [address] = inObject
   }
 
   //····················································································································
 
   mutating func remove (_ inObject : T) {
-    let address : Int = unsafeBitCast (inObject, to: Int.self)
+    let address = ObjectAddress (inObject)
     self.mDictionary [address] = nil
   }
 
   //····················································································································
 
   func contains (_ inObject : T) -> Bool {
-    let address : Int = unsafeBitCast (inObject, to: Int.self)
+    let address = ObjectAddress (inObject)
     return self.mDictionary [address] != nil
   }
 
@@ -106,13 +106,7 @@ struct EBReferenceSet <T : AnyObject> {
 
   //····················································································································
 
-  var values : Dictionary <Int, T>.Values { return self.mDictionary.values }
-
-  //····················································································································
-
-//  func <U> convertedTo () ->  {
-//    self.mDictionary = inOtherSet.mDictionary
-//  }
+  var values : Dictionary <ObjectAddress, T>.Values { return self.mDictionary.values }
 
   //····················································································································
 
@@ -129,12 +123,3 @@ struct EBReferenceSet <T : AnyObject> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//extension EBReferenceSet {
-//
-//  init <S> (_ inSequence : S) where S : Sequence, T == S.Element {
-//    self.mDictionary = inOtherSet.mDictionary
-//  }
-//
-//}
-
