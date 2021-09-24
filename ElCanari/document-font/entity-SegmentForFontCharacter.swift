@@ -218,7 +218,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "x1",
-        idx: self.x1_property.ebObjectIndex,
+        object: self.x1_property,
         y: &y,
         view: view,
         observerExplorer: &self.x1_property.mObserverExplorer,
@@ -226,7 +226,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "y1",
-        idx: self.y1_property.ebObjectIndex,
+        object: self.y1_property,
         y: &y,
         view: view,
         observerExplorer: &self.y1_property.mObserverExplorer,
@@ -234,7 +234,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "x2",
-        idx: self.x2_property.ebObjectIndex,
+        object: self.x2_property,
         y: &y,
         view: view,
         observerExplorer: &self.x2_property.mObserverExplorer,
@@ -242,7 +242,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "y2",
-        idx: self.y2_property.ebObjectIndex,
+        object: self.y2_property,
         y: &y,
         view: view,
         observerExplorer: &self.y2_property.mObserverExplorer,
@@ -251,7 +251,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -259,7 +259,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,

@@ -38,7 +38,7 @@ class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBGenericReadWrit
         self.mValueExplorer?.stringValue = "\(mValue)"
         self.mEBUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
         if logEvents () {
-          appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
+          appendMessageString ("Property \(self.explorerIndexString) did change value to \(mValue)\n")
         }
         self.postEvent ()
         self.clearSignatureCache ()

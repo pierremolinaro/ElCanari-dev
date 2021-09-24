@@ -402,7 +402,7 @@ final class SymbolRoot : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "selectedInspector",
-        idx: self.selectedInspector_property.ebObjectIndex,
+        object: self.selectedInspector_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectedInspector_property.mObserverExplorer,
@@ -410,7 +410,7 @@ final class SymbolRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "comments",
-        idx: self.comments_property.ebObjectIndex,
+        object: self.comments_property,
         y: &y,
         view: view,
         observerExplorer: &self.comments_property.mObserverExplorer,
@@ -418,7 +418,7 @@ final class SymbolRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "horizontalFlip",
-        idx: self.horizontalFlip_property.ebObjectIndex,
+        object: self.horizontalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.horizontalFlip_property.mObserverExplorer,
@@ -426,7 +426,7 @@ final class SymbolRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "verticalFlip",
-        idx: self.verticalFlip_property.ebObjectIndex,
+        object: self.verticalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.verticalFlip_property.mObserverExplorer,
@@ -434,7 +434,7 @@ final class SymbolRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "gridStyle",
-        idx: self.gridStyle_property.ebObjectIndex,
+        object: self.gridStyle_property,
         y: &y,
         view: view,
         observerExplorer: &self.gridStyle_property.mObserverExplorer,
@@ -442,7 +442,7 @@ final class SymbolRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "gridDisplay",
-        idx: self.gridDisplay_property.ebObjectIndex,
+        object: self.gridDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.gridDisplay_property.mObserverExplorer,
@@ -450,7 +450,7 @@ final class SymbolRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "zoom",
-        idx: self.zoom_property.ebObjectIndex,
+        object: self.zoom_property,
         y: &y,
         view: view,
         observerExplorer: &self.zoom_property.mObserverExplorer,
@@ -458,7 +458,7 @@ final class SymbolRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "xPlacardUnit",
-        idx: self.xPlacardUnit_property.ebObjectIndex,
+        object: self.xPlacardUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.xPlacardUnit_property.mObserverExplorer,
@@ -466,7 +466,7 @@ final class SymbolRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "yPlacardUnit",
-        idx: self.yPlacardUnit_property.ebObjectIndex,
+        object: self.yPlacardUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.yPlacardUnit_property.mObserverExplorer,
@@ -474,7 +474,7 @@ final class SymbolRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "selectedPageIndex",
-        idx: self.selectedPageIndex_property.ebObjectIndex,
+        object: self.selectedPageIndex_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectedPageIndex_property.mObserverExplorer,
@@ -483,7 +483,7 @@ final class SymbolRoot : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,
@@ -492,7 +492,7 @@ final class SymbolRoot : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "symbolObjects",
-        idx:symbolObjects_property.ebObjectIndex,
+        object: symbolObjects_property,
         y: &y,
         view: view,
         valueExplorer:&symbolObjects_property.mValueExplorer

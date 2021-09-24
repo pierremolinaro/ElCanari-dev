@@ -423,7 +423,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       view.addSubview (tf)
       let valueExplorer = NSButton (frame:thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_ProjectDocument_mDataSelection.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -444,7 +444,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "drawBoardLimits",
-        idx: self.drawBoardLimits_property.ebObjectIndex,
+        object: self.drawBoardLimits_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawBoardLimits_property.mObserverExplorer,
@@ -452,7 +452,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawComponentNamesBottomSide",
-        idx: self.drawComponentNamesBottomSide_property.ebObjectIndex,
+        object: self.drawComponentNamesBottomSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawComponentNamesBottomSide_property.mObserverExplorer,
@@ -460,7 +460,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawComponentNamesTopSide",
-        idx: self.drawComponentNamesTopSide_property.ebObjectIndex,
+        object: self.drawComponentNamesTopSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawComponentNamesTopSide_property.mObserverExplorer,
@@ -468,7 +468,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawComponentValuesBottomSide",
-        idx: self.drawComponentValuesBottomSide_property.ebObjectIndex,
+        object: self.drawComponentValuesBottomSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawComponentValuesBottomSide_property.mObserverExplorer,
@@ -476,7 +476,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawComponentValuesTopSide",
-        idx: self.drawComponentValuesTopSide_property.ebObjectIndex,
+        object: self.drawComponentValuesTopSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawComponentValuesTopSide_property.mObserverExplorer,
@@ -484,7 +484,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawInternalBoardLimits",
-        idx: self.drawInternalBoardLimits_property.ebObjectIndex,
+        object: self.drawInternalBoardLimits_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawInternalBoardLimits_property.mObserverExplorer,
@@ -492,7 +492,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawPackageLegendBottomSide",
-        idx: self.drawPackageLegendBottomSide_property.ebObjectIndex,
+        object: self.drawPackageLegendBottomSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawPackageLegendBottomSide_property.mObserverExplorer,
@@ -500,7 +500,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawPackageLegendTopSide",
-        idx: self.drawPackageLegendTopSide_property.ebObjectIndex,
+        object: self.drawPackageLegendTopSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawPackageLegendTopSide_property.mObserverExplorer,
@@ -508,7 +508,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawPadHolesInPDF",
-        idx: self.drawPadHolesInPDF_property.ebObjectIndex,
+        object: self.drawPadHolesInPDF_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawPadHolesInPDF_property.mObserverExplorer,
@@ -516,7 +516,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawPadsBottomSide",
-        idx: self.drawPadsBottomSide_property.ebObjectIndex,
+        object: self.drawPadsBottomSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawPadsBottomSide_property.mObserverExplorer,
@@ -524,7 +524,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawPadsTopSide",
-        idx: self.drawPadsTopSide_property.ebObjectIndex,
+        object: self.drawPadsTopSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawPadsTopSide_property.mObserverExplorer,
@@ -532,7 +532,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawTextsLayoutBottomSide",
-        idx: self.drawTextsLayoutBottomSide_property.ebObjectIndex,
+        object: self.drawTextsLayoutBottomSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTextsLayoutBottomSide_property.mObserverExplorer,
@@ -540,7 +540,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawTextsLayoutTopSide",
-        idx: self.drawTextsLayoutTopSide_property.ebObjectIndex,
+        object: self.drawTextsLayoutTopSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTextsLayoutTopSide_property.mObserverExplorer,
@@ -548,7 +548,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawTextsLegendBottomSide",
-        idx: self.drawTextsLegendBottomSide_property.ebObjectIndex,
+        object: self.drawTextsLegendBottomSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTextsLegendBottomSide_property.mObserverExplorer,
@@ -556,7 +556,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawTextsLegendTopSide",
-        idx: self.drawTextsLegendTopSide_property.ebObjectIndex,
+        object: self.drawTextsLegendTopSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTextsLegendTopSide_property.mObserverExplorer,
@@ -564,7 +564,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawTracksBottomSide",
-        idx: self.drawTracksBottomSide_property.ebObjectIndex,
+        object: self.drawTracksBottomSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTracksBottomSide_property.mObserverExplorer,
@@ -572,7 +572,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawTracksInner1Layer",
-        idx: self.drawTracksInner1Layer_property.ebObjectIndex,
+        object: self.drawTracksInner1Layer_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTracksInner1Layer_property.mObserverExplorer,
@@ -580,7 +580,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawTracksInner2Layer",
-        idx: self.drawTracksInner2Layer_property.ebObjectIndex,
+        object: self.drawTracksInner2Layer_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTracksInner2Layer_property.mObserverExplorer,
@@ -588,7 +588,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawTracksInner3Layer",
-        idx: self.drawTracksInner3Layer_property.ebObjectIndex,
+        object: self.drawTracksInner3Layer_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTracksInner3Layer_property.mObserverExplorer,
@@ -596,7 +596,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawTracksInner4Layer",
-        idx: self.drawTracksInner4Layer_property.ebObjectIndex,
+        object: self.drawTracksInner4Layer_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTracksInner4Layer_property.mObserverExplorer,
@@ -604,7 +604,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawTracksTopSide",
-        idx: self.drawTracksTopSide_property.ebObjectIndex,
+        object: self.drawTracksTopSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTracksTopSide_property.mObserverExplorer,
@@ -612,7 +612,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawTraversingPads",
-        idx: self.drawTraversingPads_property.ebObjectIndex,
+        object: self.drawTraversingPads_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTraversingPads_property.mObserverExplorer,
@@ -620,7 +620,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "drawVias",
-        idx: self.drawVias_property.ebObjectIndex,
+        object: self.drawVias_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawVias_property.mObserverExplorer,
@@ -628,7 +628,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "fileExtension",
-        idx: self.fileExtension_property.ebObjectIndex,
+        object: self.fileExtension_property,
         y: &y,
         view: view,
         observerExplorer: &self.fileExtension_property.mObserverExplorer,
@@ -636,7 +636,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "horizontalMirror",
-        idx: self.horizontalMirror_property.ebObjectIndex,
+        object: self.horizontalMirror_property,
         y: &y,
         view: view,
         observerExplorer: &self.horizontalMirror_property.mObserverExplorer,
@@ -644,7 +644,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "measurementUnitForPadHoleInPDF",
-        idx: self.measurementUnitForPadHoleInPDF_property.ebObjectIndex,
+        object: self.measurementUnitForPadHoleInPDF_property,
         y: &y,
         view: view,
         observerExplorer: &self.measurementUnitForPadHoleInPDF_property.mObserverExplorer,
@@ -652,7 +652,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "name",
-        idx: self.name_property.ebObjectIndex,
+        object: self.name_property,
         y: &y,
         view: view,
         observerExplorer: &self.name_property.mObserverExplorer,
@@ -660,7 +660,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       )
       createEntryForPropertyNamed (
         "padHoleDiameterInPDF",
-        idx: self.padHoleDiameterInPDF_property.ebObjectIndex,
+        object: self.padHoleDiameterInPDF_property,
         y: &y,
         view: view,
         observerExplorer: &self.padHoleDiameterInPDF_property.mObserverExplorer,
@@ -677,7 +677,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObje
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_ProjectDocument_mDataSelection.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

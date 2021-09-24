@@ -6,13 +6,19 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ObjectIndexProtocol : AnyObject {
+  var explorerIndexString : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 private var gEasyBindingsObjectIndex = 0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    EBObjcBaseObject class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBObjcBaseObject : NSObject, EBUserClassNameProtocol {
+class EBObjcBaseObject : NSObject, EBUserClassNameProtocol, ObjectIndexProtocol {
 
   //····················································································································
 
@@ -35,23 +41,33 @@ class EBObjcBaseObject : NSObject, EBUserClassNameProtocol {
 
   //····················································································································
 
+  final var explorerIndexString : String {
+    return explorerObjectIndexString (self.ebObjectIndex)
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    EBSwiftBaseObject class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBSwiftBaseObject : EBUserClassNameProtocol {
+class EBSwiftBaseObject : EBUserClassNameProtocol, ObjectIndexProtocol {
 
   //····················································································································
 
-  final let ebObjectIndex : Int
+  #if BUILD_OBJECT_EXPLORER
+    final let ebObjectIndex : Int
+  #endif
 
   //····················································································································
 
   init () {
-    self.ebObjectIndex = gEasyBindingsObjectIndex
-    gEasyBindingsObjectIndex += 1
+    #if BUILD_OBJECT_EXPLORER
+      self.ebObjectIndex = gEasyBindingsObjectIndex
+      gEasyBindingsObjectIndex += 1
+    #endif
     noteObjectAllocation (self)
   }
 
@@ -59,6 +75,16 @@ class EBSwiftBaseObject : EBUserClassNameProtocol {
 
   deinit {
     noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  final var explorerIndexString : String {
+    #if BUILD_OBJECT_EXPLORER
+      return explorerObjectIndexString (self.ebObjectIndex)
+    #else
+      return ""
+    #endif
   }
 
   //····················································································································
@@ -100,5 +126,27 @@ class EBSwiftBaseObject : EBUserClassNameProtocol {
 //  //····················································································································
 //
 //}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+private let explorerLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L",
+                               "M", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+private func explorerObjectIndexString (_ idx : Int) -> String {
+  var result = String (idx % 10)
+  var n = idx / 10
+  result += "\(n % 10)"
+  n /= 10
+  result += explorerLetters [n % explorerLetters.count]
+  n /= explorerLetters.count
+  result += explorerLetters [n % explorerLetters.count]
+  n /= explorerLetters.count
+  result += explorerLetters [n % explorerLetters.count]
+  n /= explorerLetters.count
+  if n > 0 {
+    result += "\(n)"
+  }
+  return result
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

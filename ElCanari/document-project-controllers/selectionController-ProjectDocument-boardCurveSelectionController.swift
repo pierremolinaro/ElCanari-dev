@@ -233,7 +233,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
       view.addSubview (tf)
       let valueExplorer = NSButton (frame:thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_ProjectDocument_boardCurveSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -254,7 +254,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "mCPX1",
-        idx: self.mCPX1_property.ebObjectIndex,
+        object: self.mCPX1_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCPX1_property.mObserverExplorer,
@@ -262,7 +262,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
       )
       createEntryForPropertyNamed (
         "mCPX2",
-        idx: self.mCPX2_property.ebObjectIndex,
+        object: self.mCPX2_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCPX2_property.mObserverExplorer,
@@ -270,7 +270,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
       )
       createEntryForPropertyNamed (
         "mCPY1",
-        idx: self.mCPY1_property.ebObjectIndex,
+        object: self.mCPY1_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCPY1_property.mObserverExplorer,
@@ -278,7 +278,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
       )
       createEntryForPropertyNamed (
         "mCPY2",
-        idx: self.mCPY2_property.ebObjectIndex,
+        object: self.mCPY2_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCPY2_property.mObserverExplorer,
@@ -286,7 +286,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
       )
       createEntryForPropertyNamed (
         "mNextX",
-        idx: self.mNextX_property.ebObjectIndex,
+        object: self.mNextX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNextX_property.mObserverExplorer,
@@ -294,7 +294,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
       )
       createEntryForPropertyNamed (
         "mNextY",
-        idx: self.mNextY_property.ebObjectIndex,
+        object: self.mNextY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNextY_property.mObserverExplorer,
@@ -302,7 +302,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
       )
       createEntryForPropertyNamed (
         "mShape",
-        idx: self.mShape_property.ebObjectIndex,
+        object: self.mShape_property,
         y: &y,
         view: view,
         observerExplorer: &self.mShape_property.mObserverExplorer,
@@ -310,7 +310,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
       )
       createEntryForPropertyNamed (
         "mX",
-        idx: self.mX_property.ebObjectIndex,
+        object: self.mX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX_property.mObserverExplorer,
@@ -318,7 +318,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
       )
       createEntryForPropertyNamed (
         "mY",
-        idx: self.mY_property.ebObjectIndex,
+        object: self.mY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY_property.mObserverExplorer,
@@ -335,7 +335,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_ProjectDocument_boardCurveSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

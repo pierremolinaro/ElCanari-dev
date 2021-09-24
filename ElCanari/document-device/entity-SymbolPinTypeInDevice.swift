@@ -408,7 +408,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mPinX",
-        idx: self.mPinX_property.ebObjectIndex,
+        object: self.mPinX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPinX_property.mObserverExplorer,
@@ -416,7 +416,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mPinY",
-        idx: self.mPinY_property.ebObjectIndex,
+        object: self.mPinY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPinY_property.mObserverExplorer,
@@ -424,7 +424,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mXName",
-        idx: self.mXName_property.ebObjectIndex,
+        object: self.mXName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mXName_property.mObserverExplorer,
@@ -432,7 +432,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mYName",
-        idx: self.mYName_property.ebObjectIndex,
+        object: self.mYName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mYName_property.mObserverExplorer,
@@ -440,7 +440,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mName",
-        idx: self.mName_property.ebObjectIndex,
+        object: self.mName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mName_property.mObserverExplorer,
@@ -448,7 +448,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mNameHorizontalAlignment",
-        idx: self.mNameHorizontalAlignment_property.ebObjectIndex,
+        object: self.mNameHorizontalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNameHorizontalAlignment_property.mObserverExplorer,
@@ -456,7 +456,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mPinNameIsDisplayedInSchematics",
-        idx: self.mPinNameIsDisplayedInSchematics_property.ebObjectIndex,
+        object: self.mPinNameIsDisplayedInSchematics_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPinNameIsDisplayedInSchematics_property.mObserverExplorer,
@@ -464,7 +464,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mXNumber",
-        idx: self.mXNumber_property.ebObjectIndex,
+        object: self.mXNumber_property,
         y: &y,
         view: view,
         observerExplorer: &self.mXNumber_property.mObserverExplorer,
@@ -472,7 +472,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mYNumber",
-        idx: self.mYNumber_property.ebObjectIndex,
+        object: self.mYNumber_property,
         y: &y,
         view: view,
         observerExplorer: &self.mYNumber_property.mObserverExplorer,
@@ -480,7 +480,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mNumberHorizontalAlignment",
-        idx: self.mNumberHorizontalAlignment_property.ebObjectIndex,
+        object: self.mNumberHorizontalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNumberHorizontalAlignment_property.mObserverExplorer,
@@ -489,7 +489,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "nameShape",
-        idx: self.nameShape_property.ebObjectIndex,
+        object: self.nameShape_property,
         y: &y,
         view: view,
         observerExplorer: &self.nameShape_property.mObserverExplorer,
@@ -498,7 +498,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mInstances",
-        idx:mInstances_property.ebObjectIndex,
+        object: mInstances_property,
         y: &y,
         view: view,
         valueExplorer:&mInstances_property.mValueExplorer

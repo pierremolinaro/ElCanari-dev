@@ -123,7 +123,7 @@ final class BoardModelVia : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "y",
-        idx: self.y_property.ebObjectIndex,
+        object: self.y_property,
         y: &y,
         view: view,
         observerExplorer: &self.y_property.mObserverExplorer,
@@ -131,7 +131,7 @@ final class BoardModelVia : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "padDiameter",
-        idx: self.padDiameter_property.ebObjectIndex,
+        object: self.padDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.padDiameter_property.mObserverExplorer,
@@ -139,7 +139,7 @@ final class BoardModelVia : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "x",
-        idx: self.x_property.ebObjectIndex,
+        object: self.x_property,
         y: &y,
         view: view,
         observerExplorer: &self.x_property.mObserverExplorer,

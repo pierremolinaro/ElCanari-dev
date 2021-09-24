@@ -141,7 +141,7 @@ final class DeviceDocumentation : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mFileName",
-        idx: self.mFileName_property.ebObjectIndex,
+        object: self.mFileName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFileName_property.mObserverExplorer,
@@ -149,7 +149,7 @@ final class DeviceDocumentation : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mFileData",
-        idx: self.mFileData_property.ebObjectIndex,
+        object: self.mFileData_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFileData_property.mObserverExplorer,
@@ -158,7 +158,7 @@ final class DeviceDocumentation : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "fileSize",
-        idx: self.fileSize_property.ebObjectIndex,
+        object: self.fileSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.fileSize_property.mObserverExplorer,

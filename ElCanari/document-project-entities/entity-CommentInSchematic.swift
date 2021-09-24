@@ -305,7 +305,7 @@ final class CommentInSchematic : SchematicObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mColor",
-        idx: self.mColor_property.ebObjectIndex,
+        object: self.mColor_property,
         y: &y,
         view: view,
         observerExplorer: &self.mColor_property.mObserverExplorer,
@@ -313,7 +313,7 @@ final class CommentInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mSize",
-        idx: self.mSize_property.ebObjectIndex,
+        object: self.mSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSize_property.mObserverExplorer,
@@ -321,7 +321,7 @@ final class CommentInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mHorizontalAlignment",
-        idx: self.mHorizontalAlignment_property.ebObjectIndex,
+        object: self.mHorizontalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mHorizontalAlignment_property.mObserverExplorer,
@@ -329,7 +329,7 @@ final class CommentInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mVerticalAlignment",
-        idx: self.mVerticalAlignment_property.ebObjectIndex,
+        object: self.mVerticalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mVerticalAlignment_property.mObserverExplorer,
@@ -337,7 +337,7 @@ final class CommentInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mX",
-        idx: self.mX_property.ebObjectIndex,
+        object: self.mX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX_property.mObserverExplorer,
@@ -345,7 +345,7 @@ final class CommentInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mY",
-        idx: self.mY_property.ebObjectIndex,
+        object: self.mY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY_property.mObserverExplorer,
@@ -353,7 +353,7 @@ final class CommentInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mComment",
-        idx: self.mComment_property.ebObjectIndex,
+        object: self.mComment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mComment_property.mObserverExplorer,
@@ -362,7 +362,7 @@ final class CommentInSchematic : SchematicObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -370,7 +370,7 @@ final class CommentInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,

@@ -347,7 +347,7 @@ class BoardObject : EBGraphicManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "isPlacedInBoard",
-        idx: self.isPlacedInBoard_property.ebObjectIndex,
+        object: self.isPlacedInBoard_property,
         y: &y,
         view: view,
         observerExplorer: &self.isPlacedInBoard_property.mObserverExplorer,
@@ -355,7 +355,7 @@ class BoardObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,
@@ -363,7 +363,7 @@ class BoardObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "isVia",
-        idx: self.isVia_property.ebObjectIndex,
+        object: self.isVia_property,
         y: &y,
         view: view,
         observerExplorer: &self.isVia_property.mObserverExplorer,
@@ -371,7 +371,7 @@ class BoardObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "trackLengthInCanariUnit",
-        idx: self.trackLengthInCanariUnit_property.ebObjectIndex,
+        object: self.trackLengthInCanariUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.trackLengthInCanariUnit_property.mObserverExplorer,
@@ -379,7 +379,7 @@ class BoardObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "signatureForERCChecking",
-        idx: self.signatureForERCChecking_property.ebObjectIndex,
+        object: self.signatureForERCChecking_property,
         y: &y,
         view: view,
         observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
@@ -387,7 +387,7 @@ class BoardObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "netNameAndPadLocation",
-        idx: self.netNameAndPadLocation_property.ebObjectIndex,
+        object: self.netNameAndPadLocation_property,
         y: &y,
         view: view,
         observerExplorer: &self.netNameAndPadLocation_property.mObserverExplorer,
@@ -395,7 +395,7 @@ class BoardObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "componentName",
-        idx: self.componentName_property.ebObjectIndex,
+        object: self.componentName_property,
         y: &y,
         view: view,
         observerExplorer: &self.componentName_property.mObserverExplorer,
@@ -403,7 +403,7 @@ class BoardObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -411,7 +411,7 @@ class BoardObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -419,7 +419,7 @@ class BoardObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "errorOrWarningIssueSize",
-        idx: self.errorOrWarningIssueSize_property.ebObjectIndex,
+        object: self.errorOrWarningIssueSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.errorOrWarningIssueSize_property.mObserverExplorer,
@@ -427,7 +427,7 @@ class BoardObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "trackSide",
-        idx: self.trackSide_property.ebObjectIndex,
+        object: self.trackSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.trackSide_property.mObserverExplorer,
@@ -437,7 +437,7 @@ class BoardObject : EBGraphicManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mRoot",
-        idx:self.mRoot_property.ebObjectIndex,
+        object: self.mRoot_property,
         y: &y,
         view: view,
         valueExplorer:&self.mRoot_property.mValueExplorer

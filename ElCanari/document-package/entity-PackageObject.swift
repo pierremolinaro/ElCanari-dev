@@ -162,7 +162,7 @@ class PackageObject : EBGraphicManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,
@@ -170,7 +170,7 @@ class PackageObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -178,7 +178,7 @@ class PackageObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -186,7 +186,7 @@ class PackageObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "knobSize",
-        idx: self.knobSize_property.ebObjectIndex,
+        object: self.knobSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.knobSize_property.mObserverExplorer,
@@ -196,7 +196,7 @@ class PackageObject : EBGraphicManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mRoot",
-        idx:self.mRoot_property.ebObjectIndex,
+        object: self.mRoot_property,
         y: &y,
         view: view,
         valueExplorer:&self.mRoot_property.mValueExplorer

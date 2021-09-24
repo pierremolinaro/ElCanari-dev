@@ -177,7 +177,7 @@ final class SegmentEntity : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "y1",
-        idx: self.y1_property.ebObjectIndex,
+        object: self.y1_property,
         y: &y,
         view: view,
         observerExplorer: &self.y1_property.mObserverExplorer,
@@ -185,7 +185,7 @@ final class SegmentEntity : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "x2",
-        idx: self.x2_property.ebObjectIndex,
+        object: self.x2_property,
         y: &y,
         view: view,
         observerExplorer: &self.x2_property.mObserverExplorer,
@@ -193,7 +193,7 @@ final class SegmentEntity : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "y2",
-        idx: self.y2_property.ebObjectIndex,
+        object: self.y2_property,
         y: &y,
         view: view,
         observerExplorer: &self.y2_property.mObserverExplorer,
@@ -201,7 +201,7 @@ final class SegmentEntity : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "width",
-        idx: self.width_property.ebObjectIndex,
+        object: self.width_property,
         y: &y,
         view: view,
         observerExplorer: &self.width_property.mObserverExplorer,
@@ -209,7 +209,7 @@ final class SegmentEntity : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "x1",
-        idx: self.x1_property.ebObjectIndex,
+        object: self.x1_property,
         y: &y,
         view: view,
         observerExplorer: &self.x1_property.mObserverExplorer,

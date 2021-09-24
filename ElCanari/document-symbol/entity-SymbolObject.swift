@@ -81,7 +81,7 @@ class SymbolObject : EBGraphicManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -89,7 +89,7 @@ class SymbolObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -97,7 +97,7 @@ class SymbolObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,

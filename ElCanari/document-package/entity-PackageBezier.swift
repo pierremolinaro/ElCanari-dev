@@ -667,7 +667,7 @@ final class PackageBezier : PackageObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "y1",
-        idx: self.y1_property.ebObjectIndex,
+        object: self.y1_property,
         y: &y,
         view: view,
         observerExplorer: &self.y1_property.mObserverExplorer,
@@ -675,7 +675,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "x2",
-        idx: self.x2_property.ebObjectIndex,
+        object: self.x2_property,
         y: &y,
         view: view,
         observerExplorer: &self.x2_property.mObserverExplorer,
@@ -683,7 +683,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "y2",
-        idx: self.y2_property.ebObjectIndex,
+        object: self.y2_property,
         y: &y,
         view: view,
         observerExplorer: &self.y2_property.mObserverExplorer,
@@ -691,7 +691,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "cpx1",
-        idx: self.cpx1_property.ebObjectIndex,
+        object: self.cpx1_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpx1_property.mObserverExplorer,
@@ -699,7 +699,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "cpy1",
-        idx: self.cpy1_property.ebObjectIndex,
+        object: self.cpy1_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpy1_property.mObserverExplorer,
@@ -707,7 +707,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "cpx2",
-        idx: self.cpx2_property.ebObjectIndex,
+        object: self.cpx2_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpx2_property.mObserverExplorer,
@@ -715,7 +715,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "cpy2",
-        idx: self.cpy2_property.ebObjectIndex,
+        object: self.cpy2_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpy2_property.mObserverExplorer,
@@ -723,7 +723,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "x1Unit",
-        idx: self.x1Unit_property.ebObjectIndex,
+        object: self.x1Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.x1Unit_property.mObserverExplorer,
@@ -731,7 +731,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "y1Unit",
-        idx: self.y1Unit_property.ebObjectIndex,
+        object: self.y1Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.y1Unit_property.mObserverExplorer,
@@ -739,7 +739,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "x2Unit",
-        idx: self.x2Unit_property.ebObjectIndex,
+        object: self.x2Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.x2Unit_property.mObserverExplorer,
@@ -747,7 +747,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "y2Unit",
-        idx: self.y2Unit_property.ebObjectIndex,
+        object: self.y2Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.y2Unit_property.mObserverExplorer,
@@ -755,7 +755,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "cpx1Unit",
-        idx: self.cpx1Unit_property.ebObjectIndex,
+        object: self.cpx1Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpx1Unit_property.mObserverExplorer,
@@ -763,7 +763,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "cpy1Unit",
-        idx: self.cpy1Unit_property.ebObjectIndex,
+        object: self.cpy1Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpy1Unit_property.mObserverExplorer,
@@ -771,7 +771,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "cpx2Unit",
-        idx: self.cpx2Unit_property.ebObjectIndex,
+        object: self.cpx2Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpx2Unit_property.mObserverExplorer,
@@ -779,7 +779,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "cpy2Unit",
-        idx: self.cpy2Unit_property.ebObjectIndex,
+        object: self.cpy2Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpy2Unit_property.mObserverExplorer,
@@ -787,7 +787,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "x1",
-        idx: self.x1_property.ebObjectIndex,
+        object: self.x1_property,
         y: &y,
         view: view,
         observerExplorer: &self.x1_property.mObserverExplorer,
@@ -796,7 +796,7 @@ final class PackageBezier : PackageObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "strokeBezierPath",
-        idx: self.strokeBezierPath_property.ebObjectIndex,
+        object: self.strokeBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
@@ -804,7 +804,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -812,7 +812,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -820,7 +820,7 @@ final class PackageBezier : PackageObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,

@@ -601,7 +601,7 @@ final class DeviceInProject : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mDeviceName",
-        idx: self.mDeviceName_property.ebObjectIndex,
+        object: self.mDeviceName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDeviceName_property.mObserverExplorer,
@@ -609,7 +609,7 @@ final class DeviceInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mPrefix",
-        idx: self.mPrefix_property.ebObjectIndex,
+        object: self.mPrefix_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPrefix_property.mObserverExplorer,
@@ -617,7 +617,7 @@ final class DeviceInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mDeviceVersion",
-        idx: self.mDeviceVersion_property.ebObjectIndex,
+        object: self.mDeviceVersion_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDeviceVersion_property.mObserverExplorer,
@@ -625,7 +625,7 @@ final class DeviceInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mDeviceFileData",
-        idx: self.mDeviceFileData_property.ebObjectIndex,
+        object: self.mDeviceFileData_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDeviceFileData_property.mObserverExplorer,
@@ -634,7 +634,7 @@ final class DeviceInProject : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "versionString",
-        idx: self.versionString_property.ebObjectIndex,
+        object: self.versionString_property,
         y: &y,
         view: view,
         observerExplorer: &self.versionString_property.mObserverExplorer,
@@ -642,7 +642,7 @@ final class DeviceInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "sizeString",
-        idx: self.sizeString_property.ebObjectIndex,
+        object: self.sizeString_property,
         y: &y,
         view: view,
         observerExplorer: &self.sizeString_property.mObserverExplorer,
@@ -650,7 +650,7 @@ final class DeviceInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "canExport",
-        idx: self.canExport_property.ebObjectIndex,
+        object: self.canExport_property,
         y: &y,
         view: view,
         observerExplorer: &self.canExport_property.mObserverExplorer,
@@ -658,7 +658,7 @@ final class DeviceInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "packageNames",
-        idx: self.packageNames_property.ebObjectIndex,
+        object: self.packageNames_property,
         y: &y,
         view: view,
         observerExplorer: &self.packageNames_property.mObserverExplorer,
@@ -666,7 +666,7 @@ final class DeviceInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "deviceComponentCountString",
-        idx: self.deviceComponentCountString_property.ebObjectIndex,
+        object: self.deviceComponentCountString_property,
         y: &y,
         view: view,
         observerExplorer: &self.deviceComponentCountString_property.mObserverExplorer,
@@ -674,7 +674,7 @@ final class DeviceInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "canRemove",
-        idx: self.canRemove_property.ebObjectIndex,
+        object: self.canRemove_property,
         y: &y,
         view: view,
         observerExplorer: &self.canRemove_property.mObserverExplorer,
@@ -682,7 +682,7 @@ final class DeviceInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "symbolAndTypesNames",
-        idx: self.symbolAndTypesNames_property.ebObjectIndex,
+        object: self.symbolAndTypesNames_property,
         y: &y,
         view: view,
         observerExplorer: &self.symbolAndTypesNames_property.mObserverExplorer,
@@ -690,7 +690,7 @@ final class DeviceInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "pinPadAssignments",
-        idx: self.pinPadAssignments_property.ebObjectIndex,
+        object: self.pinPadAssignments_property,
         y: &y,
         view: view,
         observerExplorer: &self.pinPadAssignments_property.mObserverExplorer,
@@ -698,7 +698,7 @@ final class DeviceInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "deviceSymbolDictionary",
-        idx: self.deviceSymbolDictionary_property.ebObjectIndex,
+        object: self.deviceSymbolDictionary_property,
         y: &y,
         view: view,
         observerExplorer: &self.deviceSymbolDictionary_property.mObserverExplorer,
@@ -707,28 +707,28 @@ final class DeviceInProject : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mPackages",
-        idx:mPackages_property.ebObjectIndex,
+        object: mPackages_property,
         y: &y,
         view: view,
         valueExplorer:&mPackages_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mSymbols",
-        idx:mSymbols_property.ebObjectIndex,
+        object: mSymbols_property,
         y: &y,
         view: view,
         valueExplorer:&mSymbols_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mComponents",
-        idx:mComponents_property.ebObjectIndex,
+        object: mComponents_property,
         y: &y,
         view: view,
         valueExplorer:&mComponents_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mPadAssignments",
-        idx:mPadAssignments_property.ebObjectIndex,
+        object: mPadAssignments_property,
         y: &y,
         view: view,
         valueExplorer:&mPadAssignments_property.mValueExplorer

@@ -890,7 +890,7 @@ final class PointInSchematic : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mSymbolPinName",
-        idx: self.mSymbolPinName_property.ebObjectIndex,
+        object: self.mSymbolPinName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSymbolPinName_property.mObserverExplorer,
@@ -898,7 +898,7 @@ final class PointInSchematic : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mX",
-        idx: self.mX_property.ebObjectIndex,
+        object: self.mX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX_property.mObserverExplorer,
@@ -906,7 +906,7 @@ final class PointInSchematic : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mY",
-        idx: self.mY_property.ebObjectIndex,
+        object: self.mY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY_property.mObserverExplorer,
@@ -915,7 +915,7 @@ final class PointInSchematic : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "location",
-        idx: self.location_property.ebObjectIndex,
+        object: self.location_property,
         y: &y,
         view: view,
         observerExplorer: &self.location_property.mObserverExplorer,
@@ -923,7 +923,7 @@ final class PointInSchematic : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "netName",
-        idx: self.netName_property.ebObjectIndex,
+        object: self.netName_property,
         y: &y,
         view: view,
         observerExplorer: &self.netName_property.mObserverExplorer,
@@ -931,7 +931,7 @@ final class PointInSchematic : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "netClassName",
-        idx: self.netClassName_property.ebObjectIndex,
+        object: self.netClassName_property,
         y: &y,
         view: view,
         observerExplorer: &self.netClassName_property.mObserverExplorer,
@@ -939,7 +939,7 @@ final class PointInSchematic : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "hasNet",
-        idx: self.hasNet_property.ebObjectIndex,
+        object: self.hasNet_property,
         y: &y,
         view: view,
         observerExplorer: &self.hasNet_property.mObserverExplorer,
@@ -947,7 +947,7 @@ final class PointInSchematic : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "canMove",
-        idx: self.canMove_property.ebObjectIndex,
+        object: self.canMove_property,
         y: &y,
         view: view,
         observerExplorer: &self.canMove_property.mObserverExplorer,
@@ -955,7 +955,7 @@ final class PointInSchematic : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "wireColor",
-        idx: self.wireColor_property.ebObjectIndex,
+        object: self.wireColor_property,
         y: &y,
         view: view,
         observerExplorer: &self.wireColor_property.mObserverExplorer,
@@ -963,7 +963,7 @@ final class PointInSchematic : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "symbolRotation",
-        idx: self.symbolRotation_property.ebObjectIndex,
+        object: self.symbolRotation_property,
         y: &y,
         view: view,
         observerExplorer: &self.symbolRotation_property.mObserverExplorer,
@@ -971,7 +971,7 @@ final class PointInSchematic : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "symbolNameNetName",
-        idx: self.symbolNameNetName_property.ebObjectIndex,
+        object: self.symbolNameNetName_property,
         y: &y,
         view: view,
         observerExplorer: &self.symbolNameNetName_property.mObserverExplorer,
@@ -979,7 +979,7 @@ final class PointInSchematic : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "isConnected",
-        idx: self.isConnected_property.ebObjectIndex,
+        object: self.isConnected_property,
         y: &y,
         view: view,
         observerExplorer: &self.isConnected_property.mObserverExplorer,
@@ -987,7 +987,7 @@ final class PointInSchematic : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "status",
-        idx: self.status_property.ebObjectIndex,
+        object: self.status_property,
         y: &y,
         view: view,
         observerExplorer: &self.status_property.mObserverExplorer,
@@ -995,7 +995,7 @@ final class PointInSchematic : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "connectedPoints",
-        idx: self.connectedPoints_property.ebObjectIndex,
+        object: self.connectedPoints_property,
         y: &y,
         view: view,
         observerExplorer: &self.connectedPoints_property.mObserverExplorer,
@@ -1003,7 +1003,7 @@ final class PointInSchematic : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "netInfoForPoint",
-        idx: self.netInfoForPoint_property.ebObjectIndex,
+        object: self.netInfoForPoint_property,
         y: &y,
         view: view,
         observerExplorer: &self.netInfoForPoint_property.mObserverExplorer,
@@ -1012,21 +1012,21 @@ final class PointInSchematic : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mLabels",
-        idx:mLabels_property.ebObjectIndex,
+        object: mLabels_property,
         y: &y,
         view: view,
         valueExplorer:&mLabels_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mWiresP2s",
-        idx:mWiresP2s_property.ebObjectIndex,
+        object: mWiresP2s_property,
         y: &y,
         view: view,
         valueExplorer:&mWiresP2s_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mWiresP1s",
-        idx:mWiresP1s_property.ebObjectIndex,
+        object: mWiresP1s_property,
         y: &y,
         view: view,
         valueExplorer:&mWiresP1s_property.mValueExplorer
@@ -1034,28 +1034,28 @@ final class PointInSchematic : EBManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mSymbol",
-        idx:self.mSymbol_property.ebObjectIndex,
+        object: self.mSymbol_property,
         y: &y,
         view: view,
         valueExplorer:&self.mSymbol_property.mValueExplorer
       )
       createEntryForToOneRelationshipNamed (
         "mNet",
-        idx:self.mNet_property.ebObjectIndex,
+        object: self.mNet_property,
         y: &y,
         view: view,
         valueExplorer:&self.mNet_property.mValueExplorer
       )
       createEntryForToOneRelationshipNamed (
         "mNC",
-        idx:self.mNC_property.ebObjectIndex,
+        object: self.mNC_property,
         y: &y,
         view: view,
         valueExplorer:&self.mNC_property.mValueExplorer
       )
       createEntryForToOneRelationshipNamed (
         "mSheet",
-        idx:self.mSheet_property.ebObjectIndex,
+        object: self.mSheet_property,
         y: &y,
         view: view,
         valueExplorer:&self.mSheet_property.mValueExplorer

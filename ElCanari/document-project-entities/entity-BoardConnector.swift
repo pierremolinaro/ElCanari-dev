@@ -1125,7 +1125,7 @@ final class BoardConnector : BoardObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mComponentPadName",
-        idx: self.mComponentPadName_property.ebObjectIndex,
+        object: self.mComponentPadName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mComponentPadName_property.mObserverExplorer,
@@ -1133,7 +1133,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "mPadIndex",
-        idx: self.mPadIndex_property.ebObjectIndex,
+        object: self.mPadIndex_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPadIndex_property.mObserverExplorer,
@@ -1141,7 +1141,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "mX",
-        idx: self.mX_property.ebObjectIndex,
+        object: self.mX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX_property.mObserverExplorer,
@@ -1149,7 +1149,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "mY",
-        idx: self.mY_property.ebObjectIndex,
+        object: self.mY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY_property.mObserverExplorer,
@@ -1157,7 +1157,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "mDefaultHoleDiameterUnit",
-        idx: self.mDefaultHoleDiameterUnit_property.ebObjectIndex,
+        object: self.mDefaultHoleDiameterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDefaultHoleDiameterUnit_property.mObserverExplorer,
@@ -1165,7 +1165,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "mCustomHoleDiameter",
-        idx: self.mCustomHoleDiameter_property.ebObjectIndex,
+        object: self.mCustomHoleDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCustomHoleDiameter_property.mObserverExplorer,
@@ -1173,7 +1173,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "mCustomHoleDiameterUnit",
-        idx: self.mCustomHoleDiameterUnit_property.ebObjectIndex,
+        object: self.mCustomHoleDiameterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCustomHoleDiameterUnit_property.mObserverExplorer,
@@ -1181,7 +1181,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "mUsesCustomHoleDiameter",
-        idx: self.mUsesCustomHoleDiameter_property.ebObjectIndex,
+        object: self.mUsesCustomHoleDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.mUsesCustomHoleDiameter_property.mObserverExplorer,
@@ -1189,7 +1189,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "mDefaultPadDiameterUnit",
-        idx: self.mDefaultPadDiameterUnit_property.ebObjectIndex,
+        object: self.mDefaultPadDiameterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDefaultPadDiameterUnit_property.mObserverExplorer,
@@ -1197,7 +1197,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "mCustomPadDiameter",
-        idx: self.mCustomPadDiameter_property.ebObjectIndex,
+        object: self.mCustomPadDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCustomPadDiameter_property.mObserverExplorer,
@@ -1205,7 +1205,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "mCustomPadDiameterUnit",
-        idx: self.mCustomPadDiameterUnit_property.ebObjectIndex,
+        object: self.mCustomPadDiameterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCustomPadDiameterUnit_property.mObserverExplorer,
@@ -1213,7 +1213,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "mUsesCustomPadDiameter",
-        idx: self.mUsesCustomPadDiameter_property.ebObjectIndex,
+        object: self.mUsesCustomPadDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.mUsesCustomPadDiameter_property.mObserverExplorer,
@@ -1222,7 +1222,7 @@ final class BoardConnector : BoardObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "isConnectedToSomePad",
-        idx: self.isConnectedToSomePad_property.ebObjectIndex,
+        object: self.isConnectedToSomePad_property,
         y: &y,
         view: view,
         observerExplorer: &self.isConnectedToSomePad_property.mObserverExplorer,
@@ -1230,7 +1230,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "location",
-        idx: self.location_property.ebObjectIndex,
+        object: self.location_property,
         y: &y,
         view: view,
         observerExplorer: &self.location_property.mObserverExplorer,
@@ -1238,7 +1238,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "netNameFromComponentPad",
-        idx: self.netNameFromComponentPad_property.ebObjectIndex,
+        object: self.netNameFromComponentPad_property,
         y: &y,
         view: view,
         observerExplorer: &self.netNameFromComponentPad_property.mObserverExplorer,
@@ -1246,7 +1246,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "netNameAndPadLocation",
-        idx: self.netNameAndPadLocation_property.ebObjectIndex,
+        object: self.netNameAndPadLocation_property,
         y: &y,
         view: view,
         observerExplorer: &self.netNameAndPadLocation_property.mObserverExplorer,
@@ -1254,7 +1254,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "side",
-        idx: self.side_property.ebObjectIndex,
+        object: self.side_property,
         y: &y,
         view: view,
         observerExplorer: &self.side_property.mObserverExplorer,
@@ -1262,7 +1262,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "isVia",
-        idx: self.isVia_property.ebObjectIndex,
+        object: self.isVia_property,
         y: &y,
         view: view,
         observerExplorer: &self.isVia_property.mObserverExplorer,
@@ -1270,7 +1270,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,
@@ -1278,7 +1278,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "viaDefaultHoleDiameter",
-        idx: self.viaDefaultHoleDiameter_property.ebObjectIndex,
+        object: self.viaDefaultHoleDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.viaDefaultHoleDiameter_property.mObserverExplorer,
@@ -1286,7 +1286,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "viaDefaultPadDiameter",
-        idx: self.viaDefaultPadDiameter_property.ebObjectIndex,
+        object: self.viaDefaultPadDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.viaDefaultPadDiameter_property.mObserverExplorer,
@@ -1294,7 +1294,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "netNameFromTracks",
-        idx: self.netNameFromTracks_property.ebObjectIndex,
+        object: self.netNameFromTracks_property,
         y: &y,
         view: view,
         observerExplorer: &self.netNameFromTracks_property.mObserverExplorer,
@@ -1302,7 +1302,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "netClassName",
-        idx: self.netClassName_property.ebObjectIndex,
+        object: self.netClassName_property,
         y: &y,
         view: view,
         observerExplorer: &self.netClassName_property.mObserverExplorer,
@@ -1310,7 +1310,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "connectedToComponent",
-        idx: self.connectedToComponent_property.ebObjectIndex,
+        object: self.connectedToComponent_property,
         y: &y,
         view: view,
         observerExplorer: &self.connectedToComponent_property.mObserverExplorer,
@@ -1318,7 +1318,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "actualHoleDiameter",
-        idx: self.actualHoleDiameter_property.ebObjectIndex,
+        object: self.actualHoleDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.actualHoleDiameter_property.mObserverExplorer,
@@ -1326,7 +1326,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "actualPadDiameter",
-        idx: self.actualPadDiameter_property.ebObjectIndex,
+        object: self.actualPadDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.actualPadDiameter_property.mObserverExplorer,
@@ -1334,7 +1334,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -1342,7 +1342,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -1350,7 +1350,7 @@ final class BoardConnector : BoardObject,
       )
       createEntryForPropertyNamed (
         "signatureForERCChecking",
-        idx: self.signatureForERCChecking_property.ebObjectIndex,
+        object: self.signatureForERCChecking_property,
         y: &y,
         view: view,
         observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
@@ -1359,14 +1359,14 @@ final class BoardConnector : BoardObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mTracksP2",
-        idx:mTracksP2_property.ebObjectIndex,
+        object: mTracksP2_property,
         y: &y,
         view: view,
         valueExplorer:&mTracksP2_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mTracksP1",
-        idx:mTracksP1_property.ebObjectIndex,
+        object: mTracksP1_property,
         y: &y,
         view: view,
         valueExplorer:&mTracksP1_property.mValueExplorer
@@ -1374,7 +1374,7 @@ final class BoardConnector : BoardObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mComponent",
-        idx:self.mComponent_property.ebObjectIndex,
+        object: self.mComponent_property,
         y: &y,
         view: view,
         valueExplorer:&self.mComponent_property.mValueExplorer

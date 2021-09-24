@@ -1327,7 +1327,7 @@ final class BoardTrack : BoardObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mSide",
-        idx: self.mSide_property.ebObjectIndex,
+        object: self.mSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSide_property.mObserverExplorer,
@@ -1335,7 +1335,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "mDefaultTrackWidthUnit",
-        idx: self.mDefaultTrackWidthUnit_property.ebObjectIndex,
+        object: self.mDefaultTrackWidthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDefaultTrackWidthUnit_property.mObserverExplorer,
@@ -1343,7 +1343,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "mCustomTrackWidth",
-        idx: self.mCustomTrackWidth_property.ebObjectIndex,
+        object: self.mCustomTrackWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCustomTrackWidth_property.mObserverExplorer,
@@ -1351,7 +1351,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "mCustomTrackWidthUnit",
-        idx: self.mCustomTrackWidthUnit_property.ebObjectIndex,
+        object: self.mCustomTrackWidthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCustomTrackWidthUnit_property.mObserverExplorer,
@@ -1359,7 +1359,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "mUsesCustomTrackWidth",
-        idx: self.mUsesCustomTrackWidth_property.ebObjectIndex,
+        object: self.mUsesCustomTrackWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.mUsesCustomTrackWidth_property.mObserverExplorer,
@@ -1367,7 +1367,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "mIsPreservedByAutoRouter",
-        idx: self.mIsPreservedByAutoRouter_property.ebObjectIndex,
+        object: self.mIsPreservedByAutoRouter_property,
         y: &y,
         view: view,
         observerExplorer: &self.mIsPreservedByAutoRouter_property.mObserverExplorer,
@@ -1375,7 +1375,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "mP1XUnit",
-        idx: self.mP1XUnit_property.ebObjectIndex,
+        object: self.mP1XUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mP1XUnit_property.mObserverExplorer,
@@ -1383,7 +1383,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "mP1YUnit",
-        idx: self.mP1YUnit_property.ebObjectIndex,
+        object: self.mP1YUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mP1YUnit_property.mObserverExplorer,
@@ -1391,7 +1391,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "mP2XUnit",
-        idx: self.mP2XUnit_property.ebObjectIndex,
+        object: self.mP2XUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mP2XUnit_property.mObserverExplorer,
@@ -1399,7 +1399,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "mP2YUnit",
-        idx: self.mP2YUnit_property.ebObjectIndex,
+        object: self.mP2YUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mP2YUnit_property.mObserverExplorer,
@@ -1407,7 +1407,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "mManualLockP1",
-        idx: self.mManualLockP1_property.ebObjectIndex,
+        object: self.mManualLockP1_property,
         y: &y,
         view: view,
         observerExplorer: &self.mManualLockP1_property.mObserverExplorer,
@@ -1415,7 +1415,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "mManualLockP2",
-        idx: self.mManualLockP2_property.ebObjectIndex,
+        object: self.mManualLockP2_property,
         y: &y,
         view: view,
         observerExplorer: &self.mManualLockP2_property.mObserverExplorer,
@@ -1423,7 +1423,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "mDirectionLockOnKnobDragging",
-        idx: self.mDirectionLockOnKnobDragging_property.ebObjectIndex,
+        object: self.mDirectionLockOnKnobDragging_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDirectionLockOnKnobDragging_property.mObserverExplorer,
@@ -1432,7 +1432,7 @@ final class BoardTrack : BoardObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "actualTrackWidth",
-        idx: self.actualTrackWidth_property.ebObjectIndex,
+        object: self.actualTrackWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.actualTrackWidth_property.mObserverExplorer,
@@ -1440,7 +1440,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "netName",
-        idx: self.netName_property.ebObjectIndex,
+        object: self.netName_property,
         y: &y,
         view: view,
         observerExplorer: &self.netName_property.mObserverExplorer,
@@ -1448,7 +1448,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "netClassName",
-        idx: self.netClassName_property.ebObjectIndex,
+        object: self.netClassName_property,
         y: &y,
         view: view,
         observerExplorer: &self.netClassName_property.mObserverExplorer,
@@ -1456,7 +1456,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "netClassTrackWidth",
-        idx: self.netClassTrackWidth_property.ebObjectIndex,
+        object: self.netClassTrackWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.netClassTrackWidth_property.mObserverExplorer,
@@ -1464,7 +1464,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "netClassViaHoleDiameter",
-        idx: self.netClassViaHoleDiameter_property.ebObjectIndex,
+        object: self.netClassViaHoleDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.netClassViaHoleDiameter_property.mObserverExplorer,
@@ -1472,7 +1472,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "netClassViaPadDiameter",
-        idx: self.netClassViaPadDiameter_property.ebObjectIndex,
+        object: self.netClassViaPadDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.netClassViaPadDiameter_property.mObserverExplorer,
@@ -1480,7 +1480,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "trackLengthInCanariUnit",
-        idx: self.trackLengthInCanariUnit_property.ebObjectIndex,
+        object: self.trackLengthInCanariUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.trackLengthInCanariUnit_property.mObserverExplorer,
@@ -1488,7 +1488,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "trackSide",
-        idx: self.trackSide_property.ebObjectIndex,
+        object: self.trackSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.trackSide_property.mObserverExplorer,
@@ -1496,7 +1496,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "signatureForERCChecking",
-        idx: self.signatureForERCChecking_property.ebObjectIndex,
+        object: self.signatureForERCChecking_property,
         y: &y,
         view: view,
         observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
@@ -1504,7 +1504,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "p1ConnectedToSomePad",
-        idx: self.p1ConnectedToSomePad_property.ebObjectIndex,
+        object: self.p1ConnectedToSomePad_property,
         y: &y,
         view: view,
         observerExplorer: &self.p1ConnectedToSomePad_property.mObserverExplorer,
@@ -1512,7 +1512,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "p2ConnectedToSomePad",
-        idx: self.p2ConnectedToSomePad_property.ebObjectIndex,
+        object: self.p2ConnectedToSomePad_property,
         y: &y,
         view: view,
         observerExplorer: &self.p2ConnectedToSomePad_property.mObserverExplorer,
@@ -1520,7 +1520,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -1528,7 +1528,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "p1CanMove",
-        idx: self.p1CanMove_property.ebObjectIndex,
+        object: self.p1CanMove_property,
         y: &y,
         view: view,
         observerExplorer: &self.p1CanMove_property.mObserverExplorer,
@@ -1536,7 +1536,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "p2CanMove",
-        idx: self.p2CanMove_property.ebObjectIndex,
+        object: self.p2CanMove_property,
         y: &y,
         view: view,
         observerExplorer: &self.p2CanMove_property.mObserverExplorer,
@@ -1544,7 +1544,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "trackCanRotate",
-        idx: self.trackCanRotate_property.ebObjectIndex,
+        object: self.trackCanRotate_property,
         y: &y,
         view: view,
         observerExplorer: &self.trackCanRotate_property.mObserverExplorer,
@@ -1552,7 +1552,7 @@ final class BoardTrack : BoardObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -1562,21 +1562,21 @@ final class BoardTrack : BoardObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mConnectorP1",
-        idx:self.mConnectorP1_property.ebObjectIndex,
+        object: self.mConnectorP1_property,
         y: &y,
         view: view,
         valueExplorer:&self.mConnectorP1_property.mValueExplorer
       )
       createEntryForToOneRelationshipNamed (
         "mConnectorP2",
-        idx:self.mConnectorP2_property.ebObjectIndex,
+        object: self.mConnectorP2_property,
         y: &y,
         view: view,
         valueExplorer:&self.mConnectorP2_property.mValueExplorer
       )
       createEntryForToOneRelationshipNamed (
         "mNet",
-        idx:self.mNet_property.ebObjectIndex,
+        object: self.mNet_property,
         y: &y,
         view: view,
         valueExplorer:&self.mNet_property.mValueExplorer

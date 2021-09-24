@@ -169,7 +169,7 @@ final class NCInSchematic : SchematicObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mOrientation",
-        idx: self.mOrientation_property.ebObjectIndex,
+        object: self.mOrientation_property,
         y: &y,
         view: view,
         observerExplorer: &self.mOrientation_property.mObserverExplorer,
@@ -178,7 +178,7 @@ final class NCInSchematic : SchematicObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -186,7 +186,7 @@ final class NCInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -196,7 +196,7 @@ final class NCInSchematic : SchematicObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mPoint",
-        idx:self.mPoint_property.ebObjectIndex,
+        object: self.mPoint_property,
         y: &y,
         view: view,
         valueExplorer:&self.mPoint_property.mValueExplorer

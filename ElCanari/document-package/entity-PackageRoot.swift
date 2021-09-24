@@ -2057,7 +2057,7 @@ final class PackageRoot : EBGraphicManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "selectedPageIndex",
-        idx: self.selectedPageIndex_property.ebObjectIndex,
+        object: self.selectedPageIndex_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectedPageIndex_property.mObserverExplorer,
@@ -2065,7 +2065,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "selectedInspector",
-        idx: self.selectedInspector_property.ebObjectIndex,
+        object: self.selectedInspector_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectedInspector_property.mObserverExplorer,
@@ -2073,7 +2073,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "comments",
-        idx: self.comments_property.ebObjectIndex,
+        object: self.comments_property,
         y: &y,
         view: view,
         observerExplorer: &self.comments_property.mObserverExplorer,
@@ -2081,7 +2081,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "program",
-        idx: self.program_property.ebObjectIndex,
+        object: self.program_property,
         y: &y,
         view: view,
         observerExplorer: &self.program_property.mObserverExplorer,
@@ -2089,7 +2089,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "horizontalFlip",
-        idx: self.horizontalFlip_property.ebObjectIndex,
+        object: self.horizontalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.horizontalFlip_property.mObserverExplorer,
@@ -2097,7 +2097,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "verticalFlip",
-        idx: self.verticalFlip_property.ebObjectIndex,
+        object: self.verticalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.verticalFlip_property.mObserverExplorer,
@@ -2105,7 +2105,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "gridStyle",
-        idx: self.gridStyle_property.ebObjectIndex,
+        object: self.gridStyle_property,
         y: &y,
         view: view,
         observerExplorer: &self.gridStyle_property.mObserverExplorer,
@@ -2113,7 +2113,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "gridStep",
-        idx: self.gridStep_property.ebObjectIndex,
+        object: self.gridStep_property,
         y: &y,
         view: view,
         observerExplorer: &self.gridStep_property.mObserverExplorer,
@@ -2121,7 +2121,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "gridStepUnit",
-        idx: self.gridStepUnit_property.ebObjectIndex,
+        object: self.gridStepUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.gridStepUnit_property.mObserverExplorer,
@@ -2129,7 +2129,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "gridDisplayFactor",
-        idx: self.gridDisplayFactor_property.ebObjectIndex,
+        object: self.gridDisplayFactor_property,
         y: &y,
         view: view,
         observerExplorer: &self.gridDisplayFactor_property.mObserverExplorer,
@@ -2137,7 +2137,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "zoom",
-        idx: self.zoom_property.ebObjectIndex,
+        object: self.zoom_property,
         y: &y,
         view: view,
         observerExplorer: &self.zoom_property.mObserverExplorer,
@@ -2145,7 +2145,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImageOpacity",
-        idx: self.mModelImageOpacity_property.ebObjectIndex,
+        object: self.mModelImageOpacity_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImageOpacity_property.mObserverExplorer,
@@ -2153,7 +2153,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImagePageHorizontalFlip",
-        idx: self.mModelImagePageHorizontalFlip_property.ebObjectIndex,
+        object: self.mModelImagePageHorizontalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImagePageHorizontalFlip_property.mObserverExplorer,
@@ -2161,7 +2161,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImagePageVerticalFlip",
-        idx: self.mModelImagePageVerticalFlip_property.ebObjectIndex,
+        object: self.mModelImagePageVerticalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImagePageVerticalFlip_property.mObserverExplorer,
@@ -2169,7 +2169,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImagePageGridStyle",
-        idx: self.mModelImagePageGridStyle_property.ebObjectIndex,
+        object: self.mModelImagePageGridStyle_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImagePageGridStyle_property.mObserverExplorer,
@@ -2177,7 +2177,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImagePageGridStep",
-        idx: self.mModelImagePageGridStep_property.ebObjectIndex,
+        object: self.mModelImagePageGridStep_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImagePageGridStep_property.mObserverExplorer,
@@ -2185,7 +2185,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImagePageGridStepUnit",
-        idx: self.mModelImagePageGridStepUnit_property.ebObjectIndex,
+        object: self.mModelImagePageGridStepUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImagePageGridStepUnit_property.mObserverExplorer,
@@ -2193,7 +2193,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImagePageGridDisplayFactor",
-        idx: self.mModelImagePageGridDisplayFactor_property.ebObjectIndex,
+        object: self.mModelImagePageGridDisplayFactor_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImagePageGridDisplayFactor_property.mObserverExplorer,
@@ -2201,7 +2201,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImagePageZoom",
-        idx: self.mModelImagePageZoom_property.ebObjectIndex,
+        object: self.mModelImagePageZoom_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImagePageZoom_property.mObserverExplorer,
@@ -2209,7 +2209,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImagePageXPlacardUnit",
-        idx: self.mModelImagePageXPlacardUnit_property.ebObjectIndex,
+        object: self.mModelImagePageXPlacardUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImagePageXPlacardUnit_property.mObserverExplorer,
@@ -2217,7 +2217,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImagePageYPlacardUnit",
-        idx: self.mModelImagePageYPlacardUnit_property.ebObjectIndex,
+        object: self.mModelImagePageYPlacardUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImagePageYPlacardUnit_property.mObserverExplorer,
@@ -2225,7 +2225,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImageSecondPointXUnit",
-        idx: self.mModelImageSecondPointXUnit_property.ebObjectIndex,
+        object: self.mModelImageSecondPointXUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImageSecondPointXUnit_property.mObserverExplorer,
@@ -2233,7 +2233,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImageSecondPointYUnit",
-        idx: self.mModelImageSecondPointYUnit_property.ebObjectIndex,
+        object: self.mModelImageSecondPointYUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImageSecondPointYUnit_property.mObserverExplorer,
@@ -2241,7 +2241,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImageFirstPointXOnLock",
-        idx: self.mModelImageFirstPointXOnLock_property.ebObjectIndex,
+        object: self.mModelImageFirstPointXOnLock_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImageFirstPointXOnLock_property.mObserverExplorer,
@@ -2249,7 +2249,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImageFirstPointYOnLock",
-        idx: self.mModelImageFirstPointYOnLock_property.ebObjectIndex,
+        object: self.mModelImageFirstPointYOnLock_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImageFirstPointYOnLock_property.mObserverExplorer,
@@ -2257,7 +2257,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImagePointsDxOnLock",
-        idx: self.mModelImagePointsDxOnLock_property.ebObjectIndex,
+        object: self.mModelImagePointsDxOnLock_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImagePointsDxOnLock_property.mObserverExplorer,
@@ -2265,7 +2265,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImagePointsDyOnLock",
-        idx: self.mModelImagePointsDyOnLock_property.ebObjectIndex,
+        object: self.mModelImagePointsDyOnLock_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImagePointsDyOnLock_property.mObserverExplorer,
@@ -2273,7 +2273,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImageScale",
-        idx: self.mModelImageScale_property.ebObjectIndex,
+        object: self.mModelImageScale_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImageScale_property.mObserverExplorer,
@@ -2281,7 +2281,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImageRotationInRadians",
-        idx: self.mModelImageRotationInRadians_property.ebObjectIndex,
+        object: self.mModelImageRotationInRadians_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImageRotationInRadians_property.mObserverExplorer,
@@ -2289,7 +2289,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mDimensionUnitFirstModelPointX",
-        idx: self.mDimensionUnitFirstModelPointX_property.ebObjectIndex,
+        object: self.mDimensionUnitFirstModelPointX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDimensionUnitFirstModelPointX_property.mObserverExplorer,
@@ -2297,7 +2297,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mDimensionUnitFirstModelPointY",
-        idx: self.mDimensionUnitFirstModelPointY_property.ebObjectIndex,
+        object: self.mDimensionUnitFirstModelPointY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDimensionUnitFirstModelPointY_property.mObserverExplorer,
@@ -2305,7 +2305,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mDimensionUnitSecondModelPointDx",
-        idx: self.mDimensionUnitSecondModelPointDx_property.ebObjectIndex,
+        object: self.mDimensionUnitSecondModelPointDx_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDimensionUnitSecondModelPointDx_property.mObserverExplorer,
@@ -2313,7 +2313,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mDimensionUnitSecondModelPointDy",
-        idx: self.mDimensionUnitSecondModelPointDy_property.ebObjectIndex,
+        object: self.mDimensionUnitSecondModelPointDy_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDimensionUnitSecondModelPointDy_property.mObserverExplorer,
@@ -2321,7 +2321,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelPointsCircleRadius",
-        idx: self.mModelPointsCircleRadius_property.ebObjectIndex,
+        object: self.mModelPointsCircleRadius_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelPointsCircleRadius_property.mObserverExplorer,
@@ -2329,7 +2329,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mPointsAreLocked",
-        idx: self.mPointsAreLocked_property.ebObjectIndex,
+        object: self.mPointsAreLocked_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPointsAreLocked_property.mObserverExplorer,
@@ -2337,7 +2337,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "knobSizeMultpliedByTen",
-        idx: self.knobSizeMultpliedByTen_property.ebObjectIndex,
+        object: self.knobSizeMultpliedByTen_property,
         y: &y,
         view: view,
         observerExplorer: &self.knobSizeMultpliedByTen_property.mObserverExplorer,
@@ -2345,7 +2345,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "padNumbering",
-        idx: self.padNumbering_property.ebObjectIndex,
+        object: self.padNumbering_property,
         y: &y,
         view: view,
         observerExplorer: &self.padNumbering_property.mObserverExplorer,
@@ -2353,7 +2353,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "counterClockNumberingStartAngle",
-        idx: self.counterClockNumberingStartAngle_property.ebObjectIndex,
+        object: self.counterClockNumberingStartAngle_property,
         y: &y,
         view: view,
         observerExplorer: &self.counterClockNumberingStartAngle_property.mObserverExplorer,
@@ -2361,7 +2361,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "xPlacardUnit",
-        idx: self.xPlacardUnit_property.ebObjectIndex,
+        object: self.xPlacardUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.xPlacardUnit_property.mObserverExplorer,
@@ -2369,7 +2369,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "yPlacardUnit",
-        idx: self.yPlacardUnit_property.ebObjectIndex,
+        object: self.yPlacardUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.yPlacardUnit_property.mObserverExplorer,
@@ -2377,7 +2377,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mModelImageData",
-        idx: self.mModelImageData_property.ebObjectIndex,
+        object: self.mModelImageData_property,
         y: &y,
         view: view,
         observerExplorer: &self.mModelImageData_property.mObserverExplorer,
@@ -2386,7 +2386,7 @@ final class PackageRoot : EBGraphicManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "freePadNumbering",
-        idx: self.freePadNumbering_property.ebObjectIndex,
+        object: self.freePadNumbering_property,
         y: &y,
         view: view,
         observerExplorer: &self.freePadNumbering_property.mObserverExplorer,
@@ -2394,7 +2394,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "counterClockNumbering",
-        idx: self.counterClockNumbering_property.ebObjectIndex,
+        object: self.counterClockNumbering_property,
         y: &y,
         view: view,
         observerExplorer: &self.counterClockNumbering_property.mObserverExplorer,
@@ -2402,7 +2402,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "gridStepMultipliedByDisplayFactor",
-        idx: self.gridStepMultipliedByDisplayFactor_property.ebObjectIndex,
+        object: self.gridStepMultipliedByDisplayFactor_property,
         y: &y,
         view: view,
         observerExplorer: &self.gridStepMultipliedByDisplayFactor_property.mObserverExplorer,
@@ -2410,7 +2410,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "secondPointX",
-        idx: self.secondPointX_property.ebObjectIndex,
+        object: self.secondPointX_property,
         y: &y,
         view: view,
         observerExplorer: &self.secondPointX_property.mObserverExplorer,
@@ -2418,7 +2418,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "secondPointY",
-        idx: self.secondPointY_property.ebObjectIndex,
+        object: self.secondPointY_property,
         y: &y,
         view: view,
         observerExplorer: &self.secondPointY_property.mObserverExplorer,
@@ -2426,7 +2426,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "lockImageView",
-        idx: self.lockImageView_property.ebObjectIndex,
+        object: self.lockImageView_property,
         y: &y,
         view: view,
         observerExplorer: &self.lockImageView_property.mObserverExplorer,
@@ -2434,7 +2434,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "padNumberDisplay",
-        idx: self.padNumberDisplay_property.ebObjectIndex,
+        object: self.padNumberDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.padNumberDisplay_property.mObserverExplorer,
@@ -2442,7 +2442,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "backgroundImagePageBackgroundDisplay",
-        idx: self.backgroundImagePageBackgroundDisplay_property.ebObjectIndex,
+        object: self.backgroundImagePageBackgroundDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.backgroundImagePageBackgroundDisplay_property.mObserverExplorer,
@@ -2450,7 +2450,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "modelImageSizeString",
-        idx: self.modelImageSizeString_property.ebObjectIndex,
+        object: self.modelImageSizeString_property,
         y: &y,
         view: view,
         observerExplorer: &self.modelImageSizeString_property.mObserverExplorer,
@@ -2458,7 +2458,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "hasModelImage",
-        idx: self.hasModelImage_property.ebObjectIndex,
+        object: self.hasModelImage_property,
         y: &y,
         view: view,
         observerExplorer: &self.hasModelImage_property.mObserverExplorer,
@@ -2466,7 +2466,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "masterPadObjectIndexArray",
-        idx: self.masterPadObjectIndexArray_property.ebObjectIndex,
+        object: self.masterPadObjectIndexArray_property,
         y: &y,
         view: view,
         observerExplorer: &self.masterPadObjectIndexArray_property.mObserverExplorer,
@@ -2474,7 +2474,7 @@ final class PackageRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,
@@ -2483,14 +2483,14 @@ final class PackageRoot : EBGraphicManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mModelImageObjects",
-        idx:mModelImageObjects_property.ebObjectIndex,
+        object: mModelImageObjects_property,
         y: &y,
         view: view,
         valueExplorer:&mModelImageObjects_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "packageObjects",
-        idx:packageObjects_property.ebObjectIndex,
+        object: packageObjects_property,
         y: &y,
         view: view,
         valueExplorer:&packageObjects_property.mValueExplorer
@@ -2498,7 +2498,7 @@ final class PackageRoot : EBGraphicManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mModelImageDoublePoint",
-        idx:self.mModelImageDoublePoint_property.ebObjectIndex,
+        object: self.mModelImageDoublePoint_property,
         y: &y,
         view: view,
         valueExplorer:&self.mModelImageDoublePoint_property.mValueExplorer

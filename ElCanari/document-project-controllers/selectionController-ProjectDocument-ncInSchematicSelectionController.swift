@@ -89,7 +89,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_ProjectDocument_ncInSchematicSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -110,7 +110,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "mOrientation",
-        idx: self.mOrientation_property.ebObjectIndex,
+        object: self.mOrientation_property,
         y: &y,
         view: view,
         observerExplorer: &self.mOrientation_property.mObserverExplorer,
@@ -127,7 +127,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_ProjectDocument_ncInSchematicSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

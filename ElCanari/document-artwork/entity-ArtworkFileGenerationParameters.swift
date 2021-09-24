@@ -1067,7 +1067,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "drawBoardLimits",
-        idx: self.drawBoardLimits_property.ebObjectIndex,
+        object: self.drawBoardLimits_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawBoardLimits_property.mObserverExplorer,
@@ -1075,7 +1075,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawInternalBoardLimits",
-        idx: self.drawInternalBoardLimits_property.ebObjectIndex,
+        object: self.drawInternalBoardLimits_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawInternalBoardLimits_property.mObserverExplorer,
@@ -1083,7 +1083,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawComponentNamesTopSide",
-        idx: self.drawComponentNamesTopSide_property.ebObjectIndex,
+        object: self.drawComponentNamesTopSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawComponentNamesTopSide_property.mObserverExplorer,
@@ -1091,7 +1091,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawComponentNamesBottomSide",
-        idx: self.drawComponentNamesBottomSide_property.ebObjectIndex,
+        object: self.drawComponentNamesBottomSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawComponentNamesBottomSide_property.mObserverExplorer,
@@ -1099,7 +1099,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawComponentValuesTopSide",
-        idx: self.drawComponentValuesTopSide_property.ebObjectIndex,
+        object: self.drawComponentValuesTopSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawComponentValuesTopSide_property.mObserverExplorer,
@@ -1107,7 +1107,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawComponentValuesBottomSide",
-        idx: self.drawComponentValuesBottomSide_property.ebObjectIndex,
+        object: self.drawComponentValuesBottomSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawComponentValuesBottomSide_property.mObserverExplorer,
@@ -1115,7 +1115,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawPackageLegendTopSide",
-        idx: self.drawPackageLegendTopSide_property.ebObjectIndex,
+        object: self.drawPackageLegendTopSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawPackageLegendTopSide_property.mObserverExplorer,
@@ -1123,7 +1123,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawPackageLegendBottomSide",
-        idx: self.drawPackageLegendBottomSide_property.ebObjectIndex,
+        object: self.drawPackageLegendBottomSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawPackageLegendBottomSide_property.mObserverExplorer,
@@ -1131,7 +1131,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawPadHolesInPDF",
-        idx: self.drawPadHolesInPDF_property.ebObjectIndex,
+        object: self.drawPadHolesInPDF_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawPadHolesInPDF_property.mObserverExplorer,
@@ -1139,7 +1139,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawPadsTopSide",
-        idx: self.drawPadsTopSide_property.ebObjectIndex,
+        object: self.drawPadsTopSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawPadsTopSide_property.mObserverExplorer,
@@ -1147,7 +1147,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawPadsBottomSide",
-        idx: self.drawPadsBottomSide_property.ebObjectIndex,
+        object: self.drawPadsBottomSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawPadsBottomSide_property.mObserverExplorer,
@@ -1155,7 +1155,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawTextsLayoutTopSide",
-        idx: self.drawTextsLayoutTopSide_property.ebObjectIndex,
+        object: self.drawTextsLayoutTopSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTextsLayoutTopSide_property.mObserverExplorer,
@@ -1163,7 +1163,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawTextsLayoutBottomSide",
-        idx: self.drawTextsLayoutBottomSide_property.ebObjectIndex,
+        object: self.drawTextsLayoutBottomSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTextsLayoutBottomSide_property.mObserverExplorer,
@@ -1171,7 +1171,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawTextsLegendTopSide",
-        idx: self.drawTextsLegendTopSide_property.ebObjectIndex,
+        object: self.drawTextsLegendTopSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTextsLegendTopSide_property.mObserverExplorer,
@@ -1179,7 +1179,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawTextsLegendBottomSide",
-        idx: self.drawTextsLegendBottomSide_property.ebObjectIndex,
+        object: self.drawTextsLegendBottomSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTextsLegendBottomSide_property.mObserverExplorer,
@@ -1187,7 +1187,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawTracksTopSide",
-        idx: self.drawTracksTopSide_property.ebObjectIndex,
+        object: self.drawTracksTopSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTracksTopSide_property.mObserverExplorer,
@@ -1195,7 +1195,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawTracksInner1Layer",
-        idx: self.drawTracksInner1Layer_property.ebObjectIndex,
+        object: self.drawTracksInner1Layer_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTracksInner1Layer_property.mObserverExplorer,
@@ -1203,7 +1203,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawTracksInner2Layer",
-        idx: self.drawTracksInner2Layer_property.ebObjectIndex,
+        object: self.drawTracksInner2Layer_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTracksInner2Layer_property.mObserverExplorer,
@@ -1211,7 +1211,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawTracksInner3Layer",
-        idx: self.drawTracksInner3Layer_property.ebObjectIndex,
+        object: self.drawTracksInner3Layer_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTracksInner3Layer_property.mObserverExplorer,
@@ -1219,7 +1219,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawTracksInner4Layer",
-        idx: self.drawTracksInner4Layer_property.ebObjectIndex,
+        object: self.drawTracksInner4Layer_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTracksInner4Layer_property.mObserverExplorer,
@@ -1227,7 +1227,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawTracksBottomSide",
-        idx: self.drawTracksBottomSide_property.ebObjectIndex,
+        object: self.drawTracksBottomSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTracksBottomSide_property.mObserverExplorer,
@@ -1235,7 +1235,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawTraversingPads",
-        idx: self.drawTraversingPads_property.ebObjectIndex,
+        object: self.drawTraversingPads_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawTraversingPads_property.mObserverExplorer,
@@ -1243,7 +1243,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "drawVias",
-        idx: self.drawVias_property.ebObjectIndex,
+        object: self.drawVias_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawVias_property.mObserverExplorer,
@@ -1251,7 +1251,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "fileExtension",
-        idx: self.fileExtension_property.ebObjectIndex,
+        object: self.fileExtension_property,
         y: &y,
         view: view,
         observerExplorer: &self.fileExtension_property.mObserverExplorer,
@@ -1259,7 +1259,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "horizontalMirror",
-        idx: self.horizontalMirror_property.ebObjectIndex,
+        object: self.horizontalMirror_property,
         y: &y,
         view: view,
         observerExplorer: &self.horizontalMirror_property.mObserverExplorer,
@@ -1267,7 +1267,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "name",
-        idx: self.name_property.ebObjectIndex,
+        object: self.name_property,
         y: &y,
         view: view,
         observerExplorer: &self.name_property.mObserverExplorer,
@@ -1275,7 +1275,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "measurementUnitForPadHoleInPDF",
-        idx: self.measurementUnitForPadHoleInPDF_property.ebObjectIndex,
+        object: self.measurementUnitForPadHoleInPDF_property,
         y: &y,
         view: view,
         observerExplorer: &self.measurementUnitForPadHoleInPDF_property.mObserverExplorer,
@@ -1283,7 +1283,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "padHoleDiameterInPDF",
-        idx: self.padHoleDiameterInPDF_property.ebObjectIndex,
+        object: self.padHoleDiameterInPDF_property,
         y: &y,
         view: view,
         observerExplorer: &self.padHoleDiameterInPDF_property.mObserverExplorer,
@@ -1292,7 +1292,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "hasNoData",
-        idx: self.hasNoData_property.ebObjectIndex,
+        object: self.hasNoData_property,
         y: &y,
         view: view,
         observerExplorer: &self.hasNoData_property.mObserverExplorer,
@@ -1300,7 +1300,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "parameterStatusImage",
-        idx: self.parameterStatusImage_property.ebObjectIndex,
+        object: self.parameterStatusImage_property,
         y: &y,
         view: view,
         observerExplorer: &self.parameterStatusImage_property.mObserverExplorer,
@@ -1308,7 +1308,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "emptyFileExtensionImage",
-        idx: self.emptyFileExtensionImage_property.ebObjectIndex,
+        object: self.emptyFileExtensionImage_property,
         y: &y,
         view: view,
         observerExplorer: &self.emptyFileExtensionImage_property.mObserverExplorer,
@@ -1318,7 +1318,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mArtwork",
-        idx:self.mArtwork_property.ebObjectIndex,
+        object: self.mArtwork_property,
         y: &y,
         view: view,
         valueExplorer:&self.mArtwork_property.mValueExplorer

@@ -123,7 +123,7 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mSymbolTypeName",
-        idx: self.mSymbolTypeName_property.ebObjectIndex,
+        object: self.mSymbolTypeName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSymbolTypeName_property.mObserverExplorer,
@@ -131,7 +131,7 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mStrokeBezierPath",
-        idx: self.mStrokeBezierPath_property.ebObjectIndex,
+        object: self.mStrokeBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
@@ -139,7 +139,7 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mFilledBezierPath",
-        idx: self.mFilledBezierPath_property.ebObjectIndex,
+        object: self.mFilledBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFilledBezierPath_property.mObserverExplorer,

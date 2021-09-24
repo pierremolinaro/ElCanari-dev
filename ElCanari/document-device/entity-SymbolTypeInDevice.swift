@@ -395,7 +395,7 @@ final class SymbolTypeInDevice : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mTypeName",
-        idx: self.mTypeName_property.ebObjectIndex,
+        object: self.mTypeName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mTypeName_property.mObserverExplorer,
@@ -403,7 +403,7 @@ final class SymbolTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mVersion",
-        idx: self.mVersion_property.ebObjectIndex,
+        object: self.mVersion_property,
         y: &y,
         view: view,
         observerExplorer: &self.mVersion_property.mObserverExplorer,
@@ -411,7 +411,7 @@ final class SymbolTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mFileData",
-        idx: self.mFileData_property.ebObjectIndex,
+        object: self.mFileData_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFileData_property.mObserverExplorer,
@@ -419,7 +419,7 @@ final class SymbolTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mStrokeBezierPath",
-        idx: self.mStrokeBezierPath_property.ebObjectIndex,
+        object: self.mStrokeBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
@@ -427,7 +427,7 @@ final class SymbolTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mFilledBezierPath",
-        idx: self.mFilledBezierPath_property.ebObjectIndex,
+        object: self.mFilledBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFilledBezierPath_property.mObserverExplorer,
@@ -436,7 +436,7 @@ final class SymbolTypeInDevice : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "versionString",
-        idx: self.versionString_property.ebObjectIndex,
+        object: self.versionString_property,
         y: &y,
         view: view,
         observerExplorer: &self.versionString_property.mObserverExplorer,
@@ -444,7 +444,7 @@ final class SymbolTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "instanceCount",
-        idx: self.instanceCount_property.ebObjectIndex,
+        object: self.instanceCount_property,
         y: &y,
         view: view,
         observerExplorer: &self.instanceCount_property.mObserverExplorer,
@@ -452,7 +452,7 @@ final class SymbolTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "documentSize",
-        idx: self.documentSize_property.ebObjectIndex,
+        object: self.documentSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.documentSize_property.mObserverExplorer,
@@ -460,7 +460,7 @@ final class SymbolTypeInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "pinNameShape",
-        idx: self.pinNameShape_property.ebObjectIndex,
+        object: self.pinNameShape_property,
         y: &y,
         view: view,
         observerExplorer: &self.pinNameShape_property.mObserverExplorer,
@@ -469,14 +469,14 @@ final class SymbolTypeInDevice : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mInstances",
-        idx:mInstances_property.ebObjectIndex,
+        object: mInstances_property,
         y: &y,
         view: view,
         valueExplorer:&mInstances_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mPinTypes",
-        idx:mPinTypes_property.ebObjectIndex,
+        object: mPinTypes_property,
         y: &y,
         view: view,
         valueExplorer:&mPinTypes_property.mValueExplorer

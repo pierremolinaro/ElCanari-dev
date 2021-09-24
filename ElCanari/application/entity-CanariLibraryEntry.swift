@@ -193,7 +193,7 @@ final class CanariLibraryEntry : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mPath",
-        idx: self.mPath_property.ebObjectIndex,
+        object: self.mPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPath_property.mObserverExplorer,
@@ -201,7 +201,7 @@ final class CanariLibraryEntry : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mUses",
-        idx: self.mUses_property.ebObjectIndex,
+        object: self.mUses_property,
         y: &y,
         view: view,
         observerExplorer: &self.mUses_property.mObserverExplorer,
@@ -209,7 +209,7 @@ final class CanariLibraryEntry : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mLibraryRepositoryURL",
-        idx: self.mLibraryRepositoryURL_property.ebObjectIndex,
+        object: self.mLibraryRepositoryURL_property,
         y: &y,
         view: view,
         observerExplorer: &self.mLibraryRepositoryURL_property.mObserverExplorer,
@@ -217,7 +217,7 @@ final class CanariLibraryEntry : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mUserAndPasswordTag",
-        idx: self.mUserAndPasswordTag_property.ebObjectIndex,
+        object: self.mUserAndPasswordTag_property,
         y: &y,
         view: view,
         observerExplorer: &self.mUserAndPasswordTag_property.mObserverExplorer,
@@ -226,7 +226,7 @@ final class CanariLibraryEntry : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "mStatusImage",
-        idx: self.mStatusImage_property.ebObjectIndex,
+        object: self.mStatusImage_property,
         y: &y,
         view: view,
         observerExplorer: &self.mStatusImage_property.mObserverExplorer,

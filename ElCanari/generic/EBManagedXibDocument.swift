@@ -281,14 +281,14 @@ class EBManagedXibDocument : EBManagedDocument {
       if let rootObject = self.mRootObject {
         createEntryForToOneRelationshipNamed (
           "Root",
-          idx: rootObject.ebObjectIndex,
+          object: rootObject,
           y: &y,
           view: view,
           valueExplorer: &self.mRootObjectExplorerButton
         )
         createEntryForToManyRelationshipNamed (
           "Entities",
-          idx: rootObject.ebObjectIndex,
+          object: rootObject,
           y: &y,
           view: view,
           valueExplorer: &self.mAccessibleObjectsExplorerPopUpButton

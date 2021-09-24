@@ -252,7 +252,7 @@ final class SymbolText : SymbolObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "y",
-        idx: self.y_property.ebObjectIndex,
+        object: self.y_property,
         y: &y,
         view: view,
         observerExplorer: &self.y_property.mObserverExplorer,
@@ -260,7 +260,7 @@ final class SymbolText : SymbolObject,
       )
       createEntryForPropertyNamed (
         "text",
-        idx: self.text_property.ebObjectIndex,
+        object: self.text_property,
         y: &y,
         view: view,
         observerExplorer: &self.text_property.mObserverExplorer,
@@ -268,7 +268,7 @@ final class SymbolText : SymbolObject,
       )
       createEntryForPropertyNamed (
         "horizontalAlignment",
-        idx: self.horizontalAlignment_property.ebObjectIndex,
+        object: self.horizontalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.horizontalAlignment_property.mObserverExplorer,
@@ -276,7 +276,7 @@ final class SymbolText : SymbolObject,
       )
       createEntryForPropertyNamed (
         "x",
-        idx: self.x_property.ebObjectIndex,
+        object: self.x_property,
         y: &y,
         view: view,
         observerExplorer: &self.x_property.mObserverExplorer,
@@ -285,7 +285,7 @@ final class SymbolText : SymbolObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -293,7 +293,7 @@ final class SymbolText : SymbolObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -301,7 +301,7 @@ final class SymbolText : SymbolObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,

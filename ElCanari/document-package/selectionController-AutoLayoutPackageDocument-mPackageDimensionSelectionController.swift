@@ -252,7 +252,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -273,7 +273,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "y1",
-        idx: self.y1_property.ebObjectIndex,
+        object: self.y1_property,
         y: &y,
         view: view,
         observerExplorer: &self.y1_property.mObserverExplorer,
@@ -281,7 +281,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       )
       createEntryForPropertyNamed (
         "x2",
-        idx: self.x2_property.ebObjectIndex,
+        object: self.x2_property,
         y: &y,
         view: view,
         observerExplorer: &self.x2_property.mObserverExplorer,
@@ -289,7 +289,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       )
       createEntryForPropertyNamed (
         "y2",
-        idx: self.y2_property.ebObjectIndex,
+        object: self.y2_property,
         y: &y,
         view: view,
         observerExplorer: &self.y2_property.mObserverExplorer,
@@ -297,7 +297,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       )
       createEntryForPropertyNamed (
         "xDimension",
-        idx: self.xDimension_property.ebObjectIndex,
+        object: self.xDimension_property,
         y: &y,
         view: view,
         observerExplorer: &self.xDimension_property.mObserverExplorer,
@@ -305,7 +305,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       )
       createEntryForPropertyNamed (
         "yDimension",
-        idx: self.yDimension_property.ebObjectIndex,
+        object: self.yDimension_property,
         y: &y,
         view: view,
         observerExplorer: &self.yDimension_property.mObserverExplorer,
@@ -313,7 +313,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       )
       createEntryForPropertyNamed (
         "x1Unit",
-        idx: self.x1Unit_property.ebObjectIndex,
+        object: self.x1Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.x1Unit_property.mObserverExplorer,
@@ -321,7 +321,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       )
       createEntryForPropertyNamed (
         "y1Unit",
-        idx: self.y1Unit_property.ebObjectIndex,
+        object: self.y1Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.y1Unit_property.mObserverExplorer,
@@ -329,7 +329,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       )
       createEntryForPropertyNamed (
         "x2Unit",
-        idx: self.x2Unit_property.ebObjectIndex,
+        object: self.x2Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.x2Unit_property.mObserverExplorer,
@@ -337,7 +337,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       )
       createEntryForPropertyNamed (
         "y2Unit",
-        idx: self.y2Unit_property.ebObjectIndex,
+        object: self.y2Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.y2Unit_property.mObserverExplorer,
@@ -345,7 +345,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       )
       createEntryForPropertyNamed (
         "xDimensionUnit",
-        idx: self.xDimensionUnit_property.ebObjectIndex,
+        object: self.xDimensionUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.xDimensionUnit_property.mObserverExplorer,
@@ -353,7 +353,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       )
       createEntryForPropertyNamed (
         "yDimensionUnit",
-        idx: self.yDimensionUnit_property.ebObjectIndex,
+        object: self.yDimensionUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.yDimensionUnit_property.mObserverExplorer,
@@ -361,7 +361,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       )
       createEntryForPropertyNamed (
         "distanceUnit",
-        idx: self.distanceUnit_property.ebObjectIndex,
+        object: self.distanceUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.distanceUnit_property.mObserverExplorer,
@@ -369,7 +369,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       )
       createEntryForPropertyNamed (
         "drawDimensionBackground",
-        idx: self.drawDimensionBackground_property.ebObjectIndex,
+        object: self.drawDimensionBackground_property,
         y: &y,
         view: view,
         observerExplorer: &self.drawDimensionBackground_property.mObserverExplorer,
@@ -377,7 +377,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       )
       createEntryForPropertyNamed (
         "x1",
-        idx: self.x1_property.ebObjectIndex,
+        object: self.x1_property,
         y: &y,
         view: view,
         observerExplorer: &self.x1_property.mObserverExplorer,
@@ -394,7 +394,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

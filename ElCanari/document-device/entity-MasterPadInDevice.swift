@@ -493,7 +493,7 @@ final class MasterPadInDevice : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mCenterX",
-        idx: self.mCenterX_property.ebObjectIndex,
+        object: self.mCenterX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCenterX_property.mObserverExplorer,
@@ -501,7 +501,7 @@ final class MasterPadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mCenterY",
-        idx: self.mCenterY_property.ebObjectIndex,
+        object: self.mCenterY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCenterY_property.mObserverExplorer,
@@ -509,7 +509,7 @@ final class MasterPadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mWidth",
-        idx: self.mWidth_property.ebObjectIndex,
+        object: self.mWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.mWidth_property.mObserverExplorer,
@@ -517,7 +517,7 @@ final class MasterPadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mHeight",
-        idx: self.mHeight_property.ebObjectIndex,
+        object: self.mHeight_property,
         y: &y,
         view: view,
         observerExplorer: &self.mHeight_property.mObserverExplorer,
@@ -525,7 +525,7 @@ final class MasterPadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mHoleWidth",
-        idx: self.mHoleWidth_property.ebObjectIndex,
+        object: self.mHoleWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.mHoleWidth_property.mObserverExplorer,
@@ -533,7 +533,7 @@ final class MasterPadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mHoleHeight",
-        idx: self.mHoleHeight_property.ebObjectIndex,
+        object: self.mHoleHeight_property,
         y: &y,
         view: view,
         observerExplorer: &self.mHoleHeight_property.mObserverExplorer,
@@ -541,7 +541,7 @@ final class MasterPadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mShape",
-        idx: self.mShape_property.ebObjectIndex,
+        object: self.mShape_property,
         y: &y,
         view: view,
         observerExplorer: &self.mShape_property.mObserverExplorer,
@@ -549,7 +549,7 @@ final class MasterPadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mStyle",
-        idx: self.mStyle_property.ebObjectIndex,
+        object: self.mStyle_property,
         y: &y,
         view: view,
         observerExplorer: &self.mStyle_property.mObserverExplorer,
@@ -557,7 +557,7 @@ final class MasterPadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mName",
-        idx: self.mName_property.ebObjectIndex,
+        object: self.mName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mName_property.mObserverExplorer,
@@ -566,7 +566,7 @@ final class MasterPadInDevice : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "padNumberDisplay",
-        idx: self.padNumberDisplay_property.ebObjectIndex,
+        object: self.padNumberDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.padNumberDisplay_property.mObserverExplorer,
@@ -574,7 +574,7 @@ final class MasterPadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "frontSideFilledBezierPathArray",
-        idx: self.frontSideFilledBezierPathArray_property.ebObjectIndex,
+        object: self.frontSideFilledBezierPathArray_property,
         y: &y,
         view: view,
         observerExplorer: &self.frontSideFilledBezierPathArray_property.mObserverExplorer,
@@ -582,7 +582,7 @@ final class MasterPadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "backSideFilledBezierPathArray",
-        idx: self.backSideFilledBezierPathArray_property.ebObjectIndex,
+        object: self.backSideFilledBezierPathArray_property,
         y: &y,
         view: view,
         observerExplorer: &self.backSideFilledBezierPathArray_property.mObserverExplorer,
@@ -591,7 +591,7 @@ final class MasterPadInDevice : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mSlavePads",
-        idx:mSlavePads_property.ebObjectIndex,
+        object: mSlavePads_property,
         y: &y,
         view: view,
         valueExplorer:&mSlavePads_property.mValueExplorer

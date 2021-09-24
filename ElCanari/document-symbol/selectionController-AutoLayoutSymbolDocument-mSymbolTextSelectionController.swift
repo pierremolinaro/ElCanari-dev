@@ -132,7 +132,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -153,7 +153,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "y",
-        idx: self.y_property.ebObjectIndex,
+        object: self.y_property,
         y: &y,
         view: view,
         observerExplorer: &self.y_property.mObserverExplorer,
@@ -161,7 +161,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
       )
       createEntryForPropertyNamed (
         "text",
-        idx: self.text_property.ebObjectIndex,
+        object: self.text_property,
         y: &y,
         view: view,
         observerExplorer: &self.text_property.mObserverExplorer,
@@ -169,7 +169,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
       )
       createEntryForPropertyNamed (
         "horizontalAlignment",
-        idx: self.horizontalAlignment_property.ebObjectIndex,
+        object: self.horizontalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.horizontalAlignment_property.mObserverExplorer,
@@ -177,7 +177,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
       )
       createEntryForPropertyNamed (
         "x",
-        idx: self.x_property.ebObjectIndex,
+        object: self.x_property,
         y: &y,
         view: view,
         observerExplorer: &self.x_property.mObserverExplorer,
@@ -194,7 +194,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

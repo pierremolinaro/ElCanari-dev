@@ -283,7 +283,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -304,7 +304,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "x",
-        idx: self.x_property.ebObjectIndex,
+        object: self.x_property,
         y: &y,
         view: view,
         observerExplorer: &self.x_property.mObserverExplorer,
@@ -312,7 +312,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       )
       createEntryForPropertyNamed (
         "y",
-        idx: self.y_property.ebObjectIndex,
+        object: self.y_property,
         y: &y,
         view: view,
         observerExplorer: &self.y_property.mObserverExplorer,
@@ -320,7 +320,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       )
       createEntryForPropertyNamed (
         "width",
-        idx: self.width_property.ebObjectIndex,
+        object: self.width_property,
         y: &y,
         view: view,
         observerExplorer: &self.width_property.mObserverExplorer,
@@ -328,7 +328,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       )
       createEntryForPropertyNamed (
         "height",
-        idx: self.height_property.ebObjectIndex,
+        object: self.height_property,
         y: &y,
         view: view,
         observerExplorer: &self.height_property.mObserverExplorer,
@@ -336,7 +336,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       )
       createEntryForPropertyNamed (
         "xUnit",
-        idx: self.xUnit_property.ebObjectIndex,
+        object: self.xUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.xUnit_property.mObserverExplorer,
@@ -344,7 +344,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       )
       createEntryForPropertyNamed (
         "yUnit",
-        idx: self.yUnit_property.ebObjectIndex,
+        object: self.yUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.yUnit_property.mObserverExplorer,
@@ -352,7 +352,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       )
       createEntryForPropertyNamed (
         "widthUnit",
-        idx: self.widthUnit_property.ebObjectIndex,
+        object: self.widthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.widthUnit_property.mObserverExplorer,
@@ -360,7 +360,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       )
       createEntryForPropertyNamed (
         "heightUnit",
-        idx: self.heightUnit_property.ebObjectIndex,
+        object: self.heightUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.heightUnit_property.mObserverExplorer,
@@ -368,7 +368,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       )
       createEntryForPropertyNamed (
         "zoneName",
-        idx: self.zoneName_property.ebObjectIndex,
+        object: self.zoneName_property,
         y: &y,
         view: view,
         observerExplorer: &self.zoneName_property.mObserverExplorer,
@@ -376,7 +376,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       )
       createEntryForPropertyNamed (
         "displayZoneName",
-        idx: self.displayZoneName_property.ebObjectIndex,
+        object: self.displayZoneName_property,
         y: &y,
         view: view,
         observerExplorer: &self.displayZoneName_property.mObserverExplorer,
@@ -384,7 +384,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       )
       createEntryForPropertyNamed (
         "xName",
-        idx: self.xName_property.ebObjectIndex,
+        object: self.xName_property,
         y: &y,
         view: view,
         observerExplorer: &self.xName_property.mObserverExplorer,
@@ -392,7 +392,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       )
       createEntryForPropertyNamed (
         "yName",
-        idx: self.yName_property.ebObjectIndex,
+        object: self.yName_property,
         y: &y,
         view: view,
         observerExplorer: &self.yName_property.mObserverExplorer,
@@ -400,7 +400,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       )
       createEntryForPropertyNamed (
         "xNameUnit",
-        idx: self.xNameUnit_property.ebObjectIndex,
+        object: self.xNameUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.xNameUnit_property.mObserverExplorer,
@@ -408,7 +408,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       )
       createEntryForPropertyNamed (
         "yNameUnit",
-        idx: self.yNameUnit_property.ebObjectIndex,
+        object: self.yNameUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.yNameUnit_property.mObserverExplorer,
@@ -416,7 +416,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       )
       createEntryForPropertyNamed (
         "zoneNumbering",
-        idx: self.zoneNumbering_property.ebObjectIndex,
+        object: self.zoneNumbering_property,
         y: &y,
         view: view,
         observerExplorer: &self.zoneNumbering_property.mObserverExplorer,
@@ -433,7 +433,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

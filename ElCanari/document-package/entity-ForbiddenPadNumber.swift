@@ -71,7 +71,7 @@ final class ForbiddenPadNumber : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "padNumber",
-        idx: self.padNumber_property.ebObjectIndex,
+        object: self.padNumber_property,
         y: &y,
         view: view,
         observerExplorer: &self.padNumber_property.mObserverExplorer,

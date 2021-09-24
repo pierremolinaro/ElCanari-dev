@@ -747,7 +747,7 @@ final class BorderCurve : EBGraphicManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mX",
-        idx: self.mX_property.ebObjectIndex,
+        object: self.mX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX_property.mObserverExplorer,
@@ -755,7 +755,7 @@ final class BorderCurve : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mY",
-        idx: self.mY_property.ebObjectIndex,
+        object: self.mY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY_property.mObserverExplorer,
@@ -763,7 +763,7 @@ final class BorderCurve : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mCPX1",
-        idx: self.mCPX1_property.ebObjectIndex,
+        object: self.mCPX1_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCPX1_property.mObserverExplorer,
@@ -771,7 +771,7 @@ final class BorderCurve : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mCPY1",
-        idx: self.mCPY1_property.ebObjectIndex,
+        object: self.mCPY1_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCPY1_property.mObserverExplorer,
@@ -779,7 +779,7 @@ final class BorderCurve : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mCPX2",
-        idx: self.mCPX2_property.ebObjectIndex,
+        object: self.mCPX2_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCPX2_property.mObserverExplorer,
@@ -787,7 +787,7 @@ final class BorderCurve : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mCPY2",
-        idx: self.mCPY2_property.ebObjectIndex,
+        object: self.mCPY2_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCPY2_property.mObserverExplorer,
@@ -795,7 +795,7 @@ final class BorderCurve : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mShape",
-        idx: self.mShape_property.ebObjectIndex,
+        object: self.mShape_property,
         y: &y,
         view: view,
         observerExplorer: &self.mShape_property.mObserverExplorer,
@@ -804,7 +804,7 @@ final class BorderCurve : EBGraphicManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "p2Xstring",
-        idx: self.p2Xstring_property.ebObjectIndex,
+        object: self.p2Xstring_property,
         y: &y,
         view: view,
         observerExplorer: &self.p2Xstring_property.mObserverExplorer,
@@ -812,7 +812,7 @@ final class BorderCurve : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "p2Ystring",
-        idx: self.p2Ystring_property.ebObjectIndex,
+        object: self.p2Ystring_property,
         y: &y,
         view: view,
         observerExplorer: &self.p2Ystring_property.mObserverExplorer,
@@ -820,7 +820,7 @@ final class BorderCurve : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "descriptor",
-        idx: self.descriptor_property.ebObjectIndex,
+        object: self.descriptor_property,
         y: &y,
         view: view,
         observerExplorer: &self.descriptor_property.mObserverExplorer,
@@ -828,7 +828,7 @@ final class BorderCurve : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -836,7 +836,7 @@ final class BorderCurve : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "isLine",
-        idx: self.isLine_property.ebObjectIndex,
+        object: self.isLine_property,
         y: &y,
         view: view,
         observerExplorer: &self.isLine_property.mObserverExplorer,
@@ -844,7 +844,7 @@ final class BorderCurve : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -854,21 +854,21 @@ final class BorderCurve : EBGraphicManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mRoot",
-        idx:self.mRoot_property.ebObjectIndex,
+        object: self.mRoot_property,
         y: &y,
         view: view,
         valueExplorer:&self.mRoot_property.mValueExplorer
       )
       createEntryForToOneRelationshipNamed (
         "mNext",
-        idx:self.mNext_property.ebObjectIndex,
+        object: self.mNext_property,
         y: &y,
         view: view,
         valueExplorer:&self.mNext_property.mValueExplorer
       )
       createEntryForToOneRelationshipNamed (
         "mPrevious",
-        idx:self.mPrevious_property.ebObjectIndex,
+        object: self.mPrevious_property,
         y: &y,
         view: view,
         valueExplorer:&self.mPrevious_property.mValueExplorer

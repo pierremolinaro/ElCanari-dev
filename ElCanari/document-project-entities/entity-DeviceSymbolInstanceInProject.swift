@@ -273,7 +273,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mSymbolInstanceName",
-        idx: self.mSymbolInstanceName_property.ebObjectIndex,
+        object: self.mSymbolInstanceName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSymbolInstanceName_property.mObserverExplorer,
@@ -282,7 +282,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "symbolAndTypeName",
-        idx: self.symbolAndTypeName_property.ebObjectIndex,
+        object: self.symbolAndTypeName_property,
         y: &y,
         view: view,
         observerExplorer: &self.symbolAndTypeName_property.mObserverExplorer,
@@ -290,7 +290,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "symbolTypeName",
-        idx: self.symbolTypeName_property.ebObjectIndex,
+        object: self.symbolTypeName_property,
         y: &y,
         view: view,
         observerExplorer: &self.symbolTypeName_property.mObserverExplorer,
@@ -298,7 +298,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "filledBezierPath",
-        idx: self.filledBezierPath_property.ebObjectIndex,
+        object: self.filledBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.filledBezierPath_property.mObserverExplorer,
@@ -306,7 +306,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "strokeBezierPath",
-        idx: self.strokeBezierPath_property.ebObjectIndex,
+        object: self.strokeBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
@@ -316,7 +316,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mSymbolType",
-        idx:self.mSymbolType_property.ebObjectIndex,
+        object: self.mSymbolType_property,
         y: &y,
         view: view,
         valueExplorer:&self.mSymbolType_property.mValueExplorer

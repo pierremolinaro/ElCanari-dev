@@ -992,7 +992,7 @@ final class NetClassInProject : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mNetClassName",
-        idx: self.mNetClassName_property.ebObjectIndex,
+        object: self.mNetClassName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNetClassName_property.mObserverExplorer,
@@ -1000,7 +1000,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mNetClassColor",
-        idx: self.mNetClassColor_property.ebObjectIndex,
+        object: self.mNetClassColor_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNetClassColor_property.mObserverExplorer,
@@ -1008,7 +1008,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mTrackWidth",
-        idx: self.mTrackWidth_property.ebObjectIndex,
+        object: self.mTrackWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.mTrackWidth_property.mObserverExplorer,
@@ -1016,7 +1016,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mTrackWidthUnit",
-        idx: self.mTrackWidthUnit_property.ebObjectIndex,
+        object: self.mTrackWidthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mTrackWidthUnit_property.mObserverExplorer,
@@ -1024,7 +1024,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mViaHoleDiameter",
-        idx: self.mViaHoleDiameter_property.ebObjectIndex,
+        object: self.mViaHoleDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.mViaHoleDiameter_property.mObserverExplorer,
@@ -1032,7 +1032,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mViaHoleDiameterUnit",
-        idx: self.mViaHoleDiameterUnit_property.ebObjectIndex,
+        object: self.mViaHoleDiameterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mViaHoleDiameterUnit_property.mObserverExplorer,
@@ -1040,7 +1040,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mViaPadDiameter",
-        idx: self.mViaPadDiameter_property.ebObjectIndex,
+        object: self.mViaPadDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.mViaPadDiameter_property.mObserverExplorer,
@@ -1048,7 +1048,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mViaPadDiameterUnit",
-        idx: self.mViaPadDiameterUnit_property.ebObjectIndex,
+        object: self.mViaPadDiameterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mViaPadDiameterUnit_property.mObserverExplorer,
@@ -1056,7 +1056,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mAllowTracksOnFrontSide",
-        idx: self.mAllowTracksOnFrontSide_property.ebObjectIndex,
+        object: self.mAllowTracksOnFrontSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.mAllowTracksOnFrontSide_property.mObserverExplorer,
@@ -1064,7 +1064,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mAllowTracksOnBackSide",
-        idx: self.mAllowTracksOnBackSide_property.ebObjectIndex,
+        object: self.mAllowTracksOnBackSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.mAllowTracksOnBackSide_property.mObserverExplorer,
@@ -1072,7 +1072,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mAllowTracksOnInner1Layer",
-        idx: self.mAllowTracksOnInner1Layer_property.ebObjectIndex,
+        object: self.mAllowTracksOnInner1Layer_property,
         y: &y,
         view: view,
         observerExplorer: &self.mAllowTracksOnInner1Layer_property.mObserverExplorer,
@@ -1080,7 +1080,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mAllowTracksOnInner2Layer",
-        idx: self.mAllowTracksOnInner2Layer_property.ebObjectIndex,
+        object: self.mAllowTracksOnInner2Layer_property,
         y: &y,
         view: view,
         observerExplorer: &self.mAllowTracksOnInner2Layer_property.mObserverExplorer,
@@ -1088,7 +1088,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mAllowTracksOnInner3Layer",
-        idx: self.mAllowTracksOnInner3Layer_property.ebObjectIndex,
+        object: self.mAllowTracksOnInner3Layer_property,
         y: &y,
         view: view,
         observerExplorer: &self.mAllowTracksOnInner3Layer_property.mObserverExplorer,
@@ -1096,7 +1096,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mAllowTracksOnInner4Layer",
-        idx: self.mAllowTracksOnInner4Layer_property.ebObjectIndex,
+        object: self.mAllowTracksOnInner4Layer_property,
         y: &y,
         view: view,
         observerExplorer: &self.mAllowTracksOnInner4Layer_property.mObserverExplorer,
@@ -1105,7 +1105,7 @@ final class NetClassInProject : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "trackWidthString",
-        idx: self.trackWidthString_property.ebObjectIndex,
+        object: self.trackWidthString_property,
         y: &y,
         view: view,
         observerExplorer: &self.trackWidthString_property.mObserverExplorer,
@@ -1113,7 +1113,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "viaHoleDiameter",
-        idx: self.viaHoleDiameter_property.ebObjectIndex,
+        object: self.viaHoleDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.viaHoleDiameter_property.mObserverExplorer,
@@ -1121,7 +1121,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "viaPadDiameter",
-        idx: self.viaPadDiameter_property.ebObjectIndex,
+        object: self.viaPadDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.viaPadDiameter_property.mObserverExplorer,
@@ -1129,7 +1129,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "allowTracksOnFrontSideString",
-        idx: self.allowTracksOnFrontSideString_property.ebObjectIndex,
+        object: self.allowTracksOnFrontSideString_property,
         y: &y,
         view: view,
         observerExplorer: &self.allowTracksOnFrontSideString_property.mObserverExplorer,
@@ -1137,7 +1137,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "allowTracksOnBackSideString",
-        idx: self.allowTracksOnBackSideString_property.ebObjectIndex,
+        object: self.allowTracksOnBackSideString_property,
         y: &y,
         view: view,
         observerExplorer: &self.allowTracksOnBackSideString_property.mObserverExplorer,
@@ -1145,7 +1145,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "allowTracksOnInner1LayerString",
-        idx: self.allowTracksOnInner1LayerString_property.ebObjectIndex,
+        object: self.allowTracksOnInner1LayerString_property,
         y: &y,
         view: view,
         observerExplorer: &self.allowTracksOnInner1LayerString_property.mObserverExplorer,
@@ -1153,7 +1153,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "allowTracksOnInner2LayerString",
-        idx: self.allowTracksOnInner2LayerString_property.ebObjectIndex,
+        object: self.allowTracksOnInner2LayerString_property,
         y: &y,
         view: view,
         observerExplorer: &self.allowTracksOnInner2LayerString_property.mObserverExplorer,
@@ -1161,7 +1161,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "allowTracksOnInner3LayerString",
-        idx: self.allowTracksOnInner3LayerString_property.ebObjectIndex,
+        object: self.allowTracksOnInner3LayerString_property,
         y: &y,
         view: view,
         observerExplorer: &self.allowTracksOnInner3LayerString_property.mObserverExplorer,
@@ -1169,7 +1169,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "allowTracksOnInner4LayerString",
-        idx: self.allowTracksOnInner4LayerString_property.ebObjectIndex,
+        object: self.allowTracksOnInner4LayerString_property,
         y: &y,
         view: view,
         observerExplorer: &self.allowTracksOnInner4LayerString_property.mObserverExplorer,
@@ -1177,7 +1177,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "canRemove",
-        idx: self.canRemove_property.ebObjectIndex,
+        object: self.canRemove_property,
         y: &y,
         view: view,
         observerExplorer: &self.canRemove_property.mObserverExplorer,
@@ -1185,7 +1185,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "netUsage",
-        idx: self.netUsage_property.ebObjectIndex,
+        object: self.netUsage_property,
         y: &y,
         view: view,
         observerExplorer: &self.netUsage_property.mObserverExplorer,
@@ -1193,7 +1193,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "netsDescription",
-        idx: self.netsDescription_property.ebObjectIndex,
+        object: self.netsDescription_property,
         y: &y,
         view: view,
         observerExplorer: &self.netsDescription_property.mObserverExplorer,
@@ -1201,7 +1201,7 @@ final class NetClassInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "netWarningCount",
-        idx: self.netWarningCount_property.ebObjectIndex,
+        object: self.netWarningCount_property,
         y: &y,
         view: view,
         observerExplorer: &self.netWarningCount_property.mObserverExplorer,
@@ -1210,7 +1210,7 @@ final class NetClassInProject : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mNets",
-        idx:mNets_property.ebObjectIndex,
+        object: mNets_property,
         y: &y,
         view: view,
         valueExplorer:&mNets_property.mValueExplorer

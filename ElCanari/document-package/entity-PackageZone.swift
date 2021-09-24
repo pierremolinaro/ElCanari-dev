@@ -747,7 +747,7 @@ final class PackageZone : PackageObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "x",
-        idx: self.x_property.ebObjectIndex,
+        object: self.x_property,
         y: &y,
         view: view,
         observerExplorer: &self.x_property.mObserverExplorer,
@@ -755,7 +755,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "y",
-        idx: self.y_property.ebObjectIndex,
+        object: self.y_property,
         y: &y,
         view: view,
         observerExplorer: &self.y_property.mObserverExplorer,
@@ -763,7 +763,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "width",
-        idx: self.width_property.ebObjectIndex,
+        object: self.width_property,
         y: &y,
         view: view,
         observerExplorer: &self.width_property.mObserverExplorer,
@@ -771,7 +771,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "height",
-        idx: self.height_property.ebObjectIndex,
+        object: self.height_property,
         y: &y,
         view: view,
         observerExplorer: &self.height_property.mObserverExplorer,
@@ -779,7 +779,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "xUnit",
-        idx: self.xUnit_property.ebObjectIndex,
+        object: self.xUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.xUnit_property.mObserverExplorer,
@@ -787,7 +787,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "yUnit",
-        idx: self.yUnit_property.ebObjectIndex,
+        object: self.yUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.yUnit_property.mObserverExplorer,
@@ -795,7 +795,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "widthUnit",
-        idx: self.widthUnit_property.ebObjectIndex,
+        object: self.widthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.widthUnit_property.mObserverExplorer,
@@ -803,7 +803,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "heightUnit",
-        idx: self.heightUnit_property.ebObjectIndex,
+        object: self.heightUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.heightUnit_property.mObserverExplorer,
@@ -811,7 +811,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "zoneName",
-        idx: self.zoneName_property.ebObjectIndex,
+        object: self.zoneName_property,
         y: &y,
         view: view,
         observerExplorer: &self.zoneName_property.mObserverExplorer,
@@ -819,7 +819,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "displayZoneName",
-        idx: self.displayZoneName_property.ebObjectIndex,
+        object: self.displayZoneName_property,
         y: &y,
         view: view,
         observerExplorer: &self.displayZoneName_property.mObserverExplorer,
@@ -827,7 +827,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "xName",
-        idx: self.xName_property.ebObjectIndex,
+        object: self.xName_property,
         y: &y,
         view: view,
         observerExplorer: &self.xName_property.mObserverExplorer,
@@ -835,7 +835,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "yName",
-        idx: self.yName_property.ebObjectIndex,
+        object: self.yName_property,
         y: &y,
         view: view,
         observerExplorer: &self.yName_property.mObserverExplorer,
@@ -843,7 +843,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "xNameUnit",
-        idx: self.xNameUnit_property.ebObjectIndex,
+        object: self.xNameUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.xNameUnit_property.mObserverExplorer,
@@ -851,7 +851,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "yNameUnit",
-        idx: self.yNameUnit_property.ebObjectIndex,
+        object: self.yNameUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.yNameUnit_property.mObserverExplorer,
@@ -859,7 +859,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "zoneNumbering",
-        idx: self.zoneNumbering_property.ebObjectIndex,
+        object: self.zoneNumbering_property,
         y: &y,
         view: view,
         observerExplorer: &self.zoneNumbering_property.mObserverExplorer,
@@ -868,7 +868,7 @@ final class PackageZone : PackageObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -876,7 +876,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,
@@ -884,7 +884,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "rect",
-        idx: self.rect_property.ebObjectIndex,
+        object: self.rect_property,
         y: &y,
         view: view,
         observerExplorer: &self.rect_property.mObserverExplorer,
@@ -892,7 +892,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -900,7 +900,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "forbiddenPadArray",
-        idx: self.forbiddenPadArray_property.ebObjectIndex,
+        object: self.forbiddenPadArray_property,
         y: &y,
         view: view,
         observerExplorer: &self.forbiddenPadArray_property.mObserverExplorer,
@@ -908,7 +908,7 @@ final class PackageZone : PackageObject,
       )
       createEntryForPropertyNamed (
         "emptyForbiddenPadArray",
-        idx: self.emptyForbiddenPadArray_property.ebObjectIndex,
+        object: self.emptyForbiddenPadArray_property,
         y: &y,
         view: view,
         observerExplorer: &self.emptyForbiddenPadArray_property.mObserverExplorer,
@@ -917,7 +917,7 @@ final class PackageZone : PackageObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "forbiddenPadNumbers",
-        idx:forbiddenPadNumbers_property.ebObjectIndex,
+        object: forbiddenPadNumbers_property,
         y: &y,
         view: view,
         valueExplorer:&forbiddenPadNumbers_property.mValueExplorer

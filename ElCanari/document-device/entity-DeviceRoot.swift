@@ -998,7 +998,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mSelectedPageIndex",
-        idx: self.mSelectedPageIndex_property.ebObjectIndex,
+        object: self.mSelectedPageIndex_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSelectedPageIndex_property.mObserverExplorer,
@@ -1006,7 +1006,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mTitle",
-        idx: self.mTitle_property.ebObjectIndex,
+        object: self.mTitle_property,
         y: &y,
         view: view,
         observerExplorer: &self.mTitle_property.mObserverExplorer,
@@ -1014,7 +1014,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mImageData",
-        idx: self.mImageData_property.ebObjectIndex,
+        object: self.mImageData_property,
         y: &y,
         view: view,
         observerExplorer: &self.mImageData_property.mObserverExplorer,
@@ -1022,7 +1022,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mPrefix",
-        idx: self.mPrefix_property.ebObjectIndex,
+        object: self.mPrefix_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPrefix_property.mObserverExplorer,
@@ -1030,7 +1030,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mComments",
-        idx: self.mComments_property.ebObjectIndex,
+        object: self.mComments_property,
         y: &y,
         view: view,
         observerExplorer: &self.mComments_property.mObserverExplorer,
@@ -1038,7 +1038,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mPackageDisplayZoom",
-        idx: self.mPackageDisplayZoom_property.ebObjectIndex,
+        object: self.mPackageDisplayZoom_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPackageDisplayZoom_property.mObserverExplorer,
@@ -1046,7 +1046,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mPackageDisplayHorizontalFlip",
-        idx: self.mPackageDisplayHorizontalFlip_property.ebObjectIndex,
+        object: self.mPackageDisplayHorizontalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPackageDisplayHorizontalFlip_property.mObserverExplorer,
@@ -1054,7 +1054,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mPackageDisplayVerticalFlip",
-        idx: self.mPackageDisplayVerticalFlip_property.ebObjectIndex,
+        object: self.mPackageDisplayVerticalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPackageDisplayVerticalFlip_property.mObserverExplorer,
@@ -1062,7 +1062,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mShowPackages",
-        idx: self.mShowPackages_property.ebObjectIndex,
+        object: self.mShowPackages_property,
         y: &y,
         view: view,
         observerExplorer: &self.mShowPackages_property.mObserverExplorer,
@@ -1070,7 +1070,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mShowPackagePadNumbers",
-        idx: self.mShowPackagePadNumbers_property.ebObjectIndex,
+        object: self.mShowPackagePadNumbers_property,
         y: &y,
         view: view,
         observerExplorer: &self.mShowPackagePadNumbers_property.mObserverExplorer,
@@ -1078,7 +1078,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mShowPackageFrontPads",
-        idx: self.mShowPackageFrontPads_property.ebObjectIndex,
+        object: self.mShowPackageFrontPads_property,
         y: &y,
         view: view,
         observerExplorer: &self.mShowPackageFrontPads_property.mObserverExplorer,
@@ -1086,7 +1086,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mShowPackageBackPads",
-        idx: self.mShowPackageBackPads_property.ebObjectIndex,
+        object: self.mShowPackageBackPads_property,
         y: &y,
         view: view,
         observerExplorer: &self.mShowPackageBackPads_property.mObserverExplorer,
@@ -1094,7 +1094,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mSymbolDisplayZoom",
-        idx: self.mSymbolDisplayZoom_property.ebObjectIndex,
+        object: self.mSymbolDisplayZoom_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSymbolDisplayZoom_property.mObserverExplorer,
@@ -1102,7 +1102,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mSymbolDisplayHorizontalFlip",
-        idx: self.mSymbolDisplayHorizontalFlip_property.ebObjectIndex,
+        object: self.mSymbolDisplayHorizontalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSymbolDisplayHorizontalFlip_property.mObserverExplorer,
@@ -1110,7 +1110,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mSymbolDisplayVerticalFlip",
-        idx: self.mSymbolDisplayVerticalFlip_property.ebObjectIndex,
+        object: self.mSymbolDisplayVerticalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSymbolDisplayVerticalFlip_property.mObserverExplorer,
@@ -1119,7 +1119,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "imageIsValid",
-        idx: self.imageIsValid_property.ebObjectIndex,
+        object: self.imageIsValid_property,
         y: &y,
         view: view,
         observerExplorer: &self.imageIsValid_property.mObserverExplorer,
@@ -1127,7 +1127,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "unconnectedPins",
-        idx: self.unconnectedPins_property.ebObjectIndex,
+        object: self.unconnectedPins_property,
         y: &y,
         view: view,
         observerExplorer: &self.unconnectedPins_property.mObserverExplorer,
@@ -1135,7 +1135,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "inconsistentPackagePadNameSetsMessage",
-        idx: self.inconsistentPackagePadNameSetsMessage_property.ebObjectIndex,
+        object: self.inconsistentPackagePadNameSetsMessage_property,
         y: &y,
         view: view,
         observerExplorer: &self.inconsistentPackagePadNameSetsMessage_property.mObserverExplorer,
@@ -1143,7 +1143,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "inconsistentSymbolNameSetMessage",
-        idx: self.inconsistentSymbolNameSetMessage_property.ebObjectIndex,
+        object: self.inconsistentSymbolNameSetMessage_property,
         y: &y,
         view: view,
         observerExplorer: &self.inconsistentSymbolNameSetMessage_property.mObserverExplorer,
@@ -1151,7 +1151,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "packagePadNameSetsAreConsistent",
-        idx: self.packagePadNameSetsAreConsistent_property.ebObjectIndex,
+        object: self.packagePadNameSetsAreConsistent_property,
         y: &y,
         view: view,
         observerExplorer: &self.packagePadNameSetsAreConsistent_property.mObserverExplorer,
@@ -1159,7 +1159,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "symbolNameAreConsistent",
-        idx: self.symbolNameAreConsistent_property.ebObjectIndex,
+        object: self.symbolNameAreConsistent_property,
         y: &y,
         view: view,
         observerExplorer: &self.symbolNameAreConsistent_property.mObserverExplorer,
@@ -1167,7 +1167,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "symbolTypeNames",
-        idx: self.symbolTypeNames_property.ebObjectIndex,
+        object: self.symbolTypeNames_property,
         y: &y,
         view: view,
         observerExplorer: &self.symbolTypeNames_property.mObserverExplorer,
@@ -1175,7 +1175,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "unconnectedPads",
-        idx: self.unconnectedPads_property.ebObjectIndex,
+        object: self.unconnectedPads_property,
         y: &y,
         view: view,
         observerExplorer: &self.unconnectedPads_property.mObserverExplorer,
@@ -1183,7 +1183,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "assignedPadProxies",
-        idx: self.assignedPadProxies_property.ebObjectIndex,
+        object: self.assignedPadProxies_property,
         y: &y,
         view: view,
         observerExplorer: &self.assignedPadProxies_property.mObserverExplorer,
@@ -1191,7 +1191,7 @@ final class DeviceRoot : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,
@@ -1200,35 +1200,35 @@ final class DeviceRoot : EBGraphicManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mDocs",
-        idx:mDocs_property.ebObjectIndex,
+        object: mDocs_property,
         y: &y,
         view: view,
         valueExplorer:&mDocs_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mSymbolInstances",
-        idx:mSymbolInstances_property.ebObjectIndex,
+        object: mSymbolInstances_property,
         y: &y,
         view: view,
         valueExplorer:&mSymbolInstances_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mPackages",
-        idx:mPackages_property.ebObjectIndex,
+        object: mPackages_property,
         y: &y,
         view: view,
         valueExplorer:&mPackages_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mSymbolTypes",
-        idx:mSymbolTypes_property.ebObjectIndex,
+        object: mSymbolTypes_property,
         y: &y,
         view: view,
         valueExplorer:&mSymbolTypes_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mPadProxies",
-        idx:mPadProxies_property.ebObjectIndex,
+        object: mPadProxies_property,
         y: &y,
         view: view,
         valueExplorer:&mPadProxies_property.mValueExplorer

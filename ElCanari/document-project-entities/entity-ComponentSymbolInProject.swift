@@ -773,7 +773,7 @@ final class ComponentSymbolInProject : SchematicObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mCenterX",
-        idx: self.mCenterX_property.ebObjectIndex,
+        object: self.mCenterX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCenterX_property.mObserverExplorer,
@@ -781,7 +781,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mCenterY",
-        idx: self.mCenterY_property.ebObjectIndex,
+        object: self.mCenterY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCenterY_property.mObserverExplorer,
@@ -789,7 +789,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mRotation",
-        idx: self.mRotation_property.ebObjectIndex,
+        object: self.mRotation_property,
         y: &y,
         view: view,
         observerExplorer: &self.mRotation_property.mObserverExplorer,
@@ -797,7 +797,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mMirror",
-        idx: self.mMirror_property.ebObjectIndex,
+        object: self.mMirror_property,
         y: &y,
         view: view,
         observerExplorer: &self.mMirror_property.mObserverExplorer,
@@ -805,7 +805,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mSymbolInstanceName",
-        idx: self.mSymbolInstanceName_property.ebObjectIndex,
+        object: self.mSymbolInstanceName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSymbolInstanceName_property.mObserverExplorer,
@@ -813,7 +813,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mSymbolTypeName",
-        idx: self.mSymbolTypeName_property.ebObjectIndex,
+        object: self.mSymbolTypeName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSymbolTypeName_property.mObserverExplorer,
@@ -821,7 +821,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mDisplayComponentNameOffsetX",
-        idx: self.mDisplayComponentNameOffsetX_property.ebObjectIndex,
+        object: self.mDisplayComponentNameOffsetX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDisplayComponentNameOffsetX_property.mObserverExplorer,
@@ -829,7 +829,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mDisplayComponentNameOffsetY",
-        idx: self.mDisplayComponentNameOffsetY_property.ebObjectIndex,
+        object: self.mDisplayComponentNameOffsetY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDisplayComponentNameOffsetY_property.mObserverExplorer,
@@ -837,7 +837,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mDisplayComponentValue",
-        idx: self.mDisplayComponentValue_property.ebObjectIndex,
+        object: self.mDisplayComponentValue_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDisplayComponentValue_property.mObserverExplorer,
@@ -845,7 +845,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mDisplayComponentValueOffsetX",
-        idx: self.mDisplayComponentValueOffsetX_property.ebObjectIndex,
+        object: self.mDisplayComponentValueOffsetX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDisplayComponentValueOffsetX_property.mObserverExplorer,
@@ -853,7 +853,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "mDisplayComponentValueOffsetY",
-        idx: self.mDisplayComponentValueOffsetY_property.ebObjectIndex,
+        object: self.mDisplayComponentValueOffsetY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDisplayComponentValueOffsetY_property.mObserverExplorer,
@@ -862,7 +862,7 @@ final class ComponentSymbolInProject : SchematicObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "componentName",
-        idx: self.componentName_property.ebObjectIndex,
+        object: self.componentName_property,
         y: &y,
         view: view,
         observerExplorer: &self.componentName_property.mObserverExplorer,
@@ -870,7 +870,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "deviceName",
-        idx: self.deviceName_property.ebObjectIndex,
+        object: self.deviceName_property,
         y: &y,
         view: view,
         observerExplorer: &self.deviceName_property.mObserverExplorer,
@@ -878,7 +878,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "symbolInfo",
-        idx: self.symbolInfo_property.ebObjectIndex,
+        object: self.symbolInfo_property,
         y: &y,
         view: view,
         observerExplorer: &self.symbolInfo_property.mObserverExplorer,
@@ -886,7 +886,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "pinPadAssignments",
-        idx: self.pinPadAssignments_property.ebObjectIndex,
+        object: self.pinPadAssignments_property,
         y: &y,
         view: view,
         observerExplorer: &self.pinPadAssignments_property.mObserverExplorer,
@@ -894,7 +894,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -902,7 +902,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -910,7 +910,7 @@ final class ComponentSymbolInProject : SchematicObject,
       )
       createEntryForPropertyNamed (
         "symbolInSchematic",
-        idx: self.symbolInSchematic_property.ebObjectIndex,
+        object: self.symbolInSchematic_property,
         y: &y,
         view: view,
         observerExplorer: &self.symbolInSchematic_property.mObserverExplorer,
@@ -919,7 +919,7 @@ final class ComponentSymbolInProject : SchematicObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mPoints",
-        idx:mPoints_property.ebObjectIndex,
+        object: mPoints_property,
         y: &y,
         view: view,
         valueExplorer:&mPoints_property.mValueExplorer
@@ -927,7 +927,7 @@ final class ComponentSymbolInProject : SchematicObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mComponent",
-        idx:self.mComponent_property.ebObjectIndex,
+        object: self.mComponent_property,
         y: &y,
         view: view,
         valueExplorer:&self.mComponent_property.mValueExplorer

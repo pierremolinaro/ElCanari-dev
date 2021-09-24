@@ -306,7 +306,7 @@ final class WireInSchematic : SchematicObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -314,7 +314,7 @@ final class WireInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -322,7 +322,7 @@ final class WireInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "netName",
-        idx: self.netName_property.ebObjectIndex,
+        object: self.netName_property,
         y: &y,
         view: view,
         observerExplorer: &self.netName_property.mObserverExplorer,
@@ -330,7 +330,7 @@ final class WireInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "netClassName",
-        idx: self.netClassName_property.ebObjectIndex,
+        object: self.netClassName_property,
         y: &y,
         view: view,
         observerExplorer: &self.netClassName_property.mObserverExplorer,
@@ -338,7 +338,7 @@ final class WireInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "hasNet",
-        idx: self.hasNet_property.ebObjectIndex,
+        object: self.hasNet_property,
         y: &y,
         view: view,
         observerExplorer: &self.hasNet_property.mObserverExplorer,
@@ -348,14 +348,14 @@ final class WireInSchematic : SchematicObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mP1",
-        idx:self.mP1_property.ebObjectIndex,
+        object: self.mP1_property,
         y: &y,
         view: view,
         valueExplorer:&self.mP1_property.mValueExplorer
       )
       createEntryForToOneRelationshipNamed (
         "mP2",
-        idx:self.mP2_property.ebObjectIndex,
+        object: self.mP2_property,
         y: &y,
         view: view,
         valueExplorer:&self.mP2_property.mValueExplorer

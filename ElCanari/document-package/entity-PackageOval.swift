@@ -411,7 +411,7 @@ final class PackageOval : PackageObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "y",
-        idx: self.y_property.ebObjectIndex,
+        object: self.y_property,
         y: &y,
         view: view,
         observerExplorer: &self.y_property.mObserverExplorer,
@@ -419,7 +419,7 @@ final class PackageOval : PackageObject,
       )
       createEntryForPropertyNamed (
         "width",
-        idx: self.width_property.ebObjectIndex,
+        object: self.width_property,
         y: &y,
         view: view,
         observerExplorer: &self.width_property.mObserverExplorer,
@@ -427,7 +427,7 @@ final class PackageOval : PackageObject,
       )
       createEntryForPropertyNamed (
         "height",
-        idx: self.height_property.ebObjectIndex,
+        object: self.height_property,
         y: &y,
         view: view,
         observerExplorer: &self.height_property.mObserverExplorer,
@@ -435,7 +435,7 @@ final class PackageOval : PackageObject,
       )
       createEntryForPropertyNamed (
         "xUnit",
-        idx: self.xUnit_property.ebObjectIndex,
+        object: self.xUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.xUnit_property.mObserverExplorer,
@@ -443,7 +443,7 @@ final class PackageOval : PackageObject,
       )
       createEntryForPropertyNamed (
         "yUnit",
-        idx: self.yUnit_property.ebObjectIndex,
+        object: self.yUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.yUnit_property.mObserverExplorer,
@@ -451,7 +451,7 @@ final class PackageOval : PackageObject,
       )
       createEntryForPropertyNamed (
         "widthUnit",
-        idx: self.widthUnit_property.ebObjectIndex,
+        object: self.widthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.widthUnit_property.mObserverExplorer,
@@ -459,7 +459,7 @@ final class PackageOval : PackageObject,
       )
       createEntryForPropertyNamed (
         "heightUnit",
-        idx: self.heightUnit_property.ebObjectIndex,
+        object: self.heightUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.heightUnit_property.mObserverExplorer,
@@ -467,7 +467,7 @@ final class PackageOval : PackageObject,
       )
       createEntryForPropertyNamed (
         "x",
-        idx: self.x_property.ebObjectIndex,
+        object: self.x_property,
         y: &y,
         view: view,
         observerExplorer: &self.x_property.mObserverExplorer,
@@ -476,7 +476,7 @@ final class PackageOval : PackageObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "strokeBezierPath",
-        idx: self.strokeBezierPath_property.ebObjectIndex,
+        object: self.strokeBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
@@ -484,7 +484,7 @@ final class PackageOval : PackageObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -492,7 +492,7 @@ final class PackageOval : PackageObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -500,7 +500,7 @@ final class PackageOval : PackageObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,

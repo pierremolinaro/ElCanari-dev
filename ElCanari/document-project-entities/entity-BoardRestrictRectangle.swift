@@ -316,7 +316,7 @@ final class BoardRestrictRectangle : BoardObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mY",
-        idx: self.mY_property.ebObjectIndex,
+        object: self.mY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY_property.mObserverExplorer,
@@ -324,7 +324,7 @@ final class BoardRestrictRectangle : BoardObject,
       )
       createEntryForPropertyNamed (
         "mWidth",
-        idx: self.mWidth_property.ebObjectIndex,
+        object: self.mWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.mWidth_property.mObserverExplorer,
@@ -332,7 +332,7 @@ final class BoardRestrictRectangle : BoardObject,
       )
       createEntryForPropertyNamed (
         "mHeight",
-        idx: self.mHeight_property.ebObjectIndex,
+        object: self.mHeight_property,
         y: &y,
         view: view,
         observerExplorer: &self.mHeight_property.mObserverExplorer,
@@ -340,7 +340,7 @@ final class BoardRestrictRectangle : BoardObject,
       )
       createEntryForPropertyNamed (
         "mIsInFrontLayer",
-        idx: self.mIsInFrontLayer_property.ebObjectIndex,
+        object: self.mIsInFrontLayer_property,
         y: &y,
         view: view,
         observerExplorer: &self.mIsInFrontLayer_property.mObserverExplorer,
@@ -348,7 +348,7 @@ final class BoardRestrictRectangle : BoardObject,
       )
       createEntryForPropertyNamed (
         "mIsInBackLayer",
-        idx: self.mIsInBackLayer_property.ebObjectIndex,
+        object: self.mIsInBackLayer_property,
         y: &y,
         view: view,
         observerExplorer: &self.mIsInBackLayer_property.mObserverExplorer,
@@ -356,7 +356,7 @@ final class BoardRestrictRectangle : BoardObject,
       )
       createEntryForPropertyNamed (
         "mX",
-        idx: self.mX_property.ebObjectIndex,
+        object: self.mX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX_property.mObserverExplorer,
@@ -365,7 +365,7 @@ final class BoardRestrictRectangle : BoardObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -373,7 +373,7 @@ final class BoardRestrictRectangle : BoardObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -381,7 +381,7 @@ final class BoardRestrictRectangle : BoardObject,
       )
       createEntryForPropertyNamed (
         "signatureForERCChecking",
-        idx: self.signatureForERCChecking_property.ebObjectIndex,
+        object: self.signatureForERCChecking_property,
         y: &y,
         view: view,
         observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,

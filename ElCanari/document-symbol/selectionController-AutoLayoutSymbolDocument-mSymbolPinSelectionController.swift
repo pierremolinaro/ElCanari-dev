@@ -218,7 +218,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -239,7 +239,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "yPin",
-        idx: self.yPin_property.ebObjectIndex,
+        object: self.yPin_property,
         y: &y,
         view: view,
         observerExplorer: &self.yPin_property.mObserverExplorer,
@@ -247,7 +247,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
       )
       createEntryForPropertyNamed (
         "xName",
-        idx: self.xName_property.ebObjectIndex,
+        object: self.xName_property,
         y: &y,
         view: view,
         observerExplorer: &self.xName_property.mObserverExplorer,
@@ -255,7 +255,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
       )
       createEntryForPropertyNamed (
         "yName",
-        idx: self.yName_property.ebObjectIndex,
+        object: self.yName_property,
         y: &y,
         view: view,
         observerExplorer: &self.yName_property.mObserverExplorer,
@@ -263,7 +263,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
       )
       createEntryForPropertyNamed (
         "xNumber",
-        idx: self.xNumber_property.ebObjectIndex,
+        object: self.xNumber_property,
         y: &y,
         view: view,
         observerExplorer: &self.xNumber_property.mObserverExplorer,
@@ -271,7 +271,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
       )
       createEntryForPropertyNamed (
         "yNumber",
-        idx: self.yNumber_property.ebObjectIndex,
+        object: self.yNumber_property,
         y: &y,
         view: view,
         observerExplorer: &self.yNumber_property.mObserverExplorer,
@@ -279,7 +279,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
       )
       createEntryForPropertyNamed (
         "name",
-        idx: self.name_property.ebObjectIndex,
+        object: self.name_property,
         y: &y,
         view: view,
         observerExplorer: &self.name_property.mObserverExplorer,
@@ -287,7 +287,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
       )
       createEntryForPropertyNamed (
         "nameHorizontalAlignment",
-        idx: self.nameHorizontalAlignment_property.ebObjectIndex,
+        object: self.nameHorizontalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.nameHorizontalAlignment_property.mObserverExplorer,
@@ -295,7 +295,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
       )
       createEntryForPropertyNamed (
         "numberHorizontalAlignment",
-        idx: self.numberHorizontalAlignment_property.ebObjectIndex,
+        object: self.numberHorizontalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.numberHorizontalAlignment_property.mObserverExplorer,
@@ -303,7 +303,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
       )
       createEntryForPropertyNamed (
         "pinNameIsDisplayedInSchematics",
-        idx: self.pinNameIsDisplayedInSchematics_property.ebObjectIndex,
+        object: self.pinNameIsDisplayedInSchematics_property,
         y: &y,
         view: view,
         observerExplorer: &self.pinNameIsDisplayedInSchematics_property.mObserverExplorer,
@@ -311,7 +311,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
       )
       createEntryForPropertyNamed (
         "xPin",
-        idx: self.xPin_property.ebObjectIndex,
+        object: self.xPin_property,
         y: &y,
         view: view,
         observerExplorer: &self.xPin_property.mObserverExplorer,
@@ -328,7 +328,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

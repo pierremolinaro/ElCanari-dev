@@ -378,7 +378,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "pinName",
-        idx: self.pinName_property.ebObjectIndex,
+        object: self.pinName_property,
         y: &y,
         view: view,
         observerExplorer: &self.pinName_property.mObserverExplorer,
@@ -386,7 +386,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "symbolName",
-        idx: self.symbolName_property.ebObjectIndex,
+        object: self.symbolName_property,
         y: &y,
         view: view,
         observerExplorer: &self.symbolName_property.mObserverExplorer,
@@ -394,7 +394,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "pinQualifiedName",
-        idx: self.pinQualifiedName_property.ebObjectIndex,
+        object: self.pinQualifiedName_property,
         y: &y,
         view: view,
         observerExplorer: &self.pinQualifiedName_property.mObserverExplorer,
@@ -402,7 +402,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "isConnected",
-        idx: self.isConnected_property.ebObjectIndex,
+        object: self.isConnected_property,
         y: &y,
         view: view,
         observerExplorer: &self.isConnected_property.mObserverExplorer,
@@ -410,7 +410,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "numberShape",
-        idx: self.numberShape_property.ebObjectIndex,
+        object: self.numberShape_property,
         y: &y,
         view: view,
         observerExplorer: &self.numberShape_property.mObserverExplorer,
@@ -420,21 +420,21 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mSymbolInstance",
-        idx:self.mSymbolInstance_property.ebObjectIndex,
+        object: self.mSymbolInstance_property,
         y: &y,
         view: view,
         valueExplorer:&self.mSymbolInstance_property.mValueExplorer
       )
       createEntryForToOneRelationshipNamed (
         "mType",
-        idx:self.mType_property.ebObjectIndex,
+        object: self.mType_property,
         y: &y,
         view: view,
         valueExplorer:&self.mType_property.mValueExplorer
       )
       createEntryForToOneRelationshipNamed (
         "mPadProxy",
-        idx:self.mPadProxy_property.ebObjectIndex,
+        object: self.mPadProxy_property,
         y: &y,
         view: view,
         valueExplorer:&self.mPadProxy_property.mValueExplorer

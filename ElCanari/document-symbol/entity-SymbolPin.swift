@@ -544,7 +544,7 @@ final class SymbolPin : SymbolObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "yPin",
-        idx: self.yPin_property.ebObjectIndex,
+        object: self.yPin_property,
         y: &y,
         view: view,
         observerExplorer: &self.yPin_property.mObserverExplorer,
@@ -552,7 +552,7 @@ final class SymbolPin : SymbolObject,
       )
       createEntryForPropertyNamed (
         "xName",
-        idx: self.xName_property.ebObjectIndex,
+        object: self.xName_property,
         y: &y,
         view: view,
         observerExplorer: &self.xName_property.mObserverExplorer,
@@ -560,7 +560,7 @@ final class SymbolPin : SymbolObject,
       )
       createEntryForPropertyNamed (
         "yName",
-        idx: self.yName_property.ebObjectIndex,
+        object: self.yName_property,
         y: &y,
         view: view,
         observerExplorer: &self.yName_property.mObserverExplorer,
@@ -568,7 +568,7 @@ final class SymbolPin : SymbolObject,
       )
       createEntryForPropertyNamed (
         "xNumber",
-        idx: self.xNumber_property.ebObjectIndex,
+        object: self.xNumber_property,
         y: &y,
         view: view,
         observerExplorer: &self.xNumber_property.mObserverExplorer,
@@ -576,7 +576,7 @@ final class SymbolPin : SymbolObject,
       )
       createEntryForPropertyNamed (
         "yNumber",
-        idx: self.yNumber_property.ebObjectIndex,
+        object: self.yNumber_property,
         y: &y,
         view: view,
         observerExplorer: &self.yNumber_property.mObserverExplorer,
@@ -584,7 +584,7 @@ final class SymbolPin : SymbolObject,
       )
       createEntryForPropertyNamed (
         "name",
-        idx: self.name_property.ebObjectIndex,
+        object: self.name_property,
         y: &y,
         view: view,
         observerExplorer: &self.name_property.mObserverExplorer,
@@ -592,7 +592,7 @@ final class SymbolPin : SymbolObject,
       )
       createEntryForPropertyNamed (
         "nameHorizontalAlignment",
-        idx: self.nameHorizontalAlignment_property.ebObjectIndex,
+        object: self.nameHorizontalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.nameHorizontalAlignment_property.mObserverExplorer,
@@ -600,7 +600,7 @@ final class SymbolPin : SymbolObject,
       )
       createEntryForPropertyNamed (
         "numberHorizontalAlignment",
-        idx: self.numberHorizontalAlignment_property.ebObjectIndex,
+        object: self.numberHorizontalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.numberHorizontalAlignment_property.mObserverExplorer,
@@ -608,7 +608,7 @@ final class SymbolPin : SymbolObject,
       )
       createEntryForPropertyNamed (
         "pinNameIsDisplayedInSchematics",
-        idx: self.pinNameIsDisplayedInSchematics_property.ebObjectIndex,
+        object: self.pinNameIsDisplayedInSchematics_property,
         y: &y,
         view: view,
         observerExplorer: &self.pinNameIsDisplayedInSchematics_property.mObserverExplorer,
@@ -616,7 +616,7 @@ final class SymbolPin : SymbolObject,
       )
       createEntryForPropertyNamed (
         "xPin",
-        idx: self.xPin_property.ebObjectIndex,
+        object: self.xPin_property,
         y: &y,
         view: view,
         observerExplorer: &self.xPin_property.mObserverExplorer,
@@ -625,7 +625,7 @@ final class SymbolPin : SymbolObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "filledBezierPath",
-        idx: self.filledBezierPath_property.ebObjectIndex,
+        object: self.filledBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.filledBezierPath_property.mObserverExplorer,
@@ -633,7 +633,7 @@ final class SymbolPin : SymbolObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -641,7 +641,7 @@ final class SymbolPin : SymbolObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -649,7 +649,7 @@ final class SymbolPin : SymbolObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,
@@ -657,7 +657,7 @@ final class SymbolPin : SymbolObject,
       )
       createEntryForPropertyNamed (
         "nameRect",
-        idx: self.nameRect_property.ebObjectIndex,
+        object: self.nameRect_property,
         y: &y,
         view: view,
         observerExplorer: &self.nameRect_property.mObserverExplorer,

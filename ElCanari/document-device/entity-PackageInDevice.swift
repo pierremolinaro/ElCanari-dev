@@ -574,7 +574,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mFileData",
-        idx: self.mFileData_property.ebObjectIndex,
+        object: self.mFileData_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFileData_property.mObserverExplorer,
@@ -582,7 +582,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mName",
-        idx: self.mName_property.ebObjectIndex,
+        object: self.mName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mName_property.mObserverExplorer,
@@ -590,7 +590,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mVersion",
-        idx: self.mVersion_property.ebObjectIndex,
+        object: self.mVersion_property,
         y: &y,
         view: view,
         observerExplorer: &self.mVersion_property.mObserverExplorer,
@@ -598,7 +598,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mStrokeBezierPath",
-        idx: self.mStrokeBezierPath_property.ebObjectIndex,
+        object: self.mStrokeBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
@@ -606,7 +606,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mX",
-        idx: self.mX_property.ebObjectIndex,
+        object: self.mX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX_property.mObserverExplorer,
@@ -614,7 +614,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mY",
-        idx: self.mY_property.ebObjectIndex,
+        object: self.mY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY_property.mObserverExplorer,
@@ -623,7 +623,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "versionString",
-        idx: self.versionString_property.ebObjectIndex,
+        object: self.versionString_property,
         y: &y,
         view: view,
         observerExplorer: &self.versionString_property.mObserverExplorer,
@@ -631,7 +631,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "documentSize",
-        idx: self.documentSize_property.ebObjectIndex,
+        object: self.documentSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.documentSize_property.mObserverExplorer,
@@ -639,7 +639,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "frontSidePadFilledBezierPathArray",
-        idx: self.frontSidePadFilledBezierPathArray_property.ebObjectIndex,
+        object: self.frontSidePadFilledBezierPathArray_property,
         y: &y,
         view: view,
         observerExplorer: &self.frontSidePadFilledBezierPathArray_property.mObserverExplorer,
@@ -647,7 +647,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "backSidePadFilledBezierPathArray",
-        idx: self.backSidePadFilledBezierPathArray_property.ebObjectIndex,
+        object: self.backSidePadFilledBezierPathArray_property,
         y: &y,
         view: view,
         observerExplorer: &self.backSidePadFilledBezierPathArray_property.mObserverExplorer,
@@ -655,7 +655,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -663,7 +663,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -671,7 +671,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "padNameSet",
-        idx: self.padNameSet_property.ebObjectIndex,
+        object: self.padNameSet_property,
         y: &y,
         view: view,
         observerExplorer: &self.padNameSet_property.mObserverExplorer,
@@ -680,7 +680,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mMasterPads",
-        idx:mMasterPads_property.ebObjectIndex,
+        object: mMasterPads_property,
         y: &y,
         view: view,
         valueExplorer:&mMasterPads_property.mValueExplorer
@@ -688,7 +688,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mRoot",
-        idx:self.mRoot_property.ebObjectIndex,
+        object: self.mRoot_property,
         y: &y,
         view: view,
         valueExplorer:&self.mRoot_property.mValueExplorer

@@ -360,7 +360,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_ProjectDocument_boardConnectorSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -381,7 +381,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "mComponentPadName",
-        idx: self.mComponentPadName_property.ebObjectIndex,
+        object: self.mComponentPadName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mComponentPadName_property.mObserverExplorer,
@@ -389,7 +389,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
       )
       createEntryForPropertyNamed (
         "mPadIndex",
-        idx: self.mPadIndex_property.ebObjectIndex,
+        object: self.mPadIndex_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPadIndex_property.mObserverExplorer,
@@ -397,7 +397,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
       )
       createEntryForPropertyNamed (
         "mX",
-        idx: self.mX_property.ebObjectIndex,
+        object: self.mX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX_property.mObserverExplorer,
@@ -405,7 +405,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
       )
       createEntryForPropertyNamed (
         "mY",
-        idx: self.mY_property.ebObjectIndex,
+        object: self.mY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY_property.mObserverExplorer,
@@ -413,7 +413,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
       )
       createEntryForPropertyNamed (
         "mDefaultHoleDiameterUnit",
-        idx: self.mDefaultHoleDiameterUnit_property.ebObjectIndex,
+        object: self.mDefaultHoleDiameterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDefaultHoleDiameterUnit_property.mObserverExplorer,
@@ -421,7 +421,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
       )
       createEntryForPropertyNamed (
         "mCustomHoleDiameter",
-        idx: self.mCustomHoleDiameter_property.ebObjectIndex,
+        object: self.mCustomHoleDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCustomHoleDiameter_property.mObserverExplorer,
@@ -429,7 +429,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
       )
       createEntryForPropertyNamed (
         "mCustomHoleDiameterUnit",
-        idx: self.mCustomHoleDiameterUnit_property.ebObjectIndex,
+        object: self.mCustomHoleDiameterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCustomHoleDiameterUnit_property.mObserverExplorer,
@@ -437,7 +437,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
       )
       createEntryForPropertyNamed (
         "mUsesCustomHoleDiameter",
-        idx: self.mUsesCustomHoleDiameter_property.ebObjectIndex,
+        object: self.mUsesCustomHoleDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.mUsesCustomHoleDiameter_property.mObserverExplorer,
@@ -445,7 +445,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
       )
       createEntryForPropertyNamed (
         "mDefaultPadDiameterUnit",
-        idx: self.mDefaultPadDiameterUnit_property.ebObjectIndex,
+        object: self.mDefaultPadDiameterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDefaultPadDiameterUnit_property.mObserverExplorer,
@@ -453,7 +453,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
       )
       createEntryForPropertyNamed (
         "mCustomPadDiameter",
-        idx: self.mCustomPadDiameter_property.ebObjectIndex,
+        object: self.mCustomPadDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCustomPadDiameter_property.mObserverExplorer,
@@ -461,7 +461,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
       )
       createEntryForPropertyNamed (
         "mCustomPadDiameterUnit",
-        idx: self.mCustomPadDiameterUnit_property.ebObjectIndex,
+        object: self.mCustomPadDiameterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCustomPadDiameterUnit_property.mObserverExplorer,
@@ -469,7 +469,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
       )
       createEntryForPropertyNamed (
         "mUsesCustomPadDiameter",
-        idx: self.mUsesCustomPadDiameter_property.ebObjectIndex,
+        object: self.mUsesCustomPadDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.mUsesCustomPadDiameter_property.mObserverExplorer,
@@ -486,7 +486,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_ProjectDocument_boardConnectorSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

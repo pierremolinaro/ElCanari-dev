@@ -446,7 +446,7 @@ final class NetInProject : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mNetName",
-        idx: self.mNetName_property.ebObjectIndex,
+        object: self.mNetName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNetName_property.mObserverExplorer,
@@ -455,7 +455,7 @@ final class NetInProject : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "netClassName",
-        idx: self.netClassName_property.ebObjectIndex,
+        object: self.netClassName_property,
         y: &y,
         view: view,
         observerExplorer: &self.netClassName_property.mObserverExplorer,
@@ -463,7 +463,7 @@ final class NetInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "netClassTrackWidth",
-        idx: self.netClassTrackWidth_property.ebObjectIndex,
+        object: self.netClassTrackWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.netClassTrackWidth_property.mObserverExplorer,
@@ -471,7 +471,7 @@ final class NetInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "netClassViaHoleDiameter",
-        idx: self.netClassViaHoleDiameter_property.ebObjectIndex,
+        object: self.netClassViaHoleDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.netClassViaHoleDiameter_property.mObserverExplorer,
@@ -479,7 +479,7 @@ final class NetInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "netClassViaPadDiameter",
-        idx: self.netClassViaPadDiameter_property.ebObjectIndex,
+        object: self.netClassViaPadDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.netClassViaPadDiameter_property.mObserverExplorer,
@@ -487,7 +487,7 @@ final class NetInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "wireColor",
-        idx: self.wireColor_property.ebObjectIndex,
+        object: self.wireColor_property,
         y: &y,
         view: view,
         observerExplorer: &self.wireColor_property.mObserverExplorer,
@@ -495,7 +495,7 @@ final class NetInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "netSchematicPointsInfo",
-        idx: self.netSchematicPointsInfo_property.ebObjectIndex,
+        object: self.netSchematicPointsInfo_property,
         y: &y,
         view: view,
         observerExplorer: &self.netSchematicPointsInfo_property.mObserverExplorer,
@@ -503,7 +503,7 @@ final class NetInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "trackCount",
-        idx: self.trackCount_property.ebObjectIndex,
+        object: self.trackCount_property,
         y: &y,
         view: view,
         observerExplorer: &self.trackCount_property.mObserverExplorer,
@@ -512,14 +512,14 @@ final class NetInProject : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mPoints",
-        idx:mPoints_property.ebObjectIndex,
+        object: mPoints_property,
         y: &y,
         view: view,
         valueExplorer:&mPoints_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mTracks",
-        idx:mTracks_property.ebObjectIndex,
+        object: mTracks_property,
         y: &y,
         view: view,
         valueExplorer:&mTracks_property.mValueExplorer
@@ -527,7 +527,7 @@ final class NetInProject : EBManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mNetClass",
-        idx:self.mNetClass_property.ebObjectIndex,
+        object: self.mNetClass_property,
         y: &y,
         view: view,
         valueExplorer:&self.mNetClass_property.mValueExplorer

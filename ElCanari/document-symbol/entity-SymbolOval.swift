@@ -299,7 +299,7 @@ final class SymbolOval : SymbolObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "y",
-        idx: self.y_property.ebObjectIndex,
+        object: self.y_property,
         y: &y,
         view: view,
         observerExplorer: &self.y_property.mObserverExplorer,
@@ -307,7 +307,7 @@ final class SymbolOval : SymbolObject,
       )
       createEntryForPropertyNamed (
         "width",
-        idx: self.width_property.ebObjectIndex,
+        object: self.width_property,
         y: &y,
         view: view,
         observerExplorer: &self.width_property.mObserverExplorer,
@@ -315,7 +315,7 @@ final class SymbolOval : SymbolObject,
       )
       createEntryForPropertyNamed (
         "height",
-        idx: self.height_property.ebObjectIndex,
+        object: self.height_property,
         y: &y,
         view: view,
         observerExplorer: &self.height_property.mObserverExplorer,
@@ -323,7 +323,7 @@ final class SymbolOval : SymbolObject,
       )
       createEntryForPropertyNamed (
         "x",
-        idx: self.x_property.ebObjectIndex,
+        object: self.x_property,
         y: &y,
         view: view,
         observerExplorer: &self.x_property.mObserverExplorer,
@@ -332,7 +332,7 @@ final class SymbolOval : SymbolObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "strokeBezierPath",
-        idx: self.strokeBezierPath_property.ebObjectIndex,
+        object: self.strokeBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
@@ -340,7 +340,7 @@ final class SymbolOval : SymbolObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -348,7 +348,7 @@ final class SymbolOval : SymbolObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -356,7 +356,7 @@ final class SymbolOval : SymbolObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,

@@ -186,7 +186,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -207,7 +207,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "y",
-        idx: self.y_property.ebObjectIndex,
+        object: self.y_property,
         y: &y,
         view: view,
         observerExplorer: &self.y_property.mObserverExplorer,
@@ -215,7 +215,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
       )
       createEntryForPropertyNamed (
         "width",
-        idx: self.width_property.ebObjectIndex,
+        object: self.width_property,
         y: &y,
         view: view,
         observerExplorer: &self.width_property.mObserverExplorer,
@@ -223,7 +223,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
       )
       createEntryForPropertyNamed (
         "height",
-        idx: self.height_property.ebObjectIndex,
+        object: self.height_property,
         y: &y,
         view: view,
         observerExplorer: &self.height_property.mObserverExplorer,
@@ -231,7 +231,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
       )
       createEntryForPropertyNamed (
         "xUnit",
-        idx: self.xUnit_property.ebObjectIndex,
+        object: self.xUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.xUnit_property.mObserverExplorer,
@@ -239,7 +239,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
       )
       createEntryForPropertyNamed (
         "yUnit",
-        idx: self.yUnit_property.ebObjectIndex,
+        object: self.yUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.yUnit_property.mObserverExplorer,
@@ -247,7 +247,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
       )
       createEntryForPropertyNamed (
         "widthUnit",
-        idx: self.widthUnit_property.ebObjectIndex,
+        object: self.widthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.widthUnit_property.mObserverExplorer,
@@ -255,7 +255,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
       )
       createEntryForPropertyNamed (
         "heightUnit",
-        idx: self.heightUnit_property.ebObjectIndex,
+        object: self.heightUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.heightUnit_property.mObserverExplorer,
@@ -263,7 +263,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
       )
       createEntryForPropertyNamed (
         "x",
-        idx: self.x_property.ebObjectIndex,
+        object: self.x_property,
         y: &y,
         view: view,
         observerExplorer: &self.x_property.mObserverExplorer,
@@ -280,7 +280,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

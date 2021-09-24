@@ -364,7 +364,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -385,7 +385,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "xCenter",
-        idx: self.xCenter_property.ebObjectIndex,
+        object: self.xCenter_property,
         y: &y,
         view: view,
         observerExplorer: &self.xCenter_property.mObserverExplorer,
@@ -393,7 +393,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "yCenter",
-        idx: self.yCenter_property.ebObjectIndex,
+        object: self.yCenter_property,
         y: &y,
         view: view,
         observerExplorer: &self.yCenter_property.mObserverExplorer,
@@ -401,7 +401,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "width",
-        idx: self.width_property.ebObjectIndex,
+        object: self.width_property,
         y: &y,
         view: view,
         observerExplorer: &self.width_property.mObserverExplorer,
@@ -409,7 +409,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "height",
-        idx: self.height_property.ebObjectIndex,
+        object: self.height_property,
         y: &y,
         view: view,
         observerExplorer: &self.height_property.mObserverExplorer,
@@ -417,7 +417,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "holeWidth",
-        idx: self.holeWidth_property.ebObjectIndex,
+        object: self.holeWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.holeWidth_property.mObserverExplorer,
@@ -425,7 +425,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "holeHeight",
-        idx: self.holeHeight_property.ebObjectIndex,
+        object: self.holeHeight_property,
         y: &y,
         view: view,
         observerExplorer: &self.holeHeight_property.mObserverExplorer,
@@ -433,7 +433,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "padShape",
-        idx: self.padShape_property.ebObjectIndex,
+        object: self.padShape_property,
         y: &y,
         view: view,
         observerExplorer: &self.padShape_property.mObserverExplorer,
@@ -441,7 +441,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "padStyle",
-        idx: self.padStyle_property.ebObjectIndex,
+        object: self.padStyle_property,
         y: &y,
         view: view,
         observerExplorer: &self.padStyle_property.mObserverExplorer,
@@ -449,7 +449,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "padNumber",
-        idx: self.padNumber_property.ebObjectIndex,
+        object: self.padNumber_property,
         y: &y,
         view: view,
         observerExplorer: &self.padNumber_property.mObserverExplorer,
@@ -457,7 +457,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "xCenterUnit",
-        idx: self.xCenterUnit_property.ebObjectIndex,
+        object: self.xCenterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.xCenterUnit_property.mObserverExplorer,
@@ -465,7 +465,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "yCenterUnit",
-        idx: self.yCenterUnit_property.ebObjectIndex,
+        object: self.yCenterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.yCenterUnit_property.mObserverExplorer,
@@ -473,7 +473,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "widthUnit",
-        idx: self.widthUnit_property.ebObjectIndex,
+        object: self.widthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.widthUnit_property.mObserverExplorer,
@@ -481,7 +481,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "heightUnit",
-        idx: self.heightUnit_property.ebObjectIndex,
+        object: self.heightUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.heightUnit_property.mObserverExplorer,
@@ -489,7 +489,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "holeWidthUnit",
-        idx: self.holeWidthUnit_property.ebObjectIndex,
+        object: self.holeWidthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.holeWidthUnit_property.mObserverExplorer,
@@ -497,7 +497,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "holeHeightUnit",
-        idx: self.holeHeightUnit_property.ebObjectIndex,
+        object: self.holeHeightUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.holeHeightUnit_property.mObserverExplorer,
@@ -505,7 +505,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       )
       createEntryForPropertyNamed (
         "annularRingUnit",
-        idx: self.annularRingUnit_property.ebObjectIndex,
+        object: self.annularRingUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.annularRingUnit_property.mObserverExplorer,
@@ -522,7 +522,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

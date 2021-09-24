@@ -473,7 +473,7 @@ final class SlavePadInDevice : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mCenterX",
-        idx: self.mCenterX_property.ebObjectIndex,
+        object: self.mCenterX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCenterX_property.mObserverExplorer,
@@ -481,7 +481,7 @@ final class SlavePadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mCenterY",
-        idx: self.mCenterY_property.ebObjectIndex,
+        object: self.mCenterY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCenterY_property.mObserverExplorer,
@@ -489,7 +489,7 @@ final class SlavePadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mWidth",
-        idx: self.mWidth_property.ebObjectIndex,
+        object: self.mWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.mWidth_property.mObserverExplorer,
@@ -497,7 +497,7 @@ final class SlavePadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mHeight",
-        idx: self.mHeight_property.ebObjectIndex,
+        object: self.mHeight_property,
         y: &y,
         view: view,
         observerExplorer: &self.mHeight_property.mObserverExplorer,
@@ -505,7 +505,7 @@ final class SlavePadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mHoleWidth",
-        idx: self.mHoleWidth_property.ebObjectIndex,
+        object: self.mHoleWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.mHoleWidth_property.mObserverExplorer,
@@ -513,7 +513,7 @@ final class SlavePadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mHoleHeight",
-        idx: self.mHoleHeight_property.ebObjectIndex,
+        object: self.mHoleHeight_property,
         y: &y,
         view: view,
         observerExplorer: &self.mHoleHeight_property.mObserverExplorer,
@@ -521,7 +521,7 @@ final class SlavePadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mShape",
-        idx: self.mShape_property.ebObjectIndex,
+        object: self.mShape_property,
         y: &y,
         view: view,
         observerExplorer: &self.mShape_property.mObserverExplorer,
@@ -529,7 +529,7 @@ final class SlavePadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mStyle",
-        idx: self.mStyle_property.ebObjectIndex,
+        object: self.mStyle_property,
         y: &y,
         view: view,
         observerExplorer: &self.mStyle_property.mObserverExplorer,
@@ -538,7 +538,7 @@ final class SlavePadInDevice : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "frontSideFilledBezierPath",
-        idx: self.frontSideFilledBezierPath_property.ebObjectIndex,
+        object: self.frontSideFilledBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.frontSideFilledBezierPath_property.mObserverExplorer,
@@ -546,7 +546,7 @@ final class SlavePadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "backSideFilledBezierPath",
-        idx: self.backSideFilledBezierPath_property.ebObjectIndex,
+        object: self.backSideFilledBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.backSideFilledBezierPath_property.mObserverExplorer,
@@ -554,7 +554,7 @@ final class SlavePadInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "padNumberDisplay",
-        idx: self.padNumberDisplay_property.ebObjectIndex,
+        object: self.padNumberDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.padNumberDisplay_property.mObserverExplorer,
@@ -564,7 +564,7 @@ final class SlavePadInDevice : EBManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mMasterPad",
-        idx:self.mMasterPad_property.ebObjectIndex,
+        object: self.mMasterPad_property,
         y: &y,
         view: view,
         valueExplorer:&self.mMasterPad_property.mValueExplorer

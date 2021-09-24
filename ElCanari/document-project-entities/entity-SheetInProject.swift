@@ -366,7 +366,7 @@ final class SheetInProject : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mSheetTitle",
-        idx: self.mSheetTitle_property.ebObjectIndex,
+        object: self.mSheetTitle_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSheetTitle_property.mObserverExplorer,
@@ -375,7 +375,7 @@ final class SheetInProject : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,
@@ -383,7 +383,7 @@ final class SheetInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "connectedPoints",
-        idx: self.connectedPoints_property.ebObjectIndex,
+        object: self.connectedPoints_property,
         y: &y,
         view: view,
         observerExplorer: &self.connectedPoints_property.mObserverExplorer,
@@ -391,7 +391,7 @@ final class SheetInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "connexionWarnings",
-        idx: self.connexionWarnings_property.ebObjectIndex,
+        object: self.connexionWarnings_property,
         y: &y,
         view: view,
         observerExplorer: &self.connexionWarnings_property.mObserverExplorer,
@@ -399,7 +399,7 @@ final class SheetInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "connexionErrors",
-        idx: self.connexionErrors_property.ebObjectIndex,
+        object: self.connexionErrors_property,
         y: &y,
         view: view,
         observerExplorer: &self.connexionErrors_property.mObserverExplorer,
@@ -407,7 +407,7 @@ final class SheetInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "sheetDescriptor",
-        idx: self.sheetDescriptor_property.ebObjectIndex,
+        object: self.sheetDescriptor_property,
         y: &y,
         view: view,
         observerExplorer: &self.sheetDescriptor_property.mObserverExplorer,
@@ -416,14 +416,14 @@ final class SheetInProject : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mObjects",
-        idx:mObjects_property.ebObjectIndex,
+        object: mObjects_property,
         y: &y,
         view: view,
         valueExplorer:&mObjects_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mPoints",
-        idx:mPoints_property.ebObjectIndex,
+        object: mPoints_property,
         y: &y,
         view: view,
         valueExplorer:&mPoints_property.mValueExplorer
@@ -431,7 +431,7 @@ final class SheetInProject : EBManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mRoot",
-        idx:self.mRoot_property.ebObjectIndex,
+        object: self.mRoot_property,
         y: &y,
         view: view,
         valueExplorer:&self.mRoot_property.mValueExplorer

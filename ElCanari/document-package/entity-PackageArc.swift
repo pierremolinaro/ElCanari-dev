@@ -576,7 +576,7 @@ final class PackageArc : PackageObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "yCenter",
-        idx: self.yCenter_property.ebObjectIndex,
+        object: self.yCenter_property,
         y: &y,
         view: view,
         observerExplorer: &self.yCenter_property.mObserverExplorer,
@@ -584,7 +584,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "radius",
-        idx: self.radius_property.ebObjectIndex,
+        object: self.radius_property,
         y: &y,
         view: view,
         observerExplorer: &self.radius_property.mObserverExplorer,
@@ -592,7 +592,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "startAngle",
-        idx: self.startAngle_property.ebObjectIndex,
+        object: self.startAngle_property,
         y: &y,
         view: view,
         observerExplorer: &self.startAngle_property.mObserverExplorer,
@@ -600,7 +600,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "arcAngle",
-        idx: self.arcAngle_property.ebObjectIndex,
+        object: self.arcAngle_property,
         y: &y,
         view: view,
         observerExplorer: &self.arcAngle_property.mObserverExplorer,
@@ -608,7 +608,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "startTangent",
-        idx: self.startTangent_property.ebObjectIndex,
+        object: self.startTangent_property,
         y: &y,
         view: view,
         observerExplorer: &self.startTangent_property.mObserverExplorer,
@@ -616,7 +616,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "endTangent",
-        idx: self.endTangent_property.ebObjectIndex,
+        object: self.endTangent_property,
         y: &y,
         view: view,
         observerExplorer: &self.endTangent_property.mObserverExplorer,
@@ -624,7 +624,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "pathIsClosed",
-        idx: self.pathIsClosed_property.ebObjectIndex,
+        object: self.pathIsClosed_property,
         y: &y,
         view: view,
         observerExplorer: &self.pathIsClosed_property.mObserverExplorer,
@@ -632,7 +632,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "xCenterUnit",
-        idx: self.xCenterUnit_property.ebObjectIndex,
+        object: self.xCenterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.xCenterUnit_property.mObserverExplorer,
@@ -640,7 +640,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "yCenterUnit",
-        idx: self.yCenterUnit_property.ebObjectIndex,
+        object: self.yCenterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.yCenterUnit_property.mObserverExplorer,
@@ -648,7 +648,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "radiusUnit",
-        idx: self.radiusUnit_property.ebObjectIndex,
+        object: self.radiusUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.radiusUnit_property.mObserverExplorer,
@@ -656,7 +656,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "startTangentUnit",
-        idx: self.startTangentUnit_property.ebObjectIndex,
+        object: self.startTangentUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.startTangentUnit_property.mObserverExplorer,
@@ -664,7 +664,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "endTangentUnit",
-        idx: self.endTangentUnit_property.ebObjectIndex,
+        object: self.endTangentUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.endTangentUnit_property.mObserverExplorer,
@@ -672,7 +672,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "xCenter",
-        idx: self.xCenter_property.ebObjectIndex,
+        object: self.xCenter_property,
         y: &y,
         view: view,
         observerExplorer: &self.xCenter_property.mObserverExplorer,
@@ -681,7 +681,7 @@ final class PackageArc : PackageObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "strokeBezierPath",
-        idx: self.strokeBezierPath_property.ebObjectIndex,
+        object: self.strokeBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
@@ -689,7 +689,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -697,7 +697,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -705,7 +705,7 @@ final class PackageArc : PackageObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,

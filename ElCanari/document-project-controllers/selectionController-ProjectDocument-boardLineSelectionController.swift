@@ -199,7 +199,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_ProjectDocument_boardLineSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -220,7 +220,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "mWidthUnit",
-        idx: self.mWidthUnit_property.ebObjectIndex,
+        object: self.mWidthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mWidthUnit_property.mObserverExplorer,
@@ -228,7 +228,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
       )
       createEntryForPropertyNamed (
         "mX1",
-        idx: self.mX1_property.ebObjectIndex,
+        object: self.mX1_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX1_property.mObserverExplorer,
@@ -236,7 +236,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
       )
       createEntryForPropertyNamed (
         "mX1Unit",
-        idx: self.mX1Unit_property.ebObjectIndex,
+        object: self.mX1Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX1Unit_property.mObserverExplorer,
@@ -244,7 +244,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
       )
       createEntryForPropertyNamed (
         "mY1",
-        idx: self.mY1_property.ebObjectIndex,
+        object: self.mY1_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY1_property.mObserverExplorer,
@@ -252,7 +252,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
       )
       createEntryForPropertyNamed (
         "mY1Unit",
-        idx: self.mY1Unit_property.ebObjectIndex,
+        object: self.mY1Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY1Unit_property.mObserverExplorer,
@@ -260,7 +260,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
       )
       createEntryForPropertyNamed (
         "mX2",
-        idx: self.mX2_property.ebObjectIndex,
+        object: self.mX2_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX2_property.mObserverExplorer,
@@ -268,7 +268,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
       )
       createEntryForPropertyNamed (
         "mX2Unit",
-        idx: self.mX2Unit_property.ebObjectIndex,
+        object: self.mX2Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX2Unit_property.mObserverExplorer,
@@ -276,7 +276,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
       )
       createEntryForPropertyNamed (
         "mY2",
-        idx: self.mY2_property.ebObjectIndex,
+        object: self.mY2_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY2_property.mObserverExplorer,
@@ -284,7 +284,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
       )
       createEntryForPropertyNamed (
         "mY2Unit",
-        idx: self.mY2Unit_property.ebObjectIndex,
+        object: self.mY2Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY2Unit_property.mObserverExplorer,
@@ -292,7 +292,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
       )
       createEntryForPropertyNamed (
         "mLayer",
-        idx: self.mLayer_property.ebObjectIndex,
+        object: self.mLayer_property,
         y: &y,
         view: view,
         observerExplorer: &self.mLayer_property.mObserverExplorer,
@@ -300,7 +300,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
       )
       createEntryForPropertyNamed (
         "mWidth",
-        idx: self.mWidth_property.ebObjectIndex,
+        object: self.mWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.mWidth_property.mObserverExplorer,
@@ -317,7 +317,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_ProjectDocument_boardLineSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

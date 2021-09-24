@@ -30,7 +30,7 @@ class EBOutletEvent : EBEvent {
       if gPendingOutletEvents.count == 0 {
         appendMessageString ("Post events\n")
       }
-      let str = "  " +  explorerIndexString (self.ebObjectIndex) + String (describing: type (of: self)) + "\n"
+      let str = "  " +  self.explorerIndexString + String (describing: type (of: self)) + "\n"
       if !self.mEventIsPosted {
         appendMessageString (str)
       }else{ // Event already posted
@@ -70,19 +70,11 @@ class EBOutletEvent : EBEvent {
 
 func flushOutletEvents () {
   if gPendingOutletEvents.count > 0 {
-    if logEvents () {
-      appendMessageString ("Flush outlet events\n", color: NSColor.blue)
-    }
-//    let startOperationQueue = Date ()
-//    let operationQueue = OperationQueue ()
-//    for event in gPendingOutletEvents {
-//      event.computeAsynchronously (operationQueue)
-//    }
-//    operationQueue.waitUntilAllOperationsAreFinished ()
-//    if LOG_OPERATION_DURATION {
-//      let durationMS = Int (Date ().timeIntervalSince (startOperationQueue) * 1000.0)
-//      Swift.print ("Compute \(gPendingOutletEvents.count) transient properties: \(durationMS) ms")
-//    }
+    #if BUILD_OBJECT_EXPLORER
+      if logEvents () {
+        appendMessageString ("Flush outlet events\n", color: NSColor.blue)
+      }
+    #endif
     let startFlushOutletEvent = Date ()
     while gPendingOutletEvents.count > 0 {
       let pendingOutletEvents = gPendingOutletEvents
@@ -91,24 +83,30 @@ func flushOutletEvents () {
         event.mEventIsPosted = false
       }
       for event in pendingOutletEvents {
-        if logEvents () {
-          let message = "  " +  explorerIndexString (event.ebObjectIndex) + String (describing: type (of: event)) + "\n"
-          appendMessageString (message, color: NSColor.blue)
-        }
+        #if BUILD_OBJECT_EXPLORER
+          if logEvents () {
+            let message = "  " +  event.explorerIndexString + String (describing: type (of: event)) + "\n"
+            appendMessageString (message, color: NSColor.blue)
+          }
+        #endif
         event.sendUpdateEvent ()
       }
-      if gPendingOutletEvents.count > 0 && logEvents () {
-        let message = String (gPendingOutletEvents.count) +  " outlet event(s) posted during flush\n"
-        appendMessageString (message, color: NSColor.red)
-      }
+      #if BUILD_OBJECT_EXPLORER
+        if gPendingOutletEvents.count > 0 && logEvents () {
+          let message = String (gPendingOutletEvents.count) +  " outlet event(s) posted during flush\n"
+          appendMessageString (message, color: NSColor.red)
+        }
+      #endif
     }
     if LOG_OPERATION_DURATION {
       let durationFlushMS = Int (Date ().timeIntervalSince (startFlushOutletEvent) * 1000.0)
       Swift.print ("Flush Outlet Events \(durationFlushMS) ms")
     }
-    if logEvents () {
-      appendMessageString ("--------------------------------------\n", color: NSColor.blue)
-    }
+    #if BUILD_OBJECT_EXPLORER
+      if logEvents () {
+        appendMessageString ("--------------------------------------\n", color: NSColor.blue)
+      }
+    #endif
   }
 }
 
@@ -116,16 +114,22 @@ func flushOutletEvents () {
 //    A P P E N D    T O    T R A N S I E N T    E V E N T    L O G
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func logEvents () -> Bool {
-  let theApp = NSApp as! EBApplication
-  return theApp.logEvents ()
-}
+  func logEvents () -> Bool {
+    #if BUILD_OBJECT_EXPLORER
+      let theApp = NSApp as! EBApplication
+      return theApp.logEvents ()
+    #else
+      return false
+    #endif
+  }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func appendToTransientEventLog (_ message : String) {
-  let theApp = NSApp as! EBApplication
-  theApp.appendToTransientEventLog (message)
+  #if BUILD_OBJECT_EXPLORER
+    let theApp = NSApp as! EBApplication
+    theApp.appendToTransientEventLog (message)
+  #endif
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

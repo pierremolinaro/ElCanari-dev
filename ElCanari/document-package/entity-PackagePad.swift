@@ -1109,7 +1109,7 @@ final class PackagePad : PackageObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "xCenter",
-        idx: self.xCenter_property.ebObjectIndex,
+        object: self.xCenter_property,
         y: &y,
         view: view,
         observerExplorer: &self.xCenter_property.mObserverExplorer,
@@ -1117,7 +1117,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "yCenter",
-        idx: self.yCenter_property.ebObjectIndex,
+        object: self.yCenter_property,
         y: &y,
         view: view,
         observerExplorer: &self.yCenter_property.mObserverExplorer,
@@ -1125,7 +1125,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "width",
-        idx: self.width_property.ebObjectIndex,
+        object: self.width_property,
         y: &y,
         view: view,
         observerExplorer: &self.width_property.mObserverExplorer,
@@ -1133,7 +1133,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "height",
-        idx: self.height_property.ebObjectIndex,
+        object: self.height_property,
         y: &y,
         view: view,
         observerExplorer: &self.height_property.mObserverExplorer,
@@ -1141,7 +1141,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "holeWidth",
-        idx: self.holeWidth_property.ebObjectIndex,
+        object: self.holeWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.holeWidth_property.mObserverExplorer,
@@ -1149,7 +1149,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "holeHeight",
-        idx: self.holeHeight_property.ebObjectIndex,
+        object: self.holeHeight_property,
         y: &y,
         view: view,
         observerExplorer: &self.holeHeight_property.mObserverExplorer,
@@ -1157,7 +1157,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "padShape",
-        idx: self.padShape_property.ebObjectIndex,
+        object: self.padShape_property,
         y: &y,
         view: view,
         observerExplorer: &self.padShape_property.mObserverExplorer,
@@ -1165,7 +1165,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "padStyle",
-        idx: self.padStyle_property.ebObjectIndex,
+        object: self.padStyle_property,
         y: &y,
         view: view,
         observerExplorer: &self.padStyle_property.mObserverExplorer,
@@ -1173,7 +1173,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "padNumber",
-        idx: self.padNumber_property.ebObjectIndex,
+        object: self.padNumber_property,
         y: &y,
         view: view,
         observerExplorer: &self.padNumber_property.mObserverExplorer,
@@ -1181,7 +1181,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "xCenterUnit",
-        idx: self.xCenterUnit_property.ebObjectIndex,
+        object: self.xCenterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.xCenterUnit_property.mObserverExplorer,
@@ -1189,7 +1189,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "yCenterUnit",
-        idx: self.yCenterUnit_property.ebObjectIndex,
+        object: self.yCenterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.yCenterUnit_property.mObserverExplorer,
@@ -1197,7 +1197,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "widthUnit",
-        idx: self.widthUnit_property.ebObjectIndex,
+        object: self.widthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.widthUnit_property.mObserverExplorer,
@@ -1205,7 +1205,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "heightUnit",
-        idx: self.heightUnit_property.ebObjectIndex,
+        object: self.heightUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.heightUnit_property.mObserverExplorer,
@@ -1213,7 +1213,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "holeWidthUnit",
-        idx: self.holeWidthUnit_property.ebObjectIndex,
+        object: self.holeWidthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.holeWidthUnit_property.mObserverExplorer,
@@ -1221,7 +1221,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "holeHeightUnit",
-        idx: self.holeHeightUnit_property.ebObjectIndex,
+        object: self.holeHeightUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.holeHeightUnit_property.mObserverExplorer,
@@ -1229,7 +1229,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "annularRingUnit",
-        idx: self.annularRingUnit_property.ebObjectIndex,
+        object: self.annularRingUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.annularRingUnit_property.mObserverExplorer,
@@ -1238,7 +1238,7 @@ final class PackagePad : PackageObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -1246,7 +1246,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -1254,7 +1254,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "padNameForDisplay",
-        idx: self.padNameForDisplay_property.ebObjectIndex,
+        object: self.padNameForDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.padNameForDisplay_property.mObserverExplorer,
@@ -1262,7 +1262,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,
@@ -1270,7 +1270,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "padIsTraversing",
-        idx: self.padIsTraversing_property.ebObjectIndex,
+        object: self.padIsTraversing_property,
         y: &y,
         view: view,
         observerExplorer: &self.padIsTraversing_property.mObserverExplorer,
@@ -1278,7 +1278,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "annularRing",
-        idx: self.annularRing_property.ebObjectIndex,
+        object: self.annularRing_property,
         y: &y,
         view: view,
         observerExplorer: &self.annularRing_property.mObserverExplorer,
@@ -1286,7 +1286,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "padNameWithZoneName",
-        idx: self.padNameWithZoneName_property.ebObjectIndex,
+        object: self.padNameWithZoneName_property,
         y: &y,
         view: view,
         observerExplorer: &self.padNameWithZoneName_property.mObserverExplorer,
@@ -1294,7 +1294,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "zoneName",
-        idx: self.zoneName_property.ebObjectIndex,
+        object: self.zoneName_property,
         y: &y,
         view: view,
         observerExplorer: &self.zoneName_property.mObserverExplorer,
@@ -1302,7 +1302,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "noZone",
-        idx: self.noZone_property.ebObjectIndex,
+        object: self.noZone_property,
         y: &y,
         view: view,
         observerExplorer: &self.noZone_property.mObserverExplorer,
@@ -1310,7 +1310,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "zoneAllowsManualRenumbering",
-        idx: self.zoneAllowsManualRenumbering_property.ebObjectIndex,
+        object: self.zoneAllowsManualRenumbering_property,
         y: &y,
         view: view,
         observerExplorer: &self.zoneAllowsManualRenumbering_property.mObserverExplorer,
@@ -1318,7 +1318,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "slavePadCount",
-        idx: self.slavePadCount_property.ebObjectIndex,
+        object: self.slavePadCount_property,
         y: &y,
         view: view,
         observerExplorer: &self.slavePadCount_property.mObserverExplorer,
@@ -1326,7 +1326,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "masterPadObjectIndex",
-        idx: self.masterPadObjectIndex_property.ebObjectIndex,
+        object: self.masterPadObjectIndex_property,
         y: &y,
         view: view,
         observerExplorer: &self.masterPadObjectIndex_property.mObserverExplorer,
@@ -1334,7 +1334,7 @@ final class PackagePad : PackageObject,
       )
       createEntryForPropertyNamed (
         "padNumberDisplay",
-        idx: self.padNumberDisplay_property.ebObjectIndex,
+        object: self.padNumberDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.padNumberDisplay_property.mObserverExplorer,
@@ -1343,7 +1343,7 @@ final class PackagePad : PackageObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "slaves",
-        idx:slaves_property.ebObjectIndex,
+        object: slaves_property,
         y: &y,
         view: view,
         valueExplorer:&slaves_property.mValueExplorer
@@ -1351,7 +1351,7 @@ final class PackagePad : PackageObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "zone",
-        idx:self.zone_property.ebObjectIndex,
+        object: self.zone_property,
         y: &y,
         view: view,
         valueExplorer:&self.zone_property.mValueExplorer

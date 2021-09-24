@@ -551,7 +551,7 @@ final class BoardText : BoardObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mX",
-        idx: self.mX_property.ebObjectIndex,
+        object: self.mX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX_property.mObserverExplorer,
@@ -559,7 +559,7 @@ final class BoardText : BoardObject,
       )
       createEntryForPropertyNamed (
         "mY",
-        idx: self.mY_property.ebObjectIndex,
+        object: self.mY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY_property.mObserverExplorer,
@@ -567,7 +567,7 @@ final class BoardText : BoardObject,
       )
       createEntryForPropertyNamed (
         "mFontSize",
-        idx: self.mFontSize_property.ebObjectIndex,
+        object: self.mFontSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFontSize_property.mObserverExplorer,
@@ -575,7 +575,7 @@ final class BoardText : BoardObject,
       )
       createEntryForPropertyNamed (
         "mLayer",
-        idx: self.mLayer_property.ebObjectIndex,
+        object: self.mLayer_property,
         y: &y,
         view: view,
         observerExplorer: &self.mLayer_property.mObserverExplorer,
@@ -583,7 +583,7 @@ final class BoardText : BoardObject,
       )
       createEntryForPropertyNamed (
         "mText",
-        idx: self.mText_property.ebObjectIndex,
+        object: self.mText_property,
         y: &y,
         view: view,
         observerExplorer: &self.mText_property.mObserverExplorer,
@@ -591,7 +591,7 @@ final class BoardText : BoardObject,
       )
       createEntryForPropertyNamed (
         "mHorizontalAlignment",
-        idx: self.mHorizontalAlignment_property.ebObjectIndex,
+        object: self.mHorizontalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mHorizontalAlignment_property.mObserverExplorer,
@@ -599,7 +599,7 @@ final class BoardText : BoardObject,
       )
       createEntryForPropertyNamed (
         "mVerticalAlignment",
-        idx: self.mVerticalAlignment_property.ebObjectIndex,
+        object: self.mVerticalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mVerticalAlignment_property.mObserverExplorer,
@@ -607,7 +607,7 @@ final class BoardText : BoardObject,
       )
       createEntryForPropertyNamed (
         "mRotation",
-        idx: self.mRotation_property.ebObjectIndex,
+        object: self.mRotation_property,
         y: &y,
         view: view,
         observerExplorer: &self.mRotation_property.mObserverExplorer,
@@ -615,7 +615,7 @@ final class BoardText : BoardObject,
       )
       createEntryForPropertyNamed (
         "mWeight",
-        idx: self.mWeight_property.ebObjectIndex,
+        object: self.mWeight_property,
         y: &y,
         view: view,
         observerExplorer: &self.mWeight_property.mObserverExplorer,
@@ -623,7 +623,7 @@ final class BoardText : BoardObject,
       )
       createEntryForPropertyNamed (
         "mOblique",
-        idx: self.mOblique_property.ebObjectIndex,
+        object: self.mOblique_property,
         y: &y,
         view: view,
         observerExplorer: &self.mOblique_property.mObserverExplorer,
@@ -632,7 +632,7 @@ final class BoardText : BoardObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -640,7 +640,7 @@ final class BoardText : BoardObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -648,7 +648,7 @@ final class BoardText : BoardObject,
       )
       createEntryForPropertyNamed (
         "fontName",
-        idx: self.fontName_property.ebObjectIndex,
+        object: self.fontName_property,
         y: &y,
         view: view,
         observerExplorer: &self.fontName_property.mObserverExplorer,
@@ -656,7 +656,7 @@ final class BoardText : BoardObject,
       )
       createEntryForPropertyNamed (
         "signatureForERCChecking",
-        idx: self.signatureForERCChecking_property.ebObjectIndex,
+        object: self.signatureForERCChecking_property,
         y: &y,
         view: view,
         observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
@@ -666,7 +666,7 @@ final class BoardText : BoardObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mFont",
-        idx:self.mFont_property.ebObjectIndex,
+        object: self.mFont_property,
         y: &y,
         view: view,
         valueExplorer:&self.mFont_property.mValueExplorer

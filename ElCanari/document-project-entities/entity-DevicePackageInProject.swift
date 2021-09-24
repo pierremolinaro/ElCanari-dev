@@ -154,7 +154,7 @@ final class DevicePackageInProject : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mPackageName",
-        idx: self.mPackageName_property.ebObjectIndex,
+        object: self.mPackageName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPackageName_property.mObserverExplorer,
@@ -162,7 +162,7 @@ final class DevicePackageInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mStrokeBezierPath",
-        idx: self.mStrokeBezierPath_property.ebObjectIndex,
+        object: self.mStrokeBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
@@ -171,7 +171,7 @@ final class DevicePackageInProject : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "packagePadDictionary",
-        idx: self.packagePadDictionary_property.ebObjectIndex,
+        object: self.packagePadDictionary_property,
         y: &y,
         view: view,
         observerExplorer: &self.packagePadDictionary_property.mObserverExplorer,
@@ -180,7 +180,7 @@ final class DevicePackageInProject : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mMasterPads",
-        idx:mMasterPads_property.ebObjectIndex,
+        object: mMasterPads_property,
         y: &y,
         view: view,
         valueExplorer:&mMasterPads_property.mValueExplorer

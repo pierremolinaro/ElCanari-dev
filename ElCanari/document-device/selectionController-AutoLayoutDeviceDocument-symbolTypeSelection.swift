@@ -161,7 +161,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
       view.addSubview (tf)
       let valueExplorer = NSButton (frame:thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -182,7 +182,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "mFileData",
-        idx: self.mFileData_property.ebObjectIndex,
+        object: self.mFileData_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFileData_property.mObserverExplorer,
@@ -190,7 +190,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
       )
       createEntryForPropertyNamed (
         "mFilledBezierPath",
-        idx: self.mFilledBezierPath_property.ebObjectIndex,
+        object: self.mFilledBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFilledBezierPath_property.mObserverExplorer,
@@ -198,7 +198,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
       )
       createEntryForPropertyNamed (
         "mStrokeBezierPath",
-        idx: self.mStrokeBezierPath_property.ebObjectIndex,
+        object: self.mStrokeBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
@@ -206,7 +206,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
       )
       createEntryForPropertyNamed (
         "mTypeName",
-        idx: self.mTypeName_property.ebObjectIndex,
+        object: self.mTypeName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mTypeName_property.mObserverExplorer,
@@ -214,7 +214,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
       )
       createEntryForPropertyNamed (
         "mVersion",
-        idx: self.mVersion_property.ebObjectIndex,
+        object: self.mVersion_property,
         y: &y,
         view: view,
         observerExplorer: &self.mVersion_property.mObserverExplorer,
@@ -231,7 +231,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

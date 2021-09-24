@@ -193,7 +193,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mPadName",
-        idx: self.mPadName_property.ebObjectIndex,
+        object: self.mPadName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPadName_property.mObserverExplorer,
@@ -202,7 +202,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "pinPadAssignment",
-        idx: self.pinPadAssignment_property.ebObjectIndex,
+        object: self.pinPadAssignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.pinPadAssignment_property.mObserverExplorer,
@@ -210,7 +210,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "descriptor",
-        idx: self.descriptor_property.ebObjectIndex,
+        object: self.descriptor_property,
         y: &y,
         view: view,
         observerExplorer: &self.descriptor_property.mObserverExplorer,
@@ -220,7 +220,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mPin",
-        idx:self.mPin_property.ebObjectIndex,
+        object: self.mPin_property,
         y: &y,
         view: view,
         valueExplorer:&self.mPin_property.mValueExplorer

@@ -145,7 +145,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBSwiftBaseOb
       view.addSubview (tf)
       let valueExplorer = NSButton (frame:thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_FontDocument_mCharacterSelection.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -166,7 +166,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBSwiftBaseOb
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "advance",
-        idx: self.advance_property.ebObjectIndex,
+        object: self.advance_property,
         y: &y,
         view: view,
         observerExplorer: &self.advance_property.mObserverExplorer,
@@ -174,7 +174,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBSwiftBaseOb
       )
       createEntryForPropertyNamed (
         "codePoint",
-        idx: self.codePoint_property.ebObjectIndex,
+        object: self.codePoint_property,
         y: &y,
         view: view,
         observerExplorer: &self.codePoint_property.mObserverExplorer,
@@ -182,7 +182,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBSwiftBaseOb
       )
       createEntryForPropertyNamed (
         "mWarnsWhenAdvanceIsZero",
-        idx: self.mWarnsWhenAdvanceIsZero_property.ebObjectIndex,
+        object: self.mWarnsWhenAdvanceIsZero_property,
         y: &y,
         view: view,
         observerExplorer: &self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer,
@@ -190,7 +190,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBSwiftBaseOb
       )
       createEntryForPropertyNamed (
         "mWarnsWhenNoSegment",
-        idx: self.mWarnsWhenNoSegment_property.ebObjectIndex,
+        object: self.mWarnsWhenNoSegment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mWarnsWhenNoSegment_property.mObserverExplorer,
@@ -207,7 +207,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBSwiftBaseOb
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_FontDocument_mCharacterSelection.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

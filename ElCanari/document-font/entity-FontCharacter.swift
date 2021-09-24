@@ -355,7 +355,7 @@ final class FontCharacter : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "codePoint",
-        idx: self.codePoint_property.ebObjectIndex,
+        object: self.codePoint_property,
         y: &y,
         view: view,
         observerExplorer: &self.codePoint_property.mObserverExplorer,
@@ -363,7 +363,7 @@ final class FontCharacter : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "advance",
-        idx: self.advance_property.ebObjectIndex,
+        object: self.advance_property,
         y: &y,
         view: view,
         observerExplorer: &self.advance_property.mObserverExplorer,
@@ -371,7 +371,7 @@ final class FontCharacter : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mWarnsWhenNoSegment",
-        idx: self.mWarnsWhenNoSegment_property.ebObjectIndex,
+        object: self.mWarnsWhenNoSegment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mWarnsWhenNoSegment_property.mObserverExplorer,
@@ -379,7 +379,7 @@ final class FontCharacter : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mWarnsWhenAdvanceIsZero",
-        idx: self.mWarnsWhenAdvanceIsZero_property.ebObjectIndex,
+        object: self.mWarnsWhenAdvanceIsZero_property,
         y: &y,
         view: view,
         observerExplorer: &self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer,
@@ -388,7 +388,7 @@ final class FontCharacter : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "segmentArrayForDrawing",
-        idx: self.segmentArrayForDrawing_property.ebObjectIndex,
+        object: self.segmentArrayForDrawing_property,
         y: &y,
         view: view,
         observerExplorer: &self.segmentArrayForDrawing_property.mObserverExplorer,
@@ -396,7 +396,7 @@ final class FontCharacter : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "gerberCode",
-        idx: self.gerberCode_property.ebObjectIndex,
+        object: self.gerberCode_property,
         y: &y,
         view: view,
         observerExplorer: &self.gerberCode_property.mObserverExplorer,
@@ -404,7 +404,7 @@ final class FontCharacter : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "gerberCodeInstructionCountMessage",
-        idx: self.gerberCodeInstructionCountMessage_property.ebObjectIndex,
+        object: self.gerberCodeInstructionCountMessage_property,
         y: &y,
         view: view,
         observerExplorer: &self.gerberCodeInstructionCountMessage_property.mObserverExplorer,
@@ -412,7 +412,7 @@ final class FontCharacter : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,
@@ -421,7 +421,7 @@ final class FontCharacter : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "segments",
-        idx:segments_property.ebObjectIndex,
+        object: segments_property,
         y: &y,
         view: view,
         valueExplorer:&segments_property.mValueExplorer

@@ -296,7 +296,7 @@ final class LabelInSchematic : SchematicObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mOrientation",
-        idx: self.mOrientation_property.ebObjectIndex,
+        object: self.mOrientation_property,
         y: &y,
         view: view,
         observerExplorer: &self.mOrientation_property.mObserverExplorer,
@@ -305,7 +305,7 @@ final class LabelInSchematic : SchematicObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "location",
-        idx: self.location_property.ebObjectIndex,
+        object: self.location_property,
         y: &y,
         view: view,
         observerExplorer: &self.location_property.mObserverExplorer,
@@ -313,7 +313,7 @@ final class LabelInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "netName",
-        idx: self.netName_property.ebObjectIndex,
+        object: self.netName_property,
         y: &y,
         view: view,
         observerExplorer: &self.netName_property.mObserverExplorer,
@@ -321,7 +321,7 @@ final class LabelInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -329,7 +329,7 @@ final class LabelInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "netClassName",
-        idx: self.netClassName_property.ebObjectIndex,
+        object: self.netClassName_property,
         y: &y,
         view: view,
         observerExplorer: &self.netClassName_property.mObserverExplorer,
@@ -337,7 +337,7 @@ final class LabelInSchematic : SchematicObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -347,7 +347,7 @@ final class LabelInSchematic : SchematicObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mPoint",
-        idx:self.mPoint_property.ebObjectIndex,
+        object: self.mPoint_property,
         y: &y,
         view: view,
         valueExplorer:&self.mPoint_property.mValueExplorer

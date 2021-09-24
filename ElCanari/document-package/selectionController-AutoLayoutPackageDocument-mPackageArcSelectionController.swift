@@ -241,7 +241,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -262,7 +262,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "yCenter",
-        idx: self.yCenter_property.ebObjectIndex,
+        object: self.yCenter_property,
         y: &y,
         view: view,
         observerExplorer: &self.yCenter_property.mObserverExplorer,
@@ -270,7 +270,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       )
       createEntryForPropertyNamed (
         "radius",
-        idx: self.radius_property.ebObjectIndex,
+        object: self.radius_property,
         y: &y,
         view: view,
         observerExplorer: &self.radius_property.mObserverExplorer,
@@ -278,7 +278,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       )
       createEntryForPropertyNamed (
         "startAngle",
-        idx: self.startAngle_property.ebObjectIndex,
+        object: self.startAngle_property,
         y: &y,
         view: view,
         observerExplorer: &self.startAngle_property.mObserverExplorer,
@@ -286,7 +286,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       )
       createEntryForPropertyNamed (
         "arcAngle",
-        idx: self.arcAngle_property.ebObjectIndex,
+        object: self.arcAngle_property,
         y: &y,
         view: view,
         observerExplorer: &self.arcAngle_property.mObserverExplorer,
@@ -294,7 +294,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       )
       createEntryForPropertyNamed (
         "startTangent",
-        idx: self.startTangent_property.ebObjectIndex,
+        object: self.startTangent_property,
         y: &y,
         view: view,
         observerExplorer: &self.startTangent_property.mObserverExplorer,
@@ -302,7 +302,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       )
       createEntryForPropertyNamed (
         "endTangent",
-        idx: self.endTangent_property.ebObjectIndex,
+        object: self.endTangent_property,
         y: &y,
         view: view,
         observerExplorer: &self.endTangent_property.mObserverExplorer,
@@ -310,7 +310,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       )
       createEntryForPropertyNamed (
         "pathIsClosed",
-        idx: self.pathIsClosed_property.ebObjectIndex,
+        object: self.pathIsClosed_property,
         y: &y,
         view: view,
         observerExplorer: &self.pathIsClosed_property.mObserverExplorer,
@@ -318,7 +318,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       )
       createEntryForPropertyNamed (
         "xCenterUnit",
-        idx: self.xCenterUnit_property.ebObjectIndex,
+        object: self.xCenterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.xCenterUnit_property.mObserverExplorer,
@@ -326,7 +326,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       )
       createEntryForPropertyNamed (
         "yCenterUnit",
-        idx: self.yCenterUnit_property.ebObjectIndex,
+        object: self.yCenterUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.yCenterUnit_property.mObserverExplorer,
@@ -334,7 +334,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       )
       createEntryForPropertyNamed (
         "radiusUnit",
-        idx: self.radiusUnit_property.ebObjectIndex,
+        object: self.radiusUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.radiusUnit_property.mObserverExplorer,
@@ -342,7 +342,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       )
       createEntryForPropertyNamed (
         "startTangentUnit",
-        idx: self.startTangentUnit_property.ebObjectIndex,
+        object: self.startTangentUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.startTangentUnit_property.mObserverExplorer,
@@ -350,7 +350,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       )
       createEntryForPropertyNamed (
         "endTangentUnit",
-        idx: self.endTangentUnit_property.ebObjectIndex,
+        object: self.endTangentUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.endTangentUnit_property.mObserverExplorer,
@@ -358,7 +358,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       )
       createEntryForPropertyNamed (
         "xCenter",
-        idx: self.xCenter_property.ebObjectIndex,
+        object: self.xCenter_property,
         y: &y,
         view: view,
         observerExplorer: &self.xCenter_property.mObserverExplorer,
@@ -375,7 +375,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

@@ -487,7 +487,7 @@ final class PackageSegment : PackageObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "y1",
-        idx: self.y1_property.ebObjectIndex,
+        object: self.y1_property,
         y: &y,
         view: view,
         observerExplorer: &self.y1_property.mObserverExplorer,
@@ -495,7 +495,7 @@ final class PackageSegment : PackageObject,
       )
       createEntryForPropertyNamed (
         "x2",
-        idx: self.x2_property.ebObjectIndex,
+        object: self.x2_property,
         y: &y,
         view: view,
         observerExplorer: &self.x2_property.mObserverExplorer,
@@ -503,7 +503,7 @@ final class PackageSegment : PackageObject,
       )
       createEntryForPropertyNamed (
         "y2",
-        idx: self.y2_property.ebObjectIndex,
+        object: self.y2_property,
         y: &y,
         view: view,
         observerExplorer: &self.y2_property.mObserverExplorer,
@@ -511,7 +511,7 @@ final class PackageSegment : PackageObject,
       )
       createEntryForPropertyNamed (
         "x1Unit",
-        idx: self.x1Unit_property.ebObjectIndex,
+        object: self.x1Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.x1Unit_property.mObserverExplorer,
@@ -519,7 +519,7 @@ final class PackageSegment : PackageObject,
       )
       createEntryForPropertyNamed (
         "y1Unit",
-        idx: self.y1Unit_property.ebObjectIndex,
+        object: self.y1Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.y1Unit_property.mObserverExplorer,
@@ -527,7 +527,7 @@ final class PackageSegment : PackageObject,
       )
       createEntryForPropertyNamed (
         "x2Unit",
-        idx: self.x2Unit_property.ebObjectIndex,
+        object: self.x2Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.x2Unit_property.mObserverExplorer,
@@ -535,7 +535,7 @@ final class PackageSegment : PackageObject,
       )
       createEntryForPropertyNamed (
         "y2Unit",
-        idx: self.y2Unit_property.ebObjectIndex,
+        object: self.y2Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.y2Unit_property.mObserverExplorer,
@@ -543,7 +543,7 @@ final class PackageSegment : PackageObject,
       )
       createEntryForPropertyNamed (
         "lengthUnit",
-        idx: self.lengthUnit_property.ebObjectIndex,
+        object: self.lengthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.lengthUnit_property.mObserverExplorer,
@@ -551,7 +551,7 @@ final class PackageSegment : PackageObject,
       )
       createEntryForPropertyNamed (
         "x1",
-        idx: self.x1_property.ebObjectIndex,
+        object: self.x1_property,
         y: &y,
         view: view,
         observerExplorer: &self.x1_property.mObserverExplorer,
@@ -560,7 +560,7 @@ final class PackageSegment : PackageObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "strokeBezierPath",
-        idx: self.strokeBezierPath_property.ebObjectIndex,
+        object: self.strokeBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
@@ -568,7 +568,7 @@ final class PackageSegment : PackageObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -576,7 +576,7 @@ final class PackageSegment : PackageObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -584,7 +584,7 @@ final class PackageSegment : PackageObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,
@@ -592,7 +592,7 @@ final class PackageSegment : PackageObject,
       )
       createEntryForPropertyNamed (
         "lengthInCanariUnit",
-        idx: self.lengthInCanariUnit_property.ebObjectIndex,
+        object: self.lengthInCanariUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.lengthInCanariUnit_property.mObserverExplorer,

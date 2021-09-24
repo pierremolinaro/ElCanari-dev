@@ -314,7 +314,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mFirstX",
-        idx: self.mFirstX_property.ebObjectIndex,
+        object: self.mFirstX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFirstX_property.mObserverExplorer,
@@ -322,7 +322,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mFirstY",
-        idx: self.mFirstY_property.ebObjectIndex,
+        object: self.mFirstY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFirstY_property.mObserverExplorer,
@@ -330,7 +330,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mFirstColor",
-        idx: self.mFirstColor_property.ebObjectIndex,
+        object: self.mFirstColor_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFirstColor_property.mObserverExplorer,
@@ -338,7 +338,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mSecondDx",
-        idx: self.mSecondDx_property.ebObjectIndex,
+        object: self.mSecondDx_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSecondDx_property.mObserverExplorer,
@@ -346,7 +346,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mSecondDy",
-        idx: self.mSecondDy_property.ebObjectIndex,
+        object: self.mSecondDy_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSecondDy_property.mObserverExplorer,
@@ -354,7 +354,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "mSecondColor",
-        idx: self.mSecondColor_property.ebObjectIndex,
+        object: self.mSecondColor_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSecondColor_property.mObserverExplorer,
@@ -363,7 +363,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -371,7 +371,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -381,7 +381,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mRoot",
-        idx:self.mRoot_property.ebObjectIndex,
+        object: self.mRoot_property,
         y: &y,
         view: view,
         valueExplorer:&self.mRoot_property.mValueExplorer

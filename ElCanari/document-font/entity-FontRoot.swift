@@ -505,7 +505,7 @@ final class FontRoot : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "comments",
-        idx: self.comments_property.ebObjectIndex,
+        object: self.comments_property,
         y: &y,
         view: view,
         observerExplorer: &self.comments_property.mObserverExplorer,
@@ -513,7 +513,7 @@ final class FontRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "nominalSize",
-        idx: self.nominalSize_property.ebObjectIndex,
+        object: self.nominalSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.nominalSize_property.mObserverExplorer,
@@ -521,7 +521,7 @@ final class FontRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "selectedTab",
-        idx: self.selectedTab_property.ebObjectIndex,
+        object: self.selectedTab_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectedTab_property.mObserverExplorer,
@@ -529,7 +529,7 @@ final class FontRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "selectedInspector",
-        idx: self.selectedInspector_property.ebObjectIndex,
+        object: self.selectedInspector_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectedInspector_property.mObserverExplorer,
@@ -537,7 +537,7 @@ final class FontRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "currentCharacterCodePoint",
-        idx: self.currentCharacterCodePoint_property.ebObjectIndex,
+        object: self.currentCharacterCodePoint_property,
         y: &y,
         view: view,
         observerExplorer: &self.currentCharacterCodePoint_property.mObserverExplorer,
@@ -546,7 +546,7 @@ final class FontRoot : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "currentCharacterCodePointString",
-        idx: self.currentCharacterCodePointString_property.ebObjectIndex,
+        object: self.currentCharacterCodePointString_property,
         y: &y,
         view: view,
         observerExplorer: &self.currentCharacterCodePointString_property.mObserverExplorer,
@@ -554,7 +554,7 @@ final class FontRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "sampleStringBezierPath",
-        idx: self.sampleStringBezierPath_property.ebObjectIndex,
+        object: self.sampleStringBezierPath_property,
         y: &y,
         view: view,
         observerExplorer: &self.sampleStringBezierPath_property.mObserverExplorer,
@@ -562,7 +562,7 @@ final class FontRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "sampleStringBezierPathWidth",
-        idx: self.sampleStringBezierPathWidth_property.ebObjectIndex,
+        object: self.sampleStringBezierPathWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.sampleStringBezierPathWidth_property.mObserverExplorer,
@@ -570,7 +570,7 @@ final class FontRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "sampleStringBezierPathAscent",
-        idx: self.sampleStringBezierPathAscent_property.ebObjectIndex,
+        object: self.sampleStringBezierPathAscent_property,
         y: &y,
         view: view,
         observerExplorer: &self.sampleStringBezierPathAscent_property.mObserverExplorer,
@@ -578,7 +578,7 @@ final class FontRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "sampleStringBezierPathDescent",
-        idx: self.sampleStringBezierPathDescent_property.ebObjectIndex,
+        object: self.sampleStringBezierPathDescent_property,
         y: &y,
         view: view,
         observerExplorer: &self.sampleStringBezierPathDescent_property.mObserverExplorer,
@@ -586,7 +586,7 @@ final class FontRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "definedCharacters",
-        idx: self.definedCharacters_property.ebObjectIndex,
+        object: self.definedCharacters_property,
         y: &y,
         view: view,
         observerExplorer: &self.definedCharacters_property.mObserverExplorer,
@@ -594,7 +594,7 @@ final class FontRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,
@@ -603,7 +603,7 @@ final class FontRoot : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "characters",
-        idx:characters_property.ebObjectIndex,
+        object: characters_property,
         y: &y,
         view: view,
         valueExplorer:&characters_property.mValueExplorer

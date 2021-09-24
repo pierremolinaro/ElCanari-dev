@@ -1558,7 +1558,7 @@ final class MergerRoot : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "selectedPageIndex",
-        idx: self.selectedPageIndex_property.ebObjectIndex,
+        object: self.selectedPageIndex_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectedPageIndex_property.mObserverExplorer,
@@ -1566,7 +1566,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "zoom",
-        idx: self.zoom_property.ebObjectIndex,
+        object: self.zoom_property,
         y: &y,
         view: view,
         observerExplorer: &self.zoom_property.mObserverExplorer,
@@ -1574,7 +1574,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "automaticBoardSize",
-        idx: self.automaticBoardSize_property.ebObjectIndex,
+        object: self.automaticBoardSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.automaticBoardSize_property.mObserverExplorer,
@@ -1582,7 +1582,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardManualWidth",
-        idx: self.boardManualWidth_property.ebObjectIndex,
+        object: self.boardManualWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardManualWidth_property.mObserverExplorer,
@@ -1590,7 +1590,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardManualHeight",
-        idx: self.boardManualHeight_property.ebObjectIndex,
+        object: self.boardManualHeight_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardManualHeight_property.mObserverExplorer,
@@ -1598,7 +1598,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardWidthUnit",
-        idx: self.boardWidthUnit_property.ebObjectIndex,
+        object: self.boardWidthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardWidthUnit_property.mObserverExplorer,
@@ -1606,7 +1606,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardHeightUnit",
-        idx: self.boardHeightUnit_property.ebObjectIndex,
+        object: self.boardHeightUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardHeightUnit_property.mObserverExplorer,
@@ -1614,7 +1614,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "overlapingArrangment",
-        idx: self.overlapingArrangment_property.ebObjectIndex,
+        object: self.overlapingArrangment_property,
         y: &y,
         view: view,
         observerExplorer: &self.overlapingArrangment_property.mObserverExplorer,
@@ -1622,7 +1622,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "selectedBoardXUnit",
-        idx: self.selectedBoardXUnit_property.ebObjectIndex,
+        object: self.selectedBoardXUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectedBoardXUnit_property.mObserverExplorer,
@@ -1630,7 +1630,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "selectedBoardYUnit",
-        idx: self.selectedBoardYUnit_property.ebObjectIndex,
+        object: self.selectedBoardYUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectedBoardYUnit_property.mObserverExplorer,
@@ -1638,7 +1638,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardLimitWidth",
-        idx: self.boardLimitWidth_property.ebObjectIndex,
+        object: self.boardLimitWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardLimitWidth_property.mObserverExplorer,
@@ -1646,7 +1646,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardLimitWidthUnit",
-        idx: self.boardLimitWidthUnit_property.ebObjectIndex,
+        object: self.boardLimitWidthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardLimitWidthUnit_property.mObserverExplorer,
@@ -1654,7 +1654,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "arrowMagnitude",
-        idx: self.arrowMagnitude_property.ebObjectIndex,
+        object: self.arrowMagnitude_property,
         y: &y,
         view: view,
         observerExplorer: &self.arrowMagnitude_property.mObserverExplorer,
@@ -1662,7 +1662,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "arrowMagnitudeUnit",
-        idx: self.arrowMagnitudeUnit_property.ebObjectIndex,
+        object: self.arrowMagnitudeUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.arrowMagnitudeUnit_property.mObserverExplorer,
@@ -1670,7 +1670,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "shiftArrowMagnitude",
-        idx: self.shiftArrowMagnitude_property.ebObjectIndex,
+        object: self.shiftArrowMagnitude_property,
         y: &y,
         view: view,
         observerExplorer: &self.shiftArrowMagnitude_property.mObserverExplorer,
@@ -1678,7 +1678,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "shiftArrowMagnitudeUnit",
-        idx: self.shiftArrowMagnitudeUnit_property.ebObjectIndex,
+        object: self.shiftArrowMagnitudeUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.shiftArrowMagnitudeUnit_property.mObserverExplorer,
@@ -1686,7 +1686,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mPDFBoardBackgroundColor",
-        idx: self.mPDFBoardBackgroundColor_property.ebObjectIndex,
+        object: self.mPDFBoardBackgroundColor_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPDFBoardBackgroundColor_property.mObserverExplorer,
@@ -1694,7 +1694,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mArtworkName",
-        idx: self.mArtworkName_property.ebObjectIndex,
+        object: self.mArtworkName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mArtworkName_property.mObserverExplorer,
@@ -1702,7 +1702,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mArtworkVersion",
-        idx: self.mArtworkVersion_property.ebObjectIndex,
+        object: self.mArtworkVersion_property,
         y: &y,
         view: view,
         observerExplorer: &self.mArtworkVersion_property.mObserverExplorer,
@@ -1711,7 +1711,7 @@ final class MergerRoot : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "modelNames",
-        idx: self.modelNames_property.ebObjectIndex,
+        object: self.modelNames_property,
         y: &y,
         view: view,
         observerExplorer: &self.modelNames_property.mObserverExplorer,
@@ -1719,7 +1719,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardRect",
-        idx: self.boardRect_property.ebObjectIndex,
+        object: self.boardRect_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardRect_property.mObserverExplorer,
@@ -1727,7 +1727,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardDisplayRect",
-        idx: self.boardDisplayRect_property.ebObjectIndex,
+        object: self.boardDisplayRect_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardDisplayRect_property.mObserverExplorer,
@@ -1735,7 +1735,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardWidth",
-        idx: self.boardWidth_property.ebObjectIndex,
+        object: self.boardWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardWidth_property.mObserverExplorer,
@@ -1743,7 +1743,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardHeight",
-        idx: self.boardHeight_property.ebObjectIndex,
+        object: self.boardHeight_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardHeight_property.mObserverExplorer,
@@ -1751,7 +1751,7 @@ final class MergerRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardOutlineRectDisplay",
-        idx: self.boardOutlineRectDisplay_property.ebObjectIndex,
+        object: self.boardOutlineRectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardOutlineRectDisplay_property.mObserverExplorer,
@@ -1760,14 +1760,14 @@ final class MergerRoot : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "boardModels",
-        idx:boardModels_property.ebObjectIndex,
+        object: boardModels_property,
         y: &y,
         view: view,
         valueExplorer:&boardModels_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "boardInstances",
-        idx:boardInstances_property.ebObjectIndex,
+        object: boardInstances_property,
         y: &y,
         view: view,
         valueExplorer:&boardInstances_property.mValueExplorer
@@ -1775,7 +1775,7 @@ final class MergerRoot : EBManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mArtwork",
-        idx:self.mArtwork_property.ebObjectIndex,
+        object: self.mArtwork_property,
         y: &y,
         view: view,
         valueExplorer:&self.mArtwork_property.mValueExplorer

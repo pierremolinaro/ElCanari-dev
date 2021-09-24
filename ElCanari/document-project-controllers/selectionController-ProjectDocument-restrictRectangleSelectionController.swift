@@ -154,7 +154,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_ProjectDocument_restrictRectangleSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -175,7 +175,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "mY",
-        idx: self.mY_property.ebObjectIndex,
+        object: self.mY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY_property.mObserverExplorer,
@@ -183,7 +183,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
       )
       createEntryForPropertyNamed (
         "mWidth",
-        idx: self.mWidth_property.ebObjectIndex,
+        object: self.mWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.mWidth_property.mObserverExplorer,
@@ -191,7 +191,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
       )
       createEntryForPropertyNamed (
         "mHeight",
-        idx: self.mHeight_property.ebObjectIndex,
+        object: self.mHeight_property,
         y: &y,
         view: view,
         observerExplorer: &self.mHeight_property.mObserverExplorer,
@@ -199,7 +199,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
       )
       createEntryForPropertyNamed (
         "mIsInFrontLayer",
-        idx: self.mIsInFrontLayer_property.ebObjectIndex,
+        object: self.mIsInFrontLayer_property,
         y: &y,
         view: view,
         observerExplorer: &self.mIsInFrontLayer_property.mObserverExplorer,
@@ -207,7 +207,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
       )
       createEntryForPropertyNamed (
         "mIsInBackLayer",
-        idx: self.mIsInBackLayer_property.ebObjectIndex,
+        object: self.mIsInBackLayer_property,
         y: &y,
         view: view,
         observerExplorer: &self.mIsInBackLayer_property.mObserverExplorer,
@@ -215,7 +215,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
       )
       createEntryForPropertyNamed (
         "mX",
-        idx: self.mX_property.ebObjectIndex,
+        object: self.mX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX_property.mObserverExplorer,
@@ -232,7 +232,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_ProjectDocument_restrictRectangleSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

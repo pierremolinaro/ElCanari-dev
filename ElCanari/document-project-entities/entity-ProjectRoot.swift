@@ -5251,7 +5251,7 @@ final class ProjectRoot : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mArtworkName",
-        idx: self.mArtworkName_property.ebObjectIndex,
+        object: self.mArtworkName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mArtworkName_property.mObserverExplorer,
@@ -5259,7 +5259,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mArtworkVersion",
-        idx: self.mArtworkVersion_property.ebObjectIndex,
+        object: self.mArtworkVersion_property,
         y: &y,
         view: view,
         observerExplorer: &self.mArtworkVersion_property.mObserverExplorer,
@@ -5267,7 +5267,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mPDFBoardBackgroundColor",
-        idx: self.mPDFBoardBackgroundColor_property.ebObjectIndex,
+        object: self.mPDFBoardBackgroundColor_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPDFBoardBackgroundColor_property.mObserverExplorer,
@@ -5275,7 +5275,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mCheckClearanceBetweenPadsOfSameNet",
-        idx: self.mCheckClearanceBetweenPadsOfSameNet_property.ebObjectIndex,
+        object: self.mCheckClearanceBetweenPadsOfSameNet_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCheckClearanceBetweenPadsOfSameNet_property.mObserverExplorer,
@@ -5283,7 +5283,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mLastERCCheckingIsSuccess",
-        idx: self.mLastERCCheckingIsSuccess_property.ebObjectIndex,
+        object: self.mLastERCCheckingIsSuccess_property,
         y: &y,
         view: view,
         observerExplorer: &self.mLastERCCheckingIsSuccess_property.mObserverExplorer,
@@ -5291,7 +5291,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mLastERCCheckingSignature",
-        idx: self.mLastERCCheckingSignature_property.ebObjectIndex,
+        object: self.mLastERCCheckingSignature_property,
         y: &y,
         view: view,
         observerExplorer: &self.mLastERCCheckingSignature_property.mObserverExplorer,
@@ -5299,7 +5299,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mLayerConfiguration",
-        idx: self.mLayerConfiguration_property.ebObjectIndex,
+        object: self.mLayerConfiguration_property,
         y: &y,
         view: view,
         observerExplorer: &self.mLayerConfiguration_property.mObserverExplorer,
@@ -5307,7 +5307,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardSideForNewTrack",
-        idx: self.mBoardSideForNewTrack_property.ebObjectIndex,
+        object: self.mBoardSideForNewTrack_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardSideForNewTrack_property.mObserverExplorer,
@@ -5315,7 +5315,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mDirectionForNewTrack",
-        idx: self.mDirectionForNewTrack_property.ebObjectIndex,
+        object: self.mDirectionForNewTrack_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDirectionForNewTrack_property.mObserverExplorer,
@@ -5323,7 +5323,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardLayerForNewText",
-        idx: self.mBoardLayerForNewText_property.ebObjectIndex,
+        object: self.mBoardLayerForNewText_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardLayerForNewText_property.mObserverExplorer,
@@ -5331,7 +5331,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardLayerForNewLine",
-        idx: self.mBoardLayerForNewLine_property.ebObjectIndex,
+        object: self.mBoardLayerForNewLine_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardLayerForNewLine_property.mObserverExplorer,
@@ -5339,7 +5339,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardSideForNewRestrictRectangle",
-        idx: self.mBoardSideForNewRestrictRectangle_property.ebObjectIndex,
+        object: self.mBoardSideForNewRestrictRectangle_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardSideForNewRestrictRectangle_property.mObserverExplorer,
@@ -5347,7 +5347,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mAutoRouterPreferredDirections",
-        idx: self.mAutoRouterPreferredDirections_property.ebObjectIndex,
+        object: self.mAutoRouterPreferredDirections_property,
         y: &y,
         view: view,
         observerExplorer: &self.mAutoRouterPreferredDirections_property.mObserverExplorer,
@@ -5355,7 +5355,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mAutorouterSnapAngle",
-        idx: self.mAutorouterSnapAngle_property.ebObjectIndex,
+        object: self.mAutorouterSnapAngle_property,
         y: &y,
         view: view,
         observerExplorer: &self.mAutorouterSnapAngle_property.mObserverExplorer,
@@ -5363,7 +5363,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mRouteDirection",
-        idx: self.mRouteDirection_property.ebObjectIndex,
+        object: self.mRouteDirection_property,
         y: &y,
         view: view,
         observerExplorer: &self.mRouteDirection_property.mObserverExplorer,
@@ -5371,7 +5371,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mRouteOrigin",
-        idx: self.mRouteOrigin_property.ebObjectIndex,
+        object: self.mRouteOrigin_property,
         y: &y,
         view: view,
         observerExplorer: &self.mRouteOrigin_property.mObserverExplorer,
@@ -5379,7 +5379,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mAutorouterInterfaceMode",
-        idx: self.mAutorouterInterfaceMode_property.ebObjectIndex,
+        object: self.mAutorouterInterfaceMode_property,
         y: &y,
         view: view,
         observerExplorer: &self.mAutorouterInterfaceMode_property.mObserverExplorer,
@@ -5387,7 +5387,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mExportExistingTracksAndVias",
-        idx: self.mExportExistingTracksAndVias_property.ebObjectIndex,
+        object: self.mExportExistingTracksAndVias_property,
         y: &y,
         view: view,
         observerExplorer: &self.mExportExistingTracksAndVias_property.mObserverExplorer,
@@ -5395,7 +5395,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mTrackLengthUnit",
-        idx: self.mTrackLengthUnit_property.ebObjectIndex,
+        object: self.mTrackLengthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mTrackLengthUnit_property.mObserverExplorer,
@@ -5403,7 +5403,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mLayoutClearance",
-        idx: self.mLayoutClearance_property.ebObjectIndex,
+        object: self.mLayoutClearance_property,
         y: &y,
         view: view,
         observerExplorer: &self.mLayoutClearance_property.mObserverExplorer,
@@ -5411,7 +5411,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mLayoutClearanceUnit",
-        idx: self.mLayoutClearanceUnit_property.ebObjectIndex,
+        object: self.mLayoutClearanceUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mLayoutClearanceUnit_property.mObserverExplorer,
@@ -5419,7 +5419,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardSelectedInspector",
-        idx: self.mBoardSelectedInspector_property.ebObjectIndex,
+        object: self.mBoardSelectedInspector_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardSelectedInspector_property.mObserverExplorer,
@@ -5427,7 +5427,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardHorizontalFlip",
-        idx: self.mBoardHorizontalFlip_property.ebObjectIndex,
+        object: self.mBoardHorizontalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardHorizontalFlip_property.mObserverExplorer,
@@ -5435,7 +5435,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardVerticalFlip",
-        idx: self.mBoardVerticalFlip_property.ebObjectIndex,
+        object: self.mBoardVerticalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardVerticalFlip_property.mObserverExplorer,
@@ -5443,7 +5443,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardGridStyle",
-        idx: self.mBoardGridStyle_property.ebObjectIndex,
+        object: self.mBoardGridStyle_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardGridStyle_property.mObserverExplorer,
@@ -5451,7 +5451,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardGridDisplayFactor",
-        idx: self.mBoardGridDisplayFactor_property.ebObjectIndex,
+        object: self.mBoardGridDisplayFactor_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardGridDisplayFactor_property.mObserverExplorer,
@@ -5459,7 +5459,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardZoom",
-        idx: self.mBoardZoom_property.ebObjectIndex,
+        object: self.mBoardZoom_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardZoom_property.mObserverExplorer,
@@ -5467,7 +5467,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardGridStep",
-        idx: self.mBoardGridStep_property.ebObjectIndex,
+        object: self.mBoardGridStep_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardGridStep_property.mObserverExplorer,
@@ -5475,7 +5475,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardGridStepUnit",
-        idx: self.mBoardGridStepUnit_property.ebObjectIndex,
+        object: self.mBoardGridStepUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardGridStepUnit_property.mObserverExplorer,
@@ -5483,7 +5483,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mErrorOrWarningIssueSize",
-        idx: self.mErrorOrWarningIssueSize_property.ebObjectIndex,
+        object: self.mErrorOrWarningIssueSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.mErrorOrWarningIssueSize_property.mObserverExplorer,
@@ -5491,7 +5491,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mControlKeyHiliteDiameter",
-        idx: self.mControlKeyHiliteDiameter_property.ebObjectIndex,
+        object: self.mControlKeyHiliteDiameter_property,
         y: &y,
         view: view,
         observerExplorer: &self.mControlKeyHiliteDiameter_property.mObserverExplorer,
@@ -5499,7 +5499,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mDSNFileProposedName",
-        idx: self.mDSNFileProposedName_property.ebObjectIndex,
+        object: self.mDSNFileProposedName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDSNFileProposedName_property.mObserverExplorer,
@@ -5507,7 +5507,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardLimitsWidth",
-        idx: self.mBoardLimitsWidth_property.ebObjectIndex,
+        object: self.mBoardLimitsWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardLimitsWidth_property.mObserverExplorer,
@@ -5515,7 +5515,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardLimitsWidthUnit",
-        idx: self.mBoardLimitsWidthUnit_property.ebObjectIndex,
+        object: self.mBoardLimitsWidthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardLimitsWidthUnit_property.mObserverExplorer,
@@ -5523,7 +5523,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardClearance",
-        idx: self.mBoardClearance_property.ebObjectIndex,
+        object: self.mBoardClearance_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardClearance_property.mObserverExplorer,
@@ -5531,7 +5531,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardClearanceUnit",
-        idx: self.mBoardClearanceUnit_property.ebObjectIndex,
+        object: self.mBoardClearanceUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardClearanceUnit_property.mObserverExplorer,
@@ -5539,7 +5539,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardLimitsSelectedInspector",
-        idx: self.mBoardLimitsSelectedInspector_property.ebObjectIndex,
+        object: self.mBoardLimitsSelectedInspector_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardLimitsSelectedInspector_property.mObserverExplorer,
@@ -5547,7 +5547,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardLimitsHorizontalFlip",
-        idx: self.mBoardLimitsHorizontalFlip_property.ebObjectIndex,
+        object: self.mBoardLimitsHorizontalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardLimitsHorizontalFlip_property.mObserverExplorer,
@@ -5555,7 +5555,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardLimitsVerticalFlip",
-        idx: self.mBoardLimitsVerticalFlip_property.ebObjectIndex,
+        object: self.mBoardLimitsVerticalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardLimitsVerticalFlip_property.mObserverExplorer,
@@ -5563,7 +5563,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardLimitsGridStyle",
-        idx: self.mBoardLimitsGridStyle_property.ebObjectIndex,
+        object: self.mBoardLimitsGridStyle_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardLimitsGridStyle_property.mObserverExplorer,
@@ -5571,7 +5571,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardLimitsGridDisplayFactor",
-        idx: self.mBoardLimitsGridDisplayFactor_property.ebObjectIndex,
+        object: self.mBoardLimitsGridDisplayFactor_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardLimitsGridDisplayFactor_property.mObserverExplorer,
@@ -5579,7 +5579,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardLimitsZoom",
-        idx: self.mBoardLimitsZoom_property.ebObjectIndex,
+        object: self.mBoardLimitsZoom_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardLimitsZoom_property.mObserverExplorer,
@@ -5587,7 +5587,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardLimitsGridStep",
-        idx: self.mBoardLimitsGridStep_property.ebObjectIndex,
+        object: self.mBoardLimitsGridStep_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardLimitsGridStep_property.mObserverExplorer,
@@ -5595,7 +5595,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardLimitsGridStepUnit",
-        idx: self.mBoardLimitsGridStepUnit_property.ebObjectIndex,
+        object: self.mBoardLimitsGridStepUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardLimitsGridStepUnit_property.mObserverExplorer,
@@ -5603,7 +5603,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardLimitsBoundingBoxUnit",
-        idx: self.mBoardLimitsBoundingBoxUnit_property.ebObjectIndex,
+        object: self.mBoardLimitsBoundingBoxUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardLimitsBoundingBoxUnit_property.mObserverExplorer,
@@ -5611,7 +5611,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardPointsBoundingBoxUnit",
-        idx: self.mBoardPointsBoundingBoxUnit_property.ebObjectIndex,
+        object: self.mBoardPointsBoundingBoxUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardPointsBoundingBoxUnit_property.mObserverExplorer,
@@ -5619,7 +5619,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardSelectedCurveDisplayUnit",
-        idx: self.mBoardSelectedCurveDisplayUnit_property.ebObjectIndex,
+        object: self.mBoardSelectedCurveDisplayUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardSelectedCurveDisplayUnit_property.mObserverExplorer,
@@ -5627,7 +5627,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardLimitControlPointsDisplayUnit",
-        idx: self.mBoardLimitControlPointsDisplayUnit_property.ebObjectIndex,
+        object: self.mBoardLimitControlPointsDisplayUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardLimitControlPointsDisplayUnit_property.mObserverExplorer,
@@ -5635,7 +5635,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mBoardShape",
-        idx: self.mBoardShape_property.ebObjectIndex,
+        object: self.mBoardShape_property,
         y: &y,
         view: view,
         observerExplorer: &self.mBoardShape_property.mObserverExplorer,
@@ -5643,7 +5643,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mRectangularBoardWidth",
-        idx: self.mRectangularBoardWidth_property.ebObjectIndex,
+        object: self.mRectangularBoardWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.mRectangularBoardWidth_property.mObserverExplorer,
@@ -5651,7 +5651,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mRectangularBoardWidthUnit",
-        idx: self.mRectangularBoardWidthUnit_property.ebObjectIndex,
+        object: self.mRectangularBoardWidthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mRectangularBoardWidthUnit_property.mObserverExplorer,
@@ -5659,7 +5659,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mRectangularBoardHeight",
-        idx: self.mRectangularBoardHeight_property.ebObjectIndex,
+        object: self.mRectangularBoardHeight_property,
         y: &y,
         view: view,
         observerExplorer: &self.mRectangularBoardHeight_property.mObserverExplorer,
@@ -5667,7 +5667,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mRectangularBoardHeightUnit",
-        idx: self.mRectangularBoardHeightUnit_property.ebObjectIndex,
+        object: self.mRectangularBoardHeightUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mRectangularBoardHeightUnit_property.mObserverExplorer,
@@ -5675,7 +5675,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mDefaultNetClassName",
-        idx: self.mDefaultNetClassName_property.ebObjectIndex,
+        object: self.mDefaultNetClassName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDefaultNetClassName_property.mObserverExplorer,
@@ -5683,7 +5683,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSelectedPageIndex",
-        idx: self.mSelectedPageIndex_property.ebObjectIndex,
+        object: self.mSelectedPageIndex_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSelectedPageIndex_property.mObserverExplorer,
@@ -5691,7 +5691,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSelectedSchematicInspector",
-        idx: self.mSelectedSchematicInspector_property.ebObjectIndex,
+        object: self.mSelectedSchematicInspector_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSelectedSchematicInspector_property.mObserverExplorer,
@@ -5699,7 +5699,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSchematicTitle",
-        idx: self.mSchematicTitle_property.ebObjectIndex,
+        object: self.mSchematicTitle_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSchematicTitle_property.mObserverExplorer,
@@ -5707,7 +5707,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSchematicVersion",
-        idx: self.mSchematicVersion_property.ebObjectIndex,
+        object: self.mSchematicVersion_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSchematicVersion_property.mObserverExplorer,
@@ -5715,7 +5715,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSchematicDate",
-        idx: self.mSchematicDate_property.ebObjectIndex,
+        object: self.mSchematicDate_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSchematicDate_property.mObserverExplorer,
@@ -5723,7 +5723,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSchematicHorizontalFlip",
-        idx: self.mSchematicHorizontalFlip_property.ebObjectIndex,
+        object: self.mSchematicHorizontalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSchematicHorizontalFlip_property.mObserverExplorer,
@@ -5731,7 +5731,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSchematicVerticalFlip",
-        idx: self.mSchematicVerticalFlip_property.ebObjectIndex,
+        object: self.mSchematicVerticalFlip_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSchematicVerticalFlip_property.mObserverExplorer,
@@ -5739,7 +5739,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSchematicZoom",
-        idx: self.mSchematicZoom_property.ebObjectIndex,
+        object: self.mSchematicZoom_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSchematicZoom_property.mObserverExplorer,
@@ -5747,7 +5747,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSchematicGridStyle",
-        idx: self.mSchematicGridStyle_property.ebObjectIndex,
+        object: self.mSchematicGridStyle_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSchematicGridStyle_property.mObserverExplorer,
@@ -5755,7 +5755,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSchematicGridDisplayFactor",
-        idx: self.mSchematicGridDisplayFactor_property.ebObjectIndex,
+        object: self.mSchematicGridDisplayFactor_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSchematicGridDisplayFactor_property.mObserverExplorer,
@@ -5763,7 +5763,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSchematicCustomWidth",
-        idx: self.mSchematicCustomWidth_property.ebObjectIndex,
+        object: self.mSchematicCustomWidth_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSchematicCustomWidth_property.mObserverExplorer,
@@ -5771,7 +5771,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSchematicCustomWidthUnit",
-        idx: self.mSchematicCustomWidthUnit_property.ebObjectIndex,
+        object: self.mSchematicCustomWidthUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSchematicCustomWidthUnit_property.mObserverExplorer,
@@ -5779,7 +5779,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSchematicCustomHeight",
-        idx: self.mSchematicCustomHeight_property.ebObjectIndex,
+        object: self.mSchematicCustomHeight_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSchematicCustomHeight_property.mObserverExplorer,
@@ -5787,7 +5787,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSchematicCustomHeightUnit",
-        idx: self.mSchematicCustomHeightUnit_property.ebObjectIndex,
+        object: self.mSchematicCustomHeightUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSchematicCustomHeightUnit_property.mObserverExplorer,
@@ -5795,7 +5795,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSchematicSheetOrientation",
-        idx: self.mSchematicSheetOrientation_property.ebObjectIndex,
+        object: self.mSchematicSheetOrientation_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSchematicSheetOrientation_property.mObserverExplorer,
@@ -5803,7 +5803,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mRastnetDisplay",
-        idx: self.mRastnetDisplay_property.ebObjectIndex,
+        object: self.mRastnetDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.mRastnetDisplay_property.mObserverExplorer,
@@ -5811,7 +5811,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mRastnetDisplayedNetName",
-        idx: self.mRastnetDisplayedNetName_property.ebObjectIndex,
+        object: self.mRastnetDisplayedNetName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mRastnetDisplayedNetName_property.mObserverExplorer,
@@ -5819,7 +5819,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mRastnetDisplayedComponentName",
-        idx: self.mRastnetDisplayedComponentName_property.ebObjectIndex,
+        object: self.mRastnetDisplayedComponentName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mRastnetDisplayedComponentName_property.mObserverExplorer,
@@ -5828,7 +5828,7 @@ final class ProjectRoot : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "boardGridStepMultipliedByDisplayFactor",
-        idx: self.boardGridStepMultipliedByDisplayFactor_property.ebObjectIndex,
+        object: self.boardGridStepMultipliedByDisplayFactor_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardGridStepMultipliedByDisplayFactor_property.mObserverExplorer,
@@ -5836,7 +5836,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardLimitsGridStepMultipliedByDisplayFactor",
-        idx: self.boardLimitsGridStepMultipliedByDisplayFactor_property.ebObjectIndex,
+        object: self.boardLimitsGridStepMultipliedByDisplayFactor_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardLimitsGridStepMultipliedByDisplayFactor_property.mObserverExplorer,
@@ -5844,7 +5844,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardShapeIsRectangular",
-        idx: self.boardShapeIsRectangular_property.ebObjectIndex,
+        object: self.boardShapeIsRectangular_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardShapeIsRectangular_property.mObserverExplorer,
@@ -5852,7 +5852,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "selectedSheetIssues",
-        idx: self.selectedSheetIssues_property.ebObjectIndex,
+        object: self.selectedSheetIssues_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectedSheetIssues_property.mObserverExplorer,
@@ -5860,7 +5860,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "connectedPoints",
-        idx: self.connectedPoints_property.ebObjectIndex,
+        object: self.connectedPoints_property,
         y: &y,
         view: view,
         observerExplorer: &self.connectedPoints_property.mObserverExplorer,
@@ -5868,7 +5868,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "connexionWarningString",
-        idx: self.connexionWarningString_property.ebObjectIndex,
+        object: self.connexionWarningString_property,
         y: &y,
         view: view,
         observerExplorer: &self.connexionWarningString_property.mObserverExplorer,
@@ -5876,7 +5876,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "connexionErrorString",
-        idx: self.connexionErrorString_property.ebObjectIndex,
+        object: self.connexionErrorString_property,
         y: &y,
         view: view,
         observerExplorer: &self.connexionErrorString_property.mObserverExplorer,
@@ -5884,7 +5884,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "sheetIndexes",
-        idx: self.sheetIndexes_property.ebObjectIndex,
+        object: self.sheetIndexes_property,
         y: &y,
         view: view,
         observerExplorer: &self.sheetIndexes_property.mObserverExplorer,
@@ -5892,7 +5892,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "netsDescription",
-        idx: self.netsDescription_property.ebObjectIndex,
+        object: self.netsDescription_property,
         y: &y,
         view: view,
         observerExplorer: &self.netsDescription_property.mObserverExplorer,
@@ -5900,7 +5900,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardIssues",
-        idx: self.boardIssues_property.ebObjectIndex,
+        object: self.boardIssues_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardIssues_property.mObserverExplorer,
@@ -5908,7 +5908,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "signatureForERCChecking",
-        idx: self.signatureForERCChecking_property.ebObjectIndex,
+        object: self.signatureForERCChecking_property,
         y: &y,
         view: view,
         observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
@@ -5916,7 +5916,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "ercStatusImage",
-        idx: self.ercStatusImage_property.ebObjectIndex,
+        object: self.ercStatusImage_property,
         y: &y,
         view: view,
         observerExplorer: &self.ercStatusImage_property.mObserverExplorer,
@@ -5924,7 +5924,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "ercStatusMessage",
-        idx: self.ercStatusMessage_property.ebObjectIndex,
+        object: self.ercStatusMessage_property,
         y: &y,
         view: view,
         observerExplorer: &self.ercStatusMessage_property.mObserverExplorer,
@@ -5932,7 +5932,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "viaCountString",
-        idx: self.viaCountString_property.ebObjectIndex,
+        object: self.viaCountString_property,
         y: &y,
         view: view,
         observerExplorer: &self.viaCountString_property.mObserverExplorer,
@@ -5940,7 +5940,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "topSideTrackCountString",
-        idx: self.topSideTrackCountString_property.ebObjectIndex,
+        object: self.topSideTrackCountString_property,
         y: &y,
         view: view,
         observerExplorer: &self.topSideTrackCountString_property.mObserverExplorer,
@@ -5948,7 +5948,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "backSideTrackCountString",
-        idx: self.backSideTrackCountString_property.ebObjectIndex,
+        object: self.backSideTrackCountString_property,
         y: &y,
         view: view,
         observerExplorer: &self.backSideTrackCountString_property.mObserverExplorer,
@@ -5956,7 +5956,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "inner1LayerTrackCountString",
-        idx: self.inner1LayerTrackCountString_property.ebObjectIndex,
+        object: self.inner1LayerTrackCountString_property,
         y: &y,
         view: view,
         observerExplorer: &self.inner1LayerTrackCountString_property.mObserverExplorer,
@@ -5964,7 +5964,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "inner2LayerTrackCountString",
-        idx: self.inner2LayerTrackCountString_property.ebObjectIndex,
+        object: self.inner2LayerTrackCountString_property,
         y: &y,
         view: view,
         observerExplorer: &self.inner2LayerTrackCountString_property.mObserverExplorer,
@@ -5972,7 +5972,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "inner3LayerTrackCountString",
-        idx: self.inner3LayerTrackCountString_property.ebObjectIndex,
+        object: self.inner3LayerTrackCountString_property,
         y: &y,
         view: view,
         observerExplorer: &self.inner3LayerTrackCountString_property.mObserverExplorer,
@@ -5980,7 +5980,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "inner4LayerTrackCountString",
-        idx: self.inner4LayerTrackCountString_property.ebObjectIndex,
+        object: self.inner4LayerTrackCountString_property,
         y: &y,
         view: view,
         observerExplorer: &self.inner4LayerTrackCountString_property.mObserverExplorer,
@@ -5988,7 +5988,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "trackCountString",
-        idx: self.trackCountString_property.ebObjectIndex,
+        object: self.trackCountString_property,
         y: &y,
         view: view,
         observerExplorer: &self.trackCountString_property.mObserverExplorer,
@@ -5996,7 +5996,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "trackLengthString",
-        idx: self.trackLengthString_property.ebObjectIndex,
+        object: self.trackLengthString_property,
         y: &y,
         view: view,
         observerExplorer: &self.trackLengthString_property.mObserverExplorer,
@@ -6004,7 +6004,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardStatusImage",
-        idx: self.boardStatusImage_property.ebObjectIndex,
+        object: self.boardStatusImage_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardStatusImage_property.mObserverExplorer,
@@ -6012,7 +6012,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardStatusMessage",
-        idx: self.boardStatusMessage_property.ebObjectIndex,
+        object: self.boardStatusMessage_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardStatusMessage_property.mObserverExplorer,
@@ -6020,7 +6020,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "interiorBoundBox",
-        idx: self.interiorBoundBox_property.ebObjectIndex,
+        object: self.interiorBoundBox_property,
         y: &y,
         view: view,
         observerExplorer: &self.interiorBoundBox_property.mObserverExplorer,
@@ -6028,7 +6028,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardBoundBox",
-        idx: self.boardBoundBox_property.ebObjectIndex,
+        object: self.boardBoundBox_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardBoundBox_property.mObserverExplorer,
@@ -6036,7 +6036,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardInteriorTop",
-        idx: self.boardInteriorTop_property.ebObjectIndex,
+        object: self.boardInteriorTop_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardInteriorTop_property.mObserverExplorer,
@@ -6044,7 +6044,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardInteriorBottom",
-        idx: self.boardInteriorBottom_property.ebObjectIndex,
+        object: self.boardInteriorBottom_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardInteriorBottom_property.mObserverExplorer,
@@ -6052,7 +6052,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardInteriorLeft",
-        idx: self.boardInteriorLeft_property.ebObjectIndex,
+        object: self.boardInteriorLeft_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardInteriorLeft_property.mObserverExplorer,
@@ -6060,7 +6060,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardInteriorRight",
-        idx: self.boardInteriorRight_property.ebObjectIndex,
+        object: self.boardInteriorRight_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardInteriorRight_property.mObserverExplorer,
@@ -6068,7 +6068,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardLimitBorderTop",
-        idx: self.boardLimitBorderTop_property.ebObjectIndex,
+        object: self.boardLimitBorderTop_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardLimitBorderTop_property.mObserverExplorer,
@@ -6076,7 +6076,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardLimitBorderBottom",
-        idx: self.boardLimitBorderBottom_property.ebObjectIndex,
+        object: self.boardLimitBorderBottom_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardLimitBorderBottom_property.mObserverExplorer,
@@ -6084,7 +6084,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardLimitBorderLeft",
-        idx: self.boardLimitBorderLeft_property.ebObjectIndex,
+        object: self.boardLimitBorderLeft_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardLimitBorderLeft_property.mObserverExplorer,
@@ -6092,7 +6092,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "boardLimitBorderRight",
-        idx: self.boardLimitBorderRight_property.ebObjectIndex,
+        object: self.boardLimitBorderRight_property,
         y: &y,
         view: view,
         observerExplorer: &self.boardLimitBorderRight_property.mObserverExplorer,
@@ -6100,7 +6100,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "borderElementCountString",
-        idx: self.borderElementCountString_property.ebObjectIndex,
+        object: self.borderElementCountString_property,
         y: &y,
         view: view,
         observerExplorer: &self.borderElementCountString_property.mObserverExplorer,
@@ -6108,7 +6108,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "borderOutlineBackground",
-        idx: self.borderOutlineBackground_property.ebObjectIndex,
+        object: self.borderOutlineBackground_property,
         y: &y,
         view: view,
         observerExplorer: &self.borderOutlineBackground_property.mObserverExplorer,
@@ -6116,7 +6116,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "borderViewBackground",
-        idx: self.borderViewBackground_property.ebObjectIndex,
+        object: self.borderViewBackground_property,
         y: &y,
         view: view,
         observerExplorer: &self.borderViewBackground_property.mObserverExplorer,
@@ -6124,7 +6124,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "deviceNames",
-        idx: self.deviceNames_property.ebObjectIndex,
+        object: self.deviceNames_property,
         y: &y,
         view: view,
         observerExplorer: &self.deviceNames_property.mObserverExplorer,
@@ -6132,7 +6132,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "allClassNames",
-        idx: self.allClassNames_property.ebObjectIndex,
+        object: self.allClassNames_property,
         y: &y,
         view: view,
         observerExplorer: &self.allClassNames_property.mObserverExplorer,
@@ -6140,7 +6140,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "sheetGeometry",
-        idx: self.sheetGeometry_property.ebObjectIndex,
+        object: self.sheetGeometry_property,
         y: &y,
         view: view,
         observerExplorer: &self.sheetGeometry_property.mObserverExplorer,
@@ -6148,7 +6148,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "schematicBackgroundDisplay",
-        idx: self.schematicBackgroundDisplay_property.ebObjectIndex,
+        object: self.schematicBackgroundDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.schematicBackgroundDisplay_property.mObserverExplorer,
@@ -6156,7 +6156,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "netWarningCount",
-        idx: self.netWarningCount_property.ebObjectIndex,
+        object: self.netWarningCount_property,
         y: &y,
         view: view,
         observerExplorer: &self.netWarningCount_property.mObserverExplorer,
@@ -6164,7 +6164,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "netNamesArray",
-        idx: self.netNamesArray_property.ebObjectIndex,
+        object: self.netNamesArray_property,
         y: &y,
         view: view,
         observerExplorer: &self.netNamesArray_property.mObserverExplorer,
@@ -6172,7 +6172,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "unplacedSymbols",
-        idx: self.unplacedSymbols_property.ebObjectIndex,
+        object: self.unplacedSymbols_property,
         y: &y,
         view: view,
         observerExplorer: &self.unplacedSymbols_property.mObserverExplorer,
@@ -6180,7 +6180,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "unplacedPackages",
-        idx: self.unplacedPackages_property.ebObjectIndex,
+        object: self.unplacedPackages_property,
         y: &y,
         view: view,
         observerExplorer: &self.unplacedPackages_property.mObserverExplorer,
@@ -6188,7 +6188,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "componentsPlacedInBoard",
-        idx: self.componentsPlacedInBoard_property.ebObjectIndex,
+        object: self.componentsPlacedInBoard_property,
         y: &y,
         view: view,
         observerExplorer: &self.componentsPlacedInBoard_property.mObserverExplorer,
@@ -6196,7 +6196,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "placedComponentNameArray",
-        idx: self.placedComponentNameArray_property.ebObjectIndex,
+        object: self.placedComponentNameArray_property,
         y: &y,
         view: view,
         observerExplorer: &self.placedComponentNameArray_property.mObserverExplorer,
@@ -6204,7 +6204,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "schematicHasErrorOrWarning",
-        idx: self.schematicHasErrorOrWarning_property.ebObjectIndex,
+        object: self.schematicHasErrorOrWarning_property,
         y: &y,
         view: view,
         observerExplorer: &self.schematicHasErrorOrWarning_property.mObserverExplorer,
@@ -6212,7 +6212,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "schematicStatusMessage",
-        idx: self.schematicStatusMessage_property.ebObjectIndex,
+        object: self.schematicStatusMessage_property,
         y: &y,
         view: view,
         observerExplorer: &self.schematicStatusMessage_property.mObserverExplorer,
@@ -6220,7 +6220,7 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "schematicStatusImage",
-        idx: self.schematicStatusImage_property.ebObjectIndex,
+        object: self.schematicStatusImage_property,
         y: &y,
         view: view,
         observerExplorer: &self.schematicStatusImage_property.mObserverExplorer,
@@ -6229,49 +6229,49 @@ final class ProjectRoot : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mSheets",
-        idx:mSheets_property.ebObjectIndex,
+        object: mSheets_property,
         y: &y,
         view: view,
         valueExplorer:&mSheets_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mNetClasses",
-        idx:mNetClasses_property.ebObjectIndex,
+        object: mNetClasses_property,
         y: &y,
         view: view,
         valueExplorer:&mNetClasses_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mFonts",
-        idx:mFonts_property.ebObjectIndex,
+        object: mFonts_property,
         y: &y,
         view: view,
         valueExplorer:&mFonts_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mDevices",
-        idx:mDevices_property.ebObjectIndex,
+        object: mDevices_property,
         y: &y,
         view: view,
         valueExplorer:&mDevices_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mBorderCurves",
-        idx:mBorderCurves_property.ebObjectIndex,
+        object: mBorderCurves_property,
         y: &y,
         view: view,
         valueExplorer:&mBorderCurves_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mBoardObjects",
-        idx:mBoardObjects_property.ebObjectIndex,
+        object: mBoardObjects_property,
         y: &y,
         view: view,
         valueExplorer:&mBoardObjects_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mComponents",
-        idx:mComponents_property.ebObjectIndex,
+        object: mComponents_property,
         y: &y,
         view: view,
         valueExplorer:&mComponents_property.mValueExplorer
@@ -6279,14 +6279,14 @@ final class ProjectRoot : EBManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mSelectedSheet",
-        idx:self.mSelectedSheet_property.ebObjectIndex,
+        object: self.mSelectedSheet_property,
         y: &y,
         view: view,
         valueExplorer:&self.mSelectedSheet_property.mValueExplorer
       )
       createEntryForToOneRelationshipNamed (
         "mArtwork",
-        idx:self.mArtwork_property.ebObjectIndex,
+        object: self.mArtwork_property,
         y: &y,
         view: view,
         valueExplorer:&self.mArtwork_property.mValueExplorer

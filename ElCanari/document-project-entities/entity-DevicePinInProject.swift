@@ -472,7 +472,7 @@ final class DevicePinInProject : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mPinName",
-        idx: self.mPinName_property.ebObjectIndex,
+        object: self.mPinName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPinName_property.mObserverExplorer,
@@ -480,7 +480,7 @@ final class DevicePinInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSymbolInstanceName",
-        idx: self.mSymbolInstanceName_property.ebObjectIndex,
+        object: self.mSymbolInstanceName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSymbolInstanceName_property.mObserverExplorer,
@@ -488,7 +488,7 @@ final class DevicePinInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mSymbolTypeName",
-        idx: self.mSymbolTypeName_property.ebObjectIndex,
+        object: self.mSymbolTypeName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSymbolTypeName_property.mObserverExplorer,
@@ -496,7 +496,7 @@ final class DevicePinInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mPinX",
-        idx: self.mPinX_property.ebObjectIndex,
+        object: self.mPinX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPinX_property.mObserverExplorer,
@@ -504,7 +504,7 @@ final class DevicePinInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mPinY",
-        idx: self.mPinY_property.ebObjectIndex,
+        object: self.mPinY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPinY_property.mObserverExplorer,
@@ -512,7 +512,7 @@ final class DevicePinInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mXName",
-        idx: self.mXName_property.ebObjectIndex,
+        object: self.mXName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mXName_property.mObserverExplorer,
@@ -520,7 +520,7 @@ final class DevicePinInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mYName",
-        idx: self.mYName_property.ebObjectIndex,
+        object: self.mYName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mYName_property.mObserverExplorer,
@@ -528,7 +528,7 @@ final class DevicePinInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mNameHorizontalAlignment",
-        idx: self.mNameHorizontalAlignment_property.ebObjectIndex,
+        object: self.mNameHorizontalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNameHorizontalAlignment_property.mObserverExplorer,
@@ -536,7 +536,7 @@ final class DevicePinInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mPinNameIsDisplayedInSchematic",
-        idx: self.mPinNameIsDisplayedInSchematic_property.ebObjectIndex,
+        object: self.mPinNameIsDisplayedInSchematic_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPinNameIsDisplayedInSchematic_property.mObserverExplorer,
@@ -544,7 +544,7 @@ final class DevicePinInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mXNumber",
-        idx: self.mXNumber_property.ebObjectIndex,
+        object: self.mXNumber_property,
         y: &y,
         view: view,
         observerExplorer: &self.mXNumber_property.mObserverExplorer,
@@ -552,7 +552,7 @@ final class DevicePinInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mYNumber",
-        idx: self.mYNumber_property.ebObjectIndex,
+        object: self.mYNumber_property,
         y: &y,
         view: view,
         observerExplorer: &self.mYNumber_property.mObserverExplorer,
@@ -560,7 +560,7 @@ final class DevicePinInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mNumberHorizontalAlignment",
-        idx: self.mNumberHorizontalAlignment_property.ebObjectIndex,
+        object: self.mNumberHorizontalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNumberHorizontalAlignment_property.mObserverExplorer,
@@ -569,7 +569,7 @@ final class DevicePinInProject : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "pinQualifiedName",
-        idx: self.pinQualifiedName_property.ebObjectIndex,
+        object: self.pinQualifiedName_property,
         y: &y,
         view: view,
         observerExplorer: &self.pinQualifiedName_property.mObserverExplorer,
@@ -577,7 +577,7 @@ final class DevicePinInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "descriptor",
-        idx: self.descriptor_property.ebObjectIndex,
+        object: self.descriptor_property,
         y: &y,
         view: view,
         observerExplorer: &self.descriptor_property.mObserverExplorer,

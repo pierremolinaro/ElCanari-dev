@@ -393,7 +393,7 @@ final class FontInProject : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mNominalSize",
-        idx: self.mNominalSize_property.ebObjectIndex,
+        object: self.mNominalSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNominalSize_property.mObserverExplorer,
@@ -401,7 +401,7 @@ final class FontInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mFontName",
-        idx: self.mFontName_property.ebObjectIndex,
+        object: self.mFontName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFontName_property.mObserverExplorer,
@@ -409,7 +409,7 @@ final class FontInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mFontVersion",
-        idx: self.mFontVersion_property.ebObjectIndex,
+        object: self.mFontVersion_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFontVersion_property.mObserverExplorer,
@@ -417,7 +417,7 @@ final class FontInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mDescriptiveString",
-        idx: self.mDescriptiveString_property.ebObjectIndex,
+        object: self.mDescriptiveString_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDescriptiveString_property.mObserverExplorer,
@@ -426,7 +426,7 @@ final class FontInProject : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "versionString",
-        idx: self.versionString_property.ebObjectIndex,
+        object: self.versionString_property,
         y: &y,
         view: view,
         observerExplorer: &self.versionString_property.mObserverExplorer,
@@ -434,7 +434,7 @@ final class FontInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "sizeString",
-        idx: self.sizeString_property.ebObjectIndex,
+        object: self.sizeString_property,
         y: &y,
         view: view,
         observerExplorer: &self.sizeString_property.mObserverExplorer,
@@ -442,7 +442,7 @@ final class FontInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "descriptor",
-        idx: self.descriptor_property.ebObjectIndex,
+        object: self.descriptor_property,
         y: &y,
         view: view,
         observerExplorer: &self.descriptor_property.mObserverExplorer,
@@ -450,7 +450,7 @@ final class FontInProject : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "canRemoveFont",
-        idx: self.canRemoveFont_property.ebObjectIndex,
+        object: self.canRemoveFont_property,
         y: &y,
         view: view,
         observerExplorer: &self.canRemoveFont_property.mObserverExplorer,
@@ -459,21 +459,21 @@ final class FontInProject : EBManagedObject,
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (
         "mTexts",
-        idx:mTexts_property.ebObjectIndex,
+        object: mTexts_property,
         y: &y,
         view: view,
         valueExplorer:&mTexts_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mComponentNames",
-        idx:mComponentNames_property.ebObjectIndex,
+        object: mComponentNames_property,
         y: &y,
         view: view,
         valueExplorer:&mComponentNames_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mComponentValues",
-        idx:mComponentValues_property.ebObjectIndex,
+        object: mComponentValues_property,
         y: &y,
         view: view,
         valueExplorer:&mComponentValues_property.mValueExplorer

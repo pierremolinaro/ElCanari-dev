@@ -8,7 +8,7 @@ import Cocoa
 
 func string (_ inManagedObject : EBManagedObject?) -> String {
   if let object = inManagedObject {
-    return explorerIndexString (object.ebObjectIndex)
+    return object.explorerIndexString
   }else{
     return "nil"
   }
@@ -205,16 +205,20 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
     }
   }
 
-  func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    createEntryForPropertyNamed (
-      "Signature",
-      idx: self.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mSignatureObserverExplorer,
-      valueExplorer: &self.mSignatureValueExplorer
-    )
-  }
+  //····················································································································
+
+  #if BUILD_OBJECT_EXPLORER
+    func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+      createEntryForPropertyNamed (
+        "Signature",
+        object: self,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSignatureObserverExplorer,
+        valueExplorer: &self.mSignatureValueExplorer
+      )
+    }
+  #endif
 
   //····················································································································
   //   createAndPopulateObjectExplorerWindow
@@ -246,7 +250,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
       closeButton?.target = self
       closeButton?.action = #selector (EBManagedObject.deleteWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (self.ebObjectIndex) + " " + className
+      let windowTitle = self.explorerIndexString + " " + className
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
@@ -430,7 +434,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
 #if BUILD_OBJECT_EXPLORER
   func updateManagedObjectToOneRelationshipDisplay (object : EBManagedObject?, button : NSButton?) {
     if let unwrappedObject = object {
-      let stringValue = explorerIndexString (unwrappedObject.ebObjectIndex) + " " + unwrappedObject.className
+      let stringValue = unwrappedObject.explorerIndexString + " " + unwrappedObject.className
       button?.isEnabled = true
       button?.title = stringValue
       button?.toolTip = stringValue
@@ -462,7 +466,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
     popUpButton?.addItem (withTitle: title)
     popUpButton?.isEnabled = objectArray.count > 0
     for object in objectArray {
-      let stringValue = explorerIndexString (object.ebObjectIndex) + " " + object.className
+      let stringValue = object.explorerIndexString + " " + object.className
       popUpButton?.addItem (withTitle: stringValue)
       let item = popUpButton?.lastItem
       item?.target = object

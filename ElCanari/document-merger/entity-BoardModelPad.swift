@@ -204,7 +204,7 @@ final class BoardModelPad : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "y",
-        idx: self.y_property.ebObjectIndex,
+        object: self.y_property,
         y: &y,
         view: view,
         observerExplorer: &self.y_property.mObserverExplorer,
@@ -212,7 +212,7 @@ final class BoardModelPad : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "width",
-        idx: self.width_property.ebObjectIndex,
+        object: self.width_property,
         y: &y,
         view: view,
         observerExplorer: &self.width_property.mObserverExplorer,
@@ -220,7 +220,7 @@ final class BoardModelPad : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "height",
-        idx: self.height_property.ebObjectIndex,
+        object: self.height_property,
         y: &y,
         view: view,
         observerExplorer: &self.height_property.mObserverExplorer,
@@ -228,7 +228,7 @@ final class BoardModelPad : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "shape",
-        idx: self.shape_property.ebObjectIndex,
+        object: self.shape_property,
         y: &y,
         view: view,
         observerExplorer: &self.shape_property.mObserverExplorer,
@@ -236,7 +236,7 @@ final class BoardModelPad : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "rotation",
-        idx: self.rotation_property.ebObjectIndex,
+        object: self.rotation_property,
         y: &y,
         view: view,
         observerExplorer: &self.rotation_property.mObserverExplorer,
@@ -244,7 +244,7 @@ final class BoardModelPad : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "x",
-        idx: self.x_property.ebObjectIndex,
+        object: self.x_property,
         y: &y,
         view: view,
         observerExplorer: &self.x_property.mObserverExplorer,

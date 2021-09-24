@@ -155,7 +155,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_ProjectDocument_commentInSchematicSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -176,7 +176,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "mColor",
-        idx: self.mColor_property.ebObjectIndex,
+        object: self.mColor_property,
         y: &y,
         view: view,
         observerExplorer: &self.mColor_property.mObserverExplorer,
@@ -184,7 +184,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
       )
       createEntryForPropertyNamed (
         "mSize",
-        idx: self.mSize_property.ebObjectIndex,
+        object: self.mSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSize_property.mObserverExplorer,
@@ -192,7 +192,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
       )
       createEntryForPropertyNamed (
         "mHorizontalAlignment",
-        idx: self.mHorizontalAlignment_property.ebObjectIndex,
+        object: self.mHorizontalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mHorizontalAlignment_property.mObserverExplorer,
@@ -200,7 +200,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
       )
       createEntryForPropertyNamed (
         "mVerticalAlignment",
-        idx: self.mVerticalAlignment_property.ebObjectIndex,
+        object: self.mVerticalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mVerticalAlignment_property.mObserverExplorer,
@@ -208,7 +208,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
       )
       createEntryForPropertyNamed (
         "mX",
-        idx: self.mX_property.ebObjectIndex,
+        object: self.mX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX_property.mObserverExplorer,
@@ -216,7 +216,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
       )
       createEntryForPropertyNamed (
         "mY",
-        idx: self.mY_property.ebObjectIndex,
+        object: self.mY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY_property.mObserverExplorer,
@@ -224,7 +224,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
       )
       createEntryForPropertyNamed (
         "mComment",
-        idx: self.mComment_property.ebObjectIndex,
+        object: self.mComment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mComment_property.mObserverExplorer,
@@ -241,7 +241,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_ProjectDocument_commentInSchematicSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

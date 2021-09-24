@@ -253,7 +253,7 @@ final class PadProxyInDevice : EBManagedObject,
       super.populateExplorerWindow (&y, view:view)
       createEntryForPropertyNamed (
         "mPinInstanceName",
-        idx: self.mPinInstanceName_property.ebObjectIndex,
+        object: self.mPinInstanceName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPinInstanceName_property.mObserverExplorer,
@@ -261,7 +261,7 @@ final class PadProxyInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mPadName",
-        idx: self.mPadName_property.ebObjectIndex,
+        object: self.mPadName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mPadName_property.mObserverExplorer,
@@ -269,7 +269,7 @@ final class PadProxyInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "mIsNC",
-        idx: self.mIsNC_property.ebObjectIndex,
+        object: self.mIsNC_property,
         y: &y,
         view: view,
         observerExplorer: &self.mIsNC_property.mObserverExplorer,
@@ -278,7 +278,7 @@ final class PadProxyInDevice : EBManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "isConnected",
-        idx: self.isConnected_property.ebObjectIndex,
+        object: self.isConnected_property,
         y: &y,
         view: view,
         observerExplorer: &self.isConnected_property.mObserverExplorer,
@@ -286,7 +286,7 @@ final class PadProxyInDevice : EBManagedObject,
       )
       createEntryForPropertyNamed (
         "symbolName",
-        idx: self.symbolName_property.ebObjectIndex,
+        object: self.symbolName_property,
         y: &y,
         view: view,
         observerExplorer: &self.symbolName_property.mObserverExplorer,
@@ -296,7 +296,7 @@ final class PadProxyInDevice : EBManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mPinInstance",
-        idx:self.mPinInstance_property.ebObjectIndex,
+        object: self.mPinInstance_property,
         y: &y,
         view: view,
         valueExplorer:&self.mPinInstance_property.mValueExplorer

@@ -505,7 +505,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_ProjectDocument_componentInBoardSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -526,7 +526,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "mSlavePadsShouldBeRouted",
-        idx: self.mSlavePadsShouldBeRouted_property.ebObjectIndex,
+        object: self.mSlavePadsShouldBeRouted_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSlavePadsShouldBeRouted_property.mObserverExplorer,
@@ -534,7 +534,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mX",
-        idx: self.mX_property.ebObjectIndex,
+        object: self.mX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX_property.mObserverExplorer,
@@ -542,7 +542,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mY",
-        idx: self.mY_property.ebObjectIndex,
+        object: self.mY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY_property.mObserverExplorer,
@@ -550,7 +550,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mRotation",
-        idx: self.mRotation_property.ebObjectIndex,
+        object: self.mRotation_property,
         y: &y,
         view: view,
         observerExplorer: &self.mRotation_property.mObserverExplorer,
@@ -558,7 +558,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mSide",
-        idx: self.mSide_property.ebObjectIndex,
+        object: self.mSide_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSide_property.mObserverExplorer,
@@ -566,7 +566,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mDisplayLegend",
-        idx: self.mDisplayLegend_property.ebObjectIndex,
+        object: self.mDisplayLegend_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDisplayLegend_property.mObserverExplorer,
@@ -574,7 +574,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mNameIsVisibleInBoard",
-        idx: self.mNameIsVisibleInBoard_property.ebObjectIndex,
+        object: self.mNameIsVisibleInBoard_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNameIsVisibleInBoard_property.mObserverExplorer,
@@ -582,7 +582,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mXName",
-        idx: self.mXName_property.ebObjectIndex,
+        object: self.mXName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mXName_property.mObserverExplorer,
@@ -590,7 +590,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mYName",
-        idx: self.mYName_property.ebObjectIndex,
+        object: self.mYName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mYName_property.mObserverExplorer,
@@ -598,7 +598,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mNameFontSize",
-        idx: self.mNameFontSize_property.ebObjectIndex,
+        object: self.mNameFontSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNameFontSize_property.mObserverExplorer,
@@ -606,7 +606,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mNameRotation",
-        idx: self.mNameRotation_property.ebObjectIndex,
+        object: self.mNameRotation_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNameRotation_property.mObserverExplorer,
@@ -614,7 +614,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mValueIsVisibleInBoard",
-        idx: self.mValueIsVisibleInBoard_property.ebObjectIndex,
+        object: self.mValueIsVisibleInBoard_property,
         y: &y,
         view: view,
         observerExplorer: &self.mValueIsVisibleInBoard_property.mObserverExplorer,
@@ -622,7 +622,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mXValue",
-        idx: self.mXValue_property.ebObjectIndex,
+        object: self.mXValue_property,
         y: &y,
         view: view,
         observerExplorer: &self.mXValue_property.mObserverExplorer,
@@ -630,7 +630,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mYValue",
-        idx: self.mYValue_property.ebObjectIndex,
+        object: self.mYValue_property,
         y: &y,
         view: view,
         observerExplorer: &self.mYValue_property.mObserverExplorer,
@@ -638,7 +638,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mValueFontSize",
-        idx: self.mValueFontSize_property.ebObjectIndex,
+        object: self.mValueFontSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.mValueFontSize_property.mObserverExplorer,
@@ -646,7 +646,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mValueRotation",
-        idx: self.mValueRotation_property.ebObjectIndex,
+        object: self.mValueRotation_property,
         y: &y,
         view: view,
         observerExplorer: &self.mValueRotation_property.mObserverExplorer,
@@ -654,7 +654,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mComponentValue",
-        idx: self.mComponentValue_property.ebObjectIndex,
+        object: self.mComponentValue_property,
         y: &y,
         view: view,
         observerExplorer: &self.mComponentValue_property.mObserverExplorer,
@@ -662,7 +662,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mNamePrefix",
-        idx: self.mNamePrefix_property.ebObjectIndex,
+        object: self.mNamePrefix_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNamePrefix_property.mObserverExplorer,
@@ -670,7 +670,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mNameIndex",
-        idx: self.mNameIndex_property.ebObjectIndex,
+        object: self.mNameIndex_property,
         y: &y,
         view: view,
         observerExplorer: &self.mNameIndex_property.mObserverExplorer,
@@ -678,7 +678,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mXUnit",
-        idx: self.mXUnit_property.ebObjectIndex,
+        object: self.mXUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mXUnit_property.mObserverExplorer,
@@ -686,7 +686,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       )
       createEntryForPropertyNamed (
         "mYUnit",
-        idx: self.mYUnit_property.ebObjectIndex,
+        object: self.mYUnit_property,
         y: &y,
         view: view,
         observerExplorer: &self.mYUnit_property.mObserverExplorer,
@@ -703,7 +703,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_ProjectDocument_componentInBoardSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

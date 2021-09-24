@@ -256,7 +256,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_ProjectDocument_componentSymbolSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -277,7 +277,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "mCenterX",
-        idx: self.mCenterX_property.ebObjectIndex,
+        object: self.mCenterX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCenterX_property.mObserverExplorer,
@@ -285,7 +285,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
       )
       createEntryForPropertyNamed (
         "mCenterY",
-        idx: self.mCenterY_property.ebObjectIndex,
+        object: self.mCenterY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mCenterY_property.mObserverExplorer,
@@ -293,7 +293,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
       )
       createEntryForPropertyNamed (
         "mRotation",
-        idx: self.mRotation_property.ebObjectIndex,
+        object: self.mRotation_property,
         y: &y,
         view: view,
         observerExplorer: &self.mRotation_property.mObserverExplorer,
@@ -301,7 +301,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
       )
       createEntryForPropertyNamed (
         "mMirror",
-        idx: self.mMirror_property.ebObjectIndex,
+        object: self.mMirror_property,
         y: &y,
         view: view,
         observerExplorer: &self.mMirror_property.mObserverExplorer,
@@ -309,7 +309,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
       )
       createEntryForPropertyNamed (
         "mSymbolInstanceName",
-        idx: self.mSymbolInstanceName_property.ebObjectIndex,
+        object: self.mSymbolInstanceName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSymbolInstanceName_property.mObserverExplorer,
@@ -317,7 +317,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
       )
       createEntryForPropertyNamed (
         "mSymbolTypeName",
-        idx: self.mSymbolTypeName_property.ebObjectIndex,
+        object: self.mSymbolTypeName_property,
         y: &y,
         view: view,
         observerExplorer: &self.mSymbolTypeName_property.mObserverExplorer,
@@ -325,7 +325,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
       )
       createEntryForPropertyNamed (
         "mDisplayComponentNameOffsetX",
-        idx: self.mDisplayComponentNameOffsetX_property.ebObjectIndex,
+        object: self.mDisplayComponentNameOffsetX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDisplayComponentNameOffsetX_property.mObserverExplorer,
@@ -333,7 +333,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
       )
       createEntryForPropertyNamed (
         "mDisplayComponentNameOffsetY",
-        idx: self.mDisplayComponentNameOffsetY_property.ebObjectIndex,
+        object: self.mDisplayComponentNameOffsetY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDisplayComponentNameOffsetY_property.mObserverExplorer,
@@ -341,7 +341,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
       )
       createEntryForPropertyNamed (
         "mDisplayComponentValue",
-        idx: self.mDisplayComponentValue_property.ebObjectIndex,
+        object: self.mDisplayComponentValue_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDisplayComponentValue_property.mObserverExplorer,
@@ -349,7 +349,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
       )
       createEntryForPropertyNamed (
         "mDisplayComponentValueOffsetX",
-        idx: self.mDisplayComponentValueOffsetX_property.ebObjectIndex,
+        object: self.mDisplayComponentValueOffsetX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDisplayComponentValueOffsetX_property.mObserverExplorer,
@@ -357,7 +357,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
       )
       createEntryForPropertyNamed (
         "mDisplayComponentValueOffsetY",
-        idx: self.mDisplayComponentValueOffsetY_property.ebObjectIndex,
+        object: self.mDisplayComponentValueOffsetY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mDisplayComponentValueOffsetY_property.mObserverExplorer,
@@ -374,7 +374,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_ProjectDocument_componentSymbolSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

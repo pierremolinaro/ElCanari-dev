@@ -208,7 +208,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_ProjectDocument_boardTextSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -229,7 +229,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "mX",
-        idx: self.mX_property.ebObjectIndex,
+        object: self.mX_property,
         y: &y,
         view: view,
         observerExplorer: &self.mX_property.mObserverExplorer,
@@ -237,7 +237,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
       )
       createEntryForPropertyNamed (
         "mY",
-        idx: self.mY_property.ebObjectIndex,
+        object: self.mY_property,
         y: &y,
         view: view,
         observerExplorer: &self.mY_property.mObserverExplorer,
@@ -245,7 +245,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
       )
       createEntryForPropertyNamed (
         "mFontSize",
-        idx: self.mFontSize_property.ebObjectIndex,
+        object: self.mFontSize_property,
         y: &y,
         view: view,
         observerExplorer: &self.mFontSize_property.mObserverExplorer,
@@ -253,7 +253,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
       )
       createEntryForPropertyNamed (
         "mLayer",
-        idx: self.mLayer_property.ebObjectIndex,
+        object: self.mLayer_property,
         y: &y,
         view: view,
         observerExplorer: &self.mLayer_property.mObserverExplorer,
@@ -261,7 +261,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
       )
       createEntryForPropertyNamed (
         "mText",
-        idx: self.mText_property.ebObjectIndex,
+        object: self.mText_property,
         y: &y,
         view: view,
         observerExplorer: &self.mText_property.mObserverExplorer,
@@ -269,7 +269,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
       )
       createEntryForPropertyNamed (
         "mHorizontalAlignment",
-        idx: self.mHorizontalAlignment_property.ebObjectIndex,
+        object: self.mHorizontalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mHorizontalAlignment_property.mObserverExplorer,
@@ -277,7 +277,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
       )
       createEntryForPropertyNamed (
         "mVerticalAlignment",
-        idx: self.mVerticalAlignment_property.ebObjectIndex,
+        object: self.mVerticalAlignment_property,
         y: &y,
         view: view,
         observerExplorer: &self.mVerticalAlignment_property.mObserverExplorer,
@@ -285,7 +285,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
       )
       createEntryForPropertyNamed (
         "mRotation",
-        idx: self.mRotation_property.ebObjectIndex,
+        object: self.mRotation_property,
         y: &y,
         view: view,
         observerExplorer: &self.mRotation_property.mObserverExplorer,
@@ -293,7 +293,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
       )
       createEntryForPropertyNamed (
         "mWeight",
-        idx: self.mWeight_property.ebObjectIndex,
+        object: self.mWeight_property,
         y: &y,
         view: view,
         observerExplorer: &self.mWeight_property.mObserverExplorer,
@@ -301,7 +301,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
       )
       createEntryForPropertyNamed (
         "mOblique",
-        idx: self.mOblique_property.ebObjectIndex,
+        object: self.mOblique_property,
         y: &y,
         view: view,
         observerExplorer: &self.mOblique_property.mObserverExplorer,
@@ -318,7 +318,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_ProjectDocument_boardTextSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

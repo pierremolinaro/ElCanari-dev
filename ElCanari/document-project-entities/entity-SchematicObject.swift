@@ -227,7 +227,7 @@ class SchematicObject : EBGraphicManagedObject,
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "issues",
-        idx: self.issues_property.ebObjectIndex,
+        object: self.issues_property,
         y: &y,
         view: view,
         observerExplorer: &self.issues_property.mObserverExplorer,
@@ -235,7 +235,7 @@ class SchematicObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "connectedPoints",
-        idx: self.connectedPoints_property.ebObjectIndex,
+        object: self.connectedPoints_property,
         y: &y,
         view: view,
         observerExplorer: &self.connectedPoints_property.mObserverExplorer,
@@ -243,7 +243,7 @@ class SchematicObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "sheetDescriptor",
-        idx: self.sheetDescriptor_property.ebObjectIndex,
+        object: self.sheetDescriptor_property,
         y: &y,
         view: view,
         observerExplorer: &self.sheetDescriptor_property.mObserverExplorer,
@@ -251,7 +251,7 @@ class SchematicObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "selectionDisplay",
-        idx: self.selectionDisplay_property.ebObjectIndex,
+        object: self.selectionDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
@@ -259,7 +259,7 @@ class SchematicObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "objectDisplay",
-        idx: self.objectDisplay_property.ebObjectIndex,
+        object: self.objectDisplay_property,
         y: &y,
         view: view,
         observerExplorer: &self.objectDisplay_property.mObserverExplorer,
@@ -267,7 +267,7 @@ class SchematicObject : EBGraphicManagedObject,
       )
       createEntryForPropertyNamed (
         "isPlacedInSchematic",
-        idx: self.isPlacedInSchematic_property.ebObjectIndex,
+        object: self.isPlacedInSchematic_property,
         y: &y,
         view: view,
         observerExplorer: &self.isPlacedInSchematic_property.mObserverExplorer,
@@ -277,7 +277,7 @@ class SchematicObject : EBGraphicManagedObject,
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
         "mSheet",
-        idx:self.mSheet_property.ebObjectIndex,
+        object: self.mSheet_property,
         y: &y,
         view: view,
         valueExplorer:&self.mSheet_property.mValueExplorer

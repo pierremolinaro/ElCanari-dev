@@ -274,7 +274,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       view.addSubview (tf)
       let valueExplorer = NSButton (frame: thirdColumn (y))
       valueExplorer.font = font
-      valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
       valueExplorer.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSelectionController.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
@@ -295,7 +295,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       var y : CGFloat = 0.0
       createEntryForPropertyNamed (
         "y1",
-        idx: self.y1_property.ebObjectIndex,
+        object: self.y1_property,
         y: &y,
         view: view,
         observerExplorer: &self.y1_property.mObserverExplorer,
@@ -303,7 +303,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "x2",
-        idx: self.x2_property.ebObjectIndex,
+        object: self.x2_property,
         y: &y,
         view: view,
         observerExplorer: &self.x2_property.mObserverExplorer,
@@ -311,7 +311,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "y2",
-        idx: self.y2_property.ebObjectIndex,
+        object: self.y2_property,
         y: &y,
         view: view,
         observerExplorer: &self.y2_property.mObserverExplorer,
@@ -319,7 +319,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "cpx1",
-        idx: self.cpx1_property.ebObjectIndex,
+        object: self.cpx1_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpx1_property.mObserverExplorer,
@@ -327,7 +327,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "cpy1",
-        idx: self.cpy1_property.ebObjectIndex,
+        object: self.cpy1_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpy1_property.mObserverExplorer,
@@ -335,7 +335,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "cpx2",
-        idx: self.cpx2_property.ebObjectIndex,
+        object: self.cpx2_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpx2_property.mObserverExplorer,
@@ -343,7 +343,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "cpy2",
-        idx: self.cpy2_property.ebObjectIndex,
+        object: self.cpy2_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpy2_property.mObserverExplorer,
@@ -351,7 +351,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "x1Unit",
-        idx: self.x1Unit_property.ebObjectIndex,
+        object: self.x1Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.x1Unit_property.mObserverExplorer,
@@ -359,7 +359,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "y1Unit",
-        idx: self.y1Unit_property.ebObjectIndex,
+        object: self.y1Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.y1Unit_property.mObserverExplorer,
@@ -367,7 +367,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "x2Unit",
-        idx: self.x2Unit_property.ebObjectIndex,
+        object: self.x2Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.x2Unit_property.mObserverExplorer,
@@ -375,7 +375,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "y2Unit",
-        idx: self.y2Unit_property.ebObjectIndex,
+        object: self.y2Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.y2Unit_property.mObserverExplorer,
@@ -383,7 +383,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "cpx1Unit",
-        idx: self.cpx1Unit_property.ebObjectIndex,
+        object: self.cpx1Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpx1Unit_property.mObserverExplorer,
@@ -391,7 +391,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "cpy1Unit",
-        idx: self.cpy1Unit_property.ebObjectIndex,
+        object: self.cpy1Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpy1Unit_property.mObserverExplorer,
@@ -399,7 +399,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "cpx2Unit",
-        idx: self.cpx2Unit_property.ebObjectIndex,
+        object: self.cpx2Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpx2Unit_property.mObserverExplorer,
@@ -407,7 +407,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "cpy2Unit",
-        idx: self.cpy2Unit_property.ebObjectIndex,
+        object: self.cpy2Unit_property,
         y: &y,
         view: view,
         observerExplorer: &self.cpy2Unit_property.mObserverExplorer,
@@ -415,7 +415,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       )
       createEntryForPropertyNamed (
         "x1",
-        idx: self.x1_property.ebObjectIndex,
+        object: self.x1_property,
         y: &y,
         view: view,
         observerExplorer: &self.x1_property.mObserverExplorer,
@@ -432,7 +432,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
       closeButton?.target = self
       closeButton?.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSelectionController.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
-      let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
+      let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       self.mExplorerWindow!.title = windowTitle
     //--- Add Scroll view
       let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
