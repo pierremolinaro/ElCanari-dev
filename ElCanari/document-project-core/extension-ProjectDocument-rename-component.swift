@@ -206,7 +206,7 @@ extension ProjectDocument {
     var allComponents = [String : [ComponentInProject]] ()
     for component in self.rootObject.mComponents {
       let prefix = component.mNamePrefix
-      allComponents [prefix] = (allComponents [prefix] ?? []) + [component]
+      allComponents [prefix] = allComponents [prefix, default: []] + [component]
     }
     for (_, components) in allComponents {
       let sortedComponents = components.sorted { $0.mNameIndex < $1.mNameIndex }

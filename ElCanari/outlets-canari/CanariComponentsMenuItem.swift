@@ -78,7 +78,7 @@ final class CanariComponentsMenuItem : NSMenuItem, EBUserClassNameProtocol {
       for component in components {
         let prefix = component.string
         let index = component.tag
-        componentNameSet [prefix] = (componentNameSet [prefix] ?? []) + [index]
+        componentNameSet [prefix] = componentNameSet [prefix, default: []] + [index]
       }
       let prefixes : [String] = Array (componentNameSet.keys).sorted ()
       for prefix in prefixes {

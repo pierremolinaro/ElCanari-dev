@@ -142,7 +142,7 @@ extension ProjectDocument {
       if let connector = object as? BoardConnector, let isVia = connector.isVia, isVia {
         let p = connector.location!.cocoaPoint
         let hd = canariUnitToCocoa (connector.actualHoleDiameter!)
-        result [hd] = (result [hd] ?? []) + [(p, p)]
+        result [hd] = result [hd, default: []] + [(p, p)]
       }else if let component = object as? ComponentInProject {
         let af = component.packageToComponentAffineTransform ()
         for (_, masterPad) in component.packagePadDictionary! {
@@ -154,16 +154,16 @@ extension ProjectDocument {
               let p1 = af.transform (NSPoint (x: p.x, y: p.y - (holeSize.height - holeSize.width) / 2.0))
               let p2 = af.transform (NSPoint (x: p.x, y: p.y + (holeSize.height - holeSize.width) / 2.0))
               let s = canariUnitToCocoa (masterPad.holeSize.width)
-              result [s] = (result [s] ?? []) + [(p1, p2)]
+              result [s] = result [s, default: []] + [(p1, p2)]
             }else if masterPad.holeSize.width > masterPad.holeSize.height { // Horizontal oblong
               let p1 = af.transform (NSPoint (x: p.x - (holeSize.width - holeSize.height) / 2.0, y: p.y))
               let p2 = af.transform (NSPoint (x: p.x + (holeSize.width - holeSize.height) / 2.0, y: p.y))
               let s = canariUnitToCocoa (masterPad.holeSize.height)
-              result [s] = (result [s] ?? []) + [(p1, p2)]
+              result [s] = result [s, default: []] + [(p1, p2)]
             }else{ // Circular
               let pp = af.transform (p)
               let s = canariUnitToCocoa (masterPad.holeSize.width)
-              result [s] = (result [s] ?? []) + [(pp, pp)]
+              result [s] = result [s, default: []] + [(pp, pp)]
             }
           case .surface :
             ()
@@ -177,16 +177,16 @@ extension ProjectDocument {
                 let p1 = af.transform (NSPoint (x: p.x, y: p.y - (holeSize.height - holeSize.width) / 2.0))
                 let p2 = af.transform (NSPoint (x: p.x, y: p.y + (holeSize.height - holeSize.width) / 2.0))
                 let s = canariUnitToCocoa (slavePad.holeSize.width)
-                result [s] = (result [s] ?? []) + [(p1, p2)]
+                result [s] = result [s, default: []] + [(p1, p2)]
               }else if slavePad.holeSize.width > slavePad.holeSize.height { // Horizontal oblong
                 let p1 = af.transform (NSPoint (x: p.x - (holeSize.width - holeSize.height) / 2.0, y: p.y))
                 let p2 = af.transform (NSPoint (x: p.x + (holeSize.width - holeSize.height) / 2.0, y: p.y))
                 let s = canariUnitToCocoa (slavePad.holeSize.height)
-                result [s] = (result [s] ?? []) + [(p1, p2)]
+                result [s] = result [s, default: []] + [(p1, p2)]
               }else{ // Circular
                 let pp = af.transform (p)
                 let s = canariUnitToCocoa (slavePad.holeSize.width)
-                result [s] = (result [s] ?? []) + [(pp, pp)]
+                result [s] = result [s, default: []] + [(pp, pp)]
               }
             case .oppositeSide, .componentSide :
               ()
@@ -216,9 +216,9 @@ extension ProjectDocument {
           }
           switch component.mSide {
           case .back :
-            backPackageLegends [aperture] = (backPackageLegends [aperture] ?? []) + transformedPathArray
+            backPackageLegends [aperture] = backPackageLegends [aperture, default: []] + transformedPathArray
           case .front :
-            frontPackageLegends [aperture] = (frontPackageLegends [aperture] ?? []) + transformedPathArray
+            frontPackageLegends [aperture] = frontPackageLegends [aperture, default: []] + transformedPathArray
           }
         }
       }
@@ -252,9 +252,9 @@ extension ProjectDocument {
           let pathArray = textBP.pointsByFlattening (withFlatness: 0.1)
           switch component.mSide {
           case .back :
-            backComponentNames [aperture] = (backComponentNames [aperture] ?? []) + pathArray
+            backComponentNames [aperture] = backComponentNames [aperture, default: []] + pathArray
           case .front :
-            frontComponentNames [aperture] = (frontComponentNames [aperture] ?? []) + pathArray
+            frontComponentNames [aperture] = frontComponentNames [aperture, default: []] + pathArray
           }
         }
       }
@@ -288,9 +288,9 @@ extension ProjectDocument {
           let pathArray = textBP.pointsByFlattening (withFlatness: 0.1)
           switch component.mSide {
           case .back :
-            backComponentValues [aperture] = (backComponentValues [aperture] ?? []) + pathArray
+            backComponentValues [aperture] = backComponentValues [aperture, default: []] + pathArray
           case .front :
-            frontComponentValues [aperture] = (frontComponentValues [aperture] ?? []) + pathArray
+            frontComponentValues [aperture] = frontComponentValues [aperture, default: []] + pathArray
           }
         }
       }
@@ -325,13 +325,13 @@ extension ProjectDocument {
         let pathArray = textBP.pointsByFlattening (withFlatness: 0.1)
         switch text.mLayer {
         case .legendFront :
-          legendFrontTexts [aperture] = (legendFrontTexts [aperture] ?? []) + pathArray
+          legendFrontTexts [aperture] = legendFrontTexts [aperture, default: []] + pathArray
         case .layoutFront :
-          layoutFrontTexts [aperture] = (layoutFrontTexts [aperture] ?? []) + pathArray
+          layoutFrontTexts [aperture] = layoutFrontTexts [aperture, default: []] + pathArray
         case .layoutBack :
-          layoutBackTexts [aperture] = (layoutBackTexts [aperture] ?? []) + pathArray
+          layoutBackTexts [aperture] = layoutBackTexts [aperture, default: []] + pathArray
         case .legendBack :
-          legendBackTexts [aperture] = (legendBackTexts [aperture] ?? []) + pathArray
+          legendBackTexts [aperture] = legendBackTexts [aperture, default: []] + pathArray
         }
       }
     }
@@ -362,7 +362,7 @@ extension ProjectDocument {
         let p2 = track.mConnectorP2!.location!.cocoaPoint
         let width = canariUnitToCocoa (track.actualTrackWidth!)
         let t = ProductOblong (p1: p1, p2: p2, width: width)
-        tracks [track.mSide] = (tracks [track.mSide] ?? []) + [t]
+        tracks [track.mSide] = tracks [track.mSide, default: []] + [t]
       }
     }
     return tracks
@@ -401,15 +401,15 @@ extension ProjectDocument {
           if let circle = productCircle (masterPad.center, masterPad.padSize, masterPad.shape, af) {
             switch masterPad.style {
             case .traversing :
-              circularPads [.frontLayer] = (circularPads [.frontLayer] ?? []) + [circle]
-              circularPads [.innerLayer] = (circularPads [.innerLayer] ?? []) + [circle]
-              circularPads [.backLayer] = (circularPads [.backLayer] ?? []) + [circle]
+              circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
+              circularPads [.innerLayer] = circularPads [.innerLayer, default: []] + [circle]
+              circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
             case .surface :
               switch component.mSide {
               case .back :
-                circularPads [.backLayer] = (circularPads [.backLayer] ?? []) + [circle]
+                circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
               case .front :
-                circularPads [.frontLayer] = (circularPads [.frontLayer] ?? []) + [circle]
+                circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
               }
             }
           }
@@ -417,22 +417,22 @@ extension ProjectDocument {
             if let circle = productCircle (slavePad.center, slavePad.padSize, slavePad.shape, af) {
               switch slavePad.style {
               case .traversing :
-                circularPads [.frontLayer] = (circularPads [.frontLayer] ?? []) + [circle]
-                circularPads [.innerLayer] = (circularPads [.innerLayer] ?? []) + [circle]
-                circularPads [.backLayer] = (circularPads [.backLayer] ?? []) + [circle]
+                circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
+                circularPads [.innerLayer] = circularPads [.innerLayer, default: []] + [circle]
+                circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
               case .oppositeSide :
                 switch component.mSide {
                 case .front :
-                  circularPads [.backLayer] = (circularPads [.backLayer] ?? []) + [circle]
+                  circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
                 case .back :
-                  circularPads [.frontLayer] = (circularPads [.frontLayer] ?? []) + [circle]
+                  circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
                 }
               case .componentSide :
                 switch component.mSide {
                 case .back :
-                  circularPads [.backLayer] = (circularPads [.backLayer] ?? []) + [circle]
+                  circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
                 case .front :
-                  circularPads [.frontLayer] = (circularPads [.frontLayer] ?? []) + [circle]
+                  circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
                 }
               }
             }
@@ -454,15 +454,15 @@ extension ProjectDocument {
           if let oblong = oblong (masterPad.center, masterPad.padSize, masterPad.shape, af) {
             switch masterPad.style {
             case .traversing :
-              oblongPads [.frontLayer] = (oblongPads [.frontLayer] ?? []) + [oblong]
-              oblongPads [.innerLayer] = (oblongPads [.innerLayer] ?? []) + [oblong]
-              oblongPads [.backLayer] = (oblongPads [.backLayer] ?? []) + [oblong]
+              oblongPads [.frontLayer] = oblongPads [.frontLayer, default: []] + [oblong]
+              oblongPads [.innerLayer] = oblongPads [.innerLayer, default: []] + [oblong]
+              oblongPads [.backLayer] = oblongPads [.backLayer, default: []] + [oblong]
             case .surface :
               switch component.mSide {
               case .back :
-                oblongPads [.backLayer] = (oblongPads [.backLayer] ?? []) + [oblong]
+                oblongPads [.backLayer] = oblongPads [.backLayer, default: []] + [oblong]
               case .front :
-                oblongPads [.frontLayer] = (oblongPads [.frontLayer] ?? []) + [oblong]
+                oblongPads [.frontLayer] = oblongPads [.frontLayer, default: []] + [oblong]
               }
             }
           }
@@ -470,22 +470,22 @@ extension ProjectDocument {
             if let oblong = oblong (slavePad.center, slavePad.padSize, slavePad.shape, af) {
               switch slavePad.style {
               case .traversing :
-                oblongPads [.frontLayer] = (oblongPads [.frontLayer] ?? []) + [oblong]
-                oblongPads [.innerLayer] = (oblongPads [.innerLayer] ?? []) + [oblong]
-                oblongPads [.backLayer] = (oblongPads [.backLayer] ?? []) + [oblong]
+                oblongPads [.frontLayer] = oblongPads [.frontLayer, default: []] + [oblong]
+                oblongPads [.innerLayer] = oblongPads [.innerLayer, default: []] + [oblong]
+                oblongPads [.backLayer] = oblongPads [.backLayer, default: []] + [oblong]
               case .oppositeSide :
                 switch component.mSide {
                 case .front :
-                  oblongPads [.backLayer] = (oblongPads [.backLayer] ?? []) + [oblong]
+                  oblongPads [.backLayer] = oblongPads [.backLayer, default: []] + [oblong]
                 case .back :
-                  oblongPads [.frontLayer] = (oblongPads [.frontLayer] ?? []) + [oblong]
+                  oblongPads [.frontLayer] = oblongPads [.frontLayer, default: []] + [oblong]
                 }
               case .componentSide :
                 switch component.mSide {
                 case .back :
-                  oblongPads [.backLayer] = (oblongPads [.backLayer] ?? []) + [oblong]
+                  oblongPads [.backLayer] = oblongPads [.backLayer, default: []] + [oblong]
                 case .front :
-                  oblongPads [.frontLayer] = (oblongPads [.frontLayer] ?? []) + [oblong]
+                  oblongPads [.frontLayer] = oblongPads [.frontLayer, default: []] + [oblong]
                 }
               }
             }
@@ -507,15 +507,15 @@ extension ProjectDocument {
           if let polygon = buildPolygon (masterPad.center, masterPad.padSize, masterPad.shape, af) {
             switch masterPad.style {
             case .traversing :
-              polygonPads [.frontLayer] = (polygonPads [.frontLayer] ?? []) + [polygon]
-              polygonPads [.innerLayer] = (polygonPads [.innerLayer] ?? []) + [polygon]
-              polygonPads [.backLayer] = (polygonPads [.backLayer] ?? []) + [polygon]
+              polygonPads [.frontLayer] = polygonPads [.frontLayer, default: []] + [polygon]
+              polygonPads [.innerLayer] = polygonPads [.innerLayer, default: []] + [polygon]
+              polygonPads [.backLayer] = polygonPads [.backLayer, default: []] + [polygon]
             case .surface :
               switch component.mSide {
               case .back :
-                polygonPads [.backLayer] = (polygonPads [.backLayer] ?? []) + [polygon]
+                polygonPads [.backLayer] = polygonPads [.backLayer, default: []] + [polygon]
               case .front :
-                polygonPads [.frontLayer] = (polygonPads [.frontLayer] ?? []) + [polygon]
+                polygonPads [.frontLayer] = polygonPads [.frontLayer, default: []] + [polygon]
               }
             }
           }
@@ -523,22 +523,22 @@ extension ProjectDocument {
            if let polygon = buildPolygon (slavePad.center, slavePad.padSize, slavePad.shape, af) {
              switch slavePad.style {
               case .traversing :
-                polygonPads [.frontLayer] = (polygonPads [.frontLayer] ?? []) + [polygon]
-                polygonPads [.innerLayer] = (polygonPads [.innerLayer] ?? []) + [polygon]
-                polygonPads [.backLayer] = (polygonPads [.backLayer] ?? []) + [polygon]
+                polygonPads [.frontLayer] = polygonPads [.frontLayer, default: []] + [polygon]
+                polygonPads [.innerLayer] = polygonPads [.innerLayer, default: []] + [polygon]
+                polygonPads [.backLayer] = polygonPads [.backLayer, default: []] + [polygon]
               case .oppositeSide :
                 switch component.mSide {
                 case .front :
-                  polygonPads [.backLayer] = (polygonPads [.backLayer] ?? []) + [polygon]
+                  polygonPads [.backLayer] = polygonPads [.backLayer, default: []] + [polygon]
                 case .back :
-                  polygonPads [.frontLayer] = (polygonPads [.frontLayer] ?? []) + [polygon]
+                  polygonPads [.frontLayer] = polygonPads [.frontLayer, default: []] + [polygon]
                 }
               case .componentSide :
                 switch component.mSide {
                 case .back :
-                  polygonPads [.backLayer] = (polygonPads [.backLayer] ?? []) + [polygon]
+                  polygonPads [.backLayer] = polygonPads [.backLayer, default: []] + [polygon]
                 case .front :
-                  polygonPads [.frontLayer] = (polygonPads [.frontLayer] ?? []) + [polygon]
+                  polygonPads [.frontLayer] = polygonPads [.frontLayer, default: []] + [polygon]
                 }
               }
             }

@@ -53,7 +53,7 @@ extension ProjectDocument {
       let componentName = component.componentName!
       let package = component.mSelectedPackage!.mPackageName
       let key = CSVKey (deviceName: deviceName, package: package, componentValue: componentValue)
-      dictionary [key] = (dictionary [key] ?? []) + [componentName]
+      dictionary [key] = dictionary [key, default: []] + [componentName]
     }
     var csvContent = "\"Device\";\"Package\";\"Value\";\"Count\";\"Component Names\"\n"
     let sortedKeys = Array (dictionary.keys).sorted ()

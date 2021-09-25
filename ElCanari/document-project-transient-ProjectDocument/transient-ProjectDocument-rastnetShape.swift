@@ -82,7 +82,7 @@ func transient_ProjectDocument_rastnetShape (
             for p in array {
               let netName = p.netName
               let location = p.location
-              dictionary [netName] = (dictionary [netName] ?? []) + [location]
+              dictionary [netName] = dictionary [netName, default: []] + [location]
             }
           }
         }
@@ -138,7 +138,7 @@ func transient_ProjectDocument_rastnetShape (
               let netName = p.netName
               if netNameSet.contains (netName) {
                 let location = p.location
-                dictionary [netName] = (dictionary [netName] ?? []) + [location]
+                dictionary [netName] = dictionary [netName, default: []] + [location]
               }
             }
           }
@@ -171,7 +171,7 @@ func transient_ProjectDocument_rastnetShape (
               let netName = p.netName
               if netNameSet.contains (netName) {
                 let location = p.location
-                dictionary [netName] = (dictionary [netName] ?? []) + [location]
+                dictionary [netName] = dictionary [netName, default: []] + [location]
               }
             }
           }

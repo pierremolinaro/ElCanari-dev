@@ -635,7 +635,7 @@ fileprivate func addNetwork (_ ioString : inout String,
     let componentName = component.componentName
     for padDescriptor in component.netList {
       if let netName = padDescriptor.netName {
-        netWorkDictionary [netName] = (netWorkDictionary [netName] ?? []) + [componentName + "-" + padDescriptor.padString]
+        netWorkDictionary [netName] = netWorkDictionary [netName, default: []] + [componentName + "-" + padDescriptor.padString]
       }
     }
   }

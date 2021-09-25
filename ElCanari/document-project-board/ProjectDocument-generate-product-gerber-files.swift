@@ -224,7 +224,7 @@ extension Dictionary where Key == CGFloat, Value == [String] {
   //····················································································································
 
   mutating func append (_ inStringArray : [String], for inAperture : CGFloat) {
-   self [inAperture] = (self [inAperture] ?? []) + inStringArray
+   self [inAperture] = self [inAperture, default: []] + inStringArray
   }
 
   //····················································································································

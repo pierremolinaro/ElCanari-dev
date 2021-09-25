@@ -412,10 +412,10 @@ extension ProjectDocument {
             switch component.mSide {
             case .front :
               let key = SideAndNetName (side: .front, netName: netName)
-              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [componentSideTransformedGeometry]
+              ioPadNetDictionary [key] = ioPadNetDictionary [key, default: []] + [componentSideTransformedGeometry]
             case .back :
               let key = SideAndNetName (side: .back, netName: netName)
-              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [componentSideTransformedGeometry]
+              ioPadNetDictionary [key] = ioPadNetDictionary [key, default: []] + [componentSideTransformedGeometry]
             }
           }
           if let oppositeSidePadGeometry = optionalOppositeSidePadGeometry{
@@ -423,10 +423,10 @@ extension ProjectDocument {
             switch component.mSide {
             case .front :
               let key = SideAndNetName (side: .back, netName: netName)
-              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [oppositeSideTransformedGeometry]
+              ioPadNetDictionary [key] = ioPadNetDictionary [key, default: []] + [oppositeSideTransformedGeometry]
             case .back :
               let key = SideAndNetName (side: .front, netName: netName)
-              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [oppositeSideTransformedGeometry]
+              ioPadNetDictionary [key] = ioPadNetDictionary [key, default: []] + [oppositeSideTransformedGeometry]
             }
           }
           if let innerLayersPadGeometry = optionalInnerLayersPadGeometry {
@@ -434,7 +434,7 @@ extension ProjectDocument {
             for side in TrackSide.allCases {
               if (side != .front) && (side != .back) {
                 let key = SideAndNetName (side: side, netName: netName)
-                ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [innerLayersTransformedGeometry]
+                ioPadNetDictionary [key] = ioPadNetDictionary [key, default: []] + [innerLayersTransformedGeometry]
               }
             }
           }
@@ -444,10 +444,10 @@ extension ProjectDocument {
             switch component.mSide {
             case .front :
               let key = SideAndNetName (side: .front, netName: slavePadNetName)
-              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [componentSideTransformedGeometry]
+              ioPadNetDictionary [key] = ioPadNetDictionary [key, default: []] + [componentSideTransformedGeometry]
             case .back :
               let key = SideAndNetName (side: .back, netName: slavePadNetName)
-              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [componentSideTransformedGeometry]
+              ioPadNetDictionary [key] = ioPadNetDictionary [key, default: []] + [componentSideTransformedGeometry]
             }
           }
           for slavePadGeometry in oppositeSideSlavePadGeometryArray {
@@ -455,10 +455,10 @@ extension ProjectDocument {
             switch component.mSide {
             case .front :
               let key = SideAndNetName (side: .back, netName: slavePadNetName)
-              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [oppositeSideTransformedGeometry]
+              ioPadNetDictionary [key] = ioPadNetDictionary [key, default: []] + [oppositeSideTransformedGeometry]
             case .back :
               let key = SideAndNetName (side: .front, netName: slavePadNetName)
-              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [oppositeSideTransformedGeometry]
+              ioPadNetDictionary [key] = ioPadNetDictionary [key, default: []] + [oppositeSideTransformedGeometry]
             }
           }
           for slavePadGeometry in innerLayersSlavePadGeometryArray {
@@ -466,7 +466,7 @@ extension ProjectDocument {
             for side in TrackSide.allCases {
               if (side != .front) && (side != .back) {
                 let key = SideAndNetName (side: side, netName: slavePadNetName)
-                ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [innerLayersTransformedGeometry]
+                ioPadNetDictionary [key] = ioPadNetDictionary [key, default: []] + [innerLayersTransformedGeometry]
               }
             }
           }
@@ -477,7 +477,7 @@ extension ProjectDocument {
     self.mERCLogTextView?.appendMessageString ("Pad insulation… ")
     var padsArrayDictionary = [TrackSide : [(String, [PadGeometryForERC])]] ()
     for (key, pads) in ioPadNetDictionary {
-      padsArrayDictionary [key.side] = (padsArrayDictionary [key.side] ?? []) + [(key.netName, pads)]
+      padsArrayDictionary [key.side] = padsArrayDictionary [key.side, default: []] + [(key.netName, pads)]
     }
     var collisionCount = 0
     for side in padsArrayDictionary.keys {
@@ -568,7 +568,7 @@ extension ProjectDocument {
               ioIssues.append (issue)
               connectionErrorCount += 1
             }else{
-              ioNetConnectorsDictionary [netName] = (ioNetConnectorsDictionary [netName] ?? []) + [(connector, bp)]
+              ioNetConnectorsDictionary [netName] = ioNetConnectorsDictionary [netName, default: []] + [(connector, bp)]
               self.checkPadSizeVersusConnectedTracksSide (&ioIssues, connector, af, &connectionErrorCount, artworkClearance: inArtworkClearance)
             }
           }else if (connector.mTracksP1.count + connector.mTracksP2.count) != 0 { // NC Pad with connection
@@ -766,7 +766,7 @@ extension ProjectDocument {
         let w = canariUnitToCocoa (track.actualTrackWidth!) + clearance
         let s = GeometricOblong (p1: p1, p2: p2, width: w)
         let key = SideAndNetName (side: track.mSide, netName: netName)
-        trackSideNetDictionary [key] = (trackSideNetDictionary [key] ?? []) + [s]
+        trackSideNetDictionary [key] = trackSideNetDictionary [key, default: []] + [s]
       }else if let via = object as? BoardConnector {
         var isVia = via.mComponent == nil
         if isVia {
@@ -781,16 +781,16 @@ extension ProjectDocument {
           let radius = (canariUnitToCocoa (via.actualPadDiameter!) + clearance) / 2.0
           let c = GeometricCircle (center: p, radius: radius)
           let netName = via.netNameFromTracks!
-          viaDictionary [netName] = (viaDictionary [netName] ?? []) + [c]
+          viaDictionary [netName] = viaDictionary [netName, default: []] + [c]
         }
       }else if let restrictRect = object as? BoardRestrictRectangle {
         let canariRect = CanariRect (left: restrictRect.mX, bottom: restrictRect.mY, width: restrictRect.mWidth, height: restrictRect.mHeight)
         let r = GeometricRect (rect: canariRect.cocoaRect)
         if restrictRect.mIsInFrontLayer {
-          restrictRectangles [.front] = (restrictRectangles [.front] ?? []) + [r]
+          restrictRectangles [.front] = restrictRectangles [.front, default: []] + [r]
         }
         if restrictRect.mIsInBackLayer {
-          restrictRectangles [.back] = (restrictRectangles [.back] ?? []) + [r]
+          restrictRectangles [.back] = restrictRectangles [.back, default: []] + [r]
         }
       }else if let text = object as? BoardText {
         switch text.mLayer {
@@ -799,11 +799,11 @@ extension ProjectDocument {
         case .layoutFront :
           let (_, _, _, _, oblongs) = text.displayInfos (extraWidth: clearance)
           let key = SideAndNetName (side: .front, netName: "")
-          trackSideNetDictionary [key] = (trackSideNetDictionary [key] ?? []) + oblongs
+          trackSideNetDictionary [key] = trackSideNetDictionary [key, default: []] + oblongs
         case .layoutBack :
           let (_, _, _, _, oblongs) = text.displayInfos (extraWidth: clearance)
           let key = SideAndNetName (side: .back, netName: "")
-          trackSideNetDictionary [key] = (trackSideNetDictionary [key] ?? []) + oblongs
+          trackSideNetDictionary [key] = trackSideNetDictionary [key, default: []] + oblongs
         }
       }
     }
@@ -822,7 +822,7 @@ extension ProjectDocument {
         let tracks = trackSideNetDictionary [key] ?? []
         let pads = inPadNetDictionary [key] ?? []
         let vias = viaDictionary [netName] ?? []
-        layout [side] = (layout [side] ?? []) + [(tracks, pads, vias)]
+        layout [side] = layout [side, default: []] + [(tracks, pads, vias)]
       }
     }
   //--- Insulation tests
