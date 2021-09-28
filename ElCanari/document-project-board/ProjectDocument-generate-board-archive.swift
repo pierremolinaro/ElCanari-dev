@@ -36,9 +36,24 @@ extension ProjectDocument {
     addLinePathes (&boardArchive, inProductData.layoutFrontTexts, "TEXTS-LAYOUT-FRONT", af)
     addLinePathes (&boardArchive, inProductData.legendBackTexts, "TEXTS-LEGEND-BACK", af)
     addLinePathes (&boardArchive, inProductData.legendFrontTexts, "TEXTS-LEGEND-FRONT", af)
-    addTracks (&boardArchive, inProductData.tracks [.back] ?? [], "TRACKS-BACK", af)
-    addTracks (&boardArchive, inProductData.tracks [.front] ?? [], "TRACKS-FRONT", af)
+    addTracks (&boardArchive, inProductData.tracks [.back, default: []], "TRACKS-BACK", af)
+    addTracks (&boardArchive, inProductData.tracks [.front, default: []], "TRACKS-FRONT", af)
     addCircles (&boardArchive, inProductData.viaPads, "VIAS", af)
+  //--- Add inner objects ?
+    switch self.rootObject.mLayerConfiguration {
+    case .twoLayers :
+      ()
+    case .fourLayers :
+      addOblongs (&boardArchive, inProductData.tracks [.inner1, default: []], "TRACKS-INNER1", af)
+      addOblongs (&boardArchive, inProductData.tracks [.inner2, default: []], "TRACKS-INNER2", af)
+
+    case .sixLayers :
+      addOblongs (&boardArchive, inProductData.tracks [.inner1, default: []], "TRACKS-INNER1", af)
+      addOblongs (&boardArchive, inProductData.tracks [.inner2, default: []], "TRACKS-INNER2", af)
+      addOblongs (&boardArchive, inProductData.tracks [.inner3, default: []], "TRACKS-INNER3", af)
+      addOblongs (&boardArchive, inProductData.tracks [.inner4, default: []], "TRACKS-INNER4", af)
+
+    }
   //--- Write file
     let data = try PropertyListSerialization.data (fromPropertyList: boardArchive, format: .binary, options: 0)
     try data.write (to: URL (fileURLWithPath: inPath))
@@ -68,6 +83,7 @@ extension ProjectDocument {
   private func addPadsToArchive (_ ioBoardArchive : inout [String : Any], _ inAffineTransform : AffineTransform) {
     var frontPads = [[String : Any]] ()
     var backPads = [[String : Any]] ()
+    var traversingPads = [[String : Any]] ()
     for object in self.rootObject.mBoardObjects {
       if let component = object as? ComponentInProject {
         var af = component.packageToComponentAffineTransform ()
@@ -78,6 +94,7 @@ extension ProjectDocument {
           case .traversing :
             frontPads.append (masterPadDict)
             backPads.append (masterPadDict)
+            traversingPads.append (masterPadDict)
           case .surface :
             switch component.mSide {
             case .back :
@@ -92,6 +109,7 @@ extension ProjectDocument {
             case .traversing :
               frontPads.append (slavePadDict)
               backPads.append (slavePadDict)
+              traversingPads.append (masterPadDict)
             case .componentSide :
               switch component.mSide {
               case .back :
@@ -113,6 +131,9 @@ extension ProjectDocument {
     }
     ioBoardArchive ["PADS-BACK"] = backPads
     ioBoardArchive ["PADS-FRONT"] = frontPads
+    if self.rootObject.mLayerConfiguration != .twoLayers {
+      ioBoardArchive ["PADS-TRAVERSING"] = traversingPads
+    }
   }
 
   //····················································································································

@@ -582,6 +582,203 @@ final class BoardRestrictRectangle : BoardObject,
   }
 
   //····················································································································
+  //  Cursor
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
+  //····················································································································
+
+/*  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    return cursorForKnob_BoardRestrictRectangle ((knob: inKnobIndex)
+  } */
+
+  //····················································································································
+  //  Translation
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
+  //····················································································································
+
+/*  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
+    return acceptedTranslation_BoardRestrictRectangle (xBy: inDx, yBy: inDy)
+  } */
+
+  //····················································································································
+
+/*  override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
+    return acceptToTranslate_BoardRestrictRectangle (xBy: inDx, yBy: inDy)
+  } */
+
+  //····················································································································
+
+/*  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+    translate_BoardRestrictRectangle (xBy: inDx, yBy: inDy, userSet: ioSet)
+  } */
+
+  //····················································································································
+  //  Knob
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
+  //····················································································································
+
+/*  override func canMove (knob inKnobIndex : Int,
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
+                         shift inShift : Bool) -> ObjcCanariPoint {
+    return canMove_BoardRestrictRectangle (
+      knob: inKnobIndex,
+      proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
+      proposedAlignedTranslation: inProposedAlignedTranslation,
+      unalignedMouseDraggedLocation: inUnalignedMouseDraggedLocation,
+      shift: inShift
+    )
+  } */
+
+  //····················································································································
+
+/*  override func move (knob inKnobIndex: Int,
+                      proposedDx inDx: Int,
+                      proposedDy inDy: Int,
+                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      alignedMouseLocationX inAlignedMouseLocationX : Int,
+                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      shift inShift : Bool) {
+    move_BoardRestrictRectangle (
+      knob: inKnobIndex,
+      proposedDx: inDx,
+      proposedDy: inDy,
+      unalignedMouseLocationX: inUnlignedMouseLocationX,
+      unalignedMouseLocationY: inUnlignedMouseLocationY,
+      alignedMouseLocationX: inAlignedMouseLocationX,
+      alignedMouseLocationY: inAlignedMouseLocationY,
+      shift: inShift
+    )
+  } */
+
+  //····················································································································
+  //  Snap to grid
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
+  //····················································································································
+
+/*  override func snapToGrid (_ inGrid : Int) {
+    snapToGrid_BoardRestrictRectangle (inGrid)
+  } */
+
+  //····················································································································
+
+/*  override func canSnapToGrid (_ inGrid : Int) -> Bool {
+    return canSnapToGrid_BoardRestrictRectangle (inGrid)
+  } */
+
+  //····················································································································
+  //  HORIZONTAL FLIP
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
+  //····················································································································
+
+/*  override func flipHorizontally () {
+    flipHorizontally_BoardRestrictRectangle ()
+  } */
+
+  //····················································································································
+
+/*  override func canFlipHorizontally () -> Bool {
+    return canFlipHorizontally_BoardRestrictRectangle ()
+  } */
+
+  //····················································································································
+  //  VERTICAL FLIP
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
+  //····················································································································
+
+/*  override func flipVertically () {
+    flipVertically_BoardRestrictRectangle ()
+  } */
+
+  //····················································································································
+
+/*  override func canFlipVertically () -> Bool {
+    return canFlipVertically_BoardRestrictRectangle ()
+  } */
+
+  //····················································································································
+  //  ROTATE 90
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
+  //····················································································································
+
+/*  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+    return canRotate90_BoardRestrictRectangle (accumulatedPoints: accumulatedPoints)
+  } */
+
+  //····················································································································
+
+/*  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+    rotate90Clockwise_BoardRestrictRectangle (from: inRotationCenter, userSet: ioSet)
+  } */
+
+  //····················································································································
+
+/*  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+    rotate90CounterClockwise_BoardRestrictRectangle (from: inRotationCenter, userSet: ioSet)
+  } */
+
+  //····················································································································
+  //  Save into additional dictionary
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
+  //····················································································································
+
+/*  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
+    saveIntoAdditionalDictionary_BoardRestrictRectangle (ioDictionary)
+  } */
+
+  //····················································································································
+  //  COPY AND PASTE
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
+  //····················································································································
+
+ /* override func canCopyAndPaste () -> Bool {
+    return canCopyAndPaste_BoardRestrictRectangle ()
+  } */
+
+  //····················································································································
+
+/*  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return operationAfterPasting_BoardRestrictRectangle (additionalDictionary: inDictionary, objectArray: inObjectArray)
+  } */
+
+  //····················································································································
+  //  Alignment Points
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
+  //····················································································································
+
+/*  override func alignmentPoints () -> ObjcCanariPointSet {
+    return alignmentPoints_BoardRestrictRectangle ()
+  } */
+
+  //····················································································································
+  //  Can be deleted
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
+  //····················································································································
+
+/*  override func canBeDeleted () -> Bool {
+    return canBeDeleted_BoardRestrictRectangle ()
+  } */
+
+  //····················································································································
+
+/*  override func operationBeforeRemoving () {
+    operationBeforeRemoving_BoardRestrictRectangle ()
+  } */
+
+  //····················································································································
 
 }
 
