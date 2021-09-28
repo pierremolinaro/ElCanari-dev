@@ -22,9 +22,11 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       oldValue.modelHeight_property.removeEBObserver (self.modelHeight_property) // Stored property
       oldValue.modelHeightUnit_property.removeEBObserver (self.modelHeightUnit_property) // Stored property
       oldValue.zoom_property.removeEBObserver (self.zoom_property) // Stored property
+      oldValue.layerConfiguration_property.removeEBObserver (self.layerConfiguration_property) // Stored property
       oldValue.modelLimitWidth_property.removeEBObserver (self.modelLimitWidth_property) // Stored property
       oldValue.modelLimitWidthUnit_property.removeEBObserver (self.modelLimitWidthUnit_property) // Stored property
       oldValue.artworkName_property.removeEBObserver (self.artworkName_property) // Stored property
+      oldValue.layerConfigurationString_property.removeEBObserver (self.layerConfigurationString_property) // Transient property
       oldValue.frontLegendLinesSegments_property.removeEBObserver (self.frontLegendLinesSegments_property) // Transient property
       oldValue.backLegendLinesSegments_property.removeEBObserver (self.backLegendLinesSegments_property) // Transient property
       oldValue.backLegendLinesBezierPaths_property.removeEBObserver (self.backLegendLinesBezierPaths_property) // Transient property
@@ -46,6 +48,8 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       oldValue.frontPadsBezierPaths_property.removeEBObserver (self.frontPadsBezierPaths_property) // Transient property
       oldValue.backPadArray_property.removeEBObserver (self.backPadArray_property) // Transient property
       oldValue.backPadsBezierPaths_property.removeEBObserver (self.backPadsBezierPaths_property) // Transient property
+      oldValue.traversingPadArray_property.removeEBObserver (self.traversingPadArray_property) // Transient property
+      oldValue.traversingPadsBezierPaths_property.removeEBObserver (self.traversingPadsBezierPaths_property) // Transient property
       oldValue.boardLimits_property.removeEBObserver (self.boardLimits_property) // Transient property
       oldValue.boardLimitsBezierPaths_property.removeEBObserver (self.boardLimitsBezierPaths_property) // Transient property
       oldValue.backComponentNameSegments_property.removeEBObserver (self.backComponentNameSegments_property) // Transient property
@@ -60,6 +64,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       oldValue.backTracksBezierPaths_property.removeEBObserver (self.backTracksBezierPaths_property) // Transient property
       oldValue.frontTrackSegments_property.removeEBObserver (self.frontTrackSegments_property) // Transient property
       oldValue.frontTracksBezierPaths_property.removeEBObserver (self.frontTracksBezierPaths_property) // Transient property
+      oldValue.inner1TracksSegments_property.removeEBObserver (self.inner1TracksSegments_property) // Transient property
+      oldValue.inner1TracksBezierPaths_property.removeEBObserver (self.inner1TracksBezierPaths_property) // Transient property
+      oldValue.inner2TracksSegments_property.removeEBObserver (self.inner2TracksSegments_property) // Transient property
+      oldValue.inner2TracksBezierPaths_property.removeEBObserver (self.inner2TracksBezierPaths_property) // Transient property
+      oldValue.inner3TracksSegments_property.removeEBObserver (self.inner3TracksSegments_property) // Transient property
+      oldValue.inner3TracksBezierPaths_property.removeEBObserver (self.inner3TracksBezierPaths_property) // Transient property
+      oldValue.inner4TracksSegments_property.removeEBObserver (self.inner4TracksSegments_property) // Transient property
+      oldValue.inner4TracksBezierPaths_property.removeEBObserver (self.inner4TracksBezierPaths_property) // Transient property
       oldValue.frontPackagesSegments_property.removeEBObserver (self.frontPackagesSegments_property) // Transient property
       oldValue.frontPackagesBezierPaths_property.removeEBObserver (self.frontPackagesBezierPaths_property) // Transient property
       oldValue.backPackagesSegments_property.removeEBObserver (self.backPackagesSegments_property) // Transient property
@@ -77,9 +89,11 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       newValue.modelHeight_property.addEBObserver (self.modelHeight_property) // Stored property
       newValue.modelHeightUnit_property.addEBObserver (self.modelHeightUnit_property) // Stored property
       newValue.zoom_property.addEBObserver (self.zoom_property) // Stored property
+      newValue.layerConfiguration_property.addEBObserver (self.layerConfiguration_property) // Stored property
       newValue.modelLimitWidth_property.addEBObserver (self.modelLimitWidth_property) // Stored property
       newValue.modelLimitWidthUnit_property.addEBObserver (self.modelLimitWidthUnit_property) // Stored property
       newValue.artworkName_property.addEBObserver (self.artworkName_property) // Stored property
+      newValue.layerConfigurationString_property.addEBObserver (self.layerConfigurationString_property) // Transient property
       newValue.frontLegendLinesSegments_property.addEBObserver (self.frontLegendLinesSegments_property) // Transient property
       newValue.backLegendLinesSegments_property.addEBObserver (self.backLegendLinesSegments_property) // Transient property
       newValue.backLegendLinesBezierPaths_property.addEBObserver (self.backLegendLinesBezierPaths_property) // Transient property
@@ -101,6 +115,8 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       newValue.frontPadsBezierPaths_property.addEBObserver (self.frontPadsBezierPaths_property) // Transient property
       newValue.backPadArray_property.addEBObserver (self.backPadArray_property) // Transient property
       newValue.backPadsBezierPaths_property.addEBObserver (self.backPadsBezierPaths_property) // Transient property
+      newValue.traversingPadArray_property.addEBObserver (self.traversingPadArray_property) // Transient property
+      newValue.traversingPadsBezierPaths_property.addEBObserver (self.traversingPadsBezierPaths_property) // Transient property
       newValue.boardLimits_property.addEBObserver (self.boardLimits_property) // Transient property
       newValue.boardLimitsBezierPaths_property.addEBObserver (self.boardLimitsBezierPaths_property) // Transient property
       newValue.backComponentNameSegments_property.addEBObserver (self.backComponentNameSegments_property) // Transient property
@@ -115,6 +131,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       newValue.backTracksBezierPaths_property.addEBObserver (self.backTracksBezierPaths_property) // Transient property
       newValue.frontTrackSegments_property.addEBObserver (self.frontTrackSegments_property) // Transient property
       newValue.frontTracksBezierPaths_property.addEBObserver (self.frontTracksBezierPaths_property) // Transient property
+      newValue.inner1TracksSegments_property.addEBObserver (self.inner1TracksSegments_property) // Transient property
+      newValue.inner1TracksBezierPaths_property.addEBObserver (self.inner1TracksBezierPaths_property) // Transient property
+      newValue.inner2TracksSegments_property.addEBObserver (self.inner2TracksSegments_property) // Transient property
+      newValue.inner2TracksBezierPaths_property.addEBObserver (self.inner2TracksBezierPaths_property) // Transient property
+      newValue.inner3TracksSegments_property.addEBObserver (self.inner3TracksSegments_property) // Transient property
+      newValue.inner3TracksBezierPaths_property.addEBObserver (self.inner3TracksBezierPaths_property) // Transient property
+      newValue.inner4TracksSegments_property.addEBObserver (self.inner4TracksSegments_property) // Transient property
+      newValue.inner4TracksBezierPaths_property.addEBObserver (self.inner4TracksBezierPaths_property) // Transient property
       newValue.frontPackagesSegments_property.addEBObserver (self.frontPackagesSegments_property) // Transient property
       newValue.frontPackagesBezierPaths_property.addEBObserver (self.frontPackagesBezierPaths_property) // Transient property
       newValue.backPackagesSegments_property.addEBObserver (self.backPackagesSegments_property) // Transient property
@@ -163,6 +187,12 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   final let zoom_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
+  //   Observers of 'layerConfiguration' stored property
+  //····················································································································
+
+  final let layerConfiguration_property = EBGenericTransientProperty <LayerConfiguration?> ()
+
+  //····················································································································
   //   Observers of 'modelLimitWidth' stored property
   //····················································································································
 
@@ -179,6 +209,12 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let artworkName_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'layerConfigurationString' transient property
+  //····················································································································
+
+  final let layerConfigurationString_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'frontLegendLinesSegments' transient property
@@ -307,6 +343,18 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   final let backPadsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
 
   //····················································································································
+  //   Observers of 'traversingPadArray' transient property
+  //····················································································································
+
+  final let traversingPadArray_property = EBGenericTransientProperty <MergerPadArray?> ()
+
+  //····················································································································
+  //   Observers of 'traversingPadsBezierPaths' transient property
+  //····················································································································
+
+  final let traversingPadsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+
+  //····················································································································
   //   Observers of 'boardLimits' transient property
   //····················································································································
 
@@ -389,6 +437,54 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontTracksBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+
+  //····················································································································
+  //   Observers of 'inner1TracksSegments' transient property
+  //····················································································································
+
+  final let inner1TracksSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+
+  //····················································································································
+  //   Observers of 'inner1TracksBezierPaths' transient property
+  //····················································································································
+
+  final let inner1TracksBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+
+  //····················································································································
+  //   Observers of 'inner2TracksSegments' transient property
+  //····················································································································
+
+  final let inner2TracksSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+
+  //····················································································································
+  //   Observers of 'inner2TracksBezierPaths' transient property
+  //····················································································································
+
+  final let inner2TracksBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+
+  //····················································································································
+  //   Observers of 'inner3TracksSegments' transient property
+  //····················································································································
+
+  final let inner3TracksSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+
+  //····················································································································
+  //   Observers of 'inner3TracksBezierPaths' transient property
+  //····················································································································
+
+  final let inner3TracksBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+
+  //····················································································································
+  //   Observers of 'inner4TracksSegments' transient property
+  //····················································································································
+
+  final let inner4TracksSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+
+  //····················································································································
+  //   Observers of 'inner4TracksBezierPaths' transient property
+  //····················································································································
+
+  final let inner4TracksBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'frontPackagesSegments' transient property
@@ -703,6 +799,30 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
+  //   Observable toMany property: traversingPads
+  //····················································································································
+
+  private final var mObserversOf_traversingPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_traversingPads (_ inObserver : EBEvent) {
+    self.mObserversOf_traversingPads.insert (inObserver)
+    if let object = self.propval {
+      object.traversingPads_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_traversingPads (_ inObserver : EBEvent) {
+    self.mObserversOf_traversingPads.remove (inObserver)
+    if let object = self.propval {
+      object.traversingPads_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable toMany property: backComponentNames
   //····················································································································
 
@@ -843,6 +963,102 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     self.mObserversOf_frontTracks.remove (inObserver)
     if let object = self.propval {
       object.frontTracks_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: inner1Tracks
+  //····················································································································
+
+  private final var mObserversOf_inner1Tracks = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner1Tracks (_ inObserver : EBEvent) {
+    self.mObserversOf_inner1Tracks.insert (inObserver)
+    if let object = self.propval {
+      object.inner1Tracks_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner1Tracks (_ inObserver : EBEvent) {
+    self.mObserversOf_inner1Tracks.remove (inObserver)
+    if let object = self.propval {
+      object.inner1Tracks_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: inner2Tracks
+  //····················································································································
+
+  private final var mObserversOf_inner2Tracks = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner2Tracks (_ inObserver : EBEvent) {
+    self.mObserversOf_inner2Tracks.insert (inObserver)
+    if let object = self.propval {
+      object.inner2Tracks_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner2Tracks (_ inObserver : EBEvent) {
+    self.mObserversOf_inner2Tracks.remove (inObserver)
+    if let object = self.propval {
+      object.inner2Tracks_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: inner3Tracks
+  //····················································································································
+
+  private final var mObserversOf_inner3Tracks = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner3Tracks (_ inObserver : EBEvent) {
+    self.mObserversOf_inner3Tracks.insert (inObserver)
+    if let object = self.propval {
+      object.inner3Tracks_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner3Tracks (_ inObserver : EBEvent) {
+    self.mObserversOf_inner3Tracks.remove (inObserver)
+    if let object = self.propval {
+      object.inner3Tracks_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: inner4Tracks
+  //····················································································································
+
+  private final var mObserversOf_inner4Tracks = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner4Tracks (_ inObserver : EBEvent) {
+    self.mObserversOf_inner4Tracks.insert (inObserver)
+    if let object = self.propval {
+      object.inner4Tracks_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner4Tracks (_ inObserver : EBEvent) {
+    self.mObserversOf_inner4Tracks.remove (inObserver)
+    if let object = self.propval {
+      object.inner4Tracks_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1014,6 +1230,21 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
         return .single (nil)
       }
     }
+  //--- Configure layerConfiguration simple stored property
+    self.layerConfiguration_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.layerConfiguration_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
   //--- Configure modelLimitWidth simple stored property
     self.modelLimitWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1048,6 +1279,21 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     self.artworkName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.artworkName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure layerConfigurationString transient property
+    self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.layerConfigurationString_property.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -1374,6 +1620,36 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
         return .single (nil)
       }
     }
+  //--- Configure traversingPadArray transient property
+    self.traversingPadArray_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.traversingPadArray_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure traversingPadsBezierPaths transient property
+    self.traversingPadsBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.traversingPadsBezierPaths_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
   //--- Configure boardLimits transient property
     self.boardLimits_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1573,6 +1849,126 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     self.frontTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.frontTracksBezierPaths_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure inner1TracksSegments transient property
+    self.inner1TracksSegments_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.inner1TracksSegments_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure inner1TracksBezierPaths transient property
+    self.inner1TracksBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.inner1TracksBezierPaths_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure inner2TracksSegments transient property
+    self.inner2TracksSegments_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.inner2TracksSegments_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure inner2TracksBezierPaths transient property
+    self.inner2TracksBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.inner2TracksBezierPaths_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure inner3TracksSegments transient property
+    self.inner3TracksSegments_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.inner3TracksSegments_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure inner3TracksBezierPaths transient property
+    self.inner3TracksBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.inner3TracksBezierPaths_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure inner4TracksSegments transient property
+    self.inner4TracksSegments_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.inner4TracksSegments_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure inner4TracksBezierPaths transient property
+    self.inner4TracksBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.inner4TracksBezierPaths_property.selection {
         case .empty :
           return .empty
         case .multiple :

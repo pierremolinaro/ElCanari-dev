@@ -42,6 +42,12 @@ protocol BoardModel_zoom : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardModel_layerConfiguration : AnyObject {
+  var layerConfiguration : LayerConfiguration { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardModel_modelLimitWidth : AnyObject {
   var modelLimitWidth : Int { get }
 }
@@ -56,6 +62,12 @@ protocol BoardModel_modelLimitWidthUnit : AnyObject {
 
 protocol BoardModel_artworkName : AnyObject {
   var artworkName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_layerConfigurationString : AnyObject {
+  var layerConfigurationString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -186,6 +198,18 @@ protocol BoardModel_backPadsBezierPaths : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardModel_traversingPadArray : AnyObject {
+  var traversingPadArray : MergerPadArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_traversingPadsBezierPaths : AnyObject {
+  var traversingPadsBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardModel_boardLimits : AnyObject {
   var boardLimits : MergerBoardLimits? { get }
 }
@@ -270,6 +294,54 @@ protocol BoardModel_frontTracksBezierPaths : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardModel_inner1TracksSegments : AnyObject {
+  var inner1TracksSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_inner1TracksBezierPaths : AnyObject {
+  var inner1TracksBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_inner2TracksSegments : AnyObject {
+  var inner2TracksSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_inner2TracksBezierPaths : AnyObject {
+  var inner2TracksBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_inner3TracksSegments : AnyObject {
+  var inner3TracksSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_inner3TracksBezierPaths : AnyObject {
+  var inner3TracksBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_inner4TracksSegments : AnyObject {
+  var inner4TracksSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_inner4TracksBezierPaths : AnyObject {
+  var inner4TracksBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardModel_frontPackagesSegments : AnyObject {
   var frontPackagesSegments : MergerSegmentArray? { get }
 }
@@ -327,9 +399,11 @@ final class BoardModel : EBManagedObject,
          BoardModel_modelHeight,
          BoardModel_modelHeightUnit,
          BoardModel_zoom,
+         BoardModel_layerConfiguration,
          BoardModel_modelLimitWidth,
          BoardModel_modelLimitWidthUnit,
          BoardModel_artworkName,
+         BoardModel_layerConfigurationString,
          BoardModel_frontLegendLinesSegments,
          BoardModel_backLegendLinesSegments,
          BoardModel_backLegendLinesBezierPaths,
@@ -351,6 +425,8 @@ final class BoardModel : EBManagedObject,
          BoardModel_frontPadsBezierPaths,
          BoardModel_backPadArray,
          BoardModel_backPadsBezierPaths,
+         BoardModel_traversingPadArray,
+         BoardModel_traversingPadsBezierPaths,
          BoardModel_boardLimits,
          BoardModel_boardLimitsBezierPaths,
          BoardModel_backComponentNameSegments,
@@ -365,6 +441,14 @@ final class BoardModel : EBManagedObject,
          BoardModel_backTracksBezierPaths,
          BoardModel_frontTrackSegments,
          BoardModel_frontTracksBezierPaths,
+         BoardModel_inner1TracksSegments,
+         BoardModel_inner1TracksBezierPaths,
+         BoardModel_inner2TracksSegments,
+         BoardModel_inner2TracksBezierPaths,
+         BoardModel_inner3TracksSegments,
+         BoardModel_inner3TracksBezierPaths,
+         BoardModel_inner4TracksSegments,
+         BoardModel_inner4TracksBezierPaths,
          BoardModel_frontPackagesSegments,
          BoardModel_frontPackagesBezierPaths,
          BoardModel_backPackagesSegments,
@@ -486,6 +570,25 @@ final class BoardModel : EBManagedObject,
   final var zoom : Int {
     get { return self.zoom_property.propval }
     set { self.zoom_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: layerConfiguration
+  //····················································································································
+
+  final let layerConfiguration_property : EBStoredProperty_LayerConfiguration
+
+  //····················································································································
+
+  final func reset_layerConfiguration_toDefaultValue () {
+    self.layerConfiguration = LayerConfiguration.twoLayers
+  }
+
+  //····················································································································
+
+  final var layerConfiguration : LayerConfiguration {
+    get { return self.layerConfiguration_property.propval }
+    set { self.layerConfiguration_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -654,6 +757,21 @@ final class BoardModel : EBManagedObject,
   }
 
   //····················································································································
+  //   To many property: traversingPads
+  //····················································································································
+
+  final let traversingPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false)
+
+  //····················································································································
+
+  //····················································································································
+
+  final var traversingPads : EBReferenceArray <BoardModelPad> {
+    get { return self.traversingPads_property.propval }
+    set { self.traversingPads_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: modelLimitWidth
   //····················································································································
 
@@ -782,6 +900,66 @@ final class BoardModel : EBManagedObject,
   }
 
   //····················································································································
+  //   To many property: inner1Tracks
+  //····················································································································
+
+  final let inner1Tracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+
+  //····················································································································
+
+  //····················································································································
+
+  final var inner1Tracks : EBReferenceArray <SegmentEntity> {
+    get { return self.inner1Tracks_property.propval }
+    set { self.inner1Tracks_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   To many property: inner2Tracks
+  //····················································································································
+
+  final let inner2Tracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+
+  //····················································································································
+
+  //····················································································································
+
+  final var inner2Tracks : EBReferenceArray <SegmentEntity> {
+    get { return self.inner2Tracks_property.propval }
+    set { self.inner2Tracks_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   To many property: inner3Tracks
+  //····················································································································
+
+  final let inner3Tracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+
+  //····················································································································
+
+  //····················································································································
+
+  final var inner3Tracks : EBReferenceArray <SegmentEntity> {
+    get { return self.inner3Tracks_property.propval }
+    set { self.inner3Tracks_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   To many property: inner4Tracks
+  //····················································································································
+
+  final let inner4Tracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+
+  //····················································································································
+
+  //····················································································································
+
+  final var inner4Tracks : EBReferenceArray <SegmentEntity> {
+    get { return self.inner4Tracks_property.propval }
+    set { self.inner4Tracks_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   To many property: frontPackages
   //····················································································································
 
@@ -843,6 +1021,23 @@ final class BoardModel : EBManagedObject,
   final var myInstances : EBReferenceArray <MergerBoardInstance> {
     get { return self.myInstances_property.propval }
     set { self.myInstances_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Transient property: layerConfigurationString
+  //····················································································································
+
+  final let layerConfigurationString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var layerConfigurationString : String? {
+    switch self.layerConfigurationString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
   }
 
   //····················································································································
@@ -1203,6 +1398,40 @@ final class BoardModel : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: traversingPadArray
+  //····················································································································
+
+  final let traversingPadArray_property = EBTransientProperty_MergerPadArray ()
+
+  //····················································································································
+
+  final var traversingPadArray : MergerPadArray? {
+    switch self.traversingPadArray_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: traversingPadsBezierPaths
+  //····················································································································
+
+  final let traversingPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  final var traversingPadsBezierPaths : BezierPathArray? {
+    switch self.traversingPadsBezierPaths_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: boardLimits
   //····················································································································
 
@@ -1441,6 +1670,142 @@ final class BoardModel : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: inner1TracksSegments
+  //····················································································································
+
+  final let inner1TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  final var inner1TracksSegments : MergerSegmentArray? {
+    switch self.inner1TracksSegments_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: inner1TracksBezierPaths
+  //····················································································································
+
+  final let inner1TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  final var inner1TracksBezierPaths : BezierPathArray? {
+    switch self.inner1TracksBezierPaths_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: inner2TracksSegments
+  //····················································································································
+
+  final let inner2TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  final var inner2TracksSegments : MergerSegmentArray? {
+    switch self.inner2TracksSegments_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: inner2TracksBezierPaths
+  //····················································································································
+
+  final let inner2TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  final var inner2TracksBezierPaths : BezierPathArray? {
+    switch self.inner2TracksBezierPaths_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: inner3TracksSegments
+  //····················································································································
+
+  final let inner3TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  final var inner3TracksSegments : MergerSegmentArray? {
+    switch self.inner3TracksSegments_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: inner3TracksBezierPaths
+  //····················································································································
+
+  final let inner3TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  final var inner3TracksBezierPaths : BezierPathArray? {
+    switch self.inner3TracksBezierPaths_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: inner4TracksSegments
+  //····················································································································
+
+  final let inner4TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  final var inner4TracksSegments : MergerSegmentArray? {
+    switch self.inner4TracksSegments_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: inner4TracksBezierPaths
+  //····················································································································
+
+  final let inner4TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  final var inner4TracksBezierPaths : BezierPathArray? {
+    switch self.inner4TracksBezierPaths_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: frontPackagesSegments
   //····················································································································
 
@@ -1587,6 +1952,7 @@ final class BoardModel : EBManagedObject,
     self.modelHeight_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.modelHeightUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.zoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.layerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: ebUndoManager)
     self.modelLimitWidth_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.artworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
@@ -1613,6 +1979,8 @@ final class BoardModel : EBManagedObject,
     self.frontPads_property.ebUndoManager = self.ebUndoManager
   //--- To many property: backPads (no option)
     self.backPads_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: traversingPads (no option)
+    self.traversingPads_property.ebUndoManager = self.ebUndoManager
   //--- To many property: backComponentNames (no option)
     self.backComponentNames_property.ebUndoManager = self.ebUndoManager
   //--- To many property: frontComponentNames (no option)
@@ -1625,6 +1993,14 @@ final class BoardModel : EBManagedObject,
     self.backTracks_property.ebUndoManager = self.ebUndoManager
   //--- To many property: frontTracks (no option)
     self.frontTracks_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: inner1Tracks (no option)
+    self.inner1Tracks_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: inner2Tracks (no option)
+    self.inner2Tracks_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: inner3Tracks (no option)
+    self.inner3Tracks_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: inner4Tracks (no option)
+    self.inner4Tracks_property.ebUndoManager = self.ebUndoManager
   //--- To many property: frontPackages (no option)
     self.frontPackages_property.ebUndoManager = self.ebUndoManager
   //--- To many property: backPackages (no option)
@@ -1635,6 +2011,22 @@ final class BoardModel : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.myModel_property.setProp (me) } },
       resetter: { inObject in inObject.myModel_property.setProp (nil) }
     )
+  //--- Atomic property: layerConfigurationString
+    self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.layerConfiguration_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardModel_layerConfigurationString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.layerConfiguration_property.addEBObserver (self.layerConfigurationString_property)
   //--- Atomic property: frontLegendLinesSegments
     self.frontLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2015,6 +2407,43 @@ final class BoardModel : EBManagedObject,
       }
     }
     self.backPadArray_property.addEBObserver (self.backPadsBezierPaths_property)
+  //--- Atomic property: traversingPadArray
+    self.traversingPadArray_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.traversingPads_property.selection, unwSelf.traversingPads_property.selection, unwSelf.traversingPads_property.selection, unwSelf.traversingPads_property.selection, unwSelf.traversingPads_property.selection, unwSelf.traversingPads_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+          return .single (transient_BoardModel_traversingPadArray (v0, v1, v2, v3, v4, v5))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.traversingPads_property.addEBObserverOf_x (self.traversingPadArray_property)
+    self.traversingPads_property.addEBObserverOf_y (self.traversingPadArray_property)
+    self.traversingPads_property.addEBObserverOf_width (self.traversingPadArray_property)
+    self.traversingPads_property.addEBObserverOf_height (self.traversingPadArray_property)
+    self.traversingPads_property.addEBObserverOf_shape (self.traversingPadArray_property)
+    self.traversingPads_property.addEBObserverOf_rotation (self.traversingPadArray_property)
+  //--- Atomic property: traversingPadsBezierPaths
+    self.traversingPadsBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.traversingPadArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardModel_traversingPadsBezierPaths (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.traversingPadArray_property.addEBObserver (self.traversingPadsBezierPaths_property)
   //--- Atomic property: boardLimits
     self.boardLimits_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2268,6 +2697,150 @@ final class BoardModel : EBManagedObject,
       }
     }
     self.frontTrackSegments_property.addEBObserver (self.frontTracksBezierPaths_property)
+  //--- Atomic property: inner1TracksSegments
+    self.inner1TracksSegments_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.inner1Tracks_property.selection, unwSelf.inner1Tracks_property.selection, unwSelf.inner1Tracks_property.selection, unwSelf.inner1Tracks_property.selection, unwSelf.inner1Tracks_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_BoardModel_inner1TracksSegments (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.inner1Tracks_property.addEBObserverOf_x1 (self.inner1TracksSegments_property)
+    self.inner1Tracks_property.addEBObserverOf_y1 (self.inner1TracksSegments_property)
+    self.inner1Tracks_property.addEBObserverOf_x2 (self.inner1TracksSegments_property)
+    self.inner1Tracks_property.addEBObserverOf_y2 (self.inner1TracksSegments_property)
+    self.inner1Tracks_property.addEBObserverOf_width (self.inner1TracksSegments_property)
+  //--- Atomic property: inner1TracksBezierPaths
+    self.inner1TracksBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.inner1TracksSegments_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardModel_inner1TracksBezierPaths (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.inner1TracksSegments_property.addEBObserver (self.inner1TracksBezierPaths_property)
+  //--- Atomic property: inner2TracksSegments
+    self.inner2TracksSegments_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.inner2Tracks_property.selection, unwSelf.inner2Tracks_property.selection, unwSelf.inner2Tracks_property.selection, unwSelf.inner2Tracks_property.selection, unwSelf.inner2Tracks_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_BoardModel_inner2TracksSegments (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.inner2Tracks_property.addEBObserverOf_x1 (self.inner2TracksSegments_property)
+    self.inner2Tracks_property.addEBObserverOf_y1 (self.inner2TracksSegments_property)
+    self.inner2Tracks_property.addEBObserverOf_x2 (self.inner2TracksSegments_property)
+    self.inner2Tracks_property.addEBObserverOf_y2 (self.inner2TracksSegments_property)
+    self.inner2Tracks_property.addEBObserverOf_width (self.inner2TracksSegments_property)
+  //--- Atomic property: inner2TracksBezierPaths
+    self.inner2TracksBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.inner2TracksSegments_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardModel_inner2TracksBezierPaths (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.inner2TracksSegments_property.addEBObserver (self.inner2TracksBezierPaths_property)
+  //--- Atomic property: inner3TracksSegments
+    self.inner3TracksSegments_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.inner3Tracks_property.selection, unwSelf.inner3Tracks_property.selection, unwSelf.inner3Tracks_property.selection, unwSelf.inner3Tracks_property.selection, unwSelf.inner3Tracks_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_BoardModel_inner3TracksSegments (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.inner3Tracks_property.addEBObserverOf_x1 (self.inner3TracksSegments_property)
+    self.inner3Tracks_property.addEBObserverOf_y1 (self.inner3TracksSegments_property)
+    self.inner3Tracks_property.addEBObserverOf_x2 (self.inner3TracksSegments_property)
+    self.inner3Tracks_property.addEBObserverOf_y2 (self.inner3TracksSegments_property)
+    self.inner3Tracks_property.addEBObserverOf_width (self.inner3TracksSegments_property)
+  //--- Atomic property: inner3TracksBezierPaths
+    self.inner3TracksBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.inner3TracksSegments_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardModel_inner3TracksBezierPaths (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.inner3TracksSegments_property.addEBObserver (self.inner3TracksBezierPaths_property)
+  //--- Atomic property: inner4TracksSegments
+    self.inner4TracksSegments_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.inner4Tracks_property.selection, unwSelf.inner4Tracks_property.selection, unwSelf.inner4Tracks_property.selection, unwSelf.inner4Tracks_property.selection, unwSelf.inner4Tracks_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_BoardModel_inner4TracksSegments (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.inner4Tracks_property.addEBObserverOf_x1 (self.inner4TracksSegments_property)
+    self.inner4Tracks_property.addEBObserverOf_y1 (self.inner4TracksSegments_property)
+    self.inner4Tracks_property.addEBObserverOf_x2 (self.inner4TracksSegments_property)
+    self.inner4Tracks_property.addEBObserverOf_y2 (self.inner4TracksSegments_property)
+    self.inner4Tracks_property.addEBObserverOf_width (self.inner4TracksSegments_property)
+  //--- Atomic property: inner4TracksBezierPaths
+    self.inner4TracksBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.inner4TracksSegments_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardModel_inner4TracksBezierPaths (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.inner4TracksSegments_property.addEBObserver (self.inner4TracksBezierPaths_property)
   //--- Atomic property: frontPackagesSegments
     self.frontPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2375,10 +2948,10 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: imageForModel
     self.imageForModel_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_mergerColorBackground_property.selection, unwSelf.modelWidth_property.selection, unwSelf.modelHeight_property.selection, unwSelf.boardLimitsBezierPaths_property.selection, preferences_mergerModelViewDisplayBoardLimits_property.selection, preferences_mergerColorBoardLimits_property.selection, unwSelf.internalBoardsLimitsBezierPaths_property.selection, preferences_mergerModelViewDisplayInternalBoardsLimits_property.selection, preferences_mergerColorInternalBoardsLimits_property.selection, unwSelf.frontTracksBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontTracks_property.selection, preferences_mergerColorFrontTracks_property.selection, unwSelf.backTracksBezierPaths_property.selection, preferences_mergerModelViewDisplayBackTracks_property.selection, preferences_mergerColorBackTracks_property.selection, unwSelf.frontPadsBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontPads_property.selection, preferences_mergerColorFrontPads_property.selection, unwSelf.backPadsBezierPaths_property.selection, preferences_mergerModelViewDisplayBackPads_property.selection, preferences_mergerColorBackPads_property.selection, unwSelf.viasBezierPaths_property.selection, preferences_mergerModelViewDisplayVias_property.selection, preferences_mergerColorVias_property.selection, unwSelf.holesBezierPaths_property.selection, preferences_mergerModelViewDisplayHoles_property.selection, preferences_mergerColorHoles_property.selection, unwSelf.frontLegendLinesBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontLegendLines_property.selection, preferences_mergerColorFrontLegendLines_property.selection, unwSelf.backLegendLinesBezierPaths_property.selection, preferences_mergerModelViewDisplayBackLegendLines_property.selection, preferences_mergerColorBackLegendLines_property.selection, unwSelf.frontLegendTextsBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontLegendTexts_property.selection, preferences_mergerColorFrontLegendTexts_property.selection, unwSelf.frontLayoutTextsBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontLayoutTexts_property.selection, preferences_mergerColorFrontLayoutTexts_property.selection, unwSelf.backLegendTextsBezierPaths_property.selection, preferences_mergerModelViewDisplayBackLegendTexts_property.selection, preferences_mergerColorBackLegendTexts_property.selection, unwSelf.backLayoutTextsBezierPaths_property.selection, preferences_mergerModelViewDisplayBackLayoutTexts_property.selection, preferences_mergerColorBackLayoutTexts_property.selection, unwSelf.backComponentNamesBezierPaths_property.selection, preferences_mergerModelViewDisplayBackComponentNames_property.selection, preferences_mergerColorBackComponentNames_property.selection, unwSelf.frontComponentNamesBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontComponentNames_property.selection, preferences_mergerColorFrontComponentNames_property.selection, unwSelf.frontComponentValuesBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontComponentValues_property.selection, preferences_mergerColorFrontComponentValues_property.selection, unwSelf.backComponentValuesBezierPaths_property.selection, preferences_mergerModelViewDisplayBackComponentValues_property.selection, preferences_mergerColorBackComponentValues_property.selection, unwSelf.frontPackagesBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontPackages_property.selection, preferences_mergerColorFrontPackages_property.selection, unwSelf.backPackagesBezierPaths_property.selection, preferences_mergerModelViewDisplayBackPackages_property.selection, preferences_mergerColorBackPackages_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29), .single (let v30), .single (let v31), .single (let v32), .single (let v33), .single (let v34), .single (let v35), .single (let v36), .single (let v37), .single (let v38), .single (let v39), .single (let v40), .single (let v41), .single (let v42), .single (let v43), .single (let v44), .single (let v45), .single (let v46), .single (let v47), .single (let v48), .single (let v49), .single (let v50), .single (let v51), .single (let v52), .single (let v53), .single (let v54), .single (let v55), .single (let v56), .single (let v57), .single (let v58), .single (let v59), .single (let v60), .single (let v61), .single (let v62)) :
-          return .single (transient_BoardModel_imageForModel (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (preferences_mergerColorBackground_property.selection, unwSelf.modelWidth_property.selection, unwSelf.modelHeight_property.selection, unwSelf.boardLimitsBezierPaths_property.selection, preferences_mergerModelViewDisplayBoardLimits_property.selection, preferences_mergerColorBoardLimits_property.selection, unwSelf.internalBoardsLimitsBezierPaths_property.selection, preferences_mergerModelViewDisplayInternalBoardsLimits_property.selection, preferences_mergerColorInternalBoardsLimits_property.selection, unwSelf.frontTracksBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontTracks_property.selection, preferences_mergerColorFrontTracks_property.selection, unwSelf.inner1TracksBezierPaths_property.selection, preferences_mergerModelViewDisplayInner1Tracks_property.selection, preferences_mergerColorInner1Tracks_property.selection, unwSelf.inner2TracksBezierPaths_property.selection, preferences_mergerModelViewDisplayInner2Tracks_property.selection, preferences_mergerColorInner2Tracks_property.selection, unwSelf.inner3TracksBezierPaths_property.selection, preferences_mergerModelViewDisplayInner3Tracks_property.selection, preferences_mergerColorInner3Tracks_property.selection, unwSelf.inner4TracksBezierPaths_property.selection, preferences_mergerModelViewDisplayInner4Tracks_property.selection, preferences_mergerColorInner4Tracks_property.selection, unwSelf.backTracksBezierPaths_property.selection, preferences_mergerModelViewDisplayBackTracks_property.selection, preferences_mergerColorBackTracks_property.selection, unwSelf.frontPadsBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontPads_property.selection, preferences_mergerColorFrontPads_property.selection, unwSelf.backPadsBezierPaths_property.selection, preferences_mergerModelViewDisplayBackPads_property.selection, preferences_mergerColorBackPads_property.selection, unwSelf.traversingPadsBezierPaths_property.selection, preferences_mergerModelViewDisplayTraversingPads_property.selection, preferences_mergerColorTraversingPads_property.selection, unwSelf.viasBezierPaths_property.selection, preferences_mergerModelViewDisplayVias_property.selection, preferences_mergerColorVias_property.selection, unwSelf.holesBezierPaths_property.selection, preferences_mergerModelViewDisplayHoles_property.selection, preferences_mergerColorHoles_property.selection, unwSelf.frontLegendLinesBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontLegendLines_property.selection, preferences_mergerColorFrontLegendLines_property.selection, unwSelf.backLegendLinesBezierPaths_property.selection, preferences_mergerModelViewDisplayBackLegendLines_property.selection, preferences_mergerColorBackLegendLines_property.selection, unwSelf.frontLegendTextsBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontLegendTexts_property.selection, preferences_mergerColorFrontLegendTexts_property.selection, unwSelf.frontLayoutTextsBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontLayoutTexts_property.selection, preferences_mergerColorFrontLayoutTexts_property.selection, unwSelf.backLegendTextsBezierPaths_property.selection, preferences_mergerModelViewDisplayBackLegendTexts_property.selection, preferences_mergerColorBackLegendTexts_property.selection, unwSelf.backLayoutTextsBezierPaths_property.selection, preferences_mergerModelViewDisplayBackLayoutTexts_property.selection, preferences_mergerColorBackLayoutTexts_property.selection, unwSelf.backComponentNamesBezierPaths_property.selection, preferences_mergerModelViewDisplayBackComponentNames_property.selection, preferences_mergerColorBackComponentNames_property.selection, unwSelf.frontComponentNamesBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontComponentNames_property.selection, preferences_mergerColorFrontComponentNames_property.selection, unwSelf.frontComponentValuesBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontComponentValues_property.selection, preferences_mergerColorFrontComponentValues_property.selection, unwSelf.backComponentValuesBezierPaths_property.selection, preferences_mergerModelViewDisplayBackComponentValues_property.selection, preferences_mergerColorBackComponentValues_property.selection, unwSelf.frontPackagesBezierPaths_property.selection, preferences_mergerModelViewDisplayFrontPackages_property.selection, preferences_mergerColorFrontPackages_property.selection, unwSelf.backPackagesBezierPaths_property.selection, preferences_mergerModelViewDisplayBackPackages_property.selection, preferences_mergerColorBackPackages_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29), .single (let v30), .single (let v31), .single (let v32), .single (let v33), .single (let v34), .single (let v35), .single (let v36), .single (let v37), .single (let v38), .single (let v39), .single (let v40), .single (let v41), .single (let v42), .single (let v43), .single (let v44), .single (let v45), .single (let v46), .single (let v47), .single (let v48), .single (let v49), .single (let v50), .single (let v51), .single (let v52), .single (let v53), .single (let v54), .single (let v55), .single (let v56), .single (let v57), .single (let v58), .single (let v59), .single (let v60), .single (let v61), .single (let v62), .single (let v63), .single (let v64), .single (let v65), .single (let v66), .single (let v67), .single (let v68), .single (let v69), .single (let v70), .single (let v71), .single (let v72), .single (let v73), .single (let v74), .single (let v75), .single (let v76), .single (let v77)) :
+          return .single (transient_BoardModel_imageForModel (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -2399,6 +2972,18 @@ final class BoardModel : EBManagedObject,
     self.frontTracksBezierPaths_property.addEBObserver (self.imageForModel_property)
     preferences_mergerModelViewDisplayFrontTracks_property.addEBObserver (self.imageForModel_property)
     preferences_mergerColorFrontTracks_property.addEBObserver (self.imageForModel_property)
+    self.inner1TracksBezierPaths_property.addEBObserver (self.imageForModel_property)
+    preferences_mergerModelViewDisplayInner1Tracks_property.addEBObserver (self.imageForModel_property)
+    preferences_mergerColorInner1Tracks_property.addEBObserver (self.imageForModel_property)
+    self.inner2TracksBezierPaths_property.addEBObserver (self.imageForModel_property)
+    preferences_mergerModelViewDisplayInner2Tracks_property.addEBObserver (self.imageForModel_property)
+    preferences_mergerColorInner2Tracks_property.addEBObserver (self.imageForModel_property)
+    self.inner3TracksBezierPaths_property.addEBObserver (self.imageForModel_property)
+    preferences_mergerModelViewDisplayInner3Tracks_property.addEBObserver (self.imageForModel_property)
+    preferences_mergerColorInner3Tracks_property.addEBObserver (self.imageForModel_property)
+    self.inner4TracksBezierPaths_property.addEBObserver (self.imageForModel_property)
+    preferences_mergerModelViewDisplayInner4Tracks_property.addEBObserver (self.imageForModel_property)
+    preferences_mergerColorInner4Tracks_property.addEBObserver (self.imageForModel_property)
     self.backTracksBezierPaths_property.addEBObserver (self.imageForModel_property)
     preferences_mergerModelViewDisplayBackTracks_property.addEBObserver (self.imageForModel_property)
     preferences_mergerColorBackTracks_property.addEBObserver (self.imageForModel_property)
@@ -2408,6 +2993,9 @@ final class BoardModel : EBManagedObject,
     self.backPadsBezierPaths_property.addEBObserver (self.imageForModel_property)
     preferences_mergerModelViewDisplayBackPads_property.addEBObserver (self.imageForModel_property)
     preferences_mergerColorBackPads_property.addEBObserver (self.imageForModel_property)
+    self.traversingPadsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    preferences_mergerModelViewDisplayTraversingPads_property.addEBObserver (self.imageForModel_property)
+    preferences_mergerColorTraversingPads_property.addEBObserver (self.imageForModel_property)
     self.viasBezierPaths_property.addEBObserver (self.imageForModel_property)
     preferences_mergerModelViewDisplayVias_property.addEBObserver (self.imageForModel_property)
     preferences_mergerColorVias_property.addEBObserver (self.imageForModel_property)
@@ -2453,10 +3041,10 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: imageForInstances
     self.imageForInstances_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_mergerColorBackground_property.selection, unwSelf.modelWidth_property.selection, unwSelf.modelHeight_property.selection, unwSelf.frontTracksBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontTracks_property.selection, preferences_mergerColorFrontTracks_property.selection, unwSelf.backTracksBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackTracks_property.selection, preferences_mergerColorBackTracks_property.selection, unwSelf.internalBoardsLimitsBezierPaths_property.selection, unwSelf.boardLimitsBezierPaths_property.selection, preferences_mergerBoardViewDisplayInternalBoardsLimits_property.selection, preferences_mergerColorInternalBoardsLimits_property.selection, unwSelf.frontPadsBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontPads_property.selection, preferences_mergerColorFrontPads_property.selection, unwSelf.backPadsBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackPads_property.selection, preferences_mergerColorBackPads_property.selection, unwSelf.viasBezierPaths_property.selection, preferences_mergerBoardViewDisplayVias_property.selection, preferences_mergerColorVias_property.selection, unwSelf.holesBezierPaths_property.selection, preferences_mergerBoardViewDisplayHoles_property.selection, preferences_mergerColorHoles_property.selection, unwSelf.frontLegendLinesBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontLegendLines_property.selection, preferences_mergerColorFrontLegendLines_property.selection, unwSelf.backLegendLinesBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackLegendLines_property.selection, preferences_mergerColorBackLegendLines_property.selection, unwSelf.frontLegendTextsBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontLegendTexts_property.selection, preferences_mergerColorFrontLegendTexts_property.selection, unwSelf.frontLayoutTextsBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontLayoutTexts_property.selection, preferences_mergerColorFrontLayoutTexts_property.selection, unwSelf.backLegendTextsBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackLegendTexts_property.selection, preferences_mergerColorBackLegendTexts_property.selection, unwSelf.backLayoutTextsBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackLayoutTexts_property.selection, preferences_mergerColorBackLayoutTexts_property.selection, unwSelf.backComponentNamesBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackComponentNames_property.selection, preferences_mergerColorBackComponentNames_property.selection, unwSelf.frontComponentNamesBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontComponentNames_property.selection, preferences_mergerColorFrontComponentNames_property.selection, unwSelf.frontComponentValuesBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontComponentValues_property.selection, preferences_mergerColorFrontComponentValues_property.selection, unwSelf.backComponentValuesBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackComponentValues_property.selection, preferences_mergerColorBackComponentValues_property.selection, unwSelf.frontPackagesBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontPackages_property.selection, preferences_mergerColorFrontPackages_property.selection, unwSelf.backPackagesBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackPackages_property.selection, preferences_mergerColorBackPackages_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29), .single (let v30), .single (let v31), .single (let v32), .single (let v33), .single (let v34), .single (let v35), .single (let v36), .single (let v37), .single (let v38), .single (let v39), .single (let v40), .single (let v41), .single (let v42), .single (let v43), .single (let v44), .single (let v45), .single (let v46), .single (let v47), .single (let v48), .single (let v49), .single (let v50), .single (let v51), .single (let v52), .single (let v53), .single (let v54), .single (let v55), .single (let v56), .single (let v57), .single (let v58), .single (let v59), .single (let v60)) :
-          return .single (transient_BoardModel_imageForInstances (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (preferences_mergerColorBackground_property.selection, unwSelf.modelWidth_property.selection, unwSelf.modelHeight_property.selection, unwSelf.frontTracksBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontTracks_property.selection, preferences_mergerColorFrontTracks_property.selection, unwSelf.inner1TracksBezierPaths_property.selection, preferences_mergerBoardViewDisplayInner1Tracks_property.selection, preferences_mergerColorInner1Tracks_property.selection, unwSelf.inner2TracksBezierPaths_property.selection, preferences_mergerBoardViewDisplayInner2Tracks_property.selection, preferences_mergerColorInner2Tracks_property.selection, unwSelf.inner3TracksBezierPaths_property.selection, preferences_mergerBoardViewDisplayInner3Tracks_property.selection, preferences_mergerColorInner3Tracks_property.selection, unwSelf.inner4TracksBezierPaths_property.selection, preferences_mergerBoardViewDisplayInner4Tracks_property.selection, preferences_mergerColorInner4Tracks_property.selection, unwSelf.backTracksBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackTracks_property.selection, preferences_mergerColorBackTracks_property.selection, unwSelf.internalBoardsLimitsBezierPaths_property.selection, unwSelf.boardLimitsBezierPaths_property.selection, preferences_mergerBoardViewDisplayInternalBoardsLimits_property.selection, preferences_mergerColorInternalBoardsLimits_property.selection, unwSelf.frontPadsBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontPads_property.selection, preferences_mergerColorFrontPads_property.selection, unwSelf.traversingPadsBezierPaths_property.selection, preferences_mergerBoardViewDisplayTraversingPads_property.selection, preferences_mergerColorTraversingPads_property.selection, unwSelf.backPadsBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackPads_property.selection, preferences_mergerColorBackPads_property.selection, unwSelf.viasBezierPaths_property.selection, preferences_mergerBoardViewDisplayVias_property.selection, preferences_mergerColorVias_property.selection, unwSelf.holesBezierPaths_property.selection, preferences_mergerBoardViewDisplayHoles_property.selection, preferences_mergerColorHoles_property.selection, unwSelf.frontLegendLinesBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontLegendLines_property.selection, preferences_mergerColorFrontLegendLines_property.selection, unwSelf.backLegendLinesBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackLegendLines_property.selection, preferences_mergerColorBackLegendLines_property.selection, unwSelf.frontLegendTextsBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontLegendTexts_property.selection, preferences_mergerColorFrontLegendTexts_property.selection, unwSelf.frontLayoutTextsBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontLayoutTexts_property.selection, preferences_mergerColorFrontLayoutTexts_property.selection, unwSelf.backLegendTextsBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackLegendTexts_property.selection, preferences_mergerColorBackLegendTexts_property.selection, unwSelf.backLayoutTextsBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackLayoutTexts_property.selection, preferences_mergerColorBackLayoutTexts_property.selection, unwSelf.backComponentNamesBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackComponentNames_property.selection, preferences_mergerColorBackComponentNames_property.selection, unwSelf.frontComponentNamesBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontComponentNames_property.selection, preferences_mergerColorFrontComponentNames_property.selection, unwSelf.frontComponentValuesBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontComponentValues_property.selection, preferences_mergerColorFrontComponentValues_property.selection, unwSelf.backComponentValuesBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackComponentValues_property.selection, preferences_mergerColorBackComponentValues_property.selection, unwSelf.frontPackagesBezierPaths_property.selection, preferences_mergerBoardViewDisplayFrontPackages_property.selection, preferences_mergerColorFrontPackages_property.selection, unwSelf.backPackagesBezierPaths_property.selection, preferences_mergerBoardViewDisplayBackPackages_property.selection, preferences_mergerColorBackPackages_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29), .single (let v30), .single (let v31), .single (let v32), .single (let v33), .single (let v34), .single (let v35), .single (let v36), .single (let v37), .single (let v38), .single (let v39), .single (let v40), .single (let v41), .single (let v42), .single (let v43), .single (let v44), .single (let v45), .single (let v46), .single (let v47), .single (let v48), .single (let v49), .single (let v50), .single (let v51), .single (let v52), .single (let v53), .single (let v54), .single (let v55), .single (let v56), .single (let v57), .single (let v58), .single (let v59), .single (let v60), .single (let v61), .single (let v62), .single (let v63), .single (let v64), .single (let v65), .single (let v66), .single (let v67), .single (let v68), .single (let v69), .single (let v70), .single (let v71), .single (let v72), .single (let v73), .single (let v74), .single (let v75)) :
+          return .single (transient_BoardModel_imageForInstances (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -2471,6 +3059,18 @@ final class BoardModel : EBManagedObject,
     self.frontTracksBezierPaths_property.addEBObserver (self.imageForInstances_property)
     preferences_mergerBoardViewDisplayFrontTracks_property.addEBObserver (self.imageForInstances_property)
     preferences_mergerColorFrontTracks_property.addEBObserver (self.imageForInstances_property)
+    self.inner1TracksBezierPaths_property.addEBObserver (self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayInner1Tracks_property.addEBObserver (self.imageForInstances_property)
+    preferences_mergerColorInner1Tracks_property.addEBObserver (self.imageForInstances_property)
+    self.inner2TracksBezierPaths_property.addEBObserver (self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayInner2Tracks_property.addEBObserver (self.imageForInstances_property)
+    preferences_mergerColorInner2Tracks_property.addEBObserver (self.imageForInstances_property)
+    self.inner3TracksBezierPaths_property.addEBObserver (self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayInner3Tracks_property.addEBObserver (self.imageForInstances_property)
+    preferences_mergerColorInner3Tracks_property.addEBObserver (self.imageForInstances_property)
+    self.inner4TracksBezierPaths_property.addEBObserver (self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayInner4Tracks_property.addEBObserver (self.imageForInstances_property)
+    preferences_mergerColorInner4Tracks_property.addEBObserver (self.imageForInstances_property)
     self.backTracksBezierPaths_property.addEBObserver (self.imageForInstances_property)
     preferences_mergerBoardViewDisplayBackTracks_property.addEBObserver (self.imageForInstances_property)
     preferences_mergerColorBackTracks_property.addEBObserver (self.imageForInstances_property)
@@ -2481,6 +3081,9 @@ final class BoardModel : EBManagedObject,
     self.frontPadsBezierPaths_property.addEBObserver (self.imageForInstances_property)
     preferences_mergerBoardViewDisplayFrontPads_property.addEBObserver (self.imageForInstances_property)
     preferences_mergerColorFrontPads_property.addEBObserver (self.imageForInstances_property)
+    self.traversingPadsBezierPaths_property.addEBObserver (self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayTraversingPads_property.addEBObserver (self.imageForInstances_property)
+    preferences_mergerColorTraversingPads_property.addEBObserver (self.imageForInstances_property)
     self.backPadsBezierPaths_property.addEBObserver (self.imageForInstances_property)
     preferences_mergerBoardViewDisplayBackPads_property.addEBObserver (self.imageForInstances_property)
     preferences_mergerColorBackPads_property.addEBObserver (self.imageForInstances_property)
@@ -2539,6 +3142,7 @@ final class BoardModel : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    // self.layerConfiguration_property.removeEBObserver (self.layerConfigurationString_property)
     // self.frontLegendLines_property.removeEBObserverOf_x1 (self.frontLegendLinesSegments_property)
     // self.frontLegendLines_property.removeEBObserverOf_y1 (self.frontLegendLinesSegments_property)
     // self.frontLegendLines_property.removeEBObserverOf_x2 (self.frontLegendLinesSegments_property)
@@ -2604,6 +3208,13 @@ final class BoardModel : EBManagedObject,
     // self.backPads_property.removeEBObserverOf_shape (self.backPadArray_property)
     // self.backPads_property.removeEBObserverOf_rotation (self.backPadArray_property)
     // self.backPadArray_property.removeEBObserver (self.backPadsBezierPaths_property)
+    // self.traversingPads_property.removeEBObserverOf_x (self.traversingPadArray_property)
+    // self.traversingPads_property.removeEBObserverOf_y (self.traversingPadArray_property)
+    // self.traversingPads_property.removeEBObserverOf_width (self.traversingPadArray_property)
+    // self.traversingPads_property.removeEBObserverOf_height (self.traversingPadArray_property)
+    // self.traversingPads_property.removeEBObserverOf_shape (self.traversingPadArray_property)
+    // self.traversingPads_property.removeEBObserverOf_rotation (self.traversingPadArray_property)
+    // self.traversingPadArray_property.removeEBObserver (self.traversingPadsBezierPaths_property)
     // self.modelWidth_property.removeEBObserver (self.boardLimits_property)
     // self.modelHeight_property.removeEBObserver (self.boardLimits_property)
     // self.modelLimitWidth_property.removeEBObserver (self.boardLimits_property)
@@ -2647,6 +3258,30 @@ final class BoardModel : EBManagedObject,
     // self.frontTracks_property.removeEBObserverOf_y2 (self.frontTrackSegments_property)
     // self.frontTracks_property.removeEBObserverOf_width (self.frontTrackSegments_property)
     // self.frontTrackSegments_property.removeEBObserver (self.frontTracksBezierPaths_property)
+    // self.inner1Tracks_property.removeEBObserverOf_x1 (self.inner1TracksSegments_property)
+    // self.inner1Tracks_property.removeEBObserverOf_y1 (self.inner1TracksSegments_property)
+    // self.inner1Tracks_property.removeEBObserverOf_x2 (self.inner1TracksSegments_property)
+    // self.inner1Tracks_property.removeEBObserverOf_y2 (self.inner1TracksSegments_property)
+    // self.inner1Tracks_property.removeEBObserverOf_width (self.inner1TracksSegments_property)
+    // self.inner1TracksSegments_property.removeEBObserver (self.inner1TracksBezierPaths_property)
+    // self.inner2Tracks_property.removeEBObserverOf_x1 (self.inner2TracksSegments_property)
+    // self.inner2Tracks_property.removeEBObserverOf_y1 (self.inner2TracksSegments_property)
+    // self.inner2Tracks_property.removeEBObserverOf_x2 (self.inner2TracksSegments_property)
+    // self.inner2Tracks_property.removeEBObserverOf_y2 (self.inner2TracksSegments_property)
+    // self.inner2Tracks_property.removeEBObserverOf_width (self.inner2TracksSegments_property)
+    // self.inner2TracksSegments_property.removeEBObserver (self.inner2TracksBezierPaths_property)
+    // self.inner3Tracks_property.removeEBObserverOf_x1 (self.inner3TracksSegments_property)
+    // self.inner3Tracks_property.removeEBObserverOf_y1 (self.inner3TracksSegments_property)
+    // self.inner3Tracks_property.removeEBObserverOf_x2 (self.inner3TracksSegments_property)
+    // self.inner3Tracks_property.removeEBObserverOf_y2 (self.inner3TracksSegments_property)
+    // self.inner3Tracks_property.removeEBObserverOf_width (self.inner3TracksSegments_property)
+    // self.inner3TracksSegments_property.removeEBObserver (self.inner3TracksBezierPaths_property)
+    // self.inner4Tracks_property.removeEBObserverOf_x1 (self.inner4TracksSegments_property)
+    // self.inner4Tracks_property.removeEBObserverOf_y1 (self.inner4TracksSegments_property)
+    // self.inner4Tracks_property.removeEBObserverOf_x2 (self.inner4TracksSegments_property)
+    // self.inner4Tracks_property.removeEBObserverOf_y2 (self.inner4TracksSegments_property)
+    // self.inner4Tracks_property.removeEBObserverOf_width (self.inner4TracksSegments_property)
+    // self.inner4TracksSegments_property.removeEBObserver (self.inner4TracksBezierPaths_property)
     // self.frontPackages_property.removeEBObserverOf_x1 (self.frontPackagesSegments_property)
     // self.frontPackages_property.removeEBObserverOf_y1 (self.frontPackagesSegments_property)
     // self.frontPackages_property.removeEBObserverOf_x2 (self.frontPackagesSegments_property)
@@ -2673,6 +3308,18 @@ final class BoardModel : EBManagedObject,
     // self.frontTracksBezierPaths_property.removeEBObserver (self.imageForModel_property)
     // preferences_mergerModelViewDisplayFrontTracks_property.removeEBObserver (self.imageForModel_property)
     // preferences_mergerColorFrontTracks_property.removeEBObserver (self.imageForModel_property)
+    // self.inner1TracksBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // preferences_mergerModelViewDisplayInner1Tracks_property.removeEBObserver (self.imageForModel_property)
+    // preferences_mergerColorInner1Tracks_property.removeEBObserver (self.imageForModel_property)
+    // self.inner2TracksBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // preferences_mergerModelViewDisplayInner2Tracks_property.removeEBObserver (self.imageForModel_property)
+    // preferences_mergerColorInner2Tracks_property.removeEBObserver (self.imageForModel_property)
+    // self.inner3TracksBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // preferences_mergerModelViewDisplayInner3Tracks_property.removeEBObserver (self.imageForModel_property)
+    // preferences_mergerColorInner3Tracks_property.removeEBObserver (self.imageForModel_property)
+    // self.inner4TracksBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // preferences_mergerModelViewDisplayInner4Tracks_property.removeEBObserver (self.imageForModel_property)
+    // preferences_mergerColorInner4Tracks_property.removeEBObserver (self.imageForModel_property)
     // self.backTracksBezierPaths_property.removeEBObserver (self.imageForModel_property)
     // preferences_mergerModelViewDisplayBackTracks_property.removeEBObserver (self.imageForModel_property)
     // preferences_mergerColorBackTracks_property.removeEBObserver (self.imageForModel_property)
@@ -2682,6 +3329,9 @@ final class BoardModel : EBManagedObject,
     // self.backPadsBezierPaths_property.removeEBObserver (self.imageForModel_property)
     // preferences_mergerModelViewDisplayBackPads_property.removeEBObserver (self.imageForModel_property)
     // preferences_mergerColorBackPads_property.removeEBObserver (self.imageForModel_property)
+    // self.traversingPadsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    // preferences_mergerModelViewDisplayTraversingPads_property.removeEBObserver (self.imageForModel_property)
+    // preferences_mergerColorTraversingPads_property.removeEBObserver (self.imageForModel_property)
     // self.viasBezierPaths_property.removeEBObserver (self.imageForModel_property)
     // preferences_mergerModelViewDisplayVias_property.removeEBObserver (self.imageForModel_property)
     // preferences_mergerColorVias_property.removeEBObserver (self.imageForModel_property)
@@ -2730,6 +3380,18 @@ final class BoardModel : EBManagedObject,
     // self.frontTracksBezierPaths_property.removeEBObserver (self.imageForInstances_property)
     // preferences_mergerBoardViewDisplayFrontTracks_property.removeEBObserver (self.imageForInstances_property)
     // preferences_mergerColorFrontTracks_property.removeEBObserver (self.imageForInstances_property)
+    // self.inner1TracksBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // preferences_mergerBoardViewDisplayInner1Tracks_property.removeEBObserver (self.imageForInstances_property)
+    // preferences_mergerColorInner1Tracks_property.removeEBObserver (self.imageForInstances_property)
+    // self.inner2TracksBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // preferences_mergerBoardViewDisplayInner2Tracks_property.removeEBObserver (self.imageForInstances_property)
+    // preferences_mergerColorInner2Tracks_property.removeEBObserver (self.imageForInstances_property)
+    // self.inner3TracksBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // preferences_mergerBoardViewDisplayInner3Tracks_property.removeEBObserver (self.imageForInstances_property)
+    // preferences_mergerColorInner3Tracks_property.removeEBObserver (self.imageForInstances_property)
+    // self.inner4TracksBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // preferences_mergerBoardViewDisplayInner4Tracks_property.removeEBObserver (self.imageForInstances_property)
+    // preferences_mergerColorInner4Tracks_property.removeEBObserver (self.imageForInstances_property)
     // self.backTracksBezierPaths_property.removeEBObserver (self.imageForInstances_property)
     // preferences_mergerBoardViewDisplayBackTracks_property.removeEBObserver (self.imageForInstances_property)
     // preferences_mergerColorBackTracks_property.removeEBObserver (self.imageForInstances_property)
@@ -2740,6 +3402,9 @@ final class BoardModel : EBManagedObject,
     // self.frontPadsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
     // preferences_mergerBoardViewDisplayFrontPads_property.removeEBObserver (self.imageForInstances_property)
     // preferences_mergerColorFrontPads_property.removeEBObserver (self.imageForInstances_property)
+    // self.traversingPadsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    // preferences_mergerBoardViewDisplayTraversingPads_property.removeEBObserver (self.imageForInstances_property)
+    // preferences_mergerColorTraversingPads_property.removeEBObserver (self.imageForInstances_property)
     // self.backPadsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
     // preferences_mergerBoardViewDisplayBackPads_property.removeEBObserver (self.imageForInstances_property)
     // preferences_mergerColorBackPads_property.removeEBObserver (self.imageForInstances_property)
@@ -2849,6 +3514,14 @@ final class BoardModel : EBManagedObject,
         valueExplorer: &self.zoom_property.mValueExplorer
       )
       createEntryForPropertyNamed (
+        "layerConfiguration",
+        object: self.layerConfiguration_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.layerConfiguration_property.mObserverExplorer,
+        valueExplorer: &self.layerConfiguration_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
         "modelLimitWidth",
         object: self.modelLimitWidth_property,
         y: &y,
@@ -2873,6 +3546,14 @@ final class BoardModel : EBManagedObject,
         valueExplorer: &self.artworkName_property.mValueExplorer
       )
       createEntryForTitle ("Properties", y: &y, view: view)
+      createEntryForPropertyNamed (
+        "layerConfigurationString",
+        object: self.layerConfigurationString_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.layerConfigurationString_property.mObserverExplorer,
+        valueExplorer: &self.layerConfigurationString_property.mValueExplorer
+      )
       createEntryForPropertyNamed (
         "frontLegendLinesSegments",
         object: self.frontLegendLinesSegments_property,
@@ -3042,6 +3723,22 @@ final class BoardModel : EBManagedObject,
         valueExplorer: &self.backPadsBezierPaths_property.mValueExplorer
       )
       createEntryForPropertyNamed (
+        "traversingPadArray",
+        object: self.traversingPadArray_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.traversingPadArray_property.mObserverExplorer,
+        valueExplorer: &self.traversingPadArray_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "traversingPadsBezierPaths",
+        object: self.traversingPadsBezierPaths_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.traversingPadsBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.traversingPadsBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
         "boardLimits",
         object: self.boardLimits_property,
         y: &y,
@@ -3152,6 +3849,70 @@ final class BoardModel : EBManagedObject,
         view: view,
         observerExplorer: &self.frontTracksBezierPaths_property.mObserverExplorer,
         valueExplorer: &self.frontTracksBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "inner1TracksSegments",
+        object: self.inner1TracksSegments_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.inner1TracksSegments_property.mObserverExplorer,
+        valueExplorer: &self.inner1TracksSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "inner1TracksBezierPaths",
+        object: self.inner1TracksBezierPaths_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.inner1TracksBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.inner1TracksBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "inner2TracksSegments",
+        object: self.inner2TracksSegments_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.inner2TracksSegments_property.mObserverExplorer,
+        valueExplorer: &self.inner2TracksSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "inner2TracksBezierPaths",
+        object: self.inner2TracksBezierPaths_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.inner2TracksBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.inner2TracksBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "inner3TracksSegments",
+        object: self.inner3TracksSegments_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.inner3TracksSegments_property.mObserverExplorer,
+        valueExplorer: &self.inner3TracksSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "inner3TracksBezierPaths",
+        object: self.inner3TracksBezierPaths_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.inner3TracksBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.inner3TracksBezierPaths_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "inner4TracksSegments",
+        object: self.inner4TracksSegments_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.inner4TracksSegments_property.mObserverExplorer,
+        valueExplorer: &self.inner4TracksSegments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "inner4TracksBezierPaths",
+        object: self.inner4TracksBezierPaths_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.inner4TracksBezierPaths_property.mObserverExplorer,
+        valueExplorer: &self.inner4TracksBezierPaths_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "frontPackagesSegments",
@@ -3296,6 +4057,13 @@ final class BoardModel : EBManagedObject,
         valueExplorer:&backPads_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
+        "traversingPads",
+        object: traversingPads_property,
+        y: &y,
+        view: view,
+        valueExplorer:&traversingPads_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
         "backComponentNames",
         object: backComponentNames_property,
         y: &y,
@@ -3336,6 +4104,34 @@ final class BoardModel : EBManagedObject,
         y: &y,
         view: view,
         valueExplorer:&frontTracks_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "inner1Tracks",
+        object: inner1Tracks_property,
+        y: &y,
+        view: view,
+        valueExplorer:&inner1Tracks_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "inner2Tracks",
+        object: inner2Tracks_property,
+        y: &y,
+        view: view,
+        valueExplorer:&inner2Tracks_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "inner3Tracks",
+        object: inner3Tracks_property,
+        y: &y,
+        view: view,
+        valueExplorer:&inner3Tracks_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "inner4Tracks",
+        object: inner4Tracks_property,
+        y: &y,
+        view: view,
+        valueExplorer:&inner4Tracks_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "frontPackages",
@@ -3387,6 +4183,9 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: zoom
     self.zoom_property.mObserverExplorer = nil
     self.zoom_property.mValueExplorer = nil
+  //--- Atomic property: layerConfiguration
+    self.layerConfiguration_property.mObserverExplorer = nil
+    self.layerConfiguration_property.mValueExplorer = nil
     //--- To many property: frontLegendLines
       self.frontLegendLines_property.mValueExplorer = nil
     //--- To many property: backLegendLines
@@ -3409,6 +4208,8 @@ final class BoardModel : EBManagedObject,
       self.frontPads_property.mValueExplorer = nil
     //--- To many property: backPads
       self.backPads_property.mValueExplorer = nil
+    //--- To many property: traversingPads
+      self.traversingPads_property.mValueExplorer = nil
   //--- Atomic property: modelLimitWidth
     self.modelLimitWidth_property.mObserverExplorer = nil
     self.modelLimitWidth_property.mValueExplorer = nil
@@ -3427,6 +4228,14 @@ final class BoardModel : EBManagedObject,
       self.backTracks_property.mValueExplorer = nil
     //--- To many property: frontTracks
       self.frontTracks_property.mValueExplorer = nil
+    //--- To many property: inner1Tracks
+      self.inner1Tracks_property.mValueExplorer = nil
+    //--- To many property: inner2Tracks
+      self.inner2Tracks_property.mValueExplorer = nil
+    //--- To many property: inner3Tracks
+      self.inner3Tracks_property.mValueExplorer = nil
+    //--- To many property: inner4Tracks
+      self.inner4Tracks_property.mValueExplorer = nil
     //--- To many property: frontPackages
       self.frontPackages_property.mValueExplorer = nil
     //--- To many property: backPackages
@@ -3457,12 +4266,17 @@ final class BoardModel : EBManagedObject,
     self.vias.removeAll ()
     self.frontPads.removeAll ()
     self.backPads.removeAll ()
+    self.traversingPads.removeAll ()
     self.backComponentNames.removeAll ()
     self.frontComponentNames.removeAll ()
     self.frontComponentValues.removeAll ()
     self.backComponentValues.removeAll ()
     self.backTracks.removeAll ()
     self.frontTracks.removeAll ()
+    self.inner1Tracks.removeAll ()
+    self.inner2Tracks.removeAll ()
+    self.inner3Tracks.removeAll ()
+    self.inner4Tracks.removeAll ()
     self.frontPackages.removeAll ()
     self.backPackages.removeAll ()
     self.myInstances.removeAll ()
@@ -3497,6 +4311,8 @@ final class BoardModel : EBManagedObject,
       self.modelHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelHeightUnit")
     //--- Atomic property: zoom
       self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
+    //--- Atomic property: layerConfiguration
+      self.layerConfiguration_property.storeIn (dictionary: ioDictionary, forKey: "layerConfiguration")
   //--- To many property: frontLegendLines
     self.store (
       managedObjectArray: self.frontLegendLines_property.propval.values,
@@ -3563,6 +4379,12 @@ final class BoardModel : EBManagedObject,
       relationshipName: "backPads",
       intoDictionary: ioDictionary
     )
+  //--- To many property: traversingPads
+    self.store (
+      managedObjectArray: self.traversingPads_property.propval.values,
+      relationshipName: "traversingPads",
+      intoDictionary: ioDictionary
+    )
     //--- Atomic property: modelLimitWidth
       self.modelLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidth")
     //--- Atomic property: modelLimitWidthUnit
@@ -3601,6 +4423,30 @@ final class BoardModel : EBManagedObject,
     self.store (
       managedObjectArray: self.frontTracks_property.propval.values,
       relationshipName: "frontTracks",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: inner1Tracks
+    self.store (
+      managedObjectArray: self.inner1Tracks_property.propval.values,
+      relationshipName: "inner1Tracks",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: inner2Tracks
+    self.store (
+      managedObjectArray: self.inner2Tracks_property.propval.values,
+      relationshipName: "inner2Tracks",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: inner3Tracks
+    self.store (
+      managedObjectArray: self.inner3Tracks_property.propval.values,
+      relationshipName: "inner3Tracks",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: inner4Tracks
+    self.store (
+      managedObjectArray: self.inner4Tracks_property.propval.values,
+      relationshipName: "inner4Tracks",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontPackages
@@ -3786,6 +4632,20 @@ final class BoardModel : EBManagedObject,
       ) as! [BoardModelPad]
       self.backPads_property.setProp (EBReferenceArray (array))
     }
+  //--- To many property: traversingPads
+/*    self.traversingPads_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "traversingPads",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [BoardModelPad]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "traversingPads",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [BoardModelPad]
+      self.traversingPads_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: backComponentNames
 /*    self.backComponentNames_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backComponentNames",
@@ -3870,6 +4730,62 @@ final class BoardModel : EBManagedObject,
       ) as! [SegmentEntity]
       self.frontTracks_property.setProp (EBReferenceArray (array))
     }
+  //--- To many property: inner1Tracks
+/*    self.inner1Tracks_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "inner1Tracks",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "inner1Tracks",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.inner1Tracks_property.setProp (EBReferenceArray (array))
+    }
+  //--- To many property: inner2Tracks
+/*    self.inner2Tracks_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "inner2Tracks",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "inner2Tracks",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.inner2Tracks_property.setProp (EBReferenceArray (array))
+    }
+  //--- To many property: inner3Tracks
+/*    self.inner3Tracks_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "inner3Tracks",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "inner3Tracks",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.inner3Tracks_property.setProp (EBReferenceArray (array))
+    }
+  //--- To many property: inner4Tracks
+/*    self.inner4Tracks_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "inner4Tracks",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [SegmentEntity]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "inner4Tracks",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [SegmentEntity]
+      self.inner4Tracks_property.setProp (EBReferenceArray (array))
+    }
   //--- To many property: frontPackages
 /*    self.frontPackages_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontPackages",
@@ -3932,6 +4848,8 @@ final class BoardModel : EBManagedObject,
     self.modelHeightUnit_property.readFrom (dictionary: inDictionary, forKey: "modelHeightUnit")
   //--- Atomic property: zoom
     self.zoom_property.readFrom (dictionary: inDictionary, forKey: "zoom")
+  //--- Atomic property: layerConfiguration
+    self.layerConfiguration_property.readFrom (dictionary: inDictionary, forKey: "layerConfiguration")
   //--- Atomic property: modelLimitWidth
     self.modelLimitWidth_property.readFrom (dictionary: inDictionary, forKey: "modelLimitWidth")
   //--- Atomic property: modelLimitWidthUnit
@@ -3954,6 +4872,7 @@ final class BoardModel : EBManagedObject,
     ioString += "modelHeight\n"
     ioString += "modelHeightUnit\n"
     ioString += "zoom\n"
+    ioString += "layerConfiguration\n"
     ioString += "modelLimitWidth\n"
     ioString += "modelLimitWidthUnit\n"
     ioString += "artworkName\n"
@@ -3970,12 +4889,17 @@ final class BoardModel : EBManagedObject,
     ioString += "vias\n"
     ioString += "frontPads\n"
     ioString += "backPads\n"
+    ioString += "traversingPads\n"
     ioString += "backComponentNames\n"
     ioString += "frontComponentNames\n"
     ioString += "frontComponentValues\n"
     ioString += "backComponentValues\n"
     ioString += "backTracks\n"
     ioString += "frontTracks\n"
+    ioString += "inner1Tracks\n"
+    ioString += "inner2Tracks\n"
+    ioString += "inner3Tracks\n"
+    ioString += "inner4Tracks\n"
     ioString += "frontPackages\n"
     ioString += "backPackages\n"
     ioString += "myInstances\n"
@@ -3999,6 +4923,8 @@ final class BoardModel : EBManagedObject,
     self.modelHeightUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.zoom.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.layerConfiguration.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.modelLimitWidth.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -4352,6 +5278,37 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
+      for object in self.traversingPads.values {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioData.append (base62Encoded: object.savingIndex)
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
+      }
+      ioData.append (ascii: .lineFeed)
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
       for object in self.backComponentNames.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
@@ -4538,6 +5495,130 @@ final class BoardModel : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
+      for object in self.inner1Tracks.values {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioData.append (base62Encoded: object.savingIndex)
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
+      }
+      ioData.append (ascii: .lineFeed)
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.inner2Tracks.values {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioData.append (base62Encoded: object.savingIndex)
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
+      }
+      ioData.append (ascii: .lineFeed)
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.inner3Tracks.values {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioData.append (base62Encoded: object.savingIndex)
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
+      }
+      ioData.append (ascii: .lineFeed)
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.inner4Tracks.values {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioData.append (base62Encoded: object.savingIndex)
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
+      }
+      ioData.append (ascii: .lineFeed)
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
       for object in self.frontPackages.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
@@ -4659,6 +5740,9 @@ final class BoardModel : EBManagedObject,
       if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.zoom = value
       }
+      if let range = inDictionary ["layerConfiguration"], let value = LayerConfiguration.unarchiveFromDataRange (inData, range) {
+        self.layerConfiguration = value
+      }
       if let range = inDictionary ["modelLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.modelLimitWidth = value
       }
@@ -4758,6 +5842,14 @@ final class BoardModel : EBManagedObject,
         }
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backPads = relationshipArray }
       }
+      if let range = inDictionary ["traversingPads"], range.length > 0 {
+        var relationshipArray = EBReferenceArray <BoardModelPad> ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
+        }
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.traversingPads = relationshipArray }
+      }
       if let range = inDictionary ["backComponentNames"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -4805,6 +5897,38 @@ final class BoardModel : EBManagedObject,
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontTracks = relationshipArray }
+      }
+      if let range = inDictionary ["inner1Tracks"], range.length > 0 {
+        var relationshipArray = EBReferenceArray <SegmentEntity> ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.inner1Tracks = relationshipArray }
+      }
+      if let range = inDictionary ["inner2Tracks"], range.length > 0 {
+        var relationshipArray = EBReferenceArray <SegmentEntity> ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.inner2Tracks = relationshipArray }
+      }
+      if let range = inDictionary ["inner3Tracks"], range.length > 0 {
+        var relationshipArray = EBReferenceArray <SegmentEntity> ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.inner3Tracks = relationshipArray }
+      }
+      if let range = inDictionary ["inner4Tracks"], range.length > 0 {
+        var relationshipArray = EBReferenceArray <SegmentEntity> ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+        }
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.inner4Tracks = relationshipArray }
       }
       if let range = inDictionary ["frontPackages"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -4884,6 +6008,10 @@ final class BoardModel : EBManagedObject,
     for managedObject in self.backPads.values {
       objects.append (managedObject)
     }
+  //--- To many property: traversingPads
+    for managedObject in self.traversingPads.values {
+      objects.append (managedObject)
+    }
   //--- To many property: backComponentNames
     for managedObject in self.backComponentNames.values {
       objects.append (managedObject)
@@ -4906,6 +6034,22 @@ final class BoardModel : EBManagedObject,
     }
   //--- To many property: frontTracks
     for managedObject in self.frontTracks.values {
+      objects.append (managedObject)
+    }
+  //--- To many property: inner1Tracks
+    for managedObject in self.inner1Tracks.values {
+      objects.append (managedObject)
+    }
+  //--- To many property: inner2Tracks
+    for managedObject in self.inner2Tracks.values {
+      objects.append (managedObject)
+    }
+  //--- To many property: inner3Tracks
+    for managedObject in self.inner3Tracks.values {
+      objects.append (managedObject)
+    }
+  //--- To many property: inner4Tracks
+    for managedObject in self.inner4Tracks.values {
       objects.append (managedObject)
     }
   //--- To many property: frontPackages
@@ -4972,6 +6116,10 @@ final class BoardModel : EBManagedObject,
     for managedObject in self.backPads.values {
       objects.append (managedObject)
     }
+  //--- To many property: traversingPads
+    for managedObject in self.traversingPads.values {
+      objects.append (managedObject)
+    }
   //--- To many property: backComponentNames
     for managedObject in self.backComponentNames.values {
       objects.append (managedObject)
@@ -4994,6 +6142,22 @@ final class BoardModel : EBManagedObject,
     }
   //--- To many property: frontTracks
     for managedObject in self.frontTracks.values {
+      objects.append (managedObject)
+    }
+  //--- To many property: inner1Tracks
+    for managedObject in self.inner1Tracks.values {
+      objects.append (managedObject)
+    }
+  //--- To many property: inner2Tracks
+    for managedObject in self.inner2Tracks.values {
+      objects.append (managedObject)
+    }
+  //--- To many property: inner3Tracks
+    for managedObject in self.inner3Tracks.values {
+      objects.append (managedObject)
+    }
+  //--- To many property: inner4Tracks
+    for managedObject in self.inner4Tracks.values {
       objects.append (managedObject)
     }
   //--- To many property: frontPackages

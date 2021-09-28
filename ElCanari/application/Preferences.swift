@@ -118,8 +118,13 @@ let Preferences_mergerModelViewDisplayFrontComponentValues = "Preferences:merger
 let Preferences_mergerModelViewDisplayFrontPackages = "Preferences:mergerModelViewDisplayFrontPackages"
 let Preferences_mergerModelViewDisplayFrontLegendTexts = "Preferences:mergerModelViewDisplayFrontLegendTexts"
 let Preferences_mergerModelViewDisplayFrontTracks = "Preferences:mergerModelViewDisplayFrontTracks"
+let Preferences_mergerModelViewDisplayInner1Tracks = "Preferences:mergerModelViewDisplayInner1Tracks"
+let Preferences_mergerModelViewDisplayInner2Tracks = "Preferences:mergerModelViewDisplayInner2Tracks"
+let Preferences_mergerModelViewDisplayInner3Tracks = "Preferences:mergerModelViewDisplayInner3Tracks"
+let Preferences_mergerModelViewDisplayInner4Tracks = "Preferences:mergerModelViewDisplayInner4Tracks"
 let Preferences_mergerModelViewDisplayFrontLayoutTexts = "Preferences:mergerModelViewDisplayFrontLayoutTexts"
 let Preferences_mergerModelViewDisplayBackPads = "Preferences:mergerModelViewDisplayBackPads"
+let Preferences_mergerModelViewDisplayTraversingPads = "Preferences:mergerModelViewDisplayTraversingPads"
 let Preferences_mergerModelViewDisplayBackComponentNames = "Preferences:mergerModelViewDisplayBackComponentNames"
 let Preferences_mergerModelViewDisplayBackComponentValues = "Preferences:mergerModelViewDisplayBackComponentValues"
 let Preferences_mergerModelViewDisplayBackLegendTexts = "Preferences:mergerModelViewDisplayBackLegendTexts"
@@ -133,6 +138,7 @@ let Preferences_mergerBoardViewVerticalFlip = "Preferences:mergerBoardViewVertic
 let Preferences_mergerBoardViewDisplayHoles = "Preferences:mergerBoardViewDisplayHoles"
 let Preferences_mergerBoardViewDisplayVias = "Preferences:mergerBoardViewDisplayVias"
 let Preferences_mergerBoardViewDisplayFrontPads = "Preferences:mergerBoardViewDisplayFrontPads"
+let Preferences_mergerBoardViewDisplayTraversingPads = "Preferences:mergerBoardViewDisplayTraversingPads"
 let Preferences_mergerBoardViewDisplayInternalBoardsLimits = "Preferences:mergerBoardViewDisplayInternalBoardsLimits"
 let Preferences_mergerBoardViewDisplayBoardLimits = "Preferences:mergerBoardViewDisplayBoardLimits"
 let Preferences_mergerBoardViewDisplayFrontComponentNames = "Preferences:mergerBoardViewDisplayFrontComponentNames"
@@ -140,6 +146,10 @@ let Preferences_mergerBoardViewDisplayFrontComponentValues = "Preferences:merger
 let Preferences_mergerBoardViewDisplayFrontPackages = "Preferences:mergerBoardViewDisplayFrontPackages"
 let Preferences_mergerBoardViewDisplayFrontLegendTexts = "Preferences:mergerBoardViewDisplayFrontLegendTexts"
 let Preferences_mergerBoardViewDisplayFrontTracks = "Preferences:mergerBoardViewDisplayFrontTracks"
+let Preferences_mergerBoardViewDisplayInner1Tracks = "Preferences:mergerBoardViewDisplayInner1Tracks"
+let Preferences_mergerBoardViewDisplayInner2Tracks = "Preferences:mergerBoardViewDisplayInner2Tracks"
+let Preferences_mergerBoardViewDisplayInner3Tracks = "Preferences:mergerBoardViewDisplayInner3Tracks"
+let Preferences_mergerBoardViewDisplayInner4Tracks = "Preferences:mergerBoardViewDisplayInner4Tracks"
 let Preferences_mergerBoardViewDisplayFrontLayoutTexts = "Preferences:mergerBoardViewDisplayFrontLayoutTexts"
 let Preferences_mergerBoardViewDisplayBackPads = "Preferences:mergerBoardViewDisplayBackPads"
 let Preferences_mergerBoardViewDisplayBackComponentNames = "Preferences:mergerBoardViewDisplayBackComponentNames"
@@ -160,8 +170,13 @@ let Preferences_mergerColorFrontComponentValues = "Preferences:mergerColorFrontC
 let Preferences_mergerColorFrontPackages = "Preferences:mergerColorFrontPackages"
 let Preferences_mergerColorFrontLegendTexts = "Preferences:mergerColorFrontLegendTexts"
 let Preferences_mergerColorFrontTracks = "Preferences:mergerColorFrontTracks"
+let Preferences_mergerColorInner1Tracks = "Preferences:mergerColorInner1Tracks"
+let Preferences_mergerColorInner2Tracks = "Preferences:mergerColorInner2Tracks"
+let Preferences_mergerColorInner3Tracks = "Preferences:mergerColorInner3Tracks"
+let Preferences_mergerColorInner4Tracks = "Preferences:mergerColorInner4Tracks"
 let Preferences_mergerColorFrontLayoutTexts = "Preferences:mergerColorFrontLayoutTexts"
 let Preferences_mergerColorBackPads = "Preferences:mergerColorBackPads"
+let Preferences_mergerColorTraversingPads = "Preferences:mergerColorTraversingPads"
 let Preferences_mergerColorBackComponentNames = "Preferences:mergerColorBackComponentNames"
 let Preferences_mergerColorBackComponentValues = "Preferences:mergerColorBackComponentValues"
 let Preferences_mergerColorBackLegendTexts = "Preferences:mergerColorBackLegendTexts"
@@ -1585,6 +1600,58 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
 //····················································································································
+//   Atomic property: mergerModelViewDisplayInner1Tracks
+//····················································································································
+
+  let preferences_mergerModelViewDisplayInner1Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayInner1Tracks)
+
+//····················································································································
+
+  var preferences_mergerModelViewDisplayInner1Tracks : Bool {
+    get { return preferences_mergerModelViewDisplayInner1Tracks_property.propval }
+    set { preferences_mergerModelViewDisplayInner1Tracks_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mergerModelViewDisplayInner2Tracks
+//····················································································································
+
+  let preferences_mergerModelViewDisplayInner2Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayInner2Tracks)
+
+//····················································································································
+
+  var preferences_mergerModelViewDisplayInner2Tracks : Bool {
+    get { return preferences_mergerModelViewDisplayInner2Tracks_property.propval }
+    set { preferences_mergerModelViewDisplayInner2Tracks_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mergerModelViewDisplayInner3Tracks
+//····················································································································
+
+  let preferences_mergerModelViewDisplayInner3Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayInner3Tracks)
+
+//····················································································································
+
+  var preferences_mergerModelViewDisplayInner3Tracks : Bool {
+    get { return preferences_mergerModelViewDisplayInner3Tracks_property.propval }
+    set { preferences_mergerModelViewDisplayInner3Tracks_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mergerModelViewDisplayInner4Tracks
+//····················································································································
+
+  let preferences_mergerModelViewDisplayInner4Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayInner4Tracks)
+
+//····················································································································
+
+  var preferences_mergerModelViewDisplayInner4Tracks : Bool {
+    get { return preferences_mergerModelViewDisplayInner4Tracks_property.propval }
+    set { preferences_mergerModelViewDisplayInner4Tracks_property.setProp (newValue) }
+  }
+
+//····················································································································
 //   Atomic property: mergerModelViewDisplayFrontLayoutTexts
 //····················································································································
 
@@ -1608,6 +1675,19 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var preferences_mergerModelViewDisplayBackPads : Bool {
     get { return preferences_mergerModelViewDisplayBackPads_property.propval }
     set { preferences_mergerModelViewDisplayBackPads_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mergerModelViewDisplayTraversingPads
+//····················································································································
+
+  let preferences_mergerModelViewDisplayTraversingPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayTraversingPads)
+
+//····················································································································
+
+  var preferences_mergerModelViewDisplayTraversingPads : Bool {
+    get { return preferences_mergerModelViewDisplayTraversingPads_property.propval }
+    set { preferences_mergerModelViewDisplayTraversingPads_property.setProp (newValue) }
   }
 
 //····················································································································
@@ -1780,6 +1860,19 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
 //····················································································································
+//   Atomic property: mergerBoardViewDisplayTraversingPads
+//····················································································································
+
+  let preferences_mergerBoardViewDisplayTraversingPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayTraversingPads)
+
+//····················································································································
+
+  var preferences_mergerBoardViewDisplayTraversingPads : Bool {
+    get { return preferences_mergerBoardViewDisplayTraversingPads_property.propval }
+    set { preferences_mergerBoardViewDisplayTraversingPads_property.setProp (newValue) }
+  }
+
+//····················································································································
 //   Atomic property: mergerBoardViewDisplayInternalBoardsLimits
 //····················································································································
 
@@ -1868,6 +1961,58 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var preferences_mergerBoardViewDisplayFrontTracks : Bool {
     get { return preferences_mergerBoardViewDisplayFrontTracks_property.propval }
     set { preferences_mergerBoardViewDisplayFrontTracks_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mergerBoardViewDisplayInner1Tracks
+//····················································································································
+
+  let preferences_mergerBoardViewDisplayInner1Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayInner1Tracks)
+
+//····················································································································
+
+  var preferences_mergerBoardViewDisplayInner1Tracks : Bool {
+    get { return preferences_mergerBoardViewDisplayInner1Tracks_property.propval }
+    set { preferences_mergerBoardViewDisplayInner1Tracks_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mergerBoardViewDisplayInner2Tracks
+//····················································································································
+
+  let preferences_mergerBoardViewDisplayInner2Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayInner2Tracks)
+
+//····················································································································
+
+  var preferences_mergerBoardViewDisplayInner2Tracks : Bool {
+    get { return preferences_mergerBoardViewDisplayInner2Tracks_property.propval }
+    set { preferences_mergerBoardViewDisplayInner2Tracks_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mergerBoardViewDisplayInner3Tracks
+//····················································································································
+
+  let preferences_mergerBoardViewDisplayInner3Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayInner3Tracks)
+
+//····················································································································
+
+  var preferences_mergerBoardViewDisplayInner3Tracks : Bool {
+    get { return preferences_mergerBoardViewDisplayInner3Tracks_property.propval }
+    set { preferences_mergerBoardViewDisplayInner3Tracks_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mergerBoardViewDisplayInner4Tracks
+//····················································································································
+
+  let preferences_mergerBoardViewDisplayInner4Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayInner4Tracks)
+
+//····················································································································
+
+  var preferences_mergerBoardViewDisplayInner4Tracks : Bool {
+    get { return preferences_mergerBoardViewDisplayInner4Tracks_property.propval }
+    set { preferences_mergerBoardViewDisplayInner4Tracks_property.setProp (newValue) }
   }
 
 //····················································································································
@@ -2131,6 +2276,58 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
 //····················································································································
+//   Atomic property: mergerColorInner1Tracks
+//····················································································································
+
+  let preferences_mergerColorInner1Tracks_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_mergerColorInner1Tracks)
+
+//····················································································································
+
+  var preferences_mergerColorInner1Tracks : NSColor {
+    get { return preferences_mergerColorInner1Tracks_property.propval }
+    set { preferences_mergerColorInner1Tracks_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mergerColorInner2Tracks
+//····················································································································
+
+  let preferences_mergerColorInner2Tracks_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorInner2Tracks)
+
+//····················································································································
+
+  var preferences_mergerColorInner2Tracks : NSColor {
+    get { return preferences_mergerColorInner2Tracks_property.propval }
+    set { preferences_mergerColorInner2Tracks_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mergerColorInner3Tracks
+//····················································································································
+
+  let preferences_mergerColorInner3Tracks_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.yellow, prefKey: Preferences_mergerColorInner3Tracks)
+
+//····················································································································
+
+  var preferences_mergerColorInner3Tracks : NSColor {
+    get { return preferences_mergerColorInner3Tracks_property.propval }
+    set { preferences_mergerColorInner3Tracks_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mergerColorInner4Tracks
+//····················································································································
+
+  let preferences_mergerColorInner4Tracks_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.purple, prefKey: Preferences_mergerColorInner4Tracks)
+
+//····················································································································
+
+  var preferences_mergerColorInner4Tracks : NSColor {
+    get { return preferences_mergerColorInner4Tracks_property.propval }
+    set { preferences_mergerColorInner4Tracks_property.setProp (newValue) }
+  }
+
+//····················································································································
 //   Atomic property: mergerColorFrontLayoutTexts
 //····················································································································
 
@@ -2154,6 +2351,19 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var preferences_mergerColorBackPads : NSColor {
     get { return preferences_mergerColorBackPads_property.propval }
     set { preferences_mergerColorBackPads_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mergerColorTraversingPads
+//····················································································································
+
+  let preferences_mergerColorTraversingPads_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorTraversingPads)
+
+//····················································································································
+
+  var preferences_mergerColorTraversingPads : NSColor {
+    get { return preferences_mergerColorTraversingPads_property.propval }
+    set { preferences_mergerColorTraversingPads_property.setProp (newValue) }
   }
 
 //····················································································································

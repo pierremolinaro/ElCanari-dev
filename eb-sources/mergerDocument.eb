@@ -36,6 +36,7 @@ xibdocument MergerDocument root MergerRoot {
   outlet EBSwitch mModelViewDisplayHolesCheckbox $value prefs.mergerModelViewDisplayHoles ;
   outlet EBSwitch mModelViewDisplayViasCheckbox $value prefs.mergerModelViewDisplayVias ;
   outlet EBSwitch mModelViewDisplayFrontPadsCheckbox $value prefs.mergerModelViewDisplayFrontPads ;
+  outlet EBSwitch mModelViewDisplayTraversingPadsCheckbox $value prefs.mergerModelViewDisplayTraversingPads ;
   outlet EBSwitch mModelViewDisplayInternalBoardsLimitsCheckbox $value prefs.mergerModelViewDisplayInternalBoardsLimits ;
   outlet EBSwitch mModelViewDisplayBoardLimitsCheckbox $value prefs.mergerModelViewDisplayBoardLimits ;
   outlet EBSwitch mModelViewDisplayFrontComponentNamesCheckbox $value prefs.mergerModelViewDisplayFrontComponentNames ;
@@ -43,6 +44,10 @@ xibdocument MergerDocument root MergerRoot {
   outlet EBSwitch mModelViewDisplayFrontPackagesCheckbox $value prefs.mergerModelViewDisplayFrontPackages ;
   outlet EBSwitch mModelViewDisplayFrontLegendTextsCheckbox $value prefs.mergerModelViewDisplayFrontLegendTexts ;
   outlet EBSwitch mModelViewDisplayFrontTracksCheckbox $value prefs.mergerModelViewDisplayFrontTracks ;
+  outlet EBSwitch mModelViewDisplayInner1TracksCheckbox $value prefs.mergerModelViewDisplayInner1Tracks ;
+  outlet EBSwitch mModelViewDisplayInner2TracksCheckbox $value prefs.mergerModelViewDisplayInner2Tracks ;
+  outlet EBSwitch mModelViewDisplayInner3TracksCheckbox $value prefs.mergerModelViewDisplayInner3Tracks ;
+  outlet EBSwitch mModelViewDisplayInner4TracksCheckbox $value prefs.mergerModelViewDisplayInner4Tracks ;
   outlet EBSwitch mModelViewDisplayFrontLayoutTextsCheckbox $value prefs.mergerModelViewDisplayFrontLayoutTexts ;
   outlet EBSwitch mModelViewDisplayBackPadsCheckbox $value prefs.mergerModelViewDisplayBackPads ;
   outlet EBSwitch mModelViewDisplayBackComponentNamesCheckbox $value prefs.mergerModelViewDisplayBackComponentNames ;
@@ -66,6 +71,11 @@ xibdocument MergerDocument root MergerRoot {
   outlet EBSwitch mBoardViewDisplayFrontPackagesCheckbox $value prefs.mergerBoardViewDisplayFrontPackages ;
   outlet EBSwitch mBoardViewDisplayFrontLegendTextsCheckbox $value prefs.mergerBoardViewDisplayFrontLegendTexts ;
   outlet EBSwitch mBoardViewDisplayFrontTracksCheckbox $value prefs.mergerBoardViewDisplayFrontTracks ;
+  outlet EBSwitch mBoardViewDisplayTraversingPadsCheckbox $value prefs.mergerBoardViewDisplayTraversingPads ;
+  outlet EBSwitch mBoardViewDisplayInner1TracksCheckbox $value prefs.mergerBoardViewDisplayInner1Tracks ;
+  outlet EBSwitch mBoardViewDisplayInner2TracksCheckbox $value prefs.mergerBoardViewDisplayInner2Tracks ;
+  outlet EBSwitch mBoardViewDisplayInner3TracksCheckbox $value prefs.mergerBoardViewDisplayInner3Tracks ;
+  outlet EBSwitch mBoardViewDisplayInner4TracksCheckbox $value prefs.mergerBoardViewDisplayInner4Tracks ;
   outlet EBSwitch mBoardViewDisplayFrontLayoutTextsCheckbox $value prefs.mergerBoardViewDisplayFrontLayoutTexts ;
   outlet EBSwitch mBoardViewDisplayBackPadsCheckbox $value prefs.mergerBoardViewDisplayBackPads ;
   outlet EBSwitch mBoardViewDisplayBackComponentNamesCheckbox $value prefs.mergerBoardViewDisplayBackComponentNames ;
@@ -81,8 +91,12 @@ xibdocument MergerDocument root MergerRoot {
     $color prefs.mergerColorHoles (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayViasColorWell
     $color prefs.mergerColorVias (sendContinously:no) ;
-  outlet EBColorWell mergerViewDisplayFrontPadsColorWell
-    $color prefs.mergerColorFrontPads (sendContinously:no) ;
+  outlet EBColorWell mergerViewDisplayFrontPadsColorWell $color prefs.mergerColorFrontPads (sendContinously:no) ;
+  outlet EBColorWell mergerViewDisplayTraversingPadsColorWell $color prefs.mergerColorTraversingPads (sendContinously:no) ;
+  outlet EBColorWell mergerViewDisplayInner1TracksColorWell $color prefs.mergerColorInner1Tracks (sendContinously:no) ;
+  outlet EBColorWell mergerViewDisplayInner2TracksColorWell $color prefs.mergerColorInner2Tracks (sendContinously:no) ;
+  outlet EBColorWell mergerViewDisplayInner3TracksColorWell $color prefs.mergerColorInner3Tracks (sendContinously:no) ;
+  outlet EBColorWell mergerViewDisplayInner4TracksColorWell $color prefs.mergerColorInner4Tracks (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayBoardLimitsColorWell
     $color prefs.mergerColorBoardLimits (sendContinously:no) ;
   outlet EBColorWell mergerViewDisplayInternalBoardsLimitsColorWell
@@ -163,6 +177,9 @@ xibdocument MergerDocument root MergerRoot {
 
 //--- Artwork model name
   outlet EBTextObserverField mArtworkNameTextField $valueObserver #mBoardModelSelection.artworkName ;
+
+//--- Model layer configuration
+  outlet EBTextObserverField mModelLayerConfigurationTextField $valueObserver #mBoardModelSelection.layerConfigurationString ;
 
 //--- Model Instance count
   outlet EBIntObserverField mInstanceCountTextField $valueObserver #mBoardModelSelection.instanceCount (autoFormatter:yes) ;

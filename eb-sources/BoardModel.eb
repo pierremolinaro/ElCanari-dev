@@ -10,6 +10,11 @@ entity BoardModel {
 
   property Int zoom default 0 ; // 0 means "fit to window"
 
+//--- Layer configuration
+  property LayerConfiguration layerConfiguration default twoLayers ;
+  
+  transient String layerConfigurationString dependsFrom self.layerConfiguration ;
+
 //--- Instances
   toMany MergerBoardInstance myInstances inverse toOne myModel ;
 
@@ -126,6 +131,15 @@ entity BoardModel {
 
   transient BezierPathArray backPadsBezierPaths dependsFrom self.backPadArray ;
 
+//--- Traversing pads
+  toMany BoardModelPad traversingPads ;
+
+  transient MergerPadArray traversingPadArray
+    dependsFrom self.traversingPads.all.x, self.traversingPads.all.y, self.traversingPads.all.width, self.traversingPads.all.height,
+                self.traversingPads.all.shape, self.traversingPads.all.rotation ;
+
+  transient BezierPathArray traversingPadsBezierPaths dependsFrom self.traversingPadArray ;
+
 //--- Board limits
   property Int modelLimitWidth default 0 ;
   property Int modelLimitWidthUnit default 0 ;
@@ -202,6 +216,50 @@ entity BoardModel {
 
   transient BezierPathArray frontTracksBezierPaths dependsFrom self.frontTrackSegments ;
 
+//--- Inner1 packages
+  toMany SegmentEntity inner1Tracks ;
+
+  transient MergerSegmentArray inner1TracksSegments dependsFrom
+    self.inner1Tracks.all.x1, self.inner1Tracks.all.y1,
+    self.inner1Tracks.all.x2, self.inner1Tracks.all.y2,
+    self.inner1Tracks.all.width
+  ;
+
+  transient BezierPathArray inner1TracksBezierPaths dependsFrom self.inner1TracksSegments ;
+
+//--- Inner2 packages
+  toMany SegmentEntity inner2Tracks ;
+
+  transient MergerSegmentArray inner2TracksSegments dependsFrom
+    self.inner2Tracks.all.x1, self.inner2Tracks.all.y1,
+    self.inner2Tracks.all.x2, self.inner2Tracks.all.y2,
+    self.inner2Tracks.all.width
+  ;
+
+  transient BezierPathArray inner2TracksBezierPaths dependsFrom self.inner2TracksSegments ;
+
+//--- Inner3 packages
+  toMany SegmentEntity inner3Tracks ;
+
+  transient MergerSegmentArray inner3TracksSegments dependsFrom
+    self.inner3Tracks.all.x1, self.inner3Tracks.all.y1,
+    self.inner3Tracks.all.x2, self.inner3Tracks.all.y2,
+    self.inner3Tracks.all.width
+  ;
+
+  transient BezierPathArray inner3TracksBezierPaths dependsFrom self.inner3TracksSegments ;
+
+//--- Inner4 packages
+  toMany SegmentEntity inner4Tracks ;
+
+  transient MergerSegmentArray inner4TracksSegments dependsFrom
+    self.inner4Tracks.all.x1, self.inner4Tracks.all.y1,
+    self.inner4Tracks.all.x2, self.inner4Tracks.all.y2,
+    self.inner4Tracks.all.width
+  ;
+
+  transient BezierPathArray inner4TracksBezierPaths dependsFrom self.inner4TracksSegments ;
+
 //--- Front packages
   toMany SegmentEntity frontPackages ;
 
@@ -242,6 +300,22 @@ entity BoardModel {
     self.frontTracksBezierPaths,
     prefs.mergerModelViewDisplayFrontTracks,
     prefs.mergerColorFrontTracks,
+// Inner1 tracks
+    self.inner1TracksBezierPaths,
+    prefs.mergerModelViewDisplayInner1Tracks,
+    prefs.mergerColorInner1Tracks,
+// Inner2 tracks
+    self.inner2TracksBezierPaths,
+    prefs.mergerModelViewDisplayInner2Tracks,
+    prefs.mergerColorInner2Tracks,
+// Inner3 tracks
+    self.inner3TracksBezierPaths,
+    prefs.mergerModelViewDisplayInner3Tracks,
+    prefs.mergerColorInner3Tracks,
+// Inner4 tracks
+    self.inner4TracksBezierPaths,
+    prefs.mergerModelViewDisplayInner4Tracks,
+    prefs.mergerColorInner4Tracks,
 // Back tracks
     self.backTracksBezierPaths,
     prefs.mergerModelViewDisplayBackTracks,
@@ -254,6 +328,10 @@ entity BoardModel {
     self.backPadsBezierPaths,
     prefs.mergerModelViewDisplayBackPads,
     prefs.mergerColorBackPads,
+// Traversing pads
+    self.traversingPadsBezierPaths,
+    prefs.mergerModelViewDisplayTraversingPads,
+    prefs.mergerColorTraversingPads,
 // Vias
     self.viasBezierPaths,
     prefs.mergerModelViewDisplayVias,
@@ -321,6 +399,22 @@ entity BoardModel {
     self.frontTracksBezierPaths,
     prefs.mergerBoardViewDisplayFrontTracks,
     prefs.mergerColorFrontTracks,
+// Inner 1 tracks
+    self.inner1TracksBezierPaths,
+    prefs.mergerBoardViewDisplayInner1Tracks,
+    prefs.mergerColorInner1Tracks,
+// Inner 2 tracks
+    self.inner2TracksBezierPaths,
+    prefs.mergerBoardViewDisplayInner2Tracks,
+    prefs.mergerColorInner2Tracks,
+// Inner 3 tracks
+    self.inner3TracksBezierPaths,
+    prefs.mergerBoardViewDisplayInner3Tracks,
+    prefs.mergerColorInner3Tracks,
+// Inner 4 tracks
+    self.inner4TracksBezierPaths,
+    prefs.mergerBoardViewDisplayInner4Tracks,
+    prefs.mergerColorInner4Tracks,
 // Back tracks
     self.backTracksBezierPaths,
     prefs.mergerBoardViewDisplayBackTracks,
@@ -334,6 +428,10 @@ entity BoardModel {
     self.frontPadsBezierPaths,
     prefs.mergerBoardViewDisplayFrontPads,
     prefs.mergerColorFrontPads,
+// Traversing pads
+    self.traversingPadsBezierPaths,
+    prefs.mergerBoardViewDisplayTraversingPads,
+    prefs.mergerColorTraversingPads,
 // Back pads
     self.backPadsBezierPaths,
     prefs.mergerBoardViewDisplayBackPads,

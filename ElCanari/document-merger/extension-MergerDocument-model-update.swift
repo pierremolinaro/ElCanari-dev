@@ -46,12 +46,12 @@ extension MergerDocument {
             if let newTemporaryBoardModel = possibleBoardModel {
               updatedBoardModel.artworkName = newTemporaryBoardModel.artworkName
               updatedBoardModel.modelWidth = newTemporaryBoardModel.modelWidth
-              updatedBoardModel.modelWidthUnit = newTemporaryBoardModel.modelWidthUnit
+     //         updatedBoardModel.modelWidthUnit = newTemporaryBoardModel.modelWidthUnit
               updatedBoardModel.modelHeight = newTemporaryBoardModel.modelHeight
-              updatedBoardModel.modelHeightUnit = newTemporaryBoardModel.modelHeightUnit
+   //           updatedBoardModel.modelHeightUnit = newTemporaryBoardModel.modelHeightUnit
               updatedBoardModel.modelLimitWidth = newTemporaryBoardModel.modelLimitWidth
-              updatedBoardModel.modelLimitWidthUnit = newTemporaryBoardModel.modelLimitWidthUnit
-              updatedBoardModel.zoom = newTemporaryBoardModel.zoom
+      //        updatedBoardModel.modelLimitWidthUnit = newTemporaryBoardModel.modelLimitWidthUnit
+      //        updatedBoardModel.zoom = newTemporaryBoardModel.zoom
 
               var newArray = newTemporaryBoardModel.backPackages
               newTemporaryBoardModel.backPackages = EBReferenceArray ()
@@ -64,6 +64,22 @@ extension MergerDocument {
               newArray = newTemporaryBoardModel.frontTracks
               newTemporaryBoardModel.frontTracks = EBReferenceArray ()
               updatedBoardModel.frontTracks = newArray
+
+              newArray = newTemporaryBoardModel.inner1Tracks
+              newTemporaryBoardModel.inner1Tracks = EBReferenceArray ()
+              updatedBoardModel.inner1Tracks = newArray
+
+              newArray = newTemporaryBoardModel.inner2Tracks
+              newTemporaryBoardModel.inner2Tracks = EBReferenceArray ()
+              updatedBoardModel.inner2Tracks = newArray
+
+              newArray = newTemporaryBoardModel.inner3Tracks
+              newTemporaryBoardModel.inner3Tracks = EBReferenceArray ()
+              updatedBoardModel.inner3Tracks = newArray
+
+              newArray = newTemporaryBoardModel.inner4Tracks
+              newTemporaryBoardModel.inner4Tracks = EBReferenceArray ()
+              updatedBoardModel.inner4Tracks = newArray
 
               newArray = newTemporaryBoardModel.backTracks
               newTemporaryBoardModel.backTracks = EBReferenceArray ()
@@ -88,6 +104,10 @@ extension MergerDocument {
               let newBackPadArray = newTemporaryBoardModel.backPads
               newTemporaryBoardModel.backPads = EBReferenceArray ()
               updatedBoardModel.backPads = newBackPadArray
+
+              let newTraversingPadArray = newTemporaryBoardModel.traversingPads
+              newTemporaryBoardModel.traversingPads = EBReferenceArray ()
+              updatedBoardModel.traversingPads = newTraversingPadArray
 
               let newFrontPadArray = newTemporaryBoardModel.frontPads
               newTemporaryBoardModel.frontPads = EBReferenceArray ()

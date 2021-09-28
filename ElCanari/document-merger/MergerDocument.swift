@@ -224,7 +224,12 @@ import Cocoa
   @IBOutlet final var mBoardViewDisplayFrontPadsCheckbox : EBSwitch? = nil
   @IBOutlet final var mBoardViewDisplayFrontTracksCheckbox : EBSwitch? = nil
   @IBOutlet final var mBoardViewDisplayHolesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayInner1TracksCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayInner2TracksCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayInner3TracksCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayInner4TracksCheckbox : EBSwitch? = nil
   @IBOutlet final var mBoardViewDisplayInternalBoardsLimitsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayTraversingPadsCheckbox : EBSwitch? = nil
   @IBOutlet final var mBoardViewDisplayViasCheckbox : EBSwitch? = nil
   @IBOutlet final var mBoardViewHorizontalFlipCheckbox : EBSwitch? = nil
   @IBOutlet final var mBoardViewVerticalFlipCheckbox : EBSwitch? = nil
@@ -278,6 +283,7 @@ import Cocoa
   @IBOutlet final var mModelDragSourceTableView : CanariDragSourceTableView? = nil
   @IBOutlet final var mModelHeightTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet final var mModelHeightUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mModelLayerConfigurationTextField : EBTextObserverField? = nil
   @IBOutlet final var mModelLimitWidthUnitPopUp : EBPopUpButton? = nil
   @IBOutlet final var mModelPageView : CanariViewWithKeyView? = nil
   @IBOutlet final var mModelViewDisplayBackComponenValuesCheckbox : EBSwitch? = nil
@@ -298,7 +304,12 @@ import Cocoa
   @IBOutlet final var mModelViewDisplayFrontPadsCheckbox : EBSwitch? = nil
   @IBOutlet final var mModelViewDisplayFrontTracksCheckbox : EBSwitch? = nil
   @IBOutlet final var mModelViewDisplayHolesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayInner1TracksCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayInner2TracksCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayInner3TracksCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayInner4TracksCheckbox : EBSwitch? = nil
   @IBOutlet final var mModelViewDisplayInternalBoardsLimitsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayTraversingPadsCheckbox : EBSwitch? = nil
   @IBOutlet final var mModelViewDisplayViasCheckbox : EBSwitch? = nil
   @IBOutlet final var mModelViewHorizontalFlipCheckbox : EBSwitch? = nil
   @IBOutlet final var mModelViewVerticalFlipCheckbox : EBSwitch? = nil
@@ -344,7 +355,12 @@ import Cocoa
   @IBOutlet final var mergerViewDisplayFrontPadsColorWell : EBColorWell? = nil
   @IBOutlet final var mergerViewDisplayFrontTracksColorWell : EBColorWell? = nil
   @IBOutlet final var mergerViewDisplayHolesColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayInner1TracksColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayInner2TracksColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayInner3TracksColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayInner4TracksColorWell : EBColorWell? = nil
   @IBOutlet final var mergerViewDisplayInternalBoardsLimitsColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayTraversingPadsColorWell : EBColorWell? = nil
   @IBOutlet final var mergerViewDisplayViasColorWell : EBColorWell? = nil
   @IBOutlet final var mergerViewFrontLegendLinesColorWell : EBColorWell? = nil
   @IBOutlet final var minValueForBoardLimitTextField : CanariDimensionObserverTextField? = nil
@@ -491,7 +507,12 @@ import Cocoa
     checkOutletConnection (self.mBoardViewDisplayFrontPadsCheckbox, "mBoardViewDisplayFrontPadsCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardViewDisplayFrontTracksCheckbox, "mBoardViewDisplayFrontTracksCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardViewDisplayHolesCheckbox, "mBoardViewDisplayHolesCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mBoardViewDisplayInner1TracksCheckbox, "mBoardViewDisplayInner1TracksCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mBoardViewDisplayInner2TracksCheckbox, "mBoardViewDisplayInner2TracksCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mBoardViewDisplayInner3TracksCheckbox, "mBoardViewDisplayInner3TracksCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mBoardViewDisplayInner4TracksCheckbox, "mBoardViewDisplayInner4TracksCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardViewDisplayInternalBoardsLimitsCheckbox, "mBoardViewDisplayInternalBoardsLimitsCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mBoardViewDisplayTraversingPadsCheckbox, "mBoardViewDisplayTraversingPadsCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardViewDisplayViasCheckbox, "mBoardViewDisplayViasCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardViewHorizontalFlipCheckbox, "mBoardViewHorizontalFlipCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardViewVerticalFlipCheckbox, "mBoardViewVerticalFlipCheckbox", EBSwitch.self, #file, #line)
@@ -545,6 +566,7 @@ import Cocoa
     checkOutletConnection (self.mModelDragSourceTableView, "mModelDragSourceTableView", CanariDragSourceTableView.self, #file, #line)
     checkOutletConnection (self.mModelHeightTextField, "mModelHeightTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mModelHeightUnitPopUp, "mModelHeightUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mModelLayerConfigurationTextField, "mModelLayerConfigurationTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mModelLimitWidthUnitPopUp, "mModelLimitWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelPageView, "mModelPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mModelViewDisplayBackComponenValuesCheckbox, "mModelViewDisplayBackComponenValuesCheckbox", EBSwitch.self, #file, #line)
@@ -565,7 +587,12 @@ import Cocoa
     checkOutletConnection (self.mModelViewDisplayFrontPadsCheckbox, "mModelViewDisplayFrontPadsCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mModelViewDisplayFrontTracksCheckbox, "mModelViewDisplayFrontTracksCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mModelViewDisplayHolesCheckbox, "mModelViewDisplayHolesCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mModelViewDisplayInner1TracksCheckbox, "mModelViewDisplayInner1TracksCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mModelViewDisplayInner2TracksCheckbox, "mModelViewDisplayInner2TracksCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mModelViewDisplayInner3TracksCheckbox, "mModelViewDisplayInner3TracksCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mModelViewDisplayInner4TracksCheckbox, "mModelViewDisplayInner4TracksCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mModelViewDisplayInternalBoardsLimitsCheckbox, "mModelViewDisplayInternalBoardsLimitsCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mModelViewDisplayTraversingPadsCheckbox, "mModelViewDisplayTraversingPadsCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mModelViewDisplayViasCheckbox, "mModelViewDisplayViasCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mModelViewHorizontalFlipCheckbox, "mModelViewHorizontalFlipCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mModelViewVerticalFlipCheckbox, "mModelViewVerticalFlipCheckbox", EBSwitch.self, #file, #line)
@@ -611,7 +638,12 @@ import Cocoa
     checkOutletConnection (self.mergerViewDisplayFrontPadsColorWell, "mergerViewDisplayFrontPadsColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mergerViewDisplayFrontTracksColorWell, "mergerViewDisplayFrontTracksColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mergerViewDisplayHolesColorWell, "mergerViewDisplayHolesColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mergerViewDisplayInner1TracksColorWell, "mergerViewDisplayInner1TracksColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mergerViewDisplayInner2TracksColorWell, "mergerViewDisplayInner2TracksColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mergerViewDisplayInner3TracksColorWell, "mergerViewDisplayInner3TracksColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mergerViewDisplayInner4TracksColorWell, "mergerViewDisplayInner4TracksColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mergerViewDisplayInternalBoardsLimitsColorWell, "mergerViewDisplayInternalBoardsLimitsColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mergerViewDisplayTraversingPadsColorWell, "mergerViewDisplayTraversingPadsColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mergerViewDisplayViasColorWell, "mergerViewDisplayViasColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mergerViewFrontLegendLinesColorWell, "mergerViewFrontLegendLinesColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.minValueForBoardLimitTextField, "minValueForBoardLimitTextField", CanariDimensionObserverTextField.self, #file, #line)
@@ -841,6 +873,7 @@ import Cocoa
     self.mModelViewDisplayHolesCheckbox?.bind_value (preferences_mergerModelViewDisplayHoles_property)
     self.mModelViewDisplayViasCheckbox?.bind_value (preferences_mergerModelViewDisplayVias_property)
     self.mModelViewDisplayFrontPadsCheckbox?.bind_value (preferences_mergerModelViewDisplayFrontPads_property)
+    self.mModelViewDisplayTraversingPadsCheckbox?.bind_value (preferences_mergerModelViewDisplayTraversingPads_property)
     self.mModelViewDisplayInternalBoardsLimitsCheckbox?.bind_value (preferences_mergerModelViewDisplayInternalBoardsLimits_property)
     self.mModelViewDisplayBoardLimitsCheckbox?.bind_value (preferences_mergerModelViewDisplayBoardLimits_property)
     self.mModelViewDisplayFrontComponentNamesCheckbox?.bind_value (preferences_mergerModelViewDisplayFrontComponentNames_property)
@@ -848,6 +881,10 @@ import Cocoa
     self.mModelViewDisplayFrontPackagesCheckbox?.bind_value (preferences_mergerModelViewDisplayFrontPackages_property)
     self.mModelViewDisplayFrontLegendTextsCheckbox?.bind_value (preferences_mergerModelViewDisplayFrontLegendTexts_property)
     self.mModelViewDisplayFrontTracksCheckbox?.bind_value (preferences_mergerModelViewDisplayFrontTracks_property)
+    self.mModelViewDisplayInner1TracksCheckbox?.bind_value (preferences_mergerModelViewDisplayInner1Tracks_property)
+    self.mModelViewDisplayInner2TracksCheckbox?.bind_value (preferences_mergerModelViewDisplayInner2Tracks_property)
+    self.mModelViewDisplayInner3TracksCheckbox?.bind_value (preferences_mergerModelViewDisplayInner3Tracks_property)
+    self.mModelViewDisplayInner4TracksCheckbox?.bind_value (preferences_mergerModelViewDisplayInner4Tracks_property)
     self.mModelViewDisplayFrontLayoutTextsCheckbox?.bind_value (preferences_mergerModelViewDisplayFrontLayoutTexts_property)
     self.mModelViewDisplayBackPadsCheckbox?.bind_value (preferences_mergerModelViewDisplayBackPads_property)
     self.mModelViewDisplayBackComponentNamesCheckbox?.bind_value (preferences_mergerModelViewDisplayBackComponentNames_property)
@@ -870,6 +907,11 @@ import Cocoa
     self.mBoardViewDisplayFrontPackagesCheckbox?.bind_value (preferences_mergerBoardViewDisplayFrontPackages_property)
     self.mBoardViewDisplayFrontLegendTextsCheckbox?.bind_value (preferences_mergerBoardViewDisplayFrontLegendTexts_property)
     self.mBoardViewDisplayFrontTracksCheckbox?.bind_value (preferences_mergerBoardViewDisplayFrontTracks_property)
+    self.mBoardViewDisplayTraversingPadsCheckbox?.bind_value (preferences_mergerBoardViewDisplayTraversingPads_property)
+    self.mBoardViewDisplayInner1TracksCheckbox?.bind_value (preferences_mergerBoardViewDisplayInner1Tracks_property)
+    self.mBoardViewDisplayInner2TracksCheckbox?.bind_value (preferences_mergerBoardViewDisplayInner2Tracks_property)
+    self.mBoardViewDisplayInner3TracksCheckbox?.bind_value (preferences_mergerBoardViewDisplayInner3Tracks_property)
+    self.mBoardViewDisplayInner4TracksCheckbox?.bind_value (preferences_mergerBoardViewDisplayInner4Tracks_property)
     self.mBoardViewDisplayFrontLayoutTextsCheckbox?.bind_value (preferences_mergerBoardViewDisplayFrontLayoutTexts_property)
     self.mBoardViewDisplayBackPadsCheckbox?.bind_value (preferences_mergerBoardViewDisplayBackPads_property)
     self.mBoardViewDisplayBackComponentNamesCheckbox?.bind_value (preferences_mergerBoardViewDisplayBackComponentNames_property)
@@ -883,6 +925,11 @@ import Cocoa
     self.mergerViewDisplayHolesColorWell?.bind_color (preferences_mergerColorHoles_property, sendContinously:false)
     self.mergerViewDisplayViasColorWell?.bind_color (preferences_mergerColorVias_property, sendContinously:false)
     self.mergerViewDisplayFrontPadsColorWell?.bind_color (preferences_mergerColorFrontPads_property, sendContinously:false)
+    self.mergerViewDisplayTraversingPadsColorWell?.bind_color (preferences_mergerColorTraversingPads_property, sendContinously:false)
+    self.mergerViewDisplayInner1TracksColorWell?.bind_color (preferences_mergerColorInner1Tracks_property, sendContinously:false)
+    self.mergerViewDisplayInner2TracksColorWell?.bind_color (preferences_mergerColorInner2Tracks_property, sendContinously:false)
+    self.mergerViewDisplayInner3TracksColorWell?.bind_color (preferences_mergerColorInner3Tracks_property, sendContinously:false)
+    self.mergerViewDisplayInner4TracksColorWell?.bind_color (preferences_mergerColorInner4Tracks_property, sendContinously:false)
     self.mergerViewDisplayBoardLimitsColorWell?.bind_color (preferences_mergerColorBoardLimits_property, sendContinously:false)
     self.mergerViewDisplayInternalBoardsLimitsColorWell?.bind_color (preferences_mergerColorInternalBoardsLimits_property, sendContinously:false)
     self.mergerViewDisplayFrontComponentNamesColorWell?.bind_color (preferences_mergerColorFrontComponentNames_property, sendContinously:false)
@@ -906,6 +953,7 @@ import Cocoa
     self.mBoardModelView?.bind_verticalFlip (preferences_mergerModelViewVerticalFlip_property)
     self.mBoardModelView?.bind_overObjectsDisplay (self.mBoardModelSelection.imageForModel_property)
     self.mArtworkNameTextField?.bind_valueObserver (self.mBoardModelSelection.artworkName_property)
+    self.mModelLayerConfigurationTextField?.bind_valueObserver (self.mBoardModelSelection.layerConfigurationString_property)
     self.mInstanceCountTextField?.bind_valueObserver (self.mBoardModelSelection.instanceCount_property, autoFormatter:true)
     self.mModelWidthUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.modelWidthUnit_property)
     self.mModelWidthTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.modelWidth_property, self.mBoardModelSelection.modelWidthUnit_property)
@@ -1173,6 +1221,7 @@ import Cocoa
     self.mModelViewDisplayHolesCheckbox?.unbind_value ()
     self.mModelViewDisplayViasCheckbox?.unbind_value ()
     self.mModelViewDisplayFrontPadsCheckbox?.unbind_value ()
+    self.mModelViewDisplayTraversingPadsCheckbox?.unbind_value ()
     self.mModelViewDisplayInternalBoardsLimitsCheckbox?.unbind_value ()
     self.mModelViewDisplayBoardLimitsCheckbox?.unbind_value ()
     self.mModelViewDisplayFrontComponentNamesCheckbox?.unbind_value ()
@@ -1180,6 +1229,10 @@ import Cocoa
     self.mModelViewDisplayFrontPackagesCheckbox?.unbind_value ()
     self.mModelViewDisplayFrontLegendTextsCheckbox?.unbind_value ()
     self.mModelViewDisplayFrontTracksCheckbox?.unbind_value ()
+    self.mModelViewDisplayInner1TracksCheckbox?.unbind_value ()
+    self.mModelViewDisplayInner2TracksCheckbox?.unbind_value ()
+    self.mModelViewDisplayInner3TracksCheckbox?.unbind_value ()
+    self.mModelViewDisplayInner4TracksCheckbox?.unbind_value ()
     self.mModelViewDisplayFrontLayoutTextsCheckbox?.unbind_value ()
     self.mModelViewDisplayBackPadsCheckbox?.unbind_value ()
     self.mModelViewDisplayBackComponentNamesCheckbox?.unbind_value ()
@@ -1202,6 +1255,11 @@ import Cocoa
     self.mBoardViewDisplayFrontPackagesCheckbox?.unbind_value ()
     self.mBoardViewDisplayFrontLegendTextsCheckbox?.unbind_value ()
     self.mBoardViewDisplayFrontTracksCheckbox?.unbind_value ()
+    self.mBoardViewDisplayTraversingPadsCheckbox?.unbind_value ()
+    self.mBoardViewDisplayInner1TracksCheckbox?.unbind_value ()
+    self.mBoardViewDisplayInner2TracksCheckbox?.unbind_value ()
+    self.mBoardViewDisplayInner3TracksCheckbox?.unbind_value ()
+    self.mBoardViewDisplayInner4TracksCheckbox?.unbind_value ()
     self.mBoardViewDisplayFrontLayoutTextsCheckbox?.unbind_value ()
     self.mBoardViewDisplayBackPadsCheckbox?.unbind_value ()
     self.mBoardViewDisplayBackComponentNamesCheckbox?.unbind_value ()
@@ -1215,6 +1273,11 @@ import Cocoa
     self.mergerViewDisplayHolesColorWell?.unbind_color ()
     self.mergerViewDisplayViasColorWell?.unbind_color ()
     self.mergerViewDisplayFrontPadsColorWell?.unbind_color ()
+    self.mergerViewDisplayTraversingPadsColorWell?.unbind_color ()
+    self.mergerViewDisplayInner1TracksColorWell?.unbind_color ()
+    self.mergerViewDisplayInner2TracksColorWell?.unbind_color ()
+    self.mergerViewDisplayInner3TracksColorWell?.unbind_color ()
+    self.mergerViewDisplayInner4TracksColorWell?.unbind_color ()
     self.mergerViewDisplayBoardLimitsColorWell?.unbind_color ()
     self.mergerViewDisplayInternalBoardsLimitsColorWell?.unbind_color ()
     self.mergerViewDisplayFrontComponentNamesColorWell?.unbind_color ()
@@ -1238,6 +1301,7 @@ import Cocoa
     self.mBoardModelView?.unbind_verticalFlip ()
     self.mBoardModelView?.unbind_overObjectsDisplay ()
     self.mArtworkNameTextField?.unbind_valueObserver ()
+    self.mModelLayerConfigurationTextField?.unbind_valueObserver ()
     self.mInstanceCountTextField?.unbind_valueObserver ()
     self.mModelWidthUnitPopUp?.unbind_selectedTag ()
     self.mModelWidthTextField?.unbind_dimensionAndUnit ()
@@ -1405,7 +1469,12 @@ import Cocoa
     self.mBoardViewDisplayFrontPadsCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayFrontTracksCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayHolesCheckbox?.ebCleanUp ()
+    self.mBoardViewDisplayInner1TracksCheckbox?.ebCleanUp ()
+    self.mBoardViewDisplayInner2TracksCheckbox?.ebCleanUp ()
+    self.mBoardViewDisplayInner3TracksCheckbox?.ebCleanUp ()
+    self.mBoardViewDisplayInner4TracksCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayInternalBoardsLimitsCheckbox?.ebCleanUp ()
+    self.mBoardViewDisplayTraversingPadsCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayViasCheckbox?.ebCleanUp ()
     self.mBoardViewHorizontalFlipCheckbox?.ebCleanUp ()
     self.mBoardViewVerticalFlipCheckbox?.ebCleanUp ()
@@ -1459,6 +1528,7 @@ import Cocoa
     self.mModelDragSourceTableView?.ebCleanUp ()
     self.mModelHeightTextField?.ebCleanUp ()
     self.mModelHeightUnitPopUp?.ebCleanUp ()
+    self.mModelLayerConfigurationTextField?.ebCleanUp ()
     self.mModelLimitWidthUnitPopUp?.ebCleanUp ()
     self.mModelPageView?.ebCleanUp ()
     self.mModelViewDisplayBackComponenValuesCheckbox?.ebCleanUp ()
@@ -1479,7 +1549,12 @@ import Cocoa
     self.mModelViewDisplayFrontPadsCheckbox?.ebCleanUp ()
     self.mModelViewDisplayFrontTracksCheckbox?.ebCleanUp ()
     self.mModelViewDisplayHolesCheckbox?.ebCleanUp ()
+    self.mModelViewDisplayInner1TracksCheckbox?.ebCleanUp ()
+    self.mModelViewDisplayInner2TracksCheckbox?.ebCleanUp ()
+    self.mModelViewDisplayInner3TracksCheckbox?.ebCleanUp ()
+    self.mModelViewDisplayInner4TracksCheckbox?.ebCleanUp ()
     self.mModelViewDisplayInternalBoardsLimitsCheckbox?.ebCleanUp ()
+    self.mModelViewDisplayTraversingPadsCheckbox?.ebCleanUp ()
     self.mModelViewDisplayViasCheckbox?.ebCleanUp ()
     self.mModelViewHorizontalFlipCheckbox?.ebCleanUp ()
     self.mModelViewVerticalFlipCheckbox?.ebCleanUp ()
@@ -1525,7 +1600,12 @@ import Cocoa
     self.mergerViewDisplayFrontPadsColorWell?.ebCleanUp ()
     self.mergerViewDisplayFrontTracksColorWell?.ebCleanUp ()
     self.mergerViewDisplayHolesColorWell?.ebCleanUp ()
+    self.mergerViewDisplayInner1TracksColorWell?.ebCleanUp ()
+    self.mergerViewDisplayInner2TracksColorWell?.ebCleanUp ()
+    self.mergerViewDisplayInner3TracksColorWell?.ebCleanUp ()
+    self.mergerViewDisplayInner4TracksColorWell?.ebCleanUp ()
     self.mergerViewDisplayInternalBoardsLimitsColorWell?.ebCleanUp ()
+    self.mergerViewDisplayTraversingPadsColorWell?.ebCleanUp ()
     self.mergerViewDisplayViasColorWell?.ebCleanUp ()
     self.mergerViewFrontLegendLinesColorWell?.ebCleanUp ()
     self.minValueForBoardLimitTextField?.ebCleanUp ()
@@ -1574,7 +1654,12 @@ import Cocoa
     self.mBoardViewDisplayFrontPadsCheckbox = nil
     self.mBoardViewDisplayFrontTracksCheckbox = nil
     self.mBoardViewDisplayHolesCheckbox = nil
+    self.mBoardViewDisplayInner1TracksCheckbox = nil
+    self.mBoardViewDisplayInner2TracksCheckbox = nil
+    self.mBoardViewDisplayInner3TracksCheckbox = nil
+    self.mBoardViewDisplayInner4TracksCheckbox = nil
     self.mBoardViewDisplayInternalBoardsLimitsCheckbox = nil
+    self.mBoardViewDisplayTraversingPadsCheckbox = nil
     self.mBoardViewDisplayViasCheckbox = nil
     self.mBoardViewHorizontalFlipCheckbox = nil
     self.mBoardViewVerticalFlipCheckbox = nil
@@ -1628,6 +1713,7 @@ import Cocoa
     self.mModelDragSourceTableView = nil
     self.mModelHeightTextField = nil
     self.mModelHeightUnitPopUp = nil
+    self.mModelLayerConfigurationTextField = nil
     self.mModelLimitWidthUnitPopUp = nil
     self.mModelPageView = nil
     self.mModelViewDisplayBackComponenValuesCheckbox = nil
@@ -1648,7 +1734,12 @@ import Cocoa
     self.mModelViewDisplayFrontPadsCheckbox = nil
     self.mModelViewDisplayFrontTracksCheckbox = nil
     self.mModelViewDisplayHolesCheckbox = nil
+    self.mModelViewDisplayInner1TracksCheckbox = nil
+    self.mModelViewDisplayInner2TracksCheckbox = nil
+    self.mModelViewDisplayInner3TracksCheckbox = nil
+    self.mModelViewDisplayInner4TracksCheckbox = nil
     self.mModelViewDisplayInternalBoardsLimitsCheckbox = nil
+    self.mModelViewDisplayTraversingPadsCheckbox = nil
     self.mModelViewDisplayViasCheckbox = nil
     self.mModelViewHorizontalFlipCheckbox = nil
     self.mModelViewVerticalFlipCheckbox = nil
@@ -1694,7 +1785,12 @@ import Cocoa
     self.mergerViewDisplayFrontPadsColorWell = nil
     self.mergerViewDisplayFrontTracksColorWell = nil
     self.mergerViewDisplayHolesColorWell = nil
+    self.mergerViewDisplayInner1TracksColorWell = nil
+    self.mergerViewDisplayInner2TracksColorWell = nil
+    self.mergerViewDisplayInner3TracksColorWell = nil
+    self.mergerViewDisplayInner4TracksColorWell = nil
     self.mergerViewDisplayInternalBoardsLimitsColorWell = nil
+    self.mergerViewDisplayTraversingPadsColorWell = nil
     self.mergerViewDisplayViasColorWell = nil
     self.mergerViewFrontLegendLinesColorWell = nil
     self.minValueForBoardLimitTextField = nil

@@ -463,8 +463,13 @@ prefs {
   property Bool mergerModelViewDisplayFrontPackages default no ;
   property Bool mergerModelViewDisplayFrontLegendTexts default no ;
   property Bool mergerModelViewDisplayFrontTracks default no ;
+  property Bool mergerModelViewDisplayInner1Tracks default no ;
+  property Bool mergerModelViewDisplayInner2Tracks default no ;
+  property Bool mergerModelViewDisplayInner3Tracks default no ;
+  property Bool mergerModelViewDisplayInner4Tracks default no ;
   property Bool mergerModelViewDisplayFrontLayoutTexts default no ;
   property Bool mergerModelViewDisplayBackPads default yes ;
+  property Bool mergerModelViewDisplayTraversingPads default yes ;
   property Bool mergerModelViewDisplayBackComponentNames default no ;
   property Bool mergerModelViewDisplayBackComponentValues default no ;
   property Bool mergerModelViewDisplayBackLegendTexts default no ;
@@ -479,6 +484,7 @@ prefs {
   property Bool mergerBoardViewDisplayHoles default yes ;
   property Bool mergerBoardViewDisplayVias default yes ;
   property Bool mergerBoardViewDisplayFrontPads default yes ;
+  property Bool mergerBoardViewDisplayTraversingPads default yes ;
   property Bool mergerBoardViewDisplayInternalBoardsLimits default yes ;
   property Bool mergerBoardViewDisplayBoardLimits default yes ;
   property Bool mergerBoardViewDisplayFrontComponentNames default no ;
@@ -486,6 +492,10 @@ prefs {
   property Bool mergerBoardViewDisplayFrontPackages default no ;
   property Bool mergerBoardViewDisplayFrontLegendTexts default no ;
   property Bool mergerBoardViewDisplayFrontTracks default no ;
+  property Bool mergerBoardViewDisplayInner1Tracks default no ;
+  property Bool mergerBoardViewDisplayInner2Tracks default no ;
+  property Bool mergerBoardViewDisplayInner3Tracks default no ;
+  property Bool mergerBoardViewDisplayInner4Tracks default no ;
   property Bool mergerBoardViewDisplayFrontLayoutTexts default no ;
   property Bool mergerBoardViewDisplayBackPads default yes ;
   property Bool mergerBoardViewDisplayBackComponentNames default no ;
@@ -507,8 +517,13 @@ prefs {
   property NSColor mergerColorFrontPackages default brown ;
   property NSColor mergerColorFrontLegendTexts default brown ;
   property NSColor mergerColorFrontTracks default blue ;
+  property NSColor mergerColorInner1Tracks default orange ;
+  property NSColor mergerColorInner2Tracks default brown ;
+  property NSColor mergerColorInner3Tracks default yellow ;
+  property NSColor mergerColorInner4Tracks default purple ;
   property NSColor mergerColorFrontLayoutTexts default blue ;
   property NSColor mergerColorBackPads default orange ;
+  property NSColor mergerColorTraversingPads default gray ;
   property NSColor mergerColorBackComponentNames default gray ;
   property NSColor mergerColorBackComponentValues default gray ;
   property NSColor mergerColorBackLegendTexts default gray ;

@@ -22,9 +22,11 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
     self.removeEBObserversOf_modelHeight_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_modelHeightUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_zoom_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_layerConfiguration_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_modelLimitWidth_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_artworkName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_layerConfigurationString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
@@ -46,6 +48,8 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
     self.removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_backPadArray_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_traversingPadArray_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_traversingPadsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardLimits_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (inRemovedSet) // Transient property
@@ -60,6 +64,14 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
     self.removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_frontTrackSegments_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_inner1TracksSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_inner1TracksBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_inner2TracksSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_inner2TracksBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_inner3TracksSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_inner3TracksBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_inner4TracksSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_inner4TracksBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_backPackagesSegments_fromElementsOfSet (inRemovedSet) // Transient property
@@ -75,9 +87,11 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
     self.addEBObserversOf_modelHeight_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_modelHeightUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_zoom_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_layerConfiguration_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_modelLimitWidth_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_artworkName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_layerConfigurationString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_backLegendLinesSegments_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (inAddedSet) // Transient property
@@ -99,6 +113,8 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
     self.addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_backPadArray_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_backPadsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_traversingPadArray_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_traversingPadsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardLimits_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_backComponentNameSegments_toElementsOfSet (inAddedSet) // Transient property
@@ -113,6 +129,14 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
     self.addEBObserversOf_backTracksBezierPaths_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_frontTrackSegments_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_inner1TracksSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_inner1TracksBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_inner2TracksSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_inner2TracksBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_inner3TracksSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_inner3TracksBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_inner4TracksSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_inner4TracksBezierPaths_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_frontPackagesSegments_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_backPackagesSegments_toElementsOfSet (inAddedSet) // Transient property
@@ -478,6 +502,65 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   }
 
   //····················································································································
+  //   Observers of 'layerConfiguration' stored property
+  //····················································································································
+
+  private final var mObserversOf_layerConfiguration = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_layerConfiguration (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_layerConfiguration.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.layerConfiguration_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_layerConfiguration (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_layerConfiguration.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.layerConfiguration_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_layerConfiguration_toElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    if !self.mObserversOf_layerConfiguration.isEmpty {
+      for managedObject in inSet.values {
+        self.mObserversOf_layerConfiguration.apply { (_ observer : EBEvent) in
+          managedObject.layerConfiguration_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_layerConfiguration_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    self.mObserversOf_layerConfiguration.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet.values {
+        managedObject.layerConfiguration_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'modelLimitWidth' stored property
   //····················································································································
 
@@ -650,6 +733,62 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
       observer.postEvent ()
       for managedObject in inSet.values {
         managedObject.artworkName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'layerConfigurationString' transient property
+  //····················································································································
+
+  private final var mObserversOf_layerConfigurationString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_layerConfigurationString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_layerConfigurationString.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.layerConfigurationString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_layerConfigurationString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_layerConfigurationString.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.layerConfigurationString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_layerConfigurationString_toElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_layerConfigurationString.apply { (_ observer : EBEvent) in
+        managedObject.layerConfigurationString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_layerConfigurationString_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_layerConfigurationString.apply { (_ observer : EBEvent) in
+        managedObject.layerConfigurationString_property.removeEBObserver (observer)
       }
     }
   }
@@ -1831,6 +1970,118 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   }
 
   //····················································································································
+  //   Observers of 'traversingPadArray' transient property
+  //····················································································································
+
+  private final var mObserversOf_traversingPadArray = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_traversingPadArray (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_traversingPadArray.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.traversingPadArray_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_traversingPadArray (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_traversingPadArray.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.traversingPadArray_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_traversingPadArray_toElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_traversingPadArray.apply { (_ observer : EBEvent) in
+        managedObject.traversingPadArray_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_traversingPadArray_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_traversingPadArray.apply { (_ observer : EBEvent) in
+        managedObject.traversingPadArray_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'traversingPadsBezierPaths' transient property
+  //····················································································································
+
+  private final var mObserversOf_traversingPadsBezierPaths = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_traversingPadsBezierPaths (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_traversingPadsBezierPaths.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.traversingPadsBezierPaths_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_traversingPadsBezierPaths (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_traversingPadsBezierPaths.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.traversingPadsBezierPaths_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_traversingPadsBezierPaths_toElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_traversingPadsBezierPaths.apply { (_ observer : EBEvent) in
+        managedObject.traversingPadsBezierPaths_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_traversingPadsBezierPaths_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_traversingPadsBezierPaths.apply { (_ observer : EBEvent) in
+        managedObject.traversingPadsBezierPaths_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'boardLimits' transient property
   //····················································································································
 
@@ -2610,6 +2861,454 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
     for managedObject in inSet.values {
       self.mObserversOf_frontTracksBezierPaths.apply { (_ observer : EBEvent) in
         managedObject.frontTracksBezierPaths_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'inner1TracksSegments' transient property
+  //····················································································································
+
+  private final var mObserversOf_inner1TracksSegments = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner1TracksSegments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_inner1TracksSegments.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner1TracksSegments_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner1TracksSegments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_inner1TracksSegments.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner1TracksSegments_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_inner1TracksSegments_toElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner1TracksSegments.apply { (_ observer : EBEvent) in
+        managedObject.inner1TracksSegments_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_inner1TracksSegments_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner1TracksSegments.apply { (_ observer : EBEvent) in
+        managedObject.inner1TracksSegments_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'inner1TracksBezierPaths' transient property
+  //····················································································································
+
+  private final var mObserversOf_inner1TracksBezierPaths = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner1TracksBezierPaths (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_inner1TracksBezierPaths.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner1TracksBezierPaths_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner1TracksBezierPaths (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_inner1TracksBezierPaths.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner1TracksBezierPaths_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_inner1TracksBezierPaths_toElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner1TracksBezierPaths.apply { (_ observer : EBEvent) in
+        managedObject.inner1TracksBezierPaths_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_inner1TracksBezierPaths_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner1TracksBezierPaths.apply { (_ observer : EBEvent) in
+        managedObject.inner1TracksBezierPaths_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'inner2TracksSegments' transient property
+  //····················································································································
+
+  private final var mObserversOf_inner2TracksSegments = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner2TracksSegments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_inner2TracksSegments.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner2TracksSegments_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner2TracksSegments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_inner2TracksSegments.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner2TracksSegments_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_inner2TracksSegments_toElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner2TracksSegments.apply { (_ observer : EBEvent) in
+        managedObject.inner2TracksSegments_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_inner2TracksSegments_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner2TracksSegments.apply { (_ observer : EBEvent) in
+        managedObject.inner2TracksSegments_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'inner2TracksBezierPaths' transient property
+  //····················································································································
+
+  private final var mObserversOf_inner2TracksBezierPaths = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner2TracksBezierPaths (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_inner2TracksBezierPaths.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner2TracksBezierPaths_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner2TracksBezierPaths (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_inner2TracksBezierPaths.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner2TracksBezierPaths_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_inner2TracksBezierPaths_toElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner2TracksBezierPaths.apply { (_ observer : EBEvent) in
+        managedObject.inner2TracksBezierPaths_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_inner2TracksBezierPaths_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner2TracksBezierPaths.apply { (_ observer : EBEvent) in
+        managedObject.inner2TracksBezierPaths_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'inner3TracksSegments' transient property
+  //····················································································································
+
+  private final var mObserversOf_inner3TracksSegments = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner3TracksSegments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_inner3TracksSegments.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner3TracksSegments_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner3TracksSegments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_inner3TracksSegments.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner3TracksSegments_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_inner3TracksSegments_toElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner3TracksSegments.apply { (_ observer : EBEvent) in
+        managedObject.inner3TracksSegments_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_inner3TracksSegments_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner3TracksSegments.apply { (_ observer : EBEvent) in
+        managedObject.inner3TracksSegments_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'inner3TracksBezierPaths' transient property
+  //····················································································································
+
+  private final var mObserversOf_inner3TracksBezierPaths = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner3TracksBezierPaths (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_inner3TracksBezierPaths.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner3TracksBezierPaths_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner3TracksBezierPaths (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_inner3TracksBezierPaths.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner3TracksBezierPaths_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_inner3TracksBezierPaths_toElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner3TracksBezierPaths.apply { (_ observer : EBEvent) in
+        managedObject.inner3TracksBezierPaths_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_inner3TracksBezierPaths_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner3TracksBezierPaths.apply { (_ observer : EBEvent) in
+        managedObject.inner3TracksBezierPaths_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'inner4TracksSegments' transient property
+  //····················································································································
+
+  private final var mObserversOf_inner4TracksSegments = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner4TracksSegments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_inner4TracksSegments.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner4TracksSegments_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner4TracksSegments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_inner4TracksSegments.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner4TracksSegments_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_inner4TracksSegments_toElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner4TracksSegments.apply { (_ observer : EBEvent) in
+        managedObject.inner4TracksSegments_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_inner4TracksSegments_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner4TracksSegments.apply { (_ observer : EBEvent) in
+        managedObject.inner4TracksSegments_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'inner4TracksBezierPaths' transient property
+  //····················································································································
+
+  private final var mObserversOf_inner4TracksBezierPaths = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner4TracksBezierPaths (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_inner4TracksBezierPaths.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner4TracksBezierPaths_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner4TracksBezierPaths (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_inner4TracksBezierPaths.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner4TracksBezierPaths_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_inner4TracksBezierPaths_toElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner4TracksBezierPaths.apply { (_ observer : EBEvent) in
+        managedObject.inner4TracksBezierPaths_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_inner4TracksBezierPaths_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_inner4TracksBezierPaths.apply { (_ observer : EBEvent) in
+        managedObject.inner4TracksBezierPaths_property.removeEBObserver (observer)
       }
     }
   }
@@ -3648,6 +4347,7 @@ final class PreferencesArrayOf_BoardModel : StoredArrayOf_BoardModel {
     self.addEBObserverOf_modelHeight (self.mObserverForWritingPreferences)
     self.addEBObserverOf_modelHeightUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_zoom (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_layerConfiguration (self.mObserverForWritingPreferences)
     self.addEBObserverOf_modelLimitWidth (self.mObserverForWritingPreferences)
     self.addEBObserverOf_modelLimitWidthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_artworkName (self.mObserverForWritingPreferences)

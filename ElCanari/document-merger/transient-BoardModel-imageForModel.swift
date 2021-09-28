@@ -26,6 +26,18 @@ func transient_BoardModel_imageForModel (
        _ self_frontTracksBezierPaths : BezierPathArray,
        _ prefs_mergerModelViewDisplayFrontTracks : Bool,
        _ prefs_mergerColorFrontTracks : NSColor,
+       _ self_inner1TracksBezierPaths : BezierPathArray,
+       _ prefs_mergerModelViewDisplayInner1Tracks : Bool,
+       _ prefs_mergerColorInner1Tracks : NSColor,
+       _ self_inner2TracksBezierPaths : BezierPathArray,
+       _ prefs_mergerModelViewDisplayInner2Tracks : Bool,
+       _ prefs_mergerColorInner2Tracks : NSColor,
+       _ self_inner3TracksBezierPaths : BezierPathArray,
+       _ prefs_mergerModelViewDisplayInner3Tracks : Bool,
+       _ prefs_mergerColorInner3Tracks : NSColor,
+       _ self_inner4TracksBezierPaths : BezierPathArray,
+       _ prefs_mergerModelViewDisplayInner4Tracks : Bool,
+       _ prefs_mergerColorInner4Tracks : NSColor,
        _ self_backTracksBezierPaths : BezierPathArray,
        _ prefs_mergerModelViewDisplayBackTracks : Bool,
        _ prefs_mergerColorBackTracks : NSColor,
@@ -35,6 +47,9 @@ func transient_BoardModel_imageForModel (
        _ self_backPadsBezierPaths : BezierPathArray,
        _ prefs_mergerModelViewDisplayBackPads : Bool,
        _ prefs_mergerColorBackPads : NSColor,
+       _ self_traversingPadsBezierPaths : BezierPathArray,
+       _ prefs_mergerModelViewDisplayTraversingPads : Bool,
+       _ prefs_mergerColorTraversingPads : NSColor,
        _ self_viasBezierPaths : BezierPathArray,
        _ prefs_mergerModelViewDisplayVias : Bool,
        _ prefs_mergerColorVias : NSColor,
@@ -114,6 +129,26 @@ func transient_BoardModel_imageForModel (
 //--- Back pads
   if (prefs_mergerModelViewDisplayBackPads) {
     shapes.add (filled: self_backPadsBezierPaths.array, prefs_mergerColorBackPads)
+  }
+//--- Inner 4 tracks
+  if (prefs_mergerModelViewDisplayInner4Tracks) {
+    shapes.add (stroke: self_inner4TracksBezierPaths.array, prefs_mergerColorInner4Tracks)
+  }
+//--- Inner 3 tracks
+  if (prefs_mergerModelViewDisplayInner3Tracks) {
+    shapes.add (stroke: self_inner3TracksBezierPaths.array, prefs_mergerColorInner3Tracks)
+  }
+//--- Inner 2 tracks
+  if (prefs_mergerModelViewDisplayInner2Tracks) {
+    shapes.add (stroke: self_inner2TracksBezierPaths.array, prefs_mergerColorInner2Tracks)
+  }
+//--- Inner 1 tracks
+  if (prefs_mergerModelViewDisplayInner1Tracks) {
+    shapes.add (stroke: self_inner1TracksBezierPaths.array, prefs_mergerColorInner1Tracks)
+  }
+//--- Traversing pads
+  if (prefs_mergerModelViewDisplayTraversingPads) {
+    shapes.add (filled: self_traversingPadsBezierPaths.array, prefs_mergerColorTraversingPads)
   }
 //--- Front tracks
   if prefs_mergerModelViewDisplayFrontTracks {

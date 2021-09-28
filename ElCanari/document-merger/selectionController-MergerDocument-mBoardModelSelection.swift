@@ -313,6 +313,70 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBSwiftBas
   var imageForModel_property = EBTransientProperty_EBShape ()
 
   //····················································································································
+  //   Selection observable property: inner1Tracks
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: inner1TracksBezierPaths
+  //····················································································································
+
+  var inner1TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+  //   Selection observable property: inner1TracksSegments
+  //····················································································································
+
+  var inner1TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+  //   Selection observable property: inner2Tracks
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: inner2TracksBezierPaths
+  //····················································································································
+
+  var inner2TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+  //   Selection observable property: inner2TracksSegments
+  //····················································································································
+
+  var inner2TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+  //   Selection observable property: inner3Tracks
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: inner3TracksBezierPaths
+  //····················································································································
+
+  var inner3TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+  //   Selection observable property: inner3TracksSegments
+  //····················································································································
+
+  var inner3TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+  //   Selection observable property: inner4Tracks
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: inner4TracksBezierPaths
+  //····················································································································
+
+  var inner4TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+  //   Selection observable property: inner4TracksSegments
+  //····················································································································
+
+  var inner4TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
   //   Selection observable property: instanceCount
   //····················································································································
 
@@ -333,6 +397,18 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBSwiftBas
   //····················································································································
 
   var internalBoardsLimitsSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+  //   Selection observable property: layerConfiguration
+  //····················································································································
+
+  var layerConfiguration_property = EBPropertyProxy_LayerConfiguration ()
+
+  //····················································································································
+  //   Selection observable property: layerConfigurationString
+  //····················································································································
+
+  var layerConfigurationString_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: modelHeight
@@ -379,6 +455,22 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBSwiftBas
   //····················································································································
 
   var name_property = EBPropertyProxy_String ()
+
+  //····················································································································
+  //   Selection observable property: traversingPadArray
+  //····················································································································
+
+  var traversingPadArray_property = EBTransientProperty_MergerPadArray ()
+
+  //····················································································································
+  //   Selection observable property: traversingPads
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: traversingPadsBezierPaths
+  //····················································································································
+
+  var traversingPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
   //   Selection observable property: viaShapes
@@ -451,9 +543,19 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBSwiftBas
     self.bind_property_holesBezierPaths (model: model)
     self.bind_property_imageForInstances (model: model)
     self.bind_property_imageForModel (model: model)
+    self.bind_property_inner1TracksBezierPaths (model: model)
+    self.bind_property_inner1TracksSegments (model: model)
+    self.bind_property_inner2TracksBezierPaths (model: model)
+    self.bind_property_inner2TracksSegments (model: model)
+    self.bind_property_inner3TracksBezierPaths (model: model)
+    self.bind_property_inner3TracksSegments (model: model)
+    self.bind_property_inner4TracksBezierPaths (model: model)
+    self.bind_property_inner4TracksSegments (model: model)
     self.bind_property_instanceCount (model: model)
     self.bind_property_internalBoardsLimitsBezierPaths (model: model)
     self.bind_property_internalBoardsLimitsSegments (model: model)
+    self.bind_property_layerConfiguration (model: model)
+    self.bind_property_layerConfigurationString (model: model)
     self.bind_property_modelHeight (model: model)
     self.bind_property_modelHeightUnit (model: model)
     self.bind_property_modelLimitWidth (model: model)
@@ -461,6 +563,8 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBSwiftBas
     self.bind_property_modelWidth (model: model)
     self.bind_property_modelWidthUnit (model: model)
     self.bind_property_name (model: model)
+    self.bind_property_traversingPadArray (model: model)
+    self.bind_property_traversingPadsBezierPaths (model: model)
     self.bind_property_viaShapes (model: model)
     self.bind_property_viasBezierPaths (model: model)
     self.bind_property_zoom (model: model)
@@ -590,6 +694,30 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBSwiftBas
   //--- imageForModel
     self.imageForModel_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_imageForModel (self.imageForModel_property)
+  //--- inner1TracksBezierPaths
+    self.inner1TracksBezierPaths_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_inner1TracksBezierPaths (self.inner1TracksBezierPaths_property)
+  //--- inner1TracksSegments
+    self.inner1TracksSegments_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_inner1TracksSegments (self.inner1TracksSegments_property)
+  //--- inner2TracksBezierPaths
+    self.inner2TracksBezierPaths_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_inner2TracksBezierPaths (self.inner2TracksBezierPaths_property)
+  //--- inner2TracksSegments
+    self.inner2TracksSegments_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_inner2TracksSegments (self.inner2TracksSegments_property)
+  //--- inner3TracksBezierPaths
+    self.inner3TracksBezierPaths_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_inner3TracksBezierPaths (self.inner3TracksBezierPaths_property)
+  //--- inner3TracksSegments
+    self.inner3TracksSegments_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_inner3TracksSegments (self.inner3TracksSegments_property)
+  //--- inner4TracksBezierPaths
+    self.inner4TracksBezierPaths_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_inner4TracksBezierPaths (self.inner4TracksBezierPaths_property)
+  //--- inner4TracksSegments
+    self.inner4TracksSegments_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_inner4TracksSegments (self.inner4TracksSegments_property)
   //--- instanceCount
     self.instanceCount_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_instanceCount (self.instanceCount_property)
@@ -599,6 +727,14 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBSwiftBas
   //--- internalBoardsLimitsSegments
     self.internalBoardsLimitsSegments_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_internalBoardsLimitsSegments (self.internalBoardsLimitsSegments_property)
+  //--- layerConfiguration
+    self.layerConfiguration_property.mReadModelFunction = nil 
+    self.layerConfiguration_property.mWriteModelFunction = nil 
+    self.layerConfiguration_property.mValidateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_layerConfiguration (self.layerConfiguration_property)
+  //--- layerConfigurationString
+    self.layerConfigurationString_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_layerConfigurationString (self.layerConfigurationString_property)
   //--- modelHeight
     self.modelHeight_property.mReadModelFunction = nil 
     self.modelHeight_property.mWriteModelFunction = nil 
@@ -634,6 +770,12 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBSwiftBas
     self.name_property.mWriteModelFunction = nil 
     self.name_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_name (self.name_property)
+  //--- traversingPadArray
+    self.traversingPadArray_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_traversingPadArray (self.traversingPadArray_property)
+  //--- traversingPadsBezierPaths
+    self.traversingPadsBezierPaths_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_traversingPadsBezierPaths (self.traversingPadsBezierPaths_property)
   //--- viaShapes
     self.viaShapes_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_viaShapes (self.viaShapes_property)
@@ -697,6 +839,14 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBSwiftBas
         view: view,
         observerExplorer: &self.artworkName_property.mObserverExplorer,
         valueExplorer: &self.artworkName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "layerConfiguration",
+        object: self.layerConfiguration_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.layerConfiguration_property.mObserverExplorer,
+        valueExplorer: &self.layerConfiguration_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "modelHeight",
@@ -2411,6 +2561,326 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBSwiftBas
 
   //···················································································································*
 
+  private final func bind_property_inner1TracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_inner1TracksBezierPaths (self.inner1TracksBezierPaths_property)
+    self.inner1TracksBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.inner1TracksBezierPaths_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_inner1TracksSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_inner1TracksSegments (self.inner1TracksSegments_property)
+    self.inner1TracksSegments_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.inner1TracksSegments_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_inner2TracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_inner2TracksBezierPaths (self.inner2TracksBezierPaths_property)
+    self.inner2TracksBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.inner2TracksBezierPaths_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_inner2TracksSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_inner2TracksSegments (self.inner2TracksSegments_property)
+    self.inner2TracksSegments_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.inner2TracksSegments_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_inner3TracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_inner3TracksBezierPaths (self.inner3TracksBezierPaths_property)
+    self.inner3TracksBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.inner3TracksBezierPaths_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_inner3TracksSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_inner3TracksSegments (self.inner3TracksSegments_property)
+    self.inner3TracksSegments_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.inner3TracksSegments_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_inner4TracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_inner4TracksBezierPaths (self.inner4TracksBezierPaths_property)
+    self.inner4TracksBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.inner4TracksBezierPaths_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_inner4TracksSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_inner4TracksSegments (self.inner4TracksSegments_property)
+    self.inner4TracksSegments_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.inner4TracksSegments_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_instanceCount (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_instanceCount (self.instanceCount_property)
     self.instanceCount_property.mReadModelFunction = { [weak self] in
@@ -2505,6 +2975,116 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBSwiftBas
           var isMultipleSelection = false
           for object in v {
             switch object.internalBoardsLimitsSegments_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_layerConfiguration (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_layerConfiguration (self.layerConfiguration_property)
+    self.layerConfiguration_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <LayerConfiguration> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.layerConfiguration_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.layerConfiguration_property.mWriteModelFunction = { [weak self] (inValue : LayerConfiguration) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.layerConfiguration_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.layerConfiguration_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : LayerConfiguration, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.layerConfiguration_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_layerConfigurationString (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_layerConfigurationString (self.layerConfigurationString_property)
+    self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.layerConfigurationString_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -3015,6 +3595,86 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBSwiftBas
         }
       }else{
         return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_traversingPadArray (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_traversingPadArray (self.traversingPadArray_property)
+    self.traversingPadArray_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerPadArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.traversingPadArray_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_traversingPadsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_traversingPadsBezierPaths (self.traversingPadsBezierPaths_property)
+    self.traversingPadsBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.traversingPadsBezierPaths_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
       }
     }
   }
