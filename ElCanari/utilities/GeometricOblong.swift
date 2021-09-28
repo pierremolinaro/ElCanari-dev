@@ -14,6 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct GeometricOblong {
+
   let p1 : NSPoint
   let p2 : NSPoint
   let width : CGFloat

@@ -1,7 +1,6 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SegmentForFontCharacter {
-
   property @signature Int x1 default 2 ;
   property @signature Int y1 default 1 ;
 

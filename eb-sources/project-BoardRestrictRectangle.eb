@@ -3,6 +3,14 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity BoardRestrictRectangle : BoardObject {
+  graphic cursorForKnob ;
+  graphic acceptedTranslation ;
+  graphic translate ;
+  graphic canCopyAndPaste ;
+  graphic move ;
+  graphic rotate ;
+  graphic snapToGrid ;
+
   property Int mX default 0 ;
   property Int mY default 0 ;
   property Int mWidth default 2_286_000 ;

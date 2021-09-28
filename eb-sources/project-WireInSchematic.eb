@@ -3,6 +3,11 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity WireInSchematic : SchematicObject {
+  graphic cursorForKnob ;
+  graphic translate ;
+  graphic move ;
+  graphic rotate ;
+  graphic snapToGrid ;
 
   toOne PointInSchematic mP1 inverse toMany mWiresP1s ;
   toOne PointInSchematic mP2 inverse toMany mWiresP2s ;  

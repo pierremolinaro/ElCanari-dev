@@ -1,0 +1,158 @@
+//
+//  extension-WireInSchematic.swift
+//  ElCanari
+//
+//  Created by Pierre Molinaro on 08/05/2019.
+//
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+import Cocoa
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+let WIRE_CENTER_KNOB = 0
+let WIRE_P1_KNOB = 1
+let WIRE_P2_KNOB = 2
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   EXTENSION WireInSchematic
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension WireInSchematic {
+
+  //····················································································································
+
+  func cursorForKnob_WireInSchematic (knob inKnobIndex: Int) -> NSCursor? {
+    return NSCursor.upDownRightLeftCursor
+  }
+
+  //····················································································································
+
+  func acceptToTranslate_WireInSchematic (xBy inDx: Int, yBy inDy: Int) -> Bool {
+    return true
+  }
+
+  //····················································································································
+
+  func translate_WireInSchematic (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+    if let p1 = self.mP1, !ioSet.contains (p1) {
+      ioSet.insert (p1)
+      p1.mX += inDx
+      p1.mY += inDy
+    }
+    if let p2 = self.mP2, !ioSet.contains (p2) {
+      ioSet.insert (p2)
+      p2.mX += inDx
+      p2.mY += inDy
+    }
+  }
+
+  //····················································································································
+  //  ROTATE 90
+  //····················································································································
+
+  func canRotate90_WireInSchematic (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+    return false
+  }
+
+  //····················································································································
+
+  func rotate90Clockwise_WireInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  }
+
+  //····················································································································
+
+  func rotate90CounterClockwise_WireInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  }
+
+  //····················································································································
+  //  Snap to grid
+  //····················································································································
+
+  func snapToGrid_WireInSchematic (_ inGrid : Int) {
+  }
+
+  //····················································································································
+
+  func canSnapToGrid_WireInSchematic (_ inGrid : Int) -> Bool {
+    return false
+  }
+
+  //····················································································································
+  //  Alignment Points
+  //····················································································································
+
+  func alignmentPoints_WireInSchematic () -> ObjcCanariPointSet {
+    return ObjcCanariPointSet ()
+  }
+
+  //····················································································································
+  //  Knob
+  //····················································································································
+
+  func canMove_WireInSchematic (knob inKnobIndex : Int,
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                         shift inShift : Bool) -> CanariPoint {
+    if inKnobIndex == WIRE_CENTER_KNOB, self.mP1?.mSymbol == nil, self.mP2?.mSymbol == nil {
+      return CanariPoint (x: inProposedAlignedTranslation.x, y: inProposedAlignedTranslation.y)
+    }else if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil, let other = self.mP2 {
+      if ((point.mX + inProposedAlignedTranslation.x) == other.mX) && ((point.mY + inProposedAlignedTranslation.y) == other.mY) {
+        return CanariPoint (x: 0, y: 0)
+      }else{
+        return inProposedAlignedTranslation
+      }
+    }else if inKnobIndex == WIRE_P2_KNOB, let point = self.mP2, point.mSymbol == nil, let other = self.mP1 {
+      if ((point.mX + inProposedAlignedTranslation.x) == other.mX) && ((point.mY + inProposedAlignedTranslation.y) == other.mY) {
+        return CanariPoint (x: 0, y: 0)
+      }else{
+        return inProposedAlignedTranslation
+      }
+    }else{
+      return CanariPoint (x: 0, y: 0)
+    }
+  }
+
+  //····················································································································
+
+  func move_WireInSchematic (knob inKnobIndex: Int,
+                      proposedDx inDx: Int,
+                      proposedDy inDy: Int,
+                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      alignedMouseLocationX inAlignedMouseLocationX : Int,
+                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      shift inShift : Bool) {
+    if inKnobIndex == WIRE_CENTER_KNOB, let p1 = self.mP1, p1.mSymbol == nil, let p2 = self.mP2, p2.mSymbol == nil {
+      p1.mX += inDx
+      p1.mY += inDy
+      p2.mX += inDx
+      p2.mY += inDy
+    }else if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil {
+      point.mX += inDx
+      point.mY += inDy
+    }else if inKnobIndex == WIRE_P2_KNOB, let point = self.mP2, point.mSymbol == nil {
+      point.mX += inDx
+      point.mY += inDy
+    }
+  }
+
+  //····················································································································
+  //  REMOVING
+  //····················································································································
+
+  func operationBeforeRemoving_WireInSchematic () {
+    var pointSet = Set <PointInSchematic> ()
+    pointSet.insert (self.mP1!)
+    pointSet.insert (self.mP2!)
+    self.mP1 = nil // Detach from point
+    self.mP2 = nil // Detach from point
+    self.mSheet?.updateConnections (pointSet : pointSet)
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

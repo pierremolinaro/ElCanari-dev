@@ -3,6 +3,12 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity CommentInSchematic : SchematicObject {
+  graphic cursorForKnob ;
+  graphic translate ;
+  graphic move ;
+  graphic rotate ;
+  graphic snapToGrid ;
+
   property String mComment default "" ;
   property NSColor mColor default black ;
   property Double mSize default 11.0 ;

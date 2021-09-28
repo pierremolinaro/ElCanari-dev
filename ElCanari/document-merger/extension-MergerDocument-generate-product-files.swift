@@ -136,9 +136,9 @@ extension MergerDocument {
     var backLegendLines = [String] ()
     var frontLegendLines = [String] ()
     var vias = [String] ()
-    var frontPads = [NSDictionary] ()
-    var traversingPads = [NSDictionary] ()
-    var backPads = [NSDictionary] ()
+    var frontPads = [[String : Any]] ()
+    var traversingPads = [[String : Any]] ()
+    var backPads = [[String : Any]] ()
     var drills = [String] ()
     for board in self.rootObject.boardInstances_property.propval {
       let myModel : BoardModel? = board.myModel_property.propval
@@ -243,7 +243,7 @@ extension MergerDocument {
         vias.append ("\(viaX) \(viaY) \(via.padDiameter)")
       }
       for pad in myModel?.frontPads_property.propval.values ?? [] {
-        let d = NSMutableDictionary ()
+        var d = [String : Any] ()
         d ["HEIGHT"] = pad.height
         d ["ROTATION"] = (pad.rotation + instanceRotation.rawValue * 90_000) % 360_000
         switch pad.shape {
@@ -272,7 +272,7 @@ extension MergerDocument {
         frontPads.append (d)
       }
       for pad in myModel?.traversingPads_property.propval.values ?? [] {
-        let d = NSMutableDictionary ()
+        var d = [String : Any] ()
         d ["HEIGHT"] = pad.height
         d ["ROTATION"] = (pad.rotation + instanceRotation.rawValue * 90_000) % 360_000
         switch pad.shape {
@@ -301,7 +301,7 @@ extension MergerDocument {
         traversingPads.append (d)
       }
       for pad in myModel?.backPads_property.propval.values ?? [] {
-        let d = NSMutableDictionary ()
+        var d = [String : Any] ()
         d ["HEIGHT"] = pad.height
         d ["ROTATION"] = (pad.rotation + instanceRotation.rawValue * 90_000) % 360_000
         switch pad.shape {
@@ -335,36 +335,36 @@ extension MergerDocument {
       case .twoLayers :
         ()
       case .fourLayers :
-        archiveDict ["PADS-TRAVERSING"] = traversingPads
-        archiveDict ["TRACKS-INNER1"] = inner1Tracks
-        archiveDict ["TRACKS-INNER2"] = inner2Tracks
+        archiveDict ["PADS-TRAVERSING"] = traversingPads // .sorted ()
+        archiveDict ["TRACKS-INNER1"] = inner1Tracks.sorted ()
+        archiveDict ["TRACKS-INNER2"] = inner2Tracks.sorted ()
       case .sixLayers :
-        archiveDict ["PADS-TRAVERSING"] = traversingPads
-        archiveDict ["TRACKS-INNER1"] = inner1Tracks
-        archiveDict ["TRACKS-INNER2"] = inner2Tracks
-        archiveDict ["TRACKS-INNER3"] = inner3Tracks
-        archiveDict ["TRACKS-INNER4"] = inner4Tracks
+        archiveDict ["PADS-TRAVERSING"] = traversingPads // .sorted ()
+        archiveDict ["TRACKS-INNER1"] = inner1Tracks.sorted ()
+        archiveDict ["TRACKS-INNER2"] = inner2Tracks.sorted ()
+        archiveDict ["TRACKS-INNER3"] = inner3Tracks.sorted ()
+        archiveDict ["TRACKS-INNER4"] = inner4Tracks.sorted ()
       }
     }
-    archiveDict ["INTERNAL-BOARDS-LIMITS"] = internalBoardsLimits
-    archiveDict ["COMPONENT-NAMES-BACK"] = backComponentNames
-    archiveDict ["COMPONENT-NAMES-FRONT"] = frontComponentNames
-    archiveDict ["COMPONENT-VALUES-BACK"] = backComponentValues
-    archiveDict ["COMPONENT-VALUES-FRONT"] = frontComponentValues
-    archiveDict ["PACKAGES-BACK"] = backPackages
-    archiveDict ["PACKAGES-FRONT"] = frontPackages
-    archiveDict ["LINES-BACK"] = backLegendLines
-    archiveDict ["LINES-FRONT"] = frontLegendLines
-    archiveDict ["PADS-FRONT"] = frontPads
-    archiveDict ["PADS-BACK"] = backPads
-    archiveDict ["TEXTS-LAYOUT-BACK"] = backLayoutTexts
-    archiveDict ["TEXTS-LAYOUT-FRONT"] = frontLayoutTexts
-    archiveDict ["TEXTS-LEGEND-BACK"] = backLegendTexts
-    archiveDict ["TEXTS-LEGEND-FRONT"] = frontLegendTexts
-    archiveDict ["TRACKS-BACK"] = backTracks
-    archiveDict ["TRACKS-FRONT"] = frontTracks
-    archiveDict ["VIAS"] = vias
-    archiveDict ["DRILLS"] = drills
+    archiveDict ["INTERNAL-BOARDS-LIMITS"] = internalBoardsLimits // DO NOT SORT
+    archiveDict ["COMPONENT-NAMES-BACK"] = backComponentNames.sorted ()
+    archiveDict ["COMPONENT-NAMES-FRONT"] = frontComponentNames.sorted ()
+    archiveDict ["COMPONENT-VALUES-BACK"] = backComponentValues.sorted ()
+    archiveDict ["COMPONENT-VALUES-FRONT"] = frontComponentValues.sorted ()
+    archiveDict ["PACKAGES-BACK"] = backPackages.sorted ()
+    archiveDict ["PACKAGES-FRONT"] = frontPackages.sorted ()
+    archiveDict ["LINES-BACK"] = backLegendLines.sorted ()
+    archiveDict ["LINES-FRONT"] = frontLegendLines.sorted ()
+    archiveDict ["PADS-FRONT"] = frontPads // .sorted ()
+    archiveDict ["PADS-BACK"] = backPads // .sorted ()
+    archiveDict ["TEXTS-LAYOUT-BACK"] = backLayoutTexts.sorted ()
+    archiveDict ["TEXTS-LAYOUT-FRONT"] = frontLayoutTexts.sorted ()
+    archiveDict ["TEXTS-LEGEND-BACK"] = backLegendTexts.sorted ()
+    archiveDict ["TEXTS-LEGEND-FRONT"] = frontLegendTexts.sorted ()
+    archiveDict ["TRACKS-BACK"] = backTracks.sorted ()
+    archiveDict ["TRACKS-FRONT"] = frontTracks.sorted ()
+    archiveDict ["VIAS"] = vias.sorted ()
+    archiveDict ["DRILLS"] = drills.sorted ()
     // NSLog ("ARCHIVE \(archiveDict)")
   //--- Write file
     let data : Data = try PropertyListSerialization.data (

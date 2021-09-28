@@ -1296,48 +1296,30 @@ final class ComponentSymbolInProject : SchematicObject,
   }
 
   //····················································································································
-  //  Cursor
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
-  //····················································································································
 
-/*  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_ComponentSymbolInProject ((knob: inKnobIndex)
-  } */
-
-  //····················································································································
-  //  Translation
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
-  //····················································································································
-
-/*  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
-    return acceptedTranslation_ComponentSymbolInProject (xBy: inDx, yBy: inDy)
-  } */
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    return cursorForKnob_ComponentSymbolInProject (knob: inKnobIndex)
+  }
 
   //····················································································································
 
-/*  override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return acceptToTranslate_ComponentSymbolInProject (xBy: inDx, yBy: inDy)
-  } */
+  }
 
   //····················································································································
 
-/*  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     translate_ComponentSymbolInProject (xBy: inDx, yBy: inDy, userSet: ioSet)
-  } */
+  }
 
   //····················································································································
-  //  Knob
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
-  //····················································································································
 
-/*  override func canMove (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
-                         shift inShift : Bool) -> ObjcCanariPoint {
+  override func canMove (knob inKnobIndex : Int,
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                         shift inShift : Bool) -> CanariPoint {
     return canMove_ComponentSymbolInProject (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
@@ -1345,11 +1327,11 @@ final class ComponentSymbolInProject : SchematicObject,
       unalignedMouseDraggedLocation: inUnalignedMouseDraggedLocation,
       shift: inShift
     )
-  } */
+  }
 
   //····················································································································
 
-/*  override func move (knob inKnobIndex: Int,
+  override func move (knob inKnobIndex: Int,
                       proposedDx inDx: Int,
                       proposedDy inDy: Int,
                       unalignedMouseLocationX inUnlignedMouseLocationX : Int,
@@ -1367,130 +1349,57 @@ final class ComponentSymbolInProject : SchematicObject,
       alignedMouseLocationY: inAlignedMouseLocationY,
       shift: inShift
     )
-  } */
+  }
 
   //····················································································································
   //  Snap to grid
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-/*  override func snapToGrid (_ inGrid : Int) {
+  override func snapToGrid (_ inGrid : Int) {
     snapToGrid_ComponentSymbolInProject (inGrid)
-  } */
+  }
 
   //····················································································································
 
-/*  override func canSnapToGrid (_ inGrid : Int) -> Bool {
+  override func canSnapToGrid (_ inGrid : Int) -> Bool {
     return canSnapToGrid_ComponentSymbolInProject (inGrid)
-  } */
-
-  //····················································································································
-  //  HORIZONTAL FLIP
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
-  //····················································································································
-
-/*  override func flipHorizontally () {
-    flipHorizontally_ComponentSymbolInProject ()
-  } */
-
-  //····················································································································
-
-/*  override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_ComponentSymbolInProject ()
-  } */
-
-  //····················································································································
-  //  VERTICAL FLIP
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
-  //····················································································································
-
-/*  override func flipVertically () {
-    flipVertically_ComponentSymbolInProject ()
-  } */
-
-  //····················································································································
-
-/*  override func canFlipVertically () -> Bool {
-    return canFlipVertically_ComponentSymbolInProject ()
-  } */
+  }
 
   //····················································································································
   //  ROTATE 90
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-/*  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
     return canRotate90_ComponentSymbolInProject (accumulatedPoints: accumulatedPoints)
-  } */
+  }
 
   //····················································································································
 
-/*  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
     rotate90Clockwise_ComponentSymbolInProject (from: inRotationCenter, userSet: ioSet)
-  } */
+  }
 
   //····················································································································
 
-/*  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
     rotate90CounterClockwise_ComponentSymbolInProject (from: inRotationCenter, userSet: ioSet)
-  } */
-
-  //····················································································································
-  //  Save into additional dictionary
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
-  //····················································································································
-
-/*  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_ComponentSymbolInProject (ioDictionary)
-  } */
-
-  //····················································································································
-  //  COPY AND PASTE
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
-  //····················································································································
-
- /* override func canCopyAndPaste () -> Bool {
-    return canCopyAndPaste_ComponentSymbolInProject ()
-  } */
-
-  //····················································································································
-
-/*  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
-                                       objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_ComponentSymbolInProject (additionalDictionary: inDictionary, objectArray: inObjectArray)
-  } */
+  }
 
   //····················································································································
   //  Alignment Points
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-/*  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> ObjcCanariPointSet {
     return alignmentPoints_ComponentSymbolInProject ()
-  } */
+  }
 
   //····················································································································
-  //  Can be deleted
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
+  //  operationBeforeRemoving
   //····················································································································
 
-/*  override func canBeDeleted () -> Bool {
-    return canBeDeleted_ComponentSymbolInProject ()
-  } */
-
-  //····················································································································
-
-/*  override func operationBeforeRemoving () {
+  override func operationBeforeRemoving () {
     operationBeforeRemoving_ComponentSymbolInProject ()
-  } */
+  }
 
   //····················································································································
 

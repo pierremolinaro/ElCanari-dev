@@ -153,7 +153,7 @@ fileprivate func addBoardLimitPathToArchive (_ ioBoardArchive : inout [String : 
      p0 = pp
    }
    stringArray.append ("\(p0.x) \(p0.y) \(firstPoint.x) \(firstPoint.y) \(inWidth)")
-   ioBoardArchive ["INTERNAL-BOARDS-LIMITS"] = stringArray
+   ioBoardArchive ["INTERNAL-BOARDS-LIMITS"] = stringArray  // DO NOT SORT
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -178,7 +178,7 @@ fileprivate func addLinePathes (_ ioBoardArchive : inout [String : Any],
        }
      }
    }
-   ioBoardArchive [inKey] = stringArray
+   ioBoardArchive [inKey] = stringArray.sorted ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -194,7 +194,7 @@ fileprivate func addOblongs (_ ioBoardArchive : inout [String : Any],
      let p2 = inAffineTransform.transform (oblong.p2).canariPoint
      stringArray.append ("\(p1.x) \(p1.y) \(p2.x) \(p2.y) \(width)")
    }
-   ioBoardArchive [inKey] = stringArray
+   ioBoardArchive [inKey] = stringArray.sorted ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -210,7 +210,7 @@ fileprivate func addTracks (_ ioBoardArchive : inout [String : Any],
      let p2 = inAffineTransform.transform (track.p2).canariPoint
      stringArray.append ("\(p1.x) \(p1.y) \(p2.x) \(p2.y) \(width)")
    }
-   ioBoardArchive [inKey] = stringArray
+   ioBoardArchive [inKey] = stringArray.sorted ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -225,7 +225,7 @@ fileprivate func addCircles (_ ioBoardArchive : inout [String : Any],
      let center = inAffineTransform.transform (circle.center).canariPoint
      stringArray.append ("\(center.x) \(center.y) \(diameter)")
    }
-   ioBoardArchive [inKey] = stringArray
+   ioBoardArchive [inKey] = stringArray.sorted ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -242,7 +242,7 @@ fileprivate func addDrills (_ ioBoardArchive : inout [String : Any],
        stringArray.append ("\(p1.x) \(p1.y) \(p2.x) \(p2.y) \(width)")
      }
    }
-   ioBoardArchive ["DRILLS"] = stringArray
+   ioBoardArchive ["DRILLS"] = stringArray.sorted ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

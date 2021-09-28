@@ -1824,48 +1824,30 @@ final class BoardConnector : BoardObject,
   }
 
   //····················································································································
-  //  Cursor
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
-  //····················································································································
 
-/*  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_BoardConnector ((knob: inKnobIndex)
-  } */
-
-  //····················································································································
-  //  Translation
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
-  //····················································································································
-
-/*  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
-    return acceptedTranslation_BoardConnector (xBy: inDx, yBy: inDy)
-  } */
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    return cursorForKnob_BoardConnector (knob: inKnobIndex)
+  }
 
   //····················································································································
 
-/*  override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return acceptToTranslate_BoardConnector (xBy: inDx, yBy: inDy)
-  } */
+  }
 
   //····················································································································
 
-/*  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
     translate_BoardConnector (xBy: inDx, yBy: inDy, userSet: ioSet)
-  } */
+  }
 
   //····················································································································
-  //  Knob
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
-  //····················································································································
 
-/*  override func canMove (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
-                         shift inShift : Bool) -> ObjcCanariPoint {
+  override func canMove (knob inKnobIndex : Int,
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                         shift inShift : Bool) -> CanariPoint {
     return canMove_BoardConnector (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
@@ -1873,11 +1855,11 @@ final class BoardConnector : BoardObject,
       unalignedMouseDraggedLocation: inUnalignedMouseDraggedLocation,
       shift: inShift
     )
-  } */
+  }
 
   //····················································································································
 
-/*  override func move (knob inKnobIndex: Int,
+  override func move (knob inKnobIndex: Int,
                       proposedDx inDx: Int,
                       proposedDy inDy: Int,
                       unalignedMouseLocationX inUnlignedMouseLocationX : Int,
@@ -1895,130 +1877,65 @@ final class BoardConnector : BoardObject,
       alignedMouseLocationY: inAlignedMouseLocationY,
       shift: inShift
     )
-  } */
+  }
 
   //····················································································································
   //  Snap to grid
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-/*  override func snapToGrid (_ inGrid : Int) {
+  override func snapToGrid (_ inGrid : Int) {
     snapToGrid_BoardConnector (inGrid)
-  } */
+  }
 
   //····················································································································
 
-/*  override func canSnapToGrid (_ inGrid : Int) -> Bool {
+  override func canSnapToGrid (_ inGrid : Int) -> Bool {
     return canSnapToGrid_BoardConnector (inGrid)
-  } */
-
-  //····················································································································
-  //  HORIZONTAL FLIP
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
-  //····················································································································
-
-/*  override func flipHorizontally () {
-    flipHorizontally_BoardConnector ()
-  } */
-
-  //····················································································································
-
-/*  override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_BoardConnector ()
-  } */
-
-  //····················································································································
-  //  VERTICAL FLIP
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
-  //····················································································································
-
-/*  override func flipVertically () {
-    flipVertically_BoardConnector ()
-  } */
-
-  //····················································································································
-
-/*  override func canFlipVertically () -> Bool {
-    return canFlipVertically_BoardConnector ()
-  } */
+  }
 
   //····················································································································
   //  ROTATE 90
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-/*  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
     return canRotate90_BoardConnector (accumulatedPoints: accumulatedPoints)
-  } */
+  }
 
   //····················································································································
 
-/*  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
     rotate90Clockwise_BoardConnector (from: inRotationCenter, userSet: ioSet)
-  } */
+  }
 
   //····················································································································
 
-/*  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
     rotate90CounterClockwise_BoardConnector (from: inRotationCenter, userSet: ioSet)
-  } */
-
-  //····················································································································
-  //  Save into additional dictionary
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
-  //····················································································································
-
-/*  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_BoardConnector (ioDictionary)
-  } */
-
-  //····················································································································
-  //  COPY AND PASTE
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
-  //····················································································································
-
- /* override func canCopyAndPaste () -> Bool {
-    return canCopyAndPaste_BoardConnector ()
-  } */
-
-  //····················································································································
-
-/*  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
-                                       objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_BoardConnector (additionalDictionary: inDictionary, objectArray: inObjectArray)
-  } */
+  }
 
   //····················································································································
   //  Alignment Points
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-/*  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> ObjcCanariPointSet {
     return alignmentPoints_BoardConnector ()
-  } */
+  }
 
   //····················································································································
   //  Can be deleted
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-/*  override func canBeDeleted () -> Bool {
-    return canBeDeleted_BoardConnector ()
-  } */
+  override func canBeDeleted () -> Bool {
+    return false
+  }
 
   //····················································································································
+  //  operationBeforeRemoving
+  //····················································································································
 
-/*  override func operationBeforeRemoving () {
+  override func operationBeforeRemoving () {
     operationBeforeRemoving_BoardConnector ()
-  } */
+  }
 
   //····················································································································
 

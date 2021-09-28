@@ -9,6 +9,13 @@ enum ConnectorSide {
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic entity BoardConnector : BoardObject {
+  graphic cursorForKnob ;
+  graphic translate ;
+  graphic move ;
+  graphic rotate ;
+  graphic snapToGrid ;
+  graphic cannotBeDeleted ;
+
   toOne ComponentInProject mComponent inverse toMany mConnectors ; // nil if not connected to a pad
   property String mComponentPadName default "" ; // Empty string if not connected to a pad
   property Int mPadIndex default 0 ; // 0 -> master pad, > 0 : slave pad
