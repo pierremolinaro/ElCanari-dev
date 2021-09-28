@@ -210,6 +210,12 @@ protocol MergerRoot_boardHeight : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol MergerRoot_layoutLayerWarningMessage : AnyObject {
+  var layoutLayerWarningMessage : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol MergerRoot_boardOutlineRectDisplay : AnyObject {
   var boardOutlineRectDisplay : EBShape? { get }
 }
@@ -253,6 +259,7 @@ final class MergerRoot : EBManagedObject,
          MergerRoot_boardDisplayRect,
          MergerRoot_boardWidth,
          MergerRoot_boardHeight,
+         MergerRoot_layoutLayerWarningMessage,
          MergerRoot_boardOutlineRectDisplay {
 
   //····················································································································
@@ -1022,6 +1029,23 @@ final class MergerRoot : EBManagedObject,
   final let mArtwork_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
+  //   Transient property: layoutLayerWarningMessage
+  //····················································································································
+
+  final let layoutLayerWarningMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var layoutLayerWarningMessage : String? {
+    switch self.layoutLayerWarningMessage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: boardOutlineRectDisplay
   //····················································································································
 
@@ -1440,6 +1464,23 @@ final class MergerRoot : EBManagedObject,
     self.boardRect_property.addEBObserver (self.boardHeight_property)
   //--- To one property: mArtwork
     self.mArtwork_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: layoutLayerWarningMessage
+    self.layoutLayerWarningMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mArtwork_property.layerConfiguration_property.selection, unwSelf.boardModels_property.selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_MergerRoot_layoutLayerWarningMessage (v0, v1))
+        case (.multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mArtwork_property.layerConfiguration_property.addEBObserver (self.layoutLayerWarningMessage_property)
+    self.boardModels_property.addEBObserverOf_layerConfiguration (self.layoutLayerWarningMessage_property)
   //--- Atomic property: boardOutlineRectDisplay
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1537,6 +1578,8 @@ final class MergerRoot : EBManagedObject,
     // self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardDisplayRect_property)
     // self.boardRect_property.removeEBObserver (self.boardWidth_property)
     // self.boardRect_property.removeEBObserver (self.boardHeight_property)
+    // self.mArtwork_property.layerConfiguration_property.removeEBObserver (self.layoutLayerWarningMessage_property)
+    // self.boardModels_property.removeEBObserverOf_layerConfiguration (self.layoutLayerWarningMessage_property)
     // self.boardRect_property.removeEBObserver (self.boardOutlineRectDisplay_property)
     // self.boardLimitWidth_property.removeEBObserver (self.boardOutlineRectDisplay_property)
     // preferences_mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
@@ -1748,6 +1791,14 @@ final class MergerRoot : EBManagedObject,
         view: view,
         observerExplorer: &self.boardHeight_property.mObserverExplorer,
         valueExplorer: &self.boardHeight_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "layoutLayerWarningMessage",
+        object: self.layoutLayerWarningMessage_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.layoutLayerWarningMessage_property.mObserverExplorer,
+        valueExplorer: &self.layoutLayerWarningMessage_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "boardOutlineRectDisplay",

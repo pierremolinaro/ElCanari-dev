@@ -15,7 +15,49 @@ extension MergerDocument {
 
   //····················································································································
 
-  final internal func generateProductFiles () {
+  final internal func checkLayerConfigurationAndGenerateProductFiles () {
+  //--- Layout layer configuration
+    var layerSet = Set <LayerConfiguration> ()
+    if let artworkLayerConfiguration = self.rootObject.mArtwork?.layerConfiguration {
+      layerSet.insert (artworkLayerConfiguration)
+    }
+    for boardModel in self.rootObject.boardModels {
+      layerSet.insert (boardModel.layerConfiguration)
+    }
+  //---
+    if layerSet.count < 2 {
+      self.generateProductFiles ()
+    }else{
+      let alert = NSAlert ()
+      alert.messageText = "Inconsistent Board models / Artwork layout layer configuration."
+      var s = ""
+      for layer in layerSet {
+        if !s.isEmpty {
+          s += ", "
+        }
+        switch layer {
+        case  .twoLayers : s += "2"
+        case .fourLayers : s += "4"
+        case  .sixLayers : s += "6"
+        }
+      }
+      alert.informativeText = "More than one layout layer configuration: \(s)."
+      alert.addButton (withTitle: "Ok")
+      alert.addButton (withTitle: "Cancel")
+      alert.beginSheetModal (
+        for: self.windowForSheet!,
+        completionHandler: {(response : NSApplication.ModalResponse) in
+          if response == .alertFirstButtonReturn { // Proceed anyway
+            self.generateProductFiles ()
+          }
+        }
+      )
+    }
+  }
+
+  //····················································································································
+
+  private func generateProductFiles () {
     do{
     //--- Create product directory
       if let f = self.fileURL?.path.deletingPathExtension {
@@ -86,11 +128,16 @@ extension MergerDocument {
     var backLegendTexts = [String] ()
     var frontLegendTexts = [String] ()
     var backTracks = [String] ()
+    var inner1Tracks = [String] ()
+    var inner2Tracks = [String] ()
+    var inner3Tracks = [String] ()
+    var inner4Tracks = [String] ()
     var frontTracks = [String] ()
     var backLegendLines = [String] ()
     var frontLegendLines = [String] ()
     var vias = [String] ()
     var frontPads = [NSDictionary] ()
+    var traversingPads = [NSDictionary] ()
     var backPads = [NSDictionary] ()
     var drills = [String] ()
     for board in self.rootObject.boardInstances_property.propval {
@@ -122,10 +169,54 @@ extension MergerDocument {
        modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
       myModel?.frontLegendTextsSegments?.add (toArchiveArray: &frontLegendTexts, dx: board.x, dy: board.y,
        modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
-      myModel?.backTrackSegments?.add (toArchiveArray: &backTracks, dx: board.x, dy: board.y,
-       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
-      myModel?.frontTrackSegments?.add (toArchiveArray: &frontTracks, dx: board.x, dy: board.y,
-       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.backTrackSegments?.add (
+        toArchiveArray: &backTracks,
+        dx: board.x,
+        dy: board.y,
+        modelWidth: modelWidth,
+        modelHeight: modelHeight,
+        instanceRotation: instanceRotation
+      )
+      myModel?.inner1TracksSegments?.add (
+        toArchiveArray: &inner1Tracks,
+        dx: board.x,
+        dy: board.y,
+        modelWidth: modelWidth,
+        modelHeight: modelHeight,
+        instanceRotation: instanceRotation
+      )
+      myModel?.inner2TracksSegments?.add (
+        toArchiveArray: &inner2Tracks,
+        dx: board.x,
+        dy: board.y,
+        modelWidth: modelWidth,
+        modelHeight: modelHeight,
+        instanceRotation: instanceRotation
+      )
+      myModel?.inner3TracksSegments?.add (
+        toArchiveArray: &inner3Tracks,
+        dx: board.x,
+        dy: board.y,
+        modelWidth: modelWidth,
+        modelHeight: modelHeight,
+        instanceRotation: instanceRotation
+      )
+      myModel?.inner4TracksSegments?.add (
+        toArchiveArray: &inner4Tracks,
+        dx: board.x,
+        dy: board.y,
+        modelWidth: modelWidth,
+        modelHeight: modelHeight,
+        instanceRotation: instanceRotation
+      )
+      myModel?.frontTrackSegments?.add (
+        toArchiveArray: &frontTracks,
+        dx: board.x,
+        dy: board.y,
+        modelWidth: modelWidth,
+        modelHeight: modelHeight,
+        instanceRotation: instanceRotation
+      )
       myModel?.backLegendLinesSegments?.add (toArchiveArray: &backLegendLines, dx: board.x, dy: board.y,
        modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
       myModel?.frontLegendLinesSegments?.add (toArchiveArray: &frontLegendLines, dx: board.x, dy: board.y,
@@ -180,6 +271,35 @@ extension MergerDocument {
         }
         frontPads.append (d)
       }
+      for pad in myModel?.traversingPads_property.propval.values ?? [] {
+        let d = NSMutableDictionary ()
+        d ["HEIGHT"] = pad.height
+        d ["ROTATION"] = (pad.rotation + instanceRotation.rawValue * 90_000) % 360_000
+        switch pad.shape {
+        case .rect :
+          d ["SHAPE"] = "RECT"
+        case .octo :
+          d ["SHAPE"] = "OCTO"
+        case .round :
+          d ["SHAPE"] = "ROUND"
+        }
+        d ["WIDTH"] = pad.width
+        switch instanceRotation {
+        case .rotation0 :
+          d ["X"] = board.x + pad.x
+          d ["Y"] = board.y + pad.y
+        case .rotation90 :
+          d ["X"] = board.x + modelHeight - pad.y
+          d ["Y"] = board.y + pad.x
+        case .rotation180 :
+          d ["X"] = board.x + modelWidth  - pad.x
+          d ["Y"] = board.y + modelHeight - pad.y
+        case .rotation270 :
+          d ["X"] = board.x + pad.y
+          d ["Y"] = board.y + modelWidth - pad.x
+        }
+        traversingPads.append (d)
+      }
       for pad in myModel?.backPads_property.propval.values ?? [] {
         let d = NSMutableDictionary ()
         d ["HEIGHT"] = pad.height
@@ -210,7 +330,22 @@ extension MergerDocument {
         backPads.append (d)
       }
     }
-
+    if let layerConfiguration = self.rootObject.mArtwork?.layerConfiguration {
+      switch layerConfiguration {
+      case .twoLayers :
+        ()
+      case .fourLayers :
+        archiveDict ["PADS-TRAVERSING"] = traversingPads
+        archiveDict ["TRACKS-INNER1"] = inner1Tracks
+        archiveDict ["TRACKS-INNER2"] = inner2Tracks
+      case .sixLayers :
+        archiveDict ["PADS-TRAVERSING"] = traversingPads
+        archiveDict ["TRACKS-INNER1"] = inner1Tracks
+        archiveDict ["TRACKS-INNER2"] = inner2Tracks
+        archiveDict ["TRACKS-INNER3"] = inner3Tracks
+        archiveDict ["TRACKS-INNER4"] = inner4Tracks
+      }
+    }
     archiveDict ["INTERNAL-BOARDS-LIMITS"] = internalBoardsLimits
     archiveDict ["COMPONENT-NAMES-BACK"] = backComponentNames
     archiveDict ["COMPONENT-NAMES-FRONT"] = frontComponentNames
@@ -244,6 +379,7 @@ extension MergerDocument {
 
   fileprivate func generatePDFfiles (atPath inFilePath : String) throws {
     if let cocoaBoardRect : NSRect = self.rootObject.boardRect?.cocoaRect {
+      let layerConfiguration = self.rootObject.mArtwork!.layerConfiguration
       let boardWidth = self.rootObject.boardWidth ?? 0
       for product in self.rootObject.mArtwork_property.propval?.fileGenerationParameterArray_property.propval.values ?? [] {
         let horizontalMirror = product.horizontalMirror
@@ -334,13 +470,23 @@ extension MergerDocument {
           }
         }
         if product.drawPadsTopSide {
-          //Swift.print ("drawPadsTopSide")
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
             let instanceRotation = board.instanceRotation
             myModel?.frontPadArray?.addPads (toFilledBezierPaths: &filledBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+          }
+        }
+        if product.drawTraversingPads && (layerConfiguration != .twoLayers) {
+          for board in self.rootObject.boardInstances_property.propval {
+            let myModel : BoardModel? = board.myModel_property.propval
+            let modelWidth  : Int = myModel?.modelWidth  ?? 0
+            let modelHeight : Int = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.traversingPadArray?.addPads (toFilledBezierPaths: &filledBezierPaths,
               dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
               modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
@@ -413,6 +559,50 @@ extension MergerDocument {
             let modelHeight : Int = myModel?.modelHeight ?? 0
             let instanceRotation = board.instanceRotation
             myModel?.frontTrackSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+          }
+        }
+        if product.drawTracksInner1Layer && (layerConfiguration != .twoLayers) {
+          for board in self.rootObject.boardInstances_property.propval {
+            let myModel : BoardModel? = board.myModel_property.propval
+            let modelWidth  : Int = myModel?.modelWidth  ?? 0
+            let modelHeight : Int = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.inner1TracksSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+          }
+        }
+        if product.drawTracksInner2Layer && (layerConfiguration != .twoLayers) {
+          for board in self.rootObject.boardInstances_property.propval {
+            let myModel : BoardModel? = board.myModel_property.propval
+            let modelWidth  : Int = myModel?.modelWidth  ?? 0
+            let modelHeight : Int = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.inner2TracksSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+          }
+        }
+        if product.drawTracksInner3Layer && (layerConfiguration == .sixLayers) {
+          for board in self.rootObject.boardInstances_property.propval {
+            let myModel : BoardModel? = board.myModel_property.propval
+            let modelWidth  : Int = myModel?.modelWidth  ?? 0
+            let modelHeight : Int = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.inner3TracksSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+          }
+        }
+        if product.drawTracksInner4Layer && (layerConfiguration == .sixLayers) {
+          for board in self.rootObject.boardInstances_property.propval {
+            let myModel : BoardModel? = board.myModel_property.propval
+            let modelWidth  : Int = myModel?.modelWidth  ?? 0
+            let modelHeight : Int = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.inner4TracksSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
               dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
               modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
@@ -506,6 +696,7 @@ extension MergerDocument {
 
   fileprivate func generateGerberFiles (atPath inFilePath : String) throws {
     let boardWidth = self.rootObject.boardWidth!
+    let layerConfiguration = self.rootObject.mArtwork!.layerConfiguration
     for product in self.rootObject.mArtwork_property.propval?.fileGenerationParameterArray_property.propval.values ?? [] {
       let horizontalMirror = product.horizontalMirror
       let filePath = inFilePath + "." + product.fileExtension
@@ -641,6 +832,24 @@ extension MergerDocument {
           )
         }
       }
+      if product.drawTraversingPads && (layerConfiguration != .twoLayers) {
+        for board in self.rootObject.boardInstances_property.propval {
+          let myModel : BoardModel? = board.myModel_property.propval
+          let modelWidth  : Int = myModel?.modelWidth  ?? 0
+          let modelHeight : Int = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.traversingPadArray?.addPads (
+            toApertures: &apertureDictionary,
+            toPolygones: &polygons,
+            dx: board.x,
+            dy: board.y,
+            horizontalMirror:horizontalMirror,
+            minimumAperture: minimumApertureMilTenth,
+            boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation
+          )
+        }
+      }
       if product.drawPadsBottomSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
@@ -716,6 +925,50 @@ extension MergerDocument {
           let modelHeight : Int = myModel?.modelHeight ?? 0
           let instanceRotation = board.instanceRotation
           myModel?.frontTrackSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+        }
+      }
+      if product.drawTracksInner1Layer && (layerConfiguration != .twoLayers) {
+        for board in self.rootObject.boardInstances_property.propval {
+          let myModel : BoardModel? = board.myModel_property.propval
+          let modelWidth  : Int = myModel?.modelWidth  ?? 0
+          let modelHeight : Int = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.inner1TracksSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+        }
+      }
+      if product.drawTracksInner2Layer && (layerConfiguration != .twoLayers) {
+        for board in self.rootObject.boardInstances_property.propval {
+          let myModel : BoardModel? = board.myModel_property.propval
+          let modelWidth  : Int = myModel?.modelWidth  ?? 0
+          let modelHeight : Int = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.inner2TracksSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+        }
+      }
+      if product.drawTracksInner3Layer && (layerConfiguration == .sixLayers) {
+        for board in self.rootObject.boardInstances_property.propval {
+          let myModel : BoardModel? = board.myModel_property.propval
+          let modelWidth  : Int = myModel?.modelWidth  ?? 0
+          let modelHeight : Int = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.inner3TracksSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+        }
+      }
+      if product.drawTracksInner4Layer && (layerConfiguration == .sixLayers) {
+        for board in self.rootObject.boardInstances_property.propval {
+          let myModel : BoardModel? = board.myModel_property.propval
+          let modelWidth  : Int = myModel?.modelWidth  ?? 0
+          let modelHeight : Int = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.inner4TracksSegments?.add (toApertures: &apertureDictionary,
             dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
             modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
         }

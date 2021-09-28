@@ -36,7 +36,9 @@ let BUGFIXES : [String] = [
 let CHANGES : [String] = [
   "Utilisation de Sparkle 1.27"
 ]
-let NEWS : [String] = []
+let NEWS : [String] = [
+  "Première version à prendre en charge des circuits à 4 ou 6 couches"
+]
 
 //--------------------------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR

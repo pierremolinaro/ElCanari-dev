@@ -270,6 +270,7 @@ import Cocoa
   @IBOutlet final var mInstanceRotation : CanariQuadrantSegmentedControl? = nil
   @IBOutlet final var mIssueTableView : IssueTableView? = nil
   @IBOutlet final var mIssueTextField : EBTextObserverField? = nil
+  @IBOutlet final var mLayoutLayerWarningMessageTextField : EBTextObserverField? = nil
   @IBOutlet final var mLogTextView : NSTextView? = nil
   @IBOutlet final var mManualBoardHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mManualBoardHeightUnitPopUp : EBPopUpButton? = nil
@@ -553,6 +554,7 @@ import Cocoa
     checkOutletConnection (self.mInstanceRotation, "mInstanceRotation", CanariQuadrantSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mIssueTableView, "mIssueTableView", IssueTableView.self, #file, #line)
     checkOutletConnection (self.mIssueTextField, "mIssueTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mLayoutLayerWarningMessageTextField, "mLayoutLayerWarningMessageTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mLogTextView, "mLogTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mManualBoardHeightTextField, "mManualBoardHeightTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mManualBoardHeightUnitPopUp, "mManualBoardHeightUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -990,6 +992,7 @@ import Cocoa
     self.mSelectedBoardYTextField?.bind_dimensionAndUnit (self.mBoardInstanceSelection.y_property, self.rootObject.selectedBoardYUnit_property)
     self.mInstanceRotation?.bind_quadrant (self.mBoardInstanceSelection.instanceRotation_property)
     self.mOverlapSwitch?.bind_value (self.rootObject.overlapingArrangment_property)
+    self.mLayoutLayerWarningMessageTextField?.bind_valueObserver (self.rootObject.layoutLayerWarningMessage_property)
     self.mIncorrectDocumentNameTextField?.bind_valueObserver (self.incorrectDocumentFileErrorMessage_property)
     self.mArtwortNameTextField?.bind_valueObserver (self.rootObject.mArtworkName_property)
     self.mImportArtworkButton?.bind_title (self.importArtworkButtonTitle_property)
@@ -1338,6 +1341,7 @@ import Cocoa
     self.mSelectedBoardYTextField?.unbind_dimensionAndUnit ()
     self.mInstanceRotation?.unbind_quadrant ()
     self.mOverlapSwitch?.unbind_value ()
+    self.mLayoutLayerWarningMessageTextField?.unbind_valueObserver ()
     self.mIncorrectDocumentNameTextField?.unbind_valueObserver ()
     self.mArtwortNameTextField?.unbind_valueObserver ()
     self.mImportArtworkButton?.unbind_title ()
@@ -1515,6 +1519,7 @@ import Cocoa
     self.mInstanceRotation?.ebCleanUp ()
     self.mIssueTableView?.ebCleanUp ()
     self.mIssueTextField?.ebCleanUp ()
+    self.mLayoutLayerWarningMessageTextField?.ebCleanUp ()
     self.mLogTextView?.ebCleanUp ()
     self.mManualBoardHeightTextField?.ebCleanUp ()
     self.mManualBoardHeightUnitPopUp?.ebCleanUp ()
@@ -1700,6 +1705,7 @@ import Cocoa
     self.mInstanceRotation = nil
     self.mIssueTableView = nil
     self.mIssueTextField = nil
+    self.mLayoutLayerWarningMessageTextField = nil
     self.mLogTextView = nil
     self.mManualBoardHeightTextField = nil
     self.mManualBoardHeightUnitPopUp = nil

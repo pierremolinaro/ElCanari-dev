@@ -205,9 +205,6 @@ xibdocument MergerDocument root MergerRoot {
 //------------------------------------- Board Page
   outlet CanariViewWithKeyView mBoardPageView ;
 
-//  outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
-//  action insertBoardAction ; // Called directly by selecting an item of mBoardInsertMenu
-
   outlet NSPopUpButton mInsertedInstanceDefaultOrientation ;
 
 //--- Board model name
@@ -270,13 +267,6 @@ xibdocument MergerDocument root MergerRoot {
      $dimensionAndUnit root.boardLimitWidth, root.boardLimitWidthUnit
   ;
 
-//--- "Insert array of boards" panel
-//  outlet NSPanel mInsertArrayOfBoardsPanel ;
-//  outlet NSPopUpButton mInsertArrayOfBoardsPopUpButton ;
-//  outlet NSSegmentedControl mInsertArrayOfBoardsOrientation ;
-//  outlet NSTextField mInsertArrayOfBoardsXCountField ;
-//  outlet NSTextField mInsertArrayOfBoardsYCountField ;
-
 //--- "Empty Board" message
  outlet EBTextField mEmptyBoardMessage $hidden root.boardInstances.count > 0 ;
 
@@ -292,8 +282,6 @@ xibdocument MergerDocument root MergerRoot {
     $arrowKeyMagnitude root.arrowMagnitude
     $shiftArrowKeyMagnitude root.shiftArrowMagnitude
   ;
-
-//  outlet EBScrollView mComposedBoardScrollView ;
 
   outlet CanariSegmentedControl mBoardInspectorSegmentedControl ;
   outlet NSView mBoardInspectorMasterView ;
@@ -331,6 +319,7 @@ xibdocument MergerDocument root MergerRoot {
   outlet CanariViewWithKeyView mProductPageView ;
 
   outlet EBTextField mNoArtworkMessage $hidden !root.mArtwork.none ;
+  outlet EBTextObserverField mLayoutLayerWarningMessageTextField $valueObserver root.layoutLayerWarningMessage ;
 
   transient String incorrectDocumentFileErrorMessage dependsFrom self.documentFileName ;
   outlet EBTextObserverField mIncorrectDocumentNameTextField $valueObserver self.incorrectDocumentFileErrorMessage ;

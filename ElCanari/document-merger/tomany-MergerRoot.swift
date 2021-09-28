@@ -40,6 +40,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
     self.removeEBObserversOf_boardDisplayRect_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardWidth_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardHeight_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_layoutLayerWarningMessage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_fileGenerationParameterArray_fromElementsOfSet (inAddedSet) // ToMany proxy
   //--- Add observers to added objects
@@ -67,6 +68,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
     self.addEBObserversOf_boardDisplayRect_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardWidth_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardHeight_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_layoutLayerWarningMessage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_fileGenerationParameterArray_toElementsOfSet (inAddedSet) // ToMany proxy
   }
@@ -2095,6 +2097,62 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
     for managedObject in inSet.values {
       self.mObserversOf_boardHeight.apply { (_ observer : EBEvent) in
         managedObject.boardHeight_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'layoutLayerWarningMessage' transient property
+  //····················································································································
+
+  private final var mObserversOf_layoutLayerWarningMessage = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_layoutLayerWarningMessage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_layoutLayerWarningMessage.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.layoutLayerWarningMessage_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_layoutLayerWarningMessage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_layoutLayerWarningMessage.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.layoutLayerWarningMessage_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_layoutLayerWarningMessage_toElementsOfSet (_ inSet : EBReferenceSet <MergerRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_layoutLayerWarningMessage.apply { (_ observer : EBEvent) in
+        managedObject.layoutLayerWarningMessage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_layoutLayerWarningMessage_fromElementsOfSet (_ inSet : EBReferenceSet <MergerRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_layoutLayerWarningMessage.apply { (_ observer : EBEvent) in
+        managedObject.layoutLayerWarningMessage_property.removeEBObserver (observer)
       }
     }
   }

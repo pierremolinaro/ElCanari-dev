@@ -40,6 +40,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       oldValue.boardDisplayRect_property.removeEBObserver (self.boardDisplayRect_property) // Transient property
       oldValue.boardWidth_property.removeEBObserver (self.boardWidth_property) // Transient property
       oldValue.boardHeight_property.removeEBObserver (self.boardHeight_property) // Transient property
+      oldValue.layoutLayerWarningMessage_property.removeEBObserver (self.layoutLayerWarningMessage_property) // Transient property
       oldValue.boardOutlineRectDisplay_property.removeEBObserver (self.boardOutlineRectDisplay_property) // Transient property
     }
   //--- Add observers to added objects
@@ -68,6 +69,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       newValue.boardDisplayRect_property.addEBObserver (self.boardDisplayRect_property) // Transient property
       newValue.boardWidth_property.addEBObserver (self.boardWidth_property) // Transient property
       newValue.boardHeight_property.addEBObserver (self.boardHeight_property) // Transient property
+      newValue.layoutLayerWarningMessage_property.addEBObserver (self.layoutLayerWarningMessage_property) // Transient property
       newValue.boardOutlineRectDisplay_property.addEBObserver (self.boardOutlineRectDisplay_property) // Transient property
     }
   }
@@ -215,6 +217,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let boardHeight_property = EBGenericTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'layoutLayerWarningMessage' transient property
+  //····················································································································
+
+  final let layoutLayerWarningMessage_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'boardOutlineRectDisplay' transient property
@@ -625,6 +633,21 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     self.boardHeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.boardHeight_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure layoutLayerWarningMessage transient property
+    self.layoutLayerWarningMessage_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.layoutLayerWarningMessage_property.selection {
         case .empty :
           return .empty
         case .multiple :

@@ -46,16 +46,14 @@ extension ProjectDocument {
     case .fourLayers :
       addOblongs (&boardArchive, inProductData.tracks [.inner1, default: []], "TRACKS-INNER1", af)
       addOblongs (&boardArchive, inProductData.tracks [.inner2, default: []], "TRACKS-INNER2", af)
-
     case .sixLayers :
       addOblongs (&boardArchive, inProductData.tracks [.inner1, default: []], "TRACKS-INNER1", af)
       addOblongs (&boardArchive, inProductData.tracks [.inner2, default: []], "TRACKS-INNER2", af)
       addOblongs (&boardArchive, inProductData.tracks [.inner3, default: []], "TRACKS-INNER3", af)
       addOblongs (&boardArchive, inProductData.tracks [.inner4, default: []], "TRACKS-INNER4", af)
-
     }
   //--- Write file
-    let data = try PropertyListSerialization.data (fromPropertyList: boardArchive, format: .binary, options: 0)
+    let data = try PropertyListSerialization.data (fromPropertyList: boardArchive, format: .xml, options: 0)
     try data.write (to: URL (fileURLWithPath: inPath))
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
   }
