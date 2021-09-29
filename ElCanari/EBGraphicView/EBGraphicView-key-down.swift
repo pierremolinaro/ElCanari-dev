@@ -52,9 +52,9 @@ extension EBGraphicView {
         }
       }
       if accepted {
-        let userSet = ObjcObjectSet ()
+        var userSet = EBReferenceSet <AnyObject> ()
         for object in controller.selectedGraphicObjectSet.values {
-          object.translate (xBy: inDx, yBy:inDy, userSet: userSet)
+          object.translate (xBy: inDx, yBy:inDy, userSet: &userSet)
         }
       }
     }

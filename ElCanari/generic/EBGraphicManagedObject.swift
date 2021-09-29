@@ -77,7 +77,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································
@@ -153,12 +153,12 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································
@@ -227,26 +227,26 @@ extension Set where Element == CanariPoint {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc final class ObjcObjectSet : EBObjcBaseObject { // SHOULD INHERIT FROM NSObject
-
-  //····················································································································
-
-  private var mObjects = Set <EBObjcBaseObject> ()
-
-  //····················································································································
-
-  func insert (_ inObject : EBObjcBaseObject) {
-    self.mObjects.insert (inObject)
-  }
-
-  //····················································································································
-
-  func contains (_ inObject : EBObjcBaseObject) -> Bool {
-    return self.mObjects.contains (inObject)
-  }
-
-  //····················································································································
-
-}
+//@objc final class EBReferenceSet <AnyObject> : EBObjcBaseObject { // SHOULD INHERIT FROM NSObject
+//
+//  //····················································································································
+//
+//  private var mObjects = Set <EBObjcBaseObject> ()
+//
+//  //····················································································································
+//
+//  func insert (_ inObject : EBObjcBaseObject) {
+//    self.mObjects.insert (inObject)
+//  }
+//
+//  //····················································································································
+//
+//  func contains (_ inObject : EBObjcBaseObject) -> Bool {
+//    return self.mObjects.contains (inObject)
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

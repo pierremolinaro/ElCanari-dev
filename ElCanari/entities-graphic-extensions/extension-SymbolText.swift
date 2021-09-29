@@ -50,12 +50,12 @@ extension SymbolText {
 
   //····················································································································
 
-  func rotate90Clockwise_SymbolText (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_SymbolText (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_SymbolText (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_SymbolText (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································
@@ -74,7 +74,7 @@ extension SymbolText {
 
   //····················································································································
 
-  func translate_SymbolText (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_SymbolText (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.x += inDx
     self.y += inDy
   }

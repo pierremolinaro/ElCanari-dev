@@ -36,7 +36,7 @@ extension PackageZone {
 
   //····················································································································
 
-  func translate_PackageZone (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_PackageZone (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.x += inDx
     self.y += inDy
     self.xName += inDx

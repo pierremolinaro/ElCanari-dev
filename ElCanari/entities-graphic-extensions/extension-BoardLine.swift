@@ -34,7 +34,7 @@ extension BoardLine {
 
   //····················································································································
 
-  func translate_BoardLine (xBy inDx : Int, yBy inDy : Int, userSet ioSet : ObjcObjectSet) {
+  func translate_BoardLine (xBy inDx : Int, yBy inDy : Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.mX1 += inDx
     self.mY1 += inDy
     self.mX2 += inDx
@@ -98,7 +98,7 @@ extension BoardLine {
 
   //····················································································································
 
-  func rotate90Clockwise_BoardLine (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_BoardLine (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.mX1, y: self.mY1)
     self.mX1 = p1.x
     self.mY1 = p1.y
@@ -110,7 +110,7 @@ extension BoardLine {
 
   //····················································································································
 
-  func rotate90CounterClockwise_BoardLine (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_BoardLine (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.mX1, y: self.mY1)
     self.mX1 = p1.x
     self.mY1 = p1.y

@@ -31,7 +31,7 @@ extension PackageDimension {
 
   //····················································································································
 
-  func translate_PackageDimension (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_PackageDimension (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.x1 += inDx
     self.y1 += inDy
     self.x2 += inDx
@@ -117,7 +117,7 @@ extension PackageDimension {
 
   //····················································································································
 
-  func rotate90Clockwise_PackageDimension (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_PackageDimension (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
     self.x1 = p1.x
     self.y1 = p1.y
@@ -131,7 +131,7 @@ extension PackageDimension {
 
   //····················································································································
 
-  func rotate90CounterClockwise_PackageDimension (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_PackageDimension (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
     self.x1 = p1.x
     self.y1 = p1.y

@@ -1189,8 +1189,8 @@ final class PackageBezier : PackageObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
-    translate_PackageBezier (xBy: inDx, yBy: inDy, userSet: ioSet)
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    translate_PackageBezier (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································

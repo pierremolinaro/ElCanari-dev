@@ -34,7 +34,7 @@ extension PackagePad {
 
   //····················································································································
 
-  func translate_PackagePad (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_PackagePad (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.xCenter += inDx
     self.yCenter += inDy
   }
@@ -100,7 +100,7 @@ extension PackagePad {
 
   //····················································································································
 
-  func rotate90Clockwise_PackagePad (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_PackagePad (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     let newCenter = inRotationCenter.rotated90Clockwise (x: self.xCenter, y: self.yCenter)
     self.xCenter = newCenter.x
     self.yCenter = newCenter.y
@@ -110,7 +110,7 @@ extension PackagePad {
 
   //····················································································································
 
-  func rotate90CounterClockwise_PackagePad (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_PackagePad (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.xCenter, y: self.yCenter)
     self.xCenter = newCenter.x
     self.yCenter = newCenter.y

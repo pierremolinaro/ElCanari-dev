@@ -36,12 +36,12 @@ extension BoardConnector {
 
   //····················································································································
 
-  func rotate90Clockwise_BoardConnector (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_BoardConnector (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_BoardConnector (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_BoardConnector (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································
@@ -67,7 +67,7 @@ extension BoardConnector {
 
   //····················································································································
 
-  func translate_BoardConnector (xBy inDx : Int, yBy inDy : Int, userSet ioSet : ObjcObjectSet) {
+  func translate_BoardConnector (xBy inDx : Int, yBy inDy : Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     if !ioSet.contains (self) {
       ioSet.insert (self)
       self.mX += inDx

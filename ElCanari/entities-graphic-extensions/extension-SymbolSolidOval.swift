@@ -76,7 +76,7 @@ extension SymbolSolidOval {
 
   //····················································································································
 
-  func translate_SymbolSolidOval (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_SymbolSolidOval (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.x += inDx
     self.y += inDy
   }
@@ -91,12 +91,12 @@ extension SymbolSolidOval {
 
   //····················································································································
 
-  func rotate90Clockwise_SymbolSolidOval (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_SymbolSolidOval (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_SymbolSolidOval (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_SymbolSolidOval (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································

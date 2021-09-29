@@ -62,7 +62,7 @@ extension SymbolSegment {
 
   //····················································································································
 
-  func translate_SymbolSegment (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_SymbolSegment (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.x1 += inDx
     self.y1 += inDy
     self.x2 += inDx

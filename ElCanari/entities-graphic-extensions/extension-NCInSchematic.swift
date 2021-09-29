@@ -30,7 +30,7 @@ extension NCInSchematic {
 
   //····················································································································
 
-  func translate_NCInSchematic (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_NCInSchematic (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································
@@ -53,7 +53,7 @@ extension NCInSchematic {
 
   //····················································································································
 
-  func rotate90Clockwise_NCInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_NCInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation270
@@ -68,7 +68,7 @@ extension NCInSchematic {
 
   //····················································································································
 
-  func rotate90CounterClockwise_NCInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_NCInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation90

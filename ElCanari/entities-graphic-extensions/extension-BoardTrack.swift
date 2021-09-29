@@ -33,7 +33,7 @@ extension BoardTrack {
 
   //····················································································································
 
-  func translate_BoardTrack (xBy inDx : Int, yBy inDy : Int, userSet ioSet : ObjcObjectSet) {
+  func translate_BoardTrack (xBy inDx : Int, yBy inDy : Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     if let connectorP1 = self.mConnectorP1, !ioSet.contains (connectorP1) {
       ioSet.insert (connectorP1)
       connectorP1.mX += inDx
@@ -175,7 +175,7 @@ extension BoardTrack {
 
   //····················································································································
 
-  func rotate90Clockwise_BoardTrack (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_BoardTrack (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     if let connectorP1 = self.mConnectorP1, let connectorP2 = self.mConnectorP2 {
       if !ioSet.contains (connectorP1) {
         let p = inRotationCenter.rotated90Clockwise (x: connectorP1.mX, y: connectorP1.mY)
@@ -194,7 +194,7 @@ extension BoardTrack {
 
   //····················································································································
 
-  func rotate90CounterClockwise_BoardTrack (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_BoardTrack (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     if let connectorP1 = self.mConnectorP1, let connectorP2 = self.mConnectorP2 {
       if !ioSet.contains (connectorP1) {
         let p = inRotationCenter.rotated90CounterClockwise (x: connectorP1.mX, y: connectorP1.mY)

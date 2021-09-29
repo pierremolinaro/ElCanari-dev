@@ -30,7 +30,7 @@ extension SymbolPin {
 
   //····················································································································
 
-  func translate_SymbolPin (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_SymbolPin (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.xPin += inDx
     self.yPin += inDy
     self.xName += inDx
@@ -75,12 +75,12 @@ extension SymbolPin {
 
   //····················································································································
 
-  func rotate90Clockwise_SymbolPin (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_SymbolPin (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_SymbolPin (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_SymbolPin (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································

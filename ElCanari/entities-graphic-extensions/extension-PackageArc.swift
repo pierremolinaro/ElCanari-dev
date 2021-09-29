@@ -43,7 +43,7 @@ extension PackageArc {
 
   //····················································································································
 
-  func translate_PackageArc (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_PackageArc (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.xCenter += inDx
     self.yCenter += inDy
   }

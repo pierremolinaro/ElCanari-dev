@@ -34,7 +34,7 @@ extension PackageSlavePad {
 
   //····················································································································
 
-  func translate_PackageSlavePad (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_PackageSlavePad (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.xCenter += inDx
     self.yCenter += inDy
   }
@@ -50,7 +50,7 @@ extension PackageSlavePad {
 
   //····················································································································
 
-  func rotate90Clockwise_PackageSlavePad (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_PackageSlavePad (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     let newCenter = inRotationCenter.rotated90Clockwise (x: self.xCenter, y: self.yCenter)
     self.xCenter = newCenter.x
     self.yCenter = newCenter.y
@@ -60,7 +60,7 @@ extension PackageSlavePad {
 
   //····················································································································
 
-  func rotate90CounterClockwise_PackageSlavePad (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_PackageSlavePad (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.xCenter, y: self.yCenter)
     self.xCenter = newCenter.x
     self.yCenter = newCenter.y

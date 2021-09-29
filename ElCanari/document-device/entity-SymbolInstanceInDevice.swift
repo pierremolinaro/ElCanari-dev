@@ -753,8 +753,8 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
-    translate_SymbolInstanceInDevice (xBy: inDx, yBy: inDy, userSet: ioSet)
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    translate_SymbolInstanceInDevice (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································

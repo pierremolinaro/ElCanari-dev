@@ -22,7 +22,7 @@ extension SymbolInstanceInDevice {
 
   //····················································································································
 
-  func translate_SymbolInstanceInDevice (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_SymbolInstanceInDevice (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.mX += inDx
     self.mY += inDy
   }

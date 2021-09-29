@@ -25,7 +25,7 @@ extension PackageSegment {
 
   //····················································································································
 
-  func translate_PackageSegment (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_PackageSegment (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.x1 += inDx
     self.y1 += inDy
     self.x2 += inDx
@@ -103,7 +103,7 @@ extension PackageSegment {
 
   //····················································································································
 
-  func rotate90Clockwise_PackageSegment (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_PackageSegment (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
     self.x1 = p1.x
@@ -114,7 +114,7 @@ extension PackageSegment {
 
   //····················································································································
 
-  func rotate90CounterClockwise_PackageSegment (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_PackageSegment (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
     self.x1 = p1.x

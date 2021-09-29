@@ -757,8 +757,8 @@ final class PackageOval : PackageObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
-    translate_PackageOval (xBy: inDx, yBy: inDy, userSet: ioSet)
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    translate_PackageOval (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································

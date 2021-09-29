@@ -30,7 +30,7 @@ extension CommentInSchematic {
 
   //····················································································································
 
-  func translate_CommentInSchematic (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_CommentInSchematic (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.mX += inDx
     self.mY += inDy
   }
@@ -45,12 +45,12 @@ extension CommentInSchematic {
 
   //····················································································································
 
-  func rotate90Clockwise_CommentInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_CommentInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_CommentInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_CommentInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································

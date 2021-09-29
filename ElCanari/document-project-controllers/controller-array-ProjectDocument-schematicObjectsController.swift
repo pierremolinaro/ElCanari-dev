@@ -654,7 +654,7 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
        let X = dataDictionary [X_KEY] as? Int,
        let Y = dataDictionary [Y_KEY] as? Int {
       var newObjects = [SchematicObject] ()
-      let userSet = ObjcObjectSet ()
+      var userSet = EBReferenceSet <AnyObject> ()
       var idx = 0
       var errorMessage = ""
       for dictionary in dictionaryArray {
@@ -664,7 +664,7 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
           }
           idx += 1
           if errorMessage == "" {
-            object.translate (xBy: X, yBy: Y, userSet: userSet)
+            object.translate (xBy: X, yBy: Y, userSet: &userSet)
             newObjects.append (object)
           }
         }
@@ -975,9 +975,9 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
 
   func rotate90Clockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet))
-    let userSet = ObjcObjectSet ()
+    var userSet = EBReferenceSet <AnyObject> ()
     for object in self.selectedArray {
-      object.rotate90Clockwise (from: r.center, userSet: userSet)
+      object.rotate90Clockwise (from: r.center, userSet: &userSet)
     }
   }
 
@@ -985,9 +985,9 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
 
   func rotate90CounterClockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet))
-    let userSet = ObjcObjectSet ()
+    var userSet = EBReferenceSet <AnyObject> ()
     for object in self.selectedArray {
-      object.rotate90CounterClockwise (from: r.center, userSet: userSet)
+      object.rotate90CounterClockwise (from: r.center, userSet: &userSet)
     }
   }
 

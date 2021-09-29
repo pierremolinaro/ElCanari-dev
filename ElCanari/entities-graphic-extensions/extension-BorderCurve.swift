@@ -51,7 +51,7 @@ extension BorderCurve {
 
   //····················································································································
 
-  func translate_BorderCurve (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_BorderCurve (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     if let next = self.mNext, let previous = self.mPrevious, let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
       let dx = max (inDx, -self.mX, -next.mX)
       let dy = max (inDy, -self.mY, -next.mY)
@@ -150,12 +150,12 @@ extension BorderCurve {
 
   //····················································································································
 
-  func rotate90Clockwise_BorderCurve (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_BorderCurve (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_BorderCurve (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_BorderCurve (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································

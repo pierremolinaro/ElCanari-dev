@@ -33,7 +33,7 @@ extension PackageOval {
 
   //····················································································································
 
-  func translate_PackageOval (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_PackageOval (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.x += inDx
     self.y += inDy
   }
@@ -130,7 +130,7 @@ extension PackageOval {
 
   //····················································································································
 
-  func rotate90Clockwise_PackageOval (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_PackageOval (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     let newCenter = inRotationCenter.rotated90Clockwise (x: self.x + self.width / 2, y: self.y + self.height / 2)
     (self.width, self.height) = (self.height, self.width)
     self.x = newCenter.x - self.width / 2
@@ -139,7 +139,7 @@ extension PackageOval {
 
   //····················································································································
 
-  func rotate90CounterClockwise_PackageOval (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_PackageOval (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.x + self.width / 2, y: self.y + self.height / 2)
     (self.width, self.height) = (self.height, self.width)
     self.x = newCenter.x - self.width / 2

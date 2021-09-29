@@ -31,7 +31,7 @@ extension SymbolSolidRect {
 
   //····················································································································
 
-  func translate_SymbolSolidRect (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_SymbolSolidRect (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.x += inDx
     self.y += inDy
   }
@@ -72,12 +72,12 @@ extension SymbolSolidRect {
 
   //····················································································································
 
-  func rotate90Clockwise_SymbolSolidRect (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_SymbolSolidRect (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_SymbolSolidRect (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_SymbolSolidRect (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································

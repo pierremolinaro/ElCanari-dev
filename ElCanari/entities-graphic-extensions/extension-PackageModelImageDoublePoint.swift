@@ -19,7 +19,7 @@ extension PackageModelImageDoublePoint {
 
   //····················································································································
 
-  func translate_PackageModelImageDoublePoint (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_PackageModelImageDoublePoint (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.mFirstX += inDx
     self.mFirstY += inDy
   }

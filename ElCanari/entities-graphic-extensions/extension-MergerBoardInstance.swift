@@ -41,7 +41,7 @@ extension MergerBoardInstance {
 
   //····················································································································
 
-  func translate_MergerBoardInstance (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_MergerBoardInstance (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.x += inDx
     self.y += inDy
   }

@@ -1837,8 +1837,8 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
-    translate_BoardConnector (xBy: inDx, yBy: inDy, userSet: ioSet)
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    translate_BoardConnector (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -1903,14 +1903,14 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
-    rotate90Clockwise_BoardConnector (from: inRotationCenter, userSet: ioSet)
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    rotate90Clockwise_BoardConnector (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
-    rotate90CounterClockwise_BoardConnector (from: inRotationCenter, userSet: ioSet)
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    rotate90CounterClockwise_BoardConnector (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································

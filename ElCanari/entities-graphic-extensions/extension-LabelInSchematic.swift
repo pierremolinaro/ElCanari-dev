@@ -39,7 +39,7 @@ extension LabelInSchematic {
 
   //····················································································································
 
-  func translate_LabelInSchematic (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate_LabelInSchematic (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     if let point = self.mPoint, point.mSymbol == nil, !ioSet.contains (point) {
       ioSet.insert (point)
       point.mX += inDx
@@ -124,7 +124,7 @@ extension LabelInSchematic {
 
   //····················································································································
 
-  func rotate90Clockwise_LabelInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise_LabelInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation270
@@ -139,7 +139,7 @@ extension LabelInSchematic {
 
   //····················································································································
 
-  func rotate90CounterClockwise_LabelInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise_LabelInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation90

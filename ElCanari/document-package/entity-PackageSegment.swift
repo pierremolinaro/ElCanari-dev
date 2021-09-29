@@ -863,8 +863,8 @@ final class PackageSegment : PackageObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
-    translate_PackageSegment (xBy: inDx, yBy: inDy, userSet: ioSet)
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    translate_PackageSegment (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
