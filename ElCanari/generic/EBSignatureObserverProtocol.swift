@@ -8,7 +8,7 @@ import Cocoa
 //  EBSignatureObserverProtocol
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc protocol EBSignatureObserverProtocol : AnyObject {
+@objc protocol EBSignatureObserverProtocol {
   func clearSignatureCache ()
   func signature () -> UInt32
 }

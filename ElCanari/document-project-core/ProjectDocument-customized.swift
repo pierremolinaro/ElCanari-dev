@@ -496,7 +496,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
         if (wire.mP1 == nil) && (wire.mP2 == nil) { // Useless wire, delete
           wire.mSheet = nil
         }else if (wire.mP1 == nil) != (wire.mP2 == nil) { // Invalid wire
-          ioErrorList.append ("Invalid wire: mP1 \(string (wire.mP1)), mP2 \(string (wire.mP2))")
+          ioErrorList.append ("Invalid wire: mP1 \(wire.mP1?.address ?? 0), mP2 \(wire.mP2?.address ?? 0)")
         }
       }
     }
@@ -551,7 +551,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
       self.mPossibleDraggedSymbol = nil
       for component in self.rootObject.mComponents {
         for s in component.mSymbols {
-           if s.ebObjectIndex == symbolTag {
+           if s.address == symbolTag {
              self.mPossibleDraggedSymbol = s
            }
         }
@@ -595,7 +595,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
       let componentTag = inSourceTableView.tag (atIndex: idx)
       self.mPossibleDraggedComponent = nil
       for component in self.rootObject.mComponents {
-        if component.ebObjectIndex == componentTag {
+        if component.address == componentTag {
           self.mPossibleDraggedComponent = component
         }
       }

@@ -14,12 +14,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_sheetIndexes (
-       _ self_mSheets : [EBManagedObject_alloc_index_protocol]
+       _ self_mSheets : [EBManagedObject_address_protocol]
 ) -> IntArray {
 //--- START OF USER ZONE 2
         var result = [Int] ()
         for sheet in self_mSheets {
-          result.append (sheet.ebObjectIndex)
+          result.append (sheet.address)
         }
         return result
 //--- END OF USER ZONE 2

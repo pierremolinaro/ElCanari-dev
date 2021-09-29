@@ -15,13 +15,13 @@ import Cocoa
 
 func transient_MergerRoot_modelNames (
        _ self_boardModels_name : [BoardModel_name],
-       _ self_boardModels : [EBManagedObject_alloc_index_protocol]
+       _ self_boardModels : [EBManagedObject_address_protocol]
 ) -> StringTagArray {
 //--- START OF USER ZONE 2
   var array = StringTagArray ()
   var idx = 0
   while idx < self_boardModels_name.count {
-    array.append (StringTag (string: self_boardModels_name [idx].name, tag: self_boardModels [idx].ebObjectIndex))
+    array.append (StringTag (string: self_boardModels_name [idx].name, tag: self_boardModels [idx].address))
     idx += 1
   }
   return array

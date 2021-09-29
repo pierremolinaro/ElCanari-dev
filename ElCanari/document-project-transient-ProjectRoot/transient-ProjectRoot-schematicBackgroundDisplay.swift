@@ -18,8 +18,8 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
        _ self_mSchematicVersion : String,              
        _ self_sheetGeometry : SchematicSheetGeometry,  
        _ self_mSelectedSheet_mSheetTitle : String?,    
-       _ self_mSheets : [EBManagedObject_alloc_index_protocol],
-       _ self_mSelectedSheet : EBManagedObject_alloc_index_protocol?,
+       _ self_mSheets : [EBManagedObject_address_protocol],
+       _ self_mSelectedSheet : EBManagedObject_address_protocol?,
        _ self_mSchematicDate : Date
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -123,10 +123,10 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
         shape.add (text: dateFormatter.string (from: self_mSchematicDate), p, textAttributes, .center, .center)
      //--- Sheet index
         var s = "?"
-        if let selectedSheetIndex = self_mSelectedSheet?.ebObjectIndex {
+        if let selectedSheetIndex = self_mSelectedSheet?.address {
           var idx = 1
           for sheet in self_mSheets {
-            if sheet.ebObjectIndex == selectedSheetIndex {
+            if sheet.address == selectedSheetIndex {
               s = "\(idx)"
             }
             idx += 1

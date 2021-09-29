@@ -56,7 +56,7 @@ extension SheetInProject {
         if point.mLabels.count > 0 { errorFlags |= 16 }
         if point.mNet != nil { errorFlags |= 32 }
         if errorFlags != 0 {
-          ioErrorList.append ("Error \(errorFlags) for NC point \(string (point))")
+          ioErrorList.append ("Error \(errorFlags) for NC point \(point.address)")
         }
       }else{
         var errorFlags : UInt32 = 0
@@ -65,7 +65,7 @@ extension SheetInProject {
         if point.mSymbol != nil { connectionCount += 1 }
         if connectionCount == 0 { errorFlags |= 2 }
         if errorFlags != 0 {
-          ioErrorList.append ("Error \(errorFlags) for point \(string (point))")
+          ioErrorList.append ("Error \(errorFlags) for point \(point.address)")
         }
         exploreSet.insert (point)
       }
@@ -82,7 +82,7 @@ extension SheetInProject {
           if exploreSet.contains (p2) {
             exploreSet.remove (p2)
             if p2.mNet !== net {
-              ioErrorList.append ("Error p2.mNet != net for net \(string (net))")
+              ioErrorList.append ("Error p2.mNet != net for net \(net?.address ?? 0)")
             }
             for reachableWire in p2.mWiresP1s + p2.mWiresP2s {
               if !exploredWires.contains (reachableWire) {
@@ -95,7 +95,7 @@ extension SheetInProject {
           if exploreSet.contains (p1) {
             exploreSet.remove (p1)
             if p1.mNet !== net {
-              ioErrorList.append ("Error p1.mNet != net for net \(string (net))")
+              ioErrorList.append ("Error p1.mNet != net for net \(net?.address ?? 0)")
             }
             for reachableWire in p1.mWiresP1s + p1.mWiresP2s {
               if !exploredWires.contains (reachableWire) {

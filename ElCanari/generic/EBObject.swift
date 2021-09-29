@@ -17,12 +17,16 @@ struct ObjectAddress : Hashable {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol ObjectIndexProtocol : AnyObject {
-  var explorerIndexString : String { get }
+  #if BUILD_OBJECT_EXPLORER
+    var explorerIndexString : String { get }
+  #endif
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-var gEasyBindingsObjectIndex = 0
+#if BUILD_OBJECT_EXPLORER
+  private var gEasyBindingsObjectIndex = 0
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    EBObjcBaseObject class
@@ -32,13 +36,17 @@ class EBObjcBaseObject : NSObject, EBUserClassNameProtocol, ObjectIndexProtocol 
 
   //····················································································································
 
-  final let ebObjectIndex : Int
+  #if BUILD_OBJECT_EXPLORER
+    final private let mObjectIndex : Int
+  #endif
 
   //····················································································································
 
   override init () {
-    self.ebObjectIndex = gEasyBindingsObjectIndex
-    gEasyBindingsObjectIndex += 1
+    #if BUILD_OBJECT_EXPLORER
+      self.mObjectIndex = gEasyBindingsObjectIndex
+      gEasyBindingsObjectIndex += 1
+    #endif
     super.init ()
     noteObjectAllocation (self)
   }
@@ -51,9 +59,11 @@ class EBObjcBaseObject : NSObject, EBUserClassNameProtocol, ObjectIndexProtocol 
 
   //····················································································································
 
-  final var explorerIndexString : String {
-    return explorerObjectIndexString (self.ebObjectIndex)
-  }
+  #if BUILD_OBJECT_EXPLORER
+    final var explorerIndexString : String {
+      return explorerObjectIndexString (self.mObjectIndex)
+    }
+  #endif
 
   //····················································································································
 
@@ -68,14 +78,14 @@ class EBSwiftBaseObject : EBUserClassNameProtocol, ObjectIndexProtocol {
   //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
-    final let ebObjectIndex : Int
+    final private let mObjectIndex : Int
   #endif
 
   //····················································································································
 
   init () {
     #if BUILD_OBJECT_EXPLORER
-      self.ebObjectIndex = gEasyBindingsObjectIndex
+      self.mObjectIndex = gEasyBindingsObjectIndex
       gEasyBindingsObjectIndex += 1
     #endif
     noteObjectAllocation (self)
@@ -91,7 +101,7 @@ class EBSwiftBaseObject : EBUserClassNameProtocol, ObjectIndexProtocol {
 
   final var explorerIndexString : String {
     #if BUILD_OBJECT_EXPLORER
-      return explorerObjectIndexString (self.ebObjectIndex)
+      return explorerObjectIndexString (self.mObjectIndex)
     #else
       return ""
     #endif
@@ -100,42 +110,6 @@ class EBSwiftBaseObject : EBUserClassNameProtocol, ObjectIndexProtocol {
   //····················································································································
 
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBSwiftEquatableBaseObject class
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//class EBSwiftEquatableBaseObject : EBSwiftBaseObject, Equatable {
-//
-//  //····················································································································
-//  //   Equatable Protocol
-//  //····················································································································
-//
-//  public static func == (lhs : EBSwiftEquatableBaseObject, rhs : EBSwiftEquatableBaseObject) -> Bool {
-//    return lhs.ebObjectIndex == rhs.ebObjectIndex
-//  }
-//
-//  //····················································································································
-//
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBSwiftHashableBaseObject class
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//class EBSwiftHashableBaseObject : EBSwiftEquatableBaseObject, Hashable {
-//
-//  //····················································································································
-//  //   Hashable Protocol
-//  //····················································································································
-//
-//  func hash (into hasher: inout Hasher) {
-//    self.ebObjectIndex.hash (into: &hasher)
-//  }
-//
-//  //····················································································································
-//
-//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

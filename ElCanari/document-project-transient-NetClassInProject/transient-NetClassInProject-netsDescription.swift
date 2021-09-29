@@ -107,7 +107,7 @@ fileprivate func computeSubnets (_ inPointArray : NetInfoPointArray) -> (StatusS
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_NetClassInProject_netsDescription (
-       _ self_mNets : [EBManagedObject_alloc_index_protocol],
+       _ self_mNets : [EBManagedObject_address_protocol],
        _ self_mNets_trackCount : [NetInProject_trackCount],
        _ self_mNets_mNetName : [NetInProject_mNetName],
        _ self_mNets_netSchematicPointsInfo : [NetInProject_netSchematicPointsInfo],
@@ -130,7 +130,7 @@ func transient_NetClassInProject_netsDescription (
           }
           let (subnets, subnetsHaveWarning) = computeSubnets (netPointInfo)
           let netInfo = NetInfo (
-            netIdentifier: self_mNets [idx].ebObjectIndex, 
+            netIdentifier: self_mNets [idx].address, 
             netName: netName,
             netClassName: self_mNetClassName,
             points: netPointInfo,

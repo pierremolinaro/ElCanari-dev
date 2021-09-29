@@ -15,7 +15,7 @@ import Cocoa
 
 func transient_ComponentInProject_unplacedSymbols (
        _ self_componentName : String,              
-       _ self_mSymbols : [EBManagedObject_alloc_index_protocol],
+       _ self_mSymbols : [EBManagedObject_address_protocol],
        _ self_mSymbols_symbolInSchematic : [ComponentSymbolInProject_symbolInSchematic],
        _ self_mSymbols_mSymbolInstanceName : [ComponentSymbolInProject_mSymbolInstanceName],
        _ self_mSymbols_mSymbolTypeName : [ComponentSymbolInProject_mSymbolTypeName],
@@ -27,7 +27,7 @@ func transient_ComponentInProject_unplacedSymbols (
         while idx < self_mSymbols_mSymbolInstanceName.count {
           let inSchematics = self_mSymbols_symbolInSchematic [idx].symbolInSchematic!
           if !inSchematics {
-            let ebObjectIndex = self_mSymbols [idx].ebObjectIndex
+            let objectAddress = self_mSymbols [idx].address
             let symbolInstanceName = self_mSymbols_mSymbolInstanceName [idx].mSymbolInstanceName
             let symbolTypeName = self_mSymbols_mSymbolTypeName [idx].mSymbolTypeName
             var name = self_componentName
@@ -39,7 +39,7 @@ func transient_ComponentInProject_unplacedSymbols (
               name += ", " + self_mComponentValue
             }
             name += ")"
-            result.append (StringTag (string: name, tag: ebObjectIndex))
+            result.append (StringTag (string: name, tag: objectAddress))
           }
           idx += 1
         }

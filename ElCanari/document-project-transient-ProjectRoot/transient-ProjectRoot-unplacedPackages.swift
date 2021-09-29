@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_unplacedPackages (
-       _ self_mComponents : [EBManagedObject_alloc_index_protocol],
+       _ self_mComponents : [EBManagedObject_address_protocol],
        _ self_mComponents_componentName : [ComponentInProject_componentName],
        _ self_mComponents_mComponentValue : [ComponentInProject_mComponentValue],
        _ self_mComponents_componentIsPlacedInBoard : [ComponentInProject_componentIsPlacedInBoard]
@@ -29,7 +29,7 @@ func transient_ProjectRoot_unplacedPackages (
             if value != "" {
               title += " (" + value + ")"
             }
-            let tag = self_mComponents [idx].ebObjectIndex
+            let tag = self_mComponents [idx].address
             let st = StringTag (string: title, tag: tag)
             result.append (st)
           }

@@ -16,11 +16,11 @@ import Cocoa
 func transient_SheetInProject_sheetDescriptor (
        _ self_mRoot_sheetGeometry : SchematicSheetGeometry?,
        _ self_mRoot_sheetIndexes : IntArray?,  
-       _ self_ebObjectIndex : Int
+       _ self_address : Int
 ) -> SchematicSheetDescriptor {
 //--- START OF USER ZONE 2
         let geometry = self_mRoot_sheetGeometry!
-        let sheetIndex = 1 + (self_mRoot_sheetIndexes?.firstIndex (of: self_ebObjectIndex) ?? -1)
+        let sheetIndex = 1 + (self_mRoot_sheetIndexes?.firstIndex (of: self_address) ?? -1)
         return SchematicSheetDescriptor (
           geometry: geometry,
           sheetIndex: sheetIndex

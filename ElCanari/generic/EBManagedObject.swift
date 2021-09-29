@@ -6,51 +6,68 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func string (_ inManagedObject : EBManagedObject?) -> String {
-  if let object = inManagedObject {
-    return object.explorerIndexString
-  }else{
-    return "nil"
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func string (_ inManagedObjects : [EBManagedObject]) -> String {
-  var s = "["
-  var first = true
-  for object in inManagedObjects {
-    if first {
-      first = false
+#if BUILD_OBJECT_EXPLORER
+  func string (_ inManagedObject : EBManagedObject?) -> String {
+    if let object = inManagedObject {
+      return object.explorerIndexString
     }else{
-      s += ", "
+      return "nil"
     }
-    s += string (object)
   }
-  s += "]"
-  return s
-}
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol EBManagedObject_alloc_index_protocol : AnyObject {
-  var ebObjectIndex : Int { get }
+#if BUILD_OBJECT_EXPLORER
+  func string (_ inManagedObjects : [EBManagedObject]) -> String {
+    var s = "["
+    var first = true
+    for object in inManagedObjects {
+      if first {
+        first = false
+      }else{
+        s += ", "
+      }
+      s += string (object)
+    }
+    s += "]"
+    return s
+  }
+#endif
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol EBManagedObject_address_protocol : AnyObject {
+  var address : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //  EBManagedObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManagedObject_alloc_index_protocol {
+class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManagedObject_address_protocol {
+
+  //····················································································································
+
   private weak final var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+  //····················································································································
+
   final var savingIndex = 0
+
+  //····················································································································
+
+  final var address : Int { return unsafeBitCast (self, to: Int.self) }
+
+  //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
     final var mExplorerWindow : NSWindow? = nil
   #endif
 
+  //····················································································································
+
 //  final var className : String { return String (describing: type (of: self)) }
-//  let ebObjectIndex: Int
   
   //····················································································································
   //  init
@@ -58,8 +75,6 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
 
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mEBUndoManager = ebUndoManager
-//    self.ebObjectIndex = gEasyBindingsObjectIndex
-//    gEasyBindingsObjectIndex += 1
     super.init ()
   }
 
@@ -103,7 +118,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
 
   //····················································································································
 
-  final var ebObjectIndex_selection : EBSelection <Int> { return .single (self.ebObjectIndex) }
+  final var ebObjectIndex_selection : EBSelection <Int> { return .single (self.address) }
 
   //····················································································································
   //   showExplorerWindow

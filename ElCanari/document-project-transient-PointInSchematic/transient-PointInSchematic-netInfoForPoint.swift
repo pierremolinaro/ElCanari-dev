@@ -19,8 +19,8 @@ func transient_PointInSchematic_netInfoForPoint (
        _ self_mSymbol_mSymbolInstanceName : String?,
        _ self_mSymbolPinName : String,           
        _ self_mSymbol_pinPadAssignments : ThreeStringArray?,
-       _ self_mWiresP1s : [EBManagedObject_alloc_index_protocol],
-       _ self_mWiresP2s : [EBManagedObject_alloc_index_protocol],
+       _ self_mWiresP1s : [EBManagedObject_address_protocol],
+       _ self_mWiresP2s : [EBManagedObject_address_protocol],
        _ self_location : CanariPoint,            
        _ self_mSheet_sheetDescriptor : SchematicSheetDescriptor?
 ) -> NetInfoPoint {
@@ -28,10 +28,10 @@ func transient_PointInSchematic_netInfoForPoint (
       //--- Wires
         var wireIndexSet = Set <Int> ()
         for wire in self_mWiresP1s {
-          wireIndexSet.insert (wire.ebObjectIndex)
+          wireIndexSet.insert (wire.address)
         }
         for wire in self_mWiresP2s {
-          wireIndexSet.insert (wire.ebObjectIndex)
+          wireIndexSet.insert (wire.address)
         }
       //--- Location in sheet
         var locationInSheetString : String

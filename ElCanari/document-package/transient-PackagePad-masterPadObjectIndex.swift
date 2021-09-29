@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_PackagePad_masterPadObjectIndex (
-       _ self_ebObjectIndex : Int
+       _ self_address : Int
 ) -> Int {
 //--- START OF USER ZONE 2
-        return self_ebObjectIndex
+        return self_address
 //--- END OF USER ZONE 2
 }
 

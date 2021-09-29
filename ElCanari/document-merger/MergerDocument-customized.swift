@@ -125,7 +125,7 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
     //--- Find board model
       var optionalBoardModel : BoardModel? = nil
       for boardModel in self.rootObject.boardModels {
-        if boardModel.ebObjectIndex == boardModelTag {
+        if boardModel.address == boardModelTag {
           optionalBoardModel = boardModel
           break
         }

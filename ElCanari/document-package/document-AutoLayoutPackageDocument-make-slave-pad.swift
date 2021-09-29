@@ -18,13 +18,13 @@ extension AutoLayoutPackageDocument {
      let additionalDictionary = NSMutableDictionary ()
      for object in self.mPackageObjectsController.selectedArray {
        if let masterPad = object as? PackagePad {
-         additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPad.ebObjectIndex
+         additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPad.address
        }
      }
      if additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] == nil {
        for object in self.rootObject.packageObjects {
          if let masterPad = object as? PackagePad {
-           additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPad.ebObjectIndex
+           additionalDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPad.address
          }
        }
      }
