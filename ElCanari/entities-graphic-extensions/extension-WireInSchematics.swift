@@ -51,7 +51,7 @@ extension WireInSchematic {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_WireInSchematic (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  func canRotate90_WireInSchematic (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
@@ -82,8 +82,8 @@ extension WireInSchematic {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_WireInSchematic () -> ObjcCanariPointSet {
-    return ObjcCanariPointSet ()
+  func alignmentPoints_WireInSchematic () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································

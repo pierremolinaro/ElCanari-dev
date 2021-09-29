@@ -58,8 +58,8 @@ extension MergerBoardInstance {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_MergerBoardInstance () -> ObjcCanariPointSet {
-    return ObjcCanariPointSet ()
+  func alignmentPoints_MergerBoardInstance () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································

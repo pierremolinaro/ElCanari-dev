@@ -39,7 +39,7 @@ extension CommentInSchematic {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_CommentInSchematic (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  func canRotate90_CommentInSchematic (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
@@ -107,9 +107,9 @@ extension CommentInSchematic {
 
   //····················································································································
 
-  func alignmentPoints_CommentInSchematic () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
-    result.insert (CanariPoint (x: self.mX, y: self.mY))
+  func alignmentPoints_CommentInSchematic () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
+    result.insertCanariPoint (x: self.mX, y: self.mY)
     return result
   }
 

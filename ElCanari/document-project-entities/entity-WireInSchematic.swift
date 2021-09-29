@@ -612,8 +612,8 @@ final class WireInSchematic : SchematicObject,
   //  ROTATE 90
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    return canRotate90_WireInSchematic (accumulatedPoints: accumulatedPoints)
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return canRotate90_WireInSchematic (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
@@ -632,7 +632,7 @@ final class WireInSchematic : SchematicObject,
   //  Alignment Points
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> Set <CanariPoint> {
     return alignmentPoints_WireInSchematic ()
   }
 

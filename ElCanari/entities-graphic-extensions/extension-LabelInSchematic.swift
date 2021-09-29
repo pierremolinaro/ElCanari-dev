@@ -109,17 +109,16 @@ extension LabelInSchematic {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_LabelInSchematic () -> ObjcCanariPointSet {
-    return ObjcCanariPointSet ()
+  func alignmentPoints_LabelInSchematic () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_LabelInSchematic (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    let p = CanariPoint (x: self.mPoint!.mX, y: self.mPoint!.mY)
-    accumulatedPoints.insert (p)
+  func canRotate90_LabelInSchematic (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    accumulatedPoints.insertCanariPoint (x: self.mPoint!.mX, y: self.mPoint!.mY)
     return true
   }
 

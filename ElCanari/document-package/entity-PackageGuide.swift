@@ -800,7 +800,7 @@ final class PackageGuide : PackageObject,
   //  Alignment Points
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> Set <CanariPoint> {
     return alignmentPoints_PackageGuide ()
   }
 

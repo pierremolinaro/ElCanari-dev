@@ -159,10 +159,10 @@ extension BoardRestrictRectangle {
 
   //····················································································································
 
-  func alignmentPoints_BoardRestrictRectangle () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
-    result.insert (CanariPoint (x: self.mX, y: self.mY))
-    result.insert (CanariPoint (x: self.mX + self.mWidth, y: self.mY + self.mHeight))
+  func alignmentPoints_BoardRestrictRectangle () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
+    result.insertCanariPoint (x: self.mX, y: self.mY)
+    result.insertCanariPoint (x: self.mX + self.mWidth, y: self.mY + self.mHeight)
     return result
   }
 
@@ -170,8 +170,8 @@ extension BoardRestrictRectangle {
   //  Rotate 90°
   //····················································································································
 
-  func canRotate90_BoardRestrictRectangle (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    accumulatedPoints.insert (CanariPoint (x: self.mX + self.mWidth / 2, y: self.mY + self.mHeight / 2))
+  func canRotate90_BoardRestrictRectangle (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    accumulatedPoints.insertCanariPoint (x: self.mX + self.mWidth / 2, y: self.mY + self.mHeight / 2)
     return true
   }
 

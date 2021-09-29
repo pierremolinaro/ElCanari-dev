@@ -1262,8 +1262,8 @@ final class BorderCurve : EBGraphicManagedObject,
   //  ROTATE 90
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    return canRotate90_BorderCurve (accumulatedPoints: accumulatedPoints)
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return canRotate90_BorderCurve (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
@@ -1282,7 +1282,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //  Alignment Points
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> Set <CanariPoint> {
     return alignmentPoints_BorderCurve ()
   }
 

@@ -163,10 +163,10 @@ extension BoardTrack {
   //  Rotate 90°
   //····················································································································
 
-  func canRotate90_BoardTrack (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  func canRotate90_BoardTrack (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     if let p1 = self.mConnectorP1?.location, let p2 = self.mConnectorP2?.location {
-      accumulatedPoints.insert (CanariPoint (x: p1.x, y: p1.y))
-      accumulatedPoints.insert (CanariPoint (x: p2.x, y: p2.y))
+      accumulatedPoints.insert (p1)
+      accumulatedPoints.insert (p2)
       return true
     }else{
       return false
@@ -215,8 +215,8 @@ extension BoardTrack {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_BoardTrack () -> ObjcCanariPointSet {
-    return ObjcCanariPointSet ()
+  func alignmentPoints_BoardTrack () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································

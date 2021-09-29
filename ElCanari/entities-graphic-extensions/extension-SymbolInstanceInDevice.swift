@@ -43,8 +43,8 @@ extension SymbolInstanceInDevice {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_SymbolInstanceInDevice () -> ObjcCanariPointSet {
-    return ObjcCanariPointSet ()
+  func alignmentPoints_SymbolInstanceInDevice () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································

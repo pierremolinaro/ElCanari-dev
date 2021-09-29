@@ -30,7 +30,7 @@ extension BoardConnector {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_BoardConnector (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  func canRotate90_BoardConnector (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
@@ -48,8 +48,8 @@ extension BoardConnector {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_BoardConnector () -> ObjcCanariPointSet {
-    return ObjcCanariPointSet ()
+  func alignmentPoints_BoardConnector () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································

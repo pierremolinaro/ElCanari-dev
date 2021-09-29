@@ -121,8 +121,8 @@ extension BoardText {
   //  Rotate 90°
   //····················································································································
 
-  func canRotate90_BoardText (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    accumulatedPoints.insert (CanariPoint (x: self.mX, y: self.mY))
+  func canRotate90_BoardText (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    accumulatedPoints.insertCanariPoint (x: self.mX, y: self.mY)
     return true
   }
 
@@ -150,8 +150,8 @@ extension BoardText {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_BoardText () -> ObjcCanariPointSet {
-    return ObjcCanariPointSet ()
+  func alignmentPoints_BoardText () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································

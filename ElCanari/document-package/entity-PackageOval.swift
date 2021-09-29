@@ -853,7 +853,7 @@ final class PackageOval : PackageObject,
   //  Alignment Points
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> Set <CanariPoint> {
     return alignmentPoints_PackageOval ()
   }
 

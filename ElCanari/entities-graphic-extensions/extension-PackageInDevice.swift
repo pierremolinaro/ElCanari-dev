@@ -42,8 +42,8 @@ extension PackageInDevice {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_PackageInDevice () -> ObjcCanariPointSet {
-    return ObjcCanariPointSet ()
+  func alignmentPoints_PackageInDevice () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································

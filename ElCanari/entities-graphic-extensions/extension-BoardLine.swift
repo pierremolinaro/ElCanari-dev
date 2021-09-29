@@ -45,8 +45,8 @@ extension BoardLine {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_BoardLine () -> ObjcCanariPointSet {
-    return ObjcCanariPointSet ()
+  func alignmentPoints_BoardLine () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································
@@ -90,9 +90,9 @@ extension BoardLine {
   //  Rotate 90°
   //····················································································································
 
-  func canRotate90_BoardLine (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    accumulatedPoints.insert (CanariPoint (x: self.mX1, y: self.mY1))
-    accumulatedPoints.insert (CanariPoint (x: self.mX2, y: self.mY2))
+  func canRotate90_BoardLine (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    accumulatedPoints.insertCanariPoint (x: self.mX1, y: self.mY1)
+    accumulatedPoints.insertCanariPoint (x: self.mX2, y: self.mY2)
     return true
   }
 

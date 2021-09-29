@@ -141,9 +141,8 @@ extension ComponentSymbolInProject {
   //  ROTATE 90 CLOCKWISE
   //····················································································································
 
-  func canRotate90_ComponentSymbolInProject (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    let p = CanariPoint (x: self.mCenterX, y: self.mCenterY)
-    accumulatedPoints.insert (p)
+  func canRotate90_ComponentSymbolInProject (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    accumulatedPoints.insertCanariPoint (x: self.mCenterX, y: self.mCenterY)
     return true
   }
 
@@ -210,8 +209,8 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  func alignmentPoints_ComponentSymbolInProject () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
+  func alignmentPoints_ComponentSymbolInProject () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
     if let symbolInfo = self.symbolInfo {
       for pin in symbolInfo.pins {
         result.insert (pin.pinLocation)

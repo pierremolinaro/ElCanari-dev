@@ -95,11 +95,9 @@ extension PackageSegment {
   //  Rotate 90°
   //····················································································································
 
-  func canRotate90_PackageSegment (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    let p1  = CanariPoint (x: self.x1, y: self.y1)
-    let p2  = CanariPoint (x: self.x2, y: self.y2)
-    accumulatedPoints.insert (p1)
-    accumulatedPoints.insert (p2)
+  func canRotate90_PackageSegment (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    accumulatedPoints.insertCanariPoint (x: self.x1, y: self.y1)
+    accumulatedPoints.insertCanariPoint (x: self.x2, y: self.y2)
     return true
   }
 
@@ -154,10 +152,10 @@ extension PackageSegment {
 
   //····················································································································
 
-  func alignmentPoints_PackageSegment () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
-    result.insert (CanariPoint (x: self.x1, y: self.y1))
-    result.insert (CanariPoint (x: self.x2, y: self.y2))
+  func alignmentPoints_PackageSegment () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
+    result.insertCanariPoint (x: self.x1, y: self.y1)
+    result.insertCanariPoint (x: self.x2, y: self.y2)
     return result
   }
 

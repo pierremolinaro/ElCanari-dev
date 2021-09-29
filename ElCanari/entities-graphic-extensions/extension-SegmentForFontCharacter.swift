@@ -23,8 +23,8 @@ extension SegmentForFontCharacter {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_SegmentForFontCharacter () -> ObjcCanariPointSet {
-    return ObjcCanariPointSet ()
+  func alignmentPoints_SegmentForFontCharacter () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································

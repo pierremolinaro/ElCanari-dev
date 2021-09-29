@@ -2822,7 +2822,7 @@ final class ComponentInProject : BoardObject,
   //  Alignment Points
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> Set <CanariPoint> {
     return alignmentPoints_ComponentInProject ()
   }
 

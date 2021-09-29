@@ -1030,8 +1030,8 @@ final class SymbolPin : SymbolObject,
   //  ROTATE 90
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    return canRotate90_SymbolPin (accumulatedPoints: accumulatedPoints)
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return canRotate90_SymbolPin (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
@@ -1058,7 +1058,7 @@ final class SymbolPin : SymbolObject,
   //  Alignment Points
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> Set <CanariPoint> {
     return alignmentPoints_SymbolPin ()
   }
 

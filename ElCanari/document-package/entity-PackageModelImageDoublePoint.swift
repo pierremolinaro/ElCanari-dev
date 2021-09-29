@@ -614,7 +614,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //  Alignment Points
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> Set <CanariPoint> {
     return alignmentPoints_PackageModelImageDoublePoint ()
   }
 

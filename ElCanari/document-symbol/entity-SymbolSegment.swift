@@ -653,7 +653,7 @@ final class SymbolSegment : SymbolObject,
   //  Alignment Points
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> Set <CanariPoint> {
     return alignmentPoints_SymbolSegment ()
   }
 

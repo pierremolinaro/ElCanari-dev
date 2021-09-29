@@ -645,8 +645,8 @@ final class SymbolOval : SymbolObject,
   //  ROTATE 90
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    return canRotate90_SymbolOval (accumulatedPoints: accumulatedPoints)
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return canRotate90_SymbolOval (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
@@ -673,7 +673,7 @@ final class SymbolOval : SymbolObject,
   //  Alignment Points
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> Set <CanariPoint> {
     return alignmentPoints_SymbolOval ()
   }
 

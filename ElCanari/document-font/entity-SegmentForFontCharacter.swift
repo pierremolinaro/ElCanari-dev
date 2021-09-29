@@ -450,7 +450,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //  Alignment Points
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> Set <CanariPoint> {
     return alignmentPoints_SegmentForFontCharacter ()
   }
 

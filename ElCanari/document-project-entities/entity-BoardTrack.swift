@@ -2034,8 +2034,8 @@ final class BoardTrack : BoardObject,
   //  ROTATE 90
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    return canRotate90_BoardTrack (accumulatedPoints: accumulatedPoints)
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return canRotate90_BoardTrack (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
@@ -2054,7 +2054,7 @@ final class BoardTrack : BoardObject,
   //  Alignment Points
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> Set <CanariPoint> {
     return alignmentPoints_BoardTrack ()
   }
 

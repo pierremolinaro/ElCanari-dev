@@ -324,7 +324,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
   func alignmentPointSetArray () -> [Set<CanariPoint>] {
     var result = [Set<CanariPoint>] ()
     for object in self.objectArray.values {
-      result.append (object.alignmentPoints ().points)
+      result.append (object.alignmentPoints ())
     }
     return result
   }
@@ -953,7 +953,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
   //····················································································································
 
   var canRotate90_property = EBTransientProperty_Bool ()
-  private var mRotate90PointSet = ObjcCanariPointSet ()
+  private var mRotate90PointSet = Set <CanariPoint> ()
 
  //····················································································································
 
@@ -963,7 +963,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
       return false
     }else{
       for object in self.selectedArray {
-        if !object.canRotate90 (accumulatedPoints: self.mRotate90PointSet) {
+        if !object.canRotate90 (accumulatedPoints: &self.mRotate90PointSet) {
           return false
         }
       }
@@ -974,7 +974,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
   //····················································································································
 
   func rotate90Clockwise () {
-    let r = CanariRect (points: Array (self.mRotate90PointSet.points))
+    let r = CanariRect (points: Array (self.mRotate90PointSet))
     let userSet = ObjcObjectSet ()
     for object in self.selectedArray {
       object.rotate90Clockwise (from: r.center, userSet: userSet)
@@ -984,7 +984,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
   //····················································································································
 
   func rotate90CounterClockwise () {
-    let r = CanariRect (points: Array (self.mRotate90PointSet.points))
+    let r = CanariRect (points: Array (self.mRotate90PointSet))
     let userSet = ObjcObjectSet ()
     for object in self.selectedArray {
       object.rotate90CounterClockwise (from: r.center, userSet: userSet)

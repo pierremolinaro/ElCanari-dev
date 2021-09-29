@@ -85,7 +85,7 @@ extension SymbolSolidOval {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_SymbolSolidOval (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  func canRotate90_SymbolSolidOval (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
@@ -188,10 +188,10 @@ extension SymbolSolidOval {
 
   //····················································································································
 
-  func alignmentPoints_SymbolSolidOval () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
-    result.insert (CanariPoint (x: self.x, y: self.y))
-    result.insert (CanariPoint (x: self.x + self.width, y: self.y + self.height))
+  func alignmentPoints_SymbolSolidOval () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
+    result.insertCanariPoint (x: self.x, y: self.y)
+    result.insertCanariPoint (x: self.x + self.width, y: self.y + self.height)
     return result
   }
 

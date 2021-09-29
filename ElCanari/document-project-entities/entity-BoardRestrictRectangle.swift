@@ -661,8 +661,8 @@ final class BoardRestrictRectangle : BoardObject,
   //  ROTATE 90
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    return canRotate90_BoardRestrictRectangle (accumulatedPoints: accumulatedPoints)
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return canRotate90_BoardRestrictRectangle (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
@@ -689,7 +689,7 @@ final class BoardRestrictRectangle : BoardObject,
   //  Alignment Points
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> Set <CanariPoint> {
     return alignmentPoints_BoardRestrictRectangle ()
   }
 

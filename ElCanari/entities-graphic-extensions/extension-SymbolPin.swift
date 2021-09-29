@@ -69,7 +69,7 @@ extension SymbolPin {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_SymbolPin (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  func canRotate90_SymbolPin (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
@@ -158,11 +158,11 @@ extension SymbolPin {
 
   //····················································································································
 
-  func alignmentPoints_SymbolPin () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
-    result.insert (CanariPoint (x: self.xPin, y: self.yPin))
-    result.insert (CanariPoint (x: self.xName, y: self.yName))
-    result.insert (CanariPoint (x: self.xNumber, y: self.yNumber))
+  func alignmentPoints_SymbolPin () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
+    result.insertCanariPoint (x: self.xPin, y: self.yPin)
+    result.insertCanariPoint (x: self.xName, y: self.yName)
+    result.insertCanariPoint (x: self.xNumber, y: self.yNumber)
     return result
   }
 

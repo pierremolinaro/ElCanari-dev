@@ -1369,8 +1369,8 @@ final class ComponentSymbolInProject : SchematicObject,
   //  ROTATE 90
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    return canRotate90_ComponentSymbolInProject (accumulatedPoints: accumulatedPoints)
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return canRotate90_ComponentSymbolInProject (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
@@ -1389,7 +1389,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //  Alignment Points
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> Set <CanariPoint> {
     return alignmentPoints_ComponentSymbolInProject ()
   }
 

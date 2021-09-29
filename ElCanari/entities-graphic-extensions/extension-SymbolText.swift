@@ -44,7 +44,7 @@ extension SymbolText {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_SymbolText (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  func canRotate90_SymbolText (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
@@ -62,8 +62,8 @@ extension SymbolText {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_SymbolText () -> ObjcCanariPointSet {
-    return ObjcCanariPointSet ()
+  func alignmentPoints_SymbolText () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································

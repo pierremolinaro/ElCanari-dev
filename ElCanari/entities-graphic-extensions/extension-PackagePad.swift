@@ -93,8 +93,8 @@ extension PackagePad {
   //  Rotate 90°
   //····················································································································
 
-  func canRotate90_PackagePad (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    accumulatedPoints.insert (x: self.xCenter, y: self.yCenter)
+  func canRotate90_PackagePad (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    accumulatedPoints.insertCanariPoint (x: self.xCenter, y: self.yCenter)
     return true
   }
 
@@ -146,9 +146,9 @@ extension PackagePad {
 
   //····················································································································
 
-  func alignmentPoints_PackagePad () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
-    result.insert (CanariPoint (x: self.xCenter, y: self.yCenter))
+  func alignmentPoints_PackagePad () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
+    result.insertCanariPoint (x: self.xCenter, y: self.yCenter)
     return result
   }
 

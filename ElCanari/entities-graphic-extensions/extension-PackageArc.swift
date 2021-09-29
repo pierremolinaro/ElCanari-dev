@@ -153,8 +153,8 @@ extension PackageArc {
 
   //····················································································································
 
-  func alignmentPoints_PackageArc () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
+  func alignmentPoints_PackageArc () -> Set <CanariPoint> {
+    let result = Set <CanariPoint> ()
 //    result.points.append (CanariPoint (x: self.x, y: self.y))
 //    result.points.append (CanariPoint (x: self.x + self.width, y: self.y + self.height))
     return result

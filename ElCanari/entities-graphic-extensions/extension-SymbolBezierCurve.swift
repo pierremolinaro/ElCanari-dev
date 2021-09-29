@@ -181,15 +181,11 @@ extension SymbolBezierCurve {
   //  Rotate 90°
   //····················································································································
 
-  func canRotate90_SymbolBezierCurve (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    let p1  = CanariPoint (x: self.x1, y: self.y1)
-    let p2  = CanariPoint (x: self.x2, y: self.y2)
-    let cp1 = CanariPoint (x: self.cpx1, y: self.cpy1)
-    let cp2 = CanariPoint (x: self.cpx2, y: cpy2)
-    accumulatedPoints.insert (p1)
-    accumulatedPoints.insert (p2)
-    accumulatedPoints.insert (cp1)
-    accumulatedPoints.insert (cp2)
+  func canRotate90_SymbolBezierCurve (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    accumulatedPoints.insertCanariPoint (x: self.x1, y: self.y1)
+    accumulatedPoints.insertCanariPoint (x: self.x2, y: self.y2)
+    accumulatedPoints.insertCanariPoint (x: self.cpx1, y: self.cpy1)
+    accumulatedPoints.insertCanariPoint (x: self.cpx2, y: cpy2)
     return true
   }
 
@@ -272,12 +268,12 @@ extension SymbolBezierCurve {
 
   //····················································································································
 
-  func alignmentPoints_SymbolBezierCurve () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
-    result.insert (CanariPoint (x: self.x1, y: self.y1))
-    result.insert (CanariPoint (x: self.x2, y: self.y2))
-    result.insert (CanariPoint (x: self.cpx1, y: self.cpy1))
-    result.insert (CanariPoint (x: self.cpx2, y: self.cpy2))
+  func alignmentPoints_SymbolBezierCurve () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
+    result.insertCanariPoint (x: self.x1, y: self.y1)
+    result.insertCanariPoint (x: self.x2, y: self.y2)
+    result.insertCanariPoint (x: self.cpx1, y: self.cpy1)
+    result.insertCanariPoint (x: self.cpx2, y: self.cpy2)
     return result
   }
 

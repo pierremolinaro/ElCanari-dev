@@ -13,6 +13,7 @@ import Cocoa
 extension PackageRoot {
 
   //····················································································································
+
   func accumulate (withUndoManager inUndoManager : EBUndoManager,
                    strokeBezierPathes : inout EBBezierPath,
                    masterPads : inout EBReferenceArray <MasterPadInDevice>) {
@@ -60,6 +61,7 @@ extension PackageRoot {
   }
 
   //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -144,11 +144,11 @@ extension PackageZone {
 
   //····················································································································
 
-  func alignmentPoints_PackageZone () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
-    result.insert (CanariPoint (x: self.x, y: self.y))
-    result.insert (CanariPoint (x: self.x + self.width, y: self.y + self.height))
-    result.insert (CanariPoint (x: self.xName, y: self.yName))
+  func alignmentPoints_PackageZone () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
+    result.insertCanariPoint (x: self.x, y: self.y)
+    result.insertCanariPoint (x: self.x + self.width, y: self.y + self.height)
+    result.insertCanariPoint (x: self.xName, y: self.yName)
     return result
   }
 

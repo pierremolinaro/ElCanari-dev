@@ -144,7 +144,7 @@ extension BorderCurve {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_BorderCurve (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  func canRotate90_BorderCurve (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
@@ -162,8 +162,8 @@ extension BorderCurve {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_BorderCurve () -> ObjcCanariPointSet {
-    return ObjcCanariPointSet ()
+  func alignmentPoints_BorderCurve () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································

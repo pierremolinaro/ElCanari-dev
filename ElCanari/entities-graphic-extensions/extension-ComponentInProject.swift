@@ -126,7 +126,7 @@ extension ComponentInProject {
   //  Rotate 90°
   //····················································································································
 
-  func canRotate90_ComponentInProject (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  func canRotate90_ComponentInProject (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     if let padRect = self.selectedPackagePadsRect () {
       accumulatedPoints.insert (padRect.center.canariPoint)
       return true
@@ -180,8 +180,8 @@ extension ComponentInProject {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_ComponentInProject () -> ObjcCanariPointSet {
-    return ObjcCanariPointSet ()
+  func alignmentPoints_ComponentInProject () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································

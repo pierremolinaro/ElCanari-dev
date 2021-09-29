@@ -645,7 +645,7 @@ final class SymbolSolidRect : SymbolObject,
   //  ROTATE 90
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     return canRotate90_SymbolSolidRect (accumulatedPoints: accumulatedPoints)
   }
 
@@ -673,7 +673,7 @@ final class SymbolSolidRect : SymbolObject,
   //  Alignment Points
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
+  override func alignmentPoints () -> Set <CanariPoint> {
     return alignmentPoints_SymbolSolidRect ()
   }
 

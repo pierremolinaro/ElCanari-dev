@@ -43,8 +43,8 @@ extension PackageSlavePad {
   //  Rotate 90°
   //····················································································································
 
-  func canRotate90_PackageSlavePad (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    accumulatedPoints.insert (x: self.xCenter, y: self.yCenter)
+  func canRotate90_PackageSlavePad (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    accumulatedPoints.insertCanariPoint (x: self.xCenter, y: self.yCenter)
     return true
   }
 
@@ -140,9 +140,9 @@ extension PackageSlavePad {
 
   //····················································································································
 
-  func alignmentPoints_PackageSlavePad () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
-    result.insert (CanariPoint (x: self.xCenter, y: self.yCenter))
+  func alignmentPoints_PackageSlavePad () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
+    result.insertCanariPoint (x: self.xCenter, y: self.yCenter)
     return result
   }
 

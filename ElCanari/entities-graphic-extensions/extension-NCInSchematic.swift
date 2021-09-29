@@ -37,15 +37,15 @@ extension NCInSchematic {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_NCInSchematic () -> ObjcCanariPointSet {
-    return ObjcCanariPointSet ()
+  func alignmentPoints_NCInSchematic () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_NCInSchematic (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  func canRotate90_NCInSchematic (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     let p = self.mPoint!.location!
     accumulatedPoints.insert (p)
     return true

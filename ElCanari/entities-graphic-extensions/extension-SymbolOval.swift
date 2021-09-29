@@ -144,10 +144,10 @@ extension SymbolOval {
 
   //····················································································································
 
-  func alignmentPoints_SymbolOval () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
-    result.insert (CanariPoint (x: self.x, y: self.y))
-    result.insert (CanariPoint (x: self.x + self.width, y: self.y + self.height))
+  func alignmentPoints_SymbolOval () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
+    result.insertCanariPoint (x: self.x, y: self.y)
+    result.insertCanariPoint (x: self.x + self.width, y: self.y + self.height)
     return result
   }
 
@@ -181,7 +181,7 @@ extension SymbolOval {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_SymbolOval (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  func canRotate90_SymbolOval (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
