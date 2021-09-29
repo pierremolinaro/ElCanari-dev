@@ -12,22 +12,22 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct EBReferenceDictionary <KEY : AnyObject, VALUE> {
+struct EBReferenceDictionary <KEY : AnyObject, VALUE> : Sequence {
 
   //····················································································································
 
-  private var mDictionary : Dictionary <ObjectAddress, VALUE>
+  private var mDictionary : Dictionary <ObjectAddress, (KEY, VALUE)>
 
   //····················································································································
 
   init () {
-    self.mDictionary = Dictionary <ObjectAddress, VALUE> ()
+    self.mDictionary = Dictionary <ObjectAddress, (KEY, VALUE)> ()
   }
 
   //····················································································································
 
   init (minimumCapacity inMinimumCapacity : Int) {
-    self.mDictionary = Dictionary <ObjectAddress, VALUE> (minimumCapacity: inMinimumCapacity)
+    self.mDictionary = Dictionary <ObjectAddress, (KEY, VALUE)> (minimumCapacity: inMinimumCapacity)
   }
 
   //····················································································································
@@ -35,36 +35,17 @@ struct EBReferenceDictionary <KEY : AnyObject, VALUE> {
   subscript (_ inKey : KEY) -> VALUE? {
     get {
       let address = ObjectAddress (inKey)
-      return self.mDictionary [address]
+      return self.mDictionary [address]?.1
     }
-    set (newValue) {
+    set (optionalNewValue) {
       let address = ObjectAddress (inKey)
-      self.mDictionary [address] = newValue
+      if let newValue = optionalNewValue {
+        self.mDictionary [address] = (inKey, newValue)
+      }else{
+        self.mDictionary [address] = nil
+      }
     }
   }
-
-  //····················································································································
-
-//  init (_ inObjects : [T]) {
-//    self.mDictionary = Dictionary <ObjectAddress, T> (minimumCapacity: inObjects.count)
-//    for object in inObjects {
-//      self.insert (object)
-//    }
-//  }
-
-  //····················································································································
-
-//  mutating func insert (_ inObject : T) {
-//    let address = ObjectAddress (inObject)
-//    self.mDictionary [address] = inObject
-//  }
-
-  //····················································································································
-
-//  mutating func remove (_ inObject : T) {
-//    let address = ObjectAddress (inObject)
-//    self.mDictionary [address] = nil
-//  }
 
   //····················································································································
 
@@ -72,29 +53,6 @@ struct EBReferenceDictionary <KEY : AnyObject, VALUE> {
     let address = ObjectAddress (inKey)
     return self.mDictionary [address] != nil
   }
-
-  //····················································································································
-
-//  func intersection (_ inArray : [T]) -> EBReferenceSet <T> {
-//    var result = EBReferenceSet <T> ()
-//    for value in inArray {
-//      if self.contains (value) {
-//        result.insert (value)
-//      }
-//    }
-//    return result
-//  }
-
-  //····················································································································
-
-//  var first : T? { return self.mDictionary.first?.value }
-
-  //····················································································································
-
-//  mutating func removeFirst () {
-//    let address = ObjectAddress (self.first!)
-//    self.mDictionary [address] = nil
-//  }
 
   //····················································································································
 
@@ -106,17 +64,19 @@ struct EBReferenceDictionary <KEY : AnyObject, VALUE> {
 
   //····················································································································
 
-  var values : Dictionary <ObjectAddress, VALUE>.Values { return self.mDictionary.values }
-
-  //····················································································································
-
-//  func subtracting (_ inOtherSet : EBReferenceSet <T>) -> EBReferenceSet <T> {
-//     var result = self
-//     for (key, _) in inOtherSet.mDictionary {
-//       result.mDictionary [key] = nil
-//     }
-//     return result
-//  }
+  func makeIterator () -> AnyIterator <(KEY, VALUE)> {
+    let values = self.mDictionary.values
+    var index = values.startIndex
+    return AnyIterator {
+      if index != values.endIndex {
+        let result = values [index]
+         values.formIndex (after: &index)
+        return result
+      }else{
+        return nil
+      }
+    }
+  }
 
   //····················································································································
 

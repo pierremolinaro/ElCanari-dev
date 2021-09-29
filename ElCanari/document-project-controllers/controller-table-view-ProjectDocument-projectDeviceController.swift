@@ -291,7 +291,7 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [DeviceInProject : Int] ()
+      var objectDictionary = EBReferenceDictionary <DeviceInProject, Int> ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -358,7 +358,7 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [DeviceInProject : Int] ()
+          var sortedObjectDictionary = EBReferenceDictionary <DeviceInProject, Int> ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -386,7 +386,7 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [DeviceInProject : Int] ()
+          var objectDictionary = EBReferenceDictionary <DeviceInProject, Int> ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

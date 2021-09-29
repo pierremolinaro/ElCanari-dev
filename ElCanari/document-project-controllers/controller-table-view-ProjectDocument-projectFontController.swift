@@ -270,7 +270,7 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [FontInProject : Int] ()
+      var objectDictionary = EBReferenceDictionary <FontInProject, Int> ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -337,7 +337,7 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [FontInProject : Int] ()
+          var sortedObjectDictionary = EBReferenceDictionary <FontInProject, Int> ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -365,7 +365,7 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [FontInProject : Int] ()
+          var objectDictionary = EBReferenceDictionary <FontInProject, Int> ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

@@ -84,7 +84,7 @@ class EBManagedXibDocument : EBManagedDocument {
   private func reachableObjectsFromRootObject () -> [EBManagedObject] {
     let rootObject = self.mRootObject!
     var reachableObjectArray = [rootObject]
-    var reachableObjectSet = Set ([rootObject])
+    var reachableObjectSet = EBReferenceSet (rootObject)
     var objectsToExploreArray = [rootObject]
     while let objectToExplore = objectsToExploreArray.last {
       objectsToExploreArray.removeLast ()

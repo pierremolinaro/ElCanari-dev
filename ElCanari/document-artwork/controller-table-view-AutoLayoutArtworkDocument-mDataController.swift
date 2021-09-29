@@ -239,7 +239,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseOb
   final func indexesOfSelectedObjects () -> IndexSet {
     var indexSet = IndexSet ()
     var idx = 0
-    let selectedObjectSet = Set (self.selectedArray_property.propval)
+    let selectedObjectSet = EBReferenceSet (self.selectedArray_property.propval.values)
     for object in self.sortedArray_property.propval {
       if selectedObjectSet.contains (object) {
         indexSet.insert (idx)
@@ -281,7 +281,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseOb
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [ArtworkFileGenerationParameters : Int] ()
+          var sortedObjectDictionary = EBReferenceDictionary <ArtworkFileGenerationParameters, Int> ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -309,7 +309,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseOb
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [ArtworkFileGenerationParameters : Int] ()
+          var objectDictionary = EBReferenceDictionary <ArtworkFileGenerationParameters, Int> ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

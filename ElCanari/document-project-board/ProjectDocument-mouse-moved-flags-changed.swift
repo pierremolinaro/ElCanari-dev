@@ -73,7 +73,7 @@ extension CustomizedProjectDocument {
 
   internal func findAllConnectorsConnectedTo (_ inConnector : BoardConnector,
                                               trackSide inTrackSide : TrackSide) -> [BoardConnector] {
-    var connectorSet = Set ([inConnector])
+    var connectorSet = EBReferenceSet (inConnector)
     var exploreArray = [inConnector]
     while !exploreArray.isEmpty {
       let c = exploreArray.removeLast ()
@@ -89,7 +89,7 @@ extension CustomizedProjectDocument {
         }
       }
     }
-    return Array (connectorSet)
+    return Array (connectorSet.values)
   }
 
   //····················································································································

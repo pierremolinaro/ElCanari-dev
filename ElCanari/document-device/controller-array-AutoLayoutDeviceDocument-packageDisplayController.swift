@@ -441,7 +441,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-           self.selectedSet = EBReferenceSet ([inObject])
+           self.selectedSet = EBReferenceSet (inObject)
         }
       }
     }
@@ -507,7 +507,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
         }
       //----------------------------------------- Remove selected object
       //--- Dictionary of object absolute indexes
-        var objectDictionary = [PackageInDevice : Int] ()
+        var objectDictionary = EBReferenceDictionary <PackageInDevice, Int> ()
         for (index, object) in model_prop.enumerated () {
           objectDictionary [object] = index
         }

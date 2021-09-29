@@ -319,7 +319,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBSwiftBa
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [SymbolTypeInDevice : Int] ()
+          var sortedObjectDictionary = EBReferenceDictionary <SymbolTypeInDevice, Int> ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -347,7 +347,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBSwiftBa
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [SymbolTypeInDevice : Int] ()
+          var objectDictionary = EBReferenceDictionary <SymbolTypeInDevice, Int> ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

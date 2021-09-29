@@ -45,7 +45,7 @@ extension SheetInProject {
 
   func canConnectWithoutDialog (points inPoints : [PointInSchematic]) -> Bool {
     let wires = self.wiresStrictlyContaining (point: inPoints [0].location!)
-    var netSet = Set <NetInProject> ()
+    var netSet = EBReferenceSet <NetInProject> ()
     for wire in wires {
       if let net = wire.mP1?.mNet {
         netSet.insert (net)
@@ -81,14 +81,14 @@ extension SheetInProject {
       }
       return (inPoints, nets)
     }else{
-      var netSet = Set <NetInProject> ()
+      var netSet = EBReferenceSet <NetInProject> ()
       for point in points {
         if let net = point.mNet {
           netSet.insert (net)
         }
       }
     //---
-      let netArray = Array (netSet).sorted { $0.mNetName.uppercased () < $1.mNetName.uppercased () }
+      let netArray = Array (netSet.values).sorted { $0.mNetName.uppercased () < $1.mNetName.uppercased () }
       if netArray.count == 0 { // Allocate a new net if a point has a label or a pin
         var hasPinOrLabel = false
         for p in points {

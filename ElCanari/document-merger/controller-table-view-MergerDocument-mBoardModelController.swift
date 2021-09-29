@@ -258,7 +258,7 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [BoardModel : Int] ()
+      var objectDictionary = EBReferenceDictionary <BoardModel, Int> ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -325,7 +325,7 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [BoardModel : Int] ()
+          var sortedObjectDictionary = EBReferenceDictionary <BoardModel, Int> ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }

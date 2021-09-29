@@ -461,7 +461,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
         var array = EBReferenceArray (v)
         array.append (newObject)
       //--- New object is the selection
-        self.selectedSet = EBReferenceSet (newObject)
+        self.selectedSet = EBReferenceSet ([newObject])
         model.setProp (array)
       }
     }
@@ -507,7 +507,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
         }
       //----------------------------------------- Remove selected object
       //--- Dictionary of object absolute indexes
-        var objectDictionary = [PackageModelImageDoublePoint : Int] ()
+        var objectDictionary = EBReferenceDictionary <PackageModelImageDoublePoint, Int> ()
         for (index, object) in model_prop.enumerated () {
           objectDictionary [object] = index
         }

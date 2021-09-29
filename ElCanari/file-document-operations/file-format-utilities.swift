@@ -8,7 +8,7 @@ import Cocoa
 
 func collectAndPrepareObjectsForSaveOperation (fromRoot inRootObject : EBManagedObject) -> [EBManagedObject] {
   var reachableObjectArray = [inRootObject]
-  var reachableObjectSet = Set ([inRootObject])
+  var reachableObjectSet = EBReferenceSet (inRootObject)
   var objectsToExploreArray = [inRootObject]
   while let objectToExplore = objectsToExploreArray.last {
     objectsToExploreArray.removeLast ()
@@ -35,7 +35,7 @@ func collectAndPrepareObjectsForSaveOperation (fromRoot inRootObject : EBManaged
 
 func collectAndPrepareObjectsForDeletion (fromRoot inRootObject : EBManagedObject) {
   var reachableObjectArray = [inRootObject]
-  var reachableObjectSet = Set ([inRootObject])
+  var reachableObjectSet = EBReferenceSet (inRootObject)
   var objectsToExploreArray = [inRootObject]
   while let objectToExplore = objectsToExploreArray.last {
     objectsToExploreArray.removeLast ()

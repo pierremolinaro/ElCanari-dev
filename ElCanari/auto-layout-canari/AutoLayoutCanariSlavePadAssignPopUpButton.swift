@@ -77,7 +77,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
       var idx = 0
       for pad in self.mMasterPadArray {
         self.addItem (withTitle: "\(pad.padNameWithZoneName!)")
-        if pad == self.mReferencedMasterPadArray [0] {
+        if pad === self.mReferencedMasterPadArray [0] {
           self.selectItem (at: idx)
         }
         let menuItem = self.lastItem!
@@ -143,11 +143,11 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
         }
       }
     }
-    var masterPadSet = Set <PackagePad> ()
+    var masterPadSet = EBReferenceSet <PackagePad> ()
     for slavePad in self.mSelectedSlavePadArray {
       masterPadSet.insert (slavePad.master!)
     }
-    self.mReferencedMasterPadArray = Array (masterPadSet).sorted (by: { $0.padNameWithZoneName! < $1.padNameWithZoneName!})
+    self.mReferencedMasterPadArray = Array (masterPadSet.values).sorted (by: { $0.padNameWithZoneName! < $1.padNameWithZoneName!})
     self.buildMenu ()
   }
 

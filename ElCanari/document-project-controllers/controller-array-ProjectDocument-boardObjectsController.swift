@@ -441,7 +441,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-           self.selectedSet = EBReferenceSet ([inObject])
+           self.selectedSet = EBReferenceSet (inObject)
         }
       }
     }

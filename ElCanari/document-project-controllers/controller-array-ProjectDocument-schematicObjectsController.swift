@@ -441,7 +441,7 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-           self.selectedSet = EBReferenceSet ([inObject])
+           self.selectedSet = EBReferenceSet (inObject)
         }
       }
     }
@@ -479,7 +479,7 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
       case .single (let model_prop) :
       //------------- Find the object to be selected after selected object removing
       //--- Dictionary of object sorted indexes
-        var sortedObjectDictionary = [SchematicObject : Int] ()
+        var sortedObjectDictionary = EBReferenceDictionary <SchematicObject, Int> ()
         for (index, object) in model_prop.enumerated () {
           sortedObjectDictionary [object] = index
         }
@@ -507,7 +507,7 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
         }
       //----------------------------------------- Remove selected object
       //--- Dictionary of object absolute indexes
-        var objectDictionary = [SchematicObject : Int] ()
+        var objectDictionary = EBReferenceDictionary <SchematicObject, Int> ()
         for (index, object) in model_prop.enumerated () {
           objectDictionary [object] = index
         }

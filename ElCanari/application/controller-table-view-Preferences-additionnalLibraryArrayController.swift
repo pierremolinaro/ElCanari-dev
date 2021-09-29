@@ -252,7 +252,7 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [CanariLibraryEntry : Int] ()
+      var objectDictionary = EBReferenceDictionary <CanariLibraryEntry, Int> ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -319,7 +319,7 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [CanariLibraryEntry : Int] ()
+          var sortedObjectDictionary = EBReferenceDictionary <CanariLibraryEntry, Int> ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -347,7 +347,7 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [CanariLibraryEntry : Int] ()
+          var objectDictionary = EBReferenceDictionary <CanariLibraryEntry, Int> ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

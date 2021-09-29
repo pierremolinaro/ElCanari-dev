@@ -313,7 +313,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [ComponentInProject : Int] ()
+      var objectDictionary = EBReferenceDictionary <ComponentInProject, Int> ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }

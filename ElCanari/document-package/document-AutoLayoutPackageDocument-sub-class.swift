@@ -335,7 +335,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
   private func handlePadNumbering () {
     var allPads = self.rootObject.packagePads_property.propval
     let aPad = allPads.first
-    var zoneDictionary = [PackageZone : [PackagePad]] ()
+    var zoneDictionary = EBReferenceDictionary <PackageZone, [PackagePad]> ()
     for zone in self.rootObject.packageZones_property.propval {
       let zoneRect = zone.rect!
       var idx = 0

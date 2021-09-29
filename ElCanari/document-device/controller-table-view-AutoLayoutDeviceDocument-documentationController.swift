@@ -243,7 +243,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBSwif
   final func indexesOfSelectedObjects () -> IndexSet {
     var indexSet = IndexSet ()
     var idx = 0
-    let selectedObjectSet = EBReferenceSet <DeviceDocumentation> (self.selectedArray_property.propval.values)
+    let selectedObjectSet = EBReferenceSet (self.selectedArray_property.propval.values)
     for object in self.sortedArray_property.propval {
       if selectedObjectSet.contains (object) {
         indexSet.insert (idx)
@@ -285,7 +285,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBSwif
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [DeviceDocumentation : Int] ()
+          var sortedObjectDictionary = EBReferenceDictionary <DeviceDocumentation, Int> ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }

@@ -26,12 +26,6 @@ struct EBReferenceSet <T : AnyObject> {
 
   //····················································································································
 
-//  init <U> (_ inOtherSet : EBReferenceSet <U>) where U : T {
-//    self.mDictionary = inOtherSet.mDictionary
-//  }
-
-  //····················································································································
-
   init (_ inObjects : [T]) {
     self.mDictionary = Dictionary <ObjectAddress, T> (minimumCapacity: inObjects.count)
     for object in inObjects {
@@ -105,9 +99,11 @@ struct EBReferenceSet <T : AnyObject> {
 
   //····················································································································
 
-  mutating func removeFirst () {
+  mutating func removeFirst () -> T {
     let address = ObjectAddress (self.first!)
+    let result = self.mDictionary [address]!
     self.mDictionary [address] = nil
+    return result
   }
 
   //····················································································································

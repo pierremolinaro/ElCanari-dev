@@ -28,7 +28,7 @@ extension CustomizedProjectDocument {
     var loop = true
     while loop {
       if let object = objectExploreSet.first {
-        objectExploreSet.removeFirst ()
+        _ = objectExploreSet.removeFirst ()
         objectSet.insert (object)
         if let nc = object as? NCInSchematic, let point = nc.mPoint, !pointSet.contains (point) {
           pointExploreSet.insert (point)
@@ -49,7 +49,7 @@ extension CustomizedProjectDocument {
           }
         }
       }else if let point = pointExploreSet.first {
-        pointExploreSet.removeFirst ()
+        _ = pointExploreSet.removeFirst ()
         pointSet.insert (point)
         if let nc = point.mNC {
           objectSet.insert (nc)

@@ -441,7 +441,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolDisplayController : ReadOn
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-           self.selectedSet = EBReferenceSet ([inObject])
+           self.selectedSet = EBReferenceSet (inObject)
         }
       }
     }

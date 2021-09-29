@@ -353,7 +353,7 @@ final class Controller_ProjectDocument_mDataController : ReadOnlyAbstractGeneric
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [ArtworkFileGenerationParameters : Int] ()
+          var objectDictionary = EBReferenceDictionary <ArtworkFileGenerationParameters, Int> ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

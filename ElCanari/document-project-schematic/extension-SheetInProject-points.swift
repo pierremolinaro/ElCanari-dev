@@ -45,7 +45,7 @@ extension SheetInProject {
       }
     }
   //--- Check points
-    var exploreSet = Set <PointInSchematic> ()
+    var exploreSet = EBReferenceSet <PointInSchematic> ()
     for point in self.mPoints {
       if point.mNC != nil {
         var errorFlags : UInt32 = 0
@@ -73,15 +73,15 @@ extension SheetInProject {
       while exploreSet.count > 0 {
         let point = exploreSet.removeFirst ()
         let net = point.mNet
-        var wiresToExplore = Set (point.mWiresP1s + point.mWiresP2s)
-        var exploredWires = Set <WireInSchematic> ()
+        var wiresToExplore = EBReferenceSet <WireInSchematic> (point.mWiresP1s.values + point.mWiresP2s.values)
+        var exploredWires = EBReferenceSet <WireInSchematic> ()
         while wiresToExplore.count > 0 {
           let wire = wiresToExplore.removeFirst ()
           exploredWires.insert (wire)
           let p2 = wire.mP2!
           if exploreSet.contains (p2) {
             exploreSet.remove (p2)
-            if p2.mNet != net {
+            if p2.mNet !== net {
               ioErrorList.append ("Error p2.mNet != net for net \(string (net))")
             }
             for reachableWire in p2.mWiresP1s + p2.mWiresP2s {
@@ -94,7 +94,7 @@ extension SheetInProject {
           let p1 = wire.mP1!
           if exploreSet.contains (p1) {
             exploreSet.remove (p1)
-            if p1.mNet != net {
+            if p1.mNet !== net {
               ioErrorList.append ("Error p1.mNet != net for net \(string (net))")
             }
             for reachableWire in p1.mWiresP1s + p1.mWiresP2s {
@@ -115,7 +115,7 @@ extension SheetInProject {
     var exploreSet = EBReferenceSet (inPoint)
     var result = EBReferenceSet <PointInSchematic> ()
     while let point = exploreSet.first {
-      exploreSet.removeFirst ()
+      _ = exploreSet.removeFirst ()
       result.insert (point)
       for wire in point.mWiresP1s {
         if let p2 = wire.mP2, !result.contains (p2) {
