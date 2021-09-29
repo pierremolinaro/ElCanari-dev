@@ -50,7 +50,7 @@ extension CustomizedProjectDocument {
       menuItem.representedObject = connectorsBackSide
       menu.addItem (menuItem)
     }
-    let connectorsBothSides = Array (Set (connectorsBackSide + connectorsFrontSide))
+    let connectorsBothSides = Array (EBReferenceSet (connectorsBackSide + connectorsFrontSide).values)
     if connectorsBothSides.count > 1 {
       let menuItem = NSMenuItem (title: "Connect in both Sides", action: #selector (Self.connectInBoardAction (_:)), keyEquivalent: "")
       menuItem.target = self
@@ -107,8 +107,8 @@ extension CustomizedProjectDocument {
       }
     }
   //--- Propagate net from retained connector
-    var exploredTracks = Set <BoardTrack> (inRetainedConnector.mTracksP1 + inRetainedConnector.mTracksP2)
-    var tracksToExplore = Array (exploredTracks)
+    var exploredTracks = EBReferenceSet <BoardTrack> (inRetainedConnector.mTracksP1.values + inRetainedConnector.mTracksP2.values)
+    var tracksToExplore = Array (exploredTracks.values)
     while let track = tracksToExplore.last {
       tracksToExplore.removeLast ()
       track.mNet = inNet
@@ -132,10 +132,10 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  internal func findAllNetsConnectedToPad (_ inConnectors : [BoardConnector]) -> Set <NetInProject> {
+  internal func findAllNetsConnectedToPad (_ inConnectors : [BoardConnector]) -> EBReferenceSet <NetInProject> {
     var netNameSet = Set <String>  ()
     var connectorsToExplore = inConnectors
-    var exploredConnectors = Set (inConnectors)
+    var exploredConnectors = EBReferenceSet (inConnectors)
     while let connector = connectorsToExplore.last {
       connectorsToExplore.removeLast ()
       if let net = connector.mComponent?.padNetDictionary? [connector.mComponentPadName] {
@@ -155,7 +155,7 @@ extension CustomizedProjectDocument {
       }
     }
   //---
-    var result = Set <NetInProject> ()
+    var result = EBReferenceSet <NetInProject> ()
     for netClass in self.rootObject.mNetClasses {
       for net in netClass.mNets {
         if netNameSet.contains (net.mNetName) {

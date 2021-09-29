@@ -338,7 +338,7 @@ extension CustomizedProjectDocument {
 
   private func appendCreateConnectItemTo (menu : NSMenu, points inPoints : [PointInSchematic], wires inWires : [WireInSchematic]) {
     if self.canConnect (points: inPoints, wires: inWires) {
-      var netSet = Set <NetInProject> ()
+      var netSet = EBReferenceSet <NetInProject> ()
       for p in inPoints {
         if let net = p.mNet {
           netSet.insert (net)

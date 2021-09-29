@@ -134,7 +134,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
   private final func performModelAdjustements () {
     self.ebUndoManager.disableUndoRegistration ()
   //--- Remove components
-    let componentSet = Set (self.rootObject.mComponents)
+    let componentSet = EBReferenceSet (self.rootObject.mComponents.values)
     for font in self.rootObject.mFonts {
       for component in font.mComponentNames {
         if !componentSet.contains (component) {

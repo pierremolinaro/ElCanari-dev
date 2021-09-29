@@ -167,7 +167,8 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
       case .empty, .multiple :
         break
       case .single (let objectArray) :
-        if objectArray.contains (inObject) {
+       let array = EBReferenceArray (objectArray)
+       if array.contains (inObject) {
            self.selectedSet = EBReferenceSet (inObject)
         }
       }

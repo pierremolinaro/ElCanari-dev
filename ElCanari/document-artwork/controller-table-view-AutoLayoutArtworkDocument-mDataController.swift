@@ -201,7 +201,8 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseOb
       case .empty, .multiple :
         ()
       case .single (let objectArray) :
-        if objectArray.contains (inObject) {
+        let array = EBReferenceArray (objectArray)
+        if array.contains (inObject) {
           self.mInternalSelectedArrayProperty.setProp ([inObject])
         }
       }

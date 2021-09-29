@@ -705,8 +705,8 @@ extension ProjectDocument {
     var connectivityErrorCount = 0
     for (netName, padConnectors) in inNetConnectorsDictionary {
       var connectorExploreArray = [padConnectors [0].0]
-      var connectorExploredSet = Set (connectorExploreArray)
-      var exploredTrackSet = Set <BoardTrack> ()
+      var connectorExploredSet = EBReferenceSet (connectorExploreArray)
+      var exploredTrackSet = EBReferenceSet <BoardTrack> ()
     //--- Iterative exploration of net
       while let connector = connectorExploreArray.last {
         connectorExploreArray.removeLast ()

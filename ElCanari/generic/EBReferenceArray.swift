@@ -62,6 +62,21 @@ struct EBReferenceArray <T : AnyObject> : RangeReplaceableCollection {
 
   //····················································································································
 
+  func contains (_ inObject : T) -> Bool {
+    let address = ObjectAddress (inObject)
+    var idx = 0
+    while idx < self.mArray.count {
+      let p = ObjectAddress (self.mArray [idx])
+      idx += 1
+      if address == p {
+        return true
+      }
+    }
+    return false
+  }
+
+  //····················································································································
+
   var values : [T] { return self.mArray }
 
   //····················································································································

@@ -70,7 +70,7 @@ final class EBPopUpButtonControllerForNetClassFromSelectedWires : EBOutletEvent 
     if let popup = self.mOutlet {
       popup.removeAllItems ()
       if let arrayModel = self.mArrayModel?.propval, let selectedArray = self.mSelection?.selectedArray {
-        var selectedNetClasses = Set <NetClassInProject> ()
+        var selectedNetClasses = EBReferenceSet <NetClassInProject> ()
         for wire in selectedArray {
           if let netClass = wire.mP1?.mNet?.mNetClass {
             selectedNetClasses.insert (netClass)

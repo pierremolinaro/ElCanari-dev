@@ -330,7 +330,8 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
       case .empty, .multiple :
         break
       case .single (let objectArray) :
-        if objectArray.contains (inObject) {
+        let array = EBReferenceArray (objectArray)
+        if array.contains (inObject) {
           self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObject))
         }
       }

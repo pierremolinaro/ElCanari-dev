@@ -50,6 +50,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
   #endif
 
 //  final var className : String { return String (describing: type (of: self)) }
+//  let ebObjectIndex: Int
   
   //····················································································································
   //  init
@@ -57,6 +58,8 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
 
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mEBUndoManager = ebUndoManager
+//    self.ebObjectIndex = gEasyBindingsObjectIndex
+//    gEasyBindingsObjectIndex += 1
     super.init ()
   }
 

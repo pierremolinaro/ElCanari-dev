@@ -70,7 +70,7 @@ final class EBPopUpButtonControllerForNetClassFromSelectedLabels : EBOutletEvent
     if let popup = self.mOutlet {
       popup.removeAllItems ()
       if let arrayModel = self.mArrayModel?.propval, let selectedArray = self.mSelection?.selectedArray {
-        var selectedNetClasses = Set <NetClassInProject> ()
+        var selectedNetClasses = EBReferenceSet <NetClassInProject> ()
         for label in selectedArray {
           if let netClass = label.mPoint?.mNet?.mNetClass {
             selectedNetClasses.insert (netClass)

@@ -22,7 +22,7 @@ protocol ObjectIndexProtocol : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private var gEasyBindingsObjectIndex = 0
+var gEasyBindingsObjectIndex = 0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    EBObjcBaseObject class

@@ -172,7 +172,7 @@ extension ProjectDocument {
   //····················································································································
 
   @IBAction func selectAllTracksOfSelectedTracksNetsAction (_ inSender : Any?) {
-    var netSet = Set <NetInProject> ()
+    var netSet = EBReferenceSet <NetInProject> ()
     for object in self.boardObjectsController.selectedArray {
       if let track = object as? BoardTrack, let net = track.mNet {
         netSet.insert (net)

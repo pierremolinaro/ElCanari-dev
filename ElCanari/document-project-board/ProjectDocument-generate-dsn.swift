@@ -493,6 +493,27 @@ fileprivate struct PackageDictionaryKeyForDSNExport : Hashable {
   let device : DeviceInProject
   let routeSlavePads : Bool
   let package : DevicePackageInProject
+
+  //····················································································································
+  //  Equatable Protocol
+  //····················································································································
+
+  static func == (lhs : PackageDictionaryKeyForDSNExport, rhs : PackageDictionaryKeyForDSNExport) -> Bool {
+    return (lhs.device === rhs.device) && (lhs.routeSlavePads == rhs.routeSlavePads) && (lhs.package === rhs.package)
+  }
+
+  //····················································································································
+  //  Hashable Protocol
+  //····················································································································
+
+   func hash (into hasher: inout Hasher) {
+    ObjectAddress (self.device).hash (into: &hasher)
+    self.routeSlavePads.hash (into: &hasher)
+    ObjectAddress (self.package).hash (into: &hasher)
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -440,7 +440,8 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
       case .empty, .multiple :
         break
       case .single (let objectArray) :
-        if objectArray.contains (inObject) {
+       let array = EBReferenceArray (objectArray)
+       if array.contains (inObject) {
            self.selectedSet = EBReferenceSet (inObject)
         }
       }
