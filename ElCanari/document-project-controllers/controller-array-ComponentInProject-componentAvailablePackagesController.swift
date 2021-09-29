@@ -168,7 +168,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-           self.selectedSet = EBReferenceSet ([inObject])
+           self.selectedSet = EBReferenceSet (inObject)
         }
       }
     }
@@ -206,7 +206,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
       case .single (let model_prop) :
       //------------- Find the object to be selected after selected object removing
       //--- Dictionary of object sorted indexes
-        var sortedObjectDictionary = [DevicePackageInProject : Int] ()
+        var sortedObjectDictionary = EBReferenceDictionary <DevicePackageInProject, Int> ()
         for (index, object) in model_prop.enumerated () {
           sortedObjectDictionary [object] = index
         }
@@ -234,7 +234,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
         }
       //----------------------------------------- Remove selected object
       //--- Dictionary of object absolute indexes
-        var objectDictionary = [DevicePackageInProject : Int] ()
+        var objectDictionary = EBReferenceDictionary <DevicePackageInProject, Int> ()
         for (index, object) in model_prop.enumerated () {
           objectDictionary [object] = index
         }

@@ -243,7 +243,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBSwif
   final func indexesOfSelectedObjects () -> IndexSet {
     var indexSet = IndexSet ()
     var idx = 0
-    let selectedObjectSet = Set (self.selectedArray_property.propval)
+    let selectedObjectSet = EBReferenceSet <DeviceDocumentation> (self.selectedArray_property.propval.values)
     for object in self.sortedArray_property.propval {
       if selectedObjectSet.contains (object) {
         indexSet.insert (idx)
@@ -313,7 +313,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBSwif
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [DeviceDocumentation : Int] ()
+          var objectDictionary = EBReferenceDictionary <DeviceDocumentation, Int> ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

@@ -479,7 +479,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolDisplayController : ReadOn
       case .single (let model_prop) :
       //------------- Find the object to be selected after selected object removing
       //--- Dictionary of object sorted indexes
-        var sortedObjectDictionary = [SymbolInstanceInDevice : Int] ()
+        var sortedObjectDictionary = EBReferenceDictionary <SymbolInstanceInDevice, Int> ()
         for (index, object) in model_prop.enumerated () {
           sortedObjectDictionary [object] = index
         }
@@ -507,7 +507,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolDisplayController : ReadOn
         }
       //----------------------------------------- Remove selected object
       //--- Dictionary of object absolute indexes
-        var objectDictionary = [SymbolInstanceInDevice : Int] ()
+        var objectDictionary = EBReferenceDictionary <SymbolInstanceInDevice, Int> ()
         for (index, object) in model_prop.enumerated () {
           objectDictionary [object] = index
         }

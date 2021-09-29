@@ -23,14 +23,14 @@ extension SheetInProject {
 
   //····················································································································
 
-  internal func updateConnections (pointSet inPointSet : Set <PointInSchematic>) {
+  internal func updateConnections (pointSet inPointSet : EBReferenceSet <PointInSchematic>) {
     if let root = self.mRoot {
     //--- Find subnets
-      let subnets : [Set <PointInSchematic>] = self.buildSubnetsFrom (inPointSet)
+      let subnets : [EBReferenceSet <PointInSchematic>] = self.buildSubnetsFrom (inPointSet)
     //--- Classify subnets
-      var subnetsWithSymbolPin = [Set <PointInSchematic>] ()
-      var subnetsWithLabelsNoSymbolPin = [Set <PointInSchematic>] ()
-      var subnetsWithNoLabelNoSymbolPin = [Set <PointInSchematic>] ()
+      var subnetsWithSymbolPin = [EBReferenceSet <PointInSchematic>] ()
+      var subnetsWithLabelsNoSymbolPin = [EBReferenceSet <PointInSchematic>] ()
+      var subnetsWithNoLabelNoSymbolPin = [EBReferenceSet <PointInSchematic>] ()
       for subnet in subnets {
         let symbolArray = self.buildSymbolArrayFromSubnet (subnet)
         if symbolArray.count > 0 {
@@ -45,7 +45,7 @@ extension SheetInProject {
         }
       }
     //--- Reassign nets
-      var usedNets = Set <NetInProject> ()
+      var usedNets = EBReferenceSet <NetInProject> ()
       for subnet in subnetsWithSymbolPin {
         let point = subnet.first!
         let noConnection = (point.mLabels.count + point.mWiresP1s.count + point.mWiresP2s.count) == 0
@@ -58,7 +58,7 @@ extension SheetInProject {
           }else{
             usedNets.insert (net)
           }
-          for point in subnet {
+          for point in subnet.values {
             point.mNet = net
           }
         }
@@ -70,13 +70,13 @@ extension SheetInProject {
         }else{
           usedNets.insert (net)
         }
-        for point in subnet {
+        for point in subnet.values {
           point.mNet = net
         }
       }
     //--- Remove any net for subnets without pin, without label
       for subnet in subnetsWithNoLabelNoSymbolPin {
-        for point in subnet {
+        for point in subnet.values {
           point.mNet = nil
         }
       }
@@ -85,8 +85,8 @@ extension SheetInProject {
 
   //····················································································································
 
-  fileprivate func performDisconnection (points inPoints : [PointInSchematic]) -> Set <PointInSchematic> {
-    var pointSet = Set <PointInSchematic> ()
+  fileprivate func performDisconnection (points inPoints : [PointInSchematic]) -> EBReferenceSet <PointInSchematic> {
+    var pointSet = EBReferenceSet <PointInSchematic> ()
     for p in inPoints {
       let location = p.location!
     //--- Remove NC ?

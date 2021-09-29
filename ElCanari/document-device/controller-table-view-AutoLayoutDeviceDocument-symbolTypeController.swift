@@ -277,7 +277,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBSwiftBa
   final func indexesOfSelectedObjects () -> IndexSet {
     var indexSet = IndexSet ()
     var idx = 0
-    let selectedObjectSet = Set (self.selectedArray_property.propval)
+    let selectedObjectSet = EBReferenceSet (self.selectedArray_property.propval.values)
     for object in self.sortedArray_property.propval {
       if selectedObjectSet.contains (object) {
         indexSet.insert (idx)

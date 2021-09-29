@@ -17,7 +17,7 @@ extension PointInSchematic {
   //····················································································································
 
   func propagateNetToAccessiblePointsThroughtWires () {
-    var reachedPointSet = Set <PointInSchematic> ([self])
+    var reachedPointSet = EBReferenceSet <PointInSchematic> (self)
     var exploreArray = [self]
     while let point = exploreArray.last {
       exploreArray.removeLast ()

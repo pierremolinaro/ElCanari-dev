@@ -143,7 +143,7 @@ extension WireInSchematic {
   //····················································································································
 
   func operationBeforeRemoving_WireInSchematic () {
-    var pointSet = Set <PointInSchematic> ()
+    var pointSet = EBReferenceSet <PointInSchematic> ()
     pointSet.insert (self.mP1!)
     pointSet.insert (self.mP2!)
     self.mP1 = nil // Detach from point

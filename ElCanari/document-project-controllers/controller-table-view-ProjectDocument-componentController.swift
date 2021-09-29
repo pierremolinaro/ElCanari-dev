@@ -380,7 +380,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [ComponentInProject : Int] ()
+          var sortedObjectDictionary = EBReferenceDictionary <ComponentInProject, Int> ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -408,7 +408,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [ComponentInProject : Int] ()
+          var objectDictionary = EBReferenceDictionary <ComponentInProject, Int> ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

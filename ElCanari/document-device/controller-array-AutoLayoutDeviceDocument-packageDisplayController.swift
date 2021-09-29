@@ -479,7 +479,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
       case .single (let model_prop) :
       //------------- Find the object to be selected after selected object removing
       //--- Dictionary of object sorted indexes
-        var sortedObjectDictionary = [PackageInDevice : Int] ()
+        var sortedObjectDictionary = EBReferenceDictionary <PackageInDevice, Int> ()
         for (index, object) in model_prop.enumerated () {
           sortedObjectDictionary [object] = index
         }

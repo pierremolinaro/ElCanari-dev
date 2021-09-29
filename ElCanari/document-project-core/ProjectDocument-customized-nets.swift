@@ -41,13 +41,13 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
   //····················································································································
 
   @IBAction func newAutomaticNetNameFromSelectedWireAction (_ sender : NSObject?) { // Bound in IB
-     var netSet = Set <NetInProject> ()
+     var netSet = EBReferenceSet <NetInProject> ()
      for wire in self.wireInSchematicSelectionController.selectedArray.values {
        if let net = wire.mP1?.mNet {
          netSet.insert (net)
        }
      }
-     for net in netSet {
+     for net in netSet.values {
        net.mNetName = self.rootObject.findUniqueNetName ()
      }
      self.updateSchematicPointsAndNets ()
@@ -89,13 +89,13 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
   //····················································································································
 
   @IBAction func newAutomaticNetNameFromSelectedLabelAction (_ sender : NSObject?) { // Bound in IB
-     var netSet = Set <NetInProject> ()
+     var netSet = EBReferenceSet <NetInProject> ()
      for label in self.schematicLabelSelectionController.selectedArray.values {
        if let net = label.mPoint?.mNet {
          netSet.insert (net)
        }
      }
-     for net in netSet {
+     for net in netSet.values {
        net.mNetName = self.rootObject.findUniqueNetName ()
      }
     self.updateSchematicPointsAndNets ()

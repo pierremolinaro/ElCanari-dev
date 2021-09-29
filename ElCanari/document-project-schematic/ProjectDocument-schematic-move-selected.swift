@@ -34,14 +34,14 @@ extension CustomizedProjectDocument {
       }
       window.beginSheet (panel) { (inModalResponse) in
         if inModalResponse == .stop, let sheet = popup.selectedItem?.representedObject as? SheetInProject {
-          for point in selectedPoints {
+          for point in selectedPoints.values {
             point.mSheet = sheet
           }
-          for object in selectedObjects {
+          for object in selectedObjects.values {
             object.mSheet = sheet
           }
           self.rootObject.mSelectedSheet = sheet
-          self.schematicObjectsController.setSelection (Array (selectedObjects))
+          self.schematicObjectsController.setSelection (Array (selectedObjects.values))
         }
       }
     }

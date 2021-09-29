@@ -258,7 +258,7 @@ final class Controller_ProjectDocument_mDataController : ReadOnlyAbstractGeneric
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [ArtworkFileGenerationParameters : Int] ()
+      var objectDictionary = EBReferenceDictionary <ArtworkFileGenerationParameters, Int> ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -325,7 +325,7 @@ final class Controller_ProjectDocument_mDataController : ReadOnlyAbstractGeneric
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [ArtworkFileGenerationParameters : Int] ()
+          var sortedObjectDictionary = EBReferenceDictionary <ArtworkFileGenerationParameters, Int> ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }

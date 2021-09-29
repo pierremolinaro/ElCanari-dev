@@ -479,7 +479,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
       case .single (let model_prop) :
       //------------- Find the object to be selected after selected object removing
       //--- Dictionary of object sorted indexes
-        var sortedObjectDictionary = [BoardObject : Int] ()
+        var sortedObjectDictionary = EBReferenceDictionary <BoardObject, Int> ()
         for (index, object) in model_prop.enumerated () {
           sortedObjectDictionary [object] = index
         }
@@ -507,7 +507,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
         }
       //----------------------------------------- Remove selected object
       //--- Dictionary of object absolute indexes
-        var objectDictionary = [BoardObject : Int] ()
+        var objectDictionary = EBReferenceDictionary <BoardObject, Int> ()
         for (index, object) in model_prop.enumerated () {
           objectDictionary [object] = index
         }

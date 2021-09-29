@@ -8,7 +8,7 @@ import Cocoa
 //    ReadOnlyAbstractObjectProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyAbstractObjectProperty <T : Hashable> : ReadOnlyAbstractGenericRelationshipProperty {
+class ReadOnlyAbstractObjectProperty <T : AnyObject> : ReadOnlyAbstractGenericRelationshipProperty {
 
   //····················································································································
   // Abstract methods
@@ -26,7 +26,7 @@ class ReadOnlyAbstractObjectProperty <T : Hashable> : ReadOnlyAbstractGenericRel
 
   internal final var mInternalValue : T? = nil {
     didSet {
-      if self.mInternalValue != oldValue {
+      if self.mInternalValue !== oldValue {
         if (self.mInternalValue == nil) != (oldValue == nil) {
           self.none_property.postEvent ()
         }

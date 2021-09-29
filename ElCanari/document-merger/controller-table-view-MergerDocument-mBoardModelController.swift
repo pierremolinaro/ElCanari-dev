@@ -353,7 +353,7 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [BoardModel : Int] ()
+          var objectDictionary = EBReferenceDictionary <BoardModel, Int> ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

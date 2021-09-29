@@ -20,11 +20,11 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  internal func selectAllConnectedElementsInSchematics () -> (Set <SchematicObject>, Set <PointInSchematic>) {
-    var objectExploreSet = Set (self.schematicObjectsController.selectedArray)
-    var objectSet = Set <SchematicObject> ()
-    var pointExploreSet = Set <PointInSchematic> ()
-    var pointSet = Set <PointInSchematic> ()
+  internal func selectAllConnectedElementsInSchematics () -> (EBReferenceSet <SchematicObject>, EBReferenceSet <PointInSchematic>) {
+    var objectExploreSet = EBReferenceSet (self.schematicObjectsController.selectedArray.values)
+    var objectSet = EBReferenceSet <SchematicObject> ()
+    var pointExploreSet = EBReferenceSet <PointInSchematic> ()
+    var pointSet = EBReferenceSet <PointInSchematic> ()
     var loop = true
     while loop {
       if let object = objectExploreSet.first {
@@ -71,7 +71,7 @@ extension CustomizedProjectDocument {
         loop = false
       }
     }
-    self.schematicObjectsController.setSelection (Array (objectSet))
+    self.schematicObjectsController.setSelection (Array (objectSet.values))
     return (objectSet, pointSet)
   }
 

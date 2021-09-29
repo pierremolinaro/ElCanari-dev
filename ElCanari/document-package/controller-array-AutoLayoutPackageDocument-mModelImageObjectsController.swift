@@ -441,7 +441,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-           self.selectedSet = EBReferenceSet ([inObject])
+           self.selectedSet = EBReferenceSet (inObject)
         }
       }
     }
@@ -461,7 +461,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
         var array = EBReferenceArray (v)
         array.append (newObject)
       //--- New object is the selection
-        self.selectedSet = EBReferenceSet ([newObject])
+        self.selectedSet = EBReferenceSet (newObject)
         model.setProp (array)
       }
     }
@@ -479,7 +479,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
       case .single (let model_prop) :
       //------------- Find the object to be selected after selected object removing
       //--- Dictionary of object sorted indexes
-        var sortedObjectDictionary = [PackageModelImageDoublePoint : Int] ()
+        var sortedObjectDictionary = EBReferenceDictionary <PackageModelImageDoublePoint, Int> ()
         for (index, object) in model_prop.enumerated () {
           sortedObjectDictionary [object] = index
         }
