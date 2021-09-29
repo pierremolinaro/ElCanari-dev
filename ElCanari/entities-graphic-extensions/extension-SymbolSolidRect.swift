@@ -66,7 +66,7 @@ extension SymbolSolidRect {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_SymbolSolidRect (accumulatedPoints : Set <CanariPoint>) -> Bool {
+  func canRotate90_SymbolSolidRect (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     return false
   }
 

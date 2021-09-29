@@ -646,7 +646,7 @@ final class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_SymbolSolidRect (accumulatedPoints: accumulatedPoints)
+    return canRotate90_SymbolSolidRect (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
