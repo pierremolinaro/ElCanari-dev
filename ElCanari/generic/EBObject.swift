@@ -6,13 +6,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct ObjectAddress : Hashable {
-  private let address : Int
-
-  init (_ inObject : AnyObject?) {
-    self.address = unsafeBitCast (inObject, to: Int.self)
-  }
-}
+//struct ObjectAddress : Hashable {
+//  private let address : UInt
+//
+//  init (_ inObject : AnyObject?) {
+//    self.address = unsafeBitCast (inObject, to: UInt.self)
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

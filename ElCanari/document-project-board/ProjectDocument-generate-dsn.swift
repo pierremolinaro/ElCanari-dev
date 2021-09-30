@@ -507,9 +507,9 @@ fileprivate struct PackageDictionaryKeyForDSNExport : Hashable {
   //····················································································································
 
    func hash (into hasher: inout Hasher) {
-    ObjectAddress (self.device).hash (into: &hasher)
+    ObjectIdentifier (self.device).hash (into: &hasher)
     self.routeSlavePads.hash (into: &hasher)
-    ObjectAddress (self.package).hash (into: &hasher)
+    ObjectIdentifier (self.package).hash (into: &hasher)
   }
 
   //····················································································································

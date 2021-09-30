@@ -38,17 +38,21 @@ fileprivate func update <T : AnyObject> (currentSet ioCurrentSet : inout EBRefer
     modelsAreEqual = inNewArray [idx] === inOldArray [idx]
     idx += 1
   }
+
 //---
   if !modelsAreEqual {
     var setAreEqual = ioCurrentSet.count == inNewArray.count
-    var newSet = EBReferenceSet <T> (minimumCapacity: inNewArray.count)
+    var newSet = EBReferenceSet <T> (minimumCapacity: inNewArray.count * 5)
     for object in inNewArray.values {
+ //     let s = Date ()
       newSet.insert (object)
+//      gT += Date ().timeIntervalSince (s)
       if !ioCurrentSet.contains (object) {
         setAreEqual = false
         addedSet.insert (object)
       }
     }
+//    Swift.print ("\(Int (gT * 1_000.0)) ms")
     if !setAreEqual {
       let oldSet = ioCurrentSet
       ioCurrentSet = newSet
@@ -57,6 +61,8 @@ fileprivate func update <T : AnyObject> (currentSet ioCurrentSet : inout EBRefer
   }
   return (modelsAreEqual, addedSet, removedSet)
 }
+
+var gT : TimeInterval = 0.0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyAbstractArrayProperty

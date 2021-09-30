@@ -63,10 +63,10 @@ struct EBReferenceArray <T : AnyObject> : RangeReplaceableCollection {
   //····················································································································
 
   func contains (_ inObject : T) -> Bool {
-    let address = ObjectAddress (inObject)
+    let address = ObjectIdentifier (inObject)
     var idx = 0
     while idx < self.mArray.count {
-      let p = ObjectAddress (self.mArray [idx])
+      let p = ObjectIdentifier (self.mArray [idx])
       idx += 1
       if address == p {
         return true
@@ -86,10 +86,10 @@ struct EBReferenceArray <T : AnyObject> : RangeReplaceableCollection {
   //····················································································································
 
   func firstIndex (of inObject : T) -> Int? {
-    let address = ObjectAddress (inObject)
+    let address = ObjectIdentifier (inObject)
     var idx = 0
     while idx < self.mArray.count {
-      let p = ObjectAddress (self.mArray [idx])
+      let p = ObjectIdentifier (self.mArray [idx])
       if address == p {
         return idx
       }

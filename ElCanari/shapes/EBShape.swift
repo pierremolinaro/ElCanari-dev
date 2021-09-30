@@ -23,8 +23,10 @@ struct EBShape : Hashable {
   //····················································································································
 
    func hash (into hasher: inout Hasher) {
-    let address = ObjectAddress (mSharedObject)
-    address.hash (into: &hasher)
+    if let sharedObject = mSharedObject {
+      let address = ObjectIdentifier (sharedObject)
+      address.hash (into: &hasher)
+    }
   }
 
   //····················································································································

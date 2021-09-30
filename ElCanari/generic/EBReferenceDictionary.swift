@@ -16,29 +16,29 @@ struct EBReferenceDictionary <KEY : AnyObject, VALUE> : Sequence {
 
   //····················································································································
 
-  private var mDictionary : Dictionary <ObjectAddress, (KEY, VALUE)>
+  private var mDictionary : Dictionary <ObjectIdentifier, (KEY, VALUE)>
 
   //····················································································································
 
   init () {
-    self.mDictionary = Dictionary <ObjectAddress, (KEY, VALUE)> ()
+    self.mDictionary = Dictionary <ObjectIdentifier, (KEY, VALUE)> ()
   }
 
   //····················································································································
 
   init (minimumCapacity inMinimumCapacity : Int) {
-    self.mDictionary = Dictionary <ObjectAddress, (KEY, VALUE)> (minimumCapacity: inMinimumCapacity)
+    self.mDictionary = Dictionary <ObjectIdentifier, (KEY, VALUE)> (minimumCapacity: inMinimumCapacity)
   }
 
   //····················································································································
 
   subscript (_ inKey : KEY) -> VALUE? {
     get {
-      let address = ObjectAddress (inKey)
+      let address = ObjectIdentifier (inKey)
       return self.mDictionary [address]?.1
     }
     set (optionalNewValue) {
-      let address = ObjectAddress (inKey)
+      let address = ObjectIdentifier (inKey)
       if let newValue = optionalNewValue {
         self.mDictionary [address] = (inKey, newValue)
       }else{
@@ -50,7 +50,7 @@ struct EBReferenceDictionary <KEY : AnyObject, VALUE> : Sequence {
   //····················································································································
 
   func contains (_ inKey : KEY) -> Bool {
-    let address = ObjectAddress (inKey)
+    let address = ObjectIdentifier (inKey)
     return self.mDictionary [address] != nil
   }
 

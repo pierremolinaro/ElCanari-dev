@@ -49,6 +49,10 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
 
   //····················································································································
 
+//  final var className : String { return String (describing: type (of: self)) }
+
+  //····················································································································
+
   private weak final var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
@@ -65,10 +69,6 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
     final var mExplorerWindow : NSWindow? = nil
   #endif
 
-  //····················································································································
-
-//  final var className : String { return String (describing: type (of: self)) }
-  
   //····················································································································
   //  init
   //····················································································································

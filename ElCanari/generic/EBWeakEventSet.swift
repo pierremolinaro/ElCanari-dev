@@ -12,19 +12,19 @@ struct EBWeakEventSet {
 
   //····················································································································
 
-  fileprivate var mDictionary = [ObjectAddress : EBWeakObserverSetElement] ()
+  fileprivate var mDictionary = [ObjectIdentifier : EBWeakObserverSetElement] ()
 
   //····················································································································
 
   mutating func insert (_ inObserver : EBEvent) {
-    let address = ObjectAddress (inObserver)
+    let address = ObjectIdentifier (inObserver)
     self.mDictionary [address] = EBWeakObserverSetElement (observer: inObserver)
   }
 
   //····················································································································
 
   mutating func remove (_ inObserver : EBEvent) {
-    let address = ObjectAddress (inObserver)
+    let address = ObjectIdentifier (inObserver)
     self.mDictionary [address] = nil
   }
 

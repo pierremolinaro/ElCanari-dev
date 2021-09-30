@@ -10,24 +10,24 @@ struct EBReferenceSet <T : AnyObject> {
 
   //····················································································································
 
-  private var mDictionary : Dictionary <ObjectAddress, T>
+  private var mDictionary : Dictionary <ObjectIdentifier, T>
 
   //····················································································································
 
   init () {
-    self.mDictionary = Dictionary <ObjectAddress, T> ()
+    self.mDictionary = Dictionary <ObjectIdentifier, T> ()
   }
 
   //····················································································································
 
   init (minimumCapacity inMinimumCapacity : Int) {
-    self.mDictionary = Dictionary <ObjectAddress, T> (minimumCapacity: inMinimumCapacity)
+    self.mDictionary = Dictionary <ObjectIdentifier, T> (minimumCapacity: inMinimumCapacity)
   }
 
   //····················································································································
 
   init (_ inObjects : [T]) {
-    self.mDictionary = Dictionary <ObjectAddress, T> (minimumCapacity: inObjects.count)
+    self.mDictionary = Dictionary <ObjectIdentifier, T> (minimumCapacity: inObjects.count)
     for object in inObjects {
       self.insert (object)
     }
@@ -36,28 +36,28 @@ struct EBReferenceSet <T : AnyObject> {
   //····················································································································
 
   init (_ inObject : T) {
-    self.mDictionary = Dictionary <ObjectAddress, T> ()
+    self.mDictionary = Dictionary <ObjectIdentifier, T> ()
     self.insert (inObject)
   }
 
   //····················································································································
 
   mutating func insert (_ inObject : T) {
-    let address = ObjectAddress (inObject)
-    self.mDictionary [address] = inObject
+    let address = ObjectIdentifier (inObject)
+    _ = self.mDictionary.updateValue (inObject, forKey: address)
   }
 
   //····················································································································
 
   mutating func remove (_ inObject : T) {
-    let address = ObjectAddress (inObject)
-    self.mDictionary [address] = nil
+    let address = ObjectIdentifier (inObject)
+    _ = self.mDictionary.removeValue (forKey: address)
   }
 
   //····················································································································
 
   func contains (_ inObject : T) -> Bool {
-    let address = ObjectAddress (inObject)
+    let address = ObjectIdentifier (inObject)
     return self.mDictionary [address] != nil
   }
 
@@ -100,7 +100,7 @@ struct EBReferenceSet <T : AnyObject> {
   //····················································································································
 
   mutating func removeFirst () -> T {
-    let address = ObjectAddress (self.first!)
+    let address = ObjectIdentifier (self.first!)
     let result = self.mDictionary [address]!
     self.mDictionary [address] = nil
     return result
@@ -116,7 +116,7 @@ struct EBReferenceSet <T : AnyObject> {
 
   //····················································································································
 
-  var values : Dictionary <ObjectAddress, T>.Values { return self.mDictionary.values }
+  var values : Dictionary <ObjectIdentifier, T>.Values { return self.mDictionary.values }
 
   //····················································································································
 

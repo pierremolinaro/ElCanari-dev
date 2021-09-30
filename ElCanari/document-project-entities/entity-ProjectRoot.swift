@@ -7798,11 +7798,15 @@ final class ProjectRoot : EBManagedObject,
     //--- To one relationships
       if let range = inDictionary ["mSelectedSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! SheetInProject
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mSelectedSheet = object }
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation {
+         self.mSelectedSheet = object
+        }
       }
       if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! ArtworkRoot
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mArtwork = object }
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation {
+          self.mArtwork = object
+        }
       }
     //--- To many relationships
       if let range = inDictionary ["mSheets"], range.length > 0 {
