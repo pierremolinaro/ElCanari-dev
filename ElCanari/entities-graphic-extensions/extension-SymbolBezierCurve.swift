@@ -20,6 +20,29 @@ extension SymbolBezierCurve {
   }
 
   //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  func operationAfterPasting_SymbolBezierCurve (additionalDictionary inDictionary : NSDictionary,
+                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return ""
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  func saveIntoAdditionalDictionary_SymbolBezierCurve (_ ioDictionary : NSMutableDictionary) {
+  }
+
+  //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_SymbolBezierCurve (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
+  }
+
 
 //  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
 //    var acceptedX = inDx

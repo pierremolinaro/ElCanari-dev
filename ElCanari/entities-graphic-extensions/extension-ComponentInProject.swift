@@ -42,6 +42,14 @@ extension ComponentInProject {
   }
 
   //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_ComponentInProject (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
+  }
+
+  //····················································································································
 
   func acceptToTranslate_ComponentInProject (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
@@ -52,6 +60,48 @@ extension ComponentInProject {
   func translate_ComponentInProject (xBy inDx : Int, yBy inDy : Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.mX += inDx
     self.mY += inDy
+  }
+
+  //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  func operationAfterPasting_ComponentInProject (additionalDictionary inDictionary : NSDictionary,
+                                                 objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return ""
+  }
+
+  //····················································································································
+  //  HORIZONTAL FLIP
+  //····················································································································
+
+  func flipHorizontally_ComponentInProject () {
+  }
+
+  //····················································································································
+
+  func canFlipHorizontally_ComponentInProject () -> Bool {
+    return false
+  }
+
+  //····················································································································
+  //  VERTICAL FLIP
+  //····················································································································
+
+  func flipVertically_ComponentInProject () {
+  }
+
+  //····················································································································
+
+  func canFlipVertically_ComponentInProject () -> Bool {
+    return false
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  func saveIntoAdditionalDictionary_ComponentInProject (_ ioDictionary : NSMutableDictionary) {
   }
 
   //····················································································································

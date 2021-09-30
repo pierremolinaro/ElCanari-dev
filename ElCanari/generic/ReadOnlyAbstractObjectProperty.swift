@@ -8,9 +8,6 @@ import Cocoa
 //    ReadOnlyAbstractObjectProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//var gT : TimeInterval = 0.0
-//var gT2 : TimeInterval = 0.0
-
 class ReadOnlyAbstractObjectProperty <T : AnyObject> : ReadOnlyAbstractGenericRelationshipProperty {
 
   //····················································································································
@@ -34,14 +31,9 @@ class ReadOnlyAbstractObjectProperty <T : AnyObject> : ReadOnlyAbstractGenericRe
           self.none_property.postEvent ()
         }
         self.postEvent ()
-//        let s = Date ()
-          self.notifyModelDidChangeFrom (oldValue: oldValue)
-//        gT += Date ().timeIntervalSince (s) * 1_000.0
-//        let s2 = Date ()
-          self.notifyModelDidChange ()
-//        gT2 += Date ().timeIntervalSince (s2) * 1_000.0
+        self.notifyModelDidChangeFrom (oldValue: oldValue)
+        self.notifyModelDidChange ()
       }
-//      Swift.print ("\(Int (gT)) \(Int (gT2)) ms")
     }
   }
 

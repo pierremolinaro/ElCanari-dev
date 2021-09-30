@@ -24,6 +24,22 @@ extension SymbolSolidOval {
   }
 
   //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  func operationAfterPasting_SymbolSolidOval (additionalDictionary inDictionary : NSDictionary,
+                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return ""
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  func saveIntoAdditionalDictionary_SymbolSolidOval (_ ioDictionary : NSMutableDictionary) {
+  }
+
+  //····················································································································
   //  HORIZONTAL FLIP
   //····················································································································
 
@@ -49,6 +65,13 @@ extension SymbolSolidOval {
     return false
   }
 
+  //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_SymbolSolidOval (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
+  }
   //····················································································································
 
 //  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {

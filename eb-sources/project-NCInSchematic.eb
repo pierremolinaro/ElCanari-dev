@@ -3,9 +3,6 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity NCInSchematic : SchematicObject {
-  graphic rotate ;
-  graphic translate ;
-
   toOne PointInSchematic mPoint inverse toOne mNC ;
 
   property QuadrantRotation mOrientation default rotation0 ;

@@ -3,12 +3,6 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity BoardText : BoardObject {
-  graphic cursorForKnob ;
-  graphic translate ;
-  graphic move ;
-  graphic rotate ;
-  graphic snapToGrid ;
-
   toOne FontInProject mFont inverse toMany mTexts ;
 
   property Int mX default 0 ;

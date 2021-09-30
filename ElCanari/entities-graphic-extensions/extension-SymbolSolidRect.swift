@@ -24,6 +24,29 @@ extension SymbolSolidRect {
   }
 
   //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  func operationAfterPasting_SymbolSolidRect (additionalDictionary inDictionary : NSDictionary,
+                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return ""
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  func saveIntoAdditionalDictionary_SymbolSolidRect (_ ioDictionary : NSMutableDictionary) {
+  }
+
+  //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_SymbolSolidRect (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
+  }
+  //····················································································································
 
   func acceptToTranslate_SymbolSolidRect (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true

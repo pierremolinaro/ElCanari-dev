@@ -18,6 +18,30 @@ extension SymbolSegment {
   }
 
   //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  func operationAfterPasting_SymbolSegment (additionalDictionary inDictionary : NSDictionary,
+                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return ""
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  func saveIntoAdditionalDictionary_SymbolSegment (_ ioDictionary : NSMutableDictionary) {
+  }
+
+  //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_SymbolSegment (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
+  }
+
+
 
 //  func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
 //    var acceptedX = inDx
@@ -170,6 +194,24 @@ extension SymbolSegment {
   //····················································································································
 
   func operationBeforeRemoving_SymbolSegment () {
+  }
+
+  //····················································································································
+  //  ROTATE 90
+  //····················································································································
+
+  func canRotate90_SymbolSegment (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return false
+  }
+
+ //····················································································································
+
+  func rotate90Clockwise_SymbolSegment (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  }
+
+ //····················································································································
+
+  func rotate90CounterClockwise_SymbolSegment (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································

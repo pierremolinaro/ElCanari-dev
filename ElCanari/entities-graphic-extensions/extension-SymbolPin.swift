@@ -23,6 +23,30 @@ extension SymbolPin {
   }
 
   //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  func operationAfterPasting_SymbolPin (additionalDictionary inDictionary : NSDictionary,
+                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return ""
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  func saveIntoAdditionalDictionary_SymbolPin (_ ioDictionary : NSMutableDictionary) {
+  }
+
+  //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_SymbolPin (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
+  }
+
+  //····················································································································
 
   func acceptToTranslate_SymbolPin (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true

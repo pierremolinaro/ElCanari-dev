@@ -9,11 +9,6 @@ enum ConnectorSide {
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic entity BoardConnector : BoardObject {
-  graphic cursorForKnob ;
-  graphic translate ;
-  graphic move ;
-  graphic rotate ;
-  graphic snapToGrid ;
   graphic cannotBeDeleted ;
 
   toOne ComponentInProject mComponent inverse toMany mConnectors ; // nil if not connected to a pad

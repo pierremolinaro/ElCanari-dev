@@ -770,10 +770,7 @@ final class NetInProject : EBManagedObject,
     //--- To one relationships
       if let range = inDictionary ["mNetClass"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! NetClassInProject
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation {
-          self.mNetClass = object
-
-        }
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mNetClass = object }
       }
     //--- To many relationships
       if let range = inDictionary ["mPoints"], range.length > 0 {

@@ -8,13 +8,7 @@ enum BoardLineLayer {
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-graphic entity BoardLine : BoardObject {
-  graphic cursorForKnob ;
-  graphic translate ;
-  graphic move ;
-  graphic rotate ;
-  graphic snapToGrid ;
- 
+graphic entity BoardLine : BoardObject { 
   property Int mWidth default 57_150 ; // 25 mils
   property Int mWidthUnit default 2_286 ; // mil
 

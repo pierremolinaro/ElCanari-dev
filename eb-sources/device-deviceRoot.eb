@@ -88,8 +88,6 @@ entity DeviceDocumentation {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageInDevice {
-  graphic translate ;
-
   toOne DeviceRoot mRoot inverse toMany mPackages ;
 
   toMany @signature MasterPadInDevice mMasterPads ;
@@ -261,8 +259,6 @@ entity SymbolPinTypeInDevice {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolInstanceInDevice {
-  graphic translate ;
-
   toOne SymbolTypeInDevice mType inverse toMany mInstances ;
   toMany @signature SymbolPinInstanceInDevice mPinInstances inverse toOne mSymbolInstance ;
 

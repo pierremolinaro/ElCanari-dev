@@ -1818,6 +1818,14 @@ final class PackagePad : PackageObject,
   }
 
   //····················································································································
+  //  Translate
+  //····················································································································
+
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return acceptedTranslation_PackagePad (xBy: inDx, yBy: inDy)
+  }
+
+  //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return acceptToTranslate_PackagePad (xBy: inDx, yBy: inDy)
@@ -1829,6 +1837,8 @@ final class PackagePad : PackageObject,
     translate_PackagePad (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
+  //····················································································································
+  //   Move
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
@@ -1910,11 +1920,31 @@ final class PackagePad : PackageObject,
   }
 
   //····················································································································
-  //  COPY AND PASTE
+  //  ROTATE 90
   //····················································································································
 
-  override func canCopyAndPaste () -> Bool {
-    return true
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return canRotate90_PackagePad (accumulatedPoints: &accumulatedPoints)
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    rotate90Clockwise_PackagePad (from: inRotationCenter, userSet: &ioSet)
+  }
+
+  //····················································································································
+
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    rotate90CounterClockwise_PackagePad (from: inRotationCenter, userSet: &ioSet)
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
+    saveIntoAdditionalDictionary_PackagePad (ioDictionary)
   }
 
   //····················································································································
@@ -1940,6 +1970,14 @@ final class PackagePad : PackageObject,
 
   override func operationBeforeRemoving () {
     operationBeforeRemoving_PackagePad ()
+  }
+
+  //····················································································································
+  //  COPY AND PASTE
+  //····················································································································
+
+  override func canCopyAndPaste () -> Bool {
+    return true
   }
 
   //····················································································································

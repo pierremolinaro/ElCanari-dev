@@ -545,6 +545,14 @@ final class WireInSchematic : SchematicObject,
   }
 
   //····················································································································
+  //  Translate
+  //····················································································································
+
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return acceptedTranslation_WireInSchematic (xBy: inDx, yBy: inDy)
+  }
+
+  //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return acceptToTranslate_WireInSchematic (xBy: inDx, yBy: inDy)
@@ -556,6 +564,8 @@ final class WireInSchematic : SchematicObject,
     translate_WireInSchematic (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
+  //····················································································································
+  //   Move
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
@@ -609,6 +619,34 @@ final class WireInSchematic : SchematicObject,
   }
 
   //····················································································································
+  //  HORIZONTAL FLIP
+  //····················································································································
+
+  override func flipHorizontally () {
+    flipHorizontally_WireInSchematic ()
+  }
+
+  //····················································································································
+
+  override func canFlipHorizontally () -> Bool {
+    return canFlipHorizontally_WireInSchematic ()
+  }
+
+  //····················································································································
+  //  VERTICAL FLIP
+  //····················································································································
+
+  override func flipVertically () {
+    flipVertically_WireInSchematic ()
+  }
+
+  //····················································································································
+
+  override func canFlipVertically () -> Bool {
+    return canFlipVertically_WireInSchematic ()
+  }
+
+  //····················································································································
   //  ROTATE 90
   //····················································································································
 
@@ -626,6 +664,23 @@ final class WireInSchematic : SchematicObject,
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     rotate90CounterClockwise_WireInSchematic (from: inRotationCenter, userSet: &ioSet)
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
+    saveIntoAdditionalDictionary_WireInSchematic (ioDictionary)
+  }
+
+  //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return operationAfterPasting_WireInSchematic (additionalDictionary: inDictionary, objectArray: inObjectArray)
   }
 
   //····················································································································

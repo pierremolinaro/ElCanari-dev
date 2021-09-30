@@ -12,6 +12,38 @@ let MODEL_IMAGE_SECOND_POINT = 2
 extension PackageModelImageDoublePoint {
 
   //····················································································································
+  //  Cursor
+  //····················································································································
+
+  func cursorForKnob_PackageModelImageDoublePoint (knob inKnobIndex: Int) -> NSCursor? {
+    return nil // Uses default cursor
+  }
+
+  //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  func operationAfterPasting_PackageModelImageDoublePoint (additionalDictionary inDictionary : NSDictionary,
+                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return ""
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  func saveIntoAdditionalDictionary_PackageModelImageDoublePoint (_ ioDictionary : NSMutableDictionary) {
+  }
+
+  //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_PackageModelImageDoublePoint  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
+  }
+
+  //····················································································································
 
   func acceptToTranslate_PackageModelImageDoublePoint (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
@@ -68,6 +100,63 @@ extension PackageModelImageDoublePoint {
   //····················································································································
 
   func operationBeforeRemoving_PackageModelImageDoublePoint () {
+  }
+
+  //····················································································································
+  //  HORIZONTAL FLIP
+  //····················································································································
+
+  func flipHorizontally_PackageModelImageDoublePoint () {
+  }
+
+  //····················································································································
+
+  func canFlipHorizontally_PackageModelImageDoublePoint () -> Bool {
+    return false
+  }
+
+  //····················································································································
+  //  VERTICAL FLIP
+  //····················································································································
+
+  func flipVertically_PackageModelImageDoublePoint () {
+  }
+
+  //····················································································································
+
+  func canFlipVertically_PackageModelImageDoublePoint () -> Bool {
+    return false
+  }
+
+  //····················································································································
+  //  ROTATE 90
+  //····················································································································
+
+  func canRotate90_PackageModelImageDoublePoint (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return false
+  }
+
+ //····················································································································
+
+  func rotate90Clockwise_PackageModelImageDoublePoint (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  }
+
+ //····················································································································
+
+  func rotate90CounterClockwise_PackageModelImageDoublePoint (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  }
+
+  //····················································································································
+  //  Snap to grid
+  //····················································································································
+
+  func snapToGrid_PackageModelImageDoublePoint (_ inGrid : Int) {
+  }
+
+  //····················································································································
+
+  func canSnapToGrid_PackageModelImageDoublePoint (_ inGrid : Int) -> Bool {
+    return false
   }
 
   //····················································································································

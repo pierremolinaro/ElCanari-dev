@@ -27,6 +27,14 @@ extension PackagePad {
   }
 
   //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_PackagePad  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
+  }
+
+  //····················································································································
 
   func acceptToTranslate_PackagePad (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
@@ -123,6 +131,13 @@ extension PackagePad {
   func operationAfterPasting_PackagePad (additionalDictionary inDictionary : NSDictionary, objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     self.padNumber += VERY_LARGE_PAD_NUMBER // So it will be numbered by model observer CustomizedPackageDocument:handlePadNumbering
     return "" // Means ok
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  func saveIntoAdditionalDictionary_PackagePad (_ ioDictionary : NSMutableDictionary) {
   }
 
   //····················································································································

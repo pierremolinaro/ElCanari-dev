@@ -7,14 +7,7 @@ abstract graphic entity SymbolObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolPin : SymbolObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic rotate ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
 
   property @signature Int xPin default 0 ;
   property @signature Int yPin default 0 ;
@@ -63,14 +56,7 @@ graphic entity SymbolPin : SymbolObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolText : SymbolObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic rotate ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
 
   property @signature Int x default 0 ;
   property @signature Int y default 0 ;
@@ -92,14 +78,7 @@ graphic entity SymbolText : SymbolObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolSolidRect : SymbolObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic rotate ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
 
   property @signature Int x default 0 ;
   property @signature Int y default 0 ;
@@ -123,14 +102,7 @@ graphic entity SymbolSolidRect : SymbolObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolOval : SymbolObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic rotate ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
 
   property @signature Int x default 0 ;
   property @signature Int y default 0 ;
@@ -154,14 +126,7 @@ graphic entity SymbolOval : SymbolObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolSolidOval : SymbolObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic rotate ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
 
   property @signature Int x default 0 ;
   property @signature Int y default 0 ;
@@ -184,14 +149,7 @@ graphic entity SymbolSolidOval : SymbolObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolBezierCurve : SymbolObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic rotate ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
 
   property @signature Int x1 default 0 ;
   property @signature Int y1 default 6_858_00 ;
@@ -226,13 +184,7 @@ graphic entity SymbolBezierCurve : SymbolObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolSegment : SymbolObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
 
   property @signature Int x1 default 0 ;
   property @signature Int y1 default 0 ;

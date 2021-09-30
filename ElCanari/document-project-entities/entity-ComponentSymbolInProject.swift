@@ -1302,6 +1302,14 @@ final class ComponentSymbolInProject : SchematicObject,
   }
 
   //····················································································································
+  //  Translate
+  //····················································································································
+
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return acceptedTranslation_ComponentSymbolInProject (xBy: inDx, yBy: inDy)
+  }
+
+  //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return acceptToTranslate_ComponentSymbolInProject (xBy: inDx, yBy: inDy)
@@ -1313,6 +1321,8 @@ final class ComponentSymbolInProject : SchematicObject,
     translate_ComponentSymbolInProject (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
+  //····················································································································
+  //   Move
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
@@ -1366,6 +1376,34 @@ final class ComponentSymbolInProject : SchematicObject,
   }
 
   //····················································································································
+  //  HORIZONTAL FLIP
+  //····················································································································
+
+  override func flipHorizontally () {
+    flipHorizontally_ComponentSymbolInProject ()
+  }
+
+  //····················································································································
+
+  override func canFlipHorizontally () -> Bool {
+    return canFlipHorizontally_ComponentSymbolInProject ()
+  }
+
+  //····················································································································
+  //  VERTICAL FLIP
+  //····················································································································
+
+  override func flipVertically () {
+    flipVertically_ComponentSymbolInProject ()
+  }
+
+  //····················································································································
+
+  override func canFlipVertically () -> Bool {
+    return canFlipVertically_ComponentSymbolInProject ()
+  }
+
+  //····················································································································
   //  ROTATE 90
   //····················································································································
 
@@ -1383,6 +1421,23 @@ final class ComponentSymbolInProject : SchematicObject,
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     rotate90CounterClockwise_ComponentSymbolInProject (from: inRotationCenter, userSet: &ioSet)
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
+    saveIntoAdditionalDictionary_ComponentSymbolInProject (ioDictionary)
+  }
+
+  //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return operationAfterPasting_ComponentSymbolInProject (additionalDictionary: inDictionary, objectArray: inObjectArray)
   }
 
   //····················································································································

@@ -750,6 +750,14 @@ final class PackageOval : PackageObject,
   }
 
   //····················································································································
+  //  Translate
+  //····················································································································
+
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return acceptedTranslation_PackageOval (xBy: inDx, yBy: inDy)
+  }
+
+  //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return acceptToTranslate_PackageOval (xBy: inDx, yBy: inDy)
@@ -761,6 +769,8 @@ final class PackageOval : PackageObject,
     translate_PackageOval (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
+  //····················································································································
+  //   Move
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
@@ -842,11 +852,40 @@ final class PackageOval : PackageObject,
   }
 
   //····················································································································
-  //  COPY AND PASTE
+  //  ROTATE 90
   //····················································································································
 
-  override func canCopyAndPaste () -> Bool {
-    return true
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return canRotate90_PackageOval (accumulatedPoints: &accumulatedPoints)
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    rotate90Clockwise_PackageOval (from: inRotationCenter, userSet: &ioSet)
+  }
+
+  //····················································································································
+
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    rotate90CounterClockwise_PackageOval (from: inRotationCenter, userSet: &ioSet)
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
+    saveIntoAdditionalDictionary_PackageOval (ioDictionary)
+  }
+
+  //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return operationAfterPasting_PackageOval (additionalDictionary: inDictionary, objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -863,6 +902,14 @@ final class PackageOval : PackageObject,
 
   override func operationBeforeRemoving () {
     operationBeforeRemoving_PackageOval ()
+  }
+
+  //····················································································································
+  //  COPY AND PASTE
+  //····················································································································
+
+  override func canCopyAndPaste () -> Bool {
+    return true
   }
 
   //····················································································································

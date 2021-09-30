@@ -29,6 +29,30 @@ extension PackageZone {
   }
 
   //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  func operationAfterPasting_PackageZone (additionalDictionary inDictionary : NSDictionary,
+                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return ""
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  func saveIntoAdditionalDictionary_PackageZone (_ ioDictionary : NSMutableDictionary) {
+  }
+
+  //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_PackageZone (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
+  }
+
+  //····················································································································
 
   func acceptToTranslate_PackageZone (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
@@ -206,6 +230,24 @@ extension PackageZone {
     s += self.zoneNumbering.descriptionForExplorer ()
     s += ";\n"
     return s
+  }
+
+  //····················································································································
+  //  ROTATE 90
+  //····················································································································
+
+  func canRotate90_PackageZone (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return false
+  }
+
+ //····················································································································
+
+  func rotate90Clockwise_PackageZone (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  }
+
+ //····················································································································
+
+  func rotate90CounterClockwise_PackageZone (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
  //····················································································································

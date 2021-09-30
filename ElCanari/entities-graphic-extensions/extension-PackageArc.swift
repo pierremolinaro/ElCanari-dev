@@ -36,6 +36,14 @@ extension PackageArc {
   }
 
   //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_PackageArc  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
+  }
+
+  //····················································································································
 
   func acceptToTranslate_PackageArc (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
@@ -46,6 +54,22 @@ extension PackageArc {
   func translate_PackageArc (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.xCenter += inDx
     self.yCenter += inDy
+  }
+
+  //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  func operationAfterPasting_PackageArc (additionalDictionary inDictionary : NSDictionary,
+                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return ""
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  func saveIntoAdditionalDictionary_PackageArc (_ ioDictionary : NSMutableDictionary) {
   }
 
   //····················································································································
@@ -189,6 +213,24 @@ extension PackageArc {
     }
     s += ";\n"
     return s
+  }
+
+  //····················································································································
+  //  ROTATE 90
+  //····················································································································
+
+  func canRotate90_PackageArc (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return false
+  }
+
+ //····················································································································
+
+  func rotate90Clockwise_PackageArc (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  }
+
+ //····················································································································
+
+  func rotate90CounterClockwise_PackageArc (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
   }
 
   //····················································································································

@@ -1967,6 +1967,14 @@ final class BoardTrack : BoardObject,
   }
 
   //····················································································································
+  //  Translate
+  //····················································································································
+
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return acceptedTranslation_BoardTrack (xBy: inDx, yBy: inDy)
+  }
+
+  //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return acceptToTranslate_BoardTrack (xBy: inDx, yBy: inDy)
@@ -1978,6 +1986,8 @@ final class BoardTrack : BoardObject,
     translate_BoardTrack (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
+  //····················································································································
+  //   Move
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
@@ -2031,6 +2041,34 @@ final class BoardTrack : BoardObject,
   }
 
   //····················································································································
+  //  HORIZONTAL FLIP
+  //····················································································································
+
+  override func flipHorizontally () {
+    flipHorizontally_BoardTrack ()
+  }
+
+  //····················································································································
+
+  override func canFlipHorizontally () -> Bool {
+    return canFlipHorizontally_BoardTrack ()
+  }
+
+  //····················································································································
+  //  VERTICAL FLIP
+  //····················································································································
+
+  override func flipVertically () {
+    flipVertically_BoardTrack ()
+  }
+
+  //····················································································································
+
+  override func canFlipVertically () -> Bool {
+    return canFlipVertically_BoardTrack ()
+  }
+
+  //····················································································································
   //  ROTATE 90
   //····················································································································
 
@@ -2048,6 +2086,23 @@ final class BoardTrack : BoardObject,
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     rotate90CounterClockwise_BoardTrack (from: inRotationCenter, userSet: &ioSet)
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
+    saveIntoAdditionalDictionary_BoardTrack (ioDictionary)
+  }
+
+  //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return operationAfterPasting_BoardTrack (additionalDictionary: inDictionary, objectArray: inObjectArray)
   }
 
   //····················································································································

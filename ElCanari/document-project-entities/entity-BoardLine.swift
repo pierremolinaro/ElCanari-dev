@@ -782,6 +782,14 @@ final class BoardLine : BoardObject,
   }
 
   //····················································································································
+  //  Translate
+  //····················································································································
+
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return acceptedTranslation_BoardLine (xBy: inDx, yBy: inDy)
+  }
+
+  //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return acceptToTranslate_BoardLine (xBy: inDx, yBy: inDy)
@@ -793,6 +801,8 @@ final class BoardLine : BoardObject,
     translate_BoardLine (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
+  //····················································································································
+  //   Move
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
@@ -846,6 +856,34 @@ final class BoardLine : BoardObject,
   }
 
   //····················································································································
+  //  HORIZONTAL FLIP
+  //····················································································································
+
+  override func flipHorizontally () {
+    flipHorizontally_BoardLine ()
+  }
+
+  //····················································································································
+
+  override func canFlipHorizontally () -> Bool {
+    return canFlipHorizontally_BoardLine ()
+  }
+
+  //····················································································································
+  //  VERTICAL FLIP
+  //····················································································································
+
+  override func flipVertically () {
+    flipVertically_BoardLine ()
+  }
+
+  //····················································································································
+
+  override func canFlipVertically () -> Bool {
+    return canFlipVertically_BoardLine ()
+  }
+
+  //····················································································································
   //  ROTATE 90
   //····················································································································
 
@@ -863,6 +901,23 @@ final class BoardLine : BoardObject,
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     rotate90CounterClockwise_BoardLine (from: inRotationCenter, userSet: &ioSet)
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
+    saveIntoAdditionalDictionary_BoardLine (ioDictionary)
+  }
+
+  //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return operationAfterPasting_BoardLine (additionalDictionary: inDictionary, objectArray: inObjectArray)
   }
 
   //····················································································································

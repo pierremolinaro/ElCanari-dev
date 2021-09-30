@@ -550,6 +550,14 @@ final class SymbolOval : SymbolObject,
   }
 
   //····················································································································
+  //  Translate
+  //····················································································································
+
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return acceptedTranslation_SymbolOval (xBy: inDx, yBy: inDy)
+  }
+
+  //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return acceptToTranslate_SymbolOval (xBy: inDx, yBy: inDy)
@@ -561,6 +569,8 @@ final class SymbolOval : SymbolObject,
     translate_SymbolOval (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
+  //····················································································································
+  //   Move
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
@@ -662,11 +672,20 @@ final class SymbolOval : SymbolObject,
   }
 
   //····················································································································
-  //  COPY AND PASTE
+  //  Save into additional dictionary
   //····················································································································
 
-  override func canCopyAndPaste () -> Bool {
-    return true
+  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
+    saveIntoAdditionalDictionary_SymbolOval (ioDictionary)
+  }
+
+  //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return operationAfterPasting_SymbolOval (additionalDictionary: inDictionary, objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -683,6 +702,14 @@ final class SymbolOval : SymbolObject,
 
   override func operationBeforeRemoving () {
     operationBeforeRemoving_SymbolOval ()
+  }
+
+  //····················································································································
+  //  COPY AND PASTE
+  //····················································································································
+
+  override func canCopyAndPaste () -> Bool {
+    return true
   }
 
   //····················································································································

@@ -24,6 +24,22 @@ extension SymbolOval {
   }
 
   //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  func operationAfterPasting_SymbolOval (additionalDictionary inDictionary : NSDictionary,
+                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return ""
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  func saveIntoAdditionalDictionary_SymbolOval (_ ioDictionary : NSMutableDictionary) {
+  }
+
+  //····················································································································
 
 //  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
 //    var acceptedX = inDx
@@ -39,6 +55,14 @@ extension SymbolOval {
 //    return CanariPoint (x: acceptedX, y: acceptedY)
 //  }
 
+  //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_SymbolOval (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
+  }
+  
   //····················································································································
 
   func acceptToTranslate_SymbolOval (xBy inDx: Int, yBy inDy: Int) -> Bool {

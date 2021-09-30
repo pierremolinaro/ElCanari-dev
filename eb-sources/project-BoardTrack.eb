@@ -15,12 +15,6 @@ enum TrackLockDirection {
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic entity BoardTrack : BoardObject {
-  graphic cursorForKnob ;
-  graphic translate ;
-  graphic move ;
-  graphic rotate ;
-  graphic snapToGrid ;
-
   toOne BoardConnector mConnectorP1 inverse toMany mTracksP1 ;
   toOne BoardConnector mConnectorP2 inverse toMany mTracksP2 ;
   toOne NetInProject mNet inverse toMany mTracks ;

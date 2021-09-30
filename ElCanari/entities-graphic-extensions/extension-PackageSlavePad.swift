@@ -27,6 +27,14 @@ extension PackageSlavePad {
   }
 
   //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_PackageSlavePad (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
+  }
+
+  //····················································································································
 
   func acceptToTranslate_PackageSlavePad (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true

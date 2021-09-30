@@ -689,6 +689,151 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   }
 
   //····················································································································
+
+  override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+    return cursorForKnob_MergerBoardInstance (knob: inKnobIndex)
+  }
+
+  //····················································································································
+  //  Translate
+  //····················································································································
+
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return acceptedTranslation_MergerBoardInstance (xBy: inDx, yBy: inDy)
+  }
+
+  //····················································································································
+
+  override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
+    return acceptToTranslate_MergerBoardInstance (xBy: inDx, yBy: inDy)
+  }
+
+  //····················································································································
+
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    translate_MergerBoardInstance (xBy: inDx, yBy: inDy, userSet: &ioSet)
+  }
+
+  //····················································································································
+  //   Move
+  //····················································································································
+
+  override func canMove (knob inKnobIndex : Int,
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                         shift inShift : Bool) -> CanariPoint {
+    return canMove_MergerBoardInstance (
+      knob: inKnobIndex,
+      proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
+      proposedAlignedTranslation: inProposedAlignedTranslation,
+      unalignedMouseDraggedLocation: inUnalignedMouseDraggedLocation,
+      shift: inShift
+    )
+  }
+
+  //····················································································································
+
+  override func move (knob inKnobIndex: Int,
+                      proposedDx inDx: Int,
+                      proposedDy inDy: Int,
+                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      alignedMouseLocationX inAlignedMouseLocationX : Int,
+                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      shift inShift : Bool) {
+    move_MergerBoardInstance (
+      knob: inKnobIndex,
+      proposedDx: inDx,
+      proposedDy: inDy,
+      unalignedMouseLocationX: inUnlignedMouseLocationX,
+      unalignedMouseLocationY: inUnlignedMouseLocationY,
+      alignedMouseLocationX: inAlignedMouseLocationX,
+      alignedMouseLocationY: inAlignedMouseLocationY,
+      shift: inShift
+    )
+  }
+
+  //····················································································································
+  //  Snap to grid
+  //····················································································································
+
+  override func snapToGrid (_ inGrid : Int) {
+    snapToGrid_MergerBoardInstance (inGrid)
+  }
+
+  //····················································································································
+
+  override func canSnapToGrid (_ inGrid : Int) -> Bool {
+    return canSnapToGrid_MergerBoardInstance (inGrid)
+  }
+
+  //····················································································································
+  //  HORIZONTAL FLIP
+  //····················································································································
+
+  override func flipHorizontally () {
+    flipHorizontally_MergerBoardInstance ()
+  }
+
+  //····················································································································
+
+  override func canFlipHorizontally () -> Bool {
+    return canFlipHorizontally_MergerBoardInstance ()
+  }
+
+  //····················································································································
+  //  VERTICAL FLIP
+  //····················································································································
+
+  override func flipVertically () {
+    flipVertically_MergerBoardInstance ()
+  }
+
+  //····················································································································
+
+  override func canFlipVertically () -> Bool {
+    return canFlipVertically_MergerBoardInstance ()
+  }
+
+  //····················································································································
+  //  ROTATE 90
+  //····················································································································
+
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return canRotate90_MergerBoardInstance (accumulatedPoints: &accumulatedPoints)
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    rotate90Clockwise_MergerBoardInstance (from: inRotationCenter, userSet: &ioSet)
+  }
+
+  //····················································································································
+
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    rotate90CounterClockwise_MergerBoardInstance (from: inRotationCenter, userSet: &ioSet)
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
+    saveIntoAdditionalDictionary_MergerBoardInstance (ioDictionary)
+  }
+
+  //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return operationAfterPasting_MergerBoardInstance (additionalDictionary: inDictionary, objectArray: inObjectArray)
+  }
+
+  //····················································································································
   //  Alignment Points
   //····················································································································
 

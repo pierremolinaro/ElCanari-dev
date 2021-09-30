@@ -1461,6 +1461,14 @@ final class PackageSlavePad : PackageObject,
   }
 
   //····················································································································
+  //  Translate
+  //····················································································································
+
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return acceptedTranslation_PackageSlavePad (xBy: inDx, yBy: inDy)
+  }
+
+  //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return acceptToTranslate_PackageSlavePad (xBy: inDx, yBy: inDy)
@@ -1472,6 +1480,8 @@ final class PackageSlavePad : PackageObject,
     translate_PackageSlavePad (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
+  //····················································································································
+  //   Move
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
@@ -1553,6 +1563,26 @@ final class PackageSlavePad : PackageObject,
   }
 
   //····················································································································
+  //  ROTATE 90
+  //····················································································································
+
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    return canRotate90_PackageSlavePad (accumulatedPoints: &accumulatedPoints)
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    rotate90Clockwise_PackageSlavePad (from: inRotationCenter, userSet: &ioSet)
+  }
+
+  //····················································································································
+
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+    rotate90CounterClockwise_PackageSlavePad (from: inRotationCenter, userSet: &ioSet)
+  }
+
+  //····················································································································
   //  Save into additional dictionary
   //····················································································································
 
@@ -1561,11 +1591,12 @@ final class PackageSlavePad : PackageObject,
   }
 
   //····················································································································
-  //  COPY AND PASTE
+  //  operationAfterPasting
   //····················································································································
 
-  override func canCopyAndPaste () -> Bool {
-    return true
+  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return operationAfterPasting_PackageSlavePad (additionalDictionary: inDictionary, objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -1582,6 +1613,14 @@ final class PackageSlavePad : PackageObject,
 
   override func operationBeforeRemoving () {
     operationBeforeRemoving_PackageSlavePad ()
+  }
+
+  //····················································································································
+  //  COPY AND PASTE
+  //····················································································································
+
+  override func canCopyAndPaste () -> Bool {
+    return true
   }
 
   //····················································································································

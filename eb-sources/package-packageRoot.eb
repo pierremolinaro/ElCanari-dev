@@ -159,13 +159,7 @@ entity PackageRoot {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageSegment : PackageObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
 
   property @signature Int x1 default 0 ;
   property @signature Int y1 default 0 ;
@@ -194,13 +188,7 @@ graphic entity PackageSegment : PackageObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageBezier : PackageObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
 
   property @signature Int x1 default 0 ;
   property @signature Int y1 default 6_858_00 ;
@@ -245,13 +233,7 @@ graphic entity PackageBezier : PackageObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageOval : PackageObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
 
   property @signature Int x default 0 ;
   property @signature Int y default 0 ;
@@ -282,13 +264,7 @@ graphic entity PackageOval : PackageObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageArc : PackageObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
 
   property @signature Int xCenter default 3_429_00 ;
   property @signature Int yCenter default 3_429_00 ;
@@ -329,14 +305,7 @@ graphic entity PackageArc : PackageObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackagePad : PackageObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
-  graphic operationAfterPasting ;
 
   property @signature Int xCenter default 0 ;
   property @signature Int yCenter default 0 ;
@@ -404,14 +373,7 @@ graphic entity PackagePad : PackageObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageSlavePad : PackageObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
-  graphic saveIntoAdditionalDictionary ;
 
   property @signature Int xCenter default 0 ;
   property @signature Int yCenter default 0 ;
@@ -465,13 +427,7 @@ graphic entity PackageSlavePad : PackageObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageGuide : PackageObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
 
   property @signature Int x1 default 0 ;
   property @signature Int y1 default 0 ;
@@ -493,13 +449,7 @@ graphic entity PackageGuide : PackageObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageDimension : PackageObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
 
   property @signature Int x1 default 0 ;
   property @signature Int y1 default 0 ;
@@ -545,13 +495,7 @@ graphic entity PackageDimension : PackageObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageZone : PackageObject {
-  graphic cursorForKnob ;
   graphic canCopyAndPaste ;
-  graphic translate ;
-  graphic move ;
-  graphic snapToGrid ;
-  graphic flipVertically ;
-  graphic flipHorizontally ;
 
   property @signature Int x default 0 ;
   property @signature Int y default 0 ;

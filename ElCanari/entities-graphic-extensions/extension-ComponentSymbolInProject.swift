@@ -38,6 +38,14 @@ extension ComponentSymbolInProject {
   }
 
   //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_ComponentSymbolInProject (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
+  }
+
+  //····················································································································
 
   func acceptToTranslate_ComponentSymbolInProject (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
@@ -48,6 +56,22 @@ extension ComponentSymbolInProject {
   func translate_ComponentSymbolInProject (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
     self.mCenterX += inDx
     self.mCenterY += inDy
+  }
+
+  //····················································································································
+  //  operationAfterPasting
+  //····················································································································
+
+  func operationAfterPasting_ComponentSymbolInProject (additionalDictionary inDictionary : NSDictionary,
+                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return ""
+  }
+
+  //····················································································································
+  //  Save into additional dictionary
+  //····················································································································
+
+  func saveIntoAdditionalDictionary_ComponentSymbolInProject (_ ioDictionary : NSMutableDictionary) {
   }
 
   //····················································································································

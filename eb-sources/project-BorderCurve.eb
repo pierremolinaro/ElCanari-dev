@@ -7,11 +7,6 @@ enum BorderCurveShape { line, bezier }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity BorderCurve {
-  graphic cursorForKnob ;
-  graphic translate ;
-  graphic move ;
-  graphic rotate ;
-  graphic snapToGrid ;
   graphic cannotBeDeleted ;
 
   property BorderCurveShape mShape default line ;
