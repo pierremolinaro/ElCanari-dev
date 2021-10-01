@@ -17,7 +17,7 @@ extension ProjectRoot {
   internal func tracks (at inLocation : CanariPoint, trackSide inSide : TrackSide) -> [BoardTrack] {
     var result = [BoardTrack] ()
     let maxDistance = milsToCanariUnit (fromDouble: self.mControlKeyHiliteDiameter)
-    for object in self.mBoardObjects {
+    for object in self.mBoardObjects.values {
       if let track = object as? BoardTrack, track.mSide == inSide,
             let p1 = track.mConnectorP1?.location,
             let p2 = track.mConnectorP2?.location {

@@ -13,7 +13,7 @@ import Cocoa
 extension ProjectDocument {
   @objc func resetSelectedDeviceVersionAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        for device in self.projectDeviceController.selectedArray {
+        for device in self.projectDeviceController.selectedArray.values {
           device.mDeviceVersion = 0
         }
 //--- END OF USER ZONE 2

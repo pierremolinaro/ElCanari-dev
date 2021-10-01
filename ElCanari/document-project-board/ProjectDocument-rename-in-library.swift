@@ -42,7 +42,7 @@ extension ProjectDocument {
       self.mRenameDeviceValidationButton?.isEnabled = true
       self.windowForSheet?.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop, let newName = self.mRenameDeviceNameTextField?.stringValue {
-          for padAssignment in selectedDevice.mPadAssignments {
+          for padAssignment in selectedDevice.mPadAssignments.values {
             if let pin = padAssignment.mPin,
             pin.mSymbolTypeName == selectedSymbolTypeName,
             pin.mPinName == selectedPinName {
@@ -80,14 +80,14 @@ extension ProjectDocument {
       self.mRenameDeviceValidationButton?.isEnabled = true
       self.windowForSheet?.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop, let newName = self.mRenameDeviceNameTextField?.stringValue {
-          for symbolInstance in selectedDevice.mSymbols {
+          for symbolInstance in selectedDevice.mSymbols.values {
             if let symbolType = symbolInstance.mSymbolType,
             symbolType.mSymbolTypeName == selectedSymbolTypeName,
             symbolInstance.mSymbolInstanceName == selectedSymbolInstanceName {
               symbolInstance.mSymbolInstanceName = newName
             }
           }
-          for padAssignment in selectedDevice.mPadAssignments {
+          for padAssignment in selectedDevice.mPadAssignments.values {
             if let pin = padAssignment.mPin,
             pin.mSymbolTypeName == selectedSymbolTypeName,
             pin.mSymbolInstanceName == selectedSymbolInstanceName {
@@ -122,7 +122,7 @@ extension ProjectDocument {
       self.mRenameDeviceValidationButton?.isEnabled = true
       self.windowForSheet?.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop, let newName = self.mRenameDeviceNameTextField?.stringValue {
-          for symbolInstance in selectedDevice.mSymbols {
+          for symbolInstance in selectedDevice.mSymbols.values {
             if let symbolType = symbolInstance.mSymbolType, symbolType.mSymbolTypeName == selectedSymbolTypeName {
               symbolType.mSymbolTypeName = newName
             }
@@ -140,7 +140,7 @@ extension ProjectDocument {
     let panel = self.mRenameDevicePanel {
       let selectedDevice = self.projectDeviceController.selectedArray [0]
       var devicePackageNameSet = Set <String> ()
-      for package in selectedDevice.mPackages {
+      for package in selectedDevice.mPackages.values {
         devicePackageNameSet.insert (package.mPackageName)
       }
       devicePackageNameSet.remove (selectedPackageName)
@@ -154,7 +154,7 @@ extension ProjectDocument {
       self.mRenameDeviceValidationButton?.isEnabled = true
       self.windowForSheet?.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop, let newName = self.mRenameDeviceNameTextField?.stringValue {
-          for package in selectedDevice.mPackages {
+          for package in selectedDevice.mPackages.values {
             if package.mPackageName == selectedPackageName {
               package.mPackageName = newName
             }
@@ -171,7 +171,7 @@ extension ProjectDocument {
       let selectedDevice = self.projectDeviceController.selectedArray [0]
       let selectedDeviceName = selectedDevice.mDeviceName
       var deviceNameSet = Set <String> ()
-      for device in self.rootObject.mDevices {
+      for device in self.rootObject.mDevices.values {
         deviceNameSet.insert (device.mDeviceName)
       }
       deviceNameSet.remove (selectedDeviceName)

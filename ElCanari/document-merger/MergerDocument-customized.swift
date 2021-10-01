@@ -47,10 +47,10 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
     self.mIssueTableView?.register (segmentedControl: self.mBoardInspectorSegmentedControl, segment: 1)
   //--- Has unused instance(s) ?
-    for model in self.rootObject.boardModels_property.propval {
+    for model in self.rootObject.boardModels_property.propval.values {
       var newInstanceArray = EBReferenceArray <MergerBoardInstance> ()
       var change = false
-      for instance in model.myInstances_property.propval {
+      for instance in model.myInstances_property.propval.values {
         if instance.myRoot_property.propval == nil {
           NSLog ("unused instance")
           change = true
@@ -84,7 +84,7 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
       if let data = pasteboard.data (forType: kDragAndDropModelType), let boardModelName = String (data: data, encoding: .ascii) {
         // NSLog ("\(boardModelName)")
         var possibleBoardModel : BoardModel? = nil
-        for boardModel in self.rootObject.boardModels_property.propval {
+        for boardModel in self.rootObject.boardModels_property.propval.values {
           if boardModel.name == boardModelName {
             possibleBoardModel = boardModel
             break
@@ -124,7 +124,7 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
       let boardModelTag = self.mModelDragSourceTableView?.tag (atIndex: idx) {
     //--- Find board model
       var optionalBoardModel : BoardModel? = nil
-      for boardModel in self.rootObject.boardModels {
+      for boardModel in self.rootObject.boardModels.values {
         if boardModel.address == boardModelTag {
           optionalBoardModel = boardModel
           break

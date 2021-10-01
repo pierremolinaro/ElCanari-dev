@@ -35,7 +35,7 @@ extension CustomizedProjectDocument {
         }else if let label = object as? LabelInSchematic, let point = label.mPoint, !pointSet.contains (point) {
           pointExploreSet.insert (point)
         }else if let symbol = object as? ComponentSymbolInProject {
-          for point in symbol.mPoints {
+          for point in symbol.mPoints.values {
             if !pointSet.contains (point) {
               pointExploreSet.insert (point)
             }
@@ -59,10 +59,10 @@ extension CustomizedProjectDocument {
             objectExploreSet.insert (symbol)
           }
         }
-        for label in point.mLabels {
+        for label in point.mLabels.values {
           objectSet.insert (label)
         }
-        for wire in point.mWiresP1s + point.mWiresP2s {
+        for wire in point.mWiresP1s.values + point.mWiresP2s.values {
           if !objectSet.contains (wire) {
             objectExploreSet.insert (wire)
           }

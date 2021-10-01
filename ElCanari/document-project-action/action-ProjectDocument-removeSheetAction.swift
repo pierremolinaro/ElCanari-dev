@@ -15,12 +15,12 @@ extension ProjectDocument {
 //--- START OF USER ZONE 2
       if let selectedSheet = self.rootObject.mSelectedSheet, let idx = self.rootObject.mSheets.firstIndex (of: selectedSheet) {
       //--- Remove all objects
-         for point in selectedSheet.mPoints {
+         for point in selectedSheet.mPoints.values {
            point.mSheet = nil
            point.mSymbol = nil
            point.mSymbolPinName = ""
          }
-         for object in selectedSheet.mObjects {
+         for object in selectedSheet.mObjects.values {
            object.operationBeforeRemoving ()
            object.mSheet = nil
          }

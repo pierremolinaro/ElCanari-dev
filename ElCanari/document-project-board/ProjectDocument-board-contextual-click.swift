@@ -99,10 +99,10 @@ extension CustomizedProjectDocument {
       if ObjectIdentifier (c) != ObjectIdentifier (inRetainedConnector) {
         let tracksP1 = c.mTracksP1
         c.mTracksP1 = EBReferenceArray ()
-        inRetainedConnector.mTracksP1 += tracksP1
+        inRetainedConnector.mTracksP1.append (objects: tracksP1)
         let tracksP2 = c.mTracksP2
         c.mTracksP2 = EBReferenceArray ()
-        inRetainedConnector.mTracksP2 += tracksP2
+        inRetainedConnector.mTracksP2.append (objects: tracksP2)
         c.mRoot = nil // Remove from board objects
       }
     }
@@ -112,16 +112,16 @@ extension CustomizedProjectDocument {
     while let track = tracksToExplore.last {
       tracksToExplore.removeLast ()
       track.mNet = inNet
-      var t = [BoardTrack] ()
+      var t = EBReferenceArray <BoardTrack> ()
       if let c = track.mConnectorP1 {
-        t += c.mTracksP1
-        t += c.mTracksP2
+        t.append (objects: c.mTracksP1)
+        t.append (objects: c.mTracksP2)
       }
       if let c = track.mConnectorP2 {
-        t += c.mTracksP1
-        t += c.mTracksP2
+        t.append (objects: c.mTracksP1)
+        t.append (objects: c.mTracksP2)
       }
-      for aTrack in t {
+      for aTrack in t.values {
         if !exploredTracks.contains (aTrack) {
           exploredTracks.insert (aTrack)
           tracksToExplore.append (aTrack)
@@ -141,13 +141,13 @@ extension CustomizedProjectDocument {
       if let net = connector.mComponent?.padNetDictionary? [connector.mComponentPadName] {
         netNameSet.insert (net)
       }
-      for track in connector.mTracksP1 {
+      for track in connector.mTracksP1.values {
         if let c = track.mConnectorP2, !exploredConnectors.contains (c) {
           connectorsToExplore.append (c)
           exploredConnectors.insert (c)
         }
       }
-      for track in connector.mTracksP2 {
+      for track in connector.mTracksP2.values {
         if let c = track.mConnectorP1, !exploredConnectors.contains (c) {
           connectorsToExplore.append (c)
           exploredConnectors.insert (c)
@@ -156,8 +156,8 @@ extension CustomizedProjectDocument {
     }
   //---
     var result = EBReferenceSet <NetInProject> ()
-    for netClass in self.rootObject.mNetClasses {
-      for net in netClass.mNets {
+    for netClass in self.rootObject.mNetClasses.values {
+      for net in netClass.mNets.values {
         if netNameSet.contains (net.mNetName) {
           result.insert (net)
         }
@@ -182,7 +182,7 @@ extension CustomizedProjectDocument {
       }
       if isConnected {
         isConnected = false
-        for track in c.mTracksP1 + c.mTracksP2 {
+        for track in c.mTracksP1.values + c.mTracksP2.values {
           if track.mSide == inSide {
             isConnected = true
           }
@@ -215,7 +215,7 @@ extension CustomizedProjectDocument {
     if let (connectors, side) = inMenuItem.representedObject as? ([BoardConnector], TrackSide) {
       for c in connectors {
         let location = c.location!
-        for track in c.mTracksP1 {
+        for track in c.mTracksP1.values {
           if track.mSide == side {
             track.mConnectorP1 = nil
             let newConnector = BoardConnector (self.ebUndoManager)
@@ -225,7 +225,7 @@ extension CustomizedProjectDocument {
             newConnector.mTracksP1 = EBReferenceArray (track)
           }
         }
-        for track in c.mTracksP2 {
+        for track in c.mTracksP2.values {
           if track.mSide == side {
             track.mConnectorP2 = nil
             let newConnector = BoardConnector (self.ebUndoManager)
@@ -275,13 +275,13 @@ extension CustomizedProjectDocument {
     if let (connector, side) = inMenuItem.representedObject as? (BoardConnector, TrackSide) {
       var retainedConnectors = [BoardConnector] ()
       var tracksToRemove = [BoardTrack] ()
-      for track in connector.mTracksP1 {
+      for track in connector.mTracksP1.values {
         if let c = track.mConnectorP2, c !== connector {
           retainedConnectors.append (c)
           tracksToRemove.append (track)
         }
       }
-      for track in connector.mTracksP2 {
+      for track in connector.mTracksP2.values {
         if let c = track.mConnectorP1, c !== connector {
           retainedConnectors.append (c)
           tracksToRemove.append (track)

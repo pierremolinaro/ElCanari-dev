@@ -16,21 +16,21 @@ extension AutoLayoutPackageDocument {
     if self.mPackageZoneSelectionController.selectedArray.count == 1,
            let selectedItemTitle = self.mZoneForbiddenPadNumberTableView?.selectedItemTitle {
       let selectedZone = self.mPackageZoneSelectionController.selectedArray [0]
-      for f in selectedZone.forbiddenPadNumbers {
+      for f in selectedZone.forbiddenPadNumbers.values {
         if selectedItemTitle == "\(f.padNumber)" {
           selectedZone.forbiddenPadNumbers_property.remove (f)
         }
       }
     //---- Adjust pad number
       var pads = [PackagePad] ()
-      for candidatePad in self.rootObject.packagePads {
+      for candidatePad in self.rootObject.packagePads.values {
         if candidatePad.zone === selectedZone {
           pads.append (candidatePad)
         }
       }
       pads.sort { $0.padNumber < $1.padNumber }
       var forbiddenPadNumberSet = Set <Int> ()
-      for forbiddenPadNumber in selectedZone.forbiddenPadNumbers {
+      for forbiddenPadNumber in selectedZone.forbiddenPadNumbers.values {
         forbiddenPadNumberSet.insert (forbiddenPadNumber.padNumber)
       }
       var newPadNumber = 1

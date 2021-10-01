@@ -18,7 +18,7 @@ extension FontDocument {
         var possibleCurrentCharacterIndex : Int? = nil
         let codePoint = self.rootObject.currentCharacterCodePoint
         var idx = 0
-        for character in charArray {
+        for character in charArray.values {
           if character.codePoint == codePoint {
             possibleCurrentCharacterIndex = idx
             break

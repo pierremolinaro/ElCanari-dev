@@ -16,7 +16,7 @@ extension ProjectDocument {
         let selectedFonts = self.projectFontController.selectedArray_property.propval
         let dc = NSDocumentController.shared 
         var messages = [String] ()
-        for font in selectedFonts {
+        for font in selectedFonts.values {
           let pathes = fontFilePathInLibraries (font.mFontName)
           if pathes.count == 0 {
             messages.append ("No file for \(font.mFontName) font in Library")

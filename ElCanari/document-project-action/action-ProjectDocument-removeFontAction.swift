@@ -15,7 +15,7 @@ extension ProjectDocument {
 //--- START OF USER ZONE 2
         let selectedFonts = self.projectFontController.selectedArray_property.propval
         var allFonts = self.rootObject.mFonts_property.propval
-        for font in selectedFonts {
+        for font in selectedFonts.values {
           if let idx = allFonts.firstIndex(of: font) {
             allFonts.remove(at: idx)
           }

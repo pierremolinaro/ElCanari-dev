@@ -16,7 +16,7 @@ extension SheetInProject {
 
   internal func pointsInSchematics (at inLocation : CanariPoint) -> [PointInSchematic] {
     var result = [PointInSchematic] ()
-    for point in self.mPoints {
+    for point in self.mPoints.values {
       if let location = point.location, inLocation == location {
         result.append (point)
       }

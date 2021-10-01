@@ -21,7 +21,7 @@ extension MergerDocument {
     if let artworkLayerConfiguration = self.rootObject.mArtwork?.layerConfiguration {
       layerSet.insert (artworkLayerConfiguration)
     }
-    for boardModel in self.rootObject.boardModels {
+    for boardModel in self.rootObject.boardModels.values {
       layerSet.insert (boardModel.layerConfiguration)
     }
   //---
@@ -140,7 +140,7 @@ extension MergerDocument {
     var traversingPads = [[String : Any]] ()
     var backPads = [[String : Any]] ()
     var drills = [String] ()
-    for board in self.rootObject.boardInstances_property.propval {
+    for board in self.rootObject.boardInstances_property.propval.values {
       let myModel : BoardModel? = board.myModel_property.propval
       let modelWidth  = myModel?.modelWidth  ?? 0
       let modelHeight = myModel?.modelHeight ?? 0
@@ -388,7 +388,7 @@ extension MergerDocument {
         var strokeBezierPaths = [EBBezierPath] ()
         var filledBezierPaths = [EBBezierPath] ()
         if product.drawInternalBoardLimits {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let lineWidth : CGFloat = canariUnitToCocoa (board.myModel_property.propval!.modelLimitWidth)
             let r : NSRect = board.instanceRect!.cocoaRect.insetBy (dx: lineWidth / 2.0, dy: lineWidth / 2.0)
             var bp = EBBezierPath (rect:r)
@@ -404,7 +404,7 @@ extension MergerDocument {
           strokeBezierPaths.append (bp)
         }
         if product.drawComponentNamesTopSide {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  = myModel?.modelWidth  ?? 0
             let modelHeight = myModel?.modelHeight ?? 0
@@ -415,7 +415,7 @@ extension MergerDocument {
           }
         }
         if product.drawComponentNamesBottomSide {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  = myModel?.modelWidth  ?? 0
             let modelHeight = myModel?.modelHeight ?? 0
@@ -426,7 +426,7 @@ extension MergerDocument {
           }
         }
         if product.drawComponentValuesTopSide {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -437,7 +437,7 @@ extension MergerDocument {
           }
         }
         if product.drawComponentValuesBottomSide {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -448,7 +448,7 @@ extension MergerDocument {
           }
         }
         if product.drawPackageLegendTopSide {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -459,7 +459,7 @@ extension MergerDocument {
           }
         }
         if product.drawPackageLegendBottomSide {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -470,7 +470,7 @@ extension MergerDocument {
           }
         }
         if product.drawPadsTopSide {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -481,7 +481,7 @@ extension MergerDocument {
           }
         }
         if product.drawTraversingPads && (layerConfiguration != .twoLayers) {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -492,7 +492,7 @@ extension MergerDocument {
           }
         }
         if product.drawPadsBottomSide {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -503,7 +503,7 @@ extension MergerDocument {
           }
         }
         if product.drawTextsLayoutTopSide {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -514,7 +514,7 @@ extension MergerDocument {
           }
         }
         if product.drawTextsLayoutBottomSide {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -525,7 +525,7 @@ extension MergerDocument {
           }
         }
         if product.drawTextsLegendTopSide {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -539,7 +539,7 @@ extension MergerDocument {
           }
         }
         if product.drawTextsLegendBottomSide {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -553,7 +553,7 @@ extension MergerDocument {
           }
         }
         if product.drawTracksTopSide {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -564,7 +564,7 @@ extension MergerDocument {
           }
         }
         if product.drawTracksInner1Layer && (layerConfiguration != .twoLayers) {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -575,7 +575,7 @@ extension MergerDocument {
           }
         }
         if product.drawTracksInner2Layer && (layerConfiguration != .twoLayers) {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -586,7 +586,7 @@ extension MergerDocument {
           }
         }
         if product.drawTracksInner3Layer && (layerConfiguration == .sixLayers) {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -597,7 +597,7 @@ extension MergerDocument {
           }
         }
         if product.drawTracksInner4Layer && (layerConfiguration == .sixLayers) {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -608,7 +608,7 @@ extension MergerDocument {
           }
         }
         if product.drawTracksBottomSide {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -619,7 +619,7 @@ extension MergerDocument {
           }
         }
         if product.drawVias {
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -632,7 +632,7 @@ extension MergerDocument {
         var drillBezierPaths = [EBBezierPath] ()
         if product.drawPadHolesInPDF {
           let pdfHoleDiameter : CGFloat = canariUnitToCocoa (product.padHoleDiameterInPDF)
-          for board in self.rootObject.boardInstances_property.propval {
+          for board in self.rootObject.boardInstances_property.propval.values {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
             let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -670,7 +670,7 @@ extension MergerDocument {
       let filePath = inFilePath + "." + drillDataFileExtension + ".pdf"
       self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
       var drillBezierPaths = [EBBezierPath] ()
-      for board in self.rootObject.boardInstances_property.propval {
+      for board in self.rootObject.boardInstances_property.propval.values {
         let myModel : BoardModel? = board.myModel_property.propval
         let modelWidth  : Int = myModel?.modelWidth  ?? 0
         let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -707,7 +707,7 @@ extension MergerDocument {
       var polygons = [[String]] ()
       let minimumApertureMilTenth = canariUnitToMilTenth (self.rootObject.mArtwork_property.propval!.minPPTPTTTW)
       if product.drawInternalBoardLimits {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let lineWidth : Int = board.myModel_property.propval!.modelLimitWidth
           let r : CanariRect = board.instanceRect!
           let left  = canariUnitToMilTenth (r.left + lineWidth / 2)
@@ -748,7 +748,7 @@ extension MergerDocument {
         }
       }
       if product.drawComponentNamesTopSide {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  = myModel?.modelWidth  ?? 0
           let modelHeight = myModel?.modelHeight ?? 0
@@ -759,7 +759,7 @@ extension MergerDocument {
         }
       }
       if product.drawComponentNamesBottomSide {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  = myModel?.modelWidth  ?? 0
           let modelHeight = myModel?.modelHeight ?? 0
@@ -770,7 +770,7 @@ extension MergerDocument {
         }
       }
       if product.drawComponentValuesTopSide {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -781,7 +781,7 @@ extension MergerDocument {
         }
       }
       if product.drawComponentValuesBottomSide {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -792,7 +792,7 @@ extension MergerDocument {
         }
       }
       if product.drawPackageLegendTopSide {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -803,7 +803,7 @@ extension MergerDocument {
         }
       }
       if product.drawPackageLegendBottomSide {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -815,7 +815,7 @@ extension MergerDocument {
       }
       if product.drawPadsTopSide {
         // Swift.print ("drawPadsTopSide")
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -833,7 +833,7 @@ extension MergerDocument {
         }
       }
       if product.drawTraversingPads && (layerConfiguration != .twoLayers) {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -851,7 +851,7 @@ extension MergerDocument {
         }
       }
       if product.drawPadsBottomSide {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -869,7 +869,7 @@ extension MergerDocument {
         }
       }
       if product.drawTextsLayoutTopSide {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -880,7 +880,7 @@ extension MergerDocument {
         }
       }
       if product.drawTextsLayoutBottomSide {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -891,7 +891,7 @@ extension MergerDocument {
         }
       }
       if product.drawTextsLegendTopSide {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -905,7 +905,7 @@ extension MergerDocument {
         }
       }
       if product.drawTextsLegendBottomSide {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -919,7 +919,7 @@ extension MergerDocument {
         }
       }
       if product.drawTracksTopSide {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -930,7 +930,7 @@ extension MergerDocument {
         }
       }
       if product.drawTracksInner1Layer && (layerConfiguration != .twoLayers) {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -941,7 +941,7 @@ extension MergerDocument {
         }
       }
       if product.drawTracksInner2Layer && (layerConfiguration != .twoLayers) {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -952,7 +952,7 @@ extension MergerDocument {
         }
       }
       if product.drawTracksInner3Layer && (layerConfiguration == .sixLayers) {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -963,7 +963,7 @@ extension MergerDocument {
         }
       }
       if product.drawTracksInner4Layer && (layerConfiguration == .sixLayers) {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -974,7 +974,7 @@ extension MergerDocument {
         }
       }
       if product.drawTracksBottomSide {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -985,7 +985,7 @@ extension MergerDocument {
         }
       }
       if product.drawVias {
-        for board in self.rootObject.boardInstances_property.propval {
+        for board in self.rootObject.boardInstances_property.propval.values {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0
           let modelHeight : Int = myModel?.modelHeight ?? 0
@@ -1033,7 +1033,7 @@ extension MergerDocument {
     s += "INCH\n"
  //--- Array of hole diameters
     var holeDictionary = [Int : [(Int, Int, Int, Int)]] ()
-    for board in self.rootObject.boardInstances_property.propval {
+    for board in self.rootObject.boardInstances_property.propval.values {
       let myModel : BoardModel? = board.myModel_property.propval
       let modelWidth  : Int = myModel?.modelWidth  ?? 0
       let modelHeight : Int = myModel?.modelHeight ?? 0

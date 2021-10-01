@@ -24,7 +24,7 @@ extension MergerDocument {
   func addBoardModel () {
   //--- Build list of current board model names
     var boardModelNames = [String] ()
-    for boardModel in rootObject.boardModels_property.propval {
+    for boardModel in rootObject.boardModels_property.propval.values {
       let name : String = boardModel.name
       boardModelNames.append (name)
     }

@@ -16,7 +16,7 @@ extension ProjectDocument {
          var possibleValues = Set <String> ()
          var componentNames = [String] ()
          let selectedComponents = self.componentController.selectedArray
-         for component in selectedComponents {
+         for component in selectedComponents.values {
            componentNames.append (component.componentName!)
            possibleValues.insert (component.mComponentValue)
          }
@@ -33,7 +33,7 @@ extension ProjectDocument {
            }
            window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
              if inResponse == .stop, let newValue = self.mChangeComponentValueComboxBox?.stringValue {
-               for component in selectedComponents {
+               for component in selectedComponents.values {
                  component.mComponentValue = newValue
                }
              }

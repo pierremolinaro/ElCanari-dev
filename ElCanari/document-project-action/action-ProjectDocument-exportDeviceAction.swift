@@ -15,7 +15,7 @@ extension ProjectDocument {
 //--- START OF USER ZONE 2
         let selectedDevices = self.projectDeviceController.selectedArray_property.propval
         var messages = [String] ()
-        for device in selectedDevices {
+        for device in selectedDevices.values {
           if device.mDeviceFileData.count > 0 {
             let savePanel = NSSavePanel ()
             savePanel.allowedFileTypes = ["ElCanariDevice"]

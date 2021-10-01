@@ -15,7 +15,7 @@ extension ProjectDocument {
 //--- START OF USER ZONE 2
     var componentToSelect = [BoardObject] ()
     var r = NSRect.null
-    for component in self.componentController.selectedArray {
+    for component in self.componentController.selectedArray.values {
       if let padRect = component.selectedPackagePadsRect () {
         componentToSelect.append (component)
         r = r.union (padRect)

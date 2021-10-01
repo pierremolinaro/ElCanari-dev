@@ -101,14 +101,14 @@ final class AutoLayoutCanariPadRenumberPullDownButton : InternalAutoLayoutPopUpB
     if let document = self.mDocument {
       let allZones = document.rootObject.packageZones
       var myZone : PackageZone? = nil
-      for zone in allZones {
+      for zone in allZones.values {
         if zone.zoneName == self.mCurrentZoneName {
           myZone = zone
           break
         }
       }
       self.addItem (withTitle: "Exchange with")
-      let allPads = document.rootObject.packagePads.sorted (by: { $0.padNumber < $1.padNumber } )
+      let allPads = document.rootObject.packagePads.values.sorted (by: { $0.padNumber < $1.padNumber } )
       for pad in allPads {
         if pad.zone === myZone {
           self.addItem (withTitle: pad.padNameWithZoneName ?? "?")
@@ -130,7 +130,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : InternalAutoLayoutPopUpB
    // Swift.print ("Exchange \(self.mCurrentPadNumber) <-> \(inSender.tag)")
     if let document = self.mDocument {
       let allPads = document.rootObject.packagePads
-      for pad in allPads {
+      for pad in allPads.values {
         if pad.padNumber == self.mCurrentPadNumber {
           pad.padNumber = inSender.tag
         }else if pad.padNumber == inSender.tag {

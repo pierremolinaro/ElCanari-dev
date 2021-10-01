@@ -115,7 +115,7 @@ extension ProjectDocument {
         self.mAddNetClassErrorMessageTextField?.stringValue = "New Net Class name is empty."
       }else{
         var newNameIsUnique = true
-        for netClass in self.rootObject.mNetClasses {
+        for netClass in self.rootObject.mNetClasses.values {
           if netClass.mNetClassName == newNetClassName {
             newNameIsUnique = false
           }
@@ -275,7 +275,7 @@ extension ProjectDocument {
        self.mAddNetClassErrorMessageTextField?.stringValue = "Net Class name is empty."
       }else{
         var newNameIsUnique = true
-        for netClass in self.rootObject.mNetClasses {
+        for netClass in self.rootObject.mNetClasses.values {
           if (netClass !== editedNetClass) && (netClass.mNetClassName == newNetClassName) {
             newNameIsUnique = false
           }

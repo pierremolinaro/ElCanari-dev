@@ -47,7 +47,7 @@ extension ProjectDocument {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
   //--- Iterate on components
     var dictionary = [CSVKey : [String]] ()
-    for component in self.rootObject.mComponents {
+    for component in self.rootObject.mComponents.values {
       let deviceName = component.mDevice!.mDeviceName
       let componentValue = component.mComponentValue
       let componentName = component.componentName!

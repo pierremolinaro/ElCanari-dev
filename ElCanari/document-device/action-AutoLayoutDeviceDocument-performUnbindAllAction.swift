@@ -13,7 +13,7 @@ import Cocoa
 extension AutoLayoutDeviceDocument {
   @objc func performUnbindAllAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-          for padProxy in self.rootObject.mPadProxies {
+          for padProxy in self.rootObject.mPadProxies.values {
             padProxy.mIsNC = false
             padProxy.mPinInstance = nil
             padProxy.mPinInstanceName = ""

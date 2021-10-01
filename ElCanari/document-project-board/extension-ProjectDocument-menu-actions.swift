@@ -25,7 +25,7 @@ extension CustomizedProjectDocument {
   internal func removeAllViasAndTracks () {
   //--- Remove all tracks
     var conservedObjects = EBReferenceArray <BoardObject> ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack {
         let optionalNet = track.mNet
         track.mConnectorP1 = nil
@@ -40,7 +40,7 @@ extension CustomizedProjectDocument {
     }
     self.rootObject.mBoardObjects = conservedObjects
   //--- Remove all vias
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let via = object as? BoardConnector {
         if (via.mComponent == nil) && ((via.mTracksP1.count + via.mTracksP2.count) == 0) {
           via.mRoot = nil
@@ -63,7 +63,7 @@ extension CustomizedProjectDocument {
     var frontTracks = EBReferenceArray <BoardObject> ()
     var restrictRectangles = EBReferenceArray <BoardObject> ()
     var connectors = EBReferenceArray <BoardObject> ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let connector = object as? BoardConnector {
         connectors.append (connector)
       }else if let rr = object as? BoardRestrictRectangle {
@@ -96,16 +96,16 @@ extension CustomizedProjectDocument {
     }
 //    self.rootObject.mBoardObjects = backComponents + backTracks + inner4Tracks + inner3Tracks + inner2Tracks + inner1Tracks + others + frontTracks + frontComponents + restrictRectangles + connectors
     var array = backComponents
-    array += backTracks
-    array += inner4Tracks
-    array += inner3Tracks
-    array += inner2Tracks
-    array += inner1Tracks
-    array += others
-    array += frontTracks
-    array += frontComponents
-    array += restrictRectangles
-    array += connectors
+    array.append (objects: backTracks)
+    array.append (objects: inner4Tracks)
+    array.append (objects: inner3Tracks)
+    array.append (objects: inner2Tracks)
+    array.append (objects: inner1Tracks)
+    array.append (objects: others)
+    array.append (objects: frontTracks)
+    array.append (objects: frontComponents)
+    array.append (objects: restrictRectangles)
+    array.append (objects: connectors)
     self.rootObject.mBoardObjects = array
   }
 
@@ -121,7 +121,7 @@ extension ProjectDocument {
 
   @IBAction func selectAllComponentsAction (_ inSender : Any?) {
     var newSelection = [BoardObject] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
         newSelection.append (component)
       }
@@ -134,7 +134,7 @@ extension ProjectDocument {
 
   @IBAction func selectAllTracksAction (_ inSender : Any?) {
     var newSelection = [BoardObject] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack {
         newSelection.append (track)
       }
@@ -147,7 +147,7 @@ extension ProjectDocument {
 
   @IBAction func selectAllViasAction (_ inSender : Any?) {
     var newSelection = [BoardObject] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let connector = object as? BoardConnector, let isVia = connector.isVia, isVia {
         newSelection.append (connector)
       }
@@ -160,7 +160,7 @@ extension ProjectDocument {
 
   @IBAction func selectAllRestrictRectanglesAction (_ inSender : Any?) {
     var newSelection = [BoardObject] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let brr = object as? BoardRestrictRectangle {
         newSelection.append (brr)
       }
@@ -173,13 +173,13 @@ extension ProjectDocument {
 
   @IBAction func selectAllTracksOfSelectedTracksNetsAction (_ inSender : Any?) {
     var netSet = EBReferenceSet <NetInProject> ()
-    for object in self.boardObjectsController.selectedArray {
+    for object in self.boardObjectsController.selectedArray.values {
       if let track = object as? BoardTrack, let net = track.mNet {
         netSet.insert (net)
       }
     }
     var newSelectedObjects = [BoardObject] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack, let net = track.mNet, netSet.contains (net) {
         newSelectedObjects.append (object)
       }
@@ -203,7 +203,7 @@ extension ProjectDocument {
 
   fileprivate func renameComponents (by inSortFunction : (CenterAndComponent, CenterAndComponent) -> Bool) {
     var componentLocationArray = [CenterAndComponent] ()
-    for component in self.rootObject.mComponents {
+    for component in self.rootObject.mComponents.values {
       if let padRect = component.selectedPackagePadsRect () {
         componentLocationArray.append (CenterAndComponent (center: padRect.center, component: component))
       }else{

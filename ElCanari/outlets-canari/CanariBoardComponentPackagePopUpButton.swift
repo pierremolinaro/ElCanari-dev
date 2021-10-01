@@ -75,9 +75,9 @@ final class CanariBoardComponentPackagePopUpButton : NSPopUpButton, EBUserClassN
     //--- Check all selected components have the same available package set
       var referencePackageSet : Set <String>? = nil
       var ok = true
-      for component in selectedComponents {
+      for component in selectedComponents.values {
         var packageSet = Set <String> ()
-        for package in component.mPackages {
+        for package in component.mPackages.values {
           packageSet.insert (package.mPackageName)
         }
         if let ps = referencePackageSet, ok {
@@ -95,7 +95,7 @@ final class CanariBoardComponentPackagePopUpButton : NSPopUpButton, EBUserClassN
           NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize),
           NSAttributedString.Key.obliqueness : 0.2
         ]
-        for package in selectedComponents [0].mPackages {
+        for package in selectedComponents [0].mPackages.values {
           self.addItem (withTitle: package.mPackageName)
           self.lastItem?.representedObject = package
           self.lastItem?.target = self
@@ -116,7 +116,7 @@ final class CanariBoardComponentPackagePopUpButton : NSPopUpButton, EBUserClassN
 
   @objc private func changePackageAction (_ inSender : NSMenuItem) {
     if let selectedComponents = self.mSelectedObjects?.propval, let package = inSender.representedObject as? DevicePackageInProject {
-      for component in selectedComponents {
+      for component in selectedComponents.values {
         component.set (package: package)
       }
     }

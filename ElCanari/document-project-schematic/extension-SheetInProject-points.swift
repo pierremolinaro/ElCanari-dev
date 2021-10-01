@@ -28,7 +28,7 @@ extension SheetInProject {
 
   internal func removeUnusedSchematicsPoints (_ ioErrorList : inout [String]) {
   //--- Remove unused points
-    for point in self.mPoints {
+    for point in self.mPoints.values {
       var used = (point.mLabels.count + point.mWiresP1s.count + point.mWiresP2s.count) > 0
       if !used {
         used = point.mNC != nil
@@ -46,7 +46,7 @@ extension SheetInProject {
     }
   //--- Check points
     var exploreSet = EBReferenceSet <PointInSchematic> ()
-    for point in self.mPoints {
+    for point in self.mPoints.values {
       if point.mNC != nil {
         var errorFlags : UInt32 = 0
         if point.mSymbol == nil { errorFlags |= 1 }
@@ -84,7 +84,7 @@ extension SheetInProject {
             if p2.mNet !== net {
               ioErrorList.append ("Error p2.mNet != net for net \(net?.address ?? 0)")
             }
-            for reachableWire in p2.mWiresP1s + p2.mWiresP2s {
+            for reachableWire in p2.mWiresP1s.values + p2.mWiresP2s.values {
               if !exploredWires.contains (reachableWire) {
                 exploredWires.insert (reachableWire)
                 wiresToExplore.insert (reachableWire)
@@ -97,7 +97,7 @@ extension SheetInProject {
             if p1.mNet !== net {
               ioErrorList.append ("Error p1.mNet != net for net \(net?.address ?? 0)")
             }
-            for reachableWire in p1.mWiresP1s + p1.mWiresP2s {
+            for reachableWire in p1.mWiresP1s.values + p1.mWiresP2s.values {
               if !exploredWires.contains (reachableWire) {
                 exploredWires.insert (reachableWire)
                 wiresToExplore.insert (reachableWire)
@@ -117,12 +117,12 @@ extension SheetInProject {
     while let point = exploreSet.first {
       _ = exploreSet.removeFirst ()
       result.insert (point)
-      for wire in point.mWiresP1s {
+      for wire in point.mWiresP1s.values {
         if let p2 = wire.mP2, !result.contains (p2) {
           exploreSet.insert (p2)
         }
       }
-      for wire in point.mWiresP2s {
+      for wire in point.mWiresP2s.values {
         if let p1 = wire.mP1, !result.contains (p1) {
           exploreSet.insert (p1)
         }
@@ -149,7 +149,7 @@ extension SheetInProject {
   internal func buildLabelArrayFromSubnet (_ inSubnet : EBReferenceSet <PointInSchematic>) -> [LabelInSchematic] {
     var result = [LabelInSchematic] ()
     for point in inSubnet.values {
-      for label in point.mLabels {
+      for label in point.mLabels.values {
         result.append (label)
       }
     }

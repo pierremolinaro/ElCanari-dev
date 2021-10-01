@@ -127,7 +127,7 @@ extension ProjectDocument {
     self.mERCLogTextView?.appendMessageString ("Check tracks layer… ")
     var errorCount = 0
     let layerConfiguration = self.rootObject.mLayerConfiguration
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack {
         switch track.mSide {
         case .back, .front :
@@ -228,7 +228,7 @@ extension ProjectDocument {
                                        artworkClearance inArtworkClearance : Int) {
     self.mERCLogTextView?.appendMessageString ("Check vias OAR and PHD… ")
     var errorCount = 0
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let connector = object as? BoardConnector, let isVia = connector.isVia, isVia {
         let viaHoleDiameter = connector.actualHoleDiameter!
         let viaOAR = (connector.actualPadDiameter! - viaHoleDiameter) / 2
@@ -269,7 +269,7 @@ extension ProjectDocument {
                                        artworkClearance inArtworkClearance : Int) {
     self.mERCLogTextView?.appendMessageString ("Check pads OAR and PHD… ")
     var errorCount = 0
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
         let af = component.affineTransformFromPackage ()
         for (_, padDescriptor) in component.packagePadDictionary! {
@@ -355,7 +355,7 @@ extension ProjectDocument {
                                           _ ioPadID : inout Int,
                                           _ ioPadNetDictionary : inout [SideAndNetName : [PadGeometryForERC]],
                                           artworkClearance inArtworkClearance : Int) {
-    for component in self.rootObject.mComponents {
+    for component in self.rootObject.mComponents.values {
       if component.mRoot != nil { // Is on board
         let padNetDictionary : PadNetDictionary = component.padNetDictionary!
         let af = component.affineTransformFromPackage ()
@@ -552,12 +552,12 @@ extension ProjectDocument {
                                      artworkClearance inArtworkClearance : Int) {
     self.mERCLogTextView?.appendMessageString ("Pad connection… ")
     var connectionErrorCount = 0
-    for component in self.rootObject.mComponents {
+    for component in self.rootObject.mComponents.values {
       if component.mRoot != nil { // Placed on board
         let af = component.affineTransformFromPackage ()
         let padNetDictionary : PadNetDictionary = component.padNetDictionary!
         let slavePadsShouldBeRouted = component.mSlavePadsShouldBeRouted
-        for connector in component.mConnectors {
+        for connector in component.mConnectors.values {
           let masterPadName = connector.mComponentPadName
           let padDescriptor = component.packagePadDictionary! [masterPadName]!
           let padShouldBeConnected = (connector.mPadIndex == 0) || slavePadsShouldBeRouted
@@ -614,7 +614,7 @@ extension ProjectDocument {
             connectorOnBackSide = true
           }
         }
-        for track in inConnector.mTracksP1 + inConnector.mTracksP2 {
+        for track in inConnector.mTracksP1.values + inConnector.mTracksP2.values {
           switch track.mSide {
           case .inner1, .inner2, .inner3, .inner4 :
              if !connectorOnFrontSide || !connectorOnBackSide {
@@ -665,7 +665,7 @@ extension ProjectDocument {
             connectorOnFrontSide = true
           }
         }
-        for track in inConnector.mTracksP1 + inConnector.mTracksP2 {
+        for track in inConnector.mTracksP1.values + inConnector.mTracksP2.values {
           switch track.mSide {
           case .inner1, .inner2, .inner3, .inner4 :
              if !connectorOnFrontSide || !connectorOnBackSide {
@@ -710,7 +710,7 @@ extension ProjectDocument {
     //--- Iterative exploration of net
       while let connector = connectorExploreArray.last {
         connectorExploreArray.removeLast ()
-        for track in connector.mTracksP1 {
+        for track in connector.mTracksP1.values {
           if !exploredTrackSet.contains (track) {
             exploredTrackSet.insert (track)
             if !connectorExploredSet.contains (track.mConnectorP2!) {
@@ -719,7 +719,7 @@ extension ProjectDocument {
             }
           }
         }
-        for track in connector.mTracksP2 {
+        for track in connector.mTracksP2.values {
           if !exploredTrackSet.contains (track) {
             exploredTrackSet.insert (track)
             if !connectorExploredSet.contains (track.mConnectorP1!) {
@@ -758,7 +758,7 @@ extension ProjectDocument {
     var restrictRectangles = [TrackSide : [GeometricRect]] ()
 
     var viaDictionary = [String : [GeometricCircle]] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack {
         let netName = track.mNet?.mNetName ?? ""
         let p1 = track.mConnectorP1!.location!.cocoaPoint
@@ -771,7 +771,7 @@ extension ProjectDocument {
         var isVia = via.mComponent == nil
         if isVia {
           var layerSet = Set <TrackSide> ()
-          for track in via.mTracksP1 + via.mTracksP2 {
+          for track in via.mTracksP1.values + via.mTracksP2.values {
             layerSet.insert (track.mSide)
           }
           isVia = layerSet.count > 1

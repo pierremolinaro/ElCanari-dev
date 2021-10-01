@@ -54,7 +54,7 @@ extension SymbolInstanceInDevice {
   //····················································································································
 
   func operationBeforeRemoving_SymbolInstanceInDevice () {
-    for pinInstance in self.mPinInstances {
+    for pinInstance in self.mPinInstances.values {
       pinInstance.mSymbolInstance = nil
       pinInstance.mType = nil
       pinInstance.mPadProxy = nil

@@ -253,7 +253,7 @@ extension ComponentSymbolInProject {
 
   func operationBeforeRemoving_ComponentSymbolInProject () {
   //--- Remove nc, and attached points in project if they are not connected to any wire
-    for point in self.mPoints {
+    for point in self.mPoints.values {
     //--- Remove NC
       point.mNC?.mSheet = nil // Remove NC from sheet
       point.mNC = nil // Detach from pin

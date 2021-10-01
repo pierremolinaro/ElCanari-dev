@@ -35,8 +35,8 @@ extension CustomizedProjectDocument {
        let popup = self.mSelectNetClassPopUpButton {
     //--- Find net
       var possibleNet : NetInProject? = nil
-      for netClass in self.rootObject.mNetClasses {
-        for net in netClass.mNets {
+      for netClass in self.rootObject.mNetClasses.values {
+        for net in netClass.mNets.values {
           if net.mNetName == inNetName {
             possibleNet = net
             break
@@ -48,7 +48,7 @@ extension CustomizedProjectDocument {
         popup.removeAllItems ()
         var netClasses = self.rootObject.mNetClasses
         netClasses.sort (by : { $0.mNetClassName.localizedStandardCompare ($1.mNetClassName) == .orderedAscending } )
-        for netClass in netClasses {
+        for netClass in netClasses.values {
           popup.addItem (withTitle: netClass.mNetClassName)
           popup.lastItem?.representedObject = netClass
           if netClass === net.mNetClass {

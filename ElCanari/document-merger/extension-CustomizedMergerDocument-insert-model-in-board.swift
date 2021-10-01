@@ -18,7 +18,7 @@ extension CustomizedMergerDocument {
     let menu = NSMenu ()
     let allModels = self.mBoardModelController.objects
     if allModels.count > 0 {
-      for model in allModels {
+      for model in allModels.values {
         menu.addItem (withTitle: "Insert '\(model.name)'", action: #selector (Self.insertModelInBoardAction (_:)), keyEquivalent: "")
         let lastItem = menu.item (at: menu.numberOfItems - 1)
         lastItem?.target = self
@@ -53,7 +53,7 @@ extension CustomizedMergerDocument {
     if let mouseDownLocationInView = inSender.representedObject as? CanariPoint {
     //--- Build model popup button
       let modelPopUpButton = InternalAutoLayoutPopUpButton (pullsDown: false, size: .small)
-      for model in self.mBoardModelController.objects {
+      for model in self.mBoardModelController.objects.values {
         modelPopUpButton.addItem (withTitle: model.name)
         let lastItem = modelPopUpButton.lastItem
         lastItem?.representedObject = model

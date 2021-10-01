@@ -13,10 +13,10 @@ import Cocoa
 extension AutoLayoutDeviceDocument {
   @objc func resetSymbolsAndPackagesVersion (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    for package in self.rootObject.mPackages_property.propval {
+    for package in self.rootObject.mPackages_property.propval.values {
       package.mVersion = 0
     }
-    for symbolType in self.rootObject.mSymbolTypes_property.propval {
+    for symbolType in self.rootObject.mSymbolTypes_property.propval.values {
       symbolType.mVersion = 0
     }
 //--- END OF USER ZONE 2

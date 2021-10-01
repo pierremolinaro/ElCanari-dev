@@ -14,7 +14,7 @@ extension AutoLayoutPackageDocument {
   @objc func loadFromDesignAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     var program = ""
-    for object in self.rootObject.packageObjects {
+    for object in self.rootObject.packageObjects.values {
       program += object.program ()
     }
     program += "end\n"

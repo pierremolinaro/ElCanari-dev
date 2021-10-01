@@ -13,7 +13,7 @@ extension ProjectDocument {
 
   internal func addComponentDialog () {
     var currentDeviceNames = Set <String> ()
-    for device in self.rootObject.mDevices_property.propval {
+    for device in self.rootObject.mDevices_property.propval.values {
       currentDeviceNames.insert (device.mDeviceName)
     }
      gOpenDeviceInLibrary?.loadDocumentFromLibrary (
@@ -38,7 +38,7 @@ extension ProjectDocument {
   func addComponent (fromEmbeddedLibraryDeviceName inDeviceName : String) {
   //--- find device
     var possibleDevice : DeviceInProject? = nil
-    for device in self.rootObject.mDevices {
+    for device in self.rootObject.mDevices.values {
       if device.mDeviceName == inDeviceName {
         possibleDevice = device
       }
@@ -75,7 +75,7 @@ extension ProjectDocument {
       newComponent.mValueFont = self.rootObject.mFonts [0]
     //--- Set symbols
       var componentSymbols = EBReferenceArray <ComponentSymbolInProject> ()
-      for symbolInDevice in deviceInProject.mSymbols {
+      for symbolInDevice in deviceInProject.mSymbols.values {
         let newSymbolInProject = ComponentSymbolInProject (self.ebUndoManager)
         newSymbolInProject.mSymbolTypeName = symbolInDevice.mSymbolType!.mSymbolTypeName
         newSymbolInProject.mSymbolInstanceName = symbolInDevice.mSymbolInstanceName
@@ -89,7 +89,7 @@ extension ProjectDocument {
         newComponent.mNamePrefix = deviceInProject.mPrefix
       }
       var idx = 1
-      for component in self.rootObject.mComponents {
+      for component in self.rootObject.mComponents.values {
         if newComponent.mNamePrefix == component.mNamePrefix {
           idx = max (idx, component.mNameIndex + 1)
         }

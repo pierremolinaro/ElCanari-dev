@@ -16,7 +16,7 @@ extension AutoLayoutDeviceDocument {
     let selectedSymbols = self.symbolTypeController.selectedArray
     let fm = FileManager ()
     var messages = [String] ()
-    for symbolType in selectedSymbols {
+    for symbolType in selectedSymbols.values {
       let pathes = symbolFilePathInLibraries (symbolType.mTypeName)
       if pathes.count == 0 {
         messages.append ("No file in Library for \(symbolType.mTypeName) symbol")
@@ -42,11 +42,11 @@ extension AutoLayoutDeviceDocument {
             symbolRoot.removeRecursivelyAllRelationsShips ()
           //--- Check if symbol pin name set is the same
             var currentPinNameSet = Set <String> ()
-            for pinType in symbolType.mPinTypes_property.propval {
+            for pinType in symbolType.mPinTypes_property.propval.values {
               currentPinNameSet.insert (pinType.mName)
             }
             var newPinNameDictionary = [String : SymbolPinTypeInDevice] ()
-            for pinType in newSymbolPinTypes {
+            for pinType in newSymbolPinTypes.values {
               newPinNameDictionary [pinType.mName] = pinType
             }
             if currentPinNameSet != Set (newPinNameDictionary.keys) {
@@ -58,7 +58,7 @@ extension AutoLayoutDeviceDocument {
               symbolType.mStrokeBezierPath = strokeBezierPathes
               symbolType.mFilledBezierPath = filledBezierPathes
             //--- Update pin types
-              for pinType in symbolType.mPinTypes_property.propval {
+              for pinType in symbolType.mPinTypes_property.propval.values {
                 let newPinType = newPinNameDictionary [pinType.mName]!
                 pinType.mXName = newPinType.mXName
                 pinType.mYName = newPinType.mYName

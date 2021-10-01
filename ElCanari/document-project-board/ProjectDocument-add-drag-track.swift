@@ -146,11 +146,11 @@ extension CustomizedProjectDocument {
       //--- Exclude connectors at mouse location
         let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseLocation.canariPoint, trackSide: newTrackSide)
         for c in connectorsUnderMouse {
-          excludedConnectors += self.findAllConnectorsConnectedTo (c, trackSide: newTrackSide)
+          excludedConnectors.append (objects: self.findAllConnectorsConnectedTo (c, trackSide: newTrackSide))
         }
       //--- Build shape
         var bpArray = [EBBezierPath] ()
-        for object in self.rootObject.mBoardObjects {
+        for object in self.rootObject.mBoardObjects.values {
           if let connector = object as? BoardConnector,
                 !excludedConnectors.contains (connector),
                 connector.netNameFromComponentPad == netName {

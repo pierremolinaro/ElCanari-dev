@@ -74,7 +74,7 @@ final class CanariBoardTextFontPopUpButton : NSPopUpButton, EBUserClassNameProto
     //Swift.print ("buildPopUpButton")
     var fontNameSet = Set <String> ()
     if let selectedTexts = self.mSelectedObjects?.propval {
-      for text in selectedTexts {
+      for text in selectedTexts.values {
         if let fontName = text.fontName {
           fontNameSet.insert (fontName)
         }
@@ -84,7 +84,7 @@ final class CanariBoardTextFontPopUpButton : NSPopUpButton, EBUserClassNameProto
   //---
     self.removeAllItems ()
     if let fontsModel = self.mFontsModel?.propval {
-      for font in fontsModel {
+      for font in fontsModel.values {
         self.addItem (withTitle: font.mFontName)
         self.lastItem?.representedObject = font
         self.lastItem?.target = self
@@ -108,7 +108,7 @@ final class CanariBoardTextFontPopUpButton : NSPopUpButton, EBUserClassNameProto
 
   @objc private func changeFontAction (_ inSender : NSMenuItem) {
     if let selectedTexts = self.mSelectedObjects?.propval, let font = inSender.representedObject as? FontInProject {
-      for text in selectedTexts {
+      for text in selectedTexts.values {
         text.mFont = font
       }
     }

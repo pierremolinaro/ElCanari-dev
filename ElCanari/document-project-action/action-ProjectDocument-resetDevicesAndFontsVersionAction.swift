@@ -13,10 +13,10 @@ import Cocoa
 extension ProjectDocument {
   @objc func resetDevicesAndFontsVersionAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-       for device in self.rootObject.mDevices {
+       for device in self.rootObject.mDevices.values {
          device.mDeviceVersion = 0
        }
-       for font in self.rootObject.mFonts {
+       for font in self.rootObject.mFonts.values {
          font.mFontVersion = 0
        }
 //--- END OF USER ZONE 2

@@ -14,7 +14,7 @@ extension AutoLayoutDeviceDocument {
   @objc func addPackageFromLibraryAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
    var currentPackageNames = Set <String> ()
-   for package in self.rootObject.mPackages {
+   for package in self.rootObject.mPackages.values {
      currentPackageNames.insert (package.mName)
    }
    gOpenPackageInLibrary?.loadDocumentFromLibrary (

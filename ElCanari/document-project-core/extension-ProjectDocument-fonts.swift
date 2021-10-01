@@ -13,7 +13,7 @@ extension ProjectDocument {
 
   internal func addFont (postAction: Optional <() -> Void>) {
      var currentFontNames = Set <String> ()
-     for font in self.rootObject.mFonts {
+     for font in self.rootObject.mFonts.values {
         currentFontNames.insert (font.mFontName)
      }
      gOpenFontInLibrary?.loadDocumentFromLibrary (
@@ -55,7 +55,7 @@ extension ProjectDocument {
   //····················································································································
 
   internal func updateFonts (_ inFonts : EBReferenceArray <FontInProject>, _ ioMessages : inout [String]) {
-    for font in inFonts {
+    for font in inFonts.values {
       let pathes = fontFilePathInLibraries (font.mFontName)
       if pathes.count == 0 {
         ioMessages.append ("No file for \(font.mFontName) font in Library")

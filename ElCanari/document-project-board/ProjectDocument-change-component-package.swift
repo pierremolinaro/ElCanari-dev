@@ -21,7 +21,7 @@ extension ProjectDocument {
     let selectedComponents = self.componentController.selectedArray_property.propval
     if selectedComponents.count > 0 {
       var intersectionOfPackageSet = Set (selectedComponents [0].availablePackages!)
-      for component in selectedComponents {
+      for component in selectedComponents.values {
         componentNames.append (component.componentName!)
         currentSelectedPackageSet.insert (component.mSelectedPackage!.mPackageName)
         if let availablePackages = component.availablePackages {
@@ -49,7 +49,7 @@ extension ProjectDocument {
       self.mChangePackagePopUpButton?.select (itemToSelect)
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop, let newPackageName = self.mChangePackagePopUpButton?.titleOfSelectedItem {
-          for component in selectedComponents {
+          for component in selectedComponents.values {
             var newPossiblePackage : DevicePackageInProject? = nil
             for candidatePackage in component.mDevice?.mPackages.values ?? [] {
               if candidatePackage.mPackageName == newPackageName {
@@ -78,7 +78,7 @@ extension ComponentInProject {
   internal func set (package inPackage : DevicePackageInProject) {
     if self.isPlacedInBoard! {
     //--- Check the corresponding pad does exist in new package
-      for currentConnector in self.mConnectors {
+      for currentConnector in self.mConnectors.values {
         var found = false
         for (padName, masterPadDescriptor) in inPackage.packagePadDictionary! {
           if (currentConnector.mComponentPadName == padName) && (currentConnector.mPadIndex <= masterPadDescriptor.slavePads.count) {
@@ -103,7 +103,7 @@ extension ComponentInProject {
         if masterPadDescriptor.slavePads.count > 0 {
           for slavePadIndex in 1 ... masterPadDescriptor.slavePads.count {
             var found = false
-            for currentConnector in self.mConnectors {
+            for currentConnector in self.mConnectors.values {
               if (currentConnector.mComponentPadName == padName) && (currentConnector.mPadIndex == slavePadIndex) {
                 found = true
               }

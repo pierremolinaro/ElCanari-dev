@@ -13,7 +13,7 @@ import Cocoa
 extension ProjectDocument {
   @objc func removeEmbeddedDevicesAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-       for device in self.rootObject.mDevices {
+       for device in self.rootObject.mDevices.values {
          device.mDeviceFileData = Data ()
        }
 //--- END OF USER ZONE 2

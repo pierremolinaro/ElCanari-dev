@@ -24,7 +24,7 @@ extension CustomizedProjectDocument {
     //--- Populate pop up button
       popup.removeAllItems ()
       var idx = 0
-      for sheet in self.rootObject.mSheets {
+      for sheet in self.rootObject.mSheets.values {
         popup.addItem (withTitle: "\(sheet.mSheetTitle) — \(idx + 1)/\(self.rootObject.mSheets.count)")
         popup.lastItem?.representedObject = sheet
         if selectedSheet === sheet {

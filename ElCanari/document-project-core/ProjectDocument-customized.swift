@@ -135,14 +135,14 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
     self.ebUndoManager.disableUndoRegistration ()
   //--- Remove components
     let componentSet = EBReferenceSet (self.rootObject.mComponents.values)
-    for font in self.rootObject.mFonts {
-      for component in font.mComponentNames {
+    for font in self.rootObject.mFonts.values {
+      for component in font.mComponentNames.values {
         if !componentSet.contains (component) {
           component.mNameFont = nil
           component.mValueFont = nil
         }
       }
-      for component in font.mComponentValues {
+      for component in font.mComponentValues.values {
         if !componentSet.contains (component) {
           component.mNameFont = nil
           component.mValueFont = nil
@@ -151,7 +151,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
     }
   //--- Remove tracks with missing connectors
     var trackWithMissingConnectorCount = 0
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack {
         var suppress = false
         if track.mConnectorP1 == nil {
@@ -484,7 +484,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
   //····················································································································
 
   internal func removeUnusedWires (_ ioErrorList : inout [String]) {
-    for object in self.rootObject.mSelectedSheet!.mObjects {
+    for object in self.rootObject.mSelectedSheet!.mObjects.values {
       if let wire = object as? WireInSchematic {
         if let p1 = wire.mP1, p1.mSheet == nil {
           wire.mP1 = nil
@@ -508,7 +508,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
 
   internal func updateBoardConnectors () {
     let boardObjects = self.rootObject.mBoardObjects
-    for object in boardObjects {
+    for object in boardObjects.values {
       if let connector = object as? BoardConnector {
         let connectedTrackCount = connector.mTracksP1.count + connector.mTracksP2.count
         if (connector.mComponent == nil) && (connectedTrackCount == 0) {
@@ -549,8 +549,8 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
     //--- Find symbol to insert in schematics
       let symbolTag = inSourceTableView.tag (atIndex: idx)
       self.mPossibleDraggedSymbol = nil
-      for component in self.rootObject.mComponents {
-        for s in component.mSymbols {
+      for component in self.rootObject.mComponents.values {
+        for s in component.mSymbols.values {
            if s.address == symbolTag {
              self.mPossibleDraggedSymbol = s
            }
@@ -594,7 +594,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
            let idx = dragRows.first {
       let componentTag = inSourceTableView.tag (atIndex: idx)
       self.mPossibleDraggedComponent = nil
-      for component in self.rootObject.mComponents {
+      for component in self.rootObject.mComponents.values {
         if component.address == componentTag {
           self.mPossibleDraggedComponent = component
         }

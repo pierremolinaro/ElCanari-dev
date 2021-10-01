@@ -241,7 +241,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseOb
     var indexSet = IndexSet ()
     var idx = 0
     let selectedObjectSet = EBReferenceSet (self.selectedArray_property.propval.values)
-    for object in self.sortedArray_property.propval {
+    for object in self.sortedArray_property.propval.values {
       if selectedObjectSet.contains (object) {
         indexSet.insert (idx)
       }

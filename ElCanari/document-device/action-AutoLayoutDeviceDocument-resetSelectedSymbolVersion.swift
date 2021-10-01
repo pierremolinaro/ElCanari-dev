@@ -14,7 +14,7 @@ extension AutoLayoutDeviceDocument {
   @objc func resetSelectedSymbolVersion (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     let selectedSymbolTypes = self.symbolTypeController.selectedArray
-    for symbolType in selectedSymbolTypes {
+    for symbolType in selectedSymbolTypes.values {
       symbolType.mVersion = 0
     }
 //--- END OF USER ZONE 2

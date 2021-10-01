@@ -118,7 +118,7 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
     // NSLog ("self.sortedArray \(self.sortedArray.count)")
     let oldSelectionSet = self.selectedSet
     var newSelectedArray = EBReferenceArray <FontInProject> ()
-    for object in self.sortedArray {
+    for object in self.sortedArray.values {
       if oldSelectionSet.contains (object) {
         newSelectedArray.append (object)
       }
@@ -156,7 +156,7 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
   var selectedIndexesSet : Set <Int> {
     var result = Set <Int> ()
     var idx = 0
-    for object in self.objects {
+    for object in self.objects.values {
       if self.selectedSet.contains (object) {
         result.insert (idx)
       }

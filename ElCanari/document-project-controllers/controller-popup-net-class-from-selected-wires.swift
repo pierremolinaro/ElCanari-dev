@@ -71,13 +71,13 @@ final class EBPopUpButtonControllerForNetClassFromSelectedWires : EBOutletEvent 
       popup.removeAllItems ()
       if let arrayModel = self.mArrayModel?.propval, let selectedArray = self.mSelection?.selectedArray {
         var selectedNetClasses = EBReferenceSet <NetClassInProject> ()
-        for wire in selectedArray {
+        for wire in selectedArray.values {
           if let netClass = wire.mP1?.mNet?.mNetClass {
             selectedNetClasses.insert (netClass)
           }
         }
         if selectedNetClasses.count == 1, let selectedNetClass = selectedNetClasses.first {
-          for netClass in arrayModel {
+          for netClass in arrayModel.values {
             popup.addItem (withTitle: netClass.mNetClassName)
             popup.lastItem?.representedObject = netClass
             popup.lastItem?.target = self
@@ -96,7 +96,7 @@ final class EBPopUpButtonControllerForNetClassFromSelectedWires : EBOutletEvent 
   @objc private func setNetClassAction (_ inSender : NSMenuItem) {
     if let netClass = inSender.representedObject as? NetClassInProject,
      let selectedArray = self.mSelection?.selectedArray {
-      for wire in selectedArray {
+      for wire in selectedArray.values {
         if let net = wire.mP1?.mNet {
           net.mNetClass = netClass
         }

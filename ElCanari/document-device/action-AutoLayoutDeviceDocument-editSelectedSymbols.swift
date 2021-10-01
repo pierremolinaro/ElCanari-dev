@@ -16,7 +16,7 @@ extension AutoLayoutDeviceDocument {
     let selectedSymbols = self.symbolTypeController.selectedArray
     let dc = NSDocumentController.shared
     var messages = [String] ()
-    for symbolType in selectedSymbols {
+    for symbolType in selectedSymbols.values {
       let pathes = symbolFilePathInLibraries (symbolType.mTypeName)
       if pathes.count == 0 {
         messages.append ("No file for \(symbolType.mTypeName) symbol in Library")

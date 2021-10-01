@@ -14,7 +14,7 @@ extension AutoLayoutDeviceDocument {
   @objc func exportSelectedPackages (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     let selectedPackages = self.packageController.selectedArray
-    for package in selectedPackages {
+    for package in selectedPackages.values {
       let savePanel = NSSavePanel ()
       savePanel.allowedFileTypes = ["ElCanariPackage"]
       savePanel.allowsOtherFileTypes = false

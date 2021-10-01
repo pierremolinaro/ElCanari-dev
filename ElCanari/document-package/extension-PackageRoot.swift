@@ -17,7 +17,7 @@ extension PackageRoot {
                    strokeBezierPathes : inout EBBezierPath,
                    masterPads : inout EBReferenceArray <MasterPadInDevice>) {
     var masterPadDictionary = EBReferenceDictionary <PackagePad, MasterPadInDevice> ()
-    for object in self.packageObjects_property.propval {
+    for object in self.packageObjects_property.propval.values {
       if let segment = object as? PackageSegment, let bp = segment.strokeBezierPath {
         strokeBezierPathes.append (bp)
       }else if let segment = object as? PackageBezier, let bp = segment.strokeBezierPath {
@@ -42,7 +42,7 @@ extension PackageRoot {
       }
     }
   //--- Handle slave pads
-    for object in self.packageObjects {
+    for object in self.packageObjects.values {
       if let packageSlavePad = object as? PackageSlavePad {
         let slavePad = SlavePadInDevice (inUndoManager)
         slavePad.mCenterX = packageSlavePad.xCenter

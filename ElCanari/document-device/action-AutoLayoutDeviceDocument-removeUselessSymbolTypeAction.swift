@@ -17,7 +17,7 @@ extension AutoLayoutDeviceDocument {
       let selectedSymbolType = self.symbolTypeController.selectedArray [0]
       if let instanceCount = selectedSymbolType.instanceCount, instanceCount == 0 {
         var newSymbolTypes = EBReferenceArray <SymbolTypeInDevice> ()
-        for symbolType in self.rootObject.mSymbolTypes {
+        for symbolType in self.rootObject.mSymbolTypes.values {
           if symbolType === selectedSymbolType {
             selectedSymbolType.mPinTypes = EBReferenceArray ()
           }else{

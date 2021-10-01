@@ -38,13 +38,13 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
     metadataDictionary [DEVICE_COMMENT_METADATA_DICTIONARY_KEY] = self.rootObject.mComments
   //--- Packages
     var packageDictionary = [String : Int] ()
-    for package in self.rootObject.mPackages.sorted (by: { $0.mName < $1.mName }) {
+    for package in self.rootObject.mPackages.values.sorted (by: { $0.mName < $1.mName }) {
       packageDictionary [package.mName] = package.mVersion
     }
     metadataDictionary [DEVICE_PACKAGE_METADATA_DICTIONARY_KEY] = packageDictionary
   //--- Symbol Types
     var symbolDictionary = [String : Int] ()
-    for symbolType in self.rootObject.mSymbolTypes.sorted (by: { $0.mTypeName < $1.mTypeName }) {
+    for symbolType in self.rootObject.mSymbolTypes.values.sorted (by: { $0.mTypeName < $1.mTypeName }) {
       symbolDictionary [symbolType.mTypeName] = symbolType.mVersion
     }
     metadataDictionary [DEVICE_SYMBOL_METADATA_DICTIONARY_KEY] = symbolDictionary  }

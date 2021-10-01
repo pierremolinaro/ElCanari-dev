@@ -143,8 +143,8 @@ extension CustomizedProjectDocument {
         netName = s.components (separatedBy: " ") [0]
       }
       var possibleNet : NetInProject? = nil
-      for netClass in self.rootObject.mNetClasses {
-         for net in netClass.mNets {
+      for netClass in self.rootObject.mNetClasses.values {
+         for net in netClass.mNets.values {
            if net.mNetName == netName {
              possibleNet = net
              break
@@ -284,7 +284,7 @@ extension CustomizedProjectDocument {
     let routedTracksArray = handleTeesAndCrossesFromRoutedTracks (inRoutedTracksArray, inRoutedViaArray)
   //--- Build connectors attached to pad
     var connectorArray = [BoardConnector] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let connector = object as? BoardConnector {
         connectorArray.append (connector)
       }
@@ -306,12 +306,12 @@ extension CustomizedProjectDocument {
       }
     }
   //--- Add objects
-    let allGraphicObjects = self.rootObject.mBoardObjects + addedObjectArray
-    self.rootObject.mBoardObjects = allGraphicObjects
+    let allGraphicObjects = self.rootObject.mBoardObjects.values + addedObjectArray
+    self.rootObject.mBoardObjects = EBReferenceArray (allGraphicObjects)
   //--- Build dictionary of all nets
     var netDictionary = [String : NetInProject] ()
-    for netClass in self.rootObject.mNetClasses {
-      for net in netClass.mNets {
+    for netClass in self.rootObject.mNetClasses.values {
+      for net in netClass.mNets.values {
         netDictionary [net.mNetName] = net
       }
     }

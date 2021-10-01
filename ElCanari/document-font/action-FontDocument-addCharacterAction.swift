@@ -16,7 +16,7 @@ extension FontDocument {
     if let window = self.windowForSheet, let panel = self.mNewCharacterPanel {
     //--- Populate table view
       var implementedCharacterSet = Set <Int> ()
-      for character in rootObject.characters_property.propval {
+      for character in rootObject.characters_property.propval.values {
         implementedCharacterSet.insert (character.codePoint)
       }
       self.mNewCharacterView?.setImplementedCharacterSet (implementedCharacterSet)

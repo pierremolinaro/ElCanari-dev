@@ -53,8 +53,8 @@ extension CustomizedProjectDocument {
     if symbolsUnderMouse.count == 1 {
       let symbolUnderMouse = symbolsUnderMouse [0]
       var n = 0
-      for component in self.rootObject.mComponents {
-        for symbol in component.mSymbols {
+      for component in self.rootObject.mComponents.values {
+        for symbol in component.mSymbols.values {
           if symbol.mSymbolTypeName == symbolUnderMouse.mSymbolTypeName {
             n += 1
           }
@@ -93,8 +93,8 @@ extension CustomizedProjectDocument {
 
   internal func runExchangeDialog (forSymbol inSymbolUnderMouse : ComponentSymbolInProject) {
     var candidateSymbols = [ComponentSymbolInProject] ()
-    for component in self.rootObject.mComponents {
-      for symbol in component.mSymbols {
+    for component in self.rootObject.mComponents.values {
+      for symbol in component.mSymbols.values {
         if symbol.mSymbolTypeName == inSymbolUnderMouse.mSymbolTypeName {
           candidateSymbols.append (symbol)
         }
@@ -135,7 +135,7 @@ extension CustomizedProjectDocument {
     let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
     var connectableSymbols = [ComponentSymbolInProject] ()
     for symbol in symbolsUnderMouse {
-      for point in symbol.mPoints {
+      for point in symbol.mPoints.values {
         if ((point.mLabels.count + point.mWiresP1s.count + point.mWiresP2s.count) == 0) && (point.mNC == nil) {
           connectableSymbols.append (symbol)
           break
@@ -173,7 +173,7 @@ extension CustomizedProjectDocument {
   internal func addNCToUnconnectedPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       for symbol in inSymbols {
-        for point in symbol.mPoints {
+        for point in symbol.mPoints.values {
           _ = selectedSheet.addNCToPin (toPoint: point)
         }
       }
@@ -188,7 +188,7 @@ extension CustomizedProjectDocument {
     let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
     var disconnectableSymbols = [ComponentSymbolInProject] ()
     for symbol in symbolsUnderMouse {
-      for point in symbol.mPoints {
+      for point in symbol.mPoints.values {
         if (point.mNC != nil) || ((point.mLabels.count + point.mWiresP1s.count + point.mWiresP2s.count) > 0) {
           disconnectableSymbols.append (symbol)
           break
@@ -225,7 +225,7 @@ extension CustomizedProjectDocument {
 
   internal func disconnectAllPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
     for symbol in inSymbols {
-      for point in symbol.mPoints {
+      for point in symbol.mPoints.values {
         self.disconnectInSchematic (points: [point])
       }
     }
@@ -241,7 +241,7 @@ extension CustomizedProjectDocument {
     var connectableSymbols = [ComponentSymbolInProject] ()
     if let selectedSheet = self.rootObject.mSelectedSheet {
       for symbol in symbolsUnderMouse {
-        for point in symbol.mPoints {
+        for point in symbol.mPoints.values {
           let allPointsAtAlignedMouseLocation = selectedSheet.pointsInSchematics (at: point.location!)
           if selectedSheet.canConnectWithoutDialog (points: allPointsAtAlignedMouseLocation) {
             connectableSymbols.append (symbol)
@@ -258,7 +258,7 @@ extension CustomizedProjectDocument {
   private func schematicSymbols (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
     var result = [ComponentSymbolInProject] ()
     if let selectedSheet = self.rootObject.mSelectedSheet {
-      for object in selectedSheet.mObjects {
+      for object in selectedSheet.mObjects.values {
         if let symbol = object as? ComponentSymbolInProject, let shape = symbol.objectDisplay {
           if shape.contains (point: inUnalignedMouseDownPoint.cocoaPoint) {
             result.append (symbol)
@@ -297,7 +297,7 @@ extension CustomizedProjectDocument {
   internal func connectPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       for symbol in inSymbols {
-        for point in symbol.mPoints {
+        for point in symbol.mPoints.values {
           let allPoints = selectedSheet.pointsInSchematics (at: point.location!)
           _ = selectedSheet.tryToConnectWithoutDialog (
             points: allPoints,

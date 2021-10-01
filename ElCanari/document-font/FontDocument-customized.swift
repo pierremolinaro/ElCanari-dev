@@ -114,7 +114,7 @@ let PMFontComment = "PMFontComment"
   //--- Search character
     var possibleCurrentCharacter : FontCharacter? = nil
     let codePoint = self.rootObject.currentCharacterCodePoint
-    for character in self.rootObject.characters_property.propval {
+    for character in self.rootObject.characters_property.propval.values {
       if character.codePoint == codePoint {
         possibleCurrentCharacter = character
         break
@@ -143,7 +143,7 @@ let PMFontComment = "PMFontComment"
     let codePoint = self.rootObject.currentCharacterCodePoint
   //--- Search for character
     var found = false
-    for character in self.rootObject.characters_property.propval {
+    for character in self.rootObject.characters_property.propval.values {
       if character.codePoint == codePoint {
         self.mSelectedCharacterController.select (object: character)
         found = true

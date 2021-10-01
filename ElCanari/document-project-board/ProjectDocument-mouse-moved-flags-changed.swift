@@ -26,7 +26,7 @@ extension CustomizedProjectDocument {
         if let netName = connectorUnderMouse.netName () {
           let connectedConnectors = self.findAllConnectorsConnectedTo (connectorUnderMouse, trackSide: newTrackSide)
           var bpArray = [EBBezierPath] ()
-          for object in self.rootObject.mBoardObjects {
+          for object in self.rootObject.mBoardObjects.values {
             if let connector = object as? BoardConnector,
                   !connectedConnectors.contains (connector),
                   connector.netNameFromComponentPad == netName {
@@ -77,7 +77,7 @@ extension CustomizedProjectDocument {
     var exploreArray = [inConnector]
     while !exploreArray.isEmpty {
       let c = exploreArray.removeLast ()
-      let tracks = c.mTracksP1 + c.mTracksP2
+      let tracks = c.mTracksP1.values + c.mTracksP2.values
       for t in tracks {
         if let connector1 = t.mConnectorP1, !connectorSet.contains (connector1) {
           connectorSet.insert (connector1)
@@ -89,7 +89,7 @@ extension CustomizedProjectDocument {
         }
       }
     }
-    return EBReferenceArray (connectorSet.values)
+    return EBReferenceArray (Array (connectorSet.values))
   }
 
   //····················································································································

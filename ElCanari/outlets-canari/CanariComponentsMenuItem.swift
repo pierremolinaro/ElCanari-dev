@@ -99,7 +99,7 @@ final class CanariComponentsMenuItem : NSMenuItem, EBUserClassNameProtocol {
   @objc private func addComponentToSelection (_ inSender : NSMenuItem) {
      if let project = self.mProject {
        var objectsToSelect = [BoardObject] ()
-       for component in project.rootObject.mComponents {
+       for component in project.rootObject.mComponents.values {
          if let componentName = component.componentName, componentName == inSender.title {
            objectsToSelect.append (component)
          }

@@ -137,7 +137,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
     self.mSelectedSlavePadArray.removeAll ()
     self.mReferencedMasterPadArray.removeAll ()
     if let document = self.mDocument {
-      for selectedObject in document.mPackageObjectsController.selectedArray {
+      for selectedObject in document.mPackageObjectsController.selectedArray.values {
         if let slavePad = selectedObject as? PackageSlavePad {
           self.mSelectedSlavePadArray.append (slavePad)
         }
@@ -178,7 +178,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
         ()
       case .single (let v) :
         let indexSet = Set (v)
-        for object in document.rootObject.packageObjects {
+        for object in document.rootObject.packageObjects.values {
           if indexSet.contains (object.address), let masterPad = object as? PackagePad {
             self.mMasterPadArray.append (masterPad)
           }

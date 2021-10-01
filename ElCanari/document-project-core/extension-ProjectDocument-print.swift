@@ -87,7 +87,7 @@ extension CustomizedProjectDocument {
       var yOffset : CGFloat = printHeight * CGFloat (sheets.count - 1)
       self.ebUndoManager.disableUndoRegistration ()
       let currentSelectedSheet = self.rootObject.mSelectedSheet
-      for sheet in sheets {
+      for sheet in sheets.values {
         self.rootObject.mSelectedSheet = sheet
         flushOutletEvents ()
         let data = schematicsView.dataWithPDF (inside: r)

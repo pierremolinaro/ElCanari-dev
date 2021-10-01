@@ -38,7 +38,7 @@ extension AutoLayoutDeviceDocument {
       symbolType.mFilledBezierPath = filledBezierPathes
       symbolType.mPinTypes = symbolPinTypes
       var pinLocations = [CanariPoint] ()
-      for pinType in symbolPinTypes {
+      for pinType in symbolPinTypes.values {
         pinLocations.append (CanariPoint (x: pinType.mPinX, y: pinType.mPinY))
       }
       let pinsCenter = CanariRect (points: pinLocations).center
@@ -49,7 +49,7 @@ extension AutoLayoutDeviceDocument {
       symbolInstance.mX = -pinsCenter.x
       symbolInstance.mY = -pinsCenter.y
     //--- Add pin instances
-      for pinType in symbolPinTypes {
+      for pinType in symbolPinTypes.values {
         let pinInstance = SymbolPinInstanceInDevice (self.ebUndoManager)
         pinInstance.mType = pinType
         symbolInstance.mPinInstances_property.add (pinInstance)
@@ -61,7 +61,7 @@ extension AutoLayoutDeviceDocument {
   //····················································································································
 
   internal func resetSymbolsVersion () {
-    for symbolType in self.rootObject.mSymbolTypes {
+    for symbolType in self.rootObject.mSymbolTypes.values {
       symbolType.mVersion = 0
     }
   }
@@ -71,7 +71,7 @@ extension AutoLayoutDeviceDocument {
   internal func performSymbolsUpdate (_ ioOkMessages : inout [String],
                                       _ ioErrorMessages : inout [String]) {
     let fm = FileManager ()
-    for symbolType in self.rootObject.mSymbolTypes {
+    for symbolType in self.rootObject.mSymbolTypes.values {
       let pathes = symbolFilePathInLibraries (symbolType.mTypeName)
       if pathes.count == 0 {
         ioErrorMessages.append ("No file in Library for \(symbolType.mTypeName) symbol")
@@ -94,11 +94,11 @@ extension AutoLayoutDeviceDocument {
             )
           //--- Check if symbol pin name set is the same
             var currentPinNameSet = Set <String> ()
-            for pinType in symbolType.mPinTypes {
+            for pinType in symbolType.mPinTypes.values {
               currentPinNameSet.insert (pinType.mName)
             }
             var newPinNameDictionary = [String : SymbolPinTypeInDevice] ()
-            for pinType in newSymbolPinTypes {
+            for pinType in newSymbolPinTypes.values {
               newPinNameDictionary [pinType.mName] = pinType
             }
             if currentPinNameSet != Set (newPinNameDictionary.keys) {
@@ -111,7 +111,7 @@ extension AutoLayoutDeviceDocument {
               symbolType.mStrokeBezierPath = strokeBezierPathes
               symbolType.mFilledBezierPath = filledBezierPathes
             //--- Update pin types
-              for pinType : SymbolPinTypeInDevice in symbolType.mPinTypes {
+              for pinType : SymbolPinTypeInDevice in symbolType.mPinTypes.values {
                 let newPinType = newPinNameDictionary [pinType.mName]!
                 pinType.mPinX = newPinType.mPinX
                 pinType.mPinY = newPinType.mPinY
@@ -159,7 +159,7 @@ extension AutoLayoutDeviceDocument {
       packageRoot.removeRecursivelyAllRelationsShips ()
 
       var masterPadsLocations = [CanariPoint] ()
-      for masterPad in masterPads {
+      for masterPad in masterPads.values {
         masterPadsLocations.append (CanariPoint (x: masterPad.mCenterX, y: masterPad.mCenterY))
       }
       let masterPadsCenter = CanariRect (points: masterPadsLocations).center
@@ -181,7 +181,7 @@ extension AutoLayoutDeviceDocument {
   //····················································································································
 
   internal func resetPackagesVersion () {
-    for package in self.rootObject.mPackages {
+    for package in self.rootObject.mPackages.values {
       package.mVersion = 0
     }
   }
@@ -193,7 +193,7 @@ extension AutoLayoutDeviceDocument {
                                        _ ioErrorMessages : inout [String]) {
 //--- START OF USER ZONE 2
     let fm = FileManager ()
-    for package in inPackages {
+    for package in inPackages.values {
       let pathes = packageFilePathInLibraries (package.mName)
       if pathes.count == 0 {
         ioErrorMessages.append ("No file in Library for package \(package.mName)")
@@ -219,7 +219,7 @@ extension AutoLayoutDeviceDocument {
           //--- Set relationship
             let oldMasterPads = package.mMasterPads_property.propval
             package.mMasterPads_property.setProp (masterPads)
-            for oldMasterPad in oldMasterPads {
+            for oldMasterPad in oldMasterPads.values {
               oldMasterPad.removeRecursivelyAllRelationsShips ()
             }
           //---
@@ -244,15 +244,15 @@ extension AutoLayoutDeviceDocument {
   func updatePadProxies () {
   //--- Inventory of current pad names
     var currentPackagePadNameSet = Set <String> ()
-    for package in self.rootObject.mPackages {
-      for masterPad in package.mMasterPads {
+    for package in self.rootObject.mPackages.values {
+      for masterPad in package.mMasterPads.values {
         currentPackagePadNameSet.insert (masterPad.mName)
       }
     }
   //--- Inventory of current pad proxies
     var currentProxyPadNameSet = Set <String> ()
     var padProxyDictionary = [String : PadProxyInDevice] ()
-    for padProxy in self.rootObject.mPadProxies {
+    for padProxy in self.rootObject.mPadProxies.values {
       padProxyDictionary [padProxy.mPadName] = padProxy
       currentProxyPadNameSet.insert (padProxy.mPadName)
     }

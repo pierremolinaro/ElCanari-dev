@@ -210,7 +210,7 @@ extension ComponentInProject {
   //····················································································································
 
   func operationBeforeRemoving_ComponentInProject () {
-    for connector in self.mConnectors {
+    for connector in self.mConnectors.values {
     //--- Assign pad location to connector
       let descriptor : ComponentPadDescriptor = self.componentPadDictionary! [connector.mComponentPadName]!
       let pad = descriptor.pads [connector.mPadIndex]

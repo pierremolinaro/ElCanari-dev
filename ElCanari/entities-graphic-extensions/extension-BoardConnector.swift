@@ -154,12 +154,12 @@ extension BoardConnector {
 
   func connectedTracksNet () -> NetInProject? {
     var netSet = EBReferenceSet <NetInProject> ()
-    for t in self.mTracksP1 {
+    for t in self.mTracksP1.values {
       if let net = t.mNet {
         netSet.insert (net)
       }
     }
-    for t in self.mTracksP2 {
+    for t in self.mTracksP2.values {
       if let net = t.mNet {
         netSet.insert (net)
       }

@@ -62,8 +62,8 @@ extension PackageInDevice {
   //····················································································································
 
   func operationBeforeRemoving_PackageInDevice () {
-    for masterPad in self.mMasterPads {
-      for slavePad in masterPad.mSlavePads {
+    for masterPad in self.mMasterPads.values {
+      for slavePad in masterPad.mSlavePads.values {
         slavePad.mMasterPad = nil
       }
     }

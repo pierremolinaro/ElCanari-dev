@@ -46,7 +46,7 @@ extension CustomizedProjectDocument {
 
   internal func performGenerateDSNFile () {
     var hasTrack = false
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if object is BoardTrack {
         hasTrack = true
         break
@@ -99,7 +99,7 @@ extension CustomizedProjectDocument {
     let layerConfiguration = self.rootObject.mLayerConfiguration
   //--- Restrict rectangles
     var restrictRectangles = [RestrictRectangleForDSNExport] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let restrictRectangle = object as? BoardRestrictRectangle {
         let r = CanariRect (left: restrictRectangle.mX, bottom: restrictRectangle.mY, width: restrictRectangle.mWidth, height: restrictRectangle.mHeight)
         let rr = RestrictRectangleForDSNExport (
@@ -113,9 +113,9 @@ extension CustomizedProjectDocument {
   //--- Net classes
     var maxTrackWithInDSNUnit : Double = 0.0
     var netClasses = [NetClassForDSNExport] ()
-    for netClass in self.rootObject.mNetClasses {
+    for netClass in self.rootObject.mNetClasses.values {
       var netNames = [String] ()
-      for net in netClass.mNets {
+      for net in netClass.mNets.values {
         if net.mPoints.count > 0 {
           netNames.append (net.mNetName)
         }
@@ -141,7 +141,7 @@ extension CustomizedProjectDocument {
     var packageArrayForRouting = [PackageTypeForDSNExport] ()
     var componentArrayForRouting = [ComponentForDSNExport] ()
     var padTypeArrayForRouting = [PadTypeForDSNExport] ()
-    for component in self.rootObject.mComponents {
+    for component in self.rootObject.mComponents.values {
       if component.mRoot != nil { // Placed on board
         let device = component.mDevice!
         let packageIndex = indexForPackage (
@@ -227,7 +227,7 @@ extension CustomizedProjectDocument {
     switch self.rootObject.mBoardShape {
     case .bezierPathes :
       var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
-      for curve in self.rootObject.mBorderCurves {
+      for curve in self.rootObject.mBorderCurves.values {
         let descriptor = curve.descriptor!
         curveDictionary [descriptor.p1] = descriptor
       }
@@ -267,7 +267,7 @@ extension CustomizedProjectDocument {
                                     _ inConverter : CanariUnitToDSNUnitConverter) {
     ioString += "  (wiring\n"
   //--- Export tracks
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack {
         let side : String
         switch track.mSide {
@@ -295,7 +295,7 @@ extension CustomizedProjectDocument {
       }
     }
   //--- Export via
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let via = object as? BoardConnector, let isVia = via.isVia, isVia {
         let p = inConverter.dsnPointFromCanariPoint (via.location!)
         let netName = via.netNameFromTracks!

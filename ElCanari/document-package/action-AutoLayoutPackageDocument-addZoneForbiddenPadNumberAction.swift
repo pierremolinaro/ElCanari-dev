@@ -9,7 +9,7 @@ extension AutoLayoutPackageDocument : NSTextFieldDelegate {
     let selectedZone = self.mPackageZoneSelectionController.selectedArray [0]
   //--- Current forbidden pad numbers
     var currentForbiddenPadNumberSet = Set <Int> ()
-    for f in selectedZone.forbiddenPadNumbers {
+    for f in selectedZone.forbiddenPadNumbers.values {
       currentForbiddenPadNumberSet.insert (f.padNumber)
     }
     if currentForbiddenPadNumberSet.contains (proposedValue) {
@@ -38,7 +38,7 @@ extension AutoLayoutPackageDocument {
       let selectedZone = self.mPackageZoneSelectionController.selectedArray [0]
     //-------------------------- Current forbidden pad numbers
       var currentForbiddenPadNumberSet = Set <Int> ()
-      for f in selectedZone.forbiddenPadNumbers {
+      for f in selectedZone.forbiddenPadNumbers.values {
         currentForbiddenPadNumberSet.insert (f.padNumber)
       }
    //-------------------------- Propose an initial value for new forbidden pad number
@@ -120,14 +120,14 @@ extension AutoLayoutPackageDocument {
           selectedZone.forbiddenPadNumbers.append (fpn)
         //---- Adjust pad number
           var pads = [PackagePad] ()
-          for candidatePad in self.rootObject.packagePads {
+          for candidatePad in self.rootObject.packagePads.values {
             if candidatePad.zone === selectedZone {
               pads.append (candidatePad)
             }
           }
           pads.sort { $0.padNumber < $1.padNumber }
           var forbiddenPadNumberSet = Set <Int> ()
-          for forbiddenPadNumber in selectedZone.forbiddenPadNumbers {
+          for forbiddenPadNumber in selectedZone.forbiddenPadNumbers.values {
             forbiddenPadNumberSet.insert (forbiddenPadNumber.padNumber)
           }
           var newPadNumber = 1

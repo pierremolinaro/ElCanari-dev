@@ -18,7 +18,7 @@ extension ProjectRoot {
     let distance = Double (milsToCanariUnit (fromDouble: self.mControlKeyHiliteDiameter)) / 2.0
     let squareOfDistance = distance * distance
     var result = [BoardConnector] ()
-    for object in self.mBoardObjects {
+    for object in self.mBoardObjects.values {
       if let connector = object as? BoardConnector {
         var ok = CanariPoint.squareOfCanariDistance (connector.location!, inLocation) < squareOfDistance
         if ok {
@@ -53,7 +53,7 @@ extension ProjectRoot {
     let distance = Double (milsToCanariUnit (fromDouble: self.mControlKeyHiliteDiameter)) / 2.0
     let squareOfDistance = distance * distance
     var result = [BoardConnector] ()
-    for object in self.mBoardObjects {
+    for object in self.mBoardObjects.values {
       if let connector = object as? BoardConnector {
         let ok = (connector.side! == inSide) && CanariPoint.squareOfCanariDistance (connector.location!, inLocation) < squareOfDistance
         if ok {

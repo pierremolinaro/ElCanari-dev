@@ -2,11 +2,11 @@
 
 extension ProjectDocument {
   private func performRemoveSelectedComponents () {
-    for component in self.componentController.selectedArray {
+    for component in self.componentController.selectedArray.values {
       if let idx = self.rootObject.mComponents.firstIndex (of: component) {
      //   let index = component.mNameIndex
       //--- Remove all symbols from schematics sheets
-        for symbol in component.mSymbols {
+        for symbol in component.mSymbols.values {
           symbol.mSheet = nil
           symbol.operationBeforeRemoving ()
         }
@@ -43,8 +43,8 @@ extension ProjectDocument {
           __NSBeep ()
         }else{
           var inSchematicsOrInBoard = false
-          for component in self.componentController.selectedArray {
-            for symbol in component.mSymbols {
+          for component in self.componentController.selectedArray.values {
+            for symbol in component.mSymbols.values {
               if symbol.mSheet != nil {
                 inSchematicsOrInBoard = true
               }

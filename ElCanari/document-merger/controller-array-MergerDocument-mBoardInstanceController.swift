@@ -672,7 +672,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
       }
       if errorMessage == "" {
         var objects = self.objectArray
-        objects += newObjects
+        objects.append (objects: newObjects)
         self.mModel?.setProp (objects)
         self.selectedSet = EBReferenceSet (newObjects)
       }else{
@@ -852,7 +852,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
       newObjectArray.append (object)
     }
     newObjectArray.reverse ()
-    newObjectArray += objects
+    newObjectArray.append (objects: objects)
     self.mModel?.setProp (newObjectArray)
   }
 
@@ -963,7 +963,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
     if self.selectedArray.count == 0 {
       return false
     }else{
-      for object in self.selectedArray {
+      for object in self.selectedArray.values {
         if !object.canRotate90 (accumulatedPoints: &self.mRotate90PointSet) {
           return false
         }
@@ -977,7 +977,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
   func rotate90Clockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet))
     var userSet = EBReferenceSet <AnyObject> ()
-    for object in self.selectedArray {
+    for object in self.selectedArray.values {
       object.rotate90Clockwise (from: r.center, userSet: &userSet)
     }
   }
@@ -987,7 +987,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
   func rotate90CounterClockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet))
     var userSet = EBReferenceSet <AnyObject> ()
-    for object in self.selectedArray {
+    for object in self.selectedArray.values {
       object.rotate90CounterClockwise (from: r.center, userSet: &userSet)
     }
   }

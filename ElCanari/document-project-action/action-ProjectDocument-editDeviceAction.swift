@@ -16,7 +16,7 @@ extension ProjectDocument {
         let selectedDevices = self.projectDeviceController.selectedArray
         let dc = NSDocumentController.shared
         var messages = [String] ()
-        for device in selectedDevices {
+        for device in selectedDevices.values {
           let pathes = deviceFilePathInLibraries (device.mDeviceName)
           if pathes.count == 0 {
             messages.append ("No file for \(device.mDeviceName) font in Library")

@@ -392,9 +392,9 @@ extension MergerDocument {
         self.ebUndoManager
       )
       if textLayer == "F.Cu" {
-        ioTemporaryBoardModel.mFrontLayoutTextEntities += segments
+        ioTemporaryBoardModel.mFrontLayoutTextEntities.append (objects: segments)
       }else if textLayer == "B.Cu" {
-        ioTemporaryBoardModel.mBackLayoutTextEntities += segments
+        ioTemporaryBoardModel.mBackLayoutTextEntities.append (objects: segments)
       }
     }
   }
@@ -466,13 +466,13 @@ extension MergerDocument {
             self.ebUndoManager
           )
           if (kind == "reference") && (textLayer == "F.SilkS") {
-            ioTemporaryBoardModel.mFrontComponentNamesEntities += segments
+            ioTemporaryBoardModel.mFrontComponentNamesEntities.append (objects: segments)
           }else if (kind == "reference") && (textLayer == "B.SilkS") {
-            ioTemporaryBoardModel.mBackComponentNamesEntities += segments
+            ioTemporaryBoardModel.mBackComponentNamesEntities.append (objects: segments)
           }else if (kind == "value") && (textLayer == "F.Fab") {
-            ioTemporaryBoardModel.mFrontComponentValuesEntities += segments
+            ioTemporaryBoardModel.mFrontComponentValuesEntities.append (objects: segments)
           }else if (kind == "value") && (textLayer == "B.Fab") {
-            ioTemporaryBoardModel.mBackComponentValuesEntities += segments
+            ioTemporaryBoardModel.mBackComponentValuesEntities.append (objects: segments)
           }
         }else if item.key == "fp_line",
               let startX = item.getFloat (["fp_line", "start"], 0, &ioErrorArray, #line),

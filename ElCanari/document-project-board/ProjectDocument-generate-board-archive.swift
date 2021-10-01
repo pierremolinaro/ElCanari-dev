@@ -82,7 +82,7 @@ extension ProjectDocument {
     var frontPads = [[String : Any]] ()
     var backPads = [[String : Any]] ()
     var traversingPads = [[String : Any]] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
         var af = component.packageToComponentAffineTransform ()
         af.append (inAffineTransform)

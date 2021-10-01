@@ -42,7 +42,7 @@ final class OpenSymbolInLibrary : OpenInLibrary {
     self.buildTableViewDataSource (extension: "ElCanariSymbol", alreadyLoadedDocuments: inNames) { (_ inRootObject : EBManagedObject?) -> NSImage? in
       var partShape = EBShape ()
       if let symbolRoot = inRootObject as? SymbolRoot {
-        for object in symbolRoot.symbolObjects {
+        for object in symbolRoot.symbolObjects.values {
           if let shape = object.objectDisplay {
             partShape.add (shape)
           }

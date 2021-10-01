@@ -336,7 +336,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     var allPads = self.rootObject.packagePads_property.propval
     let aPad = allPads.first
     var zoneDictionary = EBReferenceDictionary <PackageZone, [PackagePad]> ()
-    for zone in self.rootObject.packageZones_property.propval {
+    for zone in self.rootObject.packageZones_property.propval.values {
       let zoneRect = zone.rect!
       var idx = 0
       while idx < allPads.count {
@@ -354,19 +354,19 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
   //---
     for (zone, padArray) in zoneDictionary {
       var forbiddenPadNumberSet = Set <Int> ()
-      for f in zone.forbiddenPadNumbers {
+      for f in zone.forbiddenPadNumbers.values {
         forbiddenPadNumberSet.insert (f.padNumber)
       }
       self.performPadNumbering (padArray, zone.zoneNumbering, forbiddenPadNumberSet)
     }
   //--- Handle pads outside zones
-    for pad in allPads {
+    for pad in allPads.values {
       pad.zone_property.setProp (nil)
     }
     self.performPadNumbering (allPads.values, self.rootObject.padNumbering, [])
   //--- Link slave pads to any pad
     let allSlavePads = self.rootObject.packageSlavePads_property.propval
-    for slavePad in allSlavePads {
+    for slavePad in allSlavePads.values {
       if slavePad.master == nil {
         slavePad.master = aPad
       }

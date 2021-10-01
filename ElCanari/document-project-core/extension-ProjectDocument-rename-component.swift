@@ -79,7 +79,7 @@ extension CustomizedProjectDocument {
 
   private func getComponentNamePrefixes () -> Set <String> {
     var prefixSet = Set <String> ()
-    for component in self.rootObject.mComponents {
+    for component in self.rootObject.mComponents.values {
       prefixSet.insert (component.mNamePrefix)
     }
     return prefixSet
@@ -89,7 +89,7 @@ extension CustomizedProjectDocument {
 
   private func getComponentNameIndexes (forPrefix inPrefix : String) -> Set <Int> {
     var indexes = Set <Int> ()
-    for component in self.rootObject.mComponents {
+    for component in self.rootObject.mComponents.values {
       if component.mNamePrefix == inPrefix {
         indexes.insert (component.mNameIndex)
       }
@@ -173,7 +173,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   internal func performRenameComponent () {
-    for component in self.rootObject.mComponents {
+    for component in self.rootObject.mComponents.values {
       component.mNameIndex *= 2 ;
     }
     if let selectedComponentForRenaming = self.mSelectedComponentForRenaming {
@@ -204,7 +204,7 @@ extension ProjectDocument {
 
   func performNormalizeComponentNames () {
     var allComponents = [String : [ComponentInProject]] ()
-    for component in self.rootObject.mComponents {
+    for component in self.rootObject.mComponents.values {
       let prefix = component.mNamePrefix
       allComponents [prefix] = allComponents [prefix, default: []] + [component]
     }

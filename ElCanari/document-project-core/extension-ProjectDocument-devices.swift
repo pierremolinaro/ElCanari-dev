@@ -32,7 +32,7 @@ extension ProjectDocument {
   //····················································································································
 
   internal func updateDevices (_ inDevices : EBReferenceArray <DeviceInProject>, _ ioMessages : inout [String]) {
-    for deviceInProject in inDevices {
+    for deviceInProject in inDevices.values {
       let pathes = deviceFilePathInLibraries (deviceInProject.mDeviceName)
       if pathes.count == 0 {
         ioMessages.append ("No file for \(deviceInProject.mDeviceName) device in Library")
@@ -97,14 +97,14 @@ extension ProjectDocument {
   //--- Compute current symbol instance set
     var currentSymbolInstanceDictionary = [String : String] () // Symbol name, symbol type
     var currentSymbolTypeNameSet = Set <String> ()
-    for symbol in inCurrentDeviceInProject.mSymbols {
+    for symbol in inCurrentDeviceInProject.mSymbols.values {
       currentSymbolInstanceDictionary [symbol.mSymbolInstanceName] = symbol.mSymbolType!.mSymbolTypeName
       currentSymbolTypeNameSet.insert (symbol.mSymbolType!.mSymbolTypeName)
     }
   //--- Compute new symbol instance set
     var candidateSymbolInstanceDictionary = [String : String] () // Symbol name, symbol type
     var candidateSymbolTypeNameSet = Set <String> ()
-    for symbol in inCandidateDeviceRoot.mSymbolInstances {
+    for symbol in inCandidateDeviceRoot.mSymbolInstances.values {
       candidateSymbolInstanceDictionary [symbol.mInstanceName] = symbol.symbolTypeName!
       candidateSymbolTypeNameSet.insert (symbol.symbolTypeName!)
     }
@@ -151,12 +151,12 @@ extension ProjectDocument {
     var result = ""
   //--- Compute current master pad set
     var currentMasterPadSet = Set <String> ()
-    for masterPad in inCurrentDeviceInProject.mPackages [0].mMasterPads {
+    for masterPad in inCurrentDeviceInProject.mPackages [0].mMasterPads.values {
       currentMasterPadSet.insert (masterPad.mName)
     }
   //--- Compute new master pad set
     var newMasterPadSet = Set <String> ()
-    for masterPad in inCandidateDeviceRoot.mPackages [0].mMasterPads {
+    for masterPad in inCandidateDeviceRoot.mPackages [0].mMasterPads.values {
       newMasterPadSet.insert (masterPad.mName)
     }
   //---
@@ -179,7 +179,7 @@ extension ProjectDocument {
     var result = ""
   //--- Compute current symbol type dictionary
     var currentSymbolTypeDictionary = [String : Set <String>] () // Symbol type name, set of pin names
-    for padAssignment in inCurrentDeviceInProject.mPadAssignments {
+    for padAssignment in inCurrentDeviceInProject.mPadAssignments.values {
       if let pin = padAssignment.mPin {
         let pinName = pin.mPinName
         let symbolTypeName = pin.mSymbolTypeName
@@ -190,10 +190,10 @@ extension ProjectDocument {
     }
   //--- Compute candidate symbol type dictionary
     var candidateSymbolTypeDictionary = [String : Set <String>] () // Symbol type name, set of pin names
-    for symbolType in inCandidateDeviceRoot.mSymbolTypes {
+    for symbolType in inCandidateDeviceRoot.mSymbolTypes.values {
       let symbolTypeName = symbolType.mTypeName
       var pinNameSet = Set <String> ()
-      for pin in symbolType.mPinTypes {
+      for pin in symbolType.mPinTypes.values {
         pinNameSet.insert (pin.mName)
       }
       candidateSymbolTypeDictionary [symbolTypeName] = pinNameSet
@@ -249,19 +249,19 @@ extension ProjectDocument {
   //--- Remove current packages
     let currentPackages = inCurrentDeviceInProject.mPackages
     inCurrentDeviceInProject.mPackages = EBReferenceArray ()
-    for p in currentPackages {
+    for p in currentPackages.values {
       p.removeRecursivelyAllRelationsShips ()
     }
   //--- Build package dictionary
     var packageDictionary = [String : DevicePackageInProject] ()
   //--- Append packages
-    for packageInDevice in inCandidateDeviceRoot.mPackages {
+    for packageInDevice in inCandidateDeviceRoot.mPackages.values {
       let packageInProject = DevicePackageInProject (self.ebUndoManager)
       inCurrentDeviceInProject.mPackages.append (packageInProject)
       packageInProject.mPackageName = packageInDevice.mName
       packageInProject.mStrokeBezierPath = packageInDevice.mStrokeBezierPath
       packageDictionary [packageInProject.mPackageName] = packageInProject
-      for masterPadInDevice in packageInDevice.mMasterPads {
+      for masterPadInDevice in packageInDevice.mMasterPads.values {
         let masterPadInProject = DeviceMasterPadInProject (self.ebUndoManager)
         packageInProject.mMasterPads.append (masterPadInProject)
         masterPadInProject.mCenterX = masterPadInDevice.mCenterX
@@ -273,7 +273,7 @@ extension ProjectDocument {
         masterPadInProject.mShape = masterPadInDevice.mShape
         masterPadInProject.mStyle = masterPadInDevice.mStyle
         masterPadInProject.mWidth = masterPadInDevice.mWidth
-        for slavePadInDevice in masterPadInDevice.mSlavePads {
+        for slavePadInDevice in masterPadInDevice.mSlavePads.values {
           let slavePadInProject = DeviceSlavePadInProject (self.ebUndoManager)
           masterPadInProject.mSlavePads.append (slavePadInProject)
           slavePadInProject.mCenterX = slavePadInDevice.mCenterX
@@ -288,7 +288,7 @@ extension ProjectDocument {
       }
     }
   //--- For all components, update selected package
-    for component in inCurrentDeviceInProject.mComponents {
+    for component in inCurrentDeviceInProject.mComponents.values {
       if let newPackage = packageDictionary [component.mSelectedPackage!.mPackageName] {
         component.mSelectedPackage = newPackage
       }else{
@@ -298,22 +298,22 @@ extension ProjectDocument {
   //--- Remove current symbols
     let currentSymbols = inCurrentDeviceInProject.mSymbols
     inCurrentDeviceInProject.mSymbols = EBReferenceArray ()
-    for s in currentSymbols {
+    for s in currentSymbols.values {
       s.removeRecursivelyAllRelationsShips ()
     }
   //--- Append symbols
     var devicePinDictionary = [PinQualifiedNameStruct : DevicePinInProject] ()
-    for symbolTypeInDevice in inCandidateDeviceRoot.mSymbolTypes {
+    for symbolTypeInDevice in inCandidateDeviceRoot.mSymbolTypes.values {
       let symbolTypeInProject = DeviceSymbolTypeInProject (self.ebUndoManager)
       symbolTypeInProject.mFilledBezierPath = symbolTypeInDevice.mFilledBezierPath
       symbolTypeInProject.mStrokeBezierPath = symbolTypeInDevice.mStrokeBezierPath
       symbolTypeInProject.mSymbolTypeName = symbolTypeInDevice.mTypeName
-      for symbolInstanceInDevice in symbolTypeInDevice.mInstances {
+      for symbolInstanceInDevice in symbolTypeInDevice.mInstances.values {
         let symbolInstanceInProject = DeviceSymbolInstanceInProject (self.ebUndoManager)
         symbolInstanceInProject.mSymbolInstanceName = symbolInstanceInDevice.mInstanceName
         symbolInstanceInProject.mSymbolType = symbolTypeInProject
         inCurrentDeviceInProject.mSymbols.append (symbolInstanceInProject)
-        for pinInDevice in symbolTypeInDevice.mPinTypes {
+        for pinInDevice in symbolTypeInDevice.mPinTypes.values {
           let pinInProject = DevicePinInProject (self.ebUndoManager)
           pinInProject.mPinName = pinInDevice.mName
           pinInProject.mSymbolInstanceName = symbolInstanceInDevice.mInstanceName
@@ -335,7 +335,7 @@ extension ProjectDocument {
     }
   //--- Append pin/pad assignments
     inCurrentDeviceInProject.mPadAssignments = EBReferenceArray ()
-    for pinPadAssignmentInDevice in inCandidateDeviceRoot.mPadProxies {
+    for pinPadAssignmentInDevice in inCandidateDeviceRoot.mPadProxies.values {
       let assignment = DevicePadAssignmentInProject (self.ebUndoManager)
       let padName = pinPadAssignmentInDevice.mPadName
       assignment.mPadName = padName

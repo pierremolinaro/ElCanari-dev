@@ -15,7 +15,7 @@ extension ProjectDocument {
 //--- START OF USER ZONE 2
         let selectedDevices = self.projectDeviceController.selectedArray_property.propval
         var allDevices = self.rootObject.mDevices_property.propval
-        for device in selectedDevices {
+        for device in selectedDevices.values {
           if let idx = allDevices.firstIndex(of: device) {
             allDevices.remove(at: idx)
           }

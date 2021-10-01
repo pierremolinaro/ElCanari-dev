@@ -30,7 +30,7 @@ extension CustomizedProjectDocument {
 
   private func curve (at inUnalignedMouseDownPoint : CanariPoint) -> BorderCurve? {
     let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
-    for borderCurve in self.rootObject.mBorderCurves {
+    for borderCurve in self.rootObject.mBorderCurves.values {
       let p1  = CanariPoint (x: borderCurve.mX, y: borderCurve.mY)
       let p2  = CanariPoint (x: borderCurve.mNext!.mX, y: borderCurve.mNext!.mY)
       if (p1 != alignedMouseDownPoint) && (p2 != alignedMouseDownPoint) {

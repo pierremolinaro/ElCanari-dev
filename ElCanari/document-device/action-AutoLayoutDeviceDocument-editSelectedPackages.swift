@@ -16,7 +16,7 @@ extension AutoLayoutDeviceDocument {
     let selectedPackages = self.packageController.selectedArray
     let dc = NSDocumentController.shared
     var messages = [String] ()
-    for package in selectedPackages {
+    for package in selectedPackages.values {
       let pathes = packageFilePathInLibraries (package.mName)
       if pathes.count == 0 {
         messages.append ("No file for package \(package.mName) in Library")

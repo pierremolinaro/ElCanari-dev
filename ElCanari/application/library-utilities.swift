@@ -31,7 +31,7 @@ func existingLibraryPathArray () -> [String] {
     }
   }
 //--- Other libraries
-  for libraryEntry in preferences_additionnalLibraryArray {
+  for libraryEntry in preferences_additionnalLibraryArray.values {
     if libraryEntry.mUses {
       if fm.fileExists (atPath: libraryEntry.mPath) {
         result.append (libraryEntry.mPath)

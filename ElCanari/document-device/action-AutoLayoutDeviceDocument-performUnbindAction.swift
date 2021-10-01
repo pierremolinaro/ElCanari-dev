@@ -14,7 +14,7 @@ extension AutoLayoutDeviceDocument {
   @objc func performUnbindAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     if let selectedPadProxy = self.mAssignedPadProxyTableView?.selectedPadProxy {
-      for padProxy in self.rootObject.mPadProxies {
+      for padProxy in self.rootObject.mPadProxies.values {
         if padProxy.mPadName == selectedPadProxy.padName {
           padProxy.mPinInstance = nil
           padProxy.mIsNC = false

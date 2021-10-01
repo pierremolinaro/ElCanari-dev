@@ -22,8 +22,8 @@ extension ProjectRoot {
     while newNetName == "" {
       let tentativeNetName = "$\(idx)"
       var ok = true
-      for netClass in self.mNetClasses {
-        for net in netClass.mNets {
+      for netClass in self.mNetClasses.values {
+        for net in netClass.mNets.values {
           if net.mNetName == tentativeNetName {
             ok = false
           }
@@ -48,7 +48,7 @@ extension ProjectRoot {
     let newNetName = self.findUniqueNetName ()
   //--- Find net class
     var selectedNetClass : NetClassInProject? = nil
-    for netClass in self.mNetClasses {
+    for netClass in self.mNetClasses.values {
       if netClass.mNetClassName == self.mDefaultNetClassName {
         selectedNetClass = netClass
       }

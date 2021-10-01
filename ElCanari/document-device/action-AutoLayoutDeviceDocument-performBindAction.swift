@@ -15,7 +15,7 @@ extension AutoLayoutDeviceDocument {
 //--- START OF USER ZONE 2
         var possiblePadProxy : PadProxyInDevice? = nil
         if let selectedName = self.mUnconnectedPadsInDeviceTableView?.selectedPadName {
-          for padProxy in self.rootObject.mPadProxies {
+          for padProxy in self.rootObject.mPadProxies.values {
             if padProxy.mPadName == selectedName {
               possiblePadProxy = padProxy
             }
@@ -23,8 +23,8 @@ extension AutoLayoutDeviceDocument {
         }
         var possibleSymbolPin : SymbolPinInstanceInDevice? = nil
         if let selectedSymbolPin = self.mUnconnectedSymbolPinsInDeviceTableView?.selectedSymbolPin {
-          for symbolInstance in self.rootObject.mSymbolInstances {
-            for symbolPin in symbolInstance.mPinInstances {
+          for symbolInstance in self.rootObject.mSymbolInstances.values {
+            for symbolPin in symbolInstance.mPinInstances.values {
               if (symbolPin.pinName! == selectedSymbolPin.pinName) && (symbolPin.symbolName! == selectedSymbolPin.symbolInstanceName) {
                 possibleSymbolPin = symbolPin
               }

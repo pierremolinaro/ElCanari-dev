@@ -62,7 +62,7 @@ extension ProjectDocument {
     switch self.rootObject.mBoardShape {
     case .bezierPathes :
       var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
-      for curve in self.rootObject.mBorderCurves {
+      for curve in self.rootObject.mBorderCurves.values {
         let descriptor = curve.descriptor!
         curveDictionary [descriptor.p1] = descriptor
       }
@@ -138,7 +138,7 @@ extension ProjectDocument {
 
   fileprivate func buildHoleDictionary () -> [CGFloat : [(NSPoint, NSPoint)]] {
     var result = [CGFloat : [(NSPoint, NSPoint)]] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let connector = object as? BoardConnector, let isVia = connector.isVia, isVia {
         let p = connector.location!.cocoaPoint
         let hd = canariUnitToCocoa (connector.actualHoleDiameter!)
@@ -204,7 +204,7 @@ extension ProjectDocument {
     var frontPackageLegends = PathApertureDictionary () // Aperture, path
     var backPackageLegends = PathApertureDictionary () // Aperture, path
     let aperture = CGFloat (preferences_packageDrawingWidthMultpliedByTenForBoard) / 10.0
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject, component.mDisplayLegend {
         let strokeBezierPath = component.strokeBezierPath!
         if !strokeBezierPath.isEmpty {
@@ -231,7 +231,7 @@ extension ProjectDocument {
   private func buildComponentNamePathes () -> (PathApertureDictionary, PathApertureDictionary) {
     var frontComponentNames = PathApertureDictionary () // Aperture, path
     var backComponentNames = PathApertureDictionary () // Aperture, path
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
         if component.mNameIsVisibleInBoard, let fontDescriptor = component.mNameFont?.descriptor {
           let (textBP, _, _, _, _) = boardText_displayInfos (
@@ -267,7 +267,7 @@ extension ProjectDocument {
   private func buildComponentValuePathes () -> (PathApertureDictionary, PathApertureDictionary) {
     var frontComponentValues = PathApertureDictionary () // Aperture, path
     var backComponentValues = PathApertureDictionary () // Aperture, path
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
         if component.mValueIsVisibleInBoard, let fontDescriptor = component.mValueFont?.descriptor {
           let (textBP, _, _, _, _) = boardText_displayInfos (
@@ -305,7 +305,7 @@ extension ProjectDocument {
     var layoutFrontTexts = PathApertureDictionary () // Aperture, path
     var layoutBackTexts = PathApertureDictionary () // Aperture, path
     var legendBackTexts = PathApertureDictionary () // Aperture, path
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let text = object as? BoardText {
         let (textBP, _, _, _, _) = boardText_displayInfos (
           x: text.mX,
@@ -342,7 +342,7 @@ extension ProjectDocument {
 
   private func buildViaPads () -> [ProductCircle] { // Center, diameter
     var result = [ProductCircle] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let via = object as? BoardConnector, let isVia = via.isVia, isVia {
         let p = via.location!.cocoaPoint
         let padDiameter = canariUnitToCocoa (via.actualPadDiameter!)
@@ -356,7 +356,7 @@ extension ProjectDocument {
 
   private func buildTracks () -> [TrackSide : [ProductOblong]] {
     var tracks = [TrackSide : [ProductOblong]] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack {
         let p1 = track.mConnectorP1!.location!.cocoaPoint
         let p2 = track.mConnectorP2!.location!.cocoaPoint
@@ -373,7 +373,7 @@ extension ProjectDocument {
   private func buildLines () -> ([ProductOblong], [ProductOblong]) {
     var frontLines = [ProductOblong] ()
     var backLines = [ProductOblong] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let line = object as? BoardLine {
         let p1 = CanariPoint (x: line.mX1, y: line.mY1).cocoaPoint
         let p2 = CanariPoint (x: line.mX2, y: line.mY2).cocoaPoint
@@ -394,7 +394,7 @@ extension ProjectDocument {
 
   fileprivate func buildCircularPads () -> [PadLayer : [ProductCircle]] {
     var circularPads = [PadLayer : [ProductCircle]] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
         let af = component.packageToComponentAffineTransform ()
         for (_, masterPad) in component.packagePadDictionary! {
@@ -447,7 +447,7 @@ extension ProjectDocument {
 
   fileprivate func buildOblongPads () -> [PadLayer : [ProductOblong]] {
     var oblongPads = [PadLayer : [ProductOblong]] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
         let af = component.packageToComponentAffineTransform ()
         for (_, masterPad) in component.packagePadDictionary! {
@@ -500,7 +500,7 @@ extension ProjectDocument {
 
   fileprivate func buildPolygonPads () -> [PadLayer : [ProductPolygon]] {
     var polygonPads = [PadLayer : [ProductPolygon]] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
         let af = component.packageToComponentAffineTransform ()
         for (_, masterPad) in component.packagePadDictionary! {

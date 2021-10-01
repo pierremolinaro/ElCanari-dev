@@ -6,7 +6,7 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct EBReferenceArray <T : AnyObject> : RangeReplaceableCollection {
+struct EBReferenceArray <T : AnyObject> {
 
   private var mArray : [T]
 
@@ -38,6 +38,18 @@ struct EBReferenceArray <T : AnyObject> : RangeReplaceableCollection {
 
   //····················································································································
 
+  mutating func append (objects inObjects : [T]) {
+    self.mArray += inObjects
+  }
+
+  //····················································································································
+
+  mutating func append (objects inObjects : EBReferenceArray <T>) {
+    self.mArray += inObjects.mArray
+  }
+
+  //····················································································································
+
   mutating func remove (at inIndex : Int) {
     self.mArray.remove (at: inIndex)
   }
@@ -58,6 +70,12 @@ struct EBReferenceArray <T : AnyObject> : RangeReplaceableCollection {
 
   subscript (_ inIndex : Int) -> T {
     return self.mArray [inIndex]
+  }
+
+  //····················································································································
+
+  mutating func insert (_ inObject : T, at inIndex : Int) {
+    self.mArray.insert (inObject, at: inIndex)
   }
 
   //····················································································································
@@ -99,30 +117,12 @@ struct EBReferenceArray <T : AnyObject> : RangeReplaceableCollection {
   }
 
   //····················································································································
-  // Protocol Collection
-  //····················································································································
 
-  var startIndex : Int { return 0 }
+  var first : T? { return self.mArray.first }
 
   //····················································································································
 
-  var endIndex : Int { return self.mArray.count }
-
-  //····················································································································
-
-  func index (after i : Int) -> Int {
-    return i + 1
-  }
-
-  //····················································································································
-
-  static func += (lhs: inout EBReferenceArray <T>, rhs: EBReferenceArray <T>) {
-    lhs.mArray += rhs.mArray
-  }
-
-  //····················································································································
-
-  mutating func sort (by areInIncreasingOrder: (Element, Element) -> Bool) {
+  mutating func sort (by areInIncreasingOrder: (T, T) -> Bool) {
     self.mArray.sort { areInIncreasingOrder ($0, $1) }
   }
 
