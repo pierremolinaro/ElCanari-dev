@@ -214,16 +214,18 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
   //    populateExplorerWindow
   //····················································································································
 
-  private final var mSignatureObserverExplorer : NSPopUpButton? = nil
-  private final var mSignatureValueExplorer : NSTextField? = nil {
-    didSet {
-      if let s = self.mSignature {
-        self.mSignatureValueExplorer?.stringValue = String (format: "%04X:%04X", s >> 16, s & 0xFFFF)
-      }else{
-        self.mSignatureValueExplorer?.stringValue = "nil"
+  #if BUILD_OBJECT_EXPLORER
+    private final var mSignatureObserverExplorer : NSPopUpButton? = nil
+    private final var mSignatureValueExplorer : NSTextField? = nil {
+      didSet {
+        if let s = self.mSignature {
+          self.mSignatureValueExplorer?.stringValue = String (format: "%04X:%04X", s >> 16, s & 0xFFFF)
+        }else{
+          self.mSignatureValueExplorer?.stringValue = "nil"
+        }
       }
     }
-  }
+  #endif
 
   //····················································································································
 
@@ -413,7 +415,9 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
   final func clearSignatureCache () {
     if self.mSignature != nil {
       self.mSignature = nil
-      self.mSignatureValueExplorer?.stringValue = "nil"
+      #if BUILD_OBJECT_EXPLORER
+        self.mSignatureValueExplorer?.stringValue = "nil"
+      #endif
       self.mSignatureObserver?.clearSignatureCache ()
     }
   }
@@ -431,7 +435,9 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
       return s
     }else{
       let s = self.computeSignature ()
-      self.mSignatureValueExplorer?.stringValue = String (format: "%04X:%04X", s >> 16, s & 0xFFFF)
+      #if BUILD_OBJECT_EXPLORER
+        self.mSignatureValueExplorer?.stringValue = String (format: "%04X:%04X", s >> 16, s & 0xFFFF)
+      #endif
       self.mSignature = s
       return s
     }
