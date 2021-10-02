@@ -16,31 +16,35 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
                                           addedSet inAddedSet : EBReferenceSet <FontRoot>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_comments_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_nominalSize_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_selectedTab_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_selectedInspector_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_currentCharacterCodePoint_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_definedCharacters_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_comments_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_nominalSize_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_selectedTab_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_selectedInspector_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_currentCharacterCodePoint_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_definedCharacters_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_comments_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_nominalSize_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_selectedTab_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_selectedInspector_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_currentCharacterCodePoint_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_sampleStringBezierPath_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_definedCharacters_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_comments_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_nominalSize_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_selectedTab_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_selectedInspector_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_currentCharacterCodePoint_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_sampleStringBezierPath_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_definedCharacters_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

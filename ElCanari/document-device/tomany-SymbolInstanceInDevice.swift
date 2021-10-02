@@ -16,23 +16,27 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
                                           addedSet inAddedSet : EBReferenceSet <SymbolInstanceInDevice>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mInstanceName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_symbolQualifiedName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mInstanceName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_symbolQualifiedName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mInstanceName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_symbolQualifiedName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_symbolTypeName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_unconnectedPins_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mInstanceName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_symbolQualifiedName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_symbolTypeName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_unconnectedPins_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

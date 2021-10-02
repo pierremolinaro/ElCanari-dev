@@ -16,41 +16,45 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
                                           addedSet inAddedSet : EBReferenceSet <PackageArc>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_yCenter_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_radius_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_startAngle_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_arcAngle_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_startTangent_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_endTangent_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_pathIsClosed_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_xCenterUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_yCenterUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_radiusUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_startTangentUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_endTangentUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_xCenter_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_yCenter_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_radius_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_startAngle_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_arcAngle_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_startTangent_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_endTangent_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_pathIsClosed_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_xCenterUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_yCenterUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_radiusUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_startTangentUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_endTangentUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_xCenter_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_yCenter_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_radius_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_startAngle_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_arcAngle_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_startTangent_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_endTangent_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_pathIsClosed_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_xCenterUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_yCenterUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_radiusUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_startTangentUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_endTangentUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_xCenter_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_strokeBezierPath_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_yCenter_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_radius_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_startAngle_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_arcAngle_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_startTangent_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_endTangent_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_pathIsClosed_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_xCenterUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_yCenterUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_radiusUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_startTangentUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_endTangentUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_xCenter_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_strokeBezierPath_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

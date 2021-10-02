@@ -16,13 +16,17 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
                                           addedSet inAddedSet : EBReferenceSet <DeviceDocumentation>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mFileName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mFileData_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_fileSize_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mFileName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mFileData_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_fileSize_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mFileName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mFileData_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_fileSize_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mFileName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mFileData_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_fileSize_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

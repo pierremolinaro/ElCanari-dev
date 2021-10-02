@@ -16,23 +16,27 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
                                           addedSet inAddedSet : EBReferenceSet <FontCharacter>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_codePoint_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_advance_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_gerberCode_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_codePoint_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_advance_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_gerberCode_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_codePoint_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_advance_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mWarnsWhenNoSegment_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mWarnsWhenAdvanceIsZero_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_gerberCode_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_codePoint_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_advance_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mWarnsWhenNoSegment_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mWarnsWhenAdvanceIsZero_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_gerberCode_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

@@ -16,29 +16,33 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
                                           addedSet inAddedSet : EBReferenceSet <BoardObject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_isPlacedInBoard_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_isVia_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_trackLengthInCanariUnit_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_componentName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_errorOrWarningIssueSize_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_trackSide_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_isPlacedInBoard_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_isVia_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_trackLengthInCanariUnit_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_componentName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_errorOrWarningIssueSize_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_trackSide_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_isPlacedInBoard_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_isVia_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_trackLengthInCanariUnit_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_netNameAndPadLocation_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_componentName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_errorOrWarningIssueSize_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_trackSide_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_isPlacedInBoard_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_isVia_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_trackLengthInCanariUnit_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_netNameAndPadLocation_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_componentName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_errorOrWarningIssueSize_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_trackSide_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

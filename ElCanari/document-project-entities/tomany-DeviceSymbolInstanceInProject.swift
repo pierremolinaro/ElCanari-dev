@@ -16,17 +16,21 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
                                           addedSet inAddedSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_symbolAndTypeName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_symbolTypeName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_filledBezierPath_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_strokeBezierPath_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_symbolAndTypeName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_symbolTypeName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_filledBezierPath_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_strokeBezierPath_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

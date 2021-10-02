@@ -16,23 +16,27 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
                                           addedSet inAddedSet : EBReferenceSet <FontInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mNominalSize_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mFontName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mFontVersion_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mDescriptiveString_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_sizeString_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_canRemoveFont_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mNominalSize_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mFontName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mFontVersion_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mDescriptiveString_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_sizeString_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_canRemoveFont_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mNominalSize_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mFontName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mFontVersion_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mDescriptiveString_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_sizeString_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_canRemoveFont_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mNominalSize_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mFontName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mFontVersion_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mDescriptiveString_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_sizeString_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_canRemoveFont_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

@@ -16,17 +16,21 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
                                           addedSet inAddedSet : EBReferenceSet <SegmentEntity>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_y1_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_x2_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_y2_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_width_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_x1_fromElementsOfSet (inRemovedSet) // Stored property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_y1_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_x2_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_y2_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_width_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_x1_fromElementsOfSet (inRemovedSet) // Stored property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_y1_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_x2_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_y2_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_width_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_x1_toElementsOfSet (inAddedSet) // Stored property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_y1_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_x2_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_y2_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_width_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_x1_toElementsOfSet (inAddedSet) // Stored property
+   }
   }
 
   //····················································································································

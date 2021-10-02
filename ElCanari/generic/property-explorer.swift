@@ -132,19 +132,19 @@ import Cocoa
 
 #if BUILD_OBJECT_EXPLORER
   func createEntryForObjectNamed (_ name : String,
-                                  object : EBObjcBaseObject,
+                                  object : ObjectIndexProtocol,
                                   y ioY : inout CGFloat,
                                   view : NSView) {
     let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
   //--- Property textfield
-    let tf = NSTextField (frame:secondColumn (ioY))
+    let tf = NSTextField (frame: secondColumn (ioY))
     tf.isEnabled = true
     tf.isEditable = false
     tf.stringValue = name
     tf.font = font
     view.addSubview (tf)
   //--- Value textfield
-    let vtf = NSTextField (frame:thirdColumn (ioY))
+    let vtf = NSTextField (frame: thirdColumn (ioY))
     vtf.isEnabled = true
     vtf.isEditable = false
     vtf.stringValue = object.explorerIndexString + " - " + String (describing: type(of: object))

@@ -16,17 +16,21 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
                                           addedSet inAddedSet : EBReferenceSet <CanariLibraryEntry>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mPath_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mUses_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mPath_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mUses_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mPath_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mUses_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mStatusImage_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mPath_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mUses_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mStatusImage_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

@@ -16,33 +16,37 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
                                           addedSet inAddedSet : EBReferenceSet <DeviceInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mDeviceName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mPrefix_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mDeviceVersion_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mDeviceFileData_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_sizeString_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_canExport_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_packageNames_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_deviceComponentCountString_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_canRemove_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mDeviceName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mPrefix_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mDeviceVersion_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mDeviceFileData_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_sizeString_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_canExport_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_packageNames_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_deviceComponentCountString_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_canRemove_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mDeviceName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mPrefix_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mDeviceVersion_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mDeviceFileData_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_sizeString_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_canExport_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_packageNames_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_deviceComponentCountString_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_canRemove_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_symbolAndTypesNames_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_pinPadAssignments_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mDeviceName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mPrefix_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mDeviceVersion_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mDeviceFileData_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_sizeString_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_canExport_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_packageNames_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_deviceComponentCountString_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_canRemove_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_symbolAndTypesNames_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_pinPadAssignments_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

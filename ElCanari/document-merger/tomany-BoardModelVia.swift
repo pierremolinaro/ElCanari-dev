@@ -16,13 +16,17 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
                                           addedSet inAddedSet : EBReferenceSet <BoardModelVia>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_y_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_padDiameter_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_x_fromElementsOfSet (inRemovedSet) // Stored property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_y_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_padDiameter_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_x_fromElementsOfSet (inRemovedSet) // Stored property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_y_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_padDiameter_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_x_toElementsOfSet (inAddedSet) // Stored property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_y_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_padDiameter_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_x_toElementsOfSet (inAddedSet) // Stored property
+   }
   }
 
   //····················································································································

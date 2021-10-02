@@ -16,33 +16,37 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
                                           addedSet inAddedSet : EBReferenceSet <BoardLine>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mX1_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mX1Unit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mY1_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mY1Unit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mX2_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mX2Unit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mY2_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mY2Unit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mLayer_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mWidth_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mX1_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mX1Unit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mY1_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mY1Unit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mX2_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mX2Unit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mY2_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mY2Unit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mLayer_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mWidth_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mWidthUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mX1_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mX1Unit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mY1_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mY1Unit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mX2_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mX2Unit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mY2_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mY2Unit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mLayer_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mWidth_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mWidthUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mX1_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mX1Unit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mY1_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mY1Unit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mX2_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mX2Unit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mY2_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mY2Unit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mLayer_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mWidth_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

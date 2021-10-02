@@ -16,33 +16,37 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
                                           addedSet inAddedSet : EBReferenceSet <PackageInDevice>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mFileData_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mVersion_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_documentSize_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_frontSidePadFilledBezierPathArray_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_backSidePadFilledBezierPathArray_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_padNameSet_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mFileData_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mVersion_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_documentSize_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_frontSidePadFilledBezierPathArray_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_backSidePadFilledBezierPathArray_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_padNameSet_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mFileData_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mVersion_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_documentSize_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_frontSidePadFilledBezierPathArray_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_backSidePadFilledBezierPathArray_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_padNameSet_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mFileData_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mVersion_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_documentSize_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_frontSidePadFilledBezierPathArray_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_backSidePadFilledBezierPathArray_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_padNameSet_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

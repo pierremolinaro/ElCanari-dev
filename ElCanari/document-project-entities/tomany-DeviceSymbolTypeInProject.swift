@@ -16,13 +16,17 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
                                           addedSet inAddedSet : EBReferenceSet <DeviceSymbolTypeInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (inAddedSet) // Stored property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (inAddedSet) // Stored property
+   }
   }
 
   //····················································································································

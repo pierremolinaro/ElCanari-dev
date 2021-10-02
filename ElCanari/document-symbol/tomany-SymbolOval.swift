@@ -16,23 +16,27 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
                                           addedSet inAddedSet : EBReferenceSet <SymbolOval>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_y_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_width_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_height_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_x_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_y_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_width_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_height_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_x_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_y_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_width_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_height_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_x_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_strokeBezierPath_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_y_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_width_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_height_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_x_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_strokeBezierPath_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

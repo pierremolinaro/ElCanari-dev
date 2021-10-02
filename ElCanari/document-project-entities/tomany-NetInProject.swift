@@ -16,23 +16,27 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
                                           addedSet inAddedSet : EBReferenceSet <NetInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mNetName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_netClassName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_wireColor_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_netSchematicPointsInfo_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_trackCount_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mNetName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_netClassName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_wireColor_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_netSchematicPointsInfo_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_trackCount_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mNetName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_netClassName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_netClassTrackWidth_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_wireColor_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_netSchematicPointsInfo_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_trackCount_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mNetName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_netClassName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_netClassTrackWidth_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_wireColor_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_netSchematicPointsInfo_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_trackCount_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

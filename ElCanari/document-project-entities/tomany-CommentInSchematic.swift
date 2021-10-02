@@ -16,25 +16,29 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
                                           addedSet inAddedSet : EBReferenceSet <CommentInSchematic>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mColor_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mSize_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mComment_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mColor_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mSize_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mComment_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mColor_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mSize_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mVerticalAlignment_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mComment_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mColor_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mSize_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mVerticalAlignment_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mComment_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

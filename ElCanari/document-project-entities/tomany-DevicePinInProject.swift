@@ -16,35 +16,39 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
                                           addedSet inAddedSet : EBReferenceSet <DevicePinInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mPinName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mPinX_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mPinY_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mXName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mYName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mNameHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mPinNameIsDisplayedInSchematic_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mXNumber_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mYNumber_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_pinQualifiedName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mPinName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mPinX_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mPinY_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mXName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mYName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mNameHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mPinNameIsDisplayedInSchematic_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mXNumber_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mYNumber_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_pinQualifiedName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mPinName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mPinX_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mPinY_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mXName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mYName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mNameHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mPinNameIsDisplayedInSchematic_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mXNumber_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mYNumber_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mNumberHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_pinQualifiedName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mPinName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mPinX_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mPinY_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mXName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mYName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mNameHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mPinNameIsDisplayedInSchematic_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mXNumber_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mYNumber_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mNumberHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_pinQualifiedName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

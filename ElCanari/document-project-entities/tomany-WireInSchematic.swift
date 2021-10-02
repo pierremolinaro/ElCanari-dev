@@ -16,17 +16,21 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
                                           addedSet inAddedSet : EBReferenceSet <WireInSchematic>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_netName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_netClassName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_hasNet_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_netName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_netClassName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_hasNet_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_netName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_netClassName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_hasNet_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_netName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_netClassName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_hasNet_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

@@ -16,35 +16,39 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
                                           addedSet inAddedSet : EBReferenceSet <BoardText>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mFontSize_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mLayer_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mText_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mRotation_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mWeight_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mOblique_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_fontName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mFontSize_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mLayer_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mText_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mRotation_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mWeight_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mOblique_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_fontName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mFontSize_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mLayer_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mText_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mVerticalAlignment_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mRotation_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mWeight_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mOblique_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_fontName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mFontSize_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mLayer_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mText_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mVerticalAlignment_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mRotation_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mWeight_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mOblique_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_fontName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

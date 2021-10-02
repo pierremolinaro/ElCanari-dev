@@ -16,37 +16,41 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
                                           addedSet inAddedSet : EBReferenceSet <PointInSchematic>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mSymbolPinName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_location_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_netName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_netClassName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_hasNet_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_canMove_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_wireColor_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_symbolRotation_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_symbolNameNetName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_isConnected_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_status_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_connectedPoints_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_netInfoForPoint_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mSymbolPinName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_location_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_netName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_netClassName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_hasNet_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_canMove_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_wireColor_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_symbolRotation_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_symbolNameNetName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_isConnected_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_status_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_connectedPoints_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_netInfoForPoint_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mSymbolPinName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_location_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_netName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_netClassName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_hasNet_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_canMove_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_wireColor_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_symbolRotation_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_symbolNameNetName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_isConnected_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_status_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_connectedPoints_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_netInfoForPoint_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mSymbolPinName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_location_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_netName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_netClassName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_hasNet_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_canMove_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_wireColor_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_symbolRotation_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_symbolNameNetName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_isConnected_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_status_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_connectedPoints_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_netInfoForPoint_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

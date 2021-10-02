@@ -16,19 +16,23 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
                                           addedSet inAddedSet : EBReferenceSet <SchematicObject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_connectedPoints_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_sheetDescriptor_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_isPlacedInSchematic_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_connectedPoints_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_sheetDescriptor_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_isPlacedInSchematic_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_connectedPoints_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_sheetDescriptor_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_isPlacedInSchematic_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_connectedPoints_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_sheetDescriptor_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_isPlacedInSchematic_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

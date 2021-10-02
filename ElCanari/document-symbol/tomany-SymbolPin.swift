@@ -16,37 +16,41 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
                                           addedSet inAddedSet : EBReferenceSet <SymbolPin>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_yPin_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_xName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_yName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_xNumber_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_yNumber_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_name_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_xPin_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_nameRect_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_yPin_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_xName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_yName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_xNumber_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_yNumber_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_name_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_xPin_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_nameRect_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_yPin_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_xName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_yName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_xNumber_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_yNumber_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_name_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_xPin_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_filledBezierPath_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_nameRect_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_yPin_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_xName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_yName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_xNumber_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_yNumber_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_name_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_xPin_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_filledBezierPath_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_nameRect_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

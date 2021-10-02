@@ -16,25 +16,29 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
                                           addedSet inAddedSet : EBReferenceSet <BoardRestrictRectangle>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mWidth_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mHeight_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mIsInFrontLayer_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mIsInBackLayer_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mWidth_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mHeight_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mIsInFrontLayer_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mIsInBackLayer_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mWidth_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mHeight_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mIsInFrontLayer_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mIsInBackLayer_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mWidth_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mHeight_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mIsInFrontLayer_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mIsInBackLayer_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

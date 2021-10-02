@@ -16,43 +16,47 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
                                           addedSet inAddedSet : EBReferenceSet <ArtworkRoot>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_layerConfiguration_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_selectedTab_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_comments_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_title_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_hasInnerElements_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_hasSixLayers_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_hasDataWarning_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_emptyDrillFileExtension_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_layerConfiguration_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_selectedTab_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_comments_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_title_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_hasInnerElements_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_hasSixLayers_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_hasDataWarning_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_emptyDrillFileExtension_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_layerConfiguration_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_selectedTab_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_comments_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_minPPTPTTTW_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_title_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_hasInnerElements_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_hasSixLayers_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_hasDataWarning_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_emptyDrillFileExtension_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_layerConfiguration_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_selectedTab_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_comments_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_minPPTPTTTW_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_title_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_hasInnerElements_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_hasSixLayers_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_hasDataWarning_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_emptyDrillFileExtension_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

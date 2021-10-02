@@ -16,43 +16,47 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
                                           addedSet inAddedSet : EBReferenceSet <ComponentSymbolInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mCenterX_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mCenterY_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mRotation_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mMirror_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mDisplayComponentNameOffsetY_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mDisplayComponentValue_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mDisplayComponentValueOffsetX_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mDisplayComponentValueOffsetY_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_componentName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_deviceName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_symbolInfo_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_symbolInSchematic_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mCenterX_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mCenterY_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mRotation_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mMirror_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mDisplayComponentNameOffsetY_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mDisplayComponentValue_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mDisplayComponentValueOffsetX_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mDisplayComponentValueOffsetY_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_componentName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_deviceName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_symbolInfo_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_symbolInSchematic_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mCenterX_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mCenterY_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mRotation_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mMirror_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mDisplayComponentNameOffsetY_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mDisplayComponentValue_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mDisplayComponentValueOffsetX_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mDisplayComponentValueOffsetY_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_componentName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_deviceName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_symbolInfo_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_pinPadAssignments_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_symbolInSchematic_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mCenterX_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mCenterY_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mRotation_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mMirror_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mDisplayComponentNameOffsetY_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mDisplayComponentValue_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mDisplayComponentValueOffsetX_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mDisplayComponentValueOffsetY_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_componentName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_deviceName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_symbolInfo_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_pinPadAssignments_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_symbolInSchematic_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

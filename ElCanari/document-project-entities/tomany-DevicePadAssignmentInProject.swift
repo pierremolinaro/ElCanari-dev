@@ -16,13 +16,17 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
                                           addedSet inAddedSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mPadName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_pinPadAssignment_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mPadName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_pinPadAssignment_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mPadName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_pinPadAssignment_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mPadName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_pinPadAssignment_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

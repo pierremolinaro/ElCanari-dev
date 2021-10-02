@@ -16,9 +16,13 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
                                           addedSet inAddedSet : EBReferenceSet <ForbiddenPadNumber>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_padNumber_fromElementsOfSet (inRemovedSet) // Stored property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_padNumber_fromElementsOfSet (inRemovedSet) // Stored property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_padNumber_toElementsOfSet (inAddedSet) // Stored property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_padNumber_toElementsOfSet (inAddedSet) // Stored property
+   }
   }
 
   //····················································································································

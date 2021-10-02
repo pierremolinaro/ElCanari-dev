@@ -10,24 +10,24 @@ struct EBReferenceSet <T : AnyObject> {
 
   //····················································································································
 
-  private var mDictionary : Dictionary <ObjectIdentifier, T>
+  private var mDictionary : [ObjectIdentifier : T]
 
   //····················································································································
 
   init () {
-    self.mDictionary = Dictionary <ObjectIdentifier, T> ()
+    self.mDictionary = [ObjectIdentifier : T] ()
   }
 
   //····················································································································
 
   init (minimumCapacity inMinimumCapacity : Int) {
-    self.mDictionary = Dictionary <ObjectIdentifier, T> (minimumCapacity: inMinimumCapacity)
+    self.mDictionary = [ObjectIdentifier : T] (minimumCapacity: inMinimumCapacity)
   }
 
   //····················································································································
 
   init (_ inObjects : [T]) {
-    self.mDictionary = Dictionary <ObjectIdentifier, T> (minimumCapacity: inObjects.count)
+    self.mDictionary = [ObjectIdentifier : T] (minimumCapacity: inObjects.count)
     for object in inObjects {
       self.insert (object)
     }
@@ -36,7 +36,7 @@ struct EBReferenceSet <T : AnyObject> {
   //····················································································································
 
   init (_ inObject : T) {
-    self.mDictionary = Dictionary <ObjectIdentifier, T> ()
+    self.mDictionary = [ObjectIdentifier : T] ()
     self.insert (inObject)
   }
 
@@ -122,7 +122,7 @@ struct EBReferenceSet <T : AnyObject> {
 
   func subtracting (_ inOtherSet : EBReferenceSet <T>) -> EBReferenceSet <T> {
      var result = self
-     for (key, _) in inOtherSet.mDictionary {
+     for key in inOtherSet.mDictionary.keys {
        result.mDictionary [key] = nil
      }
      return result
@@ -131,7 +131,7 @@ struct EBReferenceSet <T : AnyObject> {
   //····················································································································
 
   mutating func subtract (_ inOtherSet : EBReferenceSet <T>) {
-     for (key, _) in inOtherSet.mDictionary {
+     for key in inOtherSet.mDictionary.keys {
        self.mDictionary [key] = nil
      }
   }

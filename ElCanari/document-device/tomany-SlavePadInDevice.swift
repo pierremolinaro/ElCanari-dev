@@ -16,29 +16,33 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
                                           addedSet inAddedSet : EBReferenceSet <SlavePadInDevice>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mCenterX_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mCenterY_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mWidth_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mHeight_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mHoleWidth_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mHoleHeight_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mShape_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mStyle_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_frontSideFilledBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_backSideFilledBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mCenterX_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mCenterY_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mWidth_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mHeight_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mHoleWidth_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mHoleHeight_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mShape_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mStyle_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_frontSideFilledBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_backSideFilledBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mCenterX_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mCenterY_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mWidth_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mHeight_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mHoleWidth_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mHoleHeight_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mShape_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mStyle_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_backSideFilledBezierPath_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_padNumberDisplay_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mCenterX_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mCenterY_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mWidth_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mHeight_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mHoleWidth_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mHoleHeight_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mShape_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mStyle_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_backSideFilledBezierPath_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_padNumberDisplay_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

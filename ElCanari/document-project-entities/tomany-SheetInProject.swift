@@ -16,19 +16,23 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
                                           addedSet inAddedSet : EBReferenceSet <SheetInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mSheetTitle_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_connectedPoints_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_connexionWarnings_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_connexionErrors_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_sheetDescriptor_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mSheetTitle_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_connectedPoints_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_connexionWarnings_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_connexionErrors_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_sheetDescriptor_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mSheetTitle_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_connectedPoints_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_connexionWarnings_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_connexionErrors_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_sheetDescriptor_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mSheetTitle_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_connectedPoints_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_connexionWarnings_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_connexionErrors_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_sheetDescriptor_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

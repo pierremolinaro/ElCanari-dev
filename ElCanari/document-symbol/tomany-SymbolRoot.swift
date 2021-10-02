@@ -16,29 +16,33 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
                                           addedSet inAddedSet : EBReferenceSet <SymbolRoot>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_selectedInspector_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_comments_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_verticalFlip_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_gridStyle_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_gridDisplay_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_zoom_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_selectedInspector_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_comments_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_verticalFlip_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_gridStyle_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_gridDisplay_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_zoom_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_selectedInspector_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_comments_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_horizontalFlip_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_verticalFlip_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_gridStyle_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_gridDisplay_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_zoom_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_xPlacardUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_yPlacardUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_selectedPageIndex_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_selectedInspector_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_comments_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_horizontalFlip_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_verticalFlip_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_gridStyle_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_gridDisplay_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_zoom_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_xPlacardUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_yPlacardUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_selectedPageIndex_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

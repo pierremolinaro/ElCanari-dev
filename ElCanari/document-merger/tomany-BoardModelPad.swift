@@ -16,19 +16,23 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
                                           addedSet inAddedSet : EBReferenceSet <BoardModelPad>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_y_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_width_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_height_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_shape_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_rotation_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_x_fromElementsOfSet (inRemovedSet) // Stored property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_y_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_width_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_height_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_shape_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_rotation_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_x_fromElementsOfSet (inRemovedSet) // Stored property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_y_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_width_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_height_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_shape_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_rotation_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_x_toElementsOfSet (inAddedSet) // Stored property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_y_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_width_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_height_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_shape_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_rotation_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_x_toElementsOfSet (inAddedSet) // Stored property
+   }
   }
 
   //····················································································································

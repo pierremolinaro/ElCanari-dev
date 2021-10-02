@@ -16,19 +16,23 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
                                           addedSet inAddedSet : EBReferenceSet <SegmentForFontCharacter>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_x1_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_y1_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_x2_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_y2_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_x1_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_y1_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_x2_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_y2_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_x1_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_y1_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_x2_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_y2_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_x1_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_y1_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_x2_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_y2_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

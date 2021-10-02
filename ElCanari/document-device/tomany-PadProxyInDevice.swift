@@ -16,17 +16,21 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
                                           addedSet inAddedSet : EBReferenceSet <PadProxyInDevice>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mPinInstanceName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mPadName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mIsNC_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_isConnected_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_symbolName_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mPinInstanceName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mPadName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mIsNC_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_isConnected_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_symbolName_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mPinInstanceName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mPadName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mIsNC_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_isConnected_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_symbolName_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mPinInstanceName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mPadName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mIsNC_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_isConnected_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_symbolName_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

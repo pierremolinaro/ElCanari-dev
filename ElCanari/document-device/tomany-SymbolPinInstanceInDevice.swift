@@ -16,17 +16,21 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
                                           addedSet inAddedSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_pinName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_symbolName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_pinQualifiedName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_isConnected_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_numberShape_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_pinName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_symbolName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_pinQualifiedName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_isConnected_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_numberShape_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_pinName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_symbolName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_pinQualifiedName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_isConnected_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_numberShape_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_pinName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_symbolName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_pinQualifiedName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_isConnected_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_numberShape_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

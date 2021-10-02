@@ -16,23 +16,27 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
                                           addedSet inAddedSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mFirstX_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mFirstY_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mFirstColor_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mSecondDx_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mSecondDy_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mSecondColor_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mFirstX_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mFirstY_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mFirstColor_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mSecondDx_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mSecondDy_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mSecondColor_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mFirstX_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mFirstY_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mFirstColor_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mSecondDx_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mSecondDy_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mSecondColor_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mFirstX_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mFirstY_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mFirstColor_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mSecondDx_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mSecondDy_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mSecondColor_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

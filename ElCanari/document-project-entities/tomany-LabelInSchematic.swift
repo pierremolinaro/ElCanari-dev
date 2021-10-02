@@ -16,19 +16,23 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
                                           addedSet inAddedSet : EBReferenceSet <LabelInSchematic>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mOrientation_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_location_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_netName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_netClassName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mOrientation_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_location_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_netName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_netClassName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mOrientation_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_location_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_netName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_netClassName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mOrientation_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_location_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_netName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_netClassName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

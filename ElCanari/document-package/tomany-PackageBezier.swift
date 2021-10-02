@@ -16,47 +16,51 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
                                           addedSet inAddedSet : EBReferenceSet <PackageBezier>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_y1_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_x2_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_y2_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_cpx1_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_cpy1_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_cpx2_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_cpy2_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_x1Unit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_y1Unit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_x2Unit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_y2Unit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_cpx1Unit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_cpy1Unit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_cpx2Unit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_cpy2Unit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_x1_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_y1_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_x2_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_y2_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_cpx1_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_cpy1_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_cpx2_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_cpy2_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_x1Unit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_y1Unit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_x2Unit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_y2Unit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_cpx1Unit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_cpy1Unit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_cpx2Unit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_cpy2Unit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_x1_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_y1_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_x2_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_y2_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_cpx1_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_cpy1_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_cpx2_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_cpy2_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_x1Unit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_y1Unit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_x2Unit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_y2Unit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_cpx1Unit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_cpy1Unit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_cpx2Unit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_cpy2Unit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_x1_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_strokeBezierPath_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_y1_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_x2_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_y2_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_cpx1_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_cpy1_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_cpx2_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_cpy2_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_x1Unit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_y1Unit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_x2Unit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_y2Unit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_cpx1Unit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_cpy1Unit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_cpx2Unit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_cpy2Unit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_x1_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_strokeBezierPath_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

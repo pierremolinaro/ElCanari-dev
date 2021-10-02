@@ -16,23 +16,27 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
                                           addedSet inAddedSet : EBReferenceSet <MergerBoardInstance>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_x_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_y_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_instanceRotation_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_instanceRect_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_modelName_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_boardLimitWidth_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_x_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_y_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_instanceRotation_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_instanceRect_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_modelName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_boardLimitWidth_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_x_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_y_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_instanceRotation_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_instanceRect_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_modelName_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_boardLimitWidth_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_x_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_y_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_instanceRotation_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_instanceRect_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_modelName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_boardLimitWidth_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

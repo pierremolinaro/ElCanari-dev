@@ -16,13 +16,17 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
                                           addedSet inAddedSet : EBReferenceSet <DevicePackageInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mPackageName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_packagePadDictionary_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mPackageName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_packagePadDictionary_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mPackageName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_packagePadDictionary_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mPackageName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_packagePadDictionary_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································

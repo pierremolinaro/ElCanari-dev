@@ -16,25 +16,29 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
                                           addedSet inAddedSet : EBReferenceSet <SymbolTypeInDevice>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mTypeName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mVersion_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mFileData_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_instanceCount_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_documentSize_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_pinNameShape_fromElementsOfSet (inRemovedSet) // Transient property
+    if !inRemovedSet.isEmpty {
+      self.removeEBObserversOf_mTypeName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mVersion_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mFileData_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_instanceCount_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_documentSize_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_pinNameShape_fromElementsOfSet (inRemovedSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.addEBObserversOf_mTypeName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mVersion_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mFileData_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_instanceCount_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_documentSize_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_pinNameShape_toElementsOfSet (inAddedSet) // Transient property
+    if !inAddedSet.isEmpty {
+      self.addEBObserversOf_mTypeName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mVersion_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mFileData_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_instanceCount_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_documentSize_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_pinNameShape_toElementsOfSet (inAddedSet) // Transient property
+   }
   }
 
   //····················································································································
