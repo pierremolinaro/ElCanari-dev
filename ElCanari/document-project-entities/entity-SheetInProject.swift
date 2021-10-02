@@ -312,7 +312,7 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.sheetGeometry_property.selection, unwSelf.mRoot_property.sheetIndexes_property.selection, unwSelf.address.selection) {
+        switch (unwSelf.mRoot_property.sheetGeometry_property.selection, unwSelf.mRoot_property.sheetIndexes_property.selection, unwSelf.objectIdentifier.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_SheetInProject_sheetDescriptor (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :

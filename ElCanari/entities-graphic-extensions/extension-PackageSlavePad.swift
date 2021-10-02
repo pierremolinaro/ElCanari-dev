@@ -164,7 +164,7 @@ extension PackageSlavePad {
   //····················································································································
 
   func saveIntoAdditionalDictionary_PackageSlavePad (_ ioDictionary : NSMutableDictionary) {
-    if let masterPadObjectIndex = self.master?.address {
+    if let masterPadObjectIndex = self.master?.objectIdentifier {
       ioDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPadObjectIndex
     }
   }
@@ -174,7 +174,7 @@ extension PackageSlavePad {
   func operationAfterPasting_PackageSlavePad (additionalDictionary inDictionary : NSDictionary, objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     if let masterPadIndex = inDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] as? Int {
       for object in inObjectArray {
-        if object.address == masterPadIndex, let masterPad = object as? PackagePad {
+        if object.objectIdentifier == masterPadIndex, let masterPad = object as? PackagePad {
           self.master = masterPad
         }
       }
@@ -212,7 +212,7 @@ extension PackageSlavePad {
     s += " : "
     s += stringFrom (valueInCanariUnit: self.holeHeight, displayUnit : self.holeHeightUnit)
     s += " id "
-    s += "\(self.master_property.propval!.address)"
+    s += "\(self.master_property.propval!.objectIdentifier)"
     s += ";\n"
     return s
   }

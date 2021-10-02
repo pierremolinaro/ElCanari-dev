@@ -28,10 +28,10 @@ func transient_PointInSchematic_netInfoForPoint (
       //--- Wires
         var wireIndexSet = Set <Int> ()
         for wire in self_mWiresP1s {
-          wireIndexSet.insert (wire.address)
+          wireIndexSet.insert (wire.objectIdentifier)
         }
         for wire in self_mWiresP2s {
-          wireIndexSet.insert (wire.address)
+          wireIndexSet.insert (wire.objectIdentifier)
         }
       //--- Location in sheet
         var locationInSheetString : String

@@ -29,7 +29,7 @@ func transient_ProjectRoot_unplacedPackages (
             if value != "" {
               title += " (" + value + ")"
             }
-            let tag = self_mComponents [idx].address
+            let tag = self_mComponents [idx].objectIdentifier
             let st = StringTag (string: title, tag: tag)
             result.append (st)
           }

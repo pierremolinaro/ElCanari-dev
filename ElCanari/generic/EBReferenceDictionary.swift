@@ -70,7 +70,7 @@ struct EBReferenceDictionary <KEY : AnyObject, VALUE> : Sequence {
     return AnyIterator {
       if index != values.endIndex {
         let result = values [index]
-         values.formIndex (after: &index)
+        values.formIndex (after: &index)
         return result
       }else{
         return nil

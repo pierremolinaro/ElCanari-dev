@@ -123,10 +123,10 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
         shape.add (text: dateFormatter.string (from: self_mSchematicDate), p, textAttributes, .center, .center)
      //--- Sheet index
         var s = "?"
-        if let selectedSheetIndex = self_mSelectedSheet?.address {
+        if let selectedSheetIndex = self_mSelectedSheet?.objectIdentifier {
           var idx = 1
           for sheet in self_mSheets {
-            if sheet.address == selectedSheetIndex {
+            if sheet.objectIdentifier == selectedSheetIndex {
               s = "\(idx)"
             }
             idx += 1

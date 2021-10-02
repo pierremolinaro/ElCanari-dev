@@ -27,7 +27,7 @@ func transient_ComponentInProject_unplacedSymbols (
         while idx < self_mSymbols_mSymbolInstanceName.count {
           let inSchematics = self_mSymbols_symbolInSchematic [idx].symbolInSchematic!
           if !inSchematics {
-            let objectAddress = self_mSymbols [idx].address
+            let objectAddress = self_mSymbols [idx].objectIdentifier
             let symbolInstanceName = self_mSymbols_mSymbolInstanceName [idx].mSymbolInstanceName
             let symbolTypeName = self_mSymbols_mSymbolTypeName [idx].mSymbolTypeName
             var name = self_componentName

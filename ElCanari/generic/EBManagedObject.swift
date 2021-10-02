@@ -38,7 +38,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol EBManagedObject_address_protocol : AnyObject {
-  var address : Int { get }
+  var objectIdentifier : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -61,7 +61,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
 
   //····················································································································
 
-  final var address : Int { return unsafeBitCast (self, to: Int.self) }
+  final var objectIdentifier : Int { return unsafeBitCast (self, to: Int.self) }
 
   //····················································································································
 
@@ -118,7 +118,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
 
   //····················································································································
 
-  final var ebObjectIndex_selection : EBSelection <Int> { return .single (self.address) }
+  final var ebObjectIndex_selection : EBSelection <Int> { return .single (self.objectIdentifier) }
 
   //····················································································································
   //   showExplorerWindow

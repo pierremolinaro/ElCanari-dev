@@ -21,7 +21,7 @@ func transient_MergerRoot_modelNames (
   var array = StringTagArray ()
   var idx = 0
   while idx < self_boardModels_name.count {
-    array.append (StringTag (string: self_boardModels_name [idx].name, tag: self_boardModels [idx].address))
+    array.append (StringTag (string: self_boardModels_name [idx].name, tag: self_boardModels [idx].objectIdentifier))
     idx += 1
   }
   return array

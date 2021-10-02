@@ -130,7 +130,7 @@ func transient_NetClassInProject_netsDescription (
           }
           let (subnets, subnetsHaveWarning) = computeSubnets (netPointInfo)
           let netInfo = NetInfo (
-            netIdentifier: self_mNets [idx].address, 
+            netIdentifier: self_mNets [idx].objectIdentifier, 
             netName: netName,
             netClassName: self_mNetClassName,
             points: netPointInfo,

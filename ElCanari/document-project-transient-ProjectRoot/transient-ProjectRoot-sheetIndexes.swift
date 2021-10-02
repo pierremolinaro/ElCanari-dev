@@ -19,7 +19,7 @@ func transient_ProjectRoot_sheetIndexes (
 //--- START OF USER ZONE 2
         var result = [Int] ()
         for sheet in self_mSheets {
-          result.append (sheet.address)
+          result.append (sheet.objectIdentifier)
         }
         return result
 //--- END OF USER ZONE 2
