@@ -1,4 +1,4 @@
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 entity DevicePackageInProject {
   toMany DeviceMasterPadInProject mMasterPads ;
@@ -9,4 +9,4 @@ entity DevicePackageInProject {
   transient PackageMasterPadDictionary packagePadDictionary dependsFrom self.mMasterPads.all.descriptor ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————

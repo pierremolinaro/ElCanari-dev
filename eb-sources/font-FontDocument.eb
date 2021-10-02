@@ -1,26 +1,26 @@
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 //     F O N T    D O C U M E N T
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 transient property struct CharacterGerberCode ;
 transient property struct CharacterSegmentList ;
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 extern outlet class NewCharacterView ;
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 extern outlet class CanariCharacterGerberCodeTableView ;
 binding CanariCharacterGerberCodeTableView $characterGerberCode : transient CharacterGerberCode ;
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 extern outlet class CanariFontSampleStringView ;
 binding CanariFontSampleStringView $bezierPath : transient NSBezierPath ;
 binding CanariFontSampleStringView $sampleStringFontSize : transient Double ;
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 extern outlet class CanariCharacterView ;
 binding CanariCharacterView $advance : transient Int ;
@@ -29,7 +29,7 @@ binding CanariCharacterView $transparency : transient Double ;
 binding CanariCharacterView $displayFlow : transient Bool ;
 binding CanariCharacterView $displayDrawingIndexes : transient Bool ;
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 xibdocument FontDocument root FontRoot {
 //--- Toolbar
@@ -66,8 +66,8 @@ xibdocument FontDocument root FontRoot {
   outlet EBButton mAddCharacterButton $run addCharacterAction ;
   action addCharacterAction ;
 
-  outlet NSPanel mNewCharacterPanel ;
-  outlet NewCharacterView mNewCharacterView ;
+//  outlet NSPanel mNewCharacterPanel ;
+//  outlet NewCharacterView mNewCharacterView ;
 
   outlet EBIntField mFontNominalSizeTextField $value root.nominalSize (sendContinously:no, autoFormatter:no) ;
 
@@ -148,4 +148,4 @@ xibdocument FontDocument root FontRoot {
   outlet EBButton resetVersionAndSignatureButton $run resetVersionAndSignatureAction ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————

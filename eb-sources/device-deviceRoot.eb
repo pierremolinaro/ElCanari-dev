@@ -75,7 +75,7 @@ entity DeviceRoot {
     self.mPadProxies.all.isConnected ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 entity DeviceDocumentation {
 
@@ -85,7 +85,7 @@ entity DeviceDocumentation {
   transient Int fileSize dependsFrom self.mFileData ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageInDevice {
   toOne DeviceRoot mRoot inverse toMany mPackages ;
@@ -145,7 +145,7 @@ graphic entity PackageInDevice {
   transient StringSet padNameSet dependsFrom self.mMasterPads.all.mName ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 entity MasterPadInDevice {
   toMany @signature SlavePadInDevice mSlavePads inverse toOne mMasterPad ;
@@ -176,7 +176,7 @@ entity MasterPadInDevice {
      self.mCenterX, self.mCenterY, prefs.padNumberColor, self.mName, prefs.padNumberFont ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 entity SlavePadInDevice {
   toOne MasterPadInDevice mMasterPad inverse toMany mSlavePads  ;
@@ -207,7 +207,7 @@ entity SlavePadInDevice {
 
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 entity SymbolTypeInDevice {
   toMany SymbolInstanceInDevice mInstances inverse toOne mType ;
@@ -229,7 +229,7 @@ entity SymbolTypeInDevice {
   transient EBShape pinNameShape dependsFrom self.mPinTypes.all.nameShape ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 entity SymbolPinTypeInDevice {
   toMany SymbolPinInstanceInDevice mInstances inverse toOne mType  ;
@@ -256,7 +256,7 @@ entity SymbolPinTypeInDevice {
    ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolInstanceInDevice {
   toOne SymbolTypeInDevice mType inverse toMany mInstances ;
@@ -297,7 +297,7 @@ graphic entity SymbolInstanceInDevice {
     self.mInstanceName  ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 entity SymbolPinInstanceInDevice {
   toOne SymbolInstanceInDevice mSymbolInstance inverse toMany mPinInstances ;
@@ -320,7 +320,7 @@ entity SymbolPinInstanceInDevice {
   transient Bool isConnected dependsFrom self.mPadProxy.none ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 entity PadProxyInDevice {
   toOne SymbolPinInstanceInDevice mPinInstance inverse toOne mPadProxy ;
@@ -336,4 +336,4 @@ entity PadProxyInDevice {
   transient String symbolName dependsFrom self.mPinInstance.one.symbolName ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————

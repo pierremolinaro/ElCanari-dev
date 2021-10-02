@@ -1,9 +1,8 @@
 //
-//  view-NewCharacterView.swift
+//  AutoLayoutCanariCharacterView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 07/09/2018.
-//
+//  Created by Pierre Molinaro on 07/09/2018, autolayout 02/10/2021
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -19,33 +18,32 @@ private let PLACEMENT_GRID : CGFloat = 20.0
 private let LINE_COUNT = 0x100 - 2
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   CanariCharacterView
+//   AutoLayoutCanariCharacterView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class NewCharacterView : NSView, EBUserClassNameProtocol {
+final class AutoLayoutCanariCharacterView : NSScrollView, EBUserClassNameProtocol {
+
+  private var mCharacterView : InternalNewCharacterView
 
   //····················································································································
 
-  override init (frame frameRect : NSRect) {
-    super.init (frame: frameRect)
+  init (okButton inOkButton : AutoLayoutSheetDefaultOkButton) {
+    self.mCharacterView = InternalNewCharacterView (okButton: inOkButton)
+    super.init (frame: NSRect ())
     noteObjectAllocation (self)
-    let width = ADDRESS_COLUMN_WIDTH + 16.0 * PLACEMENT_GRID
-    let height = PLACEMENT_GRID * CGFloat (LINE_COUNT)
-    let newRect = NSRect (x:0.0, y:0.0, width: width, height: height)
-    self.frame.size = newRect.size
-    self.bounds = newRect
+    self.translatesAutoresizingMaskIntoConstraints = false
+
+    self.drawsBackground = false
+    self.documentView = self.mCharacterView
+    self.hasHorizontalScroller = false
+    self.hasVerticalScroller = true
+    self.automaticallyAdjustsContentInsets = true
   }
 
   //····················································································································
 
   required init? (coder: NSCoder) {
-    super.init (coder: coder)
-    noteObjectAllocation (self)
-    let width = ADDRESS_COLUMN_WIDTH + 16.0 * PLACEMENT_GRID
-    let height = PLACEMENT_GRID * CGFloat (LINE_COUNT)
-    let newRect = NSRect (x:0.0, y:0.0, width: width, height: height)
-    self.frame.size = newRect.size
-    self.bounds = newRect
+    fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
@@ -55,11 +53,62 @@ final class NewCharacterView : NSView, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //    awakeFromNib
+
+  override var intrinsicContentSize : NSSize {
+    return NSSize (width: 380, height: -1)
+  }
+
+  //····················································································································
+  //    Implemented character set
   //····················································································································
 
-  override func awakeFromNib () { // Scroll view to display the first row
-    self.scroll (NSPoint (x:0.0, y:self.bounds.maxY))
+  func setImplementedCharacterSet (_ inSet : Set <Int>) {
+    self.mCharacterView.setImplementedCharacterSet (inSet)
+  }
+
+  //····················································································································
+
+  var selectedCharacter : Int? { return self.mCharacterView.selectedCharacter }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+private class InternalNewCharacterView : NSView, EBUserClassNameProtocol {
+
+  //····················································································································
+
+  private weak var mOkButton : AutoLayoutSheetDefaultOkButton? // Should be weak
+
+  //····················································································································
+
+  init (okButton inOkButton : AutoLayoutSheetDefaultOkButton) {
+    self.mOkButton = inOkButton
+    inOkButton.enable (fromEnableBinding: false)
+    super.init (frame: NSRect ())
+    noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
+    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+
+    let width = ADDRESS_COLUMN_WIDTH + 16.0 * PLACEMENT_GRID
+    let height = PLACEMENT_GRID * CGFloat (LINE_COUNT)
+    let newRect = NSRect (x: 0.0, y: 0.0, width: width, height: height)
+    self.frame.size = newRect.size
+    self.bounds = newRect
+  }
+
+  //····················································································································
+
+  required init? (coder: NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -71,9 +120,10 @@ final class NewCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   func setImplementedCharacterSet (_ inSet : Set <Int>) {
-    mImplementedCharacterSet = inSet
+    self.mImplementedCharacterSet = inSet
     self.setNeedsDisplay (self.visibleRect)
-    mSelectedCharacter = nil
+    self.mSelectedCharacter = nil
+    self.scroll (NSPoint (x: 0.0, y: self.bounds.maxY))
   }
 
   //····················································································································
@@ -137,12 +187,9 @@ final class NewCharacterView : NSView, EBUserClassNameProtocol {
       for idx in 0 ..< 16 {
         let code = (line + 2) * 16 + idx
         let rChar = NSRect (x:x, y:y, width: PLACEMENT_GRID, height: PLACEMENT_GRID)
-        if let selectedCharacter = mSelectedCharacter, selectedCharacter == code {
+        if let selectedCharacter = self.mSelectedCharacter, selectedCharacter == code {
           NSColor.lightGray.setFill ()
           NSBezierPath.fill (rChar)
- //       }else if mImplementedCharacterSet.contains (code) {
-//          NSColor.yellow.setFill ()
-//          NSBezierPath.fill (rChar)
         }
         let title = String (format: "%C", code)
         let dict = [NSAttributedString.Key.foregroundColor : mImplementedCharacterSet.contains (code) ? NSColor.lightGray : NSColor.blue]
@@ -165,8 +212,12 @@ final class NewCharacterView : NSView, EBUserClassNameProtocol {
     let column = Int ((mouseDownLocation.x - ADDRESS_COLUMN_WIDTH) / PLACEMENT_GRID)
     // Swift.print ("line \(line), column \(column)")
     let code = (line + 2) * 16 + column
-    if !mImplementedCharacterSet.contains (code) {
-      self.mSelectedCharacter = (line + 2) * 16 + column
+    if mImplementedCharacterSet.contains (code) {
+      self.mSelectedCharacter = nil
+      self.mOkButton?.enable (fromEnableBinding: false)
+    }else{
+      self.mSelectedCharacter = code
+      self.mOkButton?.enable (fromEnableBinding: true)
     }
   }
 

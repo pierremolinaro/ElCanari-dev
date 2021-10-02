@@ -1,4 +1,4 @@
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 abstract graphic entity PackageObject {
   toOne PackageRoot mRoot inverse toMany packageObjects ;
@@ -156,7 +156,7 @@ entity PackageRoot {
   transient IntArray masterPadObjectIndexArray dependsFrom self.packagePads.all.masterPadObjectIndex ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageSegment : PackageObject {
   graphic canCopyAndPaste ;
@@ -185,7 +185,7 @@ graphic entity PackageSegment : PackageObject {
   transient Int lengthInCanariUnit dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageBezier : PackageObject {
   graphic canCopyAndPaste ;
@@ -230,7 +230,7 @@ graphic entity PackageBezier : PackageObject {
   ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageOval : PackageObject {
   graphic canCopyAndPaste ;
@@ -261,7 +261,7 @@ graphic entity PackageOval : PackageObject {
   override transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageArc : PackageObject {
   graphic canCopyAndPaste ;
@@ -302,7 +302,7 @@ graphic entity PackageArc : PackageObject {
   ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackagePad : PackageObject {
   graphic canCopyAndPaste ;
@@ -370,7 +370,7 @@ graphic entity PackagePad : PackageObject {
   transient Int masterPadObjectIndex dependsFrom self ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageSlavePad : PackageObject {
   graphic canCopyAndPaste ;
@@ -424,7 +424,7 @@ graphic entity PackageSlavePad : PackageObject {
   ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageGuide : PackageObject {
   graphic canCopyAndPaste ;
@@ -446,7 +446,7 @@ graphic entity PackageGuide : PackageObject {
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageDimension : PackageObject {
   graphic canCopyAndPaste ;
@@ -492,7 +492,7 @@ graphic entity PackageDimension : PackageObject {
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageZone : PackageObject {
   graphic canCopyAndPaste ;
@@ -545,13 +545,13 @@ graphic entity PackageZone : PackageObject {
   transient Bool emptyForbiddenPadArray dependsFrom self.forbiddenPadNumbers.count ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 entity ForbiddenPadNumber {
   property @signature Int padNumber default 0 ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageModelImageDoublePoint {
   toOne PackageRoot mRoot inverse toMany mModelImageObjects ;
@@ -576,4 +576,4 @@ graphic entity PackageModelImageDoublePoint {
   ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————

@@ -149,8 +149,6 @@ import Cocoa
   @IBOutlet final var mIssueTextField : EBTextObserverField? = nil
   @IBOutlet final var mMasterFontPageView : NSView? = nil
   @IBOutlet final var mMasterView : NSView? = nil
-  @IBOutlet final var mNewCharacterPanel : NSPanel? = nil
-  @IBOutlet final var mNewCharacterView : NewCharacterView? = nil
   @IBOutlet final var mPageSegmentedControl : CanariSegmentedControl? = nil
   @IBOutlet final var mSampleStringAscentTextField : EBTextObserverField? = nil
   @IBOutlet final var mSampleStringDescentTextField : EBTextObserverField? = nil
@@ -267,8 +265,6 @@ import Cocoa
     checkOutletConnection (self.mIssueTextField, "mIssueTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mMasterFontPageView, "mMasterFontPageView", NSView.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
-    checkOutletConnection (self.mNewCharacterPanel, "mNewCharacterPanel", NSPanel.self, #file, #line)
-    checkOutletConnection (self.mNewCharacterView, "mNewCharacterView", NewCharacterView.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSampleStringAscentTextField, "mSampleStringAscentTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mSampleStringDescentTextField, "mSampleStringDescentTextField", EBTextObserverField.self, #file, #line)
@@ -607,8 +603,6 @@ import Cocoa
     self.mIssueTextField?.ebCleanUp ()
     self.mMasterFontPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
-    self.mNewCharacterPanel?.ebCleanUp ()
-    self.mNewCharacterView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mSampleStringAscentTextField?.ebCleanUp ()
     self.mSampleStringDescentTextField?.ebCleanUp ()
@@ -650,8 +644,6 @@ import Cocoa
     self.mIssueTextField = nil
     self.mMasterFontPageView = nil
     self.mMasterView = nil
-    self.mNewCharacterPanel = nil
-    self.mNewCharacterView = nil
     self.mPageSegmentedControl = nil
     self.mSampleStringAscentTextField = nil
     self.mSampleStringDescentTextField = nil

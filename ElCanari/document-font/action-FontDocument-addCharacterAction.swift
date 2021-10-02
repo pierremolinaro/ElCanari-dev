@@ -13,16 +13,50 @@ import Cocoa
 extension FontDocument {
   @objc func addCharacterAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let window = self.windowForSheet, let panel = self.mNewCharacterPanel {
+    if let window = self.windowForSheet {
+      let panel = NSPanel (
+        contentRect: NSRect (x: 0, y: 0, width: 500, height: 400),
+        styleMask: [.titled],
+        backing: .buffered,
+        defer: false
+      )
+      panel.hasShadow = true
+      let okButton = AutoLayoutSheetDefaultOkButton (
+        title: "Ok",
+        size: .regular,
+        sheet: panel,
+        isInitialFirstResponder : true
+      )
+      let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
+      let leftColumn = AutoLayoutVerticalStackView ()
+      leftColumn.appendFlexibleSpace ()
+      leftColumn.appendView (AutoLayoutApplicationImage ())
+      leftColumn.appendFlexibleSpace ()
+      mainView.appendView (leftColumn)
+    //  mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
+      let rightColumn = AutoLayoutVerticalStackView ()
+      let title = AutoLayoutStaticLabel (title: "Select New Character:", bold: false, size: .regular)
+        .set (alignment: .left)
+        .expandableWidth ()
+      rightColumn.appendView (title)
+      let newCharacterView = AutoLayoutCanariCharacterView (okButton: okButton)
+      rightColumn.appendView (newCharacterView)
+      let bottomItems = AutoLayoutHorizontalStackView ()
+      bottomItems.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+      bottomItems.appendViewPreceededByFlexibleSpace (okButton)
+      rightColumn.appendView (bottomItems)
+      mainView.appendView (rightColumn)
+
+      panel.contentView = mainView
     //--- Populate table view
       var implementedCharacterSet = Set <Int> ()
       for character in rootObject.characters_property.propval.values {
         implementedCharacterSet.insert (character.codePoint)
       }
-      self.mNewCharacterView?.setImplementedCharacterSet (implementedCharacterSet)
+      newCharacterView.setImplementedCharacterSet (implementedCharacterSet)
     //--- Display sheet
       window.beginSheet (panel) { (response : NSApplication.ModalResponse) in
-        if response == NSApplication.ModalResponse.stop, let codePoint = self.mNewCharacterView?.selectedCharacter {
+        if response == NSApplication.ModalResponse.stop, let codePoint = newCharacterView.selectedCharacter {
           var characterSet = self.rootObject.characters_property.propval
           let newCharacter = FontCharacter (self.ebUndoManager)
           newCharacter.codePoint = codePoint

@@ -1,10 +1,10 @@
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 abstract graphic entity SymbolObject {
   abstract transient CanariIssueArray issues ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolPin : SymbolObject {
   graphic canCopyAndPaste ;
@@ -53,7 +53,7 @@ graphic entity SymbolPin : SymbolObject {
 
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolText : SymbolObject {
   graphic canCopyAndPaste ;
@@ -75,7 +75,7 @@ graphic entity SymbolText : SymbolObject {
   override transient CanariIssueArray issues dependsFrom self.x, self.y, self.text ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolSolidRect : SymbolObject {
   graphic canCopyAndPaste ;
@@ -99,7 +99,7 @@ graphic entity SymbolSolidRect : SymbolObject {
   override transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolOval : SymbolObject {
   graphic canCopyAndPaste ;
@@ -123,7 +123,7 @@ graphic entity SymbolOval : SymbolObject {
   override transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolSolidOval : SymbolObject {
   graphic canCopyAndPaste ;
@@ -146,7 +146,7 @@ graphic entity SymbolSolidOval : SymbolObject {
   override transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolBezierCurve : SymbolObject {
   graphic canCopyAndPaste ;
@@ -181,7 +181,7 @@ graphic entity SymbolBezierCurve : SymbolObject {
   ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolSegment : SymbolObject {
   graphic canCopyAndPaste ;
@@ -201,7 +201,7 @@ graphic entity SymbolSegment : SymbolObject {
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 entity SymbolRoot {
 //--- Selected page index
