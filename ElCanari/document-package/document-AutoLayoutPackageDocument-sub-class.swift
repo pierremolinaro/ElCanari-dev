@@ -352,7 +352,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
       }
     }
   //---
-    for (zone, padArray) in zoneDictionary {
+    for (zone, padArray) in zoneDictionary.values {
       var forbiddenPadNumberSet = Set <Int> ()
       for f in zone.forbiddenPadNumbers.values {
         forbiddenPadNumberSet.insert (f.padNumber)

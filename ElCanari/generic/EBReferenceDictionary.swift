@@ -12,7 +12,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct EBReferenceDictionary <KEY : AnyObject, VALUE> : Sequence {
+struct EBReferenceDictionary <KEY : AnyObject, VALUE> {
 
   //····················································································································
 
@@ -64,19 +64,7 @@ struct EBReferenceDictionary <KEY : AnyObject, VALUE> : Sequence {
 
   //····················································································································
 
-  func makeIterator () -> AnyIterator <(KEY, VALUE)> {
-    let values = self.mDictionary.values
-    var index = values.startIndex
-    return AnyIterator {
-      if index != values.endIndex {
-        let result = values [index]
-        values.formIndex (after: &index)
-        return result
-      }else{
-        return nil
-      }
-    }
-  }
+  var values : Dictionary <ObjectIdentifier, (KEY, VALUE)>.Values { return self.mDictionary.values }
 
   //····················································································································
 
