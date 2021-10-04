@@ -160,7 +160,11 @@ extension LabelInSchematic {
   //····················································································································
 
   func alignmentPoints_LabelInSchematic () -> Set <CanariPoint> {
-    return Set <CanariPoint> ()
+    var s = Set <CanariPoint> ()
+    if let point = self.mPoint {
+      s.insertCanariPoint (x: point.mX, y: point.mY)
+    }
+    return s
   }
 
   //····················································································································
