@@ -132,7 +132,14 @@ extension WireInSchematic {
   //····················································································································
 
   func alignmentPoints_WireInSchematic () -> Set <CanariPoint> {
-    return Set <CanariPoint> ()
+    var s = Set <CanariPoint> ()
+    if let point = self.mP1 {
+      s.insertCanariPoint (x: point.mX, y: point.mY)
+    }
+    if let point = self.mP2 {
+      s.insertCanariPoint (x: point.mX, y: point.mY)
+    }
+    return s
   }
 
   //····················································································································
