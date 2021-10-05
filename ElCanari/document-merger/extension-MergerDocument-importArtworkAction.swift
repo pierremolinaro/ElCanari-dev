@@ -17,23 +17,20 @@ extension MergerDocument {
 
   func importArtwork () {
     if let window = self.windowForSheet {
-      gOpenArtworkInLibrary?.loadDocumentFromLibrary (
+      openArtworkPanelInLibrary (
         windowForSheet: window,
-        alreadyLoadedDocuments: [],
-        callBack: { (_ inData : Data, _ inName : String) -> Bool in
-          var ok = false
-          if let documentData = try? loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: self.ebUndoManager),
+        validationButtonTitle: "Import",
+        callBack: { (_ inURL : URL, _ inName : String) -> Void in
+          if let data = try? Data (contentsOf: inURL),
+             let documentData = try? loadEasyBindingFile (fromData: data, documentName: inName, undoManager: self.ebUndoManager),
              let artworkRoot = documentData.documentRootObject as? ArtworkRoot {
-            ok = true
             self.rootObject.mArtwork = artworkRoot
             self.rootObject.mArtworkName = inName
             if let version = documentData.documentMetadataDictionary [PMArtworkVersion] as? Int {
               self.rootObject.mArtworkVersion = version
             }
           }
-          return ok
-        },
-        postAction: {}
+        }
       )
     }
   }

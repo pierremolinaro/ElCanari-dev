@@ -172,11 +172,7 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
           for f in files {
             if f.pathExtension == inFileExtension {
               let baseName = f.lastPathComponent.deletingPathExtension
-              if let n = partCountDictionary [baseName] {
-                partCountDictionary [baseName] = n + 1
-              }else{
-                partCountDictionary [baseName] = 1
-              }
+              partCountDictionary [baseName] = partCountDictionary [baseName, default: 0] + 1
             }
           }
         }

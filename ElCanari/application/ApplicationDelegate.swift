@@ -42,10 +42,6 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
 
   @IBOutlet internal var mOpenAllDialogAccessoryCheckBox : NSButton? = nil
 
-//  @IBOutlet var mTransientEventExplorerWindow : NSWindow? = nil
-//
-//  @IBOutlet var mTransientEventExplorerTextView : NSTextView? = nil
-
   //····················································································································
   //  Theses outlets are used in ApplicationDelegate-maintenance.swift
   //····················································································································
@@ -153,6 +149,8 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
     }else if action == #selector (Self.actionNewFontDocument (_:)) {
       validate = true
     }else if action == #selector (Self.actionNewArtworkDocument (_:)) {
+      validate = true
+    }else if action == #selector (Self.actionOpenArtworkInLibrary (_:)) {
       validate = true
     }else{
       validate = false
