@@ -538,6 +538,13 @@ prefs {
 
 //——————————————————————————————————————————————————————————————————————————————
 
+prefs {
+  property String artworkDialogFilterString default "" ;
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————
+
 entity CanariLibraryEntry {
   externDelegate CanariLibraryEntryDelegate ;
 

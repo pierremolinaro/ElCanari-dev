@@ -217,6 +217,9 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
   //--- Restore Selection
     if let selectedObjectIndexes = self.mDelegate?.indexesOfSelectedObjects () {
       self.mTableView.selectRowIndexes (selectedObjectIndexes, byExtendingSelection: false)
+      if selectedObjectIndexes.isEmpty {
+        self.mDelegate?.tableViewSelectionDidChange (selectedRows:  IndexSet ())
+      }
     }
   //--- Ensure selection non empty ?
     if self.mTableView.selectedRow < 0, !self.mTableView.allowsEmptySelection, let rowCount = self.mDelegate?.rowCount (), rowCount > 0 {

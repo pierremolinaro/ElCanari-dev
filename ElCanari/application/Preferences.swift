@@ -186,6 +186,7 @@ let Preferences_mergerColorBackLayoutTexts = "Preferences:mergerColorBackLayoutT
 let Preferences_mergerColorFrontLegendLines = "Preferences:mergerColorFrontLegendLines"
 let Preferences_mergerColorBackLegendLines = "Preferences:mergerColorBackLegendLines"
 let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
+let Preferences_artworkDialogFilterString = "Preferences:artworkDialogFilterString"
 let Preferences_errorMessageColor = "Preferences:errorMessageColor"
 let Preferences_showDebugMenu = "Preferences:showDebugMenu"
 let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedByTen"
@@ -2481,6 +2482,19 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var preferences_mergerColorBackground : NSColor {
     get { return preferences_mergerColorBackground_property.propval }
     set { preferences_mergerColorBackground_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: artworkDialogFilterString
+//····················································································································
+
+  let preferences_artworkDialogFilterString_property = EBPreferencesProperty_String (defaultValue: "", prefKey: Preferences_artworkDialogFilterString)
+
+//····················································································································
+
+  var preferences_artworkDialogFilterString : String {
+    get { return preferences_artworkDialogFilterString_property.propval }
+    set { preferences_artworkDialogFilterString_property.setProp (newValue) }
   }
 
 //····················································································································

@@ -49,6 +49,7 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
     self.mNoSelectedArtworkMessage.appendFlexibleSpace ()
   //--- Artwork detailled view
     self.mArtworkDetailView = AutoLayoutVerticalStackView ()
+    self.mArtworkDetailView.appendFlexibleSpace ()
     self.mArtworkTitle = AutoLayoutStaticLabel (title: "", bold: true, size: .regular).set (alignment: .center).expandableWidth ()
     self.mArtworkDetailView.appendView (self.mArtworkTitle)
     self.mArtworkLayout = AutoLayoutStaticLabel (title: "", bold: true, size: .regular).set (alignment: .left).expandableWidth ()
@@ -103,8 +104,8 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
     mainView.appendView (twoColumns)
   //--- Left column
     let leftColumn = AutoLayoutVerticalStackView ()
-    let filterTextField = AutoLayoutSearchField (width: 300, size: .regular)
-    leftColumn.appendView (filterTextField)
+    self.mSearchField = AutoLayoutSearchField (width: 300, size: .regular).bind_value (preferences_artworkDialogFilterString_property, sendContinously: true)
+    leftColumn.appendView (self.mSearchField)
     leftColumn.appendFlexibleSpace ()
     twoColumns.appendView (leftColumn)
     self.mTableView = AutoLayoutTableView (size: .small, addControlButtons: false)
@@ -114,9 +115,34 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
       delegate: self
     )
     noteObjectAllocation (self)
+  //--- Search field delegate
+    self.mSearchField.setDelegate { (_ inFilterString : String) in
+      if inFilterString.isEmpty {
+        self.mFilteredTableViewSource = self.mTableViewSource
+      }else{
+        self.mFilteredTableViewSource.removeAll ()
+        let filter = inFilterString.uppercased ()
+        // Swift.print ("Filter \(filter)")
+        var currentSelectionFound = false
+        for entry in self.mTableViewSource {
+          let testedName = entry.mPartName.uppercased ()
+          if testedName.contains (filter) {
+            self.mFilteredTableViewSource.append (entry)
+            if entry === self.mSelectedEntry {
+              currentSelectionFound = true
+            }
+          }
+          // Swift.print ("  Entry \(entry.mPartName) -> \(testedName) : \(testedName.contains (filter))")
+        }
+        if !currentSelectionFound {
+          self.mSelectedEntry = nil
+        }
+      }
+      self.mTableView.sortAndReloadData ()
+    }
   //--- Configure table view
     self.mTableView.addColumn_NSImage (
-      valueGetterDelegate: { [weak self] in return self?.mTableViewSource [$0].statusImage () ?? NSImage () },
+      valueGetterDelegate: { [weak self] in return self?.mFilteredTableViewSource [$0].statusImage () ?? NSImage () },
       valueSetterDelegate: nil,
       sortDelegate: nil,
       title: "Status",
@@ -126,10 +152,10 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
       contentAlignment: .left
     )
     self.mTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.mTableViewSource [$0].mPartName ?? "" },
+      valueGetterDelegate: { [weak self] in return self?.mFilteredTableViewSource [$0].mPartName ?? "" },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
-        self?.mTableViewSource.sort { ascending ? ($0.mPartName < $1.mPartName) : ($0.mPartName > $1.mPartName) }
+        self?.mFilteredTableViewSource.sort { ascending ? ($0.mPartName < $1.mPartName) : ($0.mPartName > $1.mPartName) }
       },
       title: "Artwork Name",
       minWidth: 80,
@@ -144,11 +170,11 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
   //--- Grid view (status, path)
     let gridView = AutoLayoutTwoColumnsGridView ()
     _ = gridView.addFirstBaseLineAligned (
-      left: AutoLayoutStaticLabel (title: "Status", bold: false, size: .regular),
+      left: AutoLayoutStaticLabel (title: "Status", bold: false, size: .regular).set (alignment: .left),
       right: self.mArtworkStatus
     )
     _ = gridView.addFirstBaseLineAligned (
-      left: AutoLayoutStaticLabel (title: "Path", bold: false, size: .regular),
+      left: AutoLayoutStaticLabel (title: "Path", bold: false, size: .regular).set (alignment: .left),
       right: self.mArtworkPath
     )
     mainView.appendView (gridView)
@@ -165,7 +191,7 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
     if let window = inWindow {
       window.beginSheet (panel) { (inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop {
-          let entry = self.mTableViewSource [self.mTableView.selectedRow]
+          let entry = self.mFilteredTableViewSource [self.mTableView.selectedRow]
           inCallBack (URL (fileURLWithPath: entry.mFullPath), entry.mPartName)
         }
         DispatchQueue.main.async { gOpenArtworkPanelInLibrary = nil }
@@ -173,7 +199,7 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
     }else{ // Dialog
       let response = NSApp.runModal (for: panel)
       if response == .stop {
-        let entry = self.mTableViewSource [self.mTableView.selectedRow]
+        let entry = self.mFilteredTableViewSource [self.mTableView.selectedRow]
         inCallBack (URL (fileURLWithPath: entry.mFullPath), entry.mPartName)
       }
       DispatchQueue.main.async { gOpenArtworkPanelInLibrary = nil }
@@ -184,12 +210,15 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
 
   deinit {
     self.mOkButton.ebCleanUp ()
+    self.mSearchField.ebCleanUp ()
     noteObjectDeallocation (self)
   }
 
   //····················································································································
 
   private var mTableViewSource = [ArtworkDialogEntry] ()
+  private var mFilteredTableViewSource = [ArtworkDialogEntry] ()
+  private var mSearchField : AutoLayoutSearchField
   private var mArtworkStatus : AutoLayoutStaticLabel
   private var mArtworkPath : AutoLayoutStaticLabel
   private var mOkButton : AutoLayoutSheetDefaultOkButton
@@ -198,40 +227,53 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
   private var mArtworkTitle : AutoLayoutStaticLabel
   private var mArtworkLayout : AutoLayoutStaticLabel
   private var mTableView : AutoLayoutTableView
+  private var mSelectedEntry : ArtworkDialogEntry? = nil
 
   //····················································································································
   // AutoLayoutTableViewDelegate delegate implementation
   //····················································································································
 
   func rowCount() -> Int {
-    return self.mTableViewSource.count
+    return self.mFilteredTableViewSource.count
   }
 
   //····················································································································
 
   func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
     if let entryIndex = inSelectedRows.first, inSelectedRows.count == 1 {
-      let selectedEntry = self.mTableViewSource [entryIndex]
+      let selectedEntry = self.mFilteredTableViewSource [entryIndex]
       self.mArtworkStatus.stringValue = selectedEntry.statusString ()
       self.mArtworkPath.stringValue = selectedEntry.mFullPath
+      self.mArtworkPath.toolTip = selectedEntry.mFullPath
       self.mArtworkTitle.stringValue = selectedEntry.artworkTitle ()
       self.mArtworkLayout.stringValue = selectedEntry.artworkLayoutString ()
       self.mOkButton.enable (fromEnableBinding: true)
       self.mNoSelectedArtworkMessage.isHidden = true
       self.mArtworkDetailView.isHidden = false
+      self.mSelectedEntry = selectedEntry
     }else{
       self.mArtworkStatus.stringValue = ""
       self.mArtworkPath.stringValue = ""
+      self.mArtworkPath.toolTip = ""
       self.mOkButton.enable (fromEnableBinding: false)
       self.mNoSelectedArtworkMessage.isHidden = false
       self.mArtworkDetailView.isHidden = true
+      self.mSelectedEntry = nil
     }
   }
 
   //····················································································································
 
   func indexesOfSelectedObjects () -> IndexSet {
-    return IndexSet ()
+    var indexSet = IndexSet ()
+    var idx = 0
+    for object in self.mFilteredTableViewSource {
+      if object === self.mSelectedEntry {
+        indexSet.insert (idx)
+      }
+      idx += 1
+    }
+    return indexSet
   }
 
   //····················································································································
@@ -281,7 +323,7 @@ extension ApplicationDelegate {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ArtworkDialogEntry : EBUserClassNameProtocol {
+fileprivate class ArtworkDialogEntry : EBUserClassNameProtocol {
 
   //····················································································································
 

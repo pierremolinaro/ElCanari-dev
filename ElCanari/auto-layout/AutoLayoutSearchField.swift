@@ -14,7 +14,10 @@ import Cocoa
 
 final class AutoLayoutSearchField : NSSearchField, EBUserClassNameProtocol, NSSearchFieldDelegate {
 
+  //····················································································································
+
   private let mWidth : CGFloat
+  private var mDelegate : Optional < (String) -> Void > = nil
 
   //····················································································································
 
@@ -68,13 +71,22 @@ final class AutoLayoutSearchField : NSSearchField, EBUserClassNameProtocol, NSSe
   override func ebCleanUp () {
     self.mValueController?.unregister ()
     self.mValueController = nil
+    self.mDelegate = nil
     super.ebCleanUp ()
+  }
+
+  //····················································································································
+
+  func setDelegate (_ inDelegate : @escaping (String) -> Void) {
+    self.mDelegate = inDelegate
+    inDelegate (self.stringValue)
   }
 
   //····················································································································
 
   @objc func ebAction (_ inUnusedSender : Any?) {
     _ = self.mValueController?.updateModel (withCandidateValue: self.stringValue, windowForSheet: self.window)
+    self.mDelegate? (self.stringValue)
   }
 
   //····················································································································
@@ -104,6 +116,7 @@ final class AutoLayoutSearchField : NSSearchField, EBUserClassNameProtocol, NSSe
     case .single (let propertyValue) :
       self.placeholderString = nil
       self.stringValue = propertyValue
+      self.mDelegate? (propertyValue)
       self.enable (fromValueBinding: true)
     }
   }

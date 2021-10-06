@@ -66,9 +66,6 @@ xibdocument FontDocument root FontRoot {
   outlet EBButton mAddCharacterButton $run addCharacterAction ;
   action addCharacterAction ;
 
-//  outlet NSPanel mNewCharacterPanel ;
-//  outlet NewCharacterView mNewCharacterView ;
-
   outlet EBIntField mFontNominalSizeTextField $value root.nominalSize (sendContinously:no, autoFormatter:no) ;
 
 //--- Current Character
