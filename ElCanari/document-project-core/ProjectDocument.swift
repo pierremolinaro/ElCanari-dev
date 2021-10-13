@@ -707,6 +707,8 @@ import Cocoa
   @IBOutlet final var mComponentInBoardCenterYPopUp : EBPopUpButton? = nil
   @IBOutlet final var mComponentInBoardCenterYTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mComponentInBoardInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mComponentNameColorForSchematicColorWell : EBColorWell? = nil
+  @IBOutlet final var mComponentNameFontForSchematicFontButton : EBFontButton? = nil
   @IBOutlet final var mComponentNameFontSizeField : EBDoubleField? = nil
   @IBOutlet final var mComponentNameRotationSegmentedControl : CanariOrientationSegmentedControl? = nil
   @IBOutlet final var mComponentNameRotationSlider : CanariAngleSlider? = nil
@@ -720,6 +722,8 @@ import Cocoa
   @IBOutlet final var mComponentSymbolTypeNameTextField : EBTextObserverField? = nil
   @IBOutlet final var mComponentSymbolValueTextField : EBTextField? = nil
   @IBOutlet final var mComponentTableView : EBTableView? = nil
+  @IBOutlet final var mComponentValueColorForSchematicColorWell : EBColorWell? = nil
+  @IBOutlet final var mComponentValueFontForSchematicFontButton : EBFontButton? = nil
   @IBOutlet final var mComponentValueFontSizeField : EBDoubleField? = nil
   @IBOutlet final var mComponentValueRotationSegmentedControl : CanariOrientationSegmentedControl? = nil
   @IBOutlet final var mComponentValueRotationSlider : CanariAngleSlider? = nil
@@ -727,6 +731,7 @@ import Cocoa
   @IBOutlet final var mComponentsPageView : CanariViewWithKeyView? = nil
   @IBOutlet final var mConnectAllSymbolPinsSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet final var mConnectSchematicHotKeyTextField : NSTextField? = nil
+  @IBOutlet final var mConnectionColorForSchematicColorWell : EBColorWell? = nil
   @IBOutlet final var mControlKeyHiliteDiameterSlider : EBSlider? = nil
   @IBOutlet final var mCurrentComponentNameTextField : NSTextField? = nil
   @IBOutlet final var mDataTableView : EBTableView? = nil
@@ -770,6 +775,7 @@ import Cocoa
   @IBOutlet final var mDisplayLegendSwitch : EBSwitch? = nil
   @IBOutlet final var mDisplayPadNumbersColorWell : EBColorWell? = nil
   @IBOutlet final var mDisplayPadNumbersSwitch : EBSwitch? = nil
+  @IBOutlet final var mDotColorGridForSchematicColorWell : EBColorWell? = nil
   @IBOutlet final var mDrawBoardLimitsSwitch : CanariObserverSwitch? = nil
   @IBOutlet final var mDrawComponentNamesBottomSideSwitch : CanariObserverSwitch? = nil
   @IBOutlet final var mDrawComponentNamesTopSideSwitch : CanariObserverSwitch? = nil
@@ -833,6 +839,7 @@ import Cocoa
   @IBOutlet final var mLayoutClearanceTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mLibraryPageView : CanariViewWithKeyView? = nil
   @IBOutlet final var mLimitCurveBezierControlPointsView : NSView? = nil
+  @IBOutlet final var mLineColorGridForSchematicColorWell : EBColorWell? = nil
   @IBOutlet final var mMasterView : NSView? = nil
   @IBOutlet final var mMergeNetDialog : NSPanel? = nil
   @IBOutlet final var mMergeNetPopUpButton : EBPopUpButton? = nil
@@ -870,6 +877,10 @@ import Cocoa
   @IBOutlet final var mPHDUnitPopUp : EBPopUpButton? = nil
   @IBOutlet final var mPHDValueTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet final var mPageSegmentedControl : CanariSegmentedControl? = nil
+  @IBOutlet final var mPinNameColorForSchematicColorWell : EBColorWell? = nil
+  @IBOutlet final var mPinNameFontForSchematicFontButton : EBFontButton? = nil
+  @IBOutlet final var mPinNumberColorForSchematicColorWell : EBColorWell? = nil
+  @IBOutlet final var mPinNumberFontForSchematicFontButton : EBFontButton? = nil
   @IBOutlet final var mPinPadAssignmentTableView : ThreeStringArrayTableView? = nil
   @IBOutlet final var mProductFileGenerationLogTextView : NSTextView? = nil
   @IBOutlet final var mProductGenerationTabView : NSTabView? = nil
@@ -963,6 +974,8 @@ import Cocoa
   @IBOutlet final var mSheetUpButton : EBButton? = nil
   @IBOutlet final var mShowRotationKnobInBoardSwitch : EBSwitch? = nil
   @IBOutlet final var mSlavePadsShouldBeRoutedPopUpButton : CanariBoolPopUpButton? = nil
+  @IBOutlet final var mSymbolColorForSchematicColorWell : EBColorWell? = nil
+  @IBOutlet final var mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton : EBPopUpButton? = nil
   @IBOutlet final var mSymbolMirrorSwitch : EBSwitch? = nil
   @IBOutlet final var mSymbolRotationSegmentedControl : CanariQuadrantSegmentedControl? = nil
   @IBOutlet final var mTopSideTrackCountTextField : EBTextObserverField? = nil
@@ -978,6 +991,7 @@ import Cocoa
   @IBOutlet final var mTrackLockView : CanariTrackLockView? = nil
   @IBOutlet final var mTrackNetClassNameTextField : EBTextObserverField? = nil
   @IBOutlet final var mTrackNetNameTextField : EBTextObserverField? = nil
+  @IBOutlet final var mUnplacedComponentsColorForSchematicColorWell : EBColorWell? = nil
   @IBOutlet final var mUnplacedPackageTableView : CanariDragSourceTableView? = nil
   @IBOutlet final var mUnplacedPackagesBoardInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mUnplacedPackagesCountTextField : EBTextObserverField? = nil
@@ -1342,6 +1356,8 @@ import Cocoa
     checkOutletConnection (self.mComponentInBoardCenterYPopUp, "mComponentInBoardCenterYPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mComponentInBoardCenterYTextField, "mComponentInBoardCenterYTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mComponentInBoardInspectorView, "mComponentInBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mComponentNameColorForSchematicColorWell, "mComponentNameColorForSchematicColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mComponentNameFontForSchematicFontButton, "mComponentNameFontForSchematicFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mComponentNameFontSizeField, "mComponentNameFontSizeField", EBDoubleField.self, #file, #line)
     checkOutletConnection (self.mComponentNameRotationSegmentedControl, "mComponentNameRotationSegmentedControl", CanariOrientationSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mComponentNameRotationSlider, "mComponentNameRotationSlider", CanariAngleSlider.self, #file, #line)
@@ -1355,6 +1371,8 @@ import Cocoa
     checkOutletConnection (self.mComponentSymbolTypeNameTextField, "mComponentSymbolTypeNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolValueTextField, "mComponentSymbolValueTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
+    checkOutletConnection (self.mComponentValueColorForSchematicColorWell, "mComponentValueColorForSchematicColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mComponentValueFontForSchematicFontButton, "mComponentValueFontForSchematicFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mComponentValueFontSizeField, "mComponentValueFontSizeField", EBDoubleField.self, #file, #line)
     checkOutletConnection (self.mComponentValueRotationSegmentedControl, "mComponentValueRotationSegmentedControl", CanariOrientationSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mComponentValueRotationSlider, "mComponentValueRotationSlider", CanariAngleSlider.self, #file, #line)
@@ -1362,6 +1380,7 @@ import Cocoa
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mConnectAllSymbolPinsSchematicHotKeyTextField, "mConnectAllSymbolPinsSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mConnectSchematicHotKeyTextField, "mConnectSchematicHotKeyTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mConnectionColorForSchematicColorWell, "mConnectionColorForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mControlKeyHiliteDiameterSlider, "mControlKeyHiliteDiameterSlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.mCurrentComponentNameTextField, "mCurrentComponentNameTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDataTableView, "mDataTableView", EBTableView.self, #file, #line)
@@ -1405,6 +1424,7 @@ import Cocoa
     checkOutletConnection (self.mDisplayLegendSwitch, "mDisplayLegendSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayPadNumbersColorWell, "mDisplayPadNumbersColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDisplayPadNumbersSwitch, "mDisplayPadNumbersSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDotColorGridForSchematicColorWell, "mDotColorGridForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDrawBoardLimitsSwitch, "mDrawBoardLimitsSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mDrawComponentNamesBottomSideSwitch, "mDrawComponentNamesBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mDrawComponentNamesTopSideSwitch, "mDrawComponentNamesTopSideSwitch", CanariObserverSwitch.self, #file, #line)
@@ -1468,6 +1488,7 @@ import Cocoa
     checkOutletConnection (self.mLayoutClearanceTextField, "mLayoutClearanceTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mLimitCurveBezierControlPointsView, "mLimitCurveBezierControlPointsView", NSView.self, #file, #line)
+    checkOutletConnection (self.mLineColorGridForSchematicColorWell, "mLineColorGridForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
     checkOutletConnection (self.mMergeNetDialog, "mMergeNetDialog", NSPanel.self, #file, #line)
     checkOutletConnection (self.mMergeNetPopUpButton, "mMergeNetPopUpButton", EBPopUpButton.self, #file, #line)
@@ -1505,6 +1526,10 @@ import Cocoa
     checkOutletConnection (self.mPHDUnitPopUp, "mPHDUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mPHDValueTextField, "mPHDValueTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mPinNameColorForSchematicColorWell, "mPinNameColorForSchematicColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPinNameFontForSchematicFontButton, "mPinNameFontForSchematicFontButton", EBFontButton.self, #file, #line)
+    checkOutletConnection (self.mPinNumberColorForSchematicColorWell, "mPinNumberColorForSchematicColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPinNumberFontForSchematicFontButton, "mPinNumberFontForSchematicFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mPinPadAssignmentTableView, "mPinPadAssignmentTableView", ThreeStringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mProductFileGenerationLogTextView, "mProductFileGenerationLogTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mProductGenerationTabView, "mProductGenerationTabView", NSTabView.self, #file, #line)
@@ -1598,6 +1623,8 @@ import Cocoa
     checkOutletConnection (self.mSheetUpButton, "mSheetUpButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mShowRotationKnobInBoardSwitch, "mShowRotationKnobInBoardSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSlavePadsShouldBeRoutedPopUpButton, "mSlavePadsShouldBeRoutedPopUpButton", CanariBoolPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSymbolColorForSchematicColorWell, "mSymbolColorForSchematicColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton, "mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSymbolMirrorSwitch, "mSymbolMirrorSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolRotationSegmentedControl, "mSymbolRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mTopSideTrackCountTextField, "mTopSideTrackCountTextField", EBTextObserverField.self, #file, #line)
@@ -1613,6 +1640,7 @@ import Cocoa
     checkOutletConnection (self.mTrackLockView, "mTrackLockView", CanariTrackLockView.self, #file, #line)
     checkOutletConnection (self.mTrackNetClassNameTextField, "mTrackNetClassNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mTrackNetNameTextField, "mTrackNetNameTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mUnplacedComponentsColorForSchematicColorWell, "mUnplacedComponentsColorForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mUnplacedPackageTableView, "mUnplacedPackageTableView", CanariDragSourceTableView.self, #file, #line)
     checkOutletConnection (self.mUnplacedPackagesBoardInspectorView, "mUnplacedPackagesBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mUnplacedPackagesCountTextField, "mUnplacedPackagesCountTextField", EBTextObserverField.self, #file, #line)
@@ -2290,8 +2318,22 @@ import Cocoa
     self.mSchematicsVerticalFlipSwitch?.bind_value (self.rootObject.mSchematicVerticalFlip_property)
     self.mSchematicsGridStylePopUpButton?.bind_selectedIndex (self.rootObject.mSchematicGridStyle_property)
     self.mSchematicsGridDisplayFactorPopUpButton?.bind_selectedTag (self.rootObject.mSchematicGridDisplayFactor_property)
+    self.mDotColorGridForSchematicColorWell?.bind_color (preferences_dotColorGridForSchematic_property, sendContinously:true)
+    self.mLineColorGridForSchematicColorWell?.bind_color (preferences_lineColorGridForSchematic_property, sendContinously:true)
     self.mSchematicBackColorColorWell?.bind_color (preferences_schematicBackColor_property, sendContinously:true)
     self.mSchematicFrameColorColorWell?.bind_color (preferences_schematicFrameColor_property, sendContinously:true)
+    self.mSymbolColorForSchematicColorWell?.bind_color (preferences_symbolColorForSchematic_property, sendContinously:true)
+    self.mUnplacedComponentsColorForSchematicColorWell?.bind_color (preferences_symbolColorForUnplacedComponentsForSchematic_property, sendContinously:true)
+    self.mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton?.bind_selectedTag (preferences_symbolDrawingWidthMultipliedByTenForSchematic_property)
+    self.mComponentNameColorForSchematicColorWell?.bind_color (preferences_componentNameColorForSchematic_property, sendContinously:true)
+    self.mComponentNameFontForSchematicFontButton?.bind_fontValue (preferences_componentNameFontForSchematic_property)
+    self.mComponentValueColorForSchematicColorWell?.bind_color (preferences_componentValueColorForSchematic_property, sendContinously:true)
+    self.mComponentValueFontForSchematicFontButton?.bind_fontValue (preferences_componentValueFontForSchematic_property)
+    self.mPinNameColorForSchematicColorWell?.bind_color (preferences_pinNameColorForSchematic_property, sendContinously:true)
+    self.mPinNameFontForSchematicFontButton?.bind_fontValue (preferences_pinNameFontForSchematic_property)
+    self.mPinNumberColorForSchematicColorWell?.bind_color (preferences_pinNumberColorForSchematic_property, sendContinously:true)
+    self.mPinNumberFontForSchematicFontButton?.bind_fontValue (preferences_pinNumberFontForSchematic_property)
+    self.mConnectionColorForSchematicColorWell?.bind_color (preferences_connectionColorForSchematic_property, sendContinously:true)
     self.mSchematicsTitleTextField?.bind_value (self.rootObject.mSchematicTitle_property, sendContinously:true)
     self.mSchematicsVersionTextField?.bind_value (self.rootObject.mSchematicVersion_property, sendContinously:true)
     self.mSchematicsSheetOrientationSegmentedControl?.bind_selectedSegment (self.rootObject.mSchematicSheetOrientation_property)
@@ -2306,8 +2348,8 @@ import Cocoa
     self.mSchematicsView?.bind_verticalFlip (self.rootObject.mSchematicVerticalFlip_property)
     self.mSchematicsView?.bind_gridStyle (self.rootObject.mSchematicGridStyle_property)
     self.mSchematicsView?.bind_gridDisplayFactor (self.rootObject.mSchematicGridDisplayFactor_property)
-    self.mSchematicsView?.bind_gridLineColor (preferences_lineColorOfSymbolGrid_property)
-    self.mSchematicsView?.bind_gridCrossColor (preferences_crossColorOfSymbolGrid_property)
+    self.mSchematicsView?.bind_gridLineColor (preferences_lineColorGridForSchematic_property)
+    self.mSchematicsView?.bind_gridCrossColor (preferences_dotColorGridForSchematic_property)
     self.mSchematicsView?.bind_zoom (self.rootObject.mSchematicZoom_property)
     self.mSchematicsView?.bind_backColor (preferences_schematicBackColor_property)
     self.mWireNetNameTextField?.bind_valueObserver (self.wireInSchematicSelectionController.netName_property)
@@ -3171,8 +3213,22 @@ import Cocoa
     self.mSchematicsVerticalFlipSwitch?.unbind_value ()
     self.mSchematicsGridStylePopUpButton?.unbind_selectedIndex ()
     self.mSchematicsGridDisplayFactorPopUpButton?.unbind_selectedTag ()
+    self.mDotColorGridForSchematicColorWell?.unbind_color ()
+    self.mLineColorGridForSchematicColorWell?.unbind_color ()
     self.mSchematicBackColorColorWell?.unbind_color ()
     self.mSchematicFrameColorColorWell?.unbind_color ()
+    self.mSymbolColorForSchematicColorWell?.unbind_color ()
+    self.mUnplacedComponentsColorForSchematicColorWell?.unbind_color ()
+    self.mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton?.unbind_selectedTag ()
+    self.mComponentNameColorForSchematicColorWell?.unbind_color ()
+    self.mComponentNameFontForSchematicFontButton?.unbind_fontValue ()
+    self.mComponentValueColorForSchematicColorWell?.unbind_color ()
+    self.mComponentValueFontForSchematicFontButton?.unbind_fontValue ()
+    self.mPinNameColorForSchematicColorWell?.unbind_color ()
+    self.mPinNameFontForSchematicFontButton?.unbind_fontValue ()
+    self.mPinNumberColorForSchematicColorWell?.unbind_color ()
+    self.mPinNumberFontForSchematicFontButton?.unbind_fontValue ()
+    self.mConnectionColorForSchematicColorWell?.unbind_color ()
     self.mSchematicsTitleTextField?.unbind_value ()
     self.mSchematicsVersionTextField?.unbind_value ()
     self.mSchematicsSheetOrientationSegmentedControl?.unbind_selectedSegment ()
@@ -3813,6 +3869,8 @@ import Cocoa
     self.mComponentInBoardCenterYPopUp?.ebCleanUp ()
     self.mComponentInBoardCenterYTextField?.ebCleanUp ()
     self.mComponentInBoardInspectorView?.ebCleanUp ()
+    self.mComponentNameColorForSchematicColorWell?.ebCleanUp ()
+    self.mComponentNameFontForSchematicFontButton?.ebCleanUp ()
     self.mComponentNameFontSizeField?.ebCleanUp ()
     self.mComponentNameRotationSegmentedControl?.ebCleanUp ()
     self.mComponentNameRotationSlider?.ebCleanUp ()
@@ -3826,6 +3884,8 @@ import Cocoa
     self.mComponentSymbolTypeNameTextField?.ebCleanUp ()
     self.mComponentSymbolValueTextField?.ebCleanUp ()
     self.mComponentTableView?.ebCleanUp ()
+    self.mComponentValueColorForSchematicColorWell?.ebCleanUp ()
+    self.mComponentValueFontForSchematicFontButton?.ebCleanUp ()
     self.mComponentValueFontSizeField?.ebCleanUp ()
     self.mComponentValueRotationSegmentedControl?.ebCleanUp ()
     self.mComponentValueRotationSlider?.ebCleanUp ()
@@ -3833,6 +3893,7 @@ import Cocoa
     self.mComponentsPageView?.ebCleanUp ()
     self.mConnectAllSymbolPinsSchematicHotKeyTextField?.ebCleanUp ()
     self.mConnectSchematicHotKeyTextField?.ebCleanUp ()
+    self.mConnectionColorForSchematicColorWell?.ebCleanUp ()
     self.mControlKeyHiliteDiameterSlider?.ebCleanUp ()
     self.mCurrentComponentNameTextField?.ebCleanUp ()
     self.mDataTableView?.ebCleanUp ()
@@ -3876,6 +3937,7 @@ import Cocoa
     self.mDisplayLegendSwitch?.ebCleanUp ()
     self.mDisplayPadNumbersColorWell?.ebCleanUp ()
     self.mDisplayPadNumbersSwitch?.ebCleanUp ()
+    self.mDotColorGridForSchematicColorWell?.ebCleanUp ()
     self.mDrawBoardLimitsSwitch?.ebCleanUp ()
     self.mDrawComponentNamesBottomSideSwitch?.ebCleanUp ()
     self.mDrawComponentNamesTopSideSwitch?.ebCleanUp ()
@@ -3939,6 +4001,7 @@ import Cocoa
     self.mLayoutClearanceTextField?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
     self.mLimitCurveBezierControlPointsView?.ebCleanUp ()
+    self.mLineColorGridForSchematicColorWell?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
     self.mMergeNetDialog?.ebCleanUp ()
     self.mMergeNetPopUpButton?.ebCleanUp ()
@@ -3976,6 +4039,10 @@ import Cocoa
     self.mPHDUnitPopUp?.ebCleanUp ()
     self.mPHDValueTextField?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
+    self.mPinNameColorForSchematicColorWell?.ebCleanUp ()
+    self.mPinNameFontForSchematicFontButton?.ebCleanUp ()
+    self.mPinNumberColorForSchematicColorWell?.ebCleanUp ()
+    self.mPinNumberFontForSchematicFontButton?.ebCleanUp ()
     self.mPinPadAssignmentTableView?.ebCleanUp ()
     self.mProductFileGenerationLogTextView?.ebCleanUp ()
     self.mProductGenerationTabView?.ebCleanUp ()
@@ -4069,6 +4136,8 @@ import Cocoa
     self.mSheetUpButton?.ebCleanUp ()
     self.mShowRotationKnobInBoardSwitch?.ebCleanUp ()
     self.mSlavePadsShouldBeRoutedPopUpButton?.ebCleanUp ()
+    self.mSymbolColorForSchematicColorWell?.ebCleanUp ()
+    self.mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton?.ebCleanUp ()
     self.mSymbolMirrorSwitch?.ebCleanUp ()
     self.mSymbolRotationSegmentedControl?.ebCleanUp ()
     self.mTopSideTrackCountTextField?.ebCleanUp ()
@@ -4084,6 +4153,7 @@ import Cocoa
     self.mTrackLockView?.ebCleanUp ()
     self.mTrackNetClassNameTextField?.ebCleanUp ()
     self.mTrackNetNameTextField?.ebCleanUp ()
+    self.mUnplacedComponentsColorForSchematicColorWell?.ebCleanUp ()
     self.mUnplacedPackageTableView?.ebCleanUp ()
     self.mUnplacedPackagesBoardInspectorView?.ebCleanUp ()
     self.mUnplacedPackagesCountTextField?.ebCleanUp ()
@@ -4273,6 +4343,8 @@ import Cocoa
     self.mComponentInBoardCenterYPopUp = nil
     self.mComponentInBoardCenterYTextField = nil
     self.mComponentInBoardInspectorView = nil
+    self.mComponentNameColorForSchematicColorWell = nil
+    self.mComponentNameFontForSchematicFontButton = nil
     self.mComponentNameFontSizeField = nil
     self.mComponentNameRotationSegmentedControl = nil
     self.mComponentNameRotationSlider = nil
@@ -4286,6 +4358,8 @@ import Cocoa
     self.mComponentSymbolTypeNameTextField = nil
     self.mComponentSymbolValueTextField = nil
     self.mComponentTableView = nil
+    self.mComponentValueColorForSchematicColorWell = nil
+    self.mComponentValueFontForSchematicFontButton = nil
     self.mComponentValueFontSizeField = nil
     self.mComponentValueRotationSegmentedControl = nil
     self.mComponentValueRotationSlider = nil
@@ -4293,6 +4367,7 @@ import Cocoa
     self.mComponentsPageView = nil
     self.mConnectAllSymbolPinsSchematicHotKeyTextField = nil
     self.mConnectSchematicHotKeyTextField = nil
+    self.mConnectionColorForSchematicColorWell = nil
     self.mControlKeyHiliteDiameterSlider = nil
     self.mCurrentComponentNameTextField = nil
     self.mDataTableView = nil
@@ -4336,6 +4411,7 @@ import Cocoa
     self.mDisplayLegendSwitch = nil
     self.mDisplayPadNumbersColorWell = nil
     self.mDisplayPadNumbersSwitch = nil
+    self.mDotColorGridForSchematicColorWell = nil
     self.mDrawBoardLimitsSwitch = nil
     self.mDrawComponentNamesBottomSideSwitch = nil
     self.mDrawComponentNamesTopSideSwitch = nil
@@ -4399,6 +4475,7 @@ import Cocoa
     self.mLayoutClearanceTextField = nil
     self.mLibraryPageView = nil
     self.mLimitCurveBezierControlPointsView = nil
+    self.mLineColorGridForSchematicColorWell = nil
     self.mMasterView = nil
     self.mMergeNetDialog = nil
     self.mMergeNetPopUpButton = nil
@@ -4436,6 +4513,10 @@ import Cocoa
     self.mPHDUnitPopUp = nil
     self.mPHDValueTextField = nil
     self.mPageSegmentedControl = nil
+    self.mPinNameColorForSchematicColorWell = nil
+    self.mPinNameFontForSchematicFontButton = nil
+    self.mPinNumberColorForSchematicColorWell = nil
+    self.mPinNumberFontForSchematicFontButton = nil
     self.mPinPadAssignmentTableView = nil
     self.mProductFileGenerationLogTextView = nil
     self.mProductGenerationTabView = nil
@@ -4529,6 +4610,8 @@ import Cocoa
     self.mSheetUpButton = nil
     self.mShowRotationKnobInBoardSwitch = nil
     self.mSlavePadsShouldBeRoutedPopUpButton = nil
+    self.mSymbolColorForSchematicColorWell = nil
+    self.mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton = nil
     self.mSymbolMirrorSwitch = nil
     self.mSymbolRotationSegmentedControl = nil
     self.mTopSideTrackCountTextField = nil
@@ -4544,6 +4627,7 @@ import Cocoa
     self.mTrackLockView = nil
     self.mTrackNetClassNameTextField = nil
     self.mTrackNetNameTextField = nil
+    self.mUnplacedComponentsColorForSchematicColorWell = nil
     self.mUnplacedPackageTableView = nil
     self.mUnplacedPackagesBoardInspectorView = nil
     self.mUnplacedPackagesCountTextField = nil

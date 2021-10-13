@@ -28,18 +28,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.4.5"
+let VERSION_CANARI = "1.4.6"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
-  "Utilisation de Sparkle 1.27"
+  "Meilleure gestion de la transparence dans les vues graphiques",
+  "Les préférences de la schématique d'un projet sont éditables dans le projet"
 ]
-let NEWS : [String] = [
-  "Prise en charge des circuits à 4 ou 6 couches",
-  "Contrôle de la couleur de fond dans le schéma d'un projet"
-]
+let NEWS : [String] = []
 
 //--------------------------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR

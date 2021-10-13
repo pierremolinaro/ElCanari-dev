@@ -12,9 +12,9 @@ prefs {
   property NSColor errorMessageColor   default red;
   property NSColor warningMessageColor default orange;
   property NSColor successMessageColor default blue;
-  outlet EBColorWell mErrorMessageColorColorWell   $color self.errorMessageColor (sendContinously:no) ;
-  outlet EBColorWell mWarningMessageColorColorWell $color self.warningMessageColor (sendContinously:no) ;
-  outlet EBColorWell mSuccessMessageColorColorWell $color self.successMessageColor (sendContinously:no) ;
+  outlet EBColorWell mErrorMessageColorColorWell   $color self.errorMessageColor (sendContinously:yes) ;
+  outlet EBColorWell mWarningMessageColorColorWell $color self.warningMessageColor (sendContinously:yes) ;
+  outlet EBColorWell mSuccessMessageColorColorWell $color self.successMessageColor (sendContinously:yes) ;
 
   property Bool showDebugMenu default no ;
   outlet EBSwitch mShowDebugMenuSwitch $value self.showDebugMenu ;
@@ -30,7 +30,7 @@ prefs {
 //! Selection hilite
 prefs {
   property NSColor selectionHiliteColor default cyan;
-  outlet EBColorWell mSelectionHiliteColorColorWell $color self.selectionHiliteColor (sendContinously:no);
+  outlet EBColorWell mSelectionHiliteColorColorWell $color self.selectionHiliteColor (sendContinously:yes);
   property Int hiliteWidthMultipliedByTen default 15 ; // 1,5 pt
   outlet EBPopUpButton selectionHilitePopupButton $selectedTag self.hiliteWidthMultipliedByTen ;
 }
@@ -82,15 +82,15 @@ prefs {
 prefs {
 //--- Symbol Color
   property NSColor symbolColor default brown;
-  outlet EBColorWell mSymbolColorColorWell $color self.symbolColor (sendContinously:no) ;
+  outlet EBColorWell mSymbolColorColorWell $color self.symbolColor (sendContinously:yes) ;
 //--- Symbol Grid Colors
   property NSColor crossColorOfSymbolGrid   default black;
-  outlet EBColorWell mCrossColorOfSymbolGridColorWell $color self.crossColorOfSymbolGrid (sendContinously:no) ;
+  outlet EBColorWell mCrossColorOfSymbolGridColorWell $color self.crossColorOfSymbolGrid (sendContinously:yes) ;
   property NSColor lineColorOfSymbolGrid  default gray;
-  outlet EBColorWell mLineColorOfSymbolGridColorWell $color self.lineColorOfSymbolGrid (sendContinously:no) ;
+  outlet EBColorWell mLineColorOfSymbolGridColorWell $color self.lineColorOfSymbolGrid (sendContinously:yes) ;
 //--- Symbol Background Color
   property NSColor symbolBackgroundColor default white;
-  outlet EBColorWell mSymbolBackgroundColorColorWell $color self.symbolBackgroundColor (sendContinously:no) ;
+  outlet EBColorWell mSymbolBackgroundColorColorWell $color self.symbolBackgroundColor (sendContinously:yes) ;
 //--- Drawing Width
   property Int symbolDrawingWidthMultipliedByTen default 5 ;
   outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenPopupButton $selectedTag self.symbolDrawingWidthMultipliedByTen ;
@@ -106,42 +106,42 @@ prefs {
 prefs {
 //--- Package Grid Colors
   property NSColor crossColorOfPackageGrid  default white;
-  outlet EBColorWell mDotColorOfPackageGridColorWell $color self.crossColorOfPackageGrid (sendContinously:no) ;
+  outlet EBColorWell mDotColorOfPackageGridColorWell $color self.crossColorOfPackageGrid (sendContinously:yes) ;
   property NSColor lineColorOfPackageGrid default gray;
-  outlet EBColorWell mLineColorOfPackageGridColorWell $color self.lineColorOfPackageGrid (sendContinously:no) ;
+  outlet EBColorWell mLineColorOfPackageGridColorWell $color self.lineColorOfPackageGrid (sendContinously:yes) ;
 //--- Background Color
   property NSColor packageBackgroundColor default black;
-  outlet EBColorWell mPackageBackgroundColorColorWell $color self.packageBackgroundColor (sendContinously:no) ;
+  outlet EBColorWell mPackageBackgroundColorColorWell $color self.packageBackgroundColor (sendContinously:yes) ;
 //--- Package Color
   property NSColor packageColor default brown;
-  outlet EBColorWell mPackageColorColorWell $color self.packageColor (sendContinously:no) ;
+  outlet EBColorWell mPackageColorColorWell $color self.packageColor (sendContinously:yes) ;
 //--- Front Side Pad Color
   property NSColor frontSidePadColor default blue;
-  outlet EBColorWell mTopSidePadColorWell $color self.frontSidePadColor (sendContinously:no) ;
+  outlet EBColorWell mTopSidePadColorWell $color self.frontSidePadColor (sendContinously:yes) ;
   property Bool displayPackageFrontSidePads default yes ;
 //--- Back Side Pad Color
   property NSColor backSidePadColor default green;
-  outlet EBColorWell mBottomSidePadColorWell $color self.backSidePadColor (sendContinously:no) ;
+  outlet EBColorWell mBottomSidePadColorWell $color self.backSidePadColor (sendContinously:yes) ;
   property Bool displayPackageBackSidePads default yes ;
 //--- Pad Number Color
   property NSColor padNumberColor default red;
-  outlet EBColorWell mPadNumberColorColorWell $color self.padNumberColor (sendContinously:no) ;
+  outlet EBColorWell mPadNumberColorColorWell $color self.padNumberColor (sendContinously:yes) ;
 //--- Pad Number Font
   property NSFont padNumberFont default 3 ;
   outlet EBFontButton mPadFontButton $fontValue self.padNumberFont ;
   property Bool showPadNumber default yes ;
 //--- Package Guide Color
   property NSColor packageGuideColor default yellow;
-  outlet EBColorWell mPackageGuideColorWell $color self.packageGuideColor (sendContinously:no) ;
+  outlet EBColorWell mPackageGuideColorWell $color self.packageGuideColor (sendContinously:yes) ;
 //--- Package Dimension Color
   property NSColor packageDimensionColor default orange;
-  outlet EBColorWell mPackageDimensionColorWell $color self.packageDimensionColor (sendContinously:no) ;
+  outlet EBColorWell mPackageDimensionColorWell $color self.packageDimensionColor (sendContinously:yes) ;
 //--- Dimension Font
   property NSFont dimensionFont default 2 ; // toolTipsFontOfSize:2 ;
   outlet EBFontButton mDimensionFontButton $fontValue self.dimensionFont ;
 //--- Pad Zone Color
   property NSColor padZoneColor default magenta;
-  outlet EBColorWell mPadZoneColorColorWell $color self.padZoneColor (sendContinously:no) ;
+  outlet EBColorWell mPadZoneColorColorWell $color self.padZoneColor (sendContinously:yes) ;
 //--- Pad Zone Font
   property NSFont padZoneFont default 3 ;
 //--- Drawing width
@@ -156,23 +156,23 @@ prefs {
 prefs {
 //--- Grid Colors
   property NSColor mSymbolAndPackageGridDotColorForDevice default black;
-  outlet EBColorWell mSymbolAndPackageGridDotColorForDeviceColorWell $color self.mSymbolAndPackageGridDotColorForDevice (sendContinously:no) ;
+  outlet EBColorWell mSymbolAndPackageGridDotColorForDeviceColorWell $color self.mSymbolAndPackageGridDotColorForDevice (sendContinously:yes) ;
   property NSColor mSymbolAndPackageGridLineColorForDevice  default gray;
-  outlet EBColorWell mSymbolAndPackageLineDotColorForDeviceColorWell $color self.mSymbolAndPackageGridLineColorForDevice (sendContinously:no) ;
+  outlet EBColorWell mSymbolAndPackageLineDotColorForDeviceColorWell $color self.mSymbolAndPackageGridLineColorForDevice (sendContinously:yes) ;
 //--- Package Color
   property NSColor mSymbolAndPackageBackgroundColorForDevice default white;
-  outlet EBColorWell mSymbolAndPackageBackgroundColorForDeviceColorWell $color self.mSymbolAndPackageBackgroundColorForDevice (sendContinously:no) ;
+  outlet EBColorWell mSymbolAndPackageBackgroundColorForDeviceColorWell $color self.mSymbolAndPackageBackgroundColorForDevice (sendContinously:yes) ;
 //--- Package Color
   property NSColor mPackageColorForDevice default brown;
-  outlet EBColorWell mPackageColorForDeviceColorWell $color self.mPackageColorForDevice (sendContinously:no) ;
+  outlet EBColorWell mPackageColorForDeviceColorWell $color self.mPackageColorForDevice (sendContinously:yes) ;
 //--- Pad Colors
   property NSColor mFrontSidePadColorForDevice default blue;
-  outlet EBColorWell mTopSidePadColorForDeviceColorWell $color self.mFrontSidePadColorForDevice (sendContinously:no) ;
+  outlet EBColorWell mTopSidePadColorForDeviceColorWell $color self.mFrontSidePadColorForDevice (sendContinously:yes) ;
   property NSColor mBottomSidePadColorForDevice default green;
-  outlet EBColorWell mBottomSidePadColorDorDeviveColorWell $color self.mBottomSidePadColorForDevice (sendContinously:no) ;
+  outlet EBColorWell mBottomSidePadColorDorDeviveColorWell $color self.mBottomSidePadColorForDevice (sendContinously:yes) ;
 //--- Pad Number Color
   property NSColor mPadNumberColorForDevice default red;
-  outlet EBColorWell mPadNumberColorForDeviceColorWell $color self.mPadNumberColorForDevice (sendContinously:no) ;
+  outlet EBColorWell mPadNumberColorForDeviceColorWell $color self.mPadNumberColorForDevice (sendContinously:yes) ;
 //--- Package Name Font
   property NSFont mPackageNameFontForDevice default 9 ; // toolTipsFontOfSize:9 ;
   outlet EBFontButton mPackageNameFontForDeviceFontButton $fontValue self.mPadNumberFontForDevice ;
@@ -181,7 +181,7 @@ prefs {
   outlet EBFontButton mPadNumberFontForDeviceFontButton $fontValue self.mPadNumberFontForDevice ;
 //--- Symbol Color
   property NSColor mSymbolColorForDevice default brown;
-  outlet EBColorWell mSymbolColorForDeviceColorWell $color self.mSymbolColorForDevice (sendContinously:no) ;
+  outlet EBColorWell mSymbolColorForDeviceColorWell $color self.mSymbolColorForDevice (sendContinously:yes) ;
 //--- Symbol Name Font
   property NSFont mSymbolNameFontForDevice default 9 ; //toolTipsFontOfSize:9 ;
   outlet EBFontButton mSymbolNameFontForDeviceFontButton $fontValue self.mSymbolNameFontForDevice ;
@@ -205,24 +205,24 @@ prefs {
   property NSColor schematicFrameColor default black ;
 //--- Schematic Grid Colors
   property NSColor dotColorGridForSchematic  default black;
-  outlet EBColorWell mDotColorGridForSchematicColorWell $color self.dotColorGridForSchematic (sendContinously:no) ;
+  outlet EBColorWell mDotColorGridForSchematicColorWell $color self.dotColorGridForSchematic (sendContinously:yes) ;
   property NSColor lineColorGridForSchematic default gray;
-  outlet EBColorWell mLineColorGridForSchematicColorWell $color self.lineColorGridForSchematic (sendContinously:no) ;
+  outlet EBColorWell mLineColorGridForSchematicColorWell $color self.lineColorGridForSchematic (sendContinously:yes) ;
 //--- Symbol color for unplaced components
   property NSColor symbolColorForUnplacedComponentsForSchematic default darkGray;
-  outlet EBColorWell mUnplacedComponentsColorForSchematicColorWell $color self.symbolColorForUnplacedComponentsForSchematic (sendContinously:no) ;
+  outlet EBColorWell mUnplacedComponentsColorForSchematicColorWell $color self.symbolColorForUnplacedComponentsForSchematic (sendContinously:yes) ;
 //--- Symbol color
   property NSColor symbolColorForSchematic default brown;
-  outlet EBColorWell mSymbolColorForSchematicColorWell $color self.symbolColorForSchematic (sendContinously:no) ;
+  outlet EBColorWell mSymbolColorForSchematicColorWell $color self.symbolColorForSchematic (sendContinously:yes) ;
 //--- Component Name Color
   property NSColor componentNameColorForSchematic default brown;
-  outlet EBColorWell mComponentNameColorForSchematicColorWell $color self.componentNameColorForSchematic (sendContinously:no) ;
+  outlet EBColorWell mComponentNameColorForSchematicColorWell $color self.componentNameColorForSchematic (sendContinously:yes) ;
 //--- Component Name Font
   property NSFont componentNameFontForSchematic default 6 ; // toolTipsFontOfSize:6 ;
   outlet EBFontButton mComponentNameFontForSchematicFontButton $fontValue self.componentNameFontForSchematic ;
 //--- Component Value Color
   property NSColor componentValueColorForSchematic default brown;
-  outlet EBColorWell mComponentValueColorForSchematicColorWell $color self.componentValueColorForSchematic (sendContinously:no) ;
+  outlet EBColorWell mComponentValueColorForSchematicColorWell $color self.componentValueColorForSchematic (sendContinously:yes) ;
 //--- Component Name Font
   property NSFont componentValueFontForSchematic default 6 ; // toolTipsFontOfSize:6 ;
   outlet EBFontButton mComponentValueFontForSchematicFontButton $fontValue self.componentValueFontForSchematic ;
@@ -231,16 +231,16 @@ prefs {
   outlet EBFontButton mPinNameFontForSchematicFontButton $fontValue self.pinNameFontForSchematic ;
 //--- Pin Name Color
   property NSColor pinNameColorForSchematic default brown;
-  outlet EBColorWell mPinNameColorForSchematicColorWell $color self.pinNameColorForSchematic (sendContinously:no) ;
+  outlet EBColorWell mPinNameColorForSchematicColorWell $color self.pinNameColorForSchematic (sendContinously:yes) ;
 //--- Pin Number Font
   property NSFont pinNumberFontForSchematic default 6 ; // toolTipsFontOfSize:6 ;
   outlet EBFontButton mPinNumberFontForSchematicFontButton $fontValue self.pinNumberFontForSchematic ;
 //--- Pin Number Color
   property NSColor pinNumberColorForSchematic default darkGray;
-  outlet EBColorWell mPinNumberColorForSchematicColorWell $color self.pinNumberColorForSchematic (sendContinously:no) ;
+  outlet EBColorWell mPinNumberColorForSchematicColorWell $color self.pinNumberColorForSchematic (sendContinously:yes) ;
 //--- Connection Color
   property NSColor connectionColorForSchematic default black;
-  outlet EBColorWell mConnectionColorForSchematicColorWell $color self.connectionColorForSchematic (sendContinously:no) ;
+  outlet EBColorWell mConnectionColorForSchematicColorWell $color self.connectionColorForSchematic (sendContinously:yes) ;
 //--- Symbol drawing line width
   property Int symbolDrawingWidthMultipliedByTenForSchematic default 5 ;
   outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton $selectedTag self.symbolDrawingWidthMultipliedByTenForSchematic ;
@@ -254,83 +254,83 @@ prefs {
 prefs {
 //--- Board Grid Colors
   property NSColor crossColorGridForBoard default white ;
-  outlet EBColorWell mBoardDotColorGridColorWell $color self.crossColorGridForBoard (sendContinously:no)  ;
+  outlet EBColorWell mBoardDotColorGridColorWell $color self.crossColorGridForBoard (sendContinously:yes)  ;
   property NSColor lineColorGridForBoard default lightGray ;
-  outlet EBColorWell mBoardLineColorGridColorWell $color self.lineColorGridForBoard (sendContinously:no) ;
+  outlet EBColorWell mBoardLineColorGridColorWell $color self.lineColorGridForBoard (sendContinously:yes) ;
 //--- Board Background Color
   property NSColor boardBackgroundColorForBoard default black;
-  outlet EBColorWell mBoardBackgroundColorWell $color self.boardBackgroundColorForBoard (sendContinously:no) ;
+  outlet EBColorWell mBoardBackgroundColorWell $color self.boardBackgroundColorForBoard (sendContinously:yes) ;
 //--- Board Error Background Color
   property NSColor errorBackgroundColorForBoard default red;
-  outlet EBColorWell mBoardErrorBackgroundColorWell $color self.errorBackgroundColorForBoard (sendContinously:no);
+  outlet EBColorWell mBoardErrorBackgroundColorWell $color self.errorBackgroundColorForBoard (sendContinously:yes);
   property Bool drawErrorBackgroundForBoard default yes ;
   outlet EBSwitch mBoardDrawErrorBackgroundCheckbox $value self.drawErrorBackgroundForBoard;
 //--- Board Warning Background Color
   property NSColor warningBackgroundColorForBoard default orange;
-  outlet EBColorWell mBoardWarningBackgroundColorWell $color self.warningBackgroundColorForBoard (sendContinously:no);
+  outlet EBColorWell mBoardWarningBackgroundColorWell $color self.warningBackgroundColorForBoard (sendContinously:yes);
   property Bool drawWarningBackgroundForBoard default yes ;
   outlet EBSwitch mBoardDrawWarningBackgroundCheckbox $value self.drawWarningBackgroundForBoard;
 //--- Board Limits Color
   property NSColor boardLimitsColorForBoard default brown;
-  outlet EBColorWell mBoardLimitsColorWell $color self.boardLimitsColorForBoard (sendContinously:no) ;
+  outlet EBColorWell mBoardLimitsColorWell $color self.boardLimitsColorForBoard (sendContinously:yes) ;
 //--- Clearance Color
   property NSColor boardClearanceColorForBoard default yellow;
-  outlet EBColorWell mBoardClearanceColorWell $color self.boardClearanceColorForBoard (sendContinously:no) ;
+  outlet EBColorWell mBoardClearanceColorWell $color self.boardClearanceColorForBoard (sendContinously:yes) ;
 //--- Front Side Restrict Rectangle Color
   property Bool displayFrontRestrictRectangles default yes ;
   property NSColor frontSideRestrictRectangleColorForBoard default blue;
-  outlet EBColorWell mBoardTopSideRestrictRectangleColorWell $color self.frontSideRestrictRectangleColorForBoard (sendContinously:no) ;
+  outlet EBColorWell mBoardTopSideRestrictRectangleColorWell $color self.frontSideRestrictRectangleColorForBoard (sendContinously:yes) ;
 //--- Back Side Restrict Rectangle Color
   property Bool displayBackRestrictRectangles default yes ;
   property NSColor backSideRestrictRectangleColorForBoard default green;
-  outlet EBColorWell mBoardBottomSideRestrictRectangleColorWell $color self.backSideRestrictRectangleColorForBoard (sendContinously:no) ;
+  outlet EBColorWell mBoardBottomSideRestrictRectangleColorWell $color self.backSideRestrictRectangleColorForBoard (sendContinously:yes) ;
 //--- Front Side Legend Color
   property Bool displayFrontLegendForBoard default yes ;
   property NSColor frontSideLegendColorForBoard default brown;
-  outlet EBColorWell mBoardTopSideLegendColorWell $color self.frontSideLegendColorForBoard (sendContinously:no) ;
+  outlet EBColorWell mBoardTopSideLegendColorWell $color self.frontSideLegendColorForBoard (sendContinously:yes) ;
 //--- Front Side Layout Color
   property Bool displayFrontLayoutForBoard default yes ;
   property NSColor frontSideLayoutColorForBoard default blue;
-  outlet EBColorWell mBoardTopSideLayoutColorWell $color self.frontSideLayoutColorForBoard (sendContinously:no) ;
+  outlet EBColorWell mBoardTopSideLayoutColorWell $color self.frontSideLayoutColorForBoard (sendContinously:yes) ;
 //--- Back Side Layout Color
   property Bool displayBackLayoutForBoard default yes ;
   property NSColor backSideLayoutColorForBoard default green;
-  outlet EBColorWell mBoardBottomSideLayoutColorWell $color self.backSideLayoutColorForBoard (sendContinously:no) ;
+  outlet EBColorWell mBoardBottomSideLayoutColorWell $color self.backSideLayoutColorForBoard (sendContinously:yes) ;
 //--- Inner 1 Layout Color
   property Bool displayInner1LayoutForBoard default yes ;
   property NSColor inner1LayoutColorForBoard default green;
-  outlet EBColorWell mBoardInner1LayoutColorWell $color self.inner1LayoutColorForBoard (sendContinously:no) ;
+  outlet EBColorWell mBoardInner1LayoutColorWell $color self.inner1LayoutColorForBoard (sendContinously:yes) ;
 //--- Inner 2 Layout Color
   property Bool displayInner2LayoutForBoard default yes ;
   property NSColor inner2LayoutColorForBoard default green;
-  outlet EBColorWell mBoardInner2LayoutColorWell $color self.inner2LayoutColorForBoard (sendContinously:no) ;
+  outlet EBColorWell mBoardInner2LayoutColorWell $color self.inner2LayoutColorForBoard (sendContinously:yes) ;
 //--- Inner 3 Layout Color
   property Bool displayInner3LayoutForBoard default yes ;
   property NSColor inner3LayoutColorForBoard default green;
-  outlet EBColorWell mBoardInner3LayoutColorWell $color self.inner3LayoutColorForBoard (sendContinously:no) ;
+  outlet EBColorWell mBoardInner3LayoutColorWell $color self.inner3LayoutColorForBoard (sendContinously:yes) ;
 //--- Inner 4 Layout Color
   property Bool displayInner4LayoutForBoard default yes ;
   property NSColor inner4LayoutColorForBoard default green;
-  outlet EBColorWell mBoardInner4LayoutColorWell $color self.inner4LayoutColorForBoard (sendContinously:no) ;
+  outlet EBColorWell mBoardInner4LayoutColorWell $color self.inner4LayoutColorForBoard (sendContinously:yes) ;
 //--- Back Side Legend Color
   property Bool displayBackLegendForBoard default yes ;
   property NSColor backSideLegendColorForBoard default white;
-  outlet EBColorWell mBoardBottomSideLegendColorWell $color self.backSideLegendColorForBoard (sendContinously:no);
+  outlet EBColorWell mBoardBottomSideLegendColorWell $color self.backSideLegendColorForBoard (sendContinously:yes);
 //--- Front Side Pad Color
   property Bool displayFrontPadsForBoard default yes ;
   property NSColor frontSidePadColorForBoard default blue;
-  outlet EBColorWell mBoardTopSidePadColorWell $color self.frontSidePadColorForBoard (sendContinously:no);
+  outlet EBColorWell mBoardTopSidePadColorWell $color self.frontSidePadColorForBoard (sendContinously:yes);
 //--- Back Side Pad Color
   property Bool displayBackPadsForBoard default yes ;
   property NSColor backSidePadColorForBoard default green;
-  outlet EBColorWell mBoardBottomSidePadColorWell $color self.backSidePadColorForBoard (sendContinously:no);
+  outlet EBColorWell mBoardBottomSidePadColorWell $color self.backSidePadColorForBoard (sendContinously:yes);
 //--- Pad Number Font
   property Bool displayPadNumbersForBoard default yes ;
   property NSFont padNumberFontForBoard default 3 ; // toolTipsFontOfSize:3 ;
   outlet EBFontButton mBoardPadFontButton $fontValue self.padNumberFontForBoard;
 //--- Pad Number Color
   property NSColor padNumberColorForBoard default red;
-  outlet EBColorWell mBoardPadNumberColorWell $color self.padNumberColorForBoard (sendContinously:no);
+  outlet EBColorWell mBoardPadNumberColorWell $color self.padNumberColorForBoard (sendContinously:yes);
 //--- Package drawing width
   property Int packageDrawingWidthMultpliedByTenForBoard default 5  ;
   outlet EBPopUpButton mBoardPackageDrawingWidthMultipliedByTenPopupButton $selectedTag self.packageDrawingWidthMultpliedByTenForBoard ;
@@ -350,7 +350,7 @@ prefs {
   outlet EBTextField mSampleStringField $value self.sampleString (sendContinously:yes);
 //--- Sample Font size
   property Double sampleStringSize default 24.0 ;
-  outlet EBDoubleField mSampleStringSizeField $value self.sampleStringSize (sendContinously:no, autoFormatter:no);
+  outlet EBDoubleField mSampleStringSizeField $value self.sampleStringSize (sendContinously:yes, autoFormatter:no);
 //--- Display order
   property Bool showGerberDrawingFlow default yes ;
   outlet EBSwitch mShowGerberDrawingFlowCheckbox $value self.showGerberDrawingFlow ;
@@ -360,7 +360,7 @@ prefs {
 //--- Edition transparency
   property Double fontEditionTransparency default 0.5 ;
   outlet EBSlider mEditionTransparencySlider $doubleValue self.fontEditionTransparency (sendContinously:yes) ;
-  outlet EBDoubleField mEditionTransparencyTextField $value self.fontEditionTransparency (sendContinously:no, autoFormatter:no) ;
+  outlet EBDoubleField mEditionTransparencyTextField $value self.fontEditionTransparency (sendContinously:yes, autoFormatter:no) ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

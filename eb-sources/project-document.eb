@@ -295,8 +295,38 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet EBSwitch mSchematicsVerticalFlipSwitch $value root.mSchematicVerticalFlip ;
   outlet EBPopUpButton mSchematicsGridStylePopUpButton $selectedIndex root.mSchematicGridStyle ;
   outlet EBPopUpButton mSchematicsGridDisplayFactorPopUpButton $selectedTag root.mSchematicGridDisplayFactor ;
+  outlet EBColorWell mDotColorGridForSchematicColorWell $color prefs.dotColorGridForSchematic (sendContinously:yes) ;
+  outlet EBColorWell mLineColorGridForSchematicColorWell $color prefs.lineColorGridForSchematic (sendContinously:yes) ;
   outlet EBColorWell mSchematicBackColorColorWell $color prefs.schematicBackColor (sendContinously: yes) ;
   outlet EBColorWell mSchematicFrameColorColorWell $color prefs.schematicFrameColor (sendContinously: yes) ;
+
+//----------------- Color and Font inspector
+
+//--- Symbol color for placed components
+  outlet EBColorWell mSymbolColorForSchematicColorWell $color prefs.symbolColorForSchematic (sendContinously:yes) ;
+//--- Symbol color for unplaced components
+  outlet EBColorWell mUnplacedComponentsColorForSchematicColorWell $color prefs.symbolColorForUnplacedComponentsForSchematic (sendContinously:yes) ;
+//--- Symbol drawing line width
+  outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton $selectedTag prefs.symbolDrawingWidthMultipliedByTenForSchematic ;
+//--- Component Name Color
+  outlet EBColorWell mComponentNameColorForSchematicColorWell $color prefs.componentNameColorForSchematic (sendContinously:yes) ;
+//--- Component Name Font
+  outlet EBFontButton mComponentNameFontForSchematicFontButton $fontValue prefs.componentNameFontForSchematic ;
+//--- Component Value Color
+  outlet EBColorWell mComponentValueColorForSchematicColorWell $color prefs.componentValueColorForSchematic (sendContinously:yes) ;
+//--- Component Value Font
+  outlet EBFontButton mComponentValueFontForSchematicFontButton $fontValue prefs.componentValueFontForSchematic ;
+//--- Pin Name Color
+  outlet EBColorWell mPinNameColorForSchematicColorWell $color prefs.pinNameColorForSchematic (sendContinously:yes) ;
+//--- Pin Name Font
+  outlet EBFontButton mPinNameFontForSchematicFontButton $fontValue prefs.pinNameFontForSchematic ;
+//--- Pin Number Color
+  outlet EBColorWell mPinNumberColorForSchematicColorWell $color prefs.pinNumberColorForSchematic (sendContinously:yes) ;
+//--- Pin Number Font
+  outlet EBFontButton mPinNumberFontForSchematicFontButton $fontValue prefs.pinNumberFontForSchematic ;
+//--- Connection Color
+  outlet EBColorWell mConnectionColorForSchematicColorWell $color prefs.connectionColorForSchematic (sendContinously:yes) ;
+
 
 //--- Sheet inspector
   outlet EBTextField mSchematicsTitleTextField $value root.mSchematicTitle (sendContinously : yes) ;
@@ -350,8 +380,8 @@ xibdocument ProjectDocument root ProjectRoot {
     $graphicController #schematicObjectsController
     $gridStyle root.mSchematicGridStyle
     $gridDisplayFactor root.mSchematicGridDisplayFactor
-    $gridLineColor prefs.lineColorOfSymbolGrid
-    $gridCrossColor prefs.crossColorOfSymbolGrid
+    $gridLineColor prefs.lineColorGridForSchematic
+    $gridCrossColor prefs.dotColorGridForSchematic
     $zoom root.mSchematicZoom
     $backColor prefs.schematicBackColor
   ;
