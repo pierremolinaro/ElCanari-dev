@@ -99,6 +99,7 @@ final class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
     scrollView.hasHorizontalScroller = true
     scrollView.hasVerticalScroller = true
     scrollView.autohidesScrollers = false
+    scrollView.drawsBackground = false
     scrollView.documentView = self.mGraphicView
     return scrollView
   }

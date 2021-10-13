@@ -600,10 +600,10 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: symbolInfo
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRotation_property.selection, unwSelf.mMirror_property.selection, unwSelf.componentName_property.selection, unwSelf.mComponent_property.mComponentValue_property.selection, unwSelf.mComponent_property.deviceSymbolDictionary_property.selection, unwSelf.mSymbolInstanceName_property.selection, unwSelf.mSymbolTypeName_property.selection, unwSelf.mCenterX_property.selection, unwSelf.mCenterY_property.selection, preferences_pinNameFont_property.selection, unwSelf.mPoints_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
-          return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (preferences_pinNameColorForSchematic_property.selection, preferences_pinNameFontForSchematic_property.selection, preferences_pinNumberColorForSchematic_property.selection, preferences_pinNumberFontForSchematic_property.selection, unwSelf.mRotation_property.selection, unwSelf.mMirror_property.selection, unwSelf.componentName_property.selection, unwSelf.mComponent_property.mComponentValue_property.selection, unwSelf.mComponent_property.deviceSymbolDictionary_property.selection, unwSelf.mSymbolInstanceName_property.selection, unwSelf.mSymbolTypeName_property.selection, unwSelf.mCenterX_property.selection, unwSelf.mCenterY_property.selection, unwSelf.mPoints_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13)) :
+          return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -612,6 +612,10 @@ final class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
+    preferences_pinNameColorForSchematic_property.addEBObserver (self.symbolInfo_property)
+    preferences_pinNameFontForSchematic_property.addEBObserver (self.symbolInfo_property)
+    preferences_pinNumberColorForSchematic_property.addEBObserver (self.symbolInfo_property)
+    preferences_pinNumberFontForSchematic_property.addEBObserver (self.symbolInfo_property)
     self.mRotation_property.addEBObserver (self.symbolInfo_property)
     self.mMirror_property.addEBObserver (self.symbolInfo_property)
     self.componentName_property.addEBObserver (self.symbolInfo_property)
@@ -621,7 +625,6 @@ final class ComponentSymbolInProject : SchematicObject,
     self.mSymbolTypeName_property.addEBObserver (self.symbolInfo_property)
     self.mCenterX_property.addEBObserver (self.symbolInfo_property)
     self.mCenterY_property.addEBObserver (self.symbolInfo_property)
-    preferences_pinNameFont_property.addEBObserver (self.symbolInfo_property)
     self.mPoints_property.addEBObserverOf_symbolNameNetName (self.symbolInfo_property)
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
@@ -642,10 +645,10 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_pinNameFont_property.selection, unwSelf.mDisplayComponentNameOffsetX_property.selection, unwSelf.mDisplayComponentNameOffsetY_property.selection, unwSelf.mDisplayComponentValue_property.selection, unwSelf.mDisplayComponentValueOffsetX_property.selection, unwSelf.mDisplayComponentValueOffsetY_property.selection, unwSelf.symbolInfo_property.selection, preferences_symbolColorForSchematic_property.selection, unwSelf.mSymbolInstanceName_property.selection, unwSelf.mSymbolTypeName_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
-          return .single (transient_ComponentSymbolInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (preferences_pinNameFont_property.selection, preferences_componentNameColorForSchematic_property.selection, preferences_componentNameFontForSchematic_property.selection, preferences_componentValueColorForSchematic_property.selection, preferences_componentValueFontForSchematic_property.selection, preferences_symbolColorForSchematic_property.selection, unwSelf.mDisplayComponentNameOffsetX_property.selection, unwSelf.mDisplayComponentNameOffsetY_property.selection, unwSelf.mDisplayComponentValue_property.selection, unwSelf.mDisplayComponentValueOffsetX_property.selection, unwSelf.mDisplayComponentValueOffsetY_property.selection, unwSelf.symbolInfo_property.selection, unwSelf.mSymbolInstanceName_property.selection, unwSelf.mSymbolTypeName_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13)) :
+          return .single (transient_ComponentSymbolInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -655,13 +658,17 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     }
     preferences_pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    preferences_componentNameColorForSchematic_property.addEBObserver (self.objectDisplay_property)
+    preferences_componentNameFontForSchematic_property.addEBObserver (self.objectDisplay_property)
+    preferences_componentValueColorForSchematic_property.addEBObserver (self.objectDisplay_property)
+    preferences_componentValueFontForSchematic_property.addEBObserver (self.objectDisplay_property)
+    preferences_symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property)
     self.mDisplayComponentNameOffsetX_property.addEBObserver (self.objectDisplay_property)
     self.mDisplayComponentNameOffsetY_property.addEBObserver (self.objectDisplay_property)
     self.mDisplayComponentValue_property.addEBObserver (self.objectDisplay_property)
     self.mDisplayComponentValueOffsetX_property.addEBObserver (self.objectDisplay_property)
     self.mDisplayComponentValueOffsetY_property.addEBObserver (self.objectDisplay_property)
     self.symbolInfo_property.addEBObserver (self.objectDisplay_property)
-    preferences_symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property)
     self.mSymbolInstanceName_property.addEBObserver (self.objectDisplay_property)
     self.mSymbolTypeName_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
@@ -724,6 +731,10 @@ final class ComponentSymbolInProject : SchematicObject,
     self.mComponent_property.mComponentValue_property.removeEBObserver (self.componentValueProxy_property)
     // self.mComponent_property.componentName_property.removeEBObserver (self.componentName_property)
     // self.mComponent_property.deviceName_property.removeEBObserver (self.deviceName_property)
+    // preferences_pinNameColorForSchematic_property.removeEBObserver (self.symbolInfo_property)
+    // preferences_pinNameFontForSchematic_property.removeEBObserver (self.symbolInfo_property)
+    // preferences_pinNumberColorForSchematic_property.removeEBObserver (self.symbolInfo_property)
+    // preferences_pinNumberFontForSchematic_property.removeEBObserver (self.symbolInfo_property)
     // self.mRotation_property.removeEBObserver (self.symbolInfo_property)
     // self.mMirror_property.removeEBObserver (self.symbolInfo_property)
     // self.componentName_property.removeEBObserver (self.symbolInfo_property)
@@ -733,17 +744,20 @@ final class ComponentSymbolInProject : SchematicObject,
     // self.mSymbolTypeName_property.removeEBObserver (self.symbolInfo_property)
     // self.mCenterX_property.removeEBObserver (self.symbolInfo_property)
     // self.mCenterY_property.removeEBObserver (self.symbolInfo_property)
-    // preferences_pinNameFont_property.removeEBObserver (self.symbolInfo_property)
     // self.mPoints_property.removeEBObserverOf_symbolNameNetName (self.symbolInfo_property)
     // self.mComponent_property.pinPadAssignments_property.removeEBObserver (self.pinPadAssignments_property)
     // preferences_pinNameFont_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_componentNameColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_componentNameFontForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_componentValueColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_componentValueFontForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
     // self.mDisplayComponentNameOffsetX_property.removeEBObserver (self.objectDisplay_property)
     // self.mDisplayComponentNameOffsetY_property.removeEBObserver (self.objectDisplay_property)
     // self.mDisplayComponentValue_property.removeEBObserver (self.objectDisplay_property)
     // self.mDisplayComponentValueOffsetX_property.removeEBObserver (self.objectDisplay_property)
     // self.mDisplayComponentValueOffsetY_property.removeEBObserver (self.objectDisplay_property)
     // self.symbolInfo_property.removeEBObserver (self.objectDisplay_property)
-    // preferences_symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
     // self.mSymbolInstanceName_property.removeEBObserver (self.objectDisplay_property)
     // self.mSymbolTypeName_property.removeEBObserver (self.objectDisplay_property)
     // preferences_pinNameFont_property.removeEBObserver (self.selectionDisplay_property)

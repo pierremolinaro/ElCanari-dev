@@ -27,6 +27,10 @@ graphic entity ComponentSymbolInProject : SchematicObject {
   transient String deviceName dependsFrom self.mComponent.one.deviceName ;
 
   transient ComponentSymbolInfo symbolInfo dependsFrom
+    prefs.pinNameColorForSchematic,
+    prefs.pinNameFontForSchematic,
+    prefs.pinNumberColorForSchematic,
+    prefs.pinNumberFontForSchematic,
     self.mRotation,
     self.mMirror,
     self.componentName,
@@ -36,7 +40,6 @@ graphic entity ComponentSymbolInProject : SchematicObject {
     self.mSymbolTypeName,
     self.mCenterX,
     self.mCenterY,
-    prefs.pinNameFont,
     self.mPoints.all.symbolNameNetName
   ;
 
@@ -46,13 +49,17 @@ graphic entity ComponentSymbolInProject : SchematicObject {
 
   override transient EBShape objectDisplay dependsFrom
     prefs.pinNameFont,
+    prefs.componentNameColorForSchematic,
+    prefs.componentNameFontForSchematic,
+    prefs.componentValueColorForSchematic,
+    prefs.componentValueFontForSchematic,
+    prefs.symbolColorForSchematic,
     self.mDisplayComponentNameOffsetX,
     self.mDisplayComponentNameOffsetY,
     self.mDisplayComponentValue,
     self.mDisplayComponentValueOffsetX,
     self.mDisplayComponentValueOffsetY,
     self.symbolInfo,
-    prefs.symbolColorForSchematic,
     self.mSymbolInstanceName,
     self.mSymbolTypeName
   ;

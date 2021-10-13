@@ -21,14 +21,17 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
        _ self_mSheets : [EBManagedObject_address_protocol],
        _ self_mSelectedSheet : EBManagedObject_address_protocol?,
        _ self_mSchematicDate : Date,                   
-       _ prefs_schematicBackColor : NSColor
+       _ prefs_schematicBackColor : NSColor,           
+       _ prefs_schematicFrameColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let textAttributes : [NSAttributedString.Key : Any] = [
-          NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+          NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize),
+          NSAttributedString.Key.foregroundColor : prefs_schematicFrameColor
         ]
         let lineAttributes : [NSAttributedString.Key : Any] = [
-          NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize * 0.75)
+          NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize * 0.75),
+          NSAttributedString.Key.foregroundColor : prefs_schematicFrameColor
         ]
         let LEFT_COLUMN  : CGFloat = 196.0
         let RIGHT_COLUMN : CGFloat =  32.0
@@ -106,7 +109,7 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
       bp.lineWidth = 1.0
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round
-      shape.add (stroke: [bp], .black)
+      shape.add (stroke: [bp], prefs_schematicFrameColor)
      //--- Schematics Title
         p = NSPoint (x: sheetWidth - RIGHT_COLUMN - LEFT_COLUMN / 2.0 - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 2.5 + PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
         shape.add (text: self_mSchematicTitle, p, textAttributes, .center, .center)

@@ -15,13 +15,17 @@ import Cocoa
 
 func transient_ComponentSymbolInProject_objectDisplay (
        _ prefs_pinNameFont : NSFont,                   
+       _ prefs_componentNameColorForSchematic : NSColor,
+       _ prefs_componentNameFontForSchematic : NSFont, 
+       _ prefs_componentValueColorForSchematic : NSColor,
+       _ prefs_componentValueFontForSchematic : NSFont,
+       _ prefs_symbolColorForSchematic : NSColor,      
        _ self_mDisplayComponentNameOffsetX : Int,      
        _ self_mDisplayComponentNameOffsetY : Int,      
        _ self_mDisplayComponentValue : Bool,           
        _ self_mDisplayComponentValueOffsetX : Int,     
        _ self_mDisplayComponentValueOffsetY : Int,     
        _ self_symbolInfo : ComponentSymbolInfo,        
-       _ prefs_symbolColorForSchematic : NSColor,      
        _ self_mSymbolInstanceName : String,            
        _ self_mSymbolTypeName : String
 ) -> EBShape {
@@ -42,7 +46,8 @@ func transient_ComponentSymbolInProject_objectDisplay (
       //--- Component name
         do{
           let componentNameTextAttributes : [NSAttributedString.Key : Any] = [
-            NSAttributedString.Key.font : prefs_pinNameFont
+            NSAttributedString.Key.font : prefs_componentNameFontForSchematic,
+            NSAttributedString.Key.foregroundColor : prefs_componentNameColorForSchematic
           ]
           let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
           let componentNameShape = EBShape (
@@ -57,7 +62,8 @@ func transient_ComponentSymbolInProject_objectDisplay (
       //--- Component value
         if self_mDisplayComponentValue {
           let componentValueTextAttributes : [NSAttributedString.Key : Any] = [
-            NSAttributedString.Key.font : prefs_pinNameFont
+            NSAttributedString.Key.font : prefs_componentValueFontForSchematic,
+            NSAttributedString.Key.foregroundColor : prefs_componentValueColorForSchematic
           ]
           let value = (self_symbolInfo.componentValue != "") ? self_symbolInfo.componentValue : "No value"
           let componentValueCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentValueOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY)

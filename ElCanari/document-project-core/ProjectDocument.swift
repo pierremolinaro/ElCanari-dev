@@ -919,6 +919,7 @@ import Cocoa
   @IBOutlet final var mSchematicCustomSizeView : NSView? = nil
   @IBOutlet final var mSchematicCustomWidthTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mSchematicCustomWidthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mSchematicFrameColorColorWell : EBColorWell? = nil
   @IBOutlet final var mSchematicLabelInsulateSubnetButton : EBButton? = nil
   @IBOutlet final var mSchematicLabelMergeSubnetButton : EBButton? = nil
   @IBOutlet final var mSchematicLabelNetClassButton : EBPopUpButton? = nil
@@ -1553,6 +1554,7 @@ import Cocoa
     checkOutletConnection (self.mSchematicCustomSizeView, "mSchematicCustomSizeView", NSView.self, #file, #line)
     checkOutletConnection (self.mSchematicCustomWidthTextField, "mSchematicCustomWidthTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mSchematicCustomWidthUnitPopUp, "mSchematicCustomWidthUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSchematicFrameColorColorWell, "mSchematicFrameColorColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSchematicLabelInsulateSubnetButton, "mSchematicLabelInsulateSubnetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicLabelMergeSubnetButton, "mSchematicLabelMergeSubnetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicLabelNetClassButton, "mSchematicLabelNetClassButton", EBPopUpButton.self, #file, #line)
@@ -2289,6 +2291,7 @@ import Cocoa
     self.mSchematicsGridStylePopUpButton?.bind_selectedIndex (self.rootObject.mSchematicGridStyle_property)
     self.mSchematicsGridDisplayFactorPopUpButton?.bind_selectedTag (self.rootObject.mSchematicGridDisplayFactor_property)
     self.mSchematicBackColorColorWell?.bind_color (preferences_schematicBackColor_property, sendContinously:true)
+    self.mSchematicFrameColorColorWell?.bind_color (preferences_schematicFrameColor_property, sendContinously:true)
     self.mSchematicsTitleTextField?.bind_value (self.rootObject.mSchematicTitle_property, sendContinously:true)
     self.mSchematicsVersionTextField?.bind_value (self.rootObject.mSchematicVersion_property, sendContinously:true)
     self.mSchematicsSheetOrientationSegmentedControl?.bind_selectedSegment (self.rootObject.mSchematicSheetOrientation_property)
@@ -3169,6 +3172,7 @@ import Cocoa
     self.mSchematicsGridStylePopUpButton?.unbind_selectedIndex ()
     self.mSchematicsGridDisplayFactorPopUpButton?.unbind_selectedTag ()
     self.mSchematicBackColorColorWell?.unbind_color ()
+    self.mSchematicFrameColorColorWell?.unbind_color ()
     self.mSchematicsTitleTextField?.unbind_value ()
     self.mSchematicsVersionTextField?.unbind_value ()
     self.mSchematicsSheetOrientationSegmentedControl?.unbind_selectedSegment ()
@@ -4021,6 +4025,7 @@ import Cocoa
     self.mSchematicCustomSizeView?.ebCleanUp ()
     self.mSchematicCustomWidthTextField?.ebCleanUp ()
     self.mSchematicCustomWidthUnitPopUp?.ebCleanUp ()
+    self.mSchematicFrameColorColorWell?.ebCleanUp ()
     self.mSchematicLabelInsulateSubnetButton?.ebCleanUp ()
     self.mSchematicLabelMergeSubnetButton?.ebCleanUp ()
     self.mSchematicLabelNetClassButton?.ebCleanUp ()
@@ -4480,6 +4485,7 @@ import Cocoa
     self.mSchematicCustomSizeView = nil
     self.mSchematicCustomWidthTextField = nil
     self.mSchematicCustomWidthUnitPopUp = nil
+    self.mSchematicFrameColorColorWell = nil
     self.mSchematicLabelInsulateSubnetButton = nil
     self.mSchematicLabelMergeSubnetButton = nil
     self.mSchematicLabelNetClassButton = nil

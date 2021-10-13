@@ -52,10 +52,15 @@ let Preferences_mPinNameFontForDevice = "Preferences:mPinNameFontForDevice"
 let Preferences_symbolDrawingWidthForDeviceMultipliedByTen = "Preferences:symbolDrawingWidthForDeviceMultipliedByTen"
 let Preferences_packageDrawingWidthForDeviceMultipliedByTen = "Preferences:packageDrawingWidthForDeviceMultipliedByTen"
 let Preferences_schematicBackColor = "Preferences:schematicBackColor"
+let Preferences_schematicFrameColor = "Preferences:schematicFrameColor"
 let Preferences_dotColorGridForSchematic = "Preferences:dotColorGridForSchematic"
 let Preferences_lineColorGridForSchematic = "Preferences:lineColorGridForSchematic"
 let Preferences_symbolColorForUnplacedComponentsForSchematic = "Preferences:symbolColorForUnplacedComponentsForSchematic"
 let Preferences_symbolColorForSchematic = "Preferences:symbolColorForSchematic"
+let Preferences_componentNameColorForSchematic = "Preferences:componentNameColorForSchematic"
+let Preferences_componentNameFontForSchematic = "Preferences:componentNameFontForSchematic"
+let Preferences_componentValueColorForSchematic = "Preferences:componentValueColorForSchematic"
+let Preferences_componentValueFontForSchematic = "Preferences:componentValueFontForSchematic"
 let Preferences_pinNameFontForSchematic = "Preferences:pinNameFontForSchematic"
 let Preferences_pinNameColorForSchematic = "Preferences:pinNameColorForSchematic"
 let Preferences_pinNumberFontForSchematic = "Preferences:pinNumberFontForSchematic"
@@ -743,6 +748,19 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
 //····················································································································
+//   Atomic property: schematicFrameColor
+//····················································································································
+
+  let preferences_schematicFrameColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_schematicFrameColor)
+
+//····················································································································
+
+  var preferences_schematicFrameColor : NSColor {
+    get { return preferences_schematicFrameColor_property.propval }
+    set { preferences_schematicFrameColor_property.setProp (newValue) }
+  }
+
+//····················································································································
 //   Atomic property: dotColorGridForSchematic
 //····················································································································
 
@@ -792,6 +810,58 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var preferences_symbolColorForSchematic : NSColor {
     get { return preferences_symbolColorForSchematic_property.propval }
     set { preferences_symbolColorForSchematic_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: componentNameColorForSchematic
+//····················································································································
+
+  let preferences_componentNameColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_componentNameColorForSchematic)
+
+//····················································································································
+
+  var preferences_componentNameColorForSchematic : NSColor {
+    get { return preferences_componentNameColorForSchematic_property.propval }
+    set { preferences_componentNameColorForSchematic_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: componentNameFontForSchematic
+//····················································································································
+
+  let preferences_componentNameFontForSchematic_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_componentNameFontForSchematic)
+
+//····················································································································
+
+  var preferences_componentNameFontForSchematic : NSFont {
+    get { return preferences_componentNameFontForSchematic_property.propval }
+    set { preferences_componentNameFontForSchematic_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: componentValueColorForSchematic
+//····················································································································
+
+  let preferences_componentValueColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_componentValueColorForSchematic)
+
+//····················································································································
+
+  var preferences_componentValueColorForSchematic : NSColor {
+    get { return preferences_componentValueColorForSchematic_property.propval }
+    set { preferences_componentValueColorForSchematic_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: componentValueFontForSchematic
+//····················································································································
+
+  let preferences_componentValueFontForSchematic_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_componentValueFontForSchematic)
+
+//····················································································································
+
+  var preferences_componentValueFontForSchematic : NSFont {
+    get { return preferences_componentValueFontForSchematic_property.propval }
+    set { preferences_componentValueFontForSchematic_property.setProp (newValue) }
   }
 
 //····················································································································
@@ -2737,6 +2807,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mCheckLibraryResultTextView : NSTextView? = nil
   @IBOutlet var mCheckingForLibraryUpdateProgressIndicator : EBProgressIndicator? = nil
   @IBOutlet var mCheckingForLibraryUpdateWindow : EBWindow? = nil
+  @IBOutlet var mComponentNameColorForSchematicColorWell : EBColorWell? = nil
+  @IBOutlet var mComponentNameFontForSchematicFontButton : EBFontButton? = nil
+  @IBOutlet var mComponentValueColorForSchematicColorWell : EBColorWell? = nil
+  @IBOutlet var mComponentValueFontForSchematicFontButton : EBFontButton? = nil
   @IBOutlet var mConnectionColorForSchematicColorWell : EBColorWell? = nil
   @IBOutlet var mCrossColorOfSymbolGridColorWell : EBColorWell? = nil
   @IBOutlet var mDimensionFontButton : EBFontButton? = nil
@@ -2982,6 +3056,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     checkOutletConnection (self.mCheckLibraryResultTextView, "mCheckLibraryResultTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mCheckingForLibraryUpdateProgressIndicator, "mCheckingForLibraryUpdateProgressIndicator", EBProgressIndicator.self, #file, #line)
     checkOutletConnection (self.mCheckingForLibraryUpdateWindow, "mCheckingForLibraryUpdateWindow", EBWindow.self, #file, #line)
+    checkOutletConnection (self.mComponentNameColorForSchematicColorWell, "mComponentNameColorForSchematicColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mComponentNameFontForSchematicFontButton, "mComponentNameFontForSchematicFontButton", EBFontButton.self, #file, #line)
+    checkOutletConnection (self.mComponentValueColorForSchematicColorWell, "mComponentValueColorForSchematicColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mComponentValueFontForSchematicFontButton, "mComponentValueFontForSchematicFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mConnectionColorForSchematicColorWell, "mConnectionColorForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mCrossColorOfSymbolGridColorWell, "mCrossColorOfSymbolGridColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDimensionFontButton, "mDimensionFontButton", EBFontButton.self, #file, #line)
@@ -3118,6 +3196,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     mLineColorGridForSchematicColorWell?.bind_color (preferences_lineColorGridForSchematic_property, sendContinously:false)
     mUnplacedComponentsColorForSchematicColorWell?.bind_color (preferences_symbolColorForUnplacedComponentsForSchematic_property, sendContinously:false)
     mSymbolColorForSchematicColorWell?.bind_color (preferences_symbolColorForSchematic_property, sendContinously:false)
+    mComponentNameColorForSchematicColorWell?.bind_color (preferences_componentNameColorForSchematic_property, sendContinously:false)
+    mComponentNameFontForSchematicFontButton?.bind_fontValue (preferences_componentNameFontForSchematic_property)
+    mComponentValueColorForSchematicColorWell?.bind_color (preferences_componentValueColorForSchematic_property, sendContinously:false)
+    mComponentValueFontForSchematicFontButton?.bind_fontValue (preferences_componentValueFontForSchematic_property)
     mPinNameFontForSchematicFontButton?.bind_fontValue (preferences_pinNameFontForSchematic_property)
     mPinNameColorForSchematicColorWell?.bind_color (preferences_pinNameColorForSchematic_property, sendContinously:false)
     mPinNumberFontForSchematicFontButton?.bind_fontValue (preferences_pinNumberFontForSchematic_property)

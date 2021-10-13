@@ -1436,11 +1436,11 @@
             <point key="canvasLocation" x="848" y="462.5"/>
         </customView>
         <customView id="5593" userLabel="Page : Schematic Prefs">
-            <rect key="frame" x="0.0" y="0.0" width="430" height="351"/>
+            <rect key="frame" x="0.0" y="0.0" width="430" height="476"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="156" translatesAutoresizingMaskIntoConstraints="NO" id="5834">
-                    <rect key="frame" x="57" y="283" width="160" height="14"/>
+                    <rect key="frame" x="57" y="408" width="160" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Grid Color (for Lines):" id="5835">
                         <font key="font" metaFont="message" size="11"/>
@@ -1449,12 +1449,12 @@
                     </textFieldCell>
                 </textField>
                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5833" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="230" y="279" width="54" height="22"/>
+                    <rect key="frame" x="230" y="404" width="54" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="156" translatesAutoresizingMaskIntoConstraints="NO" id="5832">
-                    <rect key="frame" x="57" y="313" width="160" height="14"/>
+                    <rect key="frame" x="57" y="438" width="160" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Grid Color (for Dots):" id="5836">
                         <font key="font" metaFont="message" size="11"/>
@@ -1463,17 +1463,17 @@
                     </textFieldCell>
                 </textField>
                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5831" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="230" y="309" width="54" height="22"/>
+                    <rect key="frame" x="230" y="434" width="54" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5607" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="230" y="247" width="54" height="24"/>
+                    <rect key="frame" x="230" y="372" width="54" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="196" translatesAutoresizingMaskIntoConstraints="NO" id="5606">
-                    <rect key="frame" x="17" y="252" width="200" height="14"/>
+                    <rect key="frame" x="17" y="377" width="200" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Symbol Color, placed Components:" id="5614">
                         <font key="font" metaFont="message" size="11"/>
@@ -1482,7 +1482,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="156" translatesAutoresizingMaskIntoConstraints="NO" id="5605">
-                    <rect key="frame" x="57" y="182" width="160" height="14"/>
+                    <rect key="frame" x="57" y="307" width="160" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Symbol Drawing Width:" id="5615">
                         <font key="font" metaFont="message" size="11"/>
@@ -1491,7 +1491,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5604" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="230" y="178" width="98" height="22"/>
+                    <rect key="frame" x="230" y="303" width="98" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="square" title="0.5 Point" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" tag="5" inset="2" preferredEdge="maxY" selectedItem="5619" id="5616">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1507,13 +1507,89 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="258-6U-9a8" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="230" y="275" width="54" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </colorWell>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="156" translatesAutoresizingMaskIntoConstraints="NO" id="TKG-eG-4qi">
+                    <rect key="frame" x="57" y="280" width="160" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Component Name Color:" id="501-Ml-3ou">
+                        <font key="font" metaFont="message" size="11"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ITe-sG-ZrR" customClass="EBFontButton" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="230" y="243" width="180" height="22"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" title="Button" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="Cnp-uo-soN">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="message" size="11"/>
+                    </buttonCell>
+                </button>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="156" translatesAutoresizingMaskIntoConstraints="NO" id="1HM-ex-niT">
+                    <rect key="frame" x="57" y="249" width="160" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Component Name Font:" id="3ib-wK-oh6">
+                        <font key="font" metaFont="message" size="11"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6285" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="230" y="340" width="54" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </colorWell>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="204" translatesAutoresizingMaskIntoConstraints="NO" id="6286">
+                    <rect key="frame" x="9" y="343" width="208" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Symbol Color, unplaced Components:" id="6287">
+                        <font key="font" metaFont="message" size="11"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JA3-Oj-0t8" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="230" y="211" width="54" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </colorWell>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="156" translatesAutoresizingMaskIntoConstraints="NO" id="jw5-BK-dLf">
+                    <rect key="frame" x="57" y="216" width="160" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Component Value Color:" id="knZ-Rn-TnE">
+                        <font key="font" metaFont="message" size="11"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nPU-zk-fnE" customClass="EBFontButton" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="230" y="179" width="180" height="22"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" title="Button" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2wt-02-ajM">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="message" size="11"/>
+                    </buttonCell>
+                </button>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="156" translatesAutoresizingMaskIntoConstraints="NO" id="McM-L9-e5j">
+                    <rect key="frame" x="57" y="185" width="160" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Component Value Font:" id="MvF-al-Dd5">
+                        <font key="font" metaFont="message" size="11"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5603" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="230" y="146" width="54" height="24"/>
+                    <rect key="frame" x="230" y="147" width="54" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="156" translatesAutoresizingMaskIntoConstraints="NO" id="5602">
-                    <rect key="frame" x="57" y="151" width="160" height="14"/>
+                    <rect key="frame" x="57" y="152" width="160" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Pin Name Color:" id="5623">
                         <font key="font" metaFont="message" size="11"/>
@@ -1522,7 +1598,7 @@
                     </textFieldCell>
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5601" customClass="EBFontButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="230" y="114" width="180" height="22"/>
+                    <rect key="frame" x="230" y="115" width="180" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" title="Button" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5624">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1530,7 +1606,7 @@
                     </buttonCell>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="156" translatesAutoresizingMaskIntoConstraints="NO" id="5600">
-                    <rect key="frame" x="57" y="120" width="160" height="14"/>
+                    <rect key="frame" x="57" y="121" width="160" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Pin Name Font:" id="5625">
                         <font key="font" metaFont="message" size="11"/>
@@ -1583,22 +1659,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6285" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="230" y="215" width="54" height="24"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                </colorWell>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="204" translatesAutoresizingMaskIntoConstraints="NO" id="6286">
-                    <rect key="frame" x="9" y="218" width="208" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Symbol Color, unplaced Components:" id="6287">
-                        <font key="font" metaFont="message" size="11"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
             </subviews>
-            <point key="canvasLocation" x="621" y="477.5"/>
+            <point key="canvasLocation" x="621" y="540"/>
         </customView>
         <customView id="5631" userLabel="Page : Board Prefs">
             <rect key="frame" x="0.0" y="0.0" width="390" height="688"/>
@@ -2486,6 +2548,10 @@ Gw
                 <outlet property="mCheckLibraryResultTextView" destination="755" id="SIY-oS-aJC"/>
                 <outlet property="mCheckingForLibraryUpdateProgressIndicator" destination="6221" id="U9t-ri-t3x"/>
                 <outlet property="mCheckingForLibraryUpdateWindow" destination="6215" id="1xF-fb-FaI"/>
+                <outlet property="mComponentNameColorForSchematicColorWell" destination="258-6U-9a8" id="VaC-Um-H1c"/>
+                <outlet property="mComponentNameFontForSchematicFontButton" destination="ITe-sG-ZrR" id="832-GY-DcD"/>
+                <outlet property="mComponentValueColorForSchematicColorWell" destination="JA3-Oj-0t8" id="a8p-U0-CTQ"/>
+                <outlet property="mComponentValueFontForSchematicFontButton" destination="nPU-zk-fnE" id="5wj-Ve-rxR"/>
                 <outlet property="mConnectionColorForSchematicColorWell" destination="5595" id="Zdp-yE-EWY"/>
                 <outlet property="mCrossColorOfSymbolGridColorWell" destination="5855" id="YEt-rL-Fka"/>
                 <outlet property="mDimensionFontButton" destination="5490" id="6t1-eG-fcg"/>

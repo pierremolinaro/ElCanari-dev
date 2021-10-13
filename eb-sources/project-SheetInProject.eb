@@ -11,7 +11,10 @@ entity SheetInProject {
   
   transient CanariIssueArray issues dependsFrom self.mPoints.all.status ;
 
-  transient EBShape connectedPoints dependsFrom self.mPoints.all.connectedPoints ;
+  transient EBShape connectedPoints dependsFrom
+    prefs.connectionColorForSchematic,
+    self.mPoints.all.connectedPoints
+  ;
   
   transient Int connexionWarnings dependsFrom self.issues ;
   

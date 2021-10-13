@@ -264,10 +264,10 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoints_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_SheetInProject_connectedPoints (v0))
-        case (.multiple) :
+        switch (preferences_connectionColorForSchematic_property.selection, unwSelf.mPoints_property.selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_SheetInProject_connectedPoints (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -276,6 +276,7 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
+    preferences_connectionColorForSchematic_property.addEBObserver (self.connectedPoints_property)
     self.mPoints_property.addEBObserverOf_connectedPoints (self.connectedPoints_property)
   //--- Atomic property: connexionWarnings
     self.connexionWarnings_property.mReadModelFunction = { [weak self] in
@@ -344,6 +345,7 @@ final class SheetInProject : EBManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     // self.mPoints_property.removeEBObserverOf_status (self.issues_property)
+    // preferences_connectionColorForSchematic_property.removeEBObserver (self.connectedPoints_property)
     // self.mPoints_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
     // self.issues_property.removeEBObserver (self.connexionWarnings_property)
     // self.issues_property.removeEBObserver (self.connexionErrors_property)

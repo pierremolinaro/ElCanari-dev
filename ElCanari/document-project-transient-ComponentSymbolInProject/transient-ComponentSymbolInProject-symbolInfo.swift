@@ -14,6 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ComponentSymbolInProject_symbolInfo (
+       _ prefs_pinNameColorForSchematic : NSColor,  
+       _ prefs_pinNameFontForSchematic : NSFont,    
+       _ prefs_pinNumberColorForSchematic : NSColor,
+       _ prefs_pinNumberFontForSchematic : NSFont,  
        _ self_mRotation : QuadrantRotation,         
        _ self_mMirror : Bool,                       
        _ self_componentName : String,               
@@ -23,7 +27,6 @@ func transient_ComponentSymbolInProject_symbolInfo (
        _ self_mSymbolTypeName : String,             
        _ self_mCenterX : Int,                       
        _ self_mCenterY : Int,                       
-       _ prefs_pinNameFont : NSFont,                
        _ self_mPoints_symbolNameNetName : [PointInSchematic_symbolNameNetName]
 ) -> ComponentSymbolInfo {
 //--- START OF USER ZONE 2
@@ -39,7 +42,12 @@ func transient_ComponentSymbolInProject_symbolInfo (
         if let deviceInfo = self_mComponent_deviceSymbolDictionary? [key], let componentValue = self_mComponent_mComponentValue {
         //--- Pin names and pad names
           let pinNameAttributes : [NSAttributedString.Key : Any] = [
-            NSAttributedString.Key.font : prefs_pinNameFont
+            NSAttributedString.Key.font : prefs_pinNameFontForSchematic,
+            NSAttributedString.Key.foregroundColor : prefs_pinNameColorForSchematic
+          ]
+          let pinNumberAttributes : [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.font : prefs_pinNumberFontForSchematic,
+            NSAttributedString.Key.foregroundColor : prefs_pinNumberColorForSchematic
           ]
           var pins = [ComponentPinDescriptor] ()
           for pinPadAssignment in deviceInfo.assignments {
@@ -85,7 +93,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
               let pinNumberTextShape = EBShape (
                 text: pinPadAssignment.padName,
                 NSPoint (),
-                pinNameAttributes,
+                pinNumberAttributes,
                 self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.numberHorizontalAlignment, mirror: self_mMirror),
                 self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror)
               )

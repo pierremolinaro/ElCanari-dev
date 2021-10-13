@@ -202,7 +202,7 @@ prefs {
 
 prefs {
   property NSColor schematicBackColor default white ;
-
+  property NSColor schematicFrameColor default black ;
 //--- Schematic Grid Colors
   property NSColor dotColorGridForSchematic  default black;
   outlet EBColorWell mDotColorGridForSchematicColorWell $color self.dotColorGridForSchematic (sendContinously:no) ;
@@ -214,6 +214,18 @@ prefs {
 //--- Symbol color
   property NSColor symbolColorForSchematic default brown;
   outlet EBColorWell mSymbolColorForSchematicColorWell $color self.symbolColorForSchematic (sendContinously:no) ;
+//--- Component Name Color
+  property NSColor componentNameColorForSchematic default brown;
+  outlet EBColorWell mComponentNameColorForSchematicColorWell $color self.componentNameColorForSchematic (sendContinously:no) ;
+//--- Component Name Font
+  property NSFont componentNameFontForSchematic default 6 ; // toolTipsFontOfSize:6 ;
+  outlet EBFontButton mComponentNameFontForSchematicFontButton $fontValue self.componentNameFontForSchematic ;
+//--- Component Value Color
+  property NSColor componentValueColorForSchematic default brown;
+  outlet EBColorWell mComponentValueColorForSchematicColorWell $color self.componentValueColorForSchematic (sendContinously:no) ;
+//--- Component Name Font
+  property NSFont componentValueFontForSchematic default 6 ; // toolTipsFontOfSize:6 ;
+  outlet EBFontButton mComponentValueFontForSchematicFontButton $fontValue self.componentValueFontForSchematic ;
 //--- Pin Name Font
   property NSFont pinNameFontForSchematic default 6 ; // toolTipsFontOfSize:6;
   outlet EBFontButton mPinNameFontForSchematicFontButton $fontValue self.pinNameFontForSchematic ;

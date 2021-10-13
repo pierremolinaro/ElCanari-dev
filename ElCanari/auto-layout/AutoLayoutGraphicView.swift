@@ -75,16 +75,19 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   //····················································································································
 
   fileprivate func buildScrollView (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) -> EBScrollView {
-    let view = EBScrollView (frame: NSRect ())
-    view.minMagnification = CGFloat (inMinZoom) / 100.0
-    view.maxMagnification = CGFloat (inMaxZoom) / 100.0
-    view.allowsMagnification = true
-    view.hasHorizontalScroller = true
-    view.hasVerticalScroller = true
-    view.autohidesScrollers = false
-    view.contentView = NSClipView (frame: NSRect ())
-    view.documentView = self.mGraphicView
-    return view
+    let scrollView = EBScrollView (frame: NSRect ())
+    scrollView.minMagnification = CGFloat (inMinZoom) / 100.0
+    scrollView.maxMagnification = CGFloat (inMaxZoom) / 100.0
+    scrollView.allowsMagnification = true
+    scrollView.hasHorizontalScroller = true
+    scrollView.hasVerticalScroller = true
+    scrollView.autohidesScrollers = false
+    scrollView.contentView = NSClipView (frame: NSRect ())
+    scrollView.documentView = self.mGraphicView
+    scrollView.drawsBackground = false
+    scrollView.contentView.drawsBackground = false
+//    Swift.print ("drawsBackground -> \(scrollView.drawsBackground)")
+    return scrollView
   }
 
   //····················································································································
@@ -94,9 +97,6 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     tf.isBezeled = false
     tf.isBordered = false
     tf.drawsBackground = false
-//      tf.stringValue = "Hello"
-//      tf.backgroundColor = NSColor.white
-//      tf.drawsBackground = true
     tf.textColor = .black
     tf.isEnabled = true
     tf.isEditable = false

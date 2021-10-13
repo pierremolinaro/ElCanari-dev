@@ -150,7 +150,6 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 
   stackView mDataPage vStack set (spacing: 0) {
     hStack set (margins: 8) {
-      space
       hStack setFirstBaselineAlignment ()  {
         StaticLabel (title: "Drill File Extension", bold: no, size : .small)
         TextField (width: 56, size : .small) { $value root.drillDataFileExtension (sendContinously: yes) }
