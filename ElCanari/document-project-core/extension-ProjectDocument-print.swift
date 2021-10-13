@@ -138,8 +138,13 @@ extension CustomizedProjectDocument {
       let orientation : NSPrintInfo.PaperOrientation
       let pageWidth  : CGFloat
       let pageHeight : CGFloat
-      let boardViewWidth = boardView.frame.size.width
-      let boardViewHeight = boardView.frame.size.height
+  //--- Board Bound box
+      let boardLimitExtend = self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance
+      let boardBoundBox : CanariRect = self.rootObject.interiorBoundBox!
+      let boardViewWidth = canariUnitToCocoa (boardBoundBox.right + boardLimitExtend)
+      let boardViewHeight = canariUnitToCocoa (boardBoundBox.top + boardLimitExtend)
+//      let boardViewWidth = boardView.frame.size.width
+//      let boardViewHeight = boardView.frame.size.height
       if boardViewWidth > boardViewHeight {
         pageWidth = PAPER_A4_MAX_SIZE_COCOA_UNIT
         pageHeight = PAPER_A4_MIN_SIZE_COCOA_UNIT
@@ -174,7 +179,7 @@ extension CustomizedProjectDocument {
       printInfo.paperSize = NSSize (width: pageWidth, height: pageHeight)
       printInfo.horizontalPagination = .automatic
       printInfo.verticalPagination = .automatic
-      printInfo.scalingFactor = scalingFactor // 1.0
+      printInfo.scalingFactor = scalingFactor
       printInfo.isHorizontallyCentered = true
       printInfo.isVerticallyCentered = true
       printInfo.leftMargin = PAPER_LEFT_MARGIN_COCOA_UNIT
