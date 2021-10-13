@@ -37,7 +37,8 @@ let CHANGES : [String] = [
   "Utilisation de Sparkle 1.27"
 ]
 let NEWS : [String] = [
-  "Première version à prendre en charge des circuits à 4 ou 6 couches"
+  "Prise en charge des circuits à 4 ou 6 couches",
+  "Contrôle de la couleur de fond dans le schéma d'un projet"
 ]
 
 //--------------------------------------------------------------------------------------------------

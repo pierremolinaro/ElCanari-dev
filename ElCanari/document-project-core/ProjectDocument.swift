@@ -913,6 +913,7 @@ import Cocoa
   @IBOutlet final var mRevealPackageOfSelectedComponentsButton : EBButton? = nil
   @IBOutlet final var mRouterBoardInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mSaveDSNFileAuxiliaryView : NSView? = nil
+  @IBOutlet final var mSchematicBackColorColorWell : EBColorWell? = nil
   @IBOutlet final var mSchematicCustomHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mSchematicCustomHeightUnitPopUp : EBPopUpButton? = nil
   @IBOutlet final var mSchematicCustomSizeView : NSView? = nil
@@ -1546,6 +1547,7 @@ import Cocoa
     checkOutletConnection (self.mRevealPackageOfSelectedComponentsButton, "mRevealPackageOfSelectedComponentsButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRouterBoardInspectorView, "mRouterBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSaveDSNFileAuxiliaryView, "mSaveDSNFileAuxiliaryView", NSView.self, #file, #line)
+    checkOutletConnection (self.mSchematicBackColorColorWell, "mSchematicBackColorColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSchematicCustomHeightTextField, "mSchematicCustomHeightTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mSchematicCustomHeightUnitPopUp, "mSchematicCustomHeightUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSchematicCustomSizeView, "mSchematicCustomSizeView", NSView.self, #file, #line)
@@ -2286,6 +2288,7 @@ import Cocoa
     self.mSchematicsVerticalFlipSwitch?.bind_value (self.rootObject.mSchematicVerticalFlip_property)
     self.mSchematicsGridStylePopUpButton?.bind_selectedIndex (self.rootObject.mSchematicGridStyle_property)
     self.mSchematicsGridDisplayFactorPopUpButton?.bind_selectedTag (self.rootObject.mSchematicGridDisplayFactor_property)
+    self.mSchematicBackColorColorWell?.bind_color (preferences_schematicBackColor_property, sendContinously:true)
     self.mSchematicsTitleTextField?.bind_value (self.rootObject.mSchematicTitle_property, sendContinously:true)
     self.mSchematicsVersionTextField?.bind_value (self.rootObject.mSchematicVersion_property, sendContinously:true)
     self.mSchematicsSheetOrientationSegmentedControl?.bind_selectedSegment (self.rootObject.mSchematicSheetOrientation_property)
@@ -3165,6 +3168,7 @@ import Cocoa
     self.mSchematicsVerticalFlipSwitch?.unbind_value ()
     self.mSchematicsGridStylePopUpButton?.unbind_selectedIndex ()
     self.mSchematicsGridDisplayFactorPopUpButton?.unbind_selectedTag ()
+    self.mSchematicBackColorColorWell?.unbind_color ()
     self.mSchematicsTitleTextField?.unbind_value ()
     self.mSchematicsVersionTextField?.unbind_value ()
     self.mSchematicsSheetOrientationSegmentedControl?.unbind_selectedSegment ()
@@ -4011,6 +4015,7 @@ import Cocoa
     self.mRevealPackageOfSelectedComponentsButton?.ebCleanUp ()
     self.mRouterBoardInspectorView?.ebCleanUp ()
     self.mSaveDSNFileAuxiliaryView?.ebCleanUp ()
+    self.mSchematicBackColorColorWell?.ebCleanUp ()
     self.mSchematicCustomHeightTextField?.ebCleanUp ()
     self.mSchematicCustomHeightUnitPopUp?.ebCleanUp ()
     self.mSchematicCustomSizeView?.ebCleanUp ()
@@ -4469,6 +4474,7 @@ import Cocoa
     self.mRevealPackageOfSelectedComponentsButton = nil
     self.mRouterBoardInspectorView = nil
     self.mSaveDSNFileAuxiliaryView = nil
+    self.mSchematicBackColorColorWell = nil
     self.mSchematicCustomHeightTextField = nil
     self.mSchematicCustomHeightUnitPopUp = nil
     self.mSchematicCustomSizeView = nil

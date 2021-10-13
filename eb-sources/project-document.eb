@@ -295,6 +295,7 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet EBSwitch mSchematicsVerticalFlipSwitch $value root.mSchematicVerticalFlip ;
   outlet EBPopUpButton mSchematicsGridStylePopUpButton $selectedIndex root.mSchematicGridStyle ;
   outlet EBPopUpButton mSchematicsGridDisplayFactorPopUpButton $selectedTag root.mSchematicGridDisplayFactor ;
+  outlet EBColorWell mSchematicBackColorColorWell $color prefs.schematicBackColor (sendContinously: yes) ;
 
 //--- Sheet inspector
   outlet EBTextField mSchematicsTitleTextField $value root.mSchematicTitle (sendContinously : yes) ;

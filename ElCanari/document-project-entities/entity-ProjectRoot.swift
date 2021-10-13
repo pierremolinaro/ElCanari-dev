@@ -4856,10 +4856,10 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: schematicBackgroundDisplay
     self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSchematicTitle_property.selection, unwSelf.mSchematicVersion_property.selection, unwSelf.sheetGeometry_property.selection, unwSelf.mSelectedSheet_property.mSheetTitle_property.selection, unwSelf.mSheets_property.selection, unwSelf.mSelectedSheet_property.selection, unwSelf.mSchematicDate_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
-          return .single (transient_ProjectRoot_schematicBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (unwSelf.mSchematicTitle_property.selection, unwSelf.mSchematicVersion_property.selection, unwSelf.sheetGeometry_property.selection, unwSelf.mSelectedSheet_property.mSheetTitle_property.selection, unwSelf.mSheets_property.selection, unwSelf.mSelectedSheet_property.selection, unwSelf.mSchematicDate_property.selection, preferences_schematicBackColor_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+          return .single (transient_ProjectRoot_schematicBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -4875,6 +4875,7 @@ final class ProjectRoot : EBManagedObject,
     self.mSheets_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicDate_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    preferences_schematicBackColor_property.addEBObserver (self.schematicBackgroundDisplay_property)
   //--- Atomic property: netWarningCount
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5210,6 +5211,7 @@ final class ProjectRoot : EBManagedObject,
     // self.mSheets_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     // self.mSelectedSheet_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     // self.mSchematicDate_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // preferences_schematicBackColor_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     // self.mNetClasses_property.removeEBObserverOf_netWarningCount (self.netWarningCount_property)
     // self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netNamesArray_property)
     // self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)

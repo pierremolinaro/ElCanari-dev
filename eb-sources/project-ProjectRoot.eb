@@ -246,7 +246,8 @@ entity ProjectRoot {
     self.mSelectedSheet.one.mSheetTitle,
     self.mSheets,
     self.mSelectedSheet,
-    self.mSchematicDate
+    self.mSchematicDate,
+    prefs.schematicBackColor
   ;
   
   transient String connexionWarningString dependsFrom self.mSheets.all.connexionWarnings ;

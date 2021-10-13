@@ -20,7 +20,8 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
        _ self_mSelectedSheet_mSheetTitle : String?,    
        _ self_mSheets : [EBManagedObject_address_protocol],
        _ self_mSelectedSheet : EBManagedObject_address_protocol?,
-       _ self_mSchematicDate : Date
+       _ self_mSchematicDate : Date,                   
+       _ prefs_schematicBackColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let textAttributes : [NSAttributedString.Key : Any] = [
@@ -44,7 +45,7 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
         filledBP.appendRect (NSRect (x: sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: OFFSET, width: PAPER_GUTTER_WIDTH_COCOA_UNIT, height: sheetHeight))
         filledBP.appendRect (NSRect (x: OFFSET, y: OFFSET, width: sheetWidth, height: PAPER_GUTTER_HEIGHT_COCOA_UNIT))
         filledBP.appendRect (NSRect (x: sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT - LEFT_COLUMN - RIGHT_COLUMN + OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: LEFT_COLUMN + RIGHT_COLUMN, height: LINE_HEIGHT * 3.0))
-        shape.add (filled: [filledBP], .white)
+        shape.add (filled: [filledBP], prefs_schematicBackColor)
       //---
         var bp = EBBezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: sheetWidth, height: sheetHeight))
         bp.appendRect (NSRect (x: PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT * 2.0, height: sheetHeight - PAPER_GUTTER_HEIGHT_COCOA_UNIT * 2.0))
