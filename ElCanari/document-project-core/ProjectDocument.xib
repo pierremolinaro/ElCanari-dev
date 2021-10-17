@@ -1466,11 +1466,11 @@ Gw
                     <tabViewItems>
                         <tabViewItem label="Grid and Flip" identifier="1" id="Ifp-b0-xCg">
                             <view key="view" id="JI9-Ad-FOV">
-                                <rect key="frame" x="10" y="25" width="250" height="322"/>
+                                <rect key="frame" x="10" y="29" width="250" height="318"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="39" translatesAutoresizingMaskIntoConstraints="NO" id="1233">
-                                        <rect key="frame" x="16" y="242" width="43" height="14"/>
+                                        <rect key="frame" x="16" y="238" width="43" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Every" id="14560">
                                             <font key="font" metaFont="message" size="11"/>
@@ -1479,7 +1479,7 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1243" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                                        <rect key="frame" x="126" y="270" width="103" height="17"/>
+                                        <rect key="frame" x="126" y="266" width="103" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="roundRect" title="Lines" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2" inset="2" preferredEdge="maxY" selectedItem="1222" id="14562">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1494,7 +1494,7 @@ Gw
                                         </popUpButtonCell>
                                     </popUpButton>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15254" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="210" width="103" height="18"/>
+                                        <rect key="frame" x="15" y="206" width="103" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Horizontal Flip" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="15273">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1502,7 +1502,7 @@ Gw
                                         </buttonCell>
                                     </button>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="62" translatesAutoresizingMaskIntoConstraints="NO" id="1213">
-                                        <rect key="frame" x="15" y="301" width="66" height="14"/>
+                                        <rect key="frame" x="15" y="297" width="66" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Grid Step" id="14558">
                                             <font key="font" metaFont="message" size="11"/>
@@ -1511,7 +1511,7 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1241">
-                                        <rect key="frame" x="124" y="297" width="106" height="18"/>
+                                        <rect key="frame" x="124" y="293" width="106" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="right" title="50 mils" id="14561">
                                             <font key="font" metaFont="smallSystemBold"/>
@@ -1520,7 +1520,7 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15253" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
-                                        <rect key="frame" x="128" y="210" width="103" height="18"/>
+                                        <rect key="frame" x="128" y="206" width="103" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Vertical Flip" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="15274">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1528,7 +1528,7 @@ Gw
                                         </buttonCell>
                                     </button>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="72" translatesAutoresizingMaskIntoConstraints="NO" id="1246">
-                                        <rect key="frame" x="16" y="272" width="76" height="14"/>
+                                        <rect key="frame" x="16" y="268" width="76" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Display Grid" id="14563">
                                             <font key="font" metaFont="message" size="11"/>
@@ -1537,7 +1537,7 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1212" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                                        <rect key="frame" x="126" y="240" width="103" height="17"/>
+                                        <rect key="frame" x="126" y="236" width="103" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="roundRect" title="8 Steps" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="8" inset="2" preferredEdge="maxY" selectedItem="1228" id="14557">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1555,7 +1555,7 @@ Gw
                                         </popUpButtonCell>
                                     </popUpButton>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="39" translatesAutoresizingMaskIntoConstraints="NO" id="nES-mC-QXS">
-                                        <rect key="frame" x="16" y="188" width="156" height="14"/>
+                                        <rect key="frame" x="16" y="184" width="156" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Cross Grid Color" id="WNX-sy-vRE">
                                             <font key="font" metaFont="message" size="11"/>
@@ -1564,12 +1564,12 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s0u-dq-6eN" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
-                                        <rect key="frame" x="184" y="185" width="45" height="20"/>
+                                        <rect key="frame" x="184" y="181" width="45" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </colorWell>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="39" translatesAutoresizingMaskIntoConstraints="NO" id="HK0-A2-hgj">
-                                        <rect key="frame" x="16" y="160" width="156" height="14"/>
+                                        <rect key="frame" x="16" y="156" width="156" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Line Grid Color" id="a1a-fV-pFx">
                                             <font key="font" metaFont="message" size="11"/>
@@ -1578,12 +1578,12 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NuG-rM-Grt" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
-                                        <rect key="frame" x="184" y="157" width="45" height="20"/>
+                                        <rect key="frame" x="184" y="153" width="45" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </colorWell>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="39" translatesAutoresizingMaskIntoConstraints="NO" id="gOE-Yv-2Ec">
-                                        <rect key="frame" x="15" y="132" width="156" height="14"/>
+                                        <rect key="frame" x="15" y="128" width="156" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Background Color" id="vhI-VG-Trt">
                                             <font key="font" metaFont="message" size="11"/>
@@ -1592,12 +1592,12 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="77i-TI-YRp" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
-                                        <rect key="frame" x="183" y="129" width="45" height="20"/>
+                                        <rect key="frame" x="183" y="125" width="45" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </colorWell>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="39" translatesAutoresizingMaskIntoConstraints="NO" id="tiA-d0-leE">
-                                        <rect key="frame" x="15" y="104" width="156" height="14"/>
+                                        <rect key="frame" x="15" y="100" width="156" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Frame Color" id="dmX-ya-dCs">
                                             <font key="font" metaFont="message" size="11"/>
@@ -1606,7 +1606,7 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nl2-pp-fkQ" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
-                                        <rect key="frame" x="183" y="101" width="45" height="20"/>
+                                        <rect key="frame" x="183" y="97" width="45" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </colorWell>
@@ -2973,7 +2973,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="206.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="207" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -2986,11 +2986,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="206.5" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="207" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-s7-Ehd" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="206.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3006,7 +3006,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="121" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="120.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -3019,11 +3019,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="678" y="1" width="121" height="17"/>
+                                                <rect key="frame" x="678.5" y="1" width="120.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I0L-bu-tXF" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="121" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="120.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
