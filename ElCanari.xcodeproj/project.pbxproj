@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -43,6 +43,7 @@
 		CF00846921C4363E003627E9 /* transient-AutoLayoutPackageDocument-noIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF00846121C4363E003627E9 /* transient-AutoLayoutPackageDocument-noIssue.swift */; };
 		CF012693248BDA22008CC8DA /* Freerouting.app in Resources */ = {isa = PBXBuildFile; fileRef = CF012692248BDA22008CC8DA /* Freerouting.app */; };
 		CF012694248BDA22008CC8DA /* Freerouting.app in Resources */ = {isa = PBXBuildFile; fileRef = CF012692248BDA22008CC8DA /* Freerouting.app */; };
+		CF038A54271C87EF007006FA /* Sparkle.framework in Copy Sparkle Framework */ = {isa = PBXBuildFile; fileRef = CFDBEFF81BEA12BA001CEA4B /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF0432BF22B649A70016EDE0 /* entity-BoardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0432BB22B649A60016EDE0 /* entity-BoardText.swift */; };
 		CF0432C022B649A70016EDE0 /* entity-BoardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0432BB22B649A60016EDE0 /* entity-BoardText.swift */; };
 		CF0432C122B649A70016EDE0 /* toone-BoardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0432BC22B649A60016EDE0 /* toone-BoardText.swift */; };
@@ -3702,7 +3703,6 @@
 		CFDBA0EA22491BC900C658B2 /* transient-FontDocument-mStatusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBA0E722491BC900C658B2 /* transient-FontDocument-mStatusImage.swift */; };
 		CFDBA0EB22491BC900C658B2 /* transient-FontDocument-mStatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBA0E822491BC900C658B2 /* transient-FontDocument-mStatusMessage.swift */; };
 		CFDBA0EC22491BC900C658B2 /* transient-FontDocument-mStatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBA0E822491BC900C658B2 /* transient-FontDocument-mStatusMessage.swift */; };
-		CFDBEFFB1BEA134A001CEA4B /* Sparkle.framework in Copy Sparkle Framework */ = {isa = PBXBuildFile; fileRef = CFDBEFF81BEA12BA001CEA4B /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFDBFC5B2143BA06006780C7 /* controller-table-view-FontDocument-mSelectedCharacterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBFC592143BA06006780C7 /* controller-table-view-FontDocument-mSelectedCharacterController.swift */; };
 		CFDC5EFF20FB1F70003AB275 /* EBGraphicManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC5EFE20FB1F70003AB275 /* EBGraphicManagedObject.swift */; };
 		CFDCA18221AAFF78007B090C /* CanariDragSourceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDCA18121AAFF78007B090C /* CanariDragSourceButton.swift */; };
@@ -4397,7 +4397,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CFDBEFFB1BEA134A001CEA4B /* Sparkle.framework in Copy Sparkle Framework */,
+				CF038A54271C87EF007006FA /* Sparkle.framework in Copy Sparkle Framework */,
 			);
 			name = "Copy Sparkle Framework";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -8004,7 +8004,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					AA0EFB9E19094440C317E21B = {
 						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
@@ -8029,7 +8029,7 @@
 				};
 			};
 			buildConfigurationList = 9D4C2F636F067F89CC14862C /* Build configuration list for PBXProject "ElCanari" */;
-			compatibilityVersion = "Xcode 12.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -12550,7 +12550,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
 			};
@@ -12562,7 +12561,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = YW8QY74J2A;
 				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_UNROLL_LOOPS = YES;
@@ -12570,6 +12572,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = ElCanari;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -12582,6 +12585,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -12609,9 +12613,12 @@
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = shallow;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = YW8QY74J2A;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
@@ -12621,6 +12628,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -12636,7 +12644,10 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = YW8QY74J2A;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -12647,6 +12658,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -12750,10 +12762,9 @@
 				SWIFT_DISABLE_SAFETY_CHECKS = NO;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -12767,6 +12778,7 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -12793,6 +12805,7 @@
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = shallow;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
