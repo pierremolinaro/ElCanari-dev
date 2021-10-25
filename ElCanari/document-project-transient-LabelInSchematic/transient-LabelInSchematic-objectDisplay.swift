@@ -14,6 +14,7 @@ import Cocoa
 
 func transient_LabelInSchematic_objectDisplay (
        _ prefs_symbolColorForSchematic : NSColor,
+       _ prefs_schematicFrameColor : NSColor,  
        _ prefs_symbolDrawingWidthMultipliedByTenForSchematic : Int,
        _ self_mPoint_location : CanariPoint?,  
        _ self_netName : String,                
@@ -45,7 +46,8 @@ func transient_LabelInSchematic_objectDisplay (
         //--- Net name
           let labelOrigin = af.transform (NSPoint (x: SCHEMATIC_LABEL_SIZE * 8.0, y: 0.0))
           let textAttributes : [NSAttributedString.Key : Any] = [
-            NSAttributedString.Key.font : prefs_pinNameFont
+            NSAttributedString.Key.font : prefs_pinNameFont,
+            NSAttributedString.Key.foregroundColor : prefs_schematicFrameColor
           ]
           let horizontalAlignment : EBTextHorizontalAlignment
           let verticalAlignment : EBTextVerticalAlignment

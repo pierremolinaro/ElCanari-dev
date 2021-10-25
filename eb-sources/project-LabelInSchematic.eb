@@ -11,6 +11,7 @@ graphic entity LabelInSchematic : SchematicObject {
 
   override transient EBShape objectDisplay dependsFrom
     prefs.symbolColorForSchematic,
+    prefs.schematicFrameColor,
     prefs.symbolDrawingWidthMultipliedByTenForSchematic,
     self.mPoint.one.location,
     self.netName,

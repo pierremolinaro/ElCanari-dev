@@ -66,7 +66,9 @@ graphic entity ComponentInProject : BoardObject {
     prefs.displayBackPadsForBoard,
     prefs.displayFrontLegendForBoard,
     prefs.displayBackLegendForBoard,
-    prefs.padNumberFontForBoard, prefs.padNumberColorForBoard, prefs.displayPadNumbersForBoard,
+    prefs.padNumberFontForBoard,
+    prefs.padNumberColorForBoard,
+    prefs.displayPadNumbersForBoard,
     self.mNameIsVisibleInBoard, self.mXName, self.mYName,
     self.mNameFont.one.descriptor, self.mNameFontSize,
     self.mNameRotation,
@@ -80,6 +82,8 @@ graphic entity ComponentInProject : BoardObject {
   transient ThreeStringArray pinPadAssignments dependsFrom self.mDevice.one.pinPadAssignments ;
  
   override transient EBShape selectionDisplay dependsFrom
+    prefs.frontSideLegendColorForBoard,
+    prefs.backSideLegendColorForBoard,
     self.mX, self.mY, self.mRotation, self.mSide, self.strokeBezierPath,
     self.mDisplayLegend,
     self.mNameIsVisibleInBoard, self.mXName, self.mYName, self.mNameFont.one.descriptor, self.mNameFontSize,

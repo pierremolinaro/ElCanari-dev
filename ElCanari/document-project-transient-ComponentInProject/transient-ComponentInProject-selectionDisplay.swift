@@ -14,6 +14,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ComponentInProject_selectionDisplay (
+       _ prefs_frontSideLegendColorForBoard : NSColor,
+       _ prefs_backSideLegendColorForBoard : NSColor,
        _ self_mX : Int,                             
        _ self_mY : Int,                             
        _ self_mRotation : Int,                      
@@ -111,7 +113,8 @@ func transient_ComponentInProject_selectionDisplay (
         bp.lineJoinStyle = .round
         nonRotatedShape.add (filled: [bp], .white, knobIndex: COMPONENT_PACKAGE_NAME_KNOB)
         nonRotatedShape.add (stroke: [bp], .black)
-        nonRotatedShape.add (stroke: [textBP], .black)
+        let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
+        nonRotatedShape.add (stroke: [textBP], color)
       }
     //--- Value
       if self_mValueIsVisibleInBoard, let fontDescriptor = self_mValueFont_descriptor {
@@ -142,7 +145,8 @@ func transient_ComponentInProject_selectionDisplay (
         bp.lineJoinStyle = .round
         nonRotatedShape.add (filled: [bp], .white, knobIndex: COMPONENT_PACKAGE_VALUE_KNOB)
         nonRotatedShape.add (stroke: [bp], .black)
-        nonRotatedShape.add (stroke: [textBP], .black)
+        let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
+        nonRotatedShape.add (stroke: [textBP], color)
       }
     //---
       var af = AffineTransform ()
