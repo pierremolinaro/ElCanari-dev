@@ -355,7 +355,7 @@ fileprivate class ArtworkDialogEntry : EBUserClassNameProtocol {
   //····················································································································
 
   func statusString () -> String {
-    if self.mFullPath == "" {
+    if self.mFullPath.isEmpty {
       return ""
     }else if self.mIsDuplicated {
       return "Duplicated"
@@ -380,7 +380,7 @@ fileprivate class ArtworkDialogEntry : EBUserClassNameProtocol {
   //····················································································································
 
   func statusImage () -> NSImage? {
-    if self.mFullPath == "" {
+    if self.mFullPath.isEmpty {
       return nil
     }else if self.mIsDuplicated {
       return NSImage.statusError

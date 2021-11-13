@@ -597,7 +597,7 @@ extension AutoLayoutPackageDocument {
 
   internal func runProgram () {
     let text = self.mProgramTextView?.string ?? ""
-    if text == "" {
+    if text.isEmpty {
       self.raiseError (0, "Empty Program", #line)
     }else{
       let ua = text.unicodeArray

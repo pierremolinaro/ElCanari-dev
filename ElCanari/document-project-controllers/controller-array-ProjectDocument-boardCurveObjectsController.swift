@@ -660,17 +660,17 @@ final class Controller_ProjectDocument_boardCurveObjectsController : ReadOnlyAbs
       var errorMessage = ""
       for dictionary in dictionaryArray {
         if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? BorderCurve {
-          if errorMessage == "" {
+          if errorMessage.isEmpty {
             errorMessage = object.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx], objectArray: self.objectArray.values)
           }
           idx += 1
-          if errorMessage == "" {
+          if errorMessage.isEmpty {
             object.translate (xBy: X, yBy: Y, userSet: &userSet)
             newObjects.append (object)
           }
         }
       }
-      if errorMessage == "" {
+      if errorMessage.isEmpty {
         var objects = self.objectArray
         objects.append (objects: newObjects)
         self.mModel?.setProp (objects)

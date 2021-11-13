@@ -18,7 +18,7 @@ func transient_DevicePinInProject_pinQualifiedName (
        _ self_mPinName : String
 ) -> PinQualifiedNameStruct {
 //--- START OF USER ZONE 2
-//         if self_mPinName == "" {
+//         if self_mPinName.isEmpty {
 //           Swift.print ("\(#file):\(#line) self_mPinName")
 //         }
          return PinQualifiedNameStruct (symbolName: self_mSymbolInstanceName, pinName: self_mPinName)

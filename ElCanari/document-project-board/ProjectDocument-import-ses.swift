@@ -103,13 +103,13 @@ extension CustomizedProjectDocument {
     }else{
       extractTracksAndVias (netComponents, resolution, &routedTracks, &routedVias, &errorMessage)
     //--- Send to canari
-      if errorMessage == "" {
+      if errorMessage.isEmpty {
         self.enterResults (routedTracks, routedVias, importSESTextField, importSESProgressIndicator)
       }
     }
     self.windowForSheet?.endSheet (panel)
   //---
-    if errorMessage == "" {
+    if errorMessage.isEmpty {
       self.performERCCheckingAction (nil)
     }else{
       let alert = NSAlert ()

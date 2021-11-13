@@ -36,7 +36,7 @@ func checkProjectDocumentFilePathOk (_ inDocumentFilePath : String) -> Bool {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func libraryDocumentFileNameIssue (_ inDocumentFilePath : String) -> CanariIssue? {
-  if inDocumentFilePath == "" {
+  if inDocumentFilePath.isEmpty {
     return CanariIssue (kind: .warning, message: "File name is empty")
   }else{
     let baseName = inDocumentFilePath.lastPathComponent.deletingPathExtension

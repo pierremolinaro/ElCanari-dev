@@ -234,7 +234,7 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
   @objc internal func newNameDidChange (_ inSender : NSTextField) {
     if let netForRenamingOperation = self.mRenameNetTextField?.mTextFieldUserInfo as? NetInProject {
       let newNetName = inSender.stringValue
-      if newNetName == "" {
+      if newNetName.isEmpty {
         self.mRenameNetOkButton?.isEnabled = false
         self.mRenameNetErrorTextField?.stringValue = "Empty Net Name"
         self.mRenameNetOkButton?.title = "Rename"

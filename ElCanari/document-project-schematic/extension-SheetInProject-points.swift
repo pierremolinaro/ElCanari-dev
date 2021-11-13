@@ -50,7 +50,7 @@ extension SheetInProject {
       if point.mNC != nil {
         var errorFlags : UInt32 = 0
         if point.mSymbol == nil { errorFlags |= 1 }
-        if point.mSymbolPinName == "" { errorFlags |= 2 }
+        if point.mSymbolPinName.isEmpty { errorFlags |= 2 }
         if point.mWiresP1s.count > 0 { errorFlags |= 4 }
         if point.mWiresP2s.count > 0 { errorFlags |= 8 }
         if point.mLabels.count > 0 { errorFlags |= 16 }
@@ -60,7 +60,7 @@ extension SheetInProject {
         }
       }else{
         var errorFlags : UInt32 = 0
-        if (point.mSymbol == nil) != (point.mSymbolPinName == "") { errorFlags |= 1 }
+        if (point.mSymbol == nil) != (point.mSymbolPinName.isEmpty) { errorFlags |= 1 }
         var connectionCount = point.mWiresP1s.count + point.mWiresP2s.count + point.mLabels.count
         if point.mSymbol != nil { connectionCount += 1 }
         if connectionCount == 0 { errorFlags |= 2 }

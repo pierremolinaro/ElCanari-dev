@@ -24,7 +24,7 @@ func transient_SymbolPin_issues (
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
   var issues = [CanariIssue] ()
-  if self_name == "" {
+  if self_name.isEmpty {
     issues.appendSymbolEmptyPinNameIssueAt (x:self_xName, y: self_yName)
   }
   if (self_xPin % (SYMBOL_GRID_IN_CANARI_UNIT * 4)) != 0 {

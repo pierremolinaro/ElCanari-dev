@@ -111,7 +111,7 @@ extension ProjectDocument {
   @objc fileprivate func newClassNameTextFieldDidChange (_ inSender : NSObject?) {
     if let newNetClassName = self.mAddNetClassTextField?.stringValue {
       self.mAddNetClassValidationButton?.isEnabled = newNetClassName != ""
-      if newNetClassName == "" {
+      if newNetClassName.isEmpty {
         self.mAddNetClassErrorMessageTextField?.stringValue = "New Net Class name is empty."
       }else{
         var newNameIsUnique = true
@@ -270,7 +270,7 @@ extension ProjectDocument {
     let selectedNetClasses = self.netClassController.selectedArray
     if let newNetClassName = self.mAddNetClassTextField?.stringValue, selectedNetClasses.count == 1 {
       let editedNetClass = selectedNetClasses [0]
-      if newNetClassName == "" {
+      if newNetClassName.isEmpty {
        self.mAddNetClassValidationButton?.isEnabled = false
        self.mAddNetClassErrorMessageTextField?.stringValue = "Net Class name is empty."
       }else{

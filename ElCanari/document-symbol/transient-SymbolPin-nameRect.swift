@@ -22,7 +22,7 @@ func transient_SymbolPin_nameRect (
 ) -> NSRect {
 //--- START OF USER ZONE 2
     var nameOrigin = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
-    let displayName = (self_name == "") ? "?" : self_name
+    let displayName = (self_name.isEmpty) ? "?" : self_name
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_pinNameFont
     ]

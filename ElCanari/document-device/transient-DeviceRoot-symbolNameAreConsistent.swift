@@ -17,7 +17,7 @@ func transient_DeviceRoot_symbolNameAreConsistent (
        _ self_inconsistentSymbolNameSetMessage : String
 ) -> Bool {
 //--- START OF USER ZONE 2
-        return self_inconsistentSymbolNameSetMessage == ""
+        return self_inconsistentSymbolNameSetMessage.isEmpty
 //--- END OF USER ZONE 2
 }
 

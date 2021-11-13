@@ -50,7 +50,7 @@ func transient_PackageZone_objectDisplay (
     shape.add (stroke: [bp], prefs_padZoneColor)
   //--- Name
     if self_displayZoneName {
-      let text = (self_zoneName == "") ? "?" : self_zoneName
+      let text = (self_zoneName.isEmpty) ? "?" : self_zoneName
       let p = CanariPoint (x: self_xName, y: self_yName).cocoaPoint
       let textAttributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : prefs_padZoneFont,

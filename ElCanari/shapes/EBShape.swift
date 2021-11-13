@@ -488,7 +488,7 @@ fileprivate final class EBShapeObject {
             _ inVerticalAlignment : EBTextVerticalAlignment,
             _ inKnobKind : EBKnobKind,
             knobIndex inKnobIndex : Int) {
-    let string = (inString == "") ? " " : inString
+    let string = (inString.isEmpty) ? " " : inString
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : inFont
     ]

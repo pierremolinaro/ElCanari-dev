@@ -83,7 +83,7 @@ extension ProjectDocument {
    var errorMessage = self.checkCandidateDevicePads (inCurrentDeviceInProject, inCandidateDeviceRoot)
    errorMessage += self.checkCandidateDeviceSymbolTypes (inCurrentDeviceInProject, inCandidateDeviceRoot)
    errorMessage += self.checkCandidateDeviceSymbolInstances (inCurrentDeviceInProject, inCandidateDeviceRoot)
-   if errorMessage == "" {
+   if errorMessage.isEmpty {
       self.performUpdateDevice (inCurrentDeviceInProject, from: inCandidateDeviceRoot, inVersion, inData)
     }
     return errorMessage
@@ -120,7 +120,7 @@ extension ProjectDocument {
   //---
     let currentSymbolSet = Set (currentSymbolInstanceDictionary.keys)
     let candidateSymbolSet = Set (candidateSymbolInstanceDictionary.keys)
-    if result == "" {
+    if result.isEmpty {
       let missingSymbols = currentSymbolSet.subtracting (candidateSymbolSet)
       let unknownSymbols = candidateSymbolSet.subtracting (currentSymbolSet)
       for p in missingSymbols {
@@ -130,7 +130,7 @@ extension ProjectDocument {
         result += "\n  - the candidate device defines '\(p)' symbolinstance, but current device does not"
       }
     }
-    if result == "" {
+    if result.isEmpty {
       for symbolInstanceName in currentSymbolSet {
         let currentSymbolTypeName = currentSymbolInstanceDictionary [symbolInstanceName]!
         let candidateSymbolTypeName = candidateSymbolInstanceDictionary [symbolInstanceName]!
@@ -219,7 +219,7 @@ extension ProjectDocument {
       }
       result += ")"
     }
-    if result == "" {
+    if result.isEmpty {
       for symbolTypeName in currentSymbolTypeSet {
         let currentPinSet = currentSymbolTypeDictionary [symbolTypeName]!
         let candidatePinSet = candidateSymbolTypeDictionary [symbolTypeName]!

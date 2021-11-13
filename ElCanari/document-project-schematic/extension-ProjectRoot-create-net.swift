@@ -19,7 +19,7 @@ extension ProjectRoot {
   internal func findUniqueNetName () -> String {
     var newNetName = ""
     var idx = 1
-    while newNetName == "" {
+    while newNetName.isEmpty {
       let tentativeNetName = "$\(idx)"
       var ok = true
       for netClass in self.mNetClasses.values {

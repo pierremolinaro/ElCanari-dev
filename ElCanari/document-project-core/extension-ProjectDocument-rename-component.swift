@@ -66,7 +66,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   internal func updateRenameComponentValidationButton () {
-    if self.mComponentNewPrefix == "" {
+    if self.mComponentNewPrefix.isEmpty {
       self.mRenameComponentValidationButton?.isEnabled = false
       self.mRenameComponentValidationButton?.title = "Rename"
     }else{
@@ -132,7 +132,7 @@ extension CustomizedProjectDocument {
   internal func renameComponentComboBoxAction () {
     if let newPrefix = self.mRenameComponentPrefixComboxBox?.stringValue {
       // Swift.print ("newPrefix '\(newPrefix)'")
-      if newPrefix == "" {
+      if newPrefix.isEmpty {
         self.mRenameComponentErrorMessageTextField?.stringValue = "Empty Prefix"
         self.mComponentNewPrefix = ""
         self.updateRenameComponentValidationButton ()

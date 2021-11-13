@@ -17,7 +17,7 @@ func transient_MergerDocument_importArtworkButtonTitle (
        _ root_mArtworkName : String
 ) -> String {
 //--- START OF USER ZONE 2
-  return (root_mArtworkName == "") ? "Import Artwork…" : "Detach Artwork"
+  return (root_mArtworkName.isEmpty) ? "Import Artwork…" : "Detach Artwork"
 //--- END OF USER ZONE 2
 }
 

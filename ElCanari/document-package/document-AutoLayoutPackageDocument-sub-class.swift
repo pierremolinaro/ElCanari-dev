@@ -107,11 +107,11 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
         var errorMessage = ""
         for dictionary in dictionaryArray {
           if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageObject {
-            if errorMessage == "" {
+            if errorMessage.isEmpty {
               errorMessage = newObject.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx], objectArray: self.rootObject.packageObjects.values)
             }
             idx += 1
-            if errorMessage == "" {
+            if errorMessage.isEmpty {
               newObject.translate (
                 xBy: cocoaToCanariUnit (pointInDestinationView.x) - X,
                 yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y,
@@ -124,7 +124,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
             }
           }
         }
-        if errorMessage == "" {
+        if errorMessage.isEmpty {
           for newObject in newObjectArray {
             self.rootObject.packageObjects_property.add (newObject)
           }

@@ -180,7 +180,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
       DispatchQueue.main.async { alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil) }
     }
   //--- Define default net wire
-    if self.rootObject.mDefaultNetClassName == "" {
+    if self.rootObject.mDefaultNetClassName.isEmpty {
       self.rootObject.mDefaultNetClassName = self.rootObject.mNetClasses [0].mNetClassName
     }
     self.removeUnusedNets ()

@@ -196,7 +196,7 @@ extension ProjectDocument {
   @objc private func proposedNameDidChange () {
     if let proposedName = self.mRenameDeviceNameTextField?.stringValue,
        let (selectedName, nameSet, allowEmptyName) = self.mRenameDeviceNameTextField?.mTextFieldUserInfo as? (String, Set <String>, Bool) {
-      if (proposedName == "") && !allowEmptyName {
+      if (proposedName.isEmpty) && !allowEmptyName {
         self.mRenameDeviceErrorMessageTextField?.stringValue = "Proposed Name is empty"
         self.mRenameDeviceValidationButton?.title = "Cannot rename"
         self.mRenameDeviceValidationButton?.isEnabled = false

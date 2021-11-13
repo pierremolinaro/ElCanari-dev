@@ -58,7 +58,7 @@ func transient_PackageZone_selectionDisplay (
     shape.add (knobAt:  NSPoint (x: x + width, y: y + height / 2.0), knobIndex: PACKAGE_ZONE_RIGHT, .diamond, CGFloat (self_PackageObject_knobSize))
   //--- Zone Name
     if self_displayZoneName {
-      let text = (self_zoneName == "") ? "?" : self_zoneName
+      let text = (self_zoneName.isEmpty) ? "?" : self_zoneName
       let pText = CanariPoint (x: self_xName, y: self_yName).cocoaPoint
       shape.add (
         textKnob: text,

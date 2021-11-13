@@ -30,7 +30,7 @@ func transient_PackageZone_issues (
   if self_height == 0 {
     issues.appendZoneZeroHeightIssueAt (x: self_x + self_width / 2, y: self_y)
   }
-  if self_zoneName == "" {
+  if self_zoneName.isEmpty {
     issues.appendZoneEmptyNameHeightIssueAt (x: self_xName, y: self_yName)
   }
   return issues

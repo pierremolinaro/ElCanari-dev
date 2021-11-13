@@ -486,7 +486,7 @@ extension ProjectDocument {
         for idx in 0 ..< padArray.count {
           let netNameX = padArray [idx].0
           let frontPadX = padArray [idx].1
-          if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || (netNameX == "") {
+          if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || (netNameX.isEmpty) {
             self.checkPadInsulation (inArray: frontPadX, side.descriptionForExplorer(), &ioIssues, &collisionCount)
           }
           for idy in idx+1 ..< padArray.count {

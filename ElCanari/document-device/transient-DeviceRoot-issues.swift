@@ -28,10 +28,10 @@ func transient_DeviceRoot_issues (
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
        var issues = [CanariIssue] ()
-       if self_mTitle == "" {
+       if self_mTitle.isEmpty {
          issues.append (CanariIssue (kind: .warning, message: "Title is Empty"))
        }
-       if self_mPrefix == "" {
+       if self_mPrefix.isEmpty {
          issues.append (CanariIssue (kind: .warning, message: "Prefix is Empty"))
        }else{
          var ok = true

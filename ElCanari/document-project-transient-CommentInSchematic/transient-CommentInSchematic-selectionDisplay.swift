@@ -29,7 +29,7 @@ func transient_CommentInSchematic_selectionDisplay (
         let p = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
         var shape = EBShape ()
         shape.add (
-          textKnob: (self_mComment == "") ? "Empty comment" : self_mComment,
+          textKnob: (self_mComment.isEmpty) ? "Empty comment" : self_mComment,
           p,
           font,
           foreColor: self_mColor,

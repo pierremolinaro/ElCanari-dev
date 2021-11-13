@@ -248,7 +248,7 @@ func boardText_displayInfos (
        oblique self_mOblique : Bool,
        extraWidth inExtraWidth : CGFloat // Used for ERC checking
 ) -> (EBBezierPath, EBBezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
-  let s = (self_mText == "") ? "Empty" : self_mText
+  let s = (self_mText.isEmpty) ? "Empty" : self_mText
   var stringWidth : CGFloat = 0.0
   let oblique = self_mOblique ? CGFloat (0.25) : CGFloat (0.0)
   let fontFactor = CGFloat (self_mFontSize) / CGFloat (self_mFont_descriptor.nominalSize)

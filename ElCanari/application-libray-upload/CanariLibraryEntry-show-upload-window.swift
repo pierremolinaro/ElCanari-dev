@@ -115,7 +115,7 @@ extension CanariLibraryEntry {
   //····················································································································
 
   private func set (repositoryURL : String) {
-    let title = (repositoryURL == "") ? "— undefined —" : repositoryURL
+    let title = (repositoryURL.isEmpty) ? "— undefined —" : repositoryURL
     g_Preferences?.mLibraryRepositoryTextField?.stringValue = title
   }
 
@@ -123,7 +123,7 @@ extension CanariLibraryEntry {
 
   private func set (userAndPassword : String) {
     let title : String
-    if userAndPassword == "" {
+    if userAndPassword.isEmpty {
       title = "— undefined —"
     }else{
       title = String (repeating: "•", count: userAndPassword.count)

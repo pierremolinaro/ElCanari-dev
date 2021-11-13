@@ -44,7 +44,7 @@ func transient_SymbolPin_objectDisplay (
       NSAttributedString.Key.foregroundColor : self_pinNameIsDisplayedInSchematics ? NSColor.black : NSColor.lightGray
     ]
     let labelOrigin = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
-    let label = (self_name == "") ? "?" : self_name
+    let label = (self_name.isEmpty) ? "?" : self_name
     shape.add (text: label, labelOrigin, nameTextAttributes, self_nameHorizontalAlignment.ebTextShapeHorizontalAlignment, .center)
   //--- Number
     let numberTextAttributes : [NSAttributedString.Key : Any] = [

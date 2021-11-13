@@ -18,7 +18,7 @@ func transient_MergerDocument_incorrectDocumentFileErrorMessage (
 ) -> String {
 //--- START OF USER ZONE 2
   var message = ""
-  if self_documentFileName == "" {
+  if self_documentFileName.isEmpty {
     message = "The document is unnamed."
   }else{
     var ok = true

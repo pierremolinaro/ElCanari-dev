@@ -282,7 +282,7 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
       optionalSelectedItem = nil
     }
   //--- Table view
-    if filter == "" {
+    if filter.isEmpty {
       self.mTableViewFilteredDataSource = self.mTableViewDataSource
     }else{
       self.mTableViewFilteredDataSource = []
@@ -374,7 +374,7 @@ fileprivate final class OpenInLibraryDialogItem : EBSwiftBaseObject {
   //····················································································································
 
   func statusString () -> String {
-    if self.mFullPath == "" {
+    if self.mFullPath.isEmpty {
       return ""
     }else if self.mIsAlreadyLoaded {
       return "Already loaded"
@@ -401,7 +401,7 @@ fileprivate final class OpenInLibraryDialogItem : EBSwiftBaseObject {
   //····················································································································
 
   func statusImage () -> NSImage? {
-    if self.mFullPath == "" {
+    if self.mFullPath.isEmpty {
       return nil
     }else if self.mIsDuplicated || self.mIsAlreadyLoaded {
       return NSImage.statusError

@@ -34,7 +34,7 @@ func transient_AutoLayoutArtworkDocument_statusMessage (
         for i in 0 ..< n {
           let fileExtension = root_fileGenerationParameterArray_fileExtension [i].fileExtension
           let name = root_fileGenerationParameterArray_name [i].name
-          if name == "" {
+          if name.isEmpty {
             result += "Error: empty data name for extension '\(fileExtension)'\n"
             errorCount += 1
           }else if nameSet.contains (name) {
@@ -43,7 +43,7 @@ func transient_AutoLayoutArtworkDocument_statusMessage (
           }else{
             nameSet.insert (name)
           }
-          if fileExtension == "" {
+          if fileExtension.isEmpty {
             result += "Error: empty file extension for data named '\(name)'\n"
             errorCount += 1
           }else if fileExtensionSet.contains (fileExtension) {
@@ -76,7 +76,7 @@ func transient_AutoLayoutArtworkDocument_statusMessage (
           result += "Error: empty drill file extension\n"
           errorCount += 1
         }
-        if result == "" {
+        if result.isEmpty {
           result = "Ok."
         }else{
           if warningCount == 1 {

@@ -29,14 +29,14 @@ func transient_AutoLayoutArtworkDocument_statusImage (
         for i in 0 ..< n {
           let fileExtension = root_fileGenerationParameterArray_fileExtension [i].fileExtension
           let name = root_fileGenerationParameterArray_name [i].name
-          if fileExtension == "" {
+          if fileExtension.isEmpty {
             error = true
           }else if fileExtensionSet.contains (fileExtension) {
             error = true
           }else{
             fileExtensionSet.insert (fileExtension)
           }
-          if name == "" {
+          if name.isEmpty {
             error = true
           }else if nameSet.contains (name) {
             error = true

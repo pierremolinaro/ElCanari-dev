@@ -32,7 +32,7 @@ func transient_CommentInSchematic_objectDisplay (
           NSAttributedString.Key.foregroundColor : self_mColor
         ]
         return EBShape (
-          text: (self_mComment == "") ? "Empty comment" : self_mComment,
+          text: (self_mComment.isEmpty) ? "Empty comment" : self_mComment,
           p,
           textAttributes,
           self_mHorizontalAlignment.ebTextShapeHorizontalAlignment,
