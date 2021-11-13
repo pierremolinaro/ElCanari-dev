@@ -21,6 +21,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
       oldValue.mY_property.removeEBObserver (self.mY_property) // Stored property
       oldValue.symbolQualifiedName_property.removeEBObserver (self.symbolQualifiedName_property) // Transient property
       oldValue.symbolTypeName_property.removeEBObserver (self.symbolTypeName_property) // Transient property
+      oldValue.pinSymbolQualifiedNames_property.removeEBObserver (self.pinSymbolQualifiedNames_property) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
       oldValue.unconnectedPins_property.removeEBObserver (self.unconnectedPins_property) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
@@ -32,6 +33,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
       newValue.mY_property.addEBObserver (self.mY_property) // Stored property
       newValue.symbolQualifiedName_property.addEBObserver (self.symbolQualifiedName_property) // Transient property
       newValue.symbolTypeName_property.addEBObserver (self.symbolTypeName_property) // Transient property
+      newValue.pinSymbolQualifiedNames_property.addEBObserver (self.pinSymbolQualifiedNames_property) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
       newValue.unconnectedPins_property.addEBObserver (self.unconnectedPins_property) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
@@ -67,6 +69,12 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
   //····················································································································
 
   final let symbolTypeName_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'pinSymbolQualifiedNames' transient property
+  //····················································································································
+
+  final let pinSymbolQualifiedNames_property = EBGenericTransientProperty <StringArray?> ()
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
@@ -180,6 +188,21 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.symbolTypeName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure pinSymbolQualifiedNames transient property
+    self.pinSymbolQualifiedNames_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.pinSymbolQualifiedNames_property.selection {
         case .empty :
           return .empty
         case .multiple :

@@ -36,6 +36,12 @@ protocol SymbolInstanceInDevice_symbolTypeName : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SymbolInstanceInDevice_pinSymbolQualifiedNames : AnyObject {
+  var pinSymbolQualifiedNames : StringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SymbolInstanceInDevice_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
@@ -62,6 +68,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
          SymbolInstanceInDevice_mY,
          SymbolInstanceInDevice_symbolQualifiedName,
          SymbolInstanceInDevice_symbolTypeName,
+         SymbolInstanceInDevice_pinSymbolQualifiedNames,
          SymbolInstanceInDevice_selectionDisplay,
          SymbolInstanceInDevice_unconnectedPins,
          SymbolInstanceInDevice_objectDisplay {
@@ -199,6 +206,23 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: pinSymbolQualifiedNames
+  //····················································································································
+
+  final let pinSymbolQualifiedNames_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  final var pinSymbolQualifiedNames : StringArray? {
+    switch self.pinSymbolQualifiedNames_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: unconnectedPins
   //····················································································································
 
@@ -277,6 +301,23 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       }
     }
     self.mType_property.mTypeName_property.addEBObserver (self.symbolTypeName_property)
+  //--- Atomic property: pinSymbolQualifiedNames
+    self.pinSymbolQualifiedNames_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mInstanceName_property.selection, unwSelf.mPinInstances_property.selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_SymbolInstanceInDevice_pinSymbolQualifiedNames (v0, v1))
+        case (.multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mInstanceName_property.addEBObserver (self.pinSymbolQualifiedNames_property)
+    self.mPinInstances_property.addEBObserverOf_pinName (self.pinSymbolQualifiedNames_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -360,6 +401,8 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     // self.mInstanceName_property.removeEBObserver (self.symbolQualifiedName_property)
     // self.mType_property.mTypeName_property.removeEBObserver (self.symbolQualifiedName_property)
     // self.mType_property.mTypeName_property.removeEBObserver (self.symbolTypeName_property)
+    // self.mInstanceName_property.removeEBObserver (self.pinSymbolQualifiedNames_property)
+    // self.mPinInstances_property.removeEBObserverOf_pinName (self.pinSymbolQualifiedNames_property)
     // self.mType_property.mStrokeBezierPath_property.removeEBObserver (self.selectionDisplay_property)
     // self.mType_property.mFilledBezierPath_property.removeEBObserver (self.selectionDisplay_property)
     // self.mType_property.pinNameShape_property.removeEBObserver (self.selectionDisplay_property)
@@ -437,6 +480,14 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
         view: view,
         observerExplorer: &self.symbolTypeName_property.mObserverExplorer,
         valueExplorer: &self.symbolTypeName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "pinSymbolQualifiedNames",
+        object: self.pinSymbolQualifiedNames_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.pinSymbolQualifiedNames_property.mObserverExplorer,
+        valueExplorer: &self.pinSymbolQualifiedNames_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "selectionDisplay",

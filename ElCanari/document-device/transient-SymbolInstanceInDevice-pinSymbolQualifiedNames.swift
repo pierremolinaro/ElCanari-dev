@@ -13,40 +13,22 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_inconsistentSymbolNameSetMessage (
-       _ self_mSymbolInstances_symbolQualifiedName : [SymbolInstanceInDevice_symbolQualifiedName],
-       _ self_mSymbolInstances_pinSymbolQualifiedNames : [SymbolInstanceInDevice_pinSymbolQualifiedNames]
-) -> String {
+func transient_SymbolInstanceInDevice_pinSymbolQualifiedNames (
+       _ self_mInstanceName : String,                          
+       _ self_mPinInstances_pinName : [SymbolPinInstanceInDevice_pinName]
+) -> StringArray {
 //--- START OF USER ZONE 2
-        var message = [String] ()
-      //--- Check for unicity of symbol names
-        var duplicationDictionary = [String : Int] ()
-        for qn in self_mSymbolInstances_symbolQualifiedName {
-          if let qualifiedName = qn.symbolQualifiedName {
-            duplicationDictionary [qualifiedName] = duplicationDictionary [qualifiedName, default: 0] + 1
-          }
-        }
-        for (qualifiedName, n) in duplicationDictionary {
-          if n > 1 {
-            message.append ("\(n) symbols with the same \"\(qualifiedName)\" name")
-          }
-        }
-      //--- Check for unicity of symbol pin names
-        duplicationDictionary.removeAll ()
-        for symbol in self_mSymbolInstances_pinSymbolQualifiedNames {
-          if let pinArray : StringArray = symbol.pinSymbolQualifiedNames {
-            for qualifiedPinName in pinArray {
-              duplicationDictionary [qualifiedPinName] = duplicationDictionary [qualifiedPinName, default: 0] + 1
-            }
-          }
-        }
-        for (qualifiedPinName, n) in duplicationDictionary {
-          if n > 1 {
-            message.append ("\(n) pins with the same \"\(qualifiedPinName)\" name (assign a name to their symbols)")
-          }
-        }
-      //---
-        return message.joined (separator: "\n")
+       var result = StringArray ()
+       for pinInstance in self_mPinInstances_pinName {
+         if let pinName = pinInstance.pinName {
+           if self_mInstanceName.isEmpty {
+             result.append (pinName)
+           }else{
+             result.append (self_mInstanceName + ":" + pinName)
+           }
+         }
+       }
+       return result
 //--- END OF USER ZONE 2
 }
 

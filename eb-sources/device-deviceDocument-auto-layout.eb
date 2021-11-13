@@ -383,8 +383,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   transient Bool hasUnconnectedPad dependsFrom root.unconnectedPads ;
   transient Bool hasUnconnectedPin dependsFrom root.unconnectedPins ;
   transient Bool hasAssignedPadProxies dependsFrom root.assignedPadProxies ;
-  transient String assignmentInhibitionMessage
-    dependsFrom root.inconsistentPackagePadNameSetsMessage, root.inconsistentSymbolNameSetMessage
+  transient String assignmentInhibitionMessage dependsFrom
+     root.inconsistentPackagePadNameSetsMessage,
+     root.inconsistentSymbolNameSetMessage
   ;
 
   action performBindAction ;

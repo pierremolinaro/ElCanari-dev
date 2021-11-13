@@ -32,6 +32,7 @@ let VERSION_CANARI = "1.4.7"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Dans le document Device, détection de plusieurs pins ayant le même nom, avec des noms de symboles identiques."
 ]
 let CHANGES : [String] = [
   "Affichage d'alertes lors du lancement de FreeRouter en cas d'erreur dans le schéma ou de composants non placés sur le circuit."

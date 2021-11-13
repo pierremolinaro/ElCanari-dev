@@ -37,7 +37,10 @@ entity DeviceRoot {
   transient String inconsistentPackagePadNameSetsMessage dependsFrom self.mPackages.all.padNameSet, self.mPackages.all.mName ;
   transient Bool packagePadNameSetsAreConsistent dependsFrom self.mPackages.all.padNameSet ;
 
-  transient String inconsistentSymbolNameSetMessage dependsFrom self.mSymbolInstances.all.symbolQualifiedName ;
+  transient String inconsistentSymbolNameSetMessage dependsFrom
+    self.mSymbolInstances.all.symbolQualifiedName,
+    self.mSymbolInstances.all.pinSymbolQualifiedNames
+  ;
   transient Bool symbolNameAreConsistent dependsFrom self.inconsistentSymbolNameSetMessage ;
 
 //--- Packages
@@ -280,6 +283,11 @@ graphic entity SymbolInstanceInDevice {
   transient String symbolTypeName dependsFrom self.mType.one.mTypeName ;
 
   transient String symbolQualifiedName dependsFrom self.mInstanceName, self.mType.one.mTypeName ;
+
+  transient StringArray pinSymbolQualifiedNames dependsFrom
+    self.mInstanceName,
+    self.mPinInstances.all.pinName
+  ;
 
   transient EBShape selectionDisplay dependsFrom
      self.mType.one.mStrokeBezierPath,

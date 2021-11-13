@@ -802,10 +802,10 @@ final class DeviceRoot : EBManagedObject,
   //--- Atomic property: inconsistentSymbolNameSetMessage
     self.inconsistentSymbolNameSetMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbolInstances_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_DeviceRoot_inconsistentSymbolNameSetMessage (v0))
-        case (.multiple) :
+        switch (unwSelf.mSymbolInstances_property.selection, unwSelf.mSymbolInstances_property.selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_DeviceRoot_inconsistentSymbolNameSetMessage (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -815,6 +815,7 @@ final class DeviceRoot : EBManagedObject,
       }
     }
     self.mSymbolInstances_property.addEBObserverOf_symbolQualifiedName (self.inconsistentSymbolNameSetMessage_property)
+    self.mSymbolInstances_property.addEBObserverOf_pinSymbolQualifiedNames (self.inconsistentSymbolNameSetMessage_property)
   //--- Atomic property: packagePadNameSetsAreConsistent
     self.packagePadNameSetsAreConsistent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -952,6 +953,7 @@ final class DeviceRoot : EBManagedObject,
     // self.mPackages_property.removeEBObserverOf_padNameSet (self.inconsistentPackagePadNameSetsMessage_property)
     // self.mPackages_property.removeEBObserverOf_mName (self.inconsistentPackagePadNameSetsMessage_property)
     // self.mSymbolInstances_property.removeEBObserverOf_symbolQualifiedName (self.inconsistentSymbolNameSetMessage_property)
+    // self.mSymbolInstances_property.removeEBObserverOf_pinSymbolQualifiedNames (self.inconsistentSymbolNameSetMessage_property)
     // self.mPackages_property.removeEBObserverOf_padNameSet (self.packagePadNameSetsAreConsistent_property)
     // self.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.symbolNameAreConsistent_property)
     // self.mSymbolTypes_property.removeEBObserverOf_mTypeName (self.symbolTypeNames_property)

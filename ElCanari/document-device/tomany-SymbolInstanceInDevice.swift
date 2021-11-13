@@ -22,6 +22,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
       self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_symbolQualifiedName_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_pinSymbolQualifiedNames_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
@@ -33,6 +34,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
       self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_symbolQualifiedName_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_symbolTypeName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_pinSymbolQualifiedNames_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_unconnectedPins_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
@@ -324,6 +326,62 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
     for managedObject in inSet.values {
       self.mObserversOf_symbolTypeName.apply { (_ observer : EBEvent) in
         managedObject.symbolTypeName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'pinSymbolQualifiedNames' transient property
+  //····················································································································
+
+  private final var mObserversOf_pinSymbolQualifiedNames = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_pinSymbolQualifiedNames (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_pinSymbolQualifiedNames.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.pinSymbolQualifiedNames_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pinSymbolQualifiedNames (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_pinSymbolQualifiedNames.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.pinSymbolQualifiedNames_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_pinSymbolQualifiedNames_toElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_pinSymbolQualifiedNames.apply { (_ observer : EBEvent) in
+        managedObject.pinSymbolQualifiedNames_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_pinSymbolQualifiedNames_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_pinSymbolQualifiedNames.apply { (_ observer : EBEvent) in
+        managedObject.pinSymbolQualifiedNames_property.removeEBObserver (observer)
       }
     }
   }

@@ -43,6 +43,12 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection
   var objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
+  //   Selection observable property: pinSymbolQualifiedNames
+  //····················································································································
+
+  var pinSymbolQualifiedNames_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
@@ -80,6 +86,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection
     self.bind_property_mX (model: model)
     self.bind_property_mY (model: model)
     self.bind_property_objectDisplay (model: model)
+    self.bind_property_pinSymbolQualifiedNames (model: model)
     self.bind_property_selectionDisplay (model: model)
     self.bind_property_symbolQualifiedName (model: model)
     self.bind_property_symbolTypeName (model: model)
@@ -109,6 +116,9 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+  //--- pinSymbolQualifiedNames
+    self.pinSymbolQualifiedNames_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_pinSymbolQualifiedNames (self.pinSymbolQualifiedNames_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
@@ -473,6 +483,46 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection
           var isMultipleSelection = false
           for object in v {
             switch object.objectDisplay_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_pinSymbolQualifiedNames (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
+    model.addEBObserverOf_pinSymbolQualifiedNames (self.pinSymbolQualifiedNames_property)
+    self.pinSymbolQualifiedNames_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <StringArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.pinSymbolQualifiedNames_property.selection {
             case .empty :
               return .empty
             case .multiple :
