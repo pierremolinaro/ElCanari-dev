@@ -28,14 +28,13 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.4.6"
+let VERSION_CANARI = "1.4.7"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
-  "Meilleure gestion de la transparence dans les vues graphiques",
-  "Les préférences de la schématique d'un projet sont éditables dans le projet"
+  "Affichage d'alertes lors du lancement de FreeRouter en cas d'erreur dans le schéma ou de composants non placés sur le circuit."
 ]
 let NEWS : [String] = []
 

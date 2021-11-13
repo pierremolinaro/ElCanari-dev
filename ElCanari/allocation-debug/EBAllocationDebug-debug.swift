@@ -12,7 +12,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private let UPDATE_TIMER_PERIOD : Double = 2.0
+private let UPDATE_TIMER_PERIOD : Double = 0.5
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -95,7 +95,6 @@ func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
 fileprivate var gTotalAllocatedObjectCountByClass = [String : Int] ()
 fileprivate var gLiveObjectCountByClass = [String : Int] ()
 fileprivate var gSnapShotDictionary = [String : Int] ()
-fileprivate var gRefreshDisplay = false
 
 //······················································································································
 //    pmNoteObjectAllocation
@@ -109,7 +108,7 @@ fileprivate func pmNoteObjectAllocation (_ inClassName : String) {
   let liveCount = gLiveObjectCountByClass [inClassName] ?? 0
   gLiveObjectCountByClass [inClassName] = liveCount + 1
 //---
-  gRefreshDisplay = true
+  gDebugObject?.installTimer ()
 }
 
 //······················································································································
@@ -125,7 +124,7 @@ fileprivate func pmNoteObjectDeallocation (_ inClassName : String) {
     }
   }
 //---
-  gRefreshDisplay = true
+  gDebugObject?.installTimer ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -145,7 +144,7 @@ private var gDebugObject : EBAllocationDebug? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBAllocationDebug : EBObjcBaseObject, NSWindowDelegate, AutoLayoutTableViewDelegate {
+final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //   Properties
@@ -224,12 +223,14 @@ final class EBAllocationDebug : EBObjcBaseObject, NSWindowDelegate, AutoLayoutTa
      _ = self.mCurrentlyAllocatedLabel.bind_observedValue (self.mCurrentlyAllocated)
      _ = self.mPerformSnapShotButton.bind_run (target: self, selector: #selector (Self.performSnapShotAction (_:)))
      _ = self.mFilterPopUpButton.bind_selectedTag (self.mAllocationStatsDisplayFilterIndex)
+       .bind_run (target: self, selector: #selector (Self.allocationStatsDisplayFilterIndexDidChange (_:)))
   //--- Configure table view
     self.mStatsTableView.configure (
       allowsEmptySelection: false,
       allowsMultipleSelection: false,
       delegate: self
     )
+    _ = self.mStatsTableView.setIntercellSpacing (horizontal: 0, vertical: 5)
     self.mStatsTableView.addColumn_String (
       valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].className ?? "" },
       valueSetterDelegate: nil,
@@ -342,7 +343,7 @@ final class EBAllocationDebug : EBObjcBaseObject, NSWindowDelegate, AutoLayoutTa
   //    installTimer
   //····················································································································
 
-  private func installTimer () {
+  func installTimer () {
     if !Thread.isMainThread {
       presentErrorWindow (#file, #line, "not in main thread")
     }
@@ -350,15 +351,19 @@ final class EBAllocationDebug : EBObjcBaseObject, NSWindowDelegate, AutoLayoutTa
       let timer = Timer (
         timeInterval: UPDATE_TIMER_PERIOD,
         target: self,
-        selector: #selector (EBAllocationDebug.refreshDisplay (_:)),
+        selector: #selector (Self.refreshDisplay (_:)),
         userInfo: nil,
-        repeats: true
+        repeats: false
       )
       RunLoop.current.add (timer, forMode: .default)
       self.mRefreshTimer = timer
-      gRefreshDisplay = true
-      self.displayAllocation ()
     }
+  }
+
+  //····················································································································
+
+  @objc private func allocationStatsDisplayFilterIndexDidChange (_ inSender : Any?) {
+    self.installTimer ()
   }
 
   //····················································································································
@@ -387,21 +392,24 @@ final class EBAllocationDebug : EBObjcBaseObject, NSWindowDelegate, AutoLayoutTa
   }
 
   //····················································································································
-  //    refreshDisplay:
-  //····················································································································
-
-  @objc func refreshDisplay (_ timer : Timer) {
-    gRefreshDisplay = true
-    self.displayAllocation ()
-  }
-
-  //····················································································································
   //    performSnapShotAction:
   //····················································································································
 
   @IBAction func performSnapShotAction (_ : AnyObject) {
     gSnapShotDictionary = gLiveObjectCountByClass
-    gRefreshDisplay = true
+    self.installTimer ()
+  }
+
+  //····················································································································
+  //    refreshDisplay:
+  //····················································································································
+
+  @objc func refreshDisplay (_ timer : Timer) {
+    if let timer = self.mRefreshTimer {
+      timer.invalidate ()
+      self.mRefreshTimer = nil
+    }
+    self.displayAllocation ()
   }
 
   //····················································································································
@@ -412,39 +420,37 @@ final class EBAllocationDebug : EBObjcBaseObject, NSWindowDelegate, AutoLayoutTa
     if !Thread.isMainThread {
       presentErrorWindow (#file, #line, "not in main thread")
     }
-    if gRefreshDisplay {
-      gRefreshDisplay = false
-    //---
-      var liveObjectCount = 0
-      var totalObjectCount = 0
-    //---
-      var array = [EBAllocationItemDisplay] ()
-      for (className, totalByClass) in gTotalAllocatedObjectCountByClass {
-        let liveByClass = gLiveObjectCountByClass [className] ?? 0
-        let snapShotByClass = gSnapShotDictionary [className] ?? 0
-        liveObjectCount += liveByClass
-        totalObjectCount += totalByClass
-        var display = true
-        if 1 == self.mAllocationStatsDisplayFilterIndex.propval {
-          display = liveByClass != 0 ;
-        }else if 2 == self.mAllocationStatsDisplayFilterIndex.propval {
-          display = liveByClass != snapShotByClass ;
-        }
-        if display {
-          array.append (EBAllocationItemDisplay (
-            className: className,
-            allCount: totalByClass,
-            live: liveByClass,
-            snapShot: snapShotByClass
-          ))
-        }
+  //---
+    var liveObjectCount = 0
+    var totalObjectCount = 0
+  //---
+    var array = [EBAllocationItemDisplay] ()
+    for (className, totalByClass) in gTotalAllocatedObjectCountByClass {
+      let liveByClass = gLiveObjectCountByClass [className] ?? 0
+      let snapShotByClass = gSnapShotDictionary [className] ?? 0
+      liveObjectCount += liveByClass
+      totalObjectCount += totalByClass
+      var display = true
+      if 1 == self.mAllocationStatsDisplayFilterIndex.propval {
+        display = liveByClass != 0 ;
+      }else if 2 == self.mAllocationStatsDisplayFilterIndex.propval {
+        display = liveByClass != snapShotByClass ;
       }
-      self.mCurrentlyAllocated.setProp (liveObjectCount)
-      self.mTotalAllocated.setProp (totalObjectCount)
-    //---
-      self.mAllocationStatsDataSource = array
-      self.mStatsTableView.sortAndReloadData () // Will sort mAllocationStatsDataSource
+      if display {
+        array.append (EBAllocationItemDisplay (
+          className: className,
+          allCount: totalByClass,
+          live: liveByClass,
+          snapShot: snapShotByClass
+        ))
+      }
     }
+    self.mCurrentlyAllocated.setProp (liveObjectCount)
+    self.mTotalAllocated.setProp (totalObjectCount)
+  //---
+    self.mAllocationStatsDataSource = array
+    self.mStatsTableView.sortAndReloadData () // Will sort mAllocationStatsDataSource
+    flushOutletEvents ()
   }
 
   //····················································································································

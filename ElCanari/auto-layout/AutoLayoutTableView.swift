@@ -50,6 +50,11 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     self.mTableView.gridStyleMask = [.solidHorizontalGridLineMask, .solidVerticalGridLineMask]
     self.mTableView.usesAlternatingRowBackgroundColors = true
     self.mTableView.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
+    if #available(macOS 10.13, *) {
+      self.mTableView.usesAutomaticRowHeights = true
+    } else {
+      // Fallback on earlier versions
+    }
 
   //--- Configure scroll view
     self.mScrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,6 +86,16 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
 
   //····················································································································
 
+  override func autoLayoutCleanUp () {
+    self.mAddButton?.autoLayoutCleanUp ()
+    self.mRemoveButton?.autoLayoutCleanUp ()
+    super.autoLayoutCleanUp ()
+  }
+
+  //····················································································································
+  //  Configure table view
+  //····················································································································
+
   final func configure (allowsEmptySelection inAllowsEmptySelection : Bool,
                         allowsMultipleSelection inAllowsMultipleSelection : Bool,
                         delegate inDelegate : AutoLayoutTableViewDelegate) {
@@ -88,6 +103,38 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     self.mTableView.allowsEmptySelection = inAllowsEmptySelection
     self.mTableView.allowsMultipleSelection = inAllowsMultipleSelection
     self.mDelegate = inDelegate
+  }
+
+  //····················································································································
+
+  func noHeaderView () -> Self {
+    self.mTableView.headerView = nil
+    self.mTableView.cornerView = nil
+    return self
+  }
+
+  //····················································································································
+
+  func setIntercellSpacing (horizontal inX : Int, vertical inY : Int) -> Self {
+    self.mTableView.intercellSpacing = NSSize (width: inX, height: inY)
+    return self
+  }
+
+  //····················································································································
+
+  func set (hasHorizontalGrid inFlag : Bool) -> Self {
+    if inFlag {
+      self.mTableView.gridStyleMask.insert (.solidHorizontalGridLineMask)
+    }else{
+      self.mTableView.gridStyleMask.remove (.solidHorizontalGridLineMask)
+    }
+    return self
+  }
+  //····················································································································
+
+  func set (usesAlternatingRowBackgroundColors inFlag : Bool) -> Self {
+    self.mTableView.usesAlternatingRowBackgroundColors = inFlag
+    return self
   }
 
   //····················································································································

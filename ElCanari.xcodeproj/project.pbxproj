@@ -4319,6 +4319,9 @@
 		CFF76A052708DF930061C124 /* AutoLayoutCanariNewCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF76A042708DF930061C124 /* AutoLayoutCanariNewCharacterView.swift */; };
 		CFF76A062708DF930061C124 /* AutoLayoutCanariNewCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF76A042708DF930061C124 /* AutoLayoutCanariNewCharacterView.swift */; };
 		CFF76A072708DF930061C124 /* AutoLayoutCanariNewCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF76A042708DF930061C124 /* AutoLayoutCanariNewCharacterView.swift */; };
+		CFF79C87273FC1CC00725D28 /* extension-ProjectDocument-checkBeforeLaunchFreeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF79C86273FC1CC00725D28 /* extension-ProjectDocument-checkBeforeLaunchFreeRouter.swift */; };
+		CFF79C88273FC1CC00725D28 /* extension-ProjectDocument-checkBeforeLaunchFreeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF79C86273FC1CC00725D28 /* extension-ProjectDocument-checkBeforeLaunchFreeRouter.swift */; };
+		CFF79C89273FC1CC00725D28 /* extension-ProjectDocument-checkBeforeLaunchFreeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF79C86273FC1CC00725D28 /* extension-ProjectDocument-checkBeforeLaunchFreeRouter.swift */; };
 		CFF83D4521ADAA310084BDA9 /* utilities-symbol-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */; };
 		CFF83D4621ADAA310084BDA9 /* utilities-symbol-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */; };
 		CFF8588C2687C201001B868C /* document-AutoLayoutArtworkDocument-sub-class.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF858842687C200001B868C /* document-AutoLayoutArtworkDocument-sub-class.swift */; };
@@ -5845,6 +5848,7 @@
 		CFF63D1422B40E4100032398 /* selectionController-ProjectDocument-restrictRectangleSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ProjectDocument-restrictRectangleSelectionController.swift"; sourceTree = "<group>"; };
 		CFF6D6882427780B00BE9CC9 /* transient-PackageRoot-hasModelImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageRoot-hasModelImage.swift"; sourceTree = "<group>"; };
 		CFF76A042708DF930061C124 /* AutoLayoutCanariNewCharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariNewCharacterView.swift; sourceTree = "<group>"; };
+		CFF79C86273FC1CC00725D28 /* extension-ProjectDocument-checkBeforeLaunchFreeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-checkBeforeLaunchFreeRouter.swift"; sourceTree = "<group>"; };
 		CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "utilities-symbol-issues.swift"; sourceTree = "<group>"; };
 		CFF858842687C200001B868C /* document-AutoLayoutArtworkDocument-sub-class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "document-AutoLayoutArtworkDocument-sub-class.swift"; sourceTree = "<group>"; };
 		CFF858852687C200001B868C /* action-AutoLayoutArtworkDocument-resetVersionAndSignatureAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutArtworkDocument-resetVersionAndSignatureAction.swift"; sourceTree = "<group>"; };
@@ -6254,6 +6258,7 @@
 			children = (
 				CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */,
 				CF15D7622273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift */,
+				CFF79C86273FC1CC00725D28 /* extension-ProjectDocument-checkBeforeLaunchFreeRouter.swift */,
 				CF64AFA2225B78C100E40C83 /* extension-ProjectDocument-devices.swift */,
 				CF64AFA3225B78C100E40C83 /* extension-ProjectDocument-fonts.swift */,
 				CF04AF1F22761B7E00C70E99 /* extension-ProjectDocument-print.swift */,
@@ -9275,6 +9280,7 @@
 				CF53BE8226775244003971AF /* file-log-operation-duration.swift in Sources */,
 				CFA4D56622D373A3007992CD /* selectionController-ProjectDocument-boardLineSelectionController.swift in Sources */,
 				CFDD6D4F26A1B0F20050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift in Sources */,
+				CFF79C87273FC1CC00725D28 /* extension-ProjectDocument-checkBeforeLaunchFreeRouter.swift in Sources */,
 				CFEB7CC9233A28860060A97A /* transient-ProjectRoot-sheetIndexes.swift in Sources */,
 				CF1FB93220E57D900050391E /* class-MergerPadArray.swift in Sources */,
 				CF8560CE2677A34B00B62608 /* AutoLayoutSpinningProgressIndicator.swift in Sources */,
@@ -10681,6 +10687,7 @@
 				CF53BE8326775244003971AF /* file-log-operation-duration.swift in Sources */,
 				CFA42F84229AEACF000AA8C8 /* toone-SymbolInstanceInDevice.swift in Sources */,
 				CF78DE92222D65CA00E89DCA /* transient-SlavePadInDevice-backSideFilledBezierPath.swift in Sources */,
+				CFF79C88273FC1CC00725D28 /* extension-ProjectDocument-checkBeforeLaunchFreeRouter.swift in Sources */,
 				CFEB7CCA233A28860060A97A /* transient-ProjectRoot-sheetIndexes.swift in Sources */,
 				CFDD6D5026A1B0F20050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift in Sources */,
 				CF8560F62677A34C00B62608 /* AutoLayoutSpinningProgressIndicator.swift in Sources */,
@@ -12087,6 +12094,7 @@
 				CF9C642925CABE5C00A00D5C /* entity-DeviceSymbolTypeInProject.swift in Sources */,
 				CF49C10025D139F10082271E /* class-MergerViaShapeArray.swift in Sources */,
 				CFDD6D5126A1B0F20050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift in Sources */,
+				CFF79C89273FC1CC00725D28 /* extension-ProjectDocument-checkBeforeLaunchFreeRouter.swift in Sources */,
 				CF670EC12678FBDD0057FCDE /* AutoLayoutTextField.swift in Sources */,
 				CF9C642A25CABE5C00A00D5C /* entity-CommentInSchematic.swift in Sources */,
 				CF9C642B25CABE5C00A00D5C /* selectionController-ProjectDocument-boardLineSelectionController.swift in Sources */,
@@ -12548,7 +12556,6 @@
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
-				SWIFT_OPTIMIZE_OBJECT_LIFETIME = YES;
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -12768,7 +12775,6 @@
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_OPTIMIZE_OBJECT_LIFETIME = YES;
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -12779,6 +12785,7 @@
 		CFDA57971BFA459600EEF3CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = x86_64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
@@ -12805,6 +12812,7 @@
 		FA475530D9583C34FD356EF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = x86_64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;

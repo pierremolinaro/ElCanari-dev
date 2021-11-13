@@ -13,13 +13,15 @@ import Cocoa
 extension ProjectDocument {
   @objc func launchFreeRouterWithoutAnyDocument (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let freeRouterApplication : URL = Bundle.main.url (forResource: "Freerouting", withExtension: "app") {
-      if let _ = try? NSWorkspace.shared.launchApplication (at: freeRouterApplication, configuration: [:]) {
-      }else{
-        let alert = NSAlert ()
-        alert.messageText = "Cannot launch FreeRouting application"
-        alert.informativeText = "FreeRouting application does not exist."
-        alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+    self.checkSchematicsAndBeforeAndLaunchFreeRouteur {
+      if let freeRouterApplication : URL = Bundle.main.url (forResource: "Freerouting", withExtension: "app") {
+        if let _ = try? NSWorkspace.shared.launchApplication (at: freeRouterApplication, configuration: [:]) {
+        }else{
+          let alert = NSAlert ()
+          alert.messageText = "Cannot launch FreeRouting application"
+          alert.informativeText = "FreeRouting application does not exist."
+          alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+        }
       }
     }
 //--- END OF USER ZONE 2

@@ -15,6 +15,12 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   override func launchFreeRouterWithRouterDocument (_ sender : NSObject?) {
+    self.checkSchematicsAndBeforeAndLaunchFreeRouteur { self.performLaunchFreeRouterWithRouterDocument () }
+  }
+
+  //····················································································································
+
+  fileprivate func performLaunchFreeRouterWithRouterDocument () {
     let fm =  FileManager ()
   //---------- Get freerouter temporary directory
     let freerouterTemporaryBaseFilePath : String
