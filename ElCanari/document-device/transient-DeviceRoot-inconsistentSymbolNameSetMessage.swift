@@ -42,7 +42,7 @@ func transient_DeviceRoot_inconsistentSymbolNameSetMessage (
         }
         for (qualifiedPinName, n) in duplicationDictionary {
           if n > 1 {
-            message.append ("\(n) pins with the same \"\(qualifiedPinName)\" name (assign a name to their symbols)")
+            message.append ("\(n) pins with the same \"\(qualifiedPinName)\" name (assign a symbol name)")
           }
         }
       //---
