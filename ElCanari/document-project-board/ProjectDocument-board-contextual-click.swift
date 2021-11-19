@@ -18,15 +18,22 @@ extension CustomizedProjectDocument {
     let menu = NSMenu ()
   //--- Connect
     self.appendConnectInBoard (toMenu: menu, inUnalignedMouseDownPoint)
+  //--- Align ?
+    for layer in TrackSide.allCases {
+      self.appendAlignTracks (toMenu: menu, inUnalignedMouseDownPoint, layer)
+    }
   //--- Disconnect ?
-    self.appendDisconnectInBoard (toMenu: menu, inUnalignedMouseDownPoint, .front)
-    self.appendDisconnectInBoard (toMenu: menu, inUnalignedMouseDownPoint, .back)
+    for layer in TrackSide.allCases {
+      self.appendDisconnectInBoard (toMenu: menu, inUnalignedMouseDownPoint, layer)
+    }
   //--- Merge Tracks ?
-    self.mergeTracksInBoard (toMenu: menu, inUnalignedMouseDownPoint, .front)
-    self.mergeTracksInBoard (toMenu: menu, inUnalignedMouseDownPoint, .back)
+    for layer in TrackSide.allCases {
+      self.mergeTracksInBoard (toMenu: menu, inUnalignedMouseDownPoint, layer)
+    }
   //--- Split Track ?
-    self.splitTrackInBoard (toMenu: menu, inUnalignedMouseDownPoint, .front)
-    self.splitTrackInBoard (toMenu: menu, inUnalignedMouseDownPoint, .back)
+    for layer in TrackSide.allCases {
+      self.splitTrackInBoard (toMenu: menu, inUnalignedMouseDownPoint, layer)
+    }
   //---
     return menu
   }
@@ -193,16 +200,8 @@ extension CustomizedProjectDocument {
       }
     }
     if connectedConnectors.count > 0 {
-      let title : String
-      switch inSide {
-      case .front : title = "Disconnect in Front Layer"
-      case .back  : title = "Disconnect in Back Layer"
-      case .inner1  : title = "Disconnect in Inner 1 Layer"
-      case .inner2  : title = "Disconnect in Inner 2 Layer"
-      case .inner3  : title = "Disconnect in Inner 3 Layer"
-      case .inner4  : title = "Disconnect in Inner 4 Layer"
-      }
-      let menuItem = NSMenuItem (title: title, action: #selector (CustomizedProjectDocument.disconnectInBoardAction (_:)), keyEquivalent: "")
+      let title = "Disconnect in \(inSide.string) Layer"
+      let menuItem = NSMenuItem (title: title, action: #selector (Self.disconnectInBoardAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.representedObject = (connectedConnectors, inSide)
       menu.addItem (menuItem)
@@ -243,6 +242,132 @@ extension CustomizedProjectDocument {
   }
 
   //····················································································································
+  //  Align Tracks
+  //····················································································································
+
+  private func appendAlignTracks (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
+    let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseDownPoint, trackSide: inSide)
+    if connectorsUnderMouse.count == 1 {
+      let connector = connectorsUnderMouse [0]
+      let connectionCount = connector.mTracksP1.count + connector.mTracksP2.count
+      if connectionCount == 2 {
+        let tracks = connector.mTracksP1.values + connector.mTracksP2.values
+        var canOctoLinearAlign = false
+        var canRectiLinearAlign = false
+        for t in tracks {
+          let directionInDegrees = t.trackDirectionInDegrees!
+          // Swift.print ("directionInDegrees \(directionInDegrees)")
+          canRectiLinearAlign = canRectiLinearAlign || ((directionInDegrees % 90_000) != 0)
+          canOctoLinearAlign  = canOctoLinearAlign  || ((directionInDegrees % 90_000) != 45_000)
+        }
+        var otherPoints = [CanariPoint] ()
+        for track in connector.mTracksP1.values {
+          if let p = track.mConnectorP2?.location {
+            otherPoints.append (p)
+          }
+        }
+        for track in connector.mTracksP2.values {
+          if let p = track.mConnectorP1?.location {
+            otherPoints.append (p)
+          }
+        }
+        if otherPoints.count == 2 {
+          let p0 = otherPoints [0]
+          let p1 = otherPoints [1]
+          if canRectiLinearAlign, p0.x != p1.x, p0.y != p1.y {
+            let title = "Rectilinear Track Alignment in \(inSide.string) Layer"
+            let menuItem = NSMenuItem (title: title, action: #selector (Self.rectilinearAlignmentAction), keyEquivalent: "")
+            menuItem.target = self
+            if p0.x < p1.x {
+              menuItem.representedObject = (connector, p0, p1)
+            }else{
+              menuItem.representedObject = (connector, p1, p0)
+            }
+            menu.addItem (menuItem)
+          }
+          if canOctoLinearAlign, p0.x != p1.x, p0.y != p1.y, abs (p0.x - p1.x) != abs (p0.y - p1.y) {
+            let title = "Octolinear Track Alignment in \(inSide.string) Layer"
+            let menuItem = NSMenuItem (title: title, action: #selector (Self.octolinearAlignmentAction), keyEquivalent: "")
+            menuItem.target = self
+            if p0.x < p1.x {
+              menuItem.representedObject = (connector, p0, p1)
+            }else{
+              menuItem.representedObject = (connector, p1, p0)
+            }
+            menu.addItem (menuItem)
+          }
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  @objc private func octolinearAlignmentAction (_ inMenuItem : NSMenuItem) {
+    if let (connector, p0, p1) = inMenuItem.representedObject as? (BoardConnector, CanariPoint, CanariPoint) {
+    //--- Here, p0.x < p1.x and p0.y != p1.y and (abs (p0.x - p1.x) != abs (p0.y - p1.y)
+      if p0.y < p1.y {
+        let top = CanariPoint (x: p0.x + (p1.y - p0.y), y: p1.y)
+        let bottom = CanariPoint (x: p1.x - (p1.y - p0.y), y: p0.y)
+        let dTop = CanariPoint.squareOfCanariDistance (top, connector.location!)
+        let dBottom = CanariPoint.squareOfCanariDistance (bottom, connector.location!)
+        if dTop < dBottom {
+          connector.mX = top.x
+          connector.mY = top.y
+        }else{
+          connector.mX = bottom.x
+          connector.mY = bottom.y
+        }
+      }else{
+        let top = CanariPoint (x: p1.x - (p0.y - p1.y), y: p0.y)
+        let bottom = CanariPoint (x: p1.x - (p0.y - p1.y), y: p1.y)
+        let dTop = CanariPoint.squareOfCanariDistance (top, connector.location!)
+        let dBottom = CanariPoint.squareOfCanariDistance (bottom, connector.location!)
+        if dTop < dBottom {
+          connector.mX = top.x
+          connector.mY = top.y
+        }else{
+          connector.mX = bottom.x
+          connector.mY = bottom.y
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  @objc private func rectilinearAlignmentAction (_ inMenuItem : NSMenuItem) {
+    if let (connector, p0, p1) = inMenuItem.representedObject as? (BoardConnector, CanariPoint, CanariPoint) {
+    //--- Here, p0.x < p1.x and p0.y != p1.y
+      if p0.y < p1.y {
+        let topLeft = CanariPoint (x: p0.x, y: p1.y)
+        let bottomRight = CanariPoint (x: p1.x, y: p0.y)
+        let dTopLeft = CanariPoint.squareOfCanariDistance (topLeft, connector.location!)
+        let dBottomRight = CanariPoint.squareOfCanariDistance (bottomRight, connector.location!)
+        if dTopLeft < dBottomRight {
+          connector.mX = topLeft.x
+          connector.mY = topLeft.y
+        }else{
+          connector.mX = bottomRight.x
+          connector.mY = bottomRight.y
+        }
+      }else{
+        let topRight = CanariPoint (x: p1.x, y: p0.y)
+        let bottomLeft = CanariPoint (x: p0.x, y: p1.y)
+        let dTopRight = CanariPoint.squareOfCanariDistance (topRight, connector.location!)
+        let dBottomLeft = CanariPoint.squareOfCanariDistance (bottomLeft, connector.location!)
+        if dTopRight < dBottomLeft {
+          connector.mX = topRight.x
+          connector.mY = topRight.y
+        }else{
+          connector.mX = bottomLeft.x
+          connector.mY = bottomLeft.y
+        }
+      }
+    }
+  }
+
+  //····················································································································
   //  Merge Tracks
   //····················································································································
 
@@ -252,16 +377,8 @@ extension CustomizedProjectDocument {
       let connector = connectorsUnderMouse [0]
       let connectionCount = connector.mTracksP1.count + connector.mTracksP2.count
       if connectionCount == 2 {
-        let title : String
-        switch inSide {
-        case .front : title = "Merge Tracks in Front Layer"
-        case .back  : title = "Merge Tracks in Back Layer"
-        case .inner1  : title = "Merge Tracks in Inner 1 Layer"
-        case .inner2  : title = "Merge Tracks in Inner 2 Layer"
-        case .inner3  : title = "Merge Tracks in Inner 3 Layer"
-        case .inner4  : title = "Merge Tracks in Inner 4 Layer"
-        }
-        let menuItem = NSMenuItem (title: title, action: #selector (CustomizedProjectDocument.mergeTracksInBoardAction), keyEquivalent: "")
+        let title = "Merge Tracks in \(inSide.string) Layer"
+        let menuItem = NSMenuItem (title: title, action: #selector (Self.mergeTracksInBoardAction), keyEquivalent: "")
         menuItem.target = self
         menuItem.representedObject = (connector, inSide)
         menu.addItem (menuItem)
@@ -315,16 +432,8 @@ extension CustomizedProjectDocument {
   private func splitTrackInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
     let tracksUnderMouse = self.rootObject.tracks (at: inUnalignedMouseDownPoint, trackSide: inSide)
     if tracksUnderMouse.count == 1 {
-      let title : String
-      switch inSide {
-      case .front : title = "Split Track in Front Layer"
-      case .back  : title = "Split Track in Back Layer"
-      case .inner1  : title = "Split Track in Inner 1 Layer"
-      case .inner2  : title = "Split Track in Inner 2 Layer"
-      case .inner3  : title = "Split Track in Inner 3 Layer"
-      case .inner4  : title = "Split Track in Inner 4 Layer"
-      }
-      let menuItem = NSMenuItem (title: title, action: #selector (CustomizedProjectDocument.splitTrackInBoardAction), keyEquivalent: "")
+      let title = "Split Track in \(inSide.string) Layer"
+      let menuItem = NSMenuItem (title: title, action: #selector (Self.splitTrackInBoardAction), keyEquivalent: "")
       menuItem.target = self
       menuItem.representedObject = (tracksUnderMouse [0], inUnalignedMouseDownPoint)
       menu.addItem (menuItem)
