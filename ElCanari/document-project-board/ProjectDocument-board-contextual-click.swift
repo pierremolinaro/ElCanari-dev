@@ -252,14 +252,14 @@ extension CustomizedProjectDocument {
       let connectionCount = connector.mTracksP1.count + connector.mTracksP2.count
       if connectionCount == 2 {
         let tracks = connector.mTracksP1.values + connector.mTracksP2.values
-        var canOctoLinearAlign = false
-        var canRectiLinearAlign = false
-        for t in tracks {
-          let directionInDegrees = t.trackDirectionInDegrees!
-          // Swift.print ("directionInDegrees \(directionInDegrees)")
-          canRectiLinearAlign = canRectiLinearAlign || ((directionInDegrees % 90_000) != 0)
-          canOctoLinearAlign  = canOctoLinearAlign  || ((directionInDegrees % 90_000) != 45_000)
-        }
+        let track0Direction = tracks [0].trackDirectionInDegrees!
+        let track1Direction = tracks [1].trackDirectionInDegrees!
+        let canRectiLinearAlign = ((track0Direction % 90_000) != 0) || ((track1Direction % 90_000) != 0)
+        let canOctoLinearAlign =
+          ((track0Direction % 45_000) != 0) || // La piste 0 n'est pas rectilinéaire
+          ((track1Direction % 45_000) != 0) || // La piste 1 n'est pas rectilinéaire
+          (((track0Direction % 90_000) == 0) && ((track1Direction % 90_000) == 0)) // Les deux sont rectilinéaires
+      //---
         var otherPoints = [CanariPoint] ()
         for track in connector.mTracksP1.values {
           if let p = track.mConnectorP2?.location {
@@ -305,30 +305,62 @@ extension CustomizedProjectDocument {
 
   @objc private func octolinearAlignmentAction (_ inMenuItem : NSMenuItem) {
     if let (connector, p0, p1) = inMenuItem.representedObject as? (BoardConnector, CanariPoint, CanariPoint) {
-    //--- Here, p0.x < p1.x and p0.y != p1.y and (abs (p0.x - p1.x) != abs (p0.y - p1.y)
+    //--- Here, p0.x < p1.x and p0.y != p1.y and (p1.x - p0.x) != abs (p0.y - p1.y)
       if p0.y < p1.y {
-        let top = CanariPoint (x: p0.x + (p1.y - p0.y), y: p1.y)
-        let bottom = CanariPoint (x: p1.x - (p1.y - p0.y), y: p0.y)
-        let dTop = CanariPoint.squareOfCanariDistance (top, connector.location!)
-        let dBottom = CanariPoint.squareOfCanariDistance (bottom, connector.location!)
-        if dTop < dBottom {
-          connector.mX = top.x
-          connector.mY = top.y
+        if (p1.x - p0.x) > (p1.y - p0.y) {
+          // Swift.print ("Cas 1")
+          let top = CanariPoint (x: p0.x + (p1.y - p0.y), y: p1.y)
+          let bottom = CanariPoint (x: p1.x - (p1.y - p0.y), y: p0.y)
+          let dTop = CanariPoint.squareOfCanariDistance (top, connector.location!)
+          let dBottom = CanariPoint.squareOfCanariDistance (bottom, connector.location!)
+          if dTop < dBottom {
+            connector.mX = top.x
+            connector.mY = top.y
+          }else{
+            connector.mX = bottom.x
+            connector.mY = bottom.y
+          }
         }else{
-          connector.mX = bottom.x
-          connector.mY = bottom.y
+          // Swift.print ("Cas 2")
+          let left  = CanariPoint (x: p0.x, y: p1.y - (p1.x - p0.x))
+          let right = CanariPoint (x: p1.x, y: p0.y + (p1.x - p0.x))
+          let dLeft = CanariPoint.squareOfCanariDistance (left, connector.location!)
+          let dRight = CanariPoint.squareOfCanariDistance (right, connector.location!)
+          if dLeft < dRight {
+            connector.mX = left.x
+            connector.mY = left.y
+          }else{
+            connector.mX = right.x
+            connector.mY = right.y
+          }
         }
       }else{
-        let top = CanariPoint (x: p1.x - (p0.y - p1.y), y: p0.y)
-        let bottom = CanariPoint (x: p1.x - (p0.y - p1.y), y: p1.y)
-        let dTop = CanariPoint.squareOfCanariDistance (top, connector.location!)
-        let dBottom = CanariPoint.squareOfCanariDistance (bottom, connector.location!)
-        if dTop < dBottom {
-          connector.mX = top.x
-          connector.mY = top.y
+        if (p1.x - p0.x) > (p0.y - p1.y) {
+          // Swift.print ("Cas 3")
+          let top    = CanariPoint (x: p1.x - (p0.y - p1.y), y: p0.y)
+          let bottom = CanariPoint (x: p1.x + (p0.y - p1.y), y: p1.y)
+          let dTop = CanariPoint.squareOfCanariDistance (top, connector.location!)
+          let dBottom = CanariPoint.squareOfCanariDistance (bottom, connector.location!)
+          if dTop < dBottom {
+            connector.mX = top.x
+            connector.mY = top.y
+          }else{
+            connector.mX = bottom.x
+            connector.mY = bottom.y
+          }
         }else{
-          connector.mX = bottom.x
-          connector.mY = bottom.y
+          // Swift.print ("Cas 4")
+          let left  = CanariPoint (x: p0.x, y: p1.y + (p1.x - p0.x))
+          let right = CanariPoint (x: p1.x, y: p0.y - (p1.x - p0.x))
+          let dLeft = CanariPoint.squareOfCanariDistance (left, connector.location!)
+          let dRight = CanariPoint.squareOfCanariDistance (right, connector.location!)
+          if dLeft < dRight {
+            connector.mX = left.x
+            connector.mY = left.y
+          }else{
+            connector.mX = right.x
+            connector.mY = right.y
+          }
         }
       }
     }
