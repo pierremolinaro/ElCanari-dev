@@ -43,7 +43,6 @@
 		CF00846921C4363E003627E9 /* transient-AutoLayoutPackageDocument-noIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF00846121C4363E003627E9 /* transient-AutoLayoutPackageDocument-noIssue.swift */; };
 		CF012693248BDA22008CC8DA /* Freerouting.app in Resources */ = {isa = PBXBuildFile; fileRef = CF012692248BDA22008CC8DA /* Freerouting.app */; };
 		CF012694248BDA22008CC8DA /* Freerouting.app in Resources */ = {isa = PBXBuildFile; fileRef = CF012692248BDA22008CC8DA /* Freerouting.app */; };
-		CF038A54271C87EF007006FA /* Sparkle.framework in Copy Sparkle Framework */ = {isa = PBXBuildFile; fileRef = CFDBEFF81BEA12BA001CEA4B /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF0432BF22B649A70016EDE0 /* entity-BoardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0432BB22B649A60016EDE0 /* entity-BoardText.swift */; };
 		CF0432C022B649A70016EDE0 /* entity-BoardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0432BB22B649A60016EDE0 /* entity-BoardText.swift */; };
 		CF0432C122B649A70016EDE0 /* toone-BoardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0432BC22B649A60016EDE0 /* toone-BoardText.swift */; };
@@ -1253,8 +1252,6 @@
 		CF5C4DA8219F04D600EAC52A /* transient-BoardModel-frontComponentNameSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB680F20E2A2C6006D4E90 /* transient-BoardModel-frontComponentNameSegments.swift */; };
 		CF5C4DA9219F04D600EAC52A /* transient-FontRoot-sampleStringBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3C62F11DD897E000978A09 /* transient-FontRoot-sampleStringBezierPath.swift */; };
 		CF5C4DAA219F04D600EAC52A /* canari-conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAB0B320DE786C00476FB7 /* canari-conversions.swift */; };
-		CF5C4DAD219F04D600EAC52A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDBEFF81BEA12BA001CEA4B /* Sparkle.framework */; };
-		CF5C4DB0219F04D600EAC52A /* Sparkle.framework in Copy Sparkle Framework */ = {isa = PBXBuildFile; fileRef = CFDBEFF81BEA12BA001CEA4B /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF5CF73A1B46D53D0052AC7A /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CF7391B46D53D0052AC7A /* ApplicationDelegate.swift */; };
 		CF604DC721BC1BC1004F2311 /* EBScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF604DC621BC1BC1004F2311 /* EBScrollView.swift */; };
 		CF604DC821BC1BC1004F2311 /* EBScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF604DC621BC1BC1004F2311 /* EBScrollView.swift */; };
@@ -2745,8 +2742,6 @@
 		CF9C657725CABE5C00A00D5C /* action-ProjectDocument-removeFontAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D4B0A227F796A006E2035 /* action-ProjectDocument-removeFontAction.swift */; };
 		CF9C657925CABE5C00A00D5C /* tomany-SchematicObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA4301C229AEB92000AA8C8 /* tomany-SchematicObject.swift */; };
 		CF9C657A25CABE5C00A00D5C /* transient-ComponentInProject-componentNameFontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7B38233A25EB0060A97A /* transient-ComponentInProject-componentNameFontName.swift */; };
-		CF9C657C25CABE5C00A00D5C /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDBEFF81BEA12BA001CEA4B /* Sparkle.framework */; };
-		CF9C657E25CABE5C00A00D5C /* Sparkle.framework in Copy Sparkle Framework */ = {isa = PBXBuildFile; fileRef = CFDBEFF81BEA12BA001CEA4B /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF9C6DEA269E1CBE003DF5E0 /* action-AutoLayoutPackageDocument-copyModelImageAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C6DE9269E1CBE003DF5E0 /* action-AutoLayoutPackageDocument-copyModelImageAction.swift */; };
 		CF9C6DEB269E1CBE003DF5E0 /* action-AutoLayoutPackageDocument-copyModelImageAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C6DE9269E1CBE003DF5E0 /* action-AutoLayoutPackageDocument-copyModelImageAction.swift */; };
 		CF9C6DEC269E1CBE003DF5E0 /* action-AutoLayoutPackageDocument-copyModelImageAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C6DE9269E1CBE003DF5E0 /* action-AutoLayoutPackageDocument-copyModelImageAction.swift */; };
@@ -3189,7 +3184,6 @@
 		CFAA756622E78199002F7F36 /* action-ProjectDocument-launchFreeRouterWithoutAnyDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA756422E78199002F7F36 /* action-ProjectDocument-launchFreeRouterWithoutAnyDocument.swift */; };
 		CFAB36A523786D69000C9954 /* transient-PackageObject-knobSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB36A423786D68000C9954 /* transient-PackageObject-knobSize.swift */; };
 		CFAB36A623786D69000C9954 /* transient-PackageObject-knobSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB36A423786D68000C9954 /* transient-PackageObject-knobSize.swift */; };
-		CFACBA241BEA157D0074F5B7 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDBEFF81BEA12BA001CEA4B /* Sparkle.framework */; };
 		CFAE00ED25C6C485004083C5 /* transient-ComponentInProject-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE00EC25C6C485004083C5 /* transient-ComponentInProject-signatureForERCChecking.swift */; };
 		CFAE00EE25C6C485004083C5 /* transient-ComponentInProject-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE00EC25C6C485004083C5 /* transient-ComponentInProject-signatureForERCChecking.swift */; };
 		CFAEAED022A16DB900ECDB77 /* ProjectDocument-schematic-option-click.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAEAECF22A16DB900ECDB77 /* ProjectDocument-schematic-option-click.swift */; };
@@ -3876,6 +3870,7 @@
 		CFEABD07267F5B4600B715F9 /* InternalAutoLayoutPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEABD06267F5B4600B715F9 /* InternalAutoLayoutPopUpButton.swift */; };
 		CFEABD08267F5B4600B715F9 /* InternalAutoLayoutPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEABD06267F5B4600B715F9 /* InternalAutoLayoutPopUpButton.swift */; };
 		CFEABD09267F5B4600B715F9 /* InternalAutoLayoutPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEABD06267F5B4600B715F9 /* InternalAutoLayoutPopUpButton.swift */; };
+		CFEB1198274801F3002A6F46 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = CFEB1197274801F3002A6F46 /* Sparkle */; };
 		CFEB7A95233A23270060A97A /* transient-BoardConnector-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7A85233A23260060A97A /* transient-BoardConnector-selectionDisplay.swift */; };
 		CFEB7A96233A23270060A97A /* transient-BoardConnector-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7A85233A23260060A97A /* transient-BoardConnector-selectionDisplay.swift */; };
 		CFEB7A97233A23270060A97A /* transient-BoardConnector-actualPadDiameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7A86233A23260060A97A /* transient-BoardConnector-actualPadDiameter.swift */; };
@@ -4384,7 +4379,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CF5C4DB0219F04D600EAC52A /* Sparkle.framework in Copy Sparkle Framework */,
 			);
 			name = "Copy Sparkle Framework";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4395,7 +4389,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CF9C657E25CABE5C00A00D5C /* Sparkle.framework in Copy Sparkle Framework */,
 			);
 			name = "Copy Sparkle Framework";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4406,7 +4399,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CF038A54271C87EF007006FA /* Sparkle.framework in Copy Sparkle Framework */,
 			);
 			name = "Copy Sparkle Framework";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5541,7 +5533,6 @@
 		CFDBA0E422491B0D00C658B2 /* transient-FontDocument-noIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontDocument-noIssue.swift"; sourceTree = "<group>"; };
 		CFDBA0E722491BC900C658B2 /* transient-FontDocument-mStatusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontDocument-mStatusImage.swift"; sourceTree = "<group>"; };
 		CFDBA0E822491BC900C658B2 /* transient-FontDocument-mStatusMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontDocument-mStatusMessage.swift"; sourceTree = "<group>"; };
-		CFDBEFF81BEA12BA001CEA4B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		CFDBFC592143BA06006780C7 /* controller-table-view-FontDocument-mSelectedCharacterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-table-view-FontDocument-mSelectedCharacterController.swift"; sourceTree = "<group>"; };
 		CFDBFC5A2143BA06006780C7 /* selectionController-FontDocument-mCharacterSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-FontDocument-mCharacterSelection.swift"; sourceTree = "<group>"; };
 		CFDC5EFE20FB1F70003AB275 /* EBGraphicManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBGraphicManagedObject.swift; sourceTree = "<group>"; };
@@ -5885,7 +5876,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF5C4DAD219F04D600EAC52A /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5893,7 +5883,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF9C657C25CABE5C00A00D5C /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5901,7 +5890,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFACBA241BEA157D0074F5B7 /* Sparkle.framework in Frameworks */,
+				CFEB1198274801F3002A6F46 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5971,7 +5960,6 @@
 				CF747FB01B3C3D8D00140C49 /* Products */,
 				CF61726E1B3C4CB600F3CA82 /* Resources */,
 				CFD1B75221B2E90400F6F9EA /* Shapes */,
-				CFDBEFF71BEA126C001CEA4B /* Sparkle */,
 				CF35A54121A8257D00A0E500 /* Swift Extensions */,
 				CFFA7B46227481E000E2D69A /* Table Views */,
 				CF5CEFB81DD8C4E000A70419 /* utilities */,
@@ -7355,15 +7343,6 @@
 			path = "ElCanari/document-font";
 			sourceTree = "<group>";
 		};
-		CFDBEFF71BEA126C001CEA4B /* Sparkle */ = {
-			isa = PBXGroup;
-			children = (
-				CFDBEFF81BEA12BA001CEA4B /* Sparkle.framework */,
-			);
-			name = Sparkle;
-			path = ElCanari/sparkle;
-			sourceTree = "<group>";
-		};
 		CFDD6D2E26A1B0B30050CB78 /* Auto Layout — El Canari */ = {
 			isa = PBXGroup;
 			children = (
@@ -7969,6 +7948,9 @@
 			dependencies = (
 			);
 			name = "ElCanari-Debug";
+			packageProductDependencies = (
+				CFEB1197274801F3002A6F46 /* Sparkle */,
+			);
 			productInstallPath = "$(HOME)/bin";
 			productName = canari;
 			productReference = CF747FAF1B3C3D8D00140C49 /* ElCanari-Debug.app */;
@@ -8052,6 +8034,9 @@
 				Base,
 			);
 			mainGroup = 4B5CE2FE28308FD9F2A7BAF3;
+			packageReferences = (
+				CFEB1196274801F3002A6F46 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
 			productRefGroup = CF747FB01B3C3D8D00140C49 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -12894,6 +12879,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CFEB1196274801F3002A6F46 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CFEB1197274801F3002A6F46 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFEB1196274801F3002A6F46 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 95D565EF66E7DFF9F98764DA /* Project object */;
 }
