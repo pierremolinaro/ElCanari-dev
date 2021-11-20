@@ -1730,6 +1730,8 @@
 		CF92C3C022BEC30900C221B2 /* EBBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92C3BF22BEC30900C221B2 /* EBBezierPath.swift */; };
 		CF92C3C122BEC30900C221B2 /* EBBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92C3BF22BEC30900C221B2 /* EBBezierPath.swift */; };
 		CF92E1F51DDB1C9E0019691C /* GeometricRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92E1F41DDB1C9E0019691C /* GeometricRect.swift */; };
+		CF935B692749127D00C0F42D /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = CF935B682749127D00C0F42D /* Sparkle */; };
+		CF935B6B2749128600C0F42D /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = CF935B6A2749128600C0F42D /* Sparkle */; };
 		CF94213A22E8C2100043D7DD /* extension-ProjectDocument-menu-actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF94213922E8C2100043D7DD /* extension-ProjectDocument-menu-actions.swift */; };
 		CF94213B22E8C2100043D7DD /* extension-ProjectDocument-menu-actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF94213922E8C2100043D7DD /* extension-ProjectDocument-menu-actions.swift */; };
 		CF94213D22E8C7980043D7DD /* ProjectDocument-import-ses.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF94213C22E8C7980043D7DD /* ProjectDocument-import-ses.swift */; };
@@ -5876,6 +5878,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF935B692749127D00C0F42D /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5883,6 +5886,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF935B6B2749128600C0F42D /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7970,6 +7974,9 @@
 			dependencies = (
 			);
 			name = "ElCanari-Release";
+			packageProductDependencies = (
+				CF935B682749127D00C0F42D /* Sparkle */,
+			);
 			productInstallPath = "$(HOME)/bin";
 			productName = canari;
 			productReference = CF5C4DB4219F04D600EAC52A /* ElCanari.app */;
@@ -7989,6 +7996,9 @@
 			dependencies = (
 			);
 			name = "ElCanari-Debug-temporary";
+			packageProductDependencies = (
+				CF935B6A2749128600C0F42D /* Sparkle */,
+			);
 			productInstallPath = "$(HOME)/bin";
 			productName = canari;
 			productReference = CF9C658225CABE5C00A00D5C /* ElCanari-Debug-temporary.app */;
@@ -12891,6 +12901,16 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		CF50656627490E7F009A99B6 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+		CF935B682749127D00C0F42D /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+		CF935B6A2749128600C0F42D /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;

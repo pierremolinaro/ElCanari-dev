@@ -3,6 +3,7 @@
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 05/11/2015.
+//  Utilisation de Sparkle sous le Swift Package Manager, 20 novembre 2021
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -20,9 +21,10 @@ import Sparkle
   //····················································································································
 
   @IBOutlet private var mUpdateCheckbox : NSButton?
-  @IBOutlet private var mCheckNowForUpdateButton : NSButton?
   @IBOutlet private var mUpdateIntervalPopUpButton : NSPopUpButton?
   @IBOutlet private var mSparkleVersionTextField : NSTextField?
+  @IBOutlet private var mCheckNowForUpdateButton : NSButton?
+  @IBOutlet private var mCheckNowForUpdateMenuItem : NSMenuItem?
 
   //····················································································································
 
@@ -43,6 +45,8 @@ import Sparkle
     if let updater = Sparkle.SUUpdater.shared () {
       self.mCheckNowForUpdateButton?.target = updater
       self.mCheckNowForUpdateButton?.action = #selector (Sparkle.SUUpdater.checkForUpdates (_:))
+      self.mCheckNowForUpdateMenuItem?.target = updater
+      self.mCheckNowForUpdateMenuItem?.action = #selector (Sparkle.SUUpdater.checkForUpdates (_:))
       self.mUpdateCheckbox?.bind (
         NSBindingName.value,
         to: updater,

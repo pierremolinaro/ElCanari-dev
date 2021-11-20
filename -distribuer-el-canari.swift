@@ -28,7 +28,7 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.4.8.beta2"
+let VERSION_CANARI = "1.4.8"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
