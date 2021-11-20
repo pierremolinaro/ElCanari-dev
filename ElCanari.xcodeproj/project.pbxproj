@@ -3870,7 +3870,6 @@
 		CFEABD07267F5B4600B715F9 /* InternalAutoLayoutPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEABD06267F5B4600B715F9 /* InternalAutoLayoutPopUpButton.swift */; };
 		CFEABD08267F5B4600B715F9 /* InternalAutoLayoutPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEABD06267F5B4600B715F9 /* InternalAutoLayoutPopUpButton.swift */; };
 		CFEABD09267F5B4600B715F9 /* InternalAutoLayoutPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEABD06267F5B4600B715F9 /* InternalAutoLayoutPopUpButton.swift */; };
-		CFEB1198274801F3002A6F46 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = CFEB1197274801F3002A6F46 /* Sparkle */; };
 		CFEB7A95233A23270060A97A /* transient-BoardConnector-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7A85233A23260060A97A /* transient-BoardConnector-selectionDisplay.swift */; };
 		CFEB7A96233A23270060A97A /* transient-BoardConnector-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7A85233A23260060A97A /* transient-BoardConnector-selectionDisplay.swift */; };
 		CFEB7A97233A23270060A97A /* transient-BoardConnector-actualPadDiameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7A86233A23260060A97A /* transient-BoardConnector-actualPadDiameter.swift */; };
@@ -5890,7 +5889,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFEB1198274801F3002A6F46 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7949,7 +7947,6 @@
 			);
 			name = "ElCanari-Debug";
 			packageProductDependencies = (
-				CFEB1197274801F3002A6F46 /* Sparkle */,
 			);
 			productInstallPath = "$(HOME)/bin";
 			productName = canari;
@@ -8035,7 +8032,6 @@
 			);
 			mainGroup = 4B5CE2FE28308FD9F2A7BAF3;
 			packageReferences = (
-				CFEB1196274801F3002A6F46 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = CF747FB01B3C3D8D00140C49 /* Products */;
 			projectDirPath = "";
@@ -12502,7 +12498,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)$(PROJECT_DIR)/ElCanari/sparkle";
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -12719,7 +12714,6 @@
 				DEVELOPMENT_TEAM = YW8QY74J2A;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)$(PROJECT_DIR)/ElCanari/sparkle";
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -12879,25 +12873,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		CFEB1196274801F3002A6F46 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sparkle-project/Sparkle";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		CFEB1197274801F3002A6F46 /* Sparkle */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFEB1196274801F3002A6F46 /* XCRemoteSwiftPackageReference "Sparkle" */;
-			productName = Sparkle;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 95D565EF66E7DFF9F98764DA /* Project object */;
 }
