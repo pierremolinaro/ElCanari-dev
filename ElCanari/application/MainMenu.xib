@@ -32,6 +32,7 @@
         </customObject>
         <customObject id="n5I-oj-7oR" customClass="CanariAppUpdaterSettings">
             <connections>
+                <outlet property="mCheckNowForUpdateButton" destination="6120" id="rY3-iA-wo0"/>
                 <outlet property="mSparkleVersionTextField" destination="ile-KZ-7AF" id="ofs-9N-z0N"/>
                 <outlet property="mUpdateCheckbox" destination="6161" id="PT0-cs-kxQ"/>
                 <outlet property="mUpdateIntervalPopUpButton" destination="Fkn-0i-mVD" id="x1s-Fd-r3L"/>

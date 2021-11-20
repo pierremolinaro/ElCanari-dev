@@ -962,6 +962,7 @@
 		CF4EC73F2284A24400902FBB /* extension-SheetInProject-points-at-location.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EC73D2284A24400902FBB /* extension-SheetInProject-points-at-location.swift */; };
 		CF4EC7412284A36E00902FBB /* extension-SheetInProject-drag-add-wire.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EC7402284A36E00902FBB /* extension-SheetInProject-drag-add-wire.swift */; };
 		CF4EC7422284A36E00902FBB /* extension-SheetInProject-drag-add-wire.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EC7402284A36E00902FBB /* extension-SheetInProject-drag-add-wire.swift */; };
+		CF50656727490E7F009A99B6 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = CF50656627490E7F009A99B6 /* Sparkle */; };
 		CF5123EE222A877500FA4364 /* transient-PackageSegment-strokeBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5123ED222A877500FA4364 /* transient-PackageSegment-strokeBezierPath.swift */; };
 		CF5123EF222A877500FA4364 /* transient-PackageSegment-strokeBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5123ED222A877500FA4364 /* transient-PackageSegment-strokeBezierPath.swift */; };
 		CF5123F1222A889400FA4364 /* transient-PackageBezier-strokeBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5123F0222A889400FA4364 /* transient-PackageBezier-strokeBezierPath.swift */; };
@@ -5889,6 +5890,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF50656727490E7F009A99B6 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7947,6 +7949,7 @@
 			);
 			name = "ElCanari-Debug";
 			packageProductDependencies = (
+				CF50656627490E7F009A99B6 /* Sparkle */,
 			);
 			productInstallPath = "$(HOME)/bin";
 			productName = canari;
@@ -8032,6 +8035,7 @@
 			);
 			mainGroup = 4B5CE2FE28308FD9F2A7BAF3;
 			packageReferences = (
+				CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = CF747FB01B3C3D8D00140C49 /* Products */;
 			projectDirPath = "";
@@ -12873,6 +12877,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CF50656627490E7F009A99B6 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 95D565EF66E7DFF9F98764DA /* Project object */;
 }
