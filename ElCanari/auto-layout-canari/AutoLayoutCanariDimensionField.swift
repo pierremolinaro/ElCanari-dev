@@ -19,7 +19,6 @@ final class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtoco
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.delegate = self
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.alignment = .center
@@ -45,6 +44,54 @@ final class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtoco
 
   //····················································································································
 
+//  override func sendAction (_ action: Selector?, to target: Any?) -> Bool {
+//    Swift.print ("sendAction")
+//    return super.sendAction (action, to: target)
+//  }
+
+  //····················································································································
+
+  override func resignFirstResponder () -> Bool {
+    // Swift.print ("resignFirstResponder")
+    if let controller = self.mController {
+      let ok = controller.performValidation (self)
+      return ok
+    }else{
+      return super.resignFirstResponder ()
+    }
+  }
+
+  //····················································································································
+
+  override func textShouldEndEditing (_ inTextObject : NSText) -> Bool {
+    // Swift.print ("textShouldEndEditing")
+    if let controller = self.mController {
+      let ok = controller.performValidation (self)
+      if !ok {
+        controller.updateOutlet () // Restore previous valid value
+      }
+      return ok
+    }else{
+      return super.textShouldEndEditing (inTextObject)
+    }
+  }
+
+  //····················································································································
+
+//  override var nextResponder : NSResponder? {
+//    get {
+//      if let stack = self.superview as? AutoLayoutAbstractStackView {
+//        return stack.getResponder (following: self)
+//      }else{
+//      //Swift.print ("GET nextResponder")
+//        return super.nextResponder
+//      }
+//    }
+//    set { super.nextResponder = newValue }
+//  }
+
+  //····················································································································
+
   override func ebCleanUp () {
     self.mController?.unregister ()
     self.mController = nil
@@ -55,21 +102,8 @@ final class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtoco
   //  value binding
   //····················································································································
 
-  fileprivate func updateOutlet (dimension : EBReadOnlyProperty_Int, unit : EBReadOnlyProperty_Int) {
-    switch combine (dimension.selection, unit: unit.selection) {
-    case .empty :
-      self.placeholderString = "No Selection"
-      self.stringValue = ""
-      self.enable (fromValueBinding: false)
-    case .multiple :
-      self.placeholderString = "Multiple Selection"
-      self.stringValue = ""
-      self.enable (fromValueBinding: true)
-    case .single (let propertyValue) :
-      self.placeholderString = nil
-      self.doubleValue = propertyValue
-      self.enable (fromValueBinding: true)
-    }
+  fileprivate func updateOutlet () {
+    self.mController?.updateOutlet ()
   }
 
   //····················································································································
@@ -108,7 +142,7 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBReadO
     self.mOutlet = outlet
     super.init (
       observedObjects: [dimension, unit],
-      callBack: { outlet.updateOutlet (dimension: dimension, unit: unit) }
+      callBack: { outlet.updateOutlet () }
     )
   //--- Target
     self.mOutlet.target = self
@@ -134,18 +168,44 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBReadO
 
   //····················································································································
 
-  @objc func textFieldAction (_ inSender : AutoLayoutCanariDimensionField) {
+  fileprivate func updateOutlet () {
+    switch combine (self.mDimension.selection, unit: self.mUnit.selection) {
+    case .empty :
+      self.mOutlet.placeholderString = "No Selection"
+      self.mOutlet.stringValue = ""
+      self.mOutlet.enable (fromValueBinding: false)
+    case .multiple :
+      self.mOutlet.placeholderString = "Multiple Selection"
+      self.mOutlet.stringValue = ""
+      self.mOutlet.enable (fromValueBinding: true)
+    case .single (let propertyValue) :
+      self.mOutlet.placeholderString = nil
+      self.mOutlet.doubleValue = propertyValue
+      self.mOutlet.enable (fromValueBinding: true)
+    }
+  }
+
+  //····················································································································
+
+  fileprivate func performValidation (_ inSender : AutoLayoutCanariDimensionField) -> Bool {
     switch self.mUnit.selection {
     case .empty, .multiple :
-      break
+      return false
     case .single (let unit) :
       if let formatter = self.mOutlet.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.mOutlet.stringValue) {
         let value = Int ((outletValueNumber.doubleValue * Double (unit)).rounded ())
-        _ = self.mDimension.validateAndSetProp (value, windowForSheet: inSender.window)
+        return self.mDimension.validateAndSetProp (value, windowForSheet: inSender.window)
       }else{
         NSSound.beep ()
+        return false
       }
     }
+  }
+
+  //····················································································································
+
+  @objc func textFieldAction (_ inSender : AutoLayoutCanariDimensionField) {
+    _ = self.performValidation (inSender)
   }
 
   //····················································································································

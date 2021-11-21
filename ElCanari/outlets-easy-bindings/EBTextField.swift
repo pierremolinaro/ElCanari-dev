@@ -118,7 +118,7 @@ final class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDeleg
 
   @objc func ebAction (_ inUnusedSender : Any?) {
     self.mControlTextDidChangeCallBack? ()
-    _ = self.mValueController?.updateModel(withCandidateValue: self.stringValue, windowForSheet: self.window)
+    _ = self.mValueController?.updateModel (withCandidateValue: self.stringValue, windowForSheet: self.window)
   }
 
   //····················································································································

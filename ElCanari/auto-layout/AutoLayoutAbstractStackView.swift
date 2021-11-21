@@ -186,6 +186,41 @@ class AutoLayoutAbstractStackView : NSStackView, EBUserClassNameProtocol {
     super.observeValue (forKeyPath: keyPath, of: object, change: change, context: context)
   }
 
+//  //····················································································································
+//
+//  final func getResponder (following inResponder : NSResponder) -> NSResponder? {
+//    var result : NSResponder? = nil
+//    var searchForCurrentResponder = true
+//    for view in self.subviews {
+//      if !searchForCurrentResponder, result == nil, !view.isHidden {
+//        result = view
+//      }
+//      if view === inResponder {
+//        searchForCurrentResponder = false
+//      }
+//    }
+//    return result
+//  }
+//
+  //····················································································································
+
+  override func updateConstraints () {
+    super.updateConstraints ()
+
+    var v = self.superview
+    while v?.superview != nil {
+      v = v?.superview
+    }
+    DispatchQueue.main.async {
+      var currentView : NSView? = nil
+      var optionalLastView : NSView? = nil
+      v?.buildAutoLayoutKeyViewChain (&currentView, &optionalLastView)
+      if let lastView = optionalLastView {
+        _ = v?.setAutoLayoutFirstKeyViewInChain (lastView)
+      }
+    }
+  }
+
   //····················································································································
 
 }

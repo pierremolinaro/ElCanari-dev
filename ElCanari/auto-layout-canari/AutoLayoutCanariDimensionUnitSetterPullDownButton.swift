@@ -50,6 +50,10 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : NSPopUpButton, E
 
   //····················································································································
 
+  override var acceptsFirstResponder: Bool { return false }
+
+  //····················································································································
+
   fileprivate func add (title inTitle : String, withTag inTag : Int) {
     self.addItem (withTitle: inTitle)
     self.lastItem?.tag = inTag

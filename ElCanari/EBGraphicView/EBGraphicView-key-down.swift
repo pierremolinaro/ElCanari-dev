@@ -21,6 +21,8 @@ extension EBGraphicView {
           self.mMouseDownBehaviour.abortMouseOperation (self)
           let mouseLocationInView = self.convert (myWindow.mouseLocationOutsideOfEventStream, from: nil)
           self.setHelperTextField (self.mMouseDownBehaviour.helperString (mouseLocationInView, inEvent.modifierFlags, self))
+        case NSEvent.SpecialKey (rawValue: 9).unicodeScalar : // Htab
+          super.keyDown (with: inEvent)
         case NSEvent.SpecialKey.upArrow.unicodeScalar :
           _ = self.wantsToTranslateSelection (byX: 0, byY: amount)
         case NSEvent.SpecialKey.downArrow.unicodeScalar :
