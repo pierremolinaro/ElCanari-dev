@@ -995,7 +995,11 @@ import Cocoa
     let mainView = self.mDocumentMainView
   //--- Call outlet linkers
   //--- Assign main view to window
-    self.windowForSheet?.contentView = mainView
+    if let windowSize = self.windowForSheet?.frame.size {
+      mainView.frame.size = windowSize
+    }
+    self.windowForSheet?.contentViewController = EBViewController (mainView)
+//    self.windowForSheet?.contentView = mainView
   }
 
   //····················································································································

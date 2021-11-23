@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -57,7 +57,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
             <rect key="contentRect" x="73" y="851" width="700" height="500"/>
-            <rect key="screenRect" x="0.0" y="900" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="900" width="1920" height="1055"/>
             <value key="minSize" type="size" width="600" height="400"/>
             <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="700" height="500"/>
@@ -138,7 +138,7 @@
                     <toolbarItem reference="lmo-YY-agB"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="1318" y="-81"/>
+            <point key="canvasLocation" x="762" y="-205"/>
         </window>
         <customView id="883" userLabel="Inspector : sample string" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
@@ -292,7 +292,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="bia-Mb-mD3">
                         <rect key="frame" x="1" y="1" width="531" height="400"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1097" customClass="EBTextView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="531" height="400"/>
@@ -426,11 +426,11 @@
                     <rect key="frame" x="2" y="0.0" width="246" height="245"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="hL4-lW-hym">
-                        <rect key="frame" x="1" y="0.0" width="244" height="244"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="1" y="1" width="244" height="243"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="p8i-Zv-zRb" viewBased="YES" id="gZS-PE-KcP" customClass="CanariCharacterGerberCodeTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="244" height="221"/>
+                                <rect key="frame" x="0.0" y="0.0" width="244" height="220"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -450,11 +450,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="ozw-nh-zCn">
-                                                <rect key="frame" x="1" y="1" width="118" height="17"/>
+                                                <rect key="frame" x="1" y="1" width="123" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SjT-KG-yC3">
-                                                        <rect key="frame" x="0.0" y="3" width="118" height="14"/>
+                                                        <rect key="frame" x="0.0" y="3" width="123" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="iB7-ye-6xf">
                                                             <font key="font" metaFont="smallSystem"/>
@@ -469,7 +469,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="comment" width="120" minWidth="40" maxWidth="1000" id="fjh-Jy-Vib">
+                                    <tableColumn identifier="comment" width="111" minWidth="40" maxWidth="1000" id="fjh-Jy-Vib">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Comment">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -482,11 +482,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="comment" id="Lhm-ki-YmI">
-                                                <rect key="frame" x="122" y="1" width="120" height="17"/>
+                                                <rect key="frame" x="127" y="1" width="115" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jto-9r-B97">
-                                                        <rect key="frame" x="0.0" y="3" width="120" height="14"/>
+                                                        <rect key="frame" x="0.0" y="3" width="115" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="LnO-49-emB">
                                                             <font key="font" metaFont="smallSystem"/>
@@ -513,7 +513,7 @@
                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <tableHeaderView key="headerView" id="p8i-Zv-zRb">
+                    <tableHeaderView key="headerView" wantsLayer="YES" id="p8i-Zv-zRb">
                         <rect key="frame" x="0.0" y="0.0" width="244" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
@@ -653,7 +653,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="FcB-bo-IsW">
                         <rect key="frame" x="1" y="1" width="189" height="381"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="4ds-6U-hSp" customClass="IssueTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="189" height="381"/>
@@ -670,7 +670,7 @@
                                         </tableHeaderCell>
                                         <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="UUm-lU-k1W"/>
                                     </tableColumn>
-                                    <tableColumn identifier="title" editable="NO" width="153" minWidth="40" maxWidth="1000" id="OFi-NR-14K">
+                                    <tableColumn identifier="title" editable="NO" width="144" minWidth="40" maxWidth="1000" id="OFi-NR-14K">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>

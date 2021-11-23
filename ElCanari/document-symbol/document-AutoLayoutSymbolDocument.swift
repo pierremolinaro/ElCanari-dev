@@ -1159,7 +1159,11 @@ import Cocoa
   //--- Call outlet linkers
     self.linker_issueTableViewToGraphicView (self.mSymbolIssueTableView, self.mSymbolGraphicView)
   //--- Assign main view to window
-    self.windowForSheet?.contentView = mainView
+    if let windowSize = self.windowForSheet?.frame.size {
+      mainView.frame.size = windowSize
+    }
+    self.windowForSheet?.contentViewController = EBViewController (mainView)
+//    self.windowForSheet?.contentView = mainView
   }
 
   //····················································································································
