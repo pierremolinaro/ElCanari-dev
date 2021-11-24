@@ -65,7 +65,9 @@ extension CustomizedProjectDocument {
     let importSESProgressIndicator = AutoLayoutProgressIndicator ().expandableWidth ()
     rightColumn.appendView (importSESProgressIndicator)
     mainView.appendView (rightColumn)
-    panel.contentView = mainView
+//    panel.contentView = mainView
+    mainView.frame.size = panel.frame.size
+    panel.contentViewController = EBViewController (mainView)
   //--- Display sheet
     importSESTextField.stringValue = "Extracting Tracks…"
     importSESProgressIndicator.minValue = 0.0

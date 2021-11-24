@@ -472,7 +472,9 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
       )
       rightColumn.appendViewPreceededByFlexibleSpace (okButton)
       mainView.appendView (rightColumn)
-      panel.contentView = mainView
+//      panel.contentView = mainView
+      mainView.frame.size = panel.frame.size
+      panel.contentViewController = EBViewController (mainView)
       let message = errorList.joined (separator: "\n")
       text.string = message
       window.beginSheet (panel) { [weak self] (inModalResponse) in self?.ebUndoManager.undo () }

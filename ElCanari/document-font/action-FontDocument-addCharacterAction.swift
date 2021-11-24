@@ -47,7 +47,9 @@ extension FontDocument {
       rightColumn.appendView (bottomItems)
       mainView.appendView (rightColumn)
 
-      panel.contentView = mainView
+//      panel.contentView = mainView
+      mainView.frame.size = panel.frame.size
+      panel.contentViewController = EBViewController (mainView)
     //--- Populate table view
       var implementedCharacterSet = Set <Int> ()
       for character in rootObject.characters_property.propval.values {

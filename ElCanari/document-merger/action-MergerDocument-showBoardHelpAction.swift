@@ -36,7 +36,9 @@ extension MergerDocument {
     let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: panel, isInitialFirstResponder: true)
     rightColumn.appendViewPreceededByFlexibleSpace (okButton)
     mainView.appendViewPreceededByFlexibleSpace (rightColumn)
-    panel.contentView = mainView
+//    panel.contentView = mainView
+    mainView.frame.size = panel.frame.size
+    panel.contentViewController = EBViewController (mainView)
     self.windowForSheet?.beginSheet (panel, completionHandler: nil)
 //--- END OF USER ZONE 2
   }
