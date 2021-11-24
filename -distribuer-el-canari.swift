@@ -28,18 +28,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.4.8"
+let VERSION_CANARI = "1.4.9"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Dans le document Device, détection de plusieurs pins ayant le même nom, avec des noms de symboles identiques."
 ]
 let CHANGES : [String] = [
-  "Utilisation du Swift Package Manager pour Sparkle."
+  "Prise en compte de la tabulation pour passer d'un champ à l'autre."
 ]
 let NEWS : [String] = [
-  "Affichage d'alertes lors du lancement de FreeRouter en cas d'erreur dans le schéma ou de composants non placés sur le circuit.",
-  "Menu contextuel pour effectuer l'alignement rectilinéaire ou octolinéaire des pistes."]
+]
 
 //--------------------------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR
