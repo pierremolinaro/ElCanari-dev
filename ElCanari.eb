@@ -9,6 +9,7 @@ include "eb-sources/font-FontCharacter.eb" ;
 include "eb-sources/font-SegmentForFontCharacter.eb" ;
 include "eb-sources/font-FontRoot.eb" ;
 include "eb-sources/font-FontDocument.eb" ;
+include "eb-sources/FontDocument-auto-layout.eb" ;
 //--- Artwork
 include "eb-sources/artworkDocument-auto-layout.eb" ;
 //--- Merger

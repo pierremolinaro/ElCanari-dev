@@ -44,7 +44,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>CustomizedFontDocument</string>
+			<string>AutoLayoutFontDocumentSubClass</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
