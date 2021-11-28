@@ -10,10 +10,7 @@ var g_Preferences : Preferences? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let Preferences_warningMessageColor = "Preferences:warningMessageColor"
-let Preferences_successMessageColor = "Preferences:successMessageColor"
 let Preferences_mAutoLayoutStyle = "Preferences:mAutoLayoutStyle"
-let Preferences_selectionHiliteColor = "Preferences:selectionHiliteColor"
 let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
 let Preferences_symbolColor = "Preferences:symbolColor"
 let Preferences_crossColorOfSymbolGrid = "Preferences:crossColorOfSymbolGrid"
@@ -192,40 +189,14 @@ let Preferences_mergerColorFrontLegendLines = "Preferences:mergerColorFrontLegen
 let Preferences_mergerColorBackLegendLines = "Preferences:mergerColorBackLegendLines"
 let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
 let Preferences_artworkDialogFilterString = "Preferences:artworkDialogFilterString"
-let Preferences_errorMessageColor = "Preferences:errorMessageColor"
 let Preferences_showDebugMenu = "Preferences:showDebugMenu"
+let Preferences_selectionHiliteColor = "Preferences:selectionHiliteColor"
 let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedByTen"
 let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
 let Preferences_pinNameFont = "Preferences:pinNameFont"
 let Preferences_mFreeRouterGuiDefaultFileContents = "Preferences:mFreeRouterGuiDefaultFileContents"
 let Preferences_sampleStringSize = "Preferences:sampleStringSize"
 let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
-
-//····················································································································
-//   Atomic property: warningMessageColor
-//····················································································································
-
-  let preferences_warningMessageColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_warningMessageColor)
-
-//····················································································································
-
-  var preferences_warningMessageColor : NSColor {
-    get { return preferences_warningMessageColor_property.propval }
-    set { preferences_warningMessageColor_property.setProp (newValue) }
-  }
-
-//····················································································································
-//   Atomic property: successMessageColor
-//····················································································································
-
-  let preferences_successMessageColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_successMessageColor)
-
-//····················································································································
-
-  var preferences_successMessageColor : NSColor {
-    get { return preferences_successMessageColor_property.propval }
-    set { preferences_successMessageColor_property.setProp (newValue) }
-  }
 
 //····················································································································
 //   Atomic property: mAutoLayoutStyle
@@ -238,19 +209,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var preferences_mAutoLayoutStyle : AutoLayoutUserInterfaceStyle {
     get { return preferences_mAutoLayoutStyle_property.propval }
     set { preferences_mAutoLayoutStyle_property.setProp (newValue) }
-  }
-
-//····················································································································
-//   Atomic property: selectionHiliteColor
-//····················································································································
-
-  let preferences_selectionHiliteColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.cyan, prefKey: Preferences_selectionHiliteColor)
-
-//····················································································································
-
-  var preferences_selectionHiliteColor : NSColor {
-    get { return preferences_selectionHiliteColor_property.propval }
-    set { preferences_selectionHiliteColor_property.setProp (newValue) }
   }
 
 //····················································································································
@@ -2568,19 +2526,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
 //····················································································································
-//   Atomic property: errorMessageColor
-//····················································································································
-
-  let preferences_errorMessageColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_errorMessageColor)
-
-//····················································································································
-
-  var preferences_errorMessageColor : NSColor {
-    get { return preferences_errorMessageColor_property.propval }
-    set { preferences_errorMessageColor_property.setProp (newValue) }
-  }
-
-//····················································································································
 //   Atomic property: showDebugMenu
 //····················································································································
 
@@ -2591,6 +2536,19 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var preferences_showDebugMenu : Bool {
     get { return preferences_showDebugMenu_property.propval }
     set { preferences_showDebugMenu_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: selectionHiliteColor
+//····················································································································
+
+  let preferences_selectionHiliteColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.cyan, prefKey: Preferences_selectionHiliteColor)
+
+//····················································································································
+
+  var preferences_selectionHiliteColor : NSColor {
+    get { return preferences_selectionHiliteColor_property.propval }
+    set { preferences_selectionHiliteColor_property.setProp (newValue) }
   }
 
 //····················································································································
@@ -2818,7 +2776,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mDotColorOfPackageGridColorWell : EBColorWell? = nil
   @IBOutlet var mEditionTransparencySlider : EBSlider? = nil
   @IBOutlet var mEditionTransparencyTextField : EBDoubleField? = nil
-  @IBOutlet var mErrorMessageColorColorWell : EBColorWell? = nil
   @IBOutlet var mInformativeTextInLibraryUpdateWindow : EBTextField? = nil
   @IBOutlet var mLibraryRepositoryCommitButton : NSButton? = nil
   @IBOutlet var mLibraryRepositoryCurrentReleaseTextField : NSTextField? = nil
@@ -2871,7 +2828,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mShowDebugMenuSwitch : EBSwitch? = nil
   @IBOutlet var mShowGerberDrawingFlowCheckbox : EBSwitch? = nil
   @IBOutlet var mShowGerberDrawingIndexesCheckbox : EBSwitch? = nil
-  @IBOutlet var mSuccessMessageColorColorWell : EBColorWell? = nil
   @IBOutlet var mSymbolAndPackageBackgroundColorForDeviceColorWell : EBColorWell? = nil
   @IBOutlet var mSymbolAndPackageGridDotColorForDeviceColorWell : EBColorWell? = nil
   @IBOutlet var mSymbolAndPackageLineDotColorForDeviceColorWell : EBColorWell? = nil
@@ -2892,7 +2848,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : EBMenuItem? = nil
   @IBOutlet var mUseLibraryInUserApplicationSupportPathCheckBox : EBSwitch? = nil
   @IBOutlet var mUserAndPasswordTextField : NSTextField? = nil
-  @IBOutlet var mWarningMessageColorColorWell : EBColorWell? = nil
   @IBOutlet var nextSystemLibraryCheckDate : CanariDateObserverField? = nil
   @IBOutlet var selectionHilitePopupButton : EBPopUpButton? = nil
   @IBOutlet var systemLibraryCheckTimeIntervalPopupButton : EBPopUpButton? = nil
@@ -3067,7 +3022,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     checkOutletConnection (self.mDotColorOfPackageGridColorWell, "mDotColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mEditionTransparencySlider, "mEditionTransparencySlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.mEditionTransparencyTextField, "mEditionTransparencyTextField", EBDoubleField.self, #file, #line)
-    checkOutletConnection (self.mErrorMessageColorColorWell, "mErrorMessageColorColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mInformativeTextInLibraryUpdateWindow, "mInformativeTextInLibraryUpdateWindow", EBTextField.self, #file, #line)
     checkOutletConnection (self.mLibraryRepositoryCommitButton, "mLibraryRepositoryCommitButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mLibraryRepositoryCurrentReleaseTextField, "mLibraryRepositoryCurrentReleaseTextField", NSTextField.self, #file, #line)
@@ -3120,7 +3074,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     checkOutletConnection (self.mShowDebugMenuSwitch, "mShowDebugMenuSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mShowGerberDrawingFlowCheckbox, "mShowGerberDrawingFlowCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mShowGerberDrawingIndexesCheckbox, "mShowGerberDrawingIndexesCheckbox", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mSuccessMessageColorColorWell, "mSuccessMessageColorColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSymbolAndPackageBackgroundColorForDeviceColorWell, "mSymbolAndPackageBackgroundColorForDeviceColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSymbolAndPackageGridDotColorForDeviceColorWell, "mSymbolAndPackageGridDotColorForDeviceColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSymbolAndPackageLineDotColorForDeviceColorWell, "mSymbolAndPackageLineDotColorForDeviceColorWell", EBColorWell.self, #file, #line)
@@ -3141,15 +3094,11 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     checkOutletConnection (self.mUpDateLibraryMenuItemInCanariMenu, "mUpDateLibraryMenuItemInCanariMenu", EBMenuItem.self, #file, #line)
     checkOutletConnection (self.mUseLibraryInUserApplicationSupportPathCheckBox, "mUseLibraryInUserApplicationSupportPathCheckBox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mUserAndPasswordTextField, "mUserAndPasswordTextField", NSTextField.self, #file, #line)
-    checkOutletConnection (self.mWarningMessageColorColorWell, "mWarningMessageColorColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.nextSystemLibraryCheckDate, "nextSystemLibraryCheckDate", CanariDateObserverField.self, #file, #line)
     checkOutletConnection (self.selectionHilitePopupButton, "selectionHilitePopupButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.systemLibraryCheckTimeIntervalPopupButton, "systemLibraryCheckTimeIntervalPopupButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.systemLibraryCheckTimeIntervalTitleTextField, "systemLibraryCheckTimeIntervalTitleTextField", NSTextField.self, #file, #line)
   //--------------------------- Install bindings
-    mErrorMessageColorColorWell?.bind_color (preferences_errorMessageColor_property, sendContinously:true)
-    mWarningMessageColorColorWell?.bind_color (preferences_warningMessageColor_property, sendContinously:true)
-    mSuccessMessageColorColorWell?.bind_color (preferences_successMessageColor_property, sendContinously:true)
     mShowDebugMenuSwitch?.bind_value (preferences_showDebugMenu_property)
     mAutoLayoutStylePopUpButton?.bind_selectedIndex (preferences_mAutoLayoutStyle_property)
     mSelectionHiliteColorColorWell?.bind_color (preferences_selectionHiliteColor_property, sendContinously:true)

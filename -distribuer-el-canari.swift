@@ -138,15 +138,15 @@ let DISTRIBUTION_DIR = scriptDir + "/../EL_CANARI_DISTRIBUTION_" + VERSION_CANAR
 while fm.fileExists (atPath: DISTRIBUTION_DIR) {
   runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR])
 }
-//-------------------- Creer le repertoire contenant la distribution
+//-------------------- Créer le répertoire contenant la distribution
 runCommand ("/bin/mkdir", [DISTRIBUTION_DIR])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Importer ElCanari
 runCommand ("/bin/rm", ["-f", "archive.zip"])
 runCommand ("/bin/rm", ["-fr", "ElCanari-dev-master"])
-runCommand ("/usr/bin/curl", ["--fail", "-L", "https://github.com/pierremolinaro/ElCanari-dev/archive/master.zip", "-o", "archive.zip"])
-runCommand ("/usr/bin/unzip", ["archive.zip"])
-runCommand ("/bin/rm", ["archive.zip"])
+runCommand ("/usr/bin/curl", ["--fail", "-L", "https://github.com/pierremolinaro/ElCanari-dev/archive/master.tar.gz", "-o", "archive.tar.gz"])
+runCommand ("/usr/bin/tar", ["xvfz", "archive.tar.gz"])
+runCommand ("/bin/rm", ["archive.tar.gz"])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/ElCanari-dev-master")
 //-------------------- Obtenir l'année
 let ANNEE = Calendar.current.component (.year, from: Date ())
