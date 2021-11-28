@@ -102,31 +102,44 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
   //····················································································································
 
   func ebHashValue () -> UInt32 {
-    let data = NSMutableData ()
-    let archiver = NSKeyedArchiver (forWritingWith: data)
+//    let data = NSMutableData ()
+//    let archiver = NSKeyedArchiver (forWritingWith: data)
+//    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+//    archiver.finishEncoding ()
+//    return (data as Data).ebHashValue ()
+    let archiver = NSKeyedArchiver (requiringSecureCoding: true)
     archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
     archiver.finishEncoding ()
-    return (data as Data).ebHashValue ()
+    return archiver.encodedData.ebHashValue ()
   }
 
   //····················································································································
 
   func convertToNSObject () -> NSObject {
-    let data = NSMutableData ()
-    let archiver = NSKeyedArchiver (forWritingWith: data)
+//    let data = NSMutableData ()
+//    let archiver = NSKeyedArchiver (forWritingWith: data)
+//    var array = [NSBezierPath] ()
+//    for p in self.mPathes {
+//      array.append (p.nsBezierPath)
+//    }
+//    archiver.encode (array, forKey: NSKeyedArchiveRootObjectKey)
+//    archiver.finishEncoding ()
+//    return data
+    let archiver = NSKeyedArchiver (requiringSecureCoding: true)
     var array = [NSBezierPath] ()
     for p in self.mPathes {
       array.append (p.nsBezierPath)
     }
     archiver.encode (array, forKey: NSKeyedArchiveRootObjectKey)
     archiver.finishEncoding ()
-    return data
+    return archiver.encodedData as NSObject
   }
 
   //····················································································································
 
   static func convertFromNSObject (object : NSObject) -> BezierPathArray {
-    let array = NSKeyedUnarchiver.unarchiveObject (with: object as! Data) as! [NSBezierPath]
+   // let array = NSKeyedUnarchiver.unarchiveObject (with: object as! Data) as! [NSBezierPath]
+    let array = try! NSKeyedUnarchiver.unarchivedObject (ofClass: NSArray.self, from: object as! Data) as! [NSBezierPath]
     var result = BezierPathArray ()
     for bp in array {
       result.append (EBBezierPath (bp))

@@ -14,12 +14,12 @@ class InternalAutoLayoutSegmentedControl : NSSegmentedControl, EBUserClassNamePr
 
   //····················································································································
 
-  private let mEqualWidth : Bool
+//  private let mEqualWidth : Bool
 
   //····················································································································
 
   init (equalWidth inEqualWidth : Bool, size inSize : EBControlSize) {
-    self.mEqualWidth = inEqualWidth
+//    self.mEqualWidth = inEqualWidth
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
 
@@ -29,9 +29,12 @@ class InternalAutoLayoutSegmentedControl : NSSegmentedControl, EBUserClassNamePr
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
 
-    if #available (OSX 10.13, *) {
-      self.setValue (NSNumber (value: 2), forKey: "segmentDistribution") // fillEqually
+    if inEqualWidth {
+      self.segmentDistribution = .fillEqually // #available (OSX 10.13, *)
     }
+//    if #available (OSX 10.13, *) {
+//      self.setValue (NSNumber (value: 2), forKey: "segmentDistribution") // fillEqually
+//    }
   }
 
   //····················································································································
@@ -55,19 +58,19 @@ class InternalAutoLayoutSegmentedControl : NSSegmentedControl, EBUserClassNamePr
 
   //····················································································································
 
-  override final func resizeSubviews (withOldSize oldSize : NSSize) {
-    super.resizeSubviews (withOldSize: oldSize)
-    //Swift.print ("\(self.bounds)")
-    if #available (OSX 10.13, *) {
-    }else{
-      if self.mEqualWidth, self.segmentCount > 1 {
-        let width = self.bounds.size.width / CGFloat (self.segmentCount) - 3.0
-        for i in 0 ..< self.segmentCount {
-          self.setWidth (width, forSegment: i)
-        }
-      }
-    }
-  }
+//  override final func resizeSubviews (withOldSize oldSize : NSSize) {
+//    super.resizeSubviews (withOldSize: oldSize)
+//    //Swift.print ("\(self.bounds)")
+//    if #available (OSX 10.13, *) {
+//    }else{
+//      if self.mEqualWidth, self.segmentCount > 1 {
+//        let width = self.bounds.size.width / CGFloat (self.segmentCount) - 3.0
+//        for i in 0 ..< self.segmentCount {
+//          self.setWidth (width, forSegment: i)
+//        }
+//      }
+//    }
+//  }
 
   //····················································································································
 

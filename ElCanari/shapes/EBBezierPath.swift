@@ -133,13 +133,13 @@ struct EBBezierPath : Hashable {
       var cgGlyphArray = [CGGlyph] (repeating: CGGlyph (), count:glyphRange.length)
       _ = myLayout.getGlyphs (in: glyphRange, glyphs: &cgGlyphArray, properties: nil, characterIndexes: nil, bidiLevels: nil)
     //--- Transform in NSGlyph array
-      var nsGlyphArray = [NSGlyph] ()
-      for cgGlyph in cgGlyphArray {
-        nsGlyphArray.append (NSGlyph (cgGlyph))
-      }
+//      var nsGlyphArray = [NSGlyph] ()
+//      for cgGlyph in cgGlyphArray {
+//        nsGlyphArray.append (NSGlyph (cgGlyph))
+//      }
     //--- Enter in Bezier path
       self.mPath.move (to: NSPoint (x: inOrigin.x, y: inOrigin.y - 2.0 * font.descender))
-      self.mPath.appendGlyphs (&nsGlyphArray, count: glyphRange.length, in: font)
+      self.mPath.append (withCGGlyphs: &cgGlyphArray, count: glyphRange.length, in: font)
     //--- Alignment
       let width = self.mPath.bounds.width
       let height = self.mPath.bounds.height

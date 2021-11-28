@@ -61,9 +61,9 @@ extension String {
       characterIndexes: nil,
       bidiLevels: nil
     )
-    let nsGlyphBuffer = UnsafeMutablePointer<NSGlyph>.allocate (capacity: range.length)
-    (0..<range.length).forEach { nsGlyphBuffer [$0] = NSGlyph (cgGlyphBuffer [$0]) }
-    bp.appendGlyphs (nsGlyphBuffer, count: glyphLength, in: inFont)
+//    let nsGlyphBuffer = UnsafeMutablePointer<NSGlyph>.allocate (capacity: range.length)
+//    (0..<range.length).forEach { nsGlyphBuffer [$0] = NSGlyph (cgGlyphBuffer [$0]) }
+    bp.append (withCGGlyphs: cgGlyphBuffer, count: glyphLength, in: inFont)
     return bp
   }
 
@@ -89,14 +89,14 @@ extension String {
     var cgGlyphArray = [CGGlyph] (repeating: CGGlyph (), count:glyphRange.length)
     _ = myLayout.getGlyphs (in: glyphRange, glyphs: &cgGlyphArray, properties: nil, characterIndexes: nil, bidiLevels: nil)
   //--- Transform in NSGlyph array
-    var nsGlyphArray = [NSGlyph] ()
-    for cgGlyph in cgGlyphArray {
-      nsGlyphArray.append (NSGlyph (cgGlyph))
-    }
+//    var nsGlyphArray = [NSGlyph] ()
+//    for cgGlyph in cgGlyphArray {
+//      nsGlyphArray.append (NSGlyph (cgGlyph))
+//    }
   //--- Enter in Bezier path
     let bezier = NSBezierPath ()
     bezier.move (to: NSPoint (x: inOrigin.x, y: inOrigin.y - 2.0 * font.descender))
-    bezier.appendGlyphs (&nsGlyphArray, count: glyphRange.length, in: font)
+    bezier.append (withCGGlyphs: &cgGlyphArray, count: glyphRange.length, in: font)
     return bezier
   }
 

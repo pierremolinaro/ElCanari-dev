@@ -34,7 +34,9 @@ extension NSColor : EBStoredPropertyProtocol {
   //····················································································································
 
   func archiveToString () -> String {
-    let rgbColor = self.usingColorSpaceName (.calibratedRGB)!
+  //  let rgbColor = self.colorUsingColorSpace
+ //   let rgbColor = self.usingColorSpaceName (.calibratedRGB)!
+    let rgbColor = self.usingColorSpace (.genericRGB)!
     let red = rgbColor.redComponent
     let green = rgbColor.greenComponent
     let blue = rgbColor.blueComponent
@@ -46,22 +48,30 @@ extension NSColor : EBStoredPropertyProtocol {
   //····················································································································
 
   static func unarchiveFromData (data : Data) -> NSObject? {
-    return NSKeyedUnarchiver.unarchiveObject (with: data) as? NSColor
+//    return NSKeyedUnarchiver.unarchiveObject (with: data) as? NSColor
+    return try? NSKeyedUnarchiver.unarchivedObject (ofClass: NSColor.self, from: data)
   }
 
   //····················································································································
 
   static func unarchiveFromString (string : String) -> NSObject? {
     let scanner = Scanner (string: string)
-    var red = 0.0
-    _ = scanner.scanDouble (&red)
-    var green = 0.0
-    _ = scanner.scanDouble (&green)
-    var blue = 0.0
-    _ = scanner.scanDouble (&blue)
-    var alpha = 0.0
-    _ = scanner.scanDouble (&alpha)
-    return NSColor (calibratedRed: CGFloat (red), green: CGFloat (green), blue: CGFloat (blue), alpha: CGFloat (alpha))
+    if let red = scanner.scanDouble (),
+       let green = scanner.scanDouble (),
+       let blue = scanner.scanDouble (),
+       let alpha = scanner.scanDouble () {
+//    var red = 0.0
+//    _ = scanner.scanDouble (&red)
+//    var green = 0.0
+//    _ = scanner.scanDouble (&green)
+//    var blue = 0.0
+//    _ = scanner.scanDouble (&blue)
+//    var alpha = 0.0
+//    _ = scanner.scanDouble (&alpha)
+      return NSColor (calibratedRed: CGFloat (red), green: CGFloat (green), blue: CGFloat (blue), alpha: CGFloat (alpha))
+    }else{
+      return nil
+    }
   }
 
   //····················································································································

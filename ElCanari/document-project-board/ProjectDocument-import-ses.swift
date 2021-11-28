@@ -158,15 +158,16 @@ extension CustomizedProjectDocument {
       //--- Extract tracks (wireComponents [0] is not a valid wire description
         for netDescription in Array (wireComponents [1 ..< wireComponents.count]) {
           let scanner = Scanner (string: netDescription)
-          var ok = scanner.scanString ("(path", into: nil)
+          var ok = scanner.scanString ("(path") != nil
           if ok {
-            let startScanLocation = scanner.scanLocation
+          //  let startScanLocation = scanner.scanLocation
+            let startScanIndex = scanner.currentIndex
             let layerNames = [FRONT_SIDE_LAYOUT, BACK_SIDE_LAYOUT, INNER1_LAYOUT, INNER2_LAYOUT, INNER3_LAYOUT, INNER4_LAYOUT]
             var idx = 0
             var found = false
             while !found && (idx < layerNames.count) {
-              scanner.scanLocation = startScanLocation
-              found = scanner.scanString (layerNames [idx], into: nil)
+              scanner.currentIndex = startScanIndex
+              found = scanner.scanString (layerNames [idx]) != nil
               if found {
                 let layer : [TrackSide] = [.front, .back, .inner1, .inner2, .inner3, .inner4]
                 enterSegments (scanner, layer [idx], &ioRoutedTracks, inResolution, net, &ioErrorMessage)
@@ -184,11 +185,13 @@ extension CustomizedProjectDocument {
         viaComponents.removeFirst () // First component is not a valid via
         for viaDescription in viaComponents {
           let scanner = Scanner (string: viaDescription)
-          var x = 0.0
-          var y = 0.0
+//          var x = 0.0
+//          var y = 0.0
           let stopSet = CharacterSet (charactersIn: " ")
-          let ok = scanner.scanUpToCharacters (from: stopSet, into: nil) && scanner.scanDouble (&x) && scanner.scanDouble (&y)
-          if ok {
+          if scanner.scanUpToCharacters (from: stopSet) != nil, // scanner.scanUpToCharacters (from: stopSet, into: nil),
+             let x = scanner.scanDouble (representation: .decimal),
+             let y = scanner.scanDouble (representation: .decimal) {
+    //      if ok {
             if let netClass = net.mNetClass {
               let via = BoardConnector (self.ebUndoManager)
               via.mX = Int (x * Double (inResolution))
@@ -353,10 +356,12 @@ fileprivate func enterSegments (_ inScanner : Scanner,
     ok = inScanner.scanInt (&currentX) && inScanner.scanInt (&currentY)
     var loop = ok
     while loop {
-      let location = inScanner.scanLocation
-      loop = !inScanner.scanString (")", into: nil)
+     // let location = inScanner.scanLocation
+      let idx = inScanner.currentIndex
+   //   loop = !inScanner.scanString (")", into: nil)
+      loop = inScanner.scanString (")") == nil
       if loop {
-        inScanner.scanLocation = location
+        inScanner.currentIndex = idx
         var x = 0
         var y = 0
         ok = inScanner.scanInt (&x) && inScanner.scanInt (&y)
@@ -382,7 +387,7 @@ fileprivate func enterSegments (_ inScanner : Scanner,
         }
       }
     }
-    if ok && inScanner.scanString ("(type protect)", into: nil) {
+    if ok, inScanner.scanString ("(type protect)") != nil {
       var newRoutedSegments = [RoutedTrackForSESImporting] ()
       for segment in routedSegments {
         let rt = RoutedTrackForSESImporting (

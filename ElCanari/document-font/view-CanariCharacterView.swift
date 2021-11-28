@@ -741,9 +741,10 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
       let possibleArchive : Data? = pb.data (forType: matchingType)
       if let archive = possibleArchive {
       //--- Unarchive to get array of archived objects
-        // let unarchivedObject = NSKeyedUnarchiver.unarchiveObject (with: archive)
-        let unarchivedObject = NSUnarchiver.unarchiveObject (with: archive)
-        if let segmentListObject = unarchivedObject as? [[NSNumber]] {
+      //    let unarchivedObject = NSUnarchiver.unarchiveObject (with: archive)
+      //    let unarchivedObject = NSKeyedUnarchiver.unarchiveObject (with: archive)
+      //    if let segmentListObject = unarchivedObject as? [[NSNumber]] {
+        if let object = try? NSKeyedUnarchiver.unarchivedObject (ofClass: NSArray.self, from: archive), let segmentListObject = object as? [[NSNumber]] {
           var newSegmentArray = self.mSegmentList
           self.mSelection.removeAll ()
           for archivedSegment : [NSNumber] in segmentListObject {
@@ -781,8 +782,9 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
         segmentArray.append (s)
       }
     }
- //   let data = NSKeyedArchiver.archivedData (withRootObject: segmentArray)
-    let data = NSArchiver.archivedData (withRootObject: segmentArray)
+    let data = try! NSKeyedArchiver.archivedData (withRootObject: segmentArray, requiringSecureCoding: true)
+ //   let data = NSKeyedArchiver.archivedData (withRootObject: segmentArray) // Deprecated 10.14
+//    let data = NSArchiver.archivedData (withRootObject: segmentArray) // § Deprecated 10.13
     pb.setData (data, forType: FONT_SEGMENTS_PASTEBOARD_TYPE)
   }
 

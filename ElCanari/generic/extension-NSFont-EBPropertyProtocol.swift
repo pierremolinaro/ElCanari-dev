@@ -41,7 +41,8 @@ extension NSFont : EBStoredPropertyProtocol {
   //····················································································································
 
   static func unarchiveFromData (data : Data) -> NSObject? {
-    return NSKeyedUnarchiver.unarchiveObject (with: data) as? NSFont
+ //   return NSKeyedUnarchiver.unarchiveObject (with: data) as? NSFont
+    return try? NSKeyedUnarchiver.unarchivedObject (ofClass: NSFont.self, from: data)
   }
 
   //····················································································································

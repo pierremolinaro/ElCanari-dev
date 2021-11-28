@@ -61,7 +61,8 @@ extension NSBezierPath : EBStoredPropertyProtocol {
   //····················································································································
 
   static func unarchiveFromData (data : Data) -> NSObject? {
-    return NSKeyedUnarchiver.unarchiveObject (with: data) as? NSBezierPath
+//    return NSKeyedUnarchiver.unarchiveObject (with: data) as? NSBezierPath // §
+    return try? NSKeyedUnarchiver.unarchivedObject (ofClass: NSBezierPath.self, from: data)
   }
 
   //····················································································································
@@ -72,59 +73,36 @@ extension NSBezierPath : EBStoredPropertyProtocol {
     var ok = true
     var loop = true
     while ok && loop {
-      if scanner.scanString (":", into: nil) {
-        var x = 0.0
-        ok = scanner.scanDouble (&x)
-        var y = 0.0
-        if ok {
-          ok = scanner.scanDouble (&y)
-        }
-        if ok {
+      if scanner.scanString (":") != nil {
+        if let x = scanner.scanDouble (representation: .decimal), let y = scanner.scanDouble (representation: .decimal) {
           bp.move (to: NSPoint (x: CGFloat (x), y: CGFloat (y)))
+        }else{
+          ok = false
         }
-      }else if scanner.scanString (";", into: nil) {
-        var x = 0.0
-        ok = scanner.scanDouble (&x)
-        var y = 0.0
-        if ok {
-          ok = scanner.scanDouble (&y)
-        }
-        if ok {
+      }else if scanner.scanString (";") != nil {
+        if let x = scanner.scanDouble (representation: .decimal), let y = scanner.scanDouble (representation: .decimal) {
           bp.line (to: NSPoint (x: CGFloat (x), y: CGFloat (y)))
+        }else{
+          ok = false
         }
-      }else if scanner.scanString ("@", into: nil) {
-        var x0 = 0.0
-        ok = scanner.scanDouble (&x0)
-        var y0 = 0.0
-        if ok {
-          ok = scanner.scanDouble (&y0)
-        }
-        var x1 = 0.0
-        if ok {
-          ok = scanner.scanDouble (&x1)
-        }
-        var y1 = 0.0
-        if ok {
-          ok = scanner.scanDouble (&y1)
-        }
-        var x2 = 0.0
-        if ok {
-          ok = scanner.scanDouble (&x2)
-        }
-        var y2 = 0.0
-        if ok {
-          ok = scanner.scanDouble (&y2)
-        }
-        if ok {
+      }else if scanner.scanString ("@") != nil {
+        if let x0 = scanner.scanDouble (representation: .decimal),
+           let y0 = scanner.scanDouble (representation: .decimal),
+           let x1 = scanner.scanDouble (representation: .decimal),
+           let y1 = scanner.scanDouble (representation: .decimal),
+           let x2 = scanner.scanDouble (representation: .decimal),
+           let y2 = scanner.scanDouble (representation: .decimal) {
           bp.curve (
             to: NSPoint (x: CGFloat (x2), y: CGFloat (y2)),
             controlPoint1: NSPoint (x: CGFloat (x0), y: CGFloat (y0)),
             controlPoint2: NSPoint (x: CGFloat (x1), y: CGFloat (y1))
           )
+        }else{
+          ok = false
         }
-      }else if scanner.scanString ("#", into: nil) {
+      }else if scanner.scanString ("#") != nil {
         bp.close ()
-      }else if scanner.scanString ("*", into: nil) {
+      }else if scanner.scanString ("*") != nil {
         loop = false
       }
     }
@@ -156,25 +134,40 @@ extension NSBezierPath : EBStoredPropertyProtocol {
       }
     }
     if ok {
-      var lineWidth = 0.0
-      ok = scanner.scanDouble (&lineWidth)
-      if ok {
+      if let lineWidth = scanner.scanDouble () {
         bp.lineWidth = CGFloat (lineWidth)
+      }else{
+        ok = false
       }
+//      var lineWidth = 0.0
+//      ok = scanner.scanDouble (&lineWidth)
+//      if ok {
+//        bp.lineWidth = CGFloat (lineWidth)
+//      }
     }
     if ok {
-      var flatness = 0.0
-      ok = scanner.scanDouble (&flatness)
-      if ok {
+      if let flatness = scanner.scanDouble () {
         bp.flatness = CGFloat (flatness)
+      }else{
+        ok = false
       }
+//      var flatness = 0.0
+//      ok = scanner.scanDouble (&flatness)
+//      if ok {
+//        bp.flatness = CGFloat (flatness)
+//      }
     }
     if ok {
-      var miterLimit = 0.0
-      ok = scanner.scanDouble (&miterLimit)
-      if ok {
+      if let miterLimit = scanner.scanDouble () {
         bp.miterLimit = CGFloat (miterLimit)
+      }else{
+        ok = false
       }
+//      var miterLimit = 0.0
+//      ok = scanner.scanDouble (&miterLimit)
+//      if ok {
+//        bp.miterLimit = CGFloat (miterLimit)
+//      }
     }
     return bp
   }

@@ -4364,39 +4364,6 @@
 		CFFF522821AEFE4E00E7D041 /* StatusImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF522621AEFE4E00E7D041 /* StatusImageNames.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		CF5C4DAF219F04D600EAC52A /* Copy Sparkle Framework */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Copy Sparkle Framework";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CF9C657D25CABE5C00A00D5C /* Copy Sparkle Framework */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Copy Sparkle Framework";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CFDBEFFA1BEA1333001CEA4B /* Copy Sparkle Framework */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Copy Sparkle Framework";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		CF001F6921F8AAE10091518E /* func-sha1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "func-sha1.swift"; sourceTree = "<group>"; };
 		CF001F6C21F8AB610091518E /* class-LibraryOperationElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "class-LibraryOperationElement.swift"; sourceTree = "<group>"; };
@@ -7950,7 +7917,6 @@
 				CDCD5072BB1864CDEE4D3D6E /* Resources */,
 				9DD601BBE69F351039152189 /* Sources */,
 				F495B6AB9DCF8D3B5C6E0B01 /* Frameworks */,
-				CFDBEFFA1BEA1333001CEA4B /* Copy Sparkle Framework */,
 			);
 			buildRules = (
 			);
@@ -7972,7 +7938,6 @@
 				CF5C4C6B219F04D600EAC52A /* Resources */,
 				CF5C4CC1219F04D600EAC52A /* Sources */,
 				CF5C4DAC219F04D600EAC52A /* Frameworks */,
-				CF5C4DAF219F04D600EAC52A /* Copy Sparkle Framework */,
 			);
 			buildRules = (
 			);
@@ -7994,7 +7959,6 @@
 				CF9C605325CABE5C00A00D5C /* Resources */,
 				CF9C609225CABE5C00A00D5C /* Sources */,
 				CF9C657B25CABE5C00A00D5C /* Frameworks */,
-				CF9C657D25CABE5C00A00D5C /* Copy Sparkle Framework */,
 			);
 			buildRules = (
 			);
@@ -12543,13 +12507,10 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IBC_FLATTEN_NIBS = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LLVM_LTO = YES_THIN;
 				MACH_O_TYPE = mh_execute;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = YES;
 				OSACOMPILE_EXECUTE_ONLY = YES;
 				RUN_CLANG_STATIC_ANALYZER = NO;
@@ -12583,7 +12544,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = ElCanari;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -12606,7 +12566,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = ElCanari;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -12641,7 +12600,6 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug-temporary.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -12673,7 +12631,6 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug-temporary.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -12762,13 +12719,10 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IBC_FLATTEN_NIBS = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LLVM_LTO = YES;
 				MACH_O_TYPE = mh_execute;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = YES;
 				OSACOMPILE_EXECUTE_ONLY = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -12806,7 +12760,6 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
@@ -12834,7 +12787,6 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-DBUILD_OBJECT_EXPLORER";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;

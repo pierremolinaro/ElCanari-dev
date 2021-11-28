@@ -13,11 +13,15 @@ extension Date : EBStoredPropertyProtocol {
   //····················································································································
 
   func ebHashValue () -> UInt32 {
-    let data = NSMutableData ()
-    let archiver = NSKeyedArchiver (forWritingWith: data)
+//    let data = NSMutableData ()
+//    let archiver = NSKeyedArchiver (forWritingWith: data)
+//    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+//    archiver.finishEncoding ()
+//    return (data as Data).ebHashValue ()
+    let archiver = NSKeyedArchiver (requiringSecureCoding: true)
     archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
     archiver.finishEncoding ()
-    return (data as Data).ebHashValue ()
+    return archiver.encodedData.ebHashValue ()
   }
 
   //····················································································································
