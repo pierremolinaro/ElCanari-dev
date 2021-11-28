@@ -144,7 +144,7 @@ fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Importer ElCanari
 runCommand ("/bin/rm", ["-f", "archive.zip"])
 runCommand ("/bin/rm", ["-fr", "ElCanari-dev-master"])
-runCommand ("/usr/bin/curl", ["-L", "https://github.com/pierremolinaro/ElCanari-dev/archive/master.zip", "-o", "archive.zip"])
+runCommand ("/usr/bin/curl", ["--fail", "-L", "https://github.com/pierremolinaro/ElCanari-dev/archive/master.zip", "-o", "archive.zip"])
 runCommand ("/usr/bin/unzip", ["archive.zip"])
 runCommand ("/bin/rm", ["archive.zip"])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/ElCanari-dev-master")

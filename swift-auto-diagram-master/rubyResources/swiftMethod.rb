@@ -1,2 +1,0 @@
-class SwiftMethod < SwiftEntityElement
-end

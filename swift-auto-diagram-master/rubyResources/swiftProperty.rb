@@ -1,2 +1,0 @@
-class SwiftProperty < SwiftEntityElement
-end
