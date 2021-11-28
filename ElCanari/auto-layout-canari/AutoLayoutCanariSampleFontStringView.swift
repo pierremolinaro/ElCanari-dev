@@ -1,140 +1,122 @@
+//
+//  AutoLayoutCanariSampleFontStringView.swift
+//  ElCanari-Debug-temporary
+//
+//  Created by Pierre Molinaro on 28/11/2021.
+//
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutHorizontalStackView : AutoLayoutAbstractStackView {
+final class AutoLayoutCanariSampleFontStringView : NSView, EBUserClassNameProtocol {
 
-  //····················································································································
-  //   INIT
   //····················································································································
 
   init () {
-    super.init (orientation: .horizontal)
-    self.alignment = .height
+    super.init (frame: NSRect ())
+    noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  required init? (coder inCoder : NSCoder) {
+  required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
 
-  final func setFirstBaselineAlignment () -> Self {
-    self.alignment = .firstBaseline
-    return self
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································
+  //  update display
+  //····················································································································
 
-  final func setCenterYAlignment () -> Self {
-    self.alignment = .centerY
-    return self
+  private var mSampleStringBezierPath = NSBezierPath ()
+
+  //····················································································································
+
+  func updateDisplayFromBezierPathController (_ inBezierPath : NSBezierPath) {
+    self.mSampleStringBezierPath = inBezierPath
+    self.needsDisplay = true
   }
 
   //····················································································································
+  //  intrinsicContentSize
+  //····················································································································
 
-  final func setTopAlignment () -> Self {
-    self.alignment = .top
-    return self
+  override var intrinsicContentSize : NSSize {
+    var s = super.intrinsicContentSize
+    s.height = 60.0
+    return s
   }
 
   //····················································································································
-
-  final func equalWidth () -> Self {
-    self.distribution = .fillEqually
-    return self
-  }
-
+  //  isOpaque
   //····················································································································
 
-  final func appendVerticalSeparator () {
-    let separator = VerticalSeparator ()
-    self.appendView (separator)
-  }
+  override var isOpaque : Bool { return true }
 
   //····················································································································
-  //   Facilities
+  //  drawRect
   //····················································································································
 
-  @discardableResult final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
-    let hStack = AutoLayoutVerticalStackView ()
-    hStack.appendFlexibleSpace ()
-    hStack.appendView (inView)
-    self.addView (hStack, in: .leading)
-    return self
-  }
-
-  //····················································································································
-
-  @discardableResult final func appendViewFollowedByFlexibleSpace (_ inView : NSView) -> Self {
-    let hStack = AutoLayoutVerticalStackView ()
-    hStack.appendView (inView)
-    hStack.appendFlexibleSpace ()
-    self.addView (hStack, in: .leading)
-    return self
-  }
-
-  //····················································································································
-
-  @discardableResult final func appendViewSurroundedByFlexibleSpaces (_ inView : NSView) -> Self {
-    let hStack = AutoLayoutVerticalStackView ()
-    hStack.appendFlexibleSpace ()
-    hStack.appendView (inView)
-    hStack.appendFlexibleSpace ()
-    self.addView (hStack, in: .leading)
-    return self
-  }
-
-  //····················································································································
-
-  private var mConstraints = [NSLayoutConstraint] ()
-
-  override func updateConstraints () {
-    self.removeConstraints (self.mConstraints)
-    self.mConstraints.removeAll ()
-    var spaceViewArray = [AutoLayoutFlexibleSpace] ()
-    for view in self.subviews {
-      if let spaceView = view as? AutoLayoutFlexibleSpace {
-        spaceViewArray.append (spaceView)
-      }
+  override func draw (_ inDirtyRect: NSRect) {
+    NSColor.white.setFill ()
+    NSBezierPath.fill (inDirtyRect)
+    NSColor.black.setStroke ()
+    var bp = NSBezierPath (rect:self.bounds.insetBy(dx: 0.5, dy: 0.5))
+    bp.lineWidth = 1.0
+    bp.stroke ()
+    if !self.mSampleStringBezierPath.isEmpty {
+      let size = self.mSampleStringBezierPath.bounds.size
+      let tr = NSAffineTransform ()
+      tr.translateX (by: (self.bounds.size.width - size.width) * 0.5, yBy: (self.bounds.size.height - size.height) * 0.5)
+      bp = tr.transform (self.mSampleStringBezierPath)
+      NSColor.black.setStroke ()
+      bp.lineJoinStyle = .round
+      bp.lineCapStyle = .round
+      bp.stroke ()
     }
-    if let oneSpaceView = spaceViewArray.popLast () {
-      for spaceView in spaceViewArray {
-        let c = NSLayoutConstraint (item: oneSpaceView, attribute: .width, relatedBy: .equal, toItem: spaceView, attribute: .width, multiplier: 1.0, constant: 0.0)
-        self.mConstraints.append (c)
-      }
-      self.addConstraints (self.mConstraints)
-    }
-    super.updateConstraints ()
   }
 
   //····················································································································
-  // VerticalSeparator internal class
+  //  $bezierPath binding
   //····················································································································
 
-   final class VerticalSeparator : NSBox, EBUserClassNameProtocol {
-
-    init () {
-      let s = NSSize (width: 0, height: 10) // width == 0, height > 0 means vertical separator
-      super.init (frame: NSRect (origin: NSPoint (), size: s))
-      noteObjectAllocation (self)
-      self.translatesAutoresizingMaskIntoConstraints = false
-      self.boxType = .separator
+  final private func updateBezierPath (_ object : EBReadOnlyProperty_NSBezierPath) {
+    switch object.selection {
+    case .empty, .multiple :
+      break ;
+    case .single (let bezierPath) :
+      self.updateDisplayFromBezierPathController (bezierPath)
     }
+  }
 
-    required init? (coder inCoder: NSCoder) {
-      fatalError("init(coder:) has not been implemented")
-    }
+  //····················································································································
 
-    deinit { noteObjectDeallocation (self) }
+  private var mBezierPathBindingController : EBReadOnlyPropertyController?
 
+  final func bind_bezierPath (_ object : EBReadOnlyProperty_NSBezierPath) -> Self {
+    self.mBezierPathBindingController = EBReadOnlyPropertyController (
+      observedObjects: [object],
+      callBack: { [weak self] in self?.updateBezierPath (object) }
+    )
+    return self
+  }
+
+  //····················································································································
+
+  final func unbind_bezierPath () {
+    self.mBezierPathBindingController?.unregister ()
+    self.mBezierPathBindingController = nil
   }
 
   //····················································································································
 
 }
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

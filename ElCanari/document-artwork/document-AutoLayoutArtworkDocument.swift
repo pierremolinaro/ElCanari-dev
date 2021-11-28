@@ -493,7 +493,7 @@ import Cocoa
         let view_2_2_4 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
-          let view_2_2_4_0 = AutoLayoutSwitch (title: "Front Side Component Names", size: .small)
+          let view_2_2_4_0 = AutoLayoutCheckbox (title: "Front Side Component Names", size: .small)
             .bind_value (self.mDataSelection.drawComponentNamesTopSide_property)
           view_2_2_4.appendView (view_2_2_4_0)
           let view_2_2_4_1 = AutoLayoutFlexibleSpace ()
@@ -503,7 +503,7 @@ import Cocoa
         let view_2_2_5 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
-          let view_2_2_5_0 = AutoLayoutSwitch (title: "Front Side Component Values", size: .small)
+          let view_2_2_5_0 = AutoLayoutCheckbox (title: "Front Side Component Values", size: .small)
             .bind_value (self.mDataSelection.drawComponentValuesTopSide_property)
           view_2_2_5.appendView (view_2_2_5_0)
           let view_2_2_5_1 = AutoLayoutFlexibleSpace ()
@@ -513,7 +513,7 @@ import Cocoa
         let view_2_2_6 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
-          let view_2_2_6_0 = AutoLayoutSwitch (title: "Front Side Package Legends", size: .small)
+          let view_2_2_6_0 = AutoLayoutCheckbox (title: "Front Side Package Legends", size: .small)
             .bind_value (self.mDataSelection.drawPackageLegendTopSide_property)
           view_2_2_6.appendView (view_2_2_6_0)
           let view_2_2_6_1 = AutoLayoutFlexibleSpace ()
@@ -565,7 +565,7 @@ import Cocoa
         let view_2_2_11 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
-          let view_2_2_11_0 = AutoLayoutSwitch (title: "Back Side Component Names", size: .small)
+          let view_2_2_11_0 = AutoLayoutCheckbox (title: "Back Side Component Names", size: .small)
             .bind_value (self.mDataSelection.drawComponentNamesBottomSide_property)
           view_2_2_11.appendView (view_2_2_11_0)
           let view_2_2_11_1 = AutoLayoutFlexibleSpace ()
@@ -575,7 +575,7 @@ import Cocoa
         let view_2_2_12 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
-          let view_2_2_12_0 = AutoLayoutSwitch (title: "Back Side Component Values", size: .small)
+          let view_2_2_12_0 = AutoLayoutCheckbox (title: "Back Side Component Values", size: .small)
             .bind_value (self.mDataSelection.drawComponentValuesBottomSide_property)
           view_2_2_12.appendView (view_2_2_12_0)
           let view_2_2_12_1 = AutoLayoutFlexibleSpace ()
@@ -585,7 +585,7 @@ import Cocoa
         let view_2_2_13 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
-          let view_2_2_13_0 = AutoLayoutSwitch (title: "Back Side Package Legends", size: .small)
+          let view_2_2_13_0 = AutoLayoutCheckbox (title: "Back Side Package Legends", size: .small)
             .bind_value (self.mDataSelection.drawPackageLegendBottomSide_property)
           view_2_2_13.appendView (view_2_2_13_0)
           let view_2_2_13_1 = AutoLayoutFlexibleSpace ()
@@ -603,17 +603,17 @@ import Cocoa
         let view_2_2_15 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
-          let view_2_2_15_0 = AutoLayoutSwitch (title: "Vias", size: .small)
+          let view_2_2_15_0 = AutoLayoutCheckbox (title: "Vias", size: .small)
             .bind_value (self.mDataSelection.drawVias_property)
           view_2_2_15.appendView (view_2_2_15_0)
           let view_2_2_15_1 = AutoLayoutFlexibleSpace ()
           view_2_2_15.appendView (view_2_2_15_1)
-          let view_2_2_15_2 = AutoLayoutSwitch (title: "Internal Board Limits", size: .small)
+          let view_2_2_15_2 = AutoLayoutCheckbox (title: "Internal Board Limits", size: .small)
             .bind_value (self.mDataSelection.drawInternalBoardLimits_property)
           view_2_2_15.appendView (view_2_2_15_2)
           let view_2_2_15_3 = AutoLayoutFlexibleSpace ()
           view_2_2_15.appendView (view_2_2_15_3)
-          let view_2_2_15_4 = AutoLayoutSwitch (title: "Board Limits", size: .small)
+          let view_2_2_15_4 = AutoLayoutCheckbox (title: "Board Limits", size: .small)
             .bind_value (self.mDataSelection.drawBoardLimits_property)
           view_2_2_15.appendView (view_2_2_15_4)
         }
@@ -622,7 +622,7 @@ import Cocoa
           .set (leftMargin: 20)
           .setFirstBaselineAlignment ()
         do{
-          let view_2_2_16_0 = AutoLayoutSwitch (title: "Pad Holes in PDF file, with diameter", size: .small)
+          let view_2_2_16_0 = AutoLayoutCheckbox (title: "Pad Holes in PDF file, with diameter", size: .small)
             .bind_value (self.mDataSelection.drawPadHolesInPDF_property)
           view_2_2_16.appendView (view_2_2_16_0)
           let view_2_2_16_1 = AutoLayoutFlexibleSpace ()
@@ -644,7 +644,7 @@ import Cocoa
         let view_2_2_18 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
-          let view_2_2_18_0 = AutoLayoutSwitch (title: "Horizontal Mirror", size: .small)
+          let view_2_2_18_0 = AutoLayoutCheckbox (title: "Horizontal Mirror", size: .small)
             .bind_value (self.mDataSelection.horizontalMirror_property)
           view_2_2_18.appendView (view_2_2_18_0)
           let view_2_2_18_1 = AutoLayoutFlexibleSpace ()
@@ -741,7 +741,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_8 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Legend Front Side Texts", size: .small)
+    let view = AutoLayoutCheckbox (title: "Legend Front Side Texts", size: .small)
       .bind_value (self.mDataSelection.drawTextsLegendTopSide_property)
     return view
   }
@@ -751,7 +751,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_9 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Layout Front Side Texts", size: .small)
+    let view = AutoLayoutCheckbox (title: "Layout Front Side Texts", size: .small)
       .bind_value (self.mDataSelection.drawTextsLayoutTopSide_property)
     return view
   }
@@ -761,7 +761,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_10 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Front Side Tracks", size: .small)
+    let view = AutoLayoutCheckbox (title: "Front Side Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksTopSide_property)
     return view
   }
@@ -771,7 +771,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_11 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Front Side Pads", size: .small)
+    let view = AutoLayoutCheckbox (title: "Front Side Pads", size: .small)
       .bind_value (self.mDataSelection.drawPadsTopSide_property)
     return view
   }
@@ -781,7 +781,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_12 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Traversing Pads", size: .small)
+    let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
       .bind_value (self.mDataSelection.drawTraversingPads_property)
       .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
     return view
@@ -801,7 +801,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_14 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Traversing Pads", size: .small)
+    let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
       .bind_enabled (.id (self.rootObject.hasInnerElements_property))
       .bind_hidden (.id (self.rootObject.hasInnerElements_property))
     return view
@@ -821,7 +821,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_16 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 1 Layer Tracks", size: .small)
+    let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
       .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
     return view
@@ -832,7 +832,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_17 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 2 Layer Tracks", size: .small)
+    let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
       .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
     return view
@@ -843,7 +843,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_18 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 1 Layer Tracks", size: .small)
+    let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
       .bind_enabled (.id (self.rootObject.hasInnerElements_property))
       .bind_hidden (.id (self.rootObject.hasInnerElements_property))
     return view
@@ -854,7 +854,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_19 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 2 Layer Tracks", size: .small)
+    let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
       .bind_enabled (.id (self.rootObject.hasInnerElements_property))
       .bind_hidden (.id (self.rootObject.hasInnerElements_property))
     return view
@@ -865,7 +865,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_20 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 3 Layer Tracks", size: .small)
+    let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
       .bind_hidden (.not (.id (self.rootObject.hasSixLayers_property)))
     return view
@@ -876,7 +876,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_21 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 4 Layer Tracks", size: .small)
+    let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
       .bind_hidden (.not (.id (self.rootObject.hasSixLayers_property)))
     return view
@@ -887,7 +887,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_22 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 3 Layer Tracks", size: .small)
+    let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
       .bind_enabled (.id (self.rootObject.hasSixLayers_property))
       .bind_hidden (.id (self.rootObject.hasSixLayers_property))
     return view
@@ -898,7 +898,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_23 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 4 Layer Tracks", size: .small)
+    let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
       .bind_enabled (.id (self.rootObject.hasSixLayers_property))
       .bind_hidden (.id (self.rootObject.hasSixLayers_property))
     return view
@@ -909,7 +909,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_24 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Legend Back Side Texts", size: .small)
+    let view = AutoLayoutCheckbox (title: "Legend Back Side Texts", size: .small)
       .bind_value (self.mDataSelection.drawTextsLegendBottomSide_property)
     return view
   }
@@ -919,7 +919,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_25 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Layout Back Side Texts", size: .small)
+    let view = AutoLayoutCheckbox (title: "Layout Back Side Texts", size: .small)
       .bind_value (self.mDataSelection.drawTextsLayoutBottomSide_property)
     return view
   }
@@ -929,7 +929,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_26 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Back Side Tracks", size: .small)
+    let view = AutoLayoutCheckbox (title: "Back Side Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksBottomSide_property)
     return view
   }
@@ -939,7 +939,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_27 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Back Side Pads", size: .small)
+    let view = AutoLayoutCheckbox (title: "Back Side Pads", size: .small)
       .bind_value (self.mDataSelection.drawPadsBottomSide_property)
     return view
   }

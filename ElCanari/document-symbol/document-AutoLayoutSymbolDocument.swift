@@ -849,7 +849,7 @@ import Cocoa
   fileprivate final func computeImplicitView_10 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
-      let view_0 = AutoLayoutSwitch (title: "Pin is visible in schematics", size: .small)
+      let view_0 = AutoLayoutCheckbox (title: "Pin is visible in schematics", size: .small)
         .bind_value (self.mSymbolPinSelectionController.pinNameIsDisplayedInSchematics_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
@@ -935,7 +935,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_18 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Horizontal", size: .small)
+    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
       .bind_value (self.rootObject.horizontalFlip_property)
     return view
   }
@@ -954,7 +954,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_20 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Vertical", size: .small)
+    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
       .bind_value (self.rootObject.verticalFlip_property)
     return view
   }

@@ -181,17 +181,17 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
     defer: true
   )
 
-  fileprivate var mAllocationStatsWindowVisibleAtLaunchCheckbox = AutoLayoutSwitch (
+  fileprivate var mAllocationStatsWindowVisibleAtLaunchCheckbox = AutoLayoutCheckbox (
     title: "Visible At Launch",
     size: .small
   )
 
-  fileprivate var mEnableAllocationDebugCheckbox = AutoLayoutSwitch (
+  fileprivate var mEnableAllocationDebugCheckbox = AutoLayoutCheckbox (
     title: "Enable Allocation Debug",
     size: .small
   )
 
-  fileprivate var mReuseTableViewCellsCheckbox = AutoLayoutSwitch (
+  fileprivate var mReuseTableViewCellsCheckbox = AutoLayoutCheckbox (
     title: "Reuse TableView Cells",
     size: .small
   )

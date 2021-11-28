@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension FontDocument {
+extension AutoLayoutFontDocument {
   @objc func resetVersionAndSignatureAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
         self.resetVersionAndSignature ()

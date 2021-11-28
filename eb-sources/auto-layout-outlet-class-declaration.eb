@@ -22,6 +22,7 @@ hStack func set (bottomMargin: Int) ;
 hStack func set (height: Int) ;
 hStack func setFirstBaselineAlignment () ;
 hStack func setCenterYAlignment () ;
+hStack func setTopAlignment () ;
 
 func enum GridStyle.popupTitles {
   cross : "Cross Grid" ;
@@ -112,7 +113,7 @@ extern autolayout class CanariObservedDimensionAndPopUp (size: EBControlSize) $h
   $dimensionAndUnit transient Int, property Int
 }
 
-extern autolayout class Switch (title: String, size: EBControlSize) $enabled $hidden {
+extern autolayout class Checkbox (title: String, size: EBControlSize) $enabled $hidden {
   $value property Bool
 }
 
@@ -266,6 +267,18 @@ extern autolayout class CanariUnconnectedSymbolPinsInDeviceTableView {
 extern autolayout class CanariUnconnectedSymbolPadsInDeviceTableView {
   func expandableWidth ()
   $unconnectedPads transient StringArray
+}
+
+extern autolayout class CanariSampleFontStringView {
+  $bezierPath transient NSBezierPath
+}
+
+extern autolayout class CanariFontCharacterView {
+  $advance transient Int
+  $characterSegmentList transient CharacterSegmentList
+  $transparency transient Double
+  $displayFlow transient Bool
+  $displayDrawingIndexes transient Bool
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

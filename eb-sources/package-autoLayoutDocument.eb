@@ -91,11 +91,11 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Flip", bold: no, size : .small),
-          right: Switch (title: "Horizontal", size : .small) { $value root.mModelImagePageHorizontalFlip }
+          right: Checkbox (title: "Horizontal", size : .small) { $value root.mModelImagePageHorizontalFlip }
         )
         addFirstBaseLineAligned (
           left: FlexibleSpace,
-          right: Switch (title: "Vertical", size : .small) { $value root.mModelImagePageVerticalFlip }
+          right: Checkbox (title: "Vertical", size : .small) { $value root.mModelImagePageVerticalFlip }
         )
       }
       separator
@@ -534,7 +534,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         }
       )
     }
-    hStack { Switch (title: "Path is Closed", size : .small) { $value #mPackageArcSelectionController.pathIsClosed } space }
+    hStack { Checkbox (title: "Path is Closed", size : .small) { $value #mPackageArcSelectionController.pathIsClosed } space }
   }
 
 
@@ -625,7 +625,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       )
     }
     hStack {
-      Switch (title: "Draw Label Background", size : .small) { $value #mPackageDimensionSelectionController.drawDimensionBackground }
+      Checkbox (title: "Draw Label Background", size : .small) { $value #mPackageDimensionSelectionController.drawDimensionBackground }
       space
     }
     Button (title: "Set Label at Mid X", size : .small) { expandableWidth () $run setDimensionTextOriginAtMidXAction }
@@ -693,7 +693,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       )
       add (
         single: hStack {
-          Switch (title: "Show Zone Name", size : .small) { $value #mPackageZoneSelectionController.displayZoneName }
+          Checkbox (title: "Show Zone Name", size : .small) { $value #mPackageZoneSelectionController.displayZoneName }
           space
         }
       )
@@ -927,11 +927,11 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Flip", bold: no, size : .small),
-        right: Switch (title: "Horizontal", size : .small) { $value root.horizontalFlip }
+        right: Checkbox (title: "Horizontal", size : .small) { $value root.horizontalFlip }
       )
       addFirstBaseLineAligned (
         left: FlexibleSpace,
-        right: Switch (title: "Vertical", size : .small) { $value root.verticalFlip }
+        right: Checkbox (title: "Vertical", size : .small) { $value root.verticalFlip }
       )
       addFirstBaseLineAligned (
         left: StaticLabels (left: "Placard", right: "X", bold: no, size : .small),
@@ -989,7 +989,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         left: StaticLabel (title: "Pad Numbering", bold: no, size : .small),
         right: hStack setCenterYAlignment () {
           ColorWell { $color prefs.padNumberColor (sendContinously:no) }
-          Switch (title: "Show", size : .small) { $value prefs.showPadNumber }
+          Checkbox (title: "Show", size : .small) { $value prefs.showPadNumber }
           space
         }
       )
@@ -1001,7 +1001,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         left: StaticLabel (title: "Top Side Pads", bold: no, size : .small),
         right: hStack setCenterYAlignment () {
           ColorWell { $color prefs.frontSidePadColor (sendContinously:no) }
-          Switch (title: "Show", size : .small) { $value prefs.displayPackageFrontSidePads }
+          Checkbox (title: "Show", size : .small) { $value prefs.displayPackageFrontSidePads }
           space
         }
       )
@@ -1009,7 +1009,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         left: StaticLabel (title: "Back Side Pads", bold: no, size : .small),
         right: hStack setCenterYAlignment () {
           ColorWell { $color prefs.backSidePadColor (sendContinously:no) }
-          Switch (title: "Show", size : .small) { $value prefs.displayPackageBackSidePads }
+          Checkbox (title: "Show", size : .small) { $value prefs.displayPackageBackSidePads }
           space
         }
       )

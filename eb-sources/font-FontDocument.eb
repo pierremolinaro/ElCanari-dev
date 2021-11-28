@@ -19,15 +19,16 @@
 //extern outlet class CanariFontSampleStringView ;
 //binding CanariFontSampleStringView $bezierPath : transient NSBezierPath ;
 //binding CanariFontSampleStringView $sampleStringFontSize : transient Double ;
-//
-////——————————————————————————————————————————————————————————————————————————————
-//
-//extern outlet class CanariCharacterView ;
-//binding CanariCharacterView $advance : transient Int ;
-//binding CanariCharacterView $characterSegmentList : transient CharacterSegmentList ;
-//binding CanariCharacterView $transparency : transient Double ;
-//binding CanariCharacterView $displayFlow : transient Bool ;
-//binding CanariCharacterView $displayDrawingIndexes : transient Bool ;
+
+//——————————————————————————————————————————————————————————————————————————————
+
+extern outlet class CanariCharacterView ;
+binding CanariCharacterView $advance : transient Int ;
+binding CanariCharacterView $characterSegmentList : transient CharacterSegmentList ;
+binding CanariCharacterView $transparency : transient Double ;
+binding CanariCharacterView $displayFlow : transient Bool ;
+binding CanariCharacterView $displayDrawingIndexes : transient Bool ;
+
 
 //——————————————————————————————————————————————————————————————————————————————
 

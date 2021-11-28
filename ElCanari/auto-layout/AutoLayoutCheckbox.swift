@@ -1,5 +1,5 @@
 //
-//  AutoLayoutSwitch.swift
+//  AutoLayoutCheckbox.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 06/02/2021.
@@ -12,7 +12,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutSwitch : NSButton, EBUserClassNameProtocol {
+final class AutoLayoutCheckbox : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 

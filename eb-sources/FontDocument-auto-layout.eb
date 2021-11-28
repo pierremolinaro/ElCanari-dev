@@ -22,19 +22,84 @@ binding CanariFontSampleStringView $sampleStringFontSize : transient Double ;
 
 //——————————————————————————————————————————————————————————————————————————————
 
-extern outlet class CanariCharacterView ;
-binding CanariCharacterView $advance : transient Int ;
-binding CanariCharacterView $characterSegmentList : transient CharacterSegmentList ;
-binding CanariCharacterView $transparency : transient Double ;
-binding CanariCharacterView $displayFlow : transient Bool ;
-binding CanariCharacterView $displayDrawingIndexes : transient Bool ;
+autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainView {
 
-//——————————————————————————————————————————————————————————————————————————————
+  stackView mPageMasterView vStack { }
 
-autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mMainView {
-
-  stackView mMainView vStack set (spacing: 0) {
+  stackView mDocumentMainView vStack set (spacing: 0) {
+    hStack set (margins: 8) {
+      vStack {
+        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, size : .regular) {
+          addPage (title: "Font", tooltip: "Characters Definition", pageView: stackView mFontPage)
+          addPage (title: "Infos", tooltip: "Document Infos", pageView: stackView mInfoPage)
+          $selectedPage root.selectedTab
+        }
+        hStack { space StaticLabel (title: "Page", bold: no, size : .small) space }
+      }
+      vStack {
+        SignatureField (size : .regular) { $signature signature }
+        StaticLabel (title: "Signature", bold: no, size : .small) { set (alignment: .center)  expandableWidth () }
+      }
+      vStack {
+        VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
+        StaticLabel (title: "Version", bold: no, size : .small) { set (alignment: .center) expandableWidth () }
+      }
+      space
+      vStack {
+        hStack { space ImageObserverView (size : .regular) { $image self.statusImage $tooltip self.statusMessage } space }
+        StaticLabel (title: "Status", bold: no, size : .small) { set (alignment: .center) }
+      }
+    }
+    separator
+    stackViewRef mPageMasterView
   }
+
+  transient NSImage statusImage dependsFrom root.issues ;
+  transient String statusMessage dependsFrom root.issues ;
+  transient MetadataStatus metadataStatus dependsFrom root.issues ;
+
+//------------------------------------------------------------------------------
+//  Font Page
+//------------------------------------------------------------------------------
+
+  autolayout tableViewController #mSelectedCharacterController
+     (allowsEmptySelection:no, allowsMultipleSelection:no) root.characters ;
+  selectionController FontCharacter #mCharacterSelection : #mSelectedCharacterController.selectedArray ;
+
+  stackView mFontPage vStack set (margins: 8) {
+  //--- Sample string display
+    CanariSampleFontStringView { $bezierPath root.sampleStringBezierPath }
+    hStack {
+      StaticLabel (title: "Temp", bold: no, size : .regular)
+      separator
+      CanariFontCharacterView {
+        $advance #mCharacterSelection.advance
+        $characterSegmentList #mCharacterSelection.segmentArrayForDrawing
+        $transparency prefs.fontEditionTransparency
+        $displayFlow prefs.showGerberDrawingFlow
+        $displayDrawingIndexes prefs.showGerberDrawingIndexes
+      }
+    }
+  }
+  
+//------------------------------------------------------------------------------
+//  Infos Page
+//------------------------------------------------------------------------------
+
+  action resetVersionAndSignatureAction ;
+
+  stackView mInfoPage vStack set (margins: 8) {
+    hStack setTopAlignment () {
+      StaticLabel (title: "Description", bold: no, size : .regular)
+      TextView { $value root.comments }
+    }
+    hStack {
+      space
+      Button (title: "Reset Version and Signature", size : .small) { $run resetVersionAndSignatureAction }
+    }
+  }
+  
+//------------------------------------------------------------------------------
 
 //--- Toolbar
 //  outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedTab ;
@@ -109,10 +174,6 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mMainView {
 //--- Sample String
 //  outlet EBTextField mSampleStringField $value prefs.sampleString (sendContinously:yes);
 
-//--- Sample string display
-//  outlet CanariFontSampleStringView mFontSampleStringView
-//    $bezierPath root.sampleStringBezierPath
-//  ;
 
 //--- Sample String Display
 //  outlet EBDoubleField mSampleStringSizeField $value prefs.sampleStringSize (sendContinously:no, autoFormatter:no);
@@ -134,19 +195,8 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mMainView {
 //  outlet IssueTableView mIssueTableView $issues root.issues $hidden self.noIssue ;
 //
 //  outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
-//  transient NSImage mStatusImage dependsFrom root.issues ;
-//  transient String mStatusMessage dependsFrom root.issues ;
 //  outlet EBTextObserverField mIssueTextField $valueObserver self.mStatusMessage ;
-//  transient MetadataStatus mMetadataStatus dependsFrom root.issues ;
 
-//--------------- Infos Tab
-//  outlet CanariViewWithKeyView mInfosPageView ;
-
-//--- Comments
-//  outlet EBTextView commentTextView $value root.comments ;
-//--- Reset
-//  action resetVersionAndSignatureAction ;
-//  outlet EBButton resetVersionAndSignatureButton $run resetVersionAndSignatureAction ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

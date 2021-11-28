@@ -164,7 +164,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
         right: CanariHorizontalAlignmentSegmentedControl (size: .small) { expandableWidth () $alignment #mSymbolPinSelectionController.numberHorizontalAlignment}
       )
       add (single: hStack {
-        Switch (title : "Pin is visible in schematics", size: .small) { $value #mSymbolPinSelectionController.pinNameIsDisplayedInSchematics}
+        Checkbox (title : "Pin is visible in schematics", size: .small) { $value #mSymbolPinSelectionController.pinNameIsDisplayedInSchematics}
         space
       })
     }
@@ -199,11 +199,11 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Flip", bold: no, size: .small),
-        right: Switch (title: "Horizontal", size: .small) { $value root.horizontalFlip }
+        right: Checkbox (title: "Horizontal", size: .small) { $value root.horizontalFlip }
       )
       addFirstBaseLineAligned (
         left: FlexibleSpace,
-        right: Switch (title: "Vertical", size: .small) { $value root.verticalFlip }
+        right: Checkbox (title: "Vertical", size: .small) { $value root.verticalFlip }
       )
       addFirstBaseLineAligned (
         left: StaticLabels (left: "Placard", right: "X", bold: no, size: .small),

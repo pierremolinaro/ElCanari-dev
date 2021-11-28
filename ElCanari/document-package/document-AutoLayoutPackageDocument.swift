@@ -908,7 +908,7 @@ import Cocoa
     vStackView.appendView (view_1)
     let view_2 = AutoLayoutHorizontalStackView ()
     do{
-      let view_2_0 = AutoLayoutSwitch (title: "Path is Closed", size: .small)
+      let view_2_0 = AutoLayoutCheckbox (title: "Path is Closed", size: .small)
         .bind_value (self.mPackageArcSelectionController.pathIsClosed_property)
       view_2.appendView (view_2_0)
       let view_2_1 = AutoLayoutFlexibleSpace ()
@@ -973,7 +973,7 @@ import Cocoa
     vStackView.appendView (view_1)
     let view_2 = AutoLayoutHorizontalStackView ()
     do{
-      let view_2_0 = AutoLayoutSwitch (title: "Draw Label Background", size: .small)
+      let view_2_0 = AutoLayoutCheckbox (title: "Draw Label Background", size: .small)
         .bind_value (self.mPackageDimensionSelectionController.drawDimensionBackground_property)
       view_2.appendView (view_2_0)
       let view_2_1 = AutoLayoutFlexibleSpace ()
@@ -1375,7 +1375,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_7 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Horizontal", size: .small)
+    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
       .bind_value (self.rootObject.mModelImagePageHorizontalFlip_property)
     return view
   }
@@ -1394,7 +1394,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_9 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Vertical", size: .small)
+    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
       .bind_value (self.rootObject.mModelImagePageVerticalFlip_property)
     return view
   }
@@ -2589,7 +2589,7 @@ import Cocoa
   fileprivate final func computeImplicitView_129 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
-      let view_0 = AutoLayoutSwitch (title: "Show Zone Name", size: .small)
+      let view_0 = AutoLayoutCheckbox (title: "Show Zone Name", size: .small)
         .bind_value (self.mPackageZoneSelectionController.displayZoneName_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
@@ -3158,7 +3158,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_186 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Horizontal", size: .small)
+    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
       .bind_value (self.rootObject.horizontalFlip_property)
     return view
   }
@@ -3177,7 +3177,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_188 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Vertical", size: .small)
+    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
       .bind_value (self.rootObject.verticalFlip_property)
     return view
   }
@@ -3383,7 +3383,7 @@ import Cocoa
       let view_0 = AutoLayoutColorWell ()
         .bind_color (preferences_padNumberColor_property, sendContinously:false)
       view.appendView (view_0)
-      let view_1 = AutoLayoutSwitch (title: "Show", size: .small)
+      let view_1 = AutoLayoutCheckbox (title: "Show", size: .small)
         .bind_value (preferences_showPadNumber_property)
       view.appendView (view_1)
       let view_2 = AutoLayoutFlexibleSpace ()
@@ -3431,7 +3431,7 @@ import Cocoa
       let view_0 = AutoLayoutColorWell ()
         .bind_color (preferences_frontSidePadColor_property, sendContinously:false)
       view.appendView (view_0)
-      let view_1 = AutoLayoutSwitch (title: "Show", size: .small)
+      let view_1 = AutoLayoutCheckbox (title: "Show", size: .small)
         .bind_value (preferences_displayPackageFrontSidePads_property)
       view.appendView (view_1)
       let view_2 = AutoLayoutFlexibleSpace ()
@@ -3460,7 +3460,7 @@ import Cocoa
       let view_0 = AutoLayoutColorWell ()
         .bind_color (preferences_backSidePadColor_property, sendContinously:false)
       view.appendView (view_0)
-      let view_1 = AutoLayoutSwitch (title: "Show", size: .small)
+      let view_1 = AutoLayoutCheckbox (title: "Show", size: .small)
         .bind_value (preferences_displayPackageBackSidePads_property)
       view.appendView (view_1)
       let view_2 = AutoLayoutFlexibleSpace ()

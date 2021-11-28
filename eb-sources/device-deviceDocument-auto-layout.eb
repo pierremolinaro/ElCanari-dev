@@ -111,8 +111,8 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       }
       StaticLabel (title: "Flip", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
       hStack {
-        Switch (title: "Horizontal Flip", size : .small) { $value root.mSymbolDisplayHorizontalFlip }
-        Switch (title: "Vertical Flip", size : .small) { $value root.mSymbolDisplayVerticalFlip }
+        Checkbox (title: "Horizontal Flip", size : .small) { $value root.mSymbolDisplayHorizontalFlip }
+        Checkbox (title: "Vertical Flip", size : .small) { $value root.mSymbolDisplayVerticalFlip }
         space
       }
       StaticLabel (title: "Symbol Type", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
@@ -157,31 +157,31 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
         }
       }
       hStack {
-        Switch (title: "Horizontal Flip", size : .small) { $value root.mPackageDisplayHorizontalFlip }
+        Checkbox (title: "Horizontal Flip", size : .small) { $value root.mPackageDisplayHorizontalFlip }
         space
       }
       hStack {
-        Switch (title: "Horizontal Flip", size : .small) { $value root.mPackageDisplayHorizontalFlip }
+        Checkbox (title: "Horizontal Flip", size : .small) { $value root.mPackageDisplayHorizontalFlip }
         space
       }
       hStack setCenterYAlignment () {
         ColorWell { $color prefs.packageColor (sendContinously: no) }
-        Switch (title: "Display Packages", size : .small) { $value root.mShowPackages }
+        Checkbox (title: "Display Packages", size : .small) { $value root.mShowPackages }
         space
       }
       hStack setCenterYAlignment () {
         ColorWell { $color prefs.padNumberColor (sendContinously: no) }
-        Switch (title: "Display Pad Numbers", size : .small) { $value root.mShowPackagePadNumbers }
+        Checkbox (title: "Display Pad Numbers", size : .small) { $value root.mShowPackagePadNumbers }
         space
       }
       hStack setCenterYAlignment () {
         ColorWell { $color prefs.frontSidePadColor (sendContinously: no) }
-        Switch (title: "Display Front Side Pads", size : .small) { $value root.mShowPackageFrontPads }
+        Checkbox (title: "Display Front Side Pads", size : .small) { $value root.mShowPackageFrontPads }
         space
       }
       hStack setCenterYAlignment () {
         ColorWell { $color prefs.backSidePadColor (sendContinously: no) }
-        Switch (title: "Display Back Side Pads", size : .small) { $value root.mShowPackageBackPads }
+        Checkbox (title: "Display Back Side Pads", size : .small) { $value root.mShowPackageBackPads }
         space
       }
       space
