@@ -153,18 +153,18 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
     hStack {
       StaticLabel (title: "Segment Opacity", bold: no, size: .small)
       space
+      StaticLabel (title: "(for edition)", bold: no, size: .mini)
     }
     hStack {
-      space
-      DoubleSlider (width: 200, min: 0, max: 1, ticks: 11) { $value prefs.fontEditionTransparency }
+      DoubleSlider (width: -1, min: 0, max: 1, ticks: 11) { $value prefs.fontEditionTransparency }
       DoubleField (width: 56, size: .small) { $value prefs.fontEditionTransparency (sendContinously:no) }
     }
     separator
     hStack {
-      space
       StaticLabel (title: "Current Character", bold: no, size: .small)
-      Button (title: "New Character…", size: .small) { $run newCharacterAction }
       Button (title: "Delete", size: .small) { $run deleteCurrentCharacterAction $enabled self.canDeleteCurrentCharacter }
+      space
+      Button (title: "New Character…", size: .small) { $run newCharacterAction }
     }
     hStack {
       CanariFontCharacterSelectButton {
@@ -172,7 +172,25 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
         $characters root.definedCharacters
       }
     }
-    space
+    hStack {
+      StaticLabel (title: "Advancement", bold: no, size: .small)
+      space
+    }
+    hStack {
+      IntSlider (width: -1, min: 0, max: 32, ticks: 33) { $value #characterSelection.advance }
+      IntField (width: 56, size: .small) { $value #characterSelection.advance (sendContinously:no) }
+    }
+    hStack {
+      StaticLabel (title: "Gerber Code", bold: no, size: .small)
+      space
+      Label (bold: no, size: .small) { $title #characterSelection.gerberCodeInstructionCountMessage } 
+    }
+    hStack {
+      Checkbox (title: "Show Gerber Flow", size: .small) { $value prefs.showGerberDrawingFlow }
+      space
+      Checkbox (title: "Show Indexes", size: .small) { $value prefs.showGerberDrawingIndexes }
+    }
+    CanariFontCharacterGerberCodeTableView (size: .small) { $characterGerberCode #characterSelection.gerberCode }
   }
 
   action newCharacterAction ;
@@ -208,8 +226,6 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 //  outlet CanariViewWithKeyView mCharacterIssuesInspectorView ;
 
 //--- Advancement
-//  outlet EBIntField advancementTextField $value #characterSelection.advance (sendContinously:yes, autoFormatter:yes) ;
-//  outlet EBSlider advancementSlider $intValue #characterSelection.advance (sendContinously:yes) ;
 
 //--- Transparency
 //  outlet EBDoubleField transparencyTextField $value prefs.fontEditionTransparency (sendContinously:no, autoFormatter:no) ;
@@ -228,17 +244,6 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 //
 //  outlet EBButton mAddSegmentButton $run addSegmentAction ;
 //  action addSegmentAction ;
-
-//--- Gerber Code inspector
-//  outlet CanariViewWithKeyView mSampleStringInspectorView ;
-//  outlet EBSwitch mShowGerberDrawingFlowCheckbox $value prefs.showGerberDrawingFlow ;
-//
-//  outlet EBSwitch mShowGerberDrawingIndexesCheckbox $value prefs.showGerberDrawingIndexes ;
-//
-//  outlet EBTextObserverField gerberCodeInstructionCountMessageTextField
-//    $valueObserver #characterSelection.gerberCodeInstructionCountMessage
-//  ;
-//  outlet CanariCharacterGerberCodeTableView mGerberCodeTableView $characterGerberCode #characterSelection.gerberCode ;
 
 }
 

@@ -10,16 +10,19 @@ import Cocoa
 
 final class AutoLayoutDoubleSlider : NSSlider, EBUserClassNameProtocol {
 
-  private var mWidth : CGFloat
+  private var mWidth : Int
   
   //····················································································································
 
   init (width inWidth : Int, min inMin : Int, max inMax : Int, ticks inTickCount : Int) {
-    self.mWidth = CGFloat (inWidth)
+    self.mWidth = inWidth
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
+    if inWidth < 0 {
+      _ = self.expandableWidth ()
+    }
     self.minValue = Double (inMin)
     self.maxValue = Double (inMax)
     self.numberOfTickMarks = inTickCount
@@ -41,21 +44,20 @@ final class AutoLayoutDoubleSlider : NSSlider, EBUserClassNameProtocol {
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    _ = self.mDoubleValueController?.updateModel (withCandidateValue: self.doubleValue, windowForSheet: self.window)
+    _ = self.mValueController?.updateModel (withCandidateValue: self.doubleValue, windowForSheet: self.window)
     let r = super.sendAction (action, to: to)
     flushOutletEvents ()
     return r
   }
 
   //····················································································································
-  //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible
-  //  So we need to define intrinsicContentSize.width explicitly
-  //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-
-  //····················································································································
 
   override var intrinsicContentSize : NSSize {
-    let s = super.intrinsicContentSize
-    return NSSize (width: self.mWidth, height: s.height)
+    var s = super.intrinsicContentSize
+    if self.mWidth >= 0 {
+      s.width = CGFloat (self.mWidth)
+    }
+    return s
   }
 
   //····················································································································
@@ -75,24 +77,23 @@ final class AutoLayoutDoubleSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mDoubleValueController : EBGenericReadWritePropertyController <Double>? = nil
+  private var mValueController : EBGenericReadWritePropertyController <Double>? = nil
 
   //····················································································································
 
   final func bind_value (_ object : EBReadWriteProperty_Double) -> Self {
-    self.mDoubleValueController = EBGenericReadWritePropertyController <Double> (
+    self.mValueController = EBGenericReadWritePropertyController <Double> (
       observedObject: object,
       callBack: { [weak self] in self?.update (from: object) }
     )
-//    self.isContinuous = sendContinously
     return self
   }
 
   //····················································································································
 
   final func unbind_value () {
-    self.mDoubleValueController?.unregister ()
-    self.mDoubleValueController = nil
+    self.mValueController?.unregister ()
+    self.mValueController = nil
   }
 
   //····················································································································

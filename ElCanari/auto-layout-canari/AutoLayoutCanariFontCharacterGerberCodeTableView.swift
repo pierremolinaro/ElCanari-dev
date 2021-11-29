@@ -1,0 +1,161 @@
+//
+//  AutoLayoutCanariFontCharacterGerberCodeTableView.swift
+//  ElCanari
+//
+//  Created by Pierre Molinaro on 29/11/2021.
+//
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+import Cocoa
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate let LEFT_COLUMN_IDENTIFIER  = NSUserInterfaceItemIdentifier (rawValue: "left")
+fileprivate let RIGHT_COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "right")
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    AutoLayoutCanariFontCharacterGerberCodeTableView
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class AutoLayoutCanariFontCharacterGerberCodeTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, NSTableViewDelegate {
+
+  //····················································································································
+
+  private let mScrollView = NSScrollView (frame: NSRect ())
+  private let mTableView = NSTableView ()
+
+  //····················································································································
+
+  required init? (coder: NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  init (size inSize : EBControlSize) {
+    super.init ()
+    noteObjectAllocation (self)
+
+  //--- Configure table view
+    self.mTableView.translatesAutoresizingMaskIntoConstraints = false
+    self.mTableView.controlSize = inSize.cocoaControlSize
+    self.mTableView.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.mTableView.controlSize))
+    self.mTableView.focusRingType = .none
+    self.mTableView.isEnabled = true
+    self.mTableView.delegate = self
+    self.mTableView.dataSource = self
+    self.mTableView.gridStyleMask = [.solidHorizontalGridLineMask, .solidVerticalGridLineMask]
+    self.mTableView.usesAlternatingRowBackgroundColors = true
+    self.mTableView.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
+    self.mTableView.usesAutomaticRowHeights = true // #available(macOS 10.13
+
+    let leftColumn = NSTableColumn (identifier: LEFT_COLUMN_IDENTIFIER)
+    leftColumn.minWidth = 20.0
+    leftColumn.maxWidth = 20.0
+    leftColumn.isEditable = false
+//    leftColumn.resizingMask = [] // Not resizable
+    self.mTableView.addTableColumn (leftColumn)
+
+    let rightColumn = NSTableColumn (identifier: RIGHT_COLUMN_IDENTIFIER)
+    rightColumn.minWidth = 100.0
+    rightColumn.maxWidth = 1000.0
+    rightColumn.isEditable = false
+  //  rightColumn.resizingMask = .autoresizingMask
+    self.mTableView.addTableColumn (rightColumn)
+
+  //--- Configure scroll view
+    self.mScrollView.translatesAutoresizingMaskIntoConstraints = false
+    self.mScrollView.hasVerticalScroller = true
+    self.mScrollView.borderType = .bezelBorder
+    self.mScrollView.documentView = self.mTableView
+  //---
+    self.appendView (self.mScrollView)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+  //  value binding
+  //····················································································································
+
+  private var mValueController : EBReadOnlyPropertyController? = nil
+
+  //····················································································································
+
+  final func bind_characterGerberCode (_ inObject : EBReadOnlyProperty_CharacterGerberCode) -> Self {
+    self.mValueController = EBReadOnlyPropertyController (
+      observedObjects: [inObject],
+      callBack: { [weak self] in self?.update (from: inObject) }
+    )
+    return self
+  }
+
+  //····················································································································
+
+  final func unbind_characterGerberCode () {
+    self.mValueController?.unregister ()
+    self.mValueController = nil
+  }
+
+  //····················································································································
+
+  private var mModel = CharacterGerberCode (code: [])
+
+  //····················································································································
+
+  func update (from inModel : EBReadOnlyProperty_CharacterGerberCode) {
+    switch inModel.selection {
+    case .empty, .multiple :
+      self.mModel = CharacterGerberCode (code: [])
+    case .single (let v) :
+      self.mModel = v
+    }
+    self.mTableView.reloadData ()
+  }
+
+  //····················································································································
+  //    T A B L E V I E W    D A T A S O U R C E : numberOfRowsInTableView
+  //····················································································································
+
+  func numberOfRows (in _ : NSTableView) -> Int {
+    return self.mModel.code.count
+  }
+
+  //····················································································································
+  //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:row:
+  //····················································································································
+
+  func tableView (_ tableView : NSTableView,
+                  viewFor inTableColumn: NSTableColumn?,
+                  row inRowIndex: Int) -> NSView? {
+    let textField = NSTextField (frame: NSRect ())
+    textField.translatesAutoresizingMaskIntoConstraints = false
+
+    textField.tag = inRowIndex
+    textField.isBezeled = false
+    textField.isBordered = false
+    textField.drawsBackground = false
+    textField.isEnabled = false
+//-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
+
+    let object = self.mModel.code [inRowIndex]
+    let columnIdentifier = inTableColumn!.identifier
+    if columnIdentifier == LEFT_COLUMN_IDENTIFIER {
+      textField.stringValue = object.codeString ()
+    }else if columnIdentifier == RIGHT_COLUMN_IDENTIFIER {
+      textField.stringValue = object.comment ()
+    }else{
+      return nil
+    }
+    return textField
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

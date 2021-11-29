@@ -291,9 +291,19 @@ extern autolayout class DoubleSlider (width: Int, min: Int, max: Int, ticks: Int
   $value property Double
 }
 
+extern autolayout class IntSlider (width: Int, min: Int, max: Int, ticks: Int) {
+  func expandableWidth ()
+  $value property Int
+}
+
 extern autolayout class CanariFontCharacterSelectButton $enabled {
   $codePoint property Int
   $characters transient DefinedCharactersInDevice
 }
+
+extern autolayout class CanariFontCharacterGerberCodeTableView (size: EBControlSize) {
+  $characterGerberCode transient CharacterGerberCode
+}
+
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

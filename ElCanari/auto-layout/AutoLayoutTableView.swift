@@ -50,11 +50,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     self.mTableView.gridStyleMask = [.solidHorizontalGridLineMask, .solidVerticalGridLineMask]
     self.mTableView.usesAlternatingRowBackgroundColors = true
     self.mTableView.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
-//    if #available(macOS 10.13, *) {
-      self.mTableView.usesAutomaticRowHeights = true // #available(macOS 10.13
-//    } else {
-//      // Fallback on earlier versions
-//    }
+    self.mTableView.usesAutomaticRowHeights = true // #available(macOS 10.13
 
   //--- Configure scroll view
     self.mScrollView.translatesAutoresizingMaskIntoConstraints = false

@@ -422,39 +422,39 @@ import Cocoa
       view_2.appendView (view_2_0)
       let view_2_1 = AutoLayoutFlexibleSpace ()
       view_2.appendView (view_2_1)
+      let view_2_2 = AutoLayoutStaticLabel (title: "(for edition)", bold: false, size: .mini)
+      view_2.appendView (view_2_2)
     }
     vStackView.appendView (view_2)
     let view_3 = AutoLayoutHorizontalStackView ()
     do{
-      let view_3_0 = AutoLayoutFlexibleSpace ()
-      view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutDoubleSlider (width: 200, min: 0, max: 1, ticks: 11)
+      let view_3_0 = AutoLayoutDoubleSlider (width: -1, min: 0, max: 1, ticks: 11)
         .bind_value (preferences_fontEditionTransparency_property)
-      view_3.appendView (view_3_1)
-      let view_3_2 = AutoLayoutDoubleField (width: 56, size: .small)
+      view_3.appendView (view_3_0)
+      let view_3_1 = AutoLayoutDoubleField (width: 56, size: .small)
         .bind_value (preferences_fontEditionTransparency_property, sendContinously:false)
-      view_3.appendView (view_3_2)
+      view_3.appendView (view_3_1)
     }
     vStackView.appendView (view_3)
     let view_4 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     vStackView.appendView (view_4)
     let view_5 = AutoLayoutHorizontalStackView ()
     do{
-      let view_5_0 = AutoLayoutFlexibleSpace ()
+      let view_5_0 = AutoLayoutStaticLabel (title: "Current Character", bold: false, size: .small)
       view_5.appendView (view_5_0)
-      let view_5_1 = AutoLayoutStaticLabel (title: "Current Character", bold: false, size: .small)
-      view_5.appendView (view_5_1)
-      let view_5_2 = AutoLayoutButton (title: "New Character…", size: .small)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutFontDocument.newCharacterAction (_:))
-        )
-      view_5.appendView (view_5_2)
-      let view_5_3 = AutoLayoutButton (title: "Delete", size: .small)
+      let view_5_1 = AutoLayoutButton (title: "Delete", size: .small)
         .bind_enabled (.id (self.canDeleteCurrentCharacter_property))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutFontDocument.deleteCurrentCharacterAction (_:))
+        )
+      view_5.appendView (view_5_1)
+      let view_5_2 = AutoLayoutFlexibleSpace ()
+      view_5.appendView (view_5_2)
+      let view_5_3 = AutoLayoutButton (title: "New Character…", size: .small)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutFontDocument.newCharacterAction (_:))
         )
       view_5.appendView (view_5_3)
     }
@@ -467,8 +467,50 @@ import Cocoa
       view_6.appendView (view_6_0)
     }
     vStackView.appendView (view_6)
-    let view_7 = AutoLayoutFlexibleSpace ()
+    let view_7 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_7_0 = AutoLayoutStaticLabel (title: "Advancement", bold: false, size: .small)
+      view_7.appendView (view_7_0)
+      let view_7_1 = AutoLayoutFlexibleSpace ()
+      view_7.appendView (view_7_1)
+    }
     vStackView.appendView (view_7)
+    let view_8 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_8_0 = AutoLayoutIntSlider (width: -1, min: 0, max: 32, ticks: 33)
+        .bind_value (self.characterSelection.advance_property)
+      view_8.appendView (view_8_0)
+      let view_8_1 = AutoLayoutIntField (width: 56, size: .small)
+        .bind_value (self.characterSelection.advance_property, sendContinously:false)
+      view_8.appendView (view_8_1)
+    }
+    vStackView.appendView (view_8)
+    let view_9 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_9_0 = AutoLayoutStaticLabel (title: "Gerber Code", bold: false, size: .small)
+      view_9.appendView (view_9_0)
+      let view_9_1 = AutoLayoutFlexibleSpace ()
+      view_9.appendView (view_9_1)
+      let view_9_2 = AutoLayoutLabel (bold: false, size: .small)
+        .bind_title (self.characterSelection.gerberCodeInstructionCountMessage_property)
+      view_9.appendView (view_9_2)
+    }
+    vStackView.appendView (view_9)
+    let view_10 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_10_0 = AutoLayoutCheckbox (title: "Show Gerber Flow", size: .small)
+        .bind_value (preferences_showGerberDrawingFlow_property)
+      view_10.appendView (view_10_0)
+      let view_10_1 = AutoLayoutFlexibleSpace ()
+      view_10.appendView (view_10_1)
+      let view_10_2 = AutoLayoutCheckbox (title: "Show Indexes", size: .small)
+        .bind_value (preferences_showGerberDrawingIndexes_property)
+      view_10.appendView (view_10_2)
+    }
+    vStackView.appendView (view_10)
+    let view_11 = AutoLayoutCanariFontCharacterGerberCodeTableView (size: .small)
+      .bind_characterGerberCode (self.characterSelection.gerberCode_property)
+    vStackView.appendView (view_11)
     return vStackView
   } ()
 
