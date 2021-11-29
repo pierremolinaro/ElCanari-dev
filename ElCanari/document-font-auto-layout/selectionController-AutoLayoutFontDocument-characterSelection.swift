@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Base Selection Controller AutoLayoutFontDocument mCharacterSelection
+//    Base Selection Controller AutoLayoutFontDocument characterSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutFontDocument_mCharacterSelection : EBSwiftBaseObject {
+final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: advance
@@ -147,7 +147,7 @@ final class SelectionController_AutoLayoutFontDocument_mCharacterSelection : EBS
       valueExplorer.font = font
       valueExplorer.title = self.explorerIndexString + " " + String (describing: type (of: self))
       valueExplorer.target = self
-      valueExplorer.action = #selector(SelectionController_AutoLayoutFontDocument_mCharacterSelection.showObjectWindowFromExplorerButton(_:))
+      valueExplorer.action = #selector(SelectionController_AutoLayoutFontDocument_characterSelection.showObjectWindowFromExplorerButton(_:))
       view.addSubview (valueExplorer)
       mValueExplorer = valueExplorer
       y += EXPLORER_ROW_HEIGHT
@@ -205,7 +205,7 @@ final class SelectionController_AutoLayoutFontDocument_mCharacterSelection : EBS
     //--- Set close button as 'remove window' button
       let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
       closeButton?.target = self
-      closeButton?.action = #selector(SelectionController_AutoLayoutFontDocument_mCharacterSelection.deleteSelectionControllerWindowAction(_:))
+      closeButton?.action = #selector(SelectionController_AutoLayoutFontDocument_characterSelection.deleteSelectionControllerWindowAction(_:))
     //--- Set window title
       let windowTitle = self.explorerIndexString + " " + String (describing: type (of: self))
       mExplorerWindow!.title = windowTitle

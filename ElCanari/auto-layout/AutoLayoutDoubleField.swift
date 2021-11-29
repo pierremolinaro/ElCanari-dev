@@ -1,36 +1,45 @@
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //
-//  AutoLayoutTextField.swift
-//  ElCanari
-//
-//  Created by Pierre Molinaro on 15/06/2021.
+//  Created by Pierre Molinaro on 09/02/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutTextField
+//   AutoLayoutDoubleField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class AutoLayoutDoubleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+
+  //····················································································································
 
   private let mWidth : CGFloat
+  private let mNumberFormatter = NumberFormatter ()
 
   //····················································································································
 
   init (width inWidth : Int, size inSize : EBControlSize) {
     self.mWidth = CGFloat (inWidth)
     super.init (frame: NSRect ())
+    self.delegate = self
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.delegate = self
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.alignment = .center
-
+  //--- Target
     self.target = self
-    self.action = #selector (Self.ebAction(_:))
+    self.action = #selector (Self.valueDidChangeAction (_:))
+  //--- Number formatter
+    self.mNumberFormatter.formatterBehavior = .behavior10_4
+    self.mNumberFormatter.numberStyle = .decimal
+    self.mNumberFormatter.localizesFormat = true
+    self.mNumberFormatter.minimumFractionDigits = 2
+    self.mNumberFormatter.maximumFractionDigits = 2
+    self.mNumberFormatter.isLenient = true
+    self.formatter = self.mNumberFormatter
   }
 
   //····················································································································
@@ -47,25 +56,6 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
 
   //····················································································································
 
-  final func set (alignment inAlignment : TextAlignment) -> Self {
-    self.alignment = inAlignment.cocoaAlignment
-    return self
-  }
-
-  //····················································································································
-
-  func multiLine () -> Self {
-    self.usesSingleLineMode = false
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
-    return self
-  }
-
-  //····················································································································
-  //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible
-  //  So we need to define intrinsicContentSize.width explicitly
-  //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-
-  //····················································································································
-
   override var intrinsicContentSize : NSSize {
     let s = super.intrinsicContentSize
     return NSSize (width: self.mWidth, height: s.height)
@@ -76,22 +66,86 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
   override func ebCleanUp () {
     self.mValueController?.unregister ()
     self.mValueController = nil
+    self.delegate = nil
+    self.formatter = nil
     super.ebCleanUp ()
   }
 
   //····················································································································
 
-  @objc func ebAction (_ inUnusedSender : Any?) {
-    _ = self.mValueController?.updateModel (withCandidateValue: self.stringValue, windowForSheet: self.window)
+  final func set (min inMin : Int) -> Self {
+    self.mNumberFormatter.minimum = NSNumber (value: inMin)
+    return self
   }
 
   //····················································································································
-  // IMPLEMENTATION OF NSTextFieldDelegate
+
+  final func set (max inMax : Int) -> Self {
+    self.mNumberFormatter.maximum = NSNumber (value: inMax)
+    return self
+  }
+
   //····················································································································
 
-  func controlTextDidChange (_ inNotification : Notification) {
-    if self.mSendContinously {
-      self.ebAction (nil)
+  final func set (format inFormatString : String) -> Self {
+    self.mNumberFormatter.format = inFormatString
+    return self
+  }
+
+  //····················································································································
+  //    NSTextFieldDelegate delegate function
+  //····················································································································
+
+  func controlTextDidChange (_ inUnusedNotification : Notification) {
+    if self.isContinuous {
+      if let inputString = currentEditor()?.string {
+        // NSLog ("inputString %@", inputString)
+        let numberFormatter = self.formatter as! NumberFormatter
+        let number = numberFormatter.number (from: inputString)
+        if number == nil {
+          _ = control (
+            self,
+            didFailToFormatString: inputString,
+            errorDescription: "The “\(inputString)” value is invalid."
+          )
+        }else{
+          NSApp.sendAction (self.action!, to: self.target, from: self)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+  //    NSTextFieldDelegate delegate function
+  //····················································································································
+
+  func control (_ control : NSControl,
+                didFailToFormatString string : String,
+                errorDescription error : String?) -> Bool {
+    let alert = NSAlert ()
+    if let window = control.window {
+      alert.messageText = error!
+      alert.informativeText = "Please provide a valid value."
+      alert.addButton (withTitle: "Ok")
+      alert.addButton (withTitle: "Discard Change")
+      alert.beginSheetModal (
+        for: window,
+        completionHandler: { (response : NSApplication.ModalResponse) -> Void in
+          if response == .alertSecondButtonReturn { // Discard Change
+ //         self.integerValue = self.myIntegerValue.0
+          }
+        }
+      )
+    }
+    return false
+  }
+
+  //····················································································································
+
+  @objc fileprivate func valueDidChangeAction (_ inSender : Any?) {
+    if let formatter = self.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.stringValue) {
+      let value = outletValueNumber.doubleValue
+      _ = self.mValueController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
     }
   }
 
@@ -99,37 +153,37 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
   //  value binding
   //····················································································································
 
-  fileprivate func updateOutlet (_ inModel : EBReadOnlyProperty_String) {
-    switch inModel.selection {
-    case .empty :
-      self.placeholderString = "No Selection"
-      self.stringValue = ""
-      self.enable (fromValueBinding: false)
-    case .multiple :
-      self.placeholderString = "Multiple Selection"
-      self.stringValue = ""
-      self.enable (fromValueBinding: true)
-    case .single (let propertyValue) :
-      self.placeholderString = nil
-      self.stringValue = propertyValue
-      self.enable (fromValueBinding: true)
-    }
+  private var mValueController : EBGenericReadWritePropertyController <Double>? = nil
+
+  //····················································································································
+
+  final func bind_value (_ inObject : EBReadWriteProperty_Double, sendContinously : Bool) -> Self {
+    self.cell?.sendsActionOnEndEditing = false
+    self.isContinuous = sendContinously
+    self.mValueController = EBGenericReadWritePropertyController <Double> (
+      observedObject: inObject,
+      callBack:  { [weak self] in self?.update (from: inObject) }
+    )
+    return self
   }
 
   //····················································································································
 
-  private var mValueController : EBGenericReadWritePropertyController <String>? = nil
-  private var mSendContinously = false
-
-  //····················································································································
-
-  final func bind_value (_ inModel : EBReadWriteProperty_String, sendContinously inContinuous : Bool) -> Self {
-    self.mSendContinously = inContinuous
-    self.mValueController = EBGenericReadWritePropertyController <String> (
-      observedObject: inModel,
-      callBack: { [weak self] in self?.updateOutlet (inModel) }
-    )
-    return self
+  private func update (from model : EBReadWriteProperty_Double) {
+    switch model.selection {
+    case .empty :
+      self.enable (fromValueBinding: false)
+      self.placeholderString = "No Selection"
+      self.stringValue = ""
+    case .single (let v) :
+      self.enable (fromValueBinding: true)
+      self.placeholderString = nil
+      self.doubleValue = CGFloat (v)
+    case .multiple :
+      self.enable (fromValueBinding: false)
+      self.placeholderString = "Multiple Selection"
+      self.stringValue = ""
+    }
   }
 
   //····················································································································

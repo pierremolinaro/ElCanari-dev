@@ -41,7 +41,7 @@ extension AutoLayoutPackageDocument {
     }else if let tiffData = NSImage (pasteboard: NSPasteboard.general)?.tiffRepresentation {
       buildFrom (data: tiffData)
     }else if let window = self.windowForSheet {
-      __NSBeep ()
+      NSSound.beep ()
       let alert = NSAlert ()
       alert.messageText = "Cannot paste an image."
       alert.informativeText = "The pasteboard does not contain a valid image."

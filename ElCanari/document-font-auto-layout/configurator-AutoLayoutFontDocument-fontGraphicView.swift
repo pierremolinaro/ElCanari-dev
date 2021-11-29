@@ -13,12 +13,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontRoot_sampleStringBezierPathWidth (
-       _ self_sampleStringBezierPath : NSBezierPath
-) -> String {
+import Cocoa
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension AutoLayoutFontDocument {
+  final func configure_fontGraphicView (_ inOutlet : AutoLayoutCanariFontCharacterView) {
 //--- START OF USER ZONE 2
-  return self_sampleStringBezierPath.isEmpty ? "—" : "\(String (format: "%.2f", self_sampleStringBezierPath.bounds.width))"
+         inOutlet.set (document: self)
 //--- END OF USER ZONE 2
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

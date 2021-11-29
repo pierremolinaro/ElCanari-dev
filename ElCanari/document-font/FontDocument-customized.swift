@@ -74,7 +74,9 @@ let PMFontComment = "PMFontComment"
     self.mIssueTableView?.register (segmentedControl : self.mInspectorSegmentedControl, segment: 2)
   //---
     let currentCharacterCodePointObserver = EBModelEvent ()
-    currentCharacterCodePointObserver.mEventCallBack = { [weak self] in self?.updateCurrentCharacterSelection () }
+    currentCharacterCodePointObserver.mEventCallBack = {
+      [weak self] in self?.updateCurrentCharacterSelection ()
+    }
     self.rootObject.currentCharacterCodePointString_property.addEBObserver (currentCharacterCodePointObserver)
     self.mCurrentCharacterCodePointObserver = currentCharacterCodePointObserver
   }

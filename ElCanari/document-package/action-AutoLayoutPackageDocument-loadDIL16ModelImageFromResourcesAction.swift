@@ -30,7 +30,7 @@ extension AutoLayoutPackageDocument {
       self.rootObject.mModelImageObjects = EBReferenceArray (pp)
       self.rootObject.mModelImagePageZoom = 0
     }else if let window = self.windowForSheet {
-      __NSBeep ()
+      NSSound.beep ()
       let alert = NSAlert ()
       alert.messageText = "Cannot load the image."
       alert.informativeText = "There is no such image in Application resources."

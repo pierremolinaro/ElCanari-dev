@@ -9,16 +9,16 @@ import Cocoa
 @objc(AutoLayoutFontDocument) class AutoLayoutFontDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
 
   //····················································································································
-  //   Array controller: mSelectedCharacterController
+  //   Array controller: selectedCharacterController
   //····················································································································
 
-  var mSelectedCharacterController = Controller_AutoLayoutFontDocument_mSelectedCharacterController ()
+  var selectedCharacterController = Controller_AutoLayoutFontDocument_selectedCharacterController ()
 
   //····················································································································
-  //   Selection controller: mCharacterSelection
+  //   Selection controller: characterSelection
   //····················································································································
 
-  var mCharacterSelection = SelectionController_AutoLayoutFontDocument_mCharacterSelection ()
+  var characterSelection = SelectionController_AutoLayoutFontDocument_characterSelection ()
 
   //····················································································································
   //   Transient property: documentFileName
@@ -47,6 +47,23 @@ import Cocoa
 
   final var statusImage : NSImage? {
     switch self.statusImage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: statusTitle
+  //····················································································································
+
+  final let statusTitle_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var statusTitle : String? {
+    switch self.statusTitle_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -89,9 +106,28 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: canDeleteCurrentCharacter
+  //····················································································································
+
+  final let canDeleteCurrentCharacter_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var canDeleteCurrentCharacter : Bool? {
+    switch self.canDeleteCurrentCharacter_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    Outlets
   //····················································································································
 
+  weak final var mFontGraphicView : AutoLayoutCanariFontCharacterView? = nil
+  weak final var mFontInspectorSegmentedControl : AutoLayoutSegmentedControlWithPages? = nil
 
   //····················································································································
   //    Outlets
@@ -121,10 +157,10 @@ import Cocoa
 
   #if BUILD_OBJECT_EXPLORER
     override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    //--- Array controller property: mSelectedCharacterController
-      self.mSelectedCharacterController.addExplorer (name: "mSelectedCharacterController", y:&y, view:view)
-    //--- Selection controller property: mCharacterSelection
-      self.mCharacterSelection.addExplorer (name: "mCharacterSelection", y:&y, view:view)
+    //--- Array controller property: selectedCharacterController
+      self.selectedCharacterController.addExplorer (name: "selectedCharacterController", y:&y, view:view)
+    //--- Selection controller property: characterSelection
+      self.characterSelection.addExplorer (name: "characterSelection", y:&y, view:view)
    //---
       super.populateExplorerWindow (&y, view:view)
     }
@@ -236,6 +272,12 @@ import Cocoa
   } ()
 
   //····················································································································
+  //    VIEW mFontPageInspectorMasterView
+  //····················································································································
+
+  let mFontPageInspectorMasterView : AutoLayoutAbstractStackView = AutoLayoutVerticalStackView ()
+
+  //····················································································································
   //    VIEW mFontPage
   //····················································································································
 
@@ -247,19 +289,186 @@ import Cocoa
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutStaticLabel (title: "Temp", bold: false, size: .regular)
+      let view_1_0 = AutoLayoutVerticalStackView ()
+      do{
+        let view_1_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mFontPageInspectorMasterView, equalWidth: true, size: .small)
+          .expandableWidth ()
+          .addPage (title: "", tooltip: "Selected Character Inspector", pageView: self.mSelectedCharacterInspectorView)
+          .addPage (title: "", tooltip: "Sample String Inspector", pageView: self.mSampleStringInspectorView)
+          .addPage (title: "", tooltip: "Issue Inspector", pageView: self.mIssuesInspectorView)
+          .bind_selectedPage (self.rootObject.selectedInspector_property)
+          .bind_segmentImage (self.statusImage_property, segmentIndex:2)
+          .bind_segmentTitle (self.statusTitle_property, segmentIndex:2)
+        self.mFontInspectorSegmentedControl = view_1_0_0 // Outlet
+        self.configure_fontPageSegmentedControl (view_1_0_0) // Configurator
+        view_1_0.appendView (view_1_0_0)
+        let view_1_0_1 = AutoLayoutVerticalStackView ()
+          .set (leftMargin: 20)
+          .set (rightMargin: 20)
+          .set (bottomMargin: 20)
+          .set (spacing: 12)
+        do{
+          let view_1_0_1_0 = self.mFontPageInspectorMasterView
+          view_1_0_1.appendView (view_1_0_1_0)
+        }
+        view_1_0.appendView (view_1_0_1)
+      }
       view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
-      view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutCanariFontCharacterView ()
-        .bind_advance (self.mCharacterSelection.advance_property)
-        .bind_characterSegmentList (self.mCharacterSelection.segmentArrayForDrawing_property)
+      let view_1_1 = AutoLayoutCanariFontCharacterView ()
+        .bind_advance (self.characterSelection.advance_property)
+        .bind_characterSegmentList (self.characterSelection.segmentArrayForDrawing_property)
         .bind_transparency (preferences_fontEditionTransparency_property)
         .bind_displayFlow (preferences_showGerberDrawingFlow_property)
         .bind_displayDrawingIndexes (preferences_showGerberDrawingIndexes_property)
-      view_1.appendView (view_1_2)
+      self.mFontGraphicView = view_1_1 // Outlet
+      self.configure_fontGraphicView (view_1_1) // Configurator
+      view_1.appendView (view_1_1)
     }
     vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mIssuesInspectorView
+  //····················································································································
+
+  lazy var mIssuesInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutLabel (bold: false, size: .small)
+        .bind_title (self.statusMessage_property)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutCanariIssueTableView (hasHideIssueButton: false)
+      .bind_issues (self.rootObject.issues_property)
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSampleStringInspectorView
+  //····················································································································
+
+  lazy var mSampleStringInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "Sample String", bold: true, size: .small)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutTextView ()
+      .bind_value (preferences_sampleString_property)
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_2_0 = AutoLayoutFlexibleSpace ()
+      view_2.appendView (view_2_0)
+      let view_2_1 = AutoLayoutStaticLabel (title: "Sample String Metrics", bold: true, size: .small)
+      view_2.appendView (view_2_1)
+      let view_2_2 = AutoLayoutFlexibleSpace ()
+      view_2.appendView (view_2_2)
+    }
+    vStackView.appendView (view_2)
+    let view_3 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_3_0 = AutoLayoutFlexibleSpace ()
+      view_3.appendView (view_3_0)
+      let view_3_1 = AutoLayoutTwoColumnsGridView ()
+        .addFirstBaseLineAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_6 (), right: self.computeImplicitView_7 ())
+      view_3.appendView (view_3_1)
+      let view_3_2 = AutoLayoutFlexibleSpace ()
+      view_3.appendView (view_3_2)
+    }
+    vStackView.appendView (view_3)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSelectedCharacterInspectorView
+  //····················································································································
+
+  lazy var mSelectedCharacterInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutStaticLabel (title: "Font Nominal Size", bold: false, size: .small)
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutIntField (width: 56, size: .small)
+        .bind_value (self.rootObject.nominalSize_property, sendContinously:false)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_2_0 = AutoLayoutStaticLabel (title: "Segment Opacity", bold: false, size: .small)
+      view_2.appendView (view_2_0)
+      let view_2_1 = AutoLayoutFlexibleSpace ()
+      view_2.appendView (view_2_1)
+    }
+    vStackView.appendView (view_2)
+    let view_3 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_3_0 = AutoLayoutFlexibleSpace ()
+      view_3.appendView (view_3_0)
+      let view_3_1 = AutoLayoutDoubleSlider (width: 200, min: 0, max: 1, ticks: 11)
+        .bind_value (preferences_fontEditionTransparency_property)
+      view_3.appendView (view_3_1)
+      let view_3_2 = AutoLayoutDoubleField (width: 56, size: .small)
+        .bind_value (preferences_fontEditionTransparency_property, sendContinously:false)
+      view_3.appendView (view_3_2)
+    }
+    vStackView.appendView (view_3)
+    let view_4 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+    vStackView.appendView (view_4)
+    let view_5 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_5_0 = AutoLayoutFlexibleSpace ()
+      view_5.appendView (view_5_0)
+      let view_5_1 = AutoLayoutStaticLabel (title: "Current Character", bold: false, size: .small)
+      view_5.appendView (view_5_1)
+      let view_5_2 = AutoLayoutButton (title: "New Character…", size: .small)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutFontDocument.newCharacterAction (_:))
+        )
+      view_5.appendView (view_5_2)
+      let view_5_3 = AutoLayoutButton (title: "Delete", size: .small)
+        .bind_enabled (.id (self.canDeleteCurrentCharacter_property))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutFontDocument.deleteCurrentCharacterAction (_:))
+        )
+      view_5.appendView (view_5_3)
+    }
+    vStackView.appendView (view_5)
+    let view_6 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_6_0 = AutoLayoutCanariFontCharacterSelectButton ()
+        .bind_codePoint (self.rootObject.currentCharacterCodePoint_property)
+        .bind_characters (self.rootObject.definedCharacters_property)
+      view_6.appendView (view_6_0)
+    }
+    vStackView.appendView (view_6)
+    let view_7 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_7)
     return vStackView
   } ()
 
@@ -294,6 +503,82 @@ import Cocoa
     vStackView.appendView (view_1)
     return vStackView
   } ()
+
+  //····················································································································
+  //    IMPLICIT VIEW 0
+  //····················································································································
+
+  fileprivate final func computeImplicitView_0 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 1
+  //····················································································································
+
+  fileprivate final func computeImplicitView_1 () -> NSView {
+    let view = AutoLayoutDoubleField (width: 64, size: .small)
+      .bind_value (preferences_sampleStringSize_property, sendContinously:true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 2
+  //····················································································································
+
+  fileprivate final func computeImplicitView_2 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 3
+  //····················································································································
+
+  fileprivate final func computeImplicitView_3 () -> NSView {
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .bind_title (self.rootObject.sampleStringBezierPathWidth_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 4
+  //····················································································································
+
+  fileprivate final func computeImplicitView_4 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Ascenders", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 5
+  //····················································································································
+
+  fileprivate final func computeImplicitView_5 () -> NSView {
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .bind_title (self.rootObject.sampleStringBezierPathAscent_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 6
+  //····················································································································
+
+  fileprivate final func computeImplicitView_6 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Descenders", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 7
+  //····················································································································
+
+  fileprivate final func computeImplicitView_7 () -> NSView {
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .bind_title (self.rootObject.sampleStringBezierPathDescent_property)
+    return view
+  }
 
   //····················································································································
   //    Build User Interface
@@ -352,14 +637,14 @@ import Cocoa
   final private func configureProperties () {
     let start = Date ()
     var opIdx = 0
-  //--- Array controller property: mSelectedCharacterController
-    self.mSelectedCharacterController.bind_model (self.rootObject.characters_property, self.ebUndoManager)
+  //--- Array controller property: selectedCharacterController
+    self.selectedCharacterController.bind_model (self.rootObject.characters_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Selection controller property: mCharacterSelection
-    self.mCharacterSelection.bind_selection (model: self.mSelectedCharacterController.selectedArray_property)
+  //--- Selection controller property: characterSelection
+    self.characterSelection.bind_selection (model: self.selectedCharacterController.selectedArray_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -384,6 +669,26 @@ import Cocoa
       }
     }
     self.rootObject.issues_property.addEBObserver (self.statusImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: statusTitle
+    self.statusTitle_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.issues_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutFontDocument_statusTitle (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.statusTitle_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -428,6 +733,26 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: canDeleteCurrentCharacter
+    self.canDeleteCurrentCharacter_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.definedCharacters_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutFontDocument_canDeleteCurrentCharacter (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.definedCharacters_property.addEBObserver (self.canDeleteCurrentCharacter_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Configure properties \(durationMS) ms")
@@ -468,7 +793,11 @@ import Cocoa
   //--------------------------- Clean up auto layout views
     self.mPageMasterView.ebCleanUp ()
     self.mDocumentMainView.ebCleanUp ()
+    self.mFontPageInspectorMasterView.ebCleanUp ()
     self.mFontPage.ebCleanUp ()
+    self.mIssuesInspectorView.ebCleanUp ()
+    self.mSampleStringInspectorView.ebCleanUp ()
+    self.mSelectedCharacterInspectorView.ebCleanUp ()
     self.mInfoPage.ebCleanUp ()
     let toolbarItems = self.windowForSheet?.toolbar?.items ?? []
     for item in toolbarItems {
@@ -477,13 +806,15 @@ import Cocoa
   //--------------------------- Unbind regular bindings
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
-  //--- Array controller property: mSelectedCharacterController
-    self.mSelectedCharacterController.unbind_model ()
-  //--- Selection controller property: mCharacterSelection
-    self.mCharacterSelection.unbind_selection ()
+  //--- Array controller property: selectedCharacterController
+    self.selectedCharacterController.unbind_model ()
+  //--- Selection controller property: characterSelection
+    self.characterSelection.unbind_selection ()
     // self.rootObject.issues_property.removeEBObserver (self.statusImage_property)
+    // self.rootObject.issues_property.removeEBObserver (self.statusTitle_property)
     // self.rootObject.issues_property.removeEBObserver (self.statusMessage_property)
     // self.rootObject.issues_property.removeEBObserver (self.metadataStatus_property)
+    // self.rootObject.definedCharacters_property.removeEBObserver (self.canDeleteCurrentCharacter_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets

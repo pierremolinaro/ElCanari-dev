@@ -195,7 +195,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseOb
   //   Select a single object
   //····················································································································
 
-/*  func select (object inObject: ArtworkFileGenerationParameters) {
+  func select (object inObject: ArtworkFileGenerationParameters) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
@@ -203,11 +203,11 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseOb
       case .single (let objectArray) :
         let array = EBReferenceArray (objectArray)
         if array.contains (inObject) {
-          self.mInternalSelectedArrayProperty.setProp ([inObject])
+          self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObject))
         }
       }
     }
-  } */
+  }
 
   //····················································································································
 

@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Auto Layout Table View Controller AutoLayoutFontDocument mSelectedCharacterController
+//    Auto Layout Table View Controller AutoLayoutFontDocument selectedCharacterController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutFontDocument_mSelectedCharacterController : EBSwiftBaseObject, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutFontDocument_selectedCharacterController : EBSwiftBaseObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //    Constant properties
@@ -153,7 +153,7 @@ final class Controller_AutoLayoutFontDocument_mSelectedCharacterController : EBS
   //   Select a single object
   //····················································································································
 
-/*  func select (object inObject: FontCharacter) {
+  func select (object inObject: FontCharacter) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
@@ -161,11 +161,11 @@ final class Controller_AutoLayoutFontDocument_mSelectedCharacterController : EBS
       case .single (let objectArray) :
         let array = EBReferenceArray (objectArray)
         if array.contains (inObject) {
-          self.mInternalSelectedArrayProperty.setProp ([inObject])
+          self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObject))
         }
       }
     }
-  } */
+  }
 
   //····················································································································
 

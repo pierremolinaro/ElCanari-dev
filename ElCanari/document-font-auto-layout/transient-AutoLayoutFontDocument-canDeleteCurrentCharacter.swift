@@ -13,11 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontRoot_sampleStringBezierPathWidth (
-       _ self_sampleStringBezierPath : NSBezierPath
-) -> String {
+func transient_AutoLayoutFontDocument_canDeleteCurrentCharacter (
+       _ root_definedCharacters : DefinedCharactersInDevice
+) -> Bool {
 //--- START OF USER ZONE 2
-  return self_sampleStringBezierPath.isEmpty ? "—" : "\(String (format: "%.2f", self_sampleStringBezierPath.bounds.width))"
+        return root_definedCharacters.values.count > 1
 //--- END OF USER ZONE 2
 }
 

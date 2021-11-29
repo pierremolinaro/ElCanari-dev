@@ -40,7 +40,7 @@ extension ProjectDocument {
   @objc func removeSelectedComponentsAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
         if self.componentController.selectedArray.count == 0 {
-          __NSBeep ()
+          NSSound.beep ()
         }else{
           var inSchematicsOrInBoard = false
           for component in self.componentController.selectedArray.values {

@@ -94,7 +94,7 @@ extension CustomizedProjectDocument {
         let retainedConnector = connectorsConnectedToAPad [0]
         self.performConnection (retainedConnector, inConnectors, nets.first)
       }else{
-        __NSBeep ()
+        NSSound.beep ()
       }
     }
   }

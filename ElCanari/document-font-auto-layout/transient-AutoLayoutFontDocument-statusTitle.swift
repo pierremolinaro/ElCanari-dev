@@ -13,11 +13,15 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontRoot_sampleStringBezierPathWidth (
-       _ self_sampleStringBezierPath : NSBezierPath
+func transient_AutoLayoutFontDocument_statusTitle (
+       _ root_issues : CanariIssueArray
 ) -> String {
 //--- START OF USER ZONE 2
-  return self_sampleStringBezierPath.isEmpty ? "—" : "\(String (format: "%.2f", self_sampleStringBezierPath.bounds.width))"
+        if root_issues.count == 0 {
+          return ""
+        }else{
+          return " — \(root_issues.count)"
+        }
 //--- END OF USER ZONE 2
 }
 

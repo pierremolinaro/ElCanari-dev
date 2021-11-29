@@ -131,6 +131,7 @@ extern autolayout class Button (title: String, size: EBControlSize) $enabled $ru
 extern autolayout class TextField (width: Int, size: EBControlSize) $enabled {
   func set (alignment: TextAlignment)
   func expandableWidth ()
+  func multiLine ()
   $value property String (sendContinously : Bool)
 }
 
@@ -179,6 +180,10 @@ extern autolayout class IntObserverField (size: EBControlSize) $enabled {
   $observedValue transient Int
 }
 
+extern autolayout class DoubleField (width: Int, size: EBControlSize) $enabled {
+  $value property Double (sendContinously: Bool)
+}
+
 extern autolayout class ColorWell {
   $color property NSColor (sendContinously: Bool)
 }
@@ -187,7 +192,7 @@ extern autolayout class FontButton (size: EBControlSize) {
   $fontValue property NSFont
 }
 
-extern autolayout class CanariIssueTableView {
+extern autolayout class CanariIssueTableView (hasHideIssueButton : Bool) {
   $issues transient CanariIssueArray
 }
 
@@ -279,6 +284,16 @@ extern autolayout class CanariFontCharacterView {
   $transparency transient Double
   $displayFlow transient Bool
   $displayDrawingIndexes transient Bool
+}
+
+extern autolayout class DoubleSlider (width: Int, min: Int, max: Int, ticks: Int) {
+  func expandableWidth ()
+  $value property Double
+}
+
+extern autolayout class CanariFontCharacterSelectButton $enabled {
+  $codePoint property Int
+  $characters transient DefinedCharactersInDevice
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

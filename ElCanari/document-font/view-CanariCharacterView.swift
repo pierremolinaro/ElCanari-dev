@@ -310,7 +310,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func updateSegmentDrawingsFromCharacterSegmentListController (_ inSegments : EBReadOnlyProperty_CharacterSegmentList) {
+  private func updateSegmentDrawingsFromCharacterSegmentListController (_ inSegments : EBReadOnlyProperty_CharacterSegmentList) {
     switch inSegments.selection {
     case .empty, .multiple :
       ()
@@ -525,7 +525,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   @objc func bringForward (_ sender : Any?) {
     if mSelection.count == 0 {
-      __NSBeep ()
+      NSSound.beep ()
     }else{
       var newSegmentArray = self.mSegmentList
       var idx = newSegmentArray.count
@@ -536,7 +536,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
           newSegmentArray.insert (segment, at:idx + 1)
         }
       }
-      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+      self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }
   }
 
@@ -544,7 +544,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   @objc func bringToFront (_ sender : Any?) {
     if mSelection.count == 0 {
-      __NSBeep ()
+      NSSound.beep ()
     }else{
       var newSegmentArray = self.mSegmentList
       var idx = -1
@@ -555,7 +555,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
           newSegmentArray.append (segment)
         }
       }
-      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+      self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }
   }
   
@@ -563,7 +563,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   @objc func sendBackward (_ sender : Any?) {
     if mSelection.count == 0 {
-      __NSBeep ()
+      NSSound.beep ()
     }else{
       var newSegmentArray = self.mSegmentList
       var idx = -1
@@ -574,7 +574,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
           newSegmentArray.insert (segment, at:idx - 1)
         }
       }
-      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+      self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }
   }
 
@@ -582,7 +582,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   @objc func sendToBack (_ sender : Any?) {
     if mSelection.count == 0 {
-      __NSBeep ()
+      NSSound.beep ()
     }else{
       var newSegmentArray = self.mSegmentList
       var idx = newSegmentArray.count
@@ -593,7 +593,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
           newSegmentArray.insert (segment, at:0)
         }
       }
-      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+      self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }
   }
 
@@ -603,7 +603,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   final func deleteSelection () {
     if mSelection.count == 0 {
-      __NSBeep ()
+      NSSound.beep ()
     }else{
       var newSegmentArray = self.mSegmentList
       for segment in mSelection {
@@ -612,7 +612,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
           newSegmentArray.remove (at: idx)
         }
       }
-      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+      self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }
   }
   
@@ -685,9 +685,9 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
           newSegmentArray.append (segment)
         }
       }
-      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+      self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }else{
-      __NSBeep ()
+      NSSound.beep ()
     }
   }
   
@@ -712,9 +712,9 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
           newSegmentArray.append (segment)
         }
       }
-      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+      self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }else{
-      __NSBeep ()
+      NSSound.beep ()
     }
   }
   
@@ -757,7 +757,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
             newSegmentArray.append (newSegment)
             self.mSelection.insert (newSegment)
           }
-          mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+          self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
         }
       }
     }

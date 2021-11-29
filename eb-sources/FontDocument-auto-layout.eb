@@ -55,6 +55,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
   }
 
   transient NSImage statusImage dependsFrom root.issues ;
+  transient String statusTitle dependsFrom root.issues ;
   transient String statusMessage dependsFrom root.issues ;
   transient MetadataStatus metadataStatus dependsFrom root.issues ;
 
@@ -62,26 +63,122 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 //  Font Page
 //------------------------------------------------------------------------------
 
-  autolayout tableViewController #mSelectedCharacterController
-     (allowsEmptySelection:no, allowsMultipleSelection:no) root.characters ;
-  selectionController FontCharacter #mCharacterSelection : #mSelectedCharacterController.selectedArray ;
+  autolayout tableViewController #selectedCharacterController
+     (allowsEmptySelection: no, allowsMultipleSelection: no) root.characters ;
+  selectionController FontCharacter #characterSelection : #selectedCharacterController.selectedArray ;
+
+  stackView mFontPageInspectorMasterView : vStack ;
 
   stackView mFontPage vStack set (margins: 8) {
   //--- Sample string display
     CanariSampleFontStringView { $bezierPath root.sampleStringBezierPath }
     hStack {
-      StaticLabel (title: "Temp", bold: no, size : .regular)
-      separator
-      CanariFontCharacterView {
-        $advance #mCharacterSelection.advance
-        $characterSegmentList #mCharacterSelection.segmentArrayForDrawing
+      vStack {
+        SegmentedControlWithPages (documentView: stackView mFontPageInspectorMasterView, equalWidth: yes, size: .small)
+          [outlet mFontInspectorSegmentedControl configurator fontPageSegmentedControl] {
+          expandableWidth ()
+          addPage (title: "", tooltip: "Selected Character Inspector", pageView: stackView mSelectedCharacterInspectorView)
+          addPage (title: "", tooltip: "Sample String Inspector", pageView: stackView mSampleStringInspectorView)
+          addPage (title: "", tooltip: "Issue Inspector", pageView: stackView mIssuesInspectorView)
+          $selectedPage root.selectedInspector
+          $segmentImage self.statusImage (segmentIndex : 2)
+          $segmentTitle self.statusTitle (segmentIndex : 2)
+        }
+        vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
+          view mFontPageInspectorMasterView
+        }
+      }
+      CanariFontCharacterView [outlet mFontGraphicView configurator fontGraphicView] {
+        $advance #characterSelection.advance
+        $characterSegmentList #characterSelection.segmentArrayForDrawing
         $transparency prefs.fontEditionTransparency
         $displayFlow prefs.showGerberDrawingFlow
         $displayDrawingIndexes prefs.showGerberDrawingIndexes
       }
     }
   }
+
+//----------------------------------------------------------------------------------------------------------------------
+//   Issues inspector
+//----------------------------------------------------------------------------------------------------------------------
+
+  stackView mIssuesInspectorView vStack {
+   hStack { space Label (bold: no, size: .small) { $title self.statusMessage } space }
+   CanariIssueTableView (hasHideIssueButton: no) { $issues root.issues }
+  }
   
+//----------------------------------------------------------------------------------------------------------------------
+//   Display inspector
+//----------------------------------------------------------------------------------------------------------------------
+
+  stackView mSampleStringInspectorView vStack {
+    hStack { space StaticLabel (title: "Sample String", bold: yes, size: .small) space }
+    TextView { $value prefs.sampleString }
+    hStack { space StaticLabel (title: "Sample String Metrics", bold: yes, size: .small) space }
+    hStack {
+      space
+      TwoColumnsGridView {
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Size", bold: no, size: .small),
+          right: DoubleField (width: 64, size: .small) { $value prefs.sampleStringSize (sendContinously: yes) }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Width", bold: no, size: .small),
+          right: Label (bold: yes, size: .small) { $title root.sampleStringBezierPathWidth }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Ascenders", bold: no, size: .small),
+          right: Label (bold: yes, size: .small) { $title root.sampleStringBezierPathAscent }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Descenders", bold: no, size: .small),
+          right: Label (bold: yes, size: .small) { $title root.sampleStringBezierPathDescent }
+        )
+      }
+      space
+    }
+  }
+
+//----------------------------------------------------------------------------------------------------------------------
+//   Selected objects inspector
+//----------------------------------------------------------------------------------------------------------------------
+
+  stackView mSelectedCharacterInspectorView vStack {
+    hStack {
+      StaticLabel (title: "Font Nominal Size", bold: no, size: .small)
+      IntField (width: 56, size: .small) { $value root.nominalSize (sendContinously:no) }
+      space
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Segment Opacity", bold: no, size: .small)
+      space
+    }
+    hStack {
+      space
+      DoubleSlider (width: 200, min: 0, max: 1, ticks: 11) { $value prefs.fontEditionTransparency }
+      DoubleField (width: 56, size: .small) { $value prefs.fontEditionTransparency (sendContinously:no) }
+    }
+    separator
+    hStack {
+      space
+      StaticLabel (title: "Current Character", bold: no, size: .small)
+      Button (title: "New Character…", size: .small) { $run newCharacterAction }
+      Button (title: "Delete", size: .small) { $run deleteCurrentCharacterAction $enabled self.canDeleteCurrentCharacter }
+    }
+    hStack {
+      CanariFontCharacterSelectButton {
+        $codePoint root.currentCharacterCodePoint
+        $characters root.definedCharacters
+      }
+    }
+    space
+  }
+
+  action newCharacterAction ;
+  transient Bool canDeleteCurrentCharacter dependsFrom root.definedCharacters ;
+  action deleteCurrentCharacterAction ;
+
 //------------------------------------------------------------------------------
 //  Infos Page
 //------------------------------------------------------------------------------
@@ -101,12 +198,6 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
   
 //------------------------------------------------------------------------------
 
-//--- Toolbar
-//  outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedTab ;
-//  outlet NSView mMasterView ;
-//
-//  outlet CanariSignatureField mSignatureTextField $signature signature ;
-//  outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
 
 //------------ Page Font
 //  outlet CanariViewWithKeyView mFontPageView ;
@@ -115,33 +206,18 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 //  outlet NSView mMasterFontPageView ;
 //  outlet CanariViewWithKeyView mSelectedCharacterInspectorView ;
 //  outlet CanariViewWithKeyView mCharacterIssuesInspectorView ;
-//
-//  tableViewController #mSelectedCharacterController {allowsEmptySelection:no, allowsMultipleSelection:no} root.characters ;
-//  selectionController FontCharacter #mCharacterSelection : #mSelectedCharacterController.selectedArray ;
 
 //--- Advancement
-//  outlet EBIntField advancementTextField $value #mCharacterSelection.advance (sendContinously:yes, autoFormatter:yes) ;
-//  outlet EBSlider advancementSlider $intValue #mCharacterSelection.advance (sendContinously:yes) ;
+//  outlet EBIntField advancementTextField $value #characterSelection.advance (sendContinously:yes, autoFormatter:yes) ;
+//  outlet EBSlider advancementSlider $intValue #characterSelection.advance (sendContinously:yes) ;
 
 //--- Transparency
 //  outlet EBDoubleField transparencyTextField $value prefs.fontEditionTransparency (sendContinously:no, autoFormatter:no) ;
 //  outlet EBSlider transparencySlider $doubleValue prefs.fontEditionTransparency (sendContinously:yes) ;
 
 //--- Warning checkboxes
-//  outlet EBSwitch mWarnsWhenNoSegmentCheckbox $value #mCharacterSelection.mWarnsWhenNoSegment ;
-//  outlet EBSwitch mWarnsWhenAdvanceIsZeroCheckbox $value #mCharacterSelection.mWarnsWhenAdvanceIsZero ;
-
-//--- Font
-//  outlet EBButton mAddCharacterButton $run addCharacterAction ;
-//  action addCharacterAction ;
-//
-//  outlet EBIntField mFontNominalSizeTextField $value root.nominalSize (sendContinously:no, autoFormatter:no) ;
-
-//--- Current Character
-//  outlet FontCharacterSelectButton mFontCharacterSelectButton
-//    $codePoint root.currentCharacterCodePoint
-//    $characters root.definedCharacters
-//  ;
+//  outlet EBSwitch mWarnsWhenNoSegmentCheckbox $value #characterSelection.mWarnsWhenNoSegment ;
+//  outlet EBSwitch mWarnsWhenAdvanceIsZeroCheckbox $value #characterSelection.mWarnsWhenAdvanceIsZero ;
 //
 //  outlet EBTextObserverField mCurrentCharacterTextField $valueObserver root.currentCharacterCodePointString ;
 //
@@ -149,13 +225,6 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 //    $value root .currentCharacterCodePoint (sendContinously:yes)
 //  ;
 //
-//  transient Bool canDeleteCurrentCharacter dependsFrom root.definedCharacters ;
-//
-//  outlet EBButton mDeleteCurrentCharacterButton
-//    $run deleteCurrentCharacterAction
-//    $enabled self.canDeleteCurrentCharacter
-//  ;
-//  action deleteCurrentCharacterAction ;
 //
 //  outlet EBButton mAddSegmentButton $run addSegmentAction ;
 //  action addSegmentAction ;
@@ -167,35 +236,9 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 //  outlet EBSwitch mShowGerberDrawingIndexesCheckbox $value prefs.showGerberDrawingIndexes ;
 //
 //  outlet EBTextObserverField gerberCodeInstructionCountMessageTextField
-//    $valueObserver #mCharacterSelection.gerberCodeInstructionCountMessage
+//    $valueObserver #characterSelection.gerberCodeInstructionCountMessage
 //  ;
-//  outlet CanariCharacterGerberCodeTableView mGerberCodeTableView $characterGerberCode #mCharacterSelection.gerberCode ;
-
-//--- Sample String
-//  outlet EBTextField mSampleStringField $value prefs.sampleString (sendContinously:yes);
-
-
-//--- Sample String Display
-//  outlet EBDoubleField mSampleStringSizeField $value prefs.sampleStringSize (sendContinously:no, autoFormatter:no);
-//  outlet EBTextObserverField mSampleStringWidthTextField $valueObserver root.sampleStringBezierPathWidth ;
-//  outlet EBTextObserverField mSampleStringAscentTextField $valueObserver root.sampleStringBezierPathAscent;
-//  outlet EBTextObserverField mSampleStringDescentTextField $valueObserver root.sampleStringBezierPathDescent ;
-
-//--- View
-//  outlet CanariCharacterView currentCharacterView
-//    $advance #mCharacterSelection.advance
-//    $characterSegmentList #mCharacterSelection.segmentArrayForDrawing
-//    $transparency prefs.fontEditionTransparency
-//    $displayFlow prefs.showGerberDrawingFlow
-//    $displayDrawingIndexes prefs.showGerberDrawingIndexes
-//  ;
-
-//--- Issues
-//  transient Bool noIssue dependsFrom root.issues ;
-//  outlet IssueTableView mIssueTableView $issues root.issues $hidden self.noIssue ;
-//
-//  outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
-//  outlet EBTextObserverField mIssueTextField $valueObserver self.mStatusMessage ;
+//  outlet CanariCharacterGerberCodeTableView mGerberCodeTableView $characterGerberCode #characterSelection.gerberCode ;
 
 }
 

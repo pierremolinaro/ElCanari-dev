@@ -450,7 +450,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="ozw-nh-zCn">
-                                                <rect key="frame" x="1" y="1" width="123" height="17"/>
+                                                <rect key="frame" x="11" y="1" width="123" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SjT-KG-yC3">
@@ -469,7 +469,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="comment" width="111" minWidth="40" maxWidth="1000" id="fjh-Jy-Vib">
+                                    <tableColumn identifier="comment" width="82" minWidth="40" maxWidth="1000" id="fjh-Jy-Vib">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Comment">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -482,11 +482,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="comment" id="Lhm-ki-YmI">
-                                                <rect key="frame" x="127" y="1" width="115" height="17"/>
+                                                <rect key="frame" x="137" y="1" width="86" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jto-9r-B97">
-                                                        <rect key="frame" x="0.0" y="3" width="115" height="14"/>
+                                                        <rect key="frame" x="0.0" y="3" width="86" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="LnO-49-emB">
                                                             <font key="font" metaFont="smallSystem"/>
@@ -670,7 +670,7 @@
                                         </tableHeaderCell>
                                         <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="UUm-lU-k1W"/>
                                     </tableColumn>
-                                    <tableColumn identifier="title" editable="NO" width="144" minWidth="40" maxWidth="1000" id="OFi-NR-14K">
+                                    <tableColumn identifier="title" editable="NO" width="115" minWidth="40" maxWidth="1000" id="OFi-NR-14K">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>

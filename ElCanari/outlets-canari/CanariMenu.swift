@@ -26,9 +26,9 @@ final class CanariMenu : NSMenu, EBUserClassNameProtocol {
   @objc func revealInFinder (_ sender : NSMenuItem) {
     let ws = NSWorkspace.shared
     let title = sender.title
-    let ok = ws.openFile (title)
+    let ok = ws.open (URL (fileURLWithPath: title))
     if !ok {
-      __NSBeep ()
+      NSSound.beep ()
       let alert = NSAlert ()
       alert.messageText = "Cannot open the \(title) directory"
       alert.informativeText = "This directory does not exist."

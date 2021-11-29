@@ -47,28 +47,36 @@ private func knobRect (_ inX : Int, _ inY : Int) -> NSRect {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol {
-  @IBOutlet weak var mFontDocument : AutoLayoutFontDocumentSubClass? =  nil
 
+  //····················································································································
+
+  private weak var mFontDocument : AutoLayoutFontDocument? =  nil
   private var mSelectionRectangle : NSRect? = nil
 
   //····················································································································
 
-  override init (frame frameRect: NSRect) {
-    super.init (frame: frameRect)
+  init () {
+    super.init (frame: NSRect ())
     noteObjectAllocation (self)
+    self.setPasteboardPrivateObjectType ()
   }
 
   //····················································································································
 
   required init? (coder: NSCoder) {
-    super.init (coder: coder)
-    noteObjectAllocation (self)
+    fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
 
   deinit {
     noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  func set (document inDocument : AutoLayoutFontDocument) {
+    self.mFontDocument = inDocument
   }
 
   //····················································································································
@@ -87,14 +95,6 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
 
   override func drawFocusRingMask () {
     NSBezierPath.fill (self.bounds)
-  }
-
-  //····················································································································
-  //  awakeFromNib
-  //····················································································································
-
-  final override func awakeFromNib () {
-    setPasteboardPrivateObjectType ()
   }
 
   //····················································································································
@@ -164,14 +164,13 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
       s.draw (at: NSPoint (x: 18.0 - size.width, y: yy - size.height * 0.5), withAttributes: textAttributes)
     }
   //--- Selection rectangle
-    if let selectionRectangle = mSelectionRectangle {
+    if let selectionRectangle = self.mSelectionRectangle {
       bp = NSBezierPath (rect: selectionRectangle)
       NSColor.gray.withAlphaComponent (0.1).setFill ()
       bp.fill ()
       bp.lineWidth = 1.0
       NSColor.black.setStroke ()
       bp.stroke ()
-
     }
   //--- Character segments
     bp = NSBezierPath ()
@@ -192,7 +191,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
     NSColor.brown.setFill ()
     bp.fill ()
   //--- Draw display flow
-    if mDisplaySegmentFlow {
+    if self.mDisplaySegmentFlow {
       let strokePath = NSBezierPath ()
       let fillPath = NSBezierPath ()
       var currentX = 0
@@ -218,7 +217,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
       fillPath.fill ()
     }
   //--- Draw index flow
-    if mDrawGerberFlowIndex {
+    if self.mDrawGerberFlowIndex {
       var idx = 1
       for segment in self.mSegmentList {
         let x = (xForX (segment.x1) + xForX (segment.x2)) / 2.0
@@ -265,6 +264,8 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
 
   private var mAdvanceController : EBReadOnlyPropertyController? = nil
 
+  //····················································································································
+
   final func bind_advance (_ object : EBReadOnlyProperty_Int) -> Self {
     self.mAdvanceController = EBReadOnlyPropertyController (
       observedObjects: [object],
@@ -287,7 +288,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   //····················································································································
 
   final func setAdvance (_ inAdvance : Int) {
-    mAdvancement = inAdvance
+    self.mAdvancement = inAdvance
     self.needsDisplay = true
   }
 
@@ -314,7 +315,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
 
   //····················································································································
 
-  final func updateSegmentDrawingsFromCharacterSegmentListController (_ inSegments : EBReadOnlyProperty_CharacterSegmentList) {
+  private func updateSegmentDrawingsFromCharacterSegmentListController (_ inSegments : EBReadOnlyProperty_CharacterSegmentList) {
     switch inSegments.selection {
     case .empty, .multiple :
       ()
@@ -324,8 +325,8 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
       self.mSelection = Set ()
       for oldSegment in oldSelection {
         for newSegment in self.mSegmentList {
-          if (oldSegment.x1 == newSegment.x1) && (oldSegment.y1 == newSegment.y1)
-          && (oldSegment.x2 == newSegment.x2) && (oldSegment.y2 == newSegment.y2) {
+          if oldSegment.x1 == newSegment.x1, oldSegment.y1 == newSegment.y1,
+             oldSegment.x2 == newSegment.x2, oldSegment.y2 == newSegment.y2 {
             self.mSelection.insert (newSegment)
             break
           }
@@ -353,7 +354,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   private var mTransparencyController : EBReadOnlyPropertyController? = nil
 
   final func bind_transparency (_ object : EBReadOnlyProperty_Double) -> Self {
-    mTransparencyController = EBReadOnlyPropertyController (
+    self.mTransparencyController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateTransparency (object) }
     )
@@ -363,8 +364,8 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   //····················································································································
 
   final func unbind_transparency () {
-    mTransparencyController?.unregister ()
-    mTransparencyController = nil
+    self.mTransparencyController?.unregister ()
+    self.mTransparencyController = nil
   }
 
   //····················································································································
@@ -396,7 +397,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   private var mDisplayFlowController : EBReadOnlyPropertyController? = nil
 
   final func bind_displayFlow (_ object : EBReadOnlyProperty_Bool) -> Self {
-    mDisplayFlowController = EBReadOnlyPropertyController (
+    self.mDisplayFlowController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateDisplayFlow (object) }
     )
@@ -406,8 +407,8 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   //····················································································································
 
   final func unbind_displayFlow () {
-    mDisplayFlowController?.unregister ()
-    mDisplayFlowController = nil
+    self.mDisplayFlowController?.unregister ()
+    self.mDisplayFlowController = nil
   }
 
   //····················································································································
@@ -472,7 +473,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
     var newSegmentArray = self.mSegmentList
     let newSegment = FontCharacterSegment (x1: 2, y1: 1, x2: 9, y2: 8)
     newSegmentArray.append (newSegment)
-    mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+    self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
   }
 
   //····················································································································
@@ -494,23 +495,23 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   final func validateMenuItem (_ menuItem: NSMenuItem) -> Bool {
     let action = menuItem.action
     if action == #selector (Self.delete(_:)) {
-      return mSelection.count > 0
+      return self.mSelection.count > 0
     }else if action == #selector (Self.selectAll(_:)) {
       return self.mSegmentList.count > 0
     }else if action == #selector (Self.bringForward(_:)) {
-      return (mSelection.count > 0) && (self.mSegmentList.count > 0) && !mSelection.contains (self.mSegmentList.last!)
+      return (self.mSelection.count > 0) && (self.mSegmentList.count > 0) && !self.mSelection.contains (self.mSegmentList.last!)
     }else if action == #selector (Self.bringToFront(_:)) {
-      return (mSelection.count > 0) && (self.mSegmentList.count > 0) && !mSelection.contains (self.mSegmentList.last!)
+      return (self.mSelection.count > 0) && (self.mSegmentList.count > 0) && !self.mSelection.contains (self.mSegmentList.last!)
     }else if action == #selector (Self.sendBackward(_:)) {
-      return (mSelection.count > 0) && (self.mSegmentList.count > 0) && !mSelection.contains (self.mSegmentList.first!)
+      return (self.mSelection.count > 0) && (self.mSegmentList.count > 0) && !self.mSelection.contains (self.mSegmentList.first!)
     }else if action == #selector (Self.sendToBack(_:)) {
-      return (mSelection.count > 0) && (self.mSegmentList.count > 0) && !mSelection.contains (self.mSegmentList.first!)
+      return (self.mSelection.count > 0) && (self.mSegmentList.count > 0) && !self.mSelection.contains (self.mSegmentList.first!)
     }else if action == #selector (Self.copy(_:)) {
-      return (mSelection.count > 0) && (self.mSegmentList.count > 0)
+      return (self.mSelection.count > 0) && (self.mSegmentList.count > 0)
     }else if action == #selector (Self.cut(_:)) {
-      return (mSelection.count > 0) && (self.mSegmentList.count > 0)
+      return (self.mSelection.count > 0) && (self.mSegmentList.count > 0)
     }else if action == #selector (Self.paste(_:)) {
-      return NSPasteboard.general .data (forType: FONT_SEGMENTS_PASTEBOARD_TYPE) != nil
+      return NSPasteboard.general.data (forType: FONT_SEGMENTS_PASTEBOARD_TYPE) != nil
     }else{
       return false // super.validateMenuItem (menuItem)
     }
@@ -525,83 +526,83 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   //····················································································································
 
   final override func selectAll (_ sender : Any?) {
-    mSelection = Set (self.mSegmentList)
+    self.mSelection = Set (self.mSegmentList)
     self.needsDisplay = true
   }
 
   //····················································································································
 
   @objc func bringForward (_ sender : Any?) {
-    if mSelection.count == 0 {
-      __NSBeep ()
+    if self.mSelection.count == 0 {
+      NSSound.beep ()
     }else{
       var newSegmentArray = self.mSegmentList
       var idx = newSegmentArray.count
       for segment in self.mSegmentList.reversed () {
         idx -= 1
-        if mSelection.contains (segment) {
+        if self.mSelection.contains (segment) {
           newSegmentArray.remove (at: idx)
           newSegmentArray.insert (segment, at:idx + 1)
         }
       }
-      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+      self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }
   }
 
   //····················································································································
 
   @objc func bringToFront (_ sender : Any?) {
-    if mSelection.count == 0 {
-      __NSBeep ()
+    if self.mSelection.count == 0 {
+      NSSound.beep ()
     }else{
       var newSegmentArray = self.mSegmentList
       var idx = -1
       for segment in self.mSegmentList {
         idx += 1
-        if mSelection.contains (segment) {
+        if self.mSelection.contains (segment) {
           newSegmentArray.remove (at: idx)
           newSegmentArray.append (segment)
         }
       }
-      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+      self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }
   }
 
   //····················································································································
 
   @objc func sendBackward (_ sender : Any?) {
-    if mSelection.count == 0 {
-      __NSBeep ()
+    if self.mSelection.count == 0 {
+      NSSound.beep ()
     }else{
       var newSegmentArray = self.mSegmentList
       var idx = -1
       for segment in self.mSegmentList {
         idx += 1
-        if mSelection.contains (segment) {
+        if self.mSelection.contains (segment) {
           newSegmentArray.remove (at: idx)
           newSegmentArray.insert (segment, at:idx - 1)
         }
       }
-      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+      self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }
   }
 
   //····················································································································
 
   @objc func sendToBack (_ sender : Any?) {
-    if mSelection.count == 0 {
-      __NSBeep ()
+    if self.mSelection.count == 0 {
+      NSSound.beep ()
     }else{
       var newSegmentArray = self.mSegmentList
       var idx = newSegmentArray.count
       for segment in self.mSegmentList.reversed () {
         idx -= 1
-        if mSelection.contains (segment) {
+        if self.mSelection.contains (segment) {
           newSegmentArray.remove (at: idx)
-          newSegmentArray.insert (segment, at:0)
+          newSegmentArray.insert (segment, at: 0)
         }
       }
-      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+      self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }
   }
 
@@ -610,17 +611,17 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   //····················································································································
 
   final func deleteSelection () {
-    if mSelection.count == 0 {
-      __NSBeep ()
+    if self.mSelection.count == 0 {
+      NSSound.beep ()
     }else{
       var newSegmentArray = self.mSegmentList
-      for segment in mSelection {
+      for segment in self.mSelection {
         let possibleIdx = self.mSegmentList.firstIndex (of: segment)
         if let idx = possibleIdx {
           newSegmentArray.remove (at: idx)
         }
       }
-      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+      self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }
   }
 
@@ -629,9 +630,9 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   //····················································································································
 
   final func canMoveSelectionFrom (knob : Int, byX : Int, byY : Int) -> Bool {
-    var canMove = mSelection.count > 0
+    var canMove = self.mSelection.count > 0
     if knob == 0 {
-      for object in mSelection {
+      for object in self.mSelection {
         let newX = object.x1 + byX
         canMove = (newX >= 0) && (newX <= MAX_X)
         if canMove {
@@ -643,7 +644,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
         }
       }
     }else{
-      for object in mSelection {
+      for object in self.mSelection {
         let newX = object.x2 + byX
         canMove = (newX >= 0) && (newX <= MAX_X)
         if canMove {
@@ -693,9 +694,9 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
           newSegmentArray.append (segment)
         }
       }
-      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+      self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }else{
-      __NSBeep ()
+      NSSound.beep ()
     }
   }
 
@@ -720,9 +721,9 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
           newSegmentArray.append (segment)
         }
       }
-      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+      self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }else{
-      __NSBeep ()
+      NSSound.beep ()
     }
   }
 
@@ -765,7 +766,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
             newSegmentArray.append (newSegment)
             self.mSelection.insert (newSegment)
           }
-          mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+          self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
         }
       }
     }
@@ -780,7 +781,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   //--- Copy private representation
     var segmentArray = [[NSNumber]] ()
     for segment in self.mSegmentList {
-      if mSelection.contains (segment) {
+      if self.mSelection.contains (segment) {
         let s : [NSNumber] = [
           NSNumber (value: segment.x1),
           NSNumber (value: segment.y1),
@@ -839,15 +840,15 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
 
   final override func mouseDown (with mouseDownEvent: NSEvent) {
     let mouseDownLocation = self.convert (mouseDownEvent.locationInWindow, from:nil)
-    mMouseLocation = mouseDownLocation
+    self.mMouseLocation = mouseDownLocation
     var possibleKnobIndex : Int? = nil
   //--- First check if mouse down occurs on a knob of a selected object
     for segment in self.mSegmentList.reversed () {
       if self.mSelection.contains (segment) {
         possibleKnobIndex = segment.knobIndexFor (point: mouseDownLocation)
         if possibleKnobIndex != nil {
-          mSelection.removeAll ()
-          mSelection.insert (segment)
+          self.mSelection.removeAll ()
+          self.mSelection.insert (segment)
           break
         }
       }
@@ -860,38 +861,38 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
       for segment in self.mSegmentList.reversed () {
         if segment.contains (point: mouseDownLocation) {
           if shiftKeyOn {
-            mSelection.insert (segment)
+            self.mSelection.insert (segment)
           }else if commandKeyOn {
-            if mSelection.contains (segment) {
-              mSelection.remove (segment)
+            if self.mSelection.contains (segment) {
+              self.mSelection.remove (segment)
             }else{
-              mSelection.insert (segment)
+              self.mSelection.insert (segment)
             }
-          }else if !mSelection.contains (segment) {
-            mSelection.removeAll ()
-            mSelection.insert (segment)
+          }else if !self.mSelection.contains (segment) {
+            self.mSelection.removeAll ()
+            self.mSelection.insert (segment)
           }
           mouseDownInsideSegment = true
           break // Exit from loop
         }
       }
       if !mouseDownInsideSegment && !shiftKeyOn {
-        mSelection.removeAll ()
+        self.mSelection.removeAll ()
       }
     }
   //--- Handle mouse dragged and mouse up
     if let knobIndex = possibleKnobIndex {
-      waitUntilMouseUpOnMouseDownAt (mouseDownLocation: mouseDownLocation, for: knobIndex)
+      self.waitUntilMouseUpOnMouseDownAt (mouseDownLocation: mouseDownLocation, for: knobIndex)
     }else if mouseDownInsideSegment {
-      waitUntilMouseUpOnMouseDownOnSegment (mouseDownLocation: mouseDownLocation)
+      self.waitUntilMouseUpOnMouseDownOnSegment (mouseDownLocation: mouseDownLocation)
     }else if shiftKeyOn {
-      waitUntilMouseUpOnDraggingSelectionRectangleWithShiftKey (mouseDownLocation: mouseDownLocation)
+      self.waitUntilMouseUpOnDraggingSelectionRectangleWithShiftKey (mouseDownLocation: mouseDownLocation)
     }else{
-      waitUntilMouseUpOnDraggingSelectionRectangleNoShiftKey (mouseDownLocation: mouseDownLocation)
+      self.waitUntilMouseUpOnDraggingSelectionRectangleNoShiftKey (mouseDownLocation: mouseDownLocation)
     }
   //--- Mouse up
-    mMouseLocation = nil
-    mSelectionRectangle = nil
+    self.mMouseLocation = nil
+    self.mSelectionRectangle = nil
     self.needsDisplay = true
   }
 
@@ -913,7 +914,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
           mouseLocation.y += CGFloat (dy) * PLACEMENT_GRID
           moveSelection (byX : dx, byY : dy)
         }
-        mMouseLocation = mouseLocation
+        self.mMouseLocation = mouseLocation
       }
     }
   }
@@ -936,7 +937,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
           mouseLocation.y += CGFloat (dy) * PLACEMENT_GRID
           moveSelectionFrom (knob: knob, byX : dx, byY : dy)
         }
-        mMouseLocation = mouseLocation
+        self.mMouseLocation = mouseLocation
       }
     }
   }
@@ -952,13 +953,13 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
       loop = event.type == .leftMouseDragged // NSLeftMouseDragged
       if loop { // NSLeftMouseDragged
         let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
-        mSelection.removeAll ()
+        self.mSelection.removeAll ()
         let r = NSRect (point: mouseDownLocation, point: mouseDraggedLocation)
-        mSelectionRectangle = r
+        self.mSelectionRectangle = r
         let cr = GeometricRect (rect: r)
         for segment in self.mSegmentList {
           if segment.intersects (rect: cr) {
-            mSelection.insert (segment)
+            self.mSelection.insert (segment)
           }
         }
       }
@@ -968,7 +969,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   //····················································································································
 
   private final func waitUntilMouseUpOnDraggingSelectionRectangleWithShiftKey (mouseDownLocation : NSPoint) {
-    let selectionOnMouseDown = mSelection
+    let selectionOnMouseDown = self.mSelection
     var loop = true
     while loop {
       self.display ()
@@ -978,7 +979,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
       if loop {
         let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
         let r = NSRect (point: mouseDownLocation, point: mouseDraggedLocation)
-        mSelectionRectangle = r
+        self.mSelectionRectangle = r
         let cr = GeometricRect (rect: r)
         var selection = Set <FontCharacterSegment> ()
         for segment in self.mSegmentList {
@@ -986,7 +987,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
             selection.insert (segment)
           }
         }
-        mSelection = selection.symmetricDifference (selectionOnMouseDown)
+        self.mSelection = selection.symmetricDifference (selectionOnMouseDown)
       }
     }
   }

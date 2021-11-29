@@ -25,7 +25,7 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
 
   private var mScrollView = EmbeddedAutoLayoutScrollView ()
   private var mTableView = EmbeddedAutoLayoutTableView ()
-  private var mHideIssueButton : AutoLayoutButton
+  private var mHideIssueButton : AutoLayoutButton? = nil
 
   //····················································································································
   //   init
@@ -37,16 +37,19 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
 
   //····················································································································
 
-  override init () {
-    self.mHideIssueButton = AutoLayoutButton (title: "Hide Issue", size: .small).expandableWidth ()
+  init (hasHideIssueButton inHasHideIssueButton : Bool) {
     super.init ()
     self.translatesAutoresizingMaskIntoConstraints = false
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
 
-    self.mHideIssueButton.target = self
-    self.mHideIssueButton.action = #selector (Self.hideIssueAction (_:))
-    self.appendView (self.mHideIssueButton)
+    if inHasHideIssueButton {
+      let button = AutoLayoutButton (title: "Hide Issue", size: .small).expandableWidth ()
+      button.target = self
+      button.action = #selector (Self.hideIssueAction (_:))
+      self.appendView (button)
+      self.mHideIssueButton = button
+    }
 
     self.mTableView.dataSource = self
     self.mTableView.delegate = self
@@ -54,19 +57,23 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
     self.mTableView.gridStyleMask = .dashedHorizontalGridLineMask
     self.mTableView.controlSize = .small
     self.mTableView.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.mTableView.controlSize))
+    self.mTableView.usesAutomaticRowHeights = true // #available(macOS 10.13
 
     let leftColumn = NSTableColumn (identifier: LEFT_COLUMN_IDENTIFIER)
     leftColumn.minWidth = 20.0
     leftColumn.maxWidth = 20.0
     leftColumn.isEditable = false
-    leftColumn.resizingMask = [] // Not resizable
+//    leftColumn.resizingMask = [] // Not resizable
     self.mTableView.addTableColumn (leftColumn)
 
     let rightColumn = NSTableColumn (identifier: RIGHT_COLUMN_IDENTIFIER)
     rightColumn.minWidth = 100.0
+    rightColumn.maxWidth = 1000.0
     rightColumn.isEditable = false
-    rightColumn.resizingMask = .autoresizingMask
+  //  rightColumn.resizingMask = .autoresizingMask
     self.mTableView.addTableColumn (rightColumn)
+
+    self.mTableView.columnAutoresizingStyle = .lastColumnOnlyAutoresizingStyle
 
     self.mScrollView.documentView = self.mTableView
     self.mScrollView.hasHorizontalScroller = false
@@ -77,7 +84,7 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
   //····················································································································
 
   override var intrinsicContentSize : NSSize {
-    return NSSize (width: 50.0, height: 50.0)
+    return NSSize (width: 200.0, height: 50.0)
   }
 
   //····················································································································
@@ -110,7 +117,7 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
     var result : NSView? = nil
     if let tableColumn = inTableColumn {
       if tableColumn.identifier == LEFT_COLUMN_IDENTIFIER {
-        let imageView = NSImageView (frame: NSRect ())
+        let imageView = NSImageView ()
         switch self.mModelArray [inRow].kind {
         case .error :
           imageView.image = NSImage (named: NSImage.statusUnavailableName)
@@ -120,9 +127,9 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
         let cell = NSTableCellView ()
         cell.addSubview (imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        cell.addConstraint (NSLayoutConstraint (item: imageView, attribute: .centerY, relatedBy: .equal, toItem: cell, attribute: .centerY, multiplier: 1, constant: 0))
-        cell.addConstraint (NSLayoutConstraint (item: imageView, attribute: .left, relatedBy: .equal, toItem: cell, attribute: .left, multiplier: 1, constant: 0))
-        cell.addConstraint (NSLayoutConstraint (item: imageView, attribute: .right, relatedBy: .equal, toItem: cell, attribute: .right, multiplier: 1, constant: 0))
+//        cell.addConstraint (NSLayoutConstraint (item: imageView, attribute: .centerY, relatedBy: .equal, toItem: cell, attribute: .centerY, multiplier: 1, constant: 0))
+//        cell.addConstraint (NSLayoutConstraint (item: imageView, attribute: .left, relatedBy: .equal, toItem: cell, attribute: .left, multiplier: 1, constant: 0))
+//        cell.addConstraint (NSLayoutConstraint (item: imageView, attribute: .right, relatedBy: .equal, toItem: cell, attribute: .right, multiplier: 1, constant: 0))
         result = cell
       }else if tableColumn.identifier == RIGHT_COLUMN_IDENTIFIER {
         let text = NSTextField ()
@@ -133,10 +140,11 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
         cell.addSubview (text)
         text.drawsBackground = false
         text.isBordered = false
+        text.isEditable = false
         text.translatesAutoresizingMaskIntoConstraints = false
-        cell.addConstraint (NSLayoutConstraint (item: text, attribute: .centerY, relatedBy: .equal, toItem: cell, attribute: .centerY, multiplier: 1, constant: 0))
-        cell.addConstraint (NSLayoutConstraint (item: text, attribute: .left, relatedBy: .equal, toItem: cell, attribute: .left, multiplier: 1, constant: 0))
-        cell.addConstraint (NSLayoutConstraint (item: text, attribute: .right, relatedBy: .equal, toItem: cell, attribute: .right, multiplier: 1, constant: 0))
+//        cell.addConstraint (NSLayoutConstraint (item: text, attribute: .centerY, relatedBy: .equal, toItem: cell, attribute: .centerY, multiplier: 1, constant: 0))
+//        cell.addConstraint (NSLayoutConstraint (item: text, attribute: .left, relatedBy: .equal, toItem: cell, attribute: .left, multiplier: 1, constant: 0))
+//        cell.addConstraint (NSLayoutConstraint (item: text, attribute: .right, relatedBy: .equal, toItem: cell, attribute: .right, multiplier: 1, constant: 0))
         result = cell
       }
     }
@@ -161,11 +169,11 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
   private func updateIssueDisplay () {
     if self.mTableView.selectedRow < 0 {
       self.mIssueDisplayView?.setIssue ([], .error)
-      self.mHideIssueButton.isEnabled = false
+      self.mHideIssueButton?.isEnabled = false
     }else{
       let selectedIssue = self.mModelArray [self.mTableView.selectedRow]
       self.mIssueDisplayView?.setIssue (selectedIssue.pathes, selectedIssue.kind)
-      self.mHideIssueButton.isEnabled = true
+      self.mHideIssueButton?.isEnabled = true
     }
   }
 

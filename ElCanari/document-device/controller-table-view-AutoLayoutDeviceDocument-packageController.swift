@@ -216,7 +216,7 @@ final class Controller_AutoLayoutDeviceDocument_packageController : EBSwiftBaseO
   //   Select a single object
   //····················································································································
 
-/*  func select (object inObject: PackageInDevice) {
+  func select (object inObject: PackageInDevice) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
@@ -224,11 +224,11 @@ final class Controller_AutoLayoutDeviceDocument_packageController : EBSwiftBaseO
       case .single (let objectArray) :
         let array = EBReferenceArray (objectArray)
         if array.contains (inObject) {
-          self.mInternalSelectedArrayProperty.setProp ([inObject])
+          self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObject))
         }
       }
     }
-  } */
+  }
 
   //····················································································································
 

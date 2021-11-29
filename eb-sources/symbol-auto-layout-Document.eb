@@ -265,7 +265,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 
   stackView mIssuesInspectorView vStack {
    hStack { space Label (bold: no, size: .small) { $title self.statusMessage } space }
-   CanariIssueTableView [outlet mSymbolIssueTableView] { $issues self.issues }
+   CanariIssueTableView (hasHideIssueButton: yes) [outlet mSymbolIssueTableView] { $issues self.issues }
   }
 
   linker issueTableViewToGraphicView (mSymbolIssueTableView, mSymbolGraphicView)

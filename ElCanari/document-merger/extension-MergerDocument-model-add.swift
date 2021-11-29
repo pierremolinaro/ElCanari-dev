@@ -35,6 +35,7 @@ extension MergerDocument {
       openPanel.canChooseDirectories = false
       openPanel.allowsMultipleSelection = false
       openPanel.allowedFileTypes = [EL_CANARI_MERGER_ARCHIVE, KICAD_PCB]
+ //     openPanel.allowedContentTypes = [UTTypeReference (EL_CANARI_MERGER_ARCHIVE), UTTypeReference (KICAD_PCB]
     //--- MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
       gPanel = OpenPanelDelegateForFilteringBoardModels (boardModelNames)
       openPanel.delegate = gPanel

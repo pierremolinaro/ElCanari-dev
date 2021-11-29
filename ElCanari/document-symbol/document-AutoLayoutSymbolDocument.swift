@@ -695,7 +695,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutCanariIssueTableView ()
+    let view_1 = AutoLayoutCanariIssueTableView (hasHideIssueButton: true)
       .bind_issues (self.issues_property)
     self.mSymbolIssueTableView = view_1 // Outlet
     vStackView.appendView (view_1)

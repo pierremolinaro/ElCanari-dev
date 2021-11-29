@@ -126,7 +126,7 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBReadOnlyPro
         let value = Int ((outletValueNumber.doubleValue * Double (unit)).rounded ())
         _ = self.mDimension.validateAndSetProp (value, windowForSheet: sender.window)
       }else{
-        __NSBeep ()
+        NSSound.beep ()
       }
     }
   }

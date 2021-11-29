@@ -233,7 +233,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBSwiftBa
   //   Select a single object
   //····················································································································
 
-/*  func select (object inObject: SymbolTypeInDevice) {
+  func select (object inObject: SymbolTypeInDevice) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
@@ -241,11 +241,11 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBSwiftBa
       case .single (let objectArray) :
         let array = EBReferenceArray (objectArray)
         if array.contains (inObject) {
-          self.mInternalSelectedArrayProperty.setProp ([inObject])
+          self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObject))
         }
       }
     }
-  } */
+  }
 
   //····················································································································
 

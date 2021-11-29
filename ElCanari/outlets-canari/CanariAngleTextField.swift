@@ -128,7 +128,7 @@ final class Controller_CanariAngleTextField_angle : EBReadOnlyPropertyController
         let value : Int = Int (round (outletValueNumber.doubleValue * 1000.0))
         _ = self.mAngle.validateAndSetProp (value, windowForSheet: sender.window)
       }else{
-        __NSBeep ()
+        NSSound.beep ()
       }
     }
   }

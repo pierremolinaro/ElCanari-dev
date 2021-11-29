@@ -310,7 +310,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
   stackView mIssuesInspectorView vStack {
     hStack { space Label (bold: no, size : .small) { $title self.statusMessage} space }
-    CanariIssueTableView [outlet mPackageIssueTableView] { $issues self.issues }
+    CanariIssueTableView (hasHideIssueButton: yes) [outlet mPackageIssueTableView] { $issues self.issues }
   }
 
   transient CanariIssueArray issues dependsFrom root.issues, self.documentFileName ;
