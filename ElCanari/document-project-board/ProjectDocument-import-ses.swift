@@ -160,13 +160,14 @@ extension CustomizedProjectDocument {
           let scanner = Scanner (string: netDescription)
           var ok = scanner.scanString ("(path") != nil
           if ok {
-          //  let startScanLocation = scanner.scanLocation
-            let startScanIndex = scanner.currentIndex
+            let startScanLocation = scanner.scanLocation
+       //     let startScanIndex = scanner.currentIndex
             let layerNames = [FRONT_SIDE_LAYOUT, BACK_SIDE_LAYOUT, INNER1_LAYOUT, INNER2_LAYOUT, INNER3_LAYOUT, INNER4_LAYOUT]
             var idx = 0
             var found = false
             while !found && (idx < layerNames.count) {
-              scanner.currentIndex = startScanIndex
+//              scanner.currentIndex = startScanIndex
+              scanner.scanLocation = startScanLocation
               found = scanner.scanString (layerNames [idx]) != nil
               if found {
                 let layer : [TrackSide] = [.front, .back, .inner1, .inner2, .inner3, .inner4]
@@ -188,9 +189,10 @@ extension CustomizedProjectDocument {
 //          var x = 0.0
 //          var y = 0.0
           let stopSet = CharacterSet (charactersIn: " ")
-          if scanner.scanUpToCharacters (from: stopSet) != nil, // scanner.scanUpToCharacters (from: stopSet, into: nil),
-             let x = scanner.scanDouble (representation: .decimal),
-             let y = scanner.scanDouble (representation: .decimal) {
+          if scanner.scanUpToCharacters (from: stopSet, into: nil),
+//          if scanner.scanUpToCharacters (from: stopSet) != nil,
+             let x = scanner.scanDouble (),
+             let y = scanner.scanDouble () {
     //      if ok {
             if let netClass = net.mNetClass {
               let via = BoardConnector (self.ebUndoManager)
@@ -356,12 +358,13 @@ fileprivate func enterSegments (_ inScanner : Scanner,
     ok = inScanner.scanInt (&currentX) && inScanner.scanInt (&currentY)
     var loop = ok
     while loop {
-     // let location = inScanner.scanLocation
-      let idx = inScanner.currentIndex
+      let idx = inScanner.scanLocation
+//      let idx = inScanner.currentIndex
    //   loop = !inScanner.scanString (")", into: nil)
       loop = inScanner.scanString (")") == nil
       if loop {
-        inScanner.currentIndex = idx
+        inScanner.scanLocation = idx
+//        inScanner.currentIndex = idx
         var x = 0
         var y = 0
         ok = inScanner.scanInt (&x) && inScanner.scanInt (&y)

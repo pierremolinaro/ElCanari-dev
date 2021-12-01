@@ -74,24 +74,24 @@ extension NSBezierPath : EBStoredPropertyProtocol {
     var loop = true
     while ok && loop {
       if scanner.scanString (":") != nil {
-        if let x = scanner.scanDouble (representation: .decimal), let y = scanner.scanDouble (representation: .decimal) {
+        if let x = scanner.scanDouble (), let y = scanner.scanDouble () {
           bp.move (to: NSPoint (x: CGFloat (x), y: CGFloat (y)))
         }else{
           ok = false
         }
       }else if scanner.scanString (";") != nil {
-        if let x = scanner.scanDouble (representation: .decimal), let y = scanner.scanDouble (representation: .decimal) {
+        if let x = scanner.scanDouble (), let y = scanner.scanDouble () {
           bp.line (to: NSPoint (x: CGFloat (x), y: CGFloat (y)))
         }else{
           ok = false
         }
       }else if scanner.scanString ("@") != nil {
-        if let x0 = scanner.scanDouble (representation: .decimal),
-           let y0 = scanner.scanDouble (representation: .decimal),
-           let x1 = scanner.scanDouble (representation: .decimal),
-           let y1 = scanner.scanDouble (representation: .decimal),
-           let x2 = scanner.scanDouble (representation: .decimal),
-           let y2 = scanner.scanDouble (representation: .decimal) {
+        if let x0 = scanner.scanDouble (),
+           let y0 = scanner.scanDouble (),
+           let x1 = scanner.scanDouble (),
+           let y1 = scanner.scanDouble (),
+           let x2 = scanner.scanDouble (),
+           let y2 = scanner.scanDouble () {
           bp.curve (
             to: NSPoint (x: CGFloat (x2), y: CGFloat (y2)),
             controlPoint1: NSPoint (x: CGFloat (x0), y: CGFloat (y0)),

@@ -35,7 +35,7 @@ let BUGFIXES : [String] = [
   "Correction bug génération des fichiers de production des projets"
 ]
 let CHANGES : [String] = [
-  "Système minimum MacOS : Catalina (10.15)."
+  "Système minimum MacOS : High Sierra (10.13)."
 ]
 let NEWS : [String] = [
 ]

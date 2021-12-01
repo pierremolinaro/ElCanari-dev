@@ -2782,6 +2782,9 @@
 		CF9D7DA127034EB8002581FF /* transient-MergerRoot-layoutLayerWarningMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D7D9F27034EB8002581FF /* transient-MergerRoot-layoutLayerWarningMessage.swift */; };
 		CF9D7DA227034EB8002581FF /* transient-MergerRoot-layoutLayerWarningMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D7D9F27034EB8002581FF /* transient-MergerRoot-layoutLayerWarningMessage.swift */; };
 		CF9D7DA327034EB8002581FF /* transient-MergerRoot-layoutLayerWarningMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D7D9F27034EB8002581FF /* transient-MergerRoot-layoutLayerWarningMessage.swift */; };
+		CF9DB87B2757B70C00F8085B /* Scanner-extensions-compatibility-Catalina.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9DB87A2757B70C00F8085B /* Scanner-extensions-compatibility-Catalina.swift */; };
+		CF9DB87C2757B70C00F8085B /* Scanner-extensions-compatibility-Catalina.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9DB87A2757B70C00F8085B /* Scanner-extensions-compatibility-Catalina.swift */; };
+		CF9DB87D2757B70C00F8085B /* Scanner-extensions-compatibility-Catalina.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9DB87A2757B70C00F8085B /* Scanner-extensions-compatibility-Catalina.swift */; };
 		CF9DE3372679F0610064234B /* AutoLayoutApplicationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9DE3362679F0610064234B /* AutoLayoutApplicationImage.swift */; };
 		CF9DE3382679F0610064234B /* AutoLayoutApplicationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9DE3362679F0610064234B /* AutoLayoutApplicationImage.swift */; };
 		CF9DE3392679F0610064234B /* AutoLayoutApplicationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9DE3362679F0610064234B /* AutoLayoutApplicationImage.swift */; };
@@ -5099,6 +5102,7 @@
 		CF9D7D91270337CC002581FF /* transient-BoardModel-inner3TracksSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-inner3TracksSegments.swift"; sourceTree = "<group>"; };
 		CF9D7D92270337CD002581FF /* transient-BoardModel-inner4TracksSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-inner4TracksSegments.swift"; sourceTree = "<group>"; };
 		CF9D7D9F27034EB8002581FF /* transient-MergerRoot-layoutLayerWarningMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerRoot-layoutLayerWarningMessage.swift"; sourceTree = "<group>"; };
+		CF9DB87A2757B70C00F8085B /* Scanner-extensions-compatibility-Catalina.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scanner-extensions-compatibility-Catalina.swift"; sourceTree = "<group>"; };
 		CF9DE3362679F0610064234B /* AutoLayoutApplicationImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutApplicationImage.swift; sourceTree = "<group>"; };
 		CF9DE33A2679F43B0064234B /* AutoLayoutSheetDefaultOkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSheetDefaultOkButton.swift; sourceTree = "<group>"; };
 		CF9DE33E2679F7EE0064234B /* AutoLayoutSheetCancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSheetCancelButton.swift; sourceTree = "<group>"; };
@@ -6484,6 +6488,7 @@
 				CF92E1F41DDB1C9E0019691C /* GeometricRect.swift */,
 				CF61915D26F7739B003B75FF /* NSImage-extension.swift */,
 				CFD2414C222C09D5000D6B65 /* StringSet.swift */,
+				CF9DB87A2757B70C00F8085B /* Scanner-extensions-compatibility-Catalina.swift */,
 			);
 			name = utilities;
 			path = ElCanari/utilities;
@@ -9035,6 +9040,7 @@
 				CF14418C2755451B006C3E1F /* AutoLayoutIntSlider.swift in Sources */,
 				CF311AEC23619815003C02E3 /* enum-BoardShape.swift in Sources */,
 				CF9FCCBF27541A9F00345A34 /* transient-FontDocument-mMetadataStatus.swift in Sources */,
+				CF9DB87B2757B70C00F8085B /* Scanner-extensions-compatibility-Catalina.swift in Sources */,
 				CF41CCA52360CA2B0025D7BC /* CanariBoardTextFontPopUpButton.swift in Sources */,
 				CF8A09A62231969400A17B92 /* transient-SymbolInstanceInDevice-selectionDisplay.swift in Sources */,
 				CFEB7C54233A28670060A97A /* transient-ProjectDocument-netCount.swift in Sources */,
@@ -10450,6 +10456,7 @@
 				CF14418D2755451B006C3E1F /* AutoLayoutIntSlider.swift in Sources */,
 				CF5C4D31219F04D600EAC52A /* MergerDocument.swift in Sources */,
 				CF9FCCC027541A9F00345A34 /* transient-FontDocument-mMetadataStatus.swift in Sources */,
+				CF9DB87C2757B70C00F8085B /* Scanner-extensions-compatibility-Catalina.swift in Sources */,
 				CF311AED23619815003C02E3 /* enum-BoardShape.swift in Sources */,
 				CF41CCA62360CA2B0025D7BC /* CanariBoardTextFontPopUpButton.swift in Sources */,
 				CF5C4D32219F04D600EAC52A /* transient-MergerBoardInstance-instanceRect.swift in Sources */,
@@ -11557,6 +11564,7 @@
 				CF9C620925CABE5C00A00D5C /* transient-PackageOval-strokeBezierPath.swift in Sources */,
 				CF37916E269CBDBE00FA083F /* transient-AutoLayoutDeviceDocument-issues.swift in Sources */,
 				CF9C620B25CABE5C00A00D5C /* ProjectDocument-mouse-moved-flags-changed.swift in Sources */,
+				CF9DB87D2757B70C00F8085B /* Scanner-extensions-compatibility-Catalina.swift in Sources */,
 				CF9C620C25CABE5C00A00D5C /* class-LibraryOperationElement.swift in Sources */,
 				CF9C620D25CABE5C00A00D5C /* transient-ProjectDocument-canRemoveSelectedDevices.swift in Sources */,
 				CF9C621125CABE5C00A00D5C /* entity-DeviceMasterPadInProject.swift in Sources */,
@@ -12602,7 +12610,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LLVM_LTO = YES_THIN;
 				MACH_O_TYPE = mh_execute;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = YES;
 				OSACOMPILE_EXECUTE_ONLY = YES;
 				RUN_CLANG_STATIC_ANALYZER = NO;
@@ -12814,7 +12822,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LLVM_LTO = YES;
 				MACH_O_TYPE = mh_execute;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = YES;
 				OSACOMPILE_EXECUTE_ONLY = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -12852,7 +12860,6 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
@@ -12880,7 +12887,6 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_SWIFT_FLAGS = "";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-DBUILD_OBJECT_EXPLORER";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;

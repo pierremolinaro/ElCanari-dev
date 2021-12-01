@@ -57,24 +57,24 @@ extension CustomizedProjectDocument {
       try s.write (to: URL (fileURLWithPath: dsnFilePath), atomically: true, encoding: .utf8)
     //--- Launch free router with document
       if let freeRouterApplication : URL = Bundle.main.url (forResource: "Freerouting", withExtension: "app") {
-        let openConfiguration = NSWorkspace.OpenConfiguration ()
-        openConfiguration.arguments = ["-de", dsnFilePath]
-        NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration) { (optionalApplication, optionalError) in
-          if optionalApplication == nil {
-            let alert = NSAlert ()
-            alert.messageText = "Cannot launch FreeRouting application"
-            alert.informativeText = "FreeRouting application does not exist."
-            alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
-          }
-        }
-//       let arguments = ["-de", dsnFilePath]
-//       if let _ = try? NSWorkspace.shared.launchApplication (at: freeRouterApplication, configuration: [.arguments : arguments]) {
-//        }else{
-//          let alert = NSAlert ()
-//          alert.messageText = "Cannot launch FreeRouting application"
-//          alert.informativeText = "FreeRouting application does not exist."
-//          alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+//        let openConfiguration = NSWorkspace.OpenConfiguration ()
+//        openConfiguration.arguments = ["-de", dsnFilePath]
+//        NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration) { (optionalApplication, optionalError) in
+//          if optionalApplication == nil {
+//            let alert = NSAlert ()
+//            alert.messageText = "Cannot launch FreeRouting application"
+//            alert.informativeText = "FreeRouting application does not exist."
+//            alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+//          }
 //        }
+       let arguments = ["-de", dsnFilePath]
+       if let _ = try? NSWorkspace.shared.launchApplication (at: freeRouterApplication, configuration: [.arguments : arguments]) {
+        }else{
+          let alert = NSAlert ()
+          alert.messageText = "Cannot launch FreeRouting application"
+          alert.informativeText = "FreeRouting application does not exist."
+          alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+        }
       }
     }catch (_) {
       let alert = NSAlert ()
