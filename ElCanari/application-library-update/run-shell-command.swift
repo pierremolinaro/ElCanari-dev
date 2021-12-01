@@ -16,6 +16,7 @@ func getRemoteFileData (_ inRelativeFilePath : String,
                         _ inProxy : [String]) -> Data? {
   let arguments = [
     "-s", // Silent mode, do not show download progress
+    "-k", // Turn off curl's verification of certificate
     "-L", // Follow
     "https://www.pcmolinaro.name/CanariLibrary/" + inRelativeFilePath
   ] + inProxy
