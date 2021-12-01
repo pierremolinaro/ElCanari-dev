@@ -19,7 +19,7 @@ extension MergerDocument {
     case .single (let issues) :
       if issues.count == 0 {
         self.checkLayerConfigurationAndGenerateProductFiles ()
-      }else if let displaySettingView = self.mDisplaySettingView{
+      }else if let displaySettingView = self.mDisplaySettingView {
         let alert = NSAlert ()
         alert.messageText = "The board contains errors and / or warnings"
         alert.addButton (withTitle: "Cancel")

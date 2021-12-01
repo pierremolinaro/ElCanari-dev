@@ -16,7 +16,7 @@ extension ProjectDocument {
 
   internal func generateProductFiles () {
     if self.fileURL != nil {
-      self.testBoardIssuesERCandGenerateProductFiles ()
+      self.testERCandGenerateProductFiles ()
     }else{
       let alert = NSAlert ()
       alert.messageText = "The document should be saved before performing product file generation."
@@ -28,12 +28,6 @@ extension ProjectDocument {
         }
       }
     }
-  }
-
-  //····················································································································
-
-  internal func testBoardIssuesERCandGenerateProductFiles () {
-
   }
 
   //····················································································································

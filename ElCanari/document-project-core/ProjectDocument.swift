@@ -3158,7 +3158,7 @@ import Cocoa
     self.mArtworlImportButton?.target = self
     self.mArtworlImportButton?.action = #selector (ProjectDocument.importArtworkAction (_:))
     self.mGenerateProductFilesActionButton?.target = self
-    self.mGenerateProductFilesActionButton?.action = #selector (ProjectDocument.generateProductFilesAction (_:))
+    self.mGenerateProductFilesActionButton?.action = #selector (Self.generateProductFilesAction (_:))
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Set target and actions \(durationMS) ms")

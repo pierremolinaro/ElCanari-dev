@@ -28,10 +28,11 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.5.0"
+let VERSION_CANARI = "1.4.10"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Correction bug génération des fichiers de production des projets"
 ]
 let CHANGES : [String] = [
   "Système minimum MacOS : Catalina (10.15)."
