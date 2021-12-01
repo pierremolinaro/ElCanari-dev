@@ -126,6 +126,7 @@ final class LibraryOperationElement : EBObjcBaseObject { // SHOULD INHERIT FROM 
         concurrentQueue.async {
           let arguments = [
             "-s", // Silent mode, do not show download progress
+            "-k", // Turn off curl's verification of certificate
             "-L", // Follow redirections
             "https://www.pcmolinaro.name/CanariLibrary/files/\(self.mCommit)/\(self.mRelativePath)",
           ] + self.mProxy
