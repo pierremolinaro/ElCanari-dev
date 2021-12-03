@@ -8,7 +8,6 @@ include "eb-sources/preferences.eb" ;
 include "eb-sources/font-FontCharacter.eb" ;
 include "eb-sources/font-SegmentForFontCharacter.eb" ;
 include "eb-sources/font-FontRoot.eb" ;
-include "eb-sources/font-FontDocument.eb" ;
 include "eb-sources/FontDocument-auto-layout.eb" ;
 //--- Artwork
 include "eb-sources/artworkDocument-auto-layout.eb" ;
@@ -20,6 +19,7 @@ include "eb-sources/BoardModel.eb" ;
 include "eb-sources/MergerBoardInstance.eb" ;
 include "eb-sources/MergerRoot.eb" ;
 include "eb-sources/mergerDocument.eb" ;
+include "eb-sources/mergerDocument-auto-layout.eb" ;
 //--- Symbol
 include "eb-sources/symbol-symbolRoot.eb" ;
 include "eb-sources/symbol-auto-layout-Document.eb" ;

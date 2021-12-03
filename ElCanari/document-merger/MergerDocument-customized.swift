@@ -10,6 +10,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let EL_CANARI_MERGER_ARCHIVE = "ElCanariMergerArchive"
+
+let KICAD_PCB = "kicad_pcb"
+
 fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.model")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

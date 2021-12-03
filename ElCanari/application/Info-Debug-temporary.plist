@@ -64,7 +64,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>CustomizedMergerDocument</string>
+			<string>AutoLayoutMergerDocumentSubClass</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
