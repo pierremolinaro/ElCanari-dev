@@ -124,14 +124,6 @@ let PMFontComment = "PMFontComment"
 
   override func ebBuildUserInterface () {
     super.ebBuildUserInterface ()
-  //--- Set pages segmented control
-//    let pages = [self.mFontPageView, self.mInfosPageView]
-//    self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
-  //--- Set inspector segmented control
-//    let inspectors = [self.mSelectedCharacterInspectorView, self.mSampleStringInspectorView, self.mCharacterIssuesInspectorView]
-//    self.mInspectorSegmentedControl?.register (masterView: self.mMasterFontPageView, inspectors)
-  //---
-//    self.mIssueTableView?.register (segmentedControl : self.mInspectorSegmentedControl, segment: 2)
   //---
     let currentCharacterCodePointObserver = EBModelEvent ()
     currentCharacterCodePointObserver.mEventCallBack = {

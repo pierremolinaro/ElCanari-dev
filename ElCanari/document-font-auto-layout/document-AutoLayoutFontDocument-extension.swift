@@ -38,6 +38,7 @@ extension AutoLayoutFontDocument {
         newSegmentEntityArray.append (newSegment)
       }
       currentCharacter.segments_property.setProp (newSegmentEntityArray)
+      flushOutletEvents ()
     }
   }
 

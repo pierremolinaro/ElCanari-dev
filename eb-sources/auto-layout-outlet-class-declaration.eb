@@ -305,5 +305,8 @@ extern autolayout class CanariFontCharacterGerberCodeTableView (size: EBControlS
   $characterGerberCode transient CharacterGerberCode
 }
 
+extern autolayout class Stepper {
+  $value property Int (sendContinously: Bool)
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

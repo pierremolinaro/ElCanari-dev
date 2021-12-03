@@ -44,23 +44,26 @@ final class AutoLayoutCanariFontCharacterGerberCodeTableView : AutoLayoutVertica
     self.mTableView.isEnabled = true
     self.mTableView.delegate = self
     self.mTableView.dataSource = self
-    self.mTableView.gridStyleMask = [.solidHorizontalGridLineMask, .solidVerticalGridLineMask]
-    self.mTableView.usesAlternatingRowBackgroundColors = true
+//    self.mTableView.gridStyleMask = [.solidHorizontalGridLineMask, .solidVerticalGridLineMask]
+    self.mTableView.gridStyleMask = [.solidVerticalGridLineMask]
+ //   self.mTableView.usesAlternatingRowBackgroundColors = true
     self.mTableView.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
     self.mTableView.usesAutomaticRowHeights = true // #available(macOS 10.13
 
     let leftColumn = NSTableColumn (identifier: LEFT_COLUMN_IDENTIFIER)
-    leftColumn.minWidth = 20.0
-    leftColumn.maxWidth = 20.0
+    leftColumn.minWidth = 65.0
+    leftColumn.maxWidth = 65.0
     leftColumn.isEditable = false
+    leftColumn.title = "Code"
 //    leftColumn.resizingMask = [] // Not resizable
     self.mTableView.addTableColumn (leftColumn)
 
     let rightColumn = NSTableColumn (identifier: RIGHT_COLUMN_IDENTIFIER)
-    rightColumn.minWidth = 100.0
+    rightColumn.minWidth = 70.0
     rightColumn.maxWidth = 1000.0
     rightColumn.isEditable = false
-  //  rightColumn.resizingMask = .autoresizingMask
+    rightColumn.resizingMask = .autoresizingMask
+    rightColumn.title = "Comment"
     self.mTableView.addTableColumn (rightColumn)
 
   //--- Configure scroll view
@@ -139,7 +142,8 @@ final class AutoLayoutCanariFontCharacterGerberCodeTableView : AutoLayoutVertica
     textField.isBezeled = false
     textField.isBordered = false
     textField.drawsBackground = false
-    textField.isEnabled = false
+    textField.isEnabled = true
+    textField.isEditable = false
 //-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
 
     let object = self.mModel.code [inRowIndex]

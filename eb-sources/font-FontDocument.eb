@@ -2,23 +2,19 @@
 //     F O N T    D O C U M E N T
 //——————————————————————————————————————————————————————————————————————————————
 
-//transient property struct CharacterGerberCode ;
-//transient property struct CharacterSegmentList ;
-//
-////——————————————————————————————————————————————————————————————————————————————
-//
-//extern outlet class NewCharacterView ;
-//
-////——————————————————————————————————————————————————————————————————————————————
-//
-//extern outlet class CanariCharacterGerberCodeTableView ;
-//binding CanariCharacterGerberCodeTableView $characterGerberCode : transient CharacterGerberCode ;
-//
-////——————————————————————————————————————————————————————————————————————————————
-//
-//extern outlet class CanariFontSampleStringView ;
-//binding CanariFontSampleStringView $bezierPath : transient NSBezierPath ;
-//binding CanariFontSampleStringView $sampleStringFontSize : transient Double ;
+extern outlet class NewCharacterView ;
+
+//——————————————————————————————————————————————————————————————————————————————
+
+extern outlet class CanariCharacterGerberCodeTableView ;
+binding CanariCharacterGerberCodeTableView $characterGerberCode : transient CharacterGerberCode ;
+
+//——————————————————————————————————————————————————————————————————————————————
+
+extern outlet class CanariFontSampleStringView ;
+binding CanariFontSampleStringView $bezierPath : transient NSBezierPath ;
+binding CanariFontSampleStringView $sampleStringFontSize : transient Double ;
+
 
 //——————————————————————————————————————————————————————————————————————————————
 

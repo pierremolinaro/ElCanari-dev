@@ -7,21 +7,6 @@ transient property struct CharacterSegmentList ;
 
 //——————————————————————————————————————————————————————————————————————————————
 
-extern outlet class NewCharacterView ;
-
-//——————————————————————————————————————————————————————————————————————————————
-
-extern outlet class CanariCharacterGerberCodeTableView ;
-binding CanariCharacterGerberCodeTableView $characterGerberCode : transient CharacterGerberCode ;
-
-//——————————————————————————————————————————————————————————————————————————————
-
-extern outlet class CanariFontSampleStringView ;
-binding CanariFontSampleStringView $bezierPath : transient NSBezierPath ;
-binding CanariFontSampleStringView $sampleStringFontSize : transient Double ;
-
-//——————————————————————————————————————————————————————————————————————————————
-
 autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainView {
 
   stackView mPageMasterView vStack { }
@@ -103,8 +88,8 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 //----------------------------------------------------------------------------------------------------------------------
 
   stackView mIssuesInspectorView vStack {
-   hStack { space Label (bold: no, size: .small) { $title self.statusMessage } space }
-   CanariIssueTableView (hasHideIssueButton: no) { $issues root.issues }
+    hStack { space Label (bold: no, size: .small) { $title self.statusMessage } space }
+    CanariIssueTableView (hasHideIssueButton: no) { $issues root.issues }
   }
   
 //----------------------------------------------------------------------------------------------------------------------
@@ -145,13 +130,13 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 
   stackView mSelectedCharacterInspectorView vStack {
     hStack {
-      StaticLabel (title: "Font Nominal Size", bold: no, size: .small)
+      StaticLabel (title: "Font Nominal Size", bold: yes, size: .small)
       IntField (width: 56, size: .small) { $value root.nominalSize (sendContinously:no) }
       space
     }
     separator
     hStack {
-      StaticLabel (title: "Segment Opacity", bold: no, size: .small)
+      StaticLabel (title: "Segment Opacity", bold: yes, size: .small)
       space
       StaticLabel (title: "(for edition)", bold: no, size: .mini)
     }
@@ -161,7 +146,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
     }
     separator
     hStack {
-      StaticLabel (title: "Current Character", bold: no, size: .small)
+      StaticLabel (title: "Current Character", bold: yes, size: .small)
       Button (title: "Delete", size: .small) { $run deleteCurrentCharacterAction $enabled self.canDeleteCurrentCharacter }
       space
       Button (title: "New Character…", size: .small) { $run newCharacterAction }
@@ -171,6 +156,11 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
         $codePoint root.currentCharacterCodePoint
         $characters root.definedCharacters
       }
+      Stepper { $value root .currentCharacterCodePoint (sendContinously: yes) }
+      StaticLabel (title: "Code", bold: no, size: .small)
+      Label (bold: no, size: .small) { $title root.currentCharacterCodePointString }
+      space
+      Button (title: "New Segment", size : .small) { $run addSegmentAction }
     }
     hStack {
       StaticLabel (title: "Advancement", bold: no, size: .small)
@@ -181,7 +171,14 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
       IntField (width: 56, size: .small) { $value #characterSelection.advance (sendContinously:no) }
     }
     hStack {
-      StaticLabel (title: "Gerber Code", bold: no, size: .small)
+      StaticLabel (title: "Warns", bold: no, size: .small)
+      Checkbox (title: "No Segment", size: .small) { $value #characterSelection.mWarnsWhenNoSegment }
+      space
+      Checkbox (title: "Zero Advancement", size: .small) { $value #characterSelection.mWarnsWhenAdvanceIsZero }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Gerber Code", bold: yes, size: .small)
       space
       Label (bold: no, size: .small) { $title #characterSelection.gerberCodeInstructionCountMessage } 
     }
@@ -196,6 +193,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
   action newCharacterAction ;
   transient Bool canDeleteCurrentCharacter dependsFrom root.definedCharacters ;
   action deleteCurrentCharacterAction ;
+  action addSegmentAction ;
 
 //------------------------------------------------------------------------------
 //  Infos Page
@@ -215,35 +213,6 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
   }
   
 //------------------------------------------------------------------------------
-
-
-//------------ Page Font
-//  outlet CanariViewWithKeyView mFontPageView ;
-//
-//  outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
-//  outlet NSView mMasterFontPageView ;
-//  outlet CanariViewWithKeyView mSelectedCharacterInspectorView ;
-//  outlet CanariViewWithKeyView mCharacterIssuesInspectorView ;
-
-//--- Advancement
-
-//--- Transparency
-//  outlet EBDoubleField transparencyTextField $value prefs.fontEditionTransparency (sendContinously:no, autoFormatter:no) ;
-//  outlet EBSlider transparencySlider $doubleValue prefs.fontEditionTransparency (sendContinously:yes) ;
-
-//--- Warning checkboxes
-//  outlet EBSwitch mWarnsWhenNoSegmentCheckbox $value #characterSelection.mWarnsWhenNoSegment ;
-//  outlet EBSwitch mWarnsWhenAdvanceIsZeroCheckbox $value #characterSelection.mWarnsWhenAdvanceIsZero ;
-//
-//  outlet EBTextObserverField mCurrentCharacterTextField $valueObserver root.currentCharacterCodePointString ;
-//
-//  outlet EBStepper currentCharacterStepper
-//    $value root .currentCharacterCodePoint (sendContinously:yes)
-//  ;
-//
-//
-//  outlet EBButton mAddSegmentButton $run addSegmentAction ;
-//  action addSegmentAction ;
 
 }
 

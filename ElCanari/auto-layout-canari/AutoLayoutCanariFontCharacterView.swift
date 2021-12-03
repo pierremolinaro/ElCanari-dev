@@ -107,7 +107,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   //  drawRect
   //····················································································································
 
-  override func draw (_ inDirtyRect: NSRect) {
+  override func draw (_ inDirtyRect : NSRect) {
   //--- Background
     NSColor.white.setFill ()
     NSBezierPath.fill (inDirtyRect)
@@ -332,6 +332,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
           }
         }
       }
+//      Swift.print ("Update \(oldSelection.count) -> \(self.mSelection.count)")
       self.needsDisplay = true
     }
   }
@@ -656,13 +657,14 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
         }
       }
     }
+//    Swift.print ("canMoveSelectionFrom \(self.mSelection) -> \(canMove)")
     return canMove
   }
 
   //····················································································································
 
   final func canMoveSelection (byX : Int, byY : Int) -> Bool {
-    return canMoveSelectionFrom (knob: 0, byX: byX, byY: byY) && canMoveSelectionFrom (knob: 1, byX: byX, byY: byY)
+    return self.canMoveSelectionFrom (knob: 0, byX: byX, byY: byY) && self.canMoveSelectionFrom (knob: 1, byX: byX, byY: byY)
   }
 
   //····················································································································
@@ -670,7 +672,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   //····················································································································
 
   final func moveSelectionFrom (knob : Int, byX : Int, byY : Int) {
-    if canMoveSelectionFrom (knob: knob, byX: byX, byY: byY) {
+    if self.canMoveSelectionFrom (knob: knob, byX: byX, byY: byY) {
       var newSegmentArray = [FontCharacterSegment] ()
       let oldSelection = self.mSelection
       self.mSelection = Set ()
@@ -694,6 +696,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
           newSegmentArray.append (segment)
         }
       }
+//      Swift.print ("moveSelectionFrom \(newSegmentArray.count) selection \(oldSelection.count) -> \(self.mSelection.count)")
       self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }else{
       NSSound.beep ()
@@ -703,7 +706,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   //····················································································································
 
   final func moveSelection (byX : Int, byY : Int) {
-    if canMoveSelection (byX: byX, byY: byY) {
+    if self.canMoveSelection (byX: byX, byY: byY) {
       var newSegmentArray = [FontCharacterSegment] ()
       let oldSelection = self.mSelection
       self.mSelection = Set ()
@@ -721,6 +724,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
           newSegmentArray.append (segment)
         }
       }
+//      Swift.print ("moveSelection \(newSegmentArray.count) selection \(oldSelection.count) -> \(self.mSelection.count)")
       self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }else{
       NSSound.beep ()
@@ -839,7 +843,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   //····················································································································
 
   final override func mouseDown (with mouseDownEvent: NSEvent) {
-    let mouseDownLocation = self.convert (mouseDownEvent.locationInWindow, from:nil)
+    let mouseDownLocation = self.convert (mouseDownEvent.locationInWindow, from: nil)
     self.mMouseLocation = mouseDownLocation
     var possibleKnobIndex : Int? = nil
   //--- First check if mouse down occurs on a knob of a selected object
@@ -849,6 +853,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
         if possibleKnobIndex != nil {
           self.mSelection.removeAll ()
           self.mSelection.insert (segment)
+//          Swift.print ("mouseDown on knob \(self.mSelection)")
           break
         }
       }
@@ -871,6 +876,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
           }else if !self.mSelection.contains (segment) {
             self.mSelection.removeAll ()
             self.mSelection.insert (segment)
+//            Swift.print ("mouseDown on segment \(self.mSelection)")
           }
           mouseDownInsideSegment = true
           break // Exit from loop
@@ -899,6 +905,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   //····················································································································
 
   private final func waitUntilMouseUpOnMouseDownOnSegment (mouseDownLocation : NSPoint) {
+//    Swift.print ("waitUntilMouseUpOnMouseDownOnSegment \(self.mSelection)")
     var mouseLocation = mouseDownLocation
     var loop = true
     while loop {
@@ -906,13 +913,14 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
       let event : NSEvent = self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
       loop = event.type == .leftMouseDragged // NSLeftMouseDragged
       if loop { // NSLeftMouseDragged
-        let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
+        let mouseDraggedLocation = convert (event.locationInWindow, from: nil)
         let dx = Int ((mouseDraggedLocation.x - mouseLocation.x) / PLACEMENT_GRID)
         let dy = Int ((mouseDraggedLocation.y - mouseLocation.y) / PLACEMENT_GRID)
-        if (dx != 0) || (dy != 0) && canMoveSelection (byX : dx, byY : dy) {
+//        Swift.print ("dx \(dx), dy \(dy)")
+        if (dx != 0) || (dy != 0), self.canMoveSelection (byX : dx, byY : dy) {
           mouseLocation.x += CGFloat (dx) * PLACEMENT_GRID
           mouseLocation.y += CGFloat (dy) * PLACEMENT_GRID
-          moveSelection (byX : dx, byY : dy)
+          self.moveSelection (byX : dx, byY : dy)
         }
         self.mMouseLocation = mouseLocation
       }
@@ -932,7 +940,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
         let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
         let dx = Int ((mouseDraggedLocation.x - mouseLocation.x) / PLACEMENT_GRID)
         let dy = Int ((mouseDraggedLocation.y - mouseLocation.y) / PLACEMENT_GRID)
-        if (dx != 0) || (dy != 0) && canMoveSelectionFrom (knob: knob, byX: dx, byY: dy) {
+        if (dx != 0) || (dy != 0), self.canMoveSelectionFrom (knob: knob, byX: dx, byY: dy) {
           mouseLocation.x += CGFloat (dx) * PLACEMENT_GRID
           mouseLocation.y += CGFloat (dy) * PLACEMENT_GRID
           moveSelectionFrom (knob: knob, byX : dx, byY : dy)
