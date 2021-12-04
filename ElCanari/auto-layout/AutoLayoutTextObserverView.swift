@@ -22,6 +22,7 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
     super.init (frame: NSRect (x: 0, y: 0, width: 100, height: 100))
     noteObjectAllocation (self)
 //    self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
+    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
 
     self.mTextView.isEditable = false
     self.mTextView.isSelectable = true
@@ -31,7 +32,7 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
     self.mTextView.importsGraphics = false
     self.mTextView.allowsImageEditing = false
 
-    let MAX_SIZE : CGFloat = 1_000_000.0 // CGFloat.greatestFiniteMagnitude
+    let MAX_SIZE : CGFloat = CGFloat.greatestFiniteMagnitude
     self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
     self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
     self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)

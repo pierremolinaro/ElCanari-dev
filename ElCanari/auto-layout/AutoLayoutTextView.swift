@@ -31,11 +31,9 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
 //    Swift.print ("min size \(self.mTextView.minSize)")
 //    Swift.print ("max size \(self.mTextView.maxSize)")
 
-    let MAX_SIZE : CGFloat = 1_000_000.0 // CGFloat.greatestFiniteMagnitude
+    let MAX_SIZE : CGFloat = CGFloat.greatestFiniteMagnitude
     self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
     self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
-    self.mTextView.isVerticallyResizable = true
-    self.mTextView.isHorizontallyResizable = true
     self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
     self.mTextView.textContainer?.widthTracksTextView = true
 

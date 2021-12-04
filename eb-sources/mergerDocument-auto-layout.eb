@@ -840,30 +840,111 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   //     Product Page
   //············································································
 
-  stackView mProductPage vStack {
+  stackView mProductPage vStack set (margins: 8) {
+    hStack {
+      vStack {
+        Button (title: "Import Artwork…", size : .regular) {
+          expandableWidth ()
+          $hidden !root.mArtwork.none
+          $run importArtworkAction 
+        }
+        Button (title: "Detach Artwork", size : .regular) {
+          expandableWidth ()
+          $hidden root.mArtwork.none
+          $run detachArtworkAction 
+        }
+        Label (bold: yes, size : .regular) { expandableWidth () set (alignment: .center) $title root.mArtworkName }
+        Button (title: "Generate Files", size : .regular) {
+          expandableWidth ()
+          $enabled !root.mArtwork.none & (root.boardInstances.count > 0) & !self.documentIsUnnamed
+          $run generateProductFilesAction
+        }
+      }
+      space
+    }
+    hStack $hidden !root.mArtwork.none {
+      space
+      vStack { space StaticLabel (title: "No Artwork", bold: yes, size : .regular) space }
+      space
+    }
+    vStack $hidden root.mArtwork.none {
+      hStack {
+        space
+        SegmentedControlWithPages (documentView: stackView mProductMasterView, equalWidth: yes, size : .regular) {
+  //        [outlet mBoardInspectorSegmentedControl configurator boardPageSegmentedControl] 
+          addPage (title: "Artwork Description", tooltip: "", pageView: stackView mArtworkDescriptionPage)
+          addPage (title: "Artwork Minima", tooltip: "", pageView: stackView mArtworkMinimaPage)
+          addPage (title: "Artwork Data", tooltip: "", pageView: stackView mArtworkDataPage)
+          addPage (title: "PDF Settings", tooltip: "", pageView: stackView mPDFSettingsPage)
+          addPage (title: "Generation Log", tooltip: "", pageView: stackView mGenerationLogPage)
+        }
+        space
+      }
+      stackViewRef mProductMasterView
+    }
+ }
+
+  action importArtworkAction ;
+  action detachArtworkAction ;
+  action generateProductFilesAction ;
+  transient Bool documentIsUnnamed dependsFrom self.documentFileName ;
+
+  //············································································
+
+  stackView mProductMasterView vStack { }
+
+  //············································································
+
+  stackView mArtworkDescriptionPage vStack {
+    TwoColumnsGridView {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Layer Description", bold: no, size: .regular),
+        right: Label (bold: yes, size: .regular) {
+          set (alignment: .left)
+          expandableWidth ()
+          $title root.layerConfigurationString
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Artwork Version", bold: no, size: .regular),
+        right: IntObserverField (bold: yes, size: .regular) {
+          set (alignment: .left)
+          expandableWidth ()
+          $observedValue root.mArtworkVersion
+        }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Comment", bold: no, size: .regular),
+        right: TextObserverView () { expandableWidth () $observedValue root.comments }
+      )
+    }
   }
 
   //············································································
 
+  stackView mArtworkMinimaPage vStack {
+    space
+  }
 
-//------------------------------------- Board Page
-//  outlet CanariViewWithKeyView mBoardPageView ;
-//
-//  outlet NSPopUpButton mInsertedInstanceDefaultOrientation ;
+  //············································································
 
-//--- "Empty Board" message
-// outlet EBTextField mEmptyBoardMessage $hidden root.boardInstances.count > 0 ;
+  stackView mArtworkDataPage vStack {
+    space
+  }
 
-//--- Composed Board View
-//
-//  outlet CanariSegmentedControl mBoardInspectorSegmentedControl ;
-//  outlet NSView mBoardInspectorMasterView ;
-//
-//  outlet CanariViewWithKeyView mBoardOperationInspectorView ;
-//  outlet CanariViewWithKeyView mBoardIssueInspectorView ;
+  //············································································
+
+  stackView mPDFSettingsPage vStack {
+    space
+  }
+
+  //············································································
+
+  stackView mGenerationLogPage vStack {
+    space
+  }
 
 //------------------------------------- Product Page
-//  outlet CanariViewWithKeyView mProductPageView ;
 //
 //  outlet EBTextField mNoArtworkMessage $hidden !root.mArtwork.none ;
 //  outlet EBTextObserverField mLayoutLayerWarningMessageTextField $valueObserver root.layoutLayerWarningMessage ;
@@ -874,18 +955,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
 //  outlet EBTextObserverField mArtwortNameTextField $valueObserver root.mArtworkName ;
 //
 //  transient Bool documentFileNameOk dependsFrom self.documentFileName ;
-//  transient Bool documentIsUnnamed dependsFrom self.documentFileName ;
 //  outlet NSView mDangerView $hidden self.documentFileNameOk ;
-//
-//  action generateProductFilesAction ;
-//  outlet EBButton mGenerateProductFilesActionButton
-//    $enabled !root.mArtwork.none & (root.boardInstances.count > 0) & !self.documentIsUnnamed
-//    $run generateProductFilesAction
-//  ;
-//
-//  action importArtworkAction ;
-//  transient String importArtworkButtonTitle dependsFrom root.mArtworkName ;
-//  outlet EBButton mImportArtworkButton $run importArtworkAction $title self.importArtworkButtonTitle ;
 //
 //  outlet NSTabView mProductGenerationTabView ;
 //  outlet NSTabView mArtworkSettingsTabView $hidden root.mArtwork.none ;
@@ -944,9 +1014,6 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
 //  outlet CanariObserverSwitch mDrawTracksBottomSideSwitch $valueObserver #mDataSelection.drawTracksBottomSide ;
 //  outlet CanariObserverSwitch mDrawViasSwitch $valueObserver #mDataSelection.drawVias ;
 //  outlet CanariObserverSwitch mHorizontalMirrorSwitch $valueObserver #mDataSelection.horizontalMirror ;
-//--- Artwork info tab
-//  outlet EBTextObserverView mCommentTextView $valueObserver root.comments ;
-//  outlet EBIntObserverField mArtworkVersionTextField $valueObserver root.mArtworkVersion (autoFormatter: no) ;
 
 
 }

@@ -43,7 +43,9 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
       self.removeEBObserversOf_boardDisplayRect_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_boardWidth_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_boardHeight_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_comments_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_layoutLayerWarningMessage_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_layerConfigurationString_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_fileGenerationParameterArray_fromElementsOfSet (inAddedSet) // ToMany proxy
     }
@@ -75,7 +77,9 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
       self.addEBObserversOf_boardDisplayRect_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_boardWidth_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_boardHeight_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_comments_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_layoutLayerWarningMessage_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_layerConfigurationString_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_fileGenerationParameterArray_toElementsOfSet (inAddedSet) // ToMany proxy
    }
@@ -1891,63 +1895,6 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   }
 
   //····················································································································
-  //   Observers of 'comments' proxy property
-  //····················································································································
-
-  private final var mObserversOf_comments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_comments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.comments_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_comments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.comments_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : EBReferenceSet <MergerRoot>) {
-    for managedObject in inSet.values {
-      self.mObserversOf_comments.apply { (_ observer : EBEvent) in
-        managedObject.comments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : EBReferenceSet <MergerRoot>) {
-    self.mObserversOf_comments.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet.values {
-        managedObject.comments_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'modelNames' transient property
   //····················································································································
 
@@ -2228,6 +2175,62 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   }
 
   //····················································································································
+  //   Observers of 'comments' transient property
+  //····················································································································
+
+  private final var mObserversOf_comments = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_comments.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.comments_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_comments.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.comments_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : EBReferenceSet <MergerRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_comments.apply { (_ observer : EBEvent) in
+        managedObject.comments_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : EBReferenceSet <MergerRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_comments.apply { (_ observer : EBEvent) in
+        managedObject.comments_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'layoutLayerWarningMessage' transient property
   //····················································································································
 
@@ -2279,6 +2282,62 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
     for managedObject in inSet.values {
       self.mObserversOf_layoutLayerWarningMessage.apply { (_ observer : EBEvent) in
         managedObject.layoutLayerWarningMessage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'layerConfigurationString' transient property
+  //····················································································································
+
+  private final var mObserversOf_layerConfigurationString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_layerConfigurationString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_layerConfigurationString.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.layerConfigurationString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_layerConfigurationString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_layerConfigurationString.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.layerConfigurationString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_layerConfigurationString_toElementsOfSet (_ inSet : EBReferenceSet <MergerRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_layerConfigurationString.apply { (_ observer : EBEvent) in
+        managedObject.layerConfigurationString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_layerConfigurationString_fromElementsOfSet (_ inSet : EBReferenceSet <MergerRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_layerConfigurationString.apply { (_ observer : EBEvent) in
+        managedObject.layerConfigurationString_property.removeEBObserver (observer)
       }
     }
   }

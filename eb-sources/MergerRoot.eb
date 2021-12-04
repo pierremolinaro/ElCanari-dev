@@ -78,10 +78,12 @@ entity MergerRoot {
 
   toMany proxy ArtworkFileGenerationParameters fileGenerationParameterArray : mArtwork.fileGenerationParameterArray ;
 
-  property proxy String comments : mArtwork.comments ;
+  transient String comments dependsFrom self.mArtwork.one.comments ;
   
   transient String layoutLayerWarningMessage dependsFrom
     self.mArtwork.one.layerConfiguration, self.boardModels.all.layerConfiguration ;
+
+  transient String layerConfigurationString dependsFrom self.mArtwork.one.layerConfiguration ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

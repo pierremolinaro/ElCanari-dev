@@ -186,12 +186,6 @@ protocol MergerRoot_drillDataFileExtension : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_comments : AnyObject {
-  var comments : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol MergerRoot_modelNames : AnyObject {
   var modelNames : StringTagArray? { get }
 }
@@ -222,8 +216,20 @@ protocol MergerRoot_boardHeight : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol MergerRoot_comments : AnyObject {
+  var comments : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol MergerRoot_layoutLayerWarningMessage : AnyObject {
   var layoutLayerWarningMessage : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_layerConfigurationString : AnyObject {
+  var layerConfigurationString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -267,13 +273,14 @@ final class MergerRoot : EBManagedObject,
          MergerRoot_minValueForBoardLimitWidth,
          MergerRoot_minValueForBoardLimitWidthDisplayUnit,
          MergerRoot_drillDataFileExtension,
-         MergerRoot_comments,
          MergerRoot_modelNames,
          MergerRoot_boardRect,
          MergerRoot_boardDisplayRect,
          MergerRoot_boardWidth,
          MergerRoot_boardHeight,
+         MergerRoot_comments,
          MergerRoot_layoutLayerWarningMessage,
+         MergerRoot_layerConfigurationString,
          MergerRoot_boardOutlineRectDisplay {
 
   //····················································································································
@@ -946,30 +953,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Atomic proxy property: comments
-  //····················································································································
-
-  let comments_property = EBPropertyProxy_String ()
-
-  //····················································································································
-
-  var comments : String? {
-    get {
-      switch self.comments_property.selection {
-      case .empty, .multiple :
-        return nil
-      case .single (let v) :
-        return v
-      }
-    }
-    set {
-      if let unwrappedNewValue = newValue {
-        self.comments_property.setProp (unwrappedNewValue)
-      }
-    }
-  }
-
-  //····················································································································
   //   Transient property: modelNames
   //····················································································································
 
@@ -1081,6 +1064,23 @@ final class MergerRoot : EBManagedObject,
   final let mArtwork_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
+  //   Transient property: comments
+  //····················································································································
+
+  final let comments_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var comments : String? {
+    switch self.comments_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: layoutLayerWarningMessage
   //····················································································································
 
@@ -1090,6 +1090,23 @@ final class MergerRoot : EBManagedObject,
 
   final var layoutLayerWarningMessage : String? {
     switch self.layoutLayerWarningMessage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: layerConfigurationString
+  //····················································································································
+
+  final let layerConfigurationString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var layerConfigurationString : String? {
+    switch self.layerConfigurationString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1404,32 +1421,6 @@ final class MergerRoot : EBManagedObject,
       self.mArtwork_property.addEBObserverOf_fileGenerationParameterArray (controller)
       self.fileGenerationParameterArray_modelDidChangeController = controller
     }
-  //--- Atomic proxy property: comments
-    self.comments_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mArtwork_property {
-        switch object.comments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let optionalV) :
-          if let v = optionalV {
-            return .single (v)
-          }else{
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.comments_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
-      self?.mArtwork?.comments = inValue
-    }
-    self.comments_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.comments_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
-    self.mArtwork_property.comments_property.addEBObserver (self.comments_property)
   //--- Atomic property: modelNames
     self.modelNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1518,6 +1509,22 @@ final class MergerRoot : EBManagedObject,
     self.boardRect_property.addEBObserver (self.boardHeight_property)
   //--- To one property: mArtwork
     self.mArtwork_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: comments
+    self.comments_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mArtwork_property.comments_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerRoot_comments (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mArtwork_property.comments_property.addEBObserver (self.comments_property)
   //--- Atomic property: layoutLayerWarningMessage
     self.layoutLayerWarningMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1535,6 +1542,22 @@ final class MergerRoot : EBManagedObject,
     }
     self.mArtwork_property.layerConfiguration_property.addEBObserver (self.layoutLayerWarningMessage_property)
     self.boardModels_property.addEBObserverOf_layerConfiguration (self.layoutLayerWarningMessage_property)
+  //--- Atomic property: layerConfigurationString
+    self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mArtwork_property.layerConfiguration_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerRoot_layerConfigurationString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mArtwork_property.layerConfiguration_property.addEBObserver (self.layerConfigurationString_property)
   //--- Atomic property: boardOutlineRectDisplay
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1616,11 +1639,6 @@ final class MergerRoot : EBManagedObject,
     self.fileGenerationParameterArray_property.setModel (nil)
     self.fileGenerationParameterArray_modelDidChangeController?.unregister ()
     self.fileGenerationParameterArray_modelDidChangeController = nil
-  //--- Atomic proxy property: comments
-    self.comments_property.mReadModelFunction = nil
-    self.comments_property.mWriteModelFunction = nil
-    self.comments_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.comments_property.removeEBObserver (self.comments_property)
     // self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
     // self.boardModels_property.removeEBObserver (self.modelNames_property)
     // self.automaticBoardSize_property.removeEBObserver (self.boardRect_property)
@@ -1632,8 +1650,10 @@ final class MergerRoot : EBManagedObject,
     // self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardDisplayRect_property)
     // self.boardRect_property.removeEBObserver (self.boardWidth_property)
     // self.boardRect_property.removeEBObserver (self.boardHeight_property)
+    // self.mArtwork_property.comments_property.removeEBObserver (self.comments_property)
     // self.mArtwork_property.layerConfiguration_property.removeEBObserver (self.layoutLayerWarningMessage_property)
     // self.boardModels_property.removeEBObserverOf_layerConfiguration (self.layoutLayerWarningMessage_property)
+    // self.mArtwork_property.layerConfiguration_property.removeEBObserver (self.layerConfigurationString_property)
     // self.boardRect_property.removeEBObserver (self.boardOutlineRectDisplay_property)
     // self.boardLimitWidth_property.removeEBObserver (self.boardOutlineRectDisplay_property)
     // preferences_mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
@@ -1863,12 +1883,28 @@ final class MergerRoot : EBManagedObject,
         valueExplorer: &self.boardHeight_property.mValueExplorer
       )
       createEntryForPropertyNamed (
+        "comments",
+        object: self.comments_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.comments_property.mObserverExplorer,
+        valueExplorer: &self.comments_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
         "layoutLayerWarningMessage",
         object: self.layoutLayerWarningMessage_property,
         y: &y,
         view: view,
         observerExplorer: &self.layoutLayerWarningMessage_property.mObserverExplorer,
         valueExplorer: &self.layoutLayerWarningMessage_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "layerConfigurationString",
+        object: self.layerConfigurationString_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.layerConfigurationString_property.mObserverExplorer,
+        valueExplorer: &self.layerConfigurationString_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "boardOutlineRectDisplay",
@@ -2007,9 +2043,6 @@ final class MergerRoot : EBManagedObject,
       self.drillDataFileExtension_property.mValueExplorer = nil
     //--- ToMany proxy: fileGenerationParameterArray
       self.fileGenerationParameterArray_property.mObserverExplorer = nil
-    //--- Atomic proxy property: comments
-      self.comments_property.mObserverExplorer = nil
-      self.comments_property.mValueExplorer = nil
     //--- To one property: mArtwork
       self.mArtwork_property.mObserverExplorer = nil
       self.mArtwork_property.mValueExplorer = nil

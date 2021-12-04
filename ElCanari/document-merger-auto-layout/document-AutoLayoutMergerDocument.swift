@@ -118,6 +118,23 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: documentIsUnnamed
+  //····················································································································
+
+  final let documentIsUnnamed_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var documentIsUnnamed : Bool? {
+    switch self.documentIsUnnamed_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    Outlets
   //····················································································································
 
@@ -497,6 +514,154 @@ import Cocoa
 
   lazy var mProductPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_0_0 = AutoLayoutButton (title: "Import Artwork…", size: .regular)
+          .expandableWidth ()
+          .bind_hidden (.not (.id (self.rootObject.mArtwork_none)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutMergerDocument.importArtworkAction (_:))
+          )
+        view_0_0.appendView (view_0_0_0)
+        let view_0_0_1 = AutoLayoutButton (title: "Detach Artwork", size: .regular)
+          .expandableWidth ()
+          .bind_hidden (.id (self.rootObject.mArtwork_none))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutMergerDocument.detachArtworkAction (_:))
+          )
+        view_0_0.appendView (view_0_0_1)
+        let view_0_0_2 = AutoLayoutLabel (bold: true, size: .regular)
+          .expandableWidth ()
+          .set (alignment: .center)
+          .bind_title (self.rootObject.mArtworkName_property)
+        view_0_0.appendView (view_0_0_2)
+        let view_0_0_3 = AutoLayoutButton (title: "Generate Files", size: .regular)
+          .expandableWidth ()
+          .bind_enabled (.boolcmp (.boolcmp (.not (.id (self.rootObject.mArtwork_none)), .and, .intcmp (.id (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0))), .and, .not (.id (self.documentIsUnnamed_property))))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutMergerDocument.generateProductFilesAction (_:))
+          )
+        view_0_0.appendView (view_0_0_3)
+      }
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_1)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalStackView ()
+      .bind_hidden (.not (.id (self.rootObject.mArtwork_none)))
+    do{
+      let view_1_0 = AutoLayoutFlexibleSpace ()
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutVerticalStackView ()
+      do{
+        let view_1_1_0 = AutoLayoutFlexibleSpace ()
+        view_1_1.appendView (view_1_1_0)
+        let view_1_1_1 = AutoLayoutStaticLabel (title: "No Artwork", bold: true, size: .regular)
+        view_1_1.appendView (view_1_1_1)
+        let view_1_1_2 = AutoLayoutFlexibleSpace ()
+        view_1_1.appendView (view_1_1_2)
+      }
+      view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutFlexibleSpace ()
+      view_1.appendView (view_1_2)
+    }
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutVerticalStackView ()
+      .bind_hidden (.id (self.rootObject.mArtwork_none))
+    do{
+      let view_2_0 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_2_0_0 = AutoLayoutFlexibleSpace ()
+        view_2_0.appendView (view_2_0_0)
+        let view_2_0_1 = AutoLayoutSegmentedControlWithPages (documentView: self.mProductMasterView, equalWidth: true, size: .regular)
+          .addPage (title: "Artwork Description", tooltip: "", pageView: self.mArtworkDescriptionPage)
+          .addPage (title: "Artwork Minima", tooltip: "", pageView: self.mArtworkMinimaPage)
+          .addPage (title: "Artwork Data", tooltip: "", pageView: self.mArtworkDataPage)
+          .addPage (title: "PDF Settings", tooltip: "", pageView: self.mPDFSettingsPage)
+          .addPage (title: "Generation Log", tooltip: "", pageView: self.mGenerationLogPage)
+        view_2_0.appendView (view_2_0_1)
+        let view_2_0_2 = AutoLayoutFlexibleSpace ()
+        view_2_0.appendView (view_2_0_2)
+      }
+      view_2.appendView (view_2_0)
+      let view_2_1 = mProductMasterView
+      view_2.appendView (view_2_1)
+    }
+    vStackView.appendView (view_2)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mProductMasterView
+  //····················································································································
+
+  lazy var mProductMasterView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mArtworkDescriptionPage
+  //····················································································································
+
+  lazy var mArtworkDescriptionPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutTwoColumnsGridView ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_166 (), right: self.computeImplicitView_167 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_168 (), right: self.computeImplicitView_169 ())
+      .addCenterYAligned (left: self.computeImplicitView_170 (), right: self.computeImplicitView_171 ())
+    vStackView.appendView (view_0)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mArtworkMinimaPage
+  //····················································································································
+
+  lazy var mArtworkMinimaPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_0)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mArtworkDataPage
+  //····················································································································
+
+  lazy var mArtworkDataPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_0)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mPDFSettingsPage
+  //····················································································································
+
+  lazy var mPDFSettingsPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_0)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mGenerationLogPage
+  //····················································································································
+
+  lazy var mGenerationLogPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_0)
     return vStackView
   } ()
 
@@ -2910,6 +3075,68 @@ import Cocoa
   }
 
   //····················································································································
+  //    IMPLICIT VIEW 166
+  //····················································································································
+
+  fileprivate final func computeImplicitView_166 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Layer Description", bold: false, size: .regular)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 167
+  //····················································································································
+
+  fileprivate final func computeImplicitView_167 () -> NSView {
+    let view = AutoLayoutLabel (bold: true, size: .regular)
+      .set (alignment: .left)
+      .expandableWidth ()
+      .bind_title (self.rootObject.layerConfigurationString_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 168
+  //····················································································································
+
+  fileprivate final func computeImplicitView_168 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Artwork Version", bold: false, size: .regular)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 169
+  //····················································································································
+
+  fileprivate final func computeImplicitView_169 () -> NSView {
+    let view = AutoLayoutIntObserverField (bold: true, size: .regular)
+      .set (alignment: .left)
+      .expandableWidth ()
+      .bind_observedValue (self.rootObject.mArtworkVersion_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 170
+  //····················································································································
+
+  fileprivate final func computeImplicitView_170 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Comment", bold: false, size: .regular)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 171
+  //····················································································································
+
+  fileprivate final func computeImplicitView_171 () -> NSView {
+    let view = AutoLayoutTextObserverView ()
+      .expandableWidth ()
+      .bind_observedValue (self.rootObject.comments_property)
+    return view
+  }
+
+  //····················································································································
   //    Build User Interface
   //····················································································································
 
@@ -3079,6 +3306,26 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: documentIsUnnamed
+    self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.documentFileName_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutMergerDocument_documentIsUnnamed (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.documentFileName_property.addEBObserver (self.documentIsUnnamed_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Configure properties \(durationMS) ms")
@@ -3125,6 +3372,12 @@ import Cocoa
     self.mBoardSettingsPage.ebCleanUp ()
     self.mBoardIssuesPage.ebCleanUp ()
     self.mProductPage.ebCleanUp ()
+    self.mProductMasterView.ebCleanUp ()
+    self.mArtworkDescriptionPage.ebCleanUp ()
+    self.mArtworkMinimaPage.ebCleanUp ()
+    self.mArtworkDataPage.ebCleanUp ()
+    self.mPDFSettingsPage.ebCleanUp ()
+    self.mGenerationLogPage.ebCleanUp ()
     let toolbarItems = self.windowForSheet?.toolbar?.items ?? []
     for item in toolbarItems {
       item.view?.ebCleanUp ()
@@ -3148,6 +3401,7 @@ import Cocoa
     // self.issues_property.removeEBObserver (self.statusMessage_property)
     // self.issues_property.removeEBObserver (self.statusTitle_property)
     // self.issues_property.removeEBObserver (self.statusImage_property)
+    // self.documentFileName_property.removeEBObserver (self.documentIsUnnamed_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets

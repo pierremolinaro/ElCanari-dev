@@ -188,6 +188,7 @@ extern autolayout class IntField (width: Int, size: EBControlSize) $enabled $hid
 
 extern autolayout class IntObserverField (bold: Bool, size: EBControlSize) $enabled {
   func set (alignment: TextAlignment)
+  func expandableWidth ()
   $observedValue transient Int
 }
 
@@ -214,6 +215,7 @@ extern autolayout class TextView {
 extern autolayout class TextObserverView {
   $observedValue transient String
   func setRedTextColor ()
+  func expandableWidth ()
 }
 
 extern autolayout class ObjectInspectorView $graphicController {
