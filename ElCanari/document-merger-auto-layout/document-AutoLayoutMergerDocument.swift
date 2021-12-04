@@ -236,43 +236,11 @@ import Cocoa
   lazy var mModelPage : AutoLayoutHorizontalStackView = {
     let hStackView = AutoLayoutHorizontalStackView ()
     let view_0 = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (bottomMargin: 8)
       .set (width: 250)
       .bind_hidden (.not (.id (self.rootObject.showDisplaySettingView_property)))
     do{
-      let view_0_0 = AutoLayoutTwoColumnsGridView ()
-        .addCenterYAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
-        .addCenterYAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
-        .addCenterYAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
-        .addCenterYAligned (left: self.computeImplicitView_6 (), right: self.computeImplicitView_7 ())
-        .addCenterYAligned (left: self.computeImplicitView_8 (), right: self.computeImplicitView_9 ())
-        .addCenterYAligned (left: self.computeImplicitView_10 (), right: self.computeImplicitView_11 ())
-        .addCenterYAligned (left: self.computeImplicitView_12 (), right: self.computeImplicitView_13 ())
-        .addCenterYAligned (left: self.computeImplicitView_14 (), right: self.computeImplicitView_15 ())
-        .addCenterYAligned (left: self.computeImplicitView_16 (), right: self.computeImplicitView_17 ())
-        .addCenterYAligned (left: self.computeImplicitView_18 (), right: self.computeImplicitView_19 ())
-        .addCenterYAligned (left: self.computeImplicitView_20 (), right: self.computeImplicitView_21 ())
-        .addCenterYAligned (left: self.computeImplicitView_22 (), right: self.computeImplicitView_23 ())
-        .addCenterYAligned (left: self.computeImplicitView_24 (), right: self.computeImplicitView_25 ())
-        .addCenterYAligned (left: self.computeImplicitView_26 (), right: self.computeImplicitView_27 ())
-        .addCenterYAligned (left: self.computeImplicitView_28 (), right: self.computeImplicitView_29 ())
-        .addCenterYAligned (left: self.computeImplicitView_30 (), right: self.computeImplicitView_31 ())
-        .addCenterYAligned (left: self.computeImplicitView_32 (), right: self.computeImplicitView_33 ())
-        .addCenterYAligned (left: self.computeImplicitView_34 (), right: self.computeImplicitView_35 ())
-        .addCenterYAligned (left: self.computeImplicitView_36 (), right: self.computeImplicitView_37 ())
-        .addCenterYAligned (left: self.computeImplicitView_38 (), right: self.computeImplicitView_39 ())
-        .addCenterYAligned (left: self.computeImplicitView_40 (), right: self.computeImplicitView_41 ())
-        .addCenterYAligned (left: self.computeImplicitView_42 (), right: self.computeImplicitView_43 ())
-        .addCenterYAligned (left: self.computeImplicitView_44 (), right: self.computeImplicitView_45 ())
-        .addCenterYAligned (left: self.computeImplicitView_46 (), right: self.computeImplicitView_47 ())
-        .addCenterYAligned (left: self.computeImplicitView_48 (), right: self.computeImplicitView_49 ())
-        .addCenterYAligned (left: self.computeImplicitView_50 (), right: self.computeImplicitView_51 ())
-        .addCenterYAligned (left: self.computeImplicitView_52 (), right: self.computeImplicitView_53 ())
-        .addCenterYAligned (left: self.computeImplicitView_54 (), right: self.computeImplicitView_55 ())
-        .addCenterYAligned (left: self.computeImplicitView_56 (), right: self.computeImplicitView_57 ())
-        .addCenterYAligned (left: self.computeImplicitView_58 (), right: self.computeImplicitView_59 ())
-        .addCenterYAligned (left: self.computeImplicitView_60 (), right: self.computeImplicitView_61 ())
-        .addCenterYAligned (left: self.computeImplicitView_62 (), right: self.computeImplicitView_63 ())
+      let view_0_0 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_64 ())
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_1)
@@ -327,12 +295,12 @@ import Cocoa
       self.mBoardModelController.bind_tableView (view_1_1)
       view_1.appendView (view_1_1)
       let view_1_2 = AutoLayoutTwoColumnsGridView ()
-        .addFirstBaseLineAligned (left: self.computeImplicitView_64 (), right: self.computeImplicitView_65 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_66 (), right: self.computeImplicitView_67 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_68 (), right: self.computeImplicitView_69 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_70 (), right: self.computeImplicitView_71 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_72 (), right: self.computeImplicitView_73 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_74 (), right: self.computeImplicitView_75 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_65 (), right: self.computeImplicitView_66 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_67 (), right: self.computeImplicitView_68 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_69 (), right: self.computeImplicitView_70 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_71 (), right: self.computeImplicitView_72 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_73 (), right: self.computeImplicitView_74 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_75 (), right: self.computeImplicitView_76 ())
       view_1.appendView (view_1_2)
     }
     hStackView.appendView (view_1)
@@ -1322,7 +1290,40 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_64 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Artwork Name", bold: false, size: .small)
+    let view = AutoLayoutTwoColumnsGridView ()
+      .set (margins: 8)
+      .addCenterYAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
+      .addCenterYAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
+      .addCenterYAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
+      .addCenterYAligned (left: self.computeImplicitView_6 (), right: self.computeImplicitView_7 ())
+      .addCenterYAligned (left: self.computeImplicitView_8 (), right: self.computeImplicitView_9 ())
+      .addCenterYAligned (left: self.computeImplicitView_10 (), right: self.computeImplicitView_11 ())
+      .addCenterYAligned (left: self.computeImplicitView_12 (), right: self.computeImplicitView_13 ())
+      .addCenterYAligned (left: self.computeImplicitView_14 (), right: self.computeImplicitView_15 ())
+      .addCenterYAligned (left: self.computeImplicitView_16 (), right: self.computeImplicitView_17 ())
+      .addCenterYAligned (left: self.computeImplicitView_18 (), right: self.computeImplicitView_19 ())
+      .addCenterYAligned (left: self.computeImplicitView_20 (), right: self.computeImplicitView_21 ())
+      .addCenterYAligned (left: self.computeImplicitView_22 (), right: self.computeImplicitView_23 ())
+      .addCenterYAligned (left: self.computeImplicitView_24 (), right: self.computeImplicitView_25 ())
+      .addCenterYAligned (left: self.computeImplicitView_26 (), right: self.computeImplicitView_27 ())
+      .addCenterYAligned (left: self.computeImplicitView_28 (), right: self.computeImplicitView_29 ())
+      .addCenterYAligned (left: self.computeImplicitView_30 (), right: self.computeImplicitView_31 ())
+      .addCenterYAligned (left: self.computeImplicitView_32 (), right: self.computeImplicitView_33 ())
+      .addCenterYAligned (left: self.computeImplicitView_34 (), right: self.computeImplicitView_35 ())
+      .addCenterYAligned (left: self.computeImplicitView_36 (), right: self.computeImplicitView_37 ())
+      .addCenterYAligned (left: self.computeImplicitView_38 (), right: self.computeImplicitView_39 ())
+      .addCenterYAligned (left: self.computeImplicitView_40 (), right: self.computeImplicitView_41 ())
+      .addCenterYAligned (left: self.computeImplicitView_42 (), right: self.computeImplicitView_43 ())
+      .addCenterYAligned (left: self.computeImplicitView_44 (), right: self.computeImplicitView_45 ())
+      .addCenterYAligned (left: self.computeImplicitView_46 (), right: self.computeImplicitView_47 ())
+      .addCenterYAligned (left: self.computeImplicitView_48 (), right: self.computeImplicitView_49 ())
+      .addCenterYAligned (left: self.computeImplicitView_50 (), right: self.computeImplicitView_51 ())
+      .addCenterYAligned (left: self.computeImplicitView_52 (), right: self.computeImplicitView_53 ())
+      .addCenterYAligned (left: self.computeImplicitView_54 (), right: self.computeImplicitView_55 ())
+      .addCenterYAligned (left: self.computeImplicitView_56 (), right: self.computeImplicitView_57 ())
+      .addCenterYAligned (left: self.computeImplicitView_58 (), right: self.computeImplicitView_59 ())
+      .addCenterYAligned (left: self.computeImplicitView_60 (), right: self.computeImplicitView_61 ())
+      .addCenterYAligned (left: self.computeImplicitView_62 (), right: self.computeImplicitView_63 ())
     return view
   }
 
@@ -1331,8 +1332,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_65 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.mBoardModelSelection.artworkName_property)
+    let view = AutoLayoutStaticLabel (title: "Artwork Name", bold: false, size: .small)
     return view
   }
 
@@ -1341,7 +1341,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_66 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Layout", bold: false, size: .small)
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .bind_title (self.mBoardModelSelection.artworkName_property)
     return view
   }
 
@@ -1350,8 +1351,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_67 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.mBoardModelSelection.layerConfigurationString_property)
+    let view = AutoLayoutStaticLabel (title: "Layout", bold: false, size: .small)
     return view
   }
 
@@ -1360,7 +1360,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_68 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Model Width", bold: false, size: .small)
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .bind_title (self.mBoardModelSelection.layerConfigurationString_property)
     return view
   }
 
@@ -1369,8 +1370,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_69 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mBoardModelSelection.modelWidth_property, self.mBoardModelSelection.modelWidthUnit_property)
+    let view = AutoLayoutStaticLabel (title: "Model Width", bold: false, size: .small)
     return view
   }
 
@@ -1379,7 +1379,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_70 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Model Height", bold: false, size: .small)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mBoardModelSelection.modelWidth_property, self.mBoardModelSelection.modelWidthUnit_property)
     return view
   }
 
@@ -1388,8 +1389,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_71 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mBoardModelSelection.modelHeight_property, self.mBoardModelSelection.modelHeightUnit_property)
+    let view = AutoLayoutStaticLabel (title: "Model Height", bold: false, size: .small)
     return view
   }
 
@@ -1398,7 +1398,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_72 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Limit Width", bold: false, size: .small)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mBoardModelSelection.modelHeight_property, self.mBoardModelSelection.modelHeightUnit_property)
     return view
   }
 
@@ -1407,8 +1408,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_73 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mBoardModelSelection.modelLimitWidth_property, self.mBoardModelSelection.modelLimitWidthUnit_property)
+    let view = AutoLayoutStaticLabel (title: "Limit Width", bold: false, size: .small)
     return view
   }
 
@@ -1417,7 +1417,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_74 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Board Count", bold: false, size: .small)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mBoardModelSelection.modelLimitWidth_property, self.mBoardModelSelection.modelLimitWidthUnit_property)
     return view
   }
 
@@ -1426,6 +1427,15 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_75 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Board Count", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 76
+  //····················································································································
+
+  fileprivate final func computeImplicitView_76 () -> NSView {
     let view = AutoLayoutIntObserverField (bold: true, size: .small)
       .set (alignment: .left)
       .bind_observedValue (self.mBoardModelSelection.instanceCount_property)
