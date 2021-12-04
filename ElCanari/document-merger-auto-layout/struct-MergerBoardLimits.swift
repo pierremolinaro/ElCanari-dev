@@ -1,9 +1,8 @@
 //
-//  StringArray.swift
+//  MergerBoardLimits.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 30/06/2018.
-//
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

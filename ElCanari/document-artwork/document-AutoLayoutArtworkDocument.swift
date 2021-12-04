@@ -202,7 +202,7 @@ import Cocoa
         let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false, size: .regular)
           .addPage (title: "Description", tooltip: "Artwork Description", pageView: self.mDescriptionPage)
           .addPage (title: "Minima", tooltip: "Minima Editor", pageView: self.mMinimaPage)
-          .addPage (title: "Data", tooltip: "DataEditor", pageView: self.mDataPage)
+          .addPage (title: "Data", tooltip: "Data Editor", pageView: self.mDataPage)
           .bind_selectedPage (self.rootObject.selectedTab_property)
           .bind_segmentImage (self.segmentedControlDataIssueImage_property, segmentIndex:2)
         view_0_0.appendView (view_0_0_0)

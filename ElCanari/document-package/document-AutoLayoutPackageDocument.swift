@@ -2837,7 +2837,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_154 () -> NSView {
-    let view = AutoLayoutIntObserverField (size: .small)
+    let view = AutoLayoutIntObserverField (bold: true, size: .small)
       .bind_observedValue (self.mPackagePadSelectionController.padNumber_property)
     return view
   }
@@ -2856,7 +2856,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_156 () -> NSView {
-    let view = AutoLayoutIntObserverField (size: .small)
+    let view = AutoLayoutIntObserverField (bold: true, size: .small)
       .bind_observedValue (self.mPackagePadSelectionController.slavePadCount_property)
     return view
   }

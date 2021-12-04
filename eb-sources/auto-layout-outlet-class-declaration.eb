@@ -11,7 +11,8 @@ vStack func set (bottomMargin: Int) ;
 vStack func set (width: Int) ;
 vStack func set (minWidth: Int) ;
 vStack func equalHeight () ;
-
+vStack func setCenterAlignment () ;
+ 
 hStack func set (spacing: Int) ;
 hStack func equalWidth () ;
 hStack func set (margins: Int) ;
@@ -45,6 +46,9 @@ extern autolayout class TwoColumnsGridView {
   func addSeparator ()
 }
 
+//extern autolayout class VerticalScrollView (content: view) {
+//}
+
 extern autolayout class StaticLabel (title : String, bold: Bool, size: EBControlSize) $enabled $hidden {
   func set (alignment: TextAlignment)
   func set (width: Int)
@@ -56,7 +60,7 @@ extern autolayout class StaticLabel (title : String, bold: Bool, size: EBControl
 extern autolayout class StaticLabels (left : String, right : String, bold: Bool, size: EBControlSize) $hidden {
 }
 
-extern autolayout class Label (bold: Bool, size: EBControlSize) $enabled {
+extern autolayout class Label (bold: Bool, size: EBControlSize) $enabled $hidden {
   $title transient String
   func setRedTextColor ()
   func expandableWidth ()
@@ -142,7 +146,7 @@ extern autolayout class PullDownButton (title: String, size: EBControlSize) {
   func add (item: menuItem)
 }
 
-extern autolayout class GraphicView (minZoom : Int, maxZoom : Int) $graphicController {
+extern autolayout class GraphicView (minZoom : Int, maxZoom : Int) $graphicController $hidden {
   $underObjectsDisplay transient EBShape
   $overObjectsDisplay transient EBShape
   $arrowKeyMagnitude transient Int
@@ -176,7 +180,8 @@ extern autolayout class IntField (width: Int, size: EBControlSize) $enabled $hid
   func set (format: String)
 }
 
-extern autolayout class IntObserverField (size: EBControlSize) $enabled {
+extern autolayout class IntObserverField (bold: Bool, size: EBControlSize) $enabled {
+  func set (alignment: TextAlignment)
   $observedValue transient Int
 }
 
@@ -249,6 +254,7 @@ extern autolayout class StaticImageView (name: String) {
 }
 
 extern autolayout class TableView (size: EBControlSize, addControlButtons: Bool) $tableValue {
+  func noHeaderView ()
 }
 
 extern autolayout class CanariAddSymbolInstancePullDownButton $enabled {

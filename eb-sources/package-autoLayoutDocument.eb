@@ -800,12 +800,12 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Pad Number", bold: no, size : .small),
-        right: IntObserverField (size : .small) { $observedValue #mPackagePadSelectionController.padNumber }
+        right: IntObserverField (bold: yes, size : .small) { $observedValue #mPackagePadSelectionController.padNumber }
       )
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Slave Pads", bold: no, size : .small),
-        right: IntObserverField (size : .small) { $observedValue #mPackagePadSelectionController.slavePadCount }
+        right: IntObserverField (bold: yes, size : .small) { $observedValue #mPackagePadSelectionController.slavePadCount }
       )
       add (
         single : CanariPadRenumberPullDownButton [configurator configurePadRenumberPullDownButton] {

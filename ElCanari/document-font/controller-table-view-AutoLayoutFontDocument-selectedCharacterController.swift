@@ -8,7 +8,7 @@ import Cocoa
 //    Auto Layout Table View Controller AutoLayoutFontDocument selectedCharacterController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutFontDocument_selectedCharacterController : EBSwiftBaseObject, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutFontDocument_selectedCharacterController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //    Constant properties
@@ -167,6 +167,76 @@ final class Controller_AutoLayoutFontDocument_selectedCharacterController : EBSw
     }
   }
 
+  //····················································································································
+  //    remove
+  //····················································································································
+
+  @objc func remove (_ sender : Any) {
+    if let model = self.mModel {
+      switch model.selection {
+      case .empty, .multiple :
+        break
+      case .single (let model_prop) :
+      //------------- Find the object to be selected after selected object removing
+      //--- Dictionary of object sorted indexes
+        var sortedObjectDictionary = EBReferenceDictionary <FontCharacter, Int> ()
+        for (index, object) in model_prop.enumerated () {
+          sortedObjectDictionary [object] = index
+        }
+        var indexArrayOfSelectedObjects = [Int] ()
+        for object in self.selectedArray_property.propset.values {
+          let index = sortedObjectDictionary [object]
+          if let idx = index {
+            indexArrayOfSelectedObjects.append (idx)
+          }
+        }
+      //--- Sort
+        indexArrayOfSelectedObjects.sort { $0 < $1 }
+      //--- Find the first index of a non selected object
+        var newSelectionIndex = indexArrayOfSelectedObjects [0] + 1
+        for index in indexArrayOfSelectedObjects {
+          if newSelectionIndex < index {
+            break
+          }else{
+            newSelectionIndex = index + 1
+          }
+        }
+      /*  var newSelectedObject : FontCharacter? = nil
+        if (newSelectionIndex >= 0) && (newSelectionIndex < model_prop.count) {
+          newSelectedObject = model_prop [newSelectionIndex]
+        } */
+      //----------------------------------------- Remove selected object
+      //--- Dictionary of object absolute indexes
+        var objectDictionary = EBReferenceDictionary <FontCharacter, Int> ()
+        for (index, object) in model_prop.enumerated () {
+          objectDictionary [object] = index
+        }
+      //--- Build selected objects index array
+        var selectedObjectIndexArray = [Int] ()
+        for object in self.selectedArray_property.propset.values {
+          let index = objectDictionary [object]
+          if let idx = index {
+            selectedObjectIndexArray.append (idx)
+          }
+        }
+      //--- Sort in reverse order
+        selectedObjectIndexArray.sort { $1 < $0 }
+      //--- Remove objects, in reverse of order of their index
+        var newObjectArray = EBReferenceArray (model_prop)
+        for index in selectedObjectIndexArray {
+          newObjectArray.remove (at: index)
+        }
+      //----------------------------------------- Set new selection
+ /*       var newSelectionSet = EBReferenceSet <FontCharacter> ()
+        if let object = newSelectedObject {
+          newSelectionSet.insert (object)
+        }
+        self.selectedSet = newSelectionSet */
+      //----------------------------------------- Set new object array
+        model.setProp (newObjectArray)
+      }
+    }
+  }
   //····················································································································
 
 

@@ -18,6 +18,12 @@ protocol MergerRoot_zoom : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol MergerRoot_showDisplaySettingView : AnyObject {
+  var showDisplaySettingView : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol MergerRoot_automaticBoardSize : AnyObject {
   var automaticBoardSize : Bool { get }
 }
@@ -227,6 +233,7 @@ protocol MergerRoot_boardOutlineRectDisplay : AnyObject {
 final class MergerRoot : EBManagedObject,
          MergerRoot_selectedPageIndex,
          MergerRoot_zoom,
+         MergerRoot_showDisplaySettingView,
          MergerRoot_automaticBoardSize,
          MergerRoot_boardManualWidth,
          MergerRoot_boardManualHeight,
@@ -328,6 +335,25 @@ final class MergerRoot : EBManagedObject,
   final var zoom : Int {
     get { return self.zoom_property.propval }
     set { self.zoom_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: showDisplaySettingView
+  //····················································································································
+
+  final let showDisplaySettingView_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_showDisplaySettingView_toDefaultValue () {
+    self.showDisplaySettingView = false
+  }
+
+  //····················································································································
+
+  final var showDisplaySettingView : Bool {
+    get { return self.showDisplaySettingView_property.propval }
+    set { self.showDisplaySettingView_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -1069,6 +1095,7 @@ final class MergerRoot : EBManagedObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.zoom_property = EBStoredProperty_Int (defaultValue: 100, undoManager: ebUndoManager)
+    self.showDisplaySettingView_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.automaticBoardSize_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.boardManualWidth_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: ebUndoManager)
     self.boardManualHeight_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: ebUndoManager)
@@ -1616,6 +1643,14 @@ final class MergerRoot : EBManagedObject,
         valueExplorer: &self.zoom_property.mValueExplorer
       )
       createEntryForPropertyNamed (
+        "showDisplaySettingView",
+        object: self.showDisplaySettingView_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.showDisplaySettingView_property.mObserverExplorer,
+        valueExplorer: &self.showDisplaySettingView_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
         "automaticBoardSize",
         object: self.automaticBoardSize_property,
         y: &y,
@@ -1851,6 +1886,9 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: zoom
     self.zoom_property.mObserverExplorer = nil
     self.zoom_property.mValueExplorer = nil
+  //--- Atomic property: showDisplaySettingView
+    self.showDisplaySettingView_property.mObserverExplorer = nil
+    self.showDisplaySettingView_property.mValueExplorer = nil
   //--- Atomic property: automaticBoardSize
     self.automaticBoardSize_property.mObserverExplorer = nil
     self.automaticBoardSize_property.mValueExplorer = nil
@@ -1985,6 +2023,8 @@ final class MergerRoot : EBManagedObject,
       self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
     //--- Atomic property: zoom
       self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
+    //--- Atomic property: showDisplaySettingView
+      self.showDisplaySettingView_property.storeIn (dictionary: ioDictionary, forKey: "showDisplaySettingView")
     //--- Atomic property: automaticBoardSize
       self.automaticBoardSize_property.storeIn (dictionary: ioDictionary, forKey: "automaticBoardSize")
     //--- Atomic property: boardManualWidth
@@ -2083,6 +2123,8 @@ final class MergerRoot : EBManagedObject,
     self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey: "selectedPageIndex")
   //--- Atomic property: zoom
     self.zoom_property.readFrom (dictionary: inDictionary, forKey: "zoom")
+  //--- Atomic property: showDisplaySettingView
+    self.showDisplaySettingView_property.readFrom (dictionary: inDictionary, forKey: "showDisplaySettingView")
   //--- Atomic property: automaticBoardSize
     self.automaticBoardSize_property.readFrom (dictionary: inDictionary, forKey: "automaticBoardSize")
   //--- Atomic property: boardManualWidth
@@ -2129,6 +2171,7 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic properties
     ioString += "selectedPageIndex\n"
     ioString += "zoom\n"
+    ioString += "showDisplaySettingView\n"
     ioString += "automaticBoardSize\n"
     ioString += "boardManualWidth\n"
     ioString += "boardManualHeight\n"
@@ -2163,6 +2206,8 @@ final class MergerRoot : EBManagedObject,
     self.selectedPageIndex.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.zoom.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.showDisplaySettingView.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.automaticBoardSize.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -2284,6 +2329,9 @@ final class MergerRoot : EBManagedObject,
       }
       if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.zoom = value
+      }
+      if let range = inDictionary ["showDisplaySettingView"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.showDisplaySettingView = value
       }
       if let range = inDictionary ["automaticBoardSize"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.automaticBoardSize = value

@@ -18,6 +18,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     if let oldValue = inOldValue {
       oldValue.selectedPageIndex_property.removeEBObserver (self.selectedPageIndex_property) // Stored property
       oldValue.zoom_property.removeEBObserver (self.zoom_property) // Stored property
+      oldValue.showDisplaySettingView_property.removeEBObserver (self.showDisplaySettingView_property) // Stored property
       oldValue.automaticBoardSize_property.removeEBObserver (self.automaticBoardSize_property) // Stored property
       oldValue.boardManualWidth_property.removeEBObserver (self.boardManualWidth_property) // Stored property
       oldValue.boardManualHeight_property.removeEBObserver (self.boardManualHeight_property) // Stored property
@@ -47,6 +48,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     if let newValue = self.mInternalValue {
       newValue.selectedPageIndex_property.addEBObserver (self.selectedPageIndex_property) // Stored property
       newValue.zoom_property.addEBObserver (self.zoom_property) // Stored property
+      newValue.showDisplaySettingView_property.addEBObserver (self.showDisplaySettingView_property) // Stored property
       newValue.automaticBoardSize_property.addEBObserver (self.automaticBoardSize_property) // Stored property
       newValue.boardManualWidth_property.addEBObserver (self.boardManualWidth_property) // Stored property
       newValue.boardManualHeight_property.addEBObserver (self.boardManualHeight_property) // Stored property
@@ -85,6 +87,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let zoom_property = EBGenericTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'showDisplaySettingView' stored property
+  //····················································································································
+
+  final let showDisplaySettingView_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'automaticBoardSize' stored property
@@ -303,6 +311,21 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     self.zoom_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.zoom_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure showDisplaySettingView simple stored property
+    self.showDisplaySettingView_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.showDisplaySettingView_property.selection {
         case .empty :
           return .empty
         case .multiple :

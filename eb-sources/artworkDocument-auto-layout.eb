@@ -23,7 +23,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
         SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Description", tooltip: "Artwork Description", pageView: stackView mDescriptionPage)
           addPage (title: "Minima", tooltip: "Minima Editor", pageView: stackView mMinimaPage)
-          addPage (title: "Data", tooltip: "DataEditor", pageView: stackView mDataPage)
+          addPage (title: "Data", tooltip: "Data Editor", pageView: stackView mDataPage)
           $selectedPage root.selectedTab
           $segmentImage self.segmentedControlDataIssueImage (segmentIndex : 2)
         }

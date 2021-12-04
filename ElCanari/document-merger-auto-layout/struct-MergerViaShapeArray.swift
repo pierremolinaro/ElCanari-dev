@@ -1,9 +1,8 @@
 //
-//  ViaShapeArray.swift
+//  MergerViaShapeArray.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 25/06/2018.
-//
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

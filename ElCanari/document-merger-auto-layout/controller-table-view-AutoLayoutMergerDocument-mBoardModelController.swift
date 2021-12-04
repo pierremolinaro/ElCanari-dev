@@ -5,16 +5,16 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Auto Layout Table View Controller AutoLayoutDeviceDocument documentationController
+//    Auto Layout Table View Controller AutoLayoutMergerDocument mBoardModelController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutMergerDocument_mBoardModelController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //    Constant properties
   //····················································································································
 
-  private let allowsEmptySelection = true
+  private let allowsEmptySelection = false
   private let allowsMultipleSelection = false
 
   //····················································································································
@@ -28,49 +28,33 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
   //   Sorted Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_DeviceDocumentation ()
+  let sortedArray_property = TransientArrayOf_BoardModel ()
 
   //····················································································································
 
-  private var mSortDescriptorArray = [(DeviceDocumentation, DeviceDocumentation) -> ComparisonResult] ()
+  private var mSortDescriptorArray = [(BoardModel, BoardModel) -> ComparisonResult] ()
 
   //····················································································································
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_DeviceDocumentation? = nil
+  private var mModel : ReadWriteArrayOf_BoardModel? = nil
 
   //····················································································································
 
-  final func bind_model (_ inModel : ReadWriteArrayOf_DeviceDocumentation, _ inUndoManager : EBUndoManager) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_BoardModel, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (
       inModel,
-      sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
+      sortCallback: nil,
       addSortObserversCallback: { (observer) in
-        inModel.addEBObserverOf_fileSize (observer)
-        inModel.addEBObserverOf_mFileName (observer)
       },
       removeSortObserversCallback: {(observer) in
-        inModel.removeEBObserverOf_fileSize (observer)
-        inModel.removeEBObserverOf_mFileName (observer)
       }
     )
   }
 
-  //····················································································································
-
-  final func isOrderedBefore (_ left : DeviceDocumentation, _ right : DeviceDocumentation) -> Bool {
-    var order = ComparisonResult.orderedSame
-    for sortDescriptor in self.mSortDescriptorArray.reversed () {
-      order = sortDescriptor (left, right)
-      if order != .orderedSame {
-        break // Exit from for loop
-      }
-    }
-    return order == .orderedAscending
-  }
 
   //····················································································································
 
@@ -84,19 +68,19 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_DeviceDocumentation ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_BoardModel ()
 
   //····················································································································
 
-  var selectedArray_property : ReadOnlyArrayOf_DeviceDocumentation { return self.mInternalSelectedArrayProperty }
+  var selectedArray_property : ReadOnlyArrayOf_BoardModel { return self.mInternalSelectedArrayProperty }
 
   //····················································································································
 
-  var selectedArray : EBReferenceArray <DeviceDocumentation> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <BoardModel> { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedSet : EBReferenceSet <DeviceDocumentation> { return EBReferenceSet (self.selectedArray_property.propval.values) }
+  var selectedSet : EBReferenceSet <BoardModel> { return EBReferenceSet (self.selectedArray_property.propval.values) }
 
   //····················································································································
 
@@ -117,7 +101,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
 
   //····················································································································
 
-/*  func setSelection (_ inObjects : [DeviceDocumentation]) {
+/*  func setSelection (_ inObjects : [BoardModel]) {
     self.mInternalSelectedArrayProperty.setProp (inObjects)
   } */
 
@@ -139,10 +123,8 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
   override init () {
     super.init ()
     self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
-  //--- Observe 'mFileName' column
-    self.sortedArray_property.addEBObserverOf_mFileName (self.mSortedArrayValuesObserver)
-  //--- Observe 'fileSize' column
-    self.sortedArray_property.addEBObserverOf_fileSize (self.mSortedArrayValuesObserver)
+  //--- Observe 'name' column
+    self.sortedArray_property.addEBObserverOf_name (self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {
@@ -165,30 +147,15 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
       allowsMultipleSelection: allowsMultipleSelection,
       delegate: self
     )
-  //--- Configure 'mFileName' column
+  //--- Configure 'name' column
     inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mFileName },
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].name },
       valueSetterDelegate: nil,
-      sortDelegate: { [weak self] (ascending) in
-        self?.mSortDescriptorArray.append ({ (_ left : DeviceDocumentation, _ right : DeviceDocumentation) in return compare_String_properties (left.mFileName_property, ascending, right.mFileName_property) })
-      },
-      title: "File Name",
+      sortDelegate: nil,
+      title: "",
       minWidth: 100,
-      maxWidth: 4000,
-      headerAlignment: .left,
-      contentAlignment: .left
-    )
-  //--- Configure 'fileSize' column
-    inTableView.addColumn_Int (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].fileSize },
-      valueSetterDelegate: nil,
-      sortDelegate: { [weak self] (ascending) in
-        self?.mSortDescriptorArray.append ({ (_ left : DeviceDocumentation, _ right : DeviceDocumentation) in return compare_Int_properties (left.fileSize_property, ascending, right.fileSize_property) })
-      },
-      title: "Size (bytes)",
-      minWidth: 120,
-      maxWidth: 120,
-      headerAlignment: .right,
+      maxWidth: 300,
+      headerAlignment: .center,
       contentAlignment: .right
     )
   //---
@@ -199,7 +166,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
   //   Select a single object
   //····················································································································
 
-  func select (object inObject: DeviceDocumentation) {
+  func select (object inObject: BoardModel) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
@@ -225,7 +192,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
       case .single (let model_prop) :
       //------------- Find the object to be selected after selected object removing
       //--- Dictionary of object sorted indexes
-        var sortedObjectDictionary = EBReferenceDictionary <DeviceDocumentation, Int> ()
+        var sortedObjectDictionary = EBReferenceDictionary <BoardModel, Int> ()
         for (index, object) in model_prop.enumerated () {
           sortedObjectDictionary [object] = index
         }
@@ -247,13 +214,13 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
             newSelectionIndex = index + 1
           }
         }
-      /*  var newSelectedObject : DeviceDocumentation? = nil
+      /*  var newSelectedObject : BoardModel? = nil
         if (newSelectionIndex >= 0) && (newSelectionIndex < model_prop.count) {
           newSelectedObject = model_prop [newSelectionIndex]
         } */
       //----------------------------------------- Remove selected object
       //--- Dictionary of object absolute indexes
-        var objectDictionary = EBReferenceDictionary <DeviceDocumentation, Int> ()
+        var objectDictionary = EBReferenceDictionary <BoardModel, Int> ()
         for (index, object) in model_prop.enumerated () {
           objectDictionary [object] = index
         }
@@ -273,7 +240,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
           newObjectArray.remove (at: index)
         }
       //----------------------------------------- Set new selection
- /*       var newSelectionSet = EBReferenceSet <DeviceDocumentation> ()
+ /*       var newSelectionSet = EBReferenceSet <BoardModel> ()
         if let object = newSelectedObject {
           newSelectionSet.insert (object)
         }
@@ -301,7 +268,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
     case .empty, .multiple :
       ()
     case .single (let v) :
-      var newSelectedObjects = EBReferenceArray <DeviceDocumentation> ()
+      var newSelectedObjects = EBReferenceArray <BoardModel> ()
       for index in inSelectedRows {
         newSelectedObjects.append (v [index])
       }
@@ -332,7 +299,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
       case .empty, .multiple :
         ()
       case .single (let v) :
-        let newObject = DeviceDocumentation (self.ebUndoManager)
+        let newObject = BoardModel (self.ebUndoManager)
         var array = EBReferenceArray (v)
         array.append (newObject)
         model.setProp (array)
@@ -356,7 +323,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = EBReferenceDictionary <DeviceDocumentation, Int> ()
+          var sortedObjectDictionary = EBReferenceDictionary <BoardModel, Int> ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -378,13 +345,13 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : DeviceDocumentation? = nil
+          var newSelectedObject : BoardModel? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = EBReferenceDictionary <DeviceDocumentation, Int> ()
+          var objectDictionary = EBReferenceDictionary <BoardModel, Int> ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

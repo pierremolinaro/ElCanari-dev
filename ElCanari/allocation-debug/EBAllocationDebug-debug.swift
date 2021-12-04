@@ -196,9 +196,9 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
     size: .small
   )
 
-  fileprivate var mTotalAllocatedLabel = AutoLayoutIntObserverField (size: .small)
+  fileprivate var mTotalAllocatedLabel = AutoLayoutIntObserverField (bold: true, size: .small)
 
-  fileprivate var mCurrentlyAllocatedLabel = AutoLayoutIntObserverField (size: .small)
+  fileprivate var mCurrentlyAllocatedLabel = AutoLayoutIntObserverField (bold: true, size: .small)
 
   fileprivate var mPerformSnapShotButton = AutoLayoutButton (title: "Snap Shot", size: .small)
 

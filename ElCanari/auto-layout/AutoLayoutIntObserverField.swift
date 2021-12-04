@@ -20,13 +20,14 @@ final class AutoLayoutIntObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init (size inSize : EBControlSize) {
+  init (bold inBold : Bool, size inSize : EBControlSize) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
     self.controlSize = inSize.cocoaControlSize
-    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+    let s = NSFont.systemFontSize (for: self.controlSize)
+    self.font = inBold ? NSFont.boldSystemFont (ofSize: s) : NSFont.systemFont (ofSize: s)
     self.alignment = .center
     self.isBezeled = false
     self.isBordered = false
@@ -70,6 +71,13 @@ final class AutoLayoutIntObserverField : NSTextField, EBUserClassNameProtocol {
   }
 
   //····················································································································
+
+  final func set (alignment inAlignment : TextAlignment) -> Self {
+    self.alignment = inAlignment.cocoaAlignment
+    return self
+  }
+
+  //····················································································································
   //  observedValue binding
   //····················································································································
 
@@ -91,7 +99,7 @@ final class AutoLayoutIntObserverField : NSTextField, EBUserClassNameProtocol {
     switch model.selection {
     case .empty :
       self.enable (fromValueBinding: false)
-      self.placeholderString = "No Selection"
+      self.placeholderString = "—"
       self.stringValue = ""
     case .single (let v) :
       self.enable (fromValueBinding: true)

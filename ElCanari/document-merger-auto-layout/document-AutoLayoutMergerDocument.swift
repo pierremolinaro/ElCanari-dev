@@ -9,6 +9,52 @@ import Cocoa
 @objc(AutoLayoutMergerDocument) class AutoLayoutMergerDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
 
   //····················································································································
+  //   Array controller: mBoardModelController
+  //····················································································································
+
+  var mBoardModelController = Controller_AutoLayoutMergerDocument_mBoardModelController ()
+
+  //····················································································································
+  //   Selection controller: mBoardModelSelection
+  //····················································································································
+
+  var mBoardModelSelection = SelectionController_AutoLayoutMergerDocument_mBoardModelSelection ()
+
+  //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  final var issues : CanariIssueArray? {
+    switch self.issues_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: statusMessage
+  //····················································································································
+
+  final let statusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var statusMessage : String? {
+    switch self.statusMessage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: documentFileName
   //····················································································································
 
@@ -18,6 +64,23 @@ import Cocoa
 
   final var documentFileName : String? {
     switch self.documentFileName_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: statusImage
+  //····················································································································
+
+  final let statusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var statusImage : NSImage? {
+    switch self.statusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -58,6 +121,10 @@ import Cocoa
 
   #if BUILD_OBJECT_EXPLORER
     override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    //--- Array controller property: mBoardModelController
+      self.mBoardModelController.addExplorer (name: "mBoardModelController", y:&y, view:view)
+    //--- Selection controller property: mBoardModelSelection
+      self.mBoardModelSelection.addExplorer (name: "mBoardModelSelection", y:&y, view:view)
    //---
       super.populateExplorerWindow (&y, view:view)
     }
@@ -78,14 +145,1292 @@ import Cocoa
   final var rootObject : MergerRoot { return self.mRootObject as! MergerRoot }
 
   //····················································································································
+  //    VIEW mPageMasterView
+  //····················································································································
+
+  lazy var mPageMasterView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    return vStackView
+  } ()
+
+  //····················································································································
   //    VIEW mDocumentMainView
   //····················································································································
 
   lazy var mDocumentMainView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
+    let view_0 = AutoLayoutHorizontalStackView ()
+      .set (margins: 8)
+    do{
+      let view_0_0 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false, size: .regular)
+          .addPage (title: "Model", tooltip: "Model Description", pageView: self.mModelPage)
+          .addPage (title: "Board", tooltip: "Board Description", pageView: self.mBoardPage)
+          .addPage (title: "Product", tooltip: "Product Description", pageView: self.mProductPage)
+          .bind_selectedPage (self.rootObject.selectedPageIndex_property)
+        view_0_0.appendView (view_0_0_0)
+        let view_0_0_1 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_0_0_1_0 = AutoLayoutFlexibleSpace ()
+          view_0_0_1.appendView (view_0_0_1_0)
+          let view_0_0_1_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small)
+          view_0_0_1.appendView (view_0_0_1_1)
+          let view_0_0_1_2 = AutoLayoutFlexibleSpace ()
+          view_0_0_1.appendView (view_0_0_1_2)
+        }
+        view_0_0.appendView (view_0_0_1)
+      }
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutVerticalStackView ()
+        .setCenterAlignment ()
+      do{
+        let view_0_1_0 = AutoLayoutButton (title: "Display Settings", size: .regular)
+          .bind_enabled (.intcmp (.id (self.rootObject.selectedPageIndex_property), .le, .literalInt (1)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutMergerDocument.showPrefsForSettingMergerDisplayAction (_:))
+          )
+        view_0_1.appendView (view_0_1_0)
+        let view_0_1_1 = AutoLayoutStaticLabel (title: "for Model and Board Views", bold: false, size: .small)
+          .set (alignment: .center)
+          .expandableWidth ()
+        view_0_1.appendView (view_0_1_1)
+      }
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_3_0 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_0_3_0_0 = AutoLayoutFlexibleSpace ()
+          view_0_3_0.appendView (view_0_3_0_0)
+          let view_0_3_0_1 = AutoLayoutImageObserverView (size: .regular)
+            .bind_image (self.statusImage_property)
+            .bind_tooltip (self.statusMessage_property)
+          view_0_3_0.appendView (view_0_3_0_1)
+          let view_0_3_0_2 = AutoLayoutFlexibleSpace ()
+          view_0_3_0.appendView (view_0_3_0_2)
+        }
+        view_0_3.appendView (view_0_3_0)
+        let view_0_3_1 = AutoLayoutStaticLabel (title: "Status", bold: false, size: .small)
+          .set (alignment: .center)
+        view_0_3.appendView (view_0_3_1)
+      }
+      view_0.appendView (view_0_3)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+    vStackView.appendView (view_1)
+    let view_2 = mPageMasterView
+    vStackView.appendView (view_2)
     return vStackView
   } ()
+
+  //····················································································································
+  //    VIEW mModelPage
+  //····················································································································
+
+  lazy var mModelPage : AutoLayoutHorizontalStackView = {
+    let hStackView = AutoLayoutHorizontalStackView ()
+    let view_0 = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+      .set (width: 250)
+      .bind_hidden (.not (.id (self.rootObject.showDisplaySettingView_property)))
+    do{
+      let view_0_0 = AutoLayoutTwoColumnsGridView ()
+        .addCenterYAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
+        .addCenterYAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
+        .addCenterYAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
+        .addCenterYAligned (left: self.computeImplicitView_6 (), right: self.computeImplicitView_7 ())
+        .addCenterYAligned (left: self.computeImplicitView_8 (), right: self.computeImplicitView_9 ())
+        .addCenterYAligned (left: self.computeImplicitView_10 (), right: self.computeImplicitView_11 ())
+        .addCenterYAligned (left: self.computeImplicitView_12 (), right: self.computeImplicitView_13 ())
+        .addCenterYAligned (left: self.computeImplicitView_14 (), right: self.computeImplicitView_15 ())
+        .addCenterYAligned (left: self.computeImplicitView_16 (), right: self.computeImplicitView_17 ())
+        .addCenterYAligned (left: self.computeImplicitView_18 (), right: self.computeImplicitView_19 ())
+        .addCenterYAligned (left: self.computeImplicitView_20 (), right: self.computeImplicitView_21 ())
+        .addCenterYAligned (left: self.computeImplicitView_22 (), right: self.computeImplicitView_23 ())
+        .addCenterYAligned (left: self.computeImplicitView_24 (), right: self.computeImplicitView_25 ())
+        .addCenterYAligned (left: self.computeImplicitView_26 (), right: self.computeImplicitView_27 ())
+        .addCenterYAligned (left: self.computeImplicitView_28 (), right: self.computeImplicitView_29 ())
+        .addCenterYAligned (left: self.computeImplicitView_30 (), right: self.computeImplicitView_31 ())
+        .addCenterYAligned (left: self.computeImplicitView_32 (), right: self.computeImplicitView_33 ())
+        .addCenterYAligned (left: self.computeImplicitView_34 (), right: self.computeImplicitView_35 ())
+        .addCenterYAligned (left: self.computeImplicitView_36 (), right: self.computeImplicitView_37 ())
+        .addCenterYAligned (left: self.computeImplicitView_38 (), right: self.computeImplicitView_39 ())
+        .addCenterYAligned (left: self.computeImplicitView_40 (), right: self.computeImplicitView_41 ())
+        .addCenterYAligned (left: self.computeImplicitView_42 (), right: self.computeImplicitView_43 ())
+        .addCenterYAligned (left: self.computeImplicitView_44 (), right: self.computeImplicitView_45 ())
+        .addCenterYAligned (left: self.computeImplicitView_46 (), right: self.computeImplicitView_47 ())
+        .addCenterYAligned (left: self.computeImplicitView_48 (), right: self.computeImplicitView_49 ())
+        .addCenterYAligned (left: self.computeImplicitView_50 (), right: self.computeImplicitView_51 ())
+        .addCenterYAligned (left: self.computeImplicitView_52 (), right: self.computeImplicitView_53 ())
+        .addCenterYAligned (left: self.computeImplicitView_54 (), right: self.computeImplicitView_55 ())
+        .addCenterYAligned (left: self.computeImplicitView_56 (), right: self.computeImplicitView_57 ())
+        .addCenterYAligned (left: self.computeImplicitView_58 (), right: self.computeImplicitView_59 ())
+        .addCenterYAligned (left: self.computeImplicitView_60 (), right: self.computeImplicitView_61 ())
+        .addCenterYAligned (left: self.computeImplicitView_62 (), right: self.computeImplicitView_63 ())
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_0_2_0 = AutoLayoutFlexibleSpace ()
+        view_0_2.appendView (view_0_2_0)
+        let view_0_2_1 = AutoLayoutButton (title: "Done", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutMergerDocument.dismissDisplaySettingView (_:))
+          )
+        view_0_2.appendView (view_0_2_1)
+      }
+      view_0.appendView (view_0_2)
+    }
+    hStackView.appendView (view_0)
+    let view_1 = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+      .set (width: 250)
+      .bind_hidden (.id (self.rootObject.showDisplaySettingView_property))
+    do{
+      let view_1_0 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_1_0_0 = AutoLayoutButton (title: "+", size: .small)
+          .set (width: 40)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutMergerDocument.addBoardModelAction (_:))
+          )
+        view_1_0.appendView (view_1_0_0)
+        let view_1_0_1 = AutoLayoutButton (title: "Update…", size: .small)
+          .expandableWidth ()
+          .bind_enabled (.intcmp (.id (self.mBoardModelController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutMergerDocument.updateBoardModelAction (_:))
+          )
+        view_1_0.appendView (view_1_0_1)
+        let view_1_0_2 = AutoLayoutButton (title: "-", size: .small)
+          .set (width: 40)
+          .bind_enabled (.boolcmp (.intcmp (.id (self.mBoardModelController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.id (self.mBoardModelSelection.instanceCount_property), .eq, .literalInt (0))))
+          .bind_run (
+            target: mBoardModelController,
+            selector: #selector (Controller_AutoLayoutMergerDocument_mBoardModelController.remove (_:))
+          )
+        view_1_0.appendView (view_1_0_2)
+      }
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
+        .noHeaderView ()
+      self.mBoardModelController.bind_tableView (view_1_1)
+      view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutTwoColumnsGridView ()
+        .addFirstBaseLineAligned (left: self.computeImplicitView_64 (), right: self.computeImplicitView_65 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_66 (), right: self.computeImplicitView_67 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_68 (), right: self.computeImplicitView_69 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_70 (), right: self.computeImplicitView_71 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_72 (), right: self.computeImplicitView_73 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_74 (), right: self.computeImplicitView_75 ())
+      view_1.appendView (view_1_2)
+    }
+    hStackView.appendView (view_1)
+    let view_2 = AutoLayoutHorizontalStackView.VerticalSeparator ()
+    hStackView.appendView (view_2)
+    let view_3 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
+      .bind_zoom (self.mBoardModelSelection.zoom_property)
+      .bind_horizontalFlip (preferences_mergerModelViewHorizontalFlip_property)
+      .bind_verticalFlip (preferences_mergerModelViewVerticalFlip_property)
+      .bind_overObjectsDisplay (self.mBoardModelSelection.imageForModel_property)
+      .bind_hidden (.intcmp (.id (self.rootObject.boardModels_property.count_property), .eq, .literalInt (0)))
+    hStackView.appendView (view_3)
+    let view_4 = AutoLayoutVerticalStackView ()
+    do{
+      let view_4_0 = AutoLayoutFlexibleSpace ()
+      view_4.appendView (view_4_0)
+      let view_4_1 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_4_1_0 = AutoLayoutFlexibleSpace ()
+        view_4_1.appendView (view_4_1_0)
+        let view_4_1_1 = AutoLayoutStaticLabel (title: "No Model", bold: true, size: .regular)
+          .bind_hidden (.intcmp (.id (self.rootObject.boardModels_property.count_property), .gt, .literalInt (0)))
+        view_4_1.appendView (view_4_1_1)
+        let view_4_1_2 = AutoLayoutFlexibleSpace ()
+        view_4_1.appendView (view_4_1_2)
+      }
+      view_4.appendView (view_4_1)
+      let view_4_2 = AutoLayoutFlexibleSpace ()
+      view_4.appendView (view_4_2)
+    }
+    hStackView.appendView (view_4)
+    return hStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mBoardPage
+  //····················································································································
+
+  lazy var mBoardPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mProductPage
+  //····················································································································
+
+  lazy var mProductPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    IMPLICIT VIEW 0
+  //····················································································································
+
+  fileprivate final func computeImplicitView_0 () -> NSView {
+    let view = AutoLayoutFlexibleSpace ()
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 1
+  //····················································································································
+
+  fileprivate final func computeImplicitView_1 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutStaticLabel (title: "Model", bold: true, size: .small)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+      let view_2 = AutoLayoutStaticLabel (title: "Board", bold: true, size: .small)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 2
+  //····················································································································
+
+  fileprivate final func computeImplicitView_2 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Horizontal Flip", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 3
+  //····················································································································
+
+  fileprivate final func computeImplicitView_3 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewHorizontalFlip_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewHorizontalFlip_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 4
+  //····················································································································
+
+  fileprivate final func computeImplicitView_4 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Vertical Flip", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 5
+  //····················································································································
+
+  fileprivate final func computeImplicitView_5 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewVerticalFlip_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewVerticalFlip_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 6
+  //····················································································································
+
+  fileprivate final func computeImplicitView_6 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Holes", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 7
+  //····················································································································
+
+  fileprivate final func computeImplicitView_7 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayHoles_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorHoles_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayHoles_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 8
+  //····················································································································
+
+  fileprivate final func computeImplicitView_8 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Vias", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 9
+  //····················································································································
+
+  fileprivate final func computeImplicitView_9 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayVias_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorVias_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayVias_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 10
+  //····················································································································
+
+  fileprivate final func computeImplicitView_10 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Board Limits", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 11
+  //····················································································································
+
+  fileprivate final func computeImplicitView_11 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayBoardLimits_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorBoardLimits_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayBoardLimits_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 12
+  //····················································································································
+
+  fileprivate final func computeImplicitView_12 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Internal Board Limits", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 13
+  //····················································································································
+
+  fileprivate final func computeImplicitView_13 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayInternalBoardsLimits_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorInternalBoardsLimits_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayInternalBoardsLimits_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 14
+  //····················································································································
+
+  fileprivate final func computeImplicitView_14 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 15
+  //····················································································································
+
+  fileprivate final func computeImplicitView_15 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorBackground_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 16
+  //····················································································································
+
+  fileprivate final func computeImplicitView_16 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutStaticLabel (title: "Front", bold: true, size: .small)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 17
+  //····················································································································
+
+  fileprivate final func computeImplicitView_17 () -> NSView {
+    let view = AutoLayoutFlexibleSpace ()
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 18
+  //····················································································································
+
+  fileprivate final func computeImplicitView_18 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Pads", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 19
+  //····················································································································
+
+  fileprivate final func computeImplicitView_19 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayFrontPads_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorFrontPads_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayFrontPads_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 20
+  //····················································································································
+
+  fileprivate final func computeImplicitView_20 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Component Names", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 21
+  //····················································································································
+
+  fileprivate final func computeImplicitView_21 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayFrontComponentNames_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorFrontComponentNames_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayFrontComponentNames_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 22
+  //····················································································································
+
+  fileprivate final func computeImplicitView_22 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Component Values", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 23
+  //····················································································································
+
+  fileprivate final func computeImplicitView_23 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayFrontComponentValues_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorFrontComponentValues_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayFrontComponentValues_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 24
+  //····················································································································
+
+  fileprivate final func computeImplicitView_24 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Packages", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 25
+  //····················································································································
+
+  fileprivate final func computeImplicitView_25 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayFrontPackages_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorFrontPackages_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayFrontPackages_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 26
+  //····················································································································
+
+  fileprivate final func computeImplicitView_26 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Legend Texts", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 27
+  //····················································································································
+
+  fileprivate final func computeImplicitView_27 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayFrontLegendTexts_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorFrontLegendTexts_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayFrontLegendTexts_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 28
+  //····················································································································
+
+  fileprivate final func computeImplicitView_28 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Legend Lines", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 29
+  //····················································································································
+
+  fileprivate final func computeImplicitView_29 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayFrontLegendLines_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorFrontLegendLines_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayFrontLegendLines_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 30
+  //····················································································································
+
+  fileprivate final func computeImplicitView_30 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Layout Texts", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 31
+  //····················································································································
+
+  fileprivate final func computeImplicitView_31 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayFrontLayoutTexts_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorFrontLayoutTexts_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayFrontLayoutTexts_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 32
+  //····················································································································
+
+  fileprivate final func computeImplicitView_32 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Tracks", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 33
+  //····················································································································
+
+  fileprivate final func computeImplicitView_33 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayFrontTracks_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorFrontTracks_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayFrontTracks_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 34
+  //····················································································································
+
+  fileprivate final func computeImplicitView_34 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutStaticLabel (title: "Inner", bold: true, size: .small)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 35
+  //····················································································································
+
+  fileprivate final func computeImplicitView_35 () -> NSView {
+    let view = AutoLayoutFlexibleSpace ()
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 36
+  //····················································································································
+
+  fileprivate final func computeImplicitView_36 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Traversing Pads", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 37
+  //····················································································································
+
+  fileprivate final func computeImplicitView_37 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayTraversingPads_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorTraversingPads_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayTraversingPads_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 38
+  //····················································································································
+
+  fileprivate final func computeImplicitView_38 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Inner 1 Tracks", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 39
+  //····················································································································
+
+  fileprivate final func computeImplicitView_39 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayInner1Tracks_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorInner1Tracks_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayInner1Tracks_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 40
+  //····················································································································
+
+  fileprivate final func computeImplicitView_40 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Inner 2 Tracks", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 41
+  //····················································································································
+
+  fileprivate final func computeImplicitView_41 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayInner2Tracks_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorInner2Tracks_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayInner2Tracks_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 42
+  //····················································································································
+
+  fileprivate final func computeImplicitView_42 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Inner 3 Tracks", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 43
+  //····················································································································
+
+  fileprivate final func computeImplicitView_43 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayInner3Tracks_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorInner3Tracks_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayInner3Tracks_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 44
+  //····················································································································
+
+  fileprivate final func computeImplicitView_44 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Inner 4 Tracks", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 45
+  //····················································································································
+
+  fileprivate final func computeImplicitView_45 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayInner4Tracks_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorInner4Tracks_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayInner4Tracks_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 46
+  //····················································································································
+
+  fileprivate final func computeImplicitView_46 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutStaticLabel (title: "Back", bold: true, size: .small)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 47
+  //····················································································································
+
+  fileprivate final func computeImplicitView_47 () -> NSView {
+    let view = AutoLayoutFlexibleSpace ()
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 48
+  //····················································································································
+
+  fileprivate final func computeImplicitView_48 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Pads", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 49
+  //····················································································································
+
+  fileprivate final func computeImplicitView_49 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayBackPads_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorBackPads_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayBackPads_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 50
+  //····················································································································
+
+  fileprivate final func computeImplicitView_50 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Component Names", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 51
+  //····················································································································
+
+  fileprivate final func computeImplicitView_51 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayBackComponentNames_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorBackComponentNames_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayBackComponentNames_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 52
+  //····················································································································
+
+  fileprivate final func computeImplicitView_52 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Component Values", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 53
+  //····················································································································
+
+  fileprivate final func computeImplicitView_53 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayBackComponentValues_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorBackComponentValues_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayBackComponentValues_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 54
+  //····················································································································
+
+  fileprivate final func computeImplicitView_54 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Packages", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 55
+  //····················································································································
+
+  fileprivate final func computeImplicitView_55 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayBackPackages_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorBackPackages_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayBackPackages_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 56
+  //····················································································································
+
+  fileprivate final func computeImplicitView_56 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Legend Texts", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 57
+  //····················································································································
+
+  fileprivate final func computeImplicitView_57 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayBackLegendTexts_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorBackLegendTexts_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayBackLegendTexts_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 58
+  //····················································································································
+
+  fileprivate final func computeImplicitView_58 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Legend Lines", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 59
+  //····················································································································
+
+  fileprivate final func computeImplicitView_59 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayBackLegendLines_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorBackLegendLines_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayBackLegendLines_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 60
+  //····················································································································
+
+  fileprivate final func computeImplicitView_60 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Layout Texts", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 61
+  //····················································································································
+
+  fileprivate final func computeImplicitView_61 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayBackLayoutTexts_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorBackLayoutTexts_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayBackLayoutTexts_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 62
+  //····················································································································
+
+  fileprivate final func computeImplicitView_62 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Tracks", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 63
+  //····················································································································
+
+  fileprivate final func computeImplicitView_63 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerModelViewDisplayBackTracks_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .bind_color (preferences_mergerColorBackTracks_property, sendContinously:false)
+      view.appendView (view_1)
+      let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .bind_value (preferences_mergerBoardViewDisplayBackTracks_property)
+      view.appendView (view_2)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 64
+  //····················································································································
+
+  fileprivate final func computeImplicitView_64 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Artwork Name", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 65
+  //····················································································································
+
+  fileprivate final func computeImplicitView_65 () -> NSView {
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .bind_title (self.mBoardModelSelection.artworkName_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 66
+  //····················································································································
+
+  fileprivate final func computeImplicitView_66 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Layout", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 67
+  //····················································································································
+
+  fileprivate final func computeImplicitView_67 () -> NSView {
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .bind_title (self.mBoardModelSelection.layerConfigurationString_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 68
+  //····················································································································
+
+  fileprivate final func computeImplicitView_68 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Model Width", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 69
+  //····················································································································
+
+  fileprivate final func computeImplicitView_69 () -> NSView {
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mBoardModelSelection.modelWidth_property, self.mBoardModelSelection.modelWidthUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 70
+  //····················································································································
+
+  fileprivate final func computeImplicitView_70 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Model Height", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 71
+  //····················································································································
+
+  fileprivate final func computeImplicitView_71 () -> NSView {
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mBoardModelSelection.modelHeight_property, self.mBoardModelSelection.modelHeightUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 72
+  //····················································································································
+
+  fileprivate final func computeImplicitView_72 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Limit Width", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 73
+  //····················································································································
+
+  fileprivate final func computeImplicitView_73 () -> NSView {
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mBoardModelSelection.modelLimitWidth_property, self.mBoardModelSelection.modelLimitWidthUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 74
+  //····················································································································
+
+  fileprivate final func computeImplicitView_74 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Board Count", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 75
+  //····················································································································
+
+  fileprivate final func computeImplicitView_75 () -> NSView {
+    let view = AutoLayoutIntObserverField (bold: true, size: .small)
+      .set (alignment: .left)
+      .bind_observedValue (self.mBoardModelSelection.instanceCount_property)
+    return view
+  }
 
   //····················································································································
   //    Build User Interface
@@ -144,6 +1489,82 @@ import Cocoa
   final private func configureProperties () {
     let start = Date ()
     var opIdx = 0
+  //--- Array controller property: mBoardModelController
+    self.mBoardModelController.bind_model (self.rootObject.boardModels_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: mBoardModelSelection
+    self.mBoardModelSelection.bind_selection (model: self.mBoardModelController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: issues
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.overlapingArrangment_property.selection, unwSelf.rootObject.boardRect_property.selection, unwSelf.rootObject.boardDisplayRect_property.selection, unwSelf.rootObject.boardInstances_property.selection, unwSelf.rootObject.boardInstances_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_AutoLayoutMergerDocument_issues (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.overlapingArrangment_property.addEBObserver (self.issues_property)
+    self.rootObject.boardRect_property.addEBObserver (self.issues_property)
+    self.rootObject.boardDisplayRect_property.addEBObserver (self.issues_property)
+    self.rootObject.boardInstances_property.addEBObserverOf_instanceRect (self.issues_property)
+    self.rootObject.boardInstances_property.addEBObserverOf_boardLimitWidth (self.issues_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: statusMessage
+    self.statusMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.issues_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutMergerDocument_statusMessage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.statusMessage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: statusImage
+    self.statusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.issues_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutMergerDocument_statusImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.statusImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -186,7 +1607,11 @@ import Cocoa
   override func removeUserInterface () {
     super.removeUserInterface ()
   //--------------------------- Clean up auto layout views
+    self.mPageMasterView.ebCleanUp ()
     self.mDocumentMainView.ebCleanUp ()
+    self.mModelPage.ebCleanUp ()
+    self.mBoardPage.ebCleanUp ()
+    self.mProductPage.ebCleanUp ()
     let toolbarItems = self.windowForSheet?.toolbar?.items ?? []
     for item in toolbarItems {
       item.view?.ebCleanUp ()
@@ -194,6 +1619,17 @@ import Cocoa
   //--------------------------- Unbind regular bindings
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
+  //--- Array controller property: mBoardModelController
+    self.mBoardModelController.unbind_model ()
+  //--- Selection controller property: mBoardModelSelection
+    self.mBoardModelSelection.unbind_selection ()
+    // self.rootObject.overlapingArrangment_property.removeEBObserver (self.issues_property)
+    // self.rootObject.boardRect_property.removeEBObserver (self.issues_property)
+    // self.rootObject.boardDisplayRect_property.removeEBObserver (self.issues_property)
+    // self.rootObject.boardInstances_property.removeEBObserverOf_instanceRect (self.issues_property)
+    // self.rootObject.boardInstances_property.removeEBObserverOf_boardLimitWidth (self.issues_property)
+    // self.issues_property.removeEBObserver (self.statusMessage_property)
+    // self.issues_property.removeEBObserver (self.statusImage_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets
