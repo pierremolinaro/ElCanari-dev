@@ -42,6 +42,16 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBObjcBaseObj
 
   //····················································································································
 
+  var objects : EBReferenceArray <ArtworkFileGenerationParameters> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   final func bind_model (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager

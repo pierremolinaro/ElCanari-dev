@@ -18,6 +18,16 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
 
   //····················································································································
 
+  var objects : EBReferenceArray <SymbolObject> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   var selectedSet : EBReferenceSet <SymbolObject> {
     set (newValue) {
     //--- Add observers to newly selected set

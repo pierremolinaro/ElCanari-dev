@@ -18,6 +18,16 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
 
   //····················································································································
 
+  var objects : EBReferenceArray <PackageObject> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   var selectedSet : EBReferenceSet <PackageObject> {
     set (newValue) {
     //--- Add observers to newly selected set

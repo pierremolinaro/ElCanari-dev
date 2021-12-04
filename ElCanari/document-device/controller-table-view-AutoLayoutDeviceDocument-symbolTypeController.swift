@@ -42,6 +42,16 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
 
   //····················································································································
 
+  var objects : EBReferenceArray <SymbolTypeInDevice> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   final func bind_model (_ inModel : ReadWriteArrayOf_SymbolTypeInDevice, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager

@@ -42,6 +42,16 @@ final class Controller_AutoLayoutMergerDocument_mBoardModelController : EBObjcBa
 
   //····················································································································
 
+  var objects : EBReferenceArray <BoardModel> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   final func bind_model (_ inModel : ReadWriteArrayOf_BoardModel, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager

@@ -18,6 +18,16 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
   //····················································································································
 
+  var objects : EBReferenceArray <DevicePackageInProject> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   var selectedSet : EBReferenceSet <DevicePackageInProject> {
     set (newValue) {
       self.mPrivateSelectedSet = newValue

@@ -7,6 +7,8 @@ entity MergerRoot {
   property Int selectedPageIndex default 0 ;
   property Int zoom default 100 ;
   property Bool showDisplaySettingView default no ;
+  
+  property QuadrantRotation modelInsertionRotation default rotation0 ;
 
 //--- Board size
   property Bool automaticBoardSize default yes ;

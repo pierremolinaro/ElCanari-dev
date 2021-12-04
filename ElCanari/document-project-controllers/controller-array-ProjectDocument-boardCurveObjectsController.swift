@@ -18,6 +18,16 @@ final class Controller_ProjectDocument_boardCurveObjectsController : ReadOnlyAbs
 
   //····················································································································
 
+  var objects : EBReferenceArray <BorderCurve> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   var selectedSet : EBReferenceSet <BorderCurve> {
     set (newValue) {
     //--- Add observers to newly selected set

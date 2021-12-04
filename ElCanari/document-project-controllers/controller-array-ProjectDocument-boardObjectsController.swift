@@ -18,6 +18,16 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
 
   //····················································································································
 
+  var objects : EBReferenceArray <BoardObject> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   var selectedSet : EBReferenceSet <BoardObject> {
     set (newValue) {
     //--- Add observers to newly selected set

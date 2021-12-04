@@ -24,6 +24,12 @@ protocol MergerRoot_showDisplaySettingView : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol MergerRoot_modelInsertionRotation : AnyObject {
+  var modelInsertionRotation : QuadrantRotation { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol MergerRoot_automaticBoardSize : AnyObject {
   var automaticBoardSize : Bool { get }
 }
@@ -234,6 +240,7 @@ final class MergerRoot : EBManagedObject,
          MergerRoot_selectedPageIndex,
          MergerRoot_zoom,
          MergerRoot_showDisplaySettingView,
+         MergerRoot_modelInsertionRotation,
          MergerRoot_automaticBoardSize,
          MergerRoot_boardManualWidth,
          MergerRoot_boardManualHeight,
@@ -354,6 +361,25 @@ final class MergerRoot : EBManagedObject,
   final var showDisplaySettingView : Bool {
     get { return self.showDisplaySettingView_property.propval }
     set { self.showDisplaySettingView_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: modelInsertionRotation
+  //····················································································································
+
+  final let modelInsertionRotation_property : EBStoredProperty_QuadrantRotation
+
+  //····················································································································
+
+  final func reset_modelInsertionRotation_toDefaultValue () {
+    self.modelInsertionRotation = QuadrantRotation.rotation0
+  }
+
+  //····················································································································
+
+  final var modelInsertionRotation : QuadrantRotation {
+    get { return self.modelInsertionRotation_property.propval }
+    set { self.modelInsertionRotation_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -1096,6 +1122,7 @@ final class MergerRoot : EBManagedObject,
     self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.zoom_property = EBStoredProperty_Int (defaultValue: 100, undoManager: ebUndoManager)
     self.showDisplaySettingView_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.modelInsertionRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: ebUndoManager)
     self.automaticBoardSize_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.boardManualWidth_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: ebUndoManager)
     self.boardManualHeight_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: ebUndoManager)
@@ -1651,6 +1678,14 @@ final class MergerRoot : EBManagedObject,
         valueExplorer: &self.showDisplaySettingView_property.mValueExplorer
       )
       createEntryForPropertyNamed (
+        "modelInsertionRotation",
+        object: self.modelInsertionRotation_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.modelInsertionRotation_property.mObserverExplorer,
+        valueExplorer: &self.modelInsertionRotation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
         "automaticBoardSize",
         object: self.automaticBoardSize_property,
         y: &y,
@@ -1889,6 +1924,9 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: showDisplaySettingView
     self.showDisplaySettingView_property.mObserverExplorer = nil
     self.showDisplaySettingView_property.mValueExplorer = nil
+  //--- Atomic property: modelInsertionRotation
+    self.modelInsertionRotation_property.mObserverExplorer = nil
+    self.modelInsertionRotation_property.mValueExplorer = nil
   //--- Atomic property: automaticBoardSize
     self.automaticBoardSize_property.mObserverExplorer = nil
     self.automaticBoardSize_property.mValueExplorer = nil
@@ -2025,6 +2063,8 @@ final class MergerRoot : EBManagedObject,
       self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
     //--- Atomic property: showDisplaySettingView
       self.showDisplaySettingView_property.storeIn (dictionary: ioDictionary, forKey: "showDisplaySettingView")
+    //--- Atomic property: modelInsertionRotation
+      self.modelInsertionRotation_property.storeIn (dictionary: ioDictionary, forKey: "modelInsertionRotation")
     //--- Atomic property: automaticBoardSize
       self.automaticBoardSize_property.storeIn (dictionary: ioDictionary, forKey: "automaticBoardSize")
     //--- Atomic property: boardManualWidth
@@ -2125,6 +2165,8 @@ final class MergerRoot : EBManagedObject,
     self.zoom_property.readFrom (dictionary: inDictionary, forKey: "zoom")
   //--- Atomic property: showDisplaySettingView
     self.showDisplaySettingView_property.readFrom (dictionary: inDictionary, forKey: "showDisplaySettingView")
+  //--- Atomic property: modelInsertionRotation
+    self.modelInsertionRotation_property.readFrom (dictionary: inDictionary, forKey: "modelInsertionRotation")
   //--- Atomic property: automaticBoardSize
     self.automaticBoardSize_property.readFrom (dictionary: inDictionary, forKey: "automaticBoardSize")
   //--- Atomic property: boardManualWidth
@@ -2172,6 +2214,7 @@ final class MergerRoot : EBManagedObject,
     ioString += "selectedPageIndex\n"
     ioString += "zoom\n"
     ioString += "showDisplaySettingView\n"
+    ioString += "modelInsertionRotation\n"
     ioString += "automaticBoardSize\n"
     ioString += "boardManualWidth\n"
     ioString += "boardManualHeight\n"
@@ -2208,6 +2251,8 @@ final class MergerRoot : EBManagedObject,
     self.zoom.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.showDisplaySettingView.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.modelInsertionRotation.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.automaticBoardSize.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -2332,6 +2377,9 @@ final class MergerRoot : EBManagedObject,
       }
       if let range = inDictionary ["showDisplaySettingView"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.showDisplaySettingView = value
+      }
+      if let range = inDictionary ["modelInsertionRotation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
+        self.modelInsertionRotation = value
       }
       if let range = inDictionary ["automaticBoardSize"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.automaticBoardSize = value

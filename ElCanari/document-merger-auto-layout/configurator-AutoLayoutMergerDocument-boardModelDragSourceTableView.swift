@@ -18,9 +18,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutMergerDocument {
-  final func linker_issueTableViewToGraphicView (_ in_mBoardIssueTableView : AutoLayoutCanariIssueTableView?, _ in_mComposedBoardGraphicView : AutoLayoutGraphicView?) {
+  final func configure_boardModelDragSourceTableView (_ inOutlet : AutoLayoutElCanariDragSourceTableView) {
 //--- START OF USER ZONE 2
-        in_mBoardIssueTableView?.register (issueDisplayView: in_mComposedBoardGraphicView)
+        inOutlet.register (document: self, draggedType: kDragAndDropMergerModelType)
 //--- END OF USER ZONE 2
   }
 }

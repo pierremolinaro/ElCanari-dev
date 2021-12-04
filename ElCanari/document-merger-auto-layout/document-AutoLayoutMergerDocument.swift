@@ -121,9 +121,10 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  weak final var mBoardGraphicView : AutoLayoutGraphicView? = nil
   weak final var mBoardInspectorSegmentedControl : AutoLayoutSegmentedControlWithPages? = nil
   weak final var mBoardIssueTableView : AutoLayoutCanariIssueTableView? = nil
+  weak final var mComposedBoardGraphicView : AutoLayoutGraphicView? = nil
+  weak final var mModelDragSourceTableView : AutoLayoutElCanariDragSourceTableView? = nil
 
   //····················································································································
   //    Outlets
@@ -416,7 +417,7 @@ import Cocoa
     do{
       let view_1_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mBoardBaseInspectorView, equalWidth: true, size: .regular)
         .expandableWidth ()
-        .addPage (title: "A", tooltip: "Model Description", pageView: self.mBoardSettingsPage)
+        .addPage (title: "", tooltip: "Model Description", pageView: self.mBoardSettingsPage)
         .addPage (title: "", tooltip: "Issue Inspector", pageView: self.mBoardIssuesPage)
         .bind_segmentImage (self.statusImage_property, segmentIndex:1)
         .bind_segmentTitle (self.statusTitle_property, segmentIndex:1)
@@ -437,7 +438,8 @@ import Cocoa
       .bind_arrowKeyMagnitude (self.rootObject.arrowMagnitude_property)
       .bind_shiftArrowKeyMagnitude (self.rootObject.shiftArrowMagnitude_property)
       .bind_graphic_controller (self.mBoardInstanceController)
-    self.mBoardGraphicView = view_3 // Outlet
+    self.mComposedBoardGraphicView = view_3 // Outlet
+    self.configure_boardGraphicView (view_3) // Configurator
     hStackView.appendView (view_3)
     return hStackView
   } ()
@@ -2580,8 +2582,17 @@ import Cocoa
             selector: #selector (AutoLayoutMergerDocument.showBoardHelpAction (_:))
           )
         view_0.appendView (view_0_1)
+        let view_0_2 = AutoLayoutEnumPopUpButton (titles: QuadrantRotation.popupTitles (), size: .small)
+          .expandableWidth ()
+          .bind_selectedIndex (self.rootObject.modelInsertionRotation_property)
+        view_0.appendView (view_0_2)
       }
       view.appendView (view_0)
+      let view_1 = AutoLayoutElCanariDragSourceTableView ()
+        .bind_models (self.rootObject.modelNames_property)
+      self.mModelDragSourceTableView = view_1 // Outlet
+      self.configure_boardModelDragSourceTableView (view_1) // Configurator
+      view.appendView (view_1)
     }
     return view
   }
@@ -2915,7 +2926,7 @@ import Cocoa
     self.configureProperties ()
     let mainView = self.mDocumentMainView
   //--- Call outlet linkers
-    self.linker_issueTableViewToGraphicView (self.mBoardIssueTableView, self.mBoardGraphicView)
+    self.linker_issueTableViewToGraphicView (self.mBoardIssueTableView, self.mComposedBoardGraphicView)
   //--- Assign main view to window
     if let windowSize = self.windowForSheet?.frame.size {
       mainView.frame.size = windowSize

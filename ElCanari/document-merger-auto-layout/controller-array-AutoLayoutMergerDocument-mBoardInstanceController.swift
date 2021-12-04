@@ -18,6 +18,16 @@ final class Controller_AutoLayoutMergerDocument_mBoardInstanceController : ReadO
 
   //····················································································································
 
+  var objects : EBReferenceArray <MergerBoardInstance> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   var selectedSet : EBReferenceSet <MergerBoardInstance> {
     set (newValue) {
     //--- Add observers to newly selected set

@@ -42,6 +42,16 @@ final class Controller_AutoLayoutDeviceDocument_packageController : EBObjcBaseOb
 
   //····················································································································
 
+  var objects : EBReferenceArray <PackageInDevice> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   final func bind_model (_ inModel : ReadWriteArrayOf_PackageInDevice, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager

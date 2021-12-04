@@ -18,6 +18,16 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
 
   //····················································································································
 
+  var objects : EBReferenceArray <PackageModelImageDoublePoint> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   var selectedSet : EBReferenceSet <PackageModelImageDoublePoint> {
     set (newValue) {
     //--- Add observers to newly selected set

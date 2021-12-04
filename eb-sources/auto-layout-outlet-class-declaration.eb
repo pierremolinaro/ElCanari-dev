@@ -98,6 +98,7 @@ extern autolayout class FlexibleSpace {
 }
 
 extern autolayout class EnumPopUpButton (titles: StringArray, size: EBControlSize) {
+  func expandableWidth ()
   $selectedIndex property enum
 }
 
@@ -318,6 +319,10 @@ extern autolayout class CanariFontCharacterGerberCodeTableView (size: EBControlS
 
 extern autolayout class Stepper {
   $value property Int (sendContinously: Bool)
+}
+
+extern autolayout class ElCanariDragSourceTableView {
+  $models transient StringTagArray
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

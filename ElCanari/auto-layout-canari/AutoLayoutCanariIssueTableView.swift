@@ -127,9 +127,6 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
         let cell = NSTableCellView ()
         cell.addSubview (imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-//        cell.addConstraint (NSLayoutConstraint (item: imageView, attribute: .centerY, relatedBy: .equal, toItem: cell, attribute: .centerY, multiplier: 1, constant: 0))
-//        cell.addConstraint (NSLayoutConstraint (item: imageView, attribute: .left, relatedBy: .equal, toItem: cell, attribute: .left, multiplier: 1, constant: 0))
-//        cell.addConstraint (NSLayoutConstraint (item: imageView, attribute: .right, relatedBy: .equal, toItem: cell, attribute: .right, multiplier: 1, constant: 0))
         result = cell
       }else if tableColumn.identifier == RIGHT_COLUMN_IDENTIFIER {
         let text = NSTextField ()
@@ -142,9 +139,6 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
         text.isBordered = false
         text.isEditable = false
         text.translatesAutoresizingMaskIntoConstraints = false
-//        cell.addConstraint (NSLayoutConstraint (item: text, attribute: .centerY, relatedBy: .equal, toItem: cell, attribute: .centerY, multiplier: 1, constant: 0))
-//        cell.addConstraint (NSLayoutConstraint (item: text, attribute: .left, relatedBy: .equal, toItem: cell, attribute: .left, multiplier: 1, constant: 0))
-//        cell.addConstraint (NSLayoutConstraint (item: text, attribute: .right, relatedBy: .equal, toItem: cell, attribute: .right, multiplier: 1, constant: 0))
         result = cell
       }
     }

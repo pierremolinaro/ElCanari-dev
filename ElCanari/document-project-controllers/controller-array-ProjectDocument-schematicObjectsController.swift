@@ -18,6 +18,16 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
 
   //····················································································································
 
+  var objects : EBReferenceArray <SchematicObject> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   var selectedSet : EBReferenceSet <SchematicObject> {
     set (newValue) {
     //--- Add observers to newly selected set

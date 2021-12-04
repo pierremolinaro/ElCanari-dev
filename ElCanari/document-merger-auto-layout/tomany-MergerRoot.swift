@@ -20,6 +20,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
       self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_zoom_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_showDisplaySettingView_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_modelInsertionRotation_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_automaticBoardSize_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_boardManualWidth_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_boardManualHeight_fromElementsOfSet (inRemovedSet) // Stored property
@@ -51,6 +52,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
       self.addEBObserversOf_selectedPageIndex_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_zoom_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_showDisplaySettingView_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_modelInsertionRotation_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_automaticBoardSize_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_boardManualWidth_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_boardManualHeight_toElementsOfSet (inAddedSet) // Stored property
@@ -252,6 +254,65 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
       observer.postEvent ()
       for managedObject in inSet.values {
         managedObject.showDisplaySettingView_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'modelInsertionRotation' stored property
+  //····················································································································
+
+  private final var mObserversOf_modelInsertionRotation = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_modelInsertionRotation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_modelInsertionRotation.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.modelInsertionRotation_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_modelInsertionRotation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_modelInsertionRotation.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.modelInsertionRotation_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_modelInsertionRotation_toElementsOfSet (_ inSet : EBReferenceSet <MergerRoot>) {
+    if !self.mObserversOf_modelInsertionRotation.isEmpty {
+      for managedObject in inSet.values {
+        self.mObserversOf_modelInsertionRotation.apply { (_ observer : EBEvent) in
+          managedObject.modelInsertionRotation_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_modelInsertionRotation_fromElementsOfSet (_ inSet : EBReferenceSet <MergerRoot>) {
+    self.mObserversOf_modelInsertionRotation.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet.values {
+        managedObject.modelInsertionRotation_property.removeEBObserver (observer)
       }
     }
   }
@@ -2861,6 +2922,7 @@ final class PreferencesArrayOf_MergerRoot : StoredArrayOf_MergerRoot {
     self.addEBObserverOf_selectedPageIndex (self.mObserverForWritingPreferences)
     self.addEBObserverOf_zoom (self.mObserverForWritingPreferences)
     self.addEBObserverOf_showDisplaySettingView (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_modelInsertionRotation (self.mObserverForWritingPreferences)
     self.addEBObserverOf_automaticBoardSize (self.mObserverForWritingPreferences)
     self.addEBObserverOf_boardManualWidth (self.mObserverForWritingPreferences)
     self.addEBObserverOf_boardManualHeight (self.mObserverForWritingPreferences)

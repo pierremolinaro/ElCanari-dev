@@ -42,6 +42,16 @@ final class Controller_AutoLayoutFontDocument_selectedCharacterController : EBOb
 
   //····················································································································
 
+  var objects : EBReferenceArray <FontCharacter> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   final func bind_model (_ inModel : ReadWriteArrayOf_FontCharacter, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager

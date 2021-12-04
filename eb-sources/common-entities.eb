@@ -101,6 +101,13 @@ enum QuadrantRotation {
   rotation0, rotation90, rotation180, rotation270
 }
 
+func enum QuadrantRotation.popupTitles {
+  rotation0 : "0" ;
+  rotation90 : "90" ;
+  rotation180 : "180" ;
+  rotation270 : "270" ;
+}
+
 //——————————————————————————————————————————————————————————————————————————————
 
 enum SchematicSheetOrientation { a4Vertical, a4Horizontal, custom }

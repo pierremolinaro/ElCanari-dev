@@ -18,6 +18,16 @@ final class Controller_AutoLayoutDeviceDocument_symbolDisplayController : ReadOn
 
   //····················································································································
 
+  var objects : EBReferenceArray <SymbolInstanceInDevice> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   var selectedSet : EBReferenceSet <SymbolInstanceInDevice> {
     set (newValue) {
     //--- Add observers to newly selected set

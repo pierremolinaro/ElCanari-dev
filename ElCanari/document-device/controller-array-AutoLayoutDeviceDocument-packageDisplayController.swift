@@ -18,6 +18,16 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
 
   //····················································································································
 
+  var objects : EBReferenceArray <PackageInDevice> {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return EBReferenceArray ()
+    }
+  }
+
+  //····················································································································
+
   var selectedSet : EBReferenceSet <PackageInDevice> {
     set (newValue) {
     //--- Add observers to newly selected set

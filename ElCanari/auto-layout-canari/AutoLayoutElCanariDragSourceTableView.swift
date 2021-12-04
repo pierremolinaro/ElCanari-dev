@@ -24,10 +24,12 @@ struct StringTag : Hashable {
 typealias StringTagArray = [StringTag]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   CanariDragSourceTableView
+//   AutoLayoutElCanariDragSourceTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutElCanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
+final class AutoLayoutElCanariDragSourceTableView : NSScrollView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
+
+  private let mTableView = InternalDragSourceTableView ()
 
   //····················································································································
   // INIT
@@ -42,17 +44,36 @@ final class AutoLayoutElCanariDragSourceTableView : NSTableView, EBUserClassName
   init () {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
+//    self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
+
+    let leftColumn = NSTableColumn ()
+    leftColumn.minWidth = 20.0
+    leftColumn.maxWidth = 400.0
+    leftColumn.isEditable = false
+    leftColumn.resizingMask = .autoresizingMask
+    self.mTableView.addTableColumn (leftColumn)
 
   //--- Set sort descriptor
-    let tableColumns = self.tableColumns
+    let tableColumns = self.mTableView.tableColumns
     if tableColumns.count == 1 {
       let column = tableColumns [0]
       let sortDescriptor = NSSortDescriptor (key: column.identifier.rawValue, ascending: true)
       column.sortDescriptorPrototype = sortDescriptor
-      self.sortDescriptors = [sortDescriptor] // This shows the sort indicator
+      self.mTableView.sortDescriptors = [sortDescriptor] // This shows the sort indicator
     }
-    self.dataSource = self
-    self.delegate = self
+    self.mTableView.dataSource = self
+    self.mTableView.delegate = self
+    self.mTableView.headerView = nil
+    self.mTableView.cornerView = nil
+    self.mTableView.columnAutoresizingStyle = .lastColumnOnlyAutoresizingStyle
+    self.mTableView.usesAutomaticRowHeights = true
+
+    self.drawsBackground = false
+    self.documentView = self.mTableView
+    self.hasHorizontalScroller = false
+    self.hasVerticalScroller = true
+//    Swift.print ("self.automaticallyAdjustsContentInsets \(self.automaticallyAdjustsContentInsets)")
+    self.automaticallyAdjustsContentInsets = true
   }
 
   //····················································································································
@@ -62,35 +83,17 @@ final class AutoLayoutElCanariDragSourceTableView : NSTableView, EBUserClassName
   }
 
   //····················································································································
-  // AWAKE FROM NIB
-  //····················································································································
-
-//  override func awakeFromNib () {
-//    super.awakeFromNib ()
-//  //--- Set sort descriptor
-//    let tableColumns = self.tableColumns
-//    if tableColumns.count == 1 {
-//      let column = tableColumns [0]
-//      let sortDescriptor = NSSortDescriptor (key: column.identifier.rawValue, ascending: true)
-//      column.sortDescriptorPrototype = sortDescriptor
-//      self.sortDescriptors = [sortDescriptor] // This shows the sort indicator
-//    }
-//    self.dataSource = self
-//    self.delegate = self
-//  }
-
-  //····················································································································
   //    Register dragged type
   //····················································································································
 
   fileprivate var mDraggedType : NSPasteboard.PasteboardType? = nil
-  fileprivate weak var mDocument : EBAutoLayoutManagedDocument? = nil
 
   //····················································································································
 
   func register (document : EBAutoLayoutManagedDocument, draggedType : NSPasteboard.PasteboardType) {
     self.mDraggedType = draggedType
-    self.mDocument = document
+    self.mTableView.mDocument = document
+    self.mTableView.mSource = self
   }
 
   //····················································································································
@@ -109,16 +112,13 @@ final class AutoLayoutElCanariDragSourceTableView : NSTableView, EBUserClassName
   func tableView (_ tableView : NSTableView,
                   viewFor inTableColumn : NSTableColumn?,
                   row inRowIndex : Int) -> NSView? {
-    if let tableColumnIdentifier = inTableColumn?.identifier,
-       let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner: self) as? NSTableCellView {
-      if !reuseTableViewCells () {
-        result.identifier = nil // So result cannot be reused, will be freed
-      }
-      result.textField?.stringValue = self.mModelArray [inRowIndex].string
-      return result
-    }else{
-      return nil
-    }
+    let text = NSTextField ()
+    text.alignment = .left
+    text.drawsBackground = false
+    text.isBordered = false
+    text.stringValue = self.mModelArray [inRowIndex].string
+    text.toolTip = self.mModelArray [inRowIndex].string
+    return text
   }
 
   //····················································································································
@@ -132,7 +132,7 @@ final class AutoLayoutElCanariDragSourceTableView : NSTableView, EBUserClassName
   private func setModel (_ inModel : [StringTag]) {
   //--- Note selected rows
     var selectedRowContents = Set <String> ()
-    let currentSelectedRowIndexes = self.selectedRowIndexes
+    let currentSelectedRowIndexes = self.mTableView.selectedRowIndexes
     for idx in currentSelectedRowIndexes {
       if idx < self.mModelArray.count {
         selectedRowContents.insert (self.mModelArray [idx].string)
@@ -141,8 +141,8 @@ final class AutoLayoutElCanariDragSourceTableView : NSTableView, EBUserClassName
   //--- Assignment
     self.mModelArray = inModel
   //-- Sort
-    if self.sortDescriptors.count == 1 {
-      let sortDescriptor = self.sortDescriptors [0]
+    if self.mTableView.sortDescriptors.count == 1 {
+      let sortDescriptor = self.mTableView.sortDescriptors [0]
       if sortDescriptor.ascending {
         self.mModelArray.sort (by: { $0.string.localizedStandardCompare ($1.string) == .orderedAscending } )
       }else{
@@ -150,7 +150,7 @@ final class AutoLayoutElCanariDragSourceTableView : NSTableView, EBUserClassName
       }
     }
   //--- Tell Table view to reload
-    self.reloadData ()
+    self.mTableView.reloadData ()
   //--- Restore selection
     var newSelectedRowIndexes = IndexSet ()
     var idx = 0
@@ -171,7 +171,7 @@ final class AutoLayoutElCanariDragSourceTableView : NSTableView, EBUserClassName
         newSelectedRowIndexes.insert (0)
       }
     }
-    self.selectRowIndexes (newSelectedRowIndexes, byExtendingSelection: false)
+    self.mTableView.selectRowIndexes (newSelectedRowIndexes, byExtendingSelection: false)
   }
 
   //····················································································································
@@ -204,7 +204,7 @@ final class AutoLayoutElCanariDragSourceTableView : NSTableView, EBUserClassName
                   writeRowsWith rowIndexes: IndexSet,
                   to pboard : NSPasteboard) -> Bool {
     if let draggedType = self.mDraggedType, rowIndexes.count == 1 {
-      self.selectRowIndexes (rowIndexes, byExtendingSelection: false)
+      self.mTableView.selectRowIndexes (rowIndexes, byExtendingSelection: false)
       let cellName : String = self.mModelArray [rowIndexes.first!].string
       pboard.declareTypes ([draggedType], owner:self)
     //--- Associated data is cell name
@@ -217,37 +217,17 @@ final class AutoLayoutElCanariDragSourceTableView : NSTableView, EBUserClassName
   }
 
   //····················································································································
-  // Providing the drag image
-  //····················································································································
-
-  override func dragImageForRows (with dragRows: IndexSet,
-                                  tableColumns: [NSTableColumn],
-                                  event dragEvent: NSEvent,
-                                  offset dragImageOffset: NSPointPointer) -> NSImage {
-    if let document = self.mDocument {
-      return document.dragImageForRows (
-        source: self,
-        with: dragRows,
-        tableColumns: tableColumns,
-        event: dragEvent,
-        offset: dragImageOffset
-      )
-    }else{
-      return NSImage (named: NSImage.Name ("exclamation"))!
-    }
-  }
-
-  //····················································································································
   //    $models binding
   //····················································································································
 
   private var mModelsController : EBReadOnlyPropertyController? = nil
 
-  final func bind_models (_ model : EBReadOnlyProperty_StringTagArray) {
+  final func bind_models (_ model : EBReadOnlyProperty_StringTagArray) -> Self {
     self.mModelsController = EBReadOnlyPropertyController (
       observedObjects: [model],
       callBack: {self.update (from: model) }
     )
+    return self
   }
 
   //····················································································································
@@ -265,6 +245,61 @@ final class AutoLayoutElCanariDragSourceTableView : NSTableView, EBUserClassName
       self.setModel ([])
     case .single (let v) :
       self.setModel (v)
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   InternalDragSourceTableView
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate final class InternalDragSourceTableView : NSTableView, EBUserClassNameProtocol {
+
+  weak var mDocument : EBAutoLayoutManagedDocument? = nil
+  weak var mSource : AutoLayoutElCanariDragSourceTableView? = nil
+
+  //····················································································································
+  // INIT
+  //····················································································································
+
+  required init? (coder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  init () {
+    super.init (frame: NSRect ())
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+  // Providing the drag image
+  //····················································································································
+
+  override func dragImageForRows (with dragRows: IndexSet,
+                                  tableColumns: [NSTableColumn],
+                                  event dragEvent: NSEvent,
+                                  offset dragImageOffset: NSPointPointer) -> NSImage {
+    if let document = self.mDocument, let source = self.mSource {
+      return document.dragImageForRows (
+        source: source,
+        with: dragRows,
+        tableColumns: tableColumns,
+        event: dragEvent,
+        offset: dragImageOffset
+      )
+    }else{
+      return NSImage (named: NSImage.Name ("exclamation"))!
     }
   }
 
