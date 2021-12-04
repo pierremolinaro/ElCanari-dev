@@ -301,7 +301,7 @@ AAAAAAEGA
                                 <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="name" editable="NO" width="197.77830188679266" minWidth="40" maxWidth="1000" id="W5Y-ob-ode">
+                                    <tableColumn identifier="name" editable="NO" width="168.77830188679266" minWidth="40" maxWidth="1000" id="W5Y-ob-ode">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Name">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -314,11 +314,11 @@ AAAAAAEGA
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="wk9-sM-hfe" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="1" y="1" width="207" height="17"/>
+                                                <rect key="frame" x="11" y="1" width="178" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TGu-Py-x0D" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="178" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="nkR-v3-rgo">
                                                             <font key="font" metaFont="system"/>
@@ -2246,7 +2246,7 @@ TW: Track Width</string>
                                         </tableHeaderCell>
                                         <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ntL-7G-rt3"/>
                                     </tableColumn>
-                                    <tableColumn identifier="title" editable="NO" width="144" minWidth="40" maxWidth="1000" id="nKp-V5-rHj">
+                                    <tableColumn identifier="title" editable="NO" width="115" minWidth="40" maxWidth="1000" id="nKp-V5-rHj">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -2301,7 +2301,7 @@ TW: Track Width</string>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" autoresizesSubviews="NO" drawsBackground="NO" copiesOnScroll="NO" id="qqO-v5-L3x">
                         <rect key="frame" x="0.0" y="0.0" width="257" height="537"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView autoresizesSubviews="NO" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xI2-WN-a67">
                                 <rect key="frame" x="0.0" y="0.0" width="257" height="537"/>
@@ -2375,7 +2375,7 @@ TW: Track Width</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="lgH-tn-3jv">
                                             <rect key="frame" x="1" y="1" width="138" height="79"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" viewBased="YES" id="bu8-Fi-9kF" customClass="CanariDragSourceTableView" customModule="ElCanari" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="138" height="79"/>
@@ -2385,7 +2385,7 @@ TW: Track Width</string>
                                                     <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn editable="NO" width="126" minWidth="10" maxWidth="3.4028234663852886e+38" id="A0A-cm-L3n">
+                                                        <tableColumn editable="NO" width="97" minWidth="10" maxWidth="3.4028234663852886e+38" id="A0A-cm-L3n">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Model">
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2398,11 +2398,11 @@ TW: Track Width</string>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView id="lKP-Q2-J7D">
-                                                                    <rect key="frame" x="1" y="1" width="135" height="17"/>
+                                                                    <rect key="frame" x="11" y="1" width="106" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QD3-cA-xAb">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="135" height="17"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="106" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="5KW-fz-W4Z">
                                                                                 <font key="font" metaFont="system"/>

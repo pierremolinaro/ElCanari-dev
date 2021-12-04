@@ -50,12 +50,17 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
                       pageView inPageView : AutoLayoutAbstractStackView) -> Self {
     self.segmentCount += 1
     self.setLabel (inTitle, forSegment: self.segmentCount - 1)
-    // self.setToolTip (inTooltipString, forSegment: self.segmentCount - 1) // ONLY for 10.13+
+    self.setToolTip (inTooltipString, forSegment: self.segmentCount - 1)
     if let segmentedCell = self.cell as? NSSegmentedCell {
       segmentedCell.setToolTip (inTooltipString, forSegment: self.segmentCount - 1)
     }
     self.mPages.append (inPageView)
     self.frame.size = self.intrinsicContentSize
+
+    if self.segmentCount == 1 {
+      self.selectedSegment = 0
+      self.selectedSegmentDidChange (nil)
+    }
     return self
   }
 

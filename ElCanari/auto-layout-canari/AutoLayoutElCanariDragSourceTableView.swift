@@ -1,9 +1,8 @@
 //
-//  CanariDragSourceTableView.swift
+//  AutoLayoutElCanariDragSourceTableView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 14/07/2018.
-//
+//  Created by Pierre Molinaro on 04/12/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -13,51 +12,37 @@ import Cocoa
 //   StringTag
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//struct StringTag : Hashable {
-//  let string : String
-//  let tag : Int
-//}
+struct StringTag : Hashable {
+  let string : String
+  let tag : Int
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   StringTagArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//typealias StringTagArray = [StringTag]
+typealias StringTagArray = [StringTag]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   CanariDragSourceTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
+final class AutoLayoutElCanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
   // INIT
   //····················································································································
 
   required init? (coder : NSCoder) {
-    super.init (coder: coder)
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  init () {
+    super.init (frame: NSRect ())
     noteObjectAllocation (self)
-  }
 
-  //····················································································································
-
-  override init (frame : NSRect) {
-    super.init (frame: frame)
-    noteObjectAllocation (self)
-  }
-  
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-  // AWAKE FROM NIB
-  //····················································································································
-
-  override func awakeFromNib () {
-    super.awakeFromNib ()
   //--- Set sort descriptor
     let tableColumns = self.tableColumns
     if tableColumns.count == 1 {
@@ -71,15 +56,39 @@ final class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NS
   }
 
   //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+  // AWAKE FROM NIB
+  //····················································································································
+
+//  override func awakeFromNib () {
+//    super.awakeFromNib ()
+//  //--- Set sort descriptor
+//    let tableColumns = self.tableColumns
+//    if tableColumns.count == 1 {
+//      let column = tableColumns [0]
+//      let sortDescriptor = NSSortDescriptor (key: column.identifier.rawValue, ascending: true)
+//      column.sortDescriptorPrototype = sortDescriptor
+//      self.sortDescriptors = [sortDescriptor] // This shows the sort indicator
+//    }
+//    self.dataSource = self
+//    self.delegate = self
+//  }
+
+  //····················································································································
   //    Register dragged type
   //····················································································································
 
   fileprivate var mDraggedType : NSPasteboard.PasteboardType? = nil
-  fileprivate weak var mDocument : EBManagedXibDocument? = nil
+  fileprivate weak var mDocument : EBAutoLayoutManagedDocument? = nil
 
   //····················································································································
 
-  func register (document : EBManagedXibDocument, draggedType : NSPasteboard.PasteboardType) {
+  func register (document : EBAutoLayoutManagedDocument, draggedType : NSPasteboard.PasteboardType) {
     self.mDraggedType = draggedType
     self.mDocument = document
   }
@@ -216,7 +225,7 @@ final class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NS
                                   event dragEvent: NSEvent,
                                   offset dragImageOffset: NSPointPointer) -> NSImage {
     if let document = self.mDocument {
-      return document.dragImageForRowsXib (
+      return document.dragImageForRows (
         source: self,
         with: dragRows,
         tableColumns: tableColumns,

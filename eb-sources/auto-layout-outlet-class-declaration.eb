@@ -49,6 +49,11 @@ extern autolayout class TwoColumnsGridView {
 extern autolayout class VerticalScrollView (content: view) {
 }
 
+extern autolayout class ElCanariOrientationSegmentedControl (size: EBControlSize) $enabled $hidden {
+  func expandableWidth ()
+  $orientation property QuadrantRotation
+}
+
 extern autolayout class StaticLabel (title : String, bold: Bool, size: EBControlSize) $enabled $hidden {
   func set (alignment: TextAlignment)
   func set (width: Int)

@@ -58,7 +58,17 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   // Providing the drag image, called by a source drag table view (CanariDragSourceTableView)
   //····················································································································
 
-  func dragImageForRows (source inSourceTableView : CanariDragSourceTableView,
+  func dragImageForRowsXib (source inSourceTableView : CanariDragSourceTableView,
+                            with dragRows: IndexSet,
+                            tableColumns: [NSTableColumn],
+                            event dragEvent: NSEvent,
+                            offset dragImageOffset: NSPointPointer) -> NSImage {
+    return NSImage (named: NSImage.Name ("exclamation"))!
+  }
+
+  //····················································································································
+
+  func dragImageForRows (source inSourceTableView : AutoLayoutElCanariDragSourceTableView,
                          with dragRows: IndexSet,
                          tableColumns: [NSTableColumn],
                          event dragEvent: NSEvent,

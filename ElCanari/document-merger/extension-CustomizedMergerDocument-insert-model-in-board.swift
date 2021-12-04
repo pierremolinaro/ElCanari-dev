@@ -62,7 +62,7 @@ extension CustomizedMergerDocument {
       let xCountTextField = AutoLayoutIntField (width: 56, size: .small).bind_value (self.mInsertArrayOfBoardsXCount, sendContinously: true)
       let yCountTextField = AutoLayoutIntField (width: 56, size: .small).bind_value (self.mInsertArrayOfBoardsYCount, sendContinously: true)
     //--- Orientation
-      let orientationSegmentedControl = AutoLayoutCanariOrientationSegmentedControl (size: .small)
+      let orientationSegmentedControl = AutoLayoutElCanariOrientationSegmentedControl (size: .small)
         .bind_orientation (self.mInsertArrayOfBoardsOrientation)
     //--- Build panel
       let panel = NSPanel (

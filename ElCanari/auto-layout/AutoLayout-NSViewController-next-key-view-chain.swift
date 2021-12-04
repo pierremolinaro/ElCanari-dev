@@ -47,7 +47,7 @@ class EBViewController : NSViewController, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private func triggerNextKeyViewSettingComputation () {
+  func triggerNextKeyViewSettingComputation () {
     if !mNextKeyViewSettingComputationHasBeenTriggered {
       self.mNextKeyViewSettingComputationHasBeenTriggered = true
       DispatchQueue.main.async {

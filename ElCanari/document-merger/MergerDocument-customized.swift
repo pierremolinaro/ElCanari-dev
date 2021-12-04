@@ -26,7 +26,7 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
 
     let mInsertArrayOfBoardsXCount = EBGenericStoredProperty <Int> (defaultValue: 1, undoManager: nil)
     let mInsertArrayOfBoardsYCount = EBGenericStoredProperty <Int> (defaultValue: 1, undoManager: nil)
-    let mInsertArrayOfBoardsOrientation = EBGenericStoredProperty <QuadrantRotation> (defaultValue: .rotation0, undoManager: nil)
+    let mInsertArrayOfBoardsOrientation = EBStoredProperty_QuadrantRotation (defaultValue: .rotation0, undoManager: nil)
 
   //····················································································································
   //    buildUserInterface: customization of interface
@@ -117,11 +117,11 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
   // Providing the drag image, called by a source drag table view (CanariDragSourceTableView)
   //····················································································································
 
-  override func dragImageForRows (source inSourceTableView : CanariDragSourceTableView,
-                                  with dragRows: IndexSet,
-                                  tableColumns: [NSTableColumn],
-                                  event dragEvent: NSEvent,
-                                  offset dragImageOffset: NSPointPointer) -> NSImage {
+  override func dragImageForRowsXib (source inSourceTableView : CanariDragSourceTableView,
+                                     with dragRows: IndexSet,
+                                     tableColumns: [NSTableColumn],
+                                     event dragEvent: NSEvent,
+                                     offset dragImageOffset: NSPointPointer) -> NSImage {
     if let boardView = self.mComposedBoardView?.mGraphicView,
        dragRows.count == 1,
       let idx = dragRows.first,

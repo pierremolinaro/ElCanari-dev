@@ -538,11 +538,11 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
   // Providing the drag image, called by a source drag table view (CanariDragSourceTableView)
   //····················································································································
 
-  override func dragImageForRows (source inSourceTableView : CanariDragSourceTableView,
-                                  with dragRows: IndexSet,
-                                  tableColumns: [NSTableColumn],
-                                  event dragEvent: NSEvent,
-                                  offset dragImageOffset: NSPointPointer) -> NSImage {
+  override func dragImageForRowsXib (source inSourceTableView : CanariDragSourceTableView,
+                                     with dragRows: IndexSet,
+                                     tableColumns: [NSTableColumn],
+                                     event dragEvent: NSEvent,
+                                     offset dragImageOffset: NSPointPointer) -> NSImage {
     var resultImage = NSImage (named: NSImage.Name ("exclamation"))!
     if inSourceTableView == self.mUnplacedSymbolsTableView,
       let schematicsView = self.mSchematicsView?.mGraphicView,

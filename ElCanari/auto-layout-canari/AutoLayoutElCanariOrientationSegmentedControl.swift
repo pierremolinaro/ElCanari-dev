@@ -1,5 +1,5 @@
 //
-//  AutoLayoutCanariOrientationSegmentedControl.swift
+//  AutoLayoutElCanariOrientationSegmentedControl.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 16/07/2021.
@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariOrientationSegmentedControl : InternalAutoLayoutSegmentedControl {
+final class AutoLayoutElCanariOrientationSegmentedControl : InternalAutoLayoutSegmentedControl {
 
   //····················································································································
 
@@ -34,7 +34,7 @@ final class AutoLayoutCanariOrientationSegmentedControl : InternalAutoLayoutSegm
 
   //····················································································································
 
-  func updateTag (from inObject : EBGenericReadWriteProperty <QuadrantRotation>) {
+  func updateTag (from inObject : EBReadWriteProperty_QuadrantRotation) {
     switch inObject.selection {
     case .single (let v) :
       self.enable (fromValueBinding: true)
@@ -58,12 +58,12 @@ final class AutoLayoutCanariOrientationSegmentedControl : InternalAutoLayoutSegm
   //  $orientation binding
   //····················································································································
 
-  private var mSelectedOrientationController : EBGenericReadWritePropertyController <QuadrantRotation>? = nil
+  private var mSelectedOrientationController : EBGenericEnumReadWritePropertyController <QuadrantRotation>? = nil
 
   //····················································································································
 
-  final func bind_orientation (_ inObject : EBGenericReadWriteProperty <QuadrantRotation>) -> Self {
-    self.mSelectedOrientationController = EBGenericReadWritePropertyController <QuadrantRotation> (
+  final func bind_orientation (_ inObject : EBReadWriteProperty_QuadrantRotation) -> Self {
+    self.mSelectedOrientationController = EBGenericEnumReadWritePropertyController <QuadrantRotation> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateTag (from: inObject) }
     )

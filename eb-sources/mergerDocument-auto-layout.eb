@@ -38,6 +38,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
 
   transient NSImage statusImage dependsFrom self.issues ;
   transient String statusMessage dependsFrom self.issues ;
+  transient String statusTitle dependsFrom self.issues ;
   transient CanariIssueArray issues dependsFrom
     root.overlapingArrangment, root.boardRect, root.boardDisplayRect,
     root.boardInstances.all.instanceRect, root.boardInstances.all.boardLimitWidth
@@ -391,8 +392,449 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   //     Board Page
   //············································································
 
-  stackView mBoardPage vStack {
+  stackView mBoardBaseInspectorView vStack { }
+
+  stackView mBoardPage hStack {
+    vStack set (bottomMargin: 8) set (width: 250) $hidden !root.showDisplaySettingView {
+      VerticalScrollView (content: 
+        TwoColumnsGridView {
+          set (margins: 8)
+          addCenterYAligned (
+            left: space,
+            right: hStack {
+              StaticLabel (title: "Model", bold: yes, size: .small)
+              space
+              StaticLabel (title: "Board", bold: yes, size: .small)
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Horizontal Flip", bold: no, size: .small),
+            right: hStack {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewHorizontalFlip }
+              space
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewHorizontalFlip }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Vertical Flip", bold: no, size: .small),
+            right: hStack {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewVerticalFlip }
+              space
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewVerticalFlip }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Holes", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayHoles }
+              ColorWell { $color prefs.mergerColorHoles (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayHoles }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Vias", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayVias }
+              ColorWell { $color prefs.mergerColorVias (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayVias }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Board Limits", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBoardLimits }
+              ColorWell { $color prefs.mergerColorBoardLimits (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBoardLimits }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Internal Board Limits", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayInternalBoardsLimits }
+              ColorWell { $color prefs.mergerColorInternalBoardsLimits (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayInternalBoardsLimits }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Background", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              space
+              ColorWell { $color prefs.mergerColorBackground (sendContinously: no) }
+              space
+            }
+          )
+          addCenterYAligned (
+            left: hStack { StaticLabel (title: "Front", bold: yes, size: .small) space },
+            right: space
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Pads", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontPads }
+              ColorWell { $color prefs.mergerColorFrontPads (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontPads }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Component Names", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontComponentNames }
+              ColorWell { $color prefs.mergerColorFrontComponentNames (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontComponentNames }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Component Values", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontComponentValues }
+              ColorWell { $color prefs.mergerColorFrontComponentValues (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontComponentValues }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Packages", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontPackages }
+              ColorWell { $color prefs.mergerColorFrontPackages (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontPackages }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Legend Texts", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontLegendTexts }
+              ColorWell { $color prefs.mergerColorFrontLegendTexts (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontLegendTexts }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Legend Lines", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontLegendLines }
+              ColorWell { $color prefs.mergerColorFrontLegendLines (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontLegendLines }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Layout Texts", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontLayoutTexts }
+              ColorWell { $color prefs.mergerColorFrontLayoutTexts (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontLayoutTexts }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Tracks", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontTracks }
+              ColorWell { $color prefs.mergerColorFrontTracks (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontTracks }
+            }
+          )
+          addCenterYAligned (
+            left: hStack { StaticLabel (title: "Inner", bold: yes, size: .small) space },
+            right: space
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Traversing Pads", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayTraversingPads }
+              ColorWell { $color prefs.mergerColorTraversingPads (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayTraversingPads }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Inner 1 Tracks", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayInner1Tracks }
+              ColorWell { $color prefs.mergerColorInner1Tracks (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayInner1Tracks }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Inner 2 Tracks", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayInner2Tracks }
+              ColorWell { $color prefs.mergerColorInner2Tracks (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayInner2Tracks }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Inner 3 Tracks", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayInner3Tracks }
+              ColorWell { $color prefs.mergerColorInner3Tracks (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayInner3Tracks }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Inner 4 Tracks", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayInner4Tracks }
+              ColorWell { $color prefs.mergerColorInner4Tracks (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayInner4Tracks }
+            }
+          )
+          addCenterYAligned (
+            left: hStack { StaticLabel (title: "Back", bold: yes, size: .small) space },
+            right: space
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Pads", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackPads }
+              ColorWell { $color prefs.mergerColorBackPads (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackPads }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Component Names", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackComponentNames }
+              ColorWell { $color prefs.mergerColorBackComponentNames (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackComponentNames }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Component Values", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackComponentValues }
+              ColorWell { $color prefs.mergerColorBackComponentValues (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackComponentValues }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Packages", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackPackages }
+              ColorWell { $color prefs.mergerColorBackPackages (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackPackages }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Legend Texts", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackLegendTexts }
+              ColorWell { $color prefs.mergerColorBackLegendTexts (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackLegendTexts }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Legend Lines", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackLegendLines }
+              ColorWell { $color prefs.mergerColorBackLegendLines (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackLegendLines }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Layout Texts", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackLayoutTexts }
+              ColorWell { $color prefs.mergerColorBackLayoutTexts (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackLayoutTexts }
+            }
+          )
+          addCenterYAligned (
+            left: StaticLabel (title: "Tracks", bold: no, size: .small),
+            right: hStack setCenterYAlignment () {
+              Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackTracks }
+              ColorWell { $color prefs.mergerColorBackTracks (sendContinously: no) }
+              Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackTracks }
+            }
+          )
+        }
+      )
+      space
+      hStack { space Button (title: "Done", size : .regular) { $run dismissDisplaySettingView } }
+    }
+    vStack set (margins: 8) set (width: 250) $hidden root.showDisplaySettingView {
+      SegmentedControlWithPages (documentView: stackView mBoardBaseInspectorView, equalWidth: yes, size : .regular)
+        [outlet mBoardInspectorSegmentedControl configurator boardPageSegmentedControl] {
+        expandableWidth ()
+        addPage (title: "A", tooltip: "Model Description", pageView: stackView mBoardSettingsPage)
+        addPage (title: "", tooltip: "Issue Inspector", pageView: stackView mBoardIssuesPage)
+        $segmentImage self.statusImage (segmentIndex : 1)
+        $segmentTitle self.statusTitle (segmentIndex : 1)
+      }
+      stackViewRef mBoardBaseInspectorView
+    }
+    separator
+    GraphicView (minZoom: 10, maxZoom: 4000) [outlet mBoardGraphicView] {
+      $zoom root.zoom
+      $horizontalFlip prefs.mergerBoardViewHorizontalFlip
+      $verticalFlip prefs.mergerBoardViewVerticalFlip
+      $overObjectsDisplay root.boardOutlineRectDisplay
+      $graphicController #mBoardInstanceController
+      $arrowKeyMagnitude root.arrowMagnitude
+      $shiftArrowKeyMagnitude root.shiftArrowMagnitude
+    }
   }
+
+  arrayController #mBoardInstanceController : root.boardInstances ;
+
+//  autolayout tableViewController #mBoardInstanceController (allowsEmptySelection:no, allowsMultipleSelection:no) root.boardInstances {
+//    column modelName (title: "", minWidth: 100, maxWidth: 300, headerAlignment: .center, contentAlignment: .right)
+//  }
+  selectionController MergerBoardInstance #mBoardInstanceSelection : #mBoardInstanceController.selectedArray ;
+
+  //············································································
+  //     Board Settings Page
+  //············································································
+
+  stackView mBoardSettingsPage vStack {
+    TwoColumnsGridView {
+      add (single: 
+        hStack {
+          vStack {
+            StaticLabel (title: "Add Model", bold: yes, size : .small) { expandableWidth () set (alignment: .left) }
+            HelpButton (size : .small) { $run showBoardHelpAction }
+          }
+
+//--- Table view, source of model drag
+//  outlet CanariDragSourceTableView mModelDragSourceTableView $models root.modelNames ;
+        }
+      )
+      add (single: StaticLabel (title: "Board", bold: yes, size : .small) { expandableWidth () set (alignment: .left) } )
+      add (single: 
+        hStack {
+          Checkbox (title: "Automatic Size", size: .small) { $value root.automaticBoardSize }
+          space
+          Checkbox (title: "Limits Overlap", size: .small) {
+            $enabled root.boardInstances.count > 0
+            $value root.overlapingArrangment
+          }
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Width", bold: no, size : .small),
+        right: vStack {
+          CanariDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit root.boardManualWidth, root.boardWidthUnit
+            $hidden root.automaticBoardSize
+          }
+          CanariObservedDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit root.boardWidth, root.boardWidthUnit
+            $hidden !root.automaticBoardSize
+          }
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Height", bold: no, size : .small),
+        right: vStack {
+          CanariDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit root.boardManualHeight, root.boardHeightUnit
+            $hidden root.automaticBoardSize
+          }
+          CanariObservedDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit root.boardHeight, root.boardHeightUnit
+            $hidden !root.automaticBoardSize
+          }
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Limit Width", bold: no, size : .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit root.boardLimitWidth, root.boardLimitWidthUnit
+        }
+      )
+      add (single: StaticLabel (title: "Arrow Key Magnitude", bold: yes, size : .small)
+        { expandableWidth () set (alignment: .left) }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Arrow Key", bold: no, size : .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit root.arrowMagnitude, root.arrowMagnitudeUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Shift Arrow Key", bold: no, size : .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit root.shiftArrowMagnitude, root.shiftArrowMagnitudeUnit
+        }
+      )
+      add (single: StaticLabel (title: "Selected Element", bold: yes, size : .small)
+        { expandableWidth () set (alignment: .left) }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Model", bold: no, size : .small),
+        right: Label (bold: yes, size: .small) { $title #mBoardInstanceSelection.modelName }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Right", bold: no, size : .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #mBoardInstanceSelection.x, root.selectedBoardXUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Bottom", bold: no, size : .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #mBoardInstanceSelection.y, root.selectedBoardYUnit
+        }
+      )
+      add (single:
+        ElCanariOrientationSegmentedControl (size : .small) {
+          expandableWidth ()
+          $orientation #mBoardInstanceSelection.instanceRotation
+        }
+      )
+      add (single: StaticLabel (title: "Move Selection", bold: yes, size : .small)
+        { expandableWidth () set (alignment: .left) }
+      )
+      add (single: 
+        hStack {
+          space
+          vStack {
+            hStack {
+              space
+              Button (title: "Up", size : .small) {
+                $enabled #mBoardInstanceController.selectedArray.count > 0
+                $run moveUpAction 
+              }
+              space
+            }
+            hStack {
+              Button (title: "Left", size : .small) {
+                $enabled #mBoardInstanceController.selectedArray.count > 0
+                $run moveLeftAction 
+              }
+              Button (title: "Right", size : .small) {
+                $enabled #mBoardInstanceController.selectedArray.count > 0
+                $run moveRightAction 
+              }
+            }
+            hStack {
+              space
+              Button (title: "Down", size : .small) {
+                $enabled #mBoardInstanceController.selectedArray.count > 0
+                $run moveDownAction 
+              }
+              space
+            }
+          }
+          space
+        }
+      )
+    }
+    space
+  }
+
+  action moveRightAction ;
+  action moveLeftAction ;
+  action moveUpAction ;
+  action moveDownAction ;
+  action showBoardHelpAction ;
+
+  //············································································
+  //     Board Issues Page
+  //············································································
+
+  stackView mBoardIssuesPage vStack {
+    Label (bold: no, size: .regular) { expandableWidth () set (alignment: .center) $title self.statusMessage }
+    CanariIssueTableView (hasHideIssueButton: yes) [outlet mBoardIssueTableView] { $issues self.issues }
+  }
+
+  linker issueTableViewToGraphicView (mBoardIssueTableView, mBoardGraphicView)
 
   //············································································
   //     Product Page
@@ -403,130 +845,22 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
 
   //············································································
 
-//--- Selected Page
-
-//--- Show Preferences for setting display
-//  outlet EBButton dismissPrefsForSettingMergerDisplayButton
-//    $run showPrefsForSettingMergerDisplayAction ;
-
-//--- Issues
-//  outlet EBTextObserverField mIssueTextField $valueObserver self.mStatusMessage ;
-//
-//  outlet EBButton mDeselectIssueButton ;
-//  outlet IssueTableView mIssueTableView $issues self.issues ;
 
 //------------------------------------- Board Page
 //  outlet CanariViewWithKeyView mBoardPageView ;
 //
 //  outlet NSPopUpButton mInsertedInstanceDefaultOrientation ;
 
-//--- Board model name
-//  outlet EBTextObserverField mInstanceModelNameTextField $valueObserver #mBoardInstanceSelection.modelName ;
-
-//--- Automatic Board size
-//  outlet EBSwitch mAutomaticBoardSizeSwitch $value root.automaticBoardSize ;
-//  outlet NSView mAutomaticBoardSizeView $hidden !root.automaticBoardSize ;
-//  outlet NSView mManualBoardSizeView $hidden root.automaticBoardSize ;
-
-
-//--- Arrow Magnitude
-//  outlet EBPopUpButton mArrowMagnitudeUnitPopUp $selectedTag root.arrowMagnitudeUnit ;
-//  outlet CanariDimensionTextField mArrowMagnitudeTextField
-//     $dimensionAndUnit root.arrowMagnitude, root.arrowMagnitudeUnit
-//  ;
-
-
-//--- Shift Arrow Magnitude
-//  outlet EBPopUpButton mShiftArrowMagnitudeUnitPopUp $selectedTag root.shiftArrowMagnitudeUnit ;
-//  outlet CanariDimensionTextField mShiftArrowMagnitudeTextField
-//     $dimensionAndUnit root.shiftArrowMagnitude, root.shiftArrowMagnitudeUnit
-//  ;
-
-
-//--- Manual Board width display
-//  outlet EBPopUpButton mManualBoardWidthUnitPopUp $selectedTag root.boardWidthUnit ;
-//  outlet CanariDimensionTextField mManualBoardWidthTextField
-//     $dimensionAndUnit root.boardManualWidth, root.boardWidthUnit
-//  ;
-
-//--- Manual Board Height display
-//  outlet EBPopUpButton mManualBoardHeightUnitPopUp $selectedTag root.boardHeightUnit ;
-//  outlet CanariDimensionTextField mManualBoardHeightTextField
-//     $dimensionAndUnit root.boardManualHeight, root.boardHeightUnit
-//  ;
-
-//--- Automatic Board width display
-//  outlet EBPopUpButton mBoardWidthUnitPopUp $selectedTag root.boardWidthUnit ;
-//  outlet CanariDimensionObserverTextField mBoardWidthTextField
-//     $dimensionAndUnit root.boardWidth, root.boardWidthUnit
-//  ;
-
-//--- Automatic Board Height display
-//  outlet EBPopUpButton mBoardHeightUnitPopUp $selectedTag root.boardHeightUnit ;
-//  outlet CanariDimensionObserverTextField mBoardHeightTextField
-//     $dimensionAndUnit root.boardHeight, root.boardHeightUnit
-//  ;
-
-//--- Help
-//  action showBoardHelpAction ;
-//  outlet EBButton showBoardHelpButton $run showBoardHelpAction ;
-
-//--- Table view, source of model drag
-//  outlet CanariDragSourceTableView mModelDragSourceTableView $models root.modelNames ;
-
-//--- Board Limit Width display
-//  outlet EBPopUpButton mBoardLimitWidthUnitPopUp $selectedTag root.boardLimitWidthUnit ;
-//  outlet CanariDimensionTextField mBoardBoardLimitTextField
-//     $dimensionAndUnit root.boardLimitWidth, root.boardLimitWidthUnit
-//  ;
-
 //--- "Empty Board" message
 // outlet EBTextField mEmptyBoardMessage $hidden root.boardInstances.count > 0 ;
 
 //--- Composed Board View
-//  arrayController #mBoardInstanceController : root.boardInstances ;
-//  selectionController MergerBoardInstance #mBoardInstanceSelection : #mBoardInstanceController.selectedArray ;
-//  outlet EBEnclosingGraphicView mComposedBoardView
-//    $zoom root.zoom
-//    $horizontalFlip prefs.mergerBoardViewHorizontalFlip
-//    $verticalFlip prefs.mergerBoardViewVerticalFlip
-//    $overObjectsDisplay root.boardOutlineRectDisplay
-//    $graphicController #mBoardInstanceController
-//    $arrowKeyMagnitude root.arrowMagnitude
-//    $shiftArrowKeyMagnitude root.shiftArrowMagnitude
-//  ;
 //
 //  outlet CanariSegmentedControl mBoardInspectorSegmentedControl ;
 //  outlet NSView mBoardInspectorMasterView ;
 //
 //  outlet CanariViewWithKeyView mBoardOperationInspectorView ;
 //  outlet CanariViewWithKeyView mBoardIssueInspectorView ;
-//
-//  outlet EBPopUpButton mSelectedBoardXUnitPopUp $selectedTag root.selectedBoardXUnit ;
-//  outlet CanariDimensionTextField mSelectedBoardXTextField
-//     $dimensionAndUnit #mBoardInstanceSelection.x, root.selectedBoardXUnit
-//  ;
-//
-//  outlet EBPopUpButton mSelectedBoardYUnitPopUp $selectedTag root.selectedBoardYUnit ;
-//  outlet CanariDimensionTextField mSelectedBoardYTextField
-//     $dimensionAndUnit #mBoardInstanceSelection.y, root.selectedBoardYUnit
-//  ;
-
-
-//--- Instance rotation
-//  outlet CanariQuadrantSegmentedControl mInstanceRotation $quadrant #mBoardInstanceSelection.instanceRotation ;
-
-//--- Arrange & move selection
-//  outlet EBSwitch mOverlapSwitch $enabled root.boardInstances.count > 0 $value root.overlapingArrangment ;
-//
-//  action moveRightAction ;
-//  outlet EBButton mMoveRightButton $enabled #mBoardInstanceController.selectedArray.count > 0 $run moveRightAction ;
-//  action moveLeftAction ;
-//  outlet EBButton mMoveLeftButton $enabled #mBoardInstanceController.selectedArray.count > 0 $run moveLeftAction ;
-//  action moveUpAction ;
-//  outlet EBButton mMoveUpButton $enabled #mBoardInstanceController.selectedArray.count > 0 $run moveUpAction ;
-//  action moveDownAction ;
-//  outlet EBButton mMoveDownButton $enabled #mBoardInstanceController.selectedArray.count > 0 $run moveDownAction ;
 
 //------------------------------------- Product Page
 //  outlet CanariViewWithKeyView mProductPageView ;
