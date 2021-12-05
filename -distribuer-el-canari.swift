@@ -32,10 +32,8 @@ let VERSION_CANARI = "1.4.10"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Correction bug génération des fichiers de production des projets"
 ]
 let CHANGES : [String] = [
-  "Système minimum MacOS : High Sierra (10.13)."
 ]
 let NEWS : [String] = [
 ]
