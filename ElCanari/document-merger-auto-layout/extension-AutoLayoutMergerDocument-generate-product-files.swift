@@ -18,11 +18,15 @@ extension AutoLayoutMergerDocument {
   final internal func checkLayerConfigurationAndGenerateProductFiles () {
   //--- Layout layer configuration
     var layerSet = Set <LayerConfiguration> ()
-    if let artworkLayerConfiguration = self.rootObject.mArtwork?.layerConfiguration {
-      layerSet.insert (artworkLayerConfiguration)
+    var artworkLayerConfiguration : LayerConfiguration? = nil
+    if let artworkLayerConf = self.rootObject.mArtwork?.layerConfiguration {
+      layerSet.insert (artworkLayerConf)
+      artworkLayerConfiguration = artworkLayerConf
     }
+    var boardLayerSet = Set <LayerConfiguration> ()
     for boardModel in self.rootObject.boardModels.values {
       layerSet.insert (boardModel.layerConfiguration)
+      boardLayerSet.insert (boardModel.layerConfiguration)
     }
   //---
     if layerSet.count < 2 {
@@ -31,7 +35,7 @@ extension AutoLayoutMergerDocument {
       let alert = NSAlert ()
       alert.messageText = "Inconsistent Board models / Artwork layout layer configuration."
       var s = ""
-      for layer in layerSet {
+      for layer in boardLayerSet {
         if !s.isEmpty {
           s += ", "
         }
@@ -41,13 +45,21 @@ extension AutoLayoutMergerDocument {
         case  .sixLayers : s += "6"
         }
       }
-      alert.informativeText = "More than one layout layer configuration: \(s)."
-      alert.addButton (withTitle: "Ok")
+      var artworkLayerString = "?"
+      if let alc = artworkLayerConfiguration {
+        switch alc {
+        case  .twoLayers : artworkLayerString = "2"
+        case .fourLayers : artworkLayerString = "4"
+        case  .sixLayers : artworkLayerString = "6"
+        }
+      }
+      alert.informativeText = "Artwork handles \(artworkLayerString) layers, board elements have \(s) layers."
       alert.addButton (withTitle: "Cancel")
+      alert.addButton (withTitle: "Proceed anyway")
       alert.beginSheetModal (
         for: self.windowForSheet!,
         completionHandler: {(response : NSApplication.ModalResponse) in
-          if response == .alertFirstButtonReturn { // Proceed anyway
+          if response == .alertSecondButtonReturn { // Proceed anyway
             self.generateProductFiles ()
           }
         }
