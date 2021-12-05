@@ -860,8 +860,23 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
           $run generateProductFilesAction
         }
       }
-      space
+      vStack {
+        Label (bold: yes, size: .regular) {
+          set (alignment: .left)
+          expandableWidth ()
+          $title self.documentFileShouldBeRenamedErrorMessage
+        }
+        TextObserverView () {
+          expandableWidth ()
+          setNoBackground ()
+          setNoVerticalScroller ()
+          setNoHorizontalScroller ()
+          $observedValue self.incorrectDocumentFileDetailedErrorMessage
+        }
+        space
+      }
     }
+    separator
     hStack $hidden !root.mArtwork.none {
       space
       vStack { space StaticLabel (title: "No Artwork", bold: yes, size : .regular) space }
@@ -870,8 +885,8 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
     vStack $hidden root.mArtwork.none {
       hStack {
         space
-        SegmentedControlWithPages (documentView: stackView mProductMasterView, equalWidth: yes, size : .regular) {
-  //        [outlet mBoardInspectorSegmentedControl configurator boardPageSegmentedControl] 
+        SegmentedControlWithPages (documentView: stackView mProductMasterView, equalWidth: yes, size : .regular)
+          [outlet mProductPageSegmentedControl] { //  configurator boardPageSegmentedControl] 
           addPage (title: "Artwork Description", tooltip: "", pageView: stackView mArtworkDescriptionPage)
           addPage (title: "Artwork Minima", tooltip: "", pageView: stackView mArtworkMinimaPage)
           addPage (title: "Artwork Data", tooltip: "", pageView: stackView mArtworkDataPage)
@@ -888,6 +903,9 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   action detachArtworkAction ;
   action generateProductFilesAction ;
   transient Bool documentIsUnnamed dependsFrom self.documentFileName ;
+  transient String incorrectDocumentFileDetailedErrorMessage dependsFrom self.documentFileName ;
+  transient String documentFileShouldBeRenamedErrorMessage dependsFrom self.documentFileName ;
+//  transient Bool documentFileNameOk dependsFrom self.documentFileName ;
 
   //············································································
 
@@ -922,26 +940,193 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
 
   //············································································
 
+  stackView mArtworkDataPage vStack set (spacing: 0) {
+    hStack set (margins: 8) {
+      hStack setFirstBaselineAlignment ()  {
+        StaticLabel (title: "Drill File Extension", bold: no, size : .small)
+        TextField (width: 56, size : .small) { $value root.drillDataFileExtension (sendContinously: yes) }
+      }
+      ImageObserverView (size: .small) { $image self.emptyDrillFileExtensionImage }
+      space
+    }
+    hStack set (leftMargin: 8) set (rightMargin: 8) {
+      vStack set (topMargin: 8) {
+        Label (bold: yes, size : .small) { $title self.generatedFileCountString }
+        TableView (size : .small, addControlButtons: yes) { $tableValue #mDataController }
+        space
+      }
+      separator
+      vStack set (topMargin: 8) {
+        hStack {
+          hStack setFirstBaselineAlignment () {
+            StaticLabel (title: "File Extension", bold: yes, size : .small)
+            TextField (width: 56, size : .small) { $value #mDataSelection.fileExtension (sendContinously: yes) }
+          }
+          ImageObserverView (size: .small) { $image #mDataSelection.emptyFileExtensionImage }
+         space
+         StaticLabel (title: "Empty Data File", bold: yes, size : .small) { setOrangeTextColor () $hidden !#mDataSelection.hasNoData}
+       }
+        space
+        hStack { StaticLabel (title: "Front Side Elements", bold: yes, size : .small) space }
+        hStack {
+          TwoColumnsGridView {
+            set (leftMargin: 20)
+            addFirstBaseLineAligned (
+              left: Checkbox (title: "Legend Front Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendTopSide },
+              right: Checkbox (title: "Layout Front Side Texts", size : .small) { $value #mDataSelection.drawTextsLayoutTopSide }
+            )
+            addFirstBaseLineAligned (
+              left: Checkbox (title: "Front Side Tracks", size : .small) { $value #mDataSelection.drawTracksTopSide },
+              right: Checkbox (title: "Front Side Pads", size : .small) { $value #mDataSelection.drawPadsTopSide }
+            )
+          }
+          space
+        }
+        hStack set (leftMargin: 20) { Checkbox (title: "Front Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesTopSide } space }
+        hStack set (leftMargin: 20) { Checkbox (title: "Front Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesTopSide } space }
+        hStack set (leftMargin: 20) { Checkbox (title: "Front Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendTopSide } space }
+        hStack { StaticLabel (title: "Inner Elements", bold: yes, size : .small) space }
+        hStack {
+          TwoColumnsGridView {
+            set (leftMargin: 20)
+            addFirstBaseLineAligned (
+              left:  Checkbox (title: "Traversing Pads", size : .small) { $value #mDataSelection.drawTraversingPads $hidden !root.hasInnerElements },
+              right: space
+            )
+            addFirstBaseLineAligned (  // Always disabled items
+              left:  Checkbox (title: "Traversing Pads", size : .small) { $enabled root.hasInnerElements $hidden root.hasInnerElements },
+              right: space
+            )
+           addFirstBaseLineAligned (
+              left:  Checkbox (title: "Inner 1 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner1Layer $hidden !root.hasInnerElements },
+              right: Checkbox (title: "Inner 2 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner2Layer $hidden !root.hasInnerElements }
+            )
+            addFirstBaseLineAligned (  // Always disabled items
+              left:  Checkbox (title: "Inner 1 Layer Tracks", size : .small) { $enabled root.hasInnerElements $hidden root.hasInnerElements },
+              right: Checkbox (title: "Inner 2 Layer Tracks", size : .small) { $enabled root.hasInnerElements $hidden root.hasInnerElements }
+            )
+            addFirstBaseLineAligned (
+              left:  Checkbox (title: "Inner 3 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner3Layer $hidden !root.hasSixLayers },
+              right: Checkbox (title: "Inner 4 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner4Layer $hidden !root.hasSixLayers }
+            )
+            addFirstBaseLineAligned ( // Always disabled items
+              left:  Checkbox (title: "Inner 3 Layer Tracks", size : .small) { $enabled root.hasSixLayers $hidden root.hasSixLayers },
+              right: Checkbox (title: "Inner 4 Layer Tracks", size : .small) { $enabled root.hasSixLayers $hidden root.hasSixLayers }
+            )
+          }
+          space
+        }
+        hStack { StaticLabel (title: "Back Side Elements", bold: yes, size : .small) space }
+        hStack {
+          TwoColumnsGridView {
+            set (leftMargin: 20)
+            addFirstBaseLineAligned (
+              left: Checkbox (title: "Legend Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendBottomSide },
+              right: Checkbox (title: "Layout Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLayoutBottomSide }
+            )
+            addFirstBaseLineAligned (
+              left: Checkbox (title: "Back Side Tracks", size : .small) { $value #mDataSelection.drawTracksBottomSide },
+              right: Checkbox (title: "Back Side Pads", size : .small) { $value #mDataSelection.drawPadsBottomSide }
+            )
+          }
+          space
+        }
+        hStack set (leftMargin: 20) { Checkbox (title: "Back Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesBottomSide } space }
+        hStack set (leftMargin: 20) { Checkbox (title: "Back Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesBottomSide } space }
+        hStack set (leftMargin: 20) { Checkbox (title: "Back Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendBottomSide } space }
+        hStack { StaticLabel (title: "Other Elements", bold: yes, size : .small) space }
+        hStack set (leftMargin: 20) {
+          Checkbox (title: "Vias", size : .small) { $value #mDataSelection.drawVias }
+          Checkbox (title: "Internal Board Limits", size : .small) { $value #mDataSelection.drawInternalBoardLimits }
+          Checkbox (title: "Board Limits", size : .small) { $value #mDataSelection.drawBoardLimits }
+          space
+        }
+        hStack set (leftMargin: 20) setFirstBaselineAlignment () {
+          Checkbox (title: "Pad Holes in PDF file, with diameter", size : .small) { $value #mDataSelection.drawPadHolesInPDF }
+          CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF $enabled #mDataSelection.drawPadHolesInPDF }
+          space
+        }
+        hStack { StaticLabel (title: "Option", bold: yes, size : .small) space }
+        hStack set (leftMargin: 20) { Checkbox (title: "Horizontal Mirror", size : .small) { $value #mDataSelection.horizontalMirror } space }
+        space
+      }
+    }
+  }
+
+  transient NSImage emptyDrillFileExtensionImage dependsFrom self.emptyDrillFileExtension ;
+  transient Bool emptyDrillFileExtension dependsFrom root.drillDataFileExtension ;
+  transient String generatedFileCountString dependsFrom #mDataController.sortedArray.count ;
+
+  autolayout tableViewController #mDataController (allowsEmptySelection:no, allowsMultipleSelection:no) root.fileGenerationParameterArray {
+    editableColumn name (title: "Name", minWidth: 60, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey name
+    column parameterStatusImage (title: "", minWidth: 30, maxWidth: 30, headerAlignment: .center, contentAlignment: .center)
+  }
+  selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;
+
+  //············································································
+
   stackView mArtworkMinimaPage vStack {
     space
-  }
-
-  //············································································
-
-  stackView mArtworkDataPage vStack {
+    hStack {
+      space
+      vStack {
+        space
+        StaticLabel (title: "PP: Pad to Pad Distance", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "TP: Track to Pad Distance", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "TT: Track to Track Distance", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "TW: Track Width", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "OAR: Outer Annular Ring", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        space
+      }
+      space
+      StaticImageView (name: "artwork")
+      space
+    }
+    space
+    hStack {
+      space
+      TwoColumnsGridView {
+        set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8)
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular),
+          right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular),
+          right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular),
+          right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular),
+          right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit }
+        )
+      }
+      space
+    }
     space
   }
 
   //············································································
 
-  stackView mPDFSettingsPage vStack {
+  stackView mPDFSettingsPage vStack set (margins: 20) {
+    hStack setFirstBaselineAlignment () {
+      space
+      ColorWell { $color root.mPDFBoardBackgroundColor (sendContinously : no) }
+      StaticLabel (title: "Board Background Color", bold: no, size: .regular)
+      space
+    }
     space
   }
 
   //············································································
 
   stackView mGenerationLogPage vStack {
-    space
+    TextObserverView () [outlet mLogTextView] // expandableWidth ()
   }
 
 //------------------------------------- Product Page
@@ -949,72 +1134,9 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
 //  outlet EBTextField mNoArtworkMessage $hidden !root.mArtwork.none ;
 //  outlet EBTextObserverField mLayoutLayerWarningMessageTextField $valueObserver root.layoutLayerWarningMessage ;
 //
-//  transient String incorrectDocumentFileErrorMessage dependsFrom self.documentFileName ;
-//  outlet EBTextObserverField mIncorrectDocumentNameTextField $valueObserver self.incorrectDocumentFileErrorMessage ;
-//
 //  outlet EBTextObserverField mArtwortNameTextField $valueObserver root.mArtworkName ;
 //
-//  transient Bool documentFileNameOk dependsFrom self.documentFileName ;
 //  outlet NSView mDangerView $hidden self.documentFileNameOk ;
-//
-//  outlet NSTabView mProductGenerationTabView ;
-//  outlet NSTabView mArtworkSettingsTabView $hidden root.mArtwork.none ;
-//  outlet NSTextView mLogTextView ;
-//  outlet EBColorWell mPDFBoardBackgroundColorWell $color root.mPDFBoardBackgroundColor (sendContinously : no);
-
-//---------------- Minima Page
-//  outlet EBPopUpButton mMinPPTPTTTWinEBUnitPopUp $selectedTag root.minPPTPTTTWdisplayUnit ;
-//  outlet CanariDimensionObserverTextField mMinPPTPTTTWdisplayUnitTextField
-//     $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit
-//  ;
-//
-//  outlet EBPopUpButton mOARUnitPopUp $selectedTag root.minValueForOARdisplayUnit ;
-//  outlet CanariDimensionObserverTextField mOARValueTextField
-//     $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit
-//  ;
-//
-//  outlet EBPopUpButton mPHDUnitPopUp $selectedTag root.minValueForPHDdisplayUnit ;
-//  outlet CanariDimensionObserverTextField mPHDValueTextField
-//     $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit
-//  ;
-//
-//  outlet EBPopUpButton minValueForBoardLimitUnitPopUp $selectedTag root.minValueForBoardLimitWidthDisplayUnit ;
-//  outlet CanariDimensionObserverTextField minValueForBoardLimitTextField
-//     $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
-//  ;
-
-
-//--- Drill Page
-//  outlet EBTextObserverField mDrillDataFileExtensionTextField $valueObserver root.drillDataFileExtension ;
-
-//--- Data Tab
-//  outlet EBTableView mDataTableView $tableValue #mDataController ;
-//  selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;
-//  tableViewController #mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
-//     column "name" sortkey name EBTextObserverField $valueObserver self.name
-//  }
-//
-//  outlet EBTextObserverField mExtensionTextField $valueObserver #mDataSelection.fileExtension ;
-////  outlet CanariObserverSwitch mDrawBoardInternalLimitsSwitch $valueObserver #mDataSelection.drawInternalBoardLimits ;
-//  outlet CanariObserverSwitch mDrawBoardLimitsSwitch $valueObserver #mDataSelection.drawBoardLimits ;
-//  outlet CanariObserverSwitch mDrawComponentValuesTopSideSwitch $valueObserver #mDataSelection.drawComponentValuesTopSide ;
-//  outlet CanariObserverSwitch mDrawComponentValuesBottomSideSwitch $valueObserver #mDataSelection.drawComponentValuesBottomSide ;
-//  outlet CanariObserverSwitch mDrawComponentNamesTopSideSwitch $valueObserver #mDataSelection.drawComponentNamesTopSide ;
-//  outlet CanariObserverSwitch mDrawComponentNamesBottomSideSwitch $valueObserver #mDataSelection.drawComponentNamesBottomSide ;
-//  outlet CanariObserverSwitch mDrawPackageLegendTopSideSwitch $valueObserver #mDataSelection.drawPackageLegendTopSide ;
-//  outlet CanariObserverSwitch mDrawPackageLegendBottomSideSwitch $valueObserver #mDataSelection.drawPackageLegendBottomSide ;
-////  outlet CanariObserverSwitch mDrawPadHolesInPDFSwitch $valueObserver #mDataSelection.drawPadHolesInPDF ;
-//  outlet CanariObserverSwitch mDrawPadsTopSideSwitch $valueObserver #mDataSelection.drawPadsTopSide ;
-//  outlet CanariObserverSwitch mDrawPadsBottomSideSwitch $valueObserver #mDataSelection.drawPadsBottomSide ;
-//  outlet CanariObserverSwitch mDrawTextsLayoutTopSideSwitch $valueObserver #mDataSelection.drawTextsLayoutTopSide ;
-//  outlet CanariObserverSwitch mDrawTextsLayoutBottomSideSwitch $valueObserver #mDataSelection.drawTextsLayoutBottomSide ;
-//  outlet CanariObserverSwitch mDrawTextsLegendTopSideSwitch $valueObserver #mDataSelection.drawTextsLegendTopSide ;
-//  outlet CanariObserverSwitch mDrawTextsLegendBottomSideSwitch $valueObserver #mDataSelection.drawTextsLegendBottomSide ;
-//  outlet CanariObserverSwitch mDrawTracksTopSideSwitch $valueObserver #mDataSelection.drawTracksTopSide ;
-//  outlet CanariObserverSwitch mDrawTracksBottomSideSwitch $valueObserver #mDataSelection.drawTracksBottomSide ;
-//  outlet CanariObserverSwitch mDrawViasSwitch $valueObserver #mDataSelection.drawVias ;
-//  outlet CanariObserverSwitch mHorizontalMirrorSwitch $valueObserver #mDataSelection.horizontalMirror ;
-
 
 }
 

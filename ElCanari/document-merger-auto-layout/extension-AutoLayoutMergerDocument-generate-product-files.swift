@@ -62,7 +62,7 @@ extension AutoLayoutMergerDocument {
     //--- Create product directory
       if let f = self.fileURL?.path.deletingPathExtension {
         self.mLogTextView?.clear ()
-        self.mProductGenerationTabView?.selectTabViewItem (at: 2)
+        self.mProductPageSegmentedControl?.setSelectedSegment (atIndex: 4)
         let baseName = f.lastPathComponent
         let productDirectory = f.deletingLastPathComponent
         let fm = FileManager ()

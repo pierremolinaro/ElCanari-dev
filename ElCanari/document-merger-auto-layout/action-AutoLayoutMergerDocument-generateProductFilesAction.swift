@@ -13,41 +13,43 @@ import Cocoa
 extension AutoLayoutMergerDocument {
   @objc func generateProductFilesAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-//    switch self.issues_property.selection {
-//    case .multiple, .empty :
-//      break
-//    case .single (let issues) :
-//      if issues.count == 0 {
-//        self.checkLayerConfigurationAndGenerateProductFiles ()
-//      }else if let displaySettingView = self.mDisplaySettingView {
-//        let alert = NSAlert ()
-//        alert.messageText = "The board contains errors and / or warnings"
-//        alert.addButton (withTitle: "Cancel")
-//        alert.addButton (withTitle: "Proceed anyway")
-//        alert.addButton (withTitle: "Show issues")
-//        alert.beginSheetModal (
-//          for: self.windowForSheet!,
-//          completionHandler: {(response : NSApplication.ModalResponse) in
-//            // NSLog ("response \(response)")
-//            if response == .alertFirstButtonReturn { // Proceed anyway
-//              self.checkLayerConfigurationAndGenerateProductFiles ()
-//            }else if response == .alertSecondButtonReturn { // Show issues
-//            //--- Select board page
-//              self.rootObject.selectedPageIndex = 1
-//            //--- Remove display setting wiew
+    switch self.issues_property.selection {
+    case .multiple, .empty :
+      break
+    case .single (let issues) :
+      if issues.count == 0 {
+        self.checkLayerConfigurationAndGenerateProductFiles ()
+      }else{ // if let displaySettingView = self.mDisplaySettingView {
+        let alert = NSAlert ()
+        alert.messageText = "The board contains errors and / or warnings"
+        alert.addButton (withTitle: "Cancel")
+        alert.addButton (withTitle: "Proceed anyway")
+        alert.addButton (withTitle: "Show issues")
+        alert.beginSheetModal (
+          for: self.windowForSheet!,
+          completionHandler: {(response : NSApplication.ModalResponse) in
+//            NSLog ("response  \(response.rawValue)")
+//            NSLog ("alertFirstButtonReturn  \(NSApplication.ModalResponse.alertFirstButtonReturn.rawValue)")
+//            NSLog ("alertSecondButtonReturn \(NSApplication.ModalResponse.alertSecondButtonReturn.rawValue)")
+            if response == .alertSecondButtonReturn { // Proceed anyway
+              self.checkLayerConfigurationAndGenerateProductFiles ()
+            }else if response == .alertThirdButtonReturn { // Show issues
+            //--- Select board page
+              self.rootObject.selectedPageIndex = 1
+            //--- Remove display setting wiew
 //              if displaySettingView.window != nil {  // Remove from window
 //                displaySettingView.resignFirstResponder ()
 //                displaySettingView.removeFromSuperview ()
 //              }
-//            //--- Select issue in tabview
-//              self.mBoardInspectorSegmentedControl?.selectedSegment = 1
-//            //--- Select first issue
-//              self.mIssueTableView?.selectRowIndexes (IndexSet (integer: 0), byExtendingSelection:false)
-//            }
-//          }
-//        )
-//      }
-//    }
+            //--- Select issue in tabview
+              self.mBoardInspectorSegmentedControl?.setSelectedSegment (atIndex: 1)
+            //--- Select first issue
+              self.mBoardIssueTableView?.selectRow (atIndex: 0)
+            }
+          }
+        )
+      }
+    }
 //--- END OF USER ZONE 2
   }
 }

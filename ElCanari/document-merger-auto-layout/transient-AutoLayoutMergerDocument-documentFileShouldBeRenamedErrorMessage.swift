@@ -13,11 +13,31 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutArtworkDocument_emptyDrillFileExtensionImage (
-       _ root_emptyDrillFileExtension : Bool
-) -> NSImage {
+func transient_AutoLayoutMergerDocument_documentFileShouldBeRenamedErrorMessage (
+       _ self_documentFileName : String
+) -> String {
 //--- START OF USER ZONE 2
-       return root_emptyDrillFileExtension ? NSImage.statusError : NSImage (size: NSSize ())
+      if self_documentFileName.isEmpty {
+        return "Document is unnamed"
+      }else {
+        let baseName = self_documentFileName.lastPathComponent.deletingPathExtension
+        for char in baseName.unicodeScalars {
+          var ok = (char >= "A") && (char <= "Z")
+          if !ok {
+            ok = (char >= "a") && (char <= "z")
+          }
+          if !ok {
+            ok = (char >= "0") && (char <= "9")
+          }
+          if !ok {
+            ok = (char == "-") || (char == "_")
+          }
+          if !ok {
+            return "It is Recommended that you rename the document"
+          }
+        }
+        return ""
+      }
 //--- END OF USER ZONE 2
 }
 

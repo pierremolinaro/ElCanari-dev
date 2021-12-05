@@ -212,10 +212,13 @@ extern autolayout class TextView {
   $value property String
 }
 
-extern autolayout class TextObserverView {
+extern autolayout class TextObserverView $hidden {
   $observedValue transient String
   func setRedTextColor ()
   func expandableWidth ()
+  func setNoBackground ()
+  func setNoVerticalScroller ()
+  func setNoHorizontalScroller ()
 }
 
 extern autolayout class ObjectInspectorView $graphicController {

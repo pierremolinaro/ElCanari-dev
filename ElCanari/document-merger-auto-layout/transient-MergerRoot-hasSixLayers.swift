@@ -13,11 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutArtworkDocument_emptyDrillFileExtensionImage (
-       _ root_emptyDrillFileExtension : Bool
-) -> NSImage {
+func transient_MergerRoot_hasSixLayers (
+       _ self_mArtwork_hasSixLayers : Bool?
+) -> Bool {
 //--- START OF USER ZONE 2
-       return root_emptyDrillFileExtension ? NSImage.statusError : NSImage (size: NSSize ())
+       return self_mArtwork_hasSixLayers ?? false
 //--- END OF USER ZONE 2
 }
 

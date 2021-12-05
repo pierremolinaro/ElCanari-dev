@@ -58,10 +58,16 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
     self.frame.size = self.intrinsicContentSize
 
     if self.segmentCount == 1 {
-      self.selectedSegment = 0
-      self.selectedSegmentDidChange (nil)
+      self.setSelectedSegment (atIndex: 0)
     }
     return self
+  }
+
+  //····················································································································
+
+  func setSelectedSegment (atIndex inIndex : Int) {
+    self.selectedSegment = inIndex
+    self.selectedSegmentDidChange (nil)
   }
 
   //····················································································································
@@ -101,8 +107,7 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
     case .empty :
       ()
     case .single (let v) :
-      self.selectedSegment = v
-      self.selectedSegmentDidChange (nil)
+      self.setSelectedSegment (atIndex: v)
     case .multiple :
       ()
     }

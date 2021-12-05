@@ -84,6 +84,12 @@ entity MergerRoot {
     self.mArtwork.one.layerConfiguration, self.boardModels.all.layerConfiguration ;
 
   transient String layerConfigurationString dependsFrom self.mArtwork.one.layerConfiguration ;
+  
+  transient Bool emptyDrillFileExtension dependsFrom self.mArtwork.one.drillDataFileExtension ;
+
+  transient Bool hasInnerElements dependsFrom self.mArtwork.one.hasInnerElements ;
+  
+  transient Bool hasSixLayers dependsFrom self.mArtwork.one.hasSixLayers ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

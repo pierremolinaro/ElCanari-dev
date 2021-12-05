@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let DEBUG_FILL_COLOR = NSColor.gray.withAlphaComponent (0.025)
+let DEBUG_FILL_COLOR = NSColor.green.withAlphaComponent (0.025)
 let DEBUG_STROKE_COLOR = NSColor.orange
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

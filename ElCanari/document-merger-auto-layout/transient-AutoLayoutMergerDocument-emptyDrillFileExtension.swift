@@ -13,11 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutArtworkDocument_emptyDrillFileExtensionImage (
-       _ root_emptyDrillFileExtension : Bool
-) -> NSImage {
+func transient_AutoLayoutMergerDocument_emptyDrillFileExtension (
+       _ root_drillDataFileExtension : String
+) -> Bool {
 //--- START OF USER ZONE 2
-       return root_emptyDrillFileExtension ? NSImage.statusError : NSImage (size: NSSize ())
+        return root_drillDataFileExtension.isEmpty
 //--- END OF USER ZONE 2
 }
 

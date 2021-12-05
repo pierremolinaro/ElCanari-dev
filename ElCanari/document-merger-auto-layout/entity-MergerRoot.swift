@@ -234,6 +234,24 @@ protocol MergerRoot_layerConfigurationString : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol MergerRoot_emptyDrillFileExtension : AnyObject {
+  var emptyDrillFileExtension : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_hasInnerElements : AnyObject {
+  var hasInnerElements : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_hasSixLayers : AnyObject {
+  var hasSixLayers : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol MergerRoot_boardOutlineRectDisplay : AnyObject {
   var boardOutlineRectDisplay : EBShape? { get }
 }
@@ -281,6 +299,9 @@ final class MergerRoot : EBManagedObject,
          MergerRoot_comments,
          MergerRoot_layoutLayerWarningMessage,
          MergerRoot_layerConfigurationString,
+         MergerRoot_emptyDrillFileExtension,
+         MergerRoot_hasInnerElements,
+         MergerRoot_hasSixLayers,
          MergerRoot_boardOutlineRectDisplay {
 
   //····················································································································
@@ -1115,6 +1136,57 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: emptyDrillFileExtension
+  //····················································································································
+
+  final let emptyDrillFileExtension_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var emptyDrillFileExtension : Bool? {
+    switch self.emptyDrillFileExtension_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: hasInnerElements
+  //····················································································································
+
+  final let hasInnerElements_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var hasInnerElements : Bool? {
+    switch self.hasInnerElements_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: hasSixLayers
+  //····················································································································
+
+  final let hasSixLayers_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var hasSixLayers : Bool? {
+    switch self.hasSixLayers_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: boardOutlineRectDisplay
   //····················································································································
 
@@ -1558,6 +1630,54 @@ final class MergerRoot : EBManagedObject,
       }
     }
     self.mArtwork_property.layerConfiguration_property.addEBObserver (self.layerConfigurationString_property)
+  //--- Atomic property: emptyDrillFileExtension
+    self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mArtwork_property.drillDataFileExtension_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerRoot_emptyDrillFileExtension (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mArtwork_property.drillDataFileExtension_property.addEBObserver (self.emptyDrillFileExtension_property)
+  //--- Atomic property: hasInnerElements
+    self.hasInnerElements_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mArtwork_property.hasInnerElements_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerRoot_hasInnerElements (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mArtwork_property.hasInnerElements_property.addEBObserver (self.hasInnerElements_property)
+  //--- Atomic property: hasSixLayers
+    self.hasSixLayers_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mArtwork_property.hasSixLayers_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerRoot_hasSixLayers (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mArtwork_property.hasSixLayers_property.addEBObserver (self.hasSixLayers_property)
   //--- Atomic property: boardOutlineRectDisplay
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1654,6 +1774,9 @@ final class MergerRoot : EBManagedObject,
     // self.mArtwork_property.layerConfiguration_property.removeEBObserver (self.layoutLayerWarningMessage_property)
     // self.boardModels_property.removeEBObserverOf_layerConfiguration (self.layoutLayerWarningMessage_property)
     // self.mArtwork_property.layerConfiguration_property.removeEBObserver (self.layerConfigurationString_property)
+    // self.mArtwork_property.drillDataFileExtension_property.removeEBObserver (self.emptyDrillFileExtension_property)
+    // self.mArtwork_property.hasInnerElements_property.removeEBObserver (self.hasInnerElements_property)
+    // self.mArtwork_property.hasSixLayers_property.removeEBObserver (self.hasSixLayers_property)
     // self.boardRect_property.removeEBObserver (self.boardOutlineRectDisplay_property)
     // self.boardLimitWidth_property.removeEBObserver (self.boardOutlineRectDisplay_property)
     // preferences_mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
@@ -1905,6 +2028,30 @@ final class MergerRoot : EBManagedObject,
         view: view,
         observerExplorer: &self.layerConfigurationString_property.mObserverExplorer,
         valueExplorer: &self.layerConfigurationString_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "emptyDrillFileExtension",
+        object: self.emptyDrillFileExtension_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.emptyDrillFileExtension_property.mObserverExplorer,
+        valueExplorer: &self.emptyDrillFileExtension_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "hasInnerElements",
+        object: self.hasInnerElements_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.hasInnerElements_property.mObserverExplorer,
+        valueExplorer: &self.hasInnerElements_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "hasSixLayers",
+        object: self.hasSixLayers_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.hasSixLayers_property.mObserverExplorer,
+        valueExplorer: &self.hasSixLayers_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "boardOutlineRectDisplay",

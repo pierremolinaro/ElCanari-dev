@@ -45,6 +45,9 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       oldValue.comments_property.removeEBObserver (self.comments_property) // Transient property
       oldValue.layoutLayerWarningMessage_property.removeEBObserver (self.layoutLayerWarningMessage_property) // Transient property
       oldValue.layerConfigurationString_property.removeEBObserver (self.layerConfigurationString_property) // Transient property
+      oldValue.emptyDrillFileExtension_property.removeEBObserver (self.emptyDrillFileExtension_property) // Transient property
+      oldValue.hasInnerElements_property.removeEBObserver (self.hasInnerElements_property) // Transient property
+      oldValue.hasSixLayers_property.removeEBObserver (self.hasSixLayers_property) // Transient property
       oldValue.boardOutlineRectDisplay_property.removeEBObserver (self.boardOutlineRectDisplay_property) // Transient property
     }
   //--- Add observers to added objects
@@ -78,6 +81,9 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       newValue.comments_property.addEBObserver (self.comments_property) // Transient property
       newValue.layoutLayerWarningMessage_property.addEBObserver (self.layoutLayerWarningMessage_property) // Transient property
       newValue.layerConfigurationString_property.addEBObserver (self.layerConfigurationString_property) // Transient property
+      newValue.emptyDrillFileExtension_property.addEBObserver (self.emptyDrillFileExtension_property) // Transient property
+      newValue.hasInnerElements_property.addEBObserver (self.hasInnerElements_property) // Transient property
+      newValue.hasSixLayers_property.addEBObserver (self.hasSixLayers_property) // Transient property
       newValue.boardOutlineRectDisplay_property.addEBObserver (self.boardOutlineRectDisplay_property) // Transient property
     }
   }
@@ -255,6 +261,24 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let layerConfigurationString_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'emptyDrillFileExtension' transient property
+  //····················································································································
+
+  final let emptyDrillFileExtension_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'hasInnerElements' transient property
+  //····················································································································
+
+  final let hasInnerElements_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'hasSixLayers' transient property
+  //····················································································································
+
+  final let hasSixLayers_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'boardOutlineRectDisplay' transient property
@@ -740,6 +764,51 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.layerConfigurationString_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure emptyDrillFileExtension transient property
+    self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.emptyDrillFileExtension_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure hasInnerElements transient property
+    self.hasInnerElements_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.hasInnerElements_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure hasSixLayers transient property
+    self.hasSixLayers_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.hasSixLayers_property.selection {
         case .empty :
           return .empty
         case .multiple :

@@ -105,6 +105,12 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
 
   //····················································································································
 
+  func selectRow (atIndex inIndex : Int) {
+    self.mTableView.selectRowIndexes (IndexSet (integer: inIndex), byExtendingSelection: false)
+  }
+  
+  //····················································································································
+
   func tableView (_ tableView: NSTableView, rowViewForRow inRow : Int) -> NSTableRowView? {
     let rowView = NSTableRowView ()
     rowView.isEmphasized = false

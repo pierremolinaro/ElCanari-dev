@@ -22,7 +22,7 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
     super.init (frame: NSRect (x: 0, y: 0, width: 100, height: 100))
     noteObjectAllocation (self)
 //    self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
+//    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
 
     self.mTextView.isEditable = false
     self.mTextView.isSelectable = true
@@ -66,6 +66,27 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
   }
 
   //····················································································································
+
+  final func setNoBackground () -> Self {
+    self.mTextView.drawsBackground = false
+    return self
+  }
+
+  //····················································································································
+
+  final func setNoVerticalScroller () -> Self {
+    self.hasVerticalScroller = false
+    return self
+  }
+
+  //····················································································································
+
+  final func setNoHorizontalScroller () -> Self {
+    self.hasHorizontalScroller = false
+    return self
+  }
+
+  //····················································································································
   // setRedTextColor
   //····················································································································
 
@@ -92,11 +113,13 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
     case .empty, .multiple :
       self.mTextView.string = ""
       self.mTextView.invalidateIntrinsicContentSize ()
+//      self.mTextView.needsDisplay = true
     case .single (let propertyValue) :
       let currentSelectedRangeValues = self.mTextView.selectedRanges
       self.mTextView.string = propertyValue
       self.mTextView.selectedRanges = currentSelectedRangeValues
       self.mTextView.invalidateIntrinsicContentSize ()
+//      self.mTextView.needsDisplay = true
     }
   }
 

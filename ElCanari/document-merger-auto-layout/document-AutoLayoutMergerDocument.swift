@@ -33,6 +33,18 @@ import Cocoa
   var mBoardInstanceSelection = SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection ()
 
   //····················································································································
+  //   Array controller: mDataController
+  //····················································································································
+
+  var mDataController = Controller_AutoLayoutMergerDocument_mDataController ()
+
+  //····················································································································
+  //   Selection controller: mDataSelection
+  //····················································································································
+
+  var mDataSelection = SelectionController_AutoLayoutMergerDocument_mDataSelection ()
+
+  //····················································································································
   //   Transient property: issues
   //····················································································································
 
@@ -101,6 +113,57 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: incorrectDocumentFileDetailedErrorMessage
+  //····················································································································
+
+  final let incorrectDocumentFileDetailedErrorMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var incorrectDocumentFileDetailedErrorMessage : String? {
+    switch self.incorrectDocumentFileDetailedErrorMessage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: documentFileShouldBeRenamedErrorMessage
+  //····················································································································
+
+  final let documentFileShouldBeRenamedErrorMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var documentFileShouldBeRenamedErrorMessage : String? {
+    switch self.documentFileShouldBeRenamedErrorMessage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: emptyDrillFileExtension
+  //····················································································································
+
+  final let emptyDrillFileExtension_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var emptyDrillFileExtension : Bool? {
+    switch self.emptyDrillFileExtension_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: statusImage
   //····················································································································
 
@@ -135,13 +198,49 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: emptyDrillFileExtensionImage
+  //····················································································································
+
+  final let emptyDrillFileExtensionImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var emptyDrillFileExtensionImage : NSImage? {
+    switch self.emptyDrillFileExtensionImage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: generatedFileCountString
+  //····················································································································
+
+  final let generatedFileCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var generatedFileCountString : String? {
+    switch self.generatedFileCountString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    Outlets
   //····················································································································
 
   weak final var mBoardInspectorSegmentedControl : AutoLayoutSegmentedControlWithPages? = nil
   weak final var mBoardIssueTableView : AutoLayoutCanariIssueTableView? = nil
   weak final var mComposedBoardGraphicView : AutoLayoutGraphicView? = nil
+  weak final var mLogTextView : AutoLayoutTextObserverView? = nil
   weak final var mModelDragSourceTableView : AutoLayoutElCanariDragSourceTableView? = nil
+  weak final var mProductPageSegmentedControl : AutoLayoutSegmentedControlWithPages? = nil
 
   //····················································································································
   //    Outlets
@@ -179,6 +278,10 @@ import Cocoa
       self.mBoardInstanceController.addExplorer (name: "mBoardInstanceController", y:&y, view:view)
     //--- Selection controller property: mBoardInstanceSelection
       self.mBoardInstanceSelection.addExplorer (name: "mBoardInstanceSelection", y:&y, view:view)
+    //--- Array controller property: mDataController
+      self.mDataController.addExplorer (name: "mDataController", y:&y, view:view)
+    //--- Selection controller property: mDataSelection
+      self.mDataSelection.addExplorer (name: "mDataSelection", y:&y, view:view)
    //---
       super.populateExplorerWindow (&y, view:view)
     }
@@ -550,51 +653,70 @@ import Cocoa
         view_0_0.appendView (view_0_0_3)
       }
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutFlexibleSpace ()
+      let view_0_1 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_1_0 = AutoLayoutLabel (bold: true, size: .regular)
+          .set (alignment: .left)
+          .expandableWidth ()
+          .bind_title (self.documentFileShouldBeRenamedErrorMessage_property)
+        view_0_1.appendView (view_0_1_0)
+        let view_0_1_1 = AutoLayoutTextObserverView ()
+          .expandableWidth ()
+          .setNoBackground ()
+          .setNoVerticalScroller ()
+          .setNoHorizontalScroller ()
+          .bind_observedValue (self.incorrectDocumentFileDetailedErrorMessage_property)
+        view_0_1.appendView (view_0_1_1)
+        let view_0_1_2 = AutoLayoutFlexibleSpace ()
+        view_0_1.appendView (view_0_1_2)
+      }
       view_0.appendView (view_0_1)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
+    let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutHorizontalStackView ()
       .bind_hidden (.not (.id (self.rootObject.mArtwork_none)))
     do{
-      let view_1_0 = AutoLayoutFlexibleSpace ()
-      view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutVerticalStackView ()
+      let view_2_0 = AutoLayoutFlexibleSpace ()
+      view_2.appendView (view_2_0)
+      let view_2_1 = AutoLayoutVerticalStackView ()
       do{
-        let view_1_1_0 = AutoLayoutFlexibleSpace ()
-        view_1_1.appendView (view_1_1_0)
-        let view_1_1_1 = AutoLayoutStaticLabel (title: "No Artwork", bold: true, size: .regular)
-        view_1_1.appendView (view_1_1_1)
-        let view_1_1_2 = AutoLayoutFlexibleSpace ()
-        view_1_1.appendView (view_1_1_2)
+        let view_2_1_0 = AutoLayoutFlexibleSpace ()
+        view_2_1.appendView (view_2_1_0)
+        let view_2_1_1 = AutoLayoutStaticLabel (title: "No Artwork", bold: true, size: .regular)
+        view_2_1.appendView (view_2_1_1)
+        let view_2_1_2 = AutoLayoutFlexibleSpace ()
+        view_2_1.appendView (view_2_1_2)
       }
-      view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutFlexibleSpace ()
-      view_1.appendView (view_1_2)
+      view_2.appendView (view_2_1)
+      let view_2_2 = AutoLayoutFlexibleSpace ()
+      view_2.appendView (view_2_2)
     }
-    vStackView.appendView (view_1)
-    let view_2 = AutoLayoutVerticalStackView ()
+    vStackView.appendView (view_2)
+    let view_3 = AutoLayoutVerticalStackView ()
       .bind_hidden (.id (self.rootObject.mArtwork_none))
     do{
-      let view_2_0 = AutoLayoutHorizontalStackView ()
+      let view_3_0 = AutoLayoutHorizontalStackView ()
       do{
-        let view_2_0_0 = AutoLayoutFlexibleSpace ()
-        view_2_0.appendView (view_2_0_0)
-        let view_2_0_1 = AutoLayoutSegmentedControlWithPages (documentView: self.mProductMasterView, equalWidth: true, size: .regular)
+        let view_3_0_0 = AutoLayoutFlexibleSpace ()
+        view_3_0.appendView (view_3_0_0)
+        let view_3_0_1 = AutoLayoutSegmentedControlWithPages (documentView: self.mProductMasterView, equalWidth: true, size: .regular)
           .addPage (title: "Artwork Description", tooltip: "", pageView: self.mArtworkDescriptionPage)
           .addPage (title: "Artwork Minima", tooltip: "", pageView: self.mArtworkMinimaPage)
           .addPage (title: "Artwork Data", tooltip: "", pageView: self.mArtworkDataPage)
           .addPage (title: "PDF Settings", tooltip: "", pageView: self.mPDFSettingsPage)
           .addPage (title: "Generation Log", tooltip: "", pageView: self.mGenerationLogPage)
-        view_2_0.appendView (view_2_0_1)
-        let view_2_0_2 = AutoLayoutFlexibleSpace ()
-        view_2_0.appendView (view_2_0_2)
+        self.mProductPageSegmentedControl = view_3_0_1 // Outlet
+        view_3_0.appendView (view_3_0_1)
+        let view_3_0_2 = AutoLayoutFlexibleSpace ()
+        view_3_0.appendView (view_3_0_2)
       }
-      view_2.appendView (view_2_0)
-      let view_2_1 = mProductMasterView
-      view_2.appendView (view_2_1)
+      view_3.appendView (view_3_0)
+      let view_3_1 = mProductMasterView
+      view_3.appendView (view_3_1)
     }
-    vStackView.appendView (view_2)
+    vStackView.appendView (view_3)
     return vStackView
   } ()
 
@@ -622,6 +744,267 @@ import Cocoa
   } ()
 
   //····················································································································
+  //    VIEW mArtworkDataPage
+  //····················································································································
+
+  lazy var mArtworkDataPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (spacing: 0)
+    let view_0 = AutoLayoutHorizontalStackView ()
+      .set (margins: 8)
+    do{
+      let view_0_0 = AutoLayoutHorizontalStackView ()
+        .setFirstBaselineAlignment ()
+      do{
+        let view_0_0_0 = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .small)
+        view_0_0.appendView (view_0_0_0)
+        let view_0_0_1 = AutoLayoutTextField (width: 56, size: .small)
+          .bind_value (self.rootObject.drillDataFileExtension_property, sendContinously:true)
+        view_0_0.appendView (view_0_0_1)
+      }
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutImageObserverView (size: .small)
+        .bind_image (self.emptyDrillFileExtensionImage_property)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalStackView ()
+      .set (leftMargin: 8)
+      .set (rightMargin: 8)
+    do{
+      let view_1_0 = AutoLayoutVerticalStackView ()
+        .set (topMargin: 8)
+      do{
+        let view_1_0_0 = AutoLayoutLabel (bold: true, size: .small)
+          .bind_title (self.generatedFileCountString_property)
+        view_1_0.appendView (view_1_0_0)
+        let view_1_0_1 = AutoLayoutTableView (size: .small, addControlButtons: true)
+        self.mDataController.bind_tableView (view_1_0_1)
+        view_1_0.appendView (view_1_0_1)
+        let view_1_0_2 = AutoLayoutFlexibleSpace ()
+        view_1_0.appendView (view_1_0_2)
+      }
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
+      view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutVerticalStackView ()
+        .set (topMargin: 8)
+      do{
+        let view_1_2_0 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_1_2_0_0 = AutoLayoutHorizontalStackView ()
+            .setFirstBaselineAlignment ()
+          do{
+            let view_1_2_0_0_0 = AutoLayoutStaticLabel (title: "File Extension", bold: true, size: .small)
+            view_1_2_0_0.appendView (view_1_2_0_0_0)
+            let view_1_2_0_0_1 = AutoLayoutTextField (width: 56, size: .small)
+              .bind_value (self.mDataSelection.fileExtension_property, sendContinously:true)
+            view_1_2_0_0.appendView (view_1_2_0_0_1)
+          }
+          view_1_2_0.appendView (view_1_2_0_0)
+          let view_1_2_0_1 = AutoLayoutImageObserverView (size: .small)
+            .bind_image (self.mDataSelection.emptyFileExtensionImage_property)
+          view_1_2_0.appendView (view_1_2_0_1)
+          let view_1_2_0_2 = AutoLayoutFlexibleSpace ()
+          view_1_2_0.appendView (view_1_2_0_2)
+          let view_1_2_0_3 = AutoLayoutStaticLabel (title: "Empty Data File", bold: true, size: .small)
+            .setOrangeTextColor ()
+            .bind_hidden (.not (.id (self.mDataSelection.hasNoData_property)))
+          view_1_2_0.appendView (view_1_2_0_3)
+        }
+        view_1_2.appendView (view_1_2_0)
+        let view_1_2_1 = AutoLayoutFlexibleSpace ()
+        view_1_2.appendView (view_1_2_1)
+        let view_1_2_2 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_1_2_2_0 = AutoLayoutStaticLabel (title: "Front Side Elements", bold: true, size: .small)
+          view_1_2_2.appendView (view_1_2_2_0)
+          let view_1_2_2_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_2.appendView (view_1_2_2_1)
+        }
+        view_1_2.appendView (view_1_2_2)
+        let view_1_2_3 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_1_2_3_0 = AutoLayoutTwoColumnsGridView ()
+            .set (leftMargin: 20)
+            .addFirstBaseLineAligned (left: self.computeImplicitView_172 (), right: self.computeImplicitView_173 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_174 (), right: self.computeImplicitView_175 ())
+          view_1_2_3.appendView (view_1_2_3_0)
+          let view_1_2_3_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_3.appendView (view_1_2_3_1)
+        }
+        view_1_2.appendView (view_1_2_3)
+        let view_1_2_4 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_1_2_4_0 = AutoLayoutCheckbox (title: "Front Side Component Names", size: .small)
+            .bind_value (self.mDataSelection.drawComponentNamesTopSide_property)
+          view_1_2_4.appendView (view_1_2_4_0)
+          let view_1_2_4_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_4.appendView (view_1_2_4_1)
+        }
+        view_1_2.appendView (view_1_2_4)
+        let view_1_2_5 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_1_2_5_0 = AutoLayoutCheckbox (title: "Front Side Component Values", size: .small)
+            .bind_value (self.mDataSelection.drawComponentValuesTopSide_property)
+          view_1_2_5.appendView (view_1_2_5_0)
+          let view_1_2_5_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_5.appendView (view_1_2_5_1)
+        }
+        view_1_2.appendView (view_1_2_5)
+        let view_1_2_6 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_1_2_6_0 = AutoLayoutCheckbox (title: "Front Side Package Legends", size: .small)
+            .bind_value (self.mDataSelection.drawPackageLegendTopSide_property)
+          view_1_2_6.appendView (view_1_2_6_0)
+          let view_1_2_6_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_6.appendView (view_1_2_6_1)
+        }
+        view_1_2.appendView (view_1_2_6)
+        let view_1_2_7 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_1_2_7_0 = AutoLayoutStaticLabel (title: "Inner Elements", bold: true, size: .small)
+          view_1_2_7.appendView (view_1_2_7_0)
+          let view_1_2_7_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_7.appendView (view_1_2_7_1)
+        }
+        view_1_2.appendView (view_1_2_7)
+        let view_1_2_8 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_1_2_8_0 = AutoLayoutTwoColumnsGridView ()
+            .set (leftMargin: 20)
+            .addFirstBaseLineAligned (left: self.computeImplicitView_176 (), right: self.computeImplicitView_177 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_178 (), right: self.computeImplicitView_179 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_180 (), right: self.computeImplicitView_181 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_182 (), right: self.computeImplicitView_183 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_184 (), right: self.computeImplicitView_185 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_186 (), right: self.computeImplicitView_187 ())
+          view_1_2_8.appendView (view_1_2_8_0)
+          let view_1_2_8_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_8.appendView (view_1_2_8_1)
+        }
+        view_1_2.appendView (view_1_2_8)
+        let view_1_2_9 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_1_2_9_0 = AutoLayoutStaticLabel (title: "Back Side Elements", bold: true, size: .small)
+          view_1_2_9.appendView (view_1_2_9_0)
+          let view_1_2_9_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_9.appendView (view_1_2_9_1)
+        }
+        view_1_2.appendView (view_1_2_9)
+        let view_1_2_10 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_1_2_10_0 = AutoLayoutTwoColumnsGridView ()
+            .set (leftMargin: 20)
+            .addFirstBaseLineAligned (left: self.computeImplicitView_188 (), right: self.computeImplicitView_189 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_190 (), right: self.computeImplicitView_191 ())
+          view_1_2_10.appendView (view_1_2_10_0)
+          let view_1_2_10_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_10.appendView (view_1_2_10_1)
+        }
+        view_1_2.appendView (view_1_2_10)
+        let view_1_2_11 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_1_2_11_0 = AutoLayoutCheckbox (title: "Back Side Component Names", size: .small)
+            .bind_value (self.mDataSelection.drawComponentNamesBottomSide_property)
+          view_1_2_11.appendView (view_1_2_11_0)
+          let view_1_2_11_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_11.appendView (view_1_2_11_1)
+        }
+        view_1_2.appendView (view_1_2_11)
+        let view_1_2_12 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_1_2_12_0 = AutoLayoutCheckbox (title: "Back Side Component Values", size: .small)
+            .bind_value (self.mDataSelection.drawComponentValuesBottomSide_property)
+          view_1_2_12.appendView (view_1_2_12_0)
+          let view_1_2_12_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_12.appendView (view_1_2_12_1)
+        }
+        view_1_2.appendView (view_1_2_12)
+        let view_1_2_13 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_1_2_13_0 = AutoLayoutCheckbox (title: "Back Side Package Legends", size: .small)
+            .bind_value (self.mDataSelection.drawPackageLegendBottomSide_property)
+          view_1_2_13.appendView (view_1_2_13_0)
+          let view_1_2_13_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_13.appendView (view_1_2_13_1)
+        }
+        view_1_2.appendView (view_1_2_13)
+        let view_1_2_14 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_1_2_14_0 = AutoLayoutStaticLabel (title: "Other Elements", bold: true, size: .small)
+          view_1_2_14.appendView (view_1_2_14_0)
+          let view_1_2_14_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_14.appendView (view_1_2_14_1)
+        }
+        view_1_2.appendView (view_1_2_14)
+        let view_1_2_15 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_1_2_15_0 = AutoLayoutCheckbox (title: "Vias", size: .small)
+            .bind_value (self.mDataSelection.drawVias_property)
+          view_1_2_15.appendView (view_1_2_15_0)
+          let view_1_2_15_1 = AutoLayoutCheckbox (title: "Internal Board Limits", size: .small)
+            .bind_value (self.mDataSelection.drawInternalBoardLimits_property)
+          view_1_2_15.appendView (view_1_2_15_1)
+          let view_1_2_15_2 = AutoLayoutCheckbox (title: "Board Limits", size: .small)
+            .bind_value (self.mDataSelection.drawBoardLimits_property)
+          view_1_2_15.appendView (view_1_2_15_2)
+          let view_1_2_15_3 = AutoLayoutFlexibleSpace ()
+          view_1_2_15.appendView (view_1_2_15_3)
+        }
+        view_1_2.appendView (view_1_2_15)
+        let view_1_2_16 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+          .setFirstBaselineAlignment ()
+        do{
+          let view_1_2_16_0 = AutoLayoutCheckbox (title: "Pad Holes in PDF file, with diameter", size: .small)
+            .bind_value (self.mDataSelection.drawPadHolesInPDF_property)
+          view_1_2_16.appendView (view_1_2_16_0)
+          let view_1_2_16_1 = AutoLayoutCanariDimensionAndPopUp (size: .small)
+            .bind_dimensionAndUnit (self.mDataSelection.padHoleDiameterInPDF_property, self.mDataSelection.measurementUnitForPadHoleInPDF_property)
+            .bind_enabled (.id (self.mDataSelection.drawPadHolesInPDF_property))
+          view_1_2_16.appendView (view_1_2_16_1)
+          let view_1_2_16_2 = AutoLayoutFlexibleSpace ()
+          view_1_2_16.appendView (view_1_2_16_2)
+        }
+        view_1_2.appendView (view_1_2_16)
+        let view_1_2_17 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_1_2_17_0 = AutoLayoutStaticLabel (title: "Option", bold: true, size: .small)
+          view_1_2_17.appendView (view_1_2_17_0)
+          let view_1_2_17_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_17.appendView (view_1_2_17_1)
+        }
+        view_1_2.appendView (view_1_2_17)
+        let view_1_2_18 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_1_2_18_0 = AutoLayoutCheckbox (title: "Horizontal Mirror", size: .small)
+            .bind_value (self.mDataSelection.horizontalMirror_property)
+          view_1_2_18.appendView (view_1_2_18_0)
+          let view_1_2_18_1 = AutoLayoutFlexibleSpace ()
+          view_1_2_18.appendView (view_1_2_18_1)
+        }
+        view_1_2.appendView (view_1_2_18)
+        let view_1_2_19 = AutoLayoutFlexibleSpace ()
+        view_1_2.appendView (view_1_2_19)
+      }
+      view_1.appendView (view_1_2)
+    }
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
   //    VIEW mArtworkMinimaPage
   //····················································································································
 
@@ -629,17 +1012,75 @@ import Cocoa
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutFlexibleSpace ()
     vStackView.appendView (view_0)
-    return vStackView
-  } ()
-
-  //····················································································································
-  //    VIEW mArtworkDataPage
-  //····················································································································
-
-  lazy var mArtworkDataPage : AutoLayoutVerticalStackView = {
-    let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_1_0 = AutoLayoutFlexibleSpace ()
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutVerticalStackView ()
+      do{
+        let view_1_1_0 = AutoLayoutFlexibleSpace ()
+        view_1_1.appendView (view_1_1_0)
+        let view_1_1_1 = AutoLayoutStaticLabel (title: "PP: Pad to Pad Distance", bold: false, size: .small)
+          .set (alignment: .left)
+          .expandableWidth ()
+        view_1_1.appendView (view_1_1_1)
+        let view_1_1_2 = AutoLayoutStaticLabel (title: "TP: Track to Pad Distance", bold: false, size: .small)
+          .set (alignment: .left)
+          .expandableWidth ()
+        view_1_1.appendView (view_1_1_2)
+        let view_1_1_3 = AutoLayoutStaticLabel (title: "TT: Track to Track Distance", bold: false, size: .small)
+          .set (alignment: .left)
+          .expandableWidth ()
+        view_1_1.appendView (view_1_1_3)
+        let view_1_1_4 = AutoLayoutStaticLabel (title: "TW: Track Width", bold: false, size: .small)
+          .set (alignment: .left)
+          .expandableWidth ()
+        view_1_1.appendView (view_1_1_4)
+        let view_1_1_5 = AutoLayoutStaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: false, size: .small)
+          .set (alignment: .left)
+          .expandableWidth ()
+        view_1_1.appendView (view_1_1_5)
+        let view_1_1_6 = AutoLayoutStaticLabel (title: "OAR: Outer Annular Ring", bold: false, size: .small)
+          .set (alignment: .left)
+          .expandableWidth ()
+        view_1_1.appendView (view_1_1_6)
+        let view_1_1_7 = AutoLayoutStaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: false, size: .small)
+          .set (alignment: .left)
+          .expandableWidth ()
+        view_1_1.appendView (view_1_1_7)
+        let view_1_1_8 = AutoLayoutFlexibleSpace ()
+        view_1_1.appendView (view_1_1_8)
+      }
+      view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutFlexibleSpace ()
+      view_1.appendView (view_1_2)
+      let view_1_3 = AutoLayoutStaticImageView (name: "artwork")
+      view_1.appendView (view_1_3)
+      let view_1_4 = AutoLayoutFlexibleSpace ()
+      view_1.appendView (view_1_4)
+    }
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_2)
+    let view_3 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_3_0 = AutoLayoutFlexibleSpace ()
+      view_3.appendView (view_3_0)
+      let view_3_1 = AutoLayoutTwoColumnsGridView ()
+        .set (leftMargin: 20)
+        .set (rightMargin: 20)
+        .set (topMargin: 8)
+        .addFirstBaseLineAligned (left: self.computeImplicitView_192 (), right: self.computeImplicitView_193 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_194 (), right: self.computeImplicitView_195 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_196 (), right: self.computeImplicitView_197 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_198 (), right: self.computeImplicitView_199 ())
+      view_3.appendView (view_3_1)
+      let view_3_2 = AutoLayoutFlexibleSpace ()
+      view_3.appendView (view_3_2)
+    }
+    vStackView.appendView (view_3)
+    let view_4 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_4)
     return vStackView
   } ()
 
@@ -649,8 +1090,23 @@ import Cocoa
 
   lazy var mPDFSettingsPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutFlexibleSpace ()
+      .set (margins: 20)
+    let view_0 = AutoLayoutHorizontalStackView ()
+      .setFirstBaselineAlignment ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutColorWell ()
+        .bind_color (self.rootObject.mPDFBoardBackgroundColor_property, sendContinously:false)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutStaticLabel (title: "Board Background Color", bold: false, size: .regular)
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_3)
+    }
     vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -660,7 +1116,8 @@ import Cocoa
 
   lazy var mGenerationLogPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutFlexibleSpace ()
+    let view_0 = AutoLayoutTextObserverView ()
+    self.mLogTextView = view_0 // Outlet
     vStackView.appendView (view_0)
     return vStackView
   } ()
@@ -3137,6 +3594,290 @@ import Cocoa
   }
 
   //····················································································································
+  //    IMPLICIT VIEW 172
+  //····················································································································
+
+  fileprivate final func computeImplicitView_172 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Legend Front Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLegendTopSide_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 173
+  //····················································································································
+
+  fileprivate final func computeImplicitView_173 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Layout Front Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLayoutTopSide_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 174
+  //····················································································································
+
+  fileprivate final func computeImplicitView_174 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Front Side Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksTopSide_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 175
+  //····················································································································
+
+  fileprivate final func computeImplicitView_175 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Front Side Pads", size: .small)
+      .bind_value (self.mDataSelection.drawPadsTopSide_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 176
+  //····················································································································
+
+  fileprivate final func computeImplicitView_176 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
+      .bind_value (self.mDataSelection.drawTraversingPads_property)
+      .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 177
+  //····················································································································
+
+  fileprivate final func computeImplicitView_177 () -> NSView {
+    let view = AutoLayoutFlexibleSpace ()
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 178
+  //····················································································································
+
+  fileprivate final func computeImplicitView_178 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
+      .bind_enabled (.id (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.id (self.rootObject.hasInnerElements_property))
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 179
+  //····················································································································
+
+  fileprivate final func computeImplicitView_179 () -> NSView {
+    let view = AutoLayoutFlexibleSpace ()
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 180
+  //····················································································································
+
+  fileprivate final func computeImplicitView_180 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
+      .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 181
+  //····················································································································
+
+  fileprivate final func computeImplicitView_181 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
+      .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 182
+  //····················································································································
+
+  fileprivate final func computeImplicitView_182 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
+      .bind_enabled (.id (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.id (self.rootObject.hasInnerElements_property))
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 183
+  //····················································································································
+
+  fileprivate final func computeImplicitView_183 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
+      .bind_enabled (.id (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.id (self.rootObject.hasInnerElements_property))
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 184
+  //····················································································································
+
+  fileprivate final func computeImplicitView_184 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
+      .bind_hidden (.not (.id (self.rootObject.hasSixLayers_property)))
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 185
+  //····················································································································
+
+  fileprivate final func computeImplicitView_185 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
+      .bind_hidden (.not (.id (self.rootObject.hasSixLayers_property)))
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 186
+  //····················································································································
+
+  fileprivate final func computeImplicitView_186 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
+      .bind_enabled (.id (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.id (self.rootObject.hasSixLayers_property))
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 187
+  //····················································································································
+
+  fileprivate final func computeImplicitView_187 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
+      .bind_enabled (.id (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.id (self.rootObject.hasSixLayers_property))
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 188
+  //····················································································································
+
+  fileprivate final func computeImplicitView_188 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Legend Back Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLegendBottomSide_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 189
+  //····················································································································
+
+  fileprivate final func computeImplicitView_189 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Layout Back Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLayoutBottomSide_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 190
+  //····················································································································
+
+  fileprivate final func computeImplicitView_190 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Back Side Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksBottomSide_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 191
+  //····················································································································
+
+  fileprivate final func computeImplicitView_191 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Back Side Pads", size: .small)
+      .bind_value (self.mDataSelection.drawPadsBottomSide_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 192
+  //····················································································································
+
+  fileprivate final func computeImplicitView_192 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: false, size: .regular)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 193
+  //····················································································································
+
+  fileprivate final func computeImplicitView_193 () -> NSView {
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 194
+  //····················································································································
+
+  fileprivate final func computeImplicitView_194 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for PHD", bold: false, size: .regular)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 195
+  //····················································································································
+
+  fileprivate final func computeImplicitView_195 () -> NSView {
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 196
+  //····················································································································
+
+  fileprivate final func computeImplicitView_196 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for OAR", bold: false, size: .regular)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 197
+  //····················································································································
+
+  fileprivate final func computeImplicitView_197 () -> NSView {
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 198
+  //····················································································································
+
+  fileprivate final func computeImplicitView_198 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for Board Limit Width", bold: false, size: .regular)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 199
+  //····················································································································
+
+  fileprivate final func computeImplicitView_199 () -> NSView {
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property)
+    return view
+  }
+
+  //····················································································································
   //    Build User Interface
   //····················································································································
 
@@ -3218,6 +3959,18 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Array controller property: mDataController
+    self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: mDataSelection
+    self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3286,6 +4039,66 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: incorrectDocumentFileDetailedErrorMessage
+    self.incorrectDocumentFileDetailedErrorMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.documentFileName_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutMergerDocument_incorrectDocumentFileDetailedErrorMessage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.documentFileName_property.addEBObserver (self.incorrectDocumentFileDetailedErrorMessage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: documentFileShouldBeRenamedErrorMessage
+    self.documentFileShouldBeRenamedErrorMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.documentFileName_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutMergerDocument_documentFileShouldBeRenamedErrorMessage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.documentFileName_property.addEBObserver (self.documentFileShouldBeRenamedErrorMessage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: emptyDrillFileExtension
+    self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.drillDataFileExtension_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutMergerDocument_emptyDrillFileExtension (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.drillDataFileExtension_property.addEBObserver (self.emptyDrillFileExtension_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3322,6 +4135,46 @@ import Cocoa
       }
     }
     self.documentFileName_property.addEBObserver (self.documentIsUnnamed_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: emptyDrillFileExtensionImage
+    self.emptyDrillFileExtensionImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.emptyDrillFileExtension_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutMergerDocument_emptyDrillFileExtensionImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.emptyDrillFileExtension_property.addEBObserver (self.emptyDrillFileExtensionImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: generatedFileCountString
+    self.generatedFileCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mDataController.sortedArray_property.count_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutMergerDocument_generatedFileCountString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDataController.sortedArray_property.count_property.addEBObserver (self.generatedFileCountString_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3374,8 +4227,8 @@ import Cocoa
     self.mProductPage.ebCleanUp ()
     self.mProductMasterView.ebCleanUp ()
     self.mArtworkDescriptionPage.ebCleanUp ()
-    self.mArtworkMinimaPage.ebCleanUp ()
     self.mArtworkDataPage.ebCleanUp ()
+    self.mArtworkMinimaPage.ebCleanUp ()
     self.mPDFSettingsPage.ebCleanUp ()
     self.mGenerationLogPage.ebCleanUp ()
     let toolbarItems = self.windowForSheet?.toolbar?.items ?? []
@@ -3393,6 +4246,10 @@ import Cocoa
     self.mBoardInstanceController.unbind_model ()
   //--- Selection controller property: mBoardInstanceSelection
     self.mBoardInstanceSelection.unbind_selection ()
+  //--- Array controller property: mDataController
+    self.mDataController.unbind_model ()
+  //--- Selection controller property: mDataSelection
+    self.mDataSelection.unbind_selection ()
     // self.rootObject.overlapingArrangment_property.removeEBObserver (self.issues_property)
     // self.rootObject.boardRect_property.removeEBObserver (self.issues_property)
     // self.rootObject.boardDisplayRect_property.removeEBObserver (self.issues_property)
@@ -3400,8 +4257,13 @@ import Cocoa
     // self.rootObject.boardInstances_property.removeEBObserverOf_boardLimitWidth (self.issues_property)
     // self.issues_property.removeEBObserver (self.statusMessage_property)
     // self.issues_property.removeEBObserver (self.statusTitle_property)
+    // self.documentFileName_property.removeEBObserver (self.incorrectDocumentFileDetailedErrorMessage_property)
+    // self.documentFileName_property.removeEBObserver (self.documentFileShouldBeRenamedErrorMessage_property)
+    // self.rootObject.drillDataFileExtension_property.removeEBObserver (self.emptyDrillFileExtension_property)
     // self.issues_property.removeEBObserver (self.statusImage_property)
     // self.documentFileName_property.removeEBObserver (self.documentIsUnnamed_property)
+    // self.emptyDrillFileExtension_property.removeEBObserver (self.emptyDrillFileExtensionImage_property)
+    // self.mDataController.sortedArray_property.count_property.removeEBObserver (self.generatedFileCountString_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets
