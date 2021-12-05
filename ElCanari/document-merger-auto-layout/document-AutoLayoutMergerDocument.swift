@@ -3578,7 +3578,13 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_170 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Comment", bold: false, size: .regular)
+    let view = AutoLayoutVerticalStackView ()
+    do{
+      let view_0 = AutoLayoutStaticLabel (title: "Comment", bold: false, size: .regular)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
     return view
   }
 

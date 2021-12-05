@@ -905,7 +905,6 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   transient Bool documentIsUnnamed dependsFrom self.documentFileName ;
   transient String incorrectDocumentFileDetailedErrorMessage dependsFrom self.documentFileName ;
   transient String documentFileShouldBeRenamedErrorMessage dependsFrom self.documentFileName ;
-//  transient Bool documentFileNameOk dependsFrom self.documentFileName ;
 
   //············································································
 
@@ -932,7 +931,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         }
       )
       addCenterYAligned (
-        left: StaticLabel (title: "Comment", bold: no, size: .regular),
+        left: vStack { StaticLabel (title: "Comment", bold: no, size: .regular) space},
         right: TextObserverView () { expandableWidth () $observedValue root.comments }
       )
     }
@@ -1133,10 +1132,6 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
 //
 //  outlet EBTextField mNoArtworkMessage $hidden !root.mArtwork.none ;
 //  outlet EBTextObserverField mLayoutLayerWarningMessageTextField $valueObserver root.layoutLayerWarningMessage ;
-//
-//  outlet EBTextObserverField mArtwortNameTextField $valueObserver root.mArtworkName ;
-//
-//  outlet NSView mDangerView $hidden self.documentFileNameOk ;
 
 }
 
