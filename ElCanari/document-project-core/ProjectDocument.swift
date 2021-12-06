@@ -733,7 +733,6 @@ import Cocoa
   @IBOutlet final var mConnectSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet final var mConnectionColorForSchematicColorWell : EBColorWell? = nil
   @IBOutlet final var mControlKeyHiliteDiameterSlider : EBSlider? = nil
-  @IBOutlet final var mCurrentComponentNameTextField : NSTextField? = nil
   @IBOutlet final var mDataTableView : EBTableView? = nil
   @IBOutlet final var mDeviceLibraryTableView : EBTableView? = nil
   @IBOutlet final var mDevicePackageTableView : StringArrayTableView? = nil
@@ -901,12 +900,7 @@ import Cocoa
   @IBOutlet final var mRemoveSheetButton : EBButton? = nil
   @IBOutlet final var mRemoveWirePointSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet final var mRenameComponentButton : EBButton? = nil
-  @IBOutlet final var mRenameComponentErrorMessageTextField : NSTextField? = nil
   @IBOutlet final var mRenameComponentFromComponentSymbolButton : EBButton? = nil
-  @IBOutlet final var mRenameComponentIndexesPopUpButton : NSPopUpButton? = nil
-  @IBOutlet final var mRenameComponentPanel : NSPanel? = nil
-  @IBOutlet final var mRenameComponentPrefixComboxBox : CanariComboBox? = nil
-  @IBOutlet final var mRenameComponentValidationButton : NSButton? = nil
   @IBOutlet final var mRenameDeviceErrorMessageTextField : NSTextField? = nil
   @IBOutlet final var mRenameDeviceNameTextField : EBTextField? = nil
   @IBOutlet final var mRenameDevicePanel : NSPanel? = nil
@@ -1382,7 +1376,6 @@ import Cocoa
     checkOutletConnection (self.mConnectSchematicHotKeyTextField, "mConnectSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mConnectionColorForSchematicColorWell, "mConnectionColorForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mControlKeyHiliteDiameterSlider, "mControlKeyHiliteDiameterSlider", EBSlider.self, #file, #line)
-    checkOutletConnection (self.mCurrentComponentNameTextField, "mCurrentComponentNameTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDataTableView, "mDataTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mDeviceLibraryTableView, "mDeviceLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mDevicePackageTableView, "mDevicePackageTableView", StringArrayTableView.self, #file, #line)
@@ -1550,12 +1543,7 @@ import Cocoa
     checkOutletConnection (self.mRemoveSheetButton, "mRemoveSheetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveWirePointSchematicHotKeyTextField, "mRemoveWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mRenameComponentButton, "mRenameComponentButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mRenameComponentErrorMessageTextField, "mRenameComponentErrorMessageTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mRenameComponentFromComponentSymbolButton, "mRenameComponentFromComponentSymbolButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mRenameComponentIndexesPopUpButton, "mRenameComponentIndexesPopUpButton", NSPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mRenameComponentPanel, "mRenameComponentPanel", NSPanel.self, #file, #line)
-    checkOutletConnection (self.mRenameComponentPrefixComboxBox, "mRenameComponentPrefixComboxBox", CanariComboBox.self, #file, #line)
-    checkOutletConnection (self.mRenameComponentValidationButton, "mRenameComponentValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mRenameDeviceErrorMessageTextField, "mRenameDeviceErrorMessageTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mRenameDeviceNameTextField, "mRenameDeviceNameTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mRenameDevicePanel, "mRenameDevicePanel", NSPanel.self, #file, #line)
@@ -3895,7 +3883,6 @@ import Cocoa
     self.mConnectSchematicHotKeyTextField?.ebCleanUp ()
     self.mConnectionColorForSchematicColorWell?.ebCleanUp ()
     self.mControlKeyHiliteDiameterSlider?.ebCleanUp ()
-    self.mCurrentComponentNameTextField?.ebCleanUp ()
     self.mDataTableView?.ebCleanUp ()
     self.mDeviceLibraryTableView?.ebCleanUp ()
     self.mDevicePackageTableView?.ebCleanUp ()
@@ -4063,12 +4050,7 @@ import Cocoa
     self.mRemoveSheetButton?.ebCleanUp ()
     self.mRemoveWirePointSchematicHotKeyTextField?.ebCleanUp ()
     self.mRenameComponentButton?.ebCleanUp ()
-    self.mRenameComponentErrorMessageTextField?.ebCleanUp ()
     self.mRenameComponentFromComponentSymbolButton?.ebCleanUp ()
-    self.mRenameComponentIndexesPopUpButton?.ebCleanUp ()
-    self.mRenameComponentPanel?.ebCleanUp ()
-    self.mRenameComponentPrefixComboxBox?.ebCleanUp ()
-    self.mRenameComponentValidationButton?.ebCleanUp ()
     self.mRenameDeviceErrorMessageTextField?.ebCleanUp ()
     self.mRenameDeviceNameTextField?.ebCleanUp ()
     self.mRenameDevicePanel?.ebCleanUp ()
@@ -4369,7 +4351,6 @@ import Cocoa
     self.mConnectSchematicHotKeyTextField = nil
     self.mConnectionColorForSchematicColorWell = nil
     self.mControlKeyHiliteDiameterSlider = nil
-    self.mCurrentComponentNameTextField = nil
     self.mDataTableView = nil
     self.mDeviceLibraryTableView = nil
     self.mDevicePackageTableView = nil
@@ -4537,12 +4518,7 @@ import Cocoa
     self.mRemoveSheetButton = nil
     self.mRemoveWirePointSchematicHotKeyTextField = nil
     self.mRenameComponentButton = nil
-    self.mRenameComponentErrorMessageTextField = nil
     self.mRenameComponentFromComponentSymbolButton = nil
-    self.mRenameComponentIndexesPopUpButton = nil
-    self.mRenameComponentPanel = nil
-    self.mRenameComponentPrefixComboxBox = nil
-    self.mRenameComponentValidationButton = nil
     self.mRenameDeviceErrorMessageTextField = nil
     self.mRenameDeviceNameTextField = nil
     self.mRenameDevicePanel = nil

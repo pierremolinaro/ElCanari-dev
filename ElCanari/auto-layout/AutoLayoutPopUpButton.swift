@@ -1,63 +1,29 @@
-//
-//  CanariComboBox.swift
-//  ElCanari
-//
-//  Created by Pierre Molinaro on 21/04/2019.
-//
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariComboBox : NSComboBox, EBUserClassNameProtocol, NSComboBoxDelegate {
+final class AutoLayoutPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  required init? (coder : NSCoder) {
-    super.init (coder: coder)
+  init (size inSize : EBControlSize) {
+    super.init (frame: NSRect (), pullsDown: false)
     noteObjectAllocation (self)
-
-    self.delegate = self
+    self.translatesAutoresizingMaskIntoConstraints = false
   }
 
   //····················································································································
 
-  override init (frame : NSRect) {
-    super.init (frame: frame)
-    noteObjectAllocation (self)
-
-    self.delegate = self
+  required init? (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
 
   deinit {
     noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
-  var textDidChangeCallBack : Optional < (_ outlet : CanariComboBox) -> Void > = nil {
-    didSet {
-      self.textDidChangeCallBack? (self)
-    }
-  }
-
-  //····················································································································
-  // NSComboBoxDelegate functions
-  //····················································································································
-
-  @objc func controlTextDidChange (_ inNotification : Notification) {
-    // Swift.print ("CanariComboBox, controlTextDidChange '\(self.stringValue)' '\(String(describing: self.objectValueOfSelectedItem))'")
-    self.textDidChangeCallBack? (self)
-  }
-
-  //····················································································································
-
-  func controlTextDidEndEditing (_ notification : Notification) {
-    // Swift.print ("CanariComboBox, controlTextDidEndEditing '\(self.stringValue)' '\(String(describing: self.objectValueOfSelectedItem))'")
-    self.textDidChangeCallBack? (self)
   }
 
   //····················································································································

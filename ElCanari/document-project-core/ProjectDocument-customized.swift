@@ -111,11 +111,15 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
   //  Properties needed for renaming a component
   //····················································································································
 
-  internal var mComponentCurrentPrefix = ""
-  internal var mComponentCurrentIndex = 0
-  internal var mComponentNewPrefix = ""
-  internal var mComponentNewIndex = 0
-  internal weak var mSelectedComponentForRenaming : ComponentInProject? = nil
+  var mRenameComponentPrefixComboxBox : AutoLayoutComboBox? = nil
+  var mRenameComponentErrorMessageTextField : AutoLayoutStaticLabel? = nil
+  var mRenameComponentIndexesPopUpButton : AutoLayoutPopUpButton? = nil
+  var mRenameComponentValidationButton : AutoLayoutSheetDefaultOkButton? = nil
+  var mComponentCurrentPrefix = ""
+  var mComponentCurrentIndex = 0
+  var mComponentNewPrefix = ""
+  var mComponentNewIndex = 0
+  var mSelectedComponentForRenaming : ComponentInProject? = nil
 
   //····················································································································
   //  Property for dragging symbol in schematics

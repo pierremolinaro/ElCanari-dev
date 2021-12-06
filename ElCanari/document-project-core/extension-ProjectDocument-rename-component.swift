@@ -35,30 +35,92 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   internal func renameComponentDialog (_ inComponent : ComponentInProject) {
-    if let window = self.windowForSheet, let panel = self.mRenameComponentPanel {
+    if let window = self.windowForSheet {
+      let panel = NSPanel (
+        contentRect: NSRect (x: 0, y: 0, width: 450, height: 250),
+        styleMask: [.titled],
+        backing: .buffered,
+        defer: false
+      )
+    //---
       self.mSelectedComponentForRenaming = inComponent
       self.mComponentCurrentIndex = inComponent.mNameIndex
       self.mComponentCurrentPrefix = inComponent.mNamePrefix
       self.mComponentNewIndex = inComponent.mNameIndex
       self.mComponentNewPrefix = inComponent.mNamePrefix
-      self.updateRenameComponentValidationButton ()
-      self.mCurrentComponentNameTextField?.stringValue = self.mComponentCurrentPrefix + ":\(self.mComponentCurrentIndex)"
-      self.mRenameComponentErrorMessageTextField?.stringValue = ""
-    //--- Prefix Combo box
       let currentPrefixSet = self.getComponentNamePrefixes ()
-      self.populatePrefixComboBox (currentPrefixSet, self.mComponentCurrentPrefix)
-      self.mRenameComponentPrefixComboxBox?.textDidChangeCallBack = { [weak self] (_ : CanariComboBox) in self?.renameComponentComboBoxAction () }
-      self.mRenameComponentPrefixComboxBox?.isContinuous = true
-    //--- Name index pop up
-      self.populateIndexesPopupButton (self.mComponentCurrentIndex)
-      self.mRenameComponentIndexesPopUpButton?.target = self
-      self.mRenameComponentIndexesPopUpButton?.action = #selector (CustomizedProjectDocument.renameComponentIndexPopUpButtonAction (_:))
-    //--- Sheet
-      self.mRenameComponentValidationButton?.isEnabled = true
+    //---
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+    //---
+      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Renaming Component", bold: true, size: .regular))
+      layoutView.appendFlexibleSpace ()
+    //---
+      do{
+        let hStack = AutoLayoutHorizontalStackView ()
+        hStack.appendView (AutoLayoutStaticLabel (title: "Current Component Name", bold: false, size: .regular).set (alignment: .right))
+        hStack.appendFlexibleSpace ()
+        let currentComponentName = self.mComponentCurrentPrefix + "\(self.mComponentCurrentIndex)"
+        hStack.appendView (AutoLayoutStaticLabel (title: currentComponentName, bold: true, size: .regular))
+        layoutView.appendView (hStack)
+      }
+    //---
+      do{
+        let hStack = AutoLayoutHorizontalStackView ()
+        hStack.appendView (AutoLayoutStaticLabel (title: "New Prefix (only letters)", bold: false, size: .regular).set (alignment: .right))
+        hStack.appendFlexibleSpace ()
+        let comboBox = AutoLayoutComboBox (width: 80)
+        self.mRenameComponentPrefixComboxBox = comboBox
+        self.populatePrefixComboBox (currentPrefixSet, self.mComponentCurrentPrefix)
+        hStack.appendView (comboBox)
+        comboBox.mTextDidChangeCallBack = { [weak self] in self?.renameComponentComboBoxAction () }
+        comboBox.isContinuous = true
+        layoutView.appendView (hStack)
+      }
+    //---
+      do{
+        let hStack = AutoLayoutHorizontalStackView ()
+        hStack.appendFlexibleSpace ()
+        let tf = AutoLayoutStaticLabel (title: "", bold: true, size: .regular).setRedTextColor ()
+        self.mRenameComponentErrorMessageTextField = tf
+        hStack.appendView (tf)
+        layoutView.appendView (hStack)
+      }
+    //---
+      do{
+        let hStack = AutoLayoutHorizontalStackView ()
+        hStack.appendView (AutoLayoutStaticLabel (title: "New Index", bold: false, size: .regular).set (alignment: .right))
+        hStack.appendFlexibleSpace ()
+        let popup = AutoLayoutPopUpButton (size: .regular)
+        self.mRenameComponentIndexesPopUpButton = popup
+        self.populateIndexesPopupButton (self.mComponentCurrentIndex)
+        popup.target = self
+        popup.action = #selector (Self.renameComponentIndexPopUpButtonAction (_:))
+        hStack.appendView (popup)
+        layoutView.appendView (hStack)
+      }
+      layoutView.appendFlexibleSpace ()
+    //---
+      do{
+        let hStack = AutoLayoutHorizontalStackView ()
+        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+        hStack.appendFlexibleSpace ()
+        let button = AutoLayoutSheetDefaultOkButton (title: "Rename", size: .regular, sheet: panel, isInitialFirstResponder: true)
+        hStack.appendView (button)
+        self.mRenameComponentValidationButton = button
+        self.updateRenameComponentValidationButton ()
+        layoutView.appendView (hStack)
+      }
+    //---
+      panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop {
           self.performRenameComponent ()
         }
+        self.mRenameComponentPrefixComboxBox = nil
+        self.mRenameComponentErrorMessageTextField = nil
+        self.mRenameComponentIndexesPopUpButton = nil
+        self.mRenameComponentValidationButton = nil
+        self.mSelectedComponentForRenaming = nil
       }
     }
   }
@@ -71,7 +133,7 @@ extension CustomizedProjectDocument {
       self.mRenameComponentValidationButton?.title = "Rename"
     }else{
       self.mRenameComponentValidationButton?.isEnabled = true
-      self.mRenameComponentValidationButton?.title = "Rename to \(self.mComponentNewPrefix):\(self.mComponentNewIndex)"
+      self.mRenameComponentValidationButton?.title = "Rename to \(self.mComponentNewPrefix)\(self.mComponentNewIndex)"
     }
   }
 
