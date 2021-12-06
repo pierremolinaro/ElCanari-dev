@@ -63,8 +63,8 @@ final class AutoLayoutCanariAngleField : NSTextField, EBUserClassNameProtocol, N
 
   override func draw (_ inDirtyRect : NSRect) {
     if debugAutoLayout () {
-      DEBUG_FILL_COLOR.setFill ()
-      NSBezierPath.fill (inDirtyRect)
+//      DEBUG_FILL_COLOR.setFill ()
+//      NSBezierPath.fill (inDirtyRect)
       let bp = NSBezierPath (rect: self.bounds)
       bp.lineWidth = 1.0
       bp.lineJoinStyle = .round

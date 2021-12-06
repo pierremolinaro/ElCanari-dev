@@ -1125,13 +1125,10 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   //············································································
 
   stackView mGenerationLogPage vStack {
-    TextObserverView () [outlet mLogTextView] // expandableWidth ()
+    TextObserverView () [outlet mLogTextView]
   }
 
-//------------------------------------- Product Page
-//
-//  outlet EBTextField mNoArtworkMessage $hidden !root.mArtwork.none ;
-//  outlet EBTextObserverField mLayoutLayerWarningMessageTextField $valueObserver root.layoutLayerWarningMessage ;
+  //············································································
 
 }
 

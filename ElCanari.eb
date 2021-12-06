@@ -18,7 +18,6 @@ include "eb-sources/BoardModelVia.eb" ;
 include "eb-sources/BoardModel.eb" ;
 include "eb-sources/MergerBoardInstance.eb" ;
 include "eb-sources/MergerRoot.eb" ;
-include "eb-sources/mergerDocument.eb" ;
 include "eb-sources/mergerDocument-auto-layout.eb" ;
 //--- Symbol
 include "eb-sources/symbol-symbolRoot.eb" ;

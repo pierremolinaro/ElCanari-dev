@@ -64,8 +64,8 @@ class AutoLayoutAbstractStackView : NSStackView, EBUserClassNameProtocol {
 
   override func draw (_ inDirtyRect : NSRect) {
     if debugAutoLayout () {
-      DEBUG_FILL_COLOR.setFill ()
-      NSBezierPath.fill (inDirtyRect)
+//      DEBUG_FILL_COLOR.setFill ()
+//      NSBezierPath.fill (inDirtyRect)
       var r = self.bounds
       r.origin.x += self.edgeInsets.left
       r.origin.y += self.edgeInsets.bottom

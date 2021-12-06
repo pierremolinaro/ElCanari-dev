@@ -94,7 +94,6 @@ extension CustomizedProjectDocument {
         others.append (object)
       }
     }
-//    self.rootObject.mBoardObjects = backComponents + backTracks + inner4Tracks + inner3Tracks + inner2Tracks + inner1Tracks + others + frontTracks + frontComponents + restrictRectangles + connectors
     var array = backComponents
     array.append (objects: backTracks)
     array.append (objects: inner4Tracks)
