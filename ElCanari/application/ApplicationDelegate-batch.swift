@@ -161,24 +161,25 @@ extension ApplicationDelegate {
                     withContentsOf: URL (fileURLWithPath: fullpath),
                     display: true // animating,
                   ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
-                    if let projectDocument = document as? CustomizedProjectDocument {
-                      projectDocument.resetDevicesAndFontsVersionAction (nil)
-                      var errorMessages = [String] ()
-                      projectDocument.updateDevices (projectDocument.rootObject.mDevices, &errorMessages)
-                      projectDocument.updateFonts (projectDocument.rootObject.mFonts, &errorMessages)
-                      projectDocument.save (nil)
-                      projectDocument.close ()
-                      if errorMessages.count == 0 {
-                        self.mCount += 1
-                        let message = (self.mCount > 1)
-                          ? "\(self.mCount) projects have been updated."
-                          : "1 project has been updated."
-                        self.mMaintenanceLogTextField?.stringValue = message
-                      }else{
-                        self.mMaintenanceLogTextView?.appendErrorString ("Cannot update \(fullpath)\n")
-                        self.mMaintenanceLogTextView?.appendMessageString (errorMessages.joined (separator: "\n"))
-                      }
-                    }
+                    NSSound.beep ()
+//                    if let projectDocument = document as? CustomizedProjectDocument {
+//                      projectDocument.resetDevicesAndFontsVersionAction (nil)
+//                      var errorMessages = [String] ()
+//                      projectDocument.updateDevices (projectDocument.rootObject.mDevices, &errorMessages)
+//                      projectDocument.updateFonts (projectDocument.rootObject.mFonts, &errorMessages)
+//                      projectDocument.save (nil)
+//                      projectDocument.close ()
+//                      if errorMessages.count == 0 {
+//                        self.mCount += 1
+//                        let message = (self.mCount > 1)
+//                          ? "\(self.mCount) projects have been updated."
+//                          : "1 project has been updated."
+//                        self.mMaintenanceLogTextField?.stringValue = message
+//                      }else{
+//                        self.mMaintenanceLogTextView?.appendErrorString ("Cannot update \(fullpath)\n")
+//                        self.mMaintenanceLogTextView?.appendMessageString (errorMessages.joined (separator: "\n"))
+//                      }
+//                    }
                   }
                 }
               }

@@ -16,6 +16,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
+      oldValue.mSchematicSheetOrientation_property.removeEBObserver (self.mSchematicSheetOrientation_property) // Stored property
+      oldValue.mRastnetDisplay_property.removeEBObserver (self.mRastnetDisplay_property) // Stored property
+      oldValue.mRastnetDisplayedNetName_property.removeEBObserver (self.mRastnetDisplayedNetName_property) // Stored property
+      oldValue.mRastnetDisplayedComponentName_property.removeEBObserver (self.mRastnetDisplayedComponentName_property) // Stored property
       oldValue.mArtworkName_property.removeEBObserver (self.mArtworkName_property) // Stored property
       oldValue.mArtworkVersion_property.removeEBObserver (self.mArtworkVersion_property) // Stored property
       oldValue.mPDFBoardBackgroundColor_property.removeEBObserver (self.mPDFBoardBackgroundColor_property) // Stored property
@@ -84,15 +88,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.mSchematicCustomWidthUnit_property.removeEBObserver (self.mSchematicCustomWidthUnit_property) // Stored property
       oldValue.mSchematicCustomHeight_property.removeEBObserver (self.mSchematicCustomHeight_property) // Stored property
       oldValue.mSchematicCustomHeightUnit_property.removeEBObserver (self.mSchematicCustomHeightUnit_property) // Stored property
-      oldValue.mSchematicSheetOrientation_property.removeEBObserver (self.mSchematicSheetOrientation_property) // Stored property
-      oldValue.mRastnetDisplay_property.removeEBObserver (self.mRastnetDisplay_property) // Stored property
-      oldValue.mRastnetDisplayedNetName_property.removeEBObserver (self.mRastnetDisplayedNetName_property) // Stored property
-      oldValue.mRastnetDisplayedComponentName_property.removeEBObserver (self.mRastnetDisplayedComponentName_property) // Stored property
       oldValue.boardGridStepMultipliedByDisplayFactor_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property) // Transient property
       oldValue.boardLimitsGridStepMultipliedByDisplayFactor_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
       oldValue.boardShapeIsRectangular_property.removeEBObserver (self.boardShapeIsRectangular_property) // Transient property
       oldValue.selectedSheetIssues_property.removeEBObserver (self.selectedSheetIssues_property) // Transient property
       oldValue.connectedPoints_property.removeEBObserver (self.connectedPoints_property) // Transient property
+      oldValue.sheetGeometry_property.removeEBObserver (self.sheetGeometry_property) // Transient property
+      oldValue.schematicBackgroundDisplay_property.removeEBObserver (self.schematicBackgroundDisplay_property) // Transient property
       oldValue.connexionWarningString_property.removeEBObserver (self.connexionWarningString_property) // Transient property
       oldValue.connexionErrorString_property.removeEBObserver (self.connexionErrorString_property) // Transient property
       oldValue.sheetIndexes_property.removeEBObserver (self.sheetIndexes_property) // Transient property
@@ -127,8 +129,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.borderViewBackground_property.removeEBObserver (self.borderViewBackground_property) // Transient property
       oldValue.deviceNames_property.removeEBObserver (self.deviceNames_property) // Transient property
       oldValue.allClassNames_property.removeEBObserver (self.allClassNames_property) // Transient property
-      oldValue.sheetGeometry_property.removeEBObserver (self.sheetGeometry_property) // Transient property
-      oldValue.schematicBackgroundDisplay_property.removeEBObserver (self.schematicBackgroundDisplay_property) // Transient property
       oldValue.netWarningCount_property.removeEBObserver (self.netWarningCount_property) // Transient property
       oldValue.netNamesArray_property.removeEBObserver (self.netNamesArray_property) // Transient property
       oldValue.unplacedSymbols_property.removeEBObserver (self.unplacedSymbols_property) // Transient property
@@ -141,6 +141,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
+      newValue.mSchematicSheetOrientation_property.addEBObserver (self.mSchematicSheetOrientation_property) // Stored property
+      newValue.mRastnetDisplay_property.addEBObserver (self.mRastnetDisplay_property) // Stored property
+      newValue.mRastnetDisplayedNetName_property.addEBObserver (self.mRastnetDisplayedNetName_property) // Stored property
+      newValue.mRastnetDisplayedComponentName_property.addEBObserver (self.mRastnetDisplayedComponentName_property) // Stored property
       newValue.mArtworkName_property.addEBObserver (self.mArtworkName_property) // Stored property
       newValue.mArtworkVersion_property.addEBObserver (self.mArtworkVersion_property) // Stored property
       newValue.mPDFBoardBackgroundColor_property.addEBObserver (self.mPDFBoardBackgroundColor_property) // Stored property
@@ -209,15 +213,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.mSchematicCustomWidthUnit_property.addEBObserver (self.mSchematicCustomWidthUnit_property) // Stored property
       newValue.mSchematicCustomHeight_property.addEBObserver (self.mSchematicCustomHeight_property) // Stored property
       newValue.mSchematicCustomHeightUnit_property.addEBObserver (self.mSchematicCustomHeightUnit_property) // Stored property
-      newValue.mSchematicSheetOrientation_property.addEBObserver (self.mSchematicSheetOrientation_property) // Stored property
-      newValue.mRastnetDisplay_property.addEBObserver (self.mRastnetDisplay_property) // Stored property
-      newValue.mRastnetDisplayedNetName_property.addEBObserver (self.mRastnetDisplayedNetName_property) // Stored property
-      newValue.mRastnetDisplayedComponentName_property.addEBObserver (self.mRastnetDisplayedComponentName_property) // Stored property
       newValue.boardGridStepMultipliedByDisplayFactor_property.addEBObserver (self.boardGridStepMultipliedByDisplayFactor_property) // Transient property
       newValue.boardLimitsGridStepMultipliedByDisplayFactor_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
       newValue.boardShapeIsRectangular_property.addEBObserver (self.boardShapeIsRectangular_property) // Transient property
       newValue.selectedSheetIssues_property.addEBObserver (self.selectedSheetIssues_property) // Transient property
       newValue.connectedPoints_property.addEBObserver (self.connectedPoints_property) // Transient property
+      newValue.sheetGeometry_property.addEBObserver (self.sheetGeometry_property) // Transient property
+      newValue.schematicBackgroundDisplay_property.addEBObserver (self.schematicBackgroundDisplay_property) // Transient property
       newValue.connexionWarningString_property.addEBObserver (self.connexionWarningString_property) // Transient property
       newValue.connexionErrorString_property.addEBObserver (self.connexionErrorString_property) // Transient property
       newValue.sheetIndexes_property.addEBObserver (self.sheetIndexes_property) // Transient property
@@ -252,8 +254,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.borderViewBackground_property.addEBObserver (self.borderViewBackground_property) // Transient property
       newValue.deviceNames_property.addEBObserver (self.deviceNames_property) // Transient property
       newValue.allClassNames_property.addEBObserver (self.allClassNames_property) // Transient property
-      newValue.sheetGeometry_property.addEBObserver (self.sheetGeometry_property) // Transient property
-      newValue.schematicBackgroundDisplay_property.addEBObserver (self.schematicBackgroundDisplay_property) // Transient property
       newValue.netWarningCount_property.addEBObserver (self.netWarningCount_property) // Transient property
       newValue.netNamesArray_property.addEBObserver (self.netNamesArray_property) // Transient property
       newValue.unplacedSymbols_property.addEBObserver (self.unplacedSymbols_property) // Transient property
@@ -265,6 +265,30 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.schematicStatusImage_property.addEBObserver (self.schematicStatusImage_property) // Transient property
     }
   }
+
+  //····················································································································
+  //   Observers of 'mSchematicSheetOrientation' stored property
+  //····················································································································
+
+  final let mSchematicSheetOrientation_property = EBGenericTransientProperty <SchematicSheetOrientation?> ()
+
+  //····················································································································
+  //   Observers of 'mRastnetDisplay' stored property
+  //····················································································································
+
+  final let mRastnetDisplay_property = EBGenericTransientProperty <RastnetDisplay?> ()
+
+  //····················································································································
+  //   Observers of 'mRastnetDisplayedNetName' stored property
+  //····················································································································
+
+  final let mRastnetDisplayedNetName_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'mRastnetDisplayedComponentName' stored property
+  //····················································································································
+
+  final let mRastnetDisplayedComponentName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mArtworkName' stored property
@@ -675,30 +699,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   final let mSchematicCustomHeightUnit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-  //   Observers of 'mSchematicSheetOrientation' stored property
-  //····················································································································
-
-  final let mSchematicSheetOrientation_property = EBGenericTransientProperty <SchematicSheetOrientation?> ()
-
-  //····················································································································
-  //   Observers of 'mRastnetDisplay' stored property
-  //····················································································································
-
-  final let mRastnetDisplay_property = EBGenericTransientProperty <RastnetDisplay?> ()
-
-  //····················································································································
-  //   Observers of 'mRastnetDisplayedNetName' stored property
-  //····················································································································
-
-  final let mRastnetDisplayedNetName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-  //   Observers of 'mRastnetDisplayedComponentName' stored property
-  //····················································································································
-
-  final let mRastnetDisplayedComponentName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
   //   Observers of 'boardGridStepMultipliedByDisplayFactor' transient property
   //····················································································································
 
@@ -727,6 +727,18 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let connectedPoints_property = EBGenericTransientProperty <EBShape?> ()
+
+  //····················································································································
+  //   Observers of 'sheetGeometry' transient property
+  //····················································································································
+
+  final let sheetGeometry_property = EBGenericTransientProperty <SchematicSheetGeometry?> ()
+
+  //····················································································································
+  //   Observers of 'schematicBackgroundDisplay' transient property
+  //····················································································································
+
+  final let schematicBackgroundDisplay_property = EBGenericTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'connexionWarningString' transient property
@@ -931,18 +943,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let allClassNames_property = EBGenericTransientProperty <StringArray?> ()
-
-  //····················································································································
-  //   Observers of 'sheetGeometry' transient property
-  //····················································································································
-
-  final let sheetGeometry_property = EBGenericTransientProperty <SchematicSheetGeometry?> ()
-
-  //····················································································································
-  //   Observers of 'schematicBackgroundDisplay' transient property
-  //····················································································································
-
-  final let schematicBackgroundDisplay_property = EBGenericTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'netWarningCount' transient property
@@ -1172,6 +1172,66 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   override init () {
     super.init ()
+  //--- Configure mSchematicSheetOrientation simple stored property
+    self.mSchematicSheetOrientation_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mSchematicSheetOrientation_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mRastnetDisplay simple stored property
+    self.mRastnetDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mRastnetDisplay_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mRastnetDisplayedNetName simple stored property
+    self.mRastnetDisplayedNetName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mRastnetDisplayedNetName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mRastnetDisplayedComponentName simple stored property
+    self.mRastnetDisplayedComponentName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mRastnetDisplayedComponentName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
   //--- Configure mArtworkName simple stored property
     self.mArtworkName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2192,66 +2252,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-  //--- Configure mSchematicSheetOrientation simple stored property
-    self.mSchematicSheetOrientation_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.mSchematicSheetOrientation_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure mRastnetDisplay simple stored property
-    self.mRastnetDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.mRastnetDisplay_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure mRastnetDisplayedNetName simple stored property
-    self.mRastnetDisplayedNetName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.mRastnetDisplayedNetName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure mRastnetDisplayedComponentName simple stored property
-    self.mRastnetDisplayedComponentName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.mRastnetDisplayedComponentName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
   //--- Configure boardGridStepMultipliedByDisplayFactor transient property
     self.boardGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2316,6 +2316,36 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.connectedPoints_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure sheetGeometry transient property
+    self.sheetGeometry_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.sheetGeometry_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure schematicBackgroundDisplay transient property
+    self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.schematicBackgroundDisplay_property.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -2826,36 +2856,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.allClassNames_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.allClassNames_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure sheetGeometry transient property
-    self.sheetGeometry_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.sheetGeometry_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure schematicBackgroundDisplay transient property
-    self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.schematicBackgroundDisplay_property.selection {
         case .empty :
           return .empty
         case .multiple :

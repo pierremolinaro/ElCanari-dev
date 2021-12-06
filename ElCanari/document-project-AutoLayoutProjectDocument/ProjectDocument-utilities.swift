@@ -12,7 +12,7 @@ import Cocoa
 
 let SCHEMATIC_GRID_IN_MILS = 50
 let SCHEMATIC_GRID_IN_CANARI_UNIT = milsToCanariUnit (fromInt: SCHEMATIC_GRID_IN_MILS)
-let SCHEMATIC_GRID_IN_COCOA_UNIT = milsToCocoaUnit (CGFloat (SCHEMATIC_GRID_IN_MILS))
+let SCHEMATIC_GRID_IN_COCOA_UNIT  = milsToCocoaUnit (CGFloat (SCHEMATIC_GRID_IN_MILS))
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

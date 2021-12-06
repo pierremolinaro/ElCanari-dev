@@ -6,6 +6,30 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mSchematicSheetOrientation : AnyObject {
+  var mSchematicSheetOrientation : SchematicSheetOrientation { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mRastnetDisplay : AnyObject {
+  var mRastnetDisplay : RastnetDisplay { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mRastnetDisplayedNetName : AnyObject {
+  var mRastnetDisplayedNetName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mRastnetDisplayedComponentName : AnyObject {
+  var mRastnetDisplayedComponentName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mArtworkName : AnyObject {
   var mArtworkName : String { get }
 }
@@ -414,26 +438,8 @@ protocol ProjectRoot_mSchematicCustomHeightUnit : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicSheetOrientation : AnyObject {
-  var mSchematicSheetOrientation : SchematicSheetOrientation { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_mRastnetDisplay : AnyObject {
-  var mRastnetDisplay : RastnetDisplay { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_mRastnetDisplayedNetName : AnyObject {
-  var mRastnetDisplayedNetName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_mRastnetDisplayedComponentName : AnyObject {
-  var mRastnetDisplayedComponentName : String { get }
+protocol ProjectRoot_artworkLayerConfiguration : AnyObject {
+  var artworkLayerConfiguration : LayerConfiguration? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -510,12 +516,6 @@ protocol ProjectRoot_selectedSheetTitle : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_artworkLayerConfiguration : AnyObject {
-  var artworkLayerConfiguration : LayerConfiguration? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ProjectRoot_boardGridStepMultipliedByDisplayFactor : AnyObject {
   var boardGridStepMultipliedByDisplayFactor : Int? { get }
 }
@@ -542,6 +542,18 @@ protocol ProjectRoot_selectedSheetIssues : AnyObject {
 
 protocol ProjectRoot_connectedPoints : AnyObject {
   var connectedPoints : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_sheetGeometry : AnyObject {
+  var sheetGeometry : SchematicSheetGeometry? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_schematicBackgroundDisplay : AnyObject {
+  var schematicBackgroundDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -750,18 +762,6 @@ protocol ProjectRoot_allClassNames : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_sheetGeometry : AnyObject {
-  var sheetGeometry : SchematicSheetGeometry? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_schematicBackgroundDisplay : AnyObject {
-  var schematicBackgroundDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ProjectRoot_netWarningCount : AnyObject {
   var netWarningCount : Int? { get }
 }
@@ -819,6 +819,10 @@ protocol ProjectRoot_schematicStatusImage : AnyObject {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ProjectRoot : EBManagedObject,
+         ProjectRoot_mSchematicSheetOrientation,
+         ProjectRoot_mRastnetDisplay,
+         ProjectRoot_mRastnetDisplayedNetName,
+         ProjectRoot_mRastnetDisplayedComponentName,
          ProjectRoot_mArtworkName,
          ProjectRoot_mArtworkVersion,
          ProjectRoot_mPDFBoardBackgroundColor,
@@ -887,10 +891,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicCustomWidthUnit,
          ProjectRoot_mSchematicCustomHeight,
          ProjectRoot_mSchematicCustomHeightUnit,
-         ProjectRoot_mSchematicSheetOrientation,
-         ProjectRoot_mRastnetDisplay,
-         ProjectRoot_mRastnetDisplayedNetName,
-         ProjectRoot_mRastnetDisplayedComponentName,
+         ProjectRoot_artworkLayerConfiguration,
          ProjectRoot_minPPTPTTTWdisplayUnit,
          ProjectRoot_minPPTPTTTW,
          ProjectRoot_minValueForOARdisplayUnit,
@@ -903,12 +904,13 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_artworkComments,
          ProjectRoot_artworkTitle,
          ProjectRoot_selectedSheetTitle,
-         ProjectRoot_artworkLayerConfiguration,
          ProjectRoot_boardGridStepMultipliedByDisplayFactor,
          ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor,
          ProjectRoot_boardShapeIsRectangular,
          ProjectRoot_selectedSheetIssues,
          ProjectRoot_connectedPoints,
+         ProjectRoot_sheetGeometry,
+         ProjectRoot_schematicBackgroundDisplay,
          ProjectRoot_connexionWarningString,
          ProjectRoot_connexionErrorString,
          ProjectRoot_sheetIndexes,
@@ -943,8 +945,6 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_borderViewBackground,
          ProjectRoot_deviceNames,
          ProjectRoot_allClassNames,
-         ProjectRoot_sheetGeometry,
-         ProjectRoot_schematicBackgroundDisplay,
          ProjectRoot_netWarningCount,
          ProjectRoot_netNamesArray,
          ProjectRoot_unplacedSymbols,
@@ -954,6 +954,82 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_schematicHasErrorOrWarning,
          ProjectRoot_schematicStatusMessage,
          ProjectRoot_schematicStatusImage {
+
+  //····················································································································
+  //   Atomic property: mSchematicSheetOrientation
+  //····················································································································
+
+  final let mSchematicSheetOrientation_property : EBStoredProperty_SchematicSheetOrientation
+
+  //····················································································································
+
+  final func reset_mSchematicSheetOrientation_toDefaultValue () {
+    self.mSchematicSheetOrientation = SchematicSheetOrientation.a4Horizontal
+  }
+
+  //····················································································································
+
+  final var mSchematicSheetOrientation : SchematicSheetOrientation {
+    get { return self.mSchematicSheetOrientation_property.propval }
+    set { self.mSchematicSheetOrientation_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mRastnetDisplay
+  //····················································································································
+
+  final let mRastnetDisplay_property : EBStoredProperty_RastnetDisplay
+
+  //····················································································································
+
+  final func reset_mRastnetDisplay_toDefaultValue () {
+    self.mRastnetDisplay = RastnetDisplay.allNets
+  }
+
+  //····················································································································
+
+  final var mRastnetDisplay : RastnetDisplay {
+    get { return self.mRastnetDisplay_property.propval }
+    set { self.mRastnetDisplay_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mRastnetDisplayedNetName
+  //····················································································································
+
+  final let mRastnetDisplayedNetName_property : EBStoredProperty_String
+
+  //····················································································································
+
+  final func reset_mRastnetDisplayedNetName_toDefaultValue () {
+    self.mRastnetDisplayedNetName = ""
+  }
+
+  //····················································································································
+
+  final var mRastnetDisplayedNetName : String {
+    get { return self.mRastnetDisplayedNetName_property.propval }
+    set { self.mRastnetDisplayedNetName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mRastnetDisplayedComponentName
+  //····················································································································
+
+  final let mRastnetDisplayedComponentName_property : EBStoredProperty_String
+
+  //····················································································································
+
+  final func reset_mRastnetDisplayedComponentName_toDefaultValue () {
+    self.mRastnetDisplayedComponentName = ""
+  }
+
+  //····················································································································
+
+  final var mRastnetDisplayedComponentName : String {
+    get { return self.mRastnetDisplayedComponentName_property.propval }
+    set { self.mRastnetDisplayedComponentName_property.setProp (newValue) }
+  }
 
   //····················································································································
   //   Atomic property: mArtworkName
@@ -2308,25 +2384,6 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Atomic property: mSchematicSheetOrientation
-  //····················································································································
-
-  final let mSchematicSheetOrientation_property : EBStoredProperty_SchematicSheetOrientation
-
-  //····················································································································
-
-  final func reset_mSchematicSheetOrientation_toDefaultValue () {
-    self.mSchematicSheetOrientation = SchematicSheetOrientation.a4Horizontal
-  }
-
-  //····················································································································
-
-  final var mSchematicSheetOrientation : SchematicSheetOrientation {
-    get { return self.mSchematicSheetOrientation_property.propval }
-    set { self.mSchematicSheetOrientation_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   To many property: mBorderCurves
   //····················································································································
 
@@ -2357,63 +2414,6 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Atomic property: mRastnetDisplay
-  //····················································································································
-
-  final let mRastnetDisplay_property : EBStoredProperty_RastnetDisplay
-
-  //····················································································································
-
-  final func reset_mRastnetDisplay_toDefaultValue () {
-    self.mRastnetDisplay = RastnetDisplay.allNets
-  }
-
-  //····················································································································
-
-  final var mRastnetDisplay : RastnetDisplay {
-    get { return self.mRastnetDisplay_property.propval }
-    set { self.mRastnetDisplay_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: mRastnetDisplayedNetName
-  //····················································································································
-
-  final let mRastnetDisplayedNetName_property : EBStoredProperty_String
-
-  //····················································································································
-
-  final func reset_mRastnetDisplayedNetName_toDefaultValue () {
-    self.mRastnetDisplayedNetName = ""
-  }
-
-  //····················································································································
-
-  final var mRastnetDisplayedNetName : String {
-    get { return self.mRastnetDisplayedNetName_property.propval }
-    set { self.mRastnetDisplayedNetName_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: mRastnetDisplayedComponentName
-  //····················································································································
-
-  final let mRastnetDisplayedComponentName_property : EBStoredProperty_String
-
-  //····················································································································
-
-  final func reset_mRastnetDisplayedComponentName_toDefaultValue () {
-    self.mRastnetDisplayedComponentName = ""
-  }
-
-  //····················································································································
-
-  final var mRastnetDisplayedComponentName : String {
-    get { return self.mRastnetDisplayedComponentName_property.propval }
-    set { self.mRastnetDisplayedComponentName_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   To many property: mComponents
   //····················································································································
 
@@ -2426,6 +2426,54 @@ final class ProjectRoot : EBManagedObject,
   final var mComponents : EBReferenceArray <ComponentInProject> {
     get { return self.mComponents_property.propval }
     set { self.mComponents_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   ToMany proxy: fileGenerationParameterArray
+  //····················································································································
+
+  var fileGenerationParameterArray_modelDidChangeController : EBReadOnlyPropertyController? = nil
+  // var fileGenerationParameterArray_boundObjectDidChangeController : EBReadOnlyPropertyController? = nil
+  let fileGenerationParameterArray_property = ProxyArrayOf_ArtworkFileGenerationParameters ()
+
+  //····················································································································
+
+  var fileGenerationParameterArray : EBReferenceArray <ArtworkFileGenerationParameters> {
+    get {
+      switch self.fileGenerationParameterArray_property.selection {
+      case .empty, .multiple :
+        return EBReferenceArray ()
+      case .single (let v) :
+        return EBReferenceArray (v)
+      }
+    }
+    set {
+      self.fileGenerationParameterArray_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+  //   Atomic proxy property: artworkLayerConfiguration
+  //····················································································································
+
+  let artworkLayerConfiguration_property = EBPropertyProxy_LayerConfiguration ()
+
+  //····················································································································
+
+  var artworkLayerConfiguration : LayerConfiguration? {
+    get {
+      switch self.artworkLayerConfiguration_property.selection {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.artworkLayerConfiguration_property.setProp (unwrappedNewValue)
+      }
+    }
   }
 
   //····················································································································
@@ -2741,52 +2789,30 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   ToMany proxy: fileGenerationParameterArray
+  //   To one property: mArtwork
   //····················································································································
 
-  var fileGenerationParameterArray_modelDidChangeController : EBReadOnlyPropertyController? = nil
-  // var fileGenerationParameterArray_boundObjectDidChangeController : EBReadOnlyPropertyController? = nil
-  let fileGenerationParameterArray_property = ProxyArrayOf_ArtworkFileGenerationParameters ()
+  final let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
 
   //····················································································································
 
-  var fileGenerationParameterArray : EBReferenceArray <ArtworkFileGenerationParameters> {
+  final var mArtwork : ArtworkRoot? {
     get {
-      switch self.fileGenerationParameterArray_property.selection {
-      case .empty, .multiple :
-        return EBReferenceArray ()
-      case .single (let v) :
-        return EBReferenceArray (v)
-      }
+      return self.mArtwork_property.propval
     }
     set {
-      self.fileGenerationParameterArray_property.setProp (newValue)
+      if self.mArtwork_property.propval != nil {
+        self.mArtwork_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mArtwork_property.setProp (newValue)
+      }
     }
   }
 
   //····················································································································
-  //   Atomic proxy property: artworkLayerConfiguration
-  //····················································································································
 
-  let artworkLayerConfiguration_property = EBPropertyProxy_LayerConfiguration ()
-
-  //····················································································································
-
-  var artworkLayerConfiguration : LayerConfiguration? {
-    get {
-      switch self.artworkLayerConfiguration_property.selection {
-      case .empty, .multiple :
-        return nil
-      case .single (let v) :
-        return v
-      }
-    }
-    set {
-      if let unwrappedNewValue = newValue {
-        self.artworkLayerConfiguration_property.setProp (unwrappedNewValue)
-      }
-    }
-  }
+  final let mArtwork_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: boardGridStepMultipliedByDisplayFactor
@@ -2900,6 +2926,40 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: sheetGeometry
+  //····················································································································
+
+  final let sheetGeometry_property = EBTransientProperty_SchematicSheetGeometry ()
+
+  //····················································································································
+
+  final var sheetGeometry : SchematicSheetGeometry? {
+    switch self.sheetGeometry_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: schematicBackgroundDisplay
+  //····················································································································
+
+  final let schematicBackgroundDisplay_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  final var schematicBackgroundDisplay : EBShape? {
+    switch self.schematicBackgroundDisplay_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: connexionWarningString
   //····················································································································
 
@@ -2983,32 +3043,6 @@ final class ProjectRoot : EBManagedObject,
       return v
     }
   }
-
-  //····················································································································
-  //   To one property: mArtwork
-  //····················································································································
-
-  final let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
-
-  //····················································································································
-
-  final var mArtwork : ArtworkRoot? {
-    get {
-      return self.mArtwork_property.propval
-    }
-    set {
-      if self.mArtwork_property.propval != nil {
-        self.mArtwork_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mArtwork_property.setProp (newValue)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final let mArtwork_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: signatureForERCChecking
@@ -3504,40 +3538,6 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: sheetGeometry
-  //····················································································································
-
-  final let sheetGeometry_property = EBTransientProperty_SchematicSheetGeometry ()
-
-  //····················································································································
-
-  final var sheetGeometry : SchematicSheetGeometry? {
-    switch self.sheetGeometry_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: schematicBackgroundDisplay
-  //····················································································································
-
-  final let schematicBackgroundDisplay_property = EBTransientProperty_EBShape ()
-
-  //····················································································································
-
-  final var schematicBackgroundDisplay : EBShape? {
-    switch self.schematicBackgroundDisplay_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: netWarningCount
   //····················································································································
 
@@ -3695,6 +3695,10 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.a4Horizontal, undoManager: ebUndoManager)
+    self.mRastnetDisplay_property = EBStoredProperty_RastnetDisplay (defaultValue: RastnetDisplay.allNets, undoManager: ebUndoManager)
+    self.mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: ebUndoManager)
@@ -3763,19 +3767,7 @@ final class ProjectRoot : EBManagedObject,
     self.mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     self.mSchematicCustomHeight_property = EBStoredProperty_Int (defaultValue: 27000000, undoManager: ebUndoManager)
     self.mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.a4Horizontal, undoManager: ebUndoManager)
-    self.mRastnetDisplay_property = EBStoredProperty_RastnetDisplay (defaultValue: RastnetDisplay.allNets, undoManager: ebUndoManager)
-    self.mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mSelectedSheet_none.mReadModelFunction = { [weak self] in // §
-      if let uwSelf = self {
-        return .single (uwSelf.mSelectedSheet_property.propval == nil)
-      }else{
-        return .empty
-      }
-    }
-    self.mSelectedSheet_property.addEBObserver (self.mSelectedSheet_none)
     self.mArtwork_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mArtwork_property.propval == nil)
@@ -3784,6 +3776,14 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mArtwork_property.addEBObserver (self.mArtwork_none)
+    self.mSelectedSheet_none.mReadModelFunction = { [weak self] in // §
+      if let uwSelf = self {
+        return .single (uwSelf.mSelectedSheet_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedSheet_property.addEBObserver (self.mSelectedSheet_none)
   //--- To many property: mSheets (has opposite relationship)
     self.mSheets_property.ebUndoManager = self.ebUndoManager
     self.mSheets_property.setOppositeRelationShipFunctions (
@@ -3810,6 +3810,45 @@ final class ProjectRoot : EBManagedObject,
     )
   //--- To many property: mComponents (no option)
     self.mComponents_property.ebUndoManager = self.ebUndoManager
+  //--- ToMany proxy: fileGenerationParameterArray
+    do{
+      let controller = EBReadOnlyPropertyController (
+        observedObjects: [self.mArtwork_property],
+        callBack: { [weak self] in
+          if let me = self, let model = me.mArtwork {
+            me.fileGenerationParameterArray_property.setModel (model.fileGenerationParameterArray_property)
+          }
+        }
+      )
+      self.mArtwork_property.addEBObserverOf_fileGenerationParameterArray (controller)
+      self.fileGenerationParameterArray_modelDidChangeController = controller
+    }
+  //--- Atomic proxy property: artworkLayerConfiguration
+    self.artworkLayerConfiguration_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mArtwork_property {
+        switch object.layerConfiguration_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.artworkLayerConfiguration_property.mWriteModelFunction = { [weak self] (_ inValue : LayerConfiguration) in
+      self?.mArtwork?.layerConfiguration = inValue
+    }
+    self.artworkLayerConfiguration_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : LayerConfiguration, _ inWindow : NSWindow?) -> Bool in
+      return self?.mArtwork?.layerConfiguration_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mArtwork_property.layerConfiguration_property.addEBObserver (self.artworkLayerConfiguration_property)
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
@@ -4135,45 +4174,8 @@ final class ProjectRoot : EBManagedObject,
       self.mSelectedSheet_property.addEBObserverOf_mObjects (controller)
       self.selectedSheetObjects_modelDidChangeController = controller
     }
-  //--- ToMany proxy: fileGenerationParameterArray
-    do{
-      let controller = EBReadOnlyPropertyController (
-        observedObjects: [self.mArtwork_property],
-        callBack: { [weak self] in
-          if let me = self, let model = me.mArtwork {
-            me.fileGenerationParameterArray_property.setModel (model.fileGenerationParameterArray_property)
-          }
-        }
-      )
-      self.mArtwork_property.addEBObserverOf_fileGenerationParameterArray (controller)
-      self.fileGenerationParameterArray_modelDidChangeController = controller
-    }
-  //--- Atomic proxy property: artworkLayerConfiguration
-    self.artworkLayerConfiguration_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mArtwork_property {
-        switch object.layerConfiguration_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let optionalV) :
-          if let v = optionalV {
-            return .single (v)
-          }else{
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.artworkLayerConfiguration_property.mWriteModelFunction = { [weak self] (_ inValue : LayerConfiguration) in
-      self?.mArtwork?.layerConfiguration = inValue
-    }
-    self.artworkLayerConfiguration_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : LayerConfiguration, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.layerConfiguration_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
-    self.mArtwork_property.layerConfiguration_property.addEBObserver (self.artworkLayerConfiguration_property)
+  //--- To one property: mArtwork
+    self.mArtwork_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardGridStepMultipliedByDisplayFactor
     self.boardGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4259,6 +4261,48 @@ final class ProjectRoot : EBManagedObject,
     }
     self.mSelectedSheet_property.connectedPoints_property.addEBObserver (self.connectedPoints_property)
     self.selectedSheetIssues_property.addEBObserver (self.connectedPoints_property)
+  //--- Atomic property: sheetGeometry
+    self.sheetGeometry_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mSchematicSheetOrientation_property.selection, unwSelf.mSchematicCustomWidth_property.selection, unwSelf.mSchematicCustomHeight_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_ProjectRoot_sheetGeometry (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicSheetOrientation_property.addEBObserver (self.sheetGeometry_property)
+    self.mSchematicCustomWidth_property.addEBObserver (self.sheetGeometry_property)
+    self.mSchematicCustomHeight_property.addEBObserver (self.sheetGeometry_property)
+  //--- Atomic property: schematicBackgroundDisplay
+    self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mSchematicTitle_property.selection, unwSelf.mSchematicVersion_property.selection, unwSelf.sheetGeometry_property.selection, unwSelf.mSelectedSheet_property.mSheetTitle_property.selection, unwSelf.mSheets_property.selection, unwSelf.mSelectedSheet_property.selection, unwSelf.mSchematicDate_property.selection, preferences_schematicBackColor_property.selection, preferences_schematicFrameColor_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+          return .single (transient_ProjectRoot_schematicBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicVersion_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.sheetGeometry_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSelectedSheet_property.mSheetTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSheets_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSelectedSheet_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicDate_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    preferences_schematicBackColor_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    preferences_schematicFrameColor_property.addEBObserver (self.schematicBackgroundDisplay_property)
   //--- Atomic property: connexionWarningString
     self.connexionWarningString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4339,8 +4383,6 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mBoardObjects_property.addEBObserverOf_issues (self.boardIssues_property)
-  //--- To one property: mArtwork
-    self.mArtwork_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4835,48 +4877,6 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mNetClasses_property.addEBObserverOf_mNetClassName (self.allClassNames_property)
-  //--- Atomic property: sheetGeometry
-    self.sheetGeometry_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.mSchematicSheetOrientation_property.selection, unwSelf.mSchematicCustomWidth_property.selection, unwSelf.mSchematicCustomHeight_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
-          return .single (transient_ProjectRoot_sheetGeometry (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mSchematicSheetOrientation_property.addEBObserver (self.sheetGeometry_property)
-    self.mSchematicCustomWidth_property.addEBObserver (self.sheetGeometry_property)
-    self.mSchematicCustomHeight_property.addEBObserver (self.sheetGeometry_property)
-  //--- Atomic property: schematicBackgroundDisplay
-    self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.mSchematicTitle_property.selection, unwSelf.mSchematicVersion_property.selection, unwSelf.sheetGeometry_property.selection, unwSelf.mSelectedSheet_property.mSheetTitle_property.selection, unwSelf.mSheets_property.selection, unwSelf.mSelectedSheet_property.selection, unwSelf.mSchematicDate_property.selection, preferences_schematicBackColor_property.selection, preferences_schematicFrameColor_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
-          return .single (transient_ProjectRoot_schematicBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mSchematicTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicVersion_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.sheetGeometry_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSelectedSheet_property.mSheetTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSheets_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSelectedSheet_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicDate_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    preferences_schematicBackColor_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    preferences_schematicFrameColor_property.addEBObserver (self.schematicBackgroundDisplay_property)
   //--- Atomic property: netWarningCount
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5057,6 +5057,15 @@ final class ProjectRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+  //--- ToMany proxy: fileGenerationParameterArray
+    self.fileGenerationParameterArray_property.setModel (nil)
+    self.fileGenerationParameterArray_modelDidChangeController?.unregister ()
+    self.fileGenerationParameterArray_modelDidChangeController = nil
+  //--- Atomic proxy property: artworkLayerConfiguration
+    self.artworkLayerConfiguration_property.mReadModelFunction = nil
+    self.artworkLayerConfiguration_property.mWriteModelFunction = nil
+    self.artworkLayerConfiguration_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.layerConfiguration_property.removeEBObserver (self.artworkLayerConfiguration_property)
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = nil
     self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = nil
@@ -5121,15 +5130,6 @@ final class ProjectRoot : EBManagedObject,
     self.selectedSheetObjects_property.setModel (nil)
     self.selectedSheetObjects_modelDidChangeController?.unregister ()
     self.selectedSheetObjects_modelDidChangeController = nil
-  //--- ToMany proxy: fileGenerationParameterArray
-    self.fileGenerationParameterArray_property.setModel (nil)
-    self.fileGenerationParameterArray_modelDidChangeController?.unregister ()
-    self.fileGenerationParameterArray_modelDidChangeController = nil
-  //--- Atomic proxy property: artworkLayerConfiguration
-    self.artworkLayerConfiguration_property.mReadModelFunction = nil
-    self.artworkLayerConfiguration_property.mWriteModelFunction = nil
-    self.artworkLayerConfiguration_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.layerConfiguration_property.removeEBObserver (self.artworkLayerConfiguration_property)
     // self.mBoardGridStep_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
     // self.mBoardGridDisplayFactor_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
     // self.mBoardLimitsGridStep_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
@@ -5138,6 +5138,18 @@ final class ProjectRoot : EBManagedObject,
     // self.mSelectedSheet_property.issues_property.removeEBObserver (self.selectedSheetIssues_property)
     // self.mSelectedSheet_property.connectedPoints_property.removeEBObserver (self.connectedPoints_property)
     // self.selectedSheetIssues_property.removeEBObserver (self.connectedPoints_property)
+    // self.mSchematicSheetOrientation_property.removeEBObserver (self.sheetGeometry_property)
+    // self.mSchematicCustomWidth_property.removeEBObserver (self.sheetGeometry_property)
+    // self.mSchematicCustomHeight_property.removeEBObserver (self.sheetGeometry_property)
+    // self.mSchematicTitle_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // self.mSchematicVersion_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // self.sheetGeometry_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // self.mSelectedSheet_property.mSheetTitle_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // self.mSheets_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // self.mSelectedSheet_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // self.mSchematicDate_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // preferences_schematicBackColor_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // preferences_schematicFrameColor_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     // self.mSheets_property.removeEBObserverOf_connexionWarnings (self.connexionWarningString_property)
     // self.mSheets_property.removeEBObserverOf_connexionErrors (self.connexionErrorString_property)
     // self.mSheets_property.removeEBObserver (self.sheetIndexes_property)
@@ -5202,18 +5214,6 @@ final class ProjectRoot : EBManagedObject,
     // self.mBoardObjects_property.removeEBObserverOf_objectDisplay (self.borderViewBackground_property)
     // self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
     // self.mNetClasses_property.removeEBObserverOf_mNetClassName (self.allClassNames_property)
-    // self.mSchematicSheetOrientation_property.removeEBObserver (self.sheetGeometry_property)
-    // self.mSchematicCustomWidth_property.removeEBObserver (self.sheetGeometry_property)
-    // self.mSchematicCustomHeight_property.removeEBObserver (self.sheetGeometry_property)
-    // self.mSchematicTitle_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // self.mSchematicVersion_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // self.sheetGeometry_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // self.mSelectedSheet_property.mSheetTitle_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // self.mSheets_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // self.mSelectedSheet_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // self.mSchematicDate_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // preferences_schematicBackColor_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // preferences_schematicFrameColor_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     // self.mNetClasses_property.removeEBObserverOf_netWarningCount (self.netWarningCount_property)
     // self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netNamesArray_property)
     // self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
@@ -5253,6 +5253,38 @@ final class ProjectRoot : EBManagedObject,
   #if BUILD_OBJECT_EXPLORER
     override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
       super.populateExplorerWindow (&y, view:view)
+      createEntryForPropertyNamed (
+        "mSchematicSheetOrientation",
+        object: self.mSchematicSheetOrientation_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicSheetOrientation_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicSheetOrientation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRastnetDisplay",
+        object: self.mRastnetDisplay_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRastnetDisplay_property.mObserverExplorer,
+        valueExplorer: &self.mRastnetDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRastnetDisplayedNetName",
+        object: self.mRastnetDisplayedNetName_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRastnetDisplayedNetName_property.mObserverExplorer,
+        valueExplorer: &self.mRastnetDisplayedNetName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRastnetDisplayedComponentName",
+        object: self.mRastnetDisplayedComponentName_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRastnetDisplayedComponentName_property.mObserverExplorer,
+        valueExplorer: &self.mRastnetDisplayedComponentName_property.mValueExplorer
+      )
       createEntryForPropertyNamed (
         "mArtworkName",
         object: self.mArtworkName_property,
@@ -5797,38 +5829,6 @@ final class ProjectRoot : EBManagedObject,
         observerExplorer: &self.mSchematicCustomHeightUnit_property.mObserverExplorer,
         valueExplorer: &self.mSchematicCustomHeightUnit_property.mValueExplorer
       )
-      createEntryForPropertyNamed (
-        "mSchematicSheetOrientation",
-        object: self.mSchematicSheetOrientation_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mSchematicSheetOrientation_property.mObserverExplorer,
-        valueExplorer: &self.mSchematicSheetOrientation_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "mRastnetDisplay",
-        object: self.mRastnetDisplay_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mRastnetDisplay_property.mObserverExplorer,
-        valueExplorer: &self.mRastnetDisplay_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "mRastnetDisplayedNetName",
-        object: self.mRastnetDisplayedNetName_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mRastnetDisplayedNetName_property.mObserverExplorer,
-        valueExplorer: &self.mRastnetDisplayedNetName_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "mRastnetDisplayedComponentName",
-        object: self.mRastnetDisplayedComponentName_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mRastnetDisplayedComponentName_property.mObserverExplorer,
-        valueExplorer: &self.mRastnetDisplayedComponentName_property.mValueExplorer
-      )
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "boardGridStepMultipliedByDisplayFactor",
@@ -5869,6 +5869,22 @@ final class ProjectRoot : EBManagedObject,
         view: view,
         observerExplorer: &self.connectedPoints_property.mObserverExplorer,
         valueExplorer: &self.connectedPoints_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "sheetGeometry",
+        object: self.sheetGeometry_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.sheetGeometry_property.mObserverExplorer,
+        valueExplorer: &self.sheetGeometry_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "schematicBackgroundDisplay",
+        object: self.schematicBackgroundDisplay_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.schematicBackgroundDisplay_property.mObserverExplorer,
+        valueExplorer: &self.schematicBackgroundDisplay_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "connexionWarningString",
@@ -6143,22 +6159,6 @@ final class ProjectRoot : EBManagedObject,
         valueExplorer: &self.allClassNames_property.mValueExplorer
       )
       createEntryForPropertyNamed (
-        "sheetGeometry",
-        object: self.sheetGeometry_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.sheetGeometry_property.mObserverExplorer,
-        valueExplorer: &self.sheetGeometry_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "schematicBackgroundDisplay",
-        object: self.schematicBackgroundDisplay_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.schematicBackgroundDisplay_property.mObserverExplorer,
-        valueExplorer: &self.schematicBackgroundDisplay_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
         "netWarningCount",
         object: self.netWarningCount_property,
         y: &y,
@@ -6282,18 +6282,18 @@ final class ProjectRoot : EBManagedObject,
       )
       createEntryForTitle ("ToMany Relationships", y: &y, view: view)
       createEntryForToOneRelationshipNamed (
-        "mSelectedSheet",
-        object: self.mSelectedSheet_property,
-        y: &y,
-        view: view,
-        valueExplorer:&self.mSelectedSheet_property.mValueExplorer
-      )
-      createEntryForToOneRelationshipNamed (
         "mArtwork",
         object: self.mArtwork_property,
         y: &y,
         view: view,
         valueExplorer:&self.mArtwork_property.mValueExplorer
+      )
+      createEntryForToOneRelationshipNamed (
+        "mSelectedSheet",
+        object: self.mSelectedSheet_property,
+        y: &y,
+        view: view,
+        valueExplorer:&self.mSelectedSheet_property.mValueExplorer
       )
       createEntryForTitle ("ToOne Relationships", y: &y, view: view)
     }
@@ -6305,6 +6305,18 @@ final class ProjectRoot : EBManagedObject,
 
   #if BUILD_OBJECT_EXPLORER
     override func clearObjectExplorer () {
+  //--- Atomic property: mSchematicSheetOrientation
+    self.mSchematicSheetOrientation_property.mObserverExplorer = nil
+    self.mSchematicSheetOrientation_property.mValueExplorer = nil
+  //--- Atomic property: mRastnetDisplay
+    self.mRastnetDisplay_property.mObserverExplorer = nil
+    self.mRastnetDisplay_property.mValueExplorer = nil
+  //--- Atomic property: mRastnetDisplayedNetName
+    self.mRastnetDisplayedNetName_property.mObserverExplorer = nil
+    self.mRastnetDisplayedNetName_property.mValueExplorer = nil
+  //--- Atomic property: mRastnetDisplayedComponentName
+    self.mRastnetDisplayedComponentName_property.mObserverExplorer = nil
+    self.mRastnetDisplayedComponentName_property.mValueExplorer = nil
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.mObserverExplorer = nil
     self.mArtworkName_property.mValueExplorer = nil
@@ -6517,24 +6529,17 @@ final class ProjectRoot : EBManagedObject,
       self.mFonts_property.mValueExplorer = nil
     //--- To many property: mDevices
       self.mDevices_property.mValueExplorer = nil
-  //--- Atomic property: mSchematicSheetOrientation
-    self.mSchematicSheetOrientation_property.mObserverExplorer = nil
-    self.mSchematicSheetOrientation_property.mValueExplorer = nil
     //--- To many property: mBorderCurves
       self.mBorderCurves_property.mValueExplorer = nil
     //--- To many property: mBoardObjects
       self.mBoardObjects_property.mValueExplorer = nil
-  //--- Atomic property: mRastnetDisplay
-    self.mRastnetDisplay_property.mObserverExplorer = nil
-    self.mRastnetDisplay_property.mValueExplorer = nil
-  //--- Atomic property: mRastnetDisplayedNetName
-    self.mRastnetDisplayedNetName_property.mObserverExplorer = nil
-    self.mRastnetDisplayedNetName_property.mValueExplorer = nil
-  //--- Atomic property: mRastnetDisplayedComponentName
-    self.mRastnetDisplayedComponentName_property.mObserverExplorer = nil
-    self.mRastnetDisplayedComponentName_property.mValueExplorer = nil
     //--- To many property: mComponents
       self.mComponents_property.mValueExplorer = nil
+    //--- ToMany proxy: fileGenerationParameterArray
+      self.fileGenerationParameterArray_property.mObserverExplorer = nil
+    //--- Atomic proxy property: artworkLayerConfiguration
+      self.artworkLayerConfiguration_property.mObserverExplorer = nil
+      self.artworkLayerConfiguration_property.mValueExplorer = nil
     //--- Atomic proxy property: minPPTPTTTWdisplayUnit
       self.minPPTPTTTWdisplayUnit_property.mObserverExplorer = nil
       self.minPPTPTTTWdisplayUnit_property.mValueExplorer = nil
@@ -6573,17 +6578,12 @@ final class ProjectRoot : EBManagedObject,
       self.selectedSheetTitle_property.mValueExplorer = nil
     //--- ToMany proxy: selectedSheetObjects
       self.selectedSheetObjects_property.mObserverExplorer = nil
-    //--- ToMany proxy: fileGenerationParameterArray
-      self.fileGenerationParameterArray_property.mObserverExplorer = nil
-    //--- Atomic proxy property: artworkLayerConfiguration
-      self.artworkLayerConfiguration_property.mObserverExplorer = nil
-      self.artworkLayerConfiguration_property.mValueExplorer = nil
-    //--- To one property: mSelectedSheet
-      self.mSelectedSheet_property.mObserverExplorer = nil
-      self.mSelectedSheet_property.mValueExplorer = nil
     //--- To one property: mArtwork
       self.mArtwork_property.mObserverExplorer = nil
       self.mArtwork_property.mValueExplorer = nil
+    //--- To one property: mSelectedSheet
+      self.mSelectedSheet_property.mObserverExplorer = nil
+      self.mSelectedSheet_property.mValueExplorer = nil
     //---
       super.clearObjectExplorer ()
     }
@@ -6610,8 +6610,8 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mSelectedSheet = nil
     self.mArtwork = nil
+    self.mSelectedSheet = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -6622,6 +6622,14 @@ final class ProjectRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+    //--- Atomic property: mSchematicSheetOrientation
+      self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicSheetOrientation")
+    //--- Atomic property: mRastnetDisplay
+      self.mRastnetDisplay_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplay")
+    //--- Atomic property: mRastnetDisplayedNetName
+      self.mRastnetDisplayedNetName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedNetName")
+    //--- Atomic property: mRastnetDisplayedComponentName
+      self.mRastnetDisplayedComponentName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedComponentName")
     //--- Atomic property: mArtworkName
       self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkName")
     //--- Atomic property: mArtworkVersion
@@ -6782,8 +6790,6 @@ final class ProjectRoot : EBManagedObject,
       relationshipName: "mDevices",
       intoDictionary: ioDictionary
     )
-    //--- Atomic property: mSchematicSheetOrientation
-      self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicSheetOrientation")
   //--- To many property: mBorderCurves
     self.store (
       managedObjectArray: self.mBorderCurves_property.propval.values,
@@ -6796,25 +6802,19 @@ final class ProjectRoot : EBManagedObject,
       relationshipName: "mBoardObjects",
       intoDictionary: ioDictionary
     )
-    //--- Atomic property: mRastnetDisplay
-      self.mRastnetDisplay_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplay")
-    //--- Atomic property: mRastnetDisplayedNetName
-      self.mRastnetDisplayedNetName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedNetName")
-    //--- Atomic property: mRastnetDisplayedComponentName
-      self.mRastnetDisplayedComponentName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedComponentName")
   //--- To many property: mComponents
     self.store (
       managedObjectArray: self.mComponents_property.propval.values,
       relationshipName: "mComponents",
       intoDictionary: ioDictionary
     )
-  //--- To one property: mSelectedSheet
-    self.store (managedObject:self.mSelectedSheet_property.propval,
-      relationshipName: "mSelectedSheet",
-      intoDictionary: ioDictionary)
   //--- To one property: mArtwork
     self.store (managedObject:self.mArtwork_property.propval,
       relationshipName: "mArtwork",
+      intoDictionary: ioDictionary)
+  //--- To one property: mSelectedSheet
+    self.store (managedObject:self.mSelectedSheet_property.propval,
+      relationshipName: "mSelectedSheet",
       intoDictionary: ioDictionary)
   }
 
@@ -6923,17 +6923,6 @@ final class ProjectRoot : EBManagedObject,
       ) as! [ComponentInProject]
       self.mComponents_property.setProp (EBReferenceArray (array))
     }
-  //--- To one property: mSelectedSheet
-    do{
-      let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mSelectedSheet",
-        inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
-      )
-      if let entity = possibleEntity as? SheetInProject {
-        self.mSelectedSheet_property.setProp (entity)
-      }
-    }
   //--- To one property: mArtwork
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -6945,6 +6934,17 @@ final class ProjectRoot : EBManagedObject,
         self.mArtwork_property.setProp (entity)
       }
     }
+  //--- To one property: mSelectedSheet
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mSelectedSheet",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? SheetInProject {
+        self.mSelectedSheet_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -6953,6 +6953,14 @@ final class ProjectRoot : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mSchematicSheetOrientation
+    self.mSchematicSheetOrientation_property.readFrom (dictionary: inDictionary, forKey: "mSchematicSheetOrientation")
+  //--- Atomic property: mRastnetDisplay
+    self.mRastnetDisplay_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplay")
+  //--- Atomic property: mRastnetDisplayedNetName
+    self.mRastnetDisplayedNetName_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplayedNetName")
+  //--- Atomic property: mRastnetDisplayedComponentName
+    self.mRastnetDisplayedComponentName_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplayedComponentName")
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey: "mArtworkName")
   //--- Atomic property: mArtworkVersion
@@ -7089,14 +7097,6 @@ final class ProjectRoot : EBManagedObject,
     self.mSchematicCustomHeight_property.readFrom (dictionary: inDictionary, forKey: "mSchematicCustomHeight")
   //--- Atomic property: mSchematicCustomHeightUnit
     self.mSchematicCustomHeightUnit_property.readFrom (dictionary: inDictionary, forKey: "mSchematicCustomHeightUnit")
-  //--- Atomic property: mSchematicSheetOrientation
-    self.mSchematicSheetOrientation_property.readFrom (dictionary: inDictionary, forKey: "mSchematicSheetOrientation")
-  //--- Atomic property: mRastnetDisplay
-    self.mRastnetDisplay_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplay")
-  //--- Atomic property: mRastnetDisplayedNetName
-    self.mRastnetDisplayedNetName_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplayedNetName")
-  //--- Atomic property: mRastnetDisplayedComponentName
-    self.mRastnetDisplayedComponentName_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplayedComponentName")
   }
 
 
@@ -7107,6 +7107,10 @@ final class ProjectRoot : EBManagedObject,
   override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
+    ioString += "mSchematicSheetOrientation\n"
+    ioString += "mRastnetDisplay\n"
+    ioString += "mRastnetDisplayedNetName\n"
+    ioString += "mRastnetDisplayedComponentName\n"
     ioString += "mArtworkName\n"
     ioString += "mArtworkVersion\n"
     ioString += "mPDFBoardBackgroundColor\n"
@@ -7175,13 +7179,9 @@ final class ProjectRoot : EBManagedObject,
     ioString += "mSchematicCustomWidthUnit\n"
     ioString += "mSchematicCustomHeight\n"
     ioString += "mSchematicCustomHeightUnit\n"
-    ioString += "mSchematicSheetOrientation\n"
-    ioString += "mRastnetDisplay\n"
-    ioString += "mRastnetDisplayedNetName\n"
-    ioString += "mRastnetDisplayedComponentName\n"
   //--- To one relationships
-    ioString += "mSelectedSheet\n"
     ioString += "mArtwork\n"
+    ioString += "mSelectedSheet\n"
   //--- To many relationships
     ioString += "mSheets\n"
     ioString += "mNetClasses\n"
@@ -7199,6 +7199,14 @@ final class ProjectRoot : EBManagedObject,
   override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
+    self.mSchematicSheetOrientation.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRastnetDisplay.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRastnetDisplayedNetName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRastnetDisplayedComponentName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
     self.mArtworkName.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mArtworkVersion.appendPropertyValueTo (&ioData)
@@ -7335,20 +7343,12 @@ final class ProjectRoot : EBManagedObject,
     ioData.append (ascii: .lineFeed)
     self.mSchematicCustomHeightUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
-    self.mSchematicSheetOrientation.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.mRastnetDisplay.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.mRastnetDisplayedNetName.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.mRastnetDisplayedComponentName.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
   //--- To one relationships
-    if let object = self.mSelectedSheet {
+    if let object = self.mArtwork {
       ioData.append (base62Encoded: object.savingIndex)
     }
     ioData.append (ascii: .lineFeed)
-    if let object = self.mArtwork {
+    if let object = self.mSelectedSheet {
       ioData.append (base62Encoded: object.savingIndex)
     }
     ioData.append (ascii: .lineFeed)
@@ -7583,6 +7583,18 @@ final class ProjectRoot : EBManagedObject,
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
+      if let range = inDictionary ["mSchematicSheetOrientation"], let value = SchematicSheetOrientation.unarchiveFromDataRange (inData, range) {
+        self.mSchematicSheetOrientation = value
+      }
+      if let range = inDictionary ["mRastnetDisplay"], let value = RastnetDisplay.unarchiveFromDataRange (inData, range) {
+        self.mRastnetDisplay = value
+      }
+      if let range = inDictionary ["mRastnetDisplayedNetName"], let value = String.unarchiveFromDataRange (inData, range) {
+        self.mRastnetDisplayedNetName = value
+      }
+      if let range = inDictionary ["mRastnetDisplayedComponentName"], let value = String.unarchiveFromDataRange (inData, range) {
+        self.mRastnetDisplayedComponentName = value
+      }
       if let range = inDictionary ["mArtworkName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mArtworkName = value
       }
@@ -7787,26 +7799,14 @@ final class ProjectRoot : EBManagedObject,
       if let range = inDictionary ["mSchematicCustomHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mSchematicCustomHeightUnit = value
       }
-      if let range = inDictionary ["mSchematicSheetOrientation"], let value = SchematicSheetOrientation.unarchiveFromDataRange (inData, range) {
-        self.mSchematicSheetOrientation = value
-      }
-      if let range = inDictionary ["mRastnetDisplay"], let value = RastnetDisplay.unarchiveFromDataRange (inData, range) {
-        self.mRastnetDisplay = value
-      }
-      if let range = inDictionary ["mRastnetDisplayedNetName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mRastnetDisplayedNetName = value
-      }
-      if let range = inDictionary ["mRastnetDisplayedComponentName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mRastnetDisplayedComponentName = value
-      }
     //--- To one relationships
-      if let range = inDictionary ["mSelectedSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! SheetInProject
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mSelectedSheet = object }
-      }
       if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! ArtworkRoot
         inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mArtwork = object }
+      }
+      if let range = inDictionary ["mSelectedSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
+        let object = inObjectArray [objectIndex] as! SheetInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mSelectedSheet = object }
       }
     //--- To many relationships
       if let range = inDictionary ["mSheets"], range.length > 0 {
@@ -7903,12 +7903,12 @@ final class ProjectRoot : EBManagedObject,
     for managedObject in self.mComponents.values {
       objects.append (managedObject)
     }
-  //--- To one property: mSelectedSheet
-    if let object = self.mSelectedSheet {
-      objects.append (object)
-    }
   //--- To one property: mArtwork
     if let object = self.mArtwork {
+      objects.append (object)
+    }
+  //--- To one property: mSelectedSheet
+    if let object = self.mSelectedSheet {
       objects.append (object)
     }
   }
@@ -7947,12 +7947,12 @@ final class ProjectRoot : EBManagedObject,
     for managedObject in self.mComponents.values {
       objects.append (managedObject)
     }
-  //--- To one property: mSelectedSheet
-    if let object = self.mSelectedSheet {
-      objects.append (object)
-    }
   //--- To one property: mArtwork
     if let object = self.mArtwork {
+      objects.append (object)
+    }
+  //--- To one property: mSelectedSheet
+    if let object = self.mSelectedSheet {
       objects.append (object)
     }
   }

@@ -9,6 +9,12 @@ import Cocoa
 @objc(ProjectDocument) class ProjectDocument : EBManagedXibDocument {
 
   //····················································································································
+  //   Array controller: mDataController
+  //····················································································································
+
+  var mDataController = Controller_ProjectDocument_mDataController ()
+
+  //····················································································································
   //   Array controller: netClassController
   //····················································································································
 
@@ -117,39 +123,16 @@ import Cocoa
   var componentInBoardSelectionController = SelectionController_ProjectDocument_componentInBoardSelectionController ()
 
   //····················································································································
-  //   Array controller: mDataController
-  //····················································································································
-
-  var mDataController = Controller_ProjectDocument_mDataController ()
-
-  //····················································································································
-  //   Array controller: componentController
-  //····················································································································
-
-  var componentController = Controller_ProjectDocument_componentController ()
-
-  //····················································································································
   //   Selection controller: mDataSelection
   //····················································································································
 
   var mDataSelection = SelectionController_ProjectDocument_mDataSelection ()
 
   //····················································································································
-  //   Transient property: netCount
+  //   Array controller: componentController
   //····················································································································
 
-  final let netCount_property = EBTransientProperty_Int ()
-
-  //····················································································································
-
-  final var netCount : Int? {
-    switch self.netCount_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
+  var componentController = Controller_ProjectDocument_componentController ()
 
   //····················································································································
   //   Transient property: rastnetDisplayComponentNet
@@ -178,6 +161,108 @@ import Cocoa
 
   final var documentFileName : String? {
     switch self.documentFileName_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: schematicSheetOrientationIsCustom
+  //····················································································································
+
+  final let schematicSheetOrientationIsCustom_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var schematicSheetOrientationIsCustom : Bool? {
+    switch self.schematicSheetOrientationIsCustom_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: netCount
+  //····················································································································
+
+  final let netCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var netCount : Int? {
+    switch self.netCount_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: rastnetDisplayOneNet
+  //····················································································································
+
+  final let rastnetDisplayOneNet_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var rastnetDisplayOneNet : Bool? {
+    switch self.rastnetDisplayOneNet_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: artworlImportButtonTitle
+  //····················································································································
+
+  final let artworlImportButtonTitle_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var artworlImportButtonTitle : String? {
+    switch self.artworlImportButtonTitle_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: documentFilePathOk
+  //····················································································································
+
+  final let documentFilePathOk_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var documentFilePathOk : Bool? {
+    switch self.documentFilePathOk_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: layerConfigurationString
+  //····················································································································
+
+  final let layerConfigurationString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var layerConfigurationString : String? {
+    switch self.layerConfigurationString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -288,23 +373,6 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: schematicSheetOrientationIsCustom
-  //····················································································································
-
-  final let schematicSheetOrientationIsCustom_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var schematicSheetOrientationIsCustom : Bool? {
-    switch self.schematicSheetOrientationIsCustom_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: netCountString
   //····················································································································
 
@@ -331,74 +399,6 @@ import Cocoa
 
   final var rastnetShape : EBShape? {
     switch self.rastnetShape_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: rastnetDisplayOneNet
-  //····················································································································
-
-  final let rastnetDisplayOneNet_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var rastnetDisplayOneNet : Bool? {
-    switch self.rastnetDisplayOneNet_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: artworlImportButtonTitle
-  //····················································································································
-
-  final let artworlImportButtonTitle_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var artworlImportButtonTitle : String? {
-    switch self.artworlImportButtonTitle_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: documentFilePathOk
-  //····················································································································
-
-  final let documentFilePathOk_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var documentFilePathOk : Bool? {
-    switch self.documentFilePathOk_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: layerConfigurationString
-  //····················································································································
-
-  final let layerConfigurationString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var layerConfigurationString : String? {
-    switch self.layerConfigurationString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1121,6 +1121,8 @@ import Cocoa
 
   #if BUILD_OBJECT_EXPLORER
     override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    //--- Array controller property: mDataController
+      self.mDataController.addExplorer (name: "mDataController", y:&y, view:view)
     //--- Array controller property: netClassController
       self.netClassController.addExplorer (name: "netClassController", y:&y, view:view)
     //--- Array controller property: projectFontController
@@ -1157,12 +1159,10 @@ import Cocoa
       self.boardTextSelectionController.addExplorer (name: "boardTextSelectionController", y:&y, view:view)
     //--- Selection controller property: componentInBoardSelectionController
       self.componentInBoardSelectionController.addExplorer (name: "componentInBoardSelectionController", y:&y, view:view)
-    //--- Array controller property: mDataController
-      self.mDataController.addExplorer (name: "mDataController", y:&y, view:view)
-    //--- Array controller property: componentController
-      self.componentController.addExplorer (name: "componentController", y:&y, view:view)
     //--- Selection controller property: mDataSelection
       self.mDataSelection.addExplorer (name: "mDataSelection", y:&y, view:view)
+    //--- Array controller property: componentController
+      self.componentController.addExplorer (name: "componentController", y:&y, view:view)
     //---
       super.populateExplorerWindow (&y, view:view)
     }
@@ -1680,6 +1680,12 @@ import Cocoa
   final private func configureProperties () {
     let start = Date ()
     var opIdx = 0
+  //--- Array controller property: mDataController
+    self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Array controller property: netClassController
     self.netClassController.bind_model (self.rootObject.mNetClasses_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
@@ -1788,40 +1794,14 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Array controller property: mDataController
-    self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Array controller property: componentController
-    self.componentController.bind_model (self.rootObject.mComponents_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
   //--- Selection controller property: mDataSelection
     self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: netCount
-    self.netCount_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.netsDescription_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_netCount (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.netsDescription_property.addEBObserver (self.netCount_property)
+  //--- Array controller property: componentController
+    self.componentController.bind_model (self.rootObject.mComponents_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1846,6 +1826,126 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: schematicSheetOrientationIsCustom
+    self.schematicSheetOrientationIsCustom_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.mSchematicSheetOrientation_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_schematicSheetOrientationIsCustom (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mSchematicSheetOrientation_property.addEBObserver (self.schematicSheetOrientationIsCustom_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: netCount
+    self.netCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.netsDescription_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_netCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.netsDescription_property.addEBObserver (self.netCount_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: rastnetDisplayOneNet
+    self.rastnetDisplayOneNet_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.mRastnetDisplay_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_rastnetDisplayOneNet (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayOneNet_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: artworlImportButtonTitle
+    self.artworlImportButtonTitle_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.mArtwork_none.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_artworlImportButtonTitle (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mArtwork_property.addEBObserver (self.artworlImportButtonTitle_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: documentFilePathOk
+    self.documentFilePathOk_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.documentFileName_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_documentFilePathOk (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.documentFileName_property.addEBObserver (self.documentFilePathOk_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: layerConfigurationString
+    self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.artworkLayerConfiguration_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_layerConfigurationString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.artworkLayerConfiguration_property.addEBObserver (self.layerConfigurationString_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1971,26 +2071,6 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: schematicSheetOrientationIsCustom
-    self.schematicSheetOrientationIsCustom_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.mSchematicSheetOrientation_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_schematicSheetOrientationIsCustom (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.mSchematicSheetOrientation_property.addEBObserver (self.schematicSheetOrientationIsCustom_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
   //--- Atomic property: netCountString
     self.netCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2031,86 +2111,6 @@ import Cocoa
     self.rootObject.mRastnetDisplayedComponentName_property.addEBObserver (self.rastnetShape_property)
     self.rootObject.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
     self.boardObjectsController.selectedArray_property.addEBObserverOf_componentName (self.rastnetShape_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: rastnetDisplayOneNet
-    self.rastnetDisplayOneNet_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.mRastnetDisplay_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_rastnetDisplayOneNet (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayOneNet_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: artworlImportButtonTitle
-    self.artworlImportButtonTitle_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.mArtwork_none.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_artworlImportButtonTitle (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.mArtwork_property.addEBObserver (self.artworlImportButtonTitle_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: documentFilePathOk
-    self.documentFilePathOk_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.documentFileName_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_documentFilePathOk (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.documentFileName_property.addEBObserver (self.documentFilePathOk_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: layerConfigurationString
-    self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.artworkLayerConfiguration_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_layerConfigurationString (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.artworkLayerConfiguration_property.addEBObserver (self.layerConfigurationString_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3604,6 +3604,8 @@ import Cocoa
     self.schematicObjectsController.unbind_ebView (self.mSchematicsView)
     self.boardCurveObjectsController.unbind_ebView (self.mBoardLimitsView)
     self.boardObjectsController.unbind_ebView (self.mBoardView)
+  //--- Array controller property: mDataController
+    self.mDataController.unbind_model ()
   //--- Array controller property: netClassController
     self.netClassController.unbind_model ()
   //--- Array controller property: projectFontController
@@ -3640,14 +3642,17 @@ import Cocoa
     self.boardTextSelectionController.unbind_selection ()
   //--- Selection controller property: componentInBoardSelectionController
     self.componentInBoardSelectionController.unbind_selection ()
-  //--- Array controller property: mDataController
-    self.mDataController.unbind_model ()
-  //--- Array controller property: componentController
-    self.componentController.unbind_model ()
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
-    // self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
+  //--- Array controller property: componentController
+    self.componentController.unbind_model ()
     // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayComponentNet_property)
+    // self.rootObject.mSchematicSheetOrientation_property.removeEBObserver (self.schematicSheetOrientationIsCustom_property)
+    // self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
+    // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayOneNet_property)
+    // self.rootObject.mArtwork_property.removeEBObserver (self.artworlImportButtonTitle_property)
+    // self.documentFileName_property.removeEBObserver (self.documentFilePathOk_property)
+    // self.rootObject.artworkLayerConfiguration_property.removeEBObserver (self.layerConfigurationString_property)
     // self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     // self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
     // self.netClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
@@ -3655,17 +3660,12 @@ import Cocoa
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_deviceSymbolDictionary (self.selectedDeviceSymbols_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
-    // self.rootObject.mSchematicSheetOrientation_property.removeEBObserver (self.schematicSheetOrientationIsCustom_property)
     // self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
     // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetShape_property)
     // self.rootObject.mRastnetDisplayedNetName_property.removeEBObserver (self.rastnetShape_property)
     // self.rootObject.mRastnetDisplayedComponentName_property.removeEBObserver (self.rastnetShape_property)
     // self.rootObject.mBoardObjects_property.removeEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
     // self.boardObjectsController.selectedArray_property.removeEBObserverOf_componentName (self.rastnetShape_property)
-    // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayOneNet_property)
-    // self.rootObject.mArtwork_property.removeEBObserver (self.artworlImportButtonTitle_property)
-    // self.documentFileName_property.removeEBObserver (self.documentFilePathOk_property)
-    // self.rootObject.artworkLayerConfiguration_property.removeEBObserver (self.layerConfigurationString_property)
     // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     // self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)

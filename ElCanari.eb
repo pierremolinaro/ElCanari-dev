@@ -29,6 +29,7 @@ include "eb-sources/package-packageRoot.eb" ;
 include "eb-sources/device-deviceDocument-auto-layout.eb" ;
 include "eb-sources/device-deviceRoot.eb" ;
 //--- Project
+include "eb-sources/project-auto-layout-document.eb" ;
 include "eb-sources/project-document.eb" ;
 include "eb-sources/project-BoardConnector.eb" ;
 include "eb-sources/project-BoardLine.eb" ;
