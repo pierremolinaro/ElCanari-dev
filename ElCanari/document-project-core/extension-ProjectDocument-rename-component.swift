@@ -38,6 +38,7 @@ extension CustomizedProjectDocument {
     if let window = self.windowForSheet {
       let panel = NSPanel (
         contentRect: NSRect (x: 0, y: 0, width: 450, height: 250),
+//        contentRect: NSRect (),
         styleMask: [.titled],
         backing: .buffered,
         defer: false
@@ -55,49 +56,40 @@ extension CustomizedProjectDocument {
       layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Renaming Component", bold: true, size: .regular))
       layoutView.appendFlexibleSpace ()
     //---
+      let gridView = NSGridView (numberOfColumns: 2, rows: 0)
       do{
-        let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendView (AutoLayoutStaticLabel (title: "Current Component Name", bold: false, size: .regular).set (alignment: .right))
-        hStack.appendFlexibleSpace ()
+        let left = AutoLayoutStaticLabel (title: "Current Component Name", bold: false, size: .regular).set (alignment: .right)
         let currentComponentName = self.mComponentCurrentPrefix + "\(self.mComponentCurrentIndex)"
-        hStack.appendView (AutoLayoutStaticLabel (title: currentComponentName, bold: true, size: .regular))
-        layoutView.appendView (hStack)
+        let right = AutoLayoutStaticLabel (title: currentComponentName, bold: true, size: .regular)
+        gridView.addRow (with: [left, right])
       }
     //---
       do{
-        let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendView (AutoLayoutStaticLabel (title: "New Prefix (only letters)", bold: false, size: .regular).set (alignment: .right))
-        hStack.appendFlexibleSpace ()
+        let left = AutoLayoutStaticLabel (title: "New Prefix (only letters)", bold: false, size: .regular).set (alignment: .right)
         let comboBox = AutoLayoutComboBox (width: 80)
         self.mRenameComponentPrefixComboxBox = comboBox
         self.populatePrefixComboBox (currentPrefixSet, self.mComponentCurrentPrefix)
-        hStack.appendView (comboBox)
         comboBox.mTextDidChangeCallBack = { [weak self] in self?.renameComponentComboBoxAction () }
         comboBox.isContinuous = true
-        layoutView.appendView (hStack)
+        gridView.addRow (with: [left, comboBox])
       }
-    //---
       do{
-        let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendFlexibleSpace ()
-        let tf = AutoLayoutStaticLabel (title: "", bold: true, size: .regular).setRedTextColor ()
+        let tf = AutoLayoutStaticLabel (title: "", bold: true, size: .regular).setRedTextColor ().set (alignment: .right)
         self.mRenameComponentErrorMessageTextField = tf
-        hStack.appendView (tf)
-        layoutView.appendView (hStack)
+        gridView.addRow (with: [tf])
+        gridView.mergeCells (inHorizontalRange: NSRange (location: 0, length: 2), verticalRange: NSRange (location: gridView.numberOfRows - 1,  length: 1) )
       }
     //---
       do{
-        let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendView (AutoLayoutStaticLabel (title: "New Index", bold: false, size: .regular).set (alignment: .right))
-        hStack.appendFlexibleSpace ()
+        let left = AutoLayoutStaticLabel (title: "New Index", bold: false, size: .regular).set (alignment: .right)
         let popup = AutoLayoutPopUpButton (size: .regular)
         self.mRenameComponentIndexesPopUpButton = popup
         self.populateIndexesPopupButton (self.mComponentCurrentIndex)
         popup.target = self
         popup.action = #selector (Self.renameComponentIndexPopUpButtonAction (_:))
-        hStack.appendView (popup)
-        layoutView.appendView (hStack)
+        gridView.addRow (with: [left, popup])
       }
+      layoutView.appendView (gridView)
       layoutView.appendFlexibleSpace ()
     //---
       do{
