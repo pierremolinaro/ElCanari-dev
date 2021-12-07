@@ -126,8 +126,8 @@ import Cocoa
     if let windowSize = self.windowForSheet?.frame.size {
       mainView.frame.size = windowSize
     }
-    self.windowForSheet?.contentViewController = EBViewController (mainView)
-//    self.windowForSheet?.contentView = mainView
+    //self.windowForSheet?.contentViewController = EBViewController (mainView)
+    self.windowForSheet?.contentView = mainView
   }
 
   //····················································································································

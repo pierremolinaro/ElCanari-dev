@@ -56,6 +56,10 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
 
   //····················································································································
 
+  override var acceptsFirstResponder: Bool { return true }
+
+  //····················································································································
+
   override var intrinsicContentSize : NSSize {
     let s = super.intrinsicContentSize
     return NSSize (width: self.mWidth, height: s.height)

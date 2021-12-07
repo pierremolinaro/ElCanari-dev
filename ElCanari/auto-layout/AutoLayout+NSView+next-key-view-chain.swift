@@ -1,18 +1,16 @@
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //
-//  AutoLayout-extension-NSView.swift
+//  AutoLayout-extension-NSView-responder-chain.swift.swift
+//  ElCanari
 //
-//  Created by Pierre Molinaro on 07/02/2021.
+//  Created by Pierre Molinaro on 21/11/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Hidden binding
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private var gHiddenBindingDictionary = [NSView : EBReadOnlyPropertyController] ()
+fileprivate var gNextKeyViewSettingComputationHasBeenTriggered = Set <NSView> ()
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -20,44 +18,59 @@ extension NSView {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.autoLayoutCleanUp ()
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
-  @objc func autoLayoutCleanUp () {
-    gHiddenBindingDictionary [self] = nil
-  }
-
-  //····················································································································
-  //  $hidden binding
-  //····················································································································
-
-  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    var modelArray = [EBObservableObjectProtocol] ()
-    inExpression.addModelsTo (&modelArray)
-    let controller = EBReadOnlyPropertyController (
-      observedObjects: modelArray,
-      callBack: { [weak self] in self?.updateHiddenState (from: inExpression.compute ()) }
-    )
-    gHiddenBindingDictionary [self] = controller
-    return self
-  }
-
-  //····················································································································
-
-  fileprivate func updateHiddenState (from inObject : EBSelection <Bool>) {
-    switch inObject {
-    case .empty, .multiple :
-      self.isHidden = true
-    case .single (let v) :
-      self.isHidden = v
+  func triggerNextKeyViewSettingComputation () {
+    if !gNextKeyViewSettingComputationHasBeenTriggered.contains (self) {
+      gNextKeyViewSettingComputationHasBeenTriggered.insert (self)
+      DispatchQueue.main.async {
+        gNextKeyViewSettingComputationHasBeenTriggered.remove (self)
+        var currentView : NSView? = nil
+        var optionalLastView : NSView? = nil
+        self.buildAutoLayoutKeyViewChain (self, &currentView, &optionalLastView)
+        if let lastView = optionalLastView {
+          _ = self.setAutoLayoutFirstKeyViewInChain (self, lastView)
+        }
+      }
     }
-    if let myViewController = self.window?.contentViewController as? EBViewController {
-      myViewController.triggerNextKeyViewSettingComputation ()
+  }
+
+  //····················································································································
+
+  private func buildAutoLayoutKeyViewChain (_ inView : NSView, _ ioCurrentNextKeyView : inout NSView?, _ outLastView : inout NSView?) {
+    for view in inView.subviews.reversed () {
+      if !view.isHidden {
+        if view.acceptsFirstResponder {
+          if outLastView == nil {
+            outLastView = view
+          }
+          view.nextKeyView = ioCurrentNextKeyView
+          // Swift.print ("Responder of \(view) is \(ioCurrentNextKeyView)")
+          ioCurrentNextKeyView = view
+        }else{
+          self.buildAutoLayoutKeyViewChain (view, &ioCurrentNextKeyView, &outLastView)
+        }
+      }else{
+        view.nextResponder = nil
+      }
     }
+  }
+
+  //····················································································································
+
+  fileprivate func setAutoLayoutFirstKeyViewInChain (_ inView : NSView, _ inLastView : NSView) -> Bool {
+    for view in inView.subviews {
+      if !view.isHidden {
+        if view.acceptsFirstResponder {
+          inLastView.nextKeyView = view
+          return true
+        }else{
+          let found = self.setAutoLayoutFirstKeyViewInChain (view, inLastView)
+          if found {
+            return true
+          }
+        }
+      }
+    }
+    return false
   }
 
   //····················································································································

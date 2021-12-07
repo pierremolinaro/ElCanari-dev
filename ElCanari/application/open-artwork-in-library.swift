@@ -186,9 +186,9 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
     lastLine.appendView (self.mOkButton)
     mainView.appendView (lastLine)
   //--- Set autolayout view to panel
-  //    panel.contentView = mainView
-    mainView.frame.size = panel.frame.size
-    panel.contentViewController = EBViewController (mainView)
+    panel.contentView = mainView
+//    mainView.frame.size = panel.frame.size
+//    panel.contentViewController = EBViewController (mainView)
   //--- Sheet or dialog ?
     if let window = inWindow {
       window.beginSheet (panel) { (inResponse : NSApplication.ModalResponse) in

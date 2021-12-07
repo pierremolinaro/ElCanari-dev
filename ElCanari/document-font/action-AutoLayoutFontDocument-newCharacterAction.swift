@@ -49,7 +49,7 @@ extension AutoLayoutFontDocument {
 
 //      panel.contentView = mainView
       mainView.frame.size = panel.frame.size
-      panel.contentViewController = EBViewController (mainView)
+      panel.contentView = mainView
     //--- Populate table view
       var implementedCharacterSet = Set <Int> ()
       for character in rootObject.characters_property.propval.values {

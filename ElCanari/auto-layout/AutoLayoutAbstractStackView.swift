@@ -64,8 +64,6 @@ class AutoLayoutAbstractStackView : NSStackView, EBUserClassNameProtocol {
 
   override func draw (_ inDirtyRect : NSRect) {
     if debugAutoLayout () {
-//      DEBUG_FILL_COLOR.setFill ()
-//      NSBezierPath.fill (inDirtyRect)
       var r = self.bounds
       r.origin.x += self.edgeInsets.left
       r.origin.y += self.edgeInsets.bottom
@@ -174,6 +172,15 @@ class AutoLayoutAbstractStackView : NSStackView, EBUserClassNameProtocol {
       }
     }
     super.observeValue (forKeyPath: keyPath, of: object, change: change, context: context)
+  }
+
+  //····················································································································
+
+  override func updateConstraints () {
+    super.updateConstraints ()
+    if let windowContentView = self.window?.contentView {
+      windowContentView.triggerNextKeyViewSettingComputation ()
+    }
   }
 
   //····················································································································

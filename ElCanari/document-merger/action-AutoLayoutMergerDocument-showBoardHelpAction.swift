@@ -37,8 +37,8 @@ extension AutoLayoutMergerDocument {
     rightColumn.appendViewPreceededByFlexibleSpace (okButton)
     mainView.appendViewPreceededByFlexibleSpace (rightColumn)
 //    panel.contentView = mainView
-    mainView.frame.size = panel.frame.size
-    panel.contentViewController = EBViewController (mainView)
+//    mainView.frame.size = panel.frame.size
+    panel.contentView = mainView
     self.windowForSheet?.beginSheet (panel, completionHandler: nil)
 //--- END OF USER ZONE 2
   }

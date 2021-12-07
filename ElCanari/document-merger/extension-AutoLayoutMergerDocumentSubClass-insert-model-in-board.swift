@@ -115,7 +115,7 @@ extension AutoLayoutMergerDocumentSubClass {
       mainView.appendViewPreceededByFlexibleSpace (rightColumn)
 //      panel.contentView = mainView
       mainView.frame.size = panel.frame.size
-      panel.contentViewController = EBViewController (mainView)
+      panel.contentView = mainView
       self.windowForSheet?.beginSheet (panel) { (inResponse : NSApplication.ModalResponse) in
         flushOutletEvents ()
         if inResponse == .stop, let boardModel = modelPopUpButton.selectedItem?.representedObject as? BoardModel {

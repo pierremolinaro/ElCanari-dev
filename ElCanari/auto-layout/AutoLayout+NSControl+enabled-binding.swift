@@ -1,105 +1,81 @@
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //
-//  AutoLayout-extension-NSView-responder-chain.swift.swift
-//  ElCanari
+//  AutoLayout-extension-NSControl.swift
 //
-//  Created by Pierre Molinaro on 21/11/2021.
+//  Created by Pierre Molinaro on 07/02/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Custom Automatic Key View Chain
+//   Enabled binding
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBViewController : NSViewController, EBUserClassNameProtocol {
+private var gEnabledFromValueBindingDictionary = [NSControl : Bool] ()
+private var gEnabledBindingValueDictionary = [NSControl : Bool] ()
+private var gEnabledBindingControllerDictionary = [NSControl : EBReadOnlyPropertyController] ()
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension NSControl {
 
   //····················································································································
 
-  init (_ inView : NSView) {
-    super.init (nibName: nil, bundle: nil)
-    self.view = inView
-    noteObjectAllocation (self)
-  }
-
-  //····················································································································
-
-  required init? (coder : NSCoder) {
-    fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
-  override func viewDidLayout () {
-    super.viewDidLayout ()
-    self.triggerNextKeyViewSettingComputation ()
-  }
-
-  //····················································································································
-
-  private var mNextKeyViewSettingComputationHasBeenTriggered = false
-
-  //····················································································································
-
-  func triggerNextKeyViewSettingComputation () {
-    if !mNextKeyViewSettingComputationHasBeenTriggered {
-      self.mNextKeyViewSettingComputationHasBeenTriggered = true
-      DispatchQueue.main.async {
-        self.mNextKeyViewSettingComputationHasBeenTriggered = false
-        var currentView : NSView? = nil
-        var optionalLastView : NSView? = nil
-        self.buildAutoLayoutKeyViewChain (self.view, &currentView, &optionalLastView)
-        if let lastView = optionalLastView {
-          _ = self.setAutoLayoutFirstKeyViewInChain (self.view, lastView)
-        }
-      }
+  override func autoLayoutCleanUp () {
+    gEnabledFromValueBindingDictionary [self] = nil
+    gEnabledBindingValueDictionary [self] = nil
+    if let controller = gEnabledBindingControllerDictionary [self] {
+      controller.unregister ()
+      gEnabledBindingControllerDictionary [self] = nil
     }
+    super.autoLayoutCleanUp ()
+  }
+
+  //····················································································································
+  //  $enabled binding
+  //····················································································································
+
+  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    var modelArray = [EBObservableObjectProtocol] ()
+    inExpression.addModelsTo (&modelArray)
+    let controller = EBReadOnlyPropertyController (
+      observedObjects: modelArray,
+      callBack: { [weak self] in self?.updateEnableState (from: inExpression.compute ()) }
+    )
+    gEnabledBindingControllerDictionary [self] = controller
+    return self
   }
 
   //····················································································································
 
-  private func buildAutoLayoutKeyViewChain (_ inView : NSView, _ ioCurrentNextKeyView : inout NSView?, _ outLastView : inout NSView?) {
-    for view in inView.subviews.reversed () {
-      if !view.isHidden {
-        if view.acceptsFirstResponder {
-          if outLastView == nil {
-            outLastView = view
-          }
-          view.nextKeyView = ioCurrentNextKeyView
-          // Swift.print ("Responder of \(view) is \(ioCurrentNextKeyView)")
-          ioCurrentNextKeyView = view
-        }else{
-          self.buildAutoLayoutKeyViewChain (view, &ioCurrentNextKeyView, &outLastView)
-        }
-      }else{
-        view.nextResponder = nil
-      }
-    }
+  func enable (fromValueBinding inValue : Bool) {
+    gEnabledFromValueBindingDictionary [self] = inValue
+    self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
   }
 
   //····················································································································
 
-  fileprivate func setAutoLayoutFirstKeyViewInChain (_ inView : NSView, _ inLastView : NSView) -> Bool {
-    for view in inView.subviews {
-      if !view.isHidden {
-        if view.acceptsFirstResponder {
-          inLastView.nextKeyView = view
-          return true
-        }else{
-          let found = self.setAutoLayoutFirstKeyViewInChain (view, inLastView)
-          if found {
-            return true
-          }
-        }
-      }
+  func enable (fromEnableBinding inValue : Bool) {
+    gEnabledBindingValueDictionary [self] = inValue
+    self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
+  }
+
+  //····················································································································
+
+  fileprivate func updateEnableState (from inObject : EBSelection <Bool>) {
+    switch inObject {
+    case .empty, .multiple :
+      self.enable (fromEnableBinding: false)
+    case .single (let v) :
+      self.enable (fromEnableBinding: v)
     }
-    return false
+//    if let myViewController = self.window?.contentViewController as? EBViewController {
+//      myViewController.triggerNextKeyViewSettingComputation ()
+//    }
+    if let windowContentView = self.window?.contentView {
+      windowContentView.triggerNextKeyViewSettingComputation ()
+    }
   }
 
   //····················································································································
