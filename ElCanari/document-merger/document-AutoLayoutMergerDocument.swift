@@ -451,7 +451,7 @@ import Cocoa
         .noHeaderView ()
       self.mBoardModelController.bind_tableView (view_1_1)
       view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutTwoColumnsGridView ()
+      let view_1_2 = AutoLayoutGridView2 ()
         .addFirstBaseLineAligned (left: self.computeImplicitView_65 (), right: self.computeImplicitView_66 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_67 (), right: self.computeImplicitView_68 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_69 (), right: self.computeImplicitView_70 ())
@@ -570,7 +570,7 @@ import Cocoa
 
   lazy var mBoardSettingsPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutTwoColumnsGridView ()
+    let view_0 = AutoLayoutGridView2 ()
       .add (single: self.computeImplicitView_142 ())
       .add (single: self.computeImplicitView_143 ())
       .add (single: self.computeImplicitView_144 ())
@@ -735,7 +735,7 @@ import Cocoa
 
   lazy var mArtworkDescriptionPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutTwoColumnsGridView ()
+    let view_0 = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_166 (), right: self.computeImplicitView_167 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_168 (), right: self.computeImplicitView_169 ())
       .addCenterYAligned (left: self.computeImplicitView_170 (), right: self.computeImplicitView_171 ())
@@ -827,7 +827,7 @@ import Cocoa
         view_1_2.appendView (view_1_2_2)
         let view_1_2_3 = AutoLayoutHorizontalStackView ()
         do{
-          let view_1_2_3_0 = AutoLayoutTwoColumnsGridView ()
+          let view_1_2_3_0 = AutoLayoutGridView2 ()
             .set (leftMargin: 20)
             .addFirstBaseLineAligned (left: self.computeImplicitView_172 (), right: self.computeImplicitView_173 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_174 (), right: self.computeImplicitView_175 ())
@@ -876,7 +876,7 @@ import Cocoa
         view_1_2.appendView (view_1_2_7)
         let view_1_2_8 = AutoLayoutHorizontalStackView ()
         do{
-          let view_1_2_8_0 = AutoLayoutTwoColumnsGridView ()
+          let view_1_2_8_0 = AutoLayoutGridView2 ()
             .set (leftMargin: 20)
             .addFirstBaseLineAligned (left: self.computeImplicitView_176 (), right: self.computeImplicitView_177 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_178 (), right: self.computeImplicitView_179 ())
@@ -899,7 +899,7 @@ import Cocoa
         view_1_2.appendView (view_1_2_9)
         let view_1_2_10 = AutoLayoutHorizontalStackView ()
         do{
-          let view_1_2_10_0 = AutoLayoutTwoColumnsGridView ()
+          let view_1_2_10_0 = AutoLayoutGridView2 ()
             .set (leftMargin: 20)
             .addFirstBaseLineAligned (left: self.computeImplicitView_188 (), right: self.computeImplicitView_189 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_190 (), right: self.computeImplicitView_191 ())
@@ -1066,7 +1066,7 @@ import Cocoa
     do{
       let view_3_0 = AutoLayoutFlexibleSpace ()
       view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutTwoColumnsGridView ()
+      let view_3_1 = AutoLayoutGridView2 ()
         .set (leftMargin: 20)
         .set (rightMargin: 20)
         .set (topMargin: 8)
@@ -2059,7 +2059,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_64 () -> NSView {
-    let view = AutoLayoutTwoColumnsGridView ()
+    let view = AutoLayoutGridView2 ()
       .set (margins: 8)
       .addCenterYAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
       .addCenterYAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
@@ -3148,7 +3148,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_141 () -> NSView {
-    let view = AutoLayoutTwoColumnsGridView ()
+    let view = AutoLayoutGridView2 ()
       .set (margins: 8)
       .addCenterYAligned (left: self.computeImplicitView_77 (), right: self.computeImplicitView_78 ())
       .addCenterYAligned (left: self.computeImplicitView_79 (), right: self.computeImplicitView_80 ())

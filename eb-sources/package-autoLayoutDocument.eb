@@ -59,7 +59,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
   stackView mModelImagePage hStack set (spacing: 0) {
     vStack {
-      TwoColumnsGridView {
+      GridView2 {
         set (width: 250) 
         set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8)
         addFirstBaseLineAligned (
@@ -99,7 +99,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         )
       }
       separator
-      TwoColumnsGridView {
+      GridView2 {
         set (leftMargin: 20) set (rightMargin: 20)
         addFirstBaseLineAligned (
           left: StaticLabels (left: "Placard", right: "X", bold: no, size : .small),
@@ -111,7 +111,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         )
       }
       separator
-      TwoColumnsGridView {
+      GridView2 {
         set (leftMargin: 20) set (rightMargin: 20)
         addFirstBaseLineAligned (
           left: PullDownButton (title: "Action", size : .small) {
@@ -236,7 +236,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
           space
           DragSourceButton (tooltip: "Add Dimension") [configurator addPackageDimension] { $image self.addDimensionButtonImage }
         }
-        TwoColumnsGridView {
+        GridView2 {
           addCenterYAligned (
             left: StaticLabel (title: "Model Image Opacity", bold: no, size : .small),
             right: LinearSlider (min:0, max:1, ticks: 11) {
@@ -345,7 +345,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
   stackView mSegmentInspectorView vStack {
     hStack { space StaticLabel (title: "Segment Inspector", bold: yes, size : .small) space }
-    TwoColumnsGridView {
+    GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter5
          #mPackageSegmentSelectionController.x1Unit, #mPackageSegmentSelectionController.y1Unit,
          #mPackageSegmentSelectionController.x2Unit, #mPackageSegmentSelectionController.y2Unit,
@@ -382,7 +382,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
   stackView mBezierCurveInspectorView vStack {
     hStack { space StaticLabel (title: "Bezier Curve Inspector", bold: yes, size : .small) space }
-    TwoColumnsGridView {
+    GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter8
          #mPackageBezierCurveSelectionController.x1Unit, #mPackageBezierCurveSelectionController.y1Unit,
          #mPackageBezierCurveSelectionController.x2Unit, #mPackageBezierCurveSelectionController.y2Unit,
@@ -446,7 +446,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
   stackView mOvalInspectorView vStack {
     hStack { space StaticLabel (title: "Oval Inspector", bold: yes, size : .small) space }
-    TwoColumnsGridView {
+    GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter4
          #mPackageOvalSelectionController.xUnit, #mPackageOvalSelectionController.yUnit,
          #mPackageOvalSelectionController.widthUnit, #mPackageOvalSelectionController.heightUnit
@@ -484,7 +484,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
   stackView mArcInspectorView vStack {
     hStack { space StaticLabel (title: "Arc Inspector", bold: yes, size : .small) space }
-    TwoColumnsGridView {
+    GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter5
          #mPackageArcSelectionController.xCenterUnit, #mPackageArcSelectionController.yCenterUnit,
          #mPackageArcSelectionController.radiusUnit, #mPackageArcSelectionController.startTangentUnit,
@@ -543,7 +543,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
   stackView mGuideInspectorView vStack {
     hStack { space StaticLabel (title: "Guide Inspector", bold: yes, size : .small) space }
-    TwoColumnsGridView {
+    GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter4
          #mPackageGuideSelectionController.x1Unit, #mPackageGuideSelectionController.y1Unit,
          #mPackageGuideSelectionController.x2Unit, #mPackageGuideSelectionController.y2Unit
@@ -572,7 +572,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
   stackView mDimensionInspectorView vStack {
     hStack { space StaticLabel (title: "Dimension Inspector", bold: yes, size : .small) space }
-    TwoColumnsGridView {
+    GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter7
          #mPackageDimensionSelectionController.x1Unit, #mPackageDimensionSelectionController.y1Unit,
          #mPackageDimensionSelectionController.x2Unit, #mPackageDimensionSelectionController.y2Unit,
@@ -641,7 +641,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
   stackView mZoneInspectorView vStack {
     hStack { space StaticLabel (title: "Zone Inspector", bold: yes, size : .small) space }
-    TwoColumnsGridView {
+    GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter6
          #mPackageZoneSelectionController.xUnit, #mPackageZoneSelectionController.yUnit,
          #mPackageZoneSelectionController.widthUnit, #mPackageZoneSelectionController.heightUnit,
@@ -728,7 +728,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
   stackView mMasterPadInspectorView vStack {
     hStack { space StaticLabel (title: "Master Pad Inspector", bold: yes, size : .small) space }
-    TwoColumnsGridView {
+    GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter7
          #mPackagePadSelectionController.xCenterUnit, #mPackagePadSelectionController.yCenterUnit,
          #mPackagePadSelectionController.widthUnit, #mPackagePadSelectionController.heightUnit,
@@ -823,7 +823,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
   stackView mSlavePadInspectorView vStack {
     hStack { space StaticLabel (title: "Slave Pad Inspector", bold: yes, size : .small) space }
-    TwoColumnsGridView {
+    GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter7
          #mPackageSlavePadSelectionController.xCenterUnit, #mPackageSlavePadSelectionController.yCenterUnit,
          #mPackageSlavePadSelectionController.widthUnit, #mPackageSlavePadSelectionController.heightUnit,
@@ -905,7 +905,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
   stackView mGridZoomInspectorView vStack {
     hStack { space StaticLabel (title: "(Stored in Document Preferences)", bold: no, size: .mini) space }
-    TwoColumnsGridView {
+    GridView2 {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Grid Style", bold: no, size : .small),
         right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.gridStyle}
@@ -955,7 +955,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
   stackView mDisplayInspectorView vStack {
     hStack { space StaticLabel (title: "(Stored in Application Preferences)", bold: no, size: .mini) space }
-    TwoColumnsGridView {
+    GridView2 {
       addCenterYAligned (
         left: StaticLabel (title: "Background", bold: no, size : .small),
         right: hStack { ColorWell { $color prefs.packageBackgroundColor (sendContinously:no) } space }

@@ -79,7 +79,7 @@ extension AutoLayoutMergerDocumentSubClass {
       rightColumn.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Insert an Array of Boards", bold: true, size: .regular))
       rightColumn.appendFlexibleSpace ()
 
-      let grid = AutoLayoutTwoColumnsGridView ()
+      let grid = AutoLayoutGridView2 ()
       _ = grid.addFirstBaseLineAligned (
         left: AutoLayoutStaticLabel (title: "Model", bold: false, size: .small),
         right: modelPopUpButton

@@ -2014,7 +2014,7 @@
 		CF730B4821F87EFA00944B3E /* ApplicationDelegate-updateLibraryFromRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF730B4621F87EFA00944B3E /* ApplicationDelegate-updateLibraryFromRepository.swift */; };
 		CF73BE0B25DAFF2A00090625 /* AutoLayoutGraphicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF03A85625D05C8A00630D7D /* AutoLayoutGraphicView.swift */; };
 		CF73BE0C25DAFF2A00090625 /* AutoLayoutStaticLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB1E9225CF0EA70098C56C /* AutoLayoutStaticLabels.swift */; };
-		CF73BE0D25DAFF2A00090625 /* AutoLayoutTwoColumnsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB1CB625CED02A0098C56C /* AutoLayoutTwoColumnsGridView.swift */; };
+		CF73BE0D25DAFF2A00090625 /* AutoLayoutGridView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB1CB625CED02A0098C56C /* AutoLayoutGridView2.swift */; };
 		CF73BE0E25DAFF2A00090625 /* AutoLayoutStaticLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF57922B25CB199A009E9EF7 /* AutoLayoutStaticLabel.swift */; };
 		CF73BE0F25DAFF2A00090625 /* AutoLayoutPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF625BC025D0294D00072462 /* AutoLayoutPullDownButton.swift */; };
 		CF73BE1025DAFF2A00090625 /* AutoLayoutColorWell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF57F66225D45B9E004EB3AF /* AutoLayoutColorWell.swift */; };
@@ -2150,7 +2150,7 @@
 		CF8560C32677A34A00B62608 /* AutoLayoutIntField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC545125D2E63E009C186D /* AutoLayoutIntField.swift */; };
 		CF8560C52677A34A00B62608 /* AutoLayoutPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF625BC025D0294D00072462 /* AutoLayoutPullDownButton.swift */; };
 		CF8560C62677A34A00B62608 /* AutoLayoutLinearSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC7F4725CF211700E4F8FC /* AutoLayoutLinearSlider.swift */; };
-		CF8560C72677A34A00B62608 /* AutoLayoutTwoColumnsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB1CB625CED02A0098C56C /* AutoLayoutTwoColumnsGridView.swift */; };
+		CF8560C72677A34A00B62608 /* AutoLayoutGridView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB1CB625CED02A0098C56C /* AutoLayoutGridView2.swift */; };
 		CF8560C82677A34A00B62608 /* AutoLayoutVerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C602925CAB4FA00A00D5C /* AutoLayoutVerticalStackView.swift */; };
 		CF8560C92677A34A00B62608 /* AutoLayoutLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF57922725CB0977009E9EF7 /* AutoLayoutLabel.swift */; };
 		CF8560CB2677A34A00B62608 /* AutoLayoutFontButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15ED8125E907EC00DE99D3 /* AutoLayoutFontButton.swift */; };
@@ -2180,7 +2180,7 @@
 		CF8560EB2677A34C00B62608 /* AutoLayoutIntField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC545125D2E63E009C186D /* AutoLayoutIntField.swift */; };
 		CF8560ED2677A34C00B62608 /* AutoLayoutPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF625BC025D0294D00072462 /* AutoLayoutPullDownButton.swift */; };
 		CF8560EE2677A34C00B62608 /* AutoLayoutLinearSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC7F4725CF211700E4F8FC /* AutoLayoutLinearSlider.swift */; };
-		CF8560EF2677A34C00B62608 /* AutoLayoutTwoColumnsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB1CB625CED02A0098C56C /* AutoLayoutTwoColumnsGridView.swift */; };
+		CF8560EF2677A34C00B62608 /* AutoLayoutGridView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB1CB625CED02A0098C56C /* AutoLayoutGridView2.swift */; };
 		CF8560F02677A34C00B62608 /* AutoLayoutVerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C602925CAB4FA00A00D5C /* AutoLayoutVerticalStackView.swift */; };
 		CF8560F12677A34C00B62608 /* AutoLayoutLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF57922725CB0977009E9EF7 /* AutoLayoutLabel.swift */; };
 		CF8560F32677A34C00B62608 /* AutoLayoutFontButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15ED8125E907EC00DE99D3 /* AutoLayoutFontButton.swift */; };
@@ -5511,7 +5511,7 @@
 		CFD733892258B8D6009B2614 /* open-font-in-library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "open-font-in-library.swift"; sourceTree = "<group>"; };
 		CFD7FFF822A7BA840039DB80 /* enum-BorderCurveShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-BorderCurveShape.swift"; sourceTree = "<group>"; };
 		CFDB1BC425CEB0EB0098C56C /* AutoLayoutEnumPopUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutEnumPopUpButton.swift; sourceTree = "<group>"; };
-		CFDB1CB625CED02A0098C56C /* AutoLayoutTwoColumnsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutTwoColumnsGridView.swift; sourceTree = "<group>"; };
+		CFDB1CB625CED02A0098C56C /* AutoLayoutGridView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutGridView2.swift; sourceTree = "<group>"; };
 		CFDB1DA425CEFDF50098C56C /* AutoLayoutCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutCheckbox.swift; sourceTree = "<group>"; };
 		CFDB1E9225CF0EA70098C56C /* AutoLayoutStaticLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutStaticLabels.swift; sourceTree = "<group>"; };
 		CFDC5EFE20FB1F70003AB275 /* EBGraphicManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBGraphicManagedObject.swift; sourceTree = "<group>"; };
@@ -6930,6 +6930,7 @@
 				CF9C603125CAB4FA00A00D5C /* AutoLayoutFlexibleSpace.swift */,
 				CF15ED8125E907EC00DE99D3 /* AutoLayoutFontButton.swift */,
 				CF03A85625D05C8A00630D7D /* AutoLayoutGraphicView.swift */,
+				CFDB1CB625CED02A0098C56C /* AutoLayoutGridView2.swift */,
 				CF26AF7D25EAB687000E3080 /* AutoLayoutHelpButton.swift */,
 				CF7B7396268C8BC00058FCD1 /* AutoLayoutHorizontalSplitView.swift */,
 				CF9C602F25CAB4FA00A00D5C /* AutoLayoutHorizontalStackView.swift */,
@@ -6962,7 +6963,6 @@
 				CF670EBE2678FBDD0057FCDE /* AutoLayoutTextField.swift */,
 				CFC5DD8A2689F07C004ACDBE /* AutoLayoutTextObserverView.swift */,
 				CFF17F0325EA7BEC00375F37 /* AutoLayoutTextView.swift */,
-				CFDB1CB625CED02A0098C56C /* AutoLayoutTwoColumnsGridView.swift */,
 				CF1AA7B725CC9CD800C1F9EE /* AutoLayoutVersionField.swift */,
 				CF071E77275B7B4F00FF2772 /* AutoLayoutVerticalScrollView.swift */,
 				CF9C602925CAB4FA00A00D5C /* AutoLayoutVerticalStackView.swift */,
@@ -9402,7 +9402,7 @@
 				CFDD6D4326A1B0F20050CB78 /* AutoLayoutCanariHorizontalAlignmentSegmentedControl.swift in Sources */,
 				CFA430AF229AEC41000AA8C8 /* tomany-SymbolRoot.swift in Sources */,
 				CFA42F95229AEACF000AA8C8 /* toone-SlavePadInDevice.swift in Sources */,
-				CF8560C72677A34A00B62608 /* AutoLayoutTwoColumnsGridView.swift in Sources */,
+				CF8560C72677A34A00B62608 /* AutoLayoutGridView2.swift in Sources */,
 				CF8BE73A23510FEC00F95B3A /* EBAbstractProperty.swift in Sources */,
 				CFA43011229AEB69000AA8C8 /* toone-PackageZone.swift in Sources */,
 				CF3AE26126F618AA004ABD8F /* enum-LayerConfiguration.swift in Sources */,
@@ -10842,7 +10842,7 @@
 				CF4A6C0B21C6B80200997A19 /* EBGraphicView-binding-gridStep.swift in Sources */,
 				CF5C4D8D219F04D600EAC52A /* CanariSignatureField.swift in Sources */,
 				CFDD6D4426A1B0F20050CB78 /* AutoLayoutCanariHorizontalAlignmentSegmentedControl.swift in Sources */,
-				CF8560EF2677A34C00B62608 /* AutoLayoutTwoColumnsGridView.swift in Sources */,
+				CF8560EF2677A34C00B62608 /* AutoLayoutGridView2.swift in Sources */,
 				CFE85AA021A5C91300991A66 /* transient-SymbolSolidRect-selectionDisplay.swift in Sources */,
 				CF8BE73B23510FEC00F95B3A /* EBAbstractProperty.swift in Sources */,
 				CF04AF2122761B7E00C70E99 /* extension-ProjectDocument-print.swift in Sources */,
@@ -12276,7 +12276,7 @@
 				CF9C654F25CABE5C00A00D5C /* open-symbol-in-library.swift in Sources */,
 				CF9C655025CABE5C00A00D5C /* tomany-SymbolPinInstanceInDevice.swift in Sources */,
 				CF22F1AC275A73ED009C6FAC /* transient-MergerRoot-layoutLayerWarningMessage.swift in Sources */,
-				CF73BE0D25DAFF2A00090625 /* AutoLayoutTwoColumnsGridView.swift in Sources */,
+				CF73BE0D25DAFF2A00090625 /* AutoLayoutGridView2.swift in Sources */,
 				CFDD6D6326A1B0F20050CB78 /* AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView.swift in Sources */,
 				CF711CB8275E1A3900280069 /* extension-BoardRestrictRectangle.swift in Sources */,
 				CF711E3E275E1CC600280069 /* extension-SymbolBezierCurve.swift in Sources */,

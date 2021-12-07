@@ -132,7 +132,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 
   stackView mSymbolTextInspectorView vStack {
     hStack { space StaticLabel (title: "Text Inspector", bold: yes, size: .small) space }
-    TwoColumnsGridView {
+    GridView2 {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Pin Name", bold: no, size: .small),
         right: TextField (width: 56, size: .small) { expandableWidth () $value #mSymbolTextSelectionController.text (sendContinously : yes) }
@@ -150,7 +150,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 
   stackView mSymbolPinInspectorView vStack {
     hStack { space StaticLabel (title: "Pin Inspector", bold: yes, size: .small) space }
-    TwoColumnsGridView {
+    GridView2 {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Value", bold: no, size: .small),
         right: TextField (width: 56, size: .small) { expandableWidth () $value #mSymbolPinSelectionController.name (sendContinously : yes) }
@@ -176,7 +176,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 
   stackView mGridZoomInspectorView vStack {
     hStack { space StaticLabel (title: "(Stored in Document Preferences)", bold: no, size: .mini) space }
-    TwoColumnsGridView {
+    GridView2 {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Grid Style", bold: no, size: .small),
         right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.gridStyle}
@@ -223,7 +223,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 
   stackView mDisplayInspectorView vStack {
     hStack { space StaticLabel (title: "(Stored in Application Preferences)", bold: no, size: .mini) space }
-    TwoColumnsGridView {
+    GridView2 {
       addCenterYAligned (
         left: StaticLabel (title: "Symbol", bold: no, size: .small),
         right: hStack { ColorWell { $color prefs.symbolColor (sendContinously:no) } space }

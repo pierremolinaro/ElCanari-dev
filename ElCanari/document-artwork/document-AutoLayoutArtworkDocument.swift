@@ -377,7 +377,7 @@ import Cocoa
     do{
       let view_3_0 = AutoLayoutFlexibleSpace ()
       view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutTwoColumnsGridView ()
+      let view_3_1 = AutoLayoutGridView2 ()
         .set (leftMargin: 20)
         .set (rightMargin: 20)
         .set (topMargin: 8)
@@ -481,7 +481,7 @@ import Cocoa
         view_2_2.appendView (view_2_2_2)
         let view_2_2_3 = AutoLayoutHorizontalStackView ()
         do{
-          let view_2_2_3_0 = AutoLayoutTwoColumnsGridView ()
+          let view_2_2_3_0 = AutoLayoutGridView2 ()
             .set (leftMargin: 20)
             .addFirstBaseLineAligned (left: self.computeImplicitView_8 (), right: self.computeImplicitView_9 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_10 (), right: self.computeImplicitView_11 ())
@@ -530,7 +530,7 @@ import Cocoa
         view_2_2.appendView (view_2_2_7)
         let view_2_2_8 = AutoLayoutHorizontalStackView ()
         do{
-          let view_2_2_8_0 = AutoLayoutTwoColumnsGridView ()
+          let view_2_2_8_0 = AutoLayoutGridView2 ()
             .set (leftMargin: 20)
             .addFirstBaseLineAligned (left: self.computeImplicitView_12 (), right: self.computeImplicitView_13 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_14 (), right: self.computeImplicitView_15 ())
@@ -553,7 +553,7 @@ import Cocoa
         view_2_2.appendView (view_2_2_9)
         let view_2_2_10 = AutoLayoutHorizontalStackView ()
         do{
-          let view_2_2_10_0 = AutoLayoutTwoColumnsGridView ()
+          let view_2_2_10_0 = AutoLayoutGridView2 ()
             .set (leftMargin: 20)
             .addFirstBaseLineAligned (left: self.computeImplicitView_24 (), right: self.computeImplicitView_25 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_26 (), right: self.computeImplicitView_27 ())

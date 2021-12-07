@@ -286,7 +286,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
    //--- Build window contents
       let mainVStack = AutoLayoutVerticalStackView ()
       do {
-        let hStack = AutoLayoutTwoColumnsGridView ().set (margins: 20).set (bottomMargin: 0)
+        let hStack = AutoLayoutGridView2 ().set (margins: 20).set (bottomMargin: 0)
           .addFirstBaseLineAligned (
             left: self.mEnableAllocationDebugCheckbox,
             right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small)
@@ -302,7 +302,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
         mainVStack.appendView (hStack)
       }
       do {
-        let hStack = AutoLayoutTwoColumnsGridView ().set (margins: 20).set (topMargin: 0)
+        let hStack = AutoLayoutGridView2 ().set (margins: 20).set (topMargin: 0)
           .addFirstBaseLineAligned (
             left: AutoLayoutHorizontalStackView ().setFirstBaselineAlignment ()
               .appendView (self.mAllocationStatsWindowVisibleAtLaunchCheckbox)
@@ -322,7 +322,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
               .appendView (AutoLayoutStaticLabel (title: "Currently Allocated", bold: true, size: .small))
               .appendView (self.mCurrentlyAllocatedLabel)
           )
-          .appendView (self.mStatsTableView)
+          .add (single: self.mStatsTableView)
         mainVStack.appendView (hStack)
       }
     //--- Assign main view to window

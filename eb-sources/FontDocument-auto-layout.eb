@@ -102,7 +102,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
     hStack { space StaticLabel (title: "Sample String Metrics", bold: yes, size: .small) space }
     hStack {
       space
-      TwoColumnsGridView {
+      GridView2 {
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Size", bold: no, size: .small),
           right: DoubleField (width: 64, size: .small) { $value prefs.sampleStringSize (sendContinously: yes) }

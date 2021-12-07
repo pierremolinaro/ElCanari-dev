@@ -1,5 +1,5 @@
 //
-//  AutoLayoutTwoColumnsGridView.swift
+//  AutoLayoutGridView2.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 06/02/2021.
@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
+final class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
 
   private var mLastRightView : NSView? = nil
   private var mLastLeftView : NSView? = nil

@@ -110,7 +110,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
     space
     hStack {
       space
-      TwoColumnsGridView {
+      GridView2 {
         set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8)
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular),
@@ -178,7 +178,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
         space
         hStack { StaticLabel (title: "Front Side Elements", bold: yes, size : .small) space }
         hStack {
-          TwoColumnsGridView {
+          GridView2 {
             set (leftMargin: 20)
             addFirstBaseLineAligned (
               left: Checkbox (title: "Legend Front Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendTopSide },
@@ -196,7 +196,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
         hStack set (leftMargin: 20) { Checkbox (title: "Front Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendTopSide } space }
         hStack { StaticLabel (title: "Inner Elements", bold: yes, size : .small) space }
         hStack {
-          TwoColumnsGridView {
+          GridView2 {
             set (leftMargin: 20)
             addFirstBaseLineAligned (
               left:  Checkbox (title: "Traversing Pads", size : .small) { $value #mDataSelection.drawTraversingPads $hidden !root.hasInnerElements },
@@ -227,7 +227,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
         }
         hStack { StaticLabel (title: "Back Side Elements", bold: yes, size : .small) space }
         hStack {
-          TwoColumnsGridView {
+          GridView2 {
             set (leftMargin: 20)
             addFirstBaseLineAligned (
               left: Checkbox (title: "Legend Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendBottomSide },

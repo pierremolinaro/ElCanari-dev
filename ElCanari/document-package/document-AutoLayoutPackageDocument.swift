@@ -544,7 +544,7 @@ import Cocoa
       .set (spacing: 0)
     let view_0 = AutoLayoutVerticalStackView ()
     do{
-      let view_0_0 = AutoLayoutTwoColumnsGridView ()
+      let view_0_0 = AutoLayoutGridView2 ()
         .set (width: 250)
         .set (leftMargin: 20)
         .set (rightMargin: 20)
@@ -557,7 +557,7 @@ import Cocoa
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
       view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutTwoColumnsGridView ()
+      let view_0_2 = AutoLayoutGridView2 ()
         .set (leftMargin: 20)
         .set (rightMargin: 20)
         .addFirstBaseLineAligned (left: self.computeImplicitView_10 (), right: self.computeImplicitView_11 ())
@@ -565,7 +565,7 @@ import Cocoa
       view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutVerticalStackView.HorizontalSeparator ()
       view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutTwoColumnsGridView ()
+      let view_0_4 = AutoLayoutGridView2 ()
         .set (leftMargin: 20)
         .set (rightMargin: 20)
         .addFirstBaseLineAligned (left: self.computeImplicitView_14 (), right: self.computeImplicitView_15 ())
@@ -686,7 +686,7 @@ import Cocoa
           view_0_0_0.appendView (view_0_0_0_16)
         }
         view_0_0.appendView (view_0_0_0)
-        let view_0_0_1 = AutoLayoutTwoColumnsGridView ()
+        let view_0_0_1 = AutoLayoutGridView2 ()
           .addCenterYAligned (left: self.computeImplicitView_32 (), right: self.computeImplicitView_33 ())
           .addFirstBaseLineAligned (left: self.computeImplicitView_34 (), right: self.computeImplicitView_35 ())
           .addFirstBaseLineAligned (left: self.computeImplicitView_36 (), right: self.computeImplicitView_37 ())
@@ -813,7 +813,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTwoColumnsGridView ()
+    let view_1 = AutoLayoutGridView2 ()
       .add (single: self.computeImplicitView_38 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_39 (), right: self.computeImplicitView_40 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_41 (), right: self.computeImplicitView_42 ())
@@ -840,7 +840,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTwoColumnsGridView ()
+    let view_1 = AutoLayoutGridView2 ()
       .add (single: self.computeImplicitView_49 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_50 (), right: self.computeImplicitView_51 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_52 (), right: self.computeImplicitView_53 ())
@@ -870,7 +870,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTwoColumnsGridView ()
+    let view_1 = AutoLayoutGridView2 ()
       .add (single: self.computeImplicitView_66 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_67 (), right: self.computeImplicitView_68 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_69 (), right: self.computeImplicitView_70 ())
@@ -896,7 +896,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTwoColumnsGridView ()
+    let view_1 = AutoLayoutGridView2 ()
       .add (single: self.computeImplicitView_75 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_76 (), right: self.computeImplicitView_77 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_78 (), right: self.computeImplicitView_79 ())
@@ -934,7 +934,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTwoColumnsGridView ()
+    let view_1 = AutoLayoutGridView2 ()
       .add (single: self.computeImplicitView_90 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_91 (), right: self.computeImplicitView_92 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_93 (), right: self.computeImplicitView_94 ())
@@ -960,7 +960,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTwoColumnsGridView ()
+    let view_1 = AutoLayoutGridView2 ()
       .add (single: self.computeImplicitView_99 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_100 (), right: self.computeImplicitView_101 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_102 (), right: self.computeImplicitView_103 ())
@@ -1013,7 +1013,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTwoColumnsGridView ()
+    let view_1 = AutoLayoutGridView2 ()
       .add (single: self.computeImplicitView_114 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_115 (), right: self.computeImplicitView_116 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_117 (), right: self.computeImplicitView_118 ())
@@ -1076,7 +1076,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTwoColumnsGridView ()
+    let view_1 = AutoLayoutGridView2 ()
       .add (single: self.computeImplicitView_132 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_133 (), right: self.computeImplicitView_134 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_135 (), right: self.computeImplicitView_136 ())
@@ -1113,7 +1113,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTwoColumnsGridView ()
+    let view_1 = AutoLayoutGridView2 ()
       .add (single: self.computeImplicitView_158 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_159 (), right: self.computeImplicitView_160 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_161 (), right: self.computeImplicitView_162 ())
@@ -1146,7 +1146,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTwoColumnsGridView ()
+    let view_1 = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_179 (), right: self.computeImplicitView_180 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_181 (), right: self.computeImplicitView_182 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_183 (), right: self.computeImplicitView_184 ())
@@ -1177,7 +1177,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTwoColumnsGridView ()
+    let view_1 = AutoLayoutGridView2 ()
       .addCenterYAligned (left: self.computeImplicitView_195 (), right: self.computeImplicitView_196 ())
       .addCenterYAligned (left: self.computeImplicitView_197 (), right: self.computeImplicitView_198 ())
       .addCenterYAligned (left: self.computeImplicitView_199 (), right: self.computeImplicitView_200 ())

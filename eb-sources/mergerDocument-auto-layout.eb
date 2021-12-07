@@ -57,7 +57,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   stackView mModelPage hStack {
     vStack set (bottomMargin: 8) set (width: 250) $hidden !root.showDisplaySettingView {
       VerticalScrollView (content: 
-        TwoColumnsGridView {
+        GridView2 {
           set (margins: 8)
           addCenterYAligned (
             left: space,
@@ -329,7 +329,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         noHeaderView ()
         $tableValue #mBoardModelController
       }
-      TwoColumnsGridView {
+      GridView2 {
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Artwork Name", bold: no, size : .small),
           right: Label (bold: yes, size: .small) { $title #mBoardModelSelection.artworkName  }
@@ -397,7 +397,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   stackView mBoardPage hStack {
     vStack set (bottomMargin: 8) set (width: 250) $hidden !root.showDisplaySettingView {
       VerticalScrollView (content: 
-        TwoColumnsGridView {
+        GridView2 {
           set (margins: 8)
           addCenterYAligned (
             left: space,
@@ -679,7 +679,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   //············································································
 
   stackView mBoardSettingsPage vStack {
-    TwoColumnsGridView {
+    GridView2 {
       add (single: 
         hStack {
           vStack {
@@ -913,7 +913,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   //············································································
 
   stackView mArtworkDescriptionPage vStack {
-    TwoColumnsGridView {
+    GridView2 {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Layer Description", bold: no, size: .regular),
         right: Label (bold: yes, size: .regular) {
@@ -968,7 +968,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         space
         hStack { StaticLabel (title: "Front Side Elements", bold: yes, size : .small) space }
         hStack {
-          TwoColumnsGridView {
+          GridView2 {
             set (leftMargin: 20)
             addFirstBaseLineAligned (
               left: Checkbox (title: "Legend Front Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendTopSide },
@@ -986,7 +986,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         hStack set (leftMargin: 20) { Checkbox (title: "Front Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendTopSide } space }
         hStack { StaticLabel (title: "Inner Elements", bold: yes, size : .small) space }
         hStack {
-          TwoColumnsGridView {
+          GridView2 {
             set (leftMargin: 20)
             addFirstBaseLineAligned (
               left:  Checkbox (title: "Traversing Pads", size : .small) { $value #mDataSelection.drawTraversingPads $hidden !root.hasInnerElements },
@@ -1017,7 +1017,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         }
         hStack { StaticLabel (title: "Back Side Elements", bold: yes, size : .small) space }
         hStack {
-          TwoColumnsGridView {
+          GridView2 {
             set (leftMargin: 20)
             addFirstBaseLineAligned (
               left: Checkbox (title: "Legend Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendBottomSide },
@@ -1086,7 +1086,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
     space
     hStack {
       space
-      TwoColumnsGridView {
+      GridView2 {
         set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8)
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular),

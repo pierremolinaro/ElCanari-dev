@@ -168,7 +168,7 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
     twoColumns.appendView (self.mNoSelectedArtworkMessage)
     twoColumns.appendView (self.mArtworkDetailView)
   //--- Grid view (status, path)
-    let gridView = AutoLayoutTwoColumnsGridView ()
+    let gridView = AutoLayoutGridView2 ()
     _ = gridView.addFirstBaseLineAligned (
       left: AutoLayoutStaticLabel (title: "Status", bold: false, size: .regular).set (alignment: .left),
       right: self.mArtworkStatus

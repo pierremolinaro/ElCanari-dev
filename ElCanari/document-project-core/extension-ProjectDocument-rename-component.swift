@@ -56,12 +56,12 @@ extension CustomizedProjectDocument {
       layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Renaming Component", bold: true, size: .regular))
       layoutView.appendFlexibleSpace ()
     //---
-      let gridView = NSGridView (numberOfColumns: 2, rows: 0)
+      let gridView = AutoLayoutGridView2 ()
       do{
         let left = AutoLayoutStaticLabel (title: "Current Component Name", bold: false, size: .regular).set (alignment: .right)
         let currentComponentName = self.mComponentCurrentPrefix + "\(self.mComponentCurrentIndex)"
         let right = AutoLayoutStaticLabel (title: currentComponentName, bold: true, size: .regular)
-        gridView.addRow (with: [left, right])
+        _ = gridView.addFirstBaseLineAligned (left: left, right: right)
       }
     //---
       do{
@@ -71,13 +71,12 @@ extension CustomizedProjectDocument {
         self.populatePrefixComboBox (currentPrefixSet, self.mComponentCurrentPrefix)
         comboBox.mTextDidChangeCallBack = { [weak self] in self?.renameComponentComboBoxAction () }
         comboBox.isContinuous = true
-        gridView.addRow (with: [left, comboBox])
+        _ = gridView.addFirstBaseLineAligned (left: left, right: comboBox)
       }
       do{
         let tf = AutoLayoutStaticLabel (title: "", bold: true, size: .regular).setRedTextColor ().set (alignment: .right)
         self.mRenameComponentErrorMessageTextField = tf
-        gridView.addRow (with: [tf])
-        gridView.mergeCells (inHorizontalRange: NSRange (location: 0, length: 2), verticalRange: NSRange (location: gridView.numberOfRows - 1,  length: 1) )
+        _ = gridView.add(single: tf)
       }
     //---
       do{
@@ -87,7 +86,7 @@ extension CustomizedProjectDocument {
         self.populateIndexesPopupButton (self.mComponentCurrentIndex)
         popup.target = self
         popup.action = #selector (Self.renameComponentIndexPopUpButtonAction (_:))
-        gridView.addRow (with: [left, popup])
+        _ = gridView.addFirstBaseLineAligned (left: left, right: popup)
       }
       layoutView.appendView (gridView)
       layoutView.appendFlexibleSpace ()

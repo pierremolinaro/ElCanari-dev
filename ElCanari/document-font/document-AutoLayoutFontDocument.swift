@@ -384,7 +384,7 @@ import Cocoa
     do{
       let view_3_0 = AutoLayoutFlexibleSpace ()
       view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutTwoColumnsGridView ()
+      let view_3_1 = AutoLayoutGridView2 ()
         .addFirstBaseLineAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
