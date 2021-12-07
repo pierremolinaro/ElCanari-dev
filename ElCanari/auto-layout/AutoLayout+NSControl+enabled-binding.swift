@@ -70,10 +70,7 @@ extension NSControl {
     case .single (let v) :
       self.enable (fromEnableBinding: v)
     }
-//    if let myViewController = self.window?.contentViewController as? EBViewController {
-//      myViewController.triggerNextKeyViewSettingComputation ()
-//    }
-    if let windowContentView = self.window?.contentView {
+    if let windowContentView = self.window?.contentView as? AutoLayoutWindowContentView {
       windowContentView.triggerNextKeyViewSettingComputation ()
     }
   }

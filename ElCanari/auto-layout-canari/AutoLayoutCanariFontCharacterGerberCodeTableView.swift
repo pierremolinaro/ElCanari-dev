@@ -22,7 +22,7 @@ final class AutoLayoutCanariFontCharacterGerberCodeTableView : AutoLayoutVertica
   //····················································································································
 
   private let mScrollView = NSScrollView (frame: NSRect ())
-  private let mTableView = NSTableView ()
+  private let mTableView = PrivateTableView ()
 
   //····················································································································
 
@@ -80,10 +80,6 @@ final class AutoLayoutCanariFontCharacterGerberCodeTableView : AutoLayoutVertica
   deinit {
     noteObjectDeallocation (self)
   }
-
-  //····················································································································
-
-  override var acceptsFirstResponder: Bool { return false }
 
   //····················································································································
   //  value binding
@@ -161,6 +157,38 @@ final class AutoLayoutCanariFontCharacterGerberCodeTableView : AutoLayoutVertica
     }
     return textField
   }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate final class PrivateTableView : NSTableView, EBUserClassNameProtocol {
+
+  //····················································································································
+
+  init () {
+    super.init (frame: NSRect ())
+    noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
+  }
+
+  //····················································································································
+
+  required init? (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  override var acceptsFirstResponder: Bool { return false }
 
   //····················································································································
 

@@ -55,10 +55,7 @@ extension NSView {
     case .single (let v) :
       self.isHidden = v
     }
-//    if let myViewController = self.window?.contentViewController as? EBViewController {
-//      myViewController.triggerNextKeyViewSettingComputation ()
-//    }
-    if let windowContentView = self.window?.contentView {
+    if let windowContentView = self.window?.contentView as? AutoLayoutWindowContentView {
       windowContentView.triggerNextKeyViewSettingComputation ()
     }
   }

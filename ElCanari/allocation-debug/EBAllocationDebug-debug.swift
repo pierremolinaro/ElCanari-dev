@@ -326,7 +326,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
         mainVStack.appendView (hStack)
       }
     //--- Assign main view to window
-      self.mAllocationStatsWindow.contentView = mainVStack
+      self.mAllocationStatsWindow.contentView = AutoLayoutWindowContentView (view: mainVStack)
    //--- Show Window at Launch
      if self.mAllocationStatsWindowVisibleAtLaunch.propval {
        self.mAllocationStatsWindow.makeKeyAndOrderFront (nil)

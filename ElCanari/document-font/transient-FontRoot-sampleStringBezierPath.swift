@@ -30,7 +30,7 @@ func transient_FontRoot_sampleStringBezierPath (
   let path = NSBezierPath ()
   for unicodeCharacter in sampleStringAsMacRomanData { // sampleStringASUnicodeArray {
     let characterIndex = Int (unicodeCharacter) - 32
-    if characterIndex < self_characters_segmentArrayForDrawing.count {
+    if characterIndex >= 0, characterIndex < self_characters_segmentArrayForDrawing.count {
       let segmentArrayDescriptor : FontCharacter_segmentArrayForDrawing = self_characters_segmentArrayForDrawing [characterIndex]
       if let segmentArray = segmentArrayDescriptor.segmentArrayForDrawing {
         for segment in segmentArray.code {
@@ -39,7 +39,7 @@ func transient_FontRoot_sampleStringBezierPath (
         }
       }
     }
-    if characterIndex < self_characters_advance.count {
+    if characterIndex >= 0, characterIndex < self_characters_advance.count {
       currentX += toCocoa (self_characters_advance [characterIndex].advance)
     }
   }

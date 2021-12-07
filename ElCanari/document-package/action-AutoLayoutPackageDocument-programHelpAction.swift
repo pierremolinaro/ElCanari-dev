@@ -32,9 +32,7 @@ extension AutoLayoutPackageDocument {
       let okButton = CanariOkButtonForSheet ()
       vStack.appendView (okButton)
     //---
-      sheet.contentView = vStack
-//      vStack.frame.size = sheet.frame.size
-//      sheet.contentViewController = EBViewController (vStack)
+      sheet.contentView = AutoLayoutWindowContentView (view: vStack)
       if let cell = okButton.cell as? NSButtonCell {
         sheet.defaultButtonCell = cell
       }

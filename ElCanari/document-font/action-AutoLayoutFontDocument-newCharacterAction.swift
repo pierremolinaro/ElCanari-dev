@@ -46,10 +46,7 @@ extension AutoLayoutFontDocument {
       bottomItems.appendViewPreceededByFlexibleSpace (okButton)
       rightColumn.appendView (bottomItems)
       mainView.appendView (rightColumn)
-
-//      panel.contentView = mainView
-      mainView.frame.size = panel.frame.size
-      panel.contentView = mainView
+      panel.contentView = AutoLayoutWindowContentView (view: mainView)
     //--- Populate table view
       var implementedCharacterSet = Set <Int> ()
       for character in rootObject.characters_property.propval.values {

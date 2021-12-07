@@ -178,7 +178,7 @@ class AutoLayoutAbstractStackView : NSStackView, EBUserClassNameProtocol {
 
   override func updateConstraints () {
     super.updateConstraints ()
-    if let windowContentView = self.window?.contentView {
+    if let windowContentView = self.window?.contentView as? AutoLayoutWindowContentView {
       windowContentView.triggerNextKeyViewSettingComputation ()
     }
   }
