@@ -66,17 +66,10 @@ xibdocument ProjectDocument root ProjectRoot {
   action revealPackageOfSelectedComponentsAction ;
   outlet EBButton mRevealPackageOfSelectedComponentsButton
     $run revealPackageOfSelectedComponentsAction
-//    $enabled (#componentController.selectedArray.count > 0) & #componentController.selectedArray.all.isPlacedInBoard
     $enabled #componentController.selectedArray.count > 0
   ;
 
   outlet EBButton mRenameComponentButton $enabled #componentController.selectedArray.count == 1 ; // Action targeted in IB
-////  outlet NSPanel mRenameComponentPanel ;
-//  outlet NSTextField mCurrentComponentNameTextField ;
-//  outlet NSTextField mRenameComponentErrorMessageTextField ;
-//  outlet CanariComboBox mRenameComponentPrefixComboxBox ;
-//  outlet NSPopUpButton mRenameComponentIndexesPopUpButton ;
-//  outlet NSButton mRenameComponentValidationButton ;
 
   tableViewController #componentController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mComponents {
      column "name" sortkey componentName EBTextObserverField $valueObserver self.componentName

@@ -4231,6 +4231,9 @@
 		CFEDE5B71B4677C500036ACF /* EBManagedXibDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDE5B21B4677C500036ACF /* EBManagedXibDocument.swift */; };
 		CFEDE5B81B4677C500036ACF /* EBManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDE5B31B4677C500036ACF /* EBManagedObject.swift */; };
 		CFEDE5BA1B4677C500036ACF /* EBUndoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDE5B51B4677C500036ACF /* EBUndoManager.swift */; };
+		CFEDFA2C275F73C900614F13 /* AutoLayoutGridView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDFA2B275F73C900614F13 /* AutoLayoutGridView4.swift */; };
+		CFEDFA2D275F73C900614F13 /* AutoLayoutGridView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDFA2B275F73C900614F13 /* AutoLayoutGridView4.swift */; };
+		CFEDFA2E275F73C900614F13 /* AutoLayoutGridView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDFA2B275F73C900614F13 /* AutoLayoutGridView4.swift */; };
 		CFEF3D2B20F9FAF900DA6106 /* CanariOkButtonForSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3D2A20F9FAF900DA6106 /* CanariOkButtonForSheet.swift */; };
 		CFEF3D2D20FA002700DA6106 /* CanariCancelButtonForSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3D2C20FA002700DA6106 /* CanariCancelButtonForSheet.swift */; };
 		CFEFEE0225D17AAB00D02854 /* EBEnclosingGraphicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEFEE0125D17AAB00D02854 /* EBEnclosingGraphicView.swift */; };
@@ -5764,6 +5767,7 @@
 		CFEDE5B21B4677C500036ACF /* EBManagedXibDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBManagedXibDocument.swift; sourceTree = "<group>"; };
 		CFEDE5B31B4677C500036ACF /* EBManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBManagedObject.swift; sourceTree = "<group>"; };
 		CFEDE5B51B4677C500036ACF /* EBUndoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBUndoManager.swift; sourceTree = "<group>"; };
+		CFEDFA2B275F73C900614F13 /* AutoLayoutGridView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutGridView4.swift; sourceTree = "<group>"; };
 		CFEF3D2A20F9FAF900DA6106 /* CanariOkButtonForSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariOkButtonForSheet.swift; sourceTree = "<group>"; };
 		CFEF3D2C20FA002700DA6106 /* CanariCancelButtonForSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariCancelButtonForSheet.swift; sourceTree = "<group>"; };
 		CFEFEE0125D17AAB00D02854 /* EBEnclosingGraphicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBEnclosingGraphicView.swift; sourceTree = "<group>"; };
@@ -6931,6 +6935,7 @@
 				CF15ED8125E907EC00DE99D3 /* AutoLayoutFontButton.swift */,
 				CF03A85625D05C8A00630D7D /* AutoLayoutGraphicView.swift */,
 				CFDB1CB625CED02A0098C56C /* AutoLayoutGridView2.swift */,
+				CFEDFA2B275F73C900614F13 /* AutoLayoutGridView4.swift */,
 				CF26AF7D25EAB687000E3080 /* AutoLayoutHelpButton.swift */,
 				CF7B7396268C8BC00058FCD1 /* AutoLayoutHorizontalSplitView.swift */,
 				CF9C602F25CAB4FA00A00D5C /* AutoLayoutHorizontalStackView.swift */,
@@ -9303,6 +9308,7 @@
 				CF711D6E275E1AFA00280069 /* tomany-FontInProject.swift in Sources */,
 				CFEB7AFB233A249E0060A97A /* transient-BoardText-signatureForERCChecking.swift in Sources */,
 				CF00845321C42A91003627E9 /* transient-PackageOval-selectionDisplay.swift in Sources */,
+				CFEDFA2C275F73C900614F13 /* AutoLayoutGridView4.swift in Sources */,
 				CFA42FFD229AEB68000AA8C8 /* tomany-PackageDimension.swift in Sources */,
 				CFC4E0FC2391622E00AE5CCD /* transient-ProjectRoot-sheetGeometry.swift in Sources */,
 				CFEB7B8C233A26330060A97A /* transient-DeviceInProject-canRemove.swift in Sources */,
@@ -10740,6 +10746,7 @@
 				CF00845421C42A91003627E9 /* transient-PackageOval-selectionDisplay.swift in Sources */,
 				CF5C4D7D219F04D600EAC52A /* action-Preferences-revealUserLibraryInFinderAction.swift in Sources */,
 				CF76EF2E2205AC7F005ECF32 /* library-repository-get-current-commit.swift in Sources */,
+				CFEDFA2D275F73C900614F13 /* AutoLayoutGridView4.swift in Sources */,
 				CF14419127554E6C006C3E1F /* AutoLayoutCanariFontCharacterGerberCodeTableView.swift in Sources */,
 				CF711E17275E1C8D00280069 /* extension-PackagePad.swift in Sources */,
 				CFEB7AFC233A249E0060A97A /* transient-BoardText-signatureForERCChecking.swift in Sources */,
@@ -11240,6 +11247,7 @@
 				CF9C615825CABE5C00A00D5C /* open-package-in-library.swift in Sources */,
 				CF49C15A25D13A030082271E /* transient-SymbolSolidRect-filledBezierPath.swift in Sources */,
 				CF9C615925CABE5C00A00D5C /* StringSet.swift in Sources */,
+				CFEDFA2E275F73C900614F13 /* AutoLayoutGridView4.swift in Sources */,
 				CF49C15625D13A030082271E /* transient-SymbolSolidOval-objectDisplay.swift in Sources */,
 				CF784E50275E3544001BC885 /* controller-array-ComponentInProject-componentAvailablePackagesController.swift in Sources */,
 				CF9C615C25CABE5C00A00D5C /* transient-ProjectRoot-boardShapeIsRectangular.swift in Sources */,

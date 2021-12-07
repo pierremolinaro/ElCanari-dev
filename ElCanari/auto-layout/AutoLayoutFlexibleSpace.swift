@@ -34,7 +34,7 @@ final class AutoLayoutFlexibleSpace : NSView, EBUserClassNameProtocol {
 
   override func draw (_ inDirtyRect : NSRect) {
     if debugAutoLayout () {
-      DEBUG_FILL_COLOR.setFill ()
+      DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
       NSBezierPath.fill (inDirtyRect)
       let bp = NSBezierPath (rect: self.bounds)
       bp.lineWidth = 1.0

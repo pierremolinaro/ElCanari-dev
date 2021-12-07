@@ -25,6 +25,7 @@ final class AutoLayoutCheckbox : NSButton, EBUserClassNameProtocol {
     self.title = inTitle
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+//    self.sizeToFit ()
   }
 
   //····················································································································

@@ -46,6 +46,21 @@ extern autolayout class GridView2 {
   func addSeparator ()
 }
 
+extern autolayout class GridView4 {
+  func set (spacing: Int)
+  func set (margins: Int)
+  func set (leftMargin: Int)
+  func set (rightMargin: Int)
+  func set (topMargin: Int)
+  func set (bottomMargin: Int)
+  func set (width: Int)
+  func addFirstBaseLineAligned (first : view, second: view, third: view, fourth: view)
+  func addCenterYAligned (first : view, second: view, third: view, fourth: view)
+  func add (single : view)
+  func flexibleSpace ()
+  func addSeparator ()
+}
+
 extern autolayout class VerticalScrollView (content: view) {
 }
 

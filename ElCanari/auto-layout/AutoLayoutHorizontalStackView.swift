@@ -52,7 +52,7 @@ class AutoLayoutHorizontalStackView : AutoLayoutAbstractStackView {
   //····················································································································
 
   final func appendVerticalSeparator () {
-    let separator = VerticalSeparator ()
+    let separator = Self.VerticalSeparator ()
     self.appendView (separator)
   }
 
@@ -93,6 +93,8 @@ class AutoLayoutHorizontalStackView : AutoLayoutAbstractStackView {
 
   private var mConstraints = [NSLayoutConstraint] ()
 
+  //····················································································································
+
   override func updateConstraints () {
     self.removeConstraints (self.mConstraints)
     self.mConstraints.removeAll ()
@@ -130,11 +132,35 @@ class AutoLayoutHorizontalStackView : AutoLayoutAbstractStackView {
       fatalError("init(coder:) has not been implemented")
     }
 
-    deinit { noteObjectDeallocation (self) }
+    deinit {
+      noteObjectDeallocation (self)
+    }
 
   }
 
   //····················································································································
 
+  override func draw (_ inDirtyRect : NSRect) {
+    super.draw (inDirtyRect)
+    if debugAutoLayout () {
+      DEBUG_HORIZONTAL_SEPARATOR_FILL_COLOR.setFill ()
+      var optionalLastView : NSView? = nil
+      for view in self.subviews {
+        if !view.isHidden {
+          if let lastView = optionalLastView {
+            let left = lastView.frame.maxX
+            let right = view.frame.minX
+            let r = NSRect (x: left, y: inDirtyRect.minY, width: right - left, height: inDirtyRect.size.height)
+            NSBezierPath.fill (r)
+          }
+          optionalLastView = view
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
 }
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

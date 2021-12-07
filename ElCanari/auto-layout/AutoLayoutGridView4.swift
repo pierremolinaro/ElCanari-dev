@@ -1,8 +1,8 @@
 //
-//  AutoLayoutGridView2.swift
+//  AutoLayoutGridView4.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 06/02/2021.
+//  Created by Pierre Molinaro on 07/12/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -10,9 +10,9 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
+final class AutoLayoutGridView4 : AutoLayoutVerticalStackView {
 
-  private var mLastView = [NSView?] (repeating: nil, count: 2) // 0 -> left, 1 -> right
+  private var mLastView = [NSView?] (repeating: nil, count: 4) // 0 -> left, 3 -> right
 
   //····················································································································
   //   INIT
@@ -30,14 +30,20 @@ final class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  final func addFirstBaseLineAligned (left inLeftView : NSView, right inRightView : NSView) -> Self {
-   return self.add ([inLeftView, inRightView], alignment: .firstBaseline)
+  final func addFirstBaseLineAligned (first inView0 : NSView,
+                                      second inView1 : NSView,
+                                      third inView2 : NSView,
+                                      fourth inView3 : NSView) -> Self {
+    return self.add ([inView0, inView1, inView2, inView3], alignment: .firstBaseline)
   }
 
   //····················································································································
 
-  final func addCenterYAligned (left inLeftView : NSView, right inRightView : NSView) -> Self {
-   return self.add ([inLeftView, inRightView], alignment: .centerY)
+  final func addCenterYAligned (first inView0 : NSView,
+                                second inView1 : NSView,
+                                third inView2 : NSView,
+                                fourth inView3 : NSView) -> Self {
+    return self.add ([inView0, inView1, inView2, inView3], alignment: .centerY)
   }
 
   //····················································································································
@@ -45,7 +51,7 @@ final class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
   final private func add (_ inViews : [NSView],
                           alignment inAlignement : NSLayoutConstraint.Attribute) -> Self {
     let hStack = AutoLayoutHorizontalStackView ()
-    for i in 0 ..< 2 {
+    for i in 0 ..< 4 {
       if let v = self.mLastView [i] {
         let c = NSLayoutConstraint (
           item: inViews [i],

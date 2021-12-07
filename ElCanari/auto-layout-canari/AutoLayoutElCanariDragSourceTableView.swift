@@ -116,6 +116,8 @@ final class AutoLayoutElCanariDragSourceTableView : NSScrollView, EBUserClassNam
     text.alignment = .left
     text.drawsBackground = false
     text.isBordered = false
+    text.isSelectable = true
+    text.isEditable = false
     text.stringValue = self.mModelArray [inRowIndex].string
     text.toolTip = self.mModelArray [inRowIndex].string
     return text

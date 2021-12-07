@@ -73,8 +73,8 @@ extension AutoLayoutMergerDocumentSubClass {
       )
       panel.hasShadow = true
       let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
-      mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
-      mainView.appendFlexibleSpace ()
+      _ = mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
+        .appendFlexibleSpace ()
       let rightColumn = AutoLayoutVerticalStackView ()
       rightColumn.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Insert an Array of Boards", bold: true, size: .regular))
       rightColumn.appendFlexibleSpace ()

@@ -10,7 +10,9 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let DEBUG_FILL_COLOR = NSColor.green.withAlphaComponent (0.25)
+let DEBUG_FLEXIBLE_SPACE_FILL_COLOR = NSColor.systemGreen.withAlphaComponent (0.25)
+let DEBUG_HORIZONTAL_SEPARATOR_FILL_COLOR = NSColor.systemPurple.withAlphaComponent (0.5)
+let DEBUG_VERTICAL_SEPARATOR_FILL_COLOR   = NSColor.systemPink.withAlphaComponent (0.25)
 let DEBUG_STROKE_COLOR = NSColor.orange
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

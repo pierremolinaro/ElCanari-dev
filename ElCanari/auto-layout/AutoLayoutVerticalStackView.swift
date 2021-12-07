@@ -140,6 +140,29 @@ class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
   }
 
   //····················································································································
+
+  override func draw (_ inDirtyRect : NSRect) {
+    super.draw (inDirtyRect)
+    if debugAutoLayout () {
+      DEBUG_VERTICAL_SEPARATOR_FILL_COLOR.setFill ()
+      var optionalLastView : NSView? = nil
+      for view in self.subviews {
+        if !view.isHidden {
+          if let lastView = optionalLastView {
+            let top = lastView.frame.minY
+            let bottom = view.frame.maxY
+            let r = NSRect (x: inDirtyRect.minX, y: bottom, width: inDirtyRect.size.width, height: top - bottom)
+//            Swift.print ("r \(r)")
+            NSBezierPath.fill (r)
+          }
+          optionalLastView = view
+        }
+      }
+    }
+  }
+
+
+  //····················································································································
   // HorizontalSeparator internal class
   //····················································································································
 

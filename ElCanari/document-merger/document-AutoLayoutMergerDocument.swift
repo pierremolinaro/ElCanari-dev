@@ -1136,15 +1136,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_1 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutStaticLabel (title: "Model", bold: true, size: .small)
-      view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
-      let view_2 = AutoLayoutStaticLabel (title: "Board", bold: true, size: .small)
-      view.appendView (view_2)
-    }
+    let view = AutoLayoutStaticLabels (left: "Model", right: "Board", bold: true, size: .small)
     return view
   }
 
@@ -2225,15 +2217,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_78 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutStaticLabel (title: "Model", bold: true, size: .small)
-      view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
-      let view_2 = AutoLayoutStaticLabel (title: "Board", bold: true, size: .small)
-      view.appendView (view_2)
-    }
+    let view = AutoLayoutStaticLabels (left: "Model", right: "Board", bold: true, size: .small)
     return view
   }
 

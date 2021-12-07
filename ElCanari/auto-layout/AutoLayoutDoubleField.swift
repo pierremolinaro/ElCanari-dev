@@ -22,9 +22,9 @@ final class AutoLayoutDoubleField : NSTextField, EBUserClassNameProtocol, NSText
   init (width inWidth : Int, size inSize : EBControlSize) {
     self.mWidth = CGFloat (inWidth)
     super.init (frame: NSRect ())
-    self.delegate = self
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+    self.delegate = self
 
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))

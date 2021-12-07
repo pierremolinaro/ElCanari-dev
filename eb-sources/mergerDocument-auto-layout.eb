@@ -61,11 +61,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
           set (margins: 8)
           addCenterYAligned (
             left: space,
-            right: hStack {
-              StaticLabel (title: "Model", bold: yes, size: .small)
-              space
-              StaticLabel (title: "Board", bold: yes, size: .small)
-            }
+            right: StaticLabels (left: "Model", right: "Board", bold: yes, size: .small)
           )
           addCenterYAligned (
             left: StaticLabel (title: "Horizontal Flip", bold: no, size: .small),
@@ -401,11 +397,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
           set (margins: 8)
           addCenterYAligned (
             left: space,
-            right: hStack {
-              StaticLabel (title: "Model", bold: yes, size: .small)
-              space
-              StaticLabel (title: "Board", bold: yes, size: .small)
-            }
+            right: StaticLabels (left: "Model", right: "Board", bold: yes, size: .small)
           )
           addCenterYAligned (
             left: StaticLabel (title: "Horizontal Flip", bold: no, size: .small),
