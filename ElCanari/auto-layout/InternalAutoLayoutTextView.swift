@@ -23,6 +23,8 @@ final class InternalAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
   private let mLayoutManager = EmbeddedLayoutManager ()
 
   //····················································································································
+  // https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/TextSystemArchitecture/ArchitectureOverview.html#//apple_ref/doc/uid/TP40009459-CH7-CJBJHGAG
+  //····················································································································
 
   init () {
     let textContainer = NSTextContainer (size: NSSize (width: 300, height: 300))
@@ -63,6 +65,8 @@ final class InternalAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
     noteObjectDeallocation (self)
   }
 
+  //····················································································································
+  // https://stackoverflow.com/questions/11237622/using-autolayout-with-expanding-nstextviews
   //····················································································································
 
   override var intrinsicContentSize : NSSize {

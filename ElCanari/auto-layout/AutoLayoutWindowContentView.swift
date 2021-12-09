@@ -54,11 +54,6 @@ final class AutoLayoutWindowContentView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-//  override func updateConstraints () {
-//    super.updateConstraints ()
-//    self.subviews [1].needsDisplay = true
-//  }
-
   private var mNextKeyViewSettingComputationHasBeenTriggered = false
 
   //····················································································································
@@ -150,9 +145,19 @@ fileprivate final class HiliteView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
+  override var isOpaque : Bool { return false}
+  override var acceptsFirstResponder : Bool { return false}
+  override var canBecomeKeyView : Bool { return false}
+
+  //····················································································································
+
+  override func hitTest (_ point: NSPoint) -> NSView? {
+    return nil
+  }
+
+  //····················································································································
+
   override func draw (_ inDirtyRect : NSRect) {
-    super.draw (inDirtyRect)
-  //---
     if showKeyResponderChain () {
       DEBUG_KEY_CHAIN_STROKE_COLOR.setStroke ()
       DEBUG_KEY_CHAIN_STROKE_COLOR.setFill ()
