@@ -12,9 +12,16 @@ import Cocoa
 //   AutoLayoutTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol { // , NSTextFieldDelegate {
 
   private let mWidth : CGFloat
+  var mTextDidChange : Optional < () -> Void>  = nil
+
+  //····················································································································
+  //  User information
+  //····················································································································
+
+  var mTextFieldUserInfo : Any? = nil // Not used, freely available for user
 
   //····················································································································
 
@@ -24,7 +31,7 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.delegate = self
+//    self.delegate = self
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.alignment = .center
@@ -82,6 +89,7 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
   //····················································································································
 
   @objc func ebAction (_ inUnusedSender : Any?) {
+    self.mTextDidChange? ()
     _ = self.mValueController?.updateModel (withCandidateValue: self.stringValue, windowForSheet: self.window)
   }
 
@@ -89,8 +97,15 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
   // IMPLEMENTATION OF NSTextFieldDelegate
   //····················································································································
 
-  func controlTextDidChange (_ inNotification : Notification) {
-    if self.mSendContinously {
+//  func controlTextDidChange (_ inNotification : Notification) {
+//    if self.isContinuous {
+//      self.ebAction (nil)
+//    }
+//  }
+
+  override func textDidChange (_ inNotification : Notification) {
+    super.textDidChange (inNotification)
+    if self.isContinuous {
       self.ebAction (nil)
     }
   }
@@ -119,12 +134,12 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
   //····················································································································
 
   private var mValueController : EBGenericReadWritePropertyController <String>? = nil
-  private var mSendContinously = false
+//  private var mSendContinously = false
 
   //····················································································································
 
   final func bind_value (_ inModel : EBReadWriteProperty_String, sendContinously inContinuous : Bool) -> Self {
-    self.mSendContinously = inContinuous
+    self.isContinuous = inContinuous
     self.mValueController = EBGenericReadWritePropertyController <String> (
       observedObject: inModel,
       callBack: { [weak self] in self?.updateOutlet (inModel) }

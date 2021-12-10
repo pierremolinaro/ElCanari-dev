@@ -45,8 +45,8 @@ extension ProjectDocument {
     //---
       layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Package", bold: true, size: .regular))
       layoutView.appendFlexibleSpace ()
-    //---
       let gridView = AutoLayoutGridView2 ()
+    //---
       do{
         let left = AutoLayoutStaticLabel (title: "Components", bold: false, size: .regular).set (alignment: .right)
         let right = AutoLayoutStaticLabel (title: componentNames.joined (separator: ", "), bold: true, size: .regular)

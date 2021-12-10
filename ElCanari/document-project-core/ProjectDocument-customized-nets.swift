@@ -200,22 +200,59 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
   //····················································································································
 
   internal func dialogForRenaming (net inNet : NetInProject) {
-    if let window = self.windowForSheet, let panel = self.mRenameNetPanel {
-      self.mRenameNetTextField?.stringValue = inNet.mNetName
-      self.mRenameNetErrorTextField?.stringValue = ""
+    if let window = self.windowForSheet {
+      let panel = NSPanel (
+        contentRect: NSRect (x: 0, y: 0, width: 500, height: 200),
+        styleMask: [.titled],
+        backing: .buffered,
+        defer: false
+      )
     //---
-      self.mRenameNetTextField?.mTextFieldUserInfo = inNet
-      self.mRenameNetTextField?.target = self
-      self.mRenameNetTextField?.action = #selector (CustomizedProjectDocument.newNameDidChange (_:))
-      self.mRenameNetTextField?.setSendContinously (true)
-      self.mRenameNetTextField?.delegate = self
-      self.mRenameNetOkButton?.isEnabled = true
-      self.mRenameNetOkButton?.title = "Rename as '\(inNet.mNetName)'"
-    //--- Dialog
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+      let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel, isInitialFirstResponder: true)
+    //---
+      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Rename Net", bold: true, size: .regular))
+      layoutView.appendFlexibleSpace ()
+      let gridView = AutoLayoutGridView2 ()
+    //---
+      do{
+        let left = AutoLayoutStaticLabel (title: "Current Net Name", bold: false, size: .regular).set (alignment: .right)
+        let right = AutoLayoutStaticLabel (title: inNet.mNetName, bold: true, size: .regular).set (alignment: .left)
+        _ = gridView.addFirstBaseLineAligned (left: left, right: right)
+      }
+      let newNameTextField = AutoLayoutTextField (width: 200, size: .regular).expandableWidth().set (alignment: .left)
+      do{
+        let left = AutoLayoutStaticLabel (title: "New Net Name", bold: false, size: .regular).set (alignment: .right)
+        _ = gridView.addFirstBaseLineAligned (left: left, right: newNameTextField)
+      }
+      let errorLabel = AutoLayoutStaticLabel (title: "", bold: true, size: .regular).set (alignment: .right)
+         .setRedTextColor ().expandableWidth()
+      _ = gridView.add (single: errorLabel)
+      layoutView.appendView (gridView)
+      layoutView.appendFlexibleSpace ()
+    //---
+      do{
+        let hStack = AutoLayoutHorizontalStackView ()
+        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+        hStack.appendFlexibleSpace ()
+        hStack.appendView (okButton)
+        layoutView.appendView (hStack)
+      }
+    //---
+      newNameTextField.stringValue = inNet.mNetName
+      newNameTextField.mTextFieldUserInfo = (inNet, errorLabel, okButton)
+      newNameTextField.mTextDidChange = { self.newNameDidChange (newNameTextField) }
+      newNameTextField.isContinuous = true
+      newNameTextField.delegate = self
+      okButton.isEnabled = true
+      okButton.title = "Rename as '\(inNet.mNetName)'"
+    //---
+      panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
       window.beginSheet (panel) { inResponse in
-        self.mRenameNetTextField?.mTextFieldUserInfo = nil
+        newNameTextField.mTextFieldUserInfo = nil
         if inResponse == .stop {
-          self.performRenameNet (inNet)
+          let newNetName = newNameTextField.stringValue
+          inNet.mNetName = newNetName
         }
       }
     }
@@ -223,21 +260,14 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
 
   //····················································································································
 
-  func controlTextDidChange (_ inNotification : Notification) { // NSTextFieldDelegate
-    if let textField = self.mRenameNetTextField {
-      self.newNameDidChange (textField)
-    }
-  }
-
-  //····················································································································
-
   @objc internal func newNameDidChange (_ inSender : NSTextField) {
-    if let netForRenamingOperation = self.mRenameNetTextField?.mTextFieldUserInfo as? NetInProject {
-      let newNetName = inSender.stringValue
+    if let sender = inSender as? AutoLayoutTextField,
+       let (netForRenamingOperation, errorLabel, okButton) = sender.mTextFieldUserInfo as? (NetInProject, AutoLayoutStaticLabel, AutoLayoutSheetDefaultOkButton) {
+      let newNetName = sender.stringValue
       if newNetName.isEmpty {
-        self.mRenameNetOkButton?.isEnabled = false
-        self.mRenameNetErrorTextField?.stringValue = "Empty Net Name"
-        self.mRenameNetOkButton?.title = "Rename"
+        okButton.isEnabled = false
+        errorLabel.stringValue = "Empty Net Name"
+        okButton.title = "Rename"
       }else{
         var nameIsUnique = true
         for netClass in self.rootObject.mNetClasses.values {
@@ -247,18 +277,10 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
             }
           }
         }
-        self.mRenameNetOkButton?.isEnabled = nameIsUnique
-        self.mRenameNetErrorTextField?.stringValue = nameIsUnique ? "" : "Name already exists"
-        self.mRenameNetOkButton?.title = nameIsUnique ? "Rename as '\(newNetName)'" : "Rename"
+        okButton.isEnabled = nameIsUnique
+        errorLabel.stringValue = nameIsUnique ? "" : "Name already exists"
+        okButton.title = nameIsUnique ? "Rename as '\(newNetName)'" : "Rename"
       }
-    }
-  }
-
-  //····················································································································
-
-  internal func performRenameNet (_ inNet : NetInProject) {
-    if let newNetName = self.mRenameNetTextField?.stringValue {
-      inNet.mNetName = newNetName
     }
   }
 

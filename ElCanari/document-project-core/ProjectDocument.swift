@@ -903,11 +903,7 @@ import Cocoa
   @IBOutlet final var mRenameDevicePanel : NSPanel? = nil
   @IBOutlet final var mRenameDeviceTitleTextField : NSTextField? = nil
   @IBOutlet final var mRenameDeviceValidationButton : NSButton? = nil
-  @IBOutlet final var mRenameNetErrorTextField : EBTextField? = nil
   @IBOutlet final var mRenameNetInNetTabButton : EBButton? = nil
-  @IBOutlet final var mRenameNetOkButton : EBButton? = nil
-  @IBOutlet final var mRenameNetPanel : NSPanel? = nil
-  @IBOutlet final var mRenameNetTextField : EBTextField? = nil
   @IBOutlet final var mResetDevicesAndFontsVersionButton : EBButton? = nil
   @IBOutlet final var mResetFontVersionButton : EBButton? = nil
   @IBOutlet final var mResetSelectedDeviceVersionButton : EBButton? = nil
@@ -1543,11 +1539,7 @@ import Cocoa
     checkOutletConnection (self.mRenameDevicePanel, "mRenameDevicePanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mRenameDeviceTitleTextField, "mRenameDeviceTitleTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mRenameDeviceValidationButton, "mRenameDeviceValidationButton", NSButton.self, #file, #line)
-    checkOutletConnection (self.mRenameNetErrorTextField, "mRenameNetErrorTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mRenameNetInNetTabButton, "mRenameNetInNetTabButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mRenameNetOkButton, "mRenameNetOkButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mRenameNetPanel, "mRenameNetPanel", NSPanel.self, #file, #line)
-    checkOutletConnection (self.mRenameNetTextField, "mRenameNetTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mResetDevicesAndFontsVersionButton, "mResetDevicesAndFontsVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetSelectedDeviceVersionButton, "mResetSelectedDeviceVersionButton", EBButton.self, #file, #line)
@@ -4047,11 +4039,7 @@ import Cocoa
     self.mRenameDevicePanel?.ebCleanUp ()
     self.mRenameDeviceTitleTextField?.ebCleanUp ()
     self.mRenameDeviceValidationButton?.ebCleanUp ()
-    self.mRenameNetErrorTextField?.ebCleanUp ()
     self.mRenameNetInNetTabButton?.ebCleanUp ()
-    self.mRenameNetOkButton?.ebCleanUp ()
-    self.mRenameNetPanel?.ebCleanUp ()
-    self.mRenameNetTextField?.ebCleanUp ()
     self.mResetDevicesAndFontsVersionButton?.ebCleanUp ()
     self.mResetFontVersionButton?.ebCleanUp ()
     self.mResetSelectedDeviceVersionButton?.ebCleanUp ()
@@ -4512,11 +4500,7 @@ import Cocoa
     self.mRenameDevicePanel = nil
     self.mRenameDeviceTitleTextField = nil
     self.mRenameDeviceValidationButton = nil
-    self.mRenameNetErrorTextField = nil
     self.mRenameNetInNetTabButton = nil
-    self.mRenameNetOkButton = nil
-    self.mRenameNetPanel = nil
-    self.mRenameNetTextField = nil
     self.mResetDevicesAndFontsVersionButton = nil
     self.mResetFontVersionButton = nil
     self.mResetSelectedDeviceVersionButton = nil

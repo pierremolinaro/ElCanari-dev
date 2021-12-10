@@ -48,9 +48,6 @@ xibdocument ProjectDocument root ProjectRoot {
     $run changePackageOfSelectedComponentsAction
     $enabled self.canChangePackage
   ;
-//  outlet NSPanel mChangePackagePanel ;
-//  outlet EBPopUpButton mChangePackagePopUpButton ;
-//  outlet NSTextField mChangePackageComponentListTextField ;
 
 
   action changeValueOfSelectedComponentsAction ;
@@ -523,10 +520,10 @@ xibdocument ProjectDocument root ProjectRoot {
   transient Int netCount dependsFrom root.netsDescription ;
   
   outlet EBButton mRenameNetInNetTabButton $enabled self.netCount > 0 ; // Action set in IB
-  outlet NSPanel mRenameNetPanel ;
-  outlet EBTextField mRenameNetTextField ;
-  outlet EBTextField mRenameNetErrorTextField ;
-  outlet EBButton mRenameNetOkButton ;
+//  outlet NSPanel mRenameNetPanel ;
+//  outlet EBTextField mRenameNetTextField ;
+//  outlet EBTextField mRenameNetErrorTextField ;
+//  outlet EBButton mRenameNetOkButton ;
 
   
   outlet EBButton mSelectNetClassInNetTabButton $enabled self.netCount > 0 ; // Action set in IB
