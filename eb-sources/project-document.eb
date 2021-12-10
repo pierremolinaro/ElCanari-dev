@@ -253,9 +253,6 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet EBPopUpButton mMoveSelectedObjectsToSheetPopUpButton ;
 
 //--- Contextual menus
-  outlet NSPanel mMergeSeveralSubnetsPanel ;
-  outlet EBPopUpButton mMergeSeveralSubnetsPopUpButton ;
-  
   outlet NSPanel mExchangeSymbolPanel ;
   outlet EBPopUpButton mExchangeSymbolPopUpButton ;
 
@@ -520,10 +517,6 @@ xibdocument ProjectDocument root ProjectRoot {
   transient Int netCount dependsFrom root.netsDescription ;
   
   outlet EBButton mRenameNetInNetTabButton $enabled self.netCount > 0 ; // Action set in IB
-//  outlet NSPanel mRenameNetPanel ;
-//  outlet EBTextField mRenameNetTextField ;
-//  outlet EBTextField mRenameNetErrorTextField ;
-//  outlet EBButton mRenameNetOkButton ;
 
   
   outlet EBButton mSelectNetClassInNetTabButton $enabled self.netCount > 0 ; // Action set in IB

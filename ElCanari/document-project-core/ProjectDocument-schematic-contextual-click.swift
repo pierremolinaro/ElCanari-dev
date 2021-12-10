@@ -375,14 +375,10 @@ extension CustomizedProjectDocument {
 
   internal func connectInSchematic (points inPoints : [PointInSchematic]) {
     if let selectedSheet = self.rootObject.mSelectedSheet,
-       let window = self.windowForSheet,
-       let mergeSeveralSubnetsPanel = self.mMergeSeveralSubnetsPanel,
-       let mergeSeveralSubnetsPopUpButton = self.mMergeSeveralSubnetsPopUpButton {
+       let window = self.windowForSheet {
       selectedSheet.connect (
         points: inPoints,
         window: window,
-        panelForMergingSeveralSubnet: mergeSeveralSubnetsPanel,
-        popUpButtonForMergingSeveralSubnet: mergeSeveralSubnetsPopUpButton,
         newNetCreator: self.rootObject.createNetWithAutomaticName,
         updateSchematicPointsAndNets: { self.updateSchematicPointsAndNets () }
       )

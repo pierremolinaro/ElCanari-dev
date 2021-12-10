@@ -300,8 +300,6 @@
                 <outlet property="mMasterView" destination="3296" id="l4E-2m-udS"/>
                 <outlet property="mMergeNetDialog" destination="1060" id="O70-BN-hCy"/>
                 <outlet property="mMergeNetPopUpButton" destination="1063" id="wxY-OR-vo0"/>
-                <outlet property="mMergeSeveralSubnetsPanel" destination="840" id="giw-EK-GhW"/>
-                <outlet property="mMergeSeveralSubnetsPopUpButton" destination="846" id="Nlt-Xq-4F1"/>
                 <outlet property="mMessageBoardIsRectangularView" destination="Wfl-xq-gJX" id="4gb-Qg-F1Y"/>
                 <outlet property="mMinPPTPTTTWdisplayUnitTextField" destination="14992" id="fq9-vK-YIR"/>
                 <outlet property="mMinPPTPTTTWinEBUnitPopUp" destination="3366" id="aVa-eA-dTk"/>
@@ -558,80 +556,6 @@
                 </defaultToolbarItems>
             </toolbar>
             <point key="canvasLocation" x="22" y="2174"/>
-        </window>
-        <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="840" userLabel="Dialog : Connection will merges subnets" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="314" y="714" width="463" height="156"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
-            <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="837">
-                <rect key="frame" x="0.0" y="0.0" width="463" height="156"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="299" translatesAutoresizingMaskIntoConstraints="NO" id="838">
-                        <rect key="frame" x="143" y="114" width="303" height="22"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Connecting will merge several subnets." id="14498">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="109" translatesAutoresizingMaskIntoConstraints="NO" id="841">
-                        <rect key="frame" x="143" y="79" width="113" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Resulting Net Is:" id="14499">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="842" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="140" y="12" width="82" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14500">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                        </buttonCell>
-                    </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="836" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="284" y="12" width="165" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="push" title="Merge And Connect" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14497">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                    </button>
-                    <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1162">
-                        <rect key="frame" x="17" y="38" width="83" height="85"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="14502"/>
-                    </imageView>
-                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="846" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="268" y="78" width="175" height="19"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <popUpButtonCell key="cell" type="roundRect" title="Item1" bezelStyle="roundedRect" alignment="left" lineBreakMode="clipping" state="on" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="844" id="14501">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="cellTitle"/>
-                            <menu key="menu" title="OtherViews" id="845">
-                                <items>
-                                    <menuItem title="Item1" state="on" id="844"/>
-                                    <menuItem title="Item2" id="847"/>
-                                    <menuItem title="Item3" id="843"/>
-                                </items>
-                            </menu>
-                        </popUpButtonCell>
-                    </popUpButton>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="-82.5" y="147"/>
         </window>
         <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="1060" userLabel="MergeSubNetDialog" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>

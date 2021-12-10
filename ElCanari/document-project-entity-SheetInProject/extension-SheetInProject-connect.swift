@@ -113,8 +113,8 @@ extension SheetInProject {
 
   func connect (points inPoints : [PointInSchematic],
                 window inWindow : NSWindow,
-                panelForMergingSeveralSubnet inPanel : NSPanel,
-                popUpButtonForMergingSeveralSubnet inPopUp : EBPopUpButton,
+//                panelForMergingSeveralSubnet inPanel : NSPanel,
+//                popUpButtonForMergingSeveralSubnet inPopUp : EBPopUpButton,
                 newNetCreator inNewNetCreator : () -> NetInProject,
                 updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping () -> Void) {
     let (points, netArray) = self.tryToConnectWithoutDialog (
@@ -128,7 +128,7 @@ extension SheetInProject {
       let alert = NSAlert ()
       alert.messageText = "Performing connection will merge two nets."
       for net in netArray {
-        alert.addButton (withTitle: net.mNetName)
+        alert.addButton (withTitle: "Select '\(net.mNetName)'")
       }
       alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: inWindow) { (response : NSApplication.ModalResponse) in
@@ -139,14 +139,14 @@ extension SheetInProject {
       let alert = NSAlert ()
       alert.messageText = "Performing connection will merge three nets."
       for net in netArray {
-        alert.addButton (withTitle: net.mNetName)
+        alert.addButton (withTitle: "Select '\(net.mNetName)'")
       }
       alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: inWindow) { (response : NSApplication.ModalResponse) in
         self.handleAlertResponseForMergingNets (response, points, netArray, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
       }
     }else if netArray.count > 3 {
-      self.connectionWillMergeSeveralSubnets (points: points, netArray, inWindow, inPanel, inPopUp, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
+      self.connectionWillMergeSeveralSubnets (points: points, netArray, inWindow, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
     }
   }
 
@@ -155,20 +155,62 @@ extension SheetInProject {
   private func connectionWillMergeSeveralSubnets (points inPoints : [PointInSchematic],
                                                   _ netArray : [NetInProject],
                                                   _ inWindow : NSWindow,
-                                                  _ inPanel : NSPanel,
-                                                  _ inPopUp : EBPopUpButton,
                                                   updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping () -> Void) {
-    inPopUp.removeAllItems ()
+    let panel = NSPanel (
+      contentRect: NSRect (x: 0, y: 0, width: 500, height: 200),
+      styleMask: [.titled],
+      backing: .buffered,
+      defer: false
+    )
+  //---
+    let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+    let gridView = AutoLayoutGridView2 ()
+  //---
+    layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Performing Connection will Merge Several Subnets.", bold: true, size: .regular))
+    layoutView.appendFlexibleSpace ()
+    let popupButton = AutoLayoutPopUpButton (size: .regular).expandableWidth()
     for net in netArray {
-      inPopUp.addItem (withTitle: net.mNetName)
-      inPopUp.lastItem?.representedObject = net
+      popupButton.addItem (withTitle: net.mNetName)
+      popupButton.lastItem?.representedObject = net
     }
-    inWindow.beginSheet (inPanel) { (_ inModalResponse : NSApplication.ModalResponse) in
-      if inModalResponse == .stop, let net = inPopUp.selectedItem?.representedObject as? NetInProject {
+    do{
+      let left = AutoLayoutStaticLabel (title: "Resulting Net", bold: false, size: .regular).set (alignment: .right)
+      _ = gridView.addFirstBaseLineAligned (left: left, right: popupButton)
+    }
+    layoutView.appendView (gridView)
+    layoutView.appendFlexibleSpace ()
+  //---
+    do{
+      let hStack = AutoLayoutHorizontalStackView ()
+      hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+      hStack.appendFlexibleSpace ()
+      let okButton = AutoLayoutSheetDefaultOkButton (title: "Merge and Connect", size: .regular, sheet: panel, isInitialFirstResponder: true)
+      hStack.appendView (okButton)
+      layoutView.appendView (hStack)
+    }
+  //---
+    panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
+    inWindow.beginSheet (panel) { inResponse in
+      if inResponse == .stop, let net = popupButton.selectedItem?.representedObject as? NetInProject {
         self.propagateAndMerge (net: net, to: inPoints, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
       }
     }
   }
+
+
+
+
+//    inPopUp.removeAllItems ()
+//    for net in netArray {
+//      inPopUp.addItem (withTitle: net.mNetName)
+//      inPopUp.lastItem?.representedObject = net
+//    }
+//    inWindow.beginSheet (panel) { (_ inModalResponse : NSApplication.ModalResponse) in
+//      if inModalResponse == .stop, let net = inPopUp.selectedItem?.representedObject as? NetInProject {
+//        self.propagateAndMerge (net: net, to: inPoints, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
+//      }
+//    }
+//  }
 
   //····················································································································
 

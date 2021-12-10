@@ -287,8 +287,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //  outlet EBPopUpButton mMoveSelectedObjectsToSheetPopUpButton ;
 //
 ////--- Contextual menus
-//  outlet NSPanel mMergeSeveralSubnetsPanel ;
-//  outlet EBPopUpButton mMergeSeveralSubnetsPopUpButton ;
 //  
 //  outlet NSPanel mExchangeSymbolPanel ;
 //  outlet EBPopUpButton mExchangeSymbolPopUpButton ;

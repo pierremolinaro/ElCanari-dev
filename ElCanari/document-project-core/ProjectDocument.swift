@@ -839,8 +839,6 @@ import Cocoa
   @IBOutlet final var mMasterView : NSView? = nil
   @IBOutlet final var mMergeNetDialog : NSPanel? = nil
   @IBOutlet final var mMergeNetPopUpButton : EBPopUpButton? = nil
-  @IBOutlet final var mMergeSeveralSubnetsPanel : NSPanel? = nil
-  @IBOutlet final var mMergeSeveralSubnetsPopUpButton : EBPopUpButton? = nil
   @IBOutlet final var mMessageBoardIsRectangularView : NSView? = nil
   @IBOutlet final var mMinPPTPTTTWdisplayUnitTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet final var mMinPPTPTTTWinEBUnitPopUp : EBPopUpButton? = nil
@@ -1475,8 +1473,6 @@ import Cocoa
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
     checkOutletConnection (self.mMergeNetDialog, "mMergeNetDialog", NSPanel.self, #file, #line)
     checkOutletConnection (self.mMergeNetPopUpButton, "mMergeNetPopUpButton", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mMergeSeveralSubnetsPanel, "mMergeSeveralSubnetsPanel", NSPanel.self, #file, #line)
-    checkOutletConnection (self.mMergeSeveralSubnetsPopUpButton, "mMergeSeveralSubnetsPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mMessageBoardIsRectangularView, "mMessageBoardIsRectangularView", NSView.self, #file, #line)
     checkOutletConnection (self.mMinPPTPTTTWdisplayUnitTextField, "mMinPPTPTTTWdisplayUnitTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mMinPPTPTTTWinEBUnitPopUp, "mMinPPTPTTTWinEBUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -3975,8 +3971,6 @@ import Cocoa
     self.mMasterView?.ebCleanUp ()
     self.mMergeNetDialog?.ebCleanUp ()
     self.mMergeNetPopUpButton?.ebCleanUp ()
-    self.mMergeSeveralSubnetsPanel?.ebCleanUp ()
-    self.mMergeSeveralSubnetsPopUpButton?.ebCleanUp ()
     self.mMessageBoardIsRectangularView?.ebCleanUp ()
     self.mMinPPTPTTTWdisplayUnitTextField?.ebCleanUp ()
     self.mMinPPTPTTTWinEBUnitPopUp?.ebCleanUp ()
@@ -4436,8 +4430,6 @@ import Cocoa
     self.mMasterView = nil
     self.mMergeNetDialog = nil
     self.mMergeNetPopUpButton = nil
-    self.mMergeSeveralSubnetsPanel = nil
-    self.mMergeSeveralSubnetsPopUpButton = nil
     self.mMessageBoardIsRectangularView = nil
     self.mMinPPTPTTTWdisplayUnitTextField = nil
     self.mMinPPTPTTTWinEBUnitPopUp = nil

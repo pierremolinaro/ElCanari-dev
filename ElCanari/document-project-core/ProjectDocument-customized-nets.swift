@@ -210,10 +210,10 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
     //---
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
       let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel, isInitialFirstResponder: true)
+      let gridView = AutoLayoutGridView2 ()
     //---
       layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Rename Net", bold: true, size: .regular))
       layoutView.appendFlexibleSpace ()
-      let gridView = AutoLayoutGridView2 ()
     //---
       do{
         let left = AutoLayoutStaticLabel (title: "Current Net Name", bold: false, size: .regular).set (alignment: .right)
