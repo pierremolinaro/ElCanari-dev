@@ -289,10 +289,21 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
   //····················································································································
 
   internal func dialogForMergingSubnetFrom (point inPoint : PointInSchematic) {
-    if let window = self.windowForSheet, let panel = self.mMergeNetDialog, let popup = self.mMergeNetPopUpButton {
-      let initialNetName = inPoint.mNet!.mNetName
-      popup.removeAllItems ()
-      panel.makeFirstResponder (popup)
+    if let window = self.windowForSheet, let initialNetName = inPoint.mNet?.mNetName {
+      let panel = NSPanel (
+        contentRect: NSRect (x: 0, y: 0, width: 500, height: 200),
+        styleMask: [.titled],
+        backing: .buffered,
+        defer: false
+      )
+    //---
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+      let gridView = AutoLayoutGridView2 ()
+    //---
+      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Merge Subnet into an Existing Net", bold: true, size: .regular))
+      layoutView.appendFlexibleSpace ()
+    //---
+      let popUpButton = AutoLayoutPopUpButton (size: .regular).expandableWidth ()
       var nets = [NetInProject] ()
       for netClass in self.rootObject.mNetClasses.values {
         for net in netClass.mNets.values {
@@ -301,15 +312,32 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
       }
       nets.sort { String.numeriCaseInsensitiveCompare ($0.mNetName, $1.mNetName) }
       for net in nets {
-        popup.addItem (withTitle: net.mNetName)
-        popup.lastItem?.representedObject = net
+        popUpButton.addItem (withTitle: net.mNetName)
+        popUpButton.lastItem?.representedObject = net
         if initialNetName == net.mNetName {
-          popup.select (popup.lastItem)
+          popUpButton.select (popUpButton.lastItem)
         }
       }
-    //--- Dialog
+      do{
+        let left = AutoLayoutStaticLabel (title: "Resulting Net Name", bold: false, size: .regular).set (alignment: .right)
+        _ = gridView.addFirstBaseLineAligned (left: left, right: popUpButton)
+      }
+      layoutView.appendView (gridView)
+      layoutView.appendFlexibleSpace ()
+    //---
+      do{
+        let hStack = AutoLayoutHorizontalStackView ()
+        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+        hStack.appendFlexibleSpace ()
+        let okButton = AutoLayoutSheetDefaultOkButton (title: "Merge", size: .regular, sheet: panel, isInitialFirstResponder: true)
+        hStack.appendView (okButton)
+        layoutView.appendView (hStack)
+      }
+    //---
+      panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
+      panel.makeFirstResponder (popUpButton)
       window.beginSheet (panel) { inResponse in
-        if inResponse == .stop, let net = popup.selectedItem?.representedObject as? NetInProject {
+        if inResponse == .stop, let net = popUpButton.selectedItem?.representedObject as? NetInProject {
           inPoint.mNet = net
           inPoint.propagateNetToAccessiblePointsThroughtWires ()
           self.updateSchematicPointsAndNets ()

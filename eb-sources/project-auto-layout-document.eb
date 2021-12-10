@@ -283,9 +283,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //  outlet CanariDefaultNetClassPopUpButton mCanariDefaultNetClassPopUpButton
 //    $netClasses root.mDefaultNetClassName, root.allClassNames ;
 //
-//  outlet NSPanel mMoveSelectedObjectsToSheetPanel ;
-//  outlet EBPopUpButton mMoveSelectedObjectsToSheetPopUpButton ;
-//
 ////--- Contextual menus
 //  
 //  outlet NSPanel mExchangeSymbolPanel ;
@@ -495,9 +492,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //  outlet EBButton mSchematicLabelMergeSubnetButton  // Action set in IB
 //    $enabled #schematicLabelSelectionController.selectedArray.count == 1
 //  ;
-//  outlet NSPanel mMergeNetDialog ;
-//  outlet EBPopUpButton mMergeNetPopUpButton ;
-//  
+
 //  outlet EBButton mSchematicLabelInsulateSubnetButton  // Action set in IB
 //    $enabled #schematicLabelSelectionController.selectedArray.count == 1
 //  ;

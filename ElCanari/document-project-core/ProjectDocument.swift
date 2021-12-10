@@ -837,13 +837,9 @@ import Cocoa
   @IBOutlet final var mLimitCurveBezierControlPointsView : NSView? = nil
   @IBOutlet final var mLineColorGridForSchematicColorWell : EBColorWell? = nil
   @IBOutlet final var mMasterView : NSView? = nil
-  @IBOutlet final var mMergeNetDialog : NSPanel? = nil
-  @IBOutlet final var mMergeNetPopUpButton : EBPopUpButton? = nil
   @IBOutlet final var mMessageBoardIsRectangularView : NSView? = nil
   @IBOutlet final var mMinPPTPTTTWdisplayUnitTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet final var mMinPPTPTTTWinEBUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet final var mMoveSelectedObjectsToSheetPanel : NSPanel? = nil
-  @IBOutlet final var mMoveSelectedObjectsToSheetPopUpButton : EBPopUpButton? = nil
   @IBOutlet final var mNCInSchematicsInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mNCRotationSegmentedControl : CanariQuadrantSegmentedControl? = nil
   @IBOutlet final var mNetClassColorWell : EBColorWell? = nil
@@ -1471,13 +1467,9 @@ import Cocoa
     checkOutletConnection (self.mLimitCurveBezierControlPointsView, "mLimitCurveBezierControlPointsView", NSView.self, #file, #line)
     checkOutletConnection (self.mLineColorGridForSchematicColorWell, "mLineColorGridForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
-    checkOutletConnection (self.mMergeNetDialog, "mMergeNetDialog", NSPanel.self, #file, #line)
-    checkOutletConnection (self.mMergeNetPopUpButton, "mMergeNetPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mMessageBoardIsRectangularView, "mMessageBoardIsRectangularView", NSView.self, #file, #line)
     checkOutletConnection (self.mMinPPTPTTTWdisplayUnitTextField, "mMinPPTPTTTWdisplayUnitTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mMinPPTPTTTWinEBUnitPopUp, "mMinPPTPTTTWinEBUnitPopUp", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mMoveSelectedObjectsToSheetPanel, "mMoveSelectedObjectsToSheetPanel", NSPanel.self, #file, #line)
-    checkOutletConnection (self.mMoveSelectedObjectsToSheetPopUpButton, "mMoveSelectedObjectsToSheetPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mNCInSchematicsInspectorView, "mNCInSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mNCRotationSegmentedControl, "mNCRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mNetClassColorWell, "mNetClassColorWell", EBColorWell.self, #file, #line)
@@ -3969,13 +3961,9 @@ import Cocoa
     self.mLimitCurveBezierControlPointsView?.ebCleanUp ()
     self.mLineColorGridForSchematicColorWell?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
-    self.mMergeNetDialog?.ebCleanUp ()
-    self.mMergeNetPopUpButton?.ebCleanUp ()
     self.mMessageBoardIsRectangularView?.ebCleanUp ()
     self.mMinPPTPTTTWdisplayUnitTextField?.ebCleanUp ()
     self.mMinPPTPTTTWinEBUnitPopUp?.ebCleanUp ()
-    self.mMoveSelectedObjectsToSheetPanel?.ebCleanUp ()
-    self.mMoveSelectedObjectsToSheetPopUpButton?.ebCleanUp ()
     self.mNCInSchematicsInspectorView?.ebCleanUp ()
     self.mNCRotationSegmentedControl?.ebCleanUp ()
     self.mNetClassColorWell?.ebCleanUp ()
@@ -4428,13 +4416,9 @@ import Cocoa
     self.mLimitCurveBezierControlPointsView = nil
     self.mLineColorGridForSchematicColorWell = nil
     self.mMasterView = nil
-    self.mMergeNetDialog = nil
-    self.mMergeNetPopUpButton = nil
     self.mMessageBoardIsRectangularView = nil
     self.mMinPPTPTTTWdisplayUnitTextField = nil
     self.mMinPPTPTTTWinEBUnitPopUp = nil
-    self.mMoveSelectedObjectsToSheetPanel = nil
-    self.mMoveSelectedObjectsToSheetPopUpButton = nil
     self.mNCInSchematicsInspectorView = nil
     self.mNCRotationSegmentedControl = nil
     self.mNetClassColorWell = nil

@@ -298,13 +298,9 @@
                 <outlet property="mLimitCurveBezierControlPointsView" destination="c48-xm-8fN" id="dIR-7X-tkX"/>
                 <outlet property="mLineColorGridForSchematicColorWell" destination="NuG-rM-Grt" id="6xy-XS-PCB"/>
                 <outlet property="mMasterView" destination="3296" id="l4E-2m-udS"/>
-                <outlet property="mMergeNetDialog" destination="1060" id="O70-BN-hCy"/>
-                <outlet property="mMergeNetPopUpButton" destination="1063" id="wxY-OR-vo0"/>
                 <outlet property="mMessageBoardIsRectangularView" destination="Wfl-xq-gJX" id="4gb-Qg-F1Y"/>
                 <outlet property="mMinPPTPTTTWdisplayUnitTextField" destination="14992" id="fq9-vK-YIR"/>
                 <outlet property="mMinPPTPTTTWinEBUnitPopUp" destination="3366" id="aVa-eA-dTk"/>
-                <outlet property="mMoveSelectedObjectsToSheetPanel" destination="15139" id="Oxi-fa-IIa"/>
-                <outlet property="mMoveSelectedObjectsToSheetPopUpButton" destination="15181" id="JXM-ra-hgv"/>
                 <outlet property="mNCInSchematicsInspectorView" destination="ToC-Dv-JaV" id="7F2-pc-2hE"/>
                 <outlet property="mNCRotationSegmentedControl" destination="Fzm-dJ-2zx" id="3eG-zL-Xq6"/>
                 <outlet property="mNetClassColorWell" destination="Kqx-0w-sv8" id="w57-vU-JHE"/>
@@ -556,80 +552,6 @@
                 </defaultToolbarItems>
             </toolbar>
             <point key="canvasLocation" x="22" y="2174"/>
-        </window>
-        <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="1060" userLabel="MergeSubNetDialog" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="361" y="636" width="661" height="156"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
-            <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="1058">
-                <rect key="frame" x="0.0" y="0.0" width="661" height="156"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="107" translatesAutoresizingMaskIntoConstraints="NO" id="1061">
-                        <rect key="frame" x="164" y="78" width="111" height="17"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Select Net Name:" id="14528">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1057" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="561" y="12" width="86" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="push" title="Merge" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14527">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                    </button>
-                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1063" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="288" y="72" width="356" height="26"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <popUpButtonCell key="cell" type="push" title="Item1" bezelStyle="rounded" alignment="left" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="1064" id="14530">
-                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="menu"/>
-                            <menu key="menu" title="OtherViews" id="1066">
-                                <items>
-                                    <menuItem title="Item1" state="on" id="1064"/>
-                                    <menuItem title="Item2" id="1067"/>
-                                    <menuItem title="Item3" id="1065"/>
-                                </items>
-                            </menu>
-                        </popUpButtonCell>
-                    </popUpButton>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="335" translatesAutoresizingMaskIntoConstraints="NO" id="1068">
-                        <rect key="frame" x="164" y="119" width="339" height="17"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Merge Sub-Net Into An Existing Net" id="14531">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1161">
-                        <rect key="frame" x="17" y="44" width="83" height="85"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="14532"/>
-                    </imageView>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1062" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="160" y="12" width="82" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14529">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                        </buttonCell>
-                    </button>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="-20" y="401"/>
         </window>
         <customView id="752" userLabel="Schematics Inspector : symbol" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="379"/>
@@ -6225,71 +6147,6 @@ of the same Net</string>
             </subviews>
             <point key="canvasLocation" x="-273" y="2341"/>
         </customView>
-        <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="15139" userLabel="Dialog : Move Selected Elements to Sheet" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="218" y="839" width="420" height="208"/>
-            <rect key="screenRect" x="0.0" y="900" width="1920" height="1055"/>
-            <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="15140">
-                <rect key="frame" x="0.0" y="0.0" width="420" height="208"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15147" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="108" y="12" width="82" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="15148">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                        </buttonCell>
-                    </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15146" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="215" y="12" width="191" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="push" title="Move Selected Elements" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="15149">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                    </button>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="255" translatesAutoresizingMaskIntoConstraints="NO" id="15145">
-                        <rect key="frame" x="65" y="172" width="259" height="24"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Move Selected Elements to Sheet" id="15150">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15144">
-                        <rect key="frame" x="0.0" y="73" width="83" height="85"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="15151"/>
-                    </imageView>
-                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15181" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="111" y="101" width="292" height="19"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <popUpButtonCell key="cell" type="roundRect" title="Item1" bezelStyle="roundedRect" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="15184" id="15182">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="cellTitle"/>
-                            <menu key="menu" title="OtherViews" id="15183">
-                                <items>
-                                    <menuItem title="Item1" state="on" id="15184"/>
-                                    <menuItem title="Item2" id="15185"/>
-                                    <menuItem title="Item3" id="15186"/>
-                                </items>
-                            </menu>
-                        </popUpButtonCell>
-                    </popUpButton>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="-273" y="2669"/>
-        </window>
         <customView id="15205" userLabel="Schematics Inspector : Selected Objects" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
