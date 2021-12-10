@@ -38,7 +38,6 @@ extension CustomizedProjectDocument {
     if let window = self.windowForSheet {
       let panel = NSPanel (
         contentRect: NSRect (x: 0, y: 0, width: 450, height: 250),
-//        contentRect: NSRect (),
         styleMask: [.titled],
         backing: .buffered,
         defer: false

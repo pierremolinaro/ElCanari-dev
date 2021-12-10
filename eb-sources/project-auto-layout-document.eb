@@ -82,10 +82,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //    $run changePackageOfSelectedComponentsAction
 //    $enabled self.canChangePackage
 //  ;
-//  outlet NSPanel mChangePackagePanel ;
-//  outlet EBPopUpButton mChangePackagePopUpButton ;
-//  outlet NSTextField mChangePackageComponentListTextField ;
-//
 //
 //  action changeValueOfSelectedComponentsAction ;
 //  outlet EBButton mChangeValueOfSelectedComponentsActionButton

@@ -48,9 +48,9 @@ xibdocument ProjectDocument root ProjectRoot {
     $run changePackageOfSelectedComponentsAction
     $enabled self.canChangePackage
   ;
-  outlet NSPanel mChangePackagePanel ;
-  outlet EBPopUpButton mChangePackagePopUpButton ;
-  outlet NSTextField mChangePackageComponentListTextField ;
+//  outlet NSPanel mChangePackagePanel ;
+//  outlet EBPopUpButton mChangePackagePopUpButton ;
+//  outlet NSTextField mChangePackageComponentListTextField ;
 
 
   action changeValueOfSelectedComponentsAction ;

@@ -685,10 +685,7 @@ import Cocoa
   @IBOutlet final var mBoardView : EBEnclosingGraphicView? = nil
   @IBOutlet final var mCanariDefaultNetClassPopUpButton : CanariDefaultNetClassPopUpButton? = nil
   @IBOutlet final var mChangeComponentValueComboxBox : CanariComboBox? = nil
-  @IBOutlet final var mChangePackageComponentListTextField : NSTextField? = nil
   @IBOutlet final var mChangePackageOfSelectedComponentsActionButton : EBButton? = nil
-  @IBOutlet final var mChangePackagePanel : NSPanel? = nil
-  @IBOutlet final var mChangePackagePopUpButton : EBPopUpButton? = nil
   @IBOutlet final var mChangeValueComponentListTextField : NSTextField? = nil
   @IBOutlet final var mChangeValueOfSelectedComponentsActionButton : EBButton? = nil
   @IBOutlet final var mChangeValuePanel : NSPanel? = nil
@@ -1328,10 +1325,7 @@ import Cocoa
     checkOutletConnection (self.mBoardView, "mBoardView", EBEnclosingGraphicView.self, #file, #line)
     checkOutletConnection (self.mCanariDefaultNetClassPopUpButton, "mCanariDefaultNetClassPopUpButton", CanariDefaultNetClassPopUpButton.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
-    checkOutletConnection (self.mChangePackageComponentListTextField, "mChangePackageComponentListTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mChangePackageOfSelectedComponentsActionButton, "mChangePackageOfSelectedComponentsActionButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mChangePackagePanel, "mChangePackagePanel", NSPanel.self, #file, #line)
-    checkOutletConnection (self.mChangePackagePopUpButton, "mChangePackagePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mChangeValueComponentListTextField, "mChangeValueComponentListTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mChangeValueOfSelectedComponentsActionButton, "mChangeValueOfSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mChangeValuePanel, "mChangeValuePanel", NSPanel.self, #file, #line)
@@ -3835,10 +3829,7 @@ import Cocoa
     self.mBoardView?.ebCleanUp ()
     self.mCanariDefaultNetClassPopUpButton?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
-    self.mChangePackageComponentListTextField?.ebCleanUp ()
     self.mChangePackageOfSelectedComponentsActionButton?.ebCleanUp ()
-    self.mChangePackagePanel?.ebCleanUp ()
-    self.mChangePackagePopUpButton?.ebCleanUp ()
     self.mChangeValueComponentListTextField?.ebCleanUp ()
     self.mChangeValueOfSelectedComponentsActionButton?.ebCleanUp ()
     self.mChangeValuePanel?.ebCleanUp ()
@@ -4303,10 +4294,7 @@ import Cocoa
     self.mBoardView = nil
     self.mCanariDefaultNetClassPopUpButton = nil
     self.mChangeComponentValueComboxBox = nil
-    self.mChangePackageComponentListTextField = nil
     self.mChangePackageOfSelectedComponentsActionButton = nil
-    self.mChangePackagePanel = nil
-    self.mChangePackagePopUpButton = nil
     self.mChangeValueComponentListTextField = nil
     self.mChangeValueOfSelectedComponentsActionButton = nil
     self.mChangeValuePanel = nil

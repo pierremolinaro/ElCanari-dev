@@ -32,23 +32,62 @@ extension ProjectDocument {
     }
     componentNames.sort ()
   //---
-    if possiblePackages.count > 0, let window = self.windowForSheet, let panel = self.mChangePackagePanel {
-      self.mChangePackagePopUpButton?.removeAllItems ()
-      self.mChangePackageComponentListTextField?.stringValue = componentNames.joined (separator: ", ")
-      var itemToSelect : NSMenuItem? = nil
+    if possiblePackages.count > 0, let window = self.windowForSheet {
+      let panel = NSPanel (
+        contentRect: NSRect (x: 0, y: 0, width: 500, height: 180),
+        styleMask: [.titled],
+        backing: .buffered,
+        defer: false
+      )
+    //---
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+      let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel, isInitialFirstResponder: true)
+    //---
+      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Package", bold: true, size: .regular))
+      layoutView.appendFlexibleSpace ()
+    //---
+      let gridView = AutoLayoutGridView2 ()
+      do{
+        let left = AutoLayoutStaticLabel (title: "Components", bold: false, size: .regular).set (alignment: .right)
+        let right = AutoLayoutStaticLabel (title: componentNames.joined (separator: ", "), bold: true, size: .regular)
+          .expandableWidth().set (alignment: .left)
+        _ = gridView.addFirstBaseLineAligned (left: left, right: right)
+      }
+      let popupButton = AutoLayoutPopUpButton (size: .regular).expandableWidth ()
       let stringAttributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: 0.0)
       ]
       for packageName in possiblePackages.sorted () {
-        self.mChangePackagePopUpButton?.addItem (withTitle: packageName)
-        if let item = self.mChangePackagePopUpButton?.lastItem, currentSelectedPackageSet.contains (packageName) {
-          item.attributedTitle = NSAttributedString (string: packageName, attributes: stringAttributes)
-          itemToSelect = item
+        popupButton.addItem (withTitle: packageName)
+        if let item = popupButton.lastItem {
+          item.target = self
+          item.action = #selector (Self.changeSelectedPackageAction (_:))
+          item.representedObject = okButton
+          if currentSelectedPackageSet.contains (packageName) {
+            item.attributedTitle = NSAttributedString (string: packageName, attributes: stringAttributes)
+            popupButton.select (item)
+            self.changeSelectedPackageAction (item)
+          }
         }
       }
-      self.mChangePackagePopUpButton?.select (itemToSelect)
+      do{
+        let left = AutoLayoutStaticLabel (title: "Package", bold: false, size: .regular).set (alignment: .right)
+        _ = gridView.addFirstBaseLineAligned (left: left, right: popupButton)
+      }
+      layoutView.appendView (gridView)
+      layoutView.appendFlexibleSpace ()
+    //---
+      do{
+        let hStack = AutoLayoutHorizontalStackView ()
+        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+        hStack.appendFlexibleSpace ()
+        hStack.appendView (okButton)
+        layoutView.appendView (hStack)
+      }
+    //---
+      panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
-        if inResponse == .stop, let newPackageName = self.mChangePackagePopUpButton?.titleOfSelectedItem {
+        if inResponse == .stop, let newPackageName = popupButton.titleOfSelectedItem {
           for component in selectedComponents.values {
             var newPossiblePackage : DevicePackageInProject? = nil
             for candidatePackage in component.mDevice?.mPackages.values ?? [] {
@@ -67,6 +106,13 @@ extension ProjectDocument {
 
   //····················································································································
 
+  @objc func changeSelectedPackageAction (_ inSender : NSMenuItem) {
+    if let okButton = inSender.representedObject as? AutoLayoutSheetDefaultOkButton {
+      okButton.title = "Change to '\(inSender.title)'"
+    }
+  }
+
+  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
