@@ -100,18 +100,46 @@ extension CustomizedProjectDocument {
         }
       }
     }
-    if candidateSymbols.count > 1, let panel = self.mExchangeSymbolPanel, let popup = self.mExchangeSymbolPopUpButton {
-      popup.removeAllItems ()
+    if candidateSymbols.count > 1 {
+      let panel = NSPanel (
+        contentRect: NSRect (x: 0, y: 0, width: 500, height: 200),
+        styleMask: [.titled],
+        backing: .buffered,
+        defer: false
+      )
+    //---
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+    //---
+      let currentSymbolName = inSymbolUnderMouse.componentName! + ":" + inSymbolUnderMouse.mSymbolInstanceName
+      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Exchange '\(currentSymbolName)' symbol with…", bold: true, size: .regular))
+    //---
+      let popUpButton = AutoLayoutPopUpButton (size: .regular).expandableWidth ()
+      layoutView.appendFlexibleSpace ()
+      layoutView.appendView (popUpButton)
+      layoutView.appendFlexibleSpace ()
+    //---
+      popUpButton.removeAllItems ()
       for symbol in candidateSymbols {
-        popup.addItem (withTitle: symbol.componentName! + ":" + symbol.mSymbolInstanceName)
-        popup.lastItem?.representedObject = symbol
-        if symbol === inSymbolUnderMouse {
-          popup.select (popup.lastItem)
+        if symbol !== inSymbolUnderMouse {
+         let symbolName = symbol.componentName! + ":" + symbol.mSymbolInstanceName
+         popUpButton.addItem (withTitle: symbolName)
+          popUpButton.lastItem?.representedObject = symbol
         }
       }
+    //---
+      do{
+        let hStack = AutoLayoutHorizontalStackView ()
+        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+        hStack.appendFlexibleSpace ()
+        let okButton = AutoLayoutSheetDefaultOkButton (title: "Exchange", size: .regular, sheet: panel, isInitialFirstResponder: true)
+        hStack.appendView (okButton)
+        layoutView.appendView (hStack)
+      }
+    //---
+      panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
       self.windowForSheet?.beginSheet (panel) { (inModalResponse) in
         if inModalResponse == .stop,
-             let candidateSymbol = popup.selectedItem?.representedObject as? ComponentSymbolInProject,
+             let candidateSymbol = popUpButton.selectedItem?.representedObject as? ComponentSymbolInProject,
              candidateSymbol !== inSymbolUnderMouse {
           let symbolUnderMouseComponent = inSymbolUnderMouse.mComponent
           let symbolUnderMouseInstanceName = inSymbolUnderMouse.mSymbolInstanceName

@@ -67,17 +67,17 @@ extension CustomizedProjectDocument {
             popUpButton.select (popUpButton.lastItem)
           }
         }
-    //---
-      do{
-        let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
-        hStack.appendFlexibleSpace ()
-        let okButton = AutoLayoutSheetDefaultOkButton (title: "Select", size: .regular, sheet: panel, isInitialFirstResponder: true)
-        hStack.appendView (okButton)
-        layoutView.appendView (hStack)
-      }
-    //---
-      panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
+      //---
+        do{
+          let hStack = AutoLayoutHorizontalStackView ()
+          hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+          hStack.appendFlexibleSpace ()
+          let okButton = AutoLayoutSheetDefaultOkButton (title: "Select", size: .regular, sheet: panel, isInitialFirstResponder: true)
+          hStack.appendView (okButton)
+          layoutView.appendView (hStack)
+        }
+      //---
+        panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
       //--- Dialog
         window.beginSheet (panel) { inResponse in
           if inResponse == .stop, let netClass = popUpButton.selectedItem?.representedObject as? NetClassInProject {

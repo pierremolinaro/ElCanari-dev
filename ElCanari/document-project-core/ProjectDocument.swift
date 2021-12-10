@@ -799,8 +799,6 @@ import Cocoa
   @IBOutlet final var mEditFontButton : EBButton? = nil
   @IBOutlet final var mEditNetClassButton : EBButton? = nil
   @IBOutlet final var mErrorOrWarningIssueSlider : EBSlider? = nil
-  @IBOutlet final var mExchangeSymbolPanel : NSPanel? = nil
-  @IBOutlet final var mExchangeSymbolPopUpButton : EBPopUpButton? = nil
   @IBOutlet final var mExchangeSymbolSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet final var mExportDeviceButton : EBButton? = nil
   @IBOutlet final var mExportExistingTracksAndViasSwitch : EBSwitch? = nil
@@ -1423,8 +1421,6 @@ import Cocoa
     checkOutletConnection (self.mEditFontButton, "mEditFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditNetClassButton, "mEditNetClassButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mErrorOrWarningIssueSlider, "mErrorOrWarningIssueSlider", EBSlider.self, #file, #line)
-    checkOutletConnection (self.mExchangeSymbolPanel, "mExchangeSymbolPanel", NSPanel.self, #file, #line)
-    checkOutletConnection (self.mExchangeSymbolPopUpButton, "mExchangeSymbolPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mExchangeSymbolSchematicHotKeyTextField, "mExchangeSymbolSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mExportExistingTracksAndViasSwitch, "mExportExistingTracksAndViasSwitch", EBSwitch.self, #file, #line)
@@ -3911,8 +3907,6 @@ import Cocoa
     self.mEditFontButton?.ebCleanUp ()
     self.mEditNetClassButton?.ebCleanUp ()
     self.mErrorOrWarningIssueSlider?.ebCleanUp ()
-    self.mExchangeSymbolPanel?.ebCleanUp ()
-    self.mExchangeSymbolPopUpButton?.ebCleanUp ()
     self.mExchangeSymbolSchematicHotKeyTextField?.ebCleanUp ()
     self.mExportDeviceButton?.ebCleanUp ()
     self.mExportExistingTracksAndViasSwitch?.ebCleanUp ()
@@ -4360,8 +4354,6 @@ import Cocoa
     self.mEditFontButton = nil
     self.mEditNetClassButton = nil
     self.mErrorOrWarningIssueSlider = nil
-    self.mExchangeSymbolPanel = nil
-    self.mExchangeSymbolPopUpButton = nil
     self.mExchangeSymbolSchematicHotKeyTextField = nil
     self.mExportDeviceButton = nil
     self.mExportExistingTracksAndViasSwitch = nil

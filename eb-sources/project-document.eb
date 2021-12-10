@@ -245,10 +245,6 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet CanariDefaultNetClassPopUpButton mCanariDefaultNetClassPopUpButton
     $netClasses root.mDefaultNetClassName, root.allClassNames ;
 
-//--- Contextual menus
-  outlet NSPanel mExchangeSymbolPanel ;
-  outlet EBPopUpButton mExchangeSymbolPopUpButton ;
-
 //--- Hot keys inspector
   outlet NSTextField mConnectSchematicHotKeyTextField ;
   outlet NSTextField mDisconnectSchematicHotKeyTextField ;

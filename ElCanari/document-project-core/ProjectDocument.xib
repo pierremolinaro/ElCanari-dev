@@ -260,8 +260,6 @@
                 <outlet property="mEditFontButton" destination="2974" id="Jdy-FT-vIW"/>
                 <outlet property="mEditNetClassButton" destination="MCZ-nc-VVA" id="sBc-i6-3za"/>
                 <outlet property="mErrorOrWarningIssueSlider" destination="2494" id="bqy-Ku-3Ke"/>
-                <outlet property="mExchangeSymbolPanel" destination="M1z-Lf-5hF" id="FkJ-VM-lQD"/>
-                <outlet property="mExchangeSymbolPopUpButton" destination="fH2-CI-vkQ" id="epS-Pd-VbS"/>
                 <outlet property="mExchangeSymbolSchematicHotKeyTextField" destination="hNd-ac-8ni" id="v7L-CU-E3z"/>
                 <outlet property="mExportDeviceButton" destination="16608" id="Nx0-iS-2kA"/>
                 <outlet property="mExportExistingTracksAndViasSwitch" destination="bFK-KX-OaA" id="EbD-gf-msv"/>
@@ -8210,71 +8208,6 @@ Gw
             </subviews>
             <point key="canvasLocation" x="-403" y="111.5"/>
         </customView>
-        <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="M1z-Lf-5hF" userLabel="Dialog : Exchange Symbol" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="218" y="839" width="420" height="208"/>
-            <rect key="screenRect" x="0.0" y="900" width="1920" height="1055"/>
-            <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="Qqc-PB-MlX">
-                <rect key="frame" x="0.0" y="0.0" width="420" height="208"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeK-hf-44W" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="108" y="12" width="82" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="opE-pb-wNw">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                        </buttonCell>
-                    </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="le5-9Y-aA7" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="307" y="12" width="99" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="push" title="Exchange" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="lF0-pg-Ieo">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                    </button>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="255" translatesAutoresizingMaskIntoConstraints="NO" id="cB0-oq-PIO">
-                        <rect key="frame" x="65" y="172" width="259" height="24"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Exchange Symbol with:" id="8j1-yo-NhG">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ygm-08-8PX">
-                        <rect key="frame" x="0.0" y="73" width="83" height="85"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="Qny-IX-5kf"/>
-                    </imageView>
-                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fH2-CI-vkQ" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="111" y="101" width="292" height="19"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <popUpButtonCell key="cell" type="roundRect" title="Item1" bezelStyle="roundedRect" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="LD8-BG-H5E" id="eRL-sH-e1d">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="cellTitle"/>
-                            <menu key="menu" title="OtherViews" id="aq7-jO-DzF">
-                                <items>
-                                    <menuItem title="Item1" state="on" id="LD8-BG-H5E"/>
-                                    <menuItem title="Item2" id="fre-9O-ccp"/>
-                                    <menuItem title="Item3" id="6bh-fm-2N1"/>
-                                </items>
-                            </menu>
-                        </popUpButtonCell>
-                    </popUpButton>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="351" y="1223"/>
-        </window>
         <customView id="2TI-rd-8tc" userLabel="Board Inspector : Selected Objects" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
