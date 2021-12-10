@@ -88,10 +88,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //    $run changeValueOfSelectedComponentsAction
 //    $enabled #componentController.selectedArray.count > 0
 //  ;
-//  outlet NSPanel mChangeValuePanel ;
-//  outlet CanariComboBox mChangeComponentValueComboxBox ;
-//  outlet NSTextField mChangeValueComponentListTextField ;
-//  outlet NSButton mChangeValueValidationButton ;
 //
 //  action revealPackageOfSelectedComponentsAction ;
 //  outlet EBButton mRevealPackageOfSelectedComponentsButton
@@ -550,8 +546,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //
 //  
 //  outlet EBButton mSelectNetClassInNetTabButton $enabled self.netCount > 0 ; // Action set in IB
-//  outlet NSPanel mSelectNetClassPanel ;
-//  outlet EBPopUpButton mSelectNetClassPopUpButton ;
 //
 //  outlet NSImageView mNetWarningImageView $hidden root.netWarningCount == 0 ;
 //  

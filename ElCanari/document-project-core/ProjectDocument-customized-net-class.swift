@@ -30,9 +30,22 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   private func dialogForSelectingNetClassForNet (named inNetName : String) {
-    if let window = self.windowForSheet,
-       let panel = self.mSelectNetClassPanel,
-       let popup = self.mSelectNetClassPopUpButton {
+    if let window = self.windowForSheet {
+      let panel = NSPanel (
+        contentRect: NSRect (x: 0, y: 0, width: 500, height: 200),
+        styleMask: [.titled],
+        backing: .buffered,
+        defer: false
+      )
+    //---
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+    //---
+      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Select Net Class", bold: true, size: .regular))
+    //---
+      let popUpButton = AutoLayoutPopUpButton (size: .regular).expandableWidth ()
+      layoutView.appendFlexibleSpace ()
+      layoutView.appendView (popUpButton)
+      layoutView.appendFlexibleSpace ()
     //--- Find net
       var possibleNet : NetInProject? = nil
       for netClass in self.rootObject.mNetClasses.values {
@@ -45,19 +58,29 @@ extension CustomizedProjectDocument {
       }
     //--- Build net class popup
       if let net = possibleNet {
-        popup.removeAllItems ()
         var netClasses = self.rootObject.mNetClasses
         netClasses.sort (by : { $0.mNetClassName.localizedStandardCompare ($1.mNetClassName) == .orderedAscending } )
         for netClass in netClasses.values {
-          popup.addItem (withTitle: netClass.mNetClassName)
-          popup.lastItem?.representedObject = netClass
+          popUpButton.addItem (withTitle: netClass.mNetClassName)
+          popUpButton.lastItem?.representedObject = netClass
           if netClass === net.mNetClass {
-            popup.select (popup.lastItem)
+            popUpButton.select (popUpButton.lastItem)
           }
         }
+    //---
+      do{
+        let hStack = AutoLayoutHorizontalStackView ()
+        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+        hStack.appendFlexibleSpace ()
+        let okButton = AutoLayoutSheetDefaultOkButton (title: "Select", size: .regular, sheet: panel, isInitialFirstResponder: true)
+        hStack.appendView (okButton)
+        layoutView.appendView (hStack)
+      }
+    //---
+      panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
       //--- Dialog
         window.beginSheet (panel) { inResponse in
-          if inResponse == .stop, let netClass = popup.selectedItem?.representedObject as? NetClassInProject {
+          if inResponse == .stop, let netClass = popUpButton.selectedItem?.representedObject as? NetClassInProject {
             net.mNetClass = netClass
           }
         }

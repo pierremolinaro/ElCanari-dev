@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol { // , NSTextFieldDelegate {
+final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol {
 
   private let mWidth : CGFloat
   var mTextDidChange : Optional < () -> Void>  = nil
@@ -31,7 +31,6 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol { // , NS
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-//    self.delegate = self
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.alignment = .center
@@ -94,14 +93,6 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol { // , NS
   }
 
   //····················································································································
-  // IMPLEMENTATION OF NSTextFieldDelegate
-  //····················································································································
-
-//  func controlTextDidChange (_ inNotification : Notification) {
-//    if self.isContinuous {
-//      self.ebAction (nil)
-//    }
-//  }
 
   override func textDidChange (_ inNotification : Notification) {
     super.textDidChange (inNotification)

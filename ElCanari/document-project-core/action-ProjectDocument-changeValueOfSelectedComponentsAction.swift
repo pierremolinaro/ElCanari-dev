@@ -23,16 +23,60 @@ extension ProjectDocument {
          let componentValues = Array (possibleValues).sorted ()
          componentNames.sort ()
       //---
-         if componentValues.count > 0, let window = self.windowForSheet, let panel = self.mChangeValuePanel {
-           self.mChangeValueComponentListTextField?.stringValue = componentNames.joined (separator: ", ")
-           self.mChangeComponentValueComboxBox?.removeAllItems ()
-           self.mChangeComponentValueComboxBox?.addItems (withObjectValues: componentValues)
-           self.mChangeComponentValueComboxBox?.selectItem (at: 0)
-           self.mChangeComponentValueComboxBox?.textDidChangeCallBack = { [weak self] (_ outlet : CanariComboBox) in
-             self?.mChangeValueValidationButton?.title = "Change to " + outlet.stringValue
-           }
+         if componentValues.count > 0, let window = self.windowForSheet {
+          let panel = NSPanel (
+            contentRect: NSRect (x: 0, y: 0, width: 500, height: 200),
+            styleMask: [.titled],
+            backing: .buffered,
+            defer: false
+          )
+        //---
+          let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+          let gridView = AutoLayoutGridView2 ()
+        //---
+          layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Value", bold: true, size: .regular))
+          layoutView.appendFlexibleSpace ()
+        //---
+          do{
+            let left = AutoLayoutStaticLabel (title: "Components", bold: false, size: .regular)
+            let right = AutoLayoutStaticLabel (title: componentNames.joined (separator: ", "), bold: true, size: .regular)
+                  .set (alignment: .left).expandableWidth ()
+            _ = gridView.addFirstBaseLineAligned (left: left, right: right)
+          }
+        //---
+          let comboBox = AutoLayoutComboBox (width: 120).expandableWidth ()
+          do{
+            let left = AutoLayoutStaticLabel (title: "New Value", bold: false, size: .regular)
+            _ = gridView.addFirstBaseLineAligned (left: left, right: comboBox)
+          }
+        //---
+          layoutView.appendView (gridView)
+          layoutView.appendFlexibleSpace ()
+          let okButton = AutoLayoutSheetDefaultOkButton (title: "Change Value", size: .regular, sheet: panel, isInitialFirstResponder: true)
+          do{
+            let hStack = AutoLayoutHorizontalStackView ()
+            hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+            hStack.appendFlexibleSpace ()
+            hStack.appendView (okButton)
+            layoutView.appendView (hStack)
+          }
+        //---
+           comboBox.addItems (withObjectValues: componentValues)
+           comboBox.selectItem (at: 0)
+           comboBox.mTextDidChange = { (_ inOutlet : AutoLayoutComboBox) in okButton.title = "Change to " + inOutlet.stringValue }
+        //---
+           panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
+
+//           self.mChangeValueComponentListTextField?.stringValue = componentNames.joined (separator: ", ")
+//           self.mChangeComponentValueComboxBox?.removeAllItems ()
+//           self.mChangeComponentValueComboxBox?.addItems (withObjectValues: componentValues)
+//           self.mChangeComponentValueComboxBox?.selectItem (at: 0)
+//           self.mChangeComponentValueComboxBox?.textDidChangeCallBack = { [weak self] (_ outlet : CanariComboBox) in
+//           self?.mChangeValueValidationButton?.title = "Change to " + outlet.stringValue
+//           }
            window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
-             if inResponse == .stop, let newValue = self.mChangeComponentValueComboxBox?.stringValue {
+             if inResponse == .stop {
+               let newValue = comboBox.stringValue
                for component in selectedComponents.values {
                  component.mComponentValue = newValue
                }

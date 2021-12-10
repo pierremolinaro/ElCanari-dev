@@ -684,12 +684,8 @@ import Cocoa
   @IBOutlet final var mBoardVerticalFlipSwitch : EBSwitch? = nil
   @IBOutlet final var mBoardView : EBEnclosingGraphicView? = nil
   @IBOutlet final var mCanariDefaultNetClassPopUpButton : CanariDefaultNetClassPopUpButton? = nil
-  @IBOutlet final var mChangeComponentValueComboxBox : CanariComboBox? = nil
   @IBOutlet final var mChangePackageOfSelectedComponentsActionButton : EBButton? = nil
-  @IBOutlet final var mChangeValueComponentListTextField : NSTextField? = nil
   @IBOutlet final var mChangeValueOfSelectedComponentsActionButton : EBButton? = nil
-  @IBOutlet final var mChangeValuePanel : NSPanel? = nil
-  @IBOutlet final var mChangeValueValidationButton : NSButton? = nil
   @IBOutlet final var mCheckClearanceBetweenPadsOfSameNetSwitch : EBSwitch? = nil
   @IBOutlet final var mCommentColorInSchematicsTextField : EBColorWell? = nil
   @IBOutlet final var mCommentInSchematicsHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
@@ -938,8 +934,6 @@ import Cocoa
   @IBOutlet final var mSchematicsWireInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mSelectComponentsMenuItem : CanariComponentsMenuItem? = nil
   @IBOutlet final var mSelectNetClassInNetTabButton : EBButton? = nil
-  @IBOutlet final var mSelectNetClassPanel : NSPanel? = nil
-  @IBOutlet final var mSelectNetClassPopUpButton : EBPopUpButton? = nil
   @IBOutlet final var mSelectNetsMenuItem : CanariNetsMenuItem? = nil
   @IBOutlet final var mSelectedBoardLimitInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mSelectedLimitDisplayUnitPopUp : EBPopUpButton? = nil
@@ -1314,12 +1308,8 @@ import Cocoa
     checkOutletConnection (self.mBoardVerticalFlipSwitch, "mBoardVerticalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardView, "mBoardView", EBEnclosingGraphicView.self, #file, #line)
     checkOutletConnection (self.mCanariDefaultNetClassPopUpButton, "mCanariDefaultNetClassPopUpButton", CanariDefaultNetClassPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
     checkOutletConnection (self.mChangePackageOfSelectedComponentsActionButton, "mChangePackageOfSelectedComponentsActionButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mChangeValueComponentListTextField, "mChangeValueComponentListTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mChangeValueOfSelectedComponentsActionButton, "mChangeValueOfSelectedComponentsActionButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mChangeValuePanel, "mChangeValuePanel", NSPanel.self, #file, #line)
-    checkOutletConnection (self.mChangeValueValidationButton, "mChangeValueValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mCheckClearanceBetweenPadsOfSameNetSwitch, "mCheckClearanceBetweenPadsOfSameNetSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mCommentColorInSchematicsTextField, "mCommentColorInSchematicsTextField", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mCommentInSchematicsHorizontalAlignmentSegmentedControl, "mCommentInSchematicsHorizontalAlignmentSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
@@ -1568,8 +1558,6 @@ import Cocoa
     checkOutletConnection (self.mSchematicsWireInspectorView, "mSchematicsWireInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectComponentsMenuItem, "mSelectComponentsMenuItem", CanariComponentsMenuItem.self, #file, #line)
     checkOutletConnection (self.mSelectNetClassInNetTabButton, "mSelectNetClassInNetTabButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mSelectNetClassPanel, "mSelectNetClassPanel", NSPanel.self, #file, #line)
-    checkOutletConnection (self.mSelectNetClassPopUpButton, "mSelectNetClassPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSelectNetsMenuItem, "mSelectNetsMenuItem", CanariNetsMenuItem.self, #file, #line)
     checkOutletConnection (self.mSelectedBoardLimitInspectorView, "mSelectedBoardLimitInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedLimitDisplayUnitPopUp, "mSelectedLimitDisplayUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -3808,12 +3796,8 @@ import Cocoa
     self.mBoardVerticalFlipSwitch?.ebCleanUp ()
     self.mBoardView?.ebCleanUp ()
     self.mCanariDefaultNetClassPopUpButton?.ebCleanUp ()
-    self.mChangeComponentValueComboxBox?.ebCleanUp ()
     self.mChangePackageOfSelectedComponentsActionButton?.ebCleanUp ()
-    self.mChangeValueComponentListTextField?.ebCleanUp ()
     self.mChangeValueOfSelectedComponentsActionButton?.ebCleanUp ()
-    self.mChangeValuePanel?.ebCleanUp ()
-    self.mChangeValueValidationButton?.ebCleanUp ()
     self.mCheckClearanceBetweenPadsOfSameNetSwitch?.ebCleanUp ()
     self.mCommentColorInSchematicsTextField?.ebCleanUp ()
     self.mCommentInSchematicsHorizontalAlignmentSegmentedControl?.ebCleanUp ()
@@ -4062,8 +4046,6 @@ import Cocoa
     self.mSchematicsWireInspectorView?.ebCleanUp ()
     self.mSelectComponentsMenuItem?.ebCleanUp ()
     self.mSelectNetClassInNetTabButton?.ebCleanUp ()
-    self.mSelectNetClassPanel?.ebCleanUp ()
-    self.mSelectNetClassPopUpButton?.ebCleanUp ()
     self.mSelectNetsMenuItem?.ebCleanUp ()
     self.mSelectedBoardLimitInspectorView?.ebCleanUp ()
     self.mSelectedLimitDisplayUnitPopUp?.ebCleanUp ()
@@ -4263,12 +4245,8 @@ import Cocoa
     self.mBoardVerticalFlipSwitch = nil
     self.mBoardView = nil
     self.mCanariDefaultNetClassPopUpButton = nil
-    self.mChangeComponentValueComboxBox = nil
     self.mChangePackageOfSelectedComponentsActionButton = nil
-    self.mChangeValueComponentListTextField = nil
     self.mChangeValueOfSelectedComponentsActionButton = nil
-    self.mChangeValuePanel = nil
-    self.mChangeValueValidationButton = nil
     self.mCheckClearanceBetweenPadsOfSameNetSwitch = nil
     self.mCommentColorInSchematicsTextField = nil
     self.mCommentInSchematicsHorizontalAlignmentSegmentedControl = nil
@@ -4517,8 +4495,6 @@ import Cocoa
     self.mSchematicsWireInspectorView = nil
     self.mSelectComponentsMenuItem = nil
     self.mSelectNetClassInNetTabButton = nil
-    self.mSelectNetClassPanel = nil
-    self.mSelectNetClassPopUpButton = nil
     self.mSelectNetsMenuItem = nil
     self.mSelectedBoardLimitInspectorView = nil
     self.mSelectedLimitDisplayUnitPopUp = nil

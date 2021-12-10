@@ -68,7 +68,7 @@ extension CustomizedProjectDocument {
         let comboBox = AutoLayoutComboBox (width: 80)
         self.mRenameComponentPrefixComboxBox = comboBox
         self.populatePrefixComboBox (currentPrefixSet, self.mComponentCurrentPrefix)
-        comboBox.mTextDidChangeCallBack = { [weak self] in self?.renameComponentComboBoxAction () }
+        comboBox.mTextDidChange = { [weak self] (_ inOutlet : AutoLayoutComboBox) in self?.renameComponentComboBoxAction () }
         comboBox.isContinuous = true
         _ = gridView.addFirstBaseLineAligned (left: left, right: comboBox)
       }

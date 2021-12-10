@@ -26,7 +26,7 @@ final class AutoLayoutComboBox : NSComboBox, EBUserClassNameProtocol, NSComboBox
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.delegate = self
+//    self.delegate = self
   }
 
   //····················································································································
@@ -50,24 +50,24 @@ final class AutoLayoutComboBox : NSComboBox, EBUserClassNameProtocol, NSComboBox
 
   //····················································································································
 
-  var mTextDidChangeCallBack : Optional < () -> Void > = nil {
+  var mTextDidChange : Optional < (_ inOutlet : AutoLayoutComboBox) -> Void > = nil {
     didSet {
-      self.mTextDidChangeCallBack? ()
+      self.mTextDidChange? (self)
     }
   }
 
   //····················································································································
-  // NSComboBoxDelegate functions
-  //····················································································································
 
-  @objc func controlTextDidChange (_ inNotification : Notification) {
-    self.mTextDidChangeCallBack? ()
+  override func textDidChange (_ inNotification : Notification) {
+    super.textDidChange (inNotification)
+    self.mTextDidChange? (self)
   }
+
 
   //····················································································································
 
   func controlTextDidEndEditing (_ notification : Notification) {
-    self.mTextDidChangeCallBack? ()
+    self.mTextDidChange? (self)
   }
 
   //····················································································································
