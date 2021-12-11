@@ -357,7 +357,6 @@
                 <outlet property="mSchematicWireInsulateSubnetButton" destination="xOe-Xg-c1N" id="Lof-jW-zBS"/>
                 <outlet property="mSchematicWireMergeSubnetButton" destination="5bJ-CJ-Ynt" id="UyJ-23-Fzv"/>
                 <outlet property="mSchematicWireNetClassButton" destination="15764" id="c4g-5d-enV"/>
-                <outlet property="mSchematicsDatePicker" destination="mFL-GZ-n6M" id="bu1-3Q-9r3"/>
                 <outlet property="mSchematicsGridDisplayFactorPopUpButton" destination="1212" id="ErG-lP-VrY"/>
                 <outlet property="mSchematicsGridStylePopUpButton" destination="1243" id="3wD-oA-K3y"/>
                 <outlet property="mSchematicsHorizontalFlipSwitch" destination="15254" id="1IV-oc-fnR"/>
@@ -384,7 +383,6 @@
                 <outlet property="mSelectedObjectsBoardLimitsInspectorView" destination="ph8-QY-Yza" id="ll0-e8-xGS"/>
                 <outlet property="mSelectedObjectsSchematicsInspectorView" destination="15205" id="agk-Rg-7i0"/>
                 <outlet property="mSelectedSheetTitleTextField" destination="15310" id="EIV-hz-EDO"/>
-                <outlet property="mSetDatePanel" destination="9r6-bV-Bde" id="Mpv-wB-AtM"/>
                 <outlet property="mSetDateToNowButton" destination="16247" id="FhR-Kz-ks7"/>
                 <outlet property="mSheetDownButton" destination="15838" id="BkT-QN-SP0"/>
                 <outlet property="mSheetPopUpButton" destination="15301" id="kz2-tC-wbH"/>
@@ -6723,69 +6721,6 @@ of the same Net</string>
             </subviews>
             <point key="canvasLocation" x="-887" y="542"/>
         </customView>
-        <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="9r6-bV-Bde" userLabel="Dialog : Set Date" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="378" y="579" width="454" height="254"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
-            <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="iux-B1-WlD">
-                <rect key="frame" x="0.0" y="0.0" width="454" height="254"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QbQ-al-TO8" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="377" y="13" width="63" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="s2k-Pa-MXb">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                    </button>
-                    <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="61N-b7-Rx2">
-                        <rect key="frame" x="20" y="84" width="83" height="85"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="1zs-SY-Kdr"/>
-                    </imageView>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Xc-aS-Kqn" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="152" y="13" width="82" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="zm3-wW-fJw">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                        </buttonCell>
-                    </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="woh-mG-of2">
-                        <rect key="frame" x="156" y="217" width="280" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Set Date and Time" id="aTL-Le-KhP">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mFL-GZ-n6M">
-                        <rect key="frame" x="158" y="61" width="277" height="148"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <datePickerCell key="cell" controlSize="small" borderStyle="bezel" alignment="left" datePickerStyle="clockAndCalendar" id="jRJ-PF-8MR">
-                            <font key="font" metaFont="message" size="11"/>
-                            <date key="date" timeIntervalSinceReferenceDate="43200">
-                                <!--2001-01-01 12:00:00 +0000-->
-                            </date>
-                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <datePickerElements key="datePickerElements" year="YES" month="YES" day="YES" hour="YES" minute="YES"/>
-                        </datePickerCell>
-                    </datePicker>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="-270" y="-183"/>
-        </window>
         <customView id="gb7-75-GoJ" userLabel="Schematics Inspector : comment" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask"/>

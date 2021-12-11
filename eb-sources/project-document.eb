@@ -325,8 +325,6 @@ xibdocument ProjectDocument root ProjectRoot {
 
   action openSetDateDialogAction ;
   outlet EBButton mOpenSetDateDialogButton $run openSetDateDialogAction ;
-  outlet NSPanel mSetDatePanel ;
-  outlet NSDatePicker mSchematicsDatePicker ;
 
 //--- Schematics view
   arrayController #schematicObjectsController : root.selectedSheetObjects ;

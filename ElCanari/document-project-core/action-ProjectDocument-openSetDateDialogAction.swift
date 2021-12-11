@@ -13,11 +13,37 @@ import Cocoa
 extension ProjectDocument {
   @objc func openSetDateDialogAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let window = self.windowForSheet, let panel = self.mSetDatePanel {
-      self.mSchematicsDatePicker?.dateValue = self.rootObject.mSchematicDate
+    if let window = self.windowForSheet {
+      let panel = NSPanel (
+        contentRect: NSRect (x: 0, y: 0, width: 450, height: 250),
+        styleMask: [.titled],
+        backing: .buffered,
+        defer: false
+      )
+    //---
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+    //---
+      layoutView.appendView (AutoLayoutStaticLabel (title: "Set Date and Time", bold: true, size: .regular).expandableWidth ().set (alignment: .center))
+      layoutView.appendFlexibleSpace ()
+    //---
+      let datePicker = AutoLayoutDatePicker (size: .regular)
+      datePicker.datePickerStyle = .clockAndCalendar
+      datePicker.datePickerElements = [.yearMonthDay, .hourMinute]
+      datePicker.dateValue = self.rootObject.mSchematicDate
+      layoutView.appendView (datePicker)
+      layoutView.appendFlexibleSpace ()
+      do{
+        let hStack = AutoLayoutHorizontalStackView ()
+        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+        hStack.appendFlexibleSpace ()
+        let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: panel, isInitialFirstResponder: true)
+        hStack.appendView (okButton)
+        layoutView.appendView (hStack)
+      }
+      panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
-        if inResponse == .stop, let newDate = self.mSchematicsDatePicker?.dateValue {
-          self.rootObject.mSchematicDate = newDate
+        if inResponse == .stop {
+          self.rootObject.mSchematicDate = datePicker.dateValue
         }
       }
     }

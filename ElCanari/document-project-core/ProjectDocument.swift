@@ -896,7 +896,6 @@ import Cocoa
   @IBOutlet final var mSchematicWireInsulateSubnetButton : EBButton? = nil
   @IBOutlet final var mSchematicWireMergeSubnetButton : EBButton? = nil
   @IBOutlet final var mSchematicWireNetClassButton : EBPopUpButton? = nil
-  @IBOutlet final var mSchematicsDatePicker : NSDatePicker? = nil
   @IBOutlet final var mSchematicsGridDisplayFactorPopUpButton : EBPopUpButton? = nil
   @IBOutlet final var mSchematicsGridStylePopUpButton : EBPopUpButton? = nil
   @IBOutlet final var mSchematicsHorizontalFlipSwitch : EBSwitch? = nil
@@ -923,7 +922,6 @@ import Cocoa
   @IBOutlet final var mSelectedObjectsBoardLimitsInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mSelectedObjectsSchematicsInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mSelectedSheetTitleTextField : EBTextField? = nil
-  @IBOutlet final var mSetDatePanel : NSPanel? = nil
   @IBOutlet final var mSetDateToNowButton : EBButton? = nil
   @IBOutlet final var mSheetDownButton : EBButton? = nil
   @IBOutlet final var mSheetPopUpButton : EBPopUpButton? = nil
@@ -1501,7 +1499,6 @@ import Cocoa
     checkOutletConnection (self.mSchematicWireInsulateSubnetButton, "mSchematicWireInsulateSubnetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicWireMergeSubnetButton, "mSchematicWireMergeSubnetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicWireNetClassButton, "mSchematicWireNetClassButton", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mSchematicsDatePicker, "mSchematicsDatePicker", NSDatePicker.self, #file, #line)
     checkOutletConnection (self.mSchematicsGridDisplayFactorPopUpButton, "mSchematicsGridDisplayFactorPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSchematicsGridStylePopUpButton, "mSchematicsGridStylePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSchematicsHorizontalFlipSwitch, "mSchematicsHorizontalFlipSwitch", EBSwitch.self, #file, #line)
@@ -1528,7 +1525,6 @@ import Cocoa
     checkOutletConnection (self.mSelectedObjectsBoardLimitsInspectorView, "mSelectedObjectsBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedObjectsSchematicsInspectorView, "mSelectedObjectsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedSheetTitleTextField, "mSelectedSheetTitleTextField", EBTextField.self, #file, #line)
-    checkOutletConnection (self.mSetDatePanel, "mSetDatePanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mSetDateToNowButton, "mSetDateToNowButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSheetDownButton, "mSheetDownButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSheetPopUpButton, "mSheetPopUpButton", EBPopUpButton.self, #file, #line)
@@ -3970,7 +3966,6 @@ import Cocoa
     self.mSchematicWireInsulateSubnetButton?.ebCleanUp ()
     self.mSchematicWireMergeSubnetButton?.ebCleanUp ()
     self.mSchematicWireNetClassButton?.ebCleanUp ()
-    self.mSchematicsDatePicker?.ebCleanUp ()
     self.mSchematicsGridDisplayFactorPopUpButton?.ebCleanUp ()
     self.mSchematicsGridStylePopUpButton?.ebCleanUp ()
     self.mSchematicsHorizontalFlipSwitch?.ebCleanUp ()
@@ -3997,7 +3992,6 @@ import Cocoa
     self.mSelectedObjectsBoardLimitsInspectorView?.ebCleanUp ()
     self.mSelectedObjectsSchematicsInspectorView?.ebCleanUp ()
     self.mSelectedSheetTitleTextField?.ebCleanUp ()
-    self.mSetDatePanel?.ebCleanUp ()
     self.mSetDateToNowButton?.ebCleanUp ()
     self.mSheetDownButton?.ebCleanUp ()
     self.mSheetPopUpButton?.ebCleanUp ()
@@ -4400,7 +4394,6 @@ import Cocoa
     self.mSchematicWireInsulateSubnetButton = nil
     self.mSchematicWireMergeSubnetButton = nil
     self.mSchematicWireNetClassButton = nil
-    self.mSchematicsDatePicker = nil
     self.mSchematicsGridDisplayFactorPopUpButton = nil
     self.mSchematicsGridStylePopUpButton = nil
     self.mSchematicsHorizontalFlipSwitch = nil
@@ -4427,7 +4420,6 @@ import Cocoa
     self.mSelectedObjectsBoardLimitsInspectorView = nil
     self.mSelectedObjectsSchematicsInspectorView = nil
     self.mSelectedSheetTitleTextField = nil
-    self.mSetDatePanel = nil
     self.mSetDateToNowButton = nil
     self.mSheetDownButton = nil
     self.mSheetPopUpButton = nil
