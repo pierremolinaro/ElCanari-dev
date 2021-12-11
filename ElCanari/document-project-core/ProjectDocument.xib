@@ -330,11 +330,6 @@
                 <outlet property="mRemoveWirePointSchematicHotKeyTextField" destination="2QO-p4-nwh" id="tPI-00-PHn"/>
                 <outlet property="mRenameComponentButton" destination="2927" id="gMp-nb-zEg"/>
                 <outlet property="mRenameComponentFromComponentSymbolButton" destination="1704" id="elE-Ti-Kth"/>
-                <outlet property="mRenameDeviceErrorMessageTextField" destination="6Nk-hd-bog" id="jju-ym-YXP"/>
-                <outlet property="mRenameDeviceNameTextField" destination="FrU-id-UN7" id="ucc-yv-VZm"/>
-                <outlet property="mRenameDevicePanel" destination="7KE-rt-6c9" id="yj9-0F-71D"/>
-                <outlet property="mRenameDeviceTitleTextField" destination="m8x-MC-QBT" id="bYB-d4-fIv"/>
-                <outlet property="mRenameDeviceValidationButton" destination="YOp-10-N8J" id="CQW-Vq-8Sf"/>
                 <outlet property="mRenameNetInNetTabButton" destination="3074" id="hfM-HE-86O"/>
                 <outlet property="mResetDevicesAndFontsVersionButton" destination="15622" id="zG1-7o-8wB"/>
                 <outlet property="mResetFontVersionButton" destination="2977" id="Ef5-X5-MYW"/>
@@ -6653,74 +6648,6 @@ of the same Net</string>
             </subviews>
             <point key="canvasLocation" x="473.5" y="113"/>
         </customView>
-        <customView id="2661" userLabel="ExcellonWithSeparate">
-            <rect key="frame" x="0.0" y="0.0" width="470" height="142"/>
-            <autoresizingMask key="autoresizingMask"/>
-            <subviews>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2663">
-                    <rect key="frame" x="203" y="76" width="200" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="xyz" drawsBackground="YES" id="14679">
-                        <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="177" translatesAutoresizingMaskIntoConstraints="NO" id="2662">
-                    <rect key="frame" x="17" y="78" width="181" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Drill File Extension:" id="14678">
-                        <font key="font" metaFont="message" size="11"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2666">
-                    <rect key="frame" x="203" y="103" width="200" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="xyz" drawsBackground="YES" id="14681">
-                        <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="177" translatesAutoresizingMaskIntoConstraints="NO" id="2664">
-                    <rect key="frame" x="17" y="105" width="181" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Tool List File Extension:" id="14680">
-                        <font key="font" metaFont="message" size="11"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-            </subviews>
-            <point key="canvasLocation" x="-460" y="784"/>
-        </customView>
-        <customView id="2668" userLabel="Excellon">
-            <rect key="frame" x="0.0" y="0.0" width="470" height="142"/>
-            <autoresizingMask key="autoresizingMask"/>
-            <subviews>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2670">
-                    <rect key="frame" x="203" y="103" width="200" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="xyz" drawsBackground="YES" id="14683">
-                        <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="177" translatesAutoresizingMaskIntoConstraints="NO" id="2669">
-                    <rect key="frame" x="17" y="105" width="181" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Drill Information File Extension:" id="14682">
-                        <font key="font" metaFont="message" size="11"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-            </subviews>
-            <point key="canvasLocation" x="-887" y="542"/>
-        </customView>
         <customView id="gb7-75-GoJ" userLabel="Schematics Inspector : comment" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask"/>
@@ -8102,94 +8029,6 @@ of the same Net</string>
             </subviews>
             <point key="canvasLocation" x="-739" y="403.5"/>
         </customView>
-        <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="7KE-rt-6c9" userLabel="Dialog : Rename Device" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="159" y="599" width="634" height="181"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
-            <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="hJf-Vo-yzI">
-                <rect key="frame" x="0.0" y="0.0" width="634" height="181"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ln-Xh-HxO">
-                        <rect key="frame" x="20" y="48" width="83" height="85"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="sbv-J7-Rqg"/>
-                    </imageView>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YOp-10-N8J" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="142" y="13" width="346" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="push" title="Rename as…" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" inset="2" id="2rf-wk-Svy">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="117" translatesAutoresizingMaskIntoConstraints="NO" id="qdx-x2-Sn2">
-                        <rect key="frame" x="146" y="102" width="78" height="22"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" alignment="left" title="New Name" id="ve0-XL-ZBM">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="335" translatesAutoresizingMaskIntoConstraints="NO" id="6Nk-hd-bog" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="146" y="65" width="339" height="23"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" alignment="right" title="This name is already in use." id="BBn-eb-kuE">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="335" translatesAutoresizingMaskIntoConstraints="NO" id="m8x-MC-QBT">
-                        <rect key="frame" x="146" y="144" width="339" height="17"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" alignment="center" title="… title …" id="J7b-eZ-Fjz">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FrU-id-UN7" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="230" y="102" width="253" height="22"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="015-jP-CbH">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aqz-nB-wf4" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="528" y="13" width="92" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" inset="2" id="kJ2-bi-dF4">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                        </buttonCell>
-                    </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fyE-5a-AVq">
-                        <rect key="frame" x="529" y="145" width="87" height="16"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" title="Danger Zone" id="orW-Zj-tlF">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UFa-aj-erz">
-                        <rect key="frame" x="534" y="53" width="80" height="80"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="danger" id="cRU-48-bda"/>
-                    </imageView>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="-491" y="399.5"/>
-        </window>
         <customView id="2208" userLabel="Board Inspector : Track" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="522"/>
             <autoresizingMask key="autoresizingMask"/>
@@ -8678,7 +8517,6 @@ Locking</string>
         <image name="A4horizontal" width="64" height="64"/>
         <image name="A4vertical" width="64" height="64"/>
         <image name="NSActionTemplate" width="15" height="15"/>
-        <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="NSSmartBadgeTemplate" width="14" height="14"/>
         <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
         <image name="NSStatusUnavailable" width="16" height="16"/>
@@ -8691,7 +8529,6 @@ Locking</string>
         <image name="alignmentTop" width="10" height="10"/>
         <image name="artwork" width="300" height="150"/>
         <image name="autorouter" width="512" height="512"/>
-        <image name="danger" width="124" height="124"/>
         <image name="display" width="64" height="64"/>
         <image name="editorInspector" width="10" height="10"/>
         <image name="freeRoutingLogo" width="512" height="512"/>

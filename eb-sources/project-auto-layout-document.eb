@@ -204,12 +204,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //    $enabled #projectDeviceController.selectedArray.count > 0
 //  ;
 //
-//  outlet NSPanel mRenameDevicePanel ;
-//  outlet NSTextField mRenameDeviceTitleTextField ;
-//  outlet EBTextField mRenameDeviceNameTextField ;
-//  outlet NSTextField mRenameDeviceErrorMessageTextField ;
-//  outlet NSButton mRenameDeviceValidationButton ;
-//
 //  action exportDeviceAction ;
 //  outlet EBButton mExportDeviceButton
 //    $run exportDeviceAction

@@ -869,11 +869,6 @@ import Cocoa
   @IBOutlet final var mRemoveWirePointSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet final var mRenameComponentButton : EBButton? = nil
   @IBOutlet final var mRenameComponentFromComponentSymbolButton : EBButton? = nil
-  @IBOutlet final var mRenameDeviceErrorMessageTextField : NSTextField? = nil
-  @IBOutlet final var mRenameDeviceNameTextField : EBTextField? = nil
-  @IBOutlet final var mRenameDevicePanel : NSPanel? = nil
-  @IBOutlet final var mRenameDeviceTitleTextField : NSTextField? = nil
-  @IBOutlet final var mRenameDeviceValidationButton : NSButton? = nil
   @IBOutlet final var mRenameNetInNetTabButton : EBButton? = nil
   @IBOutlet final var mResetDevicesAndFontsVersionButton : EBButton? = nil
   @IBOutlet final var mResetFontVersionButton : EBButton? = nil
@@ -1472,11 +1467,6 @@ import Cocoa
     checkOutletConnection (self.mRemoveWirePointSchematicHotKeyTextField, "mRemoveWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mRenameComponentButton, "mRenameComponentButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRenameComponentFromComponentSymbolButton, "mRenameComponentFromComponentSymbolButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mRenameDeviceErrorMessageTextField, "mRenameDeviceErrorMessageTextField", NSTextField.self, #file, #line)
-    checkOutletConnection (self.mRenameDeviceNameTextField, "mRenameDeviceNameTextField", EBTextField.self, #file, #line)
-    checkOutletConnection (self.mRenameDevicePanel, "mRenameDevicePanel", NSPanel.self, #file, #line)
-    checkOutletConnection (self.mRenameDeviceTitleTextField, "mRenameDeviceTitleTextField", NSTextField.self, #file, #line)
-    checkOutletConnection (self.mRenameDeviceValidationButton, "mRenameDeviceValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mRenameNetInNetTabButton, "mRenameNetInNetTabButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetDevicesAndFontsVersionButton, "mResetDevicesAndFontsVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
@@ -3939,11 +3929,6 @@ import Cocoa
     self.mRemoveWirePointSchematicHotKeyTextField?.ebCleanUp ()
     self.mRenameComponentButton?.ebCleanUp ()
     self.mRenameComponentFromComponentSymbolButton?.ebCleanUp ()
-    self.mRenameDeviceErrorMessageTextField?.ebCleanUp ()
-    self.mRenameDeviceNameTextField?.ebCleanUp ()
-    self.mRenameDevicePanel?.ebCleanUp ()
-    self.mRenameDeviceTitleTextField?.ebCleanUp ()
-    self.mRenameDeviceValidationButton?.ebCleanUp ()
     self.mRenameNetInNetTabButton?.ebCleanUp ()
     self.mResetDevicesAndFontsVersionButton?.ebCleanUp ()
     self.mResetFontVersionButton?.ebCleanUp ()
@@ -4367,11 +4352,6 @@ import Cocoa
     self.mRemoveWirePointSchematicHotKeyTextField = nil
     self.mRenameComponentButton = nil
     self.mRenameComponentFromComponentSymbolButton = nil
-    self.mRenameDeviceErrorMessageTextField = nil
-    self.mRenameDeviceNameTextField = nil
-    self.mRenameDevicePanel = nil
-    self.mRenameDeviceTitleTextField = nil
-    self.mRenameDeviceValidationButton = nil
     self.mRenameNetInNetTabButton = nil
     self.mResetDevicesAndFontsVersionButton = nil
     self.mResetFontVersionButton = nil
