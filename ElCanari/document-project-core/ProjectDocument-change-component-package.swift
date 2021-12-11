@@ -85,7 +85,7 @@ extension ProjectDocument {
         layoutView.appendView (hStack)
       }
     //---
-      panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
+      panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop, let newPackageName = popupButton.titleOfSelectedItem {
           for component in selectedComponents.values {

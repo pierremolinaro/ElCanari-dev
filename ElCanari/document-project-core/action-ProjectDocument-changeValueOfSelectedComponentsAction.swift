@@ -65,15 +65,7 @@ extension ProjectDocument {
            comboBox.selectItem (at: 0)
            comboBox.mTextDidChange = { (_ inOutlet : AutoLayoutComboBox) in okButton.title = "Change to " + inOutlet.stringValue }
         //---
-           panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
-
-//           self.mChangeValueComponentListTextField?.stringValue = componentNames.joined (separator: ", ")
-//           self.mChangeComponentValueComboxBox?.removeAllItems ()
-//           self.mChangeComponentValueComboxBox?.addItems (withObjectValues: componentValues)
-//           self.mChangeComponentValueComboxBox?.selectItem (at: 0)
-//           self.mChangeComponentValueComboxBox?.textDidChangeCallBack = { [weak self] (_ outlet : CanariComboBox) in
-//           self?.mChangeValueValidationButton?.title = "Change to " + outlet.stringValue
-//           }
+           panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
            window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
              if inResponse == .stop {
                let newValue = comboBox.stringValue

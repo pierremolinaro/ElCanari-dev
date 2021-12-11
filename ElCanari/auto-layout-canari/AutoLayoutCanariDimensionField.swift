@@ -38,16 +38,20 @@ final class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtoco
   
   //····················································································································
 
-  override var intrinsicContentSize : NSSize {
-    return NSSize (width: 64.0, height: 19.0)
-  }
+//  override var intrinsicContentSize : NSSize {
+//    return NSSize (width: 64.0, height: 19.0)
+//  }
 
   //····················································································································
+  //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible
+  //  So we need to define intrinsicContentSize.width explicitly
+  //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-
+  //····················································································································
 
-//  override func sendAction (_ action: Selector?, to target: Any?) -> Bool {
-//    Swift.print ("sendAction")
-//    return super.sendAction (action, to: target)
-//  }
+  override var intrinsicContentSize : NSSize {
+    let s = super.intrinsicContentSize
+    return NSSize (width: 64.0, height: s.height)
+  }
 
   //····················································································································
 
@@ -75,20 +79,6 @@ final class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtoco
       return super.textShouldEndEditing (inTextObject)
     }
   }
-
-  //····················································································································
-
-//  override var nextResponder : NSResponder? {
-//    get {
-//      if let stack = self.superview as? AutoLayoutAbstractStackView {
-//        return stack.getResponder (following: self)
-//      }else{
-//      //Swift.print ("GET nextResponder")
-//        return super.nextResponder
-//      }
-//    }
-//    set { super.nextResponder = newValue }
-//  }
 
   //····················································································································
 

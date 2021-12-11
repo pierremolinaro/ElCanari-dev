@@ -77,7 +77,7 @@ extension CustomizedProjectDocument {
           layoutView.appendView (hStack)
         }
       //---
-        panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
+        panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       //--- Dialog
         window.beginSheet (panel) { inResponse in
           if inResponse == .stop, let netClass = popUpButton.selectedItem?.representedObject as? NetClassInProject {

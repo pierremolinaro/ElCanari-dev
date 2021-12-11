@@ -556,10 +556,6 @@ import Cocoa
   @IBOutlet final var mAddNCSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet final var mAddNCToAllSymbolPinsSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet final var mAddNetClassButton : EBButton? = nil
-  @IBOutlet final var mAddNetClassErrorMessageTextField : NSTextField? = nil
-  @IBOutlet final var mAddNetClassPanel : NSPanel? = nil
-  @IBOutlet final var mAddNetClassTextField : EBTextField? = nil
-  @IBOutlet final var mAddNetClassValidationButton : NSButton? = nil
   @IBOutlet final var mAddRestrictRectangleButton : CanariDragSourceButton? = nil
   @IBOutlet final var mAddRightLabelSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet final var mAddTextInBoardButton : CanariDragSourceImageButton? = nil
@@ -567,12 +563,6 @@ import Cocoa
   @IBOutlet final var mAddTrackInBoardButton : CanariDragSourceImageButton? = nil
   @IBOutlet final var mAddWireButton : CanariDragSourceButton? = nil
   @IBOutlet final var mAddWirePointSchematicHotKeyTextField : NSTextField? = nil
-  @IBOutlet final var mAllowTracksOnBackSideSwitch : EBSwitch? = nil
-  @IBOutlet final var mAllowTracksOnFrontSideSwitch : EBSwitch? = nil
-  @IBOutlet final var mAllowTracksOnInner1LayerSwitch : EBSwitch? = nil
-  @IBOutlet final var mAllowTracksOnInner2LayerSwitch : EBSwitch? = nil
-  @IBOutlet final var mAllowTracksOnInner3LayerSwitch : EBSwitch? = nil
-  @IBOutlet final var mAllowTracksOnInner4LayerSwitch : EBSwitch? = nil
   @IBOutlet final var mArtworkCommentTextView : EBTextObserverView? = nil
   @IBOutlet final var mArtworkLayerConfigurationTextField : EBTextObserverField? = nil
   @IBOutlet final var mArtworkNameTextField : EBTextObserverField? = nil
@@ -836,14 +826,7 @@ import Cocoa
   @IBOutlet final var mMinPPTPTTTWinEBUnitPopUp : EBPopUpButton? = nil
   @IBOutlet final var mNCInSchematicsInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mNCRotationSegmentedControl : CanariQuadrantSegmentedControl? = nil
-  @IBOutlet final var mNetClassColorWell : EBColorWell? = nil
-  @IBOutlet final var mNetClassHoleDiameterDimensionTextField : CanariDimensionTextField? = nil
-  @IBOutlet final var mNetClassHoleDiameterUnitPopUpButton : EBPopUpButton? = nil
-  @IBOutlet final var mNetClassPadDiameterDimensionTextField : CanariDimensionTextField? = nil
-  @IBOutlet final var mNetClassPadDiameterUnitPopUpButton : EBPopUpButton? = nil
   @IBOutlet final var mNetClassTableView : EBTableView? = nil
-  @IBOutlet final var mNetClassWidthDimensionTextField : CanariDimensionTextField? = nil
-  @IBOutlet final var mNetClassWidthUnitPopUpButton : EBPopUpButton? = nil
   @IBOutlet final var mNetClassesPageView : CanariViewWithKeyView? = nil
   @IBOutlet final var mNetCountTextField : EBTextObserverField? = nil
   @IBOutlet final var mNetInfoTableView : CanariNetInfoTableView? = nil
@@ -1178,10 +1161,6 @@ import Cocoa
     checkOutletConnection (self.mAddNCSchematicHotKeyTextField, "mAddNCSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddNCToAllSymbolPinsSchematicHotKeyTextField, "mAddNCToAllSymbolPinsSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddNetClassButton, "mAddNetClassButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mAddNetClassErrorMessageTextField, "mAddNetClassErrorMessageTextField", NSTextField.self, #file, #line)
-    checkOutletConnection (self.mAddNetClassPanel, "mAddNetClassPanel", NSPanel.self, #file, #line)
-    checkOutletConnection (self.mAddNetClassTextField, "mAddNetClassTextField", EBTextField.self, #file, #line)
-    checkOutletConnection (self.mAddNetClassValidationButton, "mAddNetClassValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mAddRestrictRectangleButton, "mAddRestrictRectangleButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddRightLabelSchematicHotKeyTextField, "mAddRightLabelSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddTextInBoardButton, "mAddTextInBoardButton", CanariDragSourceImageButton.self, #file, #line)
@@ -1189,12 +1168,6 @@ import Cocoa
     checkOutletConnection (self.mAddTrackInBoardButton, "mAddTrackInBoardButton", CanariDragSourceImageButton.self, #file, #line)
     checkOutletConnection (self.mAddWireButton, "mAddWireButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddWirePointSchematicHotKeyTextField, "mAddWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)
-    checkOutletConnection (self.mAllowTracksOnBackSideSwitch, "mAllowTracksOnBackSideSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mAllowTracksOnFrontSideSwitch, "mAllowTracksOnFrontSideSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mAllowTracksOnInner1LayerSwitch, "mAllowTracksOnInner1LayerSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mAllowTracksOnInner2LayerSwitch, "mAllowTracksOnInner2LayerSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mAllowTracksOnInner3LayerSwitch, "mAllowTracksOnInner3LayerSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mAllowTracksOnInner4LayerSwitch, "mAllowTracksOnInner4LayerSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mArtworkCommentTextView, "mArtworkCommentTextView", EBTextObserverView.self, #file, #line)
     checkOutletConnection (self.mArtworkLayerConfigurationTextField, "mArtworkLayerConfigurationTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mArtworkNameTextField, "mArtworkNameTextField", EBTextObserverField.self, #file, #line)
@@ -1458,14 +1431,7 @@ import Cocoa
     checkOutletConnection (self.mMinPPTPTTTWinEBUnitPopUp, "mMinPPTPTTTWinEBUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mNCInSchematicsInspectorView, "mNCInSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mNCRotationSegmentedControl, "mNCRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
-    checkOutletConnection (self.mNetClassColorWell, "mNetClassColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mNetClassHoleDiameterDimensionTextField, "mNetClassHoleDiameterDimensionTextField", CanariDimensionTextField.self, #file, #line)
-    checkOutletConnection (self.mNetClassHoleDiameterUnitPopUpButton, "mNetClassHoleDiameterUnitPopUpButton", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mNetClassPadDiameterDimensionTextField, "mNetClassPadDiameterDimensionTextField", CanariDimensionTextField.self, #file, #line)
-    checkOutletConnection (self.mNetClassPadDiameterUnitPopUpButton, "mNetClassPadDiameterUnitPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mNetClassTableView, "mNetClassTableView", EBTableView.self, #file, #line)
-    checkOutletConnection (self.mNetClassWidthDimensionTextField, "mNetClassWidthDimensionTextField", CanariDimensionTextField.self, #file, #line)
-    checkOutletConnection (self.mNetClassWidthUnitPopUpButton, "mNetClassWidthUnitPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mNetClassesPageView, "mNetClassesPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mNetCountTextField, "mNetCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mNetInfoTableView, "mNetInfoTableView", CanariNetInfoTableView.self, #file, #line)
@@ -3664,10 +3630,6 @@ import Cocoa
     self.mAddNCSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddNCToAllSymbolPinsSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddNetClassButton?.ebCleanUp ()
-    self.mAddNetClassErrorMessageTextField?.ebCleanUp ()
-    self.mAddNetClassPanel?.ebCleanUp ()
-    self.mAddNetClassTextField?.ebCleanUp ()
-    self.mAddNetClassValidationButton?.ebCleanUp ()
     self.mAddRestrictRectangleButton?.ebCleanUp ()
     self.mAddRightLabelSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddTextInBoardButton?.ebCleanUp ()
@@ -3675,12 +3637,6 @@ import Cocoa
     self.mAddTrackInBoardButton?.ebCleanUp ()
     self.mAddWireButton?.ebCleanUp ()
     self.mAddWirePointSchematicHotKeyTextField?.ebCleanUp ()
-    self.mAllowTracksOnBackSideSwitch?.ebCleanUp ()
-    self.mAllowTracksOnFrontSideSwitch?.ebCleanUp ()
-    self.mAllowTracksOnInner1LayerSwitch?.ebCleanUp ()
-    self.mAllowTracksOnInner2LayerSwitch?.ebCleanUp ()
-    self.mAllowTracksOnInner3LayerSwitch?.ebCleanUp ()
-    self.mAllowTracksOnInner4LayerSwitch?.ebCleanUp ()
     self.mArtworkCommentTextView?.ebCleanUp ()
     self.mArtworkLayerConfigurationTextField?.ebCleanUp ()
     self.mArtworkNameTextField?.ebCleanUp ()
@@ -3944,14 +3900,7 @@ import Cocoa
     self.mMinPPTPTTTWinEBUnitPopUp?.ebCleanUp ()
     self.mNCInSchematicsInspectorView?.ebCleanUp ()
     self.mNCRotationSegmentedControl?.ebCleanUp ()
-    self.mNetClassColorWell?.ebCleanUp ()
-    self.mNetClassHoleDiameterDimensionTextField?.ebCleanUp ()
-    self.mNetClassHoleDiameterUnitPopUpButton?.ebCleanUp ()
-    self.mNetClassPadDiameterDimensionTextField?.ebCleanUp ()
-    self.mNetClassPadDiameterUnitPopUpButton?.ebCleanUp ()
     self.mNetClassTableView?.ebCleanUp ()
-    self.mNetClassWidthDimensionTextField?.ebCleanUp ()
-    self.mNetClassWidthUnitPopUpButton?.ebCleanUp ()
     self.mNetClassesPageView?.ebCleanUp ()
     self.mNetCountTextField?.ebCleanUp ()
     self.mNetInfoTableView?.ebCleanUp ()
@@ -4111,10 +4060,6 @@ import Cocoa
     self.mAddNCSchematicHotKeyTextField = nil
     self.mAddNCToAllSymbolPinsSchematicHotKeyTextField = nil
     self.mAddNetClassButton = nil
-    self.mAddNetClassErrorMessageTextField = nil
-    self.mAddNetClassPanel = nil
-    self.mAddNetClassTextField = nil
-    self.mAddNetClassValidationButton = nil
     self.mAddRestrictRectangleButton = nil
     self.mAddRightLabelSchematicHotKeyTextField = nil
     self.mAddTextInBoardButton = nil
@@ -4122,12 +4067,6 @@ import Cocoa
     self.mAddTrackInBoardButton = nil
     self.mAddWireButton = nil
     self.mAddWirePointSchematicHotKeyTextField = nil
-    self.mAllowTracksOnBackSideSwitch = nil
-    self.mAllowTracksOnFrontSideSwitch = nil
-    self.mAllowTracksOnInner1LayerSwitch = nil
-    self.mAllowTracksOnInner2LayerSwitch = nil
-    self.mAllowTracksOnInner3LayerSwitch = nil
-    self.mAllowTracksOnInner4LayerSwitch = nil
     self.mArtworkCommentTextView = nil
     self.mArtworkLayerConfigurationTextField = nil
     self.mArtworkNameTextField = nil
@@ -4391,14 +4330,7 @@ import Cocoa
     self.mMinPPTPTTTWinEBUnitPopUp = nil
     self.mNCInSchematicsInspectorView = nil
     self.mNCRotationSegmentedControl = nil
-    self.mNetClassColorWell = nil
-    self.mNetClassHoleDiameterDimensionTextField = nil
-    self.mNetClassHoleDiameterUnitPopUpButton = nil
-    self.mNetClassPadDiameterDimensionTextField = nil
-    self.mNetClassPadDiameterUnitPopUpButton = nil
     self.mNetClassTableView = nil
-    self.mNetClassWidthDimensionTextField = nil
-    self.mNetClassWidthUnitPopUpButton = nil
     self.mNetClassesPageView = nil
     self.mNetCountTextField = nil
     self.mNetInfoTableView = nil

@@ -136,7 +136,7 @@ extension CustomizedProjectDocument {
         layoutView.appendView (hStack)
       }
     //---
-      panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
+      panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       self.windowForSheet?.beginSheet (panel) { (inModalResponse) in
         if inModalResponse == .stop,
              let candidateSymbol = popUpButton.selectedItem?.representedObject as? ComponentSymbolInProject,

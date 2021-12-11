@@ -16,277 +16,723 @@ extension ProjectDocument {
 
   //····················································································································
 
-  internal func performAddNetClass () {
-    if let window = self.windowForSheet, let panel = self.mAddNetClassPanel {
-      self.mAddNetClassTextField?.target = self
-      self.mAddNetClassTextField?.action = #selector (ProjectDocument.newClassNameTextFieldDidChange (_:))
-      self.mAddNetClassTextField?.isContinuous = true
-      self.mAddNetClassTextField?.setSendContinously (true)
-      self.newClassNameTextFieldDidChange (nil)
-    //---  Allow Back track
-      let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
-      self.mAllowTracksOnBackSideSwitch?.bind_value (allowBackTrack_property)
-    //---  Allow Inner 1 Layer
-      let allowInner1Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
-      self.mAllowTracksOnInner1LayerSwitch?.bind_value (allowInner1Layer_property)
-    //---  Allow Inner 2 Layer
-      let allowInner2Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
-      self.mAllowTracksOnInner2LayerSwitch?.bind_value (allowInner2Layer_property)
-    //---  Allow Inner 3 Layer
-      let allowInner3Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
-      self.mAllowTracksOnInner3LayerSwitch?.bind_value (allowInner3Layer_property)
-    //---  Allow Inner 4 Layer
-      let allowInner4Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
-      self.mAllowTracksOnInner4LayerSwitch?.bind_value (allowInner4Layer_property)
-    //---  Allow front track
-      let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
-      self.mAllowTracksOnFrontSideSwitch?.bind_value (allowFrontTrack_property)
-    //---  Width
-      let width_property = EBStoredProperty_Int (defaultValue: 45_720, undoManager: nil) // 20 mils
-      let widthUnit_property = EBStoredProperty_Int (defaultValue: 2_286, undoManager: nil) // mils
-      self.mNetClassWidthDimensionTextField?.bind_dimensionAndUnit (
-        width_property,
-        widthUnit_property
+  fileprivate func netClassEditionPanel (with inNetClass : NetClassInProject,
+                                         creation inCreation : Bool, // true -> creation, false -> edition
+                                         callBack inCallBack : @escaping () -> Void) {
+    if let window = self.windowForSheet {
+      let panel = NSPanel (
+        contentRect: NSRect (x: 0, y: 0, width: 500, height: 500),
+        styleMask: [.titled],
+        backing: .buffered,
+        defer: false
       )
-      self.mNetClassWidthUnitPopUpButton?.bind_selectedTag (widthUnit_property)
-    //--- Hole Diameter
-      let viaHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45_720, undoManager: nil) // 20 mils
-      let viaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2_286, undoManager: nil) // mils
-      self.mNetClassHoleDiameterDimensionTextField?.bind_dimensionAndUnit (
-        viaHoleDiameter_property,
-        viaHoleDiameterUnit_property
-      )
-      self.mNetClassHoleDiameterUnitPopUpButton?.bind_selectedTag (viaHoleDiameterUnit_property)
-    //--- Pad Diameter
-      let viaPadDiameter_property = EBStoredProperty_Int (defaultValue: 91_440, undoManager: nil) // 40 mils
-      let viaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2_286, undoManager: nil) // mils
-      self.mNetClassPadDiameterDimensionTextField?.bind_dimensionAndUnit (
-        viaPadDiameter_property,
-        viaPadDiameterUnit_property
-      )
-      self.mNetClassPadDiameterUnitPopUpButton?.bind_selectedTag (viaPadDiameterUnit_property)
+    //---
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+      let gridView = AutoLayoutGridView2 ()
+    //---
+      let panelTitle = inCreation ? "Create Net" : "Edit Net"
+      layoutView.appendView (AutoLayoutStaticLabel (title: panelTitle, bold: true, size: .regular).expandableWidth ().set (alignment: .center))
+      layoutView.appendFlexibleSpace ()
+    //---
+      let netClassNameTextField = AutoLayoutTextField (width: 100, size: .regular).expandableWidth ()
+      netClassNameTextField.stringValue = inNetClass.mNetClassName
+      do{
+        let left = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .regular)
+        _ = gridView.addFirstBaseLineAligned (left: left, right: netClassNameTextField)
+      }
+    //---
+      let netClassNameErrorLabel = AutoLayoutStaticLabel (title: "", bold: true, size: .regular)
+         .expandableWidth ().set (alignment: .right).setRedTextColor ()
+      _ = gridView.add (single: netClassNameErrorLabel)
     //--- Color
-      let netColor_property = EBStoredProperty_NSColor (defaultValue: .brown, undoManager: nil)
-      self.mNetClassColorWell?.bind_color (netColor_property, sendContinously: true)
+      let netColor_property = EBStoredProperty_NSColor (defaultValue: inNetClass.mNetClassColor, undoManager: nil)
+      let wireColorWell = AutoLayoutColorWell ().bind_color (netColor_property, sendContinously: false)
+      do{
+        let left = AutoLayoutStaticLabel (title: "Wire Color in Schematics", bold: false, size: .regular)
+        _ = gridView.addFirstBaseLineAligned (left: left, right: AutoLayoutHorizontalStackView.viewFollowedByFlexibleSpace (wireColorWell))
+      }
+    //---  Width
+      let width_property = EBStoredProperty_Int (defaultValue: inNetClass.mTrackWidth, undoManager: nil) // 20 mils
+      let widthUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mTrackWidthUnit, undoManager: nil) // mils
+      let widthFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (width_property, widthUnit_property)
+      do{
+        let left = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .regular)
+        _ = gridView.addFirstBaseLineAligned (left: left, right: widthFields)
+      }
+    //---  Allow front track
+      let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnFrontSide, undoManager: nil)
+      let allowFrontTrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Front Layer", size: .regular).bind_value (allowFrontTrack_property).expandableWidth ()
+      _ = gridView.addFirstBaseLineAligned (left: AutoLayoutHorizontalStackView (), right: allowFrontTrackCheckBox)
+    //---  Allow Inner 1 Layer
+      let allowInner1Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner1Layer, undoManager: nil)
+      let allowInner1TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 1 Layer", size: .regular).bind_value (allowInner1Layer_property).expandableWidth ()
+      _ = gridView.addFirstBaseLineAligned (left: AutoLayoutHorizontalStackView (), right: allowInner1TrackCheckBox)
+    //---  Allow Inner 2 Layer
+      let allowInner2Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner2Layer, undoManager: nil)
+      let allowInner2TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 2 Layer", size: .regular).bind_value (allowInner2Layer_property).expandableWidth ()
+      _ = gridView.addFirstBaseLineAligned (left: AutoLayoutHorizontalStackView (), right: allowInner2TrackCheckBox)
+    //---  Allow Inner 3 Layer
+      let allowInner3Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner3Layer, undoManager: nil)
+      let allowInner3TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 3 Layer", size: .regular).bind_value (allowInner3Layer_property).expandableWidth ()
+      _ = gridView.addFirstBaseLineAligned (left: AutoLayoutHorizontalStackView (), right: allowInner3TrackCheckBox)
+    //---  Allow Inner 4 Layer
+      let allowInner4Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner4Layer, undoManager: nil)
+      let allowInner4TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 4 Layer", size: .regular).bind_value (allowInner4Layer_property).expandableWidth ()
+      _ = gridView.addFirstBaseLineAligned (left: AutoLayoutHorizontalStackView (), right: allowInner4TrackCheckBox)
+    //---  Allow Back track
+      let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnBackSide, undoManager: nil)
+      let allowBackTrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Front Layer", size: .regular).bind_value (allowBackTrack_property).expandableWidth ()
+      _ = gridView.addFirstBaseLineAligned (left: AutoLayoutHorizontalStackView (), right: allowBackTrackCheckBox)
+    //--- Hole Diameter
+      let viaHoleDiameter_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaHoleDiameter, undoManager: nil)
+      let viaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaHoleDiameterUnit, undoManager: nil)
+      let holeDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaHoleDiameter_property, viaHoleDiameterUnit_property)
+      do{
+        let left = AutoLayoutStaticLabel (title: "Via Hole Diameter", bold: false, size: .regular)
+        _ = gridView.addFirstBaseLineAligned (left: left, right: holeDiameterFields)
+      }
+    //--- Pad Diameter
+      let viaPadDiameter_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaPadDiameter, undoManager: nil)
+      let viaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaPadDiameterUnit, undoManager: nil)
+      let padDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaPadDiameter_property, viaPadDiameterUnit_property)
+      do{
+        let left = AutoLayoutStaticLabel (title: "Via Pad Diameter", bold: false, size: .regular)
+        _ = gridView.addFirstBaseLineAligned (left: left, right: padDiameterFields)
+      }
+    //---
+      layoutView.appendView (gridView)
+      layoutView.appendFlexibleSpace ()
+      let okButtonTitle = inCreation ? "Add New Net" : "Commit Changes"
+      let okButton = AutoLayoutSheetDefaultOkButton (title: okButtonTitle, size: .regular, sheet: panel, isInitialFirstResponder: true)
+      do{
+        let hStack = AutoLayoutHorizontalStackView ()
+        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+        hStack.appendFlexibleSpace ()
+        hStack.appendView (okButton)
+        layoutView.appendView (hStack)
+      }
+    //---
+      if inCreation {
+        netClassNameTextField.mTextDidChange = { [weak netClassNameTextField] in
+          if let newNetClassName = netClassNameTextField?.stringValue {
+            okButton.isEnabled = newNetClassName != ""
+            if newNetClassName.isEmpty {
+              netClassNameErrorLabel.stringValue = "New Net Class name is empty."
+            }else{
+              var newNameIsUnique = true
+              for netClass in self.rootObject.mNetClasses.values {
+                if netClass.mNetClassName == newNetClassName {
+                  newNameIsUnique = false
+                }
+              }
+              okButton.isEnabled = newNameIsUnique
+              netClassNameErrorLabel.stringValue = newNameIsUnique
+                ? ""
+                : "New Net Class name already exists."
+            }
+          }
+        }
+      }else{
+        netClassNameTextField.mTextDidChange = { [weak netClassNameTextField] in
+          let selectedNetClasses = self.netClassController.selectedArray
+          if selectedNetClasses.count == 1, let newNetClassName = netClassNameTextField?.stringValue {
+            let editedNetClass = selectedNetClasses [0]
+            if newNetClassName.isEmpty {
+             okButton.isEnabled = false
+             netClassNameErrorLabel.stringValue = "Net Class name is empty."
+            }else{
+              var newNameIsUnique = true
+              for netClass in self.rootObject.mNetClasses.values {
+                if (netClass !== editedNetClass) && (netClass.mNetClassName == newNetClassName) {
+                  newNameIsUnique = false
+                }
+              }
+              okButton.isEnabled = newNameIsUnique
+              netClassNameErrorLabel.stringValue = newNameIsUnique
+                ? ""
+                : "Net Class name already exists."
+            }
+          }
+        }
+      }
+    //---
+      panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
     //---  Dialog
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
-        if inResponse == .stop, let newNetClassName = self.mAddNetClassTextField?.stringValue {
-          let netClass = NetClassInProject (self.ebUndoManager)
-          netClass.mNetClassName = newNetClassName
-          netClass.mNetClassColor = netColor_property.propval
-          netClass.mTrackWidth = width_property.propval
-          netClass.mTrackWidthUnit = widthUnit_property.propval
-          netClass.mViaHoleDiameter = viaHoleDiameter_property.propval
-          netClass.mViaHoleDiameterUnit = viaHoleDiameterUnit_property.propval
-          netClass.mViaPadDiameter = viaPadDiameter_property.propval
-          netClass.mViaPadDiameterUnit = viaPadDiameterUnit_property.propval
-          netClass.mAllowTracksOnFrontSide = allowFrontTrack_property.propval
-          netClass.mAllowTracksOnInner1Layer = allowInner1Layer_property.propval
-          netClass.mAllowTracksOnInner2Layer = allowInner2Layer_property.propval
-          netClass.mAllowTracksOnInner3Layer = allowInner3Layer_property.propval
-          netClass.mAllowTracksOnInner4Layer = allowInner4Layer_property.propval
-          netClass.mAllowTracksOnBackSide = allowBackTrack_property.propval
-          self.rootObject.mNetClasses.append (netClass)
-          self.netClassController.setSelection ([netClass])
+        if inResponse == .stop {
+          inNetClass.mNetClassName = netClassNameTextField.stringValue
+          inNetClass.mNetClassColor = netColor_property.propval
+          inNetClass.mTrackWidth = width_property.propval
+          inNetClass.mTrackWidthUnit = widthUnit_property.propval
+          inNetClass.mViaHoleDiameter = viaHoleDiameter_property.propval
+          inNetClass.mViaHoleDiameterUnit = viaHoleDiameterUnit_property.propval
+          inNetClass.mViaPadDiameter = viaPadDiameter_property.propval
+          inNetClass.mViaPadDiameterUnit = viaPadDiameterUnit_property.propval
+          inNetClass.mAllowTracksOnFrontSide = allowFrontTrack_property.propval
+          inNetClass.mAllowTracksOnInner1Layer = allowInner1Layer_property.propval
+          inNetClass.mAllowTracksOnInner2Layer = allowInner2Layer_property.propval
+          inNetClass.mAllowTracksOnInner3Layer = allowInner3Layer_property.propval
+          inNetClass.mAllowTracksOnInner4Layer = allowInner4Layer_property.propval
+          inNetClass.mAllowTracksOnBackSide = allowBackTrack_property.propval
+          inCallBack ()
         }
-        self.mNetClassWidthDimensionTextField?.unbind_dimensionAndUnit ()
-        self.mNetClassWidthUnitPopUpButton?.unbind_selectedTag ()
-        self.mNetClassHoleDiameterDimensionTextField?.unbind_dimensionAndUnit ()
-        self.mNetClassHoleDiameterUnitPopUpButton?.unbind_selectedTag ()
-        self.mNetClassPadDiameterDimensionTextField?.unbind_dimensionAndUnit ()
-        self.mNetClassPadDiameterUnitPopUpButton?.unbind_selectedTag ()
-        self.mNetClassColorWell?.unbind_color ()
-        self.mAllowTracksOnFrontSideSwitch?.unbind_value ()
-        self.mAllowTracksOnInner1LayerSwitch?.unbind_value ()
-        self.mAllowTracksOnInner2LayerSwitch?.unbind_value ()
-        self.mAllowTracksOnInner3LayerSwitch?.unbind_value ()
-        self.mAllowTracksOnInner4LayerSwitch?.unbind_value ()
-        self.mAllowTracksOnBackSideSwitch?.unbind_value ()
+//        widthFields.unbind_dimensionAndUnit ()
+//        holeDiameterFields.unbind_dimensionAndUnit ()
+//        padDiameterFields.unbind_dimensionAndUnit ()
+//        wireColorWell.unbind_color ()
+//        allowFrontTrackCheckBox.unbind_value ()
+//        allowInner1TrackCheckBox.unbind_value ()
+//        allowInner2TrackCheckBox.unbind_value ()
+//        allowInner3TrackCheckBox.unbind_value ()
+//        allowInner4TrackCheckBox.unbind_value ()
+//        allowBackTrackCheckBox.unbind_value ()
       }
     }
   }
 
   //····················································································································
 
-  @objc fileprivate func newClassNameTextFieldDidChange (_ inSender : NSObject?) {
-    if let newNetClassName = self.mAddNetClassTextField?.stringValue {
-      self.mAddNetClassValidationButton?.isEnabled = newNetClassName != ""
-      if newNetClassName.isEmpty {
-        self.mAddNetClassErrorMessageTextField?.stringValue = "New Net Class name is empty."
-      }else{
-        var newNameIsUnique = true
-        for netClass in self.rootObject.mNetClasses.values {
-          if netClass.mNetClassName == newNetClassName {
-            newNameIsUnique = false
-          }
-        }
-        self.mAddNetClassValidationButton?.isEnabled = newNameIsUnique
-        self.mAddNetClassErrorMessageTextField?.stringValue = newNameIsUnique
-          ? ""
-          : "New Net Class name already exists."
-      }
+  internal func performAddNetClass () {
+    let temporaryClass = NetClassInProject (nil)
+    self.netClassEditionPanel (with: temporaryClass, creation: true) {
+      let newClass = NetClassInProject (self.ebUndoManager)
+      newClass.mNetClassName = temporaryClass.mNetClassName
+      newClass.mNetClassColor = temporaryClass.mNetClassColor
+      newClass.mTrackWidth = temporaryClass.mTrackWidth
+      newClass.mTrackWidthUnit = temporaryClass.mTrackWidthUnit
+      newClass.mViaHoleDiameter = temporaryClass.mViaHoleDiameter
+      newClass.mViaHoleDiameterUnit = temporaryClass.mViaHoleDiameterUnit
+      newClass.mViaPadDiameter = temporaryClass.mViaPadDiameter
+      newClass.mViaPadDiameterUnit = temporaryClass.mViaPadDiameterUnit
+      newClass.mAllowTracksOnFrontSide = temporaryClass.mAllowTracksOnFrontSide
+      newClass.mAllowTracksOnInner1Layer = temporaryClass.mAllowTracksOnInner1Layer
+      newClass.mAllowTracksOnInner2Layer = temporaryClass.mAllowTracksOnInner2Layer
+      newClass.mAllowTracksOnInner3Layer = temporaryClass.mAllowTracksOnInner3Layer
+      newClass.mAllowTracksOnInner4Layer = temporaryClass.mAllowTracksOnInner4Layer
+      newClass.mAllowTracksOnBackSide = temporaryClass.mAllowTracksOnBackSide
+      self.rootObject.mNetClasses.append (newClass)
+      self.netClassController.setSelection ([newClass])
     }
   }
+
+//    if let window = self.windowForSheet {
+//      let panel = NSPanel (
+//        contentRect: NSRect (x: 0, y: 0, width: 500, height: 500),
+//        styleMask: [.titled],
+//        backing: .buffered,
+//        defer: false
+//      )
+//    //---
+//      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+//      let gridView = AutoLayoutGridView2 ()
+//    //---
+//      let netClassNameTextField = AutoLayoutTextField (width: 100, size: .regular).expandableWidth ()
+//      do{
+//        let left = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .regular)
+//        _ = gridView.addFirstBaseLineAligned (left: left, right: netClassNameTextField)
+//      }
+//    //---
+//      let netClassNameErrorLabel = AutoLayoutStaticLabel (title: "… error …", bold: true, size: .regular)
+//         .expandableWidth ().set (alignment: .right).setRedTextColor ()
+//      _ = gridView.add (single: netClassNameErrorLabel)
+//    //--- Color
+//      let netColor_property = EBStoredProperty_NSColor (defaultValue: .brown, undoManager: nil)
+//      let wireColorWell = AutoLayoutColorWell ().bind_color (netColor_property, sendContinously: false)
+//      do{
+//        let left = AutoLayoutStaticLabel (title: "Wire Color in Schematics", bold: false, size: .regular)
+//        _ = gridView.addFirstBaseLineAligned (left: left, right: wireColorWell)
+//      }
+//    //---  Width
+//      let width_property = EBStoredProperty_Int (defaultValue: 45_720, undoManager: nil) // 20 mils
+//      let widthUnit_property = EBStoredProperty_Int (defaultValue: 2_286, undoManager: nil) // mils
+//      let widthFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (width_property, widthUnit_property)
+//      do{
+//        let left = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .regular)
+//        _ = gridView.addFirstBaseLineAligned (left: left, right: widthFields)
+//      }
+//    //---
+////      self.mAddNetClassTextField?.target = self
+////      self.mAddNetClassTextField?.action = #selector (Self.newClassNameTextFieldDidChange (_:))
+////      self.mAddNetClassTextField?.isContinuous = true
+////      self.mAddNetClassTextField?.setSendContinously (true)
+////      self.newClassNameTextFieldDidChange (nil)
+//    //---  Allow front track
+//      let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+//      let allowFrontTrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Front Layer", size: .regular).bind_value (allowFrontTrack_property)
+//      _ = gridView.add (single: allowFrontTrackCheckBox)
+//    //---  Allow Inner 1 Layer
+//      let allowInner1Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+//      let allowInner1TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 1 Side", size: .regular).bind_value (allowInner1Layer_property)
+//      _ = gridView.add (single: allowInner1TrackCheckBox)
+//    //---  Allow Inner 2 Layer
+//      let allowInner2Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+//      let allowInner2TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 1 Side", size: .regular).bind_value (allowInner2Layer_property)
+//      _ = gridView.add (single: allowInner2TrackCheckBox)
+//    //---  Allow Inner 3 Layer
+//      let allowInner3Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+//      let allowInner3TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 1 Side", size: .regular).bind_value (allowInner3Layer_property)
+//      _ = gridView.add (single: allowInner3TrackCheckBox)
+//    //---  Allow Inner 4 Layer
+//      let allowInner4Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+//      let allowInner4TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 1 Side", size: .regular).bind_value (allowInner4Layer_property)
+//      _ = gridView.add (single: allowInner4TrackCheckBox)
+//    //---  Allow Back track
+//      let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+//      let allowBackTrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Front Side", size: .regular).bind_value (allowBackTrack_property)
+//      _ = gridView.add (single: allowBackTrackCheckBox)
+//    //--- Hole Diameter
+//      let viaHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45_720, undoManager: nil) // 20 mils
+//      let viaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2_286, undoManager: nil) // mils
+//      let holeDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaHoleDiameter_property, viaHoleDiameterUnit_property)
+//      do{
+//        let left = AutoLayoutStaticLabel (title: "Via Hole Diameter", bold: false, size: .regular)
+//        _ = gridView.addFirstBaseLineAligned (left: left, right: holeDiameterFields)
+//      }
+//    //--- Pad Diameter
+//      let viaPadDiameter_property = EBStoredProperty_Int (defaultValue: 91_440, undoManager: nil) // 40 mils
+//      let viaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2_286, undoManager: nil) // mils
+//      let padDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaPadDiameter_property, viaPadDiameterUnit_property)
+//      do{
+//        let left = AutoLayoutStaticLabel (title: "Via Pad Diameter", bold: false, size: .regular)
+//        _ = gridView.addFirstBaseLineAligned (left: left, right: padDiameterFields)
+//      }
+//    //---
+//      layoutView.appendView (gridView)
+//      layoutView.appendFlexibleSpace ()
+//      let okButton = AutoLayoutSheetDefaultOkButton (title: "Create Net", size: .regular, sheet: panel, isInitialFirstResponder: true)
+//      do{
+//        let hStack = AutoLayoutHorizontalStackView ()
+//        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+//        hStack.appendFlexibleSpace ()
+//        hStack.appendView (okButton)
+//        layoutView.appendView (hStack)
+//      }
+//    //---
+//      netClassNameTextField.mTextDidChange = { [weak netClassNameTextField] in
+//        if let newNetClassName = netClassNameTextField?.stringValue {
+//          okButton.isEnabled = newNetClassName != ""
+//          if newNetClassName.isEmpty {
+//            netClassNameErrorLabel.stringValue = "New Net Class name is empty."
+//          }else{
+//            var newNameIsUnique = true
+//            for netClass in self.rootObject.mNetClasses.values {
+//              if netClass.mNetClassName == newNetClassName {
+//                newNameIsUnique = false
+//              }
+//            }
+//            okButton.isEnabled = newNameIsUnique
+//            netClassNameErrorLabel.stringValue = newNameIsUnique
+//              ? ""
+//              : "New Net Class name already exists."
+//          }
+//        }
+//      }
+//    //---
+//      panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
+//    //---  Dialog
+//      window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
+//        if inResponse == .stop {
+//          let newNetClassName = netClassNameTextField.stringValue
+//          let netClass = NetClassInProject (self.ebUndoManager)
+//          netClass.mNetClassName = newNetClassName
+//          netClass.mNetClassColor = netColor_property.propval
+//          netClass.mTrackWidth = width_property.propval
+//          netClass.mTrackWidthUnit = widthUnit_property.propval
+//          netClass.mViaHoleDiameter = viaHoleDiameter_property.propval
+//          netClass.mViaHoleDiameterUnit = viaHoleDiameterUnit_property.propval
+//          netClass.mViaPadDiameter = viaPadDiameter_property.propval
+//          netClass.mViaPadDiameterUnit = viaPadDiameterUnit_property.propval
+//          netClass.mAllowTracksOnFrontSide = allowFrontTrack_property.propval
+//          netClass.mAllowTracksOnInner1Layer = allowInner1Layer_property.propval
+//          netClass.mAllowTracksOnInner2Layer = allowInner2Layer_property.propval
+//          netClass.mAllowTracksOnInner3Layer = allowInner3Layer_property.propval
+//          netClass.mAllowTracksOnInner4Layer = allowInner4Layer_property.propval
+//          netClass.mAllowTracksOnBackSide = allowBackTrack_property.propval
+//          self.rootObject.mNetClasses.append (netClass)
+//          self.netClassController.setSelection ([netClass])
+//        }
+////        widthFields.unbind_dimensionAndUnit ()
+////        holeDiameterFields.unbind_dimensionAndUnit ()
+////        padDiameterFields.unbind_dimensionAndUnit ()
+////        wireColorWell.unbind_color ()
+////        allowFrontTrackCheckBox.unbind_value ()
+////        allowInner1TrackCheckBox.unbind_value ()
+////        allowInner2TrackCheckBox.unbind_value ()
+////        allowInner3TrackCheckBox.unbind_value ()
+////        allowInner4TrackCheckBox.unbind_value ()
+////        allowBackTrackCheckBox.unbind_value ()
+//      }
+//    }
+//  }
+
+  //····················································································································
+
+//  @objc fileprivate func newClassNameTextFieldDidChange (_ inSender : NSObject?) {
+//    if let newNetClassName = self.mAddNetClassTextField?.stringValue {
+//      self.mAddNetClassValidationButton?.isEnabled = newNetClassName != ""
+//      if newNetClassName.isEmpty {
+//        self.mAddNetClassErrorMessageTextField?.stringValue = "New Net Class name is empty."
+//      }else{
+//        var newNameIsUnique = true
+//        for netClass in self.rootObject.mNetClasses.values {
+//          if netClass.mNetClassName == newNetClassName {
+//            newNameIsUnique = false
+//          }
+//        }
+//        self.mAddNetClassValidationButton?.isEnabled = newNameIsUnique
+//        self.mAddNetClassErrorMessageTextField?.stringValue = newNameIsUnique
+//          ? ""
+//          : "New Net Class name already exists."
+//      }
+//    }
+//  }
 
   //····················································································································
 
   internal func performEditNetClass () {
     let selectedNetClasses = self.netClassController.selectedArray
-    if let window = self.windowForSheet, let panel = self.mAddNetClassPanel, selectedNetClasses.count == 1 {
-      let editedNetClass = selectedNetClasses [0]
-      self.mAddNetClassTextField?.stringValue = editedNetClass.mNetClassName
-      self.mAddNetClassTextField?.target = self
-      self.mAddNetClassTextField?.action = #selector (ProjectDocument.classNameTextFieldEditionDidChange (_:))
-      self.mAddNetClassTextField?.isContinuous = true
-      self.mAddNetClassTextField?.setSendContinously (true)
-      self.classNameTextFieldEditionDidChange (nil)
-    //---  Allow Back track
-      let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnBackSide, undoManager: nil)
-      self.mAllowTracksOnBackSideSwitch?.bind_value (allowBackTrack_property)
-    //---  Allow Inner 1 Layer
-      let allowInner1Layer_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnInner1Layer, undoManager: nil)
-      self.mAllowTracksOnInner1LayerSwitch?.bind_value (allowInner1Layer_property)
-    //---  Allow Inner 2 Layer
-      let allowInner2Layer_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnInner2Layer, undoManager: nil)
-      self.mAllowTracksOnInner2LayerSwitch?.bind_value (allowInner2Layer_property)
-    //---  Allow Inner 3 Layer
-      let allowInner3Layer_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnInner3Layer, undoManager: nil)
-      self.mAllowTracksOnInner3LayerSwitch?.bind_value (allowInner3Layer_property)
-    //---  Allow Inner 4 Layer
-      let allowInner4Layer_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnInner4Layer, undoManager: nil)
-      self.mAllowTracksOnInner4LayerSwitch?.bind_value (allowInner4Layer_property)
-    //---  Allow front track
-      let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnFrontSide, undoManager: nil)
-      self.mAllowTracksOnFrontSideSwitch?.bind_value (allowFrontTrack_property)
-    //---  Width
-      let width_property = EBStoredProperty_Int (defaultValue: editedNetClass.mTrackWidth, undoManager: nil)
-      let widthUnit_property = EBStoredProperty_Int (defaultValue: editedNetClass.mTrackWidthUnit, undoManager: nil)
-      self.mNetClassWidthDimensionTextField?.bind_dimensionAndUnit (
-        width_property,
-        widthUnit_property
-      )
-      self.mNetClassWidthUnitPopUpButton?.bind_selectedTag (widthUnit_property)
-    //--- Hole Diameter
-      let viaHoleDiameter_property = EBStoredProperty_Int (defaultValue: editedNetClass.mViaHoleDiameter, undoManager: nil)
-      let viaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: editedNetClass.mViaHoleDiameterUnit, undoManager: nil)
-      self.mNetClassHoleDiameterDimensionTextField?.bind_dimensionAndUnit (
-        viaHoleDiameter_property,
-        viaHoleDiameterUnit_property
-      )
-      self.mNetClassHoleDiameterUnitPopUpButton?.bind_selectedTag (viaHoleDiameterUnit_property)
-    //--- Pad Diameter
-      let viaPadDiameter_property = EBStoredProperty_Int (defaultValue: editedNetClass.mViaPadDiameter, undoManager: nil)
-      let viaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: editedNetClass.mViaPadDiameterUnit, undoManager: nil)
-      self.mNetClassPadDiameterDimensionTextField?.bind_dimensionAndUnit (
-        viaPadDiameter_property,
-        viaPadDiameterUnit_property
-      )
-      self.mNetClassPadDiameterUnitPopUpButton?.bind_selectedTag (viaPadDiameterUnit_property)
-    //--- Color
-      let netColor_property = EBStoredProperty_NSColor (defaultValue: editedNetClass.mNetClassColor, undoManager: nil)
-      self.mNetClassColorWell?.bind_color (netColor_property, sendContinously: true)
-    //---  Dialog
-      window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
-        if inResponse == .stop, let newNetClassName = self.mAddNetClassTextField?.stringValue {
-          var shouldInvalidateERC = false
-          editedNetClass.mNetClassName = newNetClassName
-          editedNetClass.mNetClassColor = netColor_property.propval
-
-          if editedNetClass.mTrackWidth > width_property.propval {
-            shouldInvalidateERC = true
-          }
-          editedNetClass.mTrackWidth = width_property.propval
-
-          editedNetClass.mTrackWidthUnit = widthUnit_property.propval
-
-          if editedNetClass.mViaHoleDiameter > viaHoleDiameter_property.propval {
-            shouldInvalidateERC = true
-          }
-          editedNetClass.mViaHoleDiameter = viaHoleDiameter_property.propval
-
-          editedNetClass.mViaHoleDiameterUnit = viaHoleDiameterUnit_property.propval
-
-          if editedNetClass.mViaPadDiameter > viaPadDiameter_property.propval {
-            shouldInvalidateERC = true
-          }
-          editedNetClass.mViaPadDiameter = viaPadDiameter_property.propval
-
-          editedNetClass.mViaPadDiameterUnit = viaPadDiameterUnit_property.propval
-
-          if editedNetClass.mAllowTracksOnFrontSide && !allowFrontTrack_property.propval {
-            shouldInvalidateERC = true
-          }
-          editedNetClass.mAllowTracksOnFrontSide = allowFrontTrack_property.propval
-
-          if editedNetClass.mAllowTracksOnInner1Layer && !allowInner1Layer_property.propval {
-            shouldInvalidateERC = true
-          }
-          editedNetClass.mAllowTracksOnInner1Layer = allowInner1Layer_property.propval
-
-          if editedNetClass.mAllowTracksOnInner2Layer && !allowInner2Layer_property.propval {
-            shouldInvalidateERC = true
-          }
-          editedNetClass.mAllowTracksOnInner2Layer = allowInner2Layer_property.propval
-
-          if editedNetClass.mAllowTracksOnInner3Layer && !allowInner3Layer_property.propval {
-            shouldInvalidateERC = true
-          }
-          editedNetClass.mAllowTracksOnInner3Layer = allowInner3Layer_property.propval
-
-          if editedNetClass.mAllowTracksOnInner4Layer && !allowInner4Layer_property.propval {
-            shouldInvalidateERC = true
-          }
-          editedNetClass.mAllowTracksOnInner4Layer = allowInner4Layer_property.propval
-
-          if editedNetClass.mAllowTracksOnBackSide && !allowBackTrack_property.propval {
-            shouldInvalidateERC = true
-          }
-          editedNetClass.mAllowTracksOnBackSide = allowBackTrack_property.propval
-
-          if shouldInvalidateERC {
-            self.invalidateERC ()
-          }
-        }
-        self.mNetClassWidthDimensionTextField?.unbind_dimensionAndUnit ()
-        self.mNetClassWidthUnitPopUpButton?.unbind_selectedTag ()
-        self.mNetClassHoleDiameterDimensionTextField?.unbind_dimensionAndUnit ()
-        self.mNetClassHoleDiameterUnitPopUpButton?.unbind_selectedTag ()
-        self.mNetClassPadDiameterDimensionTextField?.unbind_dimensionAndUnit ()
-        self.mNetClassPadDiameterUnitPopUpButton?.unbind_selectedTag ()
-        self.mNetClassColorWell?.unbind_color ()
-        self.mAllowTracksOnFrontSideSwitch?.unbind_value ()
-        self.mAllowTracksOnInner1LayerSwitch?.unbind_value ()
-        self.mAllowTracksOnInner2LayerSwitch?.unbind_value ()
-        self.mAllowTracksOnInner3LayerSwitch?.unbind_value ()
-        self.mAllowTracksOnInner4LayerSwitch?.unbind_value ()
-        self.mAllowTracksOnBackSideSwitch?.unbind_value ()
+    if selectedNetClasses.count == 1 {
+      let editedNetClass : NetClassInProject = selectedNetClasses [0]
+      let temporaryClass = NetClassInProject (nil)
+      temporaryClass.mNetClassName = editedNetClass.mNetClassName
+      temporaryClass.mNetClassColor = editedNetClass.mNetClassColor
+      temporaryClass.mTrackWidth = editedNetClass.mTrackWidth
+      temporaryClass.mTrackWidthUnit = editedNetClass.mTrackWidthUnit
+      temporaryClass.mViaHoleDiameter = editedNetClass.mViaHoleDiameter
+      temporaryClass.mViaHoleDiameterUnit = editedNetClass.mViaHoleDiameterUnit
+      temporaryClass.mViaPadDiameter = editedNetClass.mViaPadDiameter
+      temporaryClass.mViaPadDiameterUnit = editedNetClass.mViaPadDiameterUnit
+      temporaryClass.mAllowTracksOnFrontSide = editedNetClass.mAllowTracksOnFrontSide
+      temporaryClass.mAllowTracksOnInner1Layer = editedNetClass.mAllowTracksOnInner1Layer
+      temporaryClass.mAllowTracksOnInner2Layer = editedNetClass.mAllowTracksOnInner2Layer
+      temporaryClass.mAllowTracksOnInner3Layer = editedNetClass.mAllowTracksOnInner3Layer
+      temporaryClass.mAllowTracksOnInner4Layer = editedNetClass.mAllowTracksOnInner4Layer
+      temporaryClass.mAllowTracksOnBackSide = editedNetClass.mAllowTracksOnBackSide
+      self.netClassEditionPanel (with: temporaryClass, creation: false) {
+        editedNetClass.mNetClassName = temporaryClass.mNetClassName
+        editedNetClass.mNetClassColor = temporaryClass.mNetClassColor
+        editedNetClass.mTrackWidth = temporaryClass.mTrackWidth
+        editedNetClass.mTrackWidthUnit = temporaryClass.mTrackWidthUnit
+        editedNetClass.mViaHoleDiameter = temporaryClass.mViaHoleDiameter
+        editedNetClass.mViaHoleDiameterUnit = temporaryClass.mViaHoleDiameterUnit
+        editedNetClass.mViaPadDiameter = temporaryClass.mViaPadDiameter
+        editedNetClass.mViaPadDiameterUnit = temporaryClass.mViaPadDiameterUnit
+        editedNetClass.mAllowTracksOnFrontSide = temporaryClass.mAllowTracksOnFrontSide
+        editedNetClass.mAllowTracksOnInner1Layer = temporaryClass.mAllowTracksOnInner1Layer
+        editedNetClass.mAllowTracksOnInner2Layer = temporaryClass.mAllowTracksOnInner2Layer
+        editedNetClass.mAllowTracksOnInner3Layer = temporaryClass.mAllowTracksOnInner3Layer
+        editedNetClass.mAllowTracksOnInner4Layer = temporaryClass.mAllowTracksOnInner4Layer
+        editedNetClass.mAllowTracksOnBackSide = temporaryClass.mAllowTracksOnBackSide
       }
     }
   }
+
+//  internal func performEditNetClass () {
+//    let selectedNetClasses = self.netClassController.selectedArray
+//    if let window = self.windowForSheet, selectedNetClasses.count == 1 {
+//      let editedNetClass : NetClassInProject = selectedNetClasses [0]
+//      let panel = NSPanel (
+//        contentRect: NSRect (x: 0, y: 0, width: 500, height: 500),
+//        styleMask: [.titled],
+//        backing: .buffered,
+//        defer: false
+//      )
+//    //---
+//      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+//      let gridView = AutoLayoutGridView2 ()
+//    //---
+//      let netClassNameTextField = AutoLayoutTextField (width: 100, size: .regular).expandableWidth ()
+//      do{
+//        let left = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .regular)
+//        _ = gridView.addFirstBaseLineAligned (left: left, right: netClassNameTextField)
+//      }
+//    //---
+//      let netClassNameErrorLabel = AutoLayoutStaticLabel (title: "… error …", bold: true, size: .regular)
+//         .expandableWidth ().set (alignment: .right).setRedTextColor ()
+//      _ = gridView.add (single: netClassNameErrorLabel)
+//    //--- Color
+//      let netColor_property = EBStoredProperty_NSColor (defaultValue: .brown, undoManager: nil)
+//      let wireColorWell = AutoLayoutColorWell ().bind_color (netColor_property, sendContinously: false)
+//      do{
+//        let left = AutoLayoutStaticLabel (title: "Wire Color in Schematics", bold: false, size: .regular)
+//        _ = gridView.addFirstBaseLineAligned (left: left, right: wireColorWell)
+//      }
+//    //---  Width
+//      let width_property = EBStoredProperty_Int (defaultValue: 45_720, undoManager: nil) // 20 mils
+//      let widthUnit_property = EBStoredProperty_Int (defaultValue: 2_286, undoManager: nil) // mils
+//      let widthFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (width_property, widthUnit_property)
+//      do{
+//        let left = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .regular)
+//        _ = gridView.addFirstBaseLineAligned (left: left, right: widthFields)
+//      }
+//    //---  Allow front track
+//      let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+//      let allowFrontTrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Front Layer", size: .regular).bind_value (allowFrontTrack_property)
+//      _ = gridView.add (single: allowFrontTrackCheckBox)
+//    //---  Allow Inner 1 Layer
+//      let allowInner1Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+//      let allowInner1TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 1 Side", size: .regular).bind_value (allowInner1Layer_property)
+//      _ = gridView.add (single: allowInner1TrackCheckBox)
+//    //---  Allow Inner 2 Layer
+//      let allowInner2Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+//      let allowInner2TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 1 Side", size: .regular).bind_value (allowInner2Layer_property)
+//      _ = gridView.add (single: allowInner2TrackCheckBox)
+//    //---  Allow Inner 3 Layer
+//      let allowInner3Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+//      let allowInner3TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 1 Side", size: .regular).bind_value (allowInner3Layer_property)
+//      _ = gridView.add (single: allowInner3TrackCheckBox)
+//    //---  Allow Inner 4 Layer
+//      let allowInner4Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+//      let allowInner4TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 1 Side", size: .regular).bind_value (allowInner4Layer_property)
+//      _ = gridView.add (single: allowInner4TrackCheckBox)
+//    //---  Allow Back track
+//      let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+//      let allowBackTrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Front Side", size: .regular).bind_value (allowBackTrack_property)
+//      _ = gridView.add (single: allowBackTrackCheckBox)
+//    //--- Hole Diameter
+//      let viaHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45_720, undoManager: nil) // 20 mils
+//      let viaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2_286, undoManager: nil) // mils
+//      let holeDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaHoleDiameter_property, viaHoleDiameterUnit_property)
+//      do{
+//        let left = AutoLayoutStaticLabel (title: "Via Hole Diameter", bold: false, size: .regular)
+//        _ = gridView.addFirstBaseLineAligned (left: left, right: holeDiameterFields)
+//      }
+//    //--- Pad Diameter
+//      let viaPadDiameter_property = EBStoredProperty_Int (defaultValue: 91_440, undoManager: nil) // 40 mils
+//      let viaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2_286, undoManager: nil) // mils
+//      let padDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaPadDiameter_property, viaPadDiameterUnit_property)
+//      do{
+//        let left = AutoLayoutStaticLabel (title: "Via Pad Diameter", bold: false, size: .regular)
+//        _ = gridView.addFirstBaseLineAligned (left: left, right: padDiameterFields)
+//      }
+//    //---
+//      layoutView.appendView (gridView)
+//      layoutView.appendFlexibleSpace ()
+//      let okButton = AutoLayoutSheetDefaultOkButton (title: "Create Net", size: .regular, sheet: panel, isInitialFirstResponder: true)
+//      do{
+//        let hStack = AutoLayoutHorizontalStackView ()
+//        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+//        hStack.appendFlexibleSpace ()
+//        hStack.appendView (okButton)
+//        layoutView.appendView (hStack)
+//      }
+//    //---
+//      netClassNameTextField.mTextDidChange = { [weak netClassNameTextField] in
+//        if let newNetClassName = netClassNameTextField?.stringValue {
+//          okButton.isEnabled = newNetClassName != ""
+//          if newNetClassName.isEmpty {
+//            netClassNameErrorLabel.stringValue = "New Net Class name is empty."
+//          }else{
+//            var newNameIsUnique = true
+//            for netClass in self.rootObject.mNetClasses.values {
+//              if netClass.mNetClassName == newNetClassName {
+//                newNameIsUnique = false
+//              }
+//            }
+//            okButton.isEnabled = newNameIsUnique
+//            netClassNameErrorLabel.stringValue = newNameIsUnique
+//              ? ""
+//              : "New Net Class name already exists."
+//          }
+//        }
+//      }
+//    //---
+//      panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
+//    //---  Dialog
+//      window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
+//        if inResponse == .stop {
+//          let newNetClassName = netClassNameTextField.stringValue
+//          let netClass = NetClassInProject (self.ebUndoManager)
+//          netClass.mNetClassName = newNetClassName
+//          netClass.mNetClassColor = netColor_property.propval
+//          netClass.mTrackWidth = width_property.propval
+//          netClass.mTrackWidthUnit = widthUnit_property.propval
+//          netClass.mViaHoleDiameter = viaHoleDiameter_property.propval
+//          netClass.mViaHoleDiameterUnit = viaHoleDiameterUnit_property.propval
+//          netClass.mViaPadDiameter = viaPadDiameter_property.propval
+//          netClass.mViaPadDiameterUnit = viaPadDiameterUnit_property.propval
+//          netClass.mAllowTracksOnFrontSide = allowFrontTrack_property.propval
+//          netClass.mAllowTracksOnInner1Layer = allowInner1Layer_property.propval
+//          netClass.mAllowTracksOnInner2Layer = allowInner2Layer_property.propval
+//          netClass.mAllowTracksOnInner3Layer = allowInner3Layer_property.propval
+//          netClass.mAllowTracksOnInner4Layer = allowInner4Layer_property.propval
+//          netClass.mAllowTracksOnBackSide = allowBackTrack_property.propval
+//          self.rootObject.mNetClasses.append (netClass)
+//          self.netClassController.setSelection ([netClass])
+//        }
+////        widthFields.unbind_dimensionAndUnit ()
+////        holeDiameterFields.unbind_dimensionAndUnit ()
+////        padDiameterFields.unbind_dimensionAndUnit ()
+////        wireColorWell.unbind_color ()
+////        allowFrontTrackCheckBox.unbind_value ()
+////        allowInner1TrackCheckBox.unbind_value ()
+////        allowInner2TrackCheckBox.unbind_value ()
+////        allowInner3TrackCheckBox.unbind_value ()
+////        allowInner4TrackCheckBox.unbind_value ()
+////        allowBackTrackCheckBox.unbind_value ()
+//      }
+//    }
+//  }
 
   //····················································································································
 
-  @objc fileprivate func classNameTextFieldEditionDidChange (_ inSender : NSObject?) {
-    let selectedNetClasses = self.netClassController.selectedArray
-    if let newNetClassName = self.mAddNetClassTextField?.stringValue, selectedNetClasses.count == 1 {
-      let editedNetClass = selectedNetClasses [0]
-      if newNetClassName.isEmpty {
-       self.mAddNetClassValidationButton?.isEnabled = false
-       self.mAddNetClassErrorMessageTextField?.stringValue = "Net Class name is empty."
-      }else{
-        var newNameIsUnique = true
-        for netClass in self.rootObject.mNetClasses.values {
-          if (netClass !== editedNetClass) && (netClass.mNetClassName == newNetClassName) {
-            newNameIsUnique = false
-          }
-        }
-        self.mAddNetClassValidationButton?.isEnabled = newNameIsUnique
-        self.mAddNetClassErrorMessageTextField?.stringValue = newNameIsUnique
-          ? ""
-          : "Net Class name already exists."
-      }
-    }
-  }
+//  internal func performEditNetClass () {
+//    let selectedNetClasses = self.netClassController.selectedArray
+//    if let window = self.windowForSheet, let panel = self.mAddNetClassPanel, selectedNetClasses.count == 1 {
+//      let editedNetClass = selectedNetClasses [0]
+//      self.mAddNetClassTextField?.stringValue = editedNetClass.mNetClassName
+//      self.mAddNetClassTextField?.target = self
+//      self.mAddNetClassTextField?.action = #selector (ProjectDocument.classNameTextFieldEditionDidChange (_:))
+//      self.mAddNetClassTextField?.isContinuous = true
+//      self.mAddNetClassTextField?.setSendContinously (true)
+//      self.classNameTextFieldEditionDidChange (nil)
+//    //---  Allow Back track
+//      let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnBackSide, undoManager: nil)
+//      self.mAllowTracksOnBackSideSwitch?.bind_value (allowBackTrack_property)
+//    //---  Allow Inner 1 Layer
+//      let allowInner1Layer_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnInner1Layer, undoManager: nil)
+//      self.mAllowTracksOnInner1LayerSwitch?.bind_value (allowInner1Layer_property)
+//    //---  Allow Inner 2 Layer
+//      let allowInner2Layer_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnInner2Layer, undoManager: nil)
+//      self.mAllowTracksOnInner2LayerSwitch?.bind_value (allowInner2Layer_property)
+//    //---  Allow Inner 3 Layer
+//      let allowInner3Layer_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnInner3Layer, undoManager: nil)
+//      self.mAllowTracksOnInner3LayerSwitch?.bind_value (allowInner3Layer_property)
+//    //---  Allow Inner 4 Layer
+//      let allowInner4Layer_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnInner4Layer, undoManager: nil)
+//      self.mAllowTracksOnInner4LayerSwitch?.bind_value (allowInner4Layer_property)
+//    //---  Allow front track
+//      let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnFrontSide, undoManager: nil)
+//      self.mAllowTracksOnFrontSideSwitch?.bind_value (allowFrontTrack_property)
+//    //---  Width
+//      let width_property = EBStoredProperty_Int (defaultValue: editedNetClass.mTrackWidth, undoManager: nil)
+//      let widthUnit_property = EBStoredProperty_Int (defaultValue: editedNetClass.mTrackWidthUnit, undoManager: nil)
+//      self.mNetClassWidthDimensionTextField?.bind_dimensionAndUnit (
+//        width_property,
+//        widthUnit_property
+//      )
+//      self.mNetClassWidthUnitPopUpButton?.bind_selectedTag (widthUnit_property)
+//    //--- Hole Diameter
+//      let viaHoleDiameter_property = EBStoredProperty_Int (defaultValue: editedNetClass.mViaHoleDiameter, undoManager: nil)
+//      let viaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: editedNetClass.mViaHoleDiameterUnit, undoManager: nil)
+//      self.mNetClassHoleDiameterDimensionTextField?.bind_dimensionAndUnit (
+//        viaHoleDiameter_property,
+//        viaHoleDiameterUnit_property
+//      )
+//      self.mNetClassHoleDiameterUnitPopUpButton?.bind_selectedTag (viaHoleDiameterUnit_property)
+//    //--- Pad Diameter
+//      let viaPadDiameter_property = EBStoredProperty_Int (defaultValue: editedNetClass.mViaPadDiameter, undoManager: nil)
+//      let viaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: editedNetClass.mViaPadDiameterUnit, undoManager: nil)
+//      self.mNetClassPadDiameterDimensionTextField?.bind_dimensionAndUnit (
+//        viaPadDiameter_property,
+//        viaPadDiameterUnit_property
+//      )
+//      self.mNetClassPadDiameterUnitPopUpButton?.bind_selectedTag (viaPadDiameterUnit_property)
+//    //--- Color
+//      let netColor_property = EBStoredProperty_NSColor (defaultValue: editedNetClass.mNetClassColor, undoManager: nil)
+//      self.mNetClassColorWell?.bind_color (netColor_property, sendContinously: true)
+//    //---  Dialog
+//      window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
+//        if inResponse == .stop, let newNetClassName = self.mAddNetClassTextField?.stringValue {
+//          var shouldInvalidateERC = false
+//          editedNetClass.mNetClassName = newNetClassName
+//          editedNetClass.mNetClassColor = netColor_property.propval
+//
+//          if editedNetClass.mTrackWidth > width_property.propval {
+//            shouldInvalidateERC = true
+//          }
+//          editedNetClass.mTrackWidth = width_property.propval
+//
+//          editedNetClass.mTrackWidthUnit = widthUnit_property.propval
+//
+//          if editedNetClass.mViaHoleDiameter > viaHoleDiameter_property.propval {
+//            shouldInvalidateERC = true
+//          }
+//          editedNetClass.mViaHoleDiameter = viaHoleDiameter_property.propval
+//
+//          editedNetClass.mViaHoleDiameterUnit = viaHoleDiameterUnit_property.propval
+//
+//          if editedNetClass.mViaPadDiameter > viaPadDiameter_property.propval {
+//            shouldInvalidateERC = true
+//          }
+//          editedNetClass.mViaPadDiameter = viaPadDiameter_property.propval
+//
+//          editedNetClass.mViaPadDiameterUnit = viaPadDiameterUnit_property.propval
+//
+//          if editedNetClass.mAllowTracksOnFrontSide && !allowFrontTrack_property.propval {
+//            shouldInvalidateERC = true
+//          }
+//          editedNetClass.mAllowTracksOnFrontSide = allowFrontTrack_property.propval
+//
+//          if editedNetClass.mAllowTracksOnInner1Layer && !allowInner1Layer_property.propval {
+//            shouldInvalidateERC = true
+//          }
+//          editedNetClass.mAllowTracksOnInner1Layer = allowInner1Layer_property.propval
+//
+//          if editedNetClass.mAllowTracksOnInner2Layer && !allowInner2Layer_property.propval {
+//            shouldInvalidateERC = true
+//          }
+//          editedNetClass.mAllowTracksOnInner2Layer = allowInner2Layer_property.propval
+//
+//          if editedNetClass.mAllowTracksOnInner3Layer && !allowInner3Layer_property.propval {
+//            shouldInvalidateERC = true
+//          }
+//          editedNetClass.mAllowTracksOnInner3Layer = allowInner3Layer_property.propval
+//
+//          if editedNetClass.mAllowTracksOnInner4Layer && !allowInner4Layer_property.propval {
+//            shouldInvalidateERC = true
+//          }
+//          editedNetClass.mAllowTracksOnInner4Layer = allowInner4Layer_property.propval
+//
+//          if editedNetClass.mAllowTracksOnBackSide && !allowBackTrack_property.propval {
+//            shouldInvalidateERC = true
+//          }
+//          editedNetClass.mAllowTracksOnBackSide = allowBackTrack_property.propval
+//
+//          if shouldInvalidateERC {
+//            self.invalidateERC ()
+//          }
+//        }
+//        self.mNetClassWidthDimensionTextField?.unbind_dimensionAndUnit ()
+//        self.mNetClassWidthUnitPopUpButton?.unbind_selectedTag ()
+//        self.mNetClassHoleDiameterDimensionTextField?.unbind_dimensionAndUnit ()
+//        self.mNetClassHoleDiameterUnitPopUpButton?.unbind_selectedTag ()
+//        self.mNetClassPadDiameterDimensionTextField?.unbind_dimensionAndUnit ()
+//        self.mNetClassPadDiameterUnitPopUpButton?.unbind_selectedTag ()
+//        self.mNetClassColorWell?.unbind_color ()
+//        self.mAllowTracksOnFrontSideSwitch?.unbind_value ()
+//        self.mAllowTracksOnInner1LayerSwitch?.unbind_value ()
+//        self.mAllowTracksOnInner2LayerSwitch?.unbind_value ()
+//        self.mAllowTracksOnInner3LayerSwitch?.unbind_value ()
+//        self.mAllowTracksOnInner4LayerSwitch?.unbind_value ()
+//        self.mAllowTracksOnBackSideSwitch?.unbind_value ()
+//      }
+//    }
+//  }
+
+  //····················································································································
+
+//  @objc fileprivate func classNameTextFieldEditionDidChange (_ inSender : NSObject?) {
+//    let selectedNetClasses = self.netClassController.selectedArray
+//    if let newNetClassName = self.mAddNetClassTextField?.stringValue, selectedNetClasses.count == 1 {
+//      let editedNetClass = selectedNetClasses [0]
+//      if newNetClassName.isEmpty {
+//       self.mAddNetClassValidationButton?.isEnabled = false
+//       self.mAddNetClassErrorMessageTextField?.stringValue = "Net Class name is empty."
+//      }else{
+//        var newNameIsUnique = true
+//        for netClass in self.rootObject.mNetClasses.values {
+//          if (netClass !== editedNetClass) && (netClass.mNetClassName == newNetClassName) {
+//            newNameIsUnique = false
+//          }
+//        }
+//        self.mAddNetClassValidationButton?.isEnabled = newNameIsUnique
+//        self.mAddNetClassErrorMessageTextField?.stringValue = newNameIsUnique
+//          ? ""
+//          : "Net Class name already exists."
+//      }
+//    }
+//  }
 
   //····················································································································
 

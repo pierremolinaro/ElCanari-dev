@@ -15,7 +15,6 @@ import Cocoa
 final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol {
 
   private let mWidth : CGFloat
-  var mTextDidChange : Optional < () -> Void>  = nil
 
   //····················································································································
   //  User information
@@ -87,8 +86,15 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
+  var mTextDidChange : Optional < () -> Void>  = nil {
+    didSet {
+      self.mTextDidChange? ()
+    }
+  }
+
+  //····················································································································
+
   @objc func ebAction (_ inUnusedSender : Any?) {
-    self.mTextDidChange? ()
     _ = self.mValueController?.updateModel (withCandidateValue: self.stringValue, windowForSheet: self.window)
   }
 
@@ -96,6 +102,7 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol {
 
   override func textDidChange (_ inNotification : Notification) {
     super.textDidChange (inNotification)
+    self.mTextDidChange? ()
     if self.isContinuous {
       self.ebAction (nil)
     }

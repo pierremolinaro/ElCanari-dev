@@ -96,23 +96,6 @@ xibdocument ProjectDocument root ProjectRoot {
 
   action addNetClassAction ;
   outlet EBButton mAddNetClassButton $run addNetClassAction ;
-  outlet NSPanel mAddNetClassPanel ;
-  outlet EBTextField mAddNetClassTextField ;
-  outlet NSTextField mAddNetClassErrorMessageTextField ;
-  outlet CanariDimensionTextField mNetClassWidthDimensionTextField ;
-  outlet EBPopUpButton mNetClassWidthUnitPopUpButton ;
-  outlet EBSwitch mAllowTracksOnFrontSideSwitch ;
-  outlet EBSwitch mAllowTracksOnInner1LayerSwitch ;
-  outlet EBSwitch mAllowTracksOnInner2LayerSwitch ;
-  outlet EBSwitch mAllowTracksOnInner3LayerSwitch ;
-  outlet EBSwitch mAllowTracksOnInner4LayerSwitch ;
-  outlet EBSwitch mAllowTracksOnBackSideSwitch ;
-  outlet CanariDimensionTextField mNetClassHoleDiameterDimensionTextField ;
-  outlet EBPopUpButton mNetClassHoleDiameterUnitPopUpButton ;
-  outlet CanariDimensionTextField mNetClassPadDiameterDimensionTextField ;
-  outlet EBPopUpButton mNetClassPadDiameterUnitPopUpButton ;
-  outlet EBColorWell mNetClassColorWell ;
-  outlet NSButton mAddNetClassValidationButton ;
 
   action removeNetClassAction ;
   transient Bool canRemoveNetClasses dependsFrom root.mNetClasses.count, #netClassController.selectedArray.all.canRemove ;

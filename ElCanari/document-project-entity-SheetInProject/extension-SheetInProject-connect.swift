@@ -189,28 +189,13 @@ extension SheetInProject {
       layoutView.appendView (hStack)
     }
   //---
-    panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
+    panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
     inWindow.beginSheet (panel) { inResponse in
       if inResponse == .stop, let net = popupButton.selectedItem?.representedObject as? NetInProject {
         self.propagateAndMerge (net: net, to: inPoints, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
       }
     }
   }
-
-
-
-
-//    inPopUp.removeAllItems ()
-//    for net in netArray {
-//      inPopUp.addItem (withTitle: net.mNetName)
-//      inPopUp.lastItem?.representedObject = net
-//    }
-//    inWindow.beginSheet (panel) { (_ inModalResponse : NSApplication.ModalResponse) in
-//      if inModalResponse == .stop, let net = inPopUp.selectedItem?.representedObject as? NetInProject {
-//        self.propagateAndMerge (net: net, to: inPoints, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
-//      }
-//    }
-//  }
 
   //····················································································································
 

@@ -91,6 +91,15 @@ class AutoLayoutHorizontalStackView : AutoLayoutAbstractStackView {
 
   //····················································································································
 
+  class final func viewFollowedByFlexibleSpace (_ inView : NSView) -> AutoLayoutHorizontalStackView {
+    let hStack = AutoLayoutHorizontalStackView ()
+    hStack.appendView (inView)
+    hStack.appendFlexibleSpace ()
+    return hStack
+  }
+
+  //····················································································································
+
   private var mConstraints = [NSLayoutConstraint] ()
 
   //····················································································································

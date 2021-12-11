@@ -247,7 +247,7 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
       okButton.isEnabled = true
       okButton.title = "Rename as '\(inNet.mNetName)'"
     //---
-      panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
+      panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       window.beginSheet (panel) { inResponse in
         newNameTextField.mTextFieldUserInfo = nil
         if inResponse == .stop {
@@ -334,7 +334,7 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
         layoutView.appendView (hStack)
       }
     //---
-      panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView)
+      panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       panel.makeFirstResponder (popUpButton)
       window.beginSheet (panel) { inResponse in
         if inResponse == .stop, let net = popUpButton.selectedItem?.representedObject as? NetInProject {
