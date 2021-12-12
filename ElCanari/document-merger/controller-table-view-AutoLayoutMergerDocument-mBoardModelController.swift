@@ -111,9 +111,9 @@ final class Controller_AutoLayoutMergerDocument_mBoardModelController : EBObjcBa
 
   //····················································································································
 
-/*  func setSelection (_ inObjects : [BoardModel]) {
-    self.mInternalSelectedArrayProperty.setProp (inObjects)
-  } */
+  func setSelection (_ inObjects : [BoardModel]) {
+    self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObjects))
+  }
 
   //····················································································································
   //    Explorer

@@ -9,6 +9,24 @@ import Cocoa
 @objc(AutoLayoutProjectDocument) class AutoLayoutProjectDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
 
   //····················································································································
+  //   Array controller: componentController
+  //····················································································································
+
+  var componentController = Controller_AutoLayoutProjectDocument_componentController ()
+
+  //····················································································································
+  //   Array controller: projectDeviceController
+  //····················································································································
+
+  var projectDeviceController = Controller_AutoLayoutProjectDocument_projectDeviceController ()
+
+  //····················································································································
+  //   Array controller: boardObjectsController
+  //····················································································································
+
+  var boardObjectsController = Controller_AutoLayoutProjectDocument_boardObjectsController ()
+
+  //····················································································································
   //   Transient property: documentFileName
   //····················································································································
 
@@ -18,6 +36,40 @@ import Cocoa
 
   final var documentFileName : String? {
     switch self.documentFileName_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: componentCount
+  //····················································································································
+
+  final let componentCount_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var componentCount : String? {
+    switch self.componentCount_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: canChangePackage
+  //····················································································································
+
+  final let canChangePackage_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var canChangePackage : Bool? {
+    switch self.canChangePackage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -58,6 +110,12 @@ import Cocoa
 
   #if BUILD_OBJECT_EXPLORER
     override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    //--- Array controller property: componentController
+      self.componentController.addExplorer (name: "componentController", y:&y, view:view)
+    //--- Array controller property: projectDeviceController
+      self.projectDeviceController.addExplorer (name: "projectDeviceController", y:&y, view:view)
+    //--- Array controller property: boardObjectsController
+      self.boardObjectsController.addExplorer (name: "boardObjectsController", y:&y, view:view)
    //---
       super.populateExplorerWindow (&y, view:view)
     }
@@ -96,12 +154,267 @@ import Cocoa
     let view_0 = AutoLayoutHorizontalStackView ()
       .set (margins: 8)
     do{
+      let view_0_0 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false, size: .regular)
+          .addPage (title: "Components", tooltip: "", pageView: self.mComponentsPage)
+          .addPage (title: "Library", tooltip: "", pageView: self.mLibraryPage)
+          .addPage (title: "Schematic", tooltip: "", pageView: self.mSchematicPage)
+          .addPage (title: "Net Classes", tooltip: "", pageView: self.mNetClassesPage)
+          .addPage (title: "Net List", tooltip: "", pageView: self.mNetListPage)
+          .addPage (title: "Board Outline", tooltip: "", pageView: self.mBoardOutlinePage)
+          .addPage (title: "Board Contents", tooltip: "", pageView: self.mBoardContentsPage)
+          .addPage (title: "Product", tooltip: "", pageView: self.mProductPage)
+          .bind_selectedPage (self.rootObject.mSelectedPageIndex_property)
+        view_0_0.appendView (view_0_0_0)
+        let view_0_0_1 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_0_0_1_0 = AutoLayoutFlexibleSpace ()
+          view_0_0_1.appendView (view_0_0_1_0)
+          let view_0_0_1_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small)
+          view_0_0_1.appendView (view_0_0_1_1)
+          let view_0_0_1_2 = AutoLayoutFlexibleSpace ()
+          view_0_0_1.appendView (view_0_0_1_2)
+        }
+        view_0_0.appendView (view_0_0_1)
+      }
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_2_0 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_0_2_0_0 = AutoLayoutFlexibleSpace ()
+          view_0_2_0.appendView (view_0_2_0_0)
+          let view_0_2_0_1 = AutoLayoutImageObserverView (size: .regular)
+            .bind_image (self.rootObject.schematicStatusImage_property)
+            .bind_tooltip (self.rootObject.schematicStatusMessage_property)
+          view_0_2_0.appendView (view_0_2_0_1)
+          let view_0_2_0_2 = AutoLayoutFlexibleSpace ()
+          view_0_2_0.appendView (view_0_2_0_2)
+        }
+        view_0_2.appendView (view_0_2_0)
+        let view_0_2_1 = AutoLayoutStaticLabel (title: "Schematic", bold: false, size: .small)
+          .set (alignment: .center)
+        view_0_2.appendView (view_0_2_1)
+      }
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_3_0 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_0_3_0_0 = AutoLayoutFlexibleSpace ()
+          view_0_3_0.appendView (view_0_3_0_0)
+          let view_0_3_0_1 = AutoLayoutImageObserverView (size: .regular)
+            .bind_image (self.rootObject.boardStatusImage_property)
+            .bind_tooltip (self.rootObject.boardStatusMessage_property)
+          view_0_3_0.appendView (view_0_3_0_1)
+          let view_0_3_0_2 = AutoLayoutFlexibleSpace ()
+          view_0_3_0.appendView (view_0_3_0_2)
+        }
+        view_0_3.appendView (view_0_3_0)
+        let view_0_3_1 = AutoLayoutStaticLabel (title: "Board", bold: false, size: .small)
+          .set (alignment: .center)
+        view_0_3.appendView (view_0_3_1)
+      }
+      view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_4_0 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_0_4_0_0 = AutoLayoutFlexibleSpace ()
+          view_0_4_0.appendView (view_0_4_0_0)
+          let view_0_4_0_1 = AutoLayoutImageObserverView (size: .regular)
+            .bind_image (self.rootObject.ercStatusImage_property)
+            .bind_tooltip (self.rootObject.ercStatusMessage_property)
+          view_0_4_0.appendView (view_0_4_0_1)
+          let view_0_4_0_2 = AutoLayoutFlexibleSpace ()
+          view_0_4_0.appendView (view_0_4_0_2)
+        }
+        view_0_4.appendView (view_0_4_0)
+        let view_0_4_1 = AutoLayoutStaticLabel (title: "ERC", bold: false, size: .small)
+          .set (alignment: .center)
+        view_0_4.appendView (view_0_4_1)
+      }
+      view_0.appendView (view_0_4)
     }
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     vStackView.appendView (view_1)
     let view_2 = mPageMasterView
     vStackView.appendView (view_2)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mComponentsPage
+  //····················································································································
+
+  lazy var mComponentsPage : AutoLayoutHorizontalStackView = {
+    let hStackView = AutoLayoutHorizontalStackView ()
+      .set (margins: 8)
+    let view_0 = AutoLayoutVerticalStackView ()
+    do{
+      let view_0_0 = AutoLayoutLabel (bold: true, size: .small)
+        .expandableWidth ()
+        .set (alignment: .center)
+        .bind_title (self.componentCount_property)
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutStaticLabel (title: "Add Component from:", bold: true, size: .small)
+        .expandableWidth ()
+        .set (alignment: .left)
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutButton (title: "File Library…", size: .small)
+        .expandableWidth ()
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.addComponentFromFileLibraryAction (_:))
+        )
+      view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutPullDownButton (title: "Embedded Library…", size: .small)
+        .expandableWidth ()
+        .bind_items (self.rootObject.deviceNames_property)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.addComponentFromEmbeddedLibraryAction (_:))
+        )
+      view_0.appendView (view_0_4)
+      let view_0_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+      view_0.appendView (view_0_5)
+      let view_0_6 = AutoLayoutStaticLabel (title: "On Selected Components", bold: true, size: .small)
+        .expandableWidth ()
+        .set (alignment: .left)
+      view_0.appendView (view_0_6)
+      let view_0_7 = AutoLayoutButton (title: "Duplicate", size: .small)
+        .expandableWidth ()
+        .bind_enabled (.intcmp (.id (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.duplicateSelectedComponentsAction (_:))
+        )
+      view_0.appendView (view_0_7)
+      let view_0_8 = AutoLayoutButton (title: "Rename…", size: .small)
+        .expandableWidth ()
+        .bind_enabled (.intcmp (.id (self.componentController.selectedArray_property.count_property), .eq, .literalInt (1)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.renameSelectedComponentsAction (_:))
+        )
+      view_0.appendView (view_0_8)
+      let view_0_9 = AutoLayoutButton (title: "Remove", size: .small)
+        .expandableWidth ()
+        .bind_enabled (.intcmp (.id (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.removeSelectedComponentsAction (_:))
+        )
+      view_0.appendView (view_0_9)
+      let view_0_10 = AutoLayoutButton (title: "Change Package…", size: .small)
+        .expandableWidth ()
+        .bind_enabled (.id (self.canChangePackage_property))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.changePackageOfSelectedComponentsAction (_:))
+        )
+      view_0.appendView (view_0_10)
+      let view_0_11 = AutoLayoutButton (title: "Change Value…", size: .small)
+        .expandableWidth ()
+        .bind_enabled (.intcmp (.id (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.changeValueOfSelectedComponentsAction (_:))
+        )
+      view_0.appendView (view_0_11)
+      let view_0_12 = AutoLayoutButton (title: "Reveal in Board", size: .small)
+        .expandableWidth ()
+        .bind_enabled (.intcmp (.id (self.componentController.selectedArray_property.count_property), .eq, .literalInt (1)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.revealPackageOfSelectedComponentsAction (_:))
+        )
+      view_0.appendView (view_0_12)
+      let view_0_13 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+      view_0.appendView (view_0_13)
+      let view_0_14 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_14)
+    }
+    hStackView.appendView (view_0)
+    let view_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
+    self.componentController.bind_tableView (view_1)
+    hStackView.appendView (view_1)
+    return hStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mLibraryPage
+  //····················································································································
+
+  lazy var mLibraryPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSchematicPage
+  //····················································································································
+
+  lazy var mSchematicPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mNetClassesPage
+  //····················································································································
+
+  lazy var mNetClassesPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mNetListPage
+  //····················································································································
+
+  lazy var mNetListPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mBoardOutlinePage
+  //····················································································································
+
+  lazy var mBoardOutlinePage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mProductPage
+  //····················································································································
+
+  lazy var mProductPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mBoardContentsPage
+  //····················································································································
+
+  lazy var mBoardContentsPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
     return vStackView
   } ()
 
@@ -161,6 +474,64 @@ import Cocoa
   final private func configureProperties () {
     let start = Date ()
     var opIdx = 0
+  //--- Array controller property: componentController
+    self.componentController.bind_model (self.rootObject.mComponents_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Array controller property: projectDeviceController
+    self.projectDeviceController.bind_model (self.rootObject.mDevices_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Array controller property: boardObjectsController
+    self.boardObjectsController.bind_model (self.rootObject.mBoardObjects_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: componentCount
+    self.componentCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.mComponents_property.count_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutProjectDocument_componentCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mComponents_property.count_property.addEBObserver (self.componentCount_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: canChangePackage
+    self.canChangePackage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.componentController.selectedArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutProjectDocument_canChangePackage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -205,6 +576,14 @@ import Cocoa
   //--------------------------- Clean up auto layout views
     self.mPageMasterView.ebCleanUp ()
     self.mDocumentMainView.ebCleanUp ()
+    self.mComponentsPage.ebCleanUp ()
+    self.mLibraryPage.ebCleanUp ()
+    self.mSchematicPage.ebCleanUp ()
+    self.mNetClassesPage.ebCleanUp ()
+    self.mNetListPage.ebCleanUp ()
+    self.mBoardOutlinePage.ebCleanUp ()
+    self.mProductPage.ebCleanUp ()
+    self.mBoardContentsPage.ebCleanUp ()
     let toolbarItems = self.windowForSheet?.toolbar?.items ?? []
     for item in toolbarItems {
       item.view?.ebCleanUp ()
@@ -212,6 +591,14 @@ import Cocoa
   //--------------------------- Unbind regular bindings
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
+  //--- Array controller property: componentController
+    self.componentController.unbind_model ()
+  //--- Array controller property: projectDeviceController
+    self.projectDeviceController.unbind_model ()
+  //--- Array controller property: boardObjectsController
+    self.boardObjectsController.unbind_model ()
+    // self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
+    // self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets

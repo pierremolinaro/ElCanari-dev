@@ -26,7 +26,8 @@ final class AutoLayoutComboBox : NSComboBox, EBUserClassNameProtocol, NSComboBox
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-//    self.delegate = self
+    self.delegate = self
+//    self.isContinuous = true
   }
 
   //····················································································································
@@ -63,6 +64,26 @@ final class AutoLayoutComboBox : NSComboBox, EBUserClassNameProtocol, NSComboBox
     self.mTextDidChange? (self)
   }
 
+
+  //····················································································································
+
+//  func controlTextDidEndEditing (_ notification : Notification) {
+//    self.mTextDidChange? (self)
+//  }
+
+  //····················································································································
+  // NSComboBoxDelegate functions
+  //····················································································································
+
+  func comboBoxSelectionDidChange (_ inNotification : Notification) {
+    DispatchQueue.main.async { self.mTextDidChange? (self) }
+  }
+
+  //····················································································································
+
+  func controlTextDidChange (_ inNotification : Notification) {
+    self.mTextDidChange? (self)
+  }
 
   //····················································································································
 

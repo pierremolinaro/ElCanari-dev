@@ -1023,6 +1023,54 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observable toMany property: mDevices
+  //····················································································································
+
+  private final var mObserversOf_mDevices = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mDevices (_ inObserver : EBEvent) {
+    self.mObserversOf_mDevices.insert (inObserver)
+    if let object = self.propval {
+      object.mDevices_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDevices (_ inObserver : EBEvent) {
+    self.mObserversOf_mDevices.remove (inObserver)
+    if let object = self.propval {
+      object.mDevices_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mBoardObjects
+  //····················································································································
+
+  private final var mObserversOf_mBoardObjects = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mBoardObjects (_ inObserver : EBEvent) {
+    self.mObserversOf_mBoardObjects.insert (inObserver)
+    if let object = self.propval {
+      object.mBoardObjects_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mBoardObjects (_ inObserver : EBEvent) {
+    self.mObserversOf_mBoardObjects.remove (inObserver)
+    if let object = self.propval {
+      object.mBoardObjects_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable toMany property: mNetClasses
   //····················································································································
 
@@ -1071,30 +1119,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observable toMany property: mDevices
-  //····················································································································
-
-  private final var mObserversOf_mDevices = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mDevices (_ inObserver : EBEvent) {
-    self.mObserversOf_mDevices.insert (inObserver)
-    if let object = self.propval {
-      object.mDevices_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mDevices (_ inObserver : EBEvent) {
-    self.mObserversOf_mDevices.remove (inObserver)
-    if let object = self.propval {
-      object.mDevices_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
   //   Observable toMany property: mBorderCurves
   //····················································································································
 
@@ -1115,30 +1139,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mObserversOf_mBorderCurves.remove (inObserver)
     if let object = self.propval {
       object.mBorderCurves_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable toMany property: mBoardObjects
-  //····················································································································
-
-  private final var mObserversOf_mBoardObjects = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardObjects (_ inObserver : EBEvent) {
-    self.mObserversOf_mBoardObjects.insert (inObserver)
-    if let object = self.propval {
-      object.mBoardObjects_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mBoardObjects (_ inObserver : EBEvent) {
-    self.mObserversOf_mBoardObjects.remove (inObserver)
-    if let object = self.propval {
-      object.mBoardObjects_property.removeEBObserver (inObserver)
     }
   }
 

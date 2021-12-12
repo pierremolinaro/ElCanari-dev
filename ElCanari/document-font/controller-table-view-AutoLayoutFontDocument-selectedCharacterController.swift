@@ -111,9 +111,9 @@ final class Controller_AutoLayoutFontDocument_selectedCharacterController : EBOb
 
   //····················································································································
 
-/*  func setSelection (_ inObjects : [FontCharacter]) {
-    self.mInternalSelectedArrayProperty.setProp (inObjects)
-  } */
+  func setSelection (_ inObjects : [FontCharacter]) {
+    self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObjects))
+  }
 
   //····················································································································
   //    Explorer

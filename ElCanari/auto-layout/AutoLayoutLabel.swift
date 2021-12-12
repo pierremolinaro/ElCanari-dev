@@ -49,8 +49,6 @@ final class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
 
   override func draw (_ inDirtyRect : NSRect) {
     if debugAutoLayout () {
-//      DEBUG_FILL_COLOR.setFill ()
-//      NSBezierPath.fill (inDirtyRect)
       let bp = NSBezierPath (rect: self.bounds)
       bp.lineWidth = 1.0
       bp.lineJoinStyle = .round

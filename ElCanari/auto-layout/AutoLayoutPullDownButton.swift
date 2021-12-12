@@ -43,11 +43,11 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
 
   final func add (item inMenuItemDescriptor : AutoLayoutMenuItemDescriptor) -> Self {
     self.addItem (withTitle: inMenuItemDescriptor.title)
-    let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-    ]
-    let attributedTitle = NSAttributedString (string: inMenuItemDescriptor.title, attributes: textAttributes)
-    self.lastItem?.attributedTitle = attributedTitle
+//    let textAttributes : [NSAttributedString.Key : Any] = [
+//      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+//    ]
+//    let attributedTitle = NSAttributedString (string: inMenuItemDescriptor.title, attributes: textAttributes)
+//    self.lastItem?.attributedTitle = attributedTitle
     self.lastItem?.target = inMenuItemDescriptor.target
     self.lastItem?.action = inMenuItemDescriptor.selector
   //--- Add Enabled binding ?
@@ -76,6 +76,39 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
       inMenuItem?.isEnabled = false
     case .single (let v) :
       inMenuItem?.isEnabled = v
+    }
+  }
+
+  //····················································································································
+  //  $items binding
+  //····················································································································
+
+  private var mItemsController : EBReadOnlyPropertyController? = nil
+
+  //····················································································································
+
+  final func bind_items (_ model : EBReadOnlyProperty_StringArray) -> Self {
+    self.mItemsController = EBReadOnlyPropertyController (
+      observedObjects: [model],
+      callBack: { [weak self] in self?.update (from: model) }
+    )
+    return self
+  }
+
+  //····················································································································
+
+  private func update (from model : EBReadOnlyProperty_StringArray) {
+    switch model.selection {
+    case .empty, .multiple :
+      self.enable (fromValueBinding: false)
+    case .single (let titleArray) :
+      self.enable (fromValueBinding: true)
+      while self.numberOfItems > 1 {
+        self.removeItem (at: self.numberOfItems - 1)
+      }
+      for itemTitle in titleArray {
+        self.addItem (withTitle: itemTitle)
+      }
     }
   }
 

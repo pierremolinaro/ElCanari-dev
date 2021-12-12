@@ -9,10 +9,64 @@ import Cocoa
 @objc(ProjectDocument) class ProjectDocument : EBManagedXibDocument {
 
   //····················································································································
+  //   Array controller: projectDeviceController
+  //····················································································································
+
+  var projectDeviceController = Controller_ProjectDocument_projectDeviceController ()
+
+  //····················································································································
+  //   Array controller: boardObjectsController
+  //····················································································································
+
+  var boardObjectsController = Controller_ProjectDocument_boardObjectsController ()
+
+  //····················································································································
+  //   Selection controller: boardTrackSelectionController
+  //····················································································································
+
+  var boardTrackSelectionController = SelectionController_ProjectDocument_boardTrackSelectionController ()
+
+  //····················································································································
+  //   Selection controller: boardConnectorSelectionController
+  //····················································································································
+
+  var boardConnectorSelectionController = SelectionController_ProjectDocument_boardConnectorSelectionController ()
+
+  //····················································································································
+  //   Selection controller: boardLineSelectionController
+  //····················································································································
+
+  var boardLineSelectionController = SelectionController_ProjectDocument_boardLineSelectionController ()
+
+  //····················································································································
+  //   Selection controller: restrictRectangleSelectionController
+  //····················································································································
+
+  var restrictRectangleSelectionController = SelectionController_ProjectDocument_restrictRectangleSelectionController ()
+
+  //····················································································································
+  //   Selection controller: boardTextSelectionController
+  //····················································································································
+
+  var boardTextSelectionController = SelectionController_ProjectDocument_boardTextSelectionController ()
+
+  //····················································································································
+  //   Selection controller: componentInBoardSelectionController
+  //····················································································································
+
+  var componentInBoardSelectionController = SelectionController_ProjectDocument_componentInBoardSelectionController ()
+
+  //····················································································································
   //   Array controller: mDataController
   //····················································································································
 
   var mDataController = Controller_ProjectDocument_mDataController ()
+
+  //····················································································································
+  //   Array controller: componentController
+  //····················································································································
+
+  var componentController = Controller_ProjectDocument_componentController ()
 
   //····················································································································
   //   Array controller: netClassController
@@ -25,12 +79,6 @@ import Cocoa
   //····················································································································
 
   var projectFontController = Controller_ProjectDocument_projectFontController ()
-
-  //····················································································································
-  //   Array controller: projectDeviceController
-  //····················································································································
-
-  var projectDeviceController = Controller_ProjectDocument_projectDeviceController ()
 
   //····················································································································
   //   Array controller: schematicObjectsController
@@ -81,58 +129,10 @@ import Cocoa
   var boardCurveSelectionController = SelectionController_ProjectDocument_boardCurveSelectionController ()
 
   //····················································································································
-  //   Array controller: boardObjectsController
-  //····················································································································
-
-  var boardObjectsController = Controller_ProjectDocument_boardObjectsController ()
-
-  //····················································································································
-  //   Selection controller: boardTrackSelectionController
-  //····················································································································
-
-  var boardTrackSelectionController = SelectionController_ProjectDocument_boardTrackSelectionController ()
-
-  //····················································································································
-  //   Selection controller: boardConnectorSelectionController
-  //····················································································································
-
-  var boardConnectorSelectionController = SelectionController_ProjectDocument_boardConnectorSelectionController ()
-
-  //····················································································································
-  //   Selection controller: boardLineSelectionController
-  //····················································································································
-
-  var boardLineSelectionController = SelectionController_ProjectDocument_boardLineSelectionController ()
-
-  //····················································································································
-  //   Selection controller: restrictRectangleSelectionController
-  //····················································································································
-
-  var restrictRectangleSelectionController = SelectionController_ProjectDocument_restrictRectangleSelectionController ()
-
-  //····················································································································
-  //   Selection controller: boardTextSelectionController
-  //····················································································································
-
-  var boardTextSelectionController = SelectionController_ProjectDocument_boardTextSelectionController ()
-
-  //····················································································································
-  //   Selection controller: componentInBoardSelectionController
-  //····················································································································
-
-  var componentInBoardSelectionController = SelectionController_ProjectDocument_componentInBoardSelectionController ()
-
-  //····················································································································
   //   Selection controller: mDataSelection
   //····················································································································
 
   var mDataSelection = SelectionController_ProjectDocument_mDataSelection ()
-
-  //····················································································································
-  //   Array controller: componentController
-  //····················································································································
-
-  var componentController = Controller_ProjectDocument_componentController ()
 
   //····················································································································
   //   Transient property: rastnetDisplayComponentNet
@@ -169,6 +169,74 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: selectedDevicePackageNames
+  //····················································································································
+
+  final let selectedDevicePackageNames_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  final var selectedDevicePackageNames : StringArray? {
+    switch self.selectedDevicePackageNames_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: selectedDeviceSymbols
+  //····················································································································
+
+  final let selectedDeviceSymbols_property = EBTransientProperty_DeviceSymbolDictionary ()
+
+  //····················································································································
+
+  final var selectedDeviceSymbols : DeviceSymbolDictionary? {
+    switch self.selectedDeviceSymbols_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: selectedDeviceSymbolNames
+  //····················································································································
+
+  final let selectedDeviceSymbolNames_property = EBTransientProperty_TwoStringArray ()
+
+  //····················································································································
+
+  final var selectedDeviceSymbolNames : TwoStringArray? {
+    switch self.selectedDeviceSymbolNames_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: pinPadAssignments
+  //····················································································································
+
+  final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+
+  //····················································································································
+
+  final var pinPadAssignments : ThreeStringArray? {
+    switch self.pinPadAssignments_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: schematicSheetOrientationIsCustom
   //····················································································································
 
@@ -195,6 +263,23 @@ import Cocoa
 
   final var netCount : Int? {
     switch self.netCount_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: rastnetShape
+  //····················································································································
+
+  final let rastnetShape_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  final var rastnetShape : EBShape? {
+    switch self.rastnetShape_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -305,66 +390,15 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: selectedDevicePackageNames
+  //   Transient property: canRemoveSelectedDevices
   //····················································································································
 
-  final let selectedDevicePackageNames_property = EBTransientProperty_StringArray ()
-
-  //····················································································································
-
-  final var selectedDevicePackageNames : StringArray? {
-    switch self.selectedDevicePackageNames_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: selectedDeviceSymbols
-  //····················································································································
-
-  final let selectedDeviceSymbols_property = EBTransientProperty_DeviceSymbolDictionary ()
+  final let canRemoveSelectedDevices_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  final var selectedDeviceSymbols : DeviceSymbolDictionary? {
-    switch self.selectedDeviceSymbols_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: selectedDeviceSymbolNames
-  //····················································································································
-
-  final let selectedDeviceSymbolNames_property = EBTransientProperty_TwoStringArray ()
-
-  //····················································································································
-
-  final var selectedDeviceSymbolNames : TwoStringArray? {
-    switch self.selectedDeviceSymbolNames_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: pinPadAssignments
-  //····················································································································
-
-  final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
-
-  //····················································································································
-
-  final var pinPadAssignments : ThreeStringArray? {
-    switch self.pinPadAssignments_property.selection {
+  final var canRemoveSelectedDevices : Bool? {
+    switch self.canRemoveSelectedDevices_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -390,15 +424,32 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: rastnetShape
+  //   Transient property: overDisplay
   //····················································································································
 
-  final let rastnetShape_property = EBTransientProperty_EBShape ()
+  final let overDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  final var rastnetShape : EBShape? {
-    switch self.rastnetShape_property.selection {
+  final var overDisplay : EBShape? {
+    switch self.overDisplay_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: canChangePackage
+  //····················································································································
+
+  final let canChangePackage_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var canChangePackage : Bool? {
+    switch self.canChangePackage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -416,23 +467,6 @@ import Cocoa
 
   final var canRemoveSelectedFonts : Bool? {
     switch self.canRemoveSelectedFonts_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: canRemoveSelectedDevices
-  //····················································································································
-
-  final let canRemoveSelectedDevices_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var canRemoveSelectedDevices : Bool? {
-    switch self.canRemoveSelectedDevices_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -501,40 +535,6 @@ import Cocoa
 
   final var unplacedPackagesCountString : String? {
     switch self.unplacedPackagesCountString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: overDisplay
-  //····················································································································
-
-  final let overDisplay_property = EBTransientProperty_EBShape ()
-
-  //····················································································································
-
-  final var overDisplay : EBShape? {
-    switch self.overDisplay_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: canChangePackage
-  //····················································································································
-
-  final let canChangePackage_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var canChangePackage : Bool? {
-    switch self.canChangePackage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1070,14 +1070,30 @@ import Cocoa
 
   #if BUILD_OBJECT_EXPLORER
     override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    //--- Array controller property: projectDeviceController
+      self.projectDeviceController.addExplorer (name: "projectDeviceController", y:&y, view:view)
+    //--- Array controller property: boardObjectsController
+      self.boardObjectsController.addExplorer (name: "boardObjectsController", y:&y, view:view)
+    //--- Selection controller property: boardTrackSelectionController
+      self.boardTrackSelectionController.addExplorer (name: "boardTrackSelectionController", y:&y, view:view)
+    //--- Selection controller property: boardConnectorSelectionController
+      self.boardConnectorSelectionController.addExplorer (name: "boardConnectorSelectionController", y:&y, view:view)
+    //--- Selection controller property: boardLineSelectionController
+      self.boardLineSelectionController.addExplorer (name: "boardLineSelectionController", y:&y, view:view)
+    //--- Selection controller property: restrictRectangleSelectionController
+      self.restrictRectangleSelectionController.addExplorer (name: "restrictRectangleSelectionController", y:&y, view:view)
+    //--- Selection controller property: boardTextSelectionController
+      self.boardTextSelectionController.addExplorer (name: "boardTextSelectionController", y:&y, view:view)
+    //--- Selection controller property: componentInBoardSelectionController
+      self.componentInBoardSelectionController.addExplorer (name: "componentInBoardSelectionController", y:&y, view:view)
     //--- Array controller property: mDataController
       self.mDataController.addExplorer (name: "mDataController", y:&y, view:view)
+    //--- Array controller property: componentController
+      self.componentController.addExplorer (name: "componentController", y:&y, view:view)
     //--- Array controller property: netClassController
       self.netClassController.addExplorer (name: "netClassController", y:&y, view:view)
     //--- Array controller property: projectFontController
       self.projectFontController.addExplorer (name: "projectFontController", y:&y, view:view)
-    //--- Array controller property: projectDeviceController
-      self.projectDeviceController.addExplorer (name: "projectDeviceController", y:&y, view:view)
     //--- Array controller property: schematicObjectsController
       self.schematicObjectsController.addExplorer (name: "schematicObjectsController", y:&y, view:view)
     //--- Selection controller property: wireInSchematicSelectionController
@@ -1094,24 +1110,8 @@ import Cocoa
       self.boardCurveObjectsController.addExplorer (name: "boardCurveObjectsController", y:&y, view:view)
     //--- Selection controller property: boardCurveSelectionController
       self.boardCurveSelectionController.addExplorer (name: "boardCurveSelectionController", y:&y, view:view)
-    //--- Array controller property: boardObjectsController
-      self.boardObjectsController.addExplorer (name: "boardObjectsController", y:&y, view:view)
-    //--- Selection controller property: boardTrackSelectionController
-      self.boardTrackSelectionController.addExplorer (name: "boardTrackSelectionController", y:&y, view:view)
-    //--- Selection controller property: boardConnectorSelectionController
-      self.boardConnectorSelectionController.addExplorer (name: "boardConnectorSelectionController", y:&y, view:view)
-    //--- Selection controller property: boardLineSelectionController
-      self.boardLineSelectionController.addExplorer (name: "boardLineSelectionController", y:&y, view:view)
-    //--- Selection controller property: restrictRectangleSelectionController
-      self.restrictRectangleSelectionController.addExplorer (name: "restrictRectangleSelectionController", y:&y, view:view)
-    //--- Selection controller property: boardTextSelectionController
-      self.boardTextSelectionController.addExplorer (name: "boardTextSelectionController", y:&y, view:view)
-    //--- Selection controller property: componentInBoardSelectionController
-      self.componentInBoardSelectionController.addExplorer (name: "componentInBoardSelectionController", y:&y, view:view)
     //--- Selection controller property: mDataSelection
       self.mDataSelection.addExplorer (name: "mDataSelection", y:&y, view:view)
-    //--- Array controller property: componentController
-      self.componentController.addExplorer (name: "componentController", y:&y, view:view)
     //---
       super.populateExplorerWindow (&y, view:view)
     }
@@ -1578,8 +1578,62 @@ import Cocoa
   final private func configureProperties () {
     let start = Date ()
     var opIdx = 0
+  //--- Array controller property: projectDeviceController
+    self.projectDeviceController.bind_model (self.rootObject.mDevices_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Array controller property: boardObjectsController
+    self.boardObjectsController.bind_model (self.rootObject.mBoardObjects_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: boardTrackSelectionController
+    self.boardTrackSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: boardConnectorSelectionController
+    self.boardConnectorSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: boardLineSelectionController
+    self.boardLineSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: restrictRectangleSelectionController
+    self.restrictRectangleSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: boardTextSelectionController
+    self.boardTextSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: componentInBoardSelectionController
+    self.componentInBoardSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Array controller property: mDataController
     self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Array controller property: componentController
+    self.componentController.bind_model (self.rootObject.mComponents_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1592,12 +1646,6 @@ import Cocoa
     }
   //--- Array controller property: projectFontController
     self.projectFontController.bind_model (self.rootObject.mFonts_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Array controller property: projectDeviceController
-    self.projectDeviceController.bind_model (self.rootObject.mDevices_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1650,56 +1698,8 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Array controller property: boardObjectsController
-    self.boardObjectsController.bind_model (self.rootObject.mBoardObjects_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Selection controller property: boardTrackSelectionController
-    self.boardTrackSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Selection controller property: boardConnectorSelectionController
-    self.boardConnectorSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Selection controller property: boardLineSelectionController
-    self.boardLineSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Selection controller property: restrictRectangleSelectionController
-    self.restrictRectangleSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Selection controller property: boardTextSelectionController
-    self.boardTextSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Selection controller property: componentInBoardSelectionController
-    self.componentInBoardSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
   //--- Selection controller property: mDataSelection
     self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Array controller property: componentController
-    self.componentController.bind_model (self.rootObject.mComponents_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1724,6 +1724,86 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: selectedDevicePackageNames
+    self.selectedDevicePackageNames_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_selectedDevicePackageNames (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: selectedDeviceSymbols
+    self.selectedDeviceSymbols_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_selectedDeviceSymbols (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_deviceSymbolDictionary (self.selectedDeviceSymbols_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: selectedDeviceSymbolNames
+    self.selectedDeviceSymbolNames_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_selectedDeviceSymbolNames (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: pinPadAssignments
+    self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_pinPadAssignments (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1764,6 +1844,30 @@ import Cocoa
       }
     }
     self.rootObject.netsDescription_property.addEBObserver (self.netCount_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: rastnetShape
+    self.rastnetShape_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.mRastnetDisplay_property.selection, unwSelf.rootObject.mRastnetDisplayedNetName_property.selection, unwSelf.rootObject.mRastnetDisplayedComponentName_property.selection, unwSelf.rootObject.mBoardObjects_property.selection, unwSelf.boardObjectsController.selectedArray_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_ProjectDocument_rastnetShape (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetShape_property)
+    self.rootObject.mRastnetDisplayedNetName_property.addEBObserver (self.rastnetShape_property)
+    self.rootObject.mRastnetDisplayedComponentName_property.addEBObserver (self.rastnetShape_property)
+    self.rootObject.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
+    self.boardObjectsController.selectedArray_property.addEBObserverOf_componentName (self.rastnetShape_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1889,12 +1993,12 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: selectedDevicePackageNames
-    self.selectedDevicePackageNames_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: canRemoveSelectedDevices
+    self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
         case (.single (let v0)) :
-          return .single (transient_ProjectDocument_selectedDevicePackageNames (v0))
+          return .single (transient_ProjectDocument_canRemoveSelectedDevices (v0))
         case (.multiple) :
           return .multiple
         default :
@@ -1904,67 +2008,7 @@ import Cocoa
         return .empty
       }
     }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: selectedDeviceSymbols
-    self.selectedDeviceSymbols_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_selectedDeviceSymbols (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_deviceSymbolDictionary (self.selectedDeviceSymbols_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: selectedDeviceSymbolNames
-    self.selectedDeviceSymbolNames_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_selectedDeviceSymbolNames (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: pinPadAssignments
-    self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_pinPadAssignments (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1989,13 +2033,13 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: rastnetShape
-    self.rastnetShape_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: overDisplay
+    self.overDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mRastnetDisplay_property.selection, unwSelf.rootObject.mRastnetDisplayedNetName_property.selection, unwSelf.rootObject.mRastnetDisplayedComponentName_property.selection, unwSelf.rootObject.mBoardObjects_property.selection, unwSelf.boardObjectsController.selectedArray_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-          return .single (transient_ProjectDocument_rastnetShape (v0, v1, v2, v3, v4))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (unwSelf.rastnetShape_property.selection, unwSelf.rootObject.boardIssues_property.selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_ProjectDocument_overDisplay (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -2004,11 +2048,28 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetShape_property)
-    self.rootObject.mRastnetDisplayedNetName_property.addEBObserver (self.rastnetShape_property)
-    self.rootObject.mRastnetDisplayedComponentName_property.addEBObserver (self.rastnetShape_property)
-    self.rootObject.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
-    self.boardObjectsController.selectedArray_property.addEBObserverOf_componentName (self.rastnetShape_property)
+    self.rastnetShape_property.addEBObserver (self.overDisplay_property)
+    self.rootObject.boardIssues_property.addEBObserver (self.overDisplay_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: canChangePackage
+    self.canChangePackage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.componentController.selectedArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_canChangePackage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -2029,26 +2090,6 @@ import Cocoa
       }
     }
     self.projectFontController.selectedArray_property.addEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: canRemoveSelectedDevices
-    self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_canRemoveSelectedDevices (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -2129,47 +2170,6 @@ import Cocoa
       }
     }
     self.unplacedPackageCount_property.addEBObserver (self.unplacedPackagesCountString_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: overDisplay
-    self.overDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rastnetShape_property.selection, unwSelf.rootObject.boardIssues_property.selection) {
-        case (.single (let v0), .single (let v1)) :
-          return .single (transient_ProjectDocument_overDisplay (v0, v1))
-        case (.multiple, .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rastnetShape_property.addEBObserver (self.overDisplay_property)
-    self.rootObject.boardIssues_property.addEBObserver (self.overDisplay_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: canChangePackage
-    self.canChangePackage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.componentController.selectedArray_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_canChangePackage (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3502,14 +3502,30 @@ import Cocoa
     self.schematicObjectsController.unbind_ebView (self.mSchematicsView)
     self.boardCurveObjectsController.unbind_ebView (self.mBoardLimitsView)
     self.boardObjectsController.unbind_ebView (self.mBoardView)
+  //--- Array controller property: projectDeviceController
+    self.projectDeviceController.unbind_model ()
+  //--- Array controller property: boardObjectsController
+    self.boardObjectsController.unbind_model ()
+  //--- Selection controller property: boardTrackSelectionController
+    self.boardTrackSelectionController.unbind_selection ()
+  //--- Selection controller property: boardConnectorSelectionController
+    self.boardConnectorSelectionController.unbind_selection ()
+  //--- Selection controller property: boardLineSelectionController
+    self.boardLineSelectionController.unbind_selection ()
+  //--- Selection controller property: restrictRectangleSelectionController
+    self.restrictRectangleSelectionController.unbind_selection ()
+  //--- Selection controller property: boardTextSelectionController
+    self.boardTextSelectionController.unbind_selection ()
+  //--- Selection controller property: componentInBoardSelectionController
+    self.componentInBoardSelectionController.unbind_selection ()
   //--- Array controller property: mDataController
     self.mDataController.unbind_model ()
+  //--- Array controller property: componentController
+    self.componentController.unbind_model ()
   //--- Array controller property: netClassController
     self.netClassController.unbind_model ()
   //--- Array controller property: projectFontController
     self.projectFontController.unbind_model ()
-  //--- Array controller property: projectDeviceController
-    self.projectDeviceController.unbind_model ()
   //--- Array controller property: schematicObjectsController
     self.schematicObjectsController.unbind_model ()
   //--- Selection controller property: wireInSchematicSelectionController
@@ -3526,27 +3542,20 @@ import Cocoa
     self.boardCurveObjectsController.unbind_model ()
   //--- Selection controller property: boardCurveSelectionController
     self.boardCurveSelectionController.unbind_selection ()
-  //--- Array controller property: boardObjectsController
-    self.boardObjectsController.unbind_model ()
-  //--- Selection controller property: boardTrackSelectionController
-    self.boardTrackSelectionController.unbind_selection ()
-  //--- Selection controller property: boardConnectorSelectionController
-    self.boardConnectorSelectionController.unbind_selection ()
-  //--- Selection controller property: boardLineSelectionController
-    self.boardLineSelectionController.unbind_selection ()
-  //--- Selection controller property: restrictRectangleSelectionController
-    self.restrictRectangleSelectionController.unbind_selection ()
-  //--- Selection controller property: boardTextSelectionController
-    self.boardTextSelectionController.unbind_selection ()
-  //--- Selection controller property: componentInBoardSelectionController
-    self.componentInBoardSelectionController.unbind_selection ()
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
-  //--- Array controller property: componentController
-    self.componentController.unbind_model ()
     // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayComponentNet_property)
+    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
+    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_deviceSymbolDictionary (self.selectedDeviceSymbols_property)
+    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
+    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     // self.rootObject.mSchematicSheetOrientation_property.removeEBObserver (self.schematicSheetOrientationIsCustom_property)
     // self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
+    // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetShape_property)
+    // self.rootObject.mRastnetDisplayedNetName_property.removeEBObserver (self.rastnetShape_property)
+    // self.rootObject.mRastnetDisplayedComponentName_property.removeEBObserver (self.rastnetShape_property)
+    // self.rootObject.mBoardObjects_property.removeEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
+    // self.boardObjectsController.selectedArray_property.removeEBObserverOf_componentName (self.rastnetShape_property)
     // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayOneNet_property)
     // self.rootObject.mArtwork_property.removeEBObserver (self.artworlImportButtonTitle_property)
     // self.documentFileName_property.removeEBObserver (self.documentFilePathOk_property)
@@ -3554,25 +3563,16 @@ import Cocoa
     // self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     // self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
     // self.netClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
-    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
-    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_deviceSymbolDictionary (self.selectedDeviceSymbols_property)
-    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
-    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
-    // self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
-    // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetShape_property)
-    // self.rootObject.mRastnetDisplayedNetName_property.removeEBObserver (self.rastnetShape_property)
-    // self.rootObject.mRastnetDisplayedComponentName_property.removeEBObserver (self.rastnetShape_property)
-    // self.rootObject.mBoardObjects_property.removeEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
-    // self.boardObjectsController.selectedArray_property.removeEBObserverOf_componentName (self.rastnetShape_property)
-    // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
+    // self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
+    // self.rastnetShape_property.removeEBObserver (self.overDisplay_property)
+    // self.rootObject.boardIssues_property.removeEBObserver (self.overDisplay_property)
+    // self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
+    // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
     // self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
     // self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
     // self.rootObject.unplacedPackages_property.removeEBObserver (self.unplacedPackageCount_property)
     // self.unplacedPackageCount_property.removeEBObserver (self.unplacedPackagesCountString_property)
-    // self.rastnetShape_property.removeEBObserver (self.overDisplay_property)
-    // self.rootObject.boardIssues_property.removeEBObserver (self.overDisplay_property)
-    // self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
   //--------------------------- Remove targets / actions
     self.mAddComponentButton?.target = nil
     self.mDuplicateSelectedComponentsActionButton?.target = nil

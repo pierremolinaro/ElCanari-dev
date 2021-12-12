@@ -86,7 +86,7 @@ final class CanariNewComponentFromDevicePullDownButton : NSPopUpButton, EBUserCl
       self.addItem (withTitle: deviceName)
       let menuItem = self.lastItem!
       menuItem.target = self
-      menuItem.action = #selector (CanariNewComponentFromDevicePullDownButton.addComponentFromEmbeddedLibrary (_:))
+      menuItem.action = #selector (Self.addComponentFromEmbeddedLibrary (_:))
     }
     self.isEnabled = array.count > 0
   }

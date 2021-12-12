@@ -127,9 +127,9 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
 
   //····················································································································
 
-/*  func setSelection (_ inObjects : [DeviceDocumentation]) {
-    self.mInternalSelectedArrayProperty.setProp (inObjects)
-  } */
+  func setSelection (_ inObjects : [DeviceDocumentation]) {
+    self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObjects))
+  }
 
   //····················································································································
   //    Explorer

@@ -10,34 +10,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension AutoLayoutPackageDocument {
-  @objc func programHelpAction (_ sender : NSObject?) {
+extension AutoLayoutProjectDocument {
+  @objc func renameSelectedComponentsAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let window = self.windowForSheet {
-      let sheet = NSPanel ()
-      var mask : NSWindow.StyleMask = sheet.styleMask
-      mask.insert (.resizable)
-      sheet.styleMask = mask
-      sheet.setContentSize (NSSize (width: 600.0, height: 500.0))
-    //---
-      let vStack = AutoLayoutVerticalStackView ().set (margins: 20)
-      vStack.appendView (AutoLayoutFlexibleSpace ())
-    //--- Text
-      let textView = AutoLayoutRTFTextView (editable: false)
-      if let url = Bundle.main.url (forResource: "package-program-guide", withExtension: "rtf") {
-        _ = textView.populateWithContententsOf (url: url)
-      }
-      vStack.appendView (textView)
-    //--- Ok button
-      let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: sheet, isInitialFirstResponder: true)
-      vStack.appendView (okButton)
-    //---
-      sheet.contentView = AutoLayoutWindowContentView (view: vStack)
-//      if let cell = okButton.cell as? NSButtonCell {
-//        sheet.defaultButtonCell = cell
-//      }
-      window.beginSheet (sheet, completionHandler: nil)
-    }
+        let selectedComponents = self.componentController.selectedArray_property.propval
+        if selectedComponents.count == 1 {
+          self.renameComponentDialog (selectedComponents [0])
+        }
 //--- END OF USER ZONE 2
   }
 }

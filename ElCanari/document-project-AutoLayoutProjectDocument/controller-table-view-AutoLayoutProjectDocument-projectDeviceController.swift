@@ -5,17 +5,17 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Auto Layout Table View Controller AutoLayoutDeviceDocument symbolTypeController
+//    Auto Layout Table View Controller AutoLayoutProjectDocument projectDeviceController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //    Constant properties
   //····················································································································
 
-  private let allowsEmptySelection = false
-  private let allowsMultipleSelection = false
+  private let allowsEmptySelection = true
+  private let allowsMultipleSelection = true
 
   //····················································································································
   //    Undo manager
@@ -28,21 +28,21 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
   //   Sorted Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_SymbolTypeInDevice ()
+  let sortedArray_property = TransientArrayOf_DeviceInProject ()
 
   //····················································································································
 
-  private var mSortDescriptorArray = [(SymbolTypeInDevice, SymbolTypeInDevice) -> ComparisonResult] ()
+  private var mSortDescriptorArray = [(DeviceInProject, DeviceInProject) -> ComparisonResult] ()
 
   //····················································································································
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_SymbolTypeInDevice? = nil
+  private var mModel : ReadWriteArrayOf_DeviceInProject? = nil
 
   //····················································································································
 
-  var objects : EBReferenceArray <SymbolTypeInDevice> {
+  var objects : EBReferenceArray <DeviceInProject> {
     if let objects = self.mModel?.propval {
       return objects
     }else{
@@ -52,30 +52,24 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
 
   //····················································································································
 
-  final func bind_model (_ inModel : ReadWriteArrayOf_SymbolTypeInDevice, _ inUndoManager : EBUndoManager) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_DeviceInProject, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (
       inModel,
       sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
       addSortObserversCallback: { (observer) in
-        inModel.addEBObserverOf_documentSize (observer)
-        inModel.addEBObserverOf_instanceCount (observer)
-        inModel.addEBObserverOf_mTypeName (observer)
-        inModel.addEBObserverOf_versionString (observer)
+        inModel.addEBObserverOf_mDeviceName (observer)
       },
       removeSortObserversCallback: {(observer) in
-        inModel.removeEBObserverOf_documentSize (observer)
-        inModel.removeEBObserverOf_instanceCount (observer)
-        inModel.removeEBObserverOf_mTypeName (observer)
-        inModel.removeEBObserverOf_versionString (observer)
+        inModel.removeEBObserverOf_mDeviceName (observer)
       }
     )
   }
 
   //····················································································································
 
-  final func isOrderedBefore (_ left : SymbolTypeInDevice, _ right : SymbolTypeInDevice) -> Bool {
+  final func isOrderedBefore (_ left : DeviceInProject, _ right : DeviceInProject) -> Bool {
     var order = ComparisonResult.orderedSame
     for sortDescriptor in self.mSortDescriptorArray.reversed () {
       order = sortDescriptor (left, right)
@@ -98,19 +92,19 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_SymbolTypeInDevice ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_DeviceInProject ()
 
   //····················································································································
 
-  var selectedArray_property : ReadOnlyArrayOf_SymbolTypeInDevice { return self.mInternalSelectedArrayProperty }
+  var selectedArray_property : ReadOnlyArrayOf_DeviceInProject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································
 
-  var selectedArray : EBReferenceArray <SymbolTypeInDevice> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <DeviceInProject> { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedSet : EBReferenceSet <SymbolTypeInDevice> { return EBReferenceSet (self.selectedArray_property.propval.values) }
+  var selectedSet : EBReferenceSet <DeviceInProject> { return EBReferenceSet (self.selectedArray_property.propval.values) }
 
   //····················································································································
 
@@ -131,7 +125,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
 
   //····················································································································
 
-  func setSelection (_ inObjects : [SymbolTypeInDevice]) {
+  func setSelection (_ inObjects : [DeviceInProject]) {
     self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObjects))
   }
 
@@ -153,14 +147,8 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
   override init () {
     super.init ()
     self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
-  //--- Observe 'versionString' column
-    self.sortedArray_property.addEBObserverOf_versionString (self.mSortedArrayValuesObserver)
-  //--- Observe 'instanceCount' column
-    self.sortedArray_property.addEBObserverOf_instanceCount (self.mSortedArrayValuesObserver)
-  //--- Observe 'mTypeName' column
-    self.sortedArray_property.addEBObserverOf_mTypeName (self.mSortedArrayValuesObserver)
-  //--- Observe 'documentSize' column
-    self.sortedArray_property.addEBObserverOf_documentSize (self.mSortedArrayValuesObserver)
+  //--- Observe 'mDeviceName' column
+    self.sortedArray_property.addEBObserverOf_mDeviceName (self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {
@@ -183,57 +171,18 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
       allowsMultipleSelection: allowsMultipleSelection,
       delegate: self
     )
-  //--- Configure 'versionString' column
+  //--- Configure 'mDeviceName' column
     inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].versionString },
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mDeviceName },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
-        self?.mSortDescriptorArray.append ({ (_ left : SymbolTypeInDevice, _ right : SymbolTypeInDevice) in return compare_String_properties (left.versionString_property, ascending, right.versionString_property) })
+        self?.mSortDescriptorArray.append ({ (_ left : DeviceInProject, _ right : DeviceInProject) in return compare_String_properties (left.mDeviceName_property, ascending, right.mDeviceName_property) })
       },
-      title: "Version",
+      title: "Name",
       minWidth: 60,
-      maxWidth: 60,
-      headerAlignment: .center,
-      contentAlignment: .center
-    )
-  //--- Configure 'instanceCount' column
-    inTableView.addColumn_Int (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].instanceCount },
-      valueSetterDelegate: nil,
-      sortDelegate: { [weak self] (ascending) in
-        self?.mSortDescriptorArray.append ({ (_ left : SymbolTypeInDevice, _ right : SymbolTypeInDevice) in return compare_Int_properties (left.instanceCount_property, ascending, right.instanceCount_property) })
-      },
-      title: "Instances",
-      minWidth: 80,
-      maxWidth: 80,
-      headerAlignment: .center,
-      contentAlignment: .center
-    )
-  //--- Configure 'mTypeName' column
-    inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mTypeName },
-      valueSetterDelegate: nil,
-      sortDelegate: { [weak self] (ascending) in
-        self?.mSortDescriptorArray.append ({ (_ left : SymbolTypeInDevice, _ right : SymbolTypeInDevice) in return compare_String_properties (left.mTypeName_property, ascending, right.mTypeName_property) })
-      },
-      title: "Symbol",
-      minWidth: 100,
-      maxWidth: 4000,
+      maxWidth: 150,
       headerAlignment: .left,
       contentAlignment: .left
-    )
-  //--- Configure 'documentSize' column
-    inTableView.addColumn_Int (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].documentSize },
-      valueSetterDelegate: nil,
-      sortDelegate: { [weak self] (ascending) in
-        self?.mSortDescriptorArray.append ({ (_ left : SymbolTypeInDevice, _ right : SymbolTypeInDevice) in return compare_Int_properties (left.documentSize_property, ascending, right.documentSize_property) })
-      },
-      title: "Size (bytes)",
-      minWidth: 100,
-      maxWidth: 100,
-      headerAlignment: .center,
-      contentAlignment: .right
     )
   //---
     self.mTableViewArray.append (inTableView)
@@ -243,7 +192,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
   //   Select a single object
   //····················································································································
 
-  func select (object inObject: SymbolTypeInDevice) {
+  func select (object inObject: DeviceInProject) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
@@ -269,7 +218,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
       case .single (let model_prop) :
       //------------- Find the object to be selected after selected object removing
       //--- Dictionary of object sorted indexes
-        var sortedObjectDictionary = EBReferenceDictionary <SymbolTypeInDevice, Int> ()
+        var sortedObjectDictionary = EBReferenceDictionary <DeviceInProject, Int> ()
         for (index, object) in model_prop.enumerated () {
           sortedObjectDictionary [object] = index
         }
@@ -291,13 +240,13 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
             newSelectionIndex = index + 1
           }
         }
-      /*  var newSelectedObject : SymbolTypeInDevice? = nil
+      /*  var newSelectedObject : DeviceInProject? = nil
         if (newSelectionIndex >= 0) && (newSelectionIndex < model_prop.count) {
           newSelectedObject = model_prop [newSelectionIndex]
         } */
       //----------------------------------------- Remove selected object
       //--- Dictionary of object absolute indexes
-        var objectDictionary = EBReferenceDictionary <SymbolTypeInDevice, Int> ()
+        var objectDictionary = EBReferenceDictionary <DeviceInProject, Int> ()
         for (index, object) in model_prop.enumerated () {
           objectDictionary [object] = index
         }
@@ -317,7 +266,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
           newObjectArray.remove (at: index)
         }
       //----------------------------------------- Set new selection
- /*       var newSelectionSet = EBReferenceSet <SymbolTypeInDevice> ()
+ /*       var newSelectionSet = EBReferenceSet <DeviceInProject> ()
         if let object = newSelectedObject {
           newSelectionSet.insert (object)
         }
@@ -345,7 +294,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
     case .empty, .multiple :
       ()
     case .single (let v) :
-      var newSelectedObjects = EBReferenceArray <SymbolTypeInDevice> ()
+      var newSelectedObjects = EBReferenceArray <DeviceInProject> ()
       for index in inSelectedRows {
         newSelectedObjects.append (v [index])
       }
@@ -376,7 +325,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
       case .empty, .multiple :
         ()
       case .single (let v) :
-        let newObject = SymbolTypeInDevice (self.ebUndoManager)
+        let newObject = DeviceInProject (self.ebUndoManager)
         var array = EBReferenceArray (v)
         array.append (newObject)
         model.setProp (array)
@@ -400,7 +349,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = EBReferenceDictionary <SymbolTypeInDevice, Int> ()
+          var sortedObjectDictionary = EBReferenceDictionary <DeviceInProject, Int> ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -422,13 +371,13 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : SymbolTypeInDevice? = nil
+          var newSelectedObject : DeviceInProject? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = EBReferenceDictionary <SymbolTypeInDevice, Int> ()
+          var objectDictionary = EBReferenceDictionary <DeviceInProject, Int> ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

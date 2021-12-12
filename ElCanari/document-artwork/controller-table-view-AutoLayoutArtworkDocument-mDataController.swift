@@ -125,9 +125,9 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBObjcBaseObj
 
   //····················································································································
 
-/*  func setSelection (_ inObjects : [ArtworkFileGenerationParameters]) {
-    self.mInternalSelectedArrayProperty.setProp (inObjects)
-  } */
+  func setSelection (_ inObjects : [ArtworkFileGenerationParameters]) {
+    self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObjects))
+  }
 
   //····················································································································
   //    Explorer

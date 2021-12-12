@@ -8,110 +8,158 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 
   stackView mDocumentMainView vStack set (spacing: 0) {
     hStack set (margins: 8) {
-//      vStack {
-//        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, size : .regular) {
-//          addPage (title: "Description", tooltip: "Artwork Description", pageView: stackView mDescriptionPage)
-//          addPage (title: "Minima", tooltip: "Minima Editor", pageView: stackView mMinimaPage)
-//          addPage (title: "Data", tooltip: "Data Editor", pageView: stackView mDataPage)
-//          $selectedPage root.selectedTab
+      vStack {
+        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, size : .regular) {
+          addPage (title: "Components", tooltip: "", pageView: stackView mComponentsPage)
+          addPage (title: "Library", tooltip: "", pageView: stackView mLibraryPage)
+          addPage (title: "Schematic", tooltip: "", pageView: stackView mSchematicPage)
+          addPage (title: "Net Classes", tooltip: "", pageView: stackView mNetClassesPage)
+          addPage (title: "Net List", tooltip: "", pageView: stackView mNetListPage)
+          addPage (title: "Board Outline", tooltip: "", pageView: stackView mBoardOutlinePage)
+          addPage (title: "Board Contents", tooltip: "", pageView: stackView mBoardContentsPage)
+          addPage (title: "Product", tooltip: "", pageView: stackView mProductPage)
+          $selectedPage root.mSelectedPageIndex
 //          $segmentImage self.segmentedControlDataIssueImage (segmentIndex : 2)
-//        }
-//        hStack { space StaticLabel (title: "Page", bold: no, size : .small) space }
-//      }
-//      vStack {
-//        SignatureField (size : .regular) { $signature signature }
-//        StaticLabel (title: "Signature", bold: no, size : .small) { set (alignment: .center)  expandableWidth () }
-//      }
-//      vStack {
-//        VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
-//        StaticLabel (title: "Version", bold: no, size : .small) { set (alignment: .center) expandableWidth () }
-//      }
-//      space
-//      vStack {
-//        hStack { space ImageObserverView (size : .regular) { $image self.statusImage $tooltip self.statusMessage } space }
-//        StaticLabel (title: "Status", bold: no, size : .small) { set (alignment: .center) }
-//      }
+        }
+        hStack { space StaticLabel (title: "Page", bold: no, size : .small) space }
+      }
+      space
+      vStack {
+        hStack {
+          space
+          ImageObserverView (size : .regular) {
+            $image root.schematicStatusImage $tooltip root.schematicStatusMessage
+          }
+          space
+        }
+        StaticLabel (title: "Schematic", bold: no, size : .small) { set (alignment: .center) }
+      }
+      vStack {
+        hStack {
+          space
+          ImageObserverView (size : .regular) {
+            $image root.boardStatusImage $tooltip root.boardStatusMessage
+          }
+          space
+        }
+        StaticLabel (title: "Board", bold: no, size : .small) { set (alignment: .center) }
+      }
+      vStack {
+        hStack {
+          space
+          ImageObserverView (size : .regular) {
+            $image root.ercStatusImage $tooltip root.ercStatusMessage
+          }
+          space
+        }
+        StaticLabel (title: "ERC", bold: no, size : .small) { set (alignment: .center) }
+      }
     }
     separator
     stackViewRef mPageMasterView
   }
   
-//xibdocument ProjectDocument root ProjectRoot {
-////--- Selected Page
-//  outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.mSelectedPageIndex ;
-//  outlet NSView mMasterView ;
-//  outlet CanariViewWithKeyView mComponentsPageView ;
-//  outlet CanariViewWithKeyView mLibraryPageView ;
-//  outlet CanariViewWithKeyView mSchematicsPageView ;
-//  outlet CanariViewWithKeyView mNetClassesPageView ;
-//  outlet CanariViewWithKeyView mNetListPageView ;
-//  outlet CanariViewWithKeyView mBoardBorderPageView ;
-//  outlet CanariViewWithKeyView mBoardObjectsPageView ;
-//  outlet CanariViewWithKeyView mProductPageView ;
-//
-////--- Issues
-//  outlet EBImageObserverView mSchematicStatusImageViewInToolbar
-//    $image root.schematicStatusImage
-//    $tooltip root.schematicStatusMessage
-//  ;
-//  outlet EBImageObserverView mBoardStatusImageViewInToolbar $image root.boardStatusImage $tooltip root.boardStatusMessage ;
-//  outlet EBImageObserverView mERCStatusImageViewInToolbar $image root.ercStatusImage $tooltip root.ercStatusMessage ;
-//
-////---------------------- Components Tab
-//  action addComponentAction ;
-//  outlet EBButton mAddComponentButton $run addComponentAction ;
-//
-//  outlet CanariNewComponentFromDevicePullDownButton mNewComponentFromDevicePullDownButton
-//    $deviceNames root.deviceNames ;
-//
-//  action duplicateSelectedComponentsAction ;
-//  outlet EBButton mDuplicateSelectedComponentsActionButton
-//    $run duplicateSelectedComponentsAction
-//    $enabled #componentController.selectedArray.count > 0
-//  ;
-//
-//  action removeSelectedComponentsAction ;
-//  outlet EBButton mRemoveSelectedComponentsActionButton
-//    $run removeSelectedComponentsAction
-//    $enabled #componentController.selectedArray.count > 0
-//  ;
-//
-//  action changePackageOfSelectedComponentsAction ;
-//  transient Bool canChangePackage dependsFrom #componentController.selectedArray.all.availablePackages ;
-//  outlet EBButton mChangePackageOfSelectedComponentsActionButton
-//    $run changePackageOfSelectedComponentsAction
-//    $enabled self.canChangePackage
-//  ;
-//
-//  action changeValueOfSelectedComponentsAction ;
-//  outlet EBButton mChangeValueOfSelectedComponentsActionButton
-//    $run changeValueOfSelectedComponentsAction
-//    $enabled #componentController.selectedArray.count > 0
-//  ;
-//
-//  action revealPackageOfSelectedComponentsAction ;
-//  outlet EBButton mRevealPackageOfSelectedComponentsButton
-//    $run revealPackageOfSelectedComponentsAction
-////    $enabled (#componentController.selectedArray.count > 0) & #componentController.selectedArray.all.isPlacedInBoard
-//    $enabled #componentController.selectedArray.count > 0
-//  ;
-//
-//  outlet EBButton mRenameComponentButton $enabled #componentController.selectedArray.count == 1 ; // Action targeted in IB
+//---------------------- Components Tab
 
-//  tableViewController #componentController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mComponents {
-//     column "name" sortkey componentName EBTextObserverField $valueObserver self.componentName
-//     column "device" sortkey deviceName EBTextObserverField $valueObserver self.deviceName
-//     column "package" sortkey selectedPackageName EBTextObserverField $valueObserver self.selectedPackageName
-//     column "value" sortkey mComponentValue EBTextField $value self.mComponentValue (sendContinously : no)
-//     column "inSchematics" sortkey placementInSchematic EBTextObserverField $valueObserver self.placementInSchematic
-//     column "inBoard" sortkey componentIsPlacedInBoardString EBTextObserverField $valueObserver self.componentIsPlacedInBoardString
-//  }
-//  outlet EBTableView mComponentTableView $tableValue #componentController ;
-//
-//  transient String componentCount dependsFrom root.mComponents.count ;
-//  outlet EBTextObserverField mComponentCountTextField $valueObserver self.componentCount ;
-//
-////---------------------- Net Class Tab
+  stackView mComponentsPage hStack set (margins: 8) {
+    vStack {
+      Label (bold: yes, size : .small) { expandableWidth () set (alignment: .center) $title self.componentCount }
+      separator
+      StaticLabel (title: "Add Component from:", bold: yes, size : .small) { expandableWidth () set (alignment: .left) }
+      Button (title: "File Library…", size: .small) { expandableWidth () $run addComponentFromFileLibraryAction }
+      PullDownButton (title: "Embedded Library…", size: .small) {
+         expandableWidth () $items root.deviceNames $run addComponentFromEmbeddedLibraryAction
+      }
+      separator
+      StaticLabel (title: "On Selected Components", bold: yes, size : .small) { expandableWidth () set (alignment: .left) }
+      Button (title: "Duplicate", size: .small) {
+        expandableWidth ()
+        $run duplicateSelectedComponentsAction
+        $enabled #componentController.selectedArray.count > 0
+      }
+      Button (title: "Rename…", size: .small) {
+        expandableWidth ()
+        $run renameSelectedComponentsAction
+        $enabled #componentController.selectedArray.count == 1
+      }
+      Button (title: "Remove", size: .small) {
+        expandableWidth ()
+        $run removeSelectedComponentsAction
+        $enabled #componentController.selectedArray.count > 0
+      }
+      Button (title: "Change Package…", size: .small) {
+        expandableWidth ()
+        $run changePackageOfSelectedComponentsAction
+        $enabled self.canChangePackage
+      }
+      Button (title: "Change Value…", size: .small) {
+        expandableWidth ()
+        $run changeValueOfSelectedComponentsAction
+        $enabled #componentController.selectedArray.count > 0
+      }
+      Button (title: "Reveal in Board", size: .small) {
+        expandableWidth ()
+        $run revealPackageOfSelectedComponentsAction
+        // $enabled (#componentController.selectedArray.count == 1) & #componentController.selectedArray.all.isPlacedInBoard
+        $enabled #componentController.selectedArray.count == 1
+      }
+      separator
+      space
+    }
+    TableView (size : .regular, addControlButtons: no) { $tableValue #componentController }
+  }
+
+  transient String componentCount dependsFrom root.mComponents.count ;
+//  transient Bool selectedComponentsArePlacedInBoard dependsFrom #componentController.selectedArray.all.isPlacedInBoard ;
+  action addComponentFromFileLibraryAction ;
+  action addComponentFromEmbeddedLibraryAction ;
+  action duplicateSelectedComponentsAction ;
+  action renameSelectedComponentsAction ;
+  action removeSelectedComponentsAction ;
+  action changePackageOfSelectedComponentsAction ;
+  transient Bool canChangePackage dependsFrom #componentController.selectedArray.all.availablePackages ;
+  action changeValueOfSelectedComponentsAction ;
+  action revealPackageOfSelectedComponentsAction ;
+
+  autolayout tableViewController #componentController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mComponents {
+     column componentName (title: "Name", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+       sortkey componentName
+     column deviceName (title: "Device", minWidth: 60, maxWidth: 300, headerAlignment: .left, contentAlignment: .left)
+       sortkey deviceName
+     column selectedPackageName (title: "Package", minWidth: 60, maxWidth: 300, headerAlignment: .left, contentAlignment: .left)
+       sortkey selectedPackageName
+     editableColumn mComponentValue (title: "Value", minWidth: 60, maxWidth: 200, headerAlignment: .left, contentAlignment: .left)
+       sortkey mComponentValue
+     column placementInSchematic (title: "inSchematics", minWidth: 60, maxWidth: 200, headerAlignment: .center, contentAlignment: .center)
+       sortkey placementInSchematic
+     column componentIsPlacedInBoardString (title: "inBoard", minWidth: 60, maxWidth: 200, headerAlignment: .center, contentAlignment: .center)
+       sortkey componentIsPlacedInBoardString
+  }
+
+//---------------------- Net Class Tab
+
+  
+  stackView mLibraryPage vStack set (margins: 8) {
+  }
+  
+  stackView mSchematicPage vStack set (margins: 8) {
+  }
+  
+  stackView mNetClassesPage vStack set (margins: 8) {
+  }
+  
+  stackView mNetListPage vStack set (margins: 8) {
+  }
+  
+  stackView mBoardOutlinePage vStack set (margins: 8) {
+  }
+  
+  stackView mProductPage vStack set (margins: 8) {
+  }
+  
+  stackView mBoardContentsPage vStack set (margins: 8) {
+  }
+
 //  tableViewController #netClassController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mNetClasses {
 //    column "name" EBTextObserverField $valueObserver self.mNetClassName
 //    column "netcolor" EBTextObserverField $backColor self.mNetClassColor
@@ -217,12 +265,14 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //  ;
 //
 //
-//  tableViewController #projectDeviceController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mDevices {
+  autolayout tableViewController #projectDeviceController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mDevices {
+     column mDeviceName (title: "Name", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+       sortkey mDeviceName
 //     column "name" sortkey mDeviceName EBTextObserverField $valueObserver self.mDeviceName
 //     column "version" sortkey versionString EBTextObserverField $valueObserver self.versionString
 //     column "size" sortkey sizeString EBTextObserverField $valueObserver self.sizeString
 //     column "componentCount" sortkey deviceComponentCountString EBTextObserverField $valueObserver self.deviceComponentCountString
-//  }
+  }
 //  outlet EBTableView mDeviceLibraryTableView $tableValue #projectDeviceController ;
 //
 //  transient StringArray selectedDevicePackageNames dependsFrom #projectDeviceController.selectedArray.all.packageNames ;
@@ -680,7 +730,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //  transient String unplacedPackagesCountString dependsFrom self.unplacedPackageCount ;
 //  outlet EBTextObserverField mUnplacedPackagesCountTextField $valueObserver self.unplacedPackagesCountString ;
 //
-//  arrayController #boardObjectsController : root.mBoardObjects ;
+  arrayController #boardObjectsController : root.mBoardObjects ;
 //  
 //  transient EBShape overDisplay dependsFrom self.rastnetShape, root.boardIssues ;
 //

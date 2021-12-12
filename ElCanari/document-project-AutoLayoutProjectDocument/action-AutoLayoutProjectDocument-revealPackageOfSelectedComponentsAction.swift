@@ -10,34 +10,21 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension AutoLayoutPackageDocument {
-  @objc func programHelpAction (_ sender : NSObject?) {
+extension AutoLayoutProjectDocument {
+  @objc func revealPackageOfSelectedComponentsAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let window = self.windowForSheet {
-      let sheet = NSPanel ()
-      var mask : NSWindow.StyleMask = sheet.styleMask
-      mask.insert (.resizable)
-      sheet.styleMask = mask
-      sheet.setContentSize (NSSize (width: 600.0, height: 500.0))
-    //---
-      let vStack = AutoLayoutVerticalStackView ().set (margins: 20)
-      vStack.appendView (AutoLayoutFlexibleSpace ())
-    //--- Text
-      let textView = AutoLayoutRTFTextView (editable: false)
-      if let url = Bundle.main.url (forResource: "package-program-guide", withExtension: "rtf") {
-        _ = textView.populateWithContententsOf (url: url)
+    var componentToSelect = [BoardObject] ()
+    var r = NSRect.null
+    for component in self.componentController.selectedArray.values {
+      if let padRect = component.selectedPackagePadsRect () {
+        componentToSelect.append (component)
+        r = r.union (padRect)
       }
-      vStack.appendView (textView)
-    //--- Ok button
-      let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: sheet, isInitialFirstResponder: true)
-      vStack.appendView (okButton)
-    //---
-      sheet.contentView = AutoLayoutWindowContentView (view: vStack)
-//      if let cell = okButton.cell as? NSButtonCell {
-//        sheet.defaultButtonCell = cell
-//      }
-      window.beginSheet (sheet, completionHandler: nil)
     }
+    self.boardObjectsController.addToSelection (objects: componentToSelect)
+//    self.mBoardView?.scrollToVisible (r)
+    NSSound.beep ()
+    self.rootObject.mSelectedPageIndex = 6
 //--- END OF USER ZONE 2
   }
 }

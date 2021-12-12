@@ -21,7 +21,7 @@ func transient_ProjectRoot_deviceNames (
         for device in self_mDevices_mDeviceName {
           result.append (device.mDeviceName)
         }
-        return result
+        return result.sorted ()
 //--- END OF USER ZONE 2
 }
 

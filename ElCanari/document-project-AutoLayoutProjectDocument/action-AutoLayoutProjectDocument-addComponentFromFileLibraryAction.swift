@@ -10,34 +10,23 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension AutoLayoutPackageDocument {
-  @objc func programHelpAction (_ sender : NSObject?) {
+extension AutoLayoutProjectDocument {
+  @objc func addComponentFromFileLibraryAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let window = self.windowForSheet {
-      let sheet = NSPanel ()
-      var mask : NSWindow.StyleMask = sheet.styleMask
-      mask.insert (.resizable)
-      sheet.styleMask = mask
-      sheet.setContentSize (NSSize (width: 600.0, height: 500.0))
-    //---
-      let vStack = AutoLayoutVerticalStackView ().set (margins: 20)
-      vStack.appendView (AutoLayoutFlexibleSpace ())
-    //--- Text
-      let textView = AutoLayoutRTFTextView (editable: false)
-      if let url = Bundle.main.url (forResource: "package-program-guide", withExtension: "rtf") {
-        _ = textView.populateWithContententsOf (url: url)
-      }
-      vStack.appendView (textView)
-    //--- Ok button
-      let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: sheet, isInitialFirstResponder: true)
-      vStack.appendView (okButton)
-    //---
-      sheet.contentView = AutoLayoutWindowContentView (view: vStack)
-//      if let cell = okButton.cell as? NSButtonCell {
-//        sheet.defaultButtonCell = cell
-//      }
-      window.beginSheet (sheet, completionHandler: nil)
-    }
+        if self.rootObject.mFonts.count == 0 {
+          let alert = NSAlert ()
+          alert.messageText = "Cannot Currently Add a Component: first, you need to add a Font."
+          alert.informativeText = "This project does not embed any font. A font is needed for displaying component name and value in board."
+          alert.addButton (withTitle: "Add Font")
+          alert.addButton (withTitle: "Cancel")
+          alert.beginSheetModal (for: self.windowForSheet!) {(inReturnCode : NSApplication.ModalResponse) in
+            if (inReturnCode == .alertFirstButtonReturn) {
+              self.addFont (postAction: self.addComponentDialog)
+            }
+          }
+        }else{
+          self.addComponentDialog ()
+        }
 //--- END OF USER ZONE 2
   }
 }

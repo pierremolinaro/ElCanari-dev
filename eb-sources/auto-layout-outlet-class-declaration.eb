@@ -163,8 +163,10 @@ extern autolayout class TextField (width: Int, size: EBControlSize) $enabled {
 extern autolayout class HelpButton (size: EBControlSize) $enabled $run {
 }
 
-extern autolayout class PullDownButton (title: String, size: EBControlSize) {
+extern autolayout class PullDownButton (title: String, size: EBControlSize) $run {
+  func expandableWidth ()
   func add (item: menuItem)
+  $items transient StringArray
 }
 
 extern autolayout class GraphicView (minZoom : Int, maxZoom : Int) $graphicController $hidden {
