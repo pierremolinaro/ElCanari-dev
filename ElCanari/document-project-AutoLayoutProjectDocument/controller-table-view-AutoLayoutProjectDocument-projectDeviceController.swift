@@ -192,7 +192,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
       },
       title: "Name",
       minWidth: 60,
-      maxWidth: 150,
+      maxWidth: 600,
       headerAlignment: .left,
       contentAlignment: .left
     )

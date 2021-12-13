@@ -287,6 +287,8 @@ extern autolayout class StaticImageView (name: String) {
 }
 
 extern autolayout class TableView (size: EBControlSize, addControlButtons: Bool) $tableValue {
+  func set (width: Int)
+  func set (height: Int)
   func noHeaderView ()
 }
 
@@ -353,18 +355,26 @@ extern autolayout class ElCanariDragSourceTableView {
 }
 
 extern autolayout class CanariProjectPinPadAssignmentTableView (size: EBControlSize) {
+  func set (width: Int)
+  func set (height: Int)
   $array transient ThreeStringArray
 }
 
 extern autolayout class CanariProjectDeviceSymbolTypeAndNameTableView (size: EBControlSize) {
+  func set (width: Int)
+  func set (height: Int)
   $array transient TwoStringArray
 }
 
 extern autolayout class CanariProjectDevicePackageTableView (size: EBControlSize) {
+  func set (width: Int)
+  func set (height: Int)
   $array transient StringArray
 }
 
 extern autolayout class CanariProjectDeviceTableView (size: EBControlSize) {
+  func set (width: Int)
+  func set (height: Int)
   $array transient StringArray
 }
 

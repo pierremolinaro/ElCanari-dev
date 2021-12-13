@@ -26,37 +26,6 @@ class AutoLayoutHorizontalSplitView : AutoLayoutAbstractSplitView {
 
   //····················································································································
 
-  override func draw (_ inDirtyRect : NSRect) {
-    NSColor.orange.setFill ()
-    NSBezierPath.fill (inDirtyRect)
-    super.draw (inDirtyRect)
-  }
-
-  //····················································································································
-
-  fileprivate var mConstraints = [NSLayoutConstraint] ()
-  
-  override func updateConstraints () {
-    self.removeConstraints (self.mConstraints)
-    self.mConstraints.removeAll ()
-//    if let s = self.superview {
-//      let c = NSLayoutConstraint (item: s, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0)
-//      self.mConstraints.append (c)
-//    }
-    if let firstView = self.subviews.first {
-      let c = NSLayoutConstraint (item: firstView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0)
-      self.mConstraints.append (c)
-    }
-    if let lastView = self.subviews.last {
-      let c = NSLayoutConstraint (item: lastView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0)
-      self.mConstraints.append (c)
-    }
-    self.addConstraints (self.mConstraints)
-    super.updateConstraints ()
-  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

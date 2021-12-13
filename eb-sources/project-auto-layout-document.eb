@@ -138,7 +138,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 
 //---------------------- Library Tab
 
-  
   stackView mLibraryPage vStack set (margins: 8) {
     hStack {
       Button (title: "Remove Embedded Devices", size: .regular) {
@@ -158,79 +157,98 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       }
       space   
     }
-    TabView (size: .regular) {
-      addTab (title: "Devices", contents: vStack set (margins: 8) {
-        hStack {
-          Button (title: "Edit Selected Device", size: .regular) {
-            $run editSelectedDeviceAction
-            $enabled #projectDeviceController.selectedArray.count > 0
+    hStack {
+      space
+      SegmentedControlWithPages (documentView: stackView mLibraryContentView, equalWidth: no, size : .regular) {
+        addPage (title: "Devices", tooltip: "", pageView: stackView mDevicesInLibraryPage)
+        addPage (title: "Fonts", tooltip: "", pageView: stackView mFontsInLibraryPage)
+      }
+      space
+    }
+    stackViewRef mLibraryContentView
+  }
+  
+  stackView mLibraryContentView vStack { }
+  
+  stackView mDevicesInLibraryPage vStack set (margins: 8) {
+     hStack {
+      Button (title: "Edit Selected Device", size: .regular) {
+        $run editSelectedDeviceAction
+        $enabled #projectDeviceController.selectedArray.count > 0
+      }
+      Button (title: "Reset Selected Device Version", size: .regular) {
+        $run resetSelectedDeviceVersionAction
+        $enabled #projectDeviceController.selectedArray.count > 0
+      }
+      Button (title: "Remove Selected Device", size: .regular) {
+        $run removeSelectedDeviceAction
+        $enabled self.canRemoveSelectedDevices
+      }
+      Button (title: "Export Selected Device", size: .regular) {
+        $run exportSelectedDeviceAction
+        $enabled #projectDeviceController.selectedArray.count > 0
+      }
+      Button (title: "Update Selected Device…", size: .regular) {
+        $run updateSelectedDeviceAction
+        $enabled #projectDeviceController.selectedArray.count > 0
+      }
+      space
+    }
+    hSplit { // hSplit
+      TableView (size : .regular, addControlButtons: no) {
+        set (width: 400)
+        $tableValue #projectDeviceController
+      }
+      vStack {
+        hStack { space StaticLabel (title: "Selected Device", bold: no, size: .regular) space }
+        hSplit {  // hSplit
+          CanariProjectDeviceTableView (size : .regular) {
+            set (width: 150)
+            $array self.selectedDeviceNames
           }
-          Button (title: "Reset Selected Device Version", size: .regular) {
-            $run resetSelectedDeviceVersionAction
-            $enabled #projectDeviceController.selectedArray.count > 0
-          }
-          Button (title: "Remove Selected Device", size: .regular) {
-            $run removeSelectedDeviceAction
-            $enabled self.canRemoveSelectedDevices
-          }
-          Button (title: "Export Selected Device", size: .regular) {
-            $run exportSelectedDeviceAction
-            $enabled #projectDeviceController.selectedArray.count > 0
-          }
-          Button (title: "Update Selected Device…", size: .regular) {
-            $run updateSelectedDeviceAction
-            $enabled #projectDeviceController.selectedArray.count > 0
-          }
-          space
-        }
-        hSplit { // hSplit
-          TableView (size : .regular, addControlButtons: no) { $tableValue #projectDeviceController }
-          vStack {
-            hStack { space StaticLabel (title: "Selected Device", bold: no, size: .regular) space }
-            hSplit {  // hSplit
-              CanariProjectDeviceTableView (size : .regular) {
-                $array self.selectedDeviceNames
-              }
-              vSplit { // vSplit
-                CanariProjectDeviceSymbolTypeAndNameTableView (size : .regular) {
-                  $array self.selectedDeviceSymbolNames
-                }
-                CanariProjectDevicePackageTableView (size : .regular) {
-                  $array self.selectedDevicePackageNames
-                }
-              }
-              CanariProjectPinPadAssignmentTableView (size : .regular) {
-                $array self.pinPadAssignments
-              }
+          vSplit { // vSplit
+            CanariProjectDeviceSymbolTypeAndNameTableView (size : .regular) {
+              set (width: 250)
+              set (height: 200)
+              $array self.selectedDeviceSymbolNames
+            }
+            CanariProjectDevicePackageTableView (size : .regular) {
+              set (height: 200)
+              $array self.selectedDevicePackageNames
             }
           }
+          CanariProjectPinPadAssignmentTableView (size : .regular) {
+            set (width: 200)
+            $array self.pinPadAssignments
+          }
         }
-      })
-      addTab (title: "Fonts", contents: vStack set (margins: 8) {
-        hStack {
-          Button (title: "Add Font…", size: .regular) { $run addFontAction }
-          Button (title: "Edit Selected Font", size: .regular) {
-            $run editFontAction
-            $enabled #projectFontController.selectedArray.count > 0
-          }
-          Button (title: "Reset Selected Font Version", size: .regular) {
-            $run resetFontVersionAction
-            $enabled #projectFontController.selectedArray.count > 0
-          }
-          Button (title: "Update Selected Fonts", size: .regular) {
-            $run updateFontAction
-            $enabled #projectFontController.selectedArray.count > 0
-          }
-          Button (title: "Remove Selected Font", size: .regular) {
-            $run removeFontAction
-            $enabled #projectFontController.selectedArray.count > 0 & self.canRemoveSelectedFonts
-          }
-          space
-        }
-        TableView (size : .regular, addControlButtons: no) { $tableValue #projectFontController }
-      })
+      }
     }
- }
+  }
+
+  stackView mFontsInLibraryPage vStack set (margins: 8) {
+    hStack {
+      Button (title: "Add Font…", size: .regular) { $run addFontAction }
+      Button (title: "Edit Selected Font", size: .regular) {
+        $run editFontAction
+        $enabled #projectFontController.selectedArray.count > 0
+      }
+      Button (title: "Reset Selected Font Version", size: .regular) {
+        $run resetFontVersionAction
+        $enabled #projectFontController.selectedArray.count > 0
+      }
+      Button (title: "Update Selected Fonts", size: .regular) {
+        $run updateFontAction
+        $enabled #projectFontController.selectedArray.count > 0
+      }
+      Button (title: "Remove Selected Font", size: .regular) {
+        $run removeFontAction
+        $enabled #projectFontController.selectedArray.count > 0 & self.canRemoveSelectedFonts
+      }
+      space
+    }
+    TableView (size : .regular, addControlButtons: no) { $tableValue #projectFontController }
+  }
  
   action removeEmbeddedDevicesAction ;
   action resetDevicesAndFontsVersionAction ;
@@ -273,7 +291,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   }
 
   autolayout tableViewController #projectDeviceController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mDevices {
-     column mDeviceName (title: "Name", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+     column mDeviceName (title: "Name", minWidth: 60, maxWidth: 600, headerAlignment: .left, contentAlignment: .left)
        sortkey mDeviceName
      column versionString (title: "Version", minWidth: 60, maxWidth: 150, headerAlignment: .center, contentAlignment: .center)
        sortkey versionString
@@ -281,33 +299,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
        sortkey sizeString
     column deviceComponentCountString (title: "Components", minWidth: 60, maxWidth: 150, headerAlignment: .center, contentAlignment: .center)
        sortkey deviceComponentCountString
-  }
-
-//  selectionController DeviceInProject #mDeviceSelectionController : #projectDeviceController.selectedArray ;
-
-//  autolayout tableViewController #padSymbolPinController (allowsEmptySelection:yes, allowsMultipleSelection:yes)
-//  #mDeviceSelectionController.mPadAssignments {
-//     column mDeviceName (title: "Name", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
-//       sortkey mDeviceName
-//     column versionString (title: "Version", minWidth: 60, maxWidth: 150, headerAlignment: .center, contentAlignment: .center)
-//       sortkey versionString
-//    column sizeString (title: "Size", minWidth: 60, maxWidth: 150, headerAlignment: .center, contentAlignment: .center)
-//       sortkey sizeString
-//    column deviceComponentCountString (title: "Components", minWidth: 60, maxWidth: 150, headerAlignment: .center, contentAlignment: .center)
-//       sortkey deviceComponentCountString
-//  }
-//
-//  transient DeviceSymbolDictionary selectedDeviceSymbols
-//    dependsFrom #projectDeviceController.selectedArray.all.deviceSymbolDictionary
-//  ;
-//  outlet DeviceSymbolTypesTableView mDeviceSymbolTypeTableView $symbolDictionary self.selectedDeviceSymbols ;
-//
-//  outlet StringArrayTableView mDeviceSymbolTypePinsTableView ; // Binding by mDeviceSymbolTypeTableView
-//
-//  transient TwoStringArray selectedDeviceSymbolNames dependsFrom
-//    #projectDeviceController.selectedArray.all.symbolAndTypesNames ;
-//  outlet TwoStringArrayTableView mDeviceSymbolTableView $array self.selectedDeviceSymbolNames ;
- 
+  } 
 
 //---------------------- Net Class Tab
   

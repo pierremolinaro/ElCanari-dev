@@ -495,9 +495,179 @@ import Cocoa
       view_0.appendView (view_0_3)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTabView (size: .regular)
-      .addTab (title: "Devices", contents: self.computeImplicitView_0 ())
-      .addTab (title: "Fonts", contents: self.computeImplicitView_1 ())
+    let view_1 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_1_0 = AutoLayoutFlexibleSpace ()
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutSegmentedControlWithPages (documentView: self.mLibraryContentView, equalWidth: false, size: .regular)
+        .addPage (title: "Devices", tooltip: "", pageView: self.mDevicesInLibraryPage)
+        .addPage (title: "Fonts", tooltip: "", pageView: self.mFontsInLibraryPage)
+      view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutFlexibleSpace ()
+      view_1.appendView (view_1_2)
+    }
+    vStackView.appendView (view_1)
+    let view_2 = mLibraryContentView
+    vStackView.appendView (view_2)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mLibraryContentView
+  //····················································································································
+
+  lazy var mLibraryContentView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mDevicesInLibraryPage
+  //····················································································································
+
+  lazy var mDevicesInLibraryPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutButton (title: "Edit Selected Device", size: .regular)
+        .bind_enabled (.intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.editSelectedDeviceAction (_:))
+        )
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutButton (title: "Reset Selected Device Version", size: .regular)
+        .bind_enabled (.intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.resetSelectedDeviceVersionAction (_:))
+        )
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutButton (title: "Remove Selected Device", size: .regular)
+        .bind_enabled (.id (self.canRemoveSelectedDevices_property))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.removeSelectedDeviceAction (_:))
+        )
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutButton (title: "Export Selected Device", size: .regular)
+        .bind_enabled (.intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.exportSelectedDeviceAction (_:))
+        )
+      view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutButton (title: "Update Selected Device…", size: .regular)
+        .bind_enabled (.intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.updateSelectedDeviceAction (_:))
+        )
+      view_0.appendView (view_0_4)
+      let view_0_5 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_5)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalSplitView ()
+    do{
+      let view_1_0 = AutoLayoutTableView (size: .regular, addControlButtons: false)
+        .set (width: 400)
+      self.projectDeviceController.bind_tableView (view_1_0)
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutVerticalStackView ()
+      do{
+        let view_1_1_0 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_1_1_0_0 = AutoLayoutFlexibleSpace ()
+          view_1_1_0.appendView (view_1_1_0_0)
+          let view_1_1_0_1 = AutoLayoutStaticLabel (title: "Selected Device", bold: false, size: .regular)
+          view_1_1_0.appendView (view_1_1_0_1)
+          let view_1_1_0_2 = AutoLayoutFlexibleSpace ()
+          view_1_1_0.appendView (view_1_1_0_2)
+        }
+        view_1_1.appendView (view_1_1_0)
+        let view_1_1_1 = AutoLayoutHorizontalSplitView ()
+        do{
+          let view_1_1_1_0 = AutoLayoutCanariProjectDeviceTableView (size: .regular)
+            .set (width: 150)
+            .bind_array (self.selectedDeviceNames_property)
+          view_1_1_1.appendView (view_1_1_1_0)
+          let view_1_1_1_1 = AutoLayoutVerticalSplitView ()
+          do{
+            let view_1_1_1_1_0 = AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView (size: .regular)
+              .set (width: 250)
+              .set (height: 200)
+              .bind_array (self.selectedDeviceSymbolNames_property)
+            view_1_1_1_1.appendView (view_1_1_1_1_0)
+            let view_1_1_1_1_1 = AutoLayoutCanariProjectDevicePackageTableView (size: .regular)
+              .set (height: 200)
+              .bind_array (self.selectedDevicePackageNames_property)
+            view_1_1_1_1.appendView (view_1_1_1_1_1)
+          }
+          view_1_1_1.appendView (view_1_1_1_1)
+          let view_1_1_1_2 = AutoLayoutCanariProjectPinPadAssignmentTableView (size: .regular)
+            .set (width: 200)
+            .bind_array (self.pinPadAssignments_property)
+          view_1_1_1.appendView (view_1_1_1_2)
+        }
+        view_1_1.appendView (view_1_1_1)
+      }
+      view_1.appendView (view_1_1)
+    }
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mFontsInLibraryPage
+  //····················································································································
+
+  lazy var mFontsInLibraryPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutButton (title: "Add Font…", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.addFontAction (_:))
+        )
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutButton (title: "Edit Selected Font", size: .regular)
+        .bind_enabled (.intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.editFontAction (_:))
+        )
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutButton (title: "Reset Selected Font Version", size: .regular)
+        .bind_enabled (.intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.resetFontVersionAction (_:))
+        )
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutButton (title: "Update Selected Fonts", size: .regular)
+        .bind_enabled (.intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.updateFontAction (_:))
+        )
+      view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutButton (title: "Remove Selected Font", size: .regular)
+        .bind_enabled (.boolcmp (.intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .id (self.canRemoveSelectedFonts_property)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.removeFontAction (_:))
+        )
+      view_0.appendView (view_0_4)
+      let view_0_5 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_5)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
+    self.projectFontController.bind_tableView (view_1)
     vStackView.appendView (view_1)
     return vStackView
   } ()
@@ -561,155 +731,6 @@ import Cocoa
       .set (margins: 8)
     return vStackView
   } ()
-
-  //····················································································································
-  //    IMPLICIT VIEW 0
-  //····················································································································
-
-  fileprivate final func computeImplicitView_0 () -> NSView {
-    let view = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
-    do{
-      let view_0 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_0_0 = AutoLayoutButton (title: "Edit Selected Device", size: .regular)
-          .bind_enabled (.intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.editSelectedDeviceAction (_:))
-          )
-        view_0.appendView (view_0_0)
-        let view_0_1 = AutoLayoutButton (title: "Reset Selected Device Version", size: .regular)
-          .bind_enabled (.intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.resetSelectedDeviceVersionAction (_:))
-          )
-        view_0.appendView (view_0_1)
-        let view_0_2 = AutoLayoutButton (title: "Remove Selected Device", size: .regular)
-          .bind_enabled (.id (self.canRemoveSelectedDevices_property))
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.removeSelectedDeviceAction (_:))
-          )
-        view_0.appendView (view_0_2)
-        let view_0_3 = AutoLayoutButton (title: "Export Selected Device", size: .regular)
-          .bind_enabled (.intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.exportSelectedDeviceAction (_:))
-          )
-        view_0.appendView (view_0_3)
-        let view_0_4 = AutoLayoutButton (title: "Update Selected Device…", size: .regular)
-          .bind_enabled (.intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.updateSelectedDeviceAction (_:))
-          )
-        view_0.appendView (view_0_4)
-        let view_0_5 = AutoLayoutFlexibleSpace ()
-        view_0.appendView (view_0_5)
-      }
-      view.appendView (view_0)
-      let view_1 = AutoLayoutHorizontalSplitView ()
-      do{
-        let view_1_0 = AutoLayoutTableView (size: .regular, addControlButtons: false)
-        self.projectDeviceController.bind_tableView (view_1_0)
-        view_1.appendView (view_1_0)
-        let view_1_1 = AutoLayoutVerticalStackView ()
-        do{
-          let view_1_1_0 = AutoLayoutHorizontalStackView ()
-          do{
-            let view_1_1_0_0 = AutoLayoutFlexibleSpace ()
-            view_1_1_0.appendView (view_1_1_0_0)
-            let view_1_1_0_1 = AutoLayoutStaticLabel (title: "Selected Device", bold: false, size: .regular)
-            view_1_1_0.appendView (view_1_1_0_1)
-            let view_1_1_0_2 = AutoLayoutFlexibleSpace ()
-            view_1_1_0.appendView (view_1_1_0_2)
-          }
-          view_1_1.appendView (view_1_1_0)
-          let view_1_1_1 = AutoLayoutHorizontalSplitView ()
-          do{
-            let view_1_1_1_0 = AutoLayoutCanariProjectDeviceTableView (size: .regular)
-              .bind_array (self.selectedDeviceNames_property)
-            view_1_1_1.appendView (view_1_1_1_0)
-            let view_1_1_1_1 = AutoLayoutVerticalSplitView ()
-            do{
-              let view_1_1_1_1_0 = AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView (size: .regular)
-                .bind_array (self.selectedDeviceSymbolNames_property)
-              view_1_1_1_1.appendView (view_1_1_1_1_0)
-              let view_1_1_1_1_1 = AutoLayoutCanariProjectDevicePackageTableView (size: .regular)
-                .bind_array (self.selectedDevicePackageNames_property)
-              view_1_1_1_1.appendView (view_1_1_1_1_1)
-            }
-            view_1_1_1.appendView (view_1_1_1_1)
-            let view_1_1_1_2 = AutoLayoutCanariProjectPinPadAssignmentTableView (size: .regular)
-              .bind_array (self.pinPadAssignments_property)
-            view_1_1_1.appendView (view_1_1_1_2)
-          }
-          view_1_1.appendView (view_1_1_1)
-        }
-        view_1.appendView (view_1_1)
-      }
-      view.appendView (view_1)
-    }
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 1
-  //····················································································································
-
-  fileprivate final func computeImplicitView_1 () -> NSView {
-    let view = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
-    do{
-      let view_0 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_0_0 = AutoLayoutButton (title: "Add Font…", size: .regular)
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.addFontAction (_:))
-          )
-        view_0.appendView (view_0_0)
-        let view_0_1 = AutoLayoutButton (title: "Edit Selected Font", size: .regular)
-          .bind_enabled (.intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.editFontAction (_:))
-          )
-        view_0.appendView (view_0_1)
-        let view_0_2 = AutoLayoutButton (title: "Reset Selected Font Version", size: .regular)
-          .bind_enabled (.intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.resetFontVersionAction (_:))
-          )
-        view_0.appendView (view_0_2)
-        let view_0_3 = AutoLayoutButton (title: "Update Selected Fonts", size: .regular)
-          .bind_enabled (.intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.updateFontAction (_:))
-          )
-        view_0.appendView (view_0_3)
-        let view_0_4 = AutoLayoutButton (title: "Remove Selected Font", size: .regular)
-          .bind_enabled (.boolcmp (.intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .id (self.canRemoveSelectedFonts_property)))
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.removeFontAction (_:))
-          )
-        view_0.appendView (view_0_4)
-        let view_0_5 = AutoLayoutFlexibleSpace ()
-        view_0.appendView (view_0_5)
-      }
-      view.appendView (view_0)
-      let view_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
-      self.projectFontController.bind_tableView (view_1)
-      view.appendView (view_1)
-    }
-    return view
-  }
 
   //····················································································································
   //    Build User Interface
@@ -997,6 +1018,9 @@ import Cocoa
     self.mDocumentMainView.ebCleanUp ()
     self.mComponentsPage.ebCleanUp ()
     self.mLibraryPage.ebCleanUp ()
+    self.mLibraryContentView.ebCleanUp ()
+    self.mDevicesInLibraryPage.ebCleanUp ()
+    self.mFontsInLibraryPage.ebCleanUp ()
     self.mSchematicPage.ebCleanUp ()
     self.mNetClassesPage.ebCleanUp ()
     self.mNetListPage.ebCleanUp ()

@@ -35,7 +35,7 @@ final class AutoLayoutCanariProjectDevicePackageTableView : AutoLayoutTableView,
       },
       title: "Packages",
       minWidth: 30,
-      maxWidth: 200,
+      maxWidth: 300,
       headerAlignment: .center,
       contentAlignment: .right
     )

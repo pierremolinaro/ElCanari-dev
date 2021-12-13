@@ -73,12 +73,21 @@ class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
   // SET WIDTH
   //····················································································································
 
-  private var mWidth = NSView.noIntrinsicMetric
+  private var mWidth : CGFloat? = nil
+  private var mHeight : CGFloat? = nil
 
   //····················································································································
 
   final func set (width inWidth : Int) -> Self {
     self.mWidth = CGFloat (inWidth)
+    self.needsUpdateConstraints = true
+    return self
+  }
+
+  //····················································································································
+
+  final func set (height inHeight : Int) -> Self {
+    self.mHeight = CGFloat (inHeight)
     self.needsUpdateConstraints = true
     return self
   }
@@ -113,7 +122,14 @@ class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
   //····················································································································
 
   override var intrinsicContentSize : NSSize {
-    return NSSize (width: self.mWidth, height: NSView.noIntrinsicMetric)
+    var s = super.intrinsicContentSize
+    if let w = self.mWidth {
+      s.width = w
+    }
+    if let h = self.mHeight {
+      s.height = h
+    }
+    return s
   }
 
   //····················································································································

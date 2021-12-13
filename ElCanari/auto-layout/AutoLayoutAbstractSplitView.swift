@@ -24,8 +24,6 @@ class AutoLayoutAbstractSplitView : NSSplitView, EBUserClassNameProtocol {
     self.translatesAutoresizingMaskIntoConstraints = false
 
     self.isVertical = inFlag
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
   }
 
   //····················································································································

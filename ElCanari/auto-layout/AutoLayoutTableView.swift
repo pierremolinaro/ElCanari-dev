@@ -89,6 +89,20 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     super.autoLayoutCleanUp ()
   }
 
+//  //····················································································································
+//
+//  func set (width inWidth : Int) -> Self {
+//    self.mTableView.set (width: inWidth)
+//    return self
+//  }
+//
+  //····················································································································
+
+//  func set (height inHeight : Int) -> Self {
+//    self.mTableView.set (height: inHeight)
+//    return self
+//  }
+
   //····················································································································
   //  Configure table view
   //····················································································································
@@ -355,6 +369,8 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
 
   private var mDragConcludeCallBack : Optional < ([URL]) -> Void > = nil
   private var mDragFilterCallBack : Optional < ([URL]) -> Bool > = nil
+  private var mWidth : CGFloat? = nil
+  private var mHeight : CGFloat? = nil
 
   //····················································································································
   // INIT
@@ -366,7 +382,6 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
     self.translatesAutoresizingMaskIntoConstraints = false
 
     self.controlSize = inSize.cocoaControlSize
-  //  self.setContentCompressionResistancePriority (.required, for: .horizontal)
   }
 
   //····················································································································
@@ -383,9 +398,26 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
 
   //····················································································································
 
+  func set (width inWidth : Int) {
+    self.mWidth = CGFloat (inWidth)
+  }
+
+  //····················································································································
+
+  func set (height inHeight : Int) {
+    self.mHeight = CGFloat (inHeight)
+  }
+
+  //····················································································································
+
   override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
-    s.width = 100.0
+    if let w = self.mWidth {
+      s.width = w
+    }
+    if let h = self.mHeight {
+      s.height = h
+    }
     return s
   }
 
