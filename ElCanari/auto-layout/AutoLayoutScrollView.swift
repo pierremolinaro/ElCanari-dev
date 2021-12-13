@@ -1,8 +1,8 @@
 //
-//  AutoLayoutHorizontalSplitView.swift
+//  AutoLayoutScrollView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 30/06/2021.
+//  Created by Pierre Molinaro on 12/12/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -10,49 +10,35 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutHorizontalSplitView : AutoLayoutAbstractSplitView {
+class AutoLayoutScrollView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
   init () {
-    super.init (dividersAreVertical: true)
+    super.init (frame: NSRect (x: 0, y: 0, width: 10, height: 10))
+    self.translatesAutoresizingMaskIntoConstraints = false
+    noteObjectAllocation (self)
+
+    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
   }
 
   //····················································································································
 
-  required init? (coder : NSCoder) {
+  required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
 
-  override func draw (_ inDirtyRect : NSRect) {
-    NSColor.orange.setFill ()
-    NSBezierPath.fill (inDirtyRect)
-    super.draw (inDirtyRect)
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································
 
-  fileprivate var mConstraints = [NSLayoutConstraint] ()
-  
-  override func updateConstraints () {
-    self.removeConstraints (self.mConstraints)
-    self.mConstraints.removeAll ()
-//    if let s = self.superview {
-//      let c = NSLayoutConstraint (item: s, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0)
-//      self.mConstraints.append (c)
-//    }
-    if let firstView = self.subviews.first {
-      let c = NSLayoutConstraint (item: firstView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0)
-      self.mConstraints.append (c)
-    }
-    if let lastView = self.subviews.last {
-      let c = NSLayoutConstraint (item: lastView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0)
-      self.mConstraints.append (c)
-    }
-    self.addConstraints (self.mConstraints)
-    super.updateConstraints ()
+  override var intrinsicContentSize : NSSize {
+    return NSSize (width: 100, height: 100)
   }
 
   //····················································································································

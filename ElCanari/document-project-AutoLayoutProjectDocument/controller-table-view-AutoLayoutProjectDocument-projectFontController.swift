@@ -5,17 +5,17 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Auto Layout Table View Controller AutoLayoutProjectDocument projectDeviceController
+//    Auto Layout Table View Controller AutoLayoutProjectDocument projectFontController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutProjectDocument_projectFontController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //    Constant properties
   //····················································································································
 
-  private let allowsEmptySelection = true
-  private let allowsMultipleSelection = true
+  private let allowsEmptySelection = false
+  private let allowsMultipleSelection = false
 
   //····················································································································
   //    Undo manager
@@ -28,21 +28,21 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
   //   Sorted Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_DeviceInProject ()
+  let sortedArray_property = TransientArrayOf_FontInProject ()
 
   //····················································································································
 
-  private var mSortDescriptorArray = [(DeviceInProject, DeviceInProject) -> ComparisonResult] ()
+  private var mSortDescriptorArray = [(FontInProject, FontInProject) -> ComparisonResult] ()
 
   //····················································································································
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_DeviceInProject? = nil
+  private var mModel : ReadWriteArrayOf_FontInProject? = nil
 
   //····················································································································
 
-  var objects : EBReferenceArray <DeviceInProject> {
+  var objects : EBReferenceArray <FontInProject> {
     if let objects = self.mModel?.propval {
       return objects
     }else{
@@ -52,22 +52,26 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
 
   //····················································································································
 
-  final func bind_model (_ inModel : ReadWriteArrayOf_DeviceInProject, _ inUndoManager : EBUndoManager) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_FontInProject, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (
       inModel,
       sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
       addSortObserversCallback: { (observer) in
-        inModel.addEBObserverOf_deviceComponentCountString (observer)
-        inModel.addEBObserverOf_mDeviceName (observer)
+        inModel.addEBObserverOf_componentNamesCount (observer)
+        inModel.addEBObserverOf_componentValuesCount (observer)
+        inModel.addEBObserverOf_mFontName (observer)
         inModel.addEBObserverOf_sizeString (observer)
+        inModel.addEBObserverOf_textCount (observer)
         inModel.addEBObserverOf_versionString (observer)
       },
       removeSortObserversCallback: {(observer) in
-        inModel.removeEBObserverOf_deviceComponentCountString (observer)
-        inModel.removeEBObserverOf_mDeviceName (observer)
+        inModel.removeEBObserverOf_componentNamesCount (observer)
+        inModel.removeEBObserverOf_componentValuesCount (observer)
+        inModel.removeEBObserverOf_mFontName (observer)
         inModel.removeEBObserverOf_sizeString (observer)
+        inModel.removeEBObserverOf_textCount (observer)
         inModel.removeEBObserverOf_versionString (observer)
       }
     )
@@ -75,7 +79,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
 
   //····················································································································
 
-  final func isOrderedBefore (_ left : DeviceInProject, _ right : DeviceInProject) -> Bool {
+  final func isOrderedBefore (_ left : FontInProject, _ right : FontInProject) -> Bool {
     var order = ComparisonResult.orderedSame
     for sortDescriptor in self.mSortDescriptorArray.reversed () {
       order = sortDescriptor (left, right)
@@ -98,19 +102,19 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_DeviceInProject ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_FontInProject ()
 
   //····················································································································
 
-  var selectedArray_property : ReadOnlyArrayOf_DeviceInProject { return self.mInternalSelectedArrayProperty }
+  var selectedArray_property : ReadOnlyArrayOf_FontInProject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································
 
-  var selectedArray : EBReferenceArray <DeviceInProject> { return self.selectedArray_property.propval }
+  var selectedArray : EBReferenceArray <FontInProject> { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedSet : EBReferenceSet <DeviceInProject> { return EBReferenceSet (self.selectedArray_property.propval.values) }
+  var selectedSet : EBReferenceSet <FontInProject> { return EBReferenceSet (self.selectedArray_property.propval.values) }
 
   //····················································································································
 
@@ -131,7 +135,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
 
   //····················································································································
 
-  func setSelection (_ inObjects : [DeviceInProject]) {
+  func setSelection (_ inObjects : [FontInProject]) {
     self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObjects))
   }
 
@@ -153,14 +157,18 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
   override init () {
     super.init ()
     self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
-  //--- Observe 'mDeviceName' column
-    self.sortedArray_property.addEBObserverOf_mDeviceName (self.mSortedArrayValuesObserver)
+  //--- Observe 'mFontName' column
+    self.sortedArray_property.addEBObserverOf_mFontName (self.mSortedArrayValuesObserver)
   //--- Observe 'versionString' column
     self.sortedArray_property.addEBObserverOf_versionString (self.mSortedArrayValuesObserver)
   //--- Observe 'sizeString' column
     self.sortedArray_property.addEBObserverOf_sizeString (self.mSortedArrayValuesObserver)
-  //--- Observe 'deviceComponentCountString' column
-    self.sortedArray_property.addEBObserverOf_deviceComponentCountString (self.mSortedArrayValuesObserver)
+  //--- Observe 'textCount' column
+    self.sortedArray_property.addEBObserverOf_textCount (self.mSortedArrayValuesObserver)
+  //--- Observe 'componentNamesCount' column
+    self.sortedArray_property.addEBObserverOf_componentNamesCount (self.mSortedArrayValuesObserver)
+  //--- Observe 'componentValuesCount' column
+    self.sortedArray_property.addEBObserverOf_componentValuesCount (self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {
@@ -183,16 +191,16 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
       allowsMultipleSelection: allowsMultipleSelection,
       delegate: self
     )
-  //--- Configure 'mDeviceName' column
+  //--- Configure 'mFontName' column
     inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mDeviceName },
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mFontName },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
-        self?.mSortDescriptorArray.append ({ (_ left : DeviceInProject, _ right : DeviceInProject) in return compare_String_properties (left.mDeviceName_property, ascending, right.mDeviceName_property) })
+        self?.mSortDescriptorArray.append ({ (_ left : FontInProject, _ right : FontInProject) in return compare_String_properties (left.mFontName_property, ascending, right.mFontName_property) })
       },
-      title: "Name",
+      title: "Font Name",
       minWidth: 60,
-      maxWidth: 150,
+      maxWidth: 550,
       headerAlignment: .left,
       contentAlignment: .left
     )
@@ -201,11 +209,11 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
       valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].versionString },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
-        self?.mSortDescriptorArray.append ({ (_ left : DeviceInProject, _ right : DeviceInProject) in return compare_String_properties (left.versionString_property, ascending, right.versionString_property) })
+        self?.mSortDescriptorArray.append ({ (_ left : FontInProject, _ right : FontInProject) in return compare_String_properties (left.versionString_property, ascending, right.versionString_property) })
       },
       title: "Version",
       minWidth: 60,
-      maxWidth: 150,
+      maxWidth: 100,
       headerAlignment: .center,
       contentAlignment: .center
     )
@@ -214,7 +222,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
       valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].sizeString },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
-        self?.mSortDescriptorArray.append ({ (_ left : DeviceInProject, _ right : DeviceInProject) in return compare_String_properties (left.sizeString_property, ascending, right.sizeString_property) })
+        self?.mSortDescriptorArray.append ({ (_ left : FontInProject, _ right : FontInProject) in return compare_String_properties (left.sizeString_property, ascending, right.sizeString_property) })
       },
       title: "Size",
       minWidth: 60,
@@ -222,14 +230,40 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
       headerAlignment: .center,
       contentAlignment: .center
     )
-  //--- Configure 'deviceComponentCountString' column
-    inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].deviceComponentCountString },
+  //--- Configure 'textCount' column
+    inTableView.addColumn_Int (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].textCount },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
-        self?.mSortDescriptorArray.append ({ (_ left : DeviceInProject, _ right : DeviceInProject) in return compare_String_properties (left.deviceComponentCountString_property, ascending, right.deviceComponentCountString_property) })
+        self?.mSortDescriptorArray.append ({ (_ left : FontInProject, _ right : FontInProject) in return compare_Int_properties (left.textCount_property, ascending, right.textCount_property) })
       },
-      title: "Components",
+      title: "# Texts",
+      minWidth: 60,
+      maxWidth: 150,
+      headerAlignment: .center,
+      contentAlignment: .center
+    )
+  //--- Configure 'componentNamesCount' column
+    inTableView.addColumn_Int (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].componentNamesCount },
+      valueSetterDelegate: nil,
+      sortDelegate: { [weak self] (ascending) in
+        self?.mSortDescriptorArray.append ({ (_ left : FontInProject, _ right : FontInProject) in return compare_Int_properties (left.componentNamesCount_property, ascending, right.componentNamesCount_property) })
+      },
+      title: "# Component Names",
+      minWidth: 60,
+      maxWidth: 150,
+      headerAlignment: .center,
+      contentAlignment: .center
+    )
+  //--- Configure 'componentValuesCount' column
+    inTableView.addColumn_Int (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].componentValuesCount },
+      valueSetterDelegate: nil,
+      sortDelegate: { [weak self] (ascending) in
+        self?.mSortDescriptorArray.append ({ (_ left : FontInProject, _ right : FontInProject) in return compare_Int_properties (left.componentValuesCount_property, ascending, right.componentValuesCount_property) })
+      },
+      title: "# Component Values",
       minWidth: 60,
       maxWidth: 150,
       headerAlignment: .center,
@@ -243,7 +277,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
   //   Select a single object
   //····················································································································
 
-  func select (object inObject: DeviceInProject) {
+  func select (object inObject: FontInProject) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
@@ -269,7 +303,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
       case .single (let model_prop) :
       //------------- Find the object to be selected after selected object removing
       //--- Dictionary of object sorted indexes
-        var sortedObjectDictionary = EBReferenceDictionary <DeviceInProject, Int> ()
+        var sortedObjectDictionary = EBReferenceDictionary <FontInProject, Int> ()
         for (index, object) in model_prop.enumerated () {
           sortedObjectDictionary [object] = index
         }
@@ -291,13 +325,13 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
             newSelectionIndex = index + 1
           }
         }
-      /*  var newSelectedObject : DeviceInProject? = nil
+      /*  var newSelectedObject : FontInProject? = nil
         if (newSelectionIndex >= 0) && (newSelectionIndex < model_prop.count) {
           newSelectedObject = model_prop [newSelectionIndex]
         } */
       //----------------------------------------- Remove selected object
       //--- Dictionary of object absolute indexes
-        var objectDictionary = EBReferenceDictionary <DeviceInProject, Int> ()
+        var objectDictionary = EBReferenceDictionary <FontInProject, Int> ()
         for (index, object) in model_prop.enumerated () {
           objectDictionary [object] = index
         }
@@ -317,7 +351,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
           newObjectArray.remove (at: index)
         }
       //----------------------------------------- Set new selection
- /*       var newSelectionSet = EBReferenceSet <DeviceInProject> ()
+ /*       var newSelectionSet = EBReferenceSet <FontInProject> ()
         if let object = newSelectedObject {
           newSelectionSet.insert (object)
         }
@@ -345,7 +379,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
     case .empty, .multiple :
       ()
     case .single (let v) :
-      var newSelectedObjects = EBReferenceArray <DeviceInProject> ()
+      var newSelectedObjects = EBReferenceArray <FontInProject> ()
       for index in inSelectedRows {
         newSelectedObjects.append (v [index])
       }
@@ -376,7 +410,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
       case .empty, .multiple :
         ()
       case .single (let v) :
-        let newObject = DeviceInProject (self.ebUndoManager)
+        let newObject = FontInProject (self.ebUndoManager)
         var array = EBReferenceArray (v)
         array.append (newObject)
         model.setProp (array)
@@ -400,7 +434,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = EBReferenceDictionary <DeviceInProject, Int> ()
+          var sortedObjectDictionary = EBReferenceDictionary <FontInProject, Int> ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -422,13 +456,13 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : DeviceInProject? = nil
+          var newSelectedObject : FontInProject? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = EBReferenceDictionary <DeviceInProject, Int> ()
+          var objectDictionary = EBReferenceDictionary <FontInProject, Int> ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

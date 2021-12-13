@@ -61,6 +61,11 @@ extern autolayout class GridView4 {
   func addSeparator ()
 }
 
+
+extern autolayout class TabView (size: EBControlSize) {
+  func addTab (title: String, contents: view)
+}
+
 extern autolayout class VerticalScrollView (content: view) {
 }
 
@@ -345,6 +350,22 @@ extern autolayout class Stepper {
 
 extern autolayout class ElCanariDragSourceTableView {
   $models transient StringTagArray
+}
+
+extern autolayout class CanariProjectPinPadAssignmentTableView (size: EBControlSize) {
+  $array transient ThreeStringArray
+}
+
+extern autolayout class CanariProjectDeviceSymbolTypeAndNameTableView (size: EBControlSize) {
+  $array transient TwoStringArray
+}
+
+extern autolayout class CanariProjectDevicePackageTableView (size: EBControlSize) {
+  $array transient StringArray
+}
+
+extern autolayout class CanariProjectDeviceTableView (size: EBControlSize) {
+  $array transient StringArray
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

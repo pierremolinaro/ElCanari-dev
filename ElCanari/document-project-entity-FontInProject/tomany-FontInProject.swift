@@ -24,7 +24,10 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
       self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_sizeString_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_textCount_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_canRemoveFont_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_componentNamesCount_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_componentValuesCount_fromElementsOfSet (inRemovedSet) // Transient property
     }
   //--- Add observers to added objects
     if !inAddedSet.isEmpty {
@@ -35,7 +38,10 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
       self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_sizeString_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_textCount_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_canRemoveFont_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_componentNamesCount_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_componentValuesCount_toElementsOfSet (inAddedSet) // Transient property
    }
   }
 
@@ -444,6 +450,62 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   }
 
   //····················································································································
+  //   Observers of 'textCount' transient property
+  //····················································································································
+
+  private final var mObserversOf_textCount = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_textCount (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_textCount.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.textCount_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_textCount (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_textCount.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.textCount_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_textCount_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_textCount.apply { (_ observer : EBEvent) in
+        managedObject.textCount_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_textCount_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_textCount.apply { (_ observer : EBEvent) in
+        managedObject.textCount_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'canRemoveFont' transient property
   //····················································································································
 
@@ -495,6 +557,118 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
     for managedObject in inSet.values {
       self.mObserversOf_canRemoveFont.apply { (_ observer : EBEvent) in
         managedObject.canRemoveFont_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'componentNamesCount' transient property
+  //····················································································································
+
+  private final var mObserversOf_componentNamesCount = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_componentNamesCount (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_componentNamesCount.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.componentNamesCount_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_componentNamesCount (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_componentNamesCount.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.componentNamesCount_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_componentNamesCount_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_componentNamesCount.apply { (_ observer : EBEvent) in
+        managedObject.componentNamesCount_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_componentNamesCount_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_componentNamesCount.apply { (_ observer : EBEvent) in
+        managedObject.componentNamesCount_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'componentValuesCount' transient property
+  //····················································································································
+
+  private final var mObserversOf_componentValuesCount = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_componentValuesCount (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_componentValuesCount.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.componentValuesCount_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_componentValuesCount (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_componentValuesCount.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.componentValuesCount_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_componentValuesCount_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_componentValuesCount.apply { (_ observer : EBEvent) in
+        managedObject.componentValuesCount_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_componentValuesCount_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_componentValuesCount.apply { (_ observer : EBEvent) in
+        managedObject.componentValuesCount_property.removeEBObserver (observer)
       }
     }
   }

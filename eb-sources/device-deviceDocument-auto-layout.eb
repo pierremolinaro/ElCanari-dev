@@ -84,8 +84,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   }
 
 
-  autolayout
-  tableViewController #documentationController (allowsEmptySelection:yes, allowsMultipleSelection:no) root.mDocs {
+  autolayout tableViewController #documentationController (allowsEmptySelection:yes, allowsMultipleSelection:no) root.mDocs {
     column mFileName (title: "File Name", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mFileName
     column fileSize (title: "Size (bytes)", minWidth: 120, maxWidth: 120, headerAlignment: .right, contentAlignment: .right) sortkey fileSize
   }

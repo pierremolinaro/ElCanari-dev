@@ -1023,6 +1023,30 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observable toMany property: mFonts
+  //····················································································································
+
+  private final var mObserversOf_mFonts = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mFonts (_ inObserver : EBEvent) {
+    self.mObserversOf_mFonts.insert (inObserver)
+    if let object = self.propval {
+      object.mFonts_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mFonts (_ inObserver : EBEvent) {
+    self.mObserversOf_mFonts.remove (inObserver)
+    if let object = self.propval {
+      object.mFonts_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable toMany property: mDevices
   //····················································································································
 
@@ -1091,30 +1115,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mObserversOf_mNetClasses.remove (inObserver)
     if let object = self.propval {
       object.mNetClasses_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable toMany property: mFonts
-  //····················································································································
-
-  private final var mObserversOf_mFonts = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mFonts (_ inObserver : EBEvent) {
-    self.mObserversOf_mFonts.insert (inObserver)
-    if let object = self.propval {
-      object.mFonts_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mFonts (_ inObserver : EBEvent) {
-    self.mObserversOf_mFonts.remove (inObserver)
-    if let object = self.propval {
-      object.mFonts_property.removeEBObserver (inObserver)
     }
   }
 

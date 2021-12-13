@@ -9,6 +9,12 @@ import Cocoa
 @objc(ProjectDocument) class ProjectDocument : EBManagedXibDocument {
 
   //····················································································································
+  //   Array controller: projectFontController
+  //····················································································································
+
+  var projectFontController = Controller_ProjectDocument_projectFontController ()
+
+  //····················································································································
   //   Array controller: projectDeviceController
   //····················································································································
 
@@ -73,12 +79,6 @@ import Cocoa
   //····················································································································
 
   var netClassController = Controller_ProjectDocument_netClassController ()
-
-  //····················································································································
-  //   Array controller: projectFontController
-  //····················································································································
-
-  var projectFontController = Controller_ProjectDocument_projectFontController ()
 
   //····················································································································
   //   Array controller: schematicObjectsController
@@ -390,6 +390,23 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: canRemoveSelectedFonts
+  //····················································································································
+
+  final let canRemoveSelectedFonts_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var canRemoveSelectedFonts : Bool? {
+    switch self.canRemoveSelectedFonts_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: canRemoveSelectedDevices
   //····················································································································
 
@@ -450,23 +467,6 @@ import Cocoa
 
   final var canChangePackage : Bool? {
     switch self.canChangePackage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: canRemoveSelectedFonts
-  //····················································································································
-
-  final let canRemoveSelectedFonts_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var canRemoveSelectedFonts : Bool? {
-    switch self.canRemoveSelectedFonts_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1070,6 +1070,8 @@ import Cocoa
 
   #if BUILD_OBJECT_EXPLORER
     override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    //--- Array controller property: projectFontController
+      self.projectFontController.addExplorer (name: "projectFontController", y:&y, view:view)
     //--- Array controller property: projectDeviceController
       self.projectDeviceController.addExplorer (name: "projectDeviceController", y:&y, view:view)
     //--- Array controller property: boardObjectsController
@@ -1092,8 +1094,6 @@ import Cocoa
       self.componentController.addExplorer (name: "componentController", y:&y, view:view)
     //--- Array controller property: netClassController
       self.netClassController.addExplorer (name: "netClassController", y:&y, view:view)
-    //--- Array controller property: projectFontController
-      self.projectFontController.addExplorer (name: "projectFontController", y:&y, view:view)
     //--- Array controller property: schematicObjectsController
       self.schematicObjectsController.addExplorer (name: "schematicObjectsController", y:&y, view:view)
     //--- Selection controller property: wireInSchematicSelectionController
@@ -1578,6 +1578,12 @@ import Cocoa
   final private func configureProperties () {
     let start = Date ()
     var opIdx = 0
+  //--- Array controller property: projectFontController
+    self.projectFontController.bind_model (self.rootObject.mFonts_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Array controller property: projectDeviceController
     self.projectDeviceController.bind_model (self.rootObject.mDevices_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
@@ -1640,12 +1646,6 @@ import Cocoa
     }
   //--- Array controller property: netClassController
     self.netClassController.bind_model (self.rootObject.mNetClasses_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Array controller property: projectFontController
-    self.projectFontController.bind_model (self.rootObject.mFonts_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1993,6 +1993,26 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: canRemoveSelectedFonts
+    self.canRemoveSelectedFonts_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.projectFontController.selectedArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_canRemoveSelectedFonts (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.projectFontController.selectedArray_property.addEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Atomic property: canRemoveSelectedDevices
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2070,26 +2090,6 @@ import Cocoa
       }
     }
     self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: canRemoveSelectedFonts
-    self.canRemoveSelectedFonts_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.projectFontController.selectedArray_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_canRemoveSelectedFonts (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.projectFontController.selectedArray_property.addEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3502,6 +3502,8 @@ import Cocoa
     self.schematicObjectsController.unbind_ebView (self.mSchematicsView)
     self.boardCurveObjectsController.unbind_ebView (self.mBoardLimitsView)
     self.boardObjectsController.unbind_ebView (self.mBoardView)
+  //--- Array controller property: projectFontController
+    self.projectFontController.unbind_model ()
   //--- Array controller property: projectDeviceController
     self.projectDeviceController.unbind_model ()
   //--- Array controller property: boardObjectsController
@@ -3524,8 +3526,6 @@ import Cocoa
     self.componentController.unbind_model ()
   //--- Array controller property: netClassController
     self.netClassController.unbind_model ()
-  //--- Array controller property: projectFontController
-    self.projectFontController.unbind_model ()
   //--- Array controller property: schematicObjectsController
     self.schematicObjectsController.unbind_model ()
   //--- Selection controller property: wireInSchematicSelectionController
@@ -3563,12 +3563,12 @@ import Cocoa
     // self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     // self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
     // self.netClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
+    // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     // self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
     // self.rastnetShape_property.removeEBObserver (self.overDisplay_property)
     // self.rootObject.boardIssues_property.removeEBObserver (self.overDisplay_property)
     // self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
-    // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
     // self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
     // self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
     // self.rootObject.unplacedPackages_property.removeEBObserver (self.unplacedPackageCount_property)

@@ -15,6 +15,12 @@ import Cocoa
   var componentController = Controller_AutoLayoutProjectDocument_componentController ()
 
   //····················································································································
+  //   Array controller: projectFontController
+  //····················································································································
+
+  var projectFontController = Controller_AutoLayoutProjectDocument_projectFontController ()
+
+  //····················································································································
   //   Array controller: projectDeviceController
   //····················································································································
 
@@ -36,6 +42,74 @@ import Cocoa
 
   final var documentFileName : String? {
     switch self.documentFileName_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: pinPadAssignments
+  //····················································································································
+
+  final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+
+  //····················································································································
+
+  final var pinPadAssignments : ThreeStringArray? {
+    switch self.pinPadAssignments_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: selectedDeviceSymbolNames
+  //····················································································································
+
+  final let selectedDeviceSymbolNames_property = EBTransientProperty_TwoStringArray ()
+
+  //····················································································································
+
+  final var selectedDeviceSymbolNames : TwoStringArray? {
+    switch self.selectedDeviceSymbolNames_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: selectedDevicePackageNames
+  //····················································································································
+
+  final let selectedDevicePackageNames_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  final var selectedDevicePackageNames : StringArray? {
+    switch self.selectedDevicePackageNames_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: selectedDeviceNames
+  //····················································································································
+
+  final let selectedDeviceNames_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  final var selectedDeviceNames : StringArray? {
+    switch self.selectedDeviceNames_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -78,6 +152,40 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: canRemoveSelectedFonts
+  //····················································································································
+
+  final let canRemoveSelectedFonts_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var canRemoveSelectedFonts : Bool? {
+    switch self.canRemoveSelectedFonts_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: canRemoveSelectedDevices
+  //····················································································································
+
+  final let canRemoveSelectedDevices_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var canRemoveSelectedDevices : Bool? {
+    switch self.canRemoveSelectedDevices_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    Outlets
   //····················································································································
 
@@ -112,6 +220,8 @@ import Cocoa
     override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     //--- Array controller property: componentController
       self.componentController.addExplorer (name: "componentController", y:&y, view:view)
+    //--- Array controller property: projectFontController
+      self.projectFontController.addExplorer (name: "projectFontController", y:&y, view:view)
     //--- Array controller property: projectDeviceController
       self.projectDeviceController.addExplorer (name: "projectDeviceController", y:&y, view:view)
     //--- Array controller property: boardObjectsController
@@ -355,6 +465,40 @@ import Cocoa
   lazy var mLibraryPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutButton (title: "Remove Embedded Devices", size: .regular)
+        .expandableWidth ()
+        .bind_enabled (.intcmp (.id (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.removeEmbeddedDevicesAction (_:))
+        )
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutButton (title: "Reset Device and Font Versions", size: .regular)
+        .expandableWidth ()
+        .bind_enabled (.boolcmp (.intcmp (.id (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.id (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.resetDevicesAndFontsVersionAction (_:))
+        )
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutButton (title: "Update Devices and Fonts", size: .regular)
+        .expandableWidth ()
+        .bind_enabled (.boolcmp (.intcmp (.id (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.id (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.updateDevicesAndFontsAction (_:))
+        )
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_3)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutTabView (size: .regular)
+      .addTab (title: "Devices", contents: self.computeImplicitView_0 ())
+      .addTab (title: "Fonts", contents: self.computeImplicitView_1 ())
+    vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -419,6 +563,155 @@ import Cocoa
   } ()
 
   //····················································································································
+  //    IMPLICIT VIEW 0
+  //····················································································································
+
+  fileprivate final func computeImplicitView_0 () -> NSView {
+    let view = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    do{
+      let view_0 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_0_0 = AutoLayoutButton (title: "Edit Selected Device", size: .regular)
+          .bind_enabled (.intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.editSelectedDeviceAction (_:))
+          )
+        view_0.appendView (view_0_0)
+        let view_0_1 = AutoLayoutButton (title: "Reset Selected Device Version", size: .regular)
+          .bind_enabled (.intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.resetSelectedDeviceVersionAction (_:))
+          )
+        view_0.appendView (view_0_1)
+        let view_0_2 = AutoLayoutButton (title: "Remove Selected Device", size: .regular)
+          .bind_enabled (.id (self.canRemoveSelectedDevices_property))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.removeSelectedDeviceAction (_:))
+          )
+        view_0.appendView (view_0_2)
+        let view_0_3 = AutoLayoutButton (title: "Export Selected Device", size: .regular)
+          .bind_enabled (.intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.exportSelectedDeviceAction (_:))
+          )
+        view_0.appendView (view_0_3)
+        let view_0_4 = AutoLayoutButton (title: "Update Selected Device…", size: .regular)
+          .bind_enabled (.intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.updateSelectedDeviceAction (_:))
+          )
+        view_0.appendView (view_0_4)
+        let view_0_5 = AutoLayoutFlexibleSpace ()
+        view_0.appendView (view_0_5)
+      }
+      view.appendView (view_0)
+      let view_1 = AutoLayoutHorizontalSplitView ()
+      do{
+        let view_1_0 = AutoLayoutTableView (size: .regular, addControlButtons: false)
+        self.projectDeviceController.bind_tableView (view_1_0)
+        view_1.appendView (view_1_0)
+        let view_1_1 = AutoLayoutVerticalStackView ()
+        do{
+          let view_1_1_0 = AutoLayoutHorizontalStackView ()
+          do{
+            let view_1_1_0_0 = AutoLayoutFlexibleSpace ()
+            view_1_1_0.appendView (view_1_1_0_0)
+            let view_1_1_0_1 = AutoLayoutStaticLabel (title: "Selected Device", bold: false, size: .regular)
+            view_1_1_0.appendView (view_1_1_0_1)
+            let view_1_1_0_2 = AutoLayoutFlexibleSpace ()
+            view_1_1_0.appendView (view_1_1_0_2)
+          }
+          view_1_1.appendView (view_1_1_0)
+          let view_1_1_1 = AutoLayoutHorizontalSplitView ()
+          do{
+            let view_1_1_1_0 = AutoLayoutCanariProjectDeviceTableView (size: .regular)
+              .bind_array (self.selectedDeviceNames_property)
+            view_1_1_1.appendView (view_1_1_1_0)
+            let view_1_1_1_1 = AutoLayoutVerticalSplitView ()
+            do{
+              let view_1_1_1_1_0 = AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView (size: .regular)
+                .bind_array (self.selectedDeviceSymbolNames_property)
+              view_1_1_1_1.appendView (view_1_1_1_1_0)
+              let view_1_1_1_1_1 = AutoLayoutCanariProjectDevicePackageTableView (size: .regular)
+                .bind_array (self.selectedDevicePackageNames_property)
+              view_1_1_1_1.appendView (view_1_1_1_1_1)
+            }
+            view_1_1_1.appendView (view_1_1_1_1)
+            let view_1_1_1_2 = AutoLayoutCanariProjectPinPadAssignmentTableView (size: .regular)
+              .bind_array (self.pinPadAssignments_property)
+            view_1_1_1.appendView (view_1_1_1_2)
+          }
+          view_1_1.appendView (view_1_1_1)
+        }
+        view_1.appendView (view_1_1)
+      }
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 1
+  //····················································································································
+
+  fileprivate final func computeImplicitView_1 () -> NSView {
+    let view = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    do{
+      let view_0 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_0_0 = AutoLayoutButton (title: "Add Font…", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.addFontAction (_:))
+          )
+        view_0.appendView (view_0_0)
+        let view_0_1 = AutoLayoutButton (title: "Edit Selected Font", size: .regular)
+          .bind_enabled (.intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.editFontAction (_:))
+          )
+        view_0.appendView (view_0_1)
+        let view_0_2 = AutoLayoutButton (title: "Reset Selected Font Version", size: .regular)
+          .bind_enabled (.intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.resetFontVersionAction (_:))
+          )
+        view_0.appendView (view_0_2)
+        let view_0_3 = AutoLayoutButton (title: "Update Selected Fonts", size: .regular)
+          .bind_enabled (.intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.updateFontAction (_:))
+          )
+        view_0.appendView (view_0_3)
+        let view_0_4 = AutoLayoutButton (title: "Remove Selected Font", size: .regular)
+          .bind_enabled (.boolcmp (.intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .id (self.canRemoveSelectedFonts_property)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.removeFontAction (_:))
+          )
+        view_0.appendView (view_0_4)
+        let view_0_5 = AutoLayoutFlexibleSpace ()
+        view_0.appendView (view_0_5)
+      }
+      view.appendView (view_0)
+      let view_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
+      self.projectFontController.bind_tableView (view_1)
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
   //    Build User Interface
   //····················································································································
 
@@ -480,6 +773,12 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Array controller property: projectFontController
+    self.projectFontController.bind_model (self.rootObject.mFonts_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Array controller property: projectDeviceController
     self.projectDeviceController.bind_model (self.rootObject.mDevices_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
@@ -492,6 +791,86 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: pinPadAssignments
+    self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutProjectDocument_pinPadAssignments (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: selectedDeviceSymbolNames
+    self.selectedDeviceSymbolNames_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutProjectDocument_selectedDeviceSymbolNames (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: selectedDevicePackageNames
+    self.selectedDevicePackageNames_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutProjectDocument_selectedDevicePackageNames (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: selectedDeviceNames
+    self.selectedDeviceNames_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutProjectDocument_selectedDeviceNames (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames (self.selectedDeviceNames_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -532,6 +911,46 @@ import Cocoa
       }
     }
     self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: canRemoveSelectedFonts
+    self.canRemoveSelectedFonts_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.projectFontController.selectedArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutProjectDocument_canRemoveSelectedFonts (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.projectFontController.selectedArray_property.addEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: canRemoveSelectedDevices
+    self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutProjectDocument_canRemoveSelectedDevices (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -593,12 +1012,20 @@ import Cocoa
   //--------------------------- Unbind array controllers
   //--- Array controller property: componentController
     self.componentController.unbind_model ()
+  //--- Array controller property: projectFontController
+    self.projectFontController.unbind_model ()
   //--- Array controller property: projectDeviceController
     self.projectDeviceController.unbind_model ()
   //--- Array controller property: boardObjectsController
     self.boardObjectsController.unbind_model ()
+    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
+    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
+    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceNames_property)
     // self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     // self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
+    // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
+    // self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets

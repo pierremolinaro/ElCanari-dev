@@ -24,12 +24,12 @@ protocol AutoLayoutTableViewDelegate : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, NSTableViewDelegate {
+class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
-  private let mScrollView = NSScrollView (frame: NSRect ())
-  private let mTableView = InternalAutoLayoutTableView ()
+  private let mScrollView = AutoLayoutScrollView ()
+  private let mTableView : InternalAutoLayoutTableView
   private var mAddButton : AutoLayoutButton? = nil
   private var mRemoveButton : AutoLayoutButton? = nil
   private weak var mDelegate : AutoLayoutTableViewDelegate? = nil // SHOULD BE WEAK
@@ -38,9 +38,9 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
   //····················································································································
 
   init (size inSize : EBControlSize, addControlButtons inAddControlButtons : Bool) {
+    self.mTableView = InternalAutoLayoutTableView (size: inSize)
     super.init ()
   //--- Configure table view
-    self.mTableView.translatesAutoresizingMaskIntoConstraints = false
     self.mTableView.controlSize = inSize.cocoaControlSize
     self.mTableView.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.mTableView.controlSize))
     self.mTableView.focusRingType = .none
@@ -50,7 +50,8 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     self.mTableView.gridStyleMask = [.solidHorizontalGridLineMask, .solidVerticalGridLineMask]
     self.mTableView.usesAlternatingRowBackgroundColors = true
     self.mTableView.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
-    self.mTableView.usesAutomaticRowHeights = true // #available(macOS 10.13
+    self.mTableView.usesAutomaticRowHeights = true // #available macOS 10.13
+    _ = self.setIntercellSpacing (horizontal: 5, vertical: 5)
 
   //--- Configure scroll view
     self.mScrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -126,6 +127,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     }
     return self
   }
+  
   //····················································································································
 
   func set (usesAlternatingRowBackgroundColors inFlag : Bool) -> Self {
@@ -163,6 +165,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
       valueGetterDelegate: inGetterDelegate
     )
     column.title = inTitle
+    column.headerCell.font = self.mTableView.font
     column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
     column.minWidth = CGFloat (inMinWidth)
     column.maxWidth = CGFloat (inMaxWidth)
@@ -346,7 +349,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
 // InternalAutoLayoutTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
+class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -357,10 +360,13 @@ fileprivate class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProt
   // INIT
   //····················································································································
 
-  init () {
-    super.init (frame: NSRect ())
+  init (size inSize : EBControlSize) {
+    super.init (frame: NSRect (x: 0, y: 0, width: 10, height: 10))
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
+    self.controlSize = inSize.cocoaControlSize
+  //  self.setContentCompressionResistancePriority (.required, for: .horizontal)
   }
 
   //····················································································································
@@ -373,6 +379,14 @@ fileprivate class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProt
 
   deinit {
     noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  override var intrinsicContentSize : NSSize {
+    var s = super.intrinsicContentSize
+    s.width = 100.0
+    return s
   }
 
   //····················································································································
@@ -426,15 +440,6 @@ fileprivate class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProt
   override func concludeDragOperation (_ inSender : NSDraggingInfo?) {
     if let array = inSender?.draggingPasteboard.readObjects (forClasses: [NSURL.self]) as? [URL] {
       self.mDragConcludeCallBack? (array)
-//      for sourceFileURL in array {
-//        if sourceFileURL.pathExtension == "pdf", let data = try? Data (contentsOf: sourceFileURL) {
-//          // NSLog ("sourceFileURL \(sourceFileURL), size \(data.count.stringWithSeparator) bytes") ;
-//          let doc = DeviceDocumentation (self.mDocument?.ebUndoManager)
-//          doc.mFileData = data
-//          doc.mFileName = sourceFileURL.path.lastPathComponent.deletingPathExtension
-//          self.mDocument?.rootObject.mDocs_property.add (doc)
-//        }
-//      }
     }
   }
 
@@ -549,12 +554,6 @@ fileprivate class InternalTextTableColumn : InternalTableColumn {
       textField.action = #selector (Self.ebAction (_:))
     }
     return textField
-
-//    inTableCellView.addSubview (textField)
-//    inTableCellView.textField = textField
-//    let c1 = NSLayoutConstraint (item: textField, attribute: .width, relatedBy: .equal, toItem: inTableCellView, attribute: .width, multiplier: 1.0, constant: 0.0)
-//    let c2 = NSLayoutConstraint (item: textField, attribute: .height, relatedBy: .equal, toItem: inTableCellView, attribute: .height, multiplier: 1.0, constant: 0.0)
-//    inTableCellView.addConstraints ([c1, c2])
   }
 
   //····················································································································
@@ -637,12 +636,6 @@ fileprivate class InternalIntTableColumn : InternalTableColumn {
       textField.action = #selector (Self.ebAction(_:))
     }
     return textField
-
-//    inTableCellView.addSubview (textField)
-//    inTableCellView.textField = textField
-//    let c1 = NSLayoutConstraint (item: textField, attribute: .width, relatedBy: .equal, toItem: inTableCellView, attribute: .width, multiplier: 1.0, constant: 0.0)
-//    let c2 = NSLayoutConstraint (item: textField, attribute: .height, relatedBy: .equal, toItem: inTableCellView, attribute: .height, multiplier: 1.0, constant: 0.0)
-//    inTableCellView.addConstraints ([c1, c2])
   }
 
   //····················································································································
@@ -700,12 +693,6 @@ fileprivate class InternalNSImageTableColumn : InternalTableColumn {
     imageView.isEditable = false
     imageView.image = self.mValueGetterDelegate (inRowIndex)
     return imageView
-
-//    inTableCellView.addSubview (imageView)
-//    inTableCellView.imageView = imageView
-//    let c1 = NSLayoutConstraint (item: imageView, attribute: .width, relatedBy: .equal, toItem: inTableCellView, attribute: .width, multiplier: 1.0, constant: 0.0)
-//    let c2 = NSLayoutConstraint (item: imageView, attribute: .height, relatedBy: .equal, toItem: inTableCellView, attribute: .height, multiplier: 1.0, constant: 0.0)
-//    inTableCellView.addConstraints ([c1, c2])
   }
 
   //····················································································································

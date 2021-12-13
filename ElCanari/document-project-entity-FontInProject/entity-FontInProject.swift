@@ -48,8 +48,26 @@ protocol FontInProject_descriptor : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol FontInProject_textCount : AnyObject {
+  var textCount : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol FontInProject_canRemoveFont : AnyObject {
   var canRemoveFont : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontInProject_componentNamesCount : AnyObject {
+  var componentNamesCount : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontInProject_componentValuesCount : AnyObject {
+  var componentValuesCount : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -64,7 +82,10 @@ final class FontInProject : EBManagedObject,
          FontInProject_versionString,
          FontInProject_sizeString,
          FontInProject_descriptor,
-         FontInProject_canRemoveFont {
+         FontInProject_textCount,
+         FontInProject_canRemoveFont,
+         FontInProject_componentNamesCount,
+         FontInProject_componentValuesCount {
 
   //····················································································································
   //   To many property: mTexts
@@ -239,6 +260,23 @@ final class FontInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: textCount
+  //····················································································································
+
+  final let textCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var textCount : Int? {
+    switch self.textCount_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: canRemoveFont
   //····················································································································
 
@@ -248,6 +286,40 @@ final class FontInProject : EBManagedObject,
 
   final var canRemoveFont : Bool? {
     switch self.canRemoveFont_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: componentNamesCount
+  //····················································································································
+
+  final let componentNamesCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var componentNamesCount : Int? {
+    switch self.componentNamesCount_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: componentValuesCount
+  //····················································································································
+
+  final let componentValuesCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var componentValuesCount : Int? {
+    switch self.componentValuesCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -332,6 +404,22 @@ final class FontInProject : EBManagedObject,
     }
     self.mNominalSize_property.addEBObserver (self.descriptor_property)
     self.mDescriptiveString_property.addEBObserver (self.descriptor_property)
+  //--- Atomic property: textCount
+    self.textCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mTexts_property.count_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontInProject_textCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mTexts_property.addEBObserver (self.textCount_property)
   //--- Atomic property: canRemoveFont
     self.canRemoveFont_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -349,6 +437,38 @@ final class FontInProject : EBManagedObject,
     }
     self.mComponentNames_property.addEBObserver (self.canRemoveFont_property)
     self.mComponentValues_property.addEBObserver (self.canRemoveFont_property)
+  //--- Atomic property: componentNamesCount
+    self.componentNamesCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mComponentNames_property.count_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontInProject_componentNamesCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponentNames_property.addEBObserver (self.componentNamesCount_property)
+  //--- Atomic property: componentValuesCount
+    self.componentValuesCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mComponentValues_property.count_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontInProject_componentValuesCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponentValues_property.addEBObserver (self.componentValuesCount_property)
   //--- Install undoers and opposite setter for relationships
     self.mTexts_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },
@@ -374,8 +494,11 @@ final class FontInProject : EBManagedObject,
     // self.mDescriptiveString_property.removeEBObserver (self.sizeString_property)
     // self.mNominalSize_property.removeEBObserver (self.descriptor_property)
     // self.mDescriptiveString_property.removeEBObserver (self.descriptor_property)
+    // self.mTexts_property.removeEBObserver (self.textCount_property)
     // self.mComponentNames_property.removeEBObserver (self.canRemoveFont_property)
     // self.mComponentValues_property.removeEBObserver (self.canRemoveFont_property)
+    // self.mComponentNames_property.removeEBObserver (self.componentNamesCount_property)
+    // self.mComponentValues_property.removeEBObserver (self.componentValuesCount_property)
   //--- Unregister properties for handling signature
   }
 
@@ -449,12 +572,36 @@ final class FontInProject : EBManagedObject,
         valueExplorer: &self.descriptor_property.mValueExplorer
       )
       createEntryForPropertyNamed (
+        "textCount",
+        object: self.textCount_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.textCount_property.mObserverExplorer,
+        valueExplorer: &self.textCount_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
         "canRemoveFont",
         object: self.canRemoveFont_property,
         y: &y,
         view: view,
         observerExplorer: &self.canRemoveFont_property.mObserverExplorer,
         valueExplorer: &self.canRemoveFont_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "componentNamesCount",
+        object: self.componentNamesCount_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.componentNamesCount_property.mObserverExplorer,
+        valueExplorer: &self.componentNamesCount_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "componentValuesCount",
+        object: self.componentValuesCount_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.componentValuesCount_property.mObserverExplorer,
+        valueExplorer: &self.componentValuesCount_property.mValueExplorer
       )
       createEntryForTitle ("Transients", y: &y, view: view)
       createEntryForToManyRelationshipNamed (

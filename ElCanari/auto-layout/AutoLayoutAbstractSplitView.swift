@@ -21,9 +21,11 @@ class AutoLayoutAbstractSplitView : NSSplitView, EBUserClassNameProtocol {
   init (dividersAreVertical inFlag : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
-//    self.translatesAutoresizingMaskIntoConstraints = false
+    self.translatesAutoresizingMaskIntoConstraints = false
 
     self.isVertical = inFlag
+    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
   }
 
   //····················································································································
@@ -50,23 +52,31 @@ class AutoLayoutAbstractSplitView : NSSplitView, EBUserClassNameProtocol {
   //····················································································································
 
   @discardableResult final func appendView (_ inView : NSView) -> Self {
+ //   inView.translatesAutoresizingMaskIntoConstraints = true
     self.addSubview (inView)
-    self.setHoldingPriority (.init (rawValue: Float (self.subviews.count)), forSubviewAt: self.subviews.count - 1)
-//    self.setHoldingPriority (.init (rawValue: 2.0), forSubviewAt: self.subviews.count - 1)
+    self.setHoldingPriority (.init (rawValue: 250.0), forSubviewAt: self.subviews.count - 1)
+//    self.setHoldingPriority (.required, forSubviewAt: self.subviews.count - 1)
+//    if self.subviews.count > 1 {
+//      for i in 1 ..< self.subviews.count {
+//        self.setPosition (CGFloat (i) / CGFloat (self.subviews.count), ofDividerAt: i)
+//      }
+//    }
     return self
   }
 
-  //····················································································································
-
-
+//  //····················································································································
+//
+//  override func layout () {
+//    super.layout ()
+//    Swift.print ("layout \(self.frame)")
+//  }
+//
   //····················································································································
   //   DRAW
   //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {
     if debugAutoLayout () {
-//      DEBUG_FILL_COLOR.setFill ()
-//      NSBezierPath.fill (inDirtyRect)
       var bp = NSBezierPath (rect: self.bounds)
       bp.lineWidth = 1.0
       bp.lineJoinStyle = .round

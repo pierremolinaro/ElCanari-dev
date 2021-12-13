@@ -23,7 +23,10 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
       oldValue.versionString_property.removeEBObserver (self.versionString_property) // Transient property
       oldValue.sizeString_property.removeEBObserver (self.sizeString_property) // Transient property
       oldValue.descriptor_property.removeEBObserver (self.descriptor_property) // Transient property
+      oldValue.textCount_property.removeEBObserver (self.textCount_property) // Transient property
       oldValue.canRemoveFont_property.removeEBObserver (self.canRemoveFont_property) // Transient property
+      oldValue.componentNamesCount_property.removeEBObserver (self.componentNamesCount_property) // Transient property
+      oldValue.componentValuesCount_property.removeEBObserver (self.componentValuesCount_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
@@ -34,7 +37,10 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
       newValue.versionString_property.addEBObserver (self.versionString_property) // Transient property
       newValue.sizeString_property.addEBObserver (self.sizeString_property) // Transient property
       newValue.descriptor_property.addEBObserver (self.descriptor_property) // Transient property
+      newValue.textCount_property.addEBObserver (self.textCount_property) // Transient property
       newValue.canRemoveFont_property.addEBObserver (self.canRemoveFont_property) // Transient property
+      newValue.componentNamesCount_property.addEBObserver (self.componentNamesCount_property) // Transient property
+      newValue.componentValuesCount_property.addEBObserver (self.componentValuesCount_property) // Transient property
     }
   }
 
@@ -81,10 +87,28 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   final let descriptor_property = EBGenericTransientProperty <BoardFontDescriptor?> ()
 
   //····················································································································
+  //   Observers of 'textCount' transient property
+  //····················································································································
+
+  final let textCount_property = EBGenericTransientProperty <Int?> ()
+
+  //····················································································································
   //   Observers of 'canRemoveFont' transient property
   //····················································································································
 
   final let canRemoveFont_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'componentNamesCount' transient property
+  //····················································································································
+
+  final let componentNamesCount_property = EBGenericTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'componentValuesCount' transient property
+  //····················································································································
+
+  final let componentValuesCount_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
   //   Observable toMany property: mTexts
@@ -269,10 +293,55 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
         return .single (nil)
       }
     }
+  //--- Configure textCount transient property
+    self.textCount_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.textCount_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
   //--- Configure canRemoveFont transient property
     self.canRemoveFont_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.canRemoveFont_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure componentNamesCount transient property
+    self.componentNamesCount_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.componentNamesCount_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure componentValuesCount transient property
+    self.componentValuesCount_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.componentValuesCount_property.selection {
         case .empty :
           return .empty
         case .multiple :

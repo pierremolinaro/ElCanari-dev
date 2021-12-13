@@ -1,8 +1,8 @@
 //
-//  AutoLayoutHorizontalSplitView.swift
+//  AutoLayoutVerticalSplitView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 30/06/2021.
+//  Created by Pierre Molinaro on 13/12/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -10,12 +10,15 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutHorizontalSplitView : AutoLayoutAbstractSplitView {
+class AutoLayoutVerticalSplitView : AutoLayoutAbstractSplitView {
 
   //····················································································································
 
   init () {
-    super.init (dividersAreVertical: true)
+    super.init (dividersAreVertical: false)
+
+    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
   }
 
   //····················································································································
@@ -27,32 +30,9 @@ class AutoLayoutHorizontalSplitView : AutoLayoutAbstractSplitView {
   //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {
-    NSColor.orange.setFill ()
+    NSColor.yellow.setFill ()
     NSBezierPath.fill (inDirtyRect)
     super.draw (inDirtyRect)
-  }
-
-  //····················································································································
-
-  fileprivate var mConstraints = [NSLayoutConstraint] ()
-  
-  override func updateConstraints () {
-    self.removeConstraints (self.mConstraints)
-    self.mConstraints.removeAll ()
-//    if let s = self.superview {
-//      let c = NSLayoutConstraint (item: s, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0)
-//      self.mConstraints.append (c)
-//    }
-    if let firstView = self.subviews.first {
-      let c = NSLayoutConstraint (item: firstView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0)
-      self.mConstraints.append (c)
-    }
-    if let lastView = self.subviews.last {
-      let c = NSLayoutConstraint (item: lastView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0)
-      self.mConstraints.append (c)
-    }
-    self.addConstraints (self.mConstraints)
-    super.updateConstraints ()
   }
 
   //····················································································································
