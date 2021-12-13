@@ -89,20 +89,6 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     super.autoLayoutCleanUp ()
   }
 
-//  //····················································································································
-//
-//  func set (width inWidth : Int) -> Self {
-//    self.mTableView.set (width: inWidth)
-//    return self
-//  }
-//
-  //····················································································································
-
-//  func set (height inHeight : Int) -> Self {
-//    self.mTableView.set (height: inHeight)
-//    return self
-//  }
-
   //····················································································································
   //  Configure table view
   //····················································································································

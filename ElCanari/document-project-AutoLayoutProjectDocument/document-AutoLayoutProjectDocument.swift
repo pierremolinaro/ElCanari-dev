@@ -9,6 +9,12 @@ import Cocoa
 @objc(AutoLayoutProjectDocument) class AutoLayoutProjectDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
 
   //····················································································································
+  //   Array controller: netClassController
+  //····················································································································
+
+  var netClassController = Controller_AutoLayoutProjectDocument_netClassController ()
+
+  //····················································································································
   //   Array controller: componentController
   //····················································································································
 
@@ -118,6 +124,23 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: canRemoveNetClasses
+  //····················································································································
+
+  final let canRemoveNetClasses_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var canRemoveNetClasses : Bool? {
+    switch self.canRemoveNetClasses_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: componentCount
   //····················································································································
 
@@ -218,6 +241,8 @@ import Cocoa
 
   #if BUILD_OBJECT_EXPLORER
     override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    //--- Array controller property: netClassController
+      self.netClassController.addExplorer (name: "netClassController", y:&y, view:view)
     //--- Array controller property: componentController
       self.componentController.addExplorer (name: "componentController", y:&y, view:view)
     //--- Array controller property: projectFontController
@@ -673,22 +698,53 @@ import Cocoa
   } ()
 
   //····················································································································
-  //    VIEW mSchematicPage
-  //····················································································································
-
-  lazy var mSchematicPage : AutoLayoutVerticalStackView = {
-    let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
-    return vStackView
-  } ()
-
-  //····················································································································
   //    VIEW mNetClassesPage
   //····················································································································
 
   lazy var mNetClassesPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutButton (title: "New Net Class", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.addNetClassAction (_:))
+        )
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutButton (title: "Edit Selected Net Class", size: .regular)
+        .bind_enabled (.intcmp (.id (self.netClassController.selectedArray_property.count_property), .eq, .literalInt (1)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.editNetClassAction (_:))
+        )
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutButton (title: "Remove Selected Net Class", size: .regular)
+        .bind_enabled (.id (self.canRemoveNetClasses_property))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.removeNetClassAction (_:))
+        )
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_3)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
+    self.netClassController.bind_tableView (view_1)
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSchematicPage
+  //····················································································································
+
+  lazy var mSchematicPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    let view_0 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_0)
     return vStackView
   } ()
 
@@ -699,6 +755,8 @@ import Cocoa
   lazy var mNetListPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
+    let view_0 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_0)
     return vStackView
   } ()
 
@@ -709,6 +767,8 @@ import Cocoa
   lazy var mBoardOutlinePage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
+    let view_0 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_0)
     return vStackView
   } ()
 
@@ -719,6 +779,8 @@ import Cocoa
   lazy var mProductPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
+    let view_0 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_0)
     return vStackView
   } ()
 
@@ -729,6 +791,8 @@ import Cocoa
   lazy var mBoardContentsPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
+    let view_0 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_0)
     return vStackView
   } ()
 
@@ -788,6 +852,12 @@ import Cocoa
   final private func configureProperties () {
     let start = Date ()
     var opIdx = 0
+  //--- Array controller property: netClassController
+    self.netClassController.bind_model (self.rootObject.mNetClasses_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Array controller property: componentController
     self.componentController.bind_model (self.rootObject.mComponents_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
@@ -892,6 +962,27 @@ import Cocoa
       }
     }
     self.projectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames (self.selectedDeviceNames_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: canRemoveNetClasses
+    self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.mNetClasses_property.count_property.selection, unwSelf.netClassController.selectedArray_property.selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_AutoLayoutProjectDocument_canRemoveNetClasses (v0, v1))
+        case (.multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mNetClasses_property.count_property.addEBObserver (self.canRemoveNetClasses_property)
+    self.netClassController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveNetClasses_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1021,8 +1112,8 @@ import Cocoa
     self.mLibraryContentView.ebCleanUp ()
     self.mDevicesInLibraryPage.ebCleanUp ()
     self.mFontsInLibraryPage.ebCleanUp ()
-    self.mSchematicPage.ebCleanUp ()
     self.mNetClassesPage.ebCleanUp ()
+    self.mSchematicPage.ebCleanUp ()
     self.mNetListPage.ebCleanUp ()
     self.mBoardOutlinePage.ebCleanUp ()
     self.mProductPage.ebCleanUp ()
@@ -1034,6 +1125,8 @@ import Cocoa
   //--------------------------- Unbind regular bindings
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
+  //--- Array controller property: netClassController
+    self.netClassController.unbind_model ()
   //--- Array controller property: componentController
     self.componentController.unbind_model ()
   //--- Array controller property: projectFontController
@@ -1046,6 +1139,8 @@ import Cocoa
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceNames_property)
+    // self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
+    // self.netClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
     // self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     // self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
     // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)

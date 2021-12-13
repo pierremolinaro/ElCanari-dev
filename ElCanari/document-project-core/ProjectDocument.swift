@@ -9,6 +9,12 @@ import Cocoa
 @objc(ProjectDocument) class ProjectDocument : EBManagedXibDocument {
 
   //····················································································································
+  //   Array controller: netClassController
+  //····················································································································
+
+  var netClassController = Controller_ProjectDocument_netClassController ()
+
+  //····················································································································
   //   Array controller: projectFontController
   //····················································································································
 
@@ -73,12 +79,6 @@ import Cocoa
   //····················································································································
 
   var componentController = Controller_ProjectDocument_componentController ()
-
-  //····················································································································
-  //   Array controller: netClassController
-  //····················································································································
-
-  var netClassController = Controller_ProjectDocument_netClassController ()
 
   //····················································································································
   //   Array controller: schematicObjectsController
@@ -161,6 +161,23 @@ import Cocoa
 
   final var documentFileName : String? {
     switch self.documentFileName_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: canRemoveNetClasses
+  //····················································································································
+
+  final let canRemoveNetClasses_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var canRemoveNetClasses : Bool? {
+    switch self.canRemoveNetClasses_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -365,23 +382,6 @@ import Cocoa
 
   final var componentCount : String? {
     switch self.componentCount_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: canRemoveNetClasses
-  //····················································································································
-
-  final let canRemoveNetClasses_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var canRemoveNetClasses : Bool? {
-    switch self.canRemoveNetClasses_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1070,6 +1070,8 @@ import Cocoa
 
   #if BUILD_OBJECT_EXPLORER
     override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    //--- Array controller property: netClassController
+      self.netClassController.addExplorer (name: "netClassController", y:&y, view:view)
     //--- Array controller property: projectFontController
       self.projectFontController.addExplorer (name: "projectFontController", y:&y, view:view)
     //--- Array controller property: projectDeviceController
@@ -1092,8 +1094,6 @@ import Cocoa
       self.mDataController.addExplorer (name: "mDataController", y:&y, view:view)
     //--- Array controller property: componentController
       self.componentController.addExplorer (name: "componentController", y:&y, view:view)
-    //--- Array controller property: netClassController
-      self.netClassController.addExplorer (name: "netClassController", y:&y, view:view)
     //--- Array controller property: schematicObjectsController
       self.schematicObjectsController.addExplorer (name: "schematicObjectsController", y:&y, view:view)
     //--- Selection controller property: wireInSchematicSelectionController
@@ -1578,6 +1578,12 @@ import Cocoa
   final private func configureProperties () {
     let start = Date ()
     var opIdx = 0
+  //--- Array controller property: netClassController
+    self.netClassController.bind_model (self.rootObject.mNetClasses_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Array controller property: projectFontController
     self.projectFontController.bind_model (self.rootObject.mFonts_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
@@ -1640,12 +1646,6 @@ import Cocoa
     }
   //--- Array controller property: componentController
     self.componentController.bind_model (self.rootObject.mComponents_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Array controller property: netClassController
-    self.netClassController.bind_model (self.rootObject.mNetClasses_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1724,6 +1724,27 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: canRemoveNetClasses
+    self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.mNetClasses_property.count_property.selection, unwSelf.netClassController.selectedArray_property.selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_ProjectDocument_canRemoveNetClasses (v0, v1))
+        case (.multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mNetClasses_property.count_property.addEBObserver (self.canRemoveNetClasses_property)
+    self.netClassController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveNetClasses_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1968,27 +1989,6 @@ import Cocoa
       }
     }
     self.rootObject.mComponents_property.count_property.addEBObserver (self.componentCount_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: canRemoveNetClasses
-    self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.mNetClasses_property.count_property.selection, unwSelf.netClassController.selectedArray_property.selection) {
-        case (.single (let v0), .single (let v1)) :
-          return .single (transient_ProjectDocument_canRemoveNetClasses (v0, v1))
-        case (.multiple, .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.mNetClasses_property.count_property.addEBObserver (self.canRemoveNetClasses_property)
-    self.netClassController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveNetClasses_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3502,6 +3502,8 @@ import Cocoa
     self.schematicObjectsController.unbind_ebView (self.mSchematicsView)
     self.boardCurveObjectsController.unbind_ebView (self.mBoardLimitsView)
     self.boardObjectsController.unbind_ebView (self.mBoardView)
+  //--- Array controller property: netClassController
+    self.netClassController.unbind_model ()
   //--- Array controller property: projectFontController
     self.projectFontController.unbind_model ()
   //--- Array controller property: projectDeviceController
@@ -3524,8 +3526,6 @@ import Cocoa
     self.mDataController.unbind_model ()
   //--- Array controller property: componentController
     self.componentController.unbind_model ()
-  //--- Array controller property: netClassController
-    self.netClassController.unbind_model ()
   //--- Array controller property: schematicObjectsController
     self.schematicObjectsController.unbind_model ()
   //--- Selection controller property: wireInSchematicSelectionController
@@ -3545,6 +3545,8 @@ import Cocoa
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
     // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayComponentNet_property)
+    // self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
+    // self.netClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_deviceSymbolDictionary (self.selectedDeviceSymbols_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
@@ -3561,8 +3563,6 @@ import Cocoa
     // self.documentFileName_property.removeEBObserver (self.documentFilePathOk_property)
     // self.rootObject.artworkLayerConfiguration_property.removeEBObserver (self.layerConfigurationString_property)
     // self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
-    // self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
-    // self.netClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
     // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     // self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)

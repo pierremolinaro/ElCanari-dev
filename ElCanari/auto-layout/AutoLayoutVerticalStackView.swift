@@ -14,6 +14,11 @@ class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
     super.init (orientation: .vertical)
     self.alignment = .width
     self.distribution = .fill
+
+    self.setHuggingPriority (.required, for: .horizontal)
+//    self.setHuggingPriority (.required, for: .vertical)
+//    self.setHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+    self.setHuggingPriority (.init (rawValue: 1.0), for: .vertical)
   }
 
   //····················································································································

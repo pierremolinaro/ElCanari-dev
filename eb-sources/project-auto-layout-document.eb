@@ -302,55 +302,78 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   } 
 
 //---------------------- Net Class Tab
-  
-  stackView mSchematicPage vStack set (margins: 8) {
-  }
 
   stackView mNetClassesPage vStack set (margins: 8) {
+    hStack {
+      Button (title: "New Net Class", size: .regular) {
+        $run addNetClassAction
+      }
+      Button (title: "Edit Selected Net Class", size: .regular) {
+        $run editNetClassAction
+        $enabled #netClassController.selectedArray.count == 1
+      }
+      Button (title: "Remove Selected Net Class", size: .regular) {
+        $run removeNetClassAction
+        $enabled self.canRemoveNetClasses
+      }
+      space
+    }
+    TableView (size: .regular, addControlButtons: no) { $tableValue #netClassController }
   }
+
+  action addNetClassAction ;
+  action editNetClassAction ;
+  action removeNetClassAction ;
+  transient Bool canRemoveNetClasses dependsFrom root.mNetClasses.count, #netClassController.selectedArray.all.canRemove ;
   
+  autolayout tableViewController #netClassController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mNetClasses {
+    column mNetClassName (title: "Name", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+       sortkey mNetClassName
+//    column "netcolor" EBTextObserverField $backColor self.mNetClassColor
+    column trackWidthString (title: "Width", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+       sortkey trackWidthString // mTrackWidth
+    column viaHoleDiameter (title: "Via Hole Diameter", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+       sortkey viaHoleDiameter // mViaHoleDiameter
+    column viaPadDiameter (title: "Via Pad Diameter", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+       sortkey viaPadDiameter // mViaPadDiameter
+    column allowTracksOnFrontSideString (title: "Front Tracks", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+       sortkey allowTracksOnFrontSideString
+    column allowTracksOnBackSideString (title: "Back Tracks", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+       sortkey allowTracksOnBackSideString
+    column allowTracksOnInner1LayerString (title: "Inner 1 Tracks", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+       sortkey allowTracksOnInner1LayerString
+    column allowTracksOnInner2LayerString (title: "Inner 2 Tracks", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+       sortkey allowTracksOnInner3LayerString
+    column allowTracksOnInner1LayerString (title: "Inner 3 Tracks", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+       sortkey allowTracksOnInner3LayerString
+    column allowTracksOnInner4LayerString (title: "Inner 4 Tracks", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+       sortkey allowTracksOnInner4LayerString
+    column netUsage (title: "Used by…", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+       sortkey netUsage
+  }
+
+//---------------------- Schematics Tab
+
+  stackView mSchematicPage vStack set (margins: 8) {
+    space
+  }
+
   stackView mNetListPage vStack set (margins: 8) {
+    space
   }
   
   stackView mBoardOutlinePage vStack set (margins: 8) {
+    space
   }
   
   stackView mProductPage vStack set (margins: 8) {
+    space
   }
   
   stackView mBoardContentsPage vStack set (margins: 8) {
+    space
   }
 
-//  tableViewController #netClassController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mNetClasses {
-//    column "name" EBTextObserverField $valueObserver self.mNetClassName
-//    column "netcolor" EBTextObserverField $backColor self.mNetClassColor
-//    column "width" EBTextObserverField $valueObserver self.trackWidthString
-//    column "hole" EBTextObserverField $valueObserver self.viaHoleDiameter
-//    column "pad" EBTextObserverField $valueObserver self.viaPadDiameter
-//    column "used" EBTextObserverField $valueObserver self.netUsage
-//    column "onFront" EBTextObserverField $valueObserver self.allowTracksOnFrontSideString
-//    column "onBack" EBTextObserverField $valueObserver self.allowTracksOnBackSideString
-//    column "onInner1" EBTextObserverField $valueObserver self.allowTracksOnInner1LayerString
-//    column "onInner2" EBTextObserverField $valueObserver self.allowTracksOnInner2LayerString
-//    column "onInner3" EBTextObserverField $valueObserver self.allowTracksOnInner3LayerString
-//    column "onInner4" EBTextObserverField $valueObserver self.allowTracksOnInner4LayerString
-//  }
-//  outlet EBTableView mNetClassTableView $tableValue #netClassController ;
-//
-//  action addNetClassAction ;
-//  outlet EBButton mAddNetClassButton $run addNetClassAction ;
-//
-//  action removeNetClassAction ;
-//  transient Bool canRemoveNetClasses dependsFrom root.mNetClasses.count, #netClassController.selectedArray.all.canRemove ;
-//  outlet EBButton mRemoveNetClassButton
-//    $run removeNetClassAction
-//    $enabled self.canRemoveNetClasses
-//  ;
-//
-//  action editNetClassAction ;
-//  outlet EBButton mEditNetClassButton $run editNetClassAction $enabled #netClassController.selectedArray.count == 1 ;
-//
-////---------------------- Schematics Tab
 //  outlet CanariSegmentedControl mSchematicsInspectorSegmentedControl $selectedPage root.mSelectedSchematicInspector ;
 //  outlet NSView mBaseSchematicsInspectorView ;
 //  outlet CanariViewWithKeyView mSelectedObjectsSchematicsInspectorView ;

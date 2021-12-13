@@ -15,8 +15,10 @@ class AutoLayoutAbstractStackView : NSStackView, EBUserClassNameProtocol {
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.setHuggingPriority (.required, for: .horizontal)
-    self.setHuggingPriority (.required, for: .vertical)
+//    self.setHuggingPriority (.required, for: .horizontal)
+//    self.setHuggingPriority (.required, for: .vertical)
+//    self.setHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+//    self.setHuggingPriority (.init (rawValue: 1.0), for: .vertical)
 
     self.orientation = inOrientation
     self.distribution = .fill

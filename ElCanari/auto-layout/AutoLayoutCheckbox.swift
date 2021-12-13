@@ -49,6 +49,14 @@ final class AutoLayoutCheckbox : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
+//  override var intrinsicContentSize : NSSize {
+//    let s = super.intrinsicContentSize
+//    Swift.print ("AutoLayoutCheckbox height \(s)")
+//    return s
+//  }
+
+  //····················································································································
+
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     _ = self.mValueController?.updateModel (withCandidateValue: self.state == NSControl.StateValue.on, windowForSheet: self.window)
     return super.sendAction (action, to: to)

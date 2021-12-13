@@ -73,6 +73,7 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol {
 
   override var intrinsicContentSize : NSSize {
     let s = super.intrinsicContentSize
+    // Swift.print ("AutoLayoutTextField height \(s.height)")
     return NSSize (width: self.mWidth, height: s.height)
   }
 

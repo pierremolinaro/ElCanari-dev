@@ -1,5 +1,5 @@
 //
-//  EBButton.swift
+//  AutoLayoutButton.swift
 //  essai-custom-stack-view
 //
 //  Created by Pierre Molinaro on 19/10/2019.

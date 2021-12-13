@@ -2369,21 +2369,6 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   To many property: mBoardObjects
-  //····················································································································
-
-  final let mBoardObjects_property = StoredArrayOf_BoardObject (usedForSignature: false)
-
-  //····················································································································
-
-  //····················································································································
-
-  final var mBoardObjects : EBReferenceArray <BoardObject> {
-    get { return self.mBoardObjects_property.propval }
-    set { self.mBoardObjects_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   To many property: mNetClasses
   //····················································································································
 
@@ -2396,6 +2381,21 @@ final class ProjectRoot : EBManagedObject,
   final var mNetClasses : EBReferenceArray <NetClassInProject> {
     get { return self.mNetClasses_property.propval }
     set { self.mNetClasses_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   To many property: mBoardObjects
+  //····················································································································
+
+  final let mBoardObjects_property = StoredArrayOf_BoardObject (usedForSignature: false)
+
+  //····················································································································
+
+  //····················································································································
+
+  final var mBoardObjects : EBReferenceArray <BoardObject> {
+    get { return self.mBoardObjects_property.propval }
+    set { self.mBoardObjects_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -3794,14 +3794,14 @@ final class ProjectRoot : EBManagedObject,
     self.mFonts_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mDevices (no option)
     self.mDevices_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mNetClasses (no option)
+    self.mNetClasses_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mBoardObjects (has opposite relationship)
     self.mBoardObjects_property.ebUndoManager = self.ebUndoManager
     self.mBoardObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
-  //--- To many property: mNetClasses (no option)
-    self.mNetClasses_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mBorderCurves (has opposite relationship)
     self.mBorderCurves_property.ebUndoManager = self.ebUndoManager
     self.mBorderCurves_property.setOppositeRelationShipFunctions (
@@ -6253,18 +6253,18 @@ final class ProjectRoot : EBManagedObject,
         valueExplorer:&mDevices_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
-        "mBoardObjects",
-        object: mBoardObjects_property,
-        y: &y,
-        view: view,
-        valueExplorer:&mBoardObjects_property.mValueExplorer
-      )
-      createEntryForToManyRelationshipNamed (
         "mNetClasses",
         object: mNetClasses_property,
         y: &y,
         view: view,
         valueExplorer:&mNetClasses_property.mValueExplorer
+      )
+      createEntryForToManyRelationshipNamed (
+        "mBoardObjects",
+        object: mBoardObjects_property,
+        y: &y,
+        view: view,
+        valueExplorer:&mBoardObjects_property.mValueExplorer
       )
       createEntryForToManyRelationshipNamed (
         "mBorderCurves",
@@ -6527,10 +6527,10 @@ final class ProjectRoot : EBManagedObject,
       self.mFonts_property.mValueExplorer = nil
     //--- To many property: mDevices
       self.mDevices_property.mValueExplorer = nil
-    //--- To many property: mBoardObjects
-      self.mBoardObjects_property.mValueExplorer = nil
     //--- To many property: mNetClasses
       self.mNetClasses_property.mValueExplorer = nil
+    //--- To many property: mBoardObjects
+      self.mBoardObjects_property.mValueExplorer = nil
     //--- To many property: mBorderCurves
       self.mBorderCurves_property.mValueExplorer = nil
     //--- To many property: mComponents
@@ -6597,8 +6597,8 @@ final class ProjectRoot : EBManagedObject,
     self.mSheets.removeAll ()
     self.mFonts.removeAll ()
     self.mDevices.removeAll ()
-    self.mBoardObjects.removeAll ()
     self.mNetClasses.removeAll ()
+    self.mBoardObjects.removeAll ()
     self.mBorderCurves.removeAll ()
     self.mComponents.removeAll ()
   //---
@@ -6784,16 +6784,16 @@ final class ProjectRoot : EBManagedObject,
       relationshipName: "mDevices",
       intoDictionary: ioDictionary
     )
-  //--- To many property: mBoardObjects
-    self.store (
-      managedObjectArray: self.mBoardObjects_property.propval.values,
-      relationshipName: "mBoardObjects",
-      intoDictionary: ioDictionary
-    )
   //--- To many property: mNetClasses
     self.store (
       managedObjectArray: self.mNetClasses_property.propval.values,
       relationshipName: "mNetClasses",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: mBoardObjects
+    self.store (
+      managedObjectArray: self.mBoardObjects_property.propval.values,
+      relationshipName: "mBoardObjects",
       intoDictionary: ioDictionary
     )
   //--- To many property: mBorderCurves
@@ -6867,20 +6867,6 @@ final class ProjectRoot : EBManagedObject,
       ) as! [DeviceInProject]
       self.mDevices_property.setProp (EBReferenceArray (array))
     }
-  //--- To many property: mBoardObjects
-/*    self.mBoardObjects_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mBoardObjects",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BoardObject]) */
-    do{
-      let array = readEntityArrayFromDictionary (
-        inRelationshipName: "mBoardObjects",
-        inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
-      ) as! [BoardObject]
-      self.mBoardObjects_property.setProp (EBReferenceArray (array))
-    }
   //--- To many property: mNetClasses
 /*    self.mNetClasses_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mNetClasses",
@@ -6894,6 +6880,20 @@ final class ProjectRoot : EBManagedObject,
         managedObjectArray: &managedObjectArray
       ) as! [NetClassInProject]
       self.mNetClasses_property.setProp (EBReferenceArray (array))
+    }
+  //--- To many property: mBoardObjects
+/*    self.mBoardObjects_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mBoardObjects",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [BoardObject]) */
+    do{
+      let array = readEntityArrayFromDictionary (
+        inRelationshipName: "mBoardObjects",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as! [BoardObject]
+      self.mBoardObjects_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mBorderCurves
 /*    self.mBorderCurves_property.setProp (readEntityArrayFromDictionary (
@@ -7186,8 +7186,8 @@ final class ProjectRoot : EBManagedObject,
     ioString += "mSheets\n"
     ioString += "mFonts\n"
     ioString += "mDevices\n"
-    ioString += "mBoardObjects\n"
     ioString += "mNetClasses\n"
+    ioString += "mBoardObjects\n"
     ioString += "mBorderCurves\n"
     ioString += "mComponents\n"
   }
@@ -7449,7 +7449,7 @@ final class ProjectRoot : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mBoardObjects.values {
+      for object in self.mNetClasses.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -7480,7 +7480,7 @@ final class ProjectRoot : EBManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mNetClasses.values {
+      for object in self.mBoardObjects.values {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -7833,14 +7833,6 @@ final class ProjectRoot : EBManagedObject,
         }
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mDevices = relationshipArray }
       }
-      if let range = inDictionary ["mBoardObjects"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <BoardObject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! BoardObject)
-        }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mBoardObjects = relationshipArray }
-      }
       if let range = inDictionary ["mNetClasses"], range.length > 0 {
         var relationshipArray = EBReferenceArray <NetClassInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -7848,6 +7840,14 @@ final class ProjectRoot : EBManagedObject,
           relationshipArray.append (inObjectArray [idx] as! NetClassInProject)
         }
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mNetClasses = relationshipArray }
+      }
+      if let range = inDictionary ["mBoardObjects"], range.length > 0 {
+        var relationshipArray = EBReferenceArray <BoardObject> ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! BoardObject)
+        }
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mBoardObjects = relationshipArray }
       }
       if let range = inDictionary ["mBorderCurves"], range.length > 0 {
         var relationshipArray = EBReferenceArray <BorderCurve> ()
@@ -7887,12 +7887,12 @@ final class ProjectRoot : EBManagedObject,
     for managedObject in self.mDevices.values {
       objects.append (managedObject)
     }
-  //--- To many property: mBoardObjects
-    for managedObject in self.mBoardObjects.values {
-      objects.append (managedObject)
-    }
   //--- To many property: mNetClasses
     for managedObject in self.mNetClasses.values {
+      objects.append (managedObject)
+    }
+  //--- To many property: mBoardObjects
+    for managedObject in self.mBoardObjects.values {
       objects.append (managedObject)
     }
   //--- To many property: mBorderCurves
@@ -7931,12 +7931,12 @@ final class ProjectRoot : EBManagedObject,
     for managedObject in self.mDevices.values {
       objects.append (managedObject)
     }
-  //--- To many property: mBoardObjects
-    for managedObject in self.mBoardObjects.values {
-      objects.append (managedObject)
-    }
   //--- To many property: mNetClasses
     for managedObject in self.mNetClasses.values {
+      objects.append (managedObject)
+    }
+  //--- To many property: mBoardObjects
+    for managedObject in self.mBoardObjects.values {
       objects.append (managedObject)
     }
   //--- To many property: mBorderCurves
