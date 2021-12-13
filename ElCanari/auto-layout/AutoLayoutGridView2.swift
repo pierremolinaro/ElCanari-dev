@@ -21,8 +21,8 @@ final class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
   override init () {
     super.init ()
 
-    self.setHuggingPriority (.required, for: .horizontal)
-    self.setHuggingPriority (.required, for: .vertical)
+//    self.setHuggingPriority (.required, for: .horizontal)
+//    self.setHuggingPriority (.required, for: .vertical)
 //    self.setHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
 //    self.setHuggingPriority (.init (rawValue: 1.0), for: .vertical)
   }

@@ -30,6 +30,8 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol {
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
+    self.setContentCompressionResistancePriority (.required, for: .vertical)
+
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.alignment = .center
