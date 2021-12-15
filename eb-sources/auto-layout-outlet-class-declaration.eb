@@ -208,7 +208,7 @@ extern autolayout class IntField (width: Int, size: EBControlSize) $enabled $hid
   func set (format: String)
 }
 
-extern autolayout class IntObserverField (bold: Bool, size: EBControlSize) $enabled {
+extern autolayout class IntObserverField (bold: Bool, size: EBControlSize) $enabled $hidden {
   func set (alignment: TextAlignment)
   func expandableWidth ()
   $observedValue transient Int
@@ -376,6 +376,13 @@ extern autolayout class CanariProjectDeviceTableView (size: EBControlSize) {
   func set (width: Int)
   func set (height: Int)
   $array transient StringArray
+}
+
+extern autolayout class WarningImageView $hidden {
+}
+
+extern autolayout class CanariNetDescriptionTableView {
+  $netInfo transient NetInfoArray
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -66,13 +66,13 @@ final class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTable
         }else{
           result?.textField?.stringValue = "\(n) segments"
         }
-        result?.imageView?.image = NSImage (named: (n == 0) ? warningStatusImageName : okStatusImageName)
+        result?.imageView?.image = (n == 0) ? NSImage (named: warningStatusImageName) : NSImage ()
       }else if columnIdentifier.rawValue == "pins" {
         result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].pinCount)"
-        result?.imageView?.image = NSImage (named: (self.mDataSource [inRowIndex].pinCount < 2) ? warningStatusImageName : okStatusImageName)
+        result?.imageView?.image = (self.mDataSource [inRowIndex].pinCount < 2) ? NSImage (named: warningStatusImageName) : NSImage ()
       }else if columnIdentifier.rawValue == "subnets" {
         result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].subnets.count)"
-        result?.imageView?.image = NSImage (named: self.mDataSource [inRowIndex].subnetsHaveWarning ? warningStatusImageName : okStatusImageName)
+        result?.imageView?.image = self.mDataSource [inRowIndex].subnetsHaveWarning ? NSImage (named: warningStatusImageName) : NSImage ()
       }
     }
     return result

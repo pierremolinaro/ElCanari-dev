@@ -32,6 +32,20 @@ final class AutoLayoutStaticImageView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
+  init (image inImage : NSImage?) {
+    super.init (frame: NSRect ())
+    noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
+
+    self.image = inImage
+    self.imageScaling = .scaleProportionallyUpOrDown
+    self.imageFrameStyle = .none
+
+    self.frame.size = self.intrinsicContentSize
+  }
+
+  //····················································································································
+
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }

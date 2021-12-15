@@ -352,13 +352,38 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
        sortkey netUsage
   }
 
+//---------------------- Net Tab
+
+  stackView mNetListPage vStack set (margins: 8) {
+    hStack {
+      Label (bold: yes, size: .regular) { $title self.netCountString }
+      WarningImageView { $hidden root.netWarningCount == 0 }
+      IntObserverField (bold: yes, size: .regular) {
+        $observedValue root.netWarningCount
+        $hidden root.netWarningCount == 0
+      }
+      Button (title: "Rename Net…", size: .regular) {
+        $run renameNetClassAction
+        $enabled self.netCount > 0
+      }
+      space
+    }
+    CanariNetDescriptionTableView { $netInfo root.netsDescription }
+  }
+
+  transient String netCountString dependsFrom root.netsDescription ;
+  transient Int netCount dependsFrom root.netsDescription ;
+  action renameNetClassAction ;
+
+//  outlet CanariNetInfoTableView mNetInfoTableView $netInfo root.netsDescription 
+//  
+//  transient Int netCount dependsFrom root.netsDescription ;
+//  
+//  outlet EBButton mSelectNetClassInNetTabButton $enabled self.netCount > 0 ; // Action set in IB
+
 //---------------------- Schematics Tab
 
   stackView mSchematicPage vStack set (margins: 8) {
-    space
-  }
-
-  stackView mNetListPage vStack set (margins: 8) {
     space
   }
   
@@ -633,27 +658,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //     $quadrant #componentSymbolSelectionController.mRotation ;
 //
 //  outlet EBSwitch mSymbolMirrorSwitch $value #componentSymbolSelectionController.mMirror ;
-//
-////---------------------- Net Tab
-//  outlet CanariNetInfoTableView mNetInfoTableView $netInfo root.netsDescription ;
-//
-//  transient String netCountString dependsFrom root.netsDescription ;
-//  
-//  outlet EBTextObserverField mNetCountTextField $valueObserver self.netCountString ;
-//  
-//  transient Int netCount dependsFrom root.netsDescription ;
-
-//  outlet EBButton mRenameNetInNetTabButton $enabled self.netCount > 0 ; // Action set in IB
-//
-//  
-//  outlet EBButton mSelectNetClassInNetTabButton $enabled self.netCount > 0 ; // Action set in IB
-//
-//  outlet NSImageView mNetWarningImageView $hidden root.netWarningCount == 0 ;
-//  
-//  outlet EBIntObserverField mNetWarningTextField
-//    $valueObserver root.netWarningCount (autoFormatter: yes)
-//    $hidden root.netWarningCount == 0
-//  ;
 //
 ////----------------- Board limits tab
 //  arrayController #boardCurveObjectsController : root.mBorderCurves ; // $hidden root.boardShapeIsRectangular ;

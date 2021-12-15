@@ -271,6 +271,23 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: netCountString
+  //····················································································································
+
+  final let netCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var netCountString : String? {
+    switch self.netCountString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: netCount
   //····················································································································
 
@@ -416,23 +433,6 @@ import Cocoa
 
   final var canRemoveSelectedDevices : Bool? {
     switch self.canRemoveSelectedDevices_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: netCountString
-  //····················································································································
-
-  final let netCountString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var netCountString : String? {
-    switch self.netCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1849,6 +1849,26 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: netCountString
+    self.netCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.netsDescription_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_netCountString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Atomic property: netCount
     self.netCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2029,26 +2049,6 @@ import Cocoa
       }
     }
     self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: netCountString
-    self.netCountString_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.netsDescription_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_netCountString (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3552,6 +3552,7 @@ import Cocoa
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     // self.rootObject.mSchematicSheetOrientation_property.removeEBObserver (self.schematicSheetOrientationIsCustom_property)
+    // self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
     // self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
     // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetShape_property)
     // self.rootObject.mRastnetDisplayedNetName_property.removeEBObserver (self.rastnetShape_property)
@@ -3565,7 +3566,6 @@ import Cocoa
     // self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
-    // self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
     // self.rastnetShape_property.removeEBObserver (self.overDisplay_property)
     // self.rootObject.boardIssues_property.removeEBObserver (self.overDisplay_property)
     // self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)

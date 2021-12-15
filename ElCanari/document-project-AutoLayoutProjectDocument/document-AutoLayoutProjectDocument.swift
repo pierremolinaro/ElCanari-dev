@@ -39,6 +39,23 @@ import Cocoa
   var boardObjectsController = Controller_AutoLayoutProjectDocument_boardObjectsController ()
 
   //····················································································································
+  //   Transient property: netCount
+  //····················································································································
+
+  final let netCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var netCount : Int? {
+    switch self.netCount_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: documentFileName
   //····················································································································
 
@@ -133,6 +150,23 @@ import Cocoa
 
   final var canRemoveNetClasses : Bool? {
     switch self.canRemoveNetClasses_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: netCountString
+  //····················································································································
+
+  final let netCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var netCountString : String? {
+    switch self.netCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -737,22 +771,46 @@ import Cocoa
   } ()
 
   //····················································································································
-  //    VIEW mSchematicPage
-  //····················································································································
-
-  lazy var mSchematicPage : AutoLayoutVerticalStackView = {
-    let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
-    let view_0 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_0)
-    return vStackView
-  } ()
-
-  //····················································································································
   //    VIEW mNetListPage
   //····················································································································
 
   lazy var mNetListPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutLabel (bold: true, size: .regular)
+        .bind_title (self.netCountString_property)
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutWarningImageView ()
+        .bind_hidden (.intcmp (.id (self.rootObject.netWarningCount_property), .eq, .literalInt (0)))
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutIntObserverField (bold: true, size: .regular)
+        .bind_observedValue (self.rootObject.netWarningCount_property)
+        .bind_hidden (.intcmp (.id (self.rootObject.netWarningCount_property), .eq, .literalInt (0)))
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutButton (title: "Rename Net…", size: .regular)
+        .bind_enabled (.intcmp (.id (self.netCount_property), .gt, .literalInt (0)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.renameNetClassAction (_:))
+        )
+      view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_4)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutCanariNetDescriptionTableView ()
+      .bind_netInfo (self.rootObject.netsDescription_property)
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSchematicPage
+  //····················································································································
+
+  lazy var mSchematicPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutFlexibleSpace ()
@@ -882,6 +940,26 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: netCount
+    self.netCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.netsDescription_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutProjectDocument_netCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.netsDescription_property.addEBObserver (self.netCount_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -983,6 +1061,26 @@ import Cocoa
     }
     self.rootObject.mNetClasses_property.count_property.addEBObserver (self.canRemoveNetClasses_property)
     self.netClassController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveNetClasses_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: netCountString
+    self.netCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.netsDescription_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutProjectDocument_netCountString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1113,8 +1211,8 @@ import Cocoa
     self.mDevicesInLibraryPage.ebCleanUp ()
     self.mFontsInLibraryPage.ebCleanUp ()
     self.mNetClassesPage.ebCleanUp ()
-    self.mSchematicPage.ebCleanUp ()
     self.mNetListPage.ebCleanUp ()
+    self.mSchematicPage.ebCleanUp ()
     self.mBoardOutlinePage.ebCleanUp ()
     self.mProductPage.ebCleanUp ()
     self.mBoardContentsPage.ebCleanUp ()
@@ -1135,12 +1233,14 @@ import Cocoa
     self.projectDeviceController.unbind_model ()
   //--- Array controller property: boardObjectsController
     self.boardObjectsController.unbind_model ()
+    // self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceNames_property)
     // self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
     // self.netClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
+    // self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
     // self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     // self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
     // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
