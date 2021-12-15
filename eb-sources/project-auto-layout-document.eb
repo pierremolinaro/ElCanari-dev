@@ -357,29 +357,34 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   stackView mNetListPage vStack set (margins: 8) {
     hStack {
       Label (bold: yes, size: .regular) { $title self.netCountString }
+      Button (title: "Rename Net…", size: .regular) {
+        $run renameNetClassAction
+        $enabled self.netCount > 0
+      }
+      Button (title: "Select Net Class…", size: .regular) {
+        $run selectNetClassAction
+        $enabled self.netCount > 0
+      }
       WarningImageView { $hidden root.netWarningCount == 0 }
       IntObserverField (bold: yes, size: .regular) {
         $observedValue root.netWarningCount
         $hidden root.netWarningCount == 0
       }
-      Button (title: "Rename Net…", size: .regular) {
-        $run renameNetClassAction
-        $enabled self.netCount > 0
-      }
       space
     }
-    CanariNetDescriptionTableView { $netInfo root.netsDescription }
+    hSplit {
+      CanariNetDescriptionTableView [outlet mNetInfoTableView] { $netInfo root.netsDescription }
+      vStack {
+        StaticLabel (title: "Pins of Selected Net", bold: no, size: .regular) { set (width: 200) }
+        space
+      }
+    }
   }
 
   transient String netCountString dependsFrom root.netsDescription ;
   transient Int netCount dependsFrom root.netsDescription ;
   action renameNetClassAction ;
-
-//  outlet CanariNetInfoTableView mNetInfoTableView $netInfo root.netsDescription 
-//  
-//  transient Int netCount dependsFrom root.netsDescription ;
-//  
-//  outlet EBButton mSelectNetClassInNetTabButton $enabled self.netCount > 0 ; // Action set in IB
+  action selectNetClassAction ;
 
 //---------------------- Schematics Tab
 

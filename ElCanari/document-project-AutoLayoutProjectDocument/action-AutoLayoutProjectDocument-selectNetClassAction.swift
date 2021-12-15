@@ -11,14 +11,14 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func renameNetClassAction (_ sender : NSObject?) {
+  @objc func selectNetClassAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     if let netInfo = self.mNetInfoTableView?.selectedNet {
-//      let idx = netInfoTableView.selectedRow
+//      let netInfo = netInfoTableView.selectedNet
 //      if idx >= 0 {
 //        let netInfo = netInfoTableView.object (at: idx)
         let netName = netInfo.netName
-        self.dialogForRenamingNet (named: netName)
+        self.dialogForSelectingNetClassForNet (named: netName)
 //      }
     }
 //--- END OF USER ZONE 2

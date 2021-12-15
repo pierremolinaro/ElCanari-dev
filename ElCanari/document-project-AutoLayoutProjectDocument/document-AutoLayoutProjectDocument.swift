@@ -246,6 +246,7 @@ import Cocoa
   //    Outlets
   //····················································································································
 
+  weak final var mNetInfoTableView : AutoLayoutCanariNetDescriptionTableView? = nil
 
   //····················································································································
   //    Outlets
@@ -796,12 +797,33 @@ import Cocoa
           selector: #selector (AutoLayoutProjectDocument.renameNetClassAction (_:))
         )
       view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutFlexibleSpace ()
+      let view_0_4 = AutoLayoutButton (title: "Select Net Class…", size: .regular)
+        .bind_enabled (.intcmp (.id (self.netCount_property), .gt, .literalInt (0)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.selectNetClassAction (_:))
+        )
       view_0.appendView (view_0_4)
+      let view_0_5 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_5)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutCanariNetDescriptionTableView ()
-      .bind_netInfo (self.rootObject.netsDescription_property)
+    let view_1 = AutoLayoutHorizontalSplitView ()
+    do{
+      let view_1_0 = AutoLayoutCanariNetDescriptionTableView ()
+        .bind_netInfo (self.rootObject.netsDescription_property)
+      self.mNetInfoTableView = view_1_0 // Outlet
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutVerticalStackView ()
+      do{
+        let view_1_1_0 = AutoLayoutStaticLabel (title: "Pins of Selected Net", bold: false, size: .regular)
+          .set (width: 200)
+        view_1_1.appendView (view_1_1_0)
+        let view_1_1_1 = AutoLayoutFlexibleSpace ()
+        view_1_1.appendView (view_1_1_1)
+      }
+      view_1.appendView (view_1_1)
+    }
     vStackView.appendView (view_1)
     return vStackView
   } ()
