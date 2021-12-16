@@ -206,7 +206,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     }
   //--- Scroll to make selection visible
     if self.mTableView.selectedRow >= 0 {
-      self.mTableView.scrollRowToVisible (self.mTableView.selectedRow)
+      DispatchQueue.main.async { self.mTableView.scrollRowToVisible (self.mTableView.selectedRow) }
     }
   }
 
