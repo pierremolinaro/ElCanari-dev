@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView : AutoLayoutTableView { // , AutoLayoutTableViewDelegate {
+final class AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView : AutoLayoutTableView {
 
   //····················································································································
   // INIT
@@ -72,45 +72,6 @@ final class AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView : AutoLayout
   //--- Tell Table view to reload
     self.sortAndReloadData ()
   }
-
-  //····················································································································
-  //  AutoLayoutTableViewDelegate functions
-  //····················································································································
-
-//  func rowCount () -> Int {
-//    return self.mModelArray.count
-//  }
-//
-//  //····················································································································
-//
-//  func tableViewSelectionDidChange(selectedRows inSelectedRows: IndexSet) {
-//  }
-//
-//  //····················································································································
-//
-//  func indexesOfSelectedObjects() -> IndexSet {
-//    return IndexSet ()
-//  }
-//
-//  //····················································································································
-//
-//  func addEntry() {
-//  }
-//
-//  //····················································································································
-//
-//  func removeSelectedEntries() {
-//  }
-//
-//  //····················································································································
-//
-//  func beginSorting() {
-//  }
-//
-//  //····················································································································
-//
-//  func endSorting () {
-//  }
 
   //····················································································································
   //    $array binding
