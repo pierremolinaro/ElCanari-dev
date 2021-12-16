@@ -25,6 +25,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
     self.mTableView.configure (
       allowsEmptySelection: false,
       allowsMultipleSelection: false,
+      rowCountCallBack: { [weak self] in self?.mDataSource.count ?? 0 },
       delegate: self
     )
     self.mTableView.addColumn_String (
@@ -51,7 +52,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
       headerAlignment: .left,
       contentAlignment: .left
     )
-    self.mTableView.addColumn_ImageInt (
+    self.mTableView.addColumn_NSImage_Int (
       valueGetterDelegate: { [weak self] in
         let optN = self?.mDataSource [$0].pinCount
         let image : NSImage?
@@ -71,9 +72,9 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
       headerAlignment: .left,
       contentAlignment: .left
     )
-    self.mTableView.addColumn_ImageInt (
+    self.mTableView.addColumn_NSImage_Int (
       valueGetterDelegate: { [weak self] in
-        let n = self?.mDataSource [$0].pinCount
+        let n = self?.mDataSource [$0].subnets.count
         let image : NSImage?
         if let uwSelf = self, let warningImage = NSImage (named: warningStatusImageName) {
           image = uwSelf.mDataSource [$0].subnetsHaveWarning ? NSImage (named: warningStatusImageName) : NSImage (size: warningImage.size)
@@ -91,7 +92,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
       headerAlignment: .left,
       contentAlignment: .left
     )
-    self.mTableView.addColumn_ImageInt (
+    self.mTableView.addColumn_NSImage_Int (
       valueGetterDelegate: { [weak self] in
         let optN = self?.mDataSource [$0].trackCount
         let image : NSImage?
@@ -133,6 +134,40 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
   }
 
   //····················································································································
+  //  AutoLayoutTableViewDelegate functions
+  //····················································································································
+
+  func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
+    self.mPinsOfSelectedNetTableView?.sortAndReloadData ()
+  }
+
+  //····················································································································
+
+  func indexesOfSelectedObjects() -> IndexSet {
+    return IndexSet ()
+  }
+
+  //····················································································································
+
+  func addEntry () {
+  }
+
+  //····················································································································
+
+  func removeSelectedEntries () {
+  }
+
+  //····················································································································
+
+  func beginSorting () {
+  }
+
+  //····················································································································
+
+  func endSorting () {
+  }
+
+  //····················································································································
   //  $unconnectedPads binding
   //····················································································································
 
@@ -161,50 +196,57 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
     switch inModel.selection {
     case .empty, .multiple :
       self.mDataSource = []
-      self.mTableView.sortAndReloadData ()
     case .single (let unconnectedPadArray) :
       self.mDataSource = unconnectedPadArray
-      self.mTableView.sortAndReloadData ()
     }
+    self.mTableView.sortAndReloadData ()
   }
 
   //····················································································································
-  // IMPLEMENTATION OF AutoLayoutTableViewDelegate
+  //  mPinsOfSelectedNetTableView
   //····················································································································
 
-  func rowCount() -> Int {
-    return self.mDataSource.count
-  }
+  private weak var mPinsOfSelectedNetTableView : AutoLayoutTableView? = nil
 
-  //····················································································································
+  func setPinsOfSelectedNetTableView (_ inPinsOfSelectedNetTableView : AutoLayoutTableView) {
+    self.mPinsOfSelectedNetTableView = inPinsOfSelectedNetTableView
 
-  func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
-  }
+    inPinsOfSelectedNetTableView.configure (
+      allowsEmptySelection: false,
+      allowsMultipleSelection: false,
+      rowCountCallBack: { [weak self] in return self?.selectedNet?.subnets.count ?? 0 },
+      delegate: nil
+    )
 
-  //····················································································································
+    inPinsOfSelectedNetTableView.addColumn_NSImage_String (
+      valueGetterDelegate: { [weak self] in
+        let optN  = self?.selectedNet?.subnets [$0].string
+        let image : NSImage?
+        if let status = self?.selectedNet?.subnets [$0].status {
+          switch status {
+          case .ok :
+            image = NSImage (named: okStatusImageName)
+          case .warning :
+            image = NSImage (named: warningStatusImageName)
+          case .error :
+            image = NSImage (named: errorStatusImageName)
+          }
+        }else{
+          image = nil
+        }
+        return (optN, image)
+      },
+      sortDelegate: nil,
+//      sortDelegate: { [weak self] (ascending) in
+//        self?.mDataSource.sort { return ascending ? ($0.pinCount < $1.pinCount) : ($0.pinCount > $1.pinCount) }
+//      },
+      title: "Subnets",
+      minWidth: 60,
+      maxWidth: 600,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
 
-  func indexesOfSelectedObjects () -> IndexSet {
-    return IndexSet ()
-  }
-
-  //····················································································································
-
-  func addEntry() {
-  }
-
-  //····················································································································
-
-  func removeSelectedEntries() {
-  }
-
-  //····················································································································
-
-  func beginSorting() {
-  }
-
-  //····················································································································
-
-  func endSorting() {
   }
 
   //····················································································································

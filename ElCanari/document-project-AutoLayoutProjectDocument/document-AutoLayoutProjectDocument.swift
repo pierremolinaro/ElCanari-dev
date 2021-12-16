@@ -817,9 +817,11 @@ import Cocoa
       let view_1_1 = AutoLayoutVerticalStackView ()
       do{
         let view_1_1_0 = AutoLayoutStaticLabel (title: "Pins of Selected Net", bold: false, size: .regular)
-          .set (width: 200)
+          .set (alignment: .center)
+          .set (width: 300)
         view_1_1.appendView (view_1_1_0)
-        let view_1_1_1 = AutoLayoutFlexibleSpace ()
+        let view_1_1_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
+        self.configure_pinsOfSelectedNetTableViewConfigurator (view_1_1_1) // Configurator
         view_1_1.appendView (view_1_1_1)
       }
       view_1.appendView (view_1_1)

@@ -12,7 +12,6 @@ import Cocoa
 
 protocol AutoLayoutTableViewDelegate : AnyObject {
 
-  func rowCount () -> Int
   func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet)
   func indexesOfSelectedObjects () -> IndexSet
   func addEntry ()
@@ -33,6 +32,8 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   private var mAddButton : AutoLayoutButton? = nil
   private var mRemoveButton : AutoLayoutButton? = nil
   private weak var mDelegate : AutoLayoutTableViewDelegate? = nil // SHOULD BE WEAK
+  private var mRowCountCallBack : Optional < () -> Int > = nil
+
   private var mTransmitSelectionChangeToDelegate = true
 
   //····················································································································
@@ -95,10 +96,12 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   final func configure (allowsEmptySelection inAllowsEmptySelection : Bool,
                         allowsMultipleSelection inAllowsMultipleSelection : Bool,
-                        delegate inDelegate : AutoLayoutTableViewDelegate) {
+                        rowCountCallBack inRowCountCallBack : @escaping () -> Int,
+                        delegate inDelegate : AutoLayoutTableViewDelegate?) {
     // Swift.print ("inAllowsEmptySelection \(inAllowsEmptySelection) inAllowsMultipleSelection \(inAllowsMultipleSelection)")
     self.mTableView.allowsEmptySelection = inAllowsEmptySelection
     self.mTableView.allowsMultipleSelection = inAllowsMultipleSelection
+    self.mRowCountCallBack = inRowCountCallBack
     self.mDelegate = inDelegate
   }
 
@@ -243,14 +246,44 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   //····················································································································
 
-  final func addColumn_ImageInt (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> (Int?, NSImage?),
-                                 sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-                                 title inTitle : String,
-                                 minWidth inMinWidth : Int,
-                                 maxWidth inMaxWidth : Int,
-                                 headerAlignment inHeaderAlignment : TextAlignment,
-                                 contentAlignment inContentAlignment : TextAlignment) {
+  final func addColumn_NSImage_Int (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> (Int?, NSImage?),
+                                    sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+                                    title inTitle : String,
+                                    minWidth inMinWidth : Int,
+                                    maxWidth inMaxWidth : Int,
+                                    headerAlignment inHeaderAlignment : TextAlignment,
+                                    contentAlignment inContentAlignment : TextAlignment) {
     let column = InternalImageIntTableColumn (
+      withIdentifierNamed: String (self.mTableView.tableColumns.count),
+      sortDelegate: inSortDelegate,
+      contentAlignment: inContentAlignment.cocoaAlignment,
+      valueGetterDelegate: inGetterDelegate
+    )
+    column.title = inTitle
+    column.headerCell.controlSize = self.mTableView.controlSize
+    column.headerCell.font = self.mTableView.font
+    column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
+    column.minWidth = CGFloat (inMinWidth)
+    column.maxWidth = CGFloat (inMaxWidth)
+    column.width = (column.minWidth + column.maxWidth) / 2.0
+  //--- Add Column
+    self.mTableView.addTableColumn (column)
+  //--- Update table view sort descriptors
+    if let s = column.sortDescriptorPrototype {
+      self.mTableView.sortDescriptors.append (s)
+    }
+  }
+
+  //····················································································································
+
+  final func addColumn_NSImage_String (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> (String?, NSImage?),
+                                       sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+                                       title inTitle : String,
+                                       minWidth inMinWidth : Int,
+                                       maxWidth inMaxWidth : Int,
+                                       headerAlignment inHeaderAlignment : TextAlignment,
+                                       contentAlignment inContentAlignment : TextAlignment) {
+    let column = InternalImageStringTableColumn (
       withIdentifierNamed: String (self.mTableView.tableColumns.count),
       sortDelegate: inSortDelegate,
       contentAlignment: inContentAlignment.cocoaAlignment,
@@ -298,7 +331,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
       }
     }
   //--- Ensure selection non empty ?
-    if self.mTableView.selectedRow < 0, !self.mTableView.allowsEmptySelection, let rowCount = self.mDelegate?.rowCount (), rowCount > 0 {
+    if self.mTableView.selectedRow < 0, !self.mTableView.allowsEmptySelection, let rowCount = self.mRowCountCallBack? (), rowCount > 0 {
       if currentSelectedRow >= 0 {
         if currentSelectedRow < rowCount {
           self.mTableView.selectRowIndexes (IndexSet (integer: currentSelectedRow), byExtendingSelection: false)
@@ -324,8 +357,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   //····················································································································
 
   func numberOfRows (in tableView: NSTableView) -> Int {
-    let n = self.mDelegate?.rowCount () ?? 0
-    return n
+    return self.mRowCountCallBack? () ?? 0
   }
 
   //····················································································································
@@ -810,6 +842,79 @@ fileprivate class InternalImageIntTableColumn : InternalTableColumn {
     textField.alignment = self.mContentAlignment
     if let v = value.0 {
       textField.integerValue = v
+    }
+
+    hStack.appendFlexibleSpace ()
+    return hStack
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// InternalImageStringTableColumn
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate class InternalImageStringTableColumn : InternalTableColumn {
+
+  //····················································································································
+
+  private let mValueGetterDelegate : (_ inRow : Int) -> (String?, NSImage?)
+  private let mNumberFormatter = NumberFormatter ()
+
+  //····················································································································
+  // INIT
+  //····················································································································
+
+  init (withIdentifierNamed inName : String,
+        sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+        contentAlignment inContentAlignment : NSTextAlignment,
+        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> (String?, NSImage?) ) {
+    self.mValueGetterDelegate = inGetterDelegate
+    super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
+    self.isEditable = false
+  //--- Configure number formatter
+    self.mNumberFormatter.formatterBehavior = .behavior10_4
+    self.mNumberFormatter.numberStyle = .decimal
+    self.mNumberFormatter.localizesFormat = true
+    self.mNumberFormatter.minimumFractionDigits = 0
+    self.mNumberFormatter.maximumFractionDigits = 0
+    self.mNumberFormatter.isLenient = true
+  }
+
+  //····················································································································
+
+  required init (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
+    let value : (String?, NSImage?) = self.mValueGetterDelegate (inRowIndex)
+
+    let hStack = AutoLayoutHorizontalStackView ()
+
+    let imageView = AutoLayoutStaticImageView (image: value.1)
+    hStack.appendView (imageView)
+
+    let textField = NSTextField (frame: NSRect ())
+    textField.translatesAutoresizingMaskIntoConstraints = false
+    hStack.appendView (textField)
+
+    textField.isBezeled = false
+    textField.isBordered = false
+    textField.drawsBackground = false
+    textField.isEnabled = true
+    textField.isEditable = false
+//-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
+//    textField.controlSize = self.mTableView.controlSize
+//    textField.font = self.mTableView.font
+    textField.formatter = self.mNumberFormatter
+    textField.alignment = self.mContentAlignment
+    if let v = value.0 {
+      textField.stringValue = v
     }
 
     hStack.appendFlexibleSpace ()

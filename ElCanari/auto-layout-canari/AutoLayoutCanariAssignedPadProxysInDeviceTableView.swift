@@ -25,6 +25,7 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
     self.mTableView.configure (
       allowsEmptySelection: false,
       allowsMultipleSelection: false,
+      rowCountCallBack: { [weak self] in self?.mDataSource.count ?? 0 },
       delegate: self
     )
     self.mTableView.addColumn_String (
@@ -124,9 +125,9 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
 
-  func rowCount() -> Int {
-    return self.mDataSource.count
-  }
+//  func rowCount() -> Int {
+//    return self.mDataSource.count
+//  }
 
   //····················································································································
 

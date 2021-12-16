@@ -112,6 +112,7 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
     self.mTableView.configure (
       allowsEmptySelection: false,
       allowsMultipleSelection: false,
+      rowCountCallBack: { [weak self] in self?.mFilteredTableViewSource.count ?? 0 },
       delegate: self
     )
     noteObjectAllocation (self)
@@ -233,9 +234,9 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
   // AutoLayoutTableViewDelegate delegate implementation
   //····················································································································
 
-  func rowCount() -> Int {
-    return self.mFilteredTableViewSource.count
-  }
+//  func rowCount() -> Int {
+//    return self.mFilteredTableViewSource.count
+//  }
 
   //····················································································································
 

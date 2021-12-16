@@ -181,6 +181,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
     inTableView.configure (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
+      rowCountCallBack: { [weak self] in self?.sortedArray_property.propval.count ?? 0 },
       delegate: self
     )
   //--- Configure 'versionString' column
@@ -334,9 +335,9 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
 
-  final func rowCount () -> Int {
+/*  final func rowCount () -> Int {
     return self.sortedArray_property.propval.count
-  }
+  } */
 
   //····················································································································
 

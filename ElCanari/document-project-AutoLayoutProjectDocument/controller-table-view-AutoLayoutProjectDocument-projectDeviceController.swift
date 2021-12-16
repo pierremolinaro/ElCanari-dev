@@ -181,6 +181,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
     inTableView.configure (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
+      rowCountCallBack: { [weak self] in self?.sortedArray_property.propval.count ?? 0 },
       delegate: self
     )
   //--- Configure 'mDeviceName' column
@@ -334,9 +335,9 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
 
-  final func rowCount () -> Int {
+/*  final func rowCount () -> Int {
     return self.sortedArray_property.propval.count
-  }
+  } */
 
   //····················································································································
 

@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutVerticalStackView, AutoLayoutTableViewDelegate {
+final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutVerticalStackView { // , AutoLayoutTableViewDelegate {
 
   //····················································································································
 
@@ -25,7 +25,8 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
     self.mTableView.configure (
       allowsEmptySelection: false,
       allowsMultipleSelection: false,
-      delegate: self
+      rowCountCallBack: { [weak self] in self?.mDataSource.count ?? 0 },
+      delegate: nil
     )
     self.mTableView.addColumn_String (
       valueGetterDelegate: { [weak self] in return self?.mDataSource [$0].symbolInstanceName ?? "" },
@@ -112,40 +113,40 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
 
-  func rowCount() -> Int {
-    return self.mDataSource.count
-  }
-
-  //····················································································································
-
-  func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
-  }
-
-  //····················································································································
-
-  func indexesOfSelectedObjects () -> IndexSet {
-    return IndexSet ()
-  }
-
-  //····················································································································
-
-  func addEntry() {
-  }
-
-  //····················································································································
-
-  func removeSelectedEntries() {
-  }
-
-  //····················································································································
-
-  func beginSorting() {
-  }
-
-  //····················································································································
-
-  func endSorting() {
-  }
+//  func rowCount() -> Int {
+//    return self.mDataSource.count
+//  }
+//
+//  //····················································································································
+//
+//  func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
+//  }
+//
+//  //····················································································································
+//
+//  func indexesOfSelectedObjects () -> IndexSet {
+//    return IndexSet ()
+//  }
+//
+//  //····················································································································
+//
+//  func addEntry() {
+//  }
+//
+//  //····················································································································
+//
+//  func removeSelectedEntries() {
+//  }
+//
+//  //····················································································································
+//
+//  func beginSorting() {
+//  }
+//
+//  //····················································································································
+//
+//  func endSorting() {
+//  }
 
   //····················································································································
 

@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutCanariProjectDeviceTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariProjectDeviceTableView : AutoLayoutTableView, AutoLayoutTableViewDelegate {
+final class AutoLayoutCanariProjectDeviceTableView : AutoLayoutTableView { // , AutoLayoutTableViewDelegate {
 
   //····················································································································
   // INIT
@@ -26,7 +26,12 @@ final class AutoLayoutCanariProjectDeviceTableView : AutoLayoutTableView, AutoLa
 
   init (size inSize : EBControlSize) {
     super.init (size: inSize, addControlButtons: false)
-    self.configure (allowsEmptySelection: true, allowsMultipleSelection: false, delegate: self)
+    self.configure (
+      allowsEmptySelection: true,
+      allowsMultipleSelection: false,
+      rowCountCallBack: { [weak self] in return self?.mModelArray.count ?? 0 },
+      delegate: nil
+    )
     self.addColumn_String (
       valueGetterDelegate: { [weak self] (_ inRow : Int) in return self?.mModelArray [inRow] },
       valueSetterDelegate: nil,
@@ -60,40 +65,40 @@ final class AutoLayoutCanariProjectDeviceTableView : AutoLayoutTableView, AutoLa
   //  AutoLayoutTableViewDelegate functions
   //····················································································································
 
-  func rowCount () -> Int {
-    return self.mModelArray.count
-  }
-
-  //····················································································································
-
-  func tableViewSelectionDidChange(selectedRows inSelectedRows: IndexSet) {
-  }
-
-  //····················································································································
-
-  func indexesOfSelectedObjects() -> IndexSet {
-    return IndexSet ()
-  }
-
-  //····················································································································
-
-  func addEntry() {
-  }
-
-  //····················································································································
-
-  func removeSelectedEntries() {
-  }
-
-  //····················································································································
-
-  func beginSorting() {
-  }
-
-  //····················································································································
-
-  func endSorting () {
-  }
+//  func rowCount () -> Int {
+//    return self.mModelArray.count
+//  }
+//
+//  //····················································································································
+//
+//  func tableViewSelectionDidChange(selectedRows inSelectedRows: IndexSet) {
+//  }
+//
+//  //····················································································································
+//
+//  func indexesOfSelectedObjects() -> IndexSet {
+//    return IndexSet ()
+//  }
+//
+//  //····················································································································
+//
+//  func addEntry() {
+//  }
+//
+//  //····················································································································
+//
+//  func removeSelectedEntries() {
+//  }
+//
+//  //····················································································································
+//
+//  func beginSorting() {
+//  }
+//
+//  //····················································································································
+//
+//  func endSorting () {
+//  }
 
   //····················································································································
   //    $array binding

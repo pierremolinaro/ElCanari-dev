@@ -153,6 +153,7 @@ final class Controller_AutoLayoutFontDocument_selectedCharacterController : EBOb
     inTableView.configure (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
+      rowCountCallBack: { [weak self] in self?.sortedArray_property.propval.count ?? 0 },
       delegate: self
     )
   //---
@@ -254,9 +255,9 @@ final class Controller_AutoLayoutFontDocument_selectedCharacterController : EBOb
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
 
-  final func rowCount () -> Int {
+/*  final func rowCount () -> Int {
     return self.sortedArray_property.propval.count
-  }
+  } */
 
   //····················································································································
 

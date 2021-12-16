@@ -26,7 +26,12 @@ final class AutoLayoutCanariProjectDevicePackageTableView : AutoLayoutTableView,
 
   init (size inSize : EBControlSize) {
     super.init (size: inSize, addControlButtons: false)
-    self.configure (allowsEmptySelection: true, allowsMultipleSelection: false, delegate: self)
+    self.configure (
+      allowsEmptySelection: true,
+      allowsMultipleSelection: false,
+      rowCountCallBack: { [weak self] in self?.mModelArray.count ?? 0 },
+      delegate: self
+    )
     self.addColumn_String (
       valueGetterDelegate: { [weak self] (_ inRow : Int) in return self?.mModelArray [inRow] },
       valueSetterDelegate: nil,
@@ -60,9 +65,9 @@ final class AutoLayoutCanariProjectDevicePackageTableView : AutoLayoutTableView,
   //  AutoLayoutTableViewDelegate functions
   //····················································································································
 
-  func rowCount () -> Int {
-    return self.mModelArray.count
-  }
+//  func rowCount () -> Int {
+//    return self.mModelArray.count
+//  }
 
   //····················································································································
 

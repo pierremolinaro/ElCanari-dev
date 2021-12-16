@@ -228,6 +228,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
     self.mStatsTableView.configure (
       allowsEmptySelection: false,
       allowsMultipleSelection: false,
+      rowCountCallBack: { [weak self] in self?.mAllocationStatsDataSource.count ?? 0 },
       delegate: self
     )
     _ = self.mStatsTableView.setIntercellSpacing (horizontal: 0, vertical: 5)
@@ -457,9 +458,9 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
   //   IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
 
-  func rowCount() -> Int {
-    return self.mAllocationStatsDataSource.count
-  }
+//  func rowCount() -> Int {
+//    return self.mAllocationStatsDataSource.count
+//  }
 
   //····················································································································
 

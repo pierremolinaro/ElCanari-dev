@@ -209,6 +209,7 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
     inTableView.configure (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
+      rowCountCallBack: { [weak self] in self?.sortedArray_property.propval.count ?? 0 },
       delegate: self
     )
   //--- Configure 'mNetClassName' column
@@ -453,9 +454,9 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
 
-  final func rowCount () -> Int {
+/*  final func rowCount () -> Int {
     return self.sortedArray_property.propval.count
-  }
+  } */
 
   //····················································································································
 
