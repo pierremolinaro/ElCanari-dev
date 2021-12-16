@@ -13,38 +13,18 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutMergerDocument_incorrectDocumentFileDetailedErrorMessage (
-       _ self_documentFileName : String
+func transient_ProjectRoot_layerConfigurationString (
+       _ self_mLayerConfiguration : LayerConfiguration
 ) -> String {
 //--- START OF USER ZONE 2
-            var message = ""
-            if self_documentFileName.isEmpty {
-              message = "The document is unnamed."
-            }else{
-              var ok = true
-              let baseName = self_documentFileName.lastPathComponent.deletingPathExtension
-              for char in baseName.unicodeScalars {
-                ok = (char >= "A") && (char <= "Z")
-                if !ok {
-                  ok = (char >= "a") && (char <= "z")
-                }
-                if !ok {
-                  ok = (char >= "0") && (char <= "9")
-                }
-                if !ok {
-                  ok = (char == "-") || (char == "_")
-                }
-                if !ok {
-                  break
-                }
-              }
-              if !ok {
-                message  = "The name of the document (\(baseName)) contains characters that can cause problems for PCB"
-                message += " manufacturers. It is recommended that this name only contains letters (without any accent),"
-                message += " digits, and the characters '_', '-'."
-              }
-            }
-            return message
+         switch self_mLayerConfiguration {
+         case .twoLayers :
+           return "2 Layers"
+         case .fourLayers :
+           return "4 Layers"
+         case .sixLayers :
+           return "6 Layers"
+         }
 //--- END OF USER ZONE 2
 }
 

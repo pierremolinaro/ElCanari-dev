@@ -673,50 +673,48 @@ import Cocoa
       view_0.appendView (view_0_1)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    vStackView.appendView (view_1)
-    let view_2 = AutoLayoutHorizontalStackView ()
+    let view_1 = AutoLayoutHorizontalStackView ()
       .bind_hidden (.not (.id (self.rootObject.mArtwork_none)))
     do{
-      let view_2_0 = AutoLayoutFlexibleSpace ()
-      view_2.appendView (view_2_0)
-      let view_2_1 = AutoLayoutVerticalStackView ()
+      let view_1_0 = AutoLayoutFlexibleSpace ()
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutVerticalStackView ()
       do{
-        let view_2_1_0 = AutoLayoutFlexibleSpace ()
-        view_2_1.appendView (view_2_1_0)
-        let view_2_1_1 = AutoLayoutStaticLabel (title: "No Artwork", bold: true, size: .regular)
-        view_2_1.appendView (view_2_1_1)
-        let view_2_1_2 = AutoLayoutFlexibleSpace ()
-        view_2_1.appendView (view_2_1_2)
+        let view_1_1_0 = AutoLayoutFlexibleSpace ()
+        view_1_1.appendView (view_1_1_0)
+        let view_1_1_1 = AutoLayoutStaticLabel (title: "No Artwork", bold: true, size: .regular)
+        view_1_1.appendView (view_1_1_1)
+        let view_1_1_2 = AutoLayoutFlexibleSpace ()
+        view_1_1.appendView (view_1_1_2)
       }
-      view_2.appendView (view_2_1)
-      let view_2_2 = AutoLayoutFlexibleSpace ()
-      view_2.appendView (view_2_2)
+      view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutFlexibleSpace ()
+      view_1.appendView (view_1_2)
     }
-    vStackView.appendView (view_2)
-    let view_3 = AutoLayoutVerticalStackView ()
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutVerticalStackView ()
       .bind_hidden (.id (self.rootObject.mArtwork_none))
     do{
-      let view_3_0 = AutoLayoutHorizontalStackView ()
+      let view_2_0 = AutoLayoutHorizontalStackView ()
       do{
-        let view_3_0_0 = AutoLayoutFlexibleSpace ()
-        view_3_0.appendView (view_3_0_0)
-        let view_3_0_1 = AutoLayoutSegmentedControlWithPages (documentView: self.mProductMasterView, equalWidth: true, size: .regular)
+        let view_2_0_0 = AutoLayoutFlexibleSpace ()
+        view_2_0.appendView (view_2_0_0)
+        let view_2_0_1 = AutoLayoutSegmentedControlWithPages (documentView: self.mProductMasterView, equalWidth: true, size: .regular)
           .addPage (title: "Artwork Description", tooltip: "", pageView: self.mArtworkDescriptionPage)
           .addPage (title: "Artwork Minima", tooltip: "", pageView: self.mArtworkMinimaPage)
           .addPage (title: "Artwork Data", tooltip: "", pageView: self.mArtworkDataPage)
           .addPage (title: "PDF Settings", tooltip: "", pageView: self.mPDFSettingsPage)
           .addPage (title: "Generation Log", tooltip: "", pageView: self.mGenerationLogPage)
-        self.mProductPageSegmentedControl = view_3_0_1 // Outlet
-        view_3_0.appendView (view_3_0_1)
-        let view_3_0_2 = AutoLayoutFlexibleSpace ()
-        view_3_0.appendView (view_3_0_2)
+        self.mProductPageSegmentedControl = view_2_0_1 // Outlet
+        view_2_0.appendView (view_2_0_1)
+        let view_2_0_2 = AutoLayoutFlexibleSpace ()
+        view_2_0.appendView (view_2_0_2)
       }
-      view_3.appendView (view_3_0)
-      let view_3_1 = mProductMasterView
-      view_3.appendView (view_3_1)
+      view_2.appendView (view_2_0)
+      let view_2_1 = mProductMasterView
+      view_2.appendView (view_2_1)
     }
-    vStackView.appendView (view_3)
+    vStackView.appendView (view_2)
     return vStackView
   } ()
 
@@ -783,8 +781,6 @@ import Cocoa
         let view_1_0_1 = AutoLayoutTableView (size: .small, addControlButtons: true)
         self.mDataController.bind_tableView (view_1_0_1)
         view_1_0.appendView (view_1_0_1)
-        let view_1_0_2 = AutoLayoutFlexibleSpace ()
-        view_1_0.appendView (view_1_0_2)
       }
       view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()

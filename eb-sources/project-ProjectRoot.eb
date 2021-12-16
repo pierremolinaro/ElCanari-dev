@@ -25,6 +25,8 @@ entity ProjectRoot {
   toMany proxy ArtworkFileGenerationParameters fileGenerationParameterArray : mArtwork.fileGenerationParameterArray ;
 
   property proxy String artworkComments : mArtwork.comments ;
+  transient Bool hasInnerElements dependsFrom self.mArtwork.one.hasInnerElements ;
+  transient Bool hasSixLayers dependsFrom self. artworkLayerConfiguration ;
   property proxy String artworkTitle : mArtwork.title ;
   property proxy LayerConfiguration artworkLayerConfiguration : mArtwork.layerConfiguration ;
  
@@ -48,6 +50,7 @@ entity ProjectRoot {
   toMany BoardObject mBoardObjects inverse toOne mRoot ;
   
   property LayerConfiguration mLayerConfiguration default twoLayers ;
+  transient String layerConfigurationString dependsFrom self.mLayerConfiguration ;
 
   property TrackSide mBoardSideForNewTrack default front ;
   property TrackCreationDirection mDirectionForNewTrack default anyAngle ;

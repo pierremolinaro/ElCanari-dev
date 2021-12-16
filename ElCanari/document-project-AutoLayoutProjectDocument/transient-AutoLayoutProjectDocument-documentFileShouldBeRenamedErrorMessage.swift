@@ -13,38 +13,31 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutMergerDocument_incorrectDocumentFileDetailedErrorMessage (
+func transient_AutoLayoutProjectDocument_documentFileShouldBeRenamedErrorMessage (
        _ self_documentFileName : String
 ) -> String {
 //--- START OF USER ZONE 2
-            var message = ""
-            if self_documentFileName.isEmpty {
-              message = "The document is unnamed."
-            }else{
-              var ok = true
-              let baseName = self_documentFileName.lastPathComponent.deletingPathExtension
-              for char in baseName.unicodeScalars {
-                ok = (char >= "A") && (char <= "Z")
-                if !ok {
-                  ok = (char >= "a") && (char <= "z")
-                }
-                if !ok {
-                  ok = (char >= "0") && (char <= "9")
-                }
-                if !ok {
-                  ok = (char == "-") || (char == "_")
-                }
-                if !ok {
-                  break
-                }
-              }
-              if !ok {
-                message  = "The name of the document (\(baseName)) contains characters that can cause problems for PCB"
-                message += " manufacturers. It is recommended that this name only contains letters (without any accent),"
-                message += " digits, and the characters '_', '-'."
-              }
-            }
-            return message
+      if self_documentFileName.isEmpty {
+        return "Document is unnamed"
+      }else {
+        let baseName = self_documentFileName.lastPathComponent.deletingPathExtension
+        for char in baseName.unicodeScalars {
+          var ok = (char >= "A") && (char <= "Z")
+          if !ok {
+            ok = (char >= "a") && (char <= "z")
+          }
+          if !ok {
+            ok = (char >= "0") && (char <= "9")
+          }
+          if !ok {
+            ok = (char == "-") || (char == "_")
+          }
+          if !ok {
+            return "It is Recommended that you rename the document"
+          }
+        }
+        return ""
+      }
 //--- END OF USER ZONE 2
 }
 

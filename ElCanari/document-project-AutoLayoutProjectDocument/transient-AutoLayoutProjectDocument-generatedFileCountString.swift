@@ -13,38 +13,19 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutMergerDocument_incorrectDocumentFileDetailedErrorMessage (
-       _ self_documentFileName : String
+func transient_AutoLayoutProjectDocument_generatedFileCountString (
+       _ self_mDataController_sortedArray_count : Int
 ) -> String {
 //--- START OF USER ZONE 2
-            var message = ""
-            if self_documentFileName.isEmpty {
-              message = "The document is unnamed."
-            }else{
-              var ok = true
-              let baseName = self_documentFileName.lastPathComponent.deletingPathExtension
-              for char in baseName.unicodeScalars {
-                ok = (char >= "A") && (char <= "Z")
-                if !ok {
-                  ok = (char >= "a") && (char <= "z")
-                }
-                if !ok {
-                  ok = (char >= "0") && (char <= "9")
-                }
-                if !ok {
-                  ok = (char == "-") || (char == "_")
-                }
-                if !ok {
-                  break
-                }
-              }
-              if !ok {
-                message  = "The name of the document (\(baseName)) contains characters that can cause problems for PCB"
-                message += " manufacturers. It is recommended that this name only contains letters (without any accent),"
-                message += " digits, and the characters '_', '-'."
-              }
-            }
-            return message
+       var s : String
+        if 0 == self_mDataController_sortedArray_count {
+          s = "This artwork generates no data file"
+        }else if 1 == self_mDataController_sortedArray_count {
+          s = "This artwork generates 1 data file"
+        }else{
+          s = "This artwork generates \(self_mDataController_sortedArray_count) data files"
+        }
+        return s
 //--- END OF USER ZONE 2
 }
 

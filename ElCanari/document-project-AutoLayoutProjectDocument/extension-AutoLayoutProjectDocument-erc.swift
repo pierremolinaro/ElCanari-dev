@@ -54,7 +54,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-//  internal func performERCChecking () -> Bool {
+  internal func performERCChecking () -> Bool {
 //    self.mERCLogTextView?.clear ()
 //    var issues = [CanariIssue] ()
 //  //--- Checkings
@@ -76,10 +76,12 @@ extension AutoLayoutProjectDocument {
 //    self.mERCIssueTableView?.setIssues (issues)
 //  //---
 //    return issues.isEmpty
-//  }
-//
-//  //····················································································································
-//
+    NSSound.beep ()
+    return false
+  }
+
+  //····················································································································
+
 //  fileprivate func checkVersusArtwork (_ ioIssues : inout [CanariIssue]) {
 //    if let artwork = self.rootObject.mArtwork {
 //      self.mERCLogTextView?.appendMessageString ("Check artwork… ")

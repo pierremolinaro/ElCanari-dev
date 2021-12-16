@@ -13,38 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutMergerDocument_incorrectDocumentFileDetailedErrorMessage (
-       _ self_documentFileName : String
-) -> String {
+func transient_ProjectRoot_hasInnerElements (
+       _ self_mArtwork_hasInnerElements : Bool?
+) -> Bool {
 //--- START OF USER ZONE 2
-            var message = ""
-            if self_documentFileName.isEmpty {
-              message = "The document is unnamed."
-            }else{
-              var ok = true
-              let baseName = self_documentFileName.lastPathComponent.deletingPathExtension
-              for char in baseName.unicodeScalars {
-                ok = (char >= "A") && (char <= "Z")
-                if !ok {
-                  ok = (char >= "a") && (char <= "z")
-                }
-                if !ok {
-                  ok = (char >= "0") && (char <= "9")
-                }
-                if !ok {
-                  ok = (char == "-") || (char == "_")
-                }
-                if !ok {
-                  break
-                }
-              }
-              if !ok {
-                message  = "The name of the document (\(baseName)) contains characters that can cause problems for PCB"
-                message += " manufacturers. It is recommended that this name only contains letters (without any accent),"
-                message += " digits, and the characters '_', '-'."
-              }
-            }
-            return message
+        return self_mArtwork_hasInnerElements ?? false
 //--- END OF USER ZONE 2
 }
 

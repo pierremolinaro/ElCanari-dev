@@ -88,6 +88,9 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.mSchematicCustomWidthUnit_property.removeEBObserver (self.mSchematicCustomWidthUnit_property) // Stored property
       oldValue.mSchematicCustomHeight_property.removeEBObserver (self.mSchematicCustomHeight_property) // Stored property
       oldValue.mSchematicCustomHeightUnit_property.removeEBObserver (self.mSchematicCustomHeightUnit_property) // Stored property
+      oldValue.hasInnerElements_property.removeEBObserver (self.hasInnerElements_property) // Transient property
+      oldValue.hasSixLayers_property.removeEBObserver (self.hasSixLayers_property) // Transient property
+      oldValue.layerConfigurationString_property.removeEBObserver (self.layerConfigurationString_property) // Transient property
       oldValue.boardGridStepMultipliedByDisplayFactor_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property) // Transient property
       oldValue.boardLimitsGridStepMultipliedByDisplayFactor_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
       oldValue.boardShapeIsRectangular_property.removeEBObserver (self.boardShapeIsRectangular_property) // Transient property
@@ -213,6 +216,9 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.mSchematicCustomWidthUnit_property.addEBObserver (self.mSchematicCustomWidthUnit_property) // Stored property
       newValue.mSchematicCustomHeight_property.addEBObserver (self.mSchematicCustomHeight_property) // Stored property
       newValue.mSchematicCustomHeightUnit_property.addEBObserver (self.mSchematicCustomHeightUnit_property) // Stored property
+      newValue.hasInnerElements_property.addEBObserver (self.hasInnerElements_property) // Transient property
+      newValue.hasSixLayers_property.addEBObserver (self.hasSixLayers_property) // Transient property
+      newValue.layerConfigurationString_property.addEBObserver (self.layerConfigurationString_property) // Transient property
       newValue.boardGridStepMultipliedByDisplayFactor_property.addEBObserver (self.boardGridStepMultipliedByDisplayFactor_property) // Transient property
       newValue.boardLimitsGridStepMultipliedByDisplayFactor_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
       newValue.boardShapeIsRectangular_property.addEBObserver (self.boardShapeIsRectangular_property) // Transient property
@@ -697,6 +703,24 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mSchematicCustomHeightUnit_property = EBGenericTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'hasInnerElements' transient property
+  //····················································································································
+
+  final let hasInnerElements_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'hasSixLayers' transient property
+  //····················································································································
+
+  final let hasSixLayers_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'layerConfigurationString' transient property
+  //····················································································································
+
+  final let layerConfigurationString_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'boardGridStepMultipliedByDisplayFactor' transient property
@@ -2241,6 +2265,51 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mSchematicCustomHeightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.mSchematicCustomHeightUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure hasInnerElements transient property
+    self.hasInnerElements_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.hasInnerElements_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure hasSixLayers transient property
+    self.hasSixLayers_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.hasSixLayers_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure layerConfigurationString transient property
+    self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.layerConfigurationString_property.selection {
         case .empty :
           return .empty
         case .multiple :

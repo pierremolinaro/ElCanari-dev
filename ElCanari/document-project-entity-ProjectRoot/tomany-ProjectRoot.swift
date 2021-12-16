@@ -89,6 +89,9 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.removeEBObserversOf_mSchematicCustomWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mSchematicCustomHeight_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mSchematicCustomHeightUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_hasInnerElements_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_hasSixLayers_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_layerConfigurationString_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_boardGridStepMultipliedByDisplayFactor_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_boardLimitsGridStepMultipliedByDisplayFactor_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_boardShapeIsRectangular_fromElementsOfSet (inRemovedSet) // Transient property
@@ -216,6 +219,9 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.addEBObserversOf_mSchematicCustomWidthUnit_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mSchematicCustomHeight_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mSchematicCustomHeightUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_hasInnerElements_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_hasSixLayers_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_layerConfigurationString_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_boardGridStepMultipliedByDisplayFactor_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_boardLimitsGridStepMultipliedByDisplayFactor_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_boardShapeIsRectangular_toElementsOfSet (inAddedSet) // Transient property
@@ -5147,63 +5153,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'drillDataFileExtension' proxy property
-  //····················································································································
-
-  private final var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_drillDataFileExtension.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.drillDataFileExtension_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_drillDataFileExtension.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.drillDataFileExtension_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_drillDataFileExtension_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    for managedObject in inSet.values {
-      self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBEvent) in
-        managedObject.drillDataFileExtension_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet.values {
-        managedObject.drillDataFileExtension_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'artworkComments' proxy property
   //····················································································································
 
@@ -5370,6 +5319,231 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet.values {
         managedObject.selectedSheetTitle_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drillDataFileExtension' proxy property
+  //····················································································································
+
+  private final var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drillDataFileExtension.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drillDataFileExtension_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drillDataFileExtension.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drillDataFileExtension_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drillDataFileExtension_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBEvent) in
+        managedObject.drillDataFileExtension_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet.values {
+        managedObject.drillDataFileExtension_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'hasInnerElements' transient property
+  //····················································································································
+
+  private final var mObserversOf_hasInnerElements = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_hasInnerElements (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_hasInnerElements.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasInnerElements_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_hasInnerElements (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_hasInnerElements.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasInnerElements_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_hasInnerElements_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_hasInnerElements.apply { (_ observer : EBEvent) in
+        managedObject.hasInnerElements_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_hasInnerElements_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_hasInnerElements.apply { (_ observer : EBEvent) in
+        managedObject.hasInnerElements_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'hasSixLayers' transient property
+  //····················································································································
+
+  private final var mObserversOf_hasSixLayers = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_hasSixLayers (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_hasSixLayers.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasSixLayers_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_hasSixLayers (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_hasSixLayers.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasSixLayers_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_hasSixLayers_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_hasSixLayers.apply { (_ observer : EBEvent) in
+        managedObject.hasSixLayers_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_hasSixLayers_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_hasSixLayers.apply { (_ observer : EBEvent) in
+        managedObject.hasSixLayers_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'layerConfigurationString' transient property
+  //····················································································································
+
+  private final var mObserversOf_layerConfigurationString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_layerConfigurationString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_layerConfigurationString.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.layerConfigurationString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_layerConfigurationString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_layerConfigurationString.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.layerConfigurationString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_layerConfigurationString_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_layerConfigurationString.apply { (_ observer : EBEvent) in
+        managedObject.layerConfigurationString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_layerConfigurationString_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_layerConfigurationString.apply { (_ observer : EBEvent) in
+        managedObject.layerConfigurationString_property.removeEBObserver (observer)
       }
     }
   }

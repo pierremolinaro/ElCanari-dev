@@ -868,7 +868,6 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         space
       }
     }
-    separator
     hStack $hidden !root.mArtwork.none {
       space
       vStack { space StaticLabel (title: "No Artwork", bold: yes, size : .regular) space }
@@ -878,7 +877,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
       hStack {
         space
         SegmentedControlWithPages (documentView: stackView mProductMasterView, equalWidth: yes, size : .regular)
-          [outlet mProductPageSegmentedControl] { //  configurator boardPageSegmentedControl] 
+          [outlet mProductPageSegmentedControl] {
           addPage (title: "Artwork Description", tooltip: "", pageView: stackView mArtworkDescriptionPage)
           addPage (title: "Artwork Minima", tooltip: "", pageView: stackView mArtworkMinimaPage)
           addPage (title: "Artwork Data", tooltip: "", pageView: stackView mArtworkDataPage)
@@ -944,7 +943,6 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
       vStack set (topMargin: 8) {
         Label (bold: yes, size : .small) { $title self.generatedFileCountString }
         TableView (size : .small, addControlButtons: yes) { $tableValue #mDataController }
-        space
       }
       separator
       vStack set (topMargin: 8) {
