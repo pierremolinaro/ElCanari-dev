@@ -1193,6 +1193,8 @@
 		CF514050276BB867008DB542 /* extension-AutoLayoutProjectDocument-generate-product-csv.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51404C276BB867008DB542 /* extension-AutoLayoutProjectDocument-generate-product-csv.swift */; };
 		CF514051276BB867008DB542 /* extension-AutoLayoutProjectDocument-generate-board-archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51404D276BB867008DB542 /* extension-AutoLayoutProjectDocument-generate-board-archive.swift */; };
 		CF514052276BB867008DB542 /* extension-AutoLayoutProjectDocument-generate-product-gerber-files.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51404E276BB867008DB542 /* extension-AutoLayoutProjectDocument-generate-product-gerber-files.swift */; };
+		CF514053276BBDF3008DB542 /* transient-ProjectRoot-hasInnerElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF514045276BB4FB008DB542 /* transient-ProjectRoot-hasInnerElements.swift */; };
+		CF514054276BBDF4008DB542 /* transient-ProjectRoot-hasInnerElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF514045276BB4FB008DB542 /* transient-ProjectRoot-hasInnerElements.swift */; };
 		CF5182DA21B8486C0035533A /* entity-CanariLibraryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5182D921B8486C0035533A /* entity-CanariLibraryEntry.swift */; };
 		CF5182DB21B8486C0035533A /* entity-CanariLibraryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5182D921B8486C0035533A /* entity-CanariLibraryEntry.swift */; };
 		CF518E052282C6F6002BCEE5 /* ProjectDocument-customized-nets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF518E042282C6F6002BCEE5 /* ProjectDocument-customized-nets.swift */; };
@@ -9327,6 +9329,7 @@
 				CFA42F91229AEACF000AA8C8 /* tomany-SymbolTypeInDevice.swift in Sources */,
 				CF4EA9D626F6513B00F01746 /* transient-BoardTrack-trackSide.swift in Sources */,
 				CF53BE8626775757003971AF /* show-debug-menu.swift in Sources */,
+				CF514054276BBDF4008DB542 /* transient-ProjectRoot-hasInnerElements.swift in Sources */,
 				CFEB7CE6233A28A10060A97A /* transient-WireInSchematic-objectDisplay.swift in Sources */,
 				CFEB7AA9233A23270060A97A /* transient-BoardConnector-netClassName.swift in Sources */,
 				CF712006275E1EA300280069 /* extension-SheetInProject-points-at-location.swift in Sources */,
@@ -10777,6 +10780,7 @@
 				CF53BE8726775757003971AF /* show-debug-menu.swift in Sources */,
 				CFEB7CE7233A28A10060A97A /* transient-WireInSchematic-objectDisplay.swift in Sources */,
 				CF4EA9D726F6513B00F01746 /* transient-BoardTrack-trackSide.swift in Sources */,
+				CF514053276BBDF3008DB542 /* transient-ProjectRoot-hasInnerElements.swift in Sources */,
 				CFA430BE229AEC41000AA8C8 /* toone-SymbolPin.swift in Sources */,
 				CF3D745121A8026D004F6C43 /* enum-HorizontalAlignment.swift in Sources */,
 				CFEB7AAA233A23270060A97A /* transient-BoardConnector-netClassName.swift in Sources */,

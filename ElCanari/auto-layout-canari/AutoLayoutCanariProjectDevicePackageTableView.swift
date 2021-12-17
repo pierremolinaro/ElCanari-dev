@@ -109,7 +109,7 @@ final class AutoLayoutCanariProjectDevicePackageTableView : AutoLayoutTableView,
   final func bind_array (_ model : EBReadOnlyProperty_StringArray) -> Self {
     self.mArrayController = EBReadOnlyPropertyController (
       observedObjects: [model],
-      callBack: {self.update (from: model) }
+      callBack: { [weak self] in self?.update (from: model) }
     )
     return self
   }

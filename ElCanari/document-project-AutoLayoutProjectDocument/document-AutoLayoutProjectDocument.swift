@@ -2326,6 +2326,7 @@ import Cocoa
   override func removeUserInterface () {
     super.removeUserInterface ()
   //--------------------------- Clean up auto layout views
+    self.windowForSheet?.contentView?.ebCleanUp ()
     self.mPageMasterView.ebCleanUp ()
     self.mDocumentMainView.ebCleanUp ()
     self.mComponentsPage.ebCleanUp ()

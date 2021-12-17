@@ -22,6 +22,9 @@ extension NSView {
 
   override func ebCleanUp () {
     self.autoLayoutCleanUp ()
+    for view in self.subviews {
+      view.ebCleanUp ()
+    }
     super.ebCleanUp ()
   }
 

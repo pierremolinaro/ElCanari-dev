@@ -28,12 +28,12 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
-  var mControlerArray = [EBReadOnlyPropertyController] ()
+  var mControllerArray = [EBReadOnlyPropertyController] ()
 
   //····················································································································
 
   override func ebCleanUp () {
-    for controller in self.mControlerArray {
+    for controller in self.mControllerArray {
       controller.unregister ()
     }
     super.ebCleanUp ()
@@ -43,11 +43,6 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
 
   final func add (item inMenuItemDescriptor : AutoLayoutMenuItemDescriptor) -> Self {
     self.addItem (withTitle: inMenuItemDescriptor.title)
-//    let textAttributes : [NSAttributedString.Key : Any] = [
-//      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-//    ]
-//    let attributedTitle = NSAttributedString (string: inMenuItemDescriptor.title, attributes: textAttributes)
-//    self.lastItem?.attributedTitle = attributedTitle
     self.lastItem?.target = inMenuItemDescriptor.target
     self.lastItem?.action = inMenuItemDescriptor.selector
   //--- Add Enabled binding ?
@@ -62,7 +57,7 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
         observedObjects: modelArray,
         callBack: { [weak self] in self?.enable (item: lastItem, from: inMenuItemDescriptor.expression.compute ()) }
       )
-      self.mControlerArray.append (controller)
+      self.mControllerArray.append (controller)
     }
   //---
     return self
@@ -87,10 +82,10 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
-  final func bind_items (_ model : EBReadOnlyProperty_StringArray) -> Self {
+  final func bind_items (_ inObject : EBReadOnlyProperty_StringArray) -> Self {
     self.mItemsController = EBReadOnlyPropertyController (
-      observedObjects: [model],
-      callBack: { [weak self] in self?.update (from: model) }
+      observedObjects: [inObject],
+      callBack: { [weak self] in self?.update (from: inObject) }
     )
     return self
   }

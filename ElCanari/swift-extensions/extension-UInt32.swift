@@ -84,8 +84,8 @@ extension Array where Element == UInt8 {
 
   func ebHashValue () -> UInt32 {
     var crc : UInt32 = 0
-    for i in 0 ..< self.count {
-      crc.accumulateUInt8 (self [i])
+    for byte in self {
+      crc.accumulateUInt8 (byte)
     }
     return crc
   }
