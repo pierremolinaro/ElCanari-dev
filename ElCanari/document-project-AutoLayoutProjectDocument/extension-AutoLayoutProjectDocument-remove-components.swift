@@ -54,7 +54,6 @@ extension AutoLayoutProjectDocument {
   private func performRemoveSelectedComponents () {
     for component in self.componentController.selectedArray.values {
       if let idx = self.rootObject.mComponents.firstIndex (of: component) {
-     //   let index = component.mNameIndex
       //--- Remove all symbols from schematics sheets
         for symbol in component.mSymbols.values {
           symbol.mSheet = nil
@@ -67,6 +66,8 @@ extension AutoLayoutProjectDocument {
         component.mRoot = nil
         component.mValueFont = nil
         component.mNameFont = nil
+        component.mConnectors = EBReferenceArray ()
+        component.mSymbols = EBReferenceArray ()
       //--- Remove from component list
         self.rootObject.mComponents.remove (at: idx)
       //--- Adapt remaining component names

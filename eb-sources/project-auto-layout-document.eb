@@ -358,7 +358,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     hStack {
       Label (bold: yes, size: .regular) { $title self.netCountString }
       Button (title: "Rename Net…", size: .regular) {
-        $run renameNetClassAction
+        $run renameNetAction
         $enabled self.netCount > 0
       }
       Button (title: "Select Net Class…", size: .regular) {
@@ -383,7 +383,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 
   transient String netCountString dependsFrom root.netsDescription ;
   transient Int netCount dependsFrom root.netsDescription ;
-  action renameNetClassAction ;
+  action renameNetAction ;
   action selectNetClassAction ;
 
 //---------------------- Schematics Tab

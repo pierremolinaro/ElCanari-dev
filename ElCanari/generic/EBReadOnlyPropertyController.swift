@@ -12,7 +12,7 @@ class EBReadOnlyPropertyController : EBOutletEvent {
 
   //····················································································································
 
-  private let mPrivateObservedObjects : [EBObservableObjectProtocol]
+  private var mPrivateObservedObjects : [EBObservableObjectProtocol]
 
   //····················································································································
 
@@ -32,6 +32,7 @@ class EBReadOnlyPropertyController : EBOutletEvent {
     for object in self.mPrivateObservedObjects {
       object.removeEBObserver (self)
     }
+    self.mPrivateObservedObjects.removeAll ()
   }
 
   //····················································································································

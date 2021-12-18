@@ -36,6 +36,8 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
     for controller in self.mControllerArray {
       controller.unregister ()
     }
+    self.mItemsController?.unregister ()
+    self.mItemsController = nil
     super.ebCleanUp ()
   }
 

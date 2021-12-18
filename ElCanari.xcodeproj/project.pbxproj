@@ -2081,7 +2081,7 @@
 		CF72E5AD276A38190019E180 /* AutoLayoutWarningImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72E5AB276A38180019E180 /* AutoLayoutWarningImageView.swift */; };
 		CF72E5AE276A38190019E180 /* AutoLayoutWarningImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72E5AB276A38180019E180 /* AutoLayoutWarningImageView.swift */; };
 		CF72E5B2276A38670019E180 /* transient-AutoLayoutProjectDocument-netCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72E5AF276A38660019E180 /* transient-AutoLayoutProjectDocument-netCount.swift */; };
-		CF72E5B3276A38670019E180 /* action-AutoLayoutProjectDocument-renameNetClassAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72E5B0276A38660019E180 /* action-AutoLayoutProjectDocument-renameNetClassAction.swift */; };
+		CF72E5B3276A38670019E180 /* action-AutoLayoutProjectDocument-renameNetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72E5B0276A38660019E180 /* action-AutoLayoutProjectDocument-renameNetAction.swift */; };
 		CF72E5B4276A38670019E180 /* transient-AutoLayoutProjectDocument-netCountString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72E5B1276A38670019E180 /* transient-AutoLayoutProjectDocument-netCountString.swift */; };
 		CF72E5B6276A38F50019E180 /* AutoLayoutCanariNetDescriptionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72E5B5276A38F50019E180 /* AutoLayoutCanariNetDescriptionTableView.swift */; };
 		CF72E5B7276A38F50019E180 /* AutoLayoutCanariNetDescriptionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72E5B5276A38F50019E180 /* AutoLayoutCanariNetDescriptionTableView.swift */; };
@@ -5259,7 +5259,7 @@
 		CF71FA3D1B3EA87800FB5049 /* EBAllocationDebug-debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "EBAllocationDebug-debug.swift"; sourceTree = "<group>"; };
 		CF72E5AB276A38180019E180 /* AutoLayoutWarningImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutWarningImageView.swift; sourceTree = "<group>"; };
 		CF72E5AF276A38660019E180 /* transient-AutoLayoutProjectDocument-netCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutProjectDocument-netCount.swift"; sourceTree = "<group>"; };
-		CF72E5B0276A38660019E180 /* action-AutoLayoutProjectDocument-renameNetClassAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-renameNetClassAction.swift"; sourceTree = "<group>"; };
+		CF72E5B0276A38660019E180 /* action-AutoLayoutProjectDocument-renameNetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-renameNetAction.swift"; sourceTree = "<group>"; };
 		CF72E5B1276A38670019E180 /* transient-AutoLayoutProjectDocument-netCountString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutProjectDocument-netCountString.swift"; sourceTree = "<group>"; };
 		CF72E5B5276A38F50019E180 /* AutoLayoutCanariNetDescriptionTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariNetDescriptionTableView.swift; sourceTree = "<group>"; };
 		CF730B4321F87E8A00944B3E /* entry-point-update-to-latest-commit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entry-point-update-to-latest-commit.swift"; sourceTree = "<group>"; };
@@ -6995,7 +6995,7 @@
 				CF04FCDD2767BFDC0062DF89 /* action-AutoLayoutProjectDocument-removeNetClassAction.swift */,
 				CFDE7C372766607000762C03 /* action-AutoLayoutProjectDocument-removeSelectedComponentsAction.swift */,
 				CF50D0E7276740F500B35C59 /* action-AutoLayoutProjectDocument-removeSelectedDeviceAction.swift */,
-				CF72E5B0276A38660019E180 /* action-AutoLayoutProjectDocument-renameNetClassAction.swift */,
+				CF72E5B0276A38660019E180 /* action-AutoLayoutProjectDocument-renameNetAction.swift */,
 				CFDE7C332766412400762C03 /* action-AutoLayoutProjectDocument-renameSelectedComponentsAction.swift */,
 				CF2285BD2766703600804193 /* action-AutoLayoutProjectDocument-resetDevicesAndFontsVersionAction.swift */,
 				CF2285D727667C7B00804193 /* action-AutoLayoutProjectDocument-resetFontVersionAction.swift */,
@@ -8239,7 +8239,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					AA0EFB9E19094440C317E21B = {
 						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
@@ -12536,7 +12536,7 @@
 				CF22F1F7275A73ED009C6FAC /* transient-BoardModel-frontLegendLinesSegments.swift in Sources */,
 				CF31551E275CDC8A00ED1FA8 /* transient-AutoLayoutMergerDocument-documentFileShouldBeRenamedErrorMessage.swift in Sources */,
 				CF9C64BB25CABE5C00A00D5C /* transient-DeviceInProject-canExport.swift in Sources */,
-				CF72E5B3276A38670019E180 /* action-AutoLayoutProjectDocument-renameNetClassAction.swift in Sources */,
+				CF72E5B3276A38670019E180 /* action-AutoLayoutProjectDocument-renameNetAction.swift in Sources */,
 				CF9C64BC25CABE5C00A00D5C /* func-presentErrorWindow.swift in Sources */,
 				CF22F26F275A73EE009C6FAC /* transient-MergerRoot-boardHeight.swift in Sources */,
 				CF711DE2275E1B8800280069 /* entity-WireInSchematic.swift in Sources */,

@@ -241,7 +241,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
     //---
       newNameTextField.stringValue = inNet.mNetName
       newNameTextField.mTextFieldUserInfo = (inNet, errorLabel, okButton)
-      newNameTextField.mTextDidChange = { self.newNameDidChange (newNameTextField) }
+      newNameTextField.mTextDidChange = { [weak self] in self?.newNameDidChange (newNameTextField) }
       newNameTextField.isContinuous = true
       newNameTextField.delegate = self
       okButton.isEnabled = true
@@ -250,6 +250,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       window.beginSheet (panel) { inResponse in
         newNameTextField.mTextFieldUserInfo = nil
+        newNameTextField.mTextDidChange = nil // Required for breaking retain cycle
         if inResponse == .stop {
           let newNetName = newNameTextField.stringValue
           inNet.mNetName = newNetName

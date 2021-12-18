@@ -12,75 +12,25 @@ import Cocoa
 //   Enabled binding
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate struct EnabledFromValueBindingDescriptor {
-  let value : Bool
-  private let mObjectIdentifier : ObjectIdentifier
-  private weak var mControl : NSControl? {
-    didSet {
-      if self.mControl == nil {
-        gEnabledFromValueBindingDictionary [self.mObjectIdentifier] = nil
-      }
-    }
-  }
-
-  init (control inControl : NSControl, value inValue : Bool) {
-    self.value = inValue
-    self.mControl = inControl
-    self.mObjectIdentifier = ObjectIdentifier (inControl)
-  }
-}
-
-fileprivate var gEnabledFromValueBindingDictionary = [ObjectIdentifier : EnabledFromValueBindingDescriptor] ()
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate struct EnabledFromEnabledBindingDescriptor {
-  let enabled : Bool
-  private let mObjectIdentifier : ObjectIdentifier
-  private weak var mControl : NSControl? {
-    didSet {
-      if self.mControl == nil {
-        gEnabledBindingValueDictionary [self.mObjectIdentifier] = nil
-      }
-    }
-  }
-
-  init (control inControl : NSControl, enabled inEnabled : Bool) {
-    self.enabled = inEnabled
-    self.mControl = inControl
-    self.mObjectIdentifier = ObjectIdentifier (inControl)
-  }
-}
-
-private var gEnabledBindingValueDictionary = [ObjectIdentifier : EnabledFromEnabledBindingDescriptor] ()
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate struct EnabledControllerDescriptor {
-  private weak var controller : EBReadOnlyPropertyController?
-  private let mObjectIdentifier : ObjectIdentifier
-  private weak var mControl : NSControl? {
-    didSet {
-      if self.mControl == nil {
-        self.controller?.unregister ()
-        gEnabledBindingControllerDictionary [self.mObjectIdentifier] = nil
-      }
-    }
-  }
-
-  init (control inControl : NSControl, controller inController : EBReadOnlyPropertyController) {
-    self.controller = inController
-    self.mControl = inControl
-    self.mObjectIdentifier = ObjectIdentifier (inControl)
-  }
-
-}
-
-private var gEnabledBindingControllerDictionary = [ObjectIdentifier : EnabledControllerDescriptor] ()
+private var gEnabledFromValueBindingDictionary = [NSControl : Bool] ()
+private var gEnabledBindingValueDictionary = [NSControl : Bool] ()
+private var gEnabledBindingControllerDictionary = [NSControl : EBReadOnlyPropertyController] ()
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension NSControl {
+
+  //····················································································································
+
+  override func autoLayoutCleanUp () {
+    gEnabledFromValueBindingDictionary [self] = nil
+    gEnabledBindingValueDictionary [self] = nil
+    if let controller = gEnabledBindingControllerDictionary [self] {
+      controller.unregister ()
+      gEnabledBindingControllerDictionary [self] = nil
+    }
+    super.autoLayoutCleanUp ()
+  }
 
   //····················································································································
   //  $enabled binding
@@ -93,22 +43,22 @@ extension NSControl {
       observedObjects: modelArray,
       callBack: { [weak self] in self?.updateEnableState (from: inExpression.compute ()) }
     )
-    gEnabledBindingControllerDictionary [ObjectIdentifier (self)] = EnabledControllerDescriptor (control: self, controller: controller)
+    gEnabledBindingControllerDictionary [self] = controller
     return self
   }
 
   //····················································································································
 
   func enable (fromValueBinding inValue : Bool) {
-    gEnabledFromValueBindingDictionary [ObjectIdentifier (self)] = EnabledFromValueBindingDescriptor (control: self, value: inValue)
-    self.isEnabled = (gEnabledBindingValueDictionary [ObjectIdentifier (self)]?.enabled ?? true) && inValue
+    gEnabledFromValueBindingDictionary [self] = inValue
+    self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
   }
 
   //····················································································································
 
-  func enable (fromEnableBinding inEnabled : Bool) {
-    gEnabledBindingValueDictionary [ObjectIdentifier (self)] = EnabledFromEnabledBindingDescriptor (control: self, enabled: inEnabled)
-    self.isEnabled = inEnabled && (gEnabledFromValueBindingDictionary [ObjectIdentifier (self)]?.value ?? true)
+  func enable (fromEnableBinding inValue : Bool) {
+    gEnabledBindingValueDictionary [self] = inValue
+    self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
   }
 
   //····················································································································

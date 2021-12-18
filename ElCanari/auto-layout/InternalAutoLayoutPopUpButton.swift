@@ -40,6 +40,7 @@ class InternalAutoLayoutPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   deinit {
     noteObjectDeallocation (self)
+  //  self.releaseEnabledBinding ()
   }
 
   //····················································································································

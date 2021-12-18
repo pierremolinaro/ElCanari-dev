@@ -907,7 +907,7 @@ import Cocoa
         .bind_enabled (.intcmp (.id (self.netCount_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
-          selector: #selector (AutoLayoutProjectDocument.renameNetClassAction (_:))
+          selector: #selector (AutoLayoutProjectDocument.renameNetAction (_:))
         )
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutButton (title: "Select Net Class…", size: .regular)
@@ -2326,7 +2326,6 @@ import Cocoa
   override func removeUserInterface () {
     super.removeUserInterface ()
   //--------------------------- Clean up auto layout views
-    self.windowForSheet?.contentView?.ebCleanUp ()
     self.mPageMasterView.ebCleanUp ()
     self.mDocumentMainView.ebCleanUp ()
     self.mComponentsPage.ebCleanUp ()

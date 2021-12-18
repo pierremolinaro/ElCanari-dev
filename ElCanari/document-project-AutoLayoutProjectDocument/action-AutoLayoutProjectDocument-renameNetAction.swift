@@ -11,7 +11,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func renameNetClassAction (_ sender : NSObject?) {
+  @objc func renameNetAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     if let netInfo = self.mNetInfoTableView?.selectedNet {
 //      let idx = netInfoTableView.selectedRow
