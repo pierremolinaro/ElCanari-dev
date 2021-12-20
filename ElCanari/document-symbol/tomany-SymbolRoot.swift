@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func removeEBObserversOf_selectedInspector_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolRoot>) {
     self.mObserversOf_selectedInspector.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.selectedInspector_property.removeEBObserver (observer)
       }
@@ -156,7 +156,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolRoot>) {
     self.mObserversOf_comments.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.comments_property.removeEBObserver (observer)
       }
@@ -215,7 +215,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func removeEBObserversOf_horizontalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolRoot>) {
     self.mObserversOf_horizontalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.horizontalFlip_property.removeEBObserver (observer)
       }
@@ -274,7 +274,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func removeEBObserversOf_verticalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolRoot>) {
     self.mObserversOf_verticalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.verticalFlip_property.removeEBObserver (observer)
       }
@@ -333,7 +333,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func removeEBObserversOf_gridStyle_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolRoot>) {
     self.mObserversOf_gridStyle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.gridStyle_property.removeEBObserver (observer)
       }
@@ -392,7 +392,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func removeEBObserversOf_gridDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolRoot>) {
     self.mObserversOf_gridDisplay.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.gridDisplay_property.removeEBObserver (observer)
       }
@@ -451,7 +451,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func removeEBObserversOf_zoom_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolRoot>) {
     self.mObserversOf_zoom.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.zoom_property.removeEBObserver (observer)
       }
@@ -510,7 +510,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func removeEBObserversOf_xPlacardUnit_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolRoot>) {
     self.mObserversOf_xPlacardUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.xPlacardUnit_property.removeEBObserver (observer)
       }
@@ -569,7 +569,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func removeEBObserversOf_yPlacardUnit_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolRoot>) {
     self.mObserversOf_yPlacardUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.yPlacardUnit_property.removeEBObserver (observer)
       }
@@ -628,7 +628,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func removeEBObserversOf_selectedPageIndex_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolRoot>) {
     self.mObserversOf_selectedPageIndex.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.selectedPageIndex_property.removeEBObserver (observer)
       }
@@ -763,7 +763,7 @@ final class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -858,7 +858,7 @@ final class TransientArrayOfSuperOf_SymbolRoot <SUPER : EBManagedObject> : ReadO
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1089,7 +1089,7 @@ class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserve
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1221,7 +1221,7 @@ final class StandAloneArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

@@ -1050,7 +1050,7 @@ import Cocoa
     }
     set{
       super.fileModificationDate = newValue
-      self.documentFileName_property.postEvent ()
+      self.documentFileName_property.observedObjectDidChange ()
     }
   }
 

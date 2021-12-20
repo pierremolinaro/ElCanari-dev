@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mPinX_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     self.mObserversOf_mPinX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPinX_property.removeEBObserver (observer)
       }
@@ -156,7 +156,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mPinY_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     self.mObserversOf_mPinY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPinY_property.removeEBObserver (observer)
       }
@@ -215,7 +215,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mXName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     self.mObserversOf_mXName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mXName_property.removeEBObserver (observer)
       }
@@ -274,7 +274,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mYName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     self.mObserversOf_mYName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mYName_property.removeEBObserver (observer)
       }
@@ -333,7 +333,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     self.mObserversOf_mName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mName_property.removeEBObserver (observer)
       }
@@ -392,7 +392,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mNameHorizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     self.mObserversOf_mNameHorizontalAlignment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mNameHorizontalAlignment_property.removeEBObserver (observer)
       }
@@ -451,7 +451,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mPinNameIsDisplayedInSchematics_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     self.mObserversOf_mPinNameIsDisplayedInSchematics.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPinNameIsDisplayedInSchematics_property.removeEBObserver (observer)
       }
@@ -510,7 +510,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mXNumber_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     self.mObserversOf_mXNumber.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mXNumber_property.removeEBObserver (observer)
       }
@@ -569,7 +569,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mYNumber_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     self.mObserversOf_mYNumber.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mYNumber_property.removeEBObserver (observer)
       }
@@ -628,7 +628,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     self.mObserversOf_mNumberHorizontalAlignment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mNumberHorizontalAlignment_property.removeEBObserver (observer)
       }
@@ -763,7 +763,7 @@ final class TransientArrayOf_SymbolPinTypeInDevice : ReadOnlyArrayOf_SymbolPinTy
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -858,7 +858,7 @@ final class TransientArrayOfSuperOf_SymbolPinTypeInDevice <SUPER : EBManagedObje
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1089,7 +1089,7 @@ class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinTypeInDevi
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1221,7 +1221,7 @@ final class StandAloneArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPin
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

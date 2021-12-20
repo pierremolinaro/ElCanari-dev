@@ -611,7 +611,7 @@ final class StoredObject_BoardText : ReadWriteObject_BoardText, EBSignatureObser
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

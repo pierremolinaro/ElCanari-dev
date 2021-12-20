@@ -565,7 +565,7 @@ final class StoredObject_SymbolBezierCurve : ReadWriteObject_SymbolBezierCurve, 
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

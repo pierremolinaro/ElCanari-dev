@@ -161,7 +161,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mSlavePadsShouldBeRouted_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mSlavePadsShouldBeRouted.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSlavePadsShouldBeRouted_property.removeEBObserver (observer)
       }
@@ -220,7 +220,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mX_property.removeEBObserver (observer)
       }
@@ -279,7 +279,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mY_property.removeEBObserver (observer)
       }
@@ -338,7 +338,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mRotation_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mRotation.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mRotation_property.removeEBObserver (observer)
       }
@@ -397,7 +397,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mSide_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSide_property.removeEBObserver (observer)
       }
@@ -456,7 +456,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mDisplayLegend_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mDisplayLegend.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDisplayLegend_property.removeEBObserver (observer)
       }
@@ -515,7 +515,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mNameIsVisibleInBoard_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mNameIsVisibleInBoard.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mNameIsVisibleInBoard_property.removeEBObserver (observer)
       }
@@ -574,7 +574,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mXName_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mXName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mXName_property.removeEBObserver (observer)
       }
@@ -633,7 +633,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mYName_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mYName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mYName_property.removeEBObserver (observer)
       }
@@ -692,7 +692,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mNameFontSize_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mNameFontSize.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mNameFontSize_property.removeEBObserver (observer)
       }
@@ -751,7 +751,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mNameRotation_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mNameRotation.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mNameRotation_property.removeEBObserver (observer)
       }
@@ -810,7 +810,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mValueIsVisibleInBoard_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mValueIsVisibleInBoard.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mValueIsVisibleInBoard_property.removeEBObserver (observer)
       }
@@ -869,7 +869,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mXValue_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mXValue.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mXValue_property.removeEBObserver (observer)
       }
@@ -928,7 +928,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mYValue_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mYValue.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mYValue_property.removeEBObserver (observer)
       }
@@ -987,7 +987,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mValueFontSize_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mValueFontSize.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mValueFontSize_property.removeEBObserver (observer)
       }
@@ -1046,7 +1046,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mValueRotation_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mValueRotation.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mValueRotation_property.removeEBObserver (observer)
       }
@@ -1105,7 +1105,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mComponentValue_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mComponentValue.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mComponentValue_property.removeEBObserver (observer)
       }
@@ -1164,7 +1164,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mNamePrefix_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mNamePrefix.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mNamePrefix_property.removeEBObserver (observer)
       }
@@ -1223,7 +1223,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mNameIndex_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mNameIndex.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mNameIndex_property.removeEBObserver (observer)
       }
@@ -1282,7 +1282,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mXUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mXUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mXUnit_property.removeEBObserver (observer)
       }
@@ -1341,7 +1341,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mYUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mYUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mYUnit_property.removeEBObserver (observer)
       }
@@ -1398,7 +1398,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_mPackages_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
     self.mObserversOf_mPackages.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPackages_property.removeEBObserver (observer)
       }
@@ -2653,7 +2653,7 @@ final class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInPro
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -2748,7 +2748,7 @@ final class TransientArrayOfSuperOf_ComponentInProject <SUPER : EBManagedObject>
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -2979,7 +2979,7 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -3111,7 +3111,7 @@ final class StandAloneArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInP
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

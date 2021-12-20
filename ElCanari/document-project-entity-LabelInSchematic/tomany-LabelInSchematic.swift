@@ -87,7 +87,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
 
   final func removeEBObserversOf_mOrientation_fromElementsOfSet (_ inSet : EBReferenceSet <LabelInSchematic>) {
     self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mOrientation_property.removeEBObserver (observer)
       }
@@ -446,7 +446,7 @@ final class TransientArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -541,7 +541,7 @@ final class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> :
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -772,7 +772,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -904,7 +904,7 @@ final class StandAloneArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchemat
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

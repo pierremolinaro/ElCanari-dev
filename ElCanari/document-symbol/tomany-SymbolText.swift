@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolText>) {
     self.mObserversOf_y.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y_property.removeEBObserver (observer)
       }
@@ -148,7 +148,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func removeEBObserversOf_text_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolText>) {
     self.mObserversOf_text.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.text_property.removeEBObserver (observer)
       }
@@ -207,7 +207,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func removeEBObserversOf_horizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolText>) {
     self.mObserversOf_horizontalAlignment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.horizontalAlignment_property.removeEBObserver (observer)
       }
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolText>) {
     self.mObserversOf_x.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x_property.removeEBObserver (observer)
       }
@@ -513,7 +513,7 @@ final class TransientArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -608,7 +608,7 @@ final class TransientArrayOfSuperOf_SymbolText <SUPER : EBManagedObject> : ReadO
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -839,7 +839,7 @@ class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureObserve
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -971,7 +971,7 @@ final class StandAloneArrayOf_SymbolText : ReadWriteArrayOf_SymbolText {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

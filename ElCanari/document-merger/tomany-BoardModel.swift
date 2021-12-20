@@ -203,7 +203,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_name_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
     self.mObserversOf_name.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.name_property.removeEBObserver (observer)
       }
@@ -262,7 +262,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_modelWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
     self.mObserversOf_modelWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.modelWidth_property.removeEBObserver (observer)
       }
@@ -321,7 +321,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_modelWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
     self.mObserversOf_modelWidthUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.modelWidthUnit_property.removeEBObserver (observer)
       }
@@ -380,7 +380,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_modelHeight_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
     self.mObserversOf_modelHeight.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.modelHeight_property.removeEBObserver (observer)
       }
@@ -439,7 +439,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_modelHeightUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
     self.mObserversOf_modelHeightUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.modelHeightUnit_property.removeEBObserver (observer)
       }
@@ -498,7 +498,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_zoom_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
     self.mObserversOf_zoom.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.zoom_property.removeEBObserver (observer)
       }
@@ -557,7 +557,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_layerConfiguration_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
     self.mObserversOf_layerConfiguration.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.layerConfiguration_property.removeEBObserver (observer)
       }
@@ -616,7 +616,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_modelLimitWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
     self.mObserversOf_modelLimitWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.modelLimitWidth_property.removeEBObserver (observer)
       }
@@ -675,7 +675,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
     self.mObserversOf_modelLimitWidthUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.modelLimitWidthUnit_property.removeEBObserver (observer)
       }
@@ -734,7 +734,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_artworkName_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
     self.mObserversOf_artworkName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.artworkName_property.removeEBObserver (observer)
       }
@@ -3837,7 +3837,7 @@ final class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -3932,7 +3932,7 @@ final class TransientArrayOfSuperOf_BoardModel <SUPER : EBManagedObject> : ReadO
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -4163,7 +4163,7 @@ class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserve
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -4295,7 +4295,7 @@ final class StandAloneArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

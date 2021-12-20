@@ -81,7 +81,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
 
   final func removeEBObserversOf_mPackageName_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePackageInProject>) {
     self.mObserversOf_mPackageName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPackageName_property.removeEBObserver (observer)
       }
@@ -140,7 +140,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
 
   final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePackageInProject>) {
     self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
       }
@@ -275,7 +275,7 @@ final class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePack
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -370,7 +370,7 @@ final class TransientArrayOfSuperOf_DevicePackageInProject <SUPER : EBManagedObj
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -601,7 +601,7 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -733,7 +733,7 @@ final class StandAloneArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePa
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

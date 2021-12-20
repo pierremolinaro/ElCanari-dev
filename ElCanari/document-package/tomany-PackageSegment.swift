@@ -103,7 +103,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
 
   final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSegment>) {
     self.mObserversOf_y1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y1_property.removeEBObserver (observer)
       }
@@ -162,7 +162,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
 
   final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSegment>) {
     self.mObserversOf_x2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x2_property.removeEBObserver (observer)
       }
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
 
   final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSegment>) {
     self.mObserversOf_y2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y2_property.removeEBObserver (observer)
       }
@@ -280,7 +280,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
 
   final func removeEBObserversOf_x1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSegment>) {
     self.mObserversOf_x1Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x1Unit_property.removeEBObserver (observer)
       }
@@ -339,7 +339,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
 
   final func removeEBObserversOf_y1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSegment>) {
     self.mObserversOf_y1Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y1Unit_property.removeEBObserver (observer)
       }
@@ -398,7 +398,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
 
   final func removeEBObserversOf_x2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSegment>) {
     self.mObserversOf_x2Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x2Unit_property.removeEBObserver (observer)
       }
@@ -457,7 +457,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
 
   final func removeEBObserversOf_y2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSegment>) {
     self.mObserversOf_y2Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y2Unit_property.removeEBObserver (observer)
       }
@@ -516,7 +516,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
 
   final func removeEBObserversOf_lengthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSegment>) {
     self.mObserversOf_lengthUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.lengthUnit_property.removeEBObserver (observer)
       }
@@ -575,7 +575,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
 
   final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSegment>) {
     self.mObserversOf_x1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x1_property.removeEBObserver (observer)
       }
@@ -934,7 +934,7 @@ final class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1029,7 +1029,7 @@ final class TransientArrayOfSuperOf_PackageSegment <SUPER : EBManagedObject> : R
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1260,7 +1260,7 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1392,7 +1392,7 @@ final class StandAloneArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

@@ -733,7 +733,7 @@ final class TransientArrayOf_BoardObject : ReadOnlyArrayOf_BoardObject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -828,7 +828,7 @@ final class TransientArrayOfSuperOf_BoardObject <SUPER : EBManagedObject> : Read
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1059,7 +1059,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1191,7 +1191,7 @@ final class StandAloneArrayOf_BoardObject : ReadWriteArrayOf_BoardObject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

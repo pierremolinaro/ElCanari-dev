@@ -14,9 +14,7 @@ protocol ObjectIndexProtocol : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#if BUILD_OBJECT_EXPLORER
-  private var gEasyBindingsObjectIndex = 0
-#endif
+fileprivate var gEasyBindingsObjectIndex = 0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    EBObjcBaseObject class
@@ -67,17 +65,13 @@ class EBSwiftBaseObject : EBUserClassNameProtocol, ObjectIndexProtocol {
 
   //····················································································································
 
-  #if BUILD_OBJECT_EXPLORER
-    final private let mObjectIndex : Int
-  #endif
+  final private let objectIndex : Int
 
   //····················································································································
 
   init () {
-    #if BUILD_OBJECT_EXPLORER
-      self.mObjectIndex = gEasyBindingsObjectIndex
-      gEasyBindingsObjectIndex += 1
-    #endif
+    self.objectIndex = gEasyBindingsObjectIndex
+    gEasyBindingsObjectIndex += 1
     noteObjectAllocation (self)
   }
 
@@ -91,7 +85,7 @@ class EBSwiftBaseObject : EBUserClassNameProtocol, ObjectIndexProtocol {
 
   final var explorerIndexString : String {
     #if BUILD_OBJECT_EXPLORER
-      return explorerObjectIndexString (self.mObjectIndex)
+      return explorerObjectIndexString (self.objectIndex)
     #else
       return ""
     #endif

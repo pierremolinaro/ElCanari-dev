@@ -81,7 +81,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     self.mObserversOf_mPadName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPadName_property.removeEBObserver (observer)
       }
@@ -272,7 +272,7 @@ final class TransientArrayOf_DevicePadAssignmentInProject : ReadOnlyArrayOf_Devi
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -367,7 +367,7 @@ final class TransientArrayOfSuperOf_DevicePadAssignmentInProject <SUPER : EBMana
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -598,7 +598,7 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -730,7 +730,7 @@ final class StandAloneArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_De
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

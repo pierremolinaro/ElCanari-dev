@@ -589,7 +589,7 @@ final class StoredObject_FontRoot : ReadWriteObject_FontRoot, EBSignatureObserve
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

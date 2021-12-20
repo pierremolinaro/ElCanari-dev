@@ -427,7 +427,7 @@ final class StoredObject_BoardModelPad : ReadWriteObject_BoardModelPad, EBSignat
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

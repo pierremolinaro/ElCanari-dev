@@ -496,7 +496,7 @@ final class StoredObject_CommentInSchematic : ReadWriteObject_CommentInSchematic
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

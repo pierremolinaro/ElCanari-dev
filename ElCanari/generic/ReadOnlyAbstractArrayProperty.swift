@@ -91,9 +91,9 @@ class ReadOnlyAbstractArrayProperty <T : AnyObject> : ReadOnlyAbstractGenericRel
       let (equalModels, addedSet, removedSet) = update (currentSet: &self.mInternalSetValue, fromNewArray: self.mInternalArrayValue, oldArray: oldValue)
       if !equalModels {
         if self.mInternalArrayValue.count != oldValue.count {
-          self.count_property.postEvent ()
+          self.count_property.observedObjectDidChange ()
         }
-        self.postEvent ()
+        self.observedObjectDidChange ()
         self.notifyModelDidChangeFrom (oldValue: oldValue)
         self.notifyModelDidChange ()
         if !addedSet.isEmpty || !removedSet.isEmpty {

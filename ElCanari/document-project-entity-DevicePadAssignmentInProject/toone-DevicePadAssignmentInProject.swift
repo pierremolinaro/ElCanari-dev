@@ -358,7 +358,7 @@ final class StoredObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePa
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

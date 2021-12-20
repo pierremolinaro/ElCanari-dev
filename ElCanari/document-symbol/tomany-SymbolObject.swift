@@ -269,7 +269,7 @@ final class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -364,7 +364,7 @@ final class TransientArrayOfSuperOf_SymbolObject <SUPER : EBManagedObject> : Rea
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -595,7 +595,7 @@ class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignatureObs
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -727,7 +727,7 @@ final class StandAloneArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

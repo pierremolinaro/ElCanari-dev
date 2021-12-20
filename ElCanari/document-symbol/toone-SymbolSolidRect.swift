@@ -473,7 +473,7 @@ final class StoredObject_SymbolSolidRect : ReadWriteObject_SymbolSolidRect, EBSi
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

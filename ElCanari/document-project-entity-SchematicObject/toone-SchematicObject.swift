@@ -427,7 +427,7 @@ final class StoredObject_SchematicObject : ReadWriteObject_SchematicObject, EBSi
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

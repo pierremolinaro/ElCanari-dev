@@ -796,7 +796,7 @@ final class StoredObject_PackageZone : ReadWriteObject_PackageZone, EBSignatureO
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

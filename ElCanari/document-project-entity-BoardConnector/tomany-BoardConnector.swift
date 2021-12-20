@@ -133,7 +133,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mComponentPadName_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mComponentPadName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mComponentPadName_property.removeEBObserver (observer)
       }
@@ -192,7 +192,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mPadIndex_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mPadIndex.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPadIndex_property.removeEBObserver (observer)
       }
@@ -251,7 +251,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mX_property.removeEBObserver (observer)
       }
@@ -310,7 +310,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mY_property.removeEBObserver (observer)
       }
@@ -369,7 +369,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mDefaultHoleDiameterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mDefaultHoleDiameterUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDefaultHoleDiameterUnit_property.removeEBObserver (observer)
       }
@@ -428,7 +428,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mCustomHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mCustomHoleDiameter.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mCustomHoleDiameter_property.removeEBObserver (observer)
       }
@@ -487,7 +487,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mCustomHoleDiameterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mCustomHoleDiameterUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mCustomHoleDiameterUnit_property.removeEBObserver (observer)
       }
@@ -546,7 +546,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mUsesCustomHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mUsesCustomHoleDiameter.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mUsesCustomHoleDiameter_property.removeEBObserver (observer)
       }
@@ -605,7 +605,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mDefaultPadDiameterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mDefaultPadDiameterUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDefaultPadDiameterUnit_property.removeEBObserver (observer)
       }
@@ -664,7 +664,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mCustomPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mCustomPadDiameter.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mCustomPadDiameter_property.removeEBObserver (observer)
       }
@@ -723,7 +723,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mCustomPadDiameterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mCustomPadDiameterUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mCustomPadDiameterUnit_property.removeEBObserver (observer)
       }
@@ -782,7 +782,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mUsesCustomPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     self.mObserversOf_mUsesCustomPadDiameter.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mUsesCustomPadDiameter_property.removeEBObserver (observer)
       }
@@ -1813,7 +1813,7 @@ final class TransientArrayOf_BoardConnector : ReadOnlyArrayOf_BoardConnector {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1908,7 +1908,7 @@ final class TransientArrayOfSuperOf_BoardConnector <SUPER : EBManagedObject> : R
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -2139,7 +2139,7 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -2271,7 +2271,7 @@ final class StandAloneArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

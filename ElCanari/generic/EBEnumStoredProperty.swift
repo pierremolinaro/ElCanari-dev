@@ -58,7 +58,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
         if logEvents () {
           appendMessageString ("Property \(self.explorerIndexString) did change value to \(self.mValue)\n")
         }
-        self.postEvent ()
+        self.observedObjectDidChange ()
         self.clearSignatureCache ()
       }
     }
@@ -102,7 +102,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
       if let window = inWindow {
         alert.beginSheetModal (for:window) { (response : NSApplication.ModalResponse) in
           if response == .alertSecondButtonReturn { // Discard Change
-            self.postEvent ()
+            self.observedObjectDidChange ()
           }
         }
       }else{

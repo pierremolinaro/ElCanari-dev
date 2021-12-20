@@ -404,7 +404,7 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

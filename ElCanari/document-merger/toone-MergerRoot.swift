@@ -1096,7 +1096,7 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

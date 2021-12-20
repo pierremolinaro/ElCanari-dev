@@ -473,7 +473,7 @@ final class StoredObject_SymbolSegment : ReadWriteObject_SymbolSegment, EBSignat
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

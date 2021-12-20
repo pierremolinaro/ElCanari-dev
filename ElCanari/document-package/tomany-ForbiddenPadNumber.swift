@@ -77,7 +77,7 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
 
   final func removeEBObserversOf_padNumber_fromElementsOfSet (_ inSet : EBReferenceSet <ForbiddenPadNumber>) {
     self.mObserversOf_padNumber.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.padNumber_property.removeEBObserver (observer)
       }
@@ -156,7 +156,7 @@ final class TransientArrayOf_ForbiddenPadNumber : ReadOnlyArrayOf_ForbiddenPadNu
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -251,7 +251,7 @@ final class TransientArrayOfSuperOf_ForbiddenPadNumber <SUPER : EBManagedObject>
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -482,7 +482,7 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -614,7 +614,7 @@ final class StandAloneArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPad
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

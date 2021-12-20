@@ -566,7 +566,7 @@ final class StoredObject_SymbolPinTypeInDevice : ReadWriteObject_SymbolPinTypeIn
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

@@ -68,6 +68,7 @@ extension AutoLayoutProjectDocument {
         component.mNameFont = nil
         component.mConnectors = EBReferenceArray ()
         component.mSymbols = EBReferenceArray ()
+        component.componentAvailablePackagesController.unbind_model ()
       //--- Remove from component list
         self.rootObject.mComponents.remove (at: idx)
       //--- Adapt remaining component names

@@ -101,7 +101,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : EBReferenceSet <PackageInDevice>) {
     self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mFileData_property.removeEBObserver (observer)
       }
@@ -160,7 +160,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func removeEBObserversOf_mName_fromElementsOfSet (_ inSet : EBReferenceSet <PackageInDevice>) {
     self.mObserversOf_mName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mName_property.removeEBObserver (observer)
       }
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func removeEBObserversOf_mVersion_fromElementsOfSet (_ inSet : EBReferenceSet <PackageInDevice>) {
     self.mObserversOf_mVersion.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mVersion_property.removeEBObserver (observer)
       }
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <PackageInDevice>) {
     self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
       }
@@ -337,7 +337,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <PackageInDevice>) {
     self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mX_property.removeEBObserver (observer)
       }
@@ -396,7 +396,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <PackageInDevice>) {
     self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mY_property.removeEBObserver (observer)
       }
@@ -867,7 +867,7 @@ final class TransientArrayOf_PackageInDevice : ReadOnlyArrayOf_PackageInDevice {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -962,7 +962,7 @@ final class TransientArrayOfSuperOf_PackageInDevice <SUPER : EBManagedObject> : 
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1193,7 +1193,7 @@ class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EBSignat
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1325,7 +1325,7 @@ final class StandAloneArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

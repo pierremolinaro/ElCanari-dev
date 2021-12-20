@@ -590,7 +590,7 @@ final class StoredObject_SymbolRoot : ReadWriteObject_SymbolRoot, EBSignatureObs
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

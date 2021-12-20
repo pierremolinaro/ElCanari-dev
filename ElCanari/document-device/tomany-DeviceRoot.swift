@@ -125,7 +125,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSelectedPageIndex_property.removeEBObserver (observer)
       }
@@ -184,7 +184,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mTitle_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mTitle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mTitle_property.removeEBObserver (observer)
       }
@@ -243,7 +243,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mImageData_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mImageData.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mImageData_property.removeEBObserver (observer)
       }
@@ -302,7 +302,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mPrefix_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mPrefix.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPrefix_property.removeEBObserver (observer)
       }
@@ -361,7 +361,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mComments_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mComments.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mComments_property.removeEBObserver (observer)
       }
@@ -420,7 +420,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mPackageDisplayZoom_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mPackageDisplayZoom.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPackageDisplayZoom_property.removeEBObserver (observer)
       }
@@ -479,7 +479,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mPackageDisplayHorizontalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mPackageDisplayHorizontalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPackageDisplayHorizontalFlip_property.removeEBObserver (observer)
       }
@@ -538,7 +538,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mPackageDisplayVerticalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mPackageDisplayVerticalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPackageDisplayVerticalFlip_property.removeEBObserver (observer)
       }
@@ -597,7 +597,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mShowPackages_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mShowPackages.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mShowPackages_property.removeEBObserver (observer)
       }
@@ -656,7 +656,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mShowPackagePadNumbers_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mShowPackagePadNumbers.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mShowPackagePadNumbers_property.removeEBObserver (observer)
       }
@@ -715,7 +715,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mShowPackageFrontPads.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mShowPackageFrontPads_property.removeEBObserver (observer)
       }
@@ -774,7 +774,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mShowPackageBackPads.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mShowPackageBackPads_property.removeEBObserver (observer)
       }
@@ -833,7 +833,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mSymbolDisplayZoom_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mSymbolDisplayZoom.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSymbolDisplayZoom_property.removeEBObserver (observer)
       }
@@ -892,7 +892,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mSymbolDisplayHorizontalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mSymbolDisplayHorizontalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSymbolDisplayHorizontalFlip_property.removeEBObserver (observer)
       }
@@ -951,7 +951,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_mSymbolDisplayVerticalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
     self.mObserversOf_mSymbolDisplayVerticalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSymbolDisplayVerticalFlip_property.removeEBObserver (observer)
       }
@@ -1590,7 +1590,7 @@ final class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1685,7 +1685,7 @@ final class TransientArrayOfSuperOf_DeviceRoot <SUPER : EBManagedObject> : ReadO
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1916,7 +1916,7 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -2048,7 +2048,7 @@ final class StandAloneArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

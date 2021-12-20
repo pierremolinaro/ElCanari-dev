@@ -404,7 +404,7 @@ final class StoredObject_WireInSchematic : ReadWriteObject_WireInSchematic, EBSi
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

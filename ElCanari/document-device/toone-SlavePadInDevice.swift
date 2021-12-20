@@ -542,7 +542,7 @@ final class StoredObject_SlavePadInDevice : ReadWriteObject_SlavePadInDevice, EB
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

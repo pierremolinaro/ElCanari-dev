@@ -111,7 +111,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserversOf_layerConfiguration_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_layerConfiguration.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.layerConfiguration_property.removeEBObserver (observer)
       }
@@ -170,7 +170,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserversOf_selectedTab_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_selectedTab.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.selectedTab_property.removeEBObserver (observer)
       }
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_comments.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.comments_property.removeEBObserver (observer)
       }
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minPPTPTTTWdisplayUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minPPTPTTTWdisplayUnit_property.removeEBObserver (observer)
       }
@@ -347,7 +347,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minPPTPTTTW.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minPPTPTTTW_property.removeEBObserver (observer)
       }
@@ -406,7 +406,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minValueForOARdisplayUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minValueForOARdisplayUnit_property.removeEBObserver (observer)
       }
@@ -465,7 +465,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minValueForOARinEBUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minValueForOARinEBUnit_property.removeEBObserver (observer)
       }
@@ -524,7 +524,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minValueForPHDdisplayUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minValueForPHDdisplayUnit_property.removeEBObserver (observer)
       }
@@ -583,7 +583,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minValueForPHDinEBUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minValueForPHDinEBUnit_property.removeEBObserver (observer)
       }
@@ -642,7 +642,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (observer)
       }
@@ -701,7 +701,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_minValueForBoardLimitWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minValueForBoardLimitWidth_property.removeEBObserver (observer)
       }
@@ -760,7 +760,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserversOf_title_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_title.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.title_property.removeEBObserver (observer)
       }
@@ -819,7 +819,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkRoot>) {
     self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drillDataFileExtension_property.removeEBObserver (observer)
       }
@@ -1178,7 +1178,7 @@ final class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1273,7 +1273,7 @@ final class TransientArrayOfSuperOf_ArtworkRoot <SUPER : EBManagedObject> : Read
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1504,7 +1504,7 @@ class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatureObser
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1636,7 +1636,7 @@ final class StandAloneArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

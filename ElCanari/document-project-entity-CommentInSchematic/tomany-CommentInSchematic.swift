@@ -93,7 +93,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   final func removeEBObserversOf_mColor_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     self.mObserversOf_mColor.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mColor_property.removeEBObserver (observer)
       }
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   final func removeEBObserversOf_mSize_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     self.mObserversOf_mSize.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSize_property.removeEBObserver (observer)
       }
@@ -211,7 +211,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   final func removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mHorizontalAlignment_property.removeEBObserver (observer)
       }
@@ -270,7 +270,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   final func removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mVerticalAlignment_property.removeEBObserver (observer)
       }
@@ -329,7 +329,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mX_property.removeEBObserver (observer)
       }
@@ -388,7 +388,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mY_property.removeEBObserver (observer)
       }
@@ -447,7 +447,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   final func removeEBObserversOf_mComment_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     self.mObserversOf_mComment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mComment_property.removeEBObserver (observer)
       }
@@ -638,7 +638,7 @@ final class TransientArrayOf_CommentInSchematic : ReadOnlyArrayOf_CommentInSchem
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -733,7 +733,7 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -964,7 +964,7 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1096,7 +1096,7 @@ final class StandAloneArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSch
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

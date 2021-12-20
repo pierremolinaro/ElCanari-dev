@@ -1004,7 +1004,7 @@ final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSign
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

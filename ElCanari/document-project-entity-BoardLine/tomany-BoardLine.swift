@@ -101,7 +101,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     self.mObserversOf_mWidthUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mWidthUnit_property.removeEBObserver (observer)
       }
@@ -160,7 +160,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mX1_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     self.mObserversOf_mX1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mX1_property.removeEBObserver (observer)
       }
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mX1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     self.mObserversOf_mX1Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mX1Unit_property.removeEBObserver (observer)
       }
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mY1_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     self.mObserversOf_mY1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mY1_property.removeEBObserver (observer)
       }
@@ -337,7 +337,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mY1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     self.mObserversOf_mY1Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mY1Unit_property.removeEBObserver (observer)
       }
@@ -396,7 +396,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mX2_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     self.mObserversOf_mX2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mX2_property.removeEBObserver (observer)
       }
@@ -455,7 +455,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mX2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     self.mObserversOf_mX2Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mX2Unit_property.removeEBObserver (observer)
       }
@@ -514,7 +514,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mY2_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     self.mObserversOf_mY2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mY2_property.removeEBObserver (observer)
       }
@@ -573,7 +573,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mY2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     self.mObserversOf_mY2Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mY2Unit_property.removeEBObserver (observer)
       }
@@ -632,7 +632,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     self.mObserversOf_mLayer.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mLayer_property.removeEBObserver (observer)
       }
@@ -691,7 +691,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mWidth_property.removeEBObserver (observer)
       }
@@ -882,7 +882,7 @@ final class TransientArrayOf_BoardLine : ReadOnlyArrayOf_BoardLine {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -977,7 +977,7 @@ final class TransientArrayOfSuperOf_BoardLine <SUPER : EBManagedObject> : ReadOn
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1208,7 +1208,7 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1340,7 +1340,7 @@ final class StandAloneArrayOf_BoardLine : ReadWriteArrayOf_BoardLine {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

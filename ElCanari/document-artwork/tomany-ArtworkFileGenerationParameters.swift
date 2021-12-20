@@ -137,7 +137,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawBoardLimits_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawBoardLimits.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawBoardLimits_property.removeEBObserver (observer)
       }
@@ -196,7 +196,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawInternalBoardLimits.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawInternalBoardLimits_property.removeEBObserver (observer)
       }
@@ -255,7 +255,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawComponentNamesTopSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawComponentNamesTopSide_property.removeEBObserver (observer)
       }
@@ -314,7 +314,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawComponentNamesBottomSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawComponentNamesBottomSide_property.removeEBObserver (observer)
       }
@@ -373,7 +373,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawComponentValuesTopSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawComponentValuesTopSide_property.removeEBObserver (observer)
       }
@@ -432,7 +432,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawComponentValuesBottomSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawComponentValuesBottomSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawComponentValuesBottomSide_property.removeEBObserver (observer)
       }
@@ -491,7 +491,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawPackageLegendTopSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawPackageLegendTopSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawPackageLegendTopSide_property.removeEBObserver (observer)
       }
@@ -550,7 +550,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawPackageLegendBottomSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawPackageLegendBottomSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawPackageLegendBottomSide_property.removeEBObserver (observer)
       }
@@ -609,7 +609,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawPadHolesInPDF_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawPadHolesInPDF.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawPadHolesInPDF_property.removeEBObserver (observer)
       }
@@ -668,7 +668,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawPadsTopSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawPadsTopSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawPadsTopSide_property.removeEBObserver (observer)
       }
@@ -727,7 +727,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawPadsBottomSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawPadsBottomSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawPadsBottomSide_property.removeEBObserver (observer)
       }
@@ -786,7 +786,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTextsLayoutTopSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawTextsLayoutTopSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawTextsLayoutTopSide_property.removeEBObserver (observer)
       }
@@ -845,7 +845,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTextsLayoutBottomSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawTextsLayoutBottomSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawTextsLayoutBottomSide_property.removeEBObserver (observer)
       }
@@ -904,7 +904,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTextsLegendTopSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawTextsLegendTopSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawTextsLegendTopSide_property.removeEBObserver (observer)
       }
@@ -963,7 +963,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTextsLegendBottomSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawTextsLegendBottomSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawTextsLegendBottomSide_property.removeEBObserver (observer)
       }
@@ -1022,7 +1022,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTracksTopSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawTracksTopSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawTracksTopSide_property.removeEBObserver (observer)
       }
@@ -1081,7 +1081,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTracksInner1Layer_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawTracksInner1Layer.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawTracksInner1Layer_property.removeEBObserver (observer)
       }
@@ -1140,7 +1140,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTracksInner2Layer_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawTracksInner2Layer.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawTracksInner2Layer_property.removeEBObserver (observer)
       }
@@ -1199,7 +1199,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTracksInner3Layer_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawTracksInner3Layer.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawTracksInner3Layer_property.removeEBObserver (observer)
       }
@@ -1258,7 +1258,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTracksInner4Layer_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawTracksInner4Layer.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawTracksInner4Layer_property.removeEBObserver (observer)
       }
@@ -1317,7 +1317,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawTracksBottomSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawTracksBottomSide_property.removeEBObserver (observer)
       }
@@ -1376,7 +1376,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTraversingPads_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawTraversingPads.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawTraversingPads_property.removeEBObserver (observer)
       }
@@ -1435,7 +1435,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawVias_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_drawVias.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drawVias_property.removeEBObserver (observer)
       }
@@ -1494,7 +1494,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_fileExtension_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_fileExtension.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.fileExtension_property.removeEBObserver (observer)
       }
@@ -1553,7 +1553,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_horizontalMirror_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_horizontalMirror.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.horizontalMirror_property.removeEBObserver (observer)
       }
@@ -1612,7 +1612,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_name_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_name.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.name_property.removeEBObserver (observer)
       }
@@ -1671,7 +1671,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_measurementUnitForPadHoleInPDF.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.measurementUnitForPadHoleInPDF_property.removeEBObserver (observer)
       }
@@ -1730,7 +1730,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_padHoleDiameterInPDF_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     self.mObserversOf_padHoleDiameterInPDF.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.padHoleDiameterInPDF_property.removeEBObserver (observer)
       }
@@ -1977,7 +1977,7 @@ final class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_A
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -2072,7 +2072,7 @@ final class TransientArrayOfSuperOf_ArtworkFileGenerationParameters <SUPER : EBM
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -2303,7 +2303,7 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -2435,7 +2435,7 @@ final class StandAloneArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

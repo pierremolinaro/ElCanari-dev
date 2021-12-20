@@ -179,7 +179,7 @@ final class EBSignatureObserverEvent : EBTransientProperty_UInt32, EBSignatureOb
   //····················································································································
 
   func clearSignatureCache () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
   }
 
   //····················································································································

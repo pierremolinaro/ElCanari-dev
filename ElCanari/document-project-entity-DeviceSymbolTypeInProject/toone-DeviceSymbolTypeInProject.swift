@@ -358,7 +358,7 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

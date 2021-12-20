@@ -99,7 +99,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolBezierCurve>) {
     self.mObserversOf_y1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y1_property.removeEBObserver (observer)
       }
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolBezierCurve>) {
     self.mObserversOf_x2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x2_property.removeEBObserver (observer)
       }
@@ -217,7 +217,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolBezierCurve>) {
     self.mObserversOf_y2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y2_property.removeEBObserver (observer)
       }
@@ -276,7 +276,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func removeEBObserversOf_cpx1_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolBezierCurve>) {
     self.mObserversOf_cpx1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.cpx1_property.removeEBObserver (observer)
       }
@@ -335,7 +335,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func removeEBObserversOf_cpy1_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolBezierCurve>) {
     self.mObserversOf_cpy1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.cpy1_property.removeEBObserver (observer)
       }
@@ -394,7 +394,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func removeEBObserversOf_cpx2_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolBezierCurve>) {
     self.mObserversOf_cpx2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.cpx2_property.removeEBObserver (observer)
       }
@@ -453,7 +453,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func removeEBObserversOf_cpy2_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolBezierCurve>) {
     self.mObserversOf_cpy2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.cpy2_property.removeEBObserver (observer)
       }
@@ -512,7 +512,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolBezierCurve>) {
     self.mObserversOf_x1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x1_property.removeEBObserver (observer)
       }
@@ -815,7 +815,7 @@ final class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCur
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -910,7 +910,7 @@ final class TransientArrayOfSuperOf_SymbolBezierCurve <SUPER : EBManagedObject> 
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1141,7 +1141,7 @@ class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSi
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1273,7 +1273,7 @@ final class StandAloneArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierC
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

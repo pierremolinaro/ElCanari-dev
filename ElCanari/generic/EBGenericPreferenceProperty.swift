@@ -28,9 +28,9 @@ final class EBGenericPreferenceProperty <T : EBStoredPropertyProtocol> : EBGener
 
   //····················································································································
 
-  override func postEvent () {
+  override func observedObjectDidChange () {
     UserDefaults.standard.set (self.propval.convertToNSObject (), forKey: self.mPreferenceKey)
-    super.postEvent ()
+    super.observedObjectDidChange ()
   }
 
 

@@ -473,7 +473,7 @@ final class StoredObject_SymbolSolidOval : ReadWriteObject_SymbolSolidOval, EBSi
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

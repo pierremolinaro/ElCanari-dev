@@ -513,7 +513,7 @@ final class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatur
   final func updateStartUpSignature () {
     if let signatureObserver = self.mSignatureObserver {
       self.mSignatureAtStartUp = signatureObserver.signature ()
-      self.postEvent ()
+      self.observedObjectDidChange ()
     }
   }
 
@@ -530,7 +530,7 @@ final class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatur
   //····················································································································
 
   func clearSignatureCache () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
   }
 
   //····················································································································
@@ -540,7 +540,7 @@ final class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatur
   func clearStartUpSignature () {
     self.mUndoManager?.registerUndo (withTarget: self, selector:#selector (performUndo(_:)), object:NSNumber (value: mSignatureAtStartUp))
     self.mSignatureAtStartUp = 0
-    self.postEvent ()
+    self.observedObjectDidChange ()
   }
 
   //····················································································································
@@ -548,7 +548,7 @@ final class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatur
   @objc func performUndo (_ oldValue : NSNumber) {
     self.mUndoManager?.registerUndo (withTarget: self, selector:#selector (performUndo(_:)), object:NSNumber (value: mSignatureAtStartUp))
     self.mSignatureAtStartUp = oldValue.uint32Value
-    self.postEvent ()
+    self.observedObjectDidChange ()
   }
 
   //····················································································································

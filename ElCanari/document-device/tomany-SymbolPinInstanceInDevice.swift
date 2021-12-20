@@ -385,7 +385,7 @@ final class TransientArrayOf_SymbolPinInstanceInDevice : ReadOnlyArrayOf_SymbolP
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -480,7 +480,7 @@ final class TransientArrayOfSuperOf_SymbolPinInstanceInDevice <SUPER : EBManaged
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -711,7 +711,7 @@ class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstan
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -843,7 +843,7 @@ final class StandAloneArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_Symbo
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

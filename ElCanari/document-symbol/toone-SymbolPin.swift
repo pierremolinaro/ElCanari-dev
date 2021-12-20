@@ -634,7 +634,7 @@ final class StoredObject_SymbolPin : ReadWriteObject_SymbolPin, EBSignatureObser
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

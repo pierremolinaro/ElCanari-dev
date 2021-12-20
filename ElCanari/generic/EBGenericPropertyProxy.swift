@@ -44,13 +44,13 @@ final class EBGenericPropertyProxy <T : Equatable> : EBGenericReadWriteProperty 
 
   //····················································································································
 
-  override func postEvent () {
+  override func observedObjectDidChange () {
     if self.mCachedValue != nil {
       self.mCachedValue = nil
       if logEvents () {
         appendMessageString ("Proxy \(self.explorerIndexString) propagation\n")
       }
-      super.postEvent ()
+      super.observedObjectDidChange ()
     }else if logEvents () {
       appendMessageString ("Proxy \(self.explorerIndexString) nil\n")
     }

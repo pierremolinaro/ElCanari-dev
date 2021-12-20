@@ -521,7 +521,7 @@ final class StoredObject_NetInProject : ReadWriteObject_NetInProject, EBSignatur
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

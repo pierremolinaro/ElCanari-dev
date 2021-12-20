@@ -727,7 +727,7 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

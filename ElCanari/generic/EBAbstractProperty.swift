@@ -19,7 +19,7 @@ class EBAbstractProperty : EBEvent {
     #if BUILD_OBJECT_EXPLORER
       self.updateObserverExplorer ()
     #endif
-    inObserver.postEvent ()
+    inObserver.observedObjectDidChange ()
   }
 
   //····················································································································
@@ -28,7 +28,7 @@ class EBAbstractProperty : EBEvent {
     if !ioObserverSet.isEmpty {
       ioObserverSet.apply { (_ observer : EBEvent) in
         self.mObservers.insert (observer)
-        observer.postEvent ()
+        observer.observedObjectDidChange ()
       }
       #if BUILD_OBJECT_EXPLORER
         self.updateObserverExplorer ()
@@ -60,8 +60,8 @@ class EBAbstractProperty : EBEvent {
 
   //····················································································································
 
-  override func postEvent () {
-    self.mObservers.apply ( {(_ observer : EBEvent) in observer.postEvent () })
+  override func observedObjectDidChange () {
+    self.mObservers.apply ( {(_ observer : EBEvent) in observer.observedObjectDidChange () })
   }
 
   //····················································································································

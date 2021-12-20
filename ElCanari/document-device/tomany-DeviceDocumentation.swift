@@ -81,7 +81,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   final func removeEBObserversOf_mFileName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
     self.mObserversOf_mFileName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mFileName_property.removeEBObserver (observer)
       }
@@ -140,7 +140,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   final func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
     self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mFileData_property.removeEBObserver (observer)
       }
@@ -275,7 +275,7 @@ final class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumen
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -370,7 +370,7 @@ final class TransientArrayOfSuperOf_DeviceDocumentation <SUPER : EBManagedObject
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -601,7 +601,7 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -733,7 +733,7 @@ final class StandAloneArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocum
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

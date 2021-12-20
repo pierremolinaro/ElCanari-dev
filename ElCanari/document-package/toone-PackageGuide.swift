@@ -542,7 +542,7 @@ final class StoredObject_PackageGuide : ReadWriteObject_PackageGuide, EBSignatur
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

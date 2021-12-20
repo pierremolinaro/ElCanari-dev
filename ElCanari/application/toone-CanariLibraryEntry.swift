@@ -404,7 +404,7 @@ final class StoredObject_CanariLibraryEntry : ReadWriteObject_CanariLibraryEntry
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

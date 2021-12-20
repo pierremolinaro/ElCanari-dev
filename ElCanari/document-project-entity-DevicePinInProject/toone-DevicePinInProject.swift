@@ -611,7 +611,7 @@ final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

@@ -984,7 +984,7 @@ final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObs
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

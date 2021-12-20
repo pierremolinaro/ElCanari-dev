@@ -81,7 +81,7 @@ class ReadOnlyArrayOf_NCInSchematic : ReadOnlyAbstractArrayProperty <NCInSchemat
 
   final func removeEBObserversOf_mOrientation_fromElementsOfSet (_ inSet : EBReferenceSet <NCInSchematic>) {
     self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mOrientation_property.removeEBObserver (observer)
       }
@@ -272,7 +272,7 @@ final class TransientArrayOf_NCInSchematic : ReadOnlyArrayOf_NCInSchematic {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -367,7 +367,7 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -598,7 +598,7 @@ class StoredArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic, EBSignatureO
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -730,7 +730,7 @@ final class StandAloneArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

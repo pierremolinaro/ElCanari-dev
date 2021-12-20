@@ -22,10 +22,10 @@ class EBOutletEvent : EBEvent {
   fileprivate final var mEventIsPosted = false
 
   //····················································································································
-  //   postEvent
+  //   observedObjectDidChange
   //····················································································································
 
-  override func postEvent () {
+  override func observedObjectDidChange () {
     if logEvents () {
       if gPendingOutletEvents.count == 0 {
         appendMessageString ("Post events\n")

@@ -614,7 +614,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

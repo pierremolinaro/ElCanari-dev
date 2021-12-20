@@ -934,7 +934,7 @@ final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, 
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

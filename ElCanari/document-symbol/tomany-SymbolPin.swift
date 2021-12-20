@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_yPin_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_yPin.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.yPin_property.removeEBObserver (observer)
       }
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_xName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_xName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.xName_property.removeEBObserver (observer)
       }
@@ -223,7 +223,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_yName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_yName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.yName_property.removeEBObserver (observer)
       }
@@ -282,7 +282,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_xNumber_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_xNumber.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.xNumber_property.removeEBObserver (observer)
       }
@@ -341,7 +341,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_yNumber_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_yNumber.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.yNumber_property.removeEBObserver (observer)
       }
@@ -400,7 +400,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_name_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_name.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.name_property.removeEBObserver (observer)
       }
@@ -459,7 +459,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_nameHorizontalAlignment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.nameHorizontalAlignment_property.removeEBObserver (observer)
       }
@@ -518,7 +518,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_numberHorizontalAlignment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.numberHorizontalAlignment_property.removeEBObserver (observer)
       }
@@ -577,7 +577,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_pinNameIsDisplayedInSchematics.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.pinNameIsDisplayedInSchematics_property.removeEBObserver (observer)
       }
@@ -636,7 +636,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_xPin_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     self.mObserversOf_xPin.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.xPin_property.removeEBObserver (observer)
       }
@@ -995,7 +995,7 @@ final class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1090,7 +1090,7 @@ final class TransientArrayOfSuperOf_SymbolPin <SUPER : EBManagedObject> : ReadOn
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1321,7 +1321,7 @@ class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverP
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1453,7 +1453,7 @@ final class StandAloneArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

@@ -427,7 +427,7 @@ final class StoredObject_LabelInSchematic : ReadWriteObject_LabelInSchematic, EB
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

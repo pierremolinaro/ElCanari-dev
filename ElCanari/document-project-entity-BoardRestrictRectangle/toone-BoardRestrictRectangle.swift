@@ -496,7 +496,7 @@ final class StoredObject_BoardRestrictRectangle : ReadWriteObject_BoardRestrictR
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

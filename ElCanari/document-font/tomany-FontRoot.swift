@@ -99,7 +99,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : EBReferenceSet <FontRoot>) {
     self.mObserversOf_comments.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.comments_property.removeEBObserver (observer)
       }
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserversOf_nominalSize_fromElementsOfSet (_ inSet : EBReferenceSet <FontRoot>) {
     self.mObserversOf_nominalSize.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.nominalSize_property.removeEBObserver (observer)
       }
@@ -217,7 +217,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserversOf_selectedTab_fromElementsOfSet (_ inSet : EBReferenceSet <FontRoot>) {
     self.mObserversOf_selectedTab.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.selectedTab_property.removeEBObserver (observer)
       }
@@ -276,7 +276,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserversOf_selectedInspector_fromElementsOfSet (_ inSet : EBReferenceSet <FontRoot>) {
     self.mObserversOf_selectedInspector.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.selectedInspector_property.removeEBObserver (observer)
       }
@@ -335,7 +335,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserversOf_currentCharacterCodePoint_fromElementsOfSet (_ inSet : EBReferenceSet <FontRoot>) {
     self.mObserversOf_currentCharacterCodePoint.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.currentCharacterCodePoint_property.removeEBObserver (observer)
       }
@@ -806,7 +806,7 @@ final class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -901,7 +901,7 @@ final class TransientArrayOfSuperOf_FontRoot <SUPER : EBManagedObject> : ReadOnl
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1132,7 +1132,7 @@ class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObserverPro
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1264,7 +1264,7 @@ final class StandAloneArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

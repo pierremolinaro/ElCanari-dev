@@ -1002,7 +1002,7 @@ final class StoredObject_ArtworkFileGenerationParameters : ReadWriteObject_Artwo
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

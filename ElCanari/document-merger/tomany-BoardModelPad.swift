@@ -87,7 +87,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
     self.mObserversOf_y.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y_property.removeEBObserver (observer)
       }
@@ -146,7 +146,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
     self.mObserversOf_width.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.width_property.removeEBObserver (observer)
       }
@@ -205,7 +205,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
     self.mObserversOf_height.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.height_property.removeEBObserver (observer)
       }
@@ -264,7 +264,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   final func removeEBObserversOf_shape_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
     self.mObserversOf_shape.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.shape_property.removeEBObserver (observer)
       }
@@ -323,7 +323,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   final func removeEBObserversOf_rotation_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
     self.mObserversOf_rotation.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.rotation_property.removeEBObserver (observer)
       }
@@ -382,7 +382,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
     self.mObserversOf_x.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x_property.removeEBObserver (observer)
       }
@@ -461,7 +461,7 @@ final class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -556,7 +556,7 @@ final class TransientArrayOfSuperOf_BoardModelPad <SUPER : EBManagedObject> : Re
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -787,7 +787,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -919,7 +919,7 @@ final class StandAloneArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

@@ -404,7 +404,7 @@ final class StoredObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIn
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

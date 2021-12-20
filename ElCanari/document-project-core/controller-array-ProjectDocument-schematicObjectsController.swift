@@ -40,7 +40,7 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
         object.selectionDisplay_property.removeEBObserver (self.mObjectSelectionObserver)
       }
       if deselectedSet.count > 0 {
-        self.mObjectSelectionObserver.postEvent () // Required, as removing observer does not post event
+        self.mObjectSelectionObserver.observedObjectDidChange () // Required, as removing observer does not post event
       }
     //---
       self.mPrivateSelectedSet = newValue
@@ -54,7 +54,7 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
 
   private var mPrivateSelectedSet = EBReferenceSet <SchematicObject> () {
     didSet {
-      self.selectedArray_property.postEvent ()
+      self.selectedArray_property.observedObjectDidChange ()
       self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (Array (self.mPrivateSelectedSet.values)))
     }
   }

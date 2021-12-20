@@ -404,7 +404,7 @@ final class StoredObject_SegmentEntity : ReadWriteObject_SegmentEntity, EBSignat
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

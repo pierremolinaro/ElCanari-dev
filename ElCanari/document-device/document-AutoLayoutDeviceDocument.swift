@@ -229,7 +229,7 @@ import Cocoa
     get { return super.displayName }
     set {
       super.displayName = newValue
-      self.documentFileName_property.postEvent ()
+      self.documentFileName_property.observedObjectDidChange ()
     }
   }
 

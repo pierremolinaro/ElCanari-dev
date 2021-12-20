@@ -427,7 +427,7 @@ final class StoredObject_SegmentForFontCharacter : ReadWriteObject_SegmentForFon
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

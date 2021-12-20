@@ -382,7 +382,7 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

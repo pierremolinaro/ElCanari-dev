@@ -684,7 +684,7 @@ final class StoredObject_DeviceInProject : ReadWriteObject_DeviceInProject, EBSi
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

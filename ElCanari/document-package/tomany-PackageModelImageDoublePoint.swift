@@ -91,7 +91,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   final func removeEBObserversOf_mFirstX_fromElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     self.mObserversOf_mFirstX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mFirstX_property.removeEBObserver (observer)
       }
@@ -150,7 +150,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   final func removeEBObserversOf_mFirstY_fromElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     self.mObserversOf_mFirstY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mFirstY_property.removeEBObserver (observer)
       }
@@ -209,7 +209,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   final func removeEBObserversOf_mFirstColor_fromElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     self.mObserversOf_mFirstColor.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mFirstColor_property.removeEBObserver (observer)
       }
@@ -268,7 +268,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   final func removeEBObserversOf_mSecondDx_fromElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     self.mObserversOf_mSecondDx.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSecondDx_property.removeEBObserver (observer)
       }
@@ -327,7 +327,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   final func removeEBObserversOf_mSecondDy_fromElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     self.mObserversOf_mSecondDy.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSecondDy_property.removeEBObserver (observer)
       }
@@ -386,7 +386,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   final func removeEBObserversOf_mSecondColor_fromElementsOfSet (_ inSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     self.mObserversOf_mSecondColor.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSecondColor_property.removeEBObserver (observer)
       }
@@ -577,7 +577,7 @@ final class TransientArrayOf_PackageModelImageDoublePoint : ReadOnlyArrayOf_Pack
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -672,7 +672,7 @@ final class TransientArrayOfSuperOf_PackageModelImageDoublePoint <SUPER : EBMana
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -903,7 +903,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1035,7 +1035,7 @@ final class StandAloneArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_Pa
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

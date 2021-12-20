@@ -381,7 +381,7 @@ final class StoredObject_PackageObject : ReadWriteObject_PackageObject, EBSignat
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

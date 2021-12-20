@@ -91,7 +91,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func removeEBObserversOf_mNetName_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     self.mObserversOf_mNetName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mNetName_property.removeEBObserver (observer)
       }
@@ -562,7 +562,7 @@ final class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -657,7 +657,7 @@ final class TransientArrayOfSuperOf_NetInProject <SUPER : EBManagedObject> : Rea
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -888,7 +888,7 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1020,7 +1020,7 @@ final class StandAloneArrayOf_NetInProject : ReadWriteArrayOf_NetInProject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

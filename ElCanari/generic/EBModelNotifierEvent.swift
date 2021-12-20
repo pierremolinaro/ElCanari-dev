@@ -38,8 +38,8 @@ final class EBModelNotifierEvent : EBEvent {
 
   //····················································································································
 
-  override func postEvent () {
-    super.postEvent ()
+  override func observedObjectDidChange () {
+    super.observedObjectDidChange ()
     self.mClient.notifyModelDidChange ()
   }
 

@@ -42,14 +42,14 @@ class EBGenericTransientProperty <T : Equatable> : EBGenericReadOnlyProperty <T>
 
   //····················································································································
 
-  override func postEvent () {
+  override func observedObjectDidChange () {
     if self.mValueCache != nil {
       self.mValueCache = nil
       self.mValueExplorer?.stringValue = "nil"
       if logEvents () {
        appendMessageString ("Transient \(self.explorerIndexString) propagation\n")
       }
-      super.postEvent ()
+      super.observedObjectDidChange ()
     }else if logEvents () {
       appendMessageString ("Transient \(self.explorerIndexString) nil\n")
     }

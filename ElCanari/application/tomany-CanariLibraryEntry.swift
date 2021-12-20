@@ -85,7 +85,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func removeEBObserversOf_mPath_fromElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
     self.mObserversOf_mPath.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPath_property.removeEBObserver (observer)
       }
@@ -144,7 +144,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func removeEBObserversOf_mUses_fromElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
     self.mObserversOf_mUses.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mUses_property.removeEBObserver (observer)
       }
@@ -203,7 +203,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
     self.mObserversOf_mLibraryRepositoryURL.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mLibraryRepositoryURL_property.removeEBObserver (observer)
       }
@@ -262,7 +262,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
     self.mObserversOf_mUserAndPasswordTag.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mUserAndPasswordTag_property.removeEBObserver (observer)
       }
@@ -397,7 +397,7 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -492,7 +492,7 @@ final class TransientArrayOfSuperOf_CanariLibraryEntry <SUPER : EBManagedObject>
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -723,7 +723,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -855,7 +855,7 @@ final class StandAloneArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibrar
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

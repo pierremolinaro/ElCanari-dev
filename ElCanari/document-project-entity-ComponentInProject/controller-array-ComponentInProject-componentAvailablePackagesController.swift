@@ -41,7 +41,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
   private var mPrivateSelectedSet = EBReferenceSet <DevicePackageInProject> () {
     didSet {
-      self.selectedArray_property.postEvent ()
+      self.selectedArray_property.observedObjectDidChange ()
       self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (Array (self.mPrivateSelectedSet.values)))
     }
   }

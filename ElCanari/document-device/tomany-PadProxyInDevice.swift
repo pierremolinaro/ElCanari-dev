@@ -85,7 +85,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   final func removeEBObserversOf_mPinInstanceName_fromElementsOfSet (_ inSet : EBReferenceSet <PadProxyInDevice>) {
     self.mObserversOf_mPinInstanceName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPinInstanceName_property.removeEBObserver (observer)
       }
@@ -144,7 +144,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : EBReferenceSet <PadProxyInDevice>) {
     self.mObserversOf_mPadName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPadName_property.removeEBObserver (observer)
       }
@@ -203,7 +203,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   final func removeEBObserversOf_mIsNC_fromElementsOfSet (_ inSet : EBReferenceSet <PadProxyInDevice>) {
     self.mObserversOf_mIsNC.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mIsNC_property.removeEBObserver (observer)
       }
@@ -394,7 +394,7 @@ final class TransientArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -489,7 +489,7 @@ final class TransientArrayOfSuperOf_PadProxyInDevice <SUPER : EBManagedObject> :
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -720,7 +720,7 @@ class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSign
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -852,7 +852,7 @@ final class StandAloneArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevi
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

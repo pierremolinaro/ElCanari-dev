@@ -680,7 +680,7 @@ final class StoredObject_PackageArc : ReadWriteObject_PackageArc, EBSignatureObs
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

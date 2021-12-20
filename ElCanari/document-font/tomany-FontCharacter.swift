@@ -91,7 +91,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func removeEBObserversOf_codePoint_fromElementsOfSet (_ inSet : EBReferenceSet <FontCharacter>) {
     self.mObserversOf_codePoint.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.codePoint_property.removeEBObserver (observer)
       }
@@ -150,7 +150,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func removeEBObserversOf_advance_fromElementsOfSet (_ inSet : EBReferenceSet <FontCharacter>) {
     self.mObserversOf_advance.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.advance_property.removeEBObserver (observer)
       }
@@ -209,7 +209,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (_ inSet : EBReferenceSet <FontCharacter>) {
     self.mObserversOf_mWarnsWhenNoSegment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mWarnsWhenNoSegment_property.removeEBObserver (observer)
       }
@@ -268,7 +268,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (_ inSet : EBReferenceSet <FontCharacter>) {
     self.mObserversOf_mWarnsWhenAdvanceIsZero.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mWarnsWhenAdvanceIsZero_property.removeEBObserver (observer)
       }
@@ -571,7 +571,7 @@ final class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -666,7 +666,7 @@ final class TransientArrayOfSuperOf_FontCharacter <SUPER : EBManagedObject> : Re
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -897,7 +897,7 @@ class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureO
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1029,7 +1029,7 @@ final class StandAloneArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

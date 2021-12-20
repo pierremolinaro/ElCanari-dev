@@ -99,7 +99,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     self.mObserversOf_y.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y_property.removeEBObserver (observer)
       }
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     self.mObserversOf_width.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.width_property.removeEBObserver (observer)
       }
@@ -217,7 +217,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     self.mObserversOf_height.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.height_property.removeEBObserver (observer)
       }
@@ -276,7 +276,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_xUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     self.mObserversOf_xUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.xUnit_property.removeEBObserver (observer)
       }
@@ -335,7 +335,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_yUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     self.mObserversOf_yUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.yUnit_property.removeEBObserver (observer)
       }
@@ -394,7 +394,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_widthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     self.mObserversOf_widthUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.widthUnit_property.removeEBObserver (observer)
       }
@@ -453,7 +453,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_heightUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     self.mObserversOf_heightUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.heightUnit_property.removeEBObserver (observer)
       }
@@ -512,7 +512,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     self.mObserversOf_x.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x_property.removeEBObserver (observer)
       }
@@ -815,7 +815,7 @@ final class TransientArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -910,7 +910,7 @@ final class TransientArrayOfSuperOf_PackageOval <SUPER : EBManagedObject> : Read
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1141,7 +1141,7 @@ class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatureObser
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1273,7 +1273,7 @@ final class StandAloneArrayOf_PackageOval : ReadWriteArrayOf_PackageOval {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

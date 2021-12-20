@@ -109,7 +109,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_yCenter_fromElementsOfSet (_ inSet : EBReferenceSet <PackageArc>) {
     self.mObserversOf_yCenter.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.yCenter_property.removeEBObserver (observer)
       }
@@ -168,7 +168,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_radius_fromElementsOfSet (_ inSet : EBReferenceSet <PackageArc>) {
     self.mObserversOf_radius.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.radius_property.removeEBObserver (observer)
       }
@@ -227,7 +227,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_startAngle_fromElementsOfSet (_ inSet : EBReferenceSet <PackageArc>) {
     self.mObserversOf_startAngle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.startAngle_property.removeEBObserver (observer)
       }
@@ -286,7 +286,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_arcAngle_fromElementsOfSet (_ inSet : EBReferenceSet <PackageArc>) {
     self.mObserversOf_arcAngle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.arcAngle_property.removeEBObserver (observer)
       }
@@ -345,7 +345,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_startTangent_fromElementsOfSet (_ inSet : EBReferenceSet <PackageArc>) {
     self.mObserversOf_startTangent.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.startTangent_property.removeEBObserver (observer)
       }
@@ -404,7 +404,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_endTangent_fromElementsOfSet (_ inSet : EBReferenceSet <PackageArc>) {
     self.mObserversOf_endTangent.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.endTangent_property.removeEBObserver (observer)
       }
@@ -463,7 +463,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_pathIsClosed_fromElementsOfSet (_ inSet : EBReferenceSet <PackageArc>) {
     self.mObserversOf_pathIsClosed.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.pathIsClosed_property.removeEBObserver (observer)
       }
@@ -522,7 +522,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_xCenterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageArc>) {
     self.mObserversOf_xCenterUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.xCenterUnit_property.removeEBObserver (observer)
       }
@@ -581,7 +581,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_yCenterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageArc>) {
     self.mObserversOf_yCenterUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.yCenterUnit_property.removeEBObserver (observer)
       }
@@ -640,7 +640,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_radiusUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageArc>) {
     self.mObserversOf_radiusUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.radiusUnit_property.removeEBObserver (observer)
       }
@@ -699,7 +699,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_startTangentUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageArc>) {
     self.mObserversOf_startTangentUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.startTangentUnit_property.removeEBObserver (observer)
       }
@@ -758,7 +758,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_endTangentUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageArc>) {
     self.mObserversOf_endTangentUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.endTangentUnit_property.removeEBObserver (observer)
       }
@@ -817,7 +817,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_xCenter_fromElementsOfSet (_ inSet : EBReferenceSet <PackageArc>) {
     self.mObserversOf_xCenter.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.xCenter_property.removeEBObserver (observer)
       }
@@ -1120,7 +1120,7 @@ final class TransientArrayOf_PackageArc : ReadOnlyArrayOf_PackageArc {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1215,7 +1215,7 @@ final class TransientArrayOfSuperOf_PackageArc <SUPER : EBManagedObject> : ReadO
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1446,7 +1446,7 @@ class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureObserve
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1578,7 +1578,7 @@ final class StandAloneArrayOf_PackageArc : ReadWriteArrayOf_PackageArc {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

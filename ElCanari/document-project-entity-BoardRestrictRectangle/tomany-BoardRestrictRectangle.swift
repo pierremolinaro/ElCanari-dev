@@ -93,7 +93,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mY_property.removeEBObserver (observer)
       }
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mWidth_property.removeEBObserver (observer)
       }
@@ -211,7 +211,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mHeight_property.removeEBObserver (observer)
       }
@@ -270,7 +270,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mIsInFrontLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     self.mObserversOf_mIsInFrontLayer.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mIsInFrontLayer_property.removeEBObserver (observer)
       }
@@ -329,7 +329,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mIsInBackLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     self.mObserversOf_mIsInBackLayer.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mIsInBackLayer_property.removeEBObserver (observer)
       }
@@ -388,7 +388,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mX_property.removeEBObserver (observer)
       }
@@ -635,7 +635,7 @@ final class TransientArrayOf_BoardRestrictRectangle : ReadOnlyArrayOf_BoardRestr
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -730,7 +730,7 @@ final class TransientArrayOfSuperOf_BoardRestrictRectangle <SUPER : EBManagedObj
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -961,7 +961,7 @@ class StoredArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrictRecta
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1093,7 +1093,7 @@ final class StandAloneArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRes
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

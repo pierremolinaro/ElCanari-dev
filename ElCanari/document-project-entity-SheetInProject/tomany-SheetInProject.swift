@@ -87,7 +87,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   final func removeEBObserversOf_mSheetTitle_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     self.mObserversOf_mSheetTitle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSheetTitle_property.removeEBObserver (observer)
       }
@@ -446,7 +446,7 @@ final class TransientArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -541,7 +541,7 @@ final class TransientArrayOfSuperOf_SheetInProject <SUPER : EBManagedObject> : R
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -772,7 +772,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -904,7 +904,7 @@ final class StandAloneArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

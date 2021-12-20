@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_mSymbolPinName_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     self.mObserversOf_mSymbolPinName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSymbolPinName_property.removeEBObserver (observer)
       }
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mX_property.removeEBObserver (observer)
       }
@@ -223,7 +223,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mY_property.removeEBObserver (observer)
       }
@@ -974,7 +974,7 @@ final class TransientArrayOf_PointInSchematic : ReadOnlyArrayOf_PointInSchematic
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1069,7 +1069,7 @@ final class TransientArrayOfSuperOf_PointInSchematic <SUPER : EBManagedObject> :
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1300,7 +1300,7 @@ class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSign
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1432,7 +1432,7 @@ final class StandAloneArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchemat
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

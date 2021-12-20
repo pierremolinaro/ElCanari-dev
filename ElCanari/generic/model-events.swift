@@ -23,10 +23,10 @@ final class EBModelEvent : EBEvent {
   var mEventIsPosted = false
 
   //····················································································································
-  //   postEvent
+  //   observedObjectDidChange
   //····················································································································
 
-  override func postEvent () {
+  override func observedObjectDidChange () {
     if gCurrentModelEvent !== self {
       if gPendingModelEvents.count == 0 {
         if logEvents () {

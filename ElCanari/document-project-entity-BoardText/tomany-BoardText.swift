@@ -103,7 +103,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mX_property.removeEBObserver (observer)
       }
@@ -162,7 +162,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mY_property.removeEBObserver (observer)
       }
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func removeEBObserversOf_mFontSize_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     self.mObserversOf_mFontSize.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mFontSize_property.removeEBObserver (observer)
       }
@@ -280,7 +280,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func removeEBObserversOf_mLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     self.mObserversOf_mLayer.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mLayer_property.removeEBObserver (observer)
       }
@@ -339,7 +339,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func removeEBObserversOf_mText_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     self.mObserversOf_mText.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mText_property.removeEBObserver (observer)
       }
@@ -398,7 +398,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mHorizontalAlignment_property.removeEBObserver (observer)
       }
@@ -457,7 +457,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mVerticalAlignment_property.removeEBObserver (observer)
       }
@@ -516,7 +516,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func removeEBObserversOf_mRotation_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     self.mObserversOf_mRotation.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mRotation_property.removeEBObserver (observer)
       }
@@ -575,7 +575,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func removeEBObserversOf_mWeight_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     self.mObserversOf_mWeight.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mWeight_property.removeEBObserver (observer)
       }
@@ -634,7 +634,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func removeEBObserversOf_mOblique_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     self.mObserversOf_mOblique.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mOblique_property.removeEBObserver (observer)
       }
@@ -937,7 +937,7 @@ final class TransientArrayOf_BoardText : ReadOnlyArrayOf_BoardText {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1032,7 +1032,7 @@ final class TransientArrayOfSuperOf_BoardText <SUPER : EBManagedObject> : ReadOn
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1263,7 +1263,7 @@ class StoredArrayOf_BoardText : ReadWriteArrayOf_BoardText, EBSignatureObserverP
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1395,7 +1395,7 @@ final class StandAloneArrayOf_BoardText : ReadWriteArrayOf_BoardText {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

@@ -703,7 +703,7 @@ final class StoredObject_PackageDimension : ReadWriteObject_PackageDimension, EB
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

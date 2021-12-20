@@ -358,7 +358,7 @@ final class StoredObject_BoardModelVia : ReadWriteObject_BoardModelVia, EBSignat
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

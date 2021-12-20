@@ -91,7 +91,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     self.mObserversOf_x.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x_property.removeEBObserver (observer)
       }
@@ -150,7 +150,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     self.mObserversOf_y.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y_property.removeEBObserver (observer)
       }
@@ -209,7 +209,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_instanceRotation_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     self.mObserversOf_instanceRotation.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.instanceRotation_property.removeEBObserver (observer)
       }
@@ -568,7 +568,7 @@ final class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardIn
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -663,7 +663,7 @@ final class TransientArrayOfSuperOf_MergerBoardInstance <SUPER : EBManagedObject
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -894,7 +894,7 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1026,7 +1026,7 @@ final class StandAloneArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoard
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

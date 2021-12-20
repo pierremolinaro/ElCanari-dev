@@ -473,7 +473,7 @@ final class StoredObject_MergerBoardInstance : ReadWriteObject_MergerBoardInstan
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

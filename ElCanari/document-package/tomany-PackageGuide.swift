@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 
   final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     self.mObserversOf_y1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y1_property.removeEBObserver (observer)
       }
@@ -156,7 +156,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 
   final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     self.mObserversOf_x2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x2_property.removeEBObserver (observer)
       }
@@ -215,7 +215,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 
   final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     self.mObserversOf_y2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y2_property.removeEBObserver (observer)
       }
@@ -274,7 +274,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 
   final func removeEBObserversOf_x1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     self.mObserversOf_x1Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x1Unit_property.removeEBObserver (observer)
       }
@@ -333,7 +333,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 
   final func removeEBObserversOf_y1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     self.mObserversOf_y1Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y1Unit_property.removeEBObserver (observer)
       }
@@ -392,7 +392,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 
   final func removeEBObserversOf_x2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     self.mObserversOf_x2Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x2Unit_property.removeEBObserver (observer)
       }
@@ -451,7 +451,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 
   final func removeEBObserversOf_y2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     self.mObserversOf_y2Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y2Unit_property.removeEBObserver (observer)
       }
@@ -510,7 +510,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 
   final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     self.mObserversOf_x1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x1_property.removeEBObserver (observer)
       }
@@ -757,7 +757,7 @@ final class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -852,7 +852,7 @@ final class TransientArrayOfSuperOf_PackageGuide <SUPER : EBManagedObject> : Rea
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1083,7 +1083,7 @@ class StoredArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide, EBSignatureObs
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1215,7 +1215,7 @@ final class StandAloneArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

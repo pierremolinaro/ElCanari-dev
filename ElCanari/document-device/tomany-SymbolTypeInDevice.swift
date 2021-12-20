@@ -93,7 +93,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func removeEBObserversOf_mTypeName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
     self.mObserversOf_mTypeName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mTypeName_property.removeEBObserver (observer)
       }
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func removeEBObserversOf_mVersion_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
     self.mObserversOf_mVersion.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mVersion_property.removeEBObserver (observer)
       }
@@ -211,7 +211,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
     self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mFileData_property.removeEBObserver (observer)
       }
@@ -270,7 +270,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
     self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
       }
@@ -329,7 +329,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
     self.mObserversOf_mFilledBezierPath.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mFilledBezierPath_property.removeEBObserver (observer)
       }
@@ -632,7 +632,7 @@ final class TransientArrayOf_SymbolTypeInDevice : ReadOnlyArrayOf_SymbolTypeInDe
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -727,7 +727,7 @@ final class TransientArrayOfSuperOf_SymbolTypeInDevice <SUPER : EBManagedObject>
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -958,7 +958,7 @@ class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EB
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1090,7 +1090,7 @@ final class StandAloneArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeIn
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

@@ -28,9 +28,9 @@ class ReadOnlyAbstractObjectProperty <T : AnyObject> : ReadOnlyAbstractGenericRe
     didSet {
       if self.mInternalValue !== oldValue {
         if (self.mInternalValue == nil) != (oldValue == nil) {
-          self.none_property.postEvent ()
+          self.none_property.observedObjectDidChange ()
         }
-        self.postEvent ()
+        self.observedObjectDidChange ()
         self.notifyModelDidChangeFrom (oldValue: oldValue)
         self.notifyModelDidChange ()
       }

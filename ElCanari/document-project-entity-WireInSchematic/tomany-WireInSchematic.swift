@@ -385,7 +385,7 @@ final class TransientArrayOf_WireInSchematic : ReadOnlyArrayOf_WireInSchematic {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -480,7 +480,7 @@ final class TransientArrayOfSuperOf_WireInSchematic <SUPER : EBManagedObject> : 
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -711,7 +711,7 @@ class StoredArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic, EBSignat
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -843,7 +843,7 @@ final class StandAloneArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

@@ -101,7 +101,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mX_property.removeEBObserver (observer)
       }
@@ -160,7 +160,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mY_property.removeEBObserver (observer)
       }
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mCPX1_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     self.mObserversOf_mCPX1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mCPX1_property.removeEBObserver (observer)
       }
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mCPY1_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     self.mObserversOf_mCPY1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mCPY1_property.removeEBObserver (observer)
       }
@@ -337,7 +337,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mCPX2_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     self.mObserversOf_mCPX2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mCPX2_property.removeEBObserver (observer)
       }
@@ -396,7 +396,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mCPY2_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     self.mObserversOf_mCPY2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mCPY2_property.removeEBObserver (observer)
       }
@@ -455,7 +455,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     self.mObserversOf_mShape.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mShape_property.removeEBObserver (observer)
       }
@@ -512,7 +512,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mNextX_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     self.mObserversOf_mNextX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mNextX_property.removeEBObserver (observer)
       }
@@ -569,7 +569,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mNextY_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     self.mObserversOf_mNextY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mNextY_property.removeEBObserver (observer)
       }
@@ -984,7 +984,7 @@ final class TransientArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1079,7 +1079,7 @@ final class TransientArrayOfSuperOf_BorderCurve <SUPER : EBManagedObject> : Read
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1310,7 +1310,7 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1442,7 +1442,7 @@ final class StandAloneArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

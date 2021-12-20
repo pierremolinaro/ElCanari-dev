@@ -81,7 +81,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
     self.mObserversOf_y.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y_property.removeEBObserver (observer)
       }
@@ -140,7 +140,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func removeEBObserversOf_padDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
     self.mObserversOf_padDiameter.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.padDiameter_property.removeEBObserver (observer)
       }
@@ -199,7 +199,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
     self.mObserversOf_x.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x_property.removeEBObserver (observer)
       }
@@ -278,7 +278,7 @@ final class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -373,7 +373,7 @@ final class TransientArrayOfSuperOf_BoardModelVia <SUPER : EBManagedObject> : Re
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -604,7 +604,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -736,7 +736,7 @@ final class StandAloneArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func removeEBObserversOf_mCenterX_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     self.mObserversOf_mCenterX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mCenterX_property.removeEBObserver (observer)
       }
@@ -156,7 +156,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func removeEBObserversOf_mCenterY_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     self.mObserversOf_mCenterY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mCenterY_property.removeEBObserver (observer)
       }
@@ -215,7 +215,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mWidth_property.removeEBObserver (observer)
       }
@@ -274,7 +274,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mHeight_property.removeEBObserver (observer)
       }
@@ -333,7 +333,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func removeEBObserversOf_mHoleWidth_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     self.mObserversOf_mHoleWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mHoleWidth_property.removeEBObserver (observer)
       }
@@ -392,7 +392,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func removeEBObserversOf_mHoleHeight_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     self.mObserversOf_mHoleHeight.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mHoleHeight_property.removeEBObserver (observer)
       }
@@ -451,7 +451,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     self.mObserversOf_mShape.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mShape_property.removeEBObserver (observer)
       }
@@ -510,7 +510,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func removeEBObserversOf_mStyle_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     self.mObserversOf_mStyle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mStyle_property.removeEBObserver (observer)
       }
@@ -757,7 +757,7 @@ final class TransientArrayOf_SlavePadInDevice : ReadOnlyArrayOf_SlavePadInDevice
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -852,7 +852,7 @@ final class TransientArrayOfSuperOf_SlavePadInDevice <SUPER : EBManagedObject> :
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1083,7 +1083,7 @@ class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, EBSign
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1215,7 +1215,7 @@ final class StandAloneArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevi
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

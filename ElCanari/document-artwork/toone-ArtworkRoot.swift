@@ -727,7 +727,7 @@ final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureO
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

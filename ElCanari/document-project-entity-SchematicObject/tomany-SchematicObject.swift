@@ -443,7 +443,7 @@ final class TransientArrayOf_SchematicObject : ReadOnlyArrayOf_SchematicObject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -538,7 +538,7 @@ final class TransientArrayOfSuperOf_SchematicObject <SUPER : EBManagedObject> : 
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -769,7 +769,7 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -901,7 +901,7 @@ final class StandAloneArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

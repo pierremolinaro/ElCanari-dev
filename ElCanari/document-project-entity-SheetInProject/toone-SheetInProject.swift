@@ -475,7 +475,7 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

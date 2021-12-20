@@ -588,7 +588,7 @@ final class StoredObject_BorderCurve : ReadWriteObject_BorderCurve, EBSignatureO
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

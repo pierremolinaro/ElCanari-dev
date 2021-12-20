@@ -611,7 +611,7 @@ final class StoredObject_PackageSegment : ReadWriteObject_PackageSegment, EBSign
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

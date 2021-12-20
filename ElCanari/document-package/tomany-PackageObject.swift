@@ -327,7 +327,7 @@ final class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -422,7 +422,7 @@ final class TransientArrayOfSuperOf_PackageObject <SUPER : EBManagedObject> : Re
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -653,7 +653,7 @@ class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSignatureO
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -785,7 +785,7 @@ final class StandAloneArrayOf_PackageObject : ReadWriteArrayOf_PackageObject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

@@ -93,7 +93,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func removeEBObserversOf_mInstanceName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     self.mObserversOf_mInstanceName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mInstanceName_property.removeEBObserver (observer)
       }
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mX_property.removeEBObserver (observer)
       }
@@ -211,7 +211,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mY_property.removeEBObserver (observer)
       }
@@ -626,7 +626,7 @@ final class TransientArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInst
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -721,7 +721,7 @@ final class TransientArrayOfSuperOf_SymbolInstanceInDevice <SUPER : EBManagedObj
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -952,7 +952,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1084,7 +1084,7 @@ final class StandAloneArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolIn
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

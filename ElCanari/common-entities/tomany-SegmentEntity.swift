@@ -85,7 +85,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     self.mObserversOf_y1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y1_property.removeEBObserver (observer)
       }
@@ -144,7 +144,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     self.mObserversOf_x2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x2_property.removeEBObserver (observer)
       }
@@ -203,7 +203,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     self.mObserversOf_y2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y2_property.removeEBObserver (observer)
       }
@@ -262,7 +262,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     self.mObserversOf_width.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.width_property.removeEBObserver (observer)
       }
@@ -321,7 +321,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     self.mObserversOf_x1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x1_property.removeEBObserver (observer)
       }
@@ -400,7 +400,7 @@ final class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -495,7 +495,7 @@ final class TransientArrayOfSuperOf_SegmentEntity <SUPER : EBManagedObject> : Re
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -726,7 +726,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -858,7 +858,7 @@ final class StandAloneArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

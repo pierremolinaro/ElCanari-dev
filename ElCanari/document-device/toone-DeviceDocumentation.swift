@@ -358,7 +358,7 @@ final class StoredObject_DeviceDocumentation : ReadWriteObject_DeviceDocumentati
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

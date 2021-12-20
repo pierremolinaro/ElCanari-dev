@@ -749,7 +749,7 @@ final class StoredObject_PackageBezier : ReadWriteObject_PackageBezier, EBSignat
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

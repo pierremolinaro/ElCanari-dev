@@ -40,7 +40,7 @@ class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBGenericReadWrit
         if logEvents () {
           appendMessageString ("Property \(self.explorerIndexString) did change value to \(mValue)\n")
         }
-        self.postEvent ()
+        self.observedObjectDidChange ()
         self.clearSignatureCache ()
       }
     }
@@ -84,7 +84,7 @@ class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBGenericReadWrit
       if let window = inWindow {
         alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
           if response == .alertSecondButtonReturn { // Discard Change
-            self.postEvent ()
+            self.observedObjectDidChange ()
           }
         }
       }else{

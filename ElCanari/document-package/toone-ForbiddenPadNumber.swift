@@ -312,7 +312,7 @@ final class StoredObject_ForbiddenPadNumber : ReadWriteObject_ForbiddenPadNumber
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

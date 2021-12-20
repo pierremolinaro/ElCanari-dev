@@ -589,7 +589,7 @@ final class StoredObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice, 
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

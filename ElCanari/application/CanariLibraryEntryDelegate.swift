@@ -28,7 +28,7 @@ final class CanariLibraryEntryDelegate : EBEvent {
 
   //····················································································································
 
-  final override func postEvent () {
+  final override func observedObjectDidChange () {
     let possiblePath = self.mObject?.mPath
   //--- Remove previous monitoring (if any)
     removeFileSystemMonitoring ()
@@ -75,7 +75,7 @@ final class CanariLibraryEntryDelegate : EBEvent {
   //····················································································································
 
   fileprivate final func monitoredFileDidChange () {
-    self.mObject?.mStatusImage_property.postEvent ()
+    self.mObject?.mStatusImage_property.observedObjectDidChange ()
   }
   
   //····················································································································

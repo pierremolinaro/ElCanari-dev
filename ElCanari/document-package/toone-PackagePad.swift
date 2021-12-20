@@ -980,7 +980,7 @@ final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObs
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

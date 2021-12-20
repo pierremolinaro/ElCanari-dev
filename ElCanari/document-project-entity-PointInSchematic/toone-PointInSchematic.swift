@@ -706,7 +706,7 @@ final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EB
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

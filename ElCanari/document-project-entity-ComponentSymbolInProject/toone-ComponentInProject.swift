@@ -1303,7 +1303,7 @@ final class StoredObject_ComponentInProject : ReadWriteObject_ComponentInProject
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

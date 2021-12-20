@@ -101,7 +101,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func removeEBObserversOf_mDeviceName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     self.mObserversOf_mDeviceName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDeviceName_property.removeEBObserver (observer)
       }
@@ -160,7 +160,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func removeEBObserversOf_mPrefix_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     self.mObserversOf_mPrefix.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPrefix_property.removeEBObserver (observer)
       }
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func removeEBObserversOf_mDeviceVersion_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     self.mObserversOf_mDeviceVersion.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDeviceVersion_property.removeEBObserver (observer)
       }
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func removeEBObserversOf_mDeviceFileData_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     self.mObserversOf_mDeviceFileData.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDeviceFileData_property.removeEBObserver (observer)
       }
@@ -861,7 +861,7 @@ final class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -956,7 +956,7 @@ final class TransientArrayOfSuperOf_DeviceInProject <SUPER : EBManagedObject> : 
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1187,7 +1187,7 @@ class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignat
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1319,7 +1319,7 @@ final class StandAloneArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

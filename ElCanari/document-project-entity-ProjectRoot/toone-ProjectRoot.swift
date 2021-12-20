@@ -3332,7 +3332,7 @@ final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureO
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()

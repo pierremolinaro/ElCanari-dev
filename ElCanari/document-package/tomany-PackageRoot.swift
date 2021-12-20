@@ -181,7 +181,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_selectedPageIndex_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_selectedPageIndex.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.selectedPageIndex_property.removeEBObserver (observer)
       }
@@ -240,7 +240,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_selectedInspector_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_selectedInspector.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.selectedInspector_property.removeEBObserver (observer)
       }
@@ -299,7 +299,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_comments.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.comments_property.removeEBObserver (observer)
       }
@@ -358,7 +358,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_program_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_program.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.program_property.removeEBObserver (observer)
       }
@@ -417,7 +417,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_horizontalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_horizontalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.horizontalFlip_property.removeEBObserver (observer)
       }
@@ -476,7 +476,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_verticalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_verticalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.verticalFlip_property.removeEBObserver (observer)
       }
@@ -535,7 +535,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_gridStyle_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_gridStyle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.gridStyle_property.removeEBObserver (observer)
       }
@@ -594,7 +594,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_gridStep_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_gridStep.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.gridStep_property.removeEBObserver (observer)
       }
@@ -653,7 +653,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_gridStepUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_gridStepUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.gridStepUnit_property.removeEBObserver (observer)
       }
@@ -712,7 +712,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_gridDisplayFactor.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.gridDisplayFactor_property.removeEBObserver (observer)
       }
@@ -771,7 +771,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_zoom_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_zoom.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.zoom_property.removeEBObserver (observer)
       }
@@ -830,7 +830,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImageOpacity_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImageOpacity.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageOpacity_property.removeEBObserver (observer)
       }
@@ -889,7 +889,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImagePageHorizontalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImagePageHorizontalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageHorizontalFlip_property.removeEBObserver (observer)
       }
@@ -948,7 +948,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImagePageVerticalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImagePageVerticalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageVerticalFlip_property.removeEBObserver (observer)
       }
@@ -1007,7 +1007,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImagePageGridStyle_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImagePageGridStyle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageGridStyle_property.removeEBObserver (observer)
       }
@@ -1066,7 +1066,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImagePageGridStep_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImagePageGridStep.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageGridStep_property.removeEBObserver (observer)
       }
@@ -1125,7 +1125,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImagePageGridStepUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImagePageGridStepUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageGridStepUnit_property.removeEBObserver (observer)
       }
@@ -1184,7 +1184,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImagePageGridDisplayFactor_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImagePageGridDisplayFactor.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageGridDisplayFactor_property.removeEBObserver (observer)
       }
@@ -1243,7 +1243,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImagePageZoom_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImagePageZoom.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageZoom_property.removeEBObserver (observer)
       }
@@ -1302,7 +1302,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImagePageXPlacardUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImagePageXPlacardUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageXPlacardUnit_property.removeEBObserver (observer)
       }
@@ -1361,7 +1361,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImagePageYPlacardUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImagePageYPlacardUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageYPlacardUnit_property.removeEBObserver (observer)
       }
@@ -1420,7 +1420,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImageSecondPointXUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImageSecondPointXUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageSecondPointXUnit_property.removeEBObserver (observer)
       }
@@ -1479,7 +1479,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImageSecondPointYUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImageSecondPointYUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageSecondPointYUnit_property.removeEBObserver (observer)
       }
@@ -1538,7 +1538,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImageFirstPointXOnLock_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImageFirstPointXOnLock.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageFirstPointXOnLock_property.removeEBObserver (observer)
       }
@@ -1597,7 +1597,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImageFirstPointYOnLock_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImageFirstPointYOnLock.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageFirstPointYOnLock_property.removeEBObserver (observer)
       }
@@ -1656,7 +1656,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImagePointsDxOnLock_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImagePointsDxOnLock.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePointsDxOnLock_property.removeEBObserver (observer)
       }
@@ -1715,7 +1715,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImagePointsDyOnLock_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImagePointsDyOnLock.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePointsDyOnLock_property.removeEBObserver (observer)
       }
@@ -1774,7 +1774,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImageScale_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImageScale.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageScale_property.removeEBObserver (observer)
       }
@@ -1833,7 +1833,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImageRotationInRadians_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImageRotationInRadians.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageRotationInRadians_property.removeEBObserver (observer)
       }
@@ -1892,7 +1892,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mDimensionUnitFirstModelPointX_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mDimensionUnitFirstModelPointX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDimensionUnitFirstModelPointX_property.removeEBObserver (observer)
       }
@@ -1951,7 +1951,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mDimensionUnitFirstModelPointY_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mDimensionUnitFirstModelPointY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDimensionUnitFirstModelPointY_property.removeEBObserver (observer)
       }
@@ -2010,7 +2010,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mDimensionUnitSecondModelPointDx_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mDimensionUnitSecondModelPointDx.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDimensionUnitSecondModelPointDx_property.removeEBObserver (observer)
       }
@@ -2069,7 +2069,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mDimensionUnitSecondModelPointDy_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mDimensionUnitSecondModelPointDy.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDimensionUnitSecondModelPointDy_property.removeEBObserver (observer)
       }
@@ -2128,7 +2128,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelPointsCircleRadius_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelPointsCircleRadius.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelPointsCircleRadius_property.removeEBObserver (observer)
       }
@@ -2187,7 +2187,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mPointsAreLocked_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mPointsAreLocked.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPointsAreLocked_property.removeEBObserver (observer)
       }
@@ -2246,7 +2246,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_knobSizeMultpliedByTen_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_knobSizeMultpliedByTen.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.knobSizeMultpliedByTen_property.removeEBObserver (observer)
       }
@@ -2305,7 +2305,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_padNumbering_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_padNumbering.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.padNumbering_property.removeEBObserver (observer)
       }
@@ -2364,7 +2364,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_counterClockNumberingStartAngle_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_counterClockNumberingStartAngle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.counterClockNumberingStartAngle_property.removeEBObserver (observer)
       }
@@ -2423,7 +2423,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_xPlacardUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_xPlacardUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.xPlacardUnit_property.removeEBObserver (observer)
       }
@@ -2482,7 +2482,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_yPlacardUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_yPlacardUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.yPlacardUnit_property.removeEBObserver (observer)
       }
@@ -2541,7 +2541,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImageData_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImageData.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageData_property.removeEBObserver (observer)
       }
@@ -2598,7 +2598,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImageFirstPointX_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImageFirstPointX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageFirstPointX_property.removeEBObserver (observer)
       }
@@ -2655,7 +2655,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImageFirstPointY_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImageFirstPointY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageFirstPointY_property.removeEBObserver (observer)
       }
@@ -2712,7 +2712,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImageSecondPointDx_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImageSecondPointDx.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageSecondPointDx_property.removeEBObserver (observer)
       }
@@ -2769,7 +2769,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_mModelImageSecondPointDy_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     self.mObserversOf_mModelImageSecondPointDy.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageSecondPointDy_property.removeEBObserver (observer)
       }
@@ -3520,7 +3520,7 @@ final class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -3615,7 +3615,7 @@ final class TransientArrayOfSuperOf_PackageRoot <SUPER : EBManagedObject> : Read
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -3846,7 +3846,7 @@ class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatureObser
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -3978,7 +3978,7 @@ final class StandAloneArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

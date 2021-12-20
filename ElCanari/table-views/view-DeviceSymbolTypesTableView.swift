@@ -69,7 +69,7 @@ final class DeviceSymbolTypesTableView : EBTableView, NSTableViewDataSource, NST
   //····················································································································
 
   func reloadDataSource (_ inDataSource : DeviceSymbolDictionary) {
-    self.mPinNameArray.postEvent ()
+    self.mPinNameArray.observedObjectDidChange ()
     self.mDeviceSymbolDictionary = inDataSource
   //--- Note selected rows
     var selectedRowContents = Set <String> ()
@@ -171,7 +171,7 @@ final class DeviceSymbolTypesTableView : EBTableView, NSTableViewDataSource, NST
   //····················································································································
 
   func tableViewSelectionDidChange (_ notification : Notification) {
-    self.mPinNameArray.postEvent ()
+    self.mPinNameArray.observedObjectDidChange ()
   }
 
   //····················································································································

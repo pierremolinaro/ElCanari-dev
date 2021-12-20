@@ -123,7 +123,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_xCenter_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_xCenter.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.xCenter_property.removeEBObserver (observer)
       }
@@ -182,7 +182,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_yCenter_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_yCenter.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.yCenter_property.removeEBObserver (observer)
       }
@@ -241,7 +241,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_width.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.width_property.removeEBObserver (observer)
       }
@@ -300,7 +300,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_height.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.height_property.removeEBObserver (observer)
       }
@@ -359,7 +359,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_holeWidth_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_holeWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.holeWidth_property.removeEBObserver (observer)
       }
@@ -418,7 +418,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_holeHeight_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_holeHeight.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.holeHeight_property.removeEBObserver (observer)
       }
@@ -477,7 +477,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_padShape_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_padShape.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.padShape_property.removeEBObserver (observer)
       }
@@ -536,7 +536,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_padStyle_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_padStyle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.padStyle_property.removeEBObserver (observer)
       }
@@ -595,7 +595,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_xCenterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_xCenterUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.xCenterUnit_property.removeEBObserver (observer)
       }
@@ -654,7 +654,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_yCenterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_yCenterUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.yCenterUnit_property.removeEBObserver (observer)
       }
@@ -713,7 +713,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_widthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_widthUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.widthUnit_property.removeEBObserver (observer)
       }
@@ -772,7 +772,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_heightUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_heightUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.heightUnit_property.removeEBObserver (observer)
       }
@@ -831,7 +831,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_holeWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_holeWidthUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.holeWidthUnit_property.removeEBObserver (observer)
       }
@@ -890,7 +890,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_holeHeightUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_holeHeightUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.holeHeightUnit_property.removeEBObserver (observer)
       }
@@ -949,7 +949,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_annularRingUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageSlavePad>) {
     self.mObserversOf_annularRingUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
+      observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.annularRingUnit_property.removeEBObserver (observer)
       }
@@ -1532,7 +1532,7 @@ final class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1627,7 +1627,7 @@ final class TransientArrayOfSuperOf_PackageSlavePad <SUPER : EBManagedObject> : 
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.postEvent ()
+    self.mModelEvent.observedObjectDidChange ()
     self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
@@ -1858,7 +1858,7 @@ class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EBSignat
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1990,7 +1990,7 @@ final class StandAloneArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.postEvent ()
+    self.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

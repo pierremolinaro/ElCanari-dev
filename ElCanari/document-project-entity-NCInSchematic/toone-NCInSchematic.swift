@@ -358,7 +358,7 @@ final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignat
       }
     #endif
   //--- Notify observers
-    self.postEvent ()
+    self.observedObjectDidChange ()
     self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()
