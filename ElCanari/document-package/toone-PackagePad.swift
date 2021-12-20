@@ -262,7 +262,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserverOf_slaves (_ inObserver : EBEvent) {
+  final func addEBObserverOf_slaves (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_slaves.insert (inObserver)
     if let object = self.propval {
       object.slaves_property.addEBObserver (inObserver)
@@ -271,7 +271,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
 
   //····················································································································
 
-  final func removeEBObserverOf_slaves (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_slaves (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_slaves.remove (inObserver)
     if let object = self.propval {
       object.slaves_property.removeEBObserver (inObserver)

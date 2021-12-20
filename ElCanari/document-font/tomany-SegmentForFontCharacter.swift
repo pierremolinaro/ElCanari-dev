@@ -43,7 +43,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   //····················································································································
 
-  final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x1 (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1.insert (inObserver)
     switch self.selection {
@@ -58,7 +58,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   //····················································································································
 
-  final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_x1 (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x1.remove (inObserver)
     switch self.selection {
@@ -102,7 +102,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   //····················································································································
 
-  final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y1 (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1.insert (inObserver)
     switch self.selection {
@@ -117,7 +117,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   //····················································································································
 
-  final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_y1 (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y1.remove (inObserver)
     switch self.selection {
@@ -161,7 +161,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   //····················································································································
 
-  final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x2 (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2.insert (inObserver)
     switch self.selection {
@@ -176,7 +176,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   //····················································································································
 
-  final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_x2 (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x2.remove (inObserver)
     switch self.selection {
@@ -220,7 +220,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   //····················································································································
 
-  final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y2 (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2.insert (inObserver)
     switch self.selection {
@@ -235,7 +235,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   //····················································································································
 
-  final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_y2 (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y2.remove (inObserver)
     switch self.selection {
@@ -279,7 +279,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch self.selection {
@@ -294,7 +294,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   //····················································································································
 
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
     switch self.selection {
@@ -335,7 +335,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch self.selection {
@@ -350,7 +350,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   //····················································································································
 
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
     switch self.selection {

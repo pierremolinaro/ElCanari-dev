@@ -126,7 +126,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_characters (_ inObserver : EBEvent) {
+  final func addEBObserverOf_characters (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_characters.insert (inObserver)
     if let object = self.propval {
       object.characters_property.addEBObserver (inObserver)
@@ -135,7 +135,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
-  final func removeEBObserverOf_characters (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_characters (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_characters.remove (inObserver)
     if let object = self.propval {
       object.characters_property.removeEBObserver (inObserver)

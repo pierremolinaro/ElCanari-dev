@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mComponentPadName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mComponentPadName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mComponentPadName.insert (inObserver)
     switch self.selection {
@@ -104,7 +104,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_mComponentPadName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mComponentPadName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mComponentPadName.remove (inObserver)
     switch self.selection {
@@ -148,7 +148,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mPadIndex (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPadIndex (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPadIndex.insert (inObserver)
     switch self.selection {
@@ -163,7 +163,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_mPadIndex (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPadIndex (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPadIndex.remove (inObserver)
     switch self.selection {
@@ -207,7 +207,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mX (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
     switch self.selection {
@@ -222,7 +222,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mX (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX.remove (inObserver)
     switch self.selection {
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mY (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
     switch self.selection {
@@ -281,7 +281,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mY (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY.remove (inObserver)
     switch self.selection {
@@ -325,7 +325,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mDefaultHoleDiameterUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDefaultHoleDiameterUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDefaultHoleDiameterUnit.insert (inObserver)
     switch self.selection {
@@ -340,7 +340,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_mDefaultHoleDiameterUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mDefaultHoleDiameterUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mDefaultHoleDiameterUnit.remove (inObserver)
     switch self.selection {
@@ -384,7 +384,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mCustomHoleDiameter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mCustomHoleDiameter (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCustomHoleDiameter.insert (inObserver)
     switch self.selection {
@@ -399,7 +399,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_mCustomHoleDiameter (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mCustomHoleDiameter (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCustomHoleDiameter.remove (inObserver)
     switch self.selection {
@@ -443,7 +443,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mCustomHoleDiameterUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mCustomHoleDiameterUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCustomHoleDiameterUnit.insert (inObserver)
     switch self.selection {
@@ -458,7 +458,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_mCustomHoleDiameterUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mCustomHoleDiameterUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCustomHoleDiameterUnit.remove (inObserver)
     switch self.selection {
@@ -502,7 +502,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mUsesCustomHoleDiameter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mUsesCustomHoleDiameter (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mUsesCustomHoleDiameter.insert (inObserver)
     switch self.selection {
@@ -517,7 +517,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_mUsesCustomHoleDiameter (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mUsesCustomHoleDiameter (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mUsesCustomHoleDiameter.remove (inObserver)
     switch self.selection {
@@ -561,7 +561,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mDefaultPadDiameterUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDefaultPadDiameterUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDefaultPadDiameterUnit.insert (inObserver)
     switch self.selection {
@@ -576,7 +576,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_mDefaultPadDiameterUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mDefaultPadDiameterUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mDefaultPadDiameterUnit.remove (inObserver)
     switch self.selection {
@@ -620,7 +620,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mCustomPadDiameter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mCustomPadDiameter (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCustomPadDiameter.insert (inObserver)
     switch self.selection {
@@ -635,7 +635,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_mCustomPadDiameter (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mCustomPadDiameter (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCustomPadDiameter.remove (inObserver)
     switch self.selection {
@@ -679,7 +679,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mCustomPadDiameterUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mCustomPadDiameterUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCustomPadDiameterUnit.insert (inObserver)
     switch self.selection {
@@ -694,7 +694,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_mCustomPadDiameterUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mCustomPadDiameterUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCustomPadDiameterUnit.remove (inObserver)
     switch self.selection {
@@ -738,7 +738,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mUsesCustomPadDiameter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mUsesCustomPadDiameter (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mUsesCustomPadDiameter.insert (inObserver)
     switch self.selection {
@@ -753,7 +753,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_mUsesCustomPadDiameter (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mUsesCustomPadDiameter (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mUsesCustomPadDiameter.remove (inObserver)
     switch self.selection {
@@ -797,7 +797,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_isConnectedToSomePad (_ inObserver : EBEvent) {
+  final func addEBObserverOf_isConnectedToSomePad (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isConnectedToSomePad.insert (inObserver)
     switch self.selection {
@@ -812,7 +812,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_isConnectedToSomePad (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_isConnectedToSomePad (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isConnectedToSomePad.remove (inObserver)
     switch self.selection {
@@ -853,7 +853,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_location (_ inObserver : EBEvent) {
+  final func addEBObserverOf_location (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_location.insert (inObserver)
     switch self.selection {
@@ -868,7 +868,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_location (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_location (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_location.remove (inObserver)
     switch self.selection {
@@ -909,7 +909,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_netNameFromComponentPad (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netNameFromComponentPad (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netNameFromComponentPad.insert (inObserver)
     switch self.selection {
@@ -924,7 +924,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_netNameFromComponentPad (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netNameFromComponentPad (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netNameFromComponentPad.remove (inObserver)
     switch self.selection {
@@ -965,7 +965,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netNameAndPadLocation (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netNameAndPadLocation.insert (inObserver)
     switch self.selection {
@@ -980,7 +980,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netNameAndPadLocation (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netNameAndPadLocation.remove (inObserver)
     switch self.selection {
@@ -1021,7 +1021,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_side (_ inObserver : EBEvent) {
+  final func addEBObserverOf_side (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_side.insert (inObserver)
     switch self.selection {
@@ -1036,7 +1036,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_side (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_side (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_side.remove (inObserver)
     switch self.selection {
@@ -1077,7 +1077,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_isVia (_ inObserver : EBEvent) {
+  final func addEBObserverOf_isVia (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isVia.insert (inObserver)
     switch self.selection {
@@ -1092,7 +1092,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_isVia (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_isVia (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isVia.remove (inObserver)
     switch self.selection {
@@ -1133,7 +1133,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_issues (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch self.selection {
@@ -1148,7 +1148,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_issues (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
     switch self.selection {
@@ -1189,7 +1189,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_viaDefaultHoleDiameter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_viaDefaultHoleDiameter (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_viaDefaultHoleDiameter.insert (inObserver)
     switch self.selection {
@@ -1204,7 +1204,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_viaDefaultHoleDiameter (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_viaDefaultHoleDiameter (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_viaDefaultHoleDiameter.remove (inObserver)
     switch self.selection {
@@ -1245,7 +1245,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_viaDefaultPadDiameter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_viaDefaultPadDiameter (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_viaDefaultPadDiameter.insert (inObserver)
     switch self.selection {
@@ -1260,7 +1260,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_viaDefaultPadDiameter (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_viaDefaultPadDiameter (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_viaDefaultPadDiameter.remove (inObserver)
     switch self.selection {
@@ -1301,7 +1301,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_netNameFromTracks (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netNameFromTracks (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netNameFromTracks.insert (inObserver)
     switch self.selection {
@@ -1316,7 +1316,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_netNameFromTracks (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netNameFromTracks (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netNameFromTracks.remove (inObserver)
     switch self.selection {
@@ -1357,7 +1357,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netClassName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassName.insert (inObserver)
     switch self.selection {
@@ -1372,7 +1372,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netClassName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassName.remove (inObserver)
     switch self.selection {
@@ -1413,7 +1413,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_connectedToComponent (_ inObserver : EBEvent) {
+  final func addEBObserverOf_connectedToComponent (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connectedToComponent.insert (inObserver)
     switch self.selection {
@@ -1428,7 +1428,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_connectedToComponent (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_connectedToComponent (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_connectedToComponent.remove (inObserver)
     switch self.selection {
@@ -1469,7 +1469,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_actualHoleDiameter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_actualHoleDiameter (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_actualHoleDiameter.insert (inObserver)
     switch self.selection {
@@ -1484,7 +1484,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_actualHoleDiameter (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_actualHoleDiameter (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_actualHoleDiameter.remove (inObserver)
     switch self.selection {
@@ -1525,7 +1525,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_actualPadDiameter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_actualPadDiameter (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_actualPadDiameter.insert (inObserver)
     switch self.selection {
@@ -1540,7 +1540,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_actualPadDiameter (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_actualPadDiameter (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_actualPadDiameter.remove (inObserver)
     switch self.selection {
@@ -1581,7 +1581,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch self.selection {
@@ -1596,7 +1596,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
     switch self.selection {
@@ -1637,7 +1637,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch self.selection {
@@ -1652,7 +1652,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
     switch self.selection {
@@ -1693,7 +1693,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
     switch self.selection {
@@ -1708,7 +1708,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.remove (inObserver)
     switch self.selection {

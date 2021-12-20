@@ -43,7 +43,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSheetTitle (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSheetTitle.insert (inObserver)
     switch self.selection {
@@ -58,7 +58,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func removeEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mSheetTitle (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSheetTitle.remove (inObserver)
     switch self.selection {
@@ -102,7 +102,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_issues (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch self.selection {
@@ -117,7 +117,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_issues (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
     switch self.selection {
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+  final func addEBObserverOf_connectedPoints (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connectedPoints.insert (inObserver)
     switch self.selection {
@@ -173,7 +173,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_connectedPoints (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_connectedPoints.remove (inObserver)
     switch self.selection {
@@ -214,7 +214,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
+  final func addEBObserverOf_connexionWarnings (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connexionWarnings.insert (inObserver)
     switch self.selection {
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func removeEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_connexionWarnings (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_connexionWarnings.remove (inObserver)
     switch self.selection {
@@ -270,7 +270,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
+  final func addEBObserverOf_connexionErrors (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connexionErrors.insert (inObserver)
     switch self.selection {
@@ -285,7 +285,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func removeEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_connexionErrors (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_connexionErrors.remove (inObserver)
     switch self.selection {
@@ -326,7 +326,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_sheetDescriptor (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sheetDescriptor.insert (inObserver)
     switch self.selection {
@@ -341,7 +341,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func removeEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_sheetDescriptor (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_sheetDescriptor.remove (inObserver)
     switch self.selection {

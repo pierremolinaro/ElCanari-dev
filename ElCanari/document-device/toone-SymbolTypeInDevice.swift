@@ -102,7 +102,7 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 
   //····················································································································
 
-  final func addEBObserverOf_mInstances (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mInstances (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mInstances.insert (inObserver)
     if let object = self.propval {
       object.mInstances_property.addEBObserver (inObserver)
@@ -111,7 +111,7 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 
   //····················································································································
 
-  final func removeEBObserverOf_mInstances (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mInstances (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mInstances.remove (inObserver)
     if let object = self.propval {
       object.mInstances_property.removeEBObserver (inObserver)
@@ -126,7 +126,7 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 
   //····················································································································
 
-  final func addEBObserverOf_mPinTypes (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPinTypes (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mPinTypes.insert (inObserver)
     if let object = self.propval {
       object.mPinTypes_property.addEBObserver (inObserver)
@@ -135,7 +135,7 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 
   //····················································································································
 
-  final func removeEBObserverOf_mPinTypes (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPinTypes (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mPinTypes.remove (inObserver)
     if let object = self.propval {
       object.mPinTypes_property.removeEBObserver (inObserver)

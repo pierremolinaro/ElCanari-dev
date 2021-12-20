@@ -49,7 +49,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func addEBObserverOf_mInstanceName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mInstanceName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mInstanceName.insert (inObserver)
     switch self.selection {
@@ -64,7 +64,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func removeEBObserverOf_mInstanceName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mInstanceName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mInstanceName.remove (inObserver)
     switch self.selection {
@@ -108,7 +108,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mX (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
     switch self.selection {
@@ -123,7 +123,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mX (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX.remove (inObserver)
     switch self.selection {
@@ -167,7 +167,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mY (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
     switch self.selection {
@@ -182,7 +182,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mY (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY.remove (inObserver)
     switch self.selection {
@@ -226,7 +226,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func addEBObserverOf_symbolQualifiedName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolQualifiedName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolQualifiedName.insert (inObserver)
     switch self.selection {
@@ -241,7 +241,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func removeEBObserverOf_symbolQualifiedName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_symbolQualifiedName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolQualifiedName.remove (inObserver)
     switch self.selection {
@@ -282,7 +282,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func addEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolTypeName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolTypeName.insert (inObserver)
     switch self.selection {
@@ -297,7 +297,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func removeEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_symbolTypeName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolTypeName.remove (inObserver)
     switch self.selection {
@@ -338,7 +338,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func addEBObserverOf_pinSymbolQualifiedNames (_ inObserver : EBEvent) {
+  final func addEBObserverOf_pinSymbolQualifiedNames (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinSymbolQualifiedNames.insert (inObserver)
     switch self.selection {
@@ -353,7 +353,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func removeEBObserverOf_pinSymbolQualifiedNames (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_pinSymbolQualifiedNames (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_pinSymbolQualifiedNames.remove (inObserver)
     switch self.selection {
@@ -394,7 +394,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch self.selection {
@@ -409,7 +409,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
     switch self.selection {
@@ -450,7 +450,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func addEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
+  final func addEBObserverOf_unconnectedPins (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_unconnectedPins.insert (inObserver)
     switch self.selection {
@@ -465,7 +465,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func removeEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_unconnectedPins (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_unconnectedPins.remove (inObserver)
     switch self.selection {
@@ -506,7 +506,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch self.selection {
@@ -521,7 +521,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
     switch self.selection {

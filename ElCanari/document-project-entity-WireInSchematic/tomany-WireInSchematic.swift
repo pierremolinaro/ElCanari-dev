@@ -41,7 +41,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch self.selection {
@@ -56,7 +56,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
     switch self.selection {
@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch self.selection {
@@ -112,7 +112,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
     switch self.selection {
@@ -153,7 +153,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netName.insert (inObserver)
     switch self.selection {
@@ -168,7 +168,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netName.remove (inObserver)
     switch self.selection {
@@ -209,7 +209,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netClassName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassName.insert (inObserver)
     switch self.selection {
@@ -224,7 +224,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netClassName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassName.remove (inObserver)
     switch self.selection {
@@ -265,7 +265,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserverOf_hasNet (_ inObserver : EBEvent) {
+  final func addEBObserverOf_hasNet (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_hasNet.insert (inObserver)
     switch self.selection {
@@ -280,7 +280,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func removeEBObserverOf_hasNet (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_hasNet (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_hasNet.remove (inObserver)
     switch self.selection {

@@ -230,7 +230,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mDocs (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDocs (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mDocs.insert (inObserver)
     if let object = self.propval {
       object.mDocs_property.addEBObserver (inObserver)
@@ -239,7 +239,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mDocs (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mDocs (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mDocs.remove (inObserver)
     if let object = self.propval {
       object.mDocs_property.removeEBObserver (inObserver)
@@ -254,7 +254,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbolInstances (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSymbolInstances (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mSymbolInstances.insert (inObserver)
     if let object = self.propval {
       object.mSymbolInstances_property.addEBObserver (inObserver)
@@ -263,7 +263,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mSymbolInstances (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mSymbolInstances (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mSymbolInstances.remove (inObserver)
     if let object = self.propval {
       object.mSymbolInstances_property.removeEBObserver (inObserver)
@@ -278,7 +278,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mPackages (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPackages (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mPackages.insert (inObserver)
     if let object = self.propval {
       object.mPackages_property.addEBObserver (inObserver)
@@ -287,7 +287,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mPackages (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPackages (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mPackages.remove (inObserver)
     if let object = self.propval {
       object.mPackages_property.removeEBObserver (inObserver)
@@ -302,7 +302,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbolTypes (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSymbolTypes (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mSymbolTypes.insert (inObserver)
     if let object = self.propval {
       object.mSymbolTypes_property.addEBObserver (inObserver)
@@ -311,7 +311,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mSymbolTypes (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mSymbolTypes (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mSymbolTypes.remove (inObserver)
     if let object = self.propval {
       object.mSymbolTypes_property.removeEBObserver (inObserver)
@@ -326,7 +326,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mPadProxies (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPadProxies (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mPadProxies.insert (inObserver)
     if let object = self.propval {
       object.mPadProxies_property.addEBObserver (inObserver)
@@ -335,7 +335,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mPadProxies (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPadProxies (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mPadProxies.remove (inObserver)
     if let object = self.propval {
       object.mPadProxies_property.removeEBObserver (inObserver)

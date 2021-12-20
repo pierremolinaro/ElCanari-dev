@@ -294,7 +294,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_boardModels (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardModels (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_boardModels.insert (inObserver)
     if let object = self.propval {
       object.boardModels_property.addEBObserver (inObserver)
@@ -303,7 +303,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func removeEBObserverOf_boardModels (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_boardModels (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_boardModels.remove (inObserver)
     if let object = self.propval {
       object.boardModels_property.removeEBObserver (inObserver)
@@ -318,7 +318,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_boardInstances (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardInstances (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_boardInstances.insert (inObserver)
     if let object = self.propval {
       object.boardInstances_property.addEBObserver (inObserver)
@@ -327,7 +327,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func removeEBObserverOf_boardInstances (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_boardInstances (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_boardInstances.remove (inObserver)
     if let object = self.propval {
       object.boardInstances_property.removeEBObserver (inObserver)

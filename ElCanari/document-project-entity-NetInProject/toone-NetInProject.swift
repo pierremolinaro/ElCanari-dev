@@ -94,7 +94,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserverOf_mPoints (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPoints (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mPoints.insert (inObserver)
     if let object = self.propval {
       object.mPoints_property.addEBObserver (inObserver)
@@ -103,7 +103,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
-  final func removeEBObserverOf_mPoints (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPoints (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mPoints.remove (inObserver)
     if let object = self.propval {
       object.mPoints_property.removeEBObserver (inObserver)
@@ -118,7 +118,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserverOf_mTracks (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mTracks (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mTracks.insert (inObserver)
     if let object = self.propval {
       object.mTracks_property.addEBObserver (inObserver)
@@ -127,7 +127,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
-  final func removeEBObserverOf_mTracks (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mTracks (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mTracks.remove (inObserver)
     if let object = self.propval {
       object.mTracks_property.removeEBObserver (inObserver)

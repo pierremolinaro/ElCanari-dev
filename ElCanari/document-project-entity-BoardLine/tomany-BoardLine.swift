@@ -57,7 +57,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mWidthUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mWidthUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWidthUnit.insert (inObserver)
     switch self.selection {
@@ -72,7 +72,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mWidthUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mWidthUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mWidthUnit.remove (inObserver)
     switch self.selection {
@@ -116,7 +116,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mX1 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mX1 (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX1.insert (inObserver)
     switch self.selection {
@@ -131,7 +131,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mX1 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mX1 (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX1.remove (inObserver)
     switch self.selection {
@@ -175,7 +175,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mX1Unit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mX1Unit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX1Unit.insert (inObserver)
     switch self.selection {
@@ -190,7 +190,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mX1Unit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mX1Unit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX1Unit.remove (inObserver)
     switch self.selection {
@@ -234,7 +234,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mY1 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mY1 (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY1.insert (inObserver)
     switch self.selection {
@@ -249,7 +249,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mY1 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mY1 (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY1.remove (inObserver)
     switch self.selection {
@@ -293,7 +293,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mY1Unit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mY1Unit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY1Unit.insert (inObserver)
     switch self.selection {
@@ -308,7 +308,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mY1Unit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mY1Unit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY1Unit.remove (inObserver)
     switch self.selection {
@@ -352,7 +352,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mX2 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mX2 (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX2.insert (inObserver)
     switch self.selection {
@@ -367,7 +367,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mX2 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mX2 (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX2.remove (inObserver)
     switch self.selection {
@@ -411,7 +411,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mX2Unit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mX2Unit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX2Unit.insert (inObserver)
     switch self.selection {
@@ -426,7 +426,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mX2Unit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mX2Unit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX2Unit.remove (inObserver)
     switch self.selection {
@@ -470,7 +470,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mY2 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mY2 (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY2.insert (inObserver)
     switch self.selection {
@@ -485,7 +485,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mY2 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mY2 (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY2.remove (inObserver)
     switch self.selection {
@@ -529,7 +529,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mY2Unit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mY2Unit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY2Unit.insert (inObserver)
     switch self.selection {
@@ -544,7 +544,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mY2Unit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mY2Unit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY2Unit.remove (inObserver)
     switch self.selection {
@@ -588,7 +588,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mLayer (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mLayer (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mLayer.insert (inObserver)
     switch self.selection {
@@ -603,7 +603,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mLayer (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mLayer (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mLayer.remove (inObserver)
     switch self.selection {
@@ -647,7 +647,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mWidth (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mWidth (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWidth.insert (inObserver)
     switch self.selection {
@@ -662,7 +662,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func removeEBObserverOf_mWidth (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mWidth (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mWidth.remove (inObserver)
     switch self.selection {
@@ -706,7 +706,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch self.selection {
@@ -721,7 +721,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
     switch self.selection {
@@ -762,7 +762,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch self.selection {
@@ -777,7 +777,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   //····················································································································
 
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
     switch self.selection {

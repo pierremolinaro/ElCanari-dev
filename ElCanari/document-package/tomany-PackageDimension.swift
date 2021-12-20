@@ -67,7 +67,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y1 (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1.insert (inObserver)
     switch self.selection {
@@ -82,7 +82,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_y1 (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y1.remove (inObserver)
     switch self.selection {
@@ -126,7 +126,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x2 (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2.insert (inObserver)
     switch self.selection {
@@ -141,7 +141,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_x2 (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x2.remove (inObserver)
     switch self.selection {
@@ -185,7 +185,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y2 (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2.insert (inObserver)
     switch self.selection {
@@ -200,7 +200,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_y2 (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y2.remove (inObserver)
     switch self.selection {
@@ -244,7 +244,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_xDimension (_ inObserver : EBEvent) {
+  final func addEBObserverOf_xDimension (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xDimension.insert (inObserver)
     switch self.selection {
@@ -259,7 +259,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_xDimension (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_xDimension (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_xDimension.remove (inObserver)
     switch self.selection {
@@ -303,7 +303,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_yDimension (_ inObserver : EBEvent) {
+  final func addEBObserverOf_yDimension (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yDimension.insert (inObserver)
     switch self.selection {
@@ -318,7 +318,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_yDimension (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_yDimension (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_yDimension.remove (inObserver)
     switch self.selection {
@@ -362,7 +362,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_x1Unit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x1Unit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1Unit.insert (inObserver)
     switch self.selection {
@@ -377,7 +377,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_x1Unit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_x1Unit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x1Unit.remove (inObserver)
     switch self.selection {
@@ -421,7 +421,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_y1Unit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y1Unit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1Unit.insert (inObserver)
     switch self.selection {
@@ -436,7 +436,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_y1Unit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_y1Unit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y1Unit.remove (inObserver)
     switch self.selection {
@@ -480,7 +480,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_x2Unit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x2Unit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2Unit.insert (inObserver)
     switch self.selection {
@@ -495,7 +495,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_x2Unit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_x2Unit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x2Unit.remove (inObserver)
     switch self.selection {
@@ -539,7 +539,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_y2Unit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y2Unit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2Unit.insert (inObserver)
     switch self.selection {
@@ -554,7 +554,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_y2Unit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_y2Unit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_y2Unit.remove (inObserver)
     switch self.selection {
@@ -598,7 +598,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_xDimensionUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_xDimensionUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xDimensionUnit.insert (inObserver)
     switch self.selection {
@@ -613,7 +613,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_xDimensionUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_xDimensionUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_xDimensionUnit.remove (inObserver)
     switch self.selection {
@@ -657,7 +657,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_yDimensionUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_yDimensionUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yDimensionUnit.insert (inObserver)
     switch self.selection {
@@ -672,7 +672,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_yDimensionUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_yDimensionUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_yDimensionUnit.remove (inObserver)
     switch self.selection {
@@ -716,7 +716,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_distanceUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_distanceUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_distanceUnit.insert (inObserver)
     switch self.selection {
@@ -731,7 +731,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_distanceUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_distanceUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_distanceUnit.remove (inObserver)
     switch self.selection {
@@ -775,7 +775,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_drawDimensionBackground (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawDimensionBackground (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawDimensionBackground.insert (inObserver)
     switch self.selection {
@@ -790,7 +790,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_drawDimensionBackground (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawDimensionBackground (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawDimensionBackground.remove (inObserver)
     switch self.selection {
@@ -834,7 +834,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x1 (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1.insert (inObserver)
     switch self.selection {
@@ -849,7 +849,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_x1 (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_x1.remove (inObserver)
     switch self.selection {
@@ -893,7 +893,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_distanceInCanariUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_distanceInCanariUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_distanceInCanariUnit.insert (inObserver)
     switch self.selection {
@@ -908,7 +908,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_distanceInCanariUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_distanceInCanariUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_distanceInCanariUnit.remove (inObserver)
     switch self.selection {
@@ -949,7 +949,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch self.selection {
@@ -964,7 +964,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
     switch self.selection {
@@ -1005,7 +1005,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch self.selection {
@@ -1020,7 +1020,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
     switch self.selection {
@@ -1061,7 +1061,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_issues (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch self.selection {
@@ -1076,7 +1076,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_issues (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
     switch self.selection {

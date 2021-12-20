@@ -33,7 +33,7 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
 
   //····················································································································
 
-  final func addEBObserverOf_padNumber (_ inObserver : EBEvent) {
+  final func addEBObserverOf_padNumber (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padNumber.insert (inObserver)
     switch self.selection {
@@ -48,7 +48,7 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
 
   //····················································································································
 
-  final func removeEBObserverOf_padNumber (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_padNumber (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_padNumber.remove (inObserver)
     switch self.selection {

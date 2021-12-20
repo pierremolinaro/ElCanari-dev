@@ -198,7 +198,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
 
   //····················································································································
 
-  final func addEBObserverOf_forbiddenPadNumbers (_ inObserver : EBEvent) {
+  final func addEBObserverOf_forbiddenPadNumbers (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_forbiddenPadNumbers.insert (inObserver)
     if let object = self.propval {
       object.forbiddenPadNumbers_property.addEBObserver (inObserver)
@@ -207,7 +207,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
 
   //····················································································································
 
-  final func removeEBObserverOf_forbiddenPadNumbers (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_forbiddenPadNumbers (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_forbiddenPadNumbers.remove (inObserver)
     if let object = self.propval {
       object.forbiddenPadNumbers_property.removeEBObserver (inObserver)

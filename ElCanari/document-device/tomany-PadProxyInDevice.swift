@@ -41,7 +41,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserverOf_mPinInstanceName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPinInstanceName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinInstanceName.insert (inObserver)
     switch self.selection {
@@ -56,7 +56,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func removeEBObserverOf_mPinInstanceName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPinInstanceName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPinInstanceName.remove (inObserver)
     switch self.selection {
@@ -100,7 +100,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPadName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPadName.insert (inObserver)
     switch self.selection {
@@ -115,7 +115,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func removeEBObserverOf_mPadName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPadName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPadName.remove (inObserver)
     switch self.selection {
@@ -159,7 +159,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserverOf_mIsNC (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mIsNC (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mIsNC.insert (inObserver)
     switch self.selection {
@@ -174,7 +174,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func removeEBObserverOf_mIsNC (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mIsNC (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mIsNC.remove (inObserver)
     switch self.selection {
@@ -218,7 +218,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
+  final func addEBObserverOf_isConnected (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isConnected.insert (inObserver)
     switch self.selection {
@@ -233,7 +233,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_isConnected (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isConnected.remove (inObserver)
     switch self.selection {
@@ -274,7 +274,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolName.insert (inObserver)
     switch self.selection {
@@ -289,7 +289,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func removeEBObserverOf_symbolName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_symbolName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolName.remove (inObserver)
     switch self.selection {

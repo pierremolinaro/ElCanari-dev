@@ -8,7 +8,7 @@ import Cocoa
 //    EBModelNotifierEvent
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBModelNotifierEvent : EBEvent {
+final class EBModelNotifierEvent : EBSwiftBaseObject, EBObserverProtocol {
 
   //····················································································································
   //   Properties
@@ -38,8 +38,8 @@ final class EBModelNotifierEvent : EBEvent {
 
   //····················································································································
 
-  override func observedObjectDidChange () {
-    super.observedObjectDidChange ()
+  func observedObjectDidChange () {
+//    super.observedObjectDidChange ()
     self.mClient.notifyModelDidChange ()
   }
 

@@ -37,7 +37,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func addEBObserverOf_mFileName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFileName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFileName.insert (inObserver)
     switch self.selection {
@@ -52,7 +52,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func removeEBObserverOf_mFileName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mFileName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFileName.remove (inObserver)
     switch self.selection {
@@ -96,7 +96,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFileData (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFileData.insert (inObserver)
     switch self.selection {
@@ -111,7 +111,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func removeEBObserverOf_mFileData (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mFileData (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFileData.remove (inObserver)
     switch self.selection {
@@ -155,7 +155,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func addEBObserverOf_fileSize (_ inObserver : EBEvent) {
+  final func addEBObserverOf_fileSize (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_fileSize.insert (inObserver)
     switch self.selection {
@@ -170,7 +170,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func removeEBObserverOf_fileSize (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_fileSize (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_fileSize.remove (inObserver)
     switch self.selection {

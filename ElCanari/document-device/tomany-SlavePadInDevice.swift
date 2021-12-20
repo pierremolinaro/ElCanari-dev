@@ -53,7 +53,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func addEBObserverOf_mCenterX (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mCenterX (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCenterX.insert (inObserver)
     switch self.selection {
@@ -68,7 +68,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func removeEBObserverOf_mCenterX (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mCenterX (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCenterX.remove (inObserver)
     switch self.selection {
@@ -112,7 +112,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func addEBObserverOf_mCenterY (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mCenterY (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCenterY.insert (inObserver)
     switch self.selection {
@@ -127,7 +127,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func removeEBObserverOf_mCenterY (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mCenterY (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mCenterY.remove (inObserver)
     switch self.selection {
@@ -171,7 +171,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func addEBObserverOf_mWidth (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mWidth (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWidth.insert (inObserver)
     switch self.selection {
@@ -186,7 +186,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func removeEBObserverOf_mWidth (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mWidth (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mWidth.remove (inObserver)
     switch self.selection {
@@ -230,7 +230,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func addEBObserverOf_mHeight (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mHeight (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHeight.insert (inObserver)
     switch self.selection {
@@ -245,7 +245,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func removeEBObserverOf_mHeight (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mHeight (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mHeight.remove (inObserver)
     switch self.selection {
@@ -289,7 +289,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func addEBObserverOf_mHoleWidth (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mHoleWidth (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHoleWidth.insert (inObserver)
     switch self.selection {
@@ -304,7 +304,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func removeEBObserverOf_mHoleWidth (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mHoleWidth (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mHoleWidth.remove (inObserver)
     switch self.selection {
@@ -348,7 +348,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func addEBObserverOf_mHoleHeight (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mHoleHeight (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHoleHeight.insert (inObserver)
     switch self.selection {
@@ -363,7 +363,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func removeEBObserverOf_mHoleHeight (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mHoleHeight (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mHoleHeight.remove (inObserver)
     switch self.selection {
@@ -407,7 +407,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func addEBObserverOf_mShape (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mShape (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mShape.insert (inObserver)
     switch self.selection {
@@ -422,7 +422,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func removeEBObserverOf_mShape (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mShape (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mShape.remove (inObserver)
     switch self.selection {
@@ -466,7 +466,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func addEBObserverOf_mStyle (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mStyle (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mStyle.insert (inObserver)
     switch self.selection {
@@ -481,7 +481,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func removeEBObserverOf_mStyle (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mStyle (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mStyle.remove (inObserver)
     switch self.selection {
@@ -525,7 +525,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func addEBObserverOf_frontSideFilledBezierPath (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontSideFilledBezierPath (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontSideFilledBezierPath.insert (inObserver)
     switch self.selection {
@@ -540,7 +540,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func removeEBObserverOf_frontSideFilledBezierPath (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontSideFilledBezierPath (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontSideFilledBezierPath.remove (inObserver)
     switch self.selection {
@@ -581,7 +581,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func addEBObserverOf_backSideFilledBezierPath (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backSideFilledBezierPath (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backSideFilledBezierPath.insert (inObserver)
     switch self.selection {
@@ -596,7 +596,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func removeEBObserverOf_backSideFilledBezierPath (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backSideFilledBezierPath (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backSideFilledBezierPath.remove (inObserver)
     switch self.selection {
@@ -637,7 +637,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func addEBObserverOf_padNumberDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_padNumberDisplay (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padNumberDisplay.insert (inObserver)
     switch self.selection {
@@ -652,7 +652,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  final func removeEBObserverOf_padNumberDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_padNumberDisplay (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_padNumberDisplay.remove (inObserver)
     switch self.selection {

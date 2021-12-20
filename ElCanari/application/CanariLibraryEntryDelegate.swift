@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariLibraryEntryDelegate : EBEvent {
+final class CanariLibraryEntryDelegate : EBSwiftBaseObject, EBObserverProtocol {
   
   private weak var mObject : CanariLibraryEntry?
   private var mStream : FSEventStreamRef? = nil
@@ -28,7 +28,7 @@ final class CanariLibraryEntryDelegate : EBEvent {
 
   //····················································································································
 
-  final override func observedObjectDidChange () {
+  final func observedObjectDidChange () {
     let possiblePath = self.mObject?.mPath
   //--- Remove previous monitoring (if any)
     removeFileSystemMonitoring ()

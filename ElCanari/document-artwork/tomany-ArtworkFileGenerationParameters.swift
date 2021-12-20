@@ -93,7 +93,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawBoardLimits (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawBoardLimits (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawBoardLimits.insert (inObserver)
     switch self.selection {
@@ -108,7 +108,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawBoardLimits (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawBoardLimits (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawBoardLimits.remove (inObserver)
     switch self.selection {
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawInternalBoardLimits (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawInternalBoardLimits.insert (inObserver)
     switch self.selection {
@@ -167,7 +167,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawInternalBoardLimits (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawInternalBoardLimits.remove (inObserver)
     switch self.selection {
@@ -211,7 +211,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentNamesTopSide.insert (inObserver)
     switch self.selection {
@@ -226,7 +226,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawComponentNamesTopSide.remove (inObserver)
     switch self.selection {
@@ -270,7 +270,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentNamesBottomSide.insert (inObserver)
     switch self.selection {
@@ -285,7 +285,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawComponentNamesBottomSide.remove (inObserver)
     switch self.selection {
@@ -329,7 +329,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentValuesTopSide.insert (inObserver)
     switch self.selection {
@@ -344,7 +344,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawComponentValuesTopSide.remove (inObserver)
     switch self.selection {
@@ -388,7 +388,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentValuesBottomSide.insert (inObserver)
     switch self.selection {
@@ -403,7 +403,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawComponentValuesBottomSide.remove (inObserver)
     switch self.selection {
@@ -447,7 +447,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPackageLegendTopSide.insert (inObserver)
     switch self.selection {
@@ -462,7 +462,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawPackageLegendTopSide.remove (inObserver)
     switch self.selection {
@@ -506,7 +506,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPackageLegendBottomSide.insert (inObserver)
     switch self.selection {
@@ -521,7 +521,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawPackageLegendBottomSide.remove (inObserver)
     switch self.selection {
@@ -565,7 +565,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawPadHolesInPDF (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPadHolesInPDF.insert (inObserver)
     switch self.selection {
@@ -580,7 +580,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawPadHolesInPDF (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawPadHolesInPDF.remove (inObserver)
     switch self.selection {
@@ -624,7 +624,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawPadsTopSide (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPadsTopSide.insert (inObserver)
     switch self.selection {
@@ -639,7 +639,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawPadsTopSide (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawPadsTopSide.remove (inObserver)
     switch self.selection {
@@ -683,7 +683,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawPadsBottomSide (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPadsBottomSide.insert (inObserver)
     switch self.selection {
@@ -698,7 +698,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawPadsBottomSide (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawPadsBottomSide.remove (inObserver)
     switch self.selection {
@@ -742,7 +742,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLayoutTopSide.insert (inObserver)
     switch self.selection {
@@ -757,7 +757,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTextsLayoutTopSide.remove (inObserver)
     switch self.selection {
@@ -801,7 +801,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLayoutBottomSide.insert (inObserver)
     switch self.selection {
@@ -816,7 +816,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTextsLayoutBottomSide.remove (inObserver)
     switch self.selection {
@@ -860,7 +860,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLegendTopSide.insert (inObserver)
     switch self.selection {
@@ -875,7 +875,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTextsLegendTopSide.remove (inObserver)
     switch self.selection {
@@ -919,7 +919,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLegendBottomSide.insert (inObserver)
     switch self.selection {
@@ -934,7 +934,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTextsLegendBottomSide.remove (inObserver)
     switch self.selection {
@@ -978,7 +978,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTracksTopSide (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTracksTopSide.insert (inObserver)
     switch self.selection {
@@ -993,7 +993,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawTracksTopSide (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTracksTopSide.remove (inObserver)
     switch self.selection {
@@ -1037,7 +1037,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksInner1Layer (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTracksInner1Layer (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTracksInner1Layer.insert (inObserver)
     switch self.selection {
@@ -1052,7 +1052,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTracksInner1Layer (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawTracksInner1Layer (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTracksInner1Layer.remove (inObserver)
     switch self.selection {
@@ -1096,7 +1096,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksInner2Layer (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTracksInner2Layer (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTracksInner2Layer.insert (inObserver)
     switch self.selection {
@@ -1111,7 +1111,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTracksInner2Layer (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawTracksInner2Layer (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTracksInner2Layer.remove (inObserver)
     switch self.selection {
@@ -1155,7 +1155,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksInner3Layer (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTracksInner3Layer (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTracksInner3Layer.insert (inObserver)
     switch self.selection {
@@ -1170,7 +1170,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTracksInner3Layer (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawTracksInner3Layer (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTracksInner3Layer.remove (inObserver)
     switch self.selection {
@@ -1214,7 +1214,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksInner4Layer (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTracksInner4Layer (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTracksInner4Layer.insert (inObserver)
     switch self.selection {
@@ -1229,7 +1229,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTracksInner4Layer (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawTracksInner4Layer (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTracksInner4Layer.remove (inObserver)
     switch self.selection {
@@ -1273,7 +1273,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTracksBottomSide (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTracksBottomSide.insert (inObserver)
     switch self.selection {
@@ -1288,7 +1288,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawTracksBottomSide (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTracksBottomSide.remove (inObserver)
     switch self.selection {
@@ -1332,7 +1332,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTraversingPads (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTraversingPads (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTraversingPads.insert (inObserver)
     switch self.selection {
@@ -1347,7 +1347,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTraversingPads (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawTraversingPads (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawTraversingPads.remove (inObserver)
     switch self.selection {
@@ -1391,7 +1391,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawVias (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawVias (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawVias.insert (inObserver)
     switch self.selection {
@@ -1406,7 +1406,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_drawVias (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drawVias (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drawVias.remove (inObserver)
     switch self.selection {
@@ -1450,7 +1450,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_fileExtension (_ inObserver : EBEvent) {
+  final func addEBObserverOf_fileExtension (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_fileExtension.insert (inObserver)
     switch self.selection {
@@ -1465,7 +1465,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_fileExtension (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_fileExtension (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_fileExtension.remove (inObserver)
     switch self.selection {
@@ -1509,7 +1509,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_horizontalMirror (_ inObserver : EBEvent) {
+  final func addEBObserverOf_horizontalMirror (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_horizontalMirror.insert (inObserver)
     switch self.selection {
@@ -1524,7 +1524,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_horizontalMirror (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_horizontalMirror (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_horizontalMirror.remove (inObserver)
     switch self.selection {
@@ -1568,7 +1568,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_name (_ inObserver : EBEvent) {
+  final func addEBObserverOf_name (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_name.insert (inObserver)
     switch self.selection {
@@ -1583,7 +1583,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_name (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_name (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_name.remove (inObserver)
     switch self.selection {
@@ -1627,7 +1627,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent) {
+  final func addEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_measurementUnitForPadHoleInPDF.insert (inObserver)
     switch self.selection {
@@ -1642,7 +1642,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_measurementUnitForPadHoleInPDF.remove (inObserver)
     switch self.selection {
@@ -1686,7 +1686,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent) {
+  final func addEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padHoleDiameterInPDF.insert (inObserver)
     switch self.selection {
@@ -1701,7 +1701,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_padHoleDiameterInPDF.remove (inObserver)
     switch self.selection {
@@ -1745,7 +1745,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_hasNoData (_ inObserver : EBEvent) {
+  final func addEBObserverOf_hasNoData (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_hasNoData.insert (inObserver)
     switch self.selection {
@@ -1760,7 +1760,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_hasNoData (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_hasNoData (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_hasNoData.remove (inObserver)
     switch self.selection {
@@ -1801,7 +1801,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_parameterStatusImage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_parameterStatusImage (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_parameterStatusImage.insert (inObserver)
     switch self.selection {
@@ -1816,7 +1816,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_parameterStatusImage (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_parameterStatusImage (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_parameterStatusImage.remove (inObserver)
     switch self.selection {
@@ -1857,7 +1857,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_emptyFileExtensionImage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_emptyFileExtensionImage (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_emptyFileExtensionImage.insert (inObserver)
     switch self.selection {
@@ -1872,7 +1872,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func removeEBObserverOf_emptyFileExtensionImage (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_emptyFileExtensionImage (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_emptyFileExtensionImage.remove (inObserver)
     switch self.selection {

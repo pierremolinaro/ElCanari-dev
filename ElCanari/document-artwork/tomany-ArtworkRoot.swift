@@ -67,7 +67,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_layerConfiguration (_ inObserver : EBEvent) {
+  final func addEBObserverOf_layerConfiguration (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_layerConfiguration.insert (inObserver)
     switch self.selection {
@@ -82,7 +82,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_layerConfiguration (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_layerConfiguration (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_layerConfiguration.remove (inObserver)
     switch self.selection {
@@ -126,7 +126,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectedTab (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedTab.insert (inObserver)
     switch self.selection {
@@ -141,7 +141,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_selectedTab (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_selectedTab (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_selectedTab.remove (inObserver)
     switch self.selection {
@@ -185,7 +185,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_comments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_comments.insert (inObserver)
     switch self.selection {
@@ -200,7 +200,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_comments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_comments.remove (inObserver)
     switch self.selection {
@@ -244,7 +244,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minPPTPTTTWdisplayUnit.insert (inObserver)
     switch self.selection {
@@ -259,7 +259,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_minPPTPTTTWdisplayUnit.remove (inObserver)
     switch self.selection {
@@ -303,7 +303,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minPPTPTTTW.insert (inObserver)
     switch self.selection {
@@ -318,7 +318,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_minPPTPTTTW (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_minPPTPTTTW.remove (inObserver)
     switch self.selection {
@@ -362,7 +362,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
     switch self.selection {
@@ -377,7 +377,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_minValueForOARdisplayUnit.remove (inObserver)
     switch self.selection {
@@ -421,7 +421,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForOARinEBUnit.insert (inObserver)
     switch self.selection {
@@ -436,7 +436,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_minValueForOARinEBUnit.remove (inObserver)
     switch self.selection {
@@ -480,7 +480,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
     switch self.selection {
@@ -495,7 +495,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_minValueForPHDdisplayUnit.remove (inObserver)
     switch self.selection {
@@ -539,7 +539,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
     switch self.selection {
@@ -554,7 +554,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_minValueForPHDinEBUnit.remove (inObserver)
     switch self.selection {
@@ -598,7 +598,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.insert (inObserver)
     switch self.selection {
@@ -613,7 +613,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.remove (inObserver)
     switch self.selection {
@@ -657,7 +657,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForBoardLimitWidth.insert (inObserver)
     switch self.selection {
@@ -672,7 +672,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_minValueForBoardLimitWidth.remove (inObserver)
     switch self.selection {
@@ -716,7 +716,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_title (_ inObserver : EBEvent) {
+  final func addEBObserverOf_title (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_title.insert (inObserver)
     switch self.selection {
@@ -731,7 +731,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_title (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_title (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_title.remove (inObserver)
     switch self.selection {
@@ -775,7 +775,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drillDataFileExtension.insert (inObserver)
     switch self.selection {
@@ -790,7 +790,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drillDataFileExtension (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drillDataFileExtension.remove (inObserver)
     switch self.selection {
@@ -834,7 +834,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_hasInnerElements (_ inObserver : EBEvent) {
+  final func addEBObserverOf_hasInnerElements (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_hasInnerElements.insert (inObserver)
     switch self.selection {
@@ -849,7 +849,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_hasInnerElements (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_hasInnerElements (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_hasInnerElements.remove (inObserver)
     switch self.selection {
@@ -890,7 +890,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_hasSixLayers (_ inObserver : EBEvent) {
+  final func addEBObserverOf_hasSixLayers (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_hasSixLayers.insert (inObserver)
     switch self.selection {
@@ -905,7 +905,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_hasSixLayers (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_hasSixLayers (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_hasSixLayers.remove (inObserver)
     switch self.selection {
@@ -946,7 +946,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_hasDataWarning (_ inObserver : EBEvent) {
+  final func addEBObserverOf_hasDataWarning (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_hasDataWarning.insert (inObserver)
     switch self.selection {
@@ -961,7 +961,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_hasDataWarning (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_hasDataWarning (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_hasDataWarning.remove (inObserver)
     switch self.selection {
@@ -1002,7 +1002,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_emptyDrillFileExtension (_ inObserver : EBEvent) {
+  final func addEBObserverOf_emptyDrillFileExtension (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_emptyDrillFileExtension.insert (inObserver)
     switch self.selection {
@@ -1017,7 +1017,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_emptyDrillFileExtension (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_emptyDrillFileExtension (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_emptyDrillFileExtension.remove (inObserver)
     switch self.selection {
@@ -1058,7 +1058,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
     switch self.selection {
@@ -1073,7 +1073,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.remove (inObserver)
     switch self.selection {

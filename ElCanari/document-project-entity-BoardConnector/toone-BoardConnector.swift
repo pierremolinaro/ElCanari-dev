@@ -262,7 +262,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mTracksP2 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mTracksP2 (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mTracksP2.insert (inObserver)
     if let object = self.propval {
       object.mTracksP2_property.addEBObserver (inObserver)
@@ -271,7 +271,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_mTracksP2 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mTracksP2 (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mTracksP2.remove (inObserver)
     if let object = self.propval {
       object.mTracksP2_property.removeEBObserver (inObserver)
@@ -286,7 +286,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mTracksP1 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mTracksP1 (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mTracksP1.insert (inObserver)
     if let object = self.propval {
       object.mTracksP1_property.addEBObserver (inObserver)
@@ -295,7 +295,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func removeEBObserverOf_mTracksP1 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mTracksP1 (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mTracksP1.remove (inObserver)
     if let object = self.propval {
       object.mTracksP1_property.removeEBObserver (inObserver)

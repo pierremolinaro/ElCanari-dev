@@ -110,7 +110,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mSlavePads (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSlavePads (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mSlavePads.insert (inObserver)
     if let object = self.propval {
       object.mSlavePads_property.addEBObserver (inObserver)
@@ -119,7 +119,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func removeEBObserverOf_mSlavePads (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mSlavePads (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mSlavePads.remove (inObserver)
     if let object = self.propval {
       object.mSlavePads_property.removeEBObserver (inObserver)

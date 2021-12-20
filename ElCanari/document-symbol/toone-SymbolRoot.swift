@@ -118,7 +118,7 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_symbolObjects (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolObjects (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_symbolObjects.insert (inObserver)
     if let object = self.propval {
       object.symbolObjects_property.addEBObserver (inObserver)
@@ -127,7 +127,7 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func removeEBObserverOf_symbolObjects (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_symbolObjects (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_symbolObjects.remove (inObserver)
     if let object = self.propval {
       object.symbolObjects_property.removeEBObserver (inObserver)
@@ -142,7 +142,7 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_symbolPins (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolPins (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_symbolPins.insert (inObserver)
     if let object = self.propval {
       object.symbolPins_property.addEBObserver (inObserver)
@@ -151,7 +151,7 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func removeEBObserverOf_symbolPins (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_symbolPins (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_symbolPins.remove (inObserver)
     if let object = self.propval {
       object.symbolPins_property.removeEBObserver (inObserver)

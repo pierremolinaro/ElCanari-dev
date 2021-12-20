@@ -246,7 +246,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mNets (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mNets (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mNets.insert (inObserver)
     if let object = self.propval {
       object.mNets_property.addEBObserver (inObserver)
@@ -255,7 +255,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
-  final func removeEBObserverOf_mNets (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mNets (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mNets.remove (inObserver)
     if let object = self.propval {
       object.mNets_property.removeEBObserver (inObserver)

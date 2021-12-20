@@ -542,7 +542,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLegendLines (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontLegendLines (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontLegendLines.insert (inObserver)
     if let object = self.propval {
       object.frontLegendLines_property.addEBObserver (inObserver)
@@ -551,7 +551,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontLegendLines (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontLegendLines (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontLegendLines.remove (inObserver)
     if let object = self.propval {
       object.frontLegendLines_property.removeEBObserver (inObserver)
@@ -566,7 +566,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLegendLines (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backLegendLines (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backLegendLines.insert (inObserver)
     if let object = self.propval {
       object.backLegendLines_property.addEBObserver (inObserver)
@@ -575,7 +575,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backLegendLines (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backLegendLines (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backLegendLines.remove (inObserver)
     if let object = self.propval {
       object.backLegendLines_property.removeEBObserver (inObserver)
@@ -590,7 +590,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLegendTexts (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontLegendTexts (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontLegendTexts.insert (inObserver)
     if let object = self.propval {
       object.frontLegendTexts_property.addEBObserver (inObserver)
@@ -599,7 +599,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontLegendTexts (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontLegendTexts (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontLegendTexts.remove (inObserver)
     if let object = self.propval {
       object.frontLegendTexts_property.removeEBObserver (inObserver)
@@ -614,7 +614,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLayoutTexts (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontLayoutTexts (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontLayoutTexts.insert (inObserver)
     if let object = self.propval {
       object.frontLayoutTexts_property.addEBObserver (inObserver)
@@ -623,7 +623,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontLayoutTexts (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontLayoutTexts (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontLayoutTexts.remove (inObserver)
     if let object = self.propval {
       object.frontLayoutTexts_property.removeEBObserver (inObserver)
@@ -638,7 +638,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLegendTexts (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backLegendTexts (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backLegendTexts.insert (inObserver)
     if let object = self.propval {
       object.backLegendTexts_property.addEBObserver (inObserver)
@@ -647,7 +647,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backLegendTexts (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backLegendTexts (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backLegendTexts.remove (inObserver)
     if let object = self.propval {
       object.backLegendTexts_property.removeEBObserver (inObserver)
@@ -662,7 +662,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLayoutTexts (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backLayoutTexts (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backLayoutTexts.insert (inObserver)
     if let object = self.propval {
       object.backLayoutTexts_property.addEBObserver (inObserver)
@@ -671,7 +671,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backLayoutTexts (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backLayoutTexts (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backLayoutTexts.remove (inObserver)
     if let object = self.propval {
       object.backLayoutTexts_property.removeEBObserver (inObserver)
@@ -686,7 +686,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_internalBoardsLimits (_ inObserver : EBEvent) {
+  final func addEBObserverOf_internalBoardsLimits (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_internalBoardsLimits.insert (inObserver)
     if let object = self.propval {
       object.internalBoardsLimits_property.addEBObserver (inObserver)
@@ -695,7 +695,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_internalBoardsLimits (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_internalBoardsLimits (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_internalBoardsLimits.remove (inObserver)
     if let object = self.propval {
       object.internalBoardsLimits_property.removeEBObserver (inObserver)
@@ -710,7 +710,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_drills (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drills (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_drills.insert (inObserver)
     if let object = self.propval {
       object.drills_property.addEBObserver (inObserver)
@@ -719,7 +719,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_drills (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drills (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_drills.remove (inObserver)
     if let object = self.propval {
       object.drills_property.removeEBObserver (inObserver)
@@ -734,7 +734,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_vias (_ inObserver : EBEvent) {
+  final func addEBObserverOf_vias (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_vias.insert (inObserver)
     if let object = self.propval {
       object.vias_property.addEBObserver (inObserver)
@@ -743,7 +743,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_vias (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_vias (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_vias.remove (inObserver)
     if let object = self.propval {
       object.vias_property.removeEBObserver (inObserver)
@@ -758,7 +758,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPads (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontPads (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontPads.insert (inObserver)
     if let object = self.propval {
       object.frontPads_property.addEBObserver (inObserver)
@@ -767,7 +767,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontPads (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontPads (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontPads.remove (inObserver)
     if let object = self.propval {
       object.frontPads_property.removeEBObserver (inObserver)
@@ -782,7 +782,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backPads (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backPads (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backPads.insert (inObserver)
     if let object = self.propval {
       object.backPads_property.addEBObserver (inObserver)
@@ -791,7 +791,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backPads (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backPads (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backPads.remove (inObserver)
     if let object = self.propval {
       object.backPads_property.removeEBObserver (inObserver)
@@ -806,7 +806,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_traversingPads (_ inObserver : EBEvent) {
+  final func addEBObserverOf_traversingPads (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_traversingPads.insert (inObserver)
     if let object = self.propval {
       object.traversingPads_property.addEBObserver (inObserver)
@@ -815,7 +815,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_traversingPads (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_traversingPads (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_traversingPads.remove (inObserver)
     if let object = self.propval {
       object.traversingPads_property.removeEBObserver (inObserver)
@@ -830,7 +830,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backComponentNames (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backComponentNames (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backComponentNames.insert (inObserver)
     if let object = self.propval {
       object.backComponentNames_property.addEBObserver (inObserver)
@@ -839,7 +839,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backComponentNames (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backComponentNames (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backComponentNames.remove (inObserver)
     if let object = self.propval {
       object.backComponentNames_property.removeEBObserver (inObserver)
@@ -854,7 +854,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontComponentNames (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontComponentNames (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontComponentNames.insert (inObserver)
     if let object = self.propval {
       object.frontComponentNames_property.addEBObserver (inObserver)
@@ -863,7 +863,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontComponentNames (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontComponentNames (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontComponentNames.remove (inObserver)
     if let object = self.propval {
       object.frontComponentNames_property.removeEBObserver (inObserver)
@@ -878,7 +878,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontComponentValues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontComponentValues (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontComponentValues.insert (inObserver)
     if let object = self.propval {
       object.frontComponentValues_property.addEBObserver (inObserver)
@@ -887,7 +887,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontComponentValues (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontComponentValues (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontComponentValues.remove (inObserver)
     if let object = self.propval {
       object.frontComponentValues_property.removeEBObserver (inObserver)
@@ -902,7 +902,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backComponentValues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backComponentValues (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backComponentValues.insert (inObserver)
     if let object = self.propval {
       object.backComponentValues_property.addEBObserver (inObserver)
@@ -911,7 +911,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backComponentValues (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backComponentValues (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backComponentValues.remove (inObserver)
     if let object = self.propval {
       object.backComponentValues_property.removeEBObserver (inObserver)
@@ -926,7 +926,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backTracks (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backTracks (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backTracks.insert (inObserver)
     if let object = self.propval {
       object.backTracks_property.addEBObserver (inObserver)
@@ -935,7 +935,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backTracks (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backTracks (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backTracks.remove (inObserver)
     if let object = self.propval {
       object.backTracks_property.removeEBObserver (inObserver)
@@ -950,7 +950,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontTracks (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontTracks (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontTracks.insert (inObserver)
     if let object = self.propval {
       object.frontTracks_property.addEBObserver (inObserver)
@@ -959,7 +959,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontTracks (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontTracks (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontTracks.remove (inObserver)
     if let object = self.propval {
       object.frontTracks_property.removeEBObserver (inObserver)
@@ -974,7 +974,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner1Tracks (_ inObserver : EBEvent) {
+  final func addEBObserverOf_inner1Tracks (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_inner1Tracks.insert (inObserver)
     if let object = self.propval {
       object.inner1Tracks_property.addEBObserver (inObserver)
@@ -983,7 +983,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_inner1Tracks (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_inner1Tracks (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_inner1Tracks.remove (inObserver)
     if let object = self.propval {
       object.inner1Tracks_property.removeEBObserver (inObserver)
@@ -998,7 +998,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner2Tracks (_ inObserver : EBEvent) {
+  final func addEBObserverOf_inner2Tracks (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_inner2Tracks.insert (inObserver)
     if let object = self.propval {
       object.inner2Tracks_property.addEBObserver (inObserver)
@@ -1007,7 +1007,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_inner2Tracks (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_inner2Tracks (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_inner2Tracks.remove (inObserver)
     if let object = self.propval {
       object.inner2Tracks_property.removeEBObserver (inObserver)
@@ -1022,7 +1022,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner3Tracks (_ inObserver : EBEvent) {
+  final func addEBObserverOf_inner3Tracks (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_inner3Tracks.insert (inObserver)
     if let object = self.propval {
       object.inner3Tracks_property.addEBObserver (inObserver)
@@ -1031,7 +1031,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_inner3Tracks (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_inner3Tracks (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_inner3Tracks.remove (inObserver)
     if let object = self.propval {
       object.inner3Tracks_property.removeEBObserver (inObserver)
@@ -1046,7 +1046,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner4Tracks (_ inObserver : EBEvent) {
+  final func addEBObserverOf_inner4Tracks (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_inner4Tracks.insert (inObserver)
     if let object = self.propval {
       object.inner4Tracks_property.addEBObserver (inObserver)
@@ -1055,7 +1055,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_inner4Tracks (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_inner4Tracks (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_inner4Tracks.remove (inObserver)
     if let object = self.propval {
       object.inner4Tracks_property.removeEBObserver (inObserver)
@@ -1070,7 +1070,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPackages (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontPackages (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontPackages.insert (inObserver)
     if let object = self.propval {
       object.frontPackages_property.addEBObserver (inObserver)
@@ -1079,7 +1079,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontPackages (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontPackages (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_frontPackages.remove (inObserver)
     if let object = self.propval {
       object.frontPackages_property.removeEBObserver (inObserver)
@@ -1094,7 +1094,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backPackages (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backPackages (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backPackages.insert (inObserver)
     if let object = self.propval {
       object.backPackages_property.addEBObserver (inObserver)
@@ -1103,7 +1103,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backPackages (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backPackages (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_backPackages.remove (inObserver)
     if let object = self.propval {
       object.backPackages_property.removeEBObserver (inObserver)
@@ -1118,7 +1118,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_myInstances (_ inObserver : EBEvent) {
+  final func addEBObserverOf_myInstances (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_myInstances.insert (inObserver)
     if let object = self.propval {
       object.myInstances_property.addEBObserver (inObserver)
@@ -1127,7 +1127,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_myInstances (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_myInstances (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_myInstances.remove (inObserver)
     if let object = self.propval {
       object.myInstances_property.removeEBObserver (inObserver)

@@ -159,7 +159,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_name (_ inObserver : EBEvent) {
+  final func addEBObserverOf_name (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_name.insert (inObserver)
     switch self.selection {
@@ -174,7 +174,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_name (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_name (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_name.remove (inObserver)
     switch self.selection {
@@ -218,7 +218,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_modelWidth (_ inObserver : EBEvent) {
+  final func addEBObserverOf_modelWidth (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_modelWidth.insert (inObserver)
     switch self.selection {
@@ -233,7 +233,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_modelWidth (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_modelWidth (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_modelWidth.remove (inObserver)
     switch self.selection {
@@ -277,7 +277,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_modelWidthUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_modelWidthUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_modelWidthUnit.insert (inObserver)
     switch self.selection {
@@ -292,7 +292,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_modelWidthUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_modelWidthUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_modelWidthUnit.remove (inObserver)
     switch self.selection {
@@ -336,7 +336,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_modelHeight (_ inObserver : EBEvent) {
+  final func addEBObserverOf_modelHeight (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_modelHeight.insert (inObserver)
     switch self.selection {
@@ -351,7 +351,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_modelHeight (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_modelHeight (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_modelHeight.remove (inObserver)
     switch self.selection {
@@ -395,7 +395,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_modelHeightUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_modelHeightUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_modelHeightUnit.insert (inObserver)
     switch self.selection {
@@ -410,7 +410,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_modelHeightUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_modelHeightUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_modelHeightUnit.remove (inObserver)
     switch self.selection {
@@ -454,7 +454,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
+  final func addEBObserverOf_zoom (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_zoom.insert (inObserver)
     switch self.selection {
@@ -469,7 +469,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_zoom (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_zoom.remove (inObserver)
     switch self.selection {
@@ -513,7 +513,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_layerConfiguration (_ inObserver : EBEvent) {
+  final func addEBObserverOf_layerConfiguration (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_layerConfiguration.insert (inObserver)
     switch self.selection {
@@ -528,7 +528,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_layerConfiguration (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_layerConfiguration (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_layerConfiguration.remove (inObserver)
     switch self.selection {
@@ -572,7 +572,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_modelLimitWidth (_ inObserver : EBEvent) {
+  final func addEBObserverOf_modelLimitWidth (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_modelLimitWidth.insert (inObserver)
     switch self.selection {
@@ -587,7 +587,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_modelLimitWidth (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_modelLimitWidth (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_modelLimitWidth.remove (inObserver)
     switch self.selection {
@@ -631,7 +631,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_modelLimitWidthUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_modelLimitWidthUnit (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_modelLimitWidthUnit.insert (inObserver)
     switch self.selection {
@@ -646,7 +646,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_modelLimitWidthUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_modelLimitWidthUnit (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_modelLimitWidthUnit.remove (inObserver)
     switch self.selection {
@@ -690,7 +690,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_artworkName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_artworkName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_artworkName.insert (inObserver)
     switch self.selection {
@@ -705,7 +705,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_artworkName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_artworkName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_artworkName.remove (inObserver)
     switch self.selection {
@@ -749,7 +749,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_layerConfigurationString (_ inObserver : EBEvent) {
+  final func addEBObserverOf_layerConfigurationString (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_layerConfigurationString.insert (inObserver)
     switch self.selection {
@@ -764,7 +764,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_layerConfigurationString (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_layerConfigurationString (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_layerConfigurationString.remove (inObserver)
     switch self.selection {
@@ -805,7 +805,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLegendLinesSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontLegendLinesSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontLegendLinesSegments.insert (inObserver)
     switch self.selection {
@@ -820,7 +820,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontLegendLinesSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontLegendLinesSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontLegendLinesSegments.remove (inObserver)
     switch self.selection {
@@ -861,7 +861,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLegendLinesSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backLegendLinesSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backLegendLinesSegments.insert (inObserver)
     switch self.selection {
@@ -876,7 +876,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backLegendLinesSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backLegendLinesSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backLegendLinesSegments.remove (inObserver)
     switch self.selection {
@@ -917,7 +917,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLegendLinesBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backLegendLinesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backLegendLinesBezierPaths.insert (inObserver)
     switch self.selection {
@@ -932,7 +932,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backLegendLinesBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backLegendLinesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backLegendLinesBezierPaths.remove (inObserver)
     switch self.selection {
@@ -973,7 +973,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLegendTextsSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontLegendTextsSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontLegendTextsSegments.insert (inObserver)
     switch self.selection {
@@ -988,7 +988,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontLegendTextsSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontLegendTextsSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontLegendTextsSegments.remove (inObserver)
     switch self.selection {
@@ -1029,7 +1029,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLegendTextsBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontLegendTextsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontLegendTextsBezierPaths.insert (inObserver)
     switch self.selection {
@@ -1044,7 +1044,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontLegendTextsBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontLegendTextsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontLegendTextsBezierPaths.remove (inObserver)
     switch self.selection {
@@ -1085,7 +1085,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLayoutTextsSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontLayoutTextsSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontLayoutTextsSegments.insert (inObserver)
     switch self.selection {
@@ -1100,7 +1100,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontLayoutTextsSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontLayoutTextsSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontLayoutTextsSegments.remove (inObserver)
     switch self.selection {
@@ -1141,7 +1141,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLayoutTextsBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontLayoutTextsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontLayoutTextsBezierPaths.insert (inObserver)
     switch self.selection {
@@ -1156,7 +1156,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontLayoutTextsBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontLayoutTextsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontLayoutTextsBezierPaths.remove (inObserver)
     switch self.selection {
@@ -1197,7 +1197,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLegendTextsSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backLegendTextsSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backLegendTextsSegments.insert (inObserver)
     switch self.selection {
@@ -1212,7 +1212,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backLegendTextsSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backLegendTextsSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backLegendTextsSegments.remove (inObserver)
     switch self.selection {
@@ -1253,7 +1253,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLegendTextsBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backLegendTextsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backLegendTextsBezierPaths.insert (inObserver)
     switch self.selection {
@@ -1268,7 +1268,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backLegendTextsBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backLegendTextsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backLegendTextsBezierPaths.remove (inObserver)
     switch self.selection {
@@ -1309,7 +1309,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLayoutTextsSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backLayoutTextsSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backLayoutTextsSegments.insert (inObserver)
     switch self.selection {
@@ -1324,7 +1324,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backLayoutTextsSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backLayoutTextsSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backLayoutTextsSegments.remove (inObserver)
     switch self.selection {
@@ -1365,7 +1365,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLayoutTextsBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backLayoutTextsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backLayoutTextsBezierPaths.insert (inObserver)
     switch self.selection {
@@ -1380,7 +1380,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backLayoutTextsBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backLayoutTextsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backLayoutTextsBezierPaths.remove (inObserver)
     switch self.selection {
@@ -1421,7 +1421,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_internalBoardsLimitsSegments.insert (inObserver)
     switch self.selection {
@@ -1436,7 +1436,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_internalBoardsLimitsSegments.remove (inObserver)
     switch self.selection {
@@ -1477,7 +1477,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_internalBoardsLimitsBezierPaths.insert (inObserver)
     switch self.selection {
@@ -1492,7 +1492,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_internalBoardsLimitsBezierPaths.remove (inObserver)
     switch self.selection {
@@ -1533,7 +1533,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_drillSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drillSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drillSegments.insert (inObserver)
     switch self.selection {
@@ -1548,7 +1548,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_drillSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drillSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_drillSegments.remove (inObserver)
     switch self.selection {
@@ -1589,7 +1589,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_holesBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_holesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_holesBezierPaths.insert (inObserver)
     switch self.selection {
@@ -1604,7 +1604,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_holesBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_holesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_holesBezierPaths.remove (inObserver)
     switch self.selection {
@@ -1645,7 +1645,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_viaShapes (_ inObserver : EBEvent) {
+  final func addEBObserverOf_viaShapes (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_viaShapes.insert (inObserver)
     switch self.selection {
@@ -1660,7 +1660,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_viaShapes (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_viaShapes (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_viaShapes.remove (inObserver)
     switch self.selection {
@@ -1701,7 +1701,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_viasBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_viasBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_viasBezierPaths.insert (inObserver)
     switch self.selection {
@@ -1716,7 +1716,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_viasBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_viasBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_viasBezierPaths.remove (inObserver)
     switch self.selection {
@@ -1757,7 +1757,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPadArray (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontPadArray (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontPadArray.insert (inObserver)
     switch self.selection {
@@ -1772,7 +1772,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontPadArray (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontPadArray (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontPadArray.remove (inObserver)
     switch self.selection {
@@ -1813,7 +1813,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPadsBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontPadsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontPadsBezierPaths.insert (inObserver)
     switch self.selection {
@@ -1828,7 +1828,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontPadsBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontPadsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontPadsBezierPaths.remove (inObserver)
     switch self.selection {
@@ -1869,7 +1869,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backPadArray (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backPadArray (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backPadArray.insert (inObserver)
     switch self.selection {
@@ -1884,7 +1884,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backPadArray (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backPadArray (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backPadArray.remove (inObserver)
     switch self.selection {
@@ -1925,7 +1925,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backPadsBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backPadsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backPadsBezierPaths.insert (inObserver)
     switch self.selection {
@@ -1940,7 +1940,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backPadsBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backPadsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backPadsBezierPaths.remove (inObserver)
     switch self.selection {
@@ -1981,7 +1981,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_traversingPadArray (_ inObserver : EBEvent) {
+  final func addEBObserverOf_traversingPadArray (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_traversingPadArray.insert (inObserver)
     switch self.selection {
@@ -1996,7 +1996,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_traversingPadArray (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_traversingPadArray (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_traversingPadArray.remove (inObserver)
     switch self.selection {
@@ -2037,7 +2037,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_traversingPadsBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_traversingPadsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_traversingPadsBezierPaths.insert (inObserver)
     switch self.selection {
@@ -2052,7 +2052,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_traversingPadsBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_traversingPadsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_traversingPadsBezierPaths.remove (inObserver)
     switch self.selection {
@@ -2093,7 +2093,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimits (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardLimits (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardLimits.insert (inObserver)
     switch self.selection {
@@ -2108,7 +2108,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_boardLimits (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_boardLimits (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_boardLimits.remove (inObserver)
     switch self.selection {
@@ -2149,7 +2149,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardLimitsBezierPaths.insert (inObserver)
     switch self.selection {
@@ -2164,7 +2164,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_boardLimitsBezierPaths.remove (inObserver)
     switch self.selection {
@@ -2205,7 +2205,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backComponentNameSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backComponentNameSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backComponentNameSegments.insert (inObserver)
     switch self.selection {
@@ -2220,7 +2220,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backComponentNameSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backComponentNameSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backComponentNameSegments.remove (inObserver)
     switch self.selection {
@@ -2261,7 +2261,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backComponentNamesBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backComponentNamesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backComponentNamesBezierPaths.insert (inObserver)
     switch self.selection {
@@ -2276,7 +2276,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backComponentNamesBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backComponentNamesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backComponentNamesBezierPaths.remove (inObserver)
     switch self.selection {
@@ -2317,7 +2317,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontComponentNameSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontComponentNameSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontComponentNameSegments.insert (inObserver)
     switch self.selection {
@@ -2332,7 +2332,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontComponentNameSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontComponentNameSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontComponentNameSegments.remove (inObserver)
     switch self.selection {
@@ -2373,7 +2373,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontComponentNamesBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontComponentNamesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontComponentNamesBezierPaths.insert (inObserver)
     switch self.selection {
@@ -2388,7 +2388,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontComponentNamesBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontComponentNamesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontComponentNamesBezierPaths.remove (inObserver)
     switch self.selection {
@@ -2429,7 +2429,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontComponentValueSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontComponentValueSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontComponentValueSegments.insert (inObserver)
     switch self.selection {
@@ -2444,7 +2444,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontComponentValueSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontComponentValueSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontComponentValueSegments.remove (inObserver)
     switch self.selection {
@@ -2485,7 +2485,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontComponentValuesBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontComponentValuesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontComponentValuesBezierPaths.insert (inObserver)
     switch self.selection {
@@ -2500,7 +2500,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontComponentValuesBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontComponentValuesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontComponentValuesBezierPaths.remove (inObserver)
     switch self.selection {
@@ -2541,7 +2541,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backComponentValueSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backComponentValueSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backComponentValueSegments.insert (inObserver)
     switch self.selection {
@@ -2556,7 +2556,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backComponentValueSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backComponentValueSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backComponentValueSegments.remove (inObserver)
     switch self.selection {
@@ -2597,7 +2597,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backComponentValuesBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backComponentValuesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backComponentValuesBezierPaths.insert (inObserver)
     switch self.selection {
@@ -2612,7 +2612,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backComponentValuesBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backComponentValuesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backComponentValuesBezierPaths.remove (inObserver)
     switch self.selection {
@@ -2653,7 +2653,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backTrackSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backTrackSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backTrackSegments.insert (inObserver)
     switch self.selection {
@@ -2668,7 +2668,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backTrackSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backTrackSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backTrackSegments.remove (inObserver)
     switch self.selection {
@@ -2709,7 +2709,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backTracksBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backTracksBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backTracksBezierPaths.insert (inObserver)
     switch self.selection {
@@ -2724,7 +2724,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backTracksBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backTracksBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backTracksBezierPaths.remove (inObserver)
     switch self.selection {
@@ -2765,7 +2765,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontTrackSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontTrackSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontTrackSegments.insert (inObserver)
     switch self.selection {
@@ -2780,7 +2780,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontTrackSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontTrackSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontTrackSegments.remove (inObserver)
     switch self.selection {
@@ -2821,7 +2821,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontTracksBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontTracksBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontTracksBezierPaths.insert (inObserver)
     switch self.selection {
@@ -2836,7 +2836,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontTracksBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontTracksBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontTracksBezierPaths.remove (inObserver)
     switch self.selection {
@@ -2877,7 +2877,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner1TracksSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_inner1TracksSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_inner1TracksSegments.insert (inObserver)
     switch self.selection {
@@ -2892,7 +2892,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_inner1TracksSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_inner1TracksSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_inner1TracksSegments.remove (inObserver)
     switch self.selection {
@@ -2933,7 +2933,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner1TracksBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_inner1TracksBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_inner1TracksBezierPaths.insert (inObserver)
     switch self.selection {
@@ -2948,7 +2948,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_inner1TracksBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_inner1TracksBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_inner1TracksBezierPaths.remove (inObserver)
     switch self.selection {
@@ -2989,7 +2989,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner2TracksSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_inner2TracksSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_inner2TracksSegments.insert (inObserver)
     switch self.selection {
@@ -3004,7 +3004,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_inner2TracksSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_inner2TracksSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_inner2TracksSegments.remove (inObserver)
     switch self.selection {
@@ -3045,7 +3045,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner2TracksBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_inner2TracksBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_inner2TracksBezierPaths.insert (inObserver)
     switch self.selection {
@@ -3060,7 +3060,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_inner2TracksBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_inner2TracksBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_inner2TracksBezierPaths.remove (inObserver)
     switch self.selection {
@@ -3101,7 +3101,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner3TracksSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_inner3TracksSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_inner3TracksSegments.insert (inObserver)
     switch self.selection {
@@ -3116,7 +3116,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_inner3TracksSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_inner3TracksSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_inner3TracksSegments.remove (inObserver)
     switch self.selection {
@@ -3157,7 +3157,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner3TracksBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_inner3TracksBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_inner3TracksBezierPaths.insert (inObserver)
     switch self.selection {
@@ -3172,7 +3172,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_inner3TracksBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_inner3TracksBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_inner3TracksBezierPaths.remove (inObserver)
     switch self.selection {
@@ -3213,7 +3213,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner4TracksSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_inner4TracksSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_inner4TracksSegments.insert (inObserver)
     switch self.selection {
@@ -3228,7 +3228,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_inner4TracksSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_inner4TracksSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_inner4TracksSegments.remove (inObserver)
     switch self.selection {
@@ -3269,7 +3269,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner4TracksBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_inner4TracksBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_inner4TracksBezierPaths.insert (inObserver)
     switch self.selection {
@@ -3284,7 +3284,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_inner4TracksBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_inner4TracksBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_inner4TracksBezierPaths.remove (inObserver)
     switch self.selection {
@@ -3325,7 +3325,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPackagesSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontPackagesSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontPackagesSegments.insert (inObserver)
     switch self.selection {
@@ -3340,7 +3340,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontPackagesSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontPackagesSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontPackagesSegments.remove (inObserver)
     switch self.selection {
@@ -3381,7 +3381,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPackagesBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontPackagesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontPackagesBezierPaths.insert (inObserver)
     switch self.selection {
@@ -3396,7 +3396,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontPackagesBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontPackagesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontPackagesBezierPaths.remove (inObserver)
     switch self.selection {
@@ -3437,7 +3437,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backPackagesSegments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backPackagesSegments (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backPackagesSegments.insert (inObserver)
     switch self.selection {
@@ -3452,7 +3452,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backPackagesSegments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backPackagesSegments (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backPackagesSegments.remove (inObserver)
     switch self.selection {
@@ -3493,7 +3493,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backPackagesBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backPackagesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backPackagesBezierPaths.insert (inObserver)
     switch self.selection {
@@ -3508,7 +3508,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_backPackagesBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backPackagesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_backPackagesBezierPaths.remove (inObserver)
     switch self.selection {
@@ -3549,7 +3549,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_instanceCount (_ inObserver : EBEvent) {
+  final func addEBObserverOf_instanceCount (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_instanceCount.insert (inObserver)
     switch self.selection {
@@ -3564,7 +3564,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_instanceCount (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_instanceCount (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_instanceCount.remove (inObserver)
     switch self.selection {
@@ -3605,7 +3605,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontLegendLinesBezierPaths.insert (inObserver)
     switch self.selection {
@@ -3620,7 +3620,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_frontLegendLinesBezierPaths.remove (inObserver)
     switch self.selection {
@@ -3661,7 +3661,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_imageForModel (_ inObserver : EBEvent) {
+  final func addEBObserverOf_imageForModel (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_imageForModel.insert (inObserver)
     switch self.selection {
@@ -3676,7 +3676,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_imageForModel (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_imageForModel (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_imageForModel.remove (inObserver)
     switch self.selection {
@@ -3717,7 +3717,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_imageForInstances (_ inObserver : EBEvent) {
+  final func addEBObserverOf_imageForInstances (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_imageForInstances.insert (inObserver)
     switch self.selection {
@@ -3732,7 +3732,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 
-  final func removeEBObserverOf_imageForInstances (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_imageForInstances (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_imageForInstances.remove (inObserver)
     switch self.selection {

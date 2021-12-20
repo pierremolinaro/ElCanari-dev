@@ -150,7 +150,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mLabels (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mLabels (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mLabels.insert (inObserver)
     if let object = self.propval {
       object.mLabels_property.addEBObserver (inObserver)
@@ -159,7 +159,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_mLabels (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mLabels (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mLabels.remove (inObserver)
     if let object = self.propval {
       object.mLabels_property.removeEBObserver (inObserver)
@@ -174,7 +174,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mWiresP2s (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mWiresP2s (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mWiresP2s.insert (inObserver)
     if let object = self.propval {
       object.mWiresP2s_property.addEBObserver (inObserver)
@@ -183,7 +183,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_mWiresP2s (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mWiresP2s (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mWiresP2s.remove (inObserver)
     if let object = self.propval {
       object.mWiresP2s_property.removeEBObserver (inObserver)
@@ -198,7 +198,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mWiresP1s (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mWiresP1s (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mWiresP1s.insert (inObserver)
     if let object = self.propval {
       object.mWiresP1s_property.addEBObserver (inObserver)
@@ -207,7 +207,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_mWiresP1s (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mWiresP1s (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mWiresP1s.remove (inObserver)
     if let object = self.propval {
       object.mWiresP1s_property.removeEBObserver (inObserver)

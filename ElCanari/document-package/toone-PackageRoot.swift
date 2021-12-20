@@ -454,7 +454,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mModelImageObjects (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mModelImageObjects (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mModelImageObjects.insert (inObserver)
     if let object = self.propval {
       object.mModelImageObjects_property.addEBObserver (inObserver)
@@ -463,7 +463,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_mModelImageObjects (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mModelImageObjects (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mModelImageObjects.remove (inObserver)
     if let object = self.propval {
       object.mModelImageObjects_property.removeEBObserver (inObserver)
@@ -478,7 +478,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_packageObjects (_ inObserver : EBEvent) {
+  final func addEBObserverOf_packageObjects (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_packageObjects.insert (inObserver)
     if let object = self.propval {
       object.packageObjects_property.addEBObserver (inObserver)
@@ -487,7 +487,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_packageObjects (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_packageObjects (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_packageObjects.remove (inObserver)
     if let object = self.propval {
       object.packageObjects_property.removeEBObserver (inObserver)
@@ -502,7 +502,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_packagePads (_ inObserver : EBEvent) {
+  final func addEBObserverOf_packagePads (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_packagePads.insert (inObserver)
     if let object = self.propval {
       object.packagePads_property.addEBObserver (inObserver)
@@ -511,7 +511,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_packagePads (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_packagePads (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_packagePads.remove (inObserver)
     if let object = self.propval {
       object.packagePads_property.removeEBObserver (inObserver)
@@ -526,7 +526,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_packageSlavePads (_ inObserver : EBEvent) {
+  final func addEBObserverOf_packageSlavePads (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_packageSlavePads.insert (inObserver)
     if let object = self.propval {
       object.packageSlavePads_property.addEBObserver (inObserver)
@@ -535,7 +535,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_packageSlavePads (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_packageSlavePads (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_packageSlavePads.remove (inObserver)
     if let object = self.propval {
       object.packageSlavePads_property.removeEBObserver (inObserver)
@@ -550,7 +550,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_packageZones (_ inObserver : EBEvent) {
+  final func addEBObserverOf_packageZones (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_packageZones.insert (inObserver)
     if let object = self.propval {
       object.packageZones_property.addEBObserver (inObserver)
@@ -559,7 +559,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_packageZones (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_packageZones (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_packageZones.remove (inObserver)
     if let object = self.propval {
       object.packageZones_property.removeEBObserver (inObserver)

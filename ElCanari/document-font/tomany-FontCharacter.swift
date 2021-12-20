@@ -47,7 +47,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_codePoint (_ inObserver : EBEvent) {
+  final func addEBObserverOf_codePoint (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_codePoint.insert (inObserver)
     switch self.selection {
@@ -62,7 +62,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func removeEBObserverOf_codePoint (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_codePoint (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_codePoint.remove (inObserver)
     switch self.selection {
@@ -106,7 +106,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_advance (_ inObserver : EBEvent) {
+  final func addEBObserverOf_advance (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_advance.insert (inObserver)
     switch self.selection {
@@ -121,7 +121,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func removeEBObserverOf_advance (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_advance (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_advance.remove (inObserver)
     switch self.selection {
@@ -165,7 +165,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWarnsWhenNoSegment.insert (inObserver)
     switch self.selection {
@@ -180,7 +180,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func removeEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mWarnsWhenNoSegment.remove (inObserver)
     switch self.selection {
@@ -224,7 +224,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWarnsWhenAdvanceIsZero.insert (inObserver)
     switch self.selection {
@@ -239,7 +239,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func removeEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mWarnsWhenAdvanceIsZero.remove (inObserver)
     switch self.selection {
@@ -283,7 +283,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
+  final func addEBObserverOf_segmentArrayForDrawing (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_segmentArrayForDrawing.insert (inObserver)
     switch self.selection {
@@ -298,7 +298,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func removeEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_segmentArrayForDrawing (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_segmentArrayForDrawing.remove (inObserver)
     switch self.selection {
@@ -339,7 +339,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_gerberCode (_ inObserver : EBEvent) {
+  final func addEBObserverOf_gerberCode (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gerberCode.insert (inObserver)
     switch self.selection {
@@ -354,7 +354,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func removeEBObserverOf_gerberCode (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_gerberCode (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_gerberCode.remove (inObserver)
     switch self.selection {
@@ -395,7 +395,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gerberCodeInstructionCountMessage.insert (inObserver)
     switch self.selection {
@@ -410,7 +410,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func removeEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_gerberCodeInstructionCountMessage.remove (inObserver)
     switch self.selection {
@@ -451,7 +451,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_issues (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch self.selection {
@@ -466,7 +466,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_issues (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_issues.remove (inObserver)
     switch self.selection {

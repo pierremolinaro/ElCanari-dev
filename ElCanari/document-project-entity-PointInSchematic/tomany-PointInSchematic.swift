@@ -61,7 +61,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbolPinName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSymbolPinName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolPinName.insert (inObserver)
     switch self.selection {
@@ -76,7 +76,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_mSymbolPinName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mSymbolPinName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mSymbolPinName.remove (inObserver)
     switch self.selection {
@@ -120,7 +120,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mX (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
     switch self.selection {
@@ -135,7 +135,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mX (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mX.remove (inObserver)
     switch self.selection {
@@ -179,7 +179,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mY (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
     switch self.selection {
@@ -194,7 +194,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mY (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mY.remove (inObserver)
     switch self.selection {
@@ -238,7 +238,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_location (_ inObserver : EBEvent) {
+  final func addEBObserverOf_location (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_location.insert (inObserver)
     switch self.selection {
@@ -253,7 +253,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_location (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_location (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_location.remove (inObserver)
     switch self.selection {
@@ -294,7 +294,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netName.insert (inObserver)
     switch self.selection {
@@ -309,7 +309,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netName.remove (inObserver)
     switch self.selection {
@@ -350,7 +350,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netClassName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassName.insert (inObserver)
     switch self.selection {
@@ -365,7 +365,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netClassName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netClassName.remove (inObserver)
     switch self.selection {
@@ -406,7 +406,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_hasNet (_ inObserver : EBEvent) {
+  final func addEBObserverOf_hasNet (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_hasNet.insert (inObserver)
     switch self.selection {
@@ -421,7 +421,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_hasNet (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_hasNet (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_hasNet.remove (inObserver)
     switch self.selection {
@@ -462,7 +462,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_canMove (_ inObserver : EBEvent) {
+  final func addEBObserverOf_canMove (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_canMove.insert (inObserver)
     switch self.selection {
@@ -477,7 +477,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_canMove (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_canMove (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_canMove.remove (inObserver)
     switch self.selection {
@@ -518,7 +518,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_wireColor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_wireColor (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_wireColor.insert (inObserver)
     switch self.selection {
@@ -533,7 +533,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_wireColor (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_wireColor (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_wireColor.remove (inObserver)
     switch self.selection {
@@ -574,7 +574,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_symbolRotation (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolRotation (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolRotation.insert (inObserver)
     switch self.selection {
@@ -589,7 +589,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_symbolRotation (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_symbolRotation (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolRotation.remove (inObserver)
     switch self.selection {
@@ -630,7 +630,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_symbolNameNetName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolNameNetName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolNameNetName.insert (inObserver)
     switch self.selection {
@@ -645,7 +645,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_symbolNameNetName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_symbolNameNetName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_symbolNameNetName.remove (inObserver)
     switch self.selection {
@@ -686,7 +686,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
+  final func addEBObserverOf_isConnected (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isConnected.insert (inObserver)
     switch self.selection {
@@ -701,7 +701,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_isConnected (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_isConnected.remove (inObserver)
     switch self.selection {
@@ -742,7 +742,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_status (_ inObserver : EBEvent) {
+  final func addEBObserverOf_status (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_status.insert (inObserver)
     switch self.selection {
@@ -757,7 +757,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_status (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_status (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_status.remove (inObserver)
     switch self.selection {
@@ -798,7 +798,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+  final func addEBObserverOf_connectedPoints (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connectedPoints.insert (inObserver)
     switch self.selection {
@@ -813,7 +813,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_connectedPoints (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_connectedPoints.remove (inObserver)
     switch self.selection {
@@ -854,7 +854,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_netInfoForPoint (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netInfoForPoint (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netInfoForPoint.insert (inObserver)
     switch self.selection {
@@ -869,7 +869,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  final func removeEBObserverOf_netInfoForPoint (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netInfoForPoint (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_netInfoForPoint.remove (inObserver)
     switch self.selection {

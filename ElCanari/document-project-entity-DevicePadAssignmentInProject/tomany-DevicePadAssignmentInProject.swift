@@ -37,7 +37,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPadName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPadName.insert (inObserver)
     switch self.selection {
@@ -52,7 +52,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserverOf_mPadName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPadName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mPadName.remove (inObserver)
     switch self.selection {
@@ -96,7 +96,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_pinPadAssignment (_ inObserver : EBEvent) {
+  final func addEBObserverOf_pinPadAssignment (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinPadAssignment.insert (inObserver)
     switch self.selection {
@@ -111,7 +111,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserverOf_pinPadAssignment (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_pinPadAssignment (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_pinPadAssignment.remove (inObserver)
     switch self.selection {
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_descriptor (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
     switch self.selection {
@@ -167,7 +167,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_descriptor (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_descriptor.remove (inObserver)
     switch self.selection {

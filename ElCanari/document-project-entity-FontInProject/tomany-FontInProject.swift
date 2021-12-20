@@ -53,7 +53,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mNominalSize (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mNominalSize (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNominalSize.insert (inObserver)
     switch self.selection {
@@ -68,7 +68,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserverOf_mNominalSize (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mNominalSize (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mNominalSize.remove (inObserver)
     switch self.selection {
@@ -112,7 +112,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mFontName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFontName (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFontName.insert (inObserver)
     switch self.selection {
@@ -127,7 +127,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserverOf_mFontName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mFontName (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFontName.remove (inObserver)
     switch self.selection {
@@ -171,7 +171,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFontVersion (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFontVersion.insert (inObserver)
     switch self.selection {
@@ -186,7 +186,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mFontVersion (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mFontVersion.remove (inObserver)
     switch self.selection {
@@ -230,7 +230,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDescriptiveString (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDescriptiveString.insert (inObserver)
     switch self.selection {
@@ -245,7 +245,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mDescriptiveString (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_mDescriptiveString.remove (inObserver)
     switch self.selection {
@@ -289,7 +289,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
+  final func addEBObserverOf_versionString (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_versionString.insert (inObserver)
     switch self.selection {
@@ -304,7 +304,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_versionString (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_versionString.remove (inObserver)
     switch self.selection {
@@ -345,7 +345,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
+  final func addEBObserverOf_sizeString (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sizeString.insert (inObserver)
     switch self.selection {
@@ -360,7 +360,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserverOf_sizeString (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_sizeString (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_sizeString.remove (inObserver)
     switch self.selection {
@@ -401,7 +401,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_descriptor (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
     switch self.selection {
@@ -416,7 +416,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_descriptor (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_descriptor.remove (inObserver)
     switch self.selection {
@@ -457,7 +457,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_textCount (_ inObserver : EBEvent) {
+  final func addEBObserverOf_textCount (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_textCount.insert (inObserver)
     switch self.selection {
@@ -472,7 +472,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserverOf_textCount (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_textCount (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_textCount.remove (inObserver)
     switch self.selection {
@@ -513,7 +513,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_canRemoveFont (_ inObserver : EBEvent) {
+  final func addEBObserverOf_canRemoveFont (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_canRemoveFont.insert (inObserver)
     switch self.selection {
@@ -528,7 +528,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserverOf_canRemoveFont (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_canRemoveFont (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_canRemoveFont.remove (inObserver)
     switch self.selection {
@@ -569,7 +569,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_componentNamesCount (_ inObserver : EBEvent) {
+  final func addEBObserverOf_componentNamesCount (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentNamesCount.insert (inObserver)
     switch self.selection {
@@ -584,7 +584,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserverOf_componentNamesCount (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_componentNamesCount (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_componentNamesCount.remove (inObserver)
     switch self.selection {
@@ -625,7 +625,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_componentValuesCount (_ inObserver : EBEvent) {
+  final func addEBObserverOf_componentValuesCount (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentValuesCount.insert (inObserver)
     switch self.selection {
@@ -640,7 +640,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserverOf_componentValuesCount (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_componentValuesCount (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
     self.mObserversOf_componentValuesCount.remove (inObserver)
     switch self.selection {

@@ -1030,7 +1030,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSheets (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSheets (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mSheets.insert (inObserver)
     if let object = self.propval {
       object.mSheets_property.addEBObserver (inObserver)
@@ -1039,7 +1039,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_mSheets (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mSheets (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mSheets.remove (inObserver)
     if let object = self.propval {
       object.mSheets_property.removeEBObserver (inObserver)
@@ -1054,7 +1054,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mFonts (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFonts (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mFonts.insert (inObserver)
     if let object = self.propval {
       object.mFonts_property.addEBObserver (inObserver)
@@ -1063,7 +1063,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_mFonts (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mFonts (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mFonts.remove (inObserver)
     if let object = self.propval {
       object.mFonts_property.removeEBObserver (inObserver)
@@ -1078,7 +1078,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mDevices (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDevices (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mDevices.insert (inObserver)
     if let object = self.propval {
       object.mDevices_property.addEBObserver (inObserver)
@@ -1087,7 +1087,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_mDevices (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mDevices (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mDevices.remove (inObserver)
     if let object = self.propval {
       object.mDevices_property.removeEBObserver (inObserver)
@@ -1102,7 +1102,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mNetClasses (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mNetClasses (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mNetClasses.insert (inObserver)
     if let object = self.propval {
       object.mNetClasses_property.addEBObserver (inObserver)
@@ -1111,7 +1111,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_mNetClasses (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mNetClasses (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mNetClasses.remove (inObserver)
     if let object = self.propval {
       object.mNetClasses_property.removeEBObserver (inObserver)
@@ -1126,7 +1126,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardObjects (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardObjects (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mBoardObjects.insert (inObserver)
     if let object = self.propval {
       object.mBoardObjects_property.addEBObserver (inObserver)
@@ -1135,7 +1135,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_mBoardObjects (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mBoardObjects (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mBoardObjects.remove (inObserver)
     if let object = self.propval {
       object.mBoardObjects_property.removeEBObserver (inObserver)
@@ -1150,7 +1150,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBorderCurves (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBorderCurves (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mBorderCurves.insert (inObserver)
     if let object = self.propval {
       object.mBorderCurves_property.addEBObserver (inObserver)
@@ -1159,7 +1159,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_mBorderCurves (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mBorderCurves (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mBorderCurves.remove (inObserver)
     if let object = self.propval {
       object.mBorderCurves_property.removeEBObserver (inObserver)
@@ -1174,7 +1174,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mComponents (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mComponents (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponents.insert (inObserver)
     if let object = self.propval {
       object.mComponents_property.addEBObserver (inObserver)
@@ -1183,7 +1183,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_mComponents (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mComponents (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponents.remove (inObserver)
     if let object = self.propval {
       object.mComponents_property.removeEBObserver (inObserver)

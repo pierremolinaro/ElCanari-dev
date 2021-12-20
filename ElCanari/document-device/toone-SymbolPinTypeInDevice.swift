@@ -118,7 +118,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mInstances (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mInstances (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mInstances.insert (inObserver)
     if let object = self.propval {
       object.mInstances_property.addEBObserver (inObserver)
@@ -127,7 +127,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
 
   //····················································································································
 
-  final func removeEBObserverOf_mInstances (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mInstances (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mInstances.remove (inObserver)
     if let object = self.propval {
       object.mInstances_property.removeEBObserver (inObserver)

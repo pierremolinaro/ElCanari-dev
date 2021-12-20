@@ -366,7 +366,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_mConnectors (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mConnectors (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mConnectors.insert (inObserver)
     if let object = self.propval {
       object.mConnectors_property.addEBObserver (inObserver)
@@ -375,7 +375,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func removeEBObserverOf_mConnectors (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mConnectors (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mConnectors.remove (inObserver)
     if let object = self.propval {
       object.mConnectors_property.removeEBObserver (inObserver)
@@ -390,7 +390,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbols (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSymbols (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mSymbols.insert (inObserver)
     if let object = self.propval {
       object.mSymbols_property.addEBObserver (inObserver)
@@ -399,7 +399,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func removeEBObserverOf_mSymbols (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mSymbols (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mSymbols.remove (inObserver)
     if let object = self.propval {
       object.mSymbols_property.removeEBObserver (inObserver)

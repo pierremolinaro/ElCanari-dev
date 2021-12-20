@@ -94,7 +94,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_segments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_segments (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_segments.insert (inObserver)
     if let object = self.propval {
       object.segments_property.addEBObserver (inObserver)
@@ -103,7 +103,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
 
   //····················································································································
 
-  final func removeEBObserverOf_segments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_segments (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_segments.remove (inObserver)
     if let object = self.propval {
       object.segments_property.removeEBObserver (inObserver)

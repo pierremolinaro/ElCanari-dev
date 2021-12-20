@@ -158,7 +158,7 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbols (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSymbols (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mSymbols.insert (inObserver)
     if let object = self.propval {
       object.mSymbols_property.addEBObserver (inObserver)
@@ -167,7 +167,7 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func removeEBObserverOf_mSymbols (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mSymbols (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mSymbols.remove (inObserver)
     if let object = self.propval {
       object.mSymbols_property.removeEBObserver (inObserver)
@@ -182,7 +182,7 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mComponents (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mComponents (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponents.insert (inObserver)
     if let object = self.propval {
       object.mComponents_property.addEBObserver (inObserver)
@@ -191,7 +191,7 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func removeEBObserverOf_mComponents (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mComponents (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponents.remove (inObserver)
     if let object = self.propval {
       object.mComponents_property.removeEBObserver (inObserver)
@@ -206,7 +206,7 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mPadAssignments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPadAssignments (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mPadAssignments.insert (inObserver)
     if let object = self.propval {
       object.mPadAssignments_property.addEBObserver (inObserver)
@@ -215,7 +215,7 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func removeEBObserverOf_mPadAssignments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPadAssignments (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mPadAssignments.remove (inObserver)
     if let object = self.propval {
       object.mPadAssignments_property.removeEBObserver (inObserver)

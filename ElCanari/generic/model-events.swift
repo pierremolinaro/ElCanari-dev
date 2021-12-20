@@ -13,7 +13,7 @@ fileprivate var gCurrentModelEvent : EBModelEvent? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBModelEvent : EBEvent {
+final class EBModelEvent : EBSwiftBaseObject, EBObserverProtocol {
 
   //····················································································································
   //   Properties
@@ -26,7 +26,7 @@ final class EBModelEvent : EBEvent {
   //   observedObjectDidChange
   //····················································································································
 
-  override func observedObjectDidChange () {
+  func observedObjectDidChange () {
     if gCurrentModelEvent !== self {
       if gPendingModelEvents.count == 0 {
         if logEvents () {

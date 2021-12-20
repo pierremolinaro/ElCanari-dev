@@ -102,7 +102,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_mPoints (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPoints (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mPoints.insert (inObserver)
     if let object = self.propval {
       object.mPoints_property.addEBObserver (inObserver)
@@ -111,7 +111,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func removeEBObserverOf_mPoints (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPoints (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mPoints.remove (inObserver)
     if let object = self.propval {
       object.mPoints_property.removeEBObserver (inObserver)

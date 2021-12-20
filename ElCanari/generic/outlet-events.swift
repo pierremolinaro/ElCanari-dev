@@ -8,11 +8,11 @@ import Cocoa
 //    EBOutletEvent class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gPendingOutletEvents = [EBOutletEvent] ()
+var gPendingOutletEvents = [EBOutletEvent] ()
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBOutletEvent : EBEvent {
+class EBOutletEvent : EBSwiftBaseObject, EBObserverProtocol {
 
   //····················································································································
   //   Properties
@@ -25,7 +25,7 @@ class EBOutletEvent : EBEvent {
   //   observedObjectDidChange
   //····················································································································
 
-  override func observedObjectDidChange () {
+  func observedObjectDidChange () {
     if logEvents () {
       if gPendingOutletEvents.count == 0 {
         appendMessageString ("Post events\n")

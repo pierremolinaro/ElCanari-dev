@@ -118,7 +118,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mTexts (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mTexts (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mTexts.insert (inObserver)
     if let object = self.propval {
       object.mTexts_property.addEBObserver (inObserver)
@@ -127,7 +127,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserverOf_mTexts (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mTexts (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mTexts.remove (inObserver)
     if let object = self.propval {
       object.mTexts_property.removeEBObserver (inObserver)
@@ -142,7 +142,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mComponentNames (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mComponentNames (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponentNames.insert (inObserver)
     if let object = self.propval {
       object.mComponentNames_property.addEBObserver (inObserver)
@@ -151,7 +151,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserverOf_mComponentNames (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mComponentNames (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponentNames.remove (inObserver)
     if let object = self.propval {
       object.mComponentNames_property.removeEBObserver (inObserver)
@@ -166,7 +166,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mComponentValues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mComponentValues (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponentValues.insert (inObserver)
     if let object = self.propval {
       object.mComponentValues_property.addEBObserver (inObserver)
@@ -175,7 +175,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func removeEBObserverOf_mComponentValues (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mComponentValues (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponentValues.remove (inObserver)
     if let object = self.propval {
       object.mComponentValues_property.removeEBObserver (inObserver)
