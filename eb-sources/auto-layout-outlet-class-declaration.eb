@@ -90,6 +90,7 @@ extern autolayout class Label (bold: Bool, size: EBControlSize) $enabled $hidden
   func setRedTextColor ()
   func expandableWidth ()
   func set (alignment: TextAlignment)
+  func set (width: Int)
 }
 
 extern autolayout class SegmentedControlWithPages (documentView: view, equalWidth: Bool, size: EBControlSize) {
@@ -98,6 +99,7 @@ extern autolayout class SegmentedControlWithPages (documentView: view, equalWidt
   $selectedPage property Int
   $segmentImage transient NSImage (segmentIndex : Int)
   $segmentTitle transient String (segmentIndex : Int)
+  $selectedSegment property enum
 }
 
 extern autolayout class SignatureField (size: EBControlSize) {
@@ -127,11 +129,11 @@ extern autolayout class TaggedPopUpButton {
   func add (title: String, withTag: Int)
 }
 
-extern autolayout class CanariUnitPopUpButton (size: EBControlSize) {
+extern autolayout class CanariUnitPopUpButton (size: EBControlSize) $hidden {
   $unit property Int
 }
 
-extern autolayout class CanariDimensionField (size: EBControlSize) {
+extern autolayout class CanariDimensionField (width: Int, size: EBControlSize) $hidden {
   $dimensionAndUnit property Int, property Int
 }
 
@@ -247,11 +249,11 @@ extern autolayout class ObjectInspectorView $graphicController {
   func addObjectInspector (forEntity: entity, inspectorView: view)
 }
 
-extern autolayout class CanariAngleField {
+extern autolayout class CanariAngleField (width: Int, size: EBControlSize) {
   $angle property Int
 }
 
-extern autolayout class CanariAngleFieldAndSlider {
+extern autolayout class CanariAngleFieldAndSlider (width: Int, size: EBControlSize) {
   $angle property Int
 }
 
@@ -383,6 +385,14 @@ extern autolayout class WarningImageView $hidden {
 
 extern autolayout class CanariNetDescriptionTableView {
   $netInfo transient NetInfoArray
+}
+
+extern autolayout class CanariBoardRectangleView {
+  $left transient String
+  $right transient String
+  $bottom transient String
+  $top transient String
+  $unit transient Int
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

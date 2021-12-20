@@ -17,7 +17,7 @@ final class AutoLayoutAngleCircularSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init () {
+  init (size inSize : EBControlSize) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +25,7 @@ final class AutoLayoutAngleCircularSlider : NSSlider, EBUserClassNameProtocol {
     self.minValue = 0.0
     self.maxValue = 360.0
 
-    self.controlSize = .small
+    self.controlSize = inSize.cocoaControlSize
     self.sliderType = .circular
   }
 

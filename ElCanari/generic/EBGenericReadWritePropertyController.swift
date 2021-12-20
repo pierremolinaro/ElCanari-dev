@@ -10,7 +10,7 @@ final class EBGenericReadWritePropertyController <T> : EBObservablePropertyContr
 
   //····················································································································
 
-  private let mObject : EBObservableMutableProperty <T>
+  private weak var mObject : EBObservableMutableProperty <T>?
 
   //····················································································································
 
@@ -22,7 +22,7 @@ final class EBGenericReadWritePropertyController <T> : EBObservablePropertyContr
   //····················································································································
 
   func updateModel (withCandidateValue inValue : T, windowForSheet inWindow : NSWindow?) -> Bool {
-    return self.mObject.validateAndSetProp (inValue, windowForSheet: inWindow)
+    return self.mObject?.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
   }
 
   //····················································································································

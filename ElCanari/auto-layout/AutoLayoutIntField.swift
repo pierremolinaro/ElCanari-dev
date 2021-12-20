@@ -10,25 +10,17 @@ import Cocoa
 //   AutoLayoutIntField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class AutoLayoutIntField : AutoLayoutBaseTextField, NSTextFieldDelegate {
 
   //····················································································································
 
-  private let mWidth : CGFloat
   private let mNumberFormatter = NumberFormatter ()
 
   //····················································································································
 
-  init (width inWidth : Int, size inSize : EBControlSize) {
-    self.mWidth = CGFloat (inWidth)
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-    self.delegate = self
+  override init (width inWidth : Int, size inSize : EBControlSize) {
+    super.init (width: inWidth, size: inSize)
 
-    self.controlSize = inSize.cocoaControlSize
-    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-    self.alignment = .center
   //--- Target
     self.target = self
     self.action = #selector (Self.valueDidChangeAction (_:))
@@ -46,23 +38,6 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
-  override var acceptsFirstResponder: Bool { return true }
-
-  //····················································································································
-
-  override var intrinsicContentSize : NSSize {
-    let s = super.intrinsicContentSize
-    return NSSize (width: self.mWidth, height: s.height)
   }
 
   //····················································································································

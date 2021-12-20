@@ -511,13 +511,13 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Start Angle", bold: no, size : .small),
-        right: CanariAngleFieldAndSlider {
+        right: CanariAngleFieldAndSlider (width: 64, size: .small) {
           $angle #mPackageArcSelectionController.startAngle
         }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Angle", bold: no, size : .small),
-        right: CanariAngleField {
+        right: CanariAngleField (width: 64, size: .small) {
           $angle #mPackageArcSelectionController.arcAngle
         }
       )

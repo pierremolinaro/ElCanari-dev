@@ -1,9 +1,8 @@
 //
-//  AutoLayoutButton.swift
-//  essai-custom-stack-view
+//  AutoLayoutBasePopUpButton.swift
+//  ElCanari
 //
-//  Created by Pierre Molinaro on 19/10/2019.
-//  Copyright © 2019 Pierre Molinaro. All rights reserved.
+//  Created by Pierre Molinaro on 20/06/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -11,38 +10,42 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutButton : AutoLayoutBaseButton {
+class AutoLayoutBasePopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mWidth : CGFloat? = nil
-  private var mHeight : CGFloat? = nil
+  init (pullsDown inPullsDown : Bool, size inSize : EBControlSize) {
+    super.init (frame: NSRect (), pullsDown: inPullsDown)
+    noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
 
-  //····················································································································
+    self.autoenablesItems = false
+    if let cell = self.cell as? NSPopUpButtonCell {
+      cell.arrowPosition = .arrowAtBottom
+    }
 
-  final func set (width inWidth : Int) -> Self {
-    self.mWidth = CGFloat (inWidth)
-    return self
+    self.controlSize = inSize.cocoaControlSize
+    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
   }
 
   //····················································································································
 
-  final func set (height inHeight : Int) -> Self {
-    self.mHeight = CGFloat (inHeight)
-    return self
+  required init?(coder inCoder: NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
 
-  override var intrinsicContentSize : NSSize {
-    var s = super.intrinsicContentSize
-    if let w = self.mWidth {
-      s.width = w
-    }
-    if let h = self.mHeight {
-      s.height = h
-    }
-    return s
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  override final func updateAutoLayoutUserInterfaceStyle () {
+    super.updateAutoLayoutUserInterfaceStyle ()
+    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
   }
 
   //····················································································································

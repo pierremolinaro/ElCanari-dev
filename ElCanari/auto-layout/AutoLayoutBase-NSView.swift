@@ -1,28 +1,25 @@
 //
-//  InternalAutoLayoutButton.swift
+//  AutoLayoutBase-NSView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 20/06/2021.
+//  Created by Pierre Molinaro on 20/12/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   AutoLayoutBaseView
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class InternalAutoLayoutButton : NSButton, EBUserClassNameProtocol {
+class AutoLayoutBaseView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init (title inTitle : String, size inSize : EBControlSize) {
+  init () {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.title = inTitle
-    self.controlSize = inSize.cocoaControlSize
-    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
   }
 
   //····················································································································
@@ -35,13 +32,6 @@ class InternalAutoLayoutButton : NSButton, EBUserClassNameProtocol {
 
   deinit {
     noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
-  override final func updateAutoLayoutUserInterfaceStyle () {
-    super.updateAutoLayoutUserInterfaceStyle ()
-    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
   }
 
   //····················································································································

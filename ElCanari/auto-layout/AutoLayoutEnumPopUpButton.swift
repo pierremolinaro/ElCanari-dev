@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutEnumPopUpButton : InternalAutoLayoutPopUpButton {
+final class AutoLayoutEnumPopUpButton : AutoLayoutBasePopUpButton {
 
   //····················································································································
 

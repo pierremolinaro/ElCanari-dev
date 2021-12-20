@@ -4,6 +4,11 @@
 
 enum BorderCurveShape { line, bezier }
 
+func enum BorderCurveShape.popupTitles {
+  line : "Line" ;
+  bezier : "Bezier Curve" ;
+}
+
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic entity BorderCurve {

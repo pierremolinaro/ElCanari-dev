@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariAddSymbolInstancePullDownButton : InternalAutoLayoutPopUpButton {
+final class AutoLayoutCanariAddSymbolInstancePullDownButton : AutoLayoutBasePopUpButton {
 
   //····················································································································
 

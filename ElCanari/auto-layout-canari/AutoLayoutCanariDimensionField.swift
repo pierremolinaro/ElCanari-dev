@@ -10,48 +10,44 @@ import Cocoa
 //   AutoLayoutCanariDimensionField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class AutoLayoutCanariDimensionField : AutoLayoutBaseTextField, NSTextFieldDelegate {
 
   //····················································································································
 
-  init (size inSize : EBControlSize) {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.controlSize = inSize.cocoaControlSize
-    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-    self.alignment = .center
-  }
-
-  //····················································································································
-
-  required init? (coder inCoder : NSCoder) {
-    fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-  
-  //····················································································································
-
-//  override var intrinsicContentSize : NSSize {
-//    return NSSize (width: 64.0, height: 19.0)
+//  init (width inWidth : Int, size inSize : EBControlSize) {
+//    super.init (frame: NSRect ())
+//    noteObjectAllocation (self)
+//    self.translatesAutoresizingMaskIntoConstraints = false
+//
+//    self.setContentCompressionResistancePriority (.required, for: .vertical)
+//
+//    self.controlSize = inSize.cocoaControlSize
+//    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+//    self.alignment = .center
 //  }
 
+  //····················································································································
+
+//  required init? (coder inCoder : NSCoder) {
+//    fatalError ("init(coder:) has not been implemented")
+//  }
+
+  //····················································································································
+
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
+  
   //····················································································································
   //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible
   //  So we need to define intrinsicContentSize.width explicitly
   //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-
   //····················································································································
 
-  override var intrinsicContentSize : NSSize {
-    let s = super.intrinsicContentSize
-    return NSSize (width: 64.0, height: s.height)
-  }
+//  override var intrinsicContentSize : NSSize {
+//    let s = super.intrinsicContentSize
+//    return NSSize (width: 64.0, height: s.height)
+//  }
 
   //····················································································································
 

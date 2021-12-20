@@ -16,12 +16,14 @@ final class AutoLayoutCanariAngleFieldAndSlider : AutoLayoutHorizontalStackView 
 
   //····················································································································
 
-  fileprivate let mAngleTextField = AutoLayoutCanariAngleField ()
-  fileprivate let mAngleSlider =  AutoLayoutAngleCircularSlider ()
+  fileprivate let mAngleTextField : AutoLayoutCanariAngleField
+  fileprivate let mAngleSlider :  AutoLayoutAngleCircularSlider
 
   //····················································································································
 
-  override init () {
+  init (width inWidth : Int, size inSize : EBControlSize) {
+    self.mAngleTextField = AutoLayoutCanariAngleField (width: inWidth, size: inSize)
+    self.mAngleSlider = AutoLayoutAngleCircularSlider (size: inSize)
     super.init ()
     self.appendView (self.mAngleTextField)
     self.appendView (self.mAngleSlider)

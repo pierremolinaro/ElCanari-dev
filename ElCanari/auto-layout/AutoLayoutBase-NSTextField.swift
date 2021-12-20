@@ -1,23 +1,34 @@
 //
-//  AutoLayoutPullDownButton.swift
+//  AutoLayoutBaseTextField.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 07/02/2021.
+//  Created by Pierre Molinaro on 20/12/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   AutoLayoutBaseTextField
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutPullDownButton : AutoLayoutBasePopUpButton {
+class AutoLayoutBaseTextField : NSTextField, EBUserClassNameProtocol {
+
+  private let mWidth : CGFloat
 
   //····················································································································
 
-  init (title inTitle : String, size inSize : EBControlSize) {
-    super.init (pullsDown: true, size: inSize)
+  init (width inWidth : Int, size inSize : EBControlSize) {
+    self.mWidth = CGFloat (inWidth)
+    super.init (frame: NSRect ())
+    noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.addItem (withTitle: inTitle)
+    self.setContentCompressionResistancePriority (.required, for: .vertical)
+
+    self.controlSize = inSize.cocoaControlSize
+    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+    self.alignment = .center
   }
 
   //····················································································································
@@ -28,85 +39,39 @@ final class AutoLayoutPullDownButton : AutoLayoutBasePopUpButton {
 
   //····················································································································
 
-  var mControllerArray = [EBObservablePropertyController] ()
-
-  //····················································································································
-
-  override func ebCleanUp () {
-    for controller in self.mControllerArray {
-      controller.unregister ()
-    }
-    self.mItemsController?.unregister ()
-    self.mItemsController = nil
-    super.ebCleanUp ()
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································
 
-  final func add (item inMenuItemDescriptor : AutoLayoutMenuItemDescriptor) -> Self {
-    self.addItem (withTitle: inMenuItemDescriptor.title)
-    self.lastItem?.target = inMenuItemDescriptor.target
-    self.lastItem?.action = inMenuItemDescriptor.selector
-  //--- Add Enabled binding ?
-    switch inMenuItemDescriptor.expression {
-    case .empty :
-      ()
-    default :
-      let lastItem = self.lastItem
-      var modelArray = [EBObservableObjectProtocol] ()
-      inMenuItemDescriptor.expression.addModelsTo (&modelArray)
-      let controller = EBObservablePropertyController (
-        observedObjects: modelArray,
-        callBack: { [weak self] in self?.enable (item: lastItem, from: inMenuItemDescriptor.expression.compute ()) }
-      )
-      self.mControllerArray.append (controller)
-    }
-  //---
+  final override var acceptsFirstResponder: Bool { return true }
+
+  //····················································································································
+
+  final func set (alignment inAlignment : TextAlignment) -> Self {
+    self.alignment = inAlignment.cocoaAlignment
     return self
   }
 
   //····················································································································
 
-  fileprivate func enable (item inMenuItem : NSMenuItem?, from inObject : EBSelection <Bool>) {
-    switch inObject {
-    case .empty, .multiple :
-      inMenuItem?.isEnabled = false
-    case .single (let v) :
-      inMenuItem?.isEnabled = v
-    }
-  }
-
-  //····················································································································
-  //  $items binding
-  //····················································································································
-
-  private var mItemsController : EBObservablePropertyController? = nil
-
-  //····················································································································
-
-  final func bind_items (_ inObject : EBReadOnlyProperty_StringArray) -> Self {
-    self.mItemsController = EBObservablePropertyController (
-      observedObjects: [inObject],
-      callBack: { [weak self] in self?.update (from: inObject) }
-    )
+  final func multiLine () -> Self {
+    self.usesSingleLineMode = false
+    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
     return self
   }
 
   //····················································································································
+  //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible
+  //  So we need to define intrinsicContentSize.width explicitly
+  //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-
+  //····················································································································
 
-  private func update (from model : EBReadOnlyProperty_StringArray) {
-    switch model.selection {
-    case .empty, .multiple :
-      self.enable (fromValueBinding: false)
-    case .single (let titleArray) :
-      self.enable (fromValueBinding: true)
-      while self.numberOfItems > 1 {
-        self.removeItem (at: self.numberOfItems - 1)
-      }
-      for itemTitle in titleArray {
-        self.addItem (withTitle: itemTitle)
-      }
-    }
+  final override var intrinsicContentSize : NSSize {
+    let s = super.intrinsicContentSize
+    // Swift.print ("AutoLayoutTextField height \(s.height)")
+    return NSSize (width: self.mWidth, height: s.height)
   }
 
   //····················································································································

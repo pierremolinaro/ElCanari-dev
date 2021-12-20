@@ -2148,7 +2148,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_83 () -> NSView {
-    let view = AutoLayoutCanariAngleFieldAndSlider ()
+    let view = AutoLayoutCanariAngleFieldAndSlider (width: 64, size: .small)
       .bind_angle (self.mPackageArcSelectionController.startAngle_property)
     return view
   }
@@ -2167,7 +2167,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_85 () -> NSView {
-    let view = AutoLayoutCanariAngleField ()
+    let view = AutoLayoutCanariAngleField (width: 64, size: .small)
       .bind_angle (self.mPackageArcSelectionController.arcAngle_property)
     return view
   }

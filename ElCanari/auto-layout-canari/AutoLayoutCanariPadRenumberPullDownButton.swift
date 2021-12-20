@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutCanariPadRenumberPullDownButton
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariPadRenumberPullDownButton : InternalAutoLayoutPopUpButton {
+final class AutoLayoutCanariPadRenumberPullDownButton : AutoLayoutBasePopUpButton {
 
    //····················································································································
 

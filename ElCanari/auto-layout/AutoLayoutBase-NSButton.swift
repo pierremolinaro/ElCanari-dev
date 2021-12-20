@@ -1,5 +1,5 @@
 //
-//  InternalAutoLayoutPopUpButton.swift
+//  AutoLayoutBaseButton.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 20/06/2021.
@@ -10,21 +10,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class InternalAutoLayoutPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+class AutoLayoutBaseButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init (pullsDown inPullsDown : Bool,
-        size inSize : EBControlSize) {
-    super.init (frame: NSRect (), pullsDown: inPullsDown)
+  init (title inTitle : String, size inSize : EBControlSize) {
+    super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.autoenablesItems = false
-    if let cell = self.cell as? NSPopUpButtonCell {
-      cell.arrowPosition = .arrowAtBottom
-    }
-
+    self.title = inTitle
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
@@ -32,7 +27,7 @@ class InternalAutoLayoutPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  required init?(coder inCoder: NSCoder) {
+  required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
@@ -40,7 +35,6 @@ class InternalAutoLayoutPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   deinit {
     noteObjectDeallocation (self)
-  //  self.releaseEnabledBinding ()
   }
 
   //····················································································································

@@ -135,7 +135,6 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
   private var mValueController : EBGenericReadWritePropertyController <String>? = nil
-//  private var mSendContinously = false
 
   //····················································································································
 

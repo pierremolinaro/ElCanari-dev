@@ -38,6 +38,8 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
     self.mSegmentImageController = nil
     self.mSegmentTitleController?.unregister ()
     self.mSegmentTitleController = nil
+    self.mSelectedSegmentController?.unregister ()
+    self.mSelectedSegmentController = nil
     super.ebCleanUp ()
   }
 
@@ -82,6 +84,7 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
     }
     self.mDocumentView.appendView (newPage)
     _ = self.mSelectedTabIndexController?.updateModel (withCandidateValue: self.selectedSegment, windowForSheet: self.window)
+    self.mSelectedSegmentController?.updateModel (self)
   }
 
   //····················································································································
@@ -112,7 +115,6 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
       ()
     }
   }
-
 
   //····················································································································
   //  $segmentImage binding
@@ -170,6 +172,55 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
     case .single (let v) :
       self.setLabel (v, forSegment: self.mSegmentTitleIndex)
     }
+  }
+
+  //····················································································································
+  //  $selectedSegment binding
+  //····················································································································
+
+  private var mSelectedSegmentController : Controller_AutoLayoutSegmentedControl_selectedSegment? = nil
+
+  //····················································································································
+
+  final func bind_selectedSegment (_ inObject : EBReadWriteObservableEnumProtocol) -> Self {
+    self.mSelectedSegmentController = Controller_AutoLayoutSegmentedControl_selectedSegment (
+      object: inObject,
+      outlet: self
+    )
+    return self
+  }
+
+  //····················································································································
+
+  fileprivate func updateSelectedSegment (_ inObject : EBReadWriteObservableEnumProtocol) {
+    self.selectedSegment = inObject.rawValue () ?? 0
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_AutoLayoutSegmentedControl_selectedSegment
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate final class Controller_AutoLayoutSegmentedControl_selectedSegment : EBObservablePropertyController {
+
+  private let mObject : EBReadWriteObservableEnumProtocol
+  private let mOutlet : AutoLayoutSegmentedControlWithPages
+
+  //····················································································································
+
+  init (object : EBReadWriteObservableEnumProtocol, outlet : AutoLayoutSegmentedControlWithPages) {
+    self.mObject = object
+    self.mOutlet = outlet
+    super.init (observedObjects:[object], callBack: { outlet.updateSelectedSegment (object) })
+  }
+
+  //····················································································································
+
+  func updateModel (_ sender : AutoLayoutSegmentedControlWithPages) {
+    self.mObject.setFrom (rawValue: self.mOutlet.selectedSegment)
   }
 
   //····················································································································

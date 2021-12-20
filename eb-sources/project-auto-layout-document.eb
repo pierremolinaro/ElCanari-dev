@@ -19,7 +19,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
           addPage (title: "Board Contents", tooltip: "", pageView: stackView mBoardContentsPage)
           addPage (title: "Product", tooltip: "", pageView: stackView mProductPage)
           $selectedPage root.mSelectedPageIndex
-//          $segmentImage self.segmentedControlDataIssueImage (segmentIndex : 2)
         }
         hStack { space StaticLabel (title: "Page", bold: no, size : .small) space }
       }
@@ -392,14 +391,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     space
   }
   
-  stackView mBoardOutlinePage vStack set (margins: 8) {
-    space
-  }
- 
-  stackView mBoardContentsPage vStack set (margins: 8) {
-    space
-  }
-  
 //  outlet CanariSegmentedControl mSchematicsInspectorSegmentedControl $selectedPage root.mSelectedSchematicInspector ;
 //  outlet NSView mBaseSchematicsInspectorView ;
 //  outlet CanariViewWithKeyView mSelectedObjectsSchematicsInspectorView ;
@@ -659,139 +650,261 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //     $quadrant #componentSymbolSelectionController.mRotation ;
 //
 //  outlet EBSwitch mSymbolMirrorSwitch $value #componentSymbolSelectionController.mMirror ;
-//
-////----------------- Board limits tab
-//  arrayController #boardCurveObjectsController : root.mBorderCurves ; // $hidden root.boardShapeIsRectangular ;
-//
-//  outlet EBEnclosingGraphicView mBoardLimitsView
-//    $underObjectsDisplay root.borderViewBackground
-//    $horizontalFlip root.mBoardLimitsHorizontalFlip
-//    $verticalFlip root.mBoardLimitsVerticalFlip
-//    $graphicController #boardCurveObjectsController
-//    $gridStyle root.mBoardLimitsGridStyle
-//    $gridDisplayFactor root.mBoardLimitsGridDisplayFactor
-//    $gridLineColor prefs.lineColorGridForBoard
-//    $gridCrossColor prefs.crossColorGridForBoard
-//    $zoom root.mBoardLimitsZoom
-//    $backColor prefs.boardBackgroundColorForBoard
-//    $mouseGrid root.mBoardLimitsGridStep
-//    $gridStep root.mBoardLimitsGridStep
-//    $arrowKeyMagnitude root.mBoardLimitsGridStep
-//    $shiftArrowKeyMagnitude root.boardLimitsGridStepMultipliedByDisplayFactor
-//    $xPlacardUnit root.mBoardLimitsGridStepUnit
-//    $yPlacardUnit root.mBoardLimitsGridStepUnit
-//  ;
-//
-////--- Inspectors
-//  outlet CanariSegmentedControl mBoardLimitsInspectorSegmentedControl $selectedPage root.mBoardLimitsSelectedInspector ;
-//  outlet NSView mBaseBoardLimitsInspectorView ;
-//  outlet CanariViewWithKeyView mSelectedObjectsBoardLimitsInspectorView ;
-//  outlet CanariViewWithKeyView mGridZoomBoardLimitsInspectorView ;
-//  outlet CanariViewWithKeyView mOperationBoardLimitsInspectorView ;
-//
-////--- Limit Curve inspector view
-//  selectionController BorderCurve #boardCurveSelectionController :
-//    #boardCurveObjectsController.selectedArray
-//  ;
-//  outlet CanariViewWithKeyView mSelectedBoardLimitInspectorView ;
-//  outlet EBPopUpButton mSelectedLimitDisplayUnitPopUp $selectedTag root.mBoardSelectedCurveDisplayUnit ;
-//
-//  outlet CanariDimensionTextField mBoardCurvePointX1TextField
-//     $dimensionAndUnit #boardCurveSelectionController.mX, root.mBoardSelectedCurveDisplayUnit
-//  ;
-//
-//  outlet CanariDimensionTextField mBoardCurvePointY1TextField
-//     $dimensionAndUnit #boardCurveSelectionController.mY, root.mBoardSelectedCurveDisplayUnit
-//  ;
-//
-//  outlet EBTextObserverField mBoardCurveX2TextField $valueObserver #boardCurveSelectionController.p2Xstring ;
-//  outlet CanariDimensionTextField mBoardCurvePointX2TextField
-//     $dimensionAndUnit #boardCurveSelectionController.mNextX, root.mBoardSelectedCurveDisplayUnit
-//  ;
-//
-//  outlet EBTextObserverField mBoardCurveY2TextField $valueObserver #boardCurveSelectionController.p2Ystring ;
-//  outlet CanariDimensionTextField mBoardCurvePointY2TextField
-//     $dimensionAndUnit #boardCurveSelectionController.mNextY, root.mBoardSelectedCurveDisplayUnit
-//  ;
-//
-//  outlet EBPopUpButton mSelectedLimitShapePopUpButton $selectedIndex #boardCurveSelectionController.mShape ;
-//
-//  outlet EBPopUpButton mBoardCurveControlPointsUnitPopUp $selectedTag root.mBoardLimitControlPointsDisplayUnit ;
-//
-//  outlet CanariDimensionTextField mBoardCurveControlPointX1TextField
-//     $dimensionAndUnit #boardCurveSelectionController.mCPX1, root.mBoardLimitControlPointsDisplayUnit
-//  ;
-//
-//  outlet CanariDimensionTextField mBoardCurveControlPointY1TextField
-//     $dimensionAndUnit #boardCurveSelectionController.mCPY1, root.mBoardLimitControlPointsDisplayUnit
-//  ;
-//
-//  outlet CanariDimensionTextField mBoardCurveControlPointX2TextField
-//     $dimensionAndUnit #boardCurveSelectionController.mCPX2, root.mBoardLimitControlPointsDisplayUnit
-//  ;
-//
-//  outlet CanariDimensionTextField mBoardCurveControlPointY2TextField
-//     $dimensionAndUnit #boardCurveSelectionController.mCPY2, root.mBoardLimitControlPointsDisplayUnit
-//  ;
-//
-//  outlet NSView mLimitCurveBezierControlPointsView $hidden #boardCurveSelectionController.isLine ;
-//  
-//  outlet NSView mMessageBoardIsRectangularView $hidden !root.boardShapeIsRectangular ;
-//  
-////--- Grid and Flip inspector
-//  outlet EBSwitch mBoardLimitsHorizontalFlipSwitch $value root.mBoardLimitsHorizontalFlip ;
-//  outlet EBSwitch mBoardLimitsVerticalFlipSwitch $value root.mBoardLimitsVerticalFlip ;
-//  outlet EBPopUpButton mBoardLimitsGridStylePopUpButton $selectedIndex root.mBoardLimitsGridStyle ;
-//  outlet EBPopUpButton mBoardLimitsGridDisplayFactorPopUpButton $selectedTag root.mBoardLimitsGridDisplayFactor ;
-//
-//  outlet EBPopUpButton mBoardLimitsGridUnitPopUp $selectedTag root.mBoardLimitsGridStepUnit ;
-//  outlet CanariDimensionTextField mBoardLimitsGridTextField
-//     $dimensionAndUnit root.mBoardLimitsGridStep, root.mBoardLimitsGridStepUnit
-//  ;
-//  
-////--- Operation Inspector
-//  outlet EBTextObserverField mBoardLimitsElementCountTextField $valueObserver root.borderElementCountString ; 
-//
-//  outlet EBTextObserverField mBoardLimitPointsTopTextField $valueObserver root.boardInteriorTop ;
-//  outlet EBTextObserverField mBoardLimitPointsBottomTextField $valueObserver root.boardInteriorBottom ;
-//  outlet EBTextObserverField mBoardLimitPointsLeftTextField $valueObserver root.boardInteriorLeft ;
-//  outlet EBTextObserverField mBoardLimitPointsRightTextField $valueObserver root.boardInteriorRight ;  
-//
-//  outlet EBPopUpButton mBoardPointsBoundingBoxUnitPopUp $selectedTag root.mBoardPointsBoundingBoxUnit ;
-//
-//  outlet EBTextObserverField mBoardLimitBorderTopTextField $valueObserver root.boardLimitBorderTop ;
-//  outlet EBTextObserverField mBoardLimitBorderBottomTextField $valueObserver root.boardLimitBorderBottom ;
-//  outlet EBTextObserverField mBoardLimitBorderLeftTextField $valueObserver root.boardLimitBorderLeft ;
-//  outlet EBTextObserverField mBoardLimitBorderRightTextField $valueObserver root.boardLimitBorderRight ;  
-//
-//  outlet EBPopUpButton mBoardLimitsBoundingBoxUnitPopUp $selectedTag root.mBoardLimitsBoundingBoxUnit ;
-//
-//  outlet EBPopUpButton mBoardLimitsWidthUnitPopUp $selectedTag root.mBoardLimitsWidthUnit ;
-//  outlet CanariDimensionTextField mBoardLimitsWidthTextField
-//     $dimensionAndUnit root.mBoardLimitsWidth, root.mBoardLimitsWidthUnit
-//  ;
-//
-//  outlet EBPopUpButton mBoardClearanceUnitPopUp $selectedTag root.mBoardClearanceUnit ;
-//  outlet CanariDimensionTextField mBoardClearanceTextField
-//     $dimensionAndUnit root.mBoardClearance, root.mBoardClearanceUnit
-//  ;
-//
-//  outlet NSView mRectangularBoardWidthHeighView $hidden !root.boardShapeIsRectangular ;
-//  outlet NSView mBezierPathBoardHelperView $hidden root.boardShapeIsRectangular ;
-//  
-//  outlet EBPopUpButton mRectangularBoardWidthUnitPopUp $selectedTag root.mRectangularBoardWidthUnit ;
-//  outlet CanariDimensionTextField mRectangularBoardWidthTextField
-//     $dimensionAndUnit root.mRectangularBoardWidth, root.mRectangularBoardWidthUnit
-//  ;
-//
-//  outlet EBPopUpButton mRectangularBoardHeightUnitPopUp $selectedTag root.mRectangularBoardHeightUnit ;
-//  outlet CanariDimensionTextField mRectangularBoardHeightTextField
-//     $dimensionAndUnit root.mRectangularBoardHeight, root.mRectangularBoardHeightUnit
-//  ;
-//
-//  outlet CanariEnumSegmentedControl mBoardShapePopUp $selectedSegment root.mBoardShape ;
-//
-////----------------- Board Objects tab
+
+//----------------- Board limits tab
+  stackView mBoardOutlinePage hStack {
+    vStack set (width: 250) set (margins: 8) {
+      SegmentedControlWithPages (documentView: stackView mBoardOutlineBaseView, equalWidth: yes, size : .small)
+        [configurator boardOutlineBaseConfigurator]  {
+        addPage (title: "", tooltip: "", pageView: stackView mBoardOutlineInspectorView)
+        addPage (title: "", tooltip: "", pageView: stackView mBoardOutlineGridAndFlipView)
+        $selectedPage root.mBoardLimitsSelectedInspector
+      }
+      stackViewRef mBoardOutlineBaseView
+    }
+    separator
+    GraphicView (minZoom: 10, maxZoom: 20_000) {
+      $underObjectsDisplay root.borderViewBackground
+      $horizontalFlip root.mBoardLimitsHorizontalFlip
+      $verticalFlip root.mBoardLimitsVerticalFlip
+      $graphicController #boardCurveObjectsController
+      $gridStyle root.mBoardLimitsGridStyle
+      $gridDisplayFactor root.mBoardLimitsGridDisplayFactor
+      $gridLineColor prefs.lineColorGridForBoard
+      $gridCrossColor prefs.crossColorGridForBoard
+      $zoom root.mBoardLimitsZoom
+      $backColor prefs.boardBackgroundColorForBoard
+      $mouseGrid root.mBoardLimitsGridStep
+      $gridStep root.mBoardLimitsGridStep
+      $arrowKeyMagnitude root.mBoardLimitsGridStep
+      $shiftArrowKeyMagnitude root.boardLimitsGridStepMultipliedByDisplayFactor
+      $xPlacardUnit root.mBoardLimitsGridStepUnit
+      $yPlacardUnit root.mBoardLimitsGridStepUnit
+    }
+  }
+
+  arrayController #boardCurveObjectsController : root.mBorderCurves ;
+  selectionController BorderCurve #boardCurveSelectionController :
+    #boardCurveObjectsController.selectedArray
+  ;
+
+  stackView mBoardOutlineBaseView vStack {
+    space
+  }
+
+  stackView mBoardOutlineGridAndFlipView vStack {
+    hStack { space StaticLabel (title: "Grid and Flip Inspector", bold: yes, size: .small) space }
+    GridView2 {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Grid Step", bold: no, size : .small),
+        right: CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mBoardLimitsGridStep, root.mBoardLimitsGridStepUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Display Grid", bold: no, size : .small),
+        right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.mBoardLimitsGridStyle }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Grid Display", bold: no, size : .small),
+        right: TaggedPopUpButton {
+          add (title: "1 Step",   withTag:  1)
+          add (title: "2 Steps",  withTag:  2)
+          add (title: "4 Steps",  withTag:  4)
+          add (title: "5 Steps",  withTag:  5)
+          add (title: "8 Steps",  withTag:  8)
+          add (title: "10 Steps", withTag: 10)
+          $selectedTag root.mBoardLimitsGridDisplayFactor
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Flip", bold: no, size : .small),
+        right: Checkbox (title: "Horizontal", size : .small) { $value root.mBoardLimitsHorizontalFlip }
+      )
+      addFirstBaseLineAligned (
+        left: FlexibleSpace,
+        right: Checkbox (title: "Vertical", size : .small) { $value root.mBoardLimitsVerticalFlip }
+      )
+    }
+    space
+  }
+
+  stackView mBoardOutlineInspectorView vStack {
+    hStack { space StaticLabel (title: "Board Shape", bold: yes, size : .small) space }
+    SegmentedControlWithPages (documentView: stackView mBoardShapeBaseView, equalWidth: yes, size : .small) {
+      addPage (title: "Rectangular", tooltip: "", pageView: stackView mBoardRectangularOutlineView)
+      addPage (title: "Bezier Pathes", tooltip: "", pageView: stackView mBoardBezierPathOutlineView)
+      $selectedSegment root.mBoardShape
+    }
+    stackViewRef mBoardShapeBaseView
+    separator
+    hStack { space StaticLabel (title: "Outlines", bold: yes, size : .small) space }
+    GridView2 {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Board Limit Width", bold: no, size : .small),
+        right: CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mBoardLimitsWidth, root.mBoardLimitsWidthUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Board Clearance", bold: no, size : .small),
+        right: CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mBoardClearance, root.mBoardClearanceUnit
+        }
+      )
+    }
+    separator
+    hStack { space StaticLabel (title: "Interior Bounding Box", bold: yes, size : .small) space }
+    CanariBoardRectangleView {
+      $top root.boardInteriorTop
+      $bottom root.boardInteriorBottom 
+      $left root.boardInteriorLeft
+      $right root.boardInteriorRight
+      $unit root.mBoardPointsBoundingBoxUnit
+    }
+    separator
+    hStack { space StaticLabel (title: "Board Bounding Box", bold: yes, size : .small) space }
+    CanariBoardRectangleView {
+      $top root.boardLimitBorderTop
+      $bottom root.boardLimitBorderBottom 
+      $left root.boardLimitBorderLeft
+      $right root.boardLimitBorderRight
+      $unit root.mBoardLimitsBoundingBoxUnit
+    }
+    space
+  }
+
+  stackView mBoardShapeBaseView vStack {
+  }
+  
+  stackView mBoardRectangularOutlineView vStack {
+    GridView2 {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Board Width", bold: no, size : .small),
+        right: CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mRectangularBoardWidth, root.mRectangularBoardWidthUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Board Height", bold: no, size : .small),
+        right: CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mRectangularBoardHeight, root.mRectangularBoardHeightUnit
+        }
+      )
+    }
+  }
+  
+  stackView mBoardBezierPathOutlineView vStack {
+    GridView2 {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Shape", bold: yes, size : .small) {
+          set (alignment: .left)
+        },
+        right: EnumPopUpButton (titles: enum BorderCurveShape.popupTitles, size: .small) {
+          $selectedIndex #boardCurveSelectionController.mShape
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "End Points", bold: yes, size : .small) {
+          set (alignment: .left)
+        },
+        right: CanariUnitPopUpButton (size: .small) {
+          $unit root.mBoardSelectedCurveDisplayUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: hStack setFirstBaselineAlignment () {
+          StaticLabel (title: "X", bold: no, size : .small) { expandableWidth () }
+          CanariDimensionField (width: 80, size: .small) {
+            $dimensionAndUnit #boardCurveSelectionController.mX, root.mBoardSelectedCurveDisplayUnit
+          }
+        },
+        right: hStack setFirstBaselineAlignment () {
+          StaticLabel (title: "Y", bold: no, size : .small) { expandableWidth () }
+          CanariDimensionField (width: 80, size: .small) {
+            $dimensionAndUnit #boardCurveSelectionController.mY, root.mBoardSelectedCurveDisplayUnit
+          }
+        }
+      )
+      addFirstBaseLineAligned (
+        left: hStack setFirstBaselineAlignment () {
+          StaticLabel (title: "X", bold: no, size : .small) { expandableWidth () }
+          Label (bold: yes, size: .small) {
+            set (width: 80) set (alignment: .center)
+            $title #boardCurveSelectionController.p2Xstring
+          }
+        },
+        right: hStack setFirstBaselineAlignment () {
+          StaticLabel (title: "Y", bold: no, size : .small) { expandableWidth () }
+          Label (bold: yes, size: .small) {
+            set (width: 80) set (alignment: .center)
+            $title #boardCurveSelectionController.p2Ystring
+          }
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Control Points", bold: yes, size : .small) {
+          set (alignment: .left)
+          $hidden #boardCurveSelectionController.isLine
+        },
+        right: CanariUnitPopUpButton (size: .small) {
+          $hidden #boardCurveSelectionController.isLine
+          $unit root.mBoardLimitControlPointsDisplayUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: hStack setFirstBaselineAlignment () {
+          StaticLabel (title: "X", bold: no, size : .small) {
+            expandableWidth ()
+            $hidden #boardCurveSelectionController.isLine
+          }
+          CanariDimensionField (width: 80, size: .small) {
+            $hidden #boardCurveSelectionController.isLine
+            $dimensionAndUnit #boardCurveSelectionController.mCPX1, root.mBoardLimitControlPointsDisplayUnit
+          }
+        },
+        right: hStack setFirstBaselineAlignment () {
+          StaticLabel (title: "Y", bold: no, size : .small) {
+            expandableWidth ()
+            $hidden #boardCurveSelectionController.isLine
+          }
+          CanariDimensionField (width: 80, size: .small) {
+            $hidden #boardCurveSelectionController.isLine
+            $dimensionAndUnit #boardCurveSelectionController.mCPY1, root.mBoardLimitControlPointsDisplayUnit
+          }
+        }
+      )
+      addFirstBaseLineAligned (
+        left: hStack setFirstBaselineAlignment () {
+          StaticLabel (title: "X", bold: no, size : .small) {
+            expandableWidth ()
+            $hidden #boardCurveSelectionController.isLine
+          }
+          CanariDimensionField (width: 80, size: .small) {
+            $hidden #boardCurveSelectionController.isLine
+            $dimensionAndUnit #boardCurveSelectionController.mCPX2, root.mBoardLimitControlPointsDisplayUnit
+          }
+        },
+        right: hStack setFirstBaselineAlignment () {
+          StaticLabel (title: "Y", bold: no, size : .small) {
+            expandableWidth ()
+            $hidden #boardCurveSelectionController.isLine
+          }
+          CanariDimensionField (width: 80, size: .small) {
+            $hidden #boardCurveSelectionController.isLine
+            $dimensionAndUnit #boardCurveSelectionController.mCPY2, root.mBoardLimitControlPointsDisplayUnit
+          }
+        }
+      )
+    }
+  }
+
+//----------------- Board Contents tab
+
+  stackView mBoardContentsPage vStack set (margins: 8) {
+    space
+  }
+
 //  outlet CanariSegmentedControl mBoardInspectorSegmentedControl $selectedPage root.mBoardSelectedInspector ;
 //  outlet NSView mBaseBoardInspectorView ;
 //  outlet CanariViewWithKeyView mSelectedObjectsBoardInspectorView ;

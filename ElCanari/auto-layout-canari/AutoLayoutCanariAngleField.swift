@@ -4,7 +4,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariAngleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class AutoLayoutCanariAngleField : AutoLayoutBaseTextField, NSTextFieldDelegate {
 
   //····················································································································
   // Property
@@ -16,14 +16,8 @@ final class AutoLayoutCanariAngleField : NSTextField, EBUserClassNameProtocol, N
   // INIT
   //····················································································································
 
-  init () {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.controlSize = .small
-    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-    self.alignment = .center
+  override init (width inWidth : Int, size inSize : EBControlSize) {
+    super.init (width: inWidth, size: inSize)
 
     self.delegate = self
     self.target = self
@@ -43,12 +37,6 @@ final class AutoLayoutCanariAngleField : NSTextField, EBUserClassNameProtocol, N
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································

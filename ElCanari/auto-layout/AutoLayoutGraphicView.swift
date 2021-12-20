@@ -18,8 +18,8 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   let mGraphicView = EBGraphicView (frame: NSRect ())
   var mScrollView : EBScrollView? = nil
-  fileprivate var mZoomPopUpButton : InternalAutoLayoutPopUpButton? = nil
-  fileprivate var mZoomToFitButton : InternalAutoLayoutButton? = nil
+  fileprivate var mZoomPopUpButton : AutoLayoutBasePopUpButton? = nil
+  fileprivate var mZoomToFitButton : AutoLayoutBaseButton? = nil
   fileprivate var mHelperTextField : NSTextField? = nil
   fileprivate var mFocusRing : AutoLayoutPrivateFocusRingView? = nil
 
@@ -108,8 +108,8 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  fileprivate func buildZoomToFitButton () -> InternalAutoLayoutButton {
-    let button = InternalAutoLayoutButton (title: "Zoom to Fit", size: .small)
+  fileprivate func buildZoomToFitButton () -> AutoLayoutBaseButton {
+    let button = AutoLayoutBaseButton (title: "Zoom to Fit", size: .small)
     button.target = self
     button.action = #selector (Self.setZoomToFitButton (_:))
     return button
@@ -117,8 +117,8 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  fileprivate func buildZoomPopUpButton (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) -> InternalAutoLayoutPopUpButton {
-    let zoomPopUpButton = InternalAutoLayoutPopUpButton (pullsDown: true, size: .small)
+  fileprivate func buildZoomPopUpButton (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) -> AutoLayoutBasePopUpButton {
+    let zoomPopUpButton = AutoLayoutBasePopUpButton (pullsDown: true, size: .small)
     zoomPopUpButton.menu?.addItem (
       withTitle:"\(Int (self.mGraphicView.actualScale * 100.0)) %",
       action:nil,
@@ -157,7 +157,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
  //····················································································································
 
   final fileprivate func addPopupButtonItemForZoom (_ inZoom : Int,
-                                                    _ inPopUp : InternalAutoLayoutPopUpButton,
+                                                    _ inPopUp : AutoLayoutBasePopUpButton,
                                                     minZoom inMinZoom : Int,
                                                     maxZoom inMaxZoom : Int) {
     if (inZoom >= inMinZoom) && (inZoom <= inMaxZoom) {

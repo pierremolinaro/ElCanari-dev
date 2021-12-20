@@ -4,7 +4,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutTaggedPopUpButton : InternalAutoLayoutPopUpButton {
+final class AutoLayoutTaggedPopUpButton : AutoLayoutBasePopUpButton {
 
   //····················································································································
 

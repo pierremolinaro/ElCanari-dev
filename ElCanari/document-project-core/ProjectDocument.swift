@@ -27,6 +27,18 @@ import Cocoa
   var projectDeviceController = Controller_ProjectDocument_projectDeviceController ()
 
   //····················································································································
+  //   Array controller: boardCurveObjectsController
+  //····················································································································
+
+  var boardCurveObjectsController = Controller_ProjectDocument_boardCurveObjectsController ()
+
+  //····················································································································
+  //   Selection controller: boardCurveSelectionController
+  //····················································································································
+
+  var boardCurveSelectionController = SelectionController_ProjectDocument_boardCurveSelectionController ()
+
+  //····················································································································
   //   Array controller: boardObjectsController
   //····················································································································
 
@@ -115,18 +127,6 @@ import Cocoa
   //····················································································································
 
   var componentSymbolSelectionController = SelectionController_ProjectDocument_componentSymbolSelectionController ()
-
-  //····················································································································
-  //   Array controller: boardCurveObjectsController
-  //····················································································································
-
-  var boardCurveObjectsController = Controller_ProjectDocument_boardCurveObjectsController ()
-
-  //····················································································································
-  //   Selection controller: boardCurveSelectionController
-  //····················································································································
-
-  var boardCurveSelectionController = SelectionController_ProjectDocument_boardCurveSelectionController ()
 
   //····················································································································
   //   Selection controller: mDataSelection
@@ -1076,6 +1076,10 @@ import Cocoa
       self.projectFontController.addExplorer (name: "projectFontController", y:&y, view:view)
     //--- Array controller property: projectDeviceController
       self.projectDeviceController.addExplorer (name: "projectDeviceController", y:&y, view:view)
+    //--- Array controller property: boardCurveObjectsController
+      self.boardCurveObjectsController.addExplorer (name: "boardCurveObjectsController", y:&y, view:view)
+    //--- Selection controller property: boardCurveSelectionController
+      self.boardCurveSelectionController.addExplorer (name: "boardCurveSelectionController", y:&y, view:view)
     //--- Array controller property: boardObjectsController
       self.boardObjectsController.addExplorer (name: "boardObjectsController", y:&y, view:view)
     //--- Selection controller property: boardTrackSelectionController
@@ -1106,10 +1110,6 @@ import Cocoa
       self.schematicLabelSelectionController.addExplorer (name: "schematicLabelSelectionController", y:&y, view:view)
     //--- Selection controller property: componentSymbolSelectionController
       self.componentSymbolSelectionController.addExplorer (name: "componentSymbolSelectionController", y:&y, view:view)
-    //--- Array controller property: boardCurveObjectsController
-      self.boardCurveObjectsController.addExplorer (name: "boardCurveObjectsController", y:&y, view:view)
-    //--- Selection controller property: boardCurveSelectionController
-      self.boardCurveSelectionController.addExplorer (name: "boardCurveSelectionController", y:&y, view:view)
     //--- Selection controller property: mDataSelection
       self.mDataSelection.addExplorer (name: "mDataSelection", y:&y, view:view)
     //---
@@ -1596,6 +1596,18 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Array controller property: boardCurveObjectsController
+    self.boardCurveObjectsController.bind_model (self.rootObject.mBorderCurves_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: boardCurveSelectionController
+    self.boardCurveSelectionController.bind_selection (model: self.boardCurveObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Array controller property: boardObjectsController
     self.boardObjectsController.bind_model (self.rootObject.mBoardObjects_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
@@ -1682,18 +1694,6 @@ import Cocoa
     }
   //--- Selection controller property: componentSymbolSelectionController
     self.componentSymbolSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Array controller property: boardCurveObjectsController
-    self.boardCurveObjectsController.bind_model (self.rootObject.mBorderCurves_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Selection controller property: boardCurveSelectionController
-    self.boardCurveSelectionController.bind_selection (model: self.boardCurveObjectsController.selectedArray_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3508,6 +3508,10 @@ import Cocoa
     self.projectFontController.unbind_model ()
   //--- Array controller property: projectDeviceController
     self.projectDeviceController.unbind_model ()
+  //--- Array controller property: boardCurveObjectsController
+    self.boardCurveObjectsController.unbind_model ()
+  //--- Selection controller property: boardCurveSelectionController
+    self.boardCurveSelectionController.unbind_selection ()
   //--- Array controller property: boardObjectsController
     self.boardObjectsController.unbind_model ()
   //--- Selection controller property: boardTrackSelectionController
@@ -3538,10 +3542,6 @@ import Cocoa
     self.schematicLabelSelectionController.unbind_selection ()
   //--- Selection controller property: componentSymbolSelectionController
     self.componentSymbolSelectionController.unbind_selection ()
-  //--- Array controller property: boardCurveObjectsController
-    self.boardCurveObjectsController.unbind_model ()
-  //--- Selection controller property: boardCurveSelectionController
-    self.boardCurveSelectionController.unbind_selection ()
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
     // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayComponentNet_property)
