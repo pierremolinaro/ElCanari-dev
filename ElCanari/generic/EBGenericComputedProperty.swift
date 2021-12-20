@@ -8,7 +8,7 @@ import Cocoa
 //   EBGenericComputedProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGenericComputedProperty <T : Equatable> : EBObservableMutableProperty <T>, EBObserverProtocol {
+final class EBGenericComputedProperty <T> : EBObservableMutableProperty <T>, EBObserverProtocol {
 
   //····················································································································
 

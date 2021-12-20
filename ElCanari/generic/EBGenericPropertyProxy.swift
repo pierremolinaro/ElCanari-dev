@@ -8,7 +8,7 @@ import Cocoa
 //   EBGenericPropertyProxy <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGenericPropertyProxy <T : Equatable> : EBObservableMutableProperty <T>, EBObserverProtocol {
+final class EBGenericPropertyProxy <T> : EBObservableMutableProperty <T>, EBObserverProtocol {
 
   //····················································································································
 
