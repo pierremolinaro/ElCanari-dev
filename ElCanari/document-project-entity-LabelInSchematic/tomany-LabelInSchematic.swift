@@ -76,7 +76,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
   final func addEBObserversOf_mOrientation_toElementsOfSet (_ inSet : EBReferenceSet <LabelInSchematic>) {
     if !self.mObserversOf_mOrientation.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mOrientation.apply { (_ observer : EBObserverProtocol) in
           managedObject.mOrientation_property.addEBObserver (observer)
         }
       }
@@ -86,7 +86,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
   //····················································································································
 
   final func removeEBObserversOf_mOrientation_fromElementsOfSet (_ inSet : EBReferenceSet <LabelInSchematic>) {
-    self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mOrientation.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mOrientation_property.removeEBObserver (observer)
@@ -134,7 +134,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
 
   final func addEBObserversOf_location_toElementsOfSet (_ inSet : EBReferenceSet <LabelInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_location.apply { (_ observer : EBEvent) in
+      self.mObserversOf_location.apply { (_ observer : EBObserverProtocol) in
         managedObject.location_property.addEBObserver (observer)
       }
     }
@@ -144,7 +144,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
 
   final func removeEBObserversOf_location_fromElementsOfSet (_ inSet : EBReferenceSet <LabelInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_location.apply { (_ observer : EBEvent) in
+      self.mObserversOf_location.apply { (_ observer : EBObserverProtocol) in
         managedObject.location_property.removeEBObserver (observer)
       }
     }
@@ -190,7 +190,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
 
   final func addEBObserversOf_netName_toElementsOfSet (_ inSet : EBReferenceSet <LabelInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netName.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netName.apply { (_ observer : EBObserverProtocol) in
         managedObject.netName_property.addEBObserver (observer)
       }
     }
@@ -200,7 +200,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
 
   final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : EBReferenceSet <LabelInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netName.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netName.apply { (_ observer : EBObserverProtocol) in
         managedObject.netName_property.removeEBObserver (observer)
       }
     }
@@ -246,7 +246,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <LabelInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -256,7 +256,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <LabelInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -302,7 +302,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
 
   final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : EBReferenceSet <LabelInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netClassName.apply { (_ observer : EBObserverProtocol) in
         managedObject.netClassName_property.addEBObserver (observer)
       }
     }
@@ -312,7 +312,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
 
   final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : EBReferenceSet <LabelInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netClassName.apply { (_ observer : EBObserverProtocol) in
         managedObject.netClassName_property.removeEBObserver (observer)
       }
     }
@@ -358,7 +358,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <LabelInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -368,7 +368,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <LabelInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }

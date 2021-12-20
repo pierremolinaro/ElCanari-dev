@@ -80,7 +80,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
     if !self.mObserversOf_y.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_y.apply { (_ observer : EBEvent) in
+        self.mObserversOf_y.apply { (_ observer : EBObserverProtocol) in
           managedObject.y_property.addEBObserver (observer)
         }
       }
@@ -90,7 +90,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
-    self.mObserversOf_y.apply { (_ observer : EBEvent) in
+    self.mObserversOf_y.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y_property.removeEBObserver (observer)
@@ -139,7 +139,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
   final func addEBObserversOf_width_toElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
     if !self.mObserversOf_width.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_width.apply { (_ observer : EBEvent) in
+        self.mObserversOf_width.apply { (_ observer : EBObserverProtocol) in
           managedObject.width_property.addEBObserver (observer)
         }
       }
@@ -149,7 +149,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
   //····················································································································
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
-    self.mObserversOf_width.apply { (_ observer : EBEvent) in
+    self.mObserversOf_width.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.width_property.removeEBObserver (observer)
@@ -198,7 +198,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
   final func addEBObserversOf_height_toElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
     if !self.mObserversOf_height.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_height.apply { (_ observer : EBEvent) in
+        self.mObserversOf_height.apply { (_ observer : EBObserverProtocol) in
           managedObject.height_property.addEBObserver (observer)
         }
       }
@@ -208,7 +208,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
   //····················································································································
 
   final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
-    self.mObserversOf_height.apply { (_ observer : EBEvent) in
+    self.mObserversOf_height.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.height_property.removeEBObserver (observer)
@@ -257,7 +257,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
     if !self.mObserversOf_x.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_x.apply { (_ observer : EBEvent) in
+        self.mObserversOf_x.apply { (_ observer : EBObserverProtocol) in
           managedObject.x_property.addEBObserver (observer)
         }
       }
@@ -267,7 +267,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
-    self.mObserversOf_x.apply { (_ observer : EBEvent) in
+    self.mObserversOf_x.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x_property.removeEBObserver (observer)
@@ -315,7 +315,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
+      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBObserverProtocol) in
         managedObject.strokeBezierPath_property.addEBObserver (observer)
       }
     }
@@ -325,7 +325,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
+      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBObserverProtocol) in
         managedObject.strokeBezierPath_property.removeEBObserver (observer)
       }
     }
@@ -371,7 +371,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -381,7 +381,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
@@ -427,7 +427,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -437,7 +437,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -483,7 +483,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -493,7 +493,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
         managedObject.issues_property.removeEBObserver (observer)
       }
     }

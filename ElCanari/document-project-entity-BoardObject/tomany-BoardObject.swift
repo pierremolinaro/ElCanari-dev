@@ -85,7 +85,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func addEBObserversOf_isPlacedInBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_isPlacedInBoard.apply { (_ observer : EBEvent) in
+      self.mObserversOf_isPlacedInBoard.apply { (_ observer : EBObserverProtocol) in
         managedObject.isPlacedInBoard_property.addEBObserver (observer)
       }
     }
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func removeEBObserversOf_isPlacedInBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_isPlacedInBoard.apply { (_ observer : EBEvent) in
+      self.mObserversOf_isPlacedInBoard.apply { (_ observer : EBObserverProtocol) in
         managedObject.isPlacedInBoard_property.removeEBObserver (observer)
       }
     }
@@ -141,7 +141,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -151,7 +151,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
         managedObject.issues_property.removeEBObserver (observer)
       }
     }
@@ -197,7 +197,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func addEBObserversOf_isVia_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_isVia.apply { (_ observer : EBEvent) in
+      self.mObserversOf_isVia.apply { (_ observer : EBObserverProtocol) in
         managedObject.isVia_property.addEBObserver (observer)
       }
     }
@@ -207,7 +207,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func removeEBObserversOf_isVia_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_isVia.apply { (_ observer : EBEvent) in
+      self.mObserversOf_isVia.apply { (_ observer : EBObserverProtocol) in
         managedObject.isVia_property.removeEBObserver (observer)
       }
     }
@@ -253,7 +253,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func addEBObserversOf_trackLengthInCanariUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_trackLengthInCanariUnit.apply { (_ observer : EBEvent) in
+      self.mObserversOf_trackLengthInCanariUnit.apply { (_ observer : EBObserverProtocol) in
         managedObject.trackLengthInCanariUnit_property.addEBObserver (observer)
       }
     }
@@ -263,7 +263,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func removeEBObserversOf_trackLengthInCanariUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_trackLengthInCanariUnit.apply { (_ observer : EBEvent) in
+      self.mObserversOf_trackLengthInCanariUnit.apply { (_ observer : EBObserverProtocol) in
         managedObject.trackLengthInCanariUnit_property.removeEBObserver (observer)
       }
     }
@@ -309,7 +309,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBObserverProtocol) in
         managedObject.signatureForERCChecking_property.addEBObserver (observer)
       }
     }
@@ -319,7 +319,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBObserverProtocol) in
         managedObject.signatureForERCChecking_property.removeEBObserver (observer)
       }
     }
@@ -365,7 +365,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func addEBObserversOf_netNameAndPadLocation_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBObserverProtocol) in
         managedObject.netNameAndPadLocation_property.addEBObserver (observer)
       }
     }
@@ -375,7 +375,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBObserverProtocol) in
         managedObject.netNameAndPadLocation_property.removeEBObserver (observer)
       }
     }
@@ -421,7 +421,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func addEBObserversOf_componentName_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_componentName.apply { (_ observer : EBEvent) in
+      self.mObserversOf_componentName.apply { (_ observer : EBObserverProtocol) in
         managedObject.componentName_property.addEBObserver (observer)
       }
     }
@@ -431,7 +431,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func removeEBObserversOf_componentName_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_componentName.apply { (_ observer : EBEvent) in
+      self.mObserversOf_componentName.apply { (_ observer : EBObserverProtocol) in
         managedObject.componentName_property.removeEBObserver (observer)
       }
     }
@@ -477,7 +477,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -487,7 +487,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -533,7 +533,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -543,7 +543,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
@@ -589,7 +589,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func addEBObserversOf_errorOrWarningIssueSize_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_errorOrWarningIssueSize.apply { (_ observer : EBEvent) in
+      self.mObserversOf_errorOrWarningIssueSize.apply { (_ observer : EBObserverProtocol) in
         managedObject.errorOrWarningIssueSize_property.addEBObserver (observer)
       }
     }
@@ -599,7 +599,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func removeEBObserversOf_errorOrWarningIssueSize_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_errorOrWarningIssueSize.apply { (_ observer : EBEvent) in
+      self.mObserversOf_errorOrWarningIssueSize.apply { (_ observer : EBObserverProtocol) in
         managedObject.errorOrWarningIssueSize_property.removeEBObserver (observer)
       }
     }
@@ -645,7 +645,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func addEBObserversOf_trackSide_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_trackSide.apply { (_ observer : EBEvent) in
+      self.mObserversOf_trackSide.apply { (_ observer : EBObserverProtocol) in
         managedObject.trackSide_property.addEBObserver (observer)
       }
     }
@@ -655,7 +655,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   final func removeEBObserversOf_trackSide_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_trackSide.apply { (_ observer : EBEvent) in
+      self.mObserversOf_trackSide.apply { (_ observer : EBObserverProtocol) in
         managedObject.trackSide_property.removeEBObserver (observer)
       }
     }

@@ -14,7 +14,7 @@ class EBAbstractProperty : EBEvent {
 
   //····················································································································
 
-  final func addEBObserver (_ inObserver : EBEvent) {
+  final func addEBObserver (_ inObserver : EBObserverProtocol) {
     self.mObservers.insert (inObserver)
     #if BUILD_OBJECT_EXPLORER
       self.updateObserverExplorer ()
@@ -26,7 +26,7 @@ class EBAbstractProperty : EBEvent {
 
   final func addEBObserversFrom (_ ioObserverSet : inout EBWeakEventSet) {
     if !ioObserverSet.isEmpty {
-      ioObserverSet.apply { (_ observer : EBEvent) in
+      ioObserverSet.apply { (_ observer : EBObserverProtocol) in
         self.mObservers.insert (observer)
         observer.observedObjectDidChange ()
       }
@@ -38,7 +38,7 @@ class EBAbstractProperty : EBEvent {
 
   //····················································································································
 
-  final func removeEBObserver (_ inObserver : EBEvent) {
+  final func removeEBObserver (_ inObserver : EBObserverProtocol) {
     self.mObservers.remove (inObserver)
     #if BUILD_OBJECT_EXPLORER
       self.updateObserverExplorer ()
@@ -49,7 +49,7 @@ class EBAbstractProperty : EBEvent {
 
   final func removeEBObserversFrom (_ ioObserverSet : inout EBWeakEventSet) {
     if !ioObserverSet.isEmpty {
-      ioObserverSet.apply {(_ observer : EBEvent) in
+      ioObserverSet.apply {(_ observer : EBObserverProtocol) in
         self.mObservers.remove (observer)
       }
       #if BUILD_OBJECT_EXPLORER
@@ -61,7 +61,7 @@ class EBAbstractProperty : EBEvent {
   //····················································································································
 
   override func observedObjectDidChange () {
-    self.mObservers.apply ( {(_ observer : EBEvent) in observer.observedObjectDidChange () })
+    self.mObservers.apply ( {(_ observer : EBObserverProtocol) in observer.observedObjectDidChange () })
   }
 
   //····················································································································
@@ -82,8 +82,8 @@ class EBAbstractProperty : EBEvent {
         let observerCount = self.mObservers.nonNilEntryCount
         observerExplorer.addItem (withTitle: String (observerCount))
         observerExplorer.isEnabled = observerCount > 0
-        self.mObservers.apply ( {(_ observer : EBEvent) in
-          let stringValue = observer.explorerIndexString + " - " + String (describing: type (of: observer))
+        self.mObservers.apply ( {(_ observer : EBObserverProtocol) in
+          let stringValue = explorerObjectIndexString (observer.objectIndex) + " - " + String (describing: type (of: observer))
           observerExplorer.addItem (withTitle: stringValue)
         })
       }

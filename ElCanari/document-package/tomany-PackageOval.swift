@@ -88,7 +88,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     if !self.mObserversOf_y.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_y.apply { (_ observer : EBEvent) in
+        self.mObserversOf_y.apply { (_ observer : EBObserverProtocol) in
           managedObject.y_property.addEBObserver (observer)
         }
       }
@@ -98,7 +98,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
-    self.mObserversOf_y.apply { (_ observer : EBEvent) in
+    self.mObserversOf_y.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y_property.removeEBObserver (observer)
@@ -147,7 +147,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func addEBObserversOf_width_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     if !self.mObserversOf_width.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_width.apply { (_ observer : EBEvent) in
+        self.mObserversOf_width.apply { (_ observer : EBObserverProtocol) in
           managedObject.width_property.addEBObserver (observer)
         }
       }
@@ -157,7 +157,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
-    self.mObserversOf_width.apply { (_ observer : EBEvent) in
+    self.mObserversOf_width.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.width_property.removeEBObserver (observer)
@@ -206,7 +206,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func addEBObserversOf_height_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     if !self.mObserversOf_height.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_height.apply { (_ observer : EBEvent) in
+        self.mObserversOf_height.apply { (_ observer : EBObserverProtocol) in
           managedObject.height_property.addEBObserver (observer)
         }
       }
@@ -216,7 +216,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
-    self.mObserversOf_height.apply { (_ observer : EBEvent) in
+    self.mObserversOf_height.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.height_property.removeEBObserver (observer)
@@ -265,7 +265,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func addEBObserversOf_xUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     if !self.mObserversOf_xUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_xUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_xUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.xUnit_property.addEBObserver (observer)
         }
       }
@@ -275,7 +275,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_xUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
-    self.mObserversOf_xUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_xUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.xUnit_property.removeEBObserver (observer)
@@ -324,7 +324,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func addEBObserversOf_yUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     if !self.mObserversOf_yUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_yUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_yUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.yUnit_property.addEBObserver (observer)
         }
       }
@@ -334,7 +334,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_yUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
-    self.mObserversOf_yUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_yUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.yUnit_property.removeEBObserver (observer)
@@ -383,7 +383,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func addEBObserversOf_widthUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     if !self.mObserversOf_widthUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_widthUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_widthUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.widthUnit_property.addEBObserver (observer)
         }
       }
@@ -393,7 +393,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_widthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
-    self.mObserversOf_widthUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_widthUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.widthUnit_property.removeEBObserver (observer)
@@ -442,7 +442,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func addEBObserversOf_heightUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     if !self.mObserversOf_heightUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_heightUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_heightUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.heightUnit_property.addEBObserver (observer)
         }
       }
@@ -452,7 +452,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_heightUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
-    self.mObserversOf_heightUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_heightUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.heightUnit_property.removeEBObserver (observer)
@@ -501,7 +501,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     if !self.mObserversOf_x.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_x.apply { (_ observer : EBEvent) in
+        self.mObserversOf_x.apply { (_ observer : EBObserverProtocol) in
           managedObject.x_property.addEBObserver (observer)
         }
       }
@@ -511,7 +511,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
-    self.mObserversOf_x.apply { (_ observer : EBEvent) in
+    self.mObserversOf_x.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x_property.removeEBObserver (observer)
@@ -559,7 +559,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
+      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBObserverProtocol) in
         managedObject.strokeBezierPath_property.addEBObserver (observer)
       }
     }
@@ -569,7 +569,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
+      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBObserverProtocol) in
         managedObject.strokeBezierPath_property.removeEBObserver (observer)
       }
     }
@@ -615,7 +615,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -625,7 +625,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
@@ -671,7 +671,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -681,7 +681,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -727,7 +727,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -737,7 +737,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
         managedObject.issues_property.removeEBObserver (observer)
       }
     }

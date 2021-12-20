@@ -70,7 +70,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   final func addEBObserversOf_mFileName_toElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
     if !self.mObserversOf_mFileName.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mFileName.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mFileName.apply { (_ observer : EBObserverProtocol) in
           managedObject.mFileName_property.addEBObserver (observer)
         }
       }
@@ -80,7 +80,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   //····················································································································
 
   final func removeEBObserversOf_mFileName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
-    self.mObserversOf_mFileName.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mFileName.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mFileName_property.removeEBObserver (observer)
@@ -129,7 +129,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   final func addEBObserversOf_mFileData_toElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
     if !self.mObserversOf_mFileData.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mFileData.apply { (_ observer : EBObserverProtocol) in
           managedObject.mFileData_property.addEBObserver (observer)
         }
       }
@@ -139,7 +139,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   //····················································································································
 
   final func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
-    self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mFileData.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mFileData_property.removeEBObserver (observer)
@@ -187,7 +187,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   final func addEBObserversOf_fileSize_toElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
     for managedObject in inSet.values {
-      self.mObserversOf_fileSize.apply { (_ observer : EBEvent) in
+      self.mObserversOf_fileSize.apply { (_ observer : EBObserverProtocol) in
         managedObject.fileSize_property.addEBObserver (observer)
       }
     }
@@ -197,7 +197,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   final func removeEBObserversOf_fileSize_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
     for managedObject in inSet.values {
-      self.mObserversOf_fileSize.apply { (_ observer : EBEvent) in
+      self.mObserversOf_fileSize.apply { (_ observer : EBObserverProtocol) in
         managedObject.fileSize_property.removeEBObserver (observer)
       }
     }

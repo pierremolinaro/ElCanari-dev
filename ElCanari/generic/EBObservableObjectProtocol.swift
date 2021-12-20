@@ -7,8 +7,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol EBObservableObjectProtocol {
-  func addEBObserver (_ inObserver : EBEvent)
-  func removeEBObserver (_ inObserver : EBEvent)
+  func addEBObserver (_ inObserver : EBObserverProtocol)
+  func removeEBObserver (_ inObserver : EBObserverProtocol)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

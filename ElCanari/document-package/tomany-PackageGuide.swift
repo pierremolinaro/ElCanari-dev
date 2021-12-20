@@ -86,7 +86,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   final func addEBObserversOf_y1_toElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     if !self.mObserversOf_y1.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_y1.apply { (_ observer : EBEvent) in
+        self.mObserversOf_y1.apply { (_ observer : EBObserverProtocol) in
           managedObject.y1_property.addEBObserver (observer)
         }
       }
@@ -96,7 +96,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   //····················································································································
 
   final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
-    self.mObserversOf_y1.apply { (_ observer : EBEvent) in
+    self.mObserversOf_y1.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y1_property.removeEBObserver (observer)
@@ -145,7 +145,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   final func addEBObserversOf_x2_toElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     if !self.mObserversOf_x2.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_x2.apply { (_ observer : EBEvent) in
+        self.mObserversOf_x2.apply { (_ observer : EBObserverProtocol) in
           managedObject.x2_property.addEBObserver (observer)
         }
       }
@@ -155,7 +155,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   //····················································································································
 
   final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
-    self.mObserversOf_x2.apply { (_ observer : EBEvent) in
+    self.mObserversOf_x2.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x2_property.removeEBObserver (observer)
@@ -204,7 +204,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   final func addEBObserversOf_y2_toElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     if !self.mObserversOf_y2.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_y2.apply { (_ observer : EBEvent) in
+        self.mObserversOf_y2.apply { (_ observer : EBObserverProtocol) in
           managedObject.y2_property.addEBObserver (observer)
         }
       }
@@ -214,7 +214,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   //····················································································································
 
   final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
-    self.mObserversOf_y2.apply { (_ observer : EBEvent) in
+    self.mObserversOf_y2.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y2_property.removeEBObserver (observer)
@@ -263,7 +263,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   final func addEBObserversOf_x1Unit_toElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     if !self.mObserversOf_x1Unit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_x1Unit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_x1Unit.apply { (_ observer : EBObserverProtocol) in
           managedObject.x1Unit_property.addEBObserver (observer)
         }
       }
@@ -273,7 +273,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   //····················································································································
 
   final func removeEBObserversOf_x1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
-    self.mObserversOf_x1Unit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_x1Unit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x1Unit_property.removeEBObserver (observer)
@@ -322,7 +322,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   final func addEBObserversOf_y1Unit_toElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     if !self.mObserversOf_y1Unit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_y1Unit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_y1Unit.apply { (_ observer : EBObserverProtocol) in
           managedObject.y1Unit_property.addEBObserver (observer)
         }
       }
@@ -332,7 +332,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   //····················································································································
 
   final func removeEBObserversOf_y1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
-    self.mObserversOf_y1Unit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_y1Unit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y1Unit_property.removeEBObserver (observer)
@@ -381,7 +381,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   final func addEBObserversOf_x2Unit_toElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     if !self.mObserversOf_x2Unit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_x2Unit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_x2Unit.apply { (_ observer : EBObserverProtocol) in
           managedObject.x2Unit_property.addEBObserver (observer)
         }
       }
@@ -391,7 +391,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   //····················································································································
 
   final func removeEBObserversOf_x2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
-    self.mObserversOf_x2Unit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_x2Unit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x2Unit_property.removeEBObserver (observer)
@@ -440,7 +440,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   final func addEBObserversOf_y2Unit_toElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     if !self.mObserversOf_y2Unit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_y2Unit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_y2Unit.apply { (_ observer : EBObserverProtocol) in
           managedObject.y2Unit_property.addEBObserver (observer)
         }
       }
@@ -450,7 +450,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   //····················································································································
 
   final func removeEBObserversOf_y2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
-    self.mObserversOf_y2Unit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_y2Unit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.y2Unit_property.removeEBObserver (observer)
@@ -499,7 +499,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   final func addEBObserversOf_x1_toElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     if !self.mObserversOf_x1.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_x1.apply { (_ observer : EBEvent) in
+        self.mObserversOf_x1.apply { (_ observer : EBObserverProtocol) in
           managedObject.x1_property.addEBObserver (observer)
         }
       }
@@ -509,7 +509,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   //····················································································································
 
   final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
-    self.mObserversOf_x1.apply { (_ observer : EBEvent) in
+    self.mObserversOf_x1.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.x1_property.removeEBObserver (observer)
@@ -557,7 +557,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -567,7 +567,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
@@ -613,7 +613,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -623,7 +623,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -669,7 +669,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -679,7 +679,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <PackageGuide>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
         managedObject.issues_property.removeEBObserver (observer)
       }
     }

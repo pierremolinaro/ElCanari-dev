@@ -80,7 +80,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func addEBObserversOf_mNetName_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     if !self.mObserversOf_mNetName.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mNetName.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mNetName.apply { (_ observer : EBObserverProtocol) in
           managedObject.mNetName_property.addEBObserver (observer)
         }
       }
@@ -90,7 +90,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   //····················································································································
 
   final func removeEBObserversOf_mNetName_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
-    self.mObserversOf_mNetName.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mNetName.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mNetName_property.removeEBObserver (observer)
@@ -138,7 +138,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netClassName.apply { (_ observer : EBObserverProtocol) in
         managedObject.netClassName_property.addEBObserver (observer)
       }
     }
@@ -148,7 +148,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netClassName.apply { (_ observer : EBObserverProtocol) in
         managedObject.netClassName_property.removeEBObserver (observer)
       }
     }
@@ -194,7 +194,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func addEBObserversOf_netClassTrackWidth_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netClassTrackWidth.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netClassTrackWidth.apply { (_ observer : EBObserverProtocol) in
         managedObject.netClassTrackWidth_property.addEBObserver (observer)
       }
     }
@@ -204,7 +204,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netClassTrackWidth.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netClassTrackWidth.apply { (_ observer : EBObserverProtocol) in
         managedObject.netClassTrackWidth_property.removeEBObserver (observer)
       }
     }
@@ -250,7 +250,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netClassViaHoleDiameter.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netClassViaHoleDiameter.apply { (_ observer : EBObserverProtocol) in
         managedObject.netClassViaHoleDiameter_property.addEBObserver (observer)
       }
     }
@@ -260,7 +260,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netClassViaHoleDiameter.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netClassViaHoleDiameter.apply { (_ observer : EBObserverProtocol) in
         managedObject.netClassViaHoleDiameter_property.removeEBObserver (observer)
       }
     }
@@ -306,7 +306,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netClassViaPadDiameter.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netClassViaPadDiameter.apply { (_ observer : EBObserverProtocol) in
         managedObject.netClassViaPadDiameter_property.addEBObserver (observer)
       }
     }
@@ -316,7 +316,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netClassViaPadDiameter.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netClassViaPadDiameter.apply { (_ observer : EBObserverProtocol) in
         managedObject.netClassViaPadDiameter_property.removeEBObserver (observer)
       }
     }
@@ -362,7 +362,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func addEBObserversOf_wireColor_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_wireColor.apply { (_ observer : EBEvent) in
+      self.mObserversOf_wireColor.apply { (_ observer : EBObserverProtocol) in
         managedObject.wireColor_property.addEBObserver (observer)
       }
     }
@@ -372,7 +372,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func removeEBObserversOf_wireColor_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_wireColor.apply { (_ observer : EBEvent) in
+      self.mObserversOf_wireColor.apply { (_ observer : EBObserverProtocol) in
         managedObject.wireColor_property.removeEBObserver (observer)
       }
     }
@@ -418,7 +418,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func addEBObserversOf_netSchematicPointsInfo_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netSchematicPointsInfo.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netSchematicPointsInfo.apply { (_ observer : EBObserverProtocol) in
         managedObject.netSchematicPointsInfo_property.addEBObserver (observer)
       }
     }
@@ -428,7 +428,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func removeEBObserversOf_netSchematicPointsInfo_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netSchematicPointsInfo.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netSchematicPointsInfo.apply { (_ observer : EBObserverProtocol) in
         managedObject.netSchematicPointsInfo_property.removeEBObserver (observer)
       }
     }
@@ -474,7 +474,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func addEBObserversOf_trackCount_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_trackCount.apply { (_ observer : EBEvent) in
+      self.mObserversOf_trackCount.apply { (_ observer : EBObserverProtocol) in
         managedObject.trackCount_property.addEBObserver (observer)
       }
     }
@@ -484,7 +484,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   final func removeEBObserversOf_trackCount_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_trackCount.apply { (_ observer : EBEvent) in
+      self.mObserversOf_trackCount.apply { (_ observer : EBObserverProtocol) in
         managedObject.trackCount_property.removeEBObserver (observer)
       }
     }

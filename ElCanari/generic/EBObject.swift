@@ -65,7 +65,7 @@ class EBSwiftBaseObject : EBUserClassNameProtocol, ObjectIndexProtocol {
 
   //····················································································································
 
-  final private let objectIndex : Int
+  final let objectIndex : Int
 
   //····················································································································
 
@@ -100,7 +100,7 @@ class EBSwiftBaseObject : EBUserClassNameProtocol, ObjectIndexProtocol {
 private let explorerLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L",
                                "M", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
-private func explorerObjectIndexString (_ idx : Int) -> String {
+func explorerObjectIndexString (_ idx : Int) -> String {
   var result = String (idx % 10)
   var n = idx / 10
   result += "\(n % 10)"

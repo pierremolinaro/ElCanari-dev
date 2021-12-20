@@ -170,7 +170,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_selectedPageIndex_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_selectedPageIndex.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_selectedPageIndex.apply { (_ observer : EBEvent) in
+        self.mObserversOf_selectedPageIndex.apply { (_ observer : EBObserverProtocol) in
           managedObject.selectedPageIndex_property.addEBObserver (observer)
         }
       }
@@ -180,7 +180,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_selectedPageIndex_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_selectedPageIndex.apply { (_ observer : EBEvent) in
+    self.mObserversOf_selectedPageIndex.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.selectedPageIndex_property.removeEBObserver (observer)
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_selectedInspector_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_selectedInspector.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_selectedInspector.apply { (_ observer : EBEvent) in
+        self.mObserversOf_selectedInspector.apply { (_ observer : EBObserverProtocol) in
           managedObject.selectedInspector_property.addEBObserver (observer)
         }
       }
@@ -239,7 +239,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_selectedInspector_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_selectedInspector.apply { (_ observer : EBEvent) in
+    self.mObserversOf_selectedInspector.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.selectedInspector_property.removeEBObserver (observer)
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_comments_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_comments.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_comments.apply { (_ observer : EBEvent) in
+        self.mObserversOf_comments.apply { (_ observer : EBObserverProtocol) in
           managedObject.comments_property.addEBObserver (observer)
         }
       }
@@ -298,7 +298,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_comments.apply { (_ observer : EBEvent) in
+    self.mObserversOf_comments.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.comments_property.removeEBObserver (observer)
@@ -347,7 +347,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_program_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_program.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_program.apply { (_ observer : EBEvent) in
+        self.mObserversOf_program.apply { (_ observer : EBObserverProtocol) in
           managedObject.program_property.addEBObserver (observer)
         }
       }
@@ -357,7 +357,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_program_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_program.apply { (_ observer : EBEvent) in
+    self.mObserversOf_program.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.program_property.removeEBObserver (observer)
@@ -406,7 +406,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_horizontalFlip_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_horizontalFlip.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_horizontalFlip.apply { (_ observer : EBEvent) in
+        self.mObserversOf_horizontalFlip.apply { (_ observer : EBObserverProtocol) in
           managedObject.horizontalFlip_property.addEBObserver (observer)
         }
       }
@@ -416,7 +416,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_horizontalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_horizontalFlip.apply { (_ observer : EBEvent) in
+    self.mObserversOf_horizontalFlip.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.horizontalFlip_property.removeEBObserver (observer)
@@ -465,7 +465,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_verticalFlip_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_verticalFlip.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_verticalFlip.apply { (_ observer : EBEvent) in
+        self.mObserversOf_verticalFlip.apply { (_ observer : EBObserverProtocol) in
           managedObject.verticalFlip_property.addEBObserver (observer)
         }
       }
@@ -475,7 +475,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_verticalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_verticalFlip.apply { (_ observer : EBEvent) in
+    self.mObserversOf_verticalFlip.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.verticalFlip_property.removeEBObserver (observer)
@@ -524,7 +524,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_gridStyle_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_gridStyle.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_gridStyle.apply { (_ observer : EBEvent) in
+        self.mObserversOf_gridStyle.apply { (_ observer : EBObserverProtocol) in
           managedObject.gridStyle_property.addEBObserver (observer)
         }
       }
@@ -534,7 +534,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_gridStyle_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_gridStyle.apply { (_ observer : EBEvent) in
+    self.mObserversOf_gridStyle.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.gridStyle_property.removeEBObserver (observer)
@@ -583,7 +583,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_gridStep_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_gridStep.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_gridStep.apply { (_ observer : EBEvent) in
+        self.mObserversOf_gridStep.apply { (_ observer : EBObserverProtocol) in
           managedObject.gridStep_property.addEBObserver (observer)
         }
       }
@@ -593,7 +593,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_gridStep_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_gridStep.apply { (_ observer : EBEvent) in
+    self.mObserversOf_gridStep.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.gridStep_property.removeEBObserver (observer)
@@ -642,7 +642,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_gridStepUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_gridStepUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_gridStepUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_gridStepUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.gridStepUnit_property.addEBObserver (observer)
         }
       }
@@ -652,7 +652,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_gridStepUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_gridStepUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_gridStepUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.gridStepUnit_property.removeEBObserver (observer)
@@ -701,7 +701,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_gridDisplayFactor_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_gridDisplayFactor.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_gridDisplayFactor.apply { (_ observer : EBEvent) in
+        self.mObserversOf_gridDisplayFactor.apply { (_ observer : EBObserverProtocol) in
           managedObject.gridDisplayFactor_property.addEBObserver (observer)
         }
       }
@@ -711,7 +711,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_gridDisplayFactor.apply { (_ observer : EBEvent) in
+    self.mObserversOf_gridDisplayFactor.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.gridDisplayFactor_property.removeEBObserver (observer)
@@ -760,7 +760,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_zoom_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_zoom.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_zoom.apply { (_ observer : EBEvent) in
+        self.mObserversOf_zoom.apply { (_ observer : EBObserverProtocol) in
           managedObject.zoom_property.addEBObserver (observer)
         }
       }
@@ -770,7 +770,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_zoom_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_zoom.apply { (_ observer : EBEvent) in
+    self.mObserversOf_zoom.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.zoom_property.removeEBObserver (observer)
@@ -819,7 +819,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImageOpacity_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImageOpacity.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImageOpacity.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImageOpacity.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImageOpacity_property.addEBObserver (observer)
         }
       }
@@ -829,7 +829,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImageOpacity_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImageOpacity.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImageOpacity.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageOpacity_property.removeEBObserver (observer)
@@ -878,7 +878,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImagePageHorizontalFlip_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImagePageHorizontalFlip.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImagePageHorizontalFlip.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImagePageHorizontalFlip.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImagePageHorizontalFlip_property.addEBObserver (observer)
         }
       }
@@ -888,7 +888,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImagePageHorizontalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImagePageHorizontalFlip.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImagePageHorizontalFlip.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageHorizontalFlip_property.removeEBObserver (observer)
@@ -937,7 +937,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImagePageVerticalFlip_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImagePageVerticalFlip.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImagePageVerticalFlip.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImagePageVerticalFlip.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImagePageVerticalFlip_property.addEBObserver (observer)
         }
       }
@@ -947,7 +947,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImagePageVerticalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImagePageVerticalFlip.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImagePageVerticalFlip.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageVerticalFlip_property.removeEBObserver (observer)
@@ -996,7 +996,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImagePageGridStyle_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImagePageGridStyle.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImagePageGridStyle.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImagePageGridStyle.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImagePageGridStyle_property.addEBObserver (observer)
         }
       }
@@ -1006,7 +1006,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImagePageGridStyle_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImagePageGridStyle.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImagePageGridStyle.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageGridStyle_property.removeEBObserver (observer)
@@ -1055,7 +1055,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImagePageGridStep_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImagePageGridStep.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImagePageGridStep.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImagePageGridStep.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImagePageGridStep_property.addEBObserver (observer)
         }
       }
@@ -1065,7 +1065,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImagePageGridStep_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImagePageGridStep.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImagePageGridStep.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageGridStep_property.removeEBObserver (observer)
@@ -1114,7 +1114,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImagePageGridStepUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImagePageGridStepUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImagePageGridStepUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImagePageGridStepUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImagePageGridStepUnit_property.addEBObserver (observer)
         }
       }
@@ -1124,7 +1124,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImagePageGridStepUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImagePageGridStepUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImagePageGridStepUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageGridStepUnit_property.removeEBObserver (observer)
@@ -1173,7 +1173,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImagePageGridDisplayFactor_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImagePageGridDisplayFactor.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImagePageGridDisplayFactor.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImagePageGridDisplayFactor.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImagePageGridDisplayFactor_property.addEBObserver (observer)
         }
       }
@@ -1183,7 +1183,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImagePageGridDisplayFactor_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImagePageGridDisplayFactor.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImagePageGridDisplayFactor.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageGridDisplayFactor_property.removeEBObserver (observer)
@@ -1232,7 +1232,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImagePageZoom_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImagePageZoom.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImagePageZoom.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImagePageZoom.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImagePageZoom_property.addEBObserver (observer)
         }
       }
@@ -1242,7 +1242,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImagePageZoom_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImagePageZoom.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImagePageZoom.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageZoom_property.removeEBObserver (observer)
@@ -1291,7 +1291,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImagePageXPlacardUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImagePageXPlacardUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImagePageXPlacardUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImagePageXPlacardUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImagePageXPlacardUnit_property.addEBObserver (observer)
         }
       }
@@ -1301,7 +1301,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImagePageXPlacardUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImagePageXPlacardUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImagePageXPlacardUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageXPlacardUnit_property.removeEBObserver (observer)
@@ -1350,7 +1350,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImagePageYPlacardUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImagePageYPlacardUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImagePageYPlacardUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImagePageYPlacardUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImagePageYPlacardUnit_property.addEBObserver (observer)
         }
       }
@@ -1360,7 +1360,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImagePageYPlacardUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImagePageYPlacardUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImagePageYPlacardUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePageYPlacardUnit_property.removeEBObserver (observer)
@@ -1409,7 +1409,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImageSecondPointXUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImageSecondPointXUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImageSecondPointXUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImageSecondPointXUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImageSecondPointXUnit_property.addEBObserver (observer)
         }
       }
@@ -1419,7 +1419,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImageSecondPointXUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImageSecondPointXUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImageSecondPointXUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageSecondPointXUnit_property.removeEBObserver (observer)
@@ -1468,7 +1468,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImageSecondPointYUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImageSecondPointYUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImageSecondPointYUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImageSecondPointYUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImageSecondPointYUnit_property.addEBObserver (observer)
         }
       }
@@ -1478,7 +1478,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImageSecondPointYUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImageSecondPointYUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImageSecondPointYUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageSecondPointYUnit_property.removeEBObserver (observer)
@@ -1527,7 +1527,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImageFirstPointXOnLock_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImageFirstPointXOnLock.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImageFirstPointXOnLock.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImageFirstPointXOnLock.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImageFirstPointXOnLock_property.addEBObserver (observer)
         }
       }
@@ -1537,7 +1537,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImageFirstPointXOnLock_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImageFirstPointXOnLock.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImageFirstPointXOnLock.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageFirstPointXOnLock_property.removeEBObserver (observer)
@@ -1586,7 +1586,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImageFirstPointYOnLock_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImageFirstPointYOnLock.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImageFirstPointYOnLock.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImageFirstPointYOnLock.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImageFirstPointYOnLock_property.addEBObserver (observer)
         }
       }
@@ -1596,7 +1596,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImageFirstPointYOnLock_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImageFirstPointYOnLock.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImageFirstPointYOnLock.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageFirstPointYOnLock_property.removeEBObserver (observer)
@@ -1645,7 +1645,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImagePointsDxOnLock_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImagePointsDxOnLock.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImagePointsDxOnLock.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImagePointsDxOnLock.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImagePointsDxOnLock_property.addEBObserver (observer)
         }
       }
@@ -1655,7 +1655,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImagePointsDxOnLock_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImagePointsDxOnLock.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImagePointsDxOnLock.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePointsDxOnLock_property.removeEBObserver (observer)
@@ -1704,7 +1704,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImagePointsDyOnLock_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImagePointsDyOnLock.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImagePointsDyOnLock.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImagePointsDyOnLock.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImagePointsDyOnLock_property.addEBObserver (observer)
         }
       }
@@ -1714,7 +1714,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImagePointsDyOnLock_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImagePointsDyOnLock.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImagePointsDyOnLock.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImagePointsDyOnLock_property.removeEBObserver (observer)
@@ -1763,7 +1763,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImageScale_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImageScale.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImageScale.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImageScale.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImageScale_property.addEBObserver (observer)
         }
       }
@@ -1773,7 +1773,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImageScale_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImageScale.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImageScale.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageScale_property.removeEBObserver (observer)
@@ -1822,7 +1822,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImageRotationInRadians_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImageRotationInRadians.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImageRotationInRadians.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImageRotationInRadians.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImageRotationInRadians_property.addEBObserver (observer)
         }
       }
@@ -1832,7 +1832,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImageRotationInRadians_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImageRotationInRadians.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImageRotationInRadians.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageRotationInRadians_property.removeEBObserver (observer)
@@ -1881,7 +1881,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mDimensionUnitFirstModelPointX_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mDimensionUnitFirstModelPointX.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mDimensionUnitFirstModelPointX.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mDimensionUnitFirstModelPointX.apply { (_ observer : EBObserverProtocol) in
           managedObject.mDimensionUnitFirstModelPointX_property.addEBObserver (observer)
         }
       }
@@ -1891,7 +1891,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mDimensionUnitFirstModelPointX_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mDimensionUnitFirstModelPointX.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mDimensionUnitFirstModelPointX.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDimensionUnitFirstModelPointX_property.removeEBObserver (observer)
@@ -1940,7 +1940,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mDimensionUnitFirstModelPointY_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mDimensionUnitFirstModelPointY.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mDimensionUnitFirstModelPointY.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mDimensionUnitFirstModelPointY.apply { (_ observer : EBObserverProtocol) in
           managedObject.mDimensionUnitFirstModelPointY_property.addEBObserver (observer)
         }
       }
@@ -1950,7 +1950,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mDimensionUnitFirstModelPointY_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mDimensionUnitFirstModelPointY.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mDimensionUnitFirstModelPointY.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDimensionUnitFirstModelPointY_property.removeEBObserver (observer)
@@ -1999,7 +1999,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mDimensionUnitSecondModelPointDx_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mDimensionUnitSecondModelPointDx.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mDimensionUnitSecondModelPointDx.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mDimensionUnitSecondModelPointDx.apply { (_ observer : EBObserverProtocol) in
           managedObject.mDimensionUnitSecondModelPointDx_property.addEBObserver (observer)
         }
       }
@@ -2009,7 +2009,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mDimensionUnitSecondModelPointDx_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mDimensionUnitSecondModelPointDx.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mDimensionUnitSecondModelPointDx.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDimensionUnitSecondModelPointDx_property.removeEBObserver (observer)
@@ -2058,7 +2058,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mDimensionUnitSecondModelPointDy_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mDimensionUnitSecondModelPointDy.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mDimensionUnitSecondModelPointDy.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mDimensionUnitSecondModelPointDy.apply { (_ observer : EBObserverProtocol) in
           managedObject.mDimensionUnitSecondModelPointDy_property.addEBObserver (observer)
         }
       }
@@ -2068,7 +2068,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mDimensionUnitSecondModelPointDy_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mDimensionUnitSecondModelPointDy.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mDimensionUnitSecondModelPointDy.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDimensionUnitSecondModelPointDy_property.removeEBObserver (observer)
@@ -2117,7 +2117,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelPointsCircleRadius_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelPointsCircleRadius.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelPointsCircleRadius.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelPointsCircleRadius.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelPointsCircleRadius_property.addEBObserver (observer)
         }
       }
@@ -2127,7 +2127,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelPointsCircleRadius_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelPointsCircleRadius.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelPointsCircleRadius.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelPointsCircleRadius_property.removeEBObserver (observer)
@@ -2176,7 +2176,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mPointsAreLocked_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mPointsAreLocked.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mPointsAreLocked.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mPointsAreLocked.apply { (_ observer : EBObserverProtocol) in
           managedObject.mPointsAreLocked_property.addEBObserver (observer)
         }
       }
@@ -2186,7 +2186,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mPointsAreLocked_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mPointsAreLocked.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mPointsAreLocked.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPointsAreLocked_property.removeEBObserver (observer)
@@ -2235,7 +2235,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_knobSizeMultpliedByTen_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_knobSizeMultpliedByTen.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_knobSizeMultpliedByTen.apply { (_ observer : EBEvent) in
+        self.mObserversOf_knobSizeMultpliedByTen.apply { (_ observer : EBObserverProtocol) in
           managedObject.knobSizeMultpliedByTen_property.addEBObserver (observer)
         }
       }
@@ -2245,7 +2245,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_knobSizeMultpliedByTen_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_knobSizeMultpliedByTen.apply { (_ observer : EBEvent) in
+    self.mObserversOf_knobSizeMultpliedByTen.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.knobSizeMultpliedByTen_property.removeEBObserver (observer)
@@ -2294,7 +2294,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_padNumbering_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_padNumbering.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_padNumbering.apply { (_ observer : EBEvent) in
+        self.mObserversOf_padNumbering.apply { (_ observer : EBObserverProtocol) in
           managedObject.padNumbering_property.addEBObserver (observer)
         }
       }
@@ -2304,7 +2304,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_padNumbering_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_padNumbering.apply { (_ observer : EBEvent) in
+    self.mObserversOf_padNumbering.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.padNumbering_property.removeEBObserver (observer)
@@ -2353,7 +2353,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_counterClockNumberingStartAngle_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_counterClockNumberingStartAngle.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_counterClockNumberingStartAngle.apply { (_ observer : EBEvent) in
+        self.mObserversOf_counterClockNumberingStartAngle.apply { (_ observer : EBObserverProtocol) in
           managedObject.counterClockNumberingStartAngle_property.addEBObserver (observer)
         }
       }
@@ -2363,7 +2363,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_counterClockNumberingStartAngle_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_counterClockNumberingStartAngle.apply { (_ observer : EBEvent) in
+    self.mObserversOf_counterClockNumberingStartAngle.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.counterClockNumberingStartAngle_property.removeEBObserver (observer)
@@ -2412,7 +2412,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_xPlacardUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_xPlacardUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_xPlacardUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_xPlacardUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.xPlacardUnit_property.addEBObserver (observer)
         }
       }
@@ -2422,7 +2422,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_xPlacardUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_xPlacardUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_xPlacardUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.xPlacardUnit_property.removeEBObserver (observer)
@@ -2471,7 +2471,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_yPlacardUnit_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_yPlacardUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_yPlacardUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_yPlacardUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.yPlacardUnit_property.addEBObserver (observer)
         }
       }
@@ -2481,7 +2481,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_yPlacardUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_yPlacardUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_yPlacardUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.yPlacardUnit_property.removeEBObserver (observer)
@@ -2530,7 +2530,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserversOf_mModelImageData_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     if !self.mObserversOf_mModelImageData.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mModelImageData.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mModelImageData.apply { (_ observer : EBObserverProtocol) in
           managedObject.mModelImageData_property.addEBObserver (observer)
         }
       }
@@ -2540,7 +2540,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImageData_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImageData.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImageData.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageData_property.removeEBObserver (observer)
@@ -2588,7 +2588,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_mModelImageFirstPointX_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_mModelImageFirstPointX.apply { (_ observer : EBEvent) in
+      self.mObserversOf_mModelImageFirstPointX.apply { (_ observer : EBObserverProtocol) in
         managedObject.mModelImageFirstPointX_property.addEBObserver (observer)
       }
     }
@@ -2597,7 +2597,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImageFirstPointX_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImageFirstPointX.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImageFirstPointX.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageFirstPointX_property.removeEBObserver (observer)
@@ -2645,7 +2645,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_mModelImageFirstPointY_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_mModelImageFirstPointY.apply { (_ observer : EBEvent) in
+      self.mObserversOf_mModelImageFirstPointY.apply { (_ observer : EBObserverProtocol) in
         managedObject.mModelImageFirstPointY_property.addEBObserver (observer)
       }
     }
@@ -2654,7 +2654,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImageFirstPointY_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImageFirstPointY.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImageFirstPointY.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageFirstPointY_property.removeEBObserver (observer)
@@ -2702,7 +2702,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_mModelImageSecondPointDx_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_mModelImageSecondPointDx.apply { (_ observer : EBEvent) in
+      self.mObserversOf_mModelImageSecondPointDx.apply { (_ observer : EBObserverProtocol) in
         managedObject.mModelImageSecondPointDx_property.addEBObserver (observer)
       }
     }
@@ -2711,7 +2711,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImageSecondPointDx_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImageSecondPointDx.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImageSecondPointDx.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageSecondPointDx_property.removeEBObserver (observer)
@@ -2759,7 +2759,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_mModelImageSecondPointDy_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_mModelImageSecondPointDy.apply { (_ observer : EBEvent) in
+      self.mObserversOf_mModelImageSecondPointDy.apply { (_ observer : EBObserverProtocol) in
         managedObject.mModelImageSecondPointDy_property.addEBObserver (observer)
       }
     }
@@ -2768,7 +2768,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mModelImageSecondPointDy_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
-    self.mObserversOf_mModelImageSecondPointDy.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mModelImageSecondPointDy.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mModelImageSecondPointDy_property.removeEBObserver (observer)
@@ -2816,7 +2816,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_freePadNumbering_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_freePadNumbering.apply { (_ observer : EBEvent) in
+      self.mObserversOf_freePadNumbering.apply { (_ observer : EBObserverProtocol) in
         managedObject.freePadNumbering_property.addEBObserver (observer)
       }
     }
@@ -2826,7 +2826,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_freePadNumbering_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_freePadNumbering.apply { (_ observer : EBEvent) in
+      self.mObserversOf_freePadNumbering.apply { (_ observer : EBObserverProtocol) in
         managedObject.freePadNumbering_property.removeEBObserver (observer)
       }
     }
@@ -2872,7 +2872,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_counterClockNumbering_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_counterClockNumbering.apply { (_ observer : EBEvent) in
+      self.mObserversOf_counterClockNumbering.apply { (_ observer : EBObserverProtocol) in
         managedObject.counterClockNumbering_property.addEBObserver (observer)
       }
     }
@@ -2882,7 +2882,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_counterClockNumbering_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_counterClockNumbering.apply { (_ observer : EBEvent) in
+      self.mObserversOf_counterClockNumbering.apply { (_ observer : EBObserverProtocol) in
         managedObject.counterClockNumbering_property.removeEBObserver (observer)
       }
     }
@@ -2928,7 +2928,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_gridStepMultipliedByDisplayFactor.apply { (_ observer : EBEvent) in
+      self.mObserversOf_gridStepMultipliedByDisplayFactor.apply { (_ observer : EBObserverProtocol) in
         managedObject.gridStepMultipliedByDisplayFactor_property.addEBObserver (observer)
       }
     }
@@ -2938,7 +2938,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_gridStepMultipliedByDisplayFactor.apply { (_ observer : EBEvent) in
+      self.mObserversOf_gridStepMultipliedByDisplayFactor.apply { (_ observer : EBObserverProtocol) in
         managedObject.gridStepMultipliedByDisplayFactor_property.removeEBObserver (observer)
       }
     }
@@ -2984,7 +2984,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_secondPointX_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_secondPointX.apply { (_ observer : EBEvent) in
+      self.mObserversOf_secondPointX.apply { (_ observer : EBObserverProtocol) in
         managedObject.secondPointX_property.addEBObserver (observer)
       }
     }
@@ -2994,7 +2994,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_secondPointX_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_secondPointX.apply { (_ observer : EBEvent) in
+      self.mObserversOf_secondPointX.apply { (_ observer : EBObserverProtocol) in
         managedObject.secondPointX_property.removeEBObserver (observer)
       }
     }
@@ -3040,7 +3040,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_secondPointY_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_secondPointY.apply { (_ observer : EBEvent) in
+      self.mObserversOf_secondPointY.apply { (_ observer : EBObserverProtocol) in
         managedObject.secondPointY_property.addEBObserver (observer)
       }
     }
@@ -3050,7 +3050,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_secondPointY_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_secondPointY.apply { (_ observer : EBEvent) in
+      self.mObserversOf_secondPointY.apply { (_ observer : EBObserverProtocol) in
         managedObject.secondPointY_property.removeEBObserver (observer)
       }
     }
@@ -3096,7 +3096,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_lockImageView_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_lockImageView.apply { (_ observer : EBEvent) in
+      self.mObserversOf_lockImageView.apply { (_ observer : EBObserverProtocol) in
         managedObject.lockImageView_property.addEBObserver (observer)
       }
     }
@@ -3106,7 +3106,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_lockImageView_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_lockImageView.apply { (_ observer : EBEvent) in
+      self.mObserversOf_lockImageView.apply { (_ observer : EBObserverProtocol) in
         managedObject.lockImageView_property.removeEBObserver (observer)
       }
     }
@@ -3152,7 +3152,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_padNumberDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.padNumberDisplay_property.addEBObserver (observer)
       }
     }
@@ -3162,7 +3162,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_padNumberDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.padNumberDisplay_property.removeEBObserver (observer)
       }
     }
@@ -3208,7 +3208,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_backgroundImagePageBackgroundDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_backgroundImagePageBackgroundDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_backgroundImagePageBackgroundDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.backgroundImagePageBackgroundDisplay_property.addEBObserver (observer)
       }
     }
@@ -3218,7 +3218,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_backgroundImagePageBackgroundDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_backgroundImagePageBackgroundDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_backgroundImagePageBackgroundDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.backgroundImagePageBackgroundDisplay_property.removeEBObserver (observer)
       }
     }
@@ -3264,7 +3264,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_modelImageSizeString_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_modelImageSizeString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_modelImageSizeString.apply { (_ observer : EBObserverProtocol) in
         managedObject.modelImageSizeString_property.addEBObserver (observer)
       }
     }
@@ -3274,7 +3274,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_modelImageSizeString_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_modelImageSizeString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_modelImageSizeString.apply { (_ observer : EBObserverProtocol) in
         managedObject.modelImageSizeString_property.removeEBObserver (observer)
       }
     }
@@ -3320,7 +3320,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_hasModelImage_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_hasModelImage.apply { (_ observer : EBEvent) in
+      self.mObserversOf_hasModelImage.apply { (_ observer : EBObserverProtocol) in
         managedObject.hasModelImage_property.addEBObserver (observer)
       }
     }
@@ -3330,7 +3330,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_hasModelImage_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_hasModelImage.apply { (_ observer : EBEvent) in
+      self.mObserversOf_hasModelImage.apply { (_ observer : EBObserverProtocol) in
         managedObject.hasModelImage_property.removeEBObserver (observer)
       }
     }
@@ -3376,7 +3376,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_masterPadObjectIndexArray_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_masterPadObjectIndexArray.apply { (_ observer : EBEvent) in
+      self.mObserversOf_masterPadObjectIndexArray.apply { (_ observer : EBObserverProtocol) in
         managedObject.masterPadObjectIndexArray_property.addEBObserver (observer)
       }
     }
@@ -3386,7 +3386,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_masterPadObjectIndexArray_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_masterPadObjectIndexArray.apply { (_ observer : EBEvent) in
+      self.mObserversOf_masterPadObjectIndexArray.apply { (_ observer : EBObserverProtocol) in
         managedObject.masterPadObjectIndexArray_property.removeEBObserver (observer)
       }
     }
@@ -3432,7 +3432,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -3442,7 +3442,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <PackageRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
         managedObject.issues_property.removeEBObserver (observer)
       }
     }

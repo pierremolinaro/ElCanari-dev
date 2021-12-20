@@ -318,7 +318,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSchematicSheetOrientation_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSchematicSheetOrientation.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSchematicSheetOrientation.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSchematicSheetOrientation.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSchematicSheetOrientation_property.addEBObserver (observer)
         }
       }
@@ -328,7 +328,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSchematicSheetOrientation_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSchematicSheetOrientation.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSchematicSheetOrientation.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSchematicSheetOrientation_property.removeEBObserver (observer)
@@ -377,7 +377,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mRastnetDisplay_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mRastnetDisplay.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mRastnetDisplay.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mRastnetDisplay.apply { (_ observer : EBObserverProtocol) in
           managedObject.mRastnetDisplay_property.addEBObserver (observer)
         }
       }
@@ -387,7 +387,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mRastnetDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mRastnetDisplay.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mRastnetDisplay.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mRastnetDisplay_property.removeEBObserver (observer)
@@ -436,7 +436,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mRastnetDisplayedNetName_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mRastnetDisplayedNetName.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mRastnetDisplayedNetName.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mRastnetDisplayedNetName.apply { (_ observer : EBObserverProtocol) in
           managedObject.mRastnetDisplayedNetName_property.addEBObserver (observer)
         }
       }
@@ -446,7 +446,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mRastnetDisplayedNetName_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mRastnetDisplayedNetName.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mRastnetDisplayedNetName.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mRastnetDisplayedNetName_property.removeEBObserver (observer)
@@ -495,7 +495,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mRastnetDisplayedComponentName_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mRastnetDisplayedComponentName.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mRastnetDisplayedComponentName.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mRastnetDisplayedComponentName.apply { (_ observer : EBObserverProtocol) in
           managedObject.mRastnetDisplayedComponentName_property.addEBObserver (observer)
         }
       }
@@ -505,7 +505,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mRastnetDisplayedComponentName_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mRastnetDisplayedComponentName.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mRastnetDisplayedComponentName.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mRastnetDisplayedComponentName_property.removeEBObserver (observer)
@@ -554,7 +554,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mArtworkName_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mArtworkName.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mArtworkName.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mArtworkName.apply { (_ observer : EBObserverProtocol) in
           managedObject.mArtworkName_property.addEBObserver (observer)
         }
       }
@@ -564,7 +564,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mArtworkName_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mArtworkName.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mArtworkName.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mArtworkName_property.removeEBObserver (observer)
@@ -613,7 +613,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mArtworkVersion_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mArtworkVersion.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mArtworkVersion.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mArtworkVersion.apply { (_ observer : EBObserverProtocol) in
           managedObject.mArtworkVersion_property.addEBObserver (observer)
         }
       }
@@ -623,7 +623,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mArtworkVersion_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mArtworkVersion.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mArtworkVersion.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mArtworkVersion_property.removeEBObserver (observer)
@@ -672,7 +672,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mPDFBoardBackgroundColor_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mPDFBoardBackgroundColor.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mPDFBoardBackgroundColor.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mPDFBoardBackgroundColor.apply { (_ observer : EBObserverProtocol) in
           managedObject.mPDFBoardBackgroundColor_property.addEBObserver (observer)
         }
       }
@@ -682,7 +682,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mPDFBoardBackgroundColor_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mPDFBoardBackgroundColor.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mPDFBoardBackgroundColor.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mPDFBoardBackgroundColor_property.removeEBObserver (observer)
@@ -731,7 +731,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mCheckClearanceBetweenPadsOfSameNet_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet.apply { (_ observer : EBObserverProtocol) in
           managedObject.mCheckClearanceBetweenPadsOfSameNet_property.addEBObserver (observer)
         }
       }
@@ -741,7 +741,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mCheckClearanceBetweenPadsOfSameNet_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mCheckClearanceBetweenPadsOfSameNet_property.removeEBObserver (observer)
@@ -790,7 +790,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mLastERCCheckingIsSuccess_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mLastERCCheckingIsSuccess.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mLastERCCheckingIsSuccess.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mLastERCCheckingIsSuccess.apply { (_ observer : EBObserverProtocol) in
           managedObject.mLastERCCheckingIsSuccess_property.addEBObserver (observer)
         }
       }
@@ -800,7 +800,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mLastERCCheckingIsSuccess_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mLastERCCheckingIsSuccess.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mLastERCCheckingIsSuccess.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mLastERCCheckingIsSuccess_property.removeEBObserver (observer)
@@ -849,7 +849,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mLastERCCheckingSignature_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mLastERCCheckingSignature.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mLastERCCheckingSignature.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mLastERCCheckingSignature.apply { (_ observer : EBObserverProtocol) in
           managedObject.mLastERCCheckingSignature_property.addEBObserver (observer)
         }
       }
@@ -859,7 +859,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mLastERCCheckingSignature_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mLastERCCheckingSignature.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mLastERCCheckingSignature.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mLastERCCheckingSignature_property.removeEBObserver (observer)
@@ -908,7 +908,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mLayerConfiguration_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mLayerConfiguration.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mLayerConfiguration.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mLayerConfiguration.apply { (_ observer : EBObserverProtocol) in
           managedObject.mLayerConfiguration_property.addEBObserver (observer)
         }
       }
@@ -918,7 +918,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mLayerConfiguration_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mLayerConfiguration.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mLayerConfiguration.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mLayerConfiguration_property.removeEBObserver (observer)
@@ -967,7 +967,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardSideForNewTrack_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardSideForNewTrack.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardSideForNewTrack.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardSideForNewTrack.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardSideForNewTrack_property.addEBObserver (observer)
         }
       }
@@ -977,7 +977,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardSideForNewTrack_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardSideForNewTrack.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardSideForNewTrack.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardSideForNewTrack_property.removeEBObserver (observer)
@@ -1026,7 +1026,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mDirectionForNewTrack_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mDirectionForNewTrack.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mDirectionForNewTrack.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mDirectionForNewTrack.apply { (_ observer : EBObserverProtocol) in
           managedObject.mDirectionForNewTrack_property.addEBObserver (observer)
         }
       }
@@ -1036,7 +1036,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mDirectionForNewTrack_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mDirectionForNewTrack.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mDirectionForNewTrack.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDirectionForNewTrack_property.removeEBObserver (observer)
@@ -1085,7 +1085,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardLayerForNewText_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardLayerForNewText.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardLayerForNewText.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardLayerForNewText.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardLayerForNewText_property.addEBObserver (observer)
         }
       }
@@ -1095,7 +1095,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardLayerForNewText_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardLayerForNewText.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardLayerForNewText.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardLayerForNewText_property.removeEBObserver (observer)
@@ -1144,7 +1144,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardLayerForNewLine_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardLayerForNewLine.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardLayerForNewLine.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardLayerForNewLine.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardLayerForNewLine_property.addEBObserver (observer)
         }
       }
@@ -1154,7 +1154,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardLayerForNewLine_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardLayerForNewLine.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardLayerForNewLine.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardLayerForNewLine_property.removeEBObserver (observer)
@@ -1203,7 +1203,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardSideForNewRestrictRectangle_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardSideForNewRestrictRectangle.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardSideForNewRestrictRectangle.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardSideForNewRestrictRectangle.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardSideForNewRestrictRectangle_property.addEBObserver (observer)
         }
       }
@@ -1213,7 +1213,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardSideForNewRestrictRectangle_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardSideForNewRestrictRectangle.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardSideForNewRestrictRectangle.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardSideForNewRestrictRectangle_property.removeEBObserver (observer)
@@ -1262,7 +1262,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mAutoRouterPreferredDirections_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mAutoRouterPreferredDirections.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mAutoRouterPreferredDirections.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mAutoRouterPreferredDirections.apply { (_ observer : EBObserverProtocol) in
           managedObject.mAutoRouterPreferredDirections_property.addEBObserver (observer)
         }
       }
@@ -1272,7 +1272,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mAutoRouterPreferredDirections_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mAutoRouterPreferredDirections.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mAutoRouterPreferredDirections.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mAutoRouterPreferredDirections_property.removeEBObserver (observer)
@@ -1321,7 +1321,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mAutorouterSnapAngle_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mAutorouterSnapAngle.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mAutorouterSnapAngle.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mAutorouterSnapAngle.apply { (_ observer : EBObserverProtocol) in
           managedObject.mAutorouterSnapAngle_property.addEBObserver (observer)
         }
       }
@@ -1331,7 +1331,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mAutorouterSnapAngle_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mAutorouterSnapAngle.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mAutorouterSnapAngle.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mAutorouterSnapAngle_property.removeEBObserver (observer)
@@ -1380,7 +1380,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mRouteDirection_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mRouteDirection.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mRouteDirection.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mRouteDirection.apply { (_ observer : EBObserverProtocol) in
           managedObject.mRouteDirection_property.addEBObserver (observer)
         }
       }
@@ -1390,7 +1390,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mRouteDirection_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mRouteDirection.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mRouteDirection.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mRouteDirection_property.removeEBObserver (observer)
@@ -1439,7 +1439,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mRouteOrigin_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mRouteOrigin.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mRouteOrigin.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mRouteOrigin.apply { (_ observer : EBObserverProtocol) in
           managedObject.mRouteOrigin_property.addEBObserver (observer)
         }
       }
@@ -1449,7 +1449,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mRouteOrigin_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mRouteOrigin.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mRouteOrigin.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mRouteOrigin_property.removeEBObserver (observer)
@@ -1498,7 +1498,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mAutorouterInterfaceMode_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mAutorouterInterfaceMode.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mAutorouterInterfaceMode.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mAutorouterInterfaceMode.apply { (_ observer : EBObserverProtocol) in
           managedObject.mAutorouterInterfaceMode_property.addEBObserver (observer)
         }
       }
@@ -1508,7 +1508,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mAutorouterInterfaceMode_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mAutorouterInterfaceMode.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mAutorouterInterfaceMode.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mAutorouterInterfaceMode_property.removeEBObserver (observer)
@@ -1557,7 +1557,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mExportExistingTracksAndVias_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mExportExistingTracksAndVias.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mExportExistingTracksAndVias.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mExportExistingTracksAndVias.apply { (_ observer : EBObserverProtocol) in
           managedObject.mExportExistingTracksAndVias_property.addEBObserver (observer)
         }
       }
@@ -1567,7 +1567,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mExportExistingTracksAndVias_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mExportExistingTracksAndVias.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mExportExistingTracksAndVias.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mExportExistingTracksAndVias_property.removeEBObserver (observer)
@@ -1616,7 +1616,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mTrackLengthUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mTrackLengthUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mTrackLengthUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mTrackLengthUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mTrackLengthUnit_property.addEBObserver (observer)
         }
       }
@@ -1626,7 +1626,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mTrackLengthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mTrackLengthUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mTrackLengthUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mTrackLengthUnit_property.removeEBObserver (observer)
@@ -1675,7 +1675,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mLayoutClearance_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mLayoutClearance.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mLayoutClearance.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mLayoutClearance.apply { (_ observer : EBObserverProtocol) in
           managedObject.mLayoutClearance_property.addEBObserver (observer)
         }
       }
@@ -1685,7 +1685,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mLayoutClearance_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mLayoutClearance.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mLayoutClearance.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mLayoutClearance_property.removeEBObserver (observer)
@@ -1734,7 +1734,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mLayoutClearanceUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mLayoutClearanceUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mLayoutClearanceUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mLayoutClearanceUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mLayoutClearanceUnit_property.addEBObserver (observer)
         }
       }
@@ -1744,7 +1744,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mLayoutClearanceUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mLayoutClearanceUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mLayoutClearanceUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mLayoutClearanceUnit_property.removeEBObserver (observer)
@@ -1793,7 +1793,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardSelectedInspector_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardSelectedInspector.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardSelectedInspector.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardSelectedInspector.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardSelectedInspector_property.addEBObserver (observer)
         }
       }
@@ -1803,7 +1803,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardSelectedInspector_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardSelectedInspector.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardSelectedInspector.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardSelectedInspector_property.removeEBObserver (observer)
@@ -1852,7 +1852,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardHorizontalFlip_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardHorizontalFlip.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardHorizontalFlip.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardHorizontalFlip.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardHorizontalFlip_property.addEBObserver (observer)
         }
       }
@@ -1862,7 +1862,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardHorizontalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardHorizontalFlip.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardHorizontalFlip.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardHorizontalFlip_property.removeEBObserver (observer)
@@ -1911,7 +1911,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardVerticalFlip_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardVerticalFlip.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardVerticalFlip.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardVerticalFlip.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardVerticalFlip_property.addEBObserver (observer)
         }
       }
@@ -1921,7 +1921,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardVerticalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardVerticalFlip.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardVerticalFlip.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardVerticalFlip_property.removeEBObserver (observer)
@@ -1970,7 +1970,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardGridStyle_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardGridStyle.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardGridStyle.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardGridStyle.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardGridStyle_property.addEBObserver (observer)
         }
       }
@@ -1980,7 +1980,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardGridStyle_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardGridStyle.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardGridStyle.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardGridStyle_property.removeEBObserver (observer)
@@ -2029,7 +2029,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardGridDisplayFactor_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardGridDisplayFactor.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardGridDisplayFactor.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardGridDisplayFactor.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardGridDisplayFactor_property.addEBObserver (observer)
         }
       }
@@ -2039,7 +2039,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardGridDisplayFactor_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardGridDisplayFactor.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardGridDisplayFactor.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardGridDisplayFactor_property.removeEBObserver (observer)
@@ -2088,7 +2088,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardZoom_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardZoom.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardZoom.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardZoom.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardZoom_property.addEBObserver (observer)
         }
       }
@@ -2098,7 +2098,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardZoom_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardZoom.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardZoom.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardZoom_property.removeEBObserver (observer)
@@ -2147,7 +2147,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardGridStep_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardGridStep.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardGridStep.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardGridStep.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardGridStep_property.addEBObserver (observer)
         }
       }
@@ -2157,7 +2157,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardGridStep_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardGridStep.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardGridStep.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardGridStep_property.removeEBObserver (observer)
@@ -2206,7 +2206,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardGridStepUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardGridStepUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardGridStepUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardGridStepUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardGridStepUnit_property.addEBObserver (observer)
         }
       }
@@ -2216,7 +2216,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardGridStepUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardGridStepUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardGridStepUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardGridStepUnit_property.removeEBObserver (observer)
@@ -2265,7 +2265,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mErrorOrWarningIssueSize_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mErrorOrWarningIssueSize.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mErrorOrWarningIssueSize.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mErrorOrWarningIssueSize.apply { (_ observer : EBObserverProtocol) in
           managedObject.mErrorOrWarningIssueSize_property.addEBObserver (observer)
         }
       }
@@ -2275,7 +2275,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mErrorOrWarningIssueSize_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mErrorOrWarningIssueSize.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mErrorOrWarningIssueSize.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mErrorOrWarningIssueSize_property.removeEBObserver (observer)
@@ -2324,7 +2324,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mControlKeyHiliteDiameter_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mControlKeyHiliteDiameter.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mControlKeyHiliteDiameter.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mControlKeyHiliteDiameter.apply { (_ observer : EBObserverProtocol) in
           managedObject.mControlKeyHiliteDiameter_property.addEBObserver (observer)
         }
       }
@@ -2334,7 +2334,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mControlKeyHiliteDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mControlKeyHiliteDiameter.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mControlKeyHiliteDiameter.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mControlKeyHiliteDiameter_property.removeEBObserver (observer)
@@ -2383,7 +2383,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mDSNFileProposedName_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mDSNFileProposedName.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mDSNFileProposedName.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mDSNFileProposedName.apply { (_ observer : EBObserverProtocol) in
           managedObject.mDSNFileProposedName_property.addEBObserver (observer)
         }
       }
@@ -2393,7 +2393,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mDSNFileProposedName_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mDSNFileProposedName.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mDSNFileProposedName.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDSNFileProposedName_property.removeEBObserver (observer)
@@ -2442,7 +2442,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardLimitsWidth_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardLimitsWidth.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardLimitsWidth.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardLimitsWidth.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardLimitsWidth_property.addEBObserver (observer)
         }
       }
@@ -2452,7 +2452,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardLimitsWidth_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsWidth.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardLimitsWidth.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardLimitsWidth_property.removeEBObserver (observer)
@@ -2501,7 +2501,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardLimitsWidthUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardLimitsWidthUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardLimitsWidthUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardLimitsWidthUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardLimitsWidthUnit_property.addEBObserver (observer)
         }
       }
@@ -2511,7 +2511,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardLimitsWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsWidthUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardLimitsWidthUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardLimitsWidthUnit_property.removeEBObserver (observer)
@@ -2560,7 +2560,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardClearance_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardClearance.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardClearance.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardClearance.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardClearance_property.addEBObserver (observer)
         }
       }
@@ -2570,7 +2570,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardClearance_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardClearance.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardClearance.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardClearance_property.removeEBObserver (observer)
@@ -2619,7 +2619,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardClearanceUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardClearanceUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardClearanceUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardClearanceUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardClearanceUnit_property.addEBObserver (observer)
         }
       }
@@ -2629,7 +2629,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardClearanceUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardClearanceUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardClearanceUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardClearanceUnit_property.removeEBObserver (observer)
@@ -2678,7 +2678,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardLimitsSelectedInspector_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardLimitsSelectedInspector.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardLimitsSelectedInspector.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardLimitsSelectedInspector.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardLimitsSelectedInspector_property.addEBObserver (observer)
         }
       }
@@ -2688,7 +2688,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardLimitsSelectedInspector_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsSelectedInspector.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardLimitsSelectedInspector.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardLimitsSelectedInspector_property.removeEBObserver (observer)
@@ -2737,7 +2737,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardLimitsHorizontalFlip_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardLimitsHorizontalFlip.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardLimitsHorizontalFlip.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardLimitsHorizontalFlip.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardLimitsHorizontalFlip_property.addEBObserver (observer)
         }
       }
@@ -2747,7 +2747,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardLimitsHorizontalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsHorizontalFlip.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardLimitsHorizontalFlip.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardLimitsHorizontalFlip_property.removeEBObserver (observer)
@@ -2796,7 +2796,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardLimitsVerticalFlip_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardLimitsVerticalFlip.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardLimitsVerticalFlip.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardLimitsVerticalFlip.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardLimitsVerticalFlip_property.addEBObserver (observer)
         }
       }
@@ -2806,7 +2806,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardLimitsVerticalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsVerticalFlip.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardLimitsVerticalFlip.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardLimitsVerticalFlip_property.removeEBObserver (observer)
@@ -2855,7 +2855,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardLimitsGridStyle_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardLimitsGridStyle.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardLimitsGridStyle.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardLimitsGridStyle.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardLimitsGridStyle_property.addEBObserver (observer)
         }
       }
@@ -2865,7 +2865,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardLimitsGridStyle_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsGridStyle.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardLimitsGridStyle.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardLimitsGridStyle_property.removeEBObserver (observer)
@@ -2914,7 +2914,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardLimitsGridDisplayFactor_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardLimitsGridDisplayFactor.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardLimitsGridDisplayFactor.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardLimitsGridDisplayFactor.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardLimitsGridDisplayFactor_property.addEBObserver (observer)
         }
       }
@@ -2924,7 +2924,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardLimitsGridDisplayFactor_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsGridDisplayFactor.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardLimitsGridDisplayFactor.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardLimitsGridDisplayFactor_property.removeEBObserver (observer)
@@ -2973,7 +2973,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardLimitsZoom_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardLimitsZoom.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardLimitsZoom.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardLimitsZoom.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardLimitsZoom_property.addEBObserver (observer)
         }
       }
@@ -2983,7 +2983,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardLimitsZoom_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsZoom.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardLimitsZoom.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardLimitsZoom_property.removeEBObserver (observer)
@@ -3032,7 +3032,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardLimitsGridStep_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardLimitsGridStep.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardLimitsGridStep.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardLimitsGridStep.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardLimitsGridStep_property.addEBObserver (observer)
         }
       }
@@ -3042,7 +3042,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardLimitsGridStep_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsGridStep.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardLimitsGridStep.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardLimitsGridStep_property.removeEBObserver (observer)
@@ -3091,7 +3091,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardLimitsGridStepUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardLimitsGridStepUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardLimitsGridStepUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardLimitsGridStepUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardLimitsGridStepUnit_property.addEBObserver (observer)
         }
       }
@@ -3101,7 +3101,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardLimitsGridStepUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsGridStepUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardLimitsGridStepUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardLimitsGridStepUnit_property.removeEBObserver (observer)
@@ -3150,7 +3150,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardLimitsBoundingBoxUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardLimitsBoundingBoxUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardLimitsBoundingBoxUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardLimitsBoundingBoxUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardLimitsBoundingBoxUnit_property.addEBObserver (observer)
         }
       }
@@ -3160,7 +3160,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardLimitsBoundingBoxUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsBoundingBoxUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardLimitsBoundingBoxUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (observer)
@@ -3209,7 +3209,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardPointsBoundingBoxUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardPointsBoundingBoxUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardPointsBoundingBoxUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardPointsBoundingBoxUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardPointsBoundingBoxUnit_property.addEBObserver (observer)
         }
       }
@@ -3219,7 +3219,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardPointsBoundingBoxUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardPointsBoundingBoxUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardPointsBoundingBoxUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardPointsBoundingBoxUnit_property.removeEBObserver (observer)
@@ -3268,7 +3268,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardSelectedCurveDisplayUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardSelectedCurveDisplayUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardSelectedCurveDisplayUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardSelectedCurveDisplayUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardSelectedCurveDisplayUnit_property.addEBObserver (observer)
         }
       }
@@ -3278,7 +3278,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardSelectedCurveDisplayUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardSelectedCurveDisplayUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardSelectedCurveDisplayUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardSelectedCurveDisplayUnit_property.removeEBObserver (observer)
@@ -3327,7 +3327,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardLimitControlPointsDisplayUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardLimitControlPointsDisplayUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardLimitControlPointsDisplayUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardLimitControlPointsDisplayUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardLimitControlPointsDisplayUnit_property.addEBObserver (observer)
         }
       }
@@ -3337,7 +3337,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardLimitControlPointsDisplayUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardLimitControlPointsDisplayUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardLimitControlPointsDisplayUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardLimitControlPointsDisplayUnit_property.removeEBObserver (observer)
@@ -3386,7 +3386,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mBoardShape_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mBoardShape.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mBoardShape.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mBoardShape.apply { (_ observer : EBObserverProtocol) in
           managedObject.mBoardShape_property.addEBObserver (observer)
         }
       }
@@ -3396,7 +3396,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mBoardShape_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mBoardShape.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mBoardShape.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardShape_property.removeEBObserver (observer)
@@ -3445,7 +3445,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mRectangularBoardWidth_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mRectangularBoardWidth.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mRectangularBoardWidth.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mRectangularBoardWidth.apply { (_ observer : EBObserverProtocol) in
           managedObject.mRectangularBoardWidth_property.addEBObserver (observer)
         }
       }
@@ -3455,7 +3455,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mRectangularBoardWidth_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mRectangularBoardWidth.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mRectangularBoardWidth.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mRectangularBoardWidth_property.removeEBObserver (observer)
@@ -3504,7 +3504,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mRectangularBoardWidthUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mRectangularBoardWidthUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mRectangularBoardWidthUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mRectangularBoardWidthUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mRectangularBoardWidthUnit_property.addEBObserver (observer)
         }
       }
@@ -3514,7 +3514,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mRectangularBoardWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mRectangularBoardWidthUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mRectangularBoardWidthUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mRectangularBoardWidthUnit_property.removeEBObserver (observer)
@@ -3563,7 +3563,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mRectangularBoardHeight_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mRectangularBoardHeight.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mRectangularBoardHeight.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mRectangularBoardHeight.apply { (_ observer : EBObserverProtocol) in
           managedObject.mRectangularBoardHeight_property.addEBObserver (observer)
         }
       }
@@ -3573,7 +3573,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mRectangularBoardHeight_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mRectangularBoardHeight.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mRectangularBoardHeight.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mRectangularBoardHeight_property.removeEBObserver (observer)
@@ -3622,7 +3622,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mRectangularBoardHeightUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mRectangularBoardHeightUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mRectangularBoardHeightUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mRectangularBoardHeightUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mRectangularBoardHeightUnit_property.addEBObserver (observer)
         }
       }
@@ -3632,7 +3632,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mRectangularBoardHeightUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mRectangularBoardHeightUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mRectangularBoardHeightUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mRectangularBoardHeightUnit_property.removeEBObserver (observer)
@@ -3681,7 +3681,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mDefaultNetClassName_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mDefaultNetClassName.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mDefaultNetClassName.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mDefaultNetClassName.apply { (_ observer : EBObserverProtocol) in
           managedObject.mDefaultNetClassName_property.addEBObserver (observer)
         }
       }
@@ -3691,7 +3691,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mDefaultNetClassName_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mDefaultNetClassName.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mDefaultNetClassName.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mDefaultNetClassName_property.removeEBObserver (observer)
@@ -3740,7 +3740,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSelectedPageIndex_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSelectedPageIndex.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSelectedPageIndex_property.addEBObserver (observer)
         }
       }
@@ -3750,7 +3750,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSelectedPageIndex_property.removeEBObserver (observer)
@@ -3799,7 +3799,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSelectedSchematicInspector_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSelectedSchematicInspector.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSelectedSchematicInspector.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSelectedSchematicInspector.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSelectedSchematicInspector_property.addEBObserver (observer)
         }
       }
@@ -3809,7 +3809,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSelectedSchematicInspector_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSelectedSchematicInspector.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSelectedSchematicInspector.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSelectedSchematicInspector_property.removeEBObserver (observer)
@@ -3858,7 +3858,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSchematicTitle_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSchematicTitle.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSchematicTitle.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSchematicTitle.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSchematicTitle_property.addEBObserver (observer)
         }
       }
@@ -3868,7 +3868,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSchematicTitle_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSchematicTitle.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSchematicTitle.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSchematicTitle_property.removeEBObserver (observer)
@@ -3917,7 +3917,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSchematicVersion_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSchematicVersion.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSchematicVersion.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSchematicVersion.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSchematicVersion_property.addEBObserver (observer)
         }
       }
@@ -3927,7 +3927,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSchematicVersion_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSchematicVersion.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSchematicVersion.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSchematicVersion_property.removeEBObserver (observer)
@@ -3976,7 +3976,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSchematicDate_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSchematicDate.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSchematicDate.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSchematicDate.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSchematicDate_property.addEBObserver (observer)
         }
       }
@@ -3986,7 +3986,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSchematicDate_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSchematicDate.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSchematicDate.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSchematicDate_property.removeEBObserver (observer)
@@ -4035,7 +4035,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSchematicHorizontalFlip_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSchematicHorizontalFlip.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSchematicHorizontalFlip.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSchematicHorizontalFlip.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSchematicHorizontalFlip_property.addEBObserver (observer)
         }
       }
@@ -4045,7 +4045,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSchematicHorizontalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSchematicHorizontalFlip.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSchematicHorizontalFlip.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSchematicHorizontalFlip_property.removeEBObserver (observer)
@@ -4094,7 +4094,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSchematicVerticalFlip_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSchematicVerticalFlip.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSchematicVerticalFlip.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSchematicVerticalFlip.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSchematicVerticalFlip_property.addEBObserver (observer)
         }
       }
@@ -4104,7 +4104,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSchematicVerticalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSchematicVerticalFlip.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSchematicVerticalFlip.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSchematicVerticalFlip_property.removeEBObserver (observer)
@@ -4153,7 +4153,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSchematicZoom_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSchematicZoom.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSchematicZoom.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSchematicZoom.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSchematicZoom_property.addEBObserver (observer)
         }
       }
@@ -4163,7 +4163,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSchematicZoom_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSchematicZoom.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSchematicZoom.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSchematicZoom_property.removeEBObserver (observer)
@@ -4212,7 +4212,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSchematicGridStyle_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSchematicGridStyle.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSchematicGridStyle.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSchematicGridStyle.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSchematicGridStyle_property.addEBObserver (observer)
         }
       }
@@ -4222,7 +4222,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSchematicGridStyle_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSchematicGridStyle.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSchematicGridStyle.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSchematicGridStyle_property.removeEBObserver (observer)
@@ -4271,7 +4271,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSchematicGridDisplayFactor_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSchematicGridDisplayFactor.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSchematicGridDisplayFactor.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSchematicGridDisplayFactor.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSchematicGridDisplayFactor_property.addEBObserver (observer)
         }
       }
@@ -4281,7 +4281,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSchematicGridDisplayFactor_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSchematicGridDisplayFactor.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSchematicGridDisplayFactor.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSchematicGridDisplayFactor_property.removeEBObserver (observer)
@@ -4330,7 +4330,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSchematicCustomWidth_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSchematicCustomWidth.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSchematicCustomWidth.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSchematicCustomWidth.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSchematicCustomWidth_property.addEBObserver (observer)
         }
       }
@@ -4340,7 +4340,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSchematicCustomWidth_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSchematicCustomWidth.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSchematicCustomWidth.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSchematicCustomWidth_property.removeEBObserver (observer)
@@ -4389,7 +4389,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSchematicCustomWidthUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSchematicCustomWidthUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSchematicCustomWidthUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSchematicCustomWidthUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSchematicCustomWidthUnit_property.addEBObserver (observer)
         }
       }
@@ -4399,7 +4399,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSchematicCustomWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSchematicCustomWidthUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSchematicCustomWidthUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSchematicCustomWidthUnit_property.removeEBObserver (observer)
@@ -4448,7 +4448,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSchematicCustomHeight_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSchematicCustomHeight.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSchematicCustomHeight.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSchematicCustomHeight.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSchematicCustomHeight_property.addEBObserver (observer)
         }
       }
@@ -4458,7 +4458,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSchematicCustomHeight_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSchematicCustomHeight.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSchematicCustomHeight.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSchematicCustomHeight_property.removeEBObserver (observer)
@@ -4507,7 +4507,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   final func addEBObserversOf_mSchematicCustomHeightUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     if !self.mObserversOf_mSchematicCustomHeightUnit.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSchematicCustomHeightUnit.apply { (_ observer : EBEvent) in
+        self.mObserversOf_mSchematicCustomHeightUnit.apply { (_ observer : EBObserverProtocol) in
           managedObject.mSchematicCustomHeightUnit_property.addEBObserver (observer)
         }
       }
@@ -4517,7 +4517,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_mSchematicCustomHeightUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSchematicCustomHeightUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_mSchematicCustomHeightUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSchematicCustomHeightUnit_property.removeEBObserver (observer)
@@ -4565,7 +4565,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_fileGenerationParameterArray_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_fileGenerationParameterArray.apply { (_ observer : EBEvent) in
+      self.mObserversOf_fileGenerationParameterArray.apply { (_ observer : EBObserverProtocol) in
         managedObject.fileGenerationParameterArray_property.addEBObserver (observer)
       }
     }
@@ -4574,7 +4574,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_fileGenerationParameterArray_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_fileGenerationParameterArray.apply { (_ observer : EBEvent) in
+    self.mObserversOf_fileGenerationParameterArray.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.fileGenerationParameterArray_property.removeEBObserver (observer)
@@ -4622,7 +4622,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_selectedSheetObjects_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectedSheetObjects.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectedSheetObjects.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectedSheetObjects_property.addEBObserver (observer)
       }
     }
@@ -4631,7 +4631,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_selectedSheetObjects_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_selectedSheetObjects.apply { (_ observer : EBEvent) in
+    self.mObserversOf_selectedSheetObjects.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.selectedSheetObjects_property.removeEBObserver (observer)
@@ -4679,7 +4679,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_artworkLayerConfiguration_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_artworkLayerConfiguration.apply { (_ observer : EBEvent) in
+      self.mObserversOf_artworkLayerConfiguration.apply { (_ observer : EBObserverProtocol) in
         managedObject.artworkLayerConfiguration_property.addEBObserver (observer)
       }
     }
@@ -4688,7 +4688,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_artworkLayerConfiguration_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_artworkLayerConfiguration.apply { (_ observer : EBEvent) in
+    self.mObserversOf_artworkLayerConfiguration.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.artworkLayerConfiguration_property.removeEBObserver (observer)
@@ -4736,7 +4736,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_minPPTPTTTWdisplayUnit.apply { (_ observer : EBEvent) in
+      self.mObserversOf_minPPTPTTTWdisplayUnit.apply { (_ observer : EBObserverProtocol) in
         managedObject.minPPTPTTTWdisplayUnit_property.addEBObserver (observer)
       }
     }
@@ -4745,7 +4745,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_minPPTPTTTWdisplayUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_minPPTPTTTWdisplayUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minPPTPTTTWdisplayUnit_property.removeEBObserver (observer)
@@ -4793,7 +4793,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_minPPTPTTTW_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_minPPTPTTTW.apply { (_ observer : EBEvent) in
+      self.mObserversOf_minPPTPTTTW.apply { (_ observer : EBObserverProtocol) in
         managedObject.minPPTPTTTW_property.addEBObserver (observer)
       }
     }
@@ -4802,7 +4802,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_minPPTPTTTW.apply { (_ observer : EBEvent) in
+    self.mObserversOf_minPPTPTTTW.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minPPTPTTTW_property.removeEBObserver (observer)
@@ -4850,7 +4850,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_minValueForOARdisplayUnit.apply { (_ observer : EBEvent) in
+      self.mObserversOf_minValueForOARdisplayUnit.apply { (_ observer : EBObserverProtocol) in
         managedObject.minValueForOARdisplayUnit_property.addEBObserver (observer)
       }
     }
@@ -4859,7 +4859,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_minValueForOARdisplayUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_minValueForOARdisplayUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minValueForOARdisplayUnit_property.removeEBObserver (observer)
@@ -4907,7 +4907,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_minValueForOARinEBUnit.apply { (_ observer : EBEvent) in
+      self.mObserversOf_minValueForOARinEBUnit.apply { (_ observer : EBObserverProtocol) in
         managedObject.minValueForOARinEBUnit_property.addEBObserver (observer)
       }
     }
@@ -4916,7 +4916,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_minValueForOARinEBUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_minValueForOARinEBUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minValueForOARinEBUnit_property.removeEBObserver (observer)
@@ -4964,7 +4964,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_minValueForPHDdisplayUnit.apply { (_ observer : EBEvent) in
+      self.mObserversOf_minValueForPHDdisplayUnit.apply { (_ observer : EBObserverProtocol) in
         managedObject.minValueForPHDdisplayUnit_property.addEBObserver (observer)
       }
     }
@@ -4973,7 +4973,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_minValueForPHDdisplayUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_minValueForPHDdisplayUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minValueForPHDdisplayUnit_property.removeEBObserver (observer)
@@ -5021,7 +5021,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_minValueForPHDinEBUnit.apply { (_ observer : EBEvent) in
+      self.mObserversOf_minValueForPHDinEBUnit.apply { (_ observer : EBObserverProtocol) in
         managedObject.minValueForPHDinEBUnit_property.addEBObserver (observer)
       }
     }
@@ -5030,7 +5030,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_minValueForPHDinEBUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_minValueForPHDinEBUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minValueForPHDinEBUnit_property.removeEBObserver (observer)
@@ -5078,7 +5078,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_minValueForBoardLimitWidth.apply { (_ observer : EBEvent) in
+      self.mObserversOf_minValueForBoardLimitWidth.apply { (_ observer : EBObserverProtocol) in
         managedObject.minValueForBoardLimitWidth_property.addEBObserver (observer)
       }
     }
@@ -5087,7 +5087,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_minValueForBoardLimitWidth.apply { (_ observer : EBEvent) in
+    self.mObserversOf_minValueForBoardLimitWidth.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minValueForBoardLimitWidth_property.removeEBObserver (observer)
@@ -5135,7 +5135,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.apply { (_ observer : EBEvent) in
+      self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.apply { (_ observer : EBObserverProtocol) in
         managedObject.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (observer)
       }
     }
@@ -5144,7 +5144,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.apply { (_ observer : EBEvent) in
+    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (observer)
@@ -5192,7 +5192,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_artworkComments_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_artworkComments.apply { (_ observer : EBEvent) in
+      self.mObserversOf_artworkComments.apply { (_ observer : EBObserverProtocol) in
         managedObject.artworkComments_property.addEBObserver (observer)
       }
     }
@@ -5201,7 +5201,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_artworkComments_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_artworkComments.apply { (_ observer : EBEvent) in
+    self.mObserversOf_artworkComments.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.artworkComments_property.removeEBObserver (observer)
@@ -5249,7 +5249,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_artworkTitle_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_artworkTitle.apply { (_ observer : EBEvent) in
+      self.mObserversOf_artworkTitle.apply { (_ observer : EBObserverProtocol) in
         managedObject.artworkTitle_property.addEBObserver (observer)
       }
     }
@@ -5258,7 +5258,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_artworkTitle_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_artworkTitle.apply { (_ observer : EBEvent) in
+    self.mObserversOf_artworkTitle.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.artworkTitle_property.removeEBObserver (observer)
@@ -5306,7 +5306,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_selectedSheetTitle_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectedSheetTitle.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectedSheetTitle.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectedSheetTitle_property.addEBObserver (observer)
       }
     }
@@ -5315,7 +5315,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_selectedSheetTitle_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_selectedSheetTitle.apply { (_ observer : EBEvent) in
+    self.mObserversOf_selectedSheetTitle.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.selectedSheetTitle_property.removeEBObserver (observer)
@@ -5363,7 +5363,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_drillDataFileExtension_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBEvent) in
+      self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBObserverProtocol) in
         managedObject.drillDataFileExtension_property.addEBObserver (observer)
       }
     }
@@ -5372,7 +5372,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //····················································································································
 
   final func removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBEvent) in
+    self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBObserverProtocol) in
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.drillDataFileExtension_property.removeEBObserver (observer)
@@ -5420,7 +5420,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_hasInnerElements_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_hasInnerElements.apply { (_ observer : EBEvent) in
+      self.mObserversOf_hasInnerElements.apply { (_ observer : EBObserverProtocol) in
         managedObject.hasInnerElements_property.addEBObserver (observer)
       }
     }
@@ -5430,7 +5430,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_hasInnerElements_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_hasInnerElements.apply { (_ observer : EBEvent) in
+      self.mObserversOf_hasInnerElements.apply { (_ observer : EBObserverProtocol) in
         managedObject.hasInnerElements_property.removeEBObserver (observer)
       }
     }
@@ -5476,7 +5476,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_hasSixLayers_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_hasSixLayers.apply { (_ observer : EBEvent) in
+      self.mObserversOf_hasSixLayers.apply { (_ observer : EBObserverProtocol) in
         managedObject.hasSixLayers_property.addEBObserver (observer)
       }
     }
@@ -5486,7 +5486,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_hasSixLayers_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_hasSixLayers.apply { (_ observer : EBEvent) in
+      self.mObserversOf_hasSixLayers.apply { (_ observer : EBObserverProtocol) in
         managedObject.hasSixLayers_property.removeEBObserver (observer)
       }
     }
@@ -5532,7 +5532,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_layerConfigurationString_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_layerConfigurationString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_layerConfigurationString.apply { (_ observer : EBObserverProtocol) in
         managedObject.layerConfigurationString_property.addEBObserver (observer)
       }
     }
@@ -5542,7 +5542,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_layerConfigurationString_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_layerConfigurationString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_layerConfigurationString.apply { (_ observer : EBObserverProtocol) in
         managedObject.layerConfigurationString_property.removeEBObserver (observer)
       }
     }
@@ -5588,7 +5588,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardGridStepMultipliedByDisplayFactor_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardGridStepMultipliedByDisplayFactor.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardGridStepMultipliedByDisplayFactor.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardGridStepMultipliedByDisplayFactor_property.addEBObserver (observer)
       }
     }
@@ -5598,7 +5598,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardGridStepMultipliedByDisplayFactor_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardGridStepMultipliedByDisplayFactor.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardGridStepMultipliedByDisplayFactor.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardGridStepMultipliedByDisplayFactor_property.removeEBObserver (observer)
       }
     }
@@ -5644,7 +5644,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardLimitsGridStepMultipliedByDisplayFactor_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardLimitsGridStepMultipliedByDisplayFactor_property.addEBObserver (observer)
       }
     }
@@ -5654,7 +5654,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardLimitsGridStepMultipliedByDisplayFactor_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardLimitsGridStepMultipliedByDisplayFactor_property.removeEBObserver (observer)
       }
     }
@@ -5700,7 +5700,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardShapeIsRectangular_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardShapeIsRectangular.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardShapeIsRectangular.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardShapeIsRectangular_property.addEBObserver (observer)
       }
     }
@@ -5710,7 +5710,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardShapeIsRectangular_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardShapeIsRectangular.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardShapeIsRectangular.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardShapeIsRectangular_property.removeEBObserver (observer)
       }
     }
@@ -5756,7 +5756,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_selectedSheetIssues_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectedSheetIssues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectedSheetIssues.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectedSheetIssues_property.addEBObserver (observer)
       }
     }
@@ -5766,7 +5766,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectedSheetIssues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectedSheetIssues.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectedSheetIssues_property.removeEBObserver (observer)
       }
     }
@@ -5812,7 +5812,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
+      self.mObserversOf_connectedPoints.apply { (_ observer : EBObserverProtocol) in
         managedObject.connectedPoints_property.addEBObserver (observer)
       }
     }
@@ -5822,7 +5822,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
+      self.mObserversOf_connectedPoints.apply { (_ observer : EBObserverProtocol) in
         managedObject.connectedPoints_property.removeEBObserver (observer)
       }
     }
@@ -5868,7 +5868,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_sheetGeometry_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_sheetGeometry.apply { (_ observer : EBEvent) in
+      self.mObserversOf_sheetGeometry.apply { (_ observer : EBObserverProtocol) in
         managedObject.sheetGeometry_property.addEBObserver (observer)
       }
     }
@@ -5878,7 +5878,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_sheetGeometry_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_sheetGeometry.apply { (_ observer : EBEvent) in
+      self.mObserversOf_sheetGeometry.apply { (_ observer : EBObserverProtocol) in
         managedObject.sheetGeometry_property.removeEBObserver (observer)
       }
     }
@@ -5924,7 +5924,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_schematicBackgroundDisplay_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_schematicBackgroundDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_schematicBackgroundDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.schematicBackgroundDisplay_property.addEBObserver (observer)
       }
     }
@@ -5934,7 +5934,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_schematicBackgroundDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_schematicBackgroundDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_schematicBackgroundDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.schematicBackgroundDisplay_property.removeEBObserver (observer)
       }
     }
@@ -5980,7 +5980,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_connexionWarningString_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connexionWarningString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_connexionWarningString.apply { (_ observer : EBObserverProtocol) in
         managedObject.connexionWarningString_property.addEBObserver (observer)
       }
     }
@@ -5990,7 +5990,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_connexionWarningString_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connexionWarningString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_connexionWarningString.apply { (_ observer : EBObserverProtocol) in
         managedObject.connexionWarningString_property.removeEBObserver (observer)
       }
     }
@@ -6036,7 +6036,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_connexionErrorString_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connexionErrorString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_connexionErrorString.apply { (_ observer : EBObserverProtocol) in
         managedObject.connexionErrorString_property.addEBObserver (observer)
       }
     }
@@ -6046,7 +6046,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_connexionErrorString_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connexionErrorString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_connexionErrorString.apply { (_ observer : EBObserverProtocol) in
         managedObject.connexionErrorString_property.removeEBObserver (observer)
       }
     }
@@ -6092,7 +6092,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_sheetIndexes_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_sheetIndexes.apply { (_ observer : EBEvent) in
+      self.mObserversOf_sheetIndexes.apply { (_ observer : EBObserverProtocol) in
         managedObject.sheetIndexes_property.addEBObserver (observer)
       }
     }
@@ -6102,7 +6102,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_sheetIndexes_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_sheetIndexes.apply { (_ observer : EBEvent) in
+      self.mObserversOf_sheetIndexes.apply { (_ observer : EBObserverProtocol) in
         managedObject.sheetIndexes_property.removeEBObserver (observer)
       }
     }
@@ -6148,7 +6148,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_netsDescription_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netsDescription.apply { (_ observer : EBObserverProtocol) in
         managedObject.netsDescription_property.addEBObserver (observer)
       }
     }
@@ -6158,7 +6158,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_netsDescription_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netsDescription.apply { (_ observer : EBObserverProtocol) in
         managedObject.netsDescription_property.removeEBObserver (observer)
       }
     }
@@ -6204,7 +6204,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardIssues_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardIssues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardIssues.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardIssues_property.addEBObserver (observer)
       }
     }
@@ -6214,7 +6214,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardIssues_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardIssues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardIssues.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardIssues_property.removeEBObserver (observer)
       }
     }
@@ -6260,7 +6260,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBObserverProtocol) in
         managedObject.signatureForERCChecking_property.addEBObserver (observer)
       }
     }
@@ -6270,7 +6270,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBObserverProtocol) in
         managedObject.signatureForERCChecking_property.removeEBObserver (observer)
       }
     }
@@ -6316,7 +6316,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_ercStatusImage_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_ercStatusImage.apply { (_ observer : EBEvent) in
+      self.mObserversOf_ercStatusImage.apply { (_ observer : EBObserverProtocol) in
         managedObject.ercStatusImage_property.addEBObserver (observer)
       }
     }
@@ -6326,7 +6326,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_ercStatusImage_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_ercStatusImage.apply { (_ observer : EBEvent) in
+      self.mObserversOf_ercStatusImage.apply { (_ observer : EBObserverProtocol) in
         managedObject.ercStatusImage_property.removeEBObserver (observer)
       }
     }
@@ -6372,7 +6372,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_ercStatusMessage_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_ercStatusMessage.apply { (_ observer : EBEvent) in
+      self.mObserversOf_ercStatusMessage.apply { (_ observer : EBObserverProtocol) in
         managedObject.ercStatusMessage_property.addEBObserver (observer)
       }
     }
@@ -6382,7 +6382,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_ercStatusMessage_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_ercStatusMessage.apply { (_ observer : EBEvent) in
+      self.mObserversOf_ercStatusMessage.apply { (_ observer : EBObserverProtocol) in
         managedObject.ercStatusMessage_property.removeEBObserver (observer)
       }
     }
@@ -6428,7 +6428,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_viaCountString_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_viaCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_viaCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.viaCountString_property.addEBObserver (observer)
       }
     }
@@ -6438,7 +6438,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_viaCountString_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_viaCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_viaCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.viaCountString_property.removeEBObserver (observer)
       }
     }
@@ -6484,7 +6484,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_topSideTrackCountString_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_topSideTrackCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_topSideTrackCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.topSideTrackCountString_property.addEBObserver (observer)
       }
     }
@@ -6494,7 +6494,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_topSideTrackCountString_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_topSideTrackCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_topSideTrackCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.topSideTrackCountString_property.removeEBObserver (observer)
       }
     }
@@ -6540,7 +6540,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_backSideTrackCountString_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_backSideTrackCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_backSideTrackCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.backSideTrackCountString_property.addEBObserver (observer)
       }
     }
@@ -6550,7 +6550,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_backSideTrackCountString_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_backSideTrackCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_backSideTrackCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.backSideTrackCountString_property.removeEBObserver (observer)
       }
     }
@@ -6596,7 +6596,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_inner1LayerTrackCountString_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_inner1LayerTrackCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_inner1LayerTrackCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.inner1LayerTrackCountString_property.addEBObserver (observer)
       }
     }
@@ -6606,7 +6606,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_inner1LayerTrackCountString_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_inner1LayerTrackCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_inner1LayerTrackCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.inner1LayerTrackCountString_property.removeEBObserver (observer)
       }
     }
@@ -6652,7 +6652,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_inner2LayerTrackCountString_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_inner2LayerTrackCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_inner2LayerTrackCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.inner2LayerTrackCountString_property.addEBObserver (observer)
       }
     }
@@ -6662,7 +6662,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_inner2LayerTrackCountString_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_inner2LayerTrackCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_inner2LayerTrackCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.inner2LayerTrackCountString_property.removeEBObserver (observer)
       }
     }
@@ -6708,7 +6708,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_inner3LayerTrackCountString_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_inner3LayerTrackCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_inner3LayerTrackCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.inner3LayerTrackCountString_property.addEBObserver (observer)
       }
     }
@@ -6718,7 +6718,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_inner3LayerTrackCountString_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_inner3LayerTrackCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_inner3LayerTrackCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.inner3LayerTrackCountString_property.removeEBObserver (observer)
       }
     }
@@ -6764,7 +6764,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_inner4LayerTrackCountString_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_inner4LayerTrackCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_inner4LayerTrackCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.inner4LayerTrackCountString_property.addEBObserver (observer)
       }
     }
@@ -6774,7 +6774,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_inner4LayerTrackCountString_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_inner4LayerTrackCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_inner4LayerTrackCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.inner4LayerTrackCountString_property.removeEBObserver (observer)
       }
     }
@@ -6820,7 +6820,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_trackCountString_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_trackCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_trackCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.trackCountString_property.addEBObserver (observer)
       }
     }
@@ -6830,7 +6830,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_trackCountString_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_trackCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_trackCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.trackCountString_property.removeEBObserver (observer)
       }
     }
@@ -6876,7 +6876,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_trackLengthString_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_trackLengthString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_trackLengthString.apply { (_ observer : EBObserverProtocol) in
         managedObject.trackLengthString_property.addEBObserver (observer)
       }
     }
@@ -6886,7 +6886,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_trackLengthString_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_trackLengthString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_trackLengthString.apply { (_ observer : EBObserverProtocol) in
         managedObject.trackLengthString_property.removeEBObserver (observer)
       }
     }
@@ -6932,7 +6932,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardStatusImage_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardStatusImage.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardStatusImage.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardStatusImage_property.addEBObserver (observer)
       }
     }
@@ -6942,7 +6942,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardStatusImage_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardStatusImage.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardStatusImage.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardStatusImage_property.removeEBObserver (observer)
       }
     }
@@ -6988,7 +6988,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardStatusMessage_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardStatusMessage.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardStatusMessage.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardStatusMessage_property.addEBObserver (observer)
       }
     }
@@ -6998,7 +6998,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardStatusMessage_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardStatusMessage.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardStatusMessage.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardStatusMessage_property.removeEBObserver (observer)
       }
     }
@@ -7044,7 +7044,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_interiorBoundBox_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_interiorBoundBox.apply { (_ observer : EBEvent) in
+      self.mObserversOf_interiorBoundBox.apply { (_ observer : EBObserverProtocol) in
         managedObject.interiorBoundBox_property.addEBObserver (observer)
       }
     }
@@ -7054,7 +7054,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_interiorBoundBox_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_interiorBoundBox.apply { (_ observer : EBEvent) in
+      self.mObserversOf_interiorBoundBox.apply { (_ observer : EBObserverProtocol) in
         managedObject.interiorBoundBox_property.removeEBObserver (observer)
       }
     }
@@ -7100,7 +7100,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardBoundBox_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardBoundBox.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardBoundBox.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardBoundBox_property.addEBObserver (observer)
       }
     }
@@ -7110,7 +7110,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardBoundBox_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardBoundBox.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardBoundBox.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardBoundBox_property.removeEBObserver (observer)
       }
     }
@@ -7156,7 +7156,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardInteriorTop_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardInteriorTop.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardInteriorTop.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardInteriorTop_property.addEBObserver (observer)
       }
     }
@@ -7166,7 +7166,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardInteriorTop_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardInteriorTop.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardInteriorTop.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardInteriorTop_property.removeEBObserver (observer)
       }
     }
@@ -7212,7 +7212,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardInteriorBottom_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardInteriorBottom.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardInteriorBottom.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardInteriorBottom_property.addEBObserver (observer)
       }
     }
@@ -7222,7 +7222,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardInteriorBottom_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardInteriorBottom.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardInteriorBottom.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardInteriorBottom_property.removeEBObserver (observer)
       }
     }
@@ -7268,7 +7268,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardInteriorLeft_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardInteriorLeft.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardInteriorLeft.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardInteriorLeft_property.addEBObserver (observer)
       }
     }
@@ -7278,7 +7278,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardInteriorLeft_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardInteriorLeft.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardInteriorLeft.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardInteriorLeft_property.removeEBObserver (observer)
       }
     }
@@ -7324,7 +7324,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardInteriorRight_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardInteriorRight.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardInteriorRight.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardInteriorRight_property.addEBObserver (observer)
       }
     }
@@ -7334,7 +7334,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardInteriorRight_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardInteriorRight.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardInteriorRight.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardInteriorRight_property.removeEBObserver (observer)
       }
     }
@@ -7380,7 +7380,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardLimitBorderTop_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardLimitBorderTop.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardLimitBorderTop.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardLimitBorderTop_property.addEBObserver (observer)
       }
     }
@@ -7390,7 +7390,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardLimitBorderTop_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardLimitBorderTop.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardLimitBorderTop.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardLimitBorderTop_property.removeEBObserver (observer)
       }
     }
@@ -7436,7 +7436,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardLimitBorderBottom_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardLimitBorderBottom.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardLimitBorderBottom.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardLimitBorderBottom_property.addEBObserver (observer)
       }
     }
@@ -7446,7 +7446,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardLimitBorderBottom_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardLimitBorderBottom.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardLimitBorderBottom.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardLimitBorderBottom_property.removeEBObserver (observer)
       }
     }
@@ -7492,7 +7492,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardLimitBorderLeft_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardLimitBorderLeft.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardLimitBorderLeft.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardLimitBorderLeft_property.addEBObserver (observer)
       }
     }
@@ -7502,7 +7502,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardLimitBorderLeft_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardLimitBorderLeft.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardLimitBorderLeft.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardLimitBorderLeft_property.removeEBObserver (observer)
       }
     }
@@ -7548,7 +7548,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_boardLimitBorderRight_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardLimitBorderRight.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardLimitBorderRight.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardLimitBorderRight_property.addEBObserver (observer)
       }
     }
@@ -7558,7 +7558,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_boardLimitBorderRight_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_boardLimitBorderRight.apply { (_ observer : EBEvent) in
+      self.mObserversOf_boardLimitBorderRight.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardLimitBorderRight_property.removeEBObserver (observer)
       }
     }
@@ -7604,7 +7604,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_borderElementCountString_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_borderElementCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_borderElementCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.borderElementCountString_property.addEBObserver (observer)
       }
     }
@@ -7614,7 +7614,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_borderElementCountString_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_borderElementCountString.apply { (_ observer : EBEvent) in
+      self.mObserversOf_borderElementCountString.apply { (_ observer : EBObserverProtocol) in
         managedObject.borderElementCountString_property.removeEBObserver (observer)
       }
     }
@@ -7660,7 +7660,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_borderOutlineBackground_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_borderOutlineBackground.apply { (_ observer : EBEvent) in
+      self.mObserversOf_borderOutlineBackground.apply { (_ observer : EBObserverProtocol) in
         managedObject.borderOutlineBackground_property.addEBObserver (observer)
       }
     }
@@ -7670,7 +7670,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_borderOutlineBackground_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_borderOutlineBackground.apply { (_ observer : EBEvent) in
+      self.mObserversOf_borderOutlineBackground.apply { (_ observer : EBObserverProtocol) in
         managedObject.borderOutlineBackground_property.removeEBObserver (observer)
       }
     }
@@ -7716,7 +7716,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_borderViewBackground_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_borderViewBackground.apply { (_ observer : EBEvent) in
+      self.mObserversOf_borderViewBackground.apply { (_ observer : EBObserverProtocol) in
         managedObject.borderViewBackground_property.addEBObserver (observer)
       }
     }
@@ -7726,7 +7726,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_borderViewBackground_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_borderViewBackground.apply { (_ observer : EBEvent) in
+      self.mObserversOf_borderViewBackground.apply { (_ observer : EBObserverProtocol) in
         managedObject.borderViewBackground_property.removeEBObserver (observer)
       }
     }
@@ -7772,7 +7772,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_deviceNames_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_deviceNames.apply { (_ observer : EBEvent) in
+      self.mObserversOf_deviceNames.apply { (_ observer : EBObserverProtocol) in
         managedObject.deviceNames_property.addEBObserver (observer)
       }
     }
@@ -7782,7 +7782,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_deviceNames_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_deviceNames.apply { (_ observer : EBEvent) in
+      self.mObserversOf_deviceNames.apply { (_ observer : EBObserverProtocol) in
         managedObject.deviceNames_property.removeEBObserver (observer)
       }
     }
@@ -7828,7 +7828,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_allClassNames_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_allClassNames.apply { (_ observer : EBEvent) in
+      self.mObserversOf_allClassNames.apply { (_ observer : EBObserverProtocol) in
         managedObject.allClassNames_property.addEBObserver (observer)
       }
     }
@@ -7838,7 +7838,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_allClassNames_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_allClassNames.apply { (_ observer : EBEvent) in
+      self.mObserversOf_allClassNames.apply { (_ observer : EBObserverProtocol) in
         managedObject.allClassNames_property.removeEBObserver (observer)
       }
     }
@@ -7884,7 +7884,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_netWarningCount_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netWarningCount.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netWarningCount.apply { (_ observer : EBObserverProtocol) in
         managedObject.netWarningCount_property.addEBObserver (observer)
       }
     }
@@ -7894,7 +7894,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_netWarningCount_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netWarningCount.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netWarningCount.apply { (_ observer : EBObserverProtocol) in
         managedObject.netWarningCount_property.removeEBObserver (observer)
       }
     }
@@ -7940,7 +7940,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_netNamesArray_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netNamesArray.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netNamesArray.apply { (_ observer : EBObserverProtocol) in
         managedObject.netNamesArray_property.addEBObserver (observer)
       }
     }
@@ -7950,7 +7950,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_netNamesArray_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netNamesArray.apply { (_ observer : EBEvent) in
+      self.mObserversOf_netNamesArray.apply { (_ observer : EBObserverProtocol) in
         managedObject.netNamesArray_property.removeEBObserver (observer)
       }
     }
@@ -7996,7 +7996,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_unplacedSymbols_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
+      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBObserverProtocol) in
         managedObject.unplacedSymbols_property.addEBObserver (observer)
       }
     }
@@ -8006,7 +8006,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_unplacedSymbols_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
+      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBObserverProtocol) in
         managedObject.unplacedSymbols_property.removeEBObserver (observer)
       }
     }
@@ -8052,7 +8052,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_unplacedPackages_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_unplacedPackages.apply { (_ observer : EBEvent) in
+      self.mObserversOf_unplacedPackages.apply { (_ observer : EBObserverProtocol) in
         managedObject.unplacedPackages_property.addEBObserver (observer)
       }
     }
@@ -8062,7 +8062,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_unplacedPackages_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_unplacedPackages.apply { (_ observer : EBEvent) in
+      self.mObserversOf_unplacedPackages.apply { (_ observer : EBObserverProtocol) in
         managedObject.unplacedPackages_property.removeEBObserver (observer)
       }
     }
@@ -8108,7 +8108,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_componentsPlacedInBoard_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_componentsPlacedInBoard.apply { (_ observer : EBEvent) in
+      self.mObserversOf_componentsPlacedInBoard.apply { (_ observer : EBObserverProtocol) in
         managedObject.componentsPlacedInBoard_property.addEBObserver (observer)
       }
     }
@@ -8118,7 +8118,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_componentsPlacedInBoard_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_componentsPlacedInBoard.apply { (_ observer : EBEvent) in
+      self.mObserversOf_componentsPlacedInBoard.apply { (_ observer : EBObserverProtocol) in
         managedObject.componentsPlacedInBoard_property.removeEBObserver (observer)
       }
     }
@@ -8164,7 +8164,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_placedComponentNameArray_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_placedComponentNameArray.apply { (_ observer : EBEvent) in
+      self.mObserversOf_placedComponentNameArray.apply { (_ observer : EBObserverProtocol) in
         managedObject.placedComponentNameArray_property.addEBObserver (observer)
       }
     }
@@ -8174,7 +8174,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_placedComponentNameArray_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_placedComponentNameArray.apply { (_ observer : EBEvent) in
+      self.mObserversOf_placedComponentNameArray.apply { (_ observer : EBObserverProtocol) in
         managedObject.placedComponentNameArray_property.removeEBObserver (observer)
       }
     }
@@ -8220,7 +8220,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_schematicHasErrorOrWarning_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_schematicHasErrorOrWarning.apply { (_ observer : EBEvent) in
+      self.mObserversOf_schematicHasErrorOrWarning.apply { (_ observer : EBObserverProtocol) in
         managedObject.schematicHasErrorOrWarning_property.addEBObserver (observer)
       }
     }
@@ -8230,7 +8230,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_schematicHasErrorOrWarning_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_schematicHasErrorOrWarning.apply { (_ observer : EBEvent) in
+      self.mObserversOf_schematicHasErrorOrWarning.apply { (_ observer : EBObserverProtocol) in
         managedObject.schematicHasErrorOrWarning_property.removeEBObserver (observer)
       }
     }
@@ -8276,7 +8276,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_schematicStatusMessage_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_schematicStatusMessage.apply { (_ observer : EBEvent) in
+      self.mObserversOf_schematicStatusMessage.apply { (_ observer : EBObserverProtocol) in
         managedObject.schematicStatusMessage_property.addEBObserver (observer)
       }
     }
@@ -8286,7 +8286,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_schematicStatusMessage_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_schematicStatusMessage.apply { (_ observer : EBEvent) in
+      self.mObserversOf_schematicStatusMessage.apply { (_ observer : EBObserverProtocol) in
         managedObject.schematicStatusMessage_property.removeEBObserver (observer)
       }
     }
@@ -8332,7 +8332,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_schematicStatusImage_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
+      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBObserverProtocol) in
         managedObject.schematicStatusImage_property.addEBObserver (observer)
       }
     }
@@ -8342,7 +8342,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func removeEBObserversOf_schematicStatusImage_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
     for managedObject in inSet.values {
-      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
+      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBObserverProtocol) in
         managedObject.schematicStatusImage_property.removeEBObserver (observer)
       }
     }

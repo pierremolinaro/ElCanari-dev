@@ -75,7 +75,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <SchematicObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -85,7 +85,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <SchematicObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
         managedObject.issues_property.removeEBObserver (observer)
       }
     }
@@ -131,7 +131,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
 
   final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : EBReferenceSet <SchematicObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
+      self.mObserversOf_connectedPoints.apply { (_ observer : EBObserverProtocol) in
         managedObject.connectedPoints_property.addEBObserver (observer)
       }
     }
@@ -141,7 +141,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
 
   final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : EBReferenceSet <SchematicObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
+      self.mObserversOf_connectedPoints.apply { (_ observer : EBObserverProtocol) in
         managedObject.connectedPoints_property.removeEBObserver (observer)
       }
     }
@@ -187,7 +187,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
 
   final func addEBObserversOf_sheetDescriptor_toElementsOfSet (_ inSet : EBReferenceSet <SchematicObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBEvent) in
+      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBObserverProtocol) in
         managedObject.sheetDescriptor_property.addEBObserver (observer)
       }
     }
@@ -197,7 +197,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
 
   final func removeEBObserversOf_sheetDescriptor_fromElementsOfSet (_ inSet : EBReferenceSet <SchematicObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBEvent) in
+      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBObserverProtocol) in
         managedObject.sheetDescriptor_property.removeEBObserver (observer)
       }
     }
@@ -243,7 +243,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <SchematicObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -253,7 +253,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <SchematicObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -299,7 +299,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <SchematicObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -309,7 +309,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <SchematicObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
@@ -355,7 +355,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
 
   final func addEBObserversOf_isPlacedInSchematic_toElementsOfSet (_ inSet : EBReferenceSet <SchematicObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_isPlacedInSchematic.apply { (_ observer : EBEvent) in
+      self.mObserversOf_isPlacedInSchematic.apply { (_ observer : EBObserverProtocol) in
         managedObject.isPlacedInSchematic_property.addEBObserver (observer)
       }
     }
@@ -365,7 +365,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
 
   final func removeEBObserversOf_isPlacedInSchematic_fromElementsOfSet (_ inSet : EBReferenceSet <SchematicObject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_isPlacedInSchematic.apply { (_ observer : EBEvent) in
+      self.mObserversOf_isPlacedInSchematic.apply { (_ observer : EBObserverProtocol) in
         managedObject.isPlacedInSchematic_property.removeEBObserver (observer)
       }
     }

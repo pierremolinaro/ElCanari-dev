@@ -73,7 +73,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_pinName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_pinName.apply { (_ observer : EBEvent) in
+      self.mObserversOf_pinName.apply { (_ observer : EBObserverProtocol) in
         managedObject.pinName_property.addEBObserver (observer)
       }
     }
@@ -83,7 +83,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_pinName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_pinName.apply { (_ observer : EBEvent) in
+      self.mObserversOf_pinName.apply { (_ observer : EBObserverProtocol) in
         managedObject.pinName_property.removeEBObserver (observer)
       }
     }
@@ -129,7 +129,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_symbolName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_symbolName.apply { (_ observer : EBEvent) in
+      self.mObserversOf_symbolName.apply { (_ observer : EBObserverProtocol) in
         managedObject.symbolName_property.addEBObserver (observer)
       }
     }
@@ -139,7 +139,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_symbolName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_symbolName.apply { (_ observer : EBEvent) in
+      self.mObserversOf_symbolName.apply { (_ observer : EBObserverProtocol) in
         managedObject.symbolName_property.removeEBObserver (observer)
       }
     }
@@ -185,7 +185,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_pinQualifiedName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_pinQualifiedName.apply { (_ observer : EBEvent) in
+      self.mObserversOf_pinQualifiedName.apply { (_ observer : EBObserverProtocol) in
         managedObject.pinQualifiedName_property.addEBObserver (observer)
       }
     }
@@ -195,7 +195,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_pinQualifiedName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_pinQualifiedName.apply { (_ observer : EBEvent) in
+      self.mObserversOf_pinQualifiedName.apply { (_ observer : EBObserverProtocol) in
         managedObject.pinQualifiedName_property.removeEBObserver (observer)
       }
     }
@@ -241,7 +241,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
+      self.mObserversOf_isConnected.apply { (_ observer : EBObserverProtocol) in
         managedObject.isConnected_property.addEBObserver (observer)
       }
     }
@@ -251,7 +251,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
+      self.mObserversOf_isConnected.apply { (_ observer : EBObserverProtocol) in
         managedObject.isConnected_property.removeEBObserver (observer)
       }
     }
@@ -297,7 +297,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_numberShape_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_numberShape.apply { (_ observer : EBEvent) in
+      self.mObserversOf_numberShape.apply { (_ observer : EBObserverProtocol) in
         managedObject.numberShape_property.addEBObserver (observer)
       }
     }
@@ -307,7 +307,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_numberShape_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_numberShape.apply { (_ observer : EBEvent) in
+      self.mObserversOf_numberShape.apply { (_ observer : EBObserverProtocol) in
         managedObject.numberShape_property.removeEBObserver (observer)
       }
     }
