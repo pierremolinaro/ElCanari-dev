@@ -8,7 +8,7 @@ import Cocoa
 //   EBGenericStoredProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBGenericReadWriteProperty <T> {
+class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T> {
 
   //····················································································································
 

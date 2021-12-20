@@ -134,8 +134,8 @@
 		CF0777FA23521A4E00F56EAB /* EBGenericPreferenceProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777EF23521A4D00F56EAB /* EBGenericPreferenceProperty.swift */; };
 		CF0777FB23521A4E00F56EAB /* EBEnumProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F023521A4D00F56EAB /* EBEnumProtocol.swift */; };
 		CF0777FC23521A4E00F56EAB /* EBEnumProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F023521A4D00F56EAB /* EBEnumProtocol.swift */; };
-		CF0777FD23521A4E00F56EAB /* EBGenericReadWriteProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F123521A4D00F56EAB /* EBGenericReadWriteProperty.swift */; };
-		CF0777FE23521A4E00F56EAB /* EBGenericReadWriteProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F123521A4D00F56EAB /* EBGenericReadWriteProperty.swift */; };
+		CF0777FD23521A4E00F56EAB /* EBObservableMutableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F123521A4D00F56EAB /* EBObservableMutableProperty.swift */; };
+		CF0777FE23521A4E00F56EAB /* EBObservableMutableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F123521A4D00F56EAB /* EBObservableMutableProperty.swift */; };
 		CF0777FF23521A4E00F56EAB /* extension-Data-Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F223521A4D00F56EAB /* extension-Data-Comparable.swift */; };
 		CF07780023521A4E00F56EAB /* extension-Data-Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F223521A4D00F56EAB /* extension-Data-Comparable.swift */; };
 		CF07780123521A4E00F56EAB /* EBGenericStoredProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F323521A4D00F56EAB /* EBGenericStoredProperty.swift */; };
@@ -2764,7 +2764,7 @@
 		CF9C62EC25CABE5C00A00D5C /* transient-ProjectRoot-ercStatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7C7F233A28850060A97A /* transient-ProjectRoot-ercStatusMessage.swift */; };
 		CF9C62EF25CABE5C00A00D5C /* transient-PackageSegment-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D083721C2F18000380ACA /* transient-PackageSegment-objectDisplay.swift */; };
 		CF9C62F025CABE5C00A00D5C /* toone-PackageInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA42F6F229AEACD000AA8C8 /* toone-PackageInDevice.swift */; };
-		CF9C62F125CABE5C00A00D5C /* EBGenericReadWriteProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F123521A4D00F56EAB /* EBGenericReadWriteProperty.swift */; };
+		CF9C62F125CABE5C00A00D5C /* EBObservableMutableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F123521A4D00F56EAB /* EBObservableMutableProperty.swift */; };
 		CF9C62F225CABE5C00A00D5C /* property-explorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07781223521CB800F56EAB /* property-explorer.swift */; };
 		CF9C62F425CABE5C00A00D5C /* tomany-SymbolInstanceInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA42F6B229AEACC000AA8C8 /* tomany-SymbolInstanceInDevice.swift */; };
 		CF9C62F725CABE5C00A00D5C /* transient-BoardRestrictRectangle-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7AE9233A247F0060A97A /* transient-BoardRestrictRectangle-signatureForERCChecking.swift */; };
@@ -4510,7 +4510,7 @@
 		CF0777E6235216F800F56EAB /* EBEnumStoredProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBEnumStoredProperty.swift; sourceTree = "<group>"; };
 		CF0777EF23521A4D00F56EAB /* EBGenericPreferenceProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBGenericPreferenceProperty.swift; sourceTree = "<group>"; };
 		CF0777F023521A4D00F56EAB /* EBEnumProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBEnumProtocol.swift; sourceTree = "<group>"; };
-		CF0777F123521A4D00F56EAB /* EBGenericReadWriteProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBGenericReadWriteProperty.swift; sourceTree = "<group>"; };
+		CF0777F123521A4D00F56EAB /* EBObservableMutableProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBObservableMutableProperty.swift; sourceTree = "<group>"; };
 		CF0777F223521A4D00F56EAB /* extension-Data-Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-Data-Comparable.swift"; sourceTree = "<group>"; };
 		CF0777F323521A4D00F56EAB /* EBGenericStoredProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBGenericStoredProperty.swift; sourceTree = "<group>"; };
 		CF0777F423521A4E00F56EAB /* EBGenericPropertyProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBGenericPropertyProxy.swift; sourceTree = "<group>"; };
@@ -6719,8 +6719,6 @@
 				CF841C45275BB3880000EA26 /* EBGenericEnumReadWritePropertyController.swift */,
 				CF0777EF23521A4D00F56EAB /* EBGenericPreferenceProperty.swift */,
 				CF0777F423521A4E00F56EAB /* EBGenericPropertyProxy.swift */,
-				CF0777F723521A4E00F56EAB /* EBObservableProperty.swift */,
-				CF0777F123521A4D00F56EAB /* EBGenericReadWriteProperty.swift */,
 				CFA80DD325C0503700966D91 /* EBGenericReadWritePropertyController.swift */,
 				CF0777F323521A4D00F56EAB /* EBGenericStoredProperty.swift */,
 				CF0777F523521A4E00F56EAB /* EBGenericTransientProperty.swift */,
@@ -6731,7 +6729,9 @@
 				CFEDE5B21B4677C500036ACF /* EBManagedXibDocument.swift */,
 				CF8BE73823510FEC00F95B3A /* EBModelNotifierEvent.swift */,
 				CF0777D22352152F00F56EAB /* EBObject.swift */,
+				CF0777F123521A4D00F56EAB /* EBObservableMutableProperty.swift */,
 				CF4C8F3825262ADC0046F831 /* EBObservableObjectProtocol.swift */,
+				CF0777F723521A4E00F56EAB /* EBObservableProperty.swift */,
 				CF8BE73623510FEB00F95B3A /* EBObservedObject.swift */,
 				CF549F5227707E1400D978D9 /* EBObserverProtocol.swift */,
 				CF07780D23521A8300F56EAB /* EBPropertyProtocol.swift */,
@@ -9191,7 +9191,7 @@
 				CF711F28275E1E6C00280069 /* transient-ProjectDocument-unplacedPackagesCountString.swift in Sources */,
 				CF4D083C21C2F18000380ACA /* transient-PackageSegment-objectDisplay.swift in Sources */,
 				CFA42F8F229AEACF000AA8C8 /* toone-PackageInDevice.swift in Sources */,
-				CF0777FD23521A4E00F56EAB /* EBGenericReadWriteProperty.swift in Sources */,
+				CF0777FD23521A4E00F56EAB /* EBObservableMutableProperty.swift in Sources */,
 				CF07781823521CB800F56EAB /* property-explorer.swift in Sources */,
 				CFA42F87229AEACF000AA8C8 /* tomany-SymbolInstanceInDevice.swift in Sources */,
 				CF711DF6275E1C2400280069 /* tomany-DeviceSymbolTypeInProject.swift in Sources */,
@@ -10643,7 +10643,7 @@
 				CF3E658B21BECB7A0041FA2A /* EBGraphicView-issue.swift in Sources */,
 				CFEB7CC4233A28860060A97A /* transient-ProjectRoot-ercStatusMessage.swift in Sources */,
 				CFD3B2BD21B04977007D3361 /* transient-SymbolPin-nameRect.swift in Sources */,
-				CF0777FE23521A4E00F56EAB /* EBGenericReadWriteProperty.swift in Sources */,
+				CF0777FE23521A4E00F56EAB /* EBObservableMutableProperty.swift in Sources */,
 				CF07781923521CB800F56EAB /* property-explorer.swift in Sources */,
 				CFA43012229AEB69000AA8C8 /* toone-PackageZone.swift in Sources */,
 				CF4B39D421D4E5DD001217C6 /* transient-PackagePad-noZone.swift in Sources */,
@@ -12046,7 +12046,7 @@
 				CF73BE1B25DAFF2A00090625 /* AutoLayoutFlexibleSpace.swift in Sources */,
 				CF9C62EF25CABE5C00A00D5C /* transient-PackageSegment-objectDisplay.swift in Sources */,
 				CF9C62F025CABE5C00A00D5C /* toone-PackageInDevice.swift in Sources */,
-				CF9C62F125CABE5C00A00D5C /* EBGenericReadWriteProperty.swift in Sources */,
+				CF9C62F125CABE5C00A00D5C /* EBObservableMutableProperty.swift in Sources */,
 				CFD1EA8D274EE23B000AED8E /* entity-SegmentForFontCharacter.swift in Sources */,
 				CF9C62F225CABE5C00A00D5C /* property-explorer.swift in Sources */,
 				CF9C62F425CABE5C00A00D5C /* tomany-SymbolInstanceInDevice.swift in Sources */,

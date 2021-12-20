@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBGenericReadWriteProperty <T> (abstract class)
+//   EBObservableMutableProperty <T> (abstract class)
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBGenericReadWriteProperty <T : Equatable> : EBObservableProperty <T> {
+class EBObservableMutableProperty <T> : EBObservableProperty <T> {
 
   //····················································································································
 
@@ -16,7 +16,7 @@ class EBGenericReadWriteProperty <T : Equatable> : EBObservableProperty <T> {
 
   //····················································································································
 
-  func validateAndSetProp (_ candidateValue : T, windowForSheet inWindow:NSWindow?) -> Bool {
+  func validateAndSetProp (_ inCandidateValue : T, windowForSheet inWindow : NSWindow?) -> Bool {
     return false
   } // Abstract method
 

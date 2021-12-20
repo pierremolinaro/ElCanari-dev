@@ -85,7 +85,7 @@ final class CanariBoolPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func bind_value (_ inObject : EBGenericReadWriteProperty <Bool>,
+  final func bind_value (_ inObject : EBObservableMutableProperty <Bool>,
                    item0 inItem0Title : String,
                    item1 inItem1Title : String) {
     self.mItem0Title = inItem0Title

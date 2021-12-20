@@ -308,7 +308,7 @@ final class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func bind_zoom (_ inObject : EBGenericReadWriteProperty <Int>) {
+  final func bind_zoom (_ inObject : EBObservableMutableProperty <Int>) {
     self.mGraphicView.bind_zoom (inObject)
   }
 
@@ -320,13 +320,13 @@ final class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func bind_xPlacardUnit (_ inObject : EBGenericReadWriteProperty <Int>) {
+  final func bind_xPlacardUnit (_ inObject : EBObservableMutableProperty <Int>) {
     self.mGraphicView.bind_xPlacardUnit (inObject)
   }
 
   //····················································································································
 
-  final func bind_yPlacardUnit (_ inObject : EBGenericReadWriteProperty <Int>) {
+  final func bind_yPlacardUnit (_ inObject : EBObservableMutableProperty <Int>) {
     self.mGraphicView.bind_yPlacardUnit (inObject)
   }
 

@@ -36,7 +36,7 @@ final class AutoLayoutTaggedPopUpButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
-  func updateTag (from inObject : EBGenericReadWriteProperty <Int>) {
+  func updateTag (from inObject : EBObservableMutableProperty <Int>) {
     switch inObject.selection {
     case .single (let v) :
       self.enable (fromValueBinding: true)
@@ -63,7 +63,7 @@ final class AutoLayoutTaggedPopUpButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
-  final func bind_selectedTag (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
+  final func bind_selectedTag (_ inObject : EBObservableMutableProperty <Int>) -> Self {
     self.mSelectedTagController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateTag (from: inObject) }

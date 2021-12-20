@@ -92,7 +92,7 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
 
   //····················································································································
 
-  final func bind_selectedPage (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
+  final func bind_selectedPage (_ inObject : EBObservableMutableProperty <Int>) -> Self {
     self.mSelectedTabIndexController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.update (from: inObject) }
@@ -102,7 +102,7 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
 
   //····················································································································
 
-  fileprivate func update (from inObject : EBGenericReadWriteProperty <Int>) {
+  fileprivate func update (from inObject : EBObservableMutableProperty <Int>) {
     switch inObject.selection {
     case .empty :
       ()

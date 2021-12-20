@@ -10,7 +10,7 @@ import Cocoa
 
 typealias EBReadOnlyProperty_UInt32    = EBObservableProperty <UInt32>
 typealias EBTransientProperty_UInt32   = EBGenericTransientProperty <UInt32>
-typealias EBReadWriteProperty_UInt32   = EBGenericReadWriteProperty <UInt32>
+typealias EBReadWriteProperty_UInt32   = EBObservableMutableProperty <UInt32>
 typealias EBPropertyProxy_UInt32       = EBGenericPropertyProxy <UInt32>
 typealias EBComputedProperty_UInt32    = EBGenericComputedProperty <UInt32>
 typealias EBStoredProperty_UInt32      = EBGenericStoredProperty <UInt32>
@@ -68,7 +68,7 @@ func compare_UInt32_properties (_ inLeft : EBReadOnlyProperty_UInt32, _ inAscend
 
 typealias EBReadOnlyProperty_Int    = EBObservableProperty <Int>
 typealias EBTransientProperty_Int   = EBGenericTransientProperty <Int>
-typealias EBReadWriteProperty_Int   = EBGenericReadWriteProperty <Int>
+typealias EBReadWriteProperty_Int   = EBObservableMutableProperty <Int>
 typealias EBPropertyProxy_Int       = EBGenericPropertyProxy <Int>
 typealias EBComputedProperty_Int    = EBGenericComputedProperty <Int>
 typealias EBStoredProperty_Int      = EBGenericStoredProperty <Int>
@@ -126,7 +126,7 @@ func compare_Int_properties (_ inLeft : EBReadOnlyProperty_Int, _ inAscending : 
 
 typealias EBReadOnlyProperty_Bool    = EBObservableProperty <Bool>
 typealias EBTransientProperty_Bool   = EBGenericTransientProperty <Bool>
-typealias EBReadWriteProperty_Bool   = EBGenericReadWriteProperty <Bool>
+typealias EBReadWriteProperty_Bool   = EBObservableMutableProperty <Bool>
 typealias EBPropertyProxy_Bool       = EBGenericPropertyProxy <Bool>
 typealias EBComputedProperty_Bool    = EBGenericComputedProperty <Bool>
 typealias EBStoredProperty_Bool      = EBGenericStoredProperty <Bool>
@@ -184,7 +184,7 @@ func compare_Bool_properties (_ inLeft : EBReadOnlyProperty_Bool, _ inAscending 
 
 typealias EBReadOnlyProperty_Double    = EBObservableProperty <Double>
 typealias EBTransientProperty_Double   = EBGenericTransientProperty <Double>
-typealias EBReadWriteProperty_Double   = EBGenericReadWriteProperty <Double>
+typealias EBReadWriteProperty_Double   = EBObservableMutableProperty <Double>
 typealias EBPropertyProxy_Double       = EBGenericPropertyProxy <Double>
 typealias EBComputedProperty_Double    = EBGenericComputedProperty <Double>
 typealias EBStoredProperty_Double      = EBGenericStoredProperty <Double>
@@ -242,7 +242,7 @@ func compare_Double_properties (_ inLeft : EBReadOnlyProperty_Double, _ inAscend
 
 typealias EBReadOnlyProperty_String    = EBObservableProperty <String>
 typealias EBTransientProperty_String   = EBGenericTransientProperty <String>
-typealias EBReadWriteProperty_String   = EBGenericReadWriteProperty <String>
+typealias EBReadWriteProperty_String   = EBObservableMutableProperty <String>
 typealias EBPropertyProxy_String       = EBGenericPropertyProxy <String>
 typealias EBComputedProperty_String    = EBGenericComputedProperty <String>
 typealias EBStoredProperty_String      = EBGenericStoredProperty <String>
@@ -294,7 +294,7 @@ func compare_String_properties (_ inLeft : EBReadOnlyProperty_String, _ inAscend
 
 typealias EBReadOnlyProperty_Data    = EBObservableProperty <Data>
 typealias EBTransientProperty_Data   = EBGenericTransientProperty <Data>
-typealias EBReadWriteProperty_Data   = EBGenericReadWriteProperty <Data>
+typealias EBReadWriteProperty_Data   = EBObservableMutableProperty <Data>
 typealias EBPropertyProxy_Data       = EBGenericPropertyProxy <Data>
 typealias EBComputedProperty_Data    = EBGenericComputedProperty <Data>
 typealias EBStoredProperty_Data      = EBGenericStoredProperty <Data>
@@ -352,7 +352,7 @@ func compare_Data_properties (_ inLeft : EBReadOnlyProperty_Data, _ inAscending 
 
 typealias EBReadOnlyProperty_Date    = EBObservableProperty <Date>
 typealias EBTransientProperty_Date   = EBGenericTransientProperty <Date>
-typealias EBReadWriteProperty_Date   = EBGenericReadWriteProperty <Date>
+typealias EBReadWriteProperty_Date   = EBObservableMutableProperty <Date>
 typealias EBPropertyProxy_Date       = EBGenericPropertyProxy <Date>
 typealias EBComputedProperty_Date    = EBGenericComputedProperty <Date>
 typealias EBStoredProperty_Date      = EBGenericStoredProperty <Date>
@@ -410,7 +410,7 @@ func compare_Date_properties (_ inLeft : EBReadOnlyProperty_Date, _ inAscending 
 
 typealias EBReadOnlyProperty_BezierPathArray    = EBObservableProperty <BezierPathArray>
 typealias EBTransientProperty_BezierPathArray   = EBGenericTransientProperty <BezierPathArray>
-typealias EBReadWriteProperty_BezierPathArray   = EBGenericReadWriteProperty <BezierPathArray>
+typealias EBReadWriteProperty_BezierPathArray   = EBObservableMutableProperty <BezierPathArray>
 typealias EBPropertyProxy_BezierPathArray       = EBGenericPropertyProxy <BezierPathArray>
 typealias EBComputedProperty_BezierPathArray    = EBGenericComputedProperty <BezierPathArray>
 typealias EBStoredProperty_BezierPathArray      = EBGenericStoredProperty <BezierPathArray>
@@ -815,7 +815,7 @@ typealias EBTransientProperty_CharacterGerberCode   = EBGenericTransientProperty
 
 typealias EBReadOnlyProperty_NSBezierPath    = EBObservableProperty <NSBezierPath>
 typealias EBTransientProperty_NSBezierPath   = EBGenericTransientProperty <NSBezierPath>
-typealias EBReadWriteProperty_NSBezierPath   = EBGenericReadWriteProperty <NSBezierPath>
+typealias EBReadWriteProperty_NSBezierPath   = EBObservableMutableProperty <NSBezierPath>
 typealias EBPropertyProxy_NSBezierPath       = EBGenericPropertyProxy <NSBezierPath>
 typealias EBComputedProperty_NSBezierPath    = EBGenericComputedProperty <NSBezierPath>
 typealias EBStoredProperty_NSBezierPath      = EBGenericStoredProperty <NSBezierPath>
@@ -827,7 +827,7 @@ typealias EBPreferencesProperty_NSBezierPath = EBGenericPreferenceProperty <NSBe
 
 typealias EBReadOnlyProperty_NSFont    = EBObservableProperty <NSFont>
 typealias EBTransientProperty_NSFont   = EBGenericTransientProperty <NSFont>
-typealias EBReadWriteProperty_NSFont   = EBGenericReadWriteProperty <NSFont>
+typealias EBReadWriteProperty_NSFont   = EBObservableMutableProperty <NSFont>
 typealias EBPropertyProxy_NSFont       = EBGenericPropertyProxy <NSFont>
 typealias EBComputedProperty_NSFont    = EBGenericComputedProperty <NSFont>
 typealias EBStoredProperty_NSFont      = EBGenericStoredProperty <NSFont>
@@ -839,7 +839,7 @@ typealias EBPreferencesProperty_NSFont = EBGenericPreferenceProperty <NSFont>
 
 typealias EBReadOnlyProperty_NSColor    = EBObservableProperty <NSColor>
 typealias EBTransientProperty_NSColor   = EBGenericTransientProperty <NSColor>
-typealias EBReadWriteProperty_NSColor   = EBGenericReadWriteProperty <NSColor>
+typealias EBReadWriteProperty_NSColor   = EBObservableMutableProperty <NSColor>
 typealias EBPropertyProxy_NSColor       = EBGenericPropertyProxy <NSColor>
 typealias EBComputedProperty_NSColor    = EBGenericComputedProperty <NSColor>
 typealias EBStoredProperty_NSColor      = EBGenericStoredProperty <NSColor>

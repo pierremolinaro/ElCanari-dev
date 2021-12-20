@@ -74,64 +74,64 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : NSPopUpButton, E
   //  $setterN bindings
   //····················································································································
 
-  private var mObjects = [EBGenericReadWriteProperty <Int>] ()
+  private var mObjects = [EBObservableMutableProperty <Int>] ()
 
   //····················································································································
 
-  final func bind_setter4 (_ inObject1 : EBGenericReadWriteProperty <Int>,
-                           _ inObject2 : EBGenericReadWriteProperty <Int>,
-                           _ inObject3 : EBGenericReadWriteProperty <Int>,
-                           _ inObject4 : EBGenericReadWriteProperty <Int>) -> Self {
+  final func bind_setter4 (_ inObject1 : EBObservableMutableProperty <Int>,
+                           _ inObject2 : EBObservableMutableProperty <Int>,
+                           _ inObject3 : EBObservableMutableProperty <Int>,
+                           _ inObject4 : EBObservableMutableProperty <Int>) -> Self {
     self.mObjects = [inObject1, inObject2, inObject3, inObject4]
     return self
   }
 
   //····················································································································
 
-  final func bind_setter5 (_ inObject1 : EBGenericReadWriteProperty <Int>,
-                           _ inObject2 : EBGenericReadWriteProperty <Int>,
-                           _ inObject3 : EBGenericReadWriteProperty <Int>,
-                           _ inObject4 : EBGenericReadWriteProperty <Int>,
-                           _ inObject5 : EBGenericReadWriteProperty <Int>) -> Self {
+  final func bind_setter5 (_ inObject1 : EBObservableMutableProperty <Int>,
+                           _ inObject2 : EBObservableMutableProperty <Int>,
+                           _ inObject3 : EBObservableMutableProperty <Int>,
+                           _ inObject4 : EBObservableMutableProperty <Int>,
+                           _ inObject5 : EBObservableMutableProperty <Int>) -> Self {
     self.mObjects = [inObject1, inObject2, inObject3, inObject4, inObject5]
     return self
   }
 
   //····················································································································
 
-  final func bind_setter6 (_ inObject1 : EBGenericReadWriteProperty <Int>,
-                           _ inObject2 : EBGenericReadWriteProperty <Int>,
-                           _ inObject3 : EBGenericReadWriteProperty <Int>,
-                           _ inObject4 : EBGenericReadWriteProperty <Int>,
-                           _ inObject5 : EBGenericReadWriteProperty <Int>,
-                           _ inObject6 : EBGenericReadWriteProperty <Int>) -> Self {
+  final func bind_setter6 (_ inObject1 : EBObservableMutableProperty <Int>,
+                           _ inObject2 : EBObservableMutableProperty <Int>,
+                           _ inObject3 : EBObservableMutableProperty <Int>,
+                           _ inObject4 : EBObservableMutableProperty <Int>,
+                           _ inObject5 : EBObservableMutableProperty <Int>,
+                           _ inObject6 : EBObservableMutableProperty <Int>) -> Self {
     self.mObjects = [inObject1, inObject2, inObject3, inObject4, inObject5, inObject6]
     return self
   }
 
   //····················································································································
 
-  final func bind_setter7 (_ inObject1 : EBGenericReadWriteProperty <Int>,
-                           _ inObject2 : EBGenericReadWriteProperty <Int>,
-                           _ inObject3 : EBGenericReadWriteProperty <Int>,
-                           _ inObject4 : EBGenericReadWriteProperty <Int>,
-                           _ inObject5 : EBGenericReadWriteProperty <Int>,
-                           _ inObject6 : EBGenericReadWriteProperty <Int>,
-                           _ inObject7 : EBGenericReadWriteProperty <Int>) -> Self {
+  final func bind_setter7 (_ inObject1 : EBObservableMutableProperty <Int>,
+                           _ inObject2 : EBObservableMutableProperty <Int>,
+                           _ inObject3 : EBObservableMutableProperty <Int>,
+                           _ inObject4 : EBObservableMutableProperty <Int>,
+                           _ inObject5 : EBObservableMutableProperty <Int>,
+                           _ inObject6 : EBObservableMutableProperty <Int>,
+                           _ inObject7 : EBObservableMutableProperty <Int>) -> Self {
     self.mObjects = [inObject1, inObject2, inObject3, inObject4, inObject5, inObject6, inObject7]
     return self
   }
 
   //····················································································································
 
-  final func bind_setter8 (_ inObject1 : EBGenericReadWriteProperty <Int>,
-                           _ inObject2 : EBGenericReadWriteProperty <Int>,
-                           _ inObject3 : EBGenericReadWriteProperty <Int>,
-                           _ inObject4 : EBGenericReadWriteProperty <Int>,
-                           _ inObject5 : EBGenericReadWriteProperty <Int>,
-                           _ inObject6 : EBGenericReadWriteProperty <Int>,
-                           _ inObject7 : EBGenericReadWriteProperty <Int>,
-                           _ inObject8 : EBGenericReadWriteProperty <Int>) -> Self {
+  final func bind_setter8 (_ inObject1 : EBObservableMutableProperty <Int>,
+                           _ inObject2 : EBObservableMutableProperty <Int>,
+                           _ inObject3 : EBObservableMutableProperty <Int>,
+                           _ inObject4 : EBObservableMutableProperty <Int>,
+                           _ inObject5 : EBObservableMutableProperty <Int>,
+                           _ inObject6 : EBObservableMutableProperty <Int>,
+                           _ inObject7 : EBObservableMutableProperty <Int>,
+                           _ inObject8 : EBObservableMutableProperty <Int>) -> Self {
     self.mObjects = [inObject1, inObject2, inObject3, inObject4, inObject5, inObject6, inObject7, inObject8]
     return self
   }

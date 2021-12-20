@@ -50,7 +50,7 @@ final class AutoLayoutCanariUnitPopUpButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
-  func updateTag (from inObject : EBGenericReadWriteProperty <Int>) {
+  func updateTag (from inObject : EBObservableMutableProperty <Int>) {
     switch inObject.selection {
     case .single (let v) :
       self.enable (fromValueBinding: true)
@@ -77,7 +77,7 @@ final class AutoLayoutCanariUnitPopUpButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
-  final func bind_unit (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
+  final func bind_unit (_ inObject : EBObservableMutableProperty <Int>) -> Self {
     self.mSelectedUnitController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateTag (from: inObject) }
