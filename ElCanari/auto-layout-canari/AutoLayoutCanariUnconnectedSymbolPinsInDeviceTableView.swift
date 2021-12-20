@@ -77,12 +77,12 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
   //  $unconnectedPins binding
   //····················································································································
 
-  private var mController : EBReadOnlyPropertyController? = nil
+  private var mController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_unconnectedPins (_ model : EBReadOnlyProperty_UnconnectedSymbolPinsInDevice) -> Self {
-    self.mController = EBReadOnlyPropertyController (
+    self.mController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateUnconnectedPinList (from: model) }
     )

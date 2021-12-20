@@ -87,12 +87,12 @@ final class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
   //  $title binding
   //····················································································································
 
-  private var mTitleController : EBReadOnlyPropertyController? = nil
+  private var mTitleController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_title (_ model : EBReadOnlyProperty_String) -> Self {
-    self.mTitleController = EBReadOnlyPropertyController (
+    self.mTitleController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
     )

@@ -102,7 +102,7 @@ final class AutoLayoutCanariDeviceDroppableImageView : AutoLayoutVerticalStackVi
 
   //····················································································································
 
-  private var mImageDataController : EBReadOnlyPropertyController? = nil
+  private var mImageDataController : EBObservablePropertyController? = nil
   private weak var mModel : EBStoredProperty_Data? = nil
 
   //····················································································································
@@ -115,7 +115,7 @@ final class AutoLayoutCanariDeviceDroppableImageView : AutoLayoutVerticalStackVi
 
   final func bind_imageData (_ inModel : EBStoredProperty_Data) -> Self {
     self.mModel = inModel
-    self.mImageDataController = EBReadOnlyPropertyController (
+    self.mImageDataController = EBObservablePropertyController (
       observedObjects: [inModel],
       callBack: { [weak self] in self?.updateImageData (inModel) }
      )

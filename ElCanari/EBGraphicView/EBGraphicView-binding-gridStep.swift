@@ -13,7 +13,7 @@ extension EBGraphicView {
   //····················································································································
 
   final func bind_gridStep (_ model : EBReadOnlyProperty_Int) {
-    self.mGridStepController = EBReadOnlyPropertyController (
+    self.mGridStepController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateGridStep (from: model) }
     )

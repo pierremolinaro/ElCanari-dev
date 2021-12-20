@@ -114,12 +114,12 @@ final class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDr
 
   //····················································································································
 
-  fileprivate var mImageController : EBReadOnlyPropertyController? = nil
+  fileprivate var mImageController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_image (_ inObject : EBReadOnlyProperty_NSImage) -> Self {
-    self.mImageController = EBReadOnlyPropertyController (
+    self.mImageController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateValue (from: inObject) }
     )

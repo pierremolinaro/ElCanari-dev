@@ -87,12 +87,12 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  fileprivate var mImageController : EBReadOnlyPropertyController? = nil
+  fileprivate var mImageController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_image (_ object : EBReadOnlyProperty_NSImage) -> Self {
-    self.mImageController = EBReadOnlyPropertyController (
+    self.mImageController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateImage (object) ; }
     )
@@ -119,12 +119,12 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mTooltipController : EBReadOnlyPropertyController? = nil
+  private var mTooltipController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_tooltip (_ object : EBReadOnlyProperty_String) -> Self {
-    self.mTooltipController = EBReadOnlyPropertyController (
+    self.mTooltipController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateTooltip (object) }
     )

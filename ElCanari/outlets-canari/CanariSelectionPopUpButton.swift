@@ -79,7 +79,7 @@ final class CanariSelectionPopUpButton : EBPopUpButton {
 //   Controller_CanariSelectionPopUpButton_selectedNameInArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariSelectionPopUpButton_selectedNameInArray : EBReadOnlyPropertyController {
+final class Controller_CanariSelectionPopUpButton_selectedNameInArray : EBObservablePropertyController {
 
   //····················································································································
 

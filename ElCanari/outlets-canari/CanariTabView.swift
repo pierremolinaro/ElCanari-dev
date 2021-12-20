@@ -88,7 +88,7 @@ final class CanariTabView : NSTabView, NSTabViewDelegate, EBUserClassNameProtoco
 //   Controller Controller_CanariTabView_selectedTabIndex
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariTabView_selectedTabIndex : EBReadOnlyPropertyController {
+final class Controller_CanariTabView_selectedTabIndex : EBObservablePropertyController {
 
   private var mOutlet : CanariTabView
   private var mSelectedTabIndex  : EBReadWriteProperty_Int

@@ -222,10 +222,10 @@ final class AutoLayoutElCanariDragSourceTableView : NSScrollView, EBUserClassNam
   //    $models binding
   //····················································································································
 
-  private var mModelsController : EBReadOnlyPropertyController? = nil
+  private var mModelsController : EBObservablePropertyController? = nil
 
   final func bind_models (_ model : EBReadOnlyProperty_StringTagArray) -> Self {
-    self.mModelsController = EBReadOnlyPropertyController (
+    self.mModelsController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: {self.update (from: model) }
     )

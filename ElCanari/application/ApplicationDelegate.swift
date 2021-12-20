@@ -175,12 +175,12 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
   //   AutoLayout user interface style
   //····················································································································
 
-  fileprivate var mUserInterfaceStyleObserver : EBReadOnlyPropertyController? = nil
+  fileprivate var mUserInterfaceStyleObserver : EBObservablePropertyController? = nil
 
   //····················································································································
 
   fileprivate func addAutoLayoutUserInterfaceStyleObserver () {
-    self.mUserInterfaceStyleObserver = EBReadOnlyPropertyController (
+    self.mUserInterfaceStyleObserver = EBObservablePropertyController (
       observedObjects: [preferences_mAutoLayoutStyle_property],
       callBack: {
          changeAutoLayoutUserInterfaceStyle (to: preferences_mAutoLayoutStyle)

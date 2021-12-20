@@ -116,7 +116,7 @@ final class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtoco
 //   Controller Controller_AutoLayoutCanariDimensionField_dimensionAndUnit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBReadOnlyPropertyController {
+final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObservablePropertyController {
 
   private var mOutlet: AutoLayoutCanariDimensionField
   private var mDimension : EBReadWriteProperty_Int

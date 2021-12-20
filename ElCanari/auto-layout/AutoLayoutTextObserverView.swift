@@ -125,12 +125,12 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mValueController : EBReadOnlyPropertyController? = nil
+  private var mValueController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_observedValue (_ inObject : EBReadOnlyProperty_String) -> Self {
-    self.mValueController = EBReadOnlyPropertyController (
+    self.mValueController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.update (from: inObject) }
     )

@@ -68,7 +68,7 @@ final class CanariEnumSegmentedControl : NSSegmentedControl, EBUserClassNameProt
 //   Controller_CanariEnumSegmentedControl_selectedSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariEnumSegmentedControl_selectedSegment : EBReadOnlyPropertyController {
+final class Controller_CanariEnumSegmentedControl_selectedSegment : EBObservablePropertyController {
 
   private let mObject : EBReadWriteObservableEnumProtocol
   private let mOutlet : CanariEnumSegmentedControl

@@ -2765,8 +2765,8 @@ final class ProjectRoot : EBManagedObject,
   //   ToMany proxy: fileGenerationParameterArray
   //····················································································································
 
-  var fileGenerationParameterArray_modelDidChangeController : EBReadOnlyPropertyController? = nil
-  // var fileGenerationParameterArray_boundObjectDidChangeController : EBReadOnlyPropertyController? = nil
+  var fileGenerationParameterArray_modelDidChangeController : EBObservablePropertyController? = nil
+  // var fileGenerationParameterArray_boundObjectDidChangeController : EBObservablePropertyController? = nil
   let fileGenerationParameterArray_property = ProxyArrayOf_ArtworkFileGenerationParameters ()
 
   //····················································································································
@@ -2789,8 +2789,8 @@ final class ProjectRoot : EBManagedObject,
   //   ToMany proxy: selectedSheetObjects
   //····················································································································
 
-  var selectedSheetObjects_modelDidChangeController : EBReadOnlyPropertyController? = nil
-  // var selectedSheetObjects_boundObjectDidChangeController : EBReadOnlyPropertyController? = nil
+  var selectedSheetObjects_modelDidChangeController : EBObservablePropertyController? = nil
+  // var selectedSheetObjects_boundObjectDidChangeController : EBObservablePropertyController? = nil
   let selectedSheetObjects_property = ProxyArrayOf_SchematicObject ()
 
   //····················································································································
@@ -4222,7 +4222,7 @@ final class ProjectRoot : EBManagedObject,
     self.mArtwork_property.drillDataFileExtension_property.addEBObserver (self.drillDataFileExtension_property)
   //--- ToMany proxy: fileGenerationParameterArray
     do{
-      let controller = EBReadOnlyPropertyController (
+      let controller = EBObservablePropertyController (
         observedObjects: [self.mArtwork_property],
         callBack: { [weak self] in
           if let me = self, let model = me.mArtwork {
@@ -4235,7 +4235,7 @@ final class ProjectRoot : EBManagedObject,
     }
   //--- ToMany proxy: selectedSheetObjects
     do{
-      let controller = EBReadOnlyPropertyController (
+      let controller = EBObservablePropertyController (
         observedObjects: [self.mSelectedSheet_property],
         callBack: { [weak self] in
           if let me = self, let model = me.mSelectedSheet {

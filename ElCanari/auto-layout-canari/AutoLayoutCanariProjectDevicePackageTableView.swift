@@ -104,10 +104,10 @@ final class AutoLayoutCanariProjectDevicePackageTableView : AutoLayoutTableView,
   //    $array binding
   //····················································································································
 
-  private var mArrayController : EBReadOnlyPropertyController? = nil
+  private var mArrayController : EBObservablePropertyController? = nil
 
   final func bind_array (_ model : EBReadOnlyProperty_StringArray) -> Self {
-    self.mArrayController = EBReadOnlyPropertyController (
+    self.mArrayController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
     )

@@ -13,7 +13,7 @@ extension EBGraphicView {
   //····················································································································
 
   final func bind_gridStyle (_ model : EBReadOnlyProperty_GridStyle) {
-    self.mGridStyleController = EBReadOnlyPropertyController (
+    self.mGridStyleController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateGridStyle (from: model) }
     )

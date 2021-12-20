@@ -262,12 +262,12 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
 
   //····················································································································
 
-  private var mAdvanceController : EBReadOnlyPropertyController? = nil
+  private var mAdvanceController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_advance (_ object : EBReadOnlyProperty_Int) -> Self {
-    self.mAdvanceController = EBReadOnlyPropertyController (
+    self.mAdvanceController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateAdvance (object) }
     )
@@ -296,10 +296,10 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
   //  characterSegmentList binding
   //····················································································································
 
-  private var mCharacterSegmentListController : EBReadOnlyPropertyController? = nil
+  private var mCharacterSegmentListController : EBObservablePropertyController? = nil
 
   final func bind_characterSegmentList (_ object : EBReadOnlyProperty_CharacterSegmentList) -> Self {
-    self.mCharacterSegmentListController = EBReadOnlyPropertyController (
+    self.mCharacterSegmentListController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateSegmentDrawingsFromCharacterSegmentListController (object) }
     )
@@ -352,10 +352,10 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
 
   //····················································································································
 
-  private var mTransparencyController : EBReadOnlyPropertyController? = nil
+  private var mTransparencyController : EBObservablePropertyController? = nil
 
   final func bind_transparency (_ object : EBReadOnlyProperty_Double) -> Self {
-    self.mTransparencyController = EBReadOnlyPropertyController (
+    self.mTransparencyController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateTransparency (object) }
     )
@@ -395,10 +395,10 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
 
   //····················································································································
 
-  private var mDisplayFlowController : EBReadOnlyPropertyController? = nil
+  private var mDisplayFlowController : EBObservablePropertyController? = nil
 
   final func bind_displayFlow (_ object : EBReadOnlyProperty_Bool) -> Self {
-    self.mDisplayFlowController = EBReadOnlyPropertyController (
+    self.mDisplayFlowController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateDisplayFlow (object) }
     )
@@ -438,10 +438,10 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
 
   //····················································································································
 
-  private var mDisplayDrawingIndexesController : EBReadOnlyPropertyController? = nil
+  private var mDisplayDrawingIndexesController : EBObservablePropertyController? = nil
 
   final func bind_displayDrawingIndexes (_ object : EBReadOnlyProperty_Bool) -> Self {
-    self.mDisplayDrawingIndexesController = EBReadOnlyPropertyController (
+    self.mDisplayDrawingIndexesController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateIndexDrawing (object) }
     )

@@ -76,7 +76,7 @@ final class EBStepper : NSStepper, EBUserClassNameProtocol {
 //   Controller Controller_EBStepper_value
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_EBStepper_value : EBReadOnlyPropertyController {
+final class Controller_EBStepper_value : EBObservablePropertyController {
 
   private let mOutlet : EBStepper
   private let mObject : EBReadWriteProperty_Int

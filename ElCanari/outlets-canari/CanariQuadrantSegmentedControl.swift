@@ -82,7 +82,7 @@ final class CanariQuadrantSegmentedControl : NSSegmentedControl, EBUserClassName
 //   Controller_CanariQuadrantSegmentedControl_quadrant
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariQuadrantSegmentedControl_quadrant : EBReadOnlyPropertyController {
+final class Controller_CanariQuadrantSegmentedControl_quadrant : EBObservablePropertyController {
 
   private let mObject : EBReadWriteProperty_QuadrantRotation
   private let mOutlet : CanariQuadrantSegmentedControl

@@ -187,12 +187,12 @@ final class IssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   //    $issues binding
   //····················································································································
 
-  private var mIssueController : EBReadOnlyPropertyController? = nil
+  private var mIssueController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_issues (_ model : EBReadOnlyProperty_CanariIssueArray) {
-    self.mIssueController = EBReadOnlyPropertyController (
+    self.mIssueController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { self.update (from: model) }
     )

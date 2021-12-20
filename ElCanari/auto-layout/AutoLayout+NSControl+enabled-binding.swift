@@ -14,7 +14,7 @@ import Cocoa
 
 private var gEnabledFromValueBindingDictionary = [NSControl : Bool] ()
 private var gEnabledBindingValueDictionary = [NSControl : Bool] ()
-private var gEnabledBindingControllerDictionary = [NSControl : EBReadOnlyPropertyController] ()
+private var gEnabledBindingControllerDictionary = [NSControl : EBObservablePropertyController] ()
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -39,7 +39,7 @@ extension NSControl {
   final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
     var modelArray = [EBObservableObjectProtocol] ()
     inExpression.addModelsTo (&modelArray)
-    let controller = EBReadOnlyPropertyController (
+    let controller = EBObservablePropertyController (
       observedObjects: modelArray,
       callBack: { [weak self] in self?.updateEnableState (from: inExpression.compute ()) }
     )

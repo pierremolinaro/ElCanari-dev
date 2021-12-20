@@ -13,7 +13,7 @@ extension EBGraphicView {
   //····················································································································
 
   final func bind_horizontalFlip (_ model : EBReadOnlyProperty_Bool) {
-    self.mHorizontalFlipController = EBReadOnlyPropertyController (
+    self.mHorizontalFlipController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateHorizontalFlip (from: model) }
     )

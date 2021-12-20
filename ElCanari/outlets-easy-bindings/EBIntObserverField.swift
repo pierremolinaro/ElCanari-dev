@@ -84,7 +84,7 @@ final class EBIntObserverField : NSTextField, EBUserClassNameProtocol {
 //   Controller_EBIntObserverField_readOnlyValue
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_EBIntObserverField_readOnlyValue : EBReadOnlyPropertyController {
+final class Controller_EBIntObserverField_readOnlyValue : EBObservablePropertyController {
 
   private let mObject : EBReadOnlyProperty_Int
   private let mOutlet : EBIntObserverField

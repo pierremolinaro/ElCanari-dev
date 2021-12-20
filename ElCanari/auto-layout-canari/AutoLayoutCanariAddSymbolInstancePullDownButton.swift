@@ -91,12 +91,12 @@ final class AutoLayoutCanariAddSymbolInstancePullDownButton : InternalAutoLayout
   //  $symbolTypeNames binding
   //····················································································································
 
-  private var mSymbolTypeNamesController : EBReadOnlyPropertyController? = nil
+  private var mSymbolTypeNamesController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_symbolTypeNames (_ model : EBReadOnlyProperty_StringArray) -> Self {
-    self.mSymbolTypeNamesController = EBReadOnlyPropertyController (
+    self.mSymbolTypeNamesController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateItemList (from: model) }
     )

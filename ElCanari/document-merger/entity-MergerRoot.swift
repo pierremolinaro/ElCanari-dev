@@ -953,8 +953,8 @@ final class MergerRoot : EBManagedObject,
   //   ToMany proxy: fileGenerationParameterArray
   //····················································································································
 
-  var fileGenerationParameterArray_modelDidChangeController : EBReadOnlyPropertyController? = nil
-  // var fileGenerationParameterArray_boundObjectDidChangeController : EBReadOnlyPropertyController? = nil
+  var fileGenerationParameterArray_modelDidChangeController : EBObservablePropertyController? = nil
+  // var fileGenerationParameterArray_boundObjectDidChangeController : EBObservablePropertyController? = nil
   let fileGenerationParameterArray_property = ProxyArrayOf_ArtworkFileGenerationParameters ()
 
   //····················································································································
@@ -1482,7 +1482,7 @@ final class MergerRoot : EBManagedObject,
     self.mArtwork_property.drillDataFileExtension_property.addEBObserver (self.drillDataFileExtension_property)
   //--- ToMany proxy: fileGenerationParameterArray
     do{
-      let controller = EBReadOnlyPropertyController (
+      let controller = EBObservablePropertyController (
         observedObjects: [self.mArtwork_property],
         callBack: { [weak self] in
           if let me = self, let model = me.mArtwork {

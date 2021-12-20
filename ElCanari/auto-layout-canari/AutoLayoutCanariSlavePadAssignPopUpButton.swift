@@ -116,14 +116,14 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
   // SLAVE PAD INDEX binding
   //····················································································································
 
-  private var mSlavePadIndexController : EBReadOnlyPropertyController? = nil
+  private var mSlavePadIndexController : EBObservablePropertyController? = nil
   private var mSelectedSlavePadArray = [PackageSlavePad] ()
   private var mReferencedMasterPadArray = [PackagePad] ()
 
  //····················································································································
 
   final func bind_masterPadName (_ inObject : EBObservableProperty <String>) -> Self {
-    self.mSlavePadIndexController = EBReadOnlyPropertyController (
+    self.mSlavePadIndexController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { self.update (fromMasterPadName: inObject) }
     )
@@ -155,13 +155,13 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
   // MASTER PAD INDEX ARRAY binding
   //····················································································································
 
-  private var mMasterPadIndexArrayIndexController : EBReadOnlyPropertyController? = nil
+  private var mMasterPadIndexArrayIndexController : EBObservablePropertyController? = nil
   private var mMasterPadArray = [PackagePad] ()
 
  //····················································································································
 
   final func bind_masterPadObjectIndexArray (_ inObject : EBObservableProperty <IntArray>) -> Self {
-    self.mMasterPadIndexArrayIndexController = EBReadOnlyPropertyController (
+    self.mMasterPadIndexArrayIndexController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { self.update (fromMasterPadIndexArray: inObject) }
     )

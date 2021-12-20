@@ -67,14 +67,14 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : InternalAutoLa
   //  $alignment binding
   //····················································································································
 
-  private var mAlignmentController : EBReadOnlyPropertyController? = nil
+  private var mAlignmentController : EBObservablePropertyController? = nil
   private var mObject : EBReadWriteObservableEnumProtocol? = nil
 
   //····················································································································
 
   final func bind_alignment (_ inObject : EBReadWriteObservableEnumProtocol) -> Self {
     self.mObject = inObject
-    self.mAlignmentController = EBReadOnlyPropertyController (
+    self.mAlignmentController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.update (from: inObject) }
     )

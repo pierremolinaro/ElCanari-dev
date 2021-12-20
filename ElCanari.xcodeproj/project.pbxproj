@@ -2358,8 +2358,8 @@
 		CF8BE750235112CC00F95B3A /* ReadOnlyAbstractArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE746235112CC00F95B3A /* ReadOnlyAbstractArrayProperty.swift */; };
 		CF8BE752235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE751235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift */; };
 		CF8BE753235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE751235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift */; };
-		CF8BE7562351166A00F95B3A /* EBReadOnlyPropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7542351166A00F95B3A /* EBReadOnlyPropertyController.swift */; };
-		CF8BE7572351166A00F95B3A /* EBReadOnlyPropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7542351166A00F95B3A /* EBReadOnlyPropertyController.swift */; };
+		CF8BE7562351166A00F95B3A /* EBObservablePropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */; };
+		CF8BE7572351166A00F95B3A /* EBObservablePropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */; };
 		CF8BE7582351166A00F95B3A /* EBTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7552351166A00F95B3A /* EBTableCellView.swift */; };
 		CF8BE7592351166A00F95B3A /* EBTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7552351166A00F95B3A /* EBTableCellView.swift */; };
 		CF8BEB141BFF2D75003C769C /* EBStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BEB131BFF2D75003C769C /* EBStepper.swift */; };
@@ -2862,7 +2862,7 @@
 		CF9C63A225CABE5C00A00D5C /* transient-PackageOval-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF00844A21C42A90003627E9 /* transient-PackageOval-objectDisplay.swift */; };
 		CF9C63A325CABE5C00A00D5C /* transient-PackageSlavePad-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B39B621D3F1C4001217C6 /* transient-PackageSlavePad-issues.swift */; };
 		CF9C63A725CABE5C00A00D5C /* transient-ProjectRoot-boardLimitBorderBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7C8C233A28860060A97A /* transient-ProjectRoot-boardLimitBorderBottom.swift */; };
-		CF9C63A825CABE5C00A00D5C /* EBReadOnlyPropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7542351166A00F95B3A /* EBReadOnlyPropertyController.swift */; };
+		CF9C63A825CABE5C00A00D5C /* EBObservablePropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */; };
 		CF9C63A925CABE5C00A00D5C /* entity-SymbolInstanceInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A0999223191D500A17B92 /* entity-SymbolInstanceInDevice.swift */; };
 		CF9C63AD25CABE5C00A00D5C /* entity-PadProxyInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCEE4712233BE6F00C397CE /* entity-PadProxyInDevice.swift */; };
 		CF9C63B225CABE5C00A00D5C /* transient-PointInSchematic-location.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7C13233A284A0060A97A /* transient-PointInSchematic-location.swift */; };
@@ -5359,7 +5359,7 @@
 		CF8BE744235112CB00F95B3A /* func-presentErrorWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "func-presentErrorWindow.swift"; sourceTree = "<group>"; };
 		CF8BE746235112CC00F95B3A /* ReadOnlyAbstractArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyAbstractArrayProperty.swift; sourceTree = "<group>"; };
 		CF8BE751235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyAbstractObjectProperty.swift; sourceTree = "<group>"; };
-		CF8BE7542351166A00F95B3A /* EBReadOnlyPropertyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBReadOnlyPropertyController.swift; sourceTree = "<group>"; };
+		CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBObservablePropertyController.swift; sourceTree = "<group>"; };
 		CF8BE7552351166A00F95B3A /* EBTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBTableCellView.swift; sourceTree = "<group>"; };
 		CF8BEB131BFF2D75003C769C /* EBStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBStepper.swift; sourceTree = "<group>"; };
 		CF8DC24425C5F80400BC1DE6 /* enum-RestrictRectangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-RestrictRectangleLayer.swift"; sourceTree = "<group>"; };
@@ -6735,7 +6735,7 @@
 				CF8BE73623510FEB00F95B3A /* EBObservedObject.swift */,
 				CF549F5227707E1400D978D9 /* EBObserverProtocol.swift */,
 				CF07780D23521A8300F56EAB /* EBPropertyProtocol.swift */,
-				CF8BE7542351166A00F95B3A /* EBReadOnlyPropertyController.swift */,
+				CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */,
 				CF171D8926FB999A00A1BCB2 /* EBReferenceArray.swift */,
 				CF04F00027046EC200CAFAE0 /* EBReferenceDictionary.swift */,
 				CFC1325E26FB4EBB0027AC93 /* EBReferenceSet.swift */,
@@ -9394,7 +9394,7 @@
 				CF711D06275E1A7900280069 /* extension-ComponentInProject.swift in Sources */,
 				CFA430AD229AEC41000AA8C8 /* toone-SymbolBezierCurve.swift in Sources */,
 				CFEB7CDD233A28860060A97A /* transient-ProjectRoot-boardLimitBorderBottom.swift in Sources */,
-				CF8BE7562351166A00F95B3A /* EBReadOnlyPropertyController.swift in Sources */,
+				CF8BE7562351166A00F95B3A /* EBObservablePropertyController.swift in Sources */,
 				CF8A099A223191D600A17B92 /* entity-SymbolInstanceInDevice.swift in Sources */,
 				CF22F27F275A73EE009C6FAC /* transient-BoardModel-backLayoutTextsSegments.swift in Sources */,
 				CF39CCB4268CC0B3004971F9 /* selectionController-AutoLayoutDeviceDocument-symbolTypeSelection.swift in Sources */,
@@ -10842,7 +10842,7 @@
 				CF5C4D53219F04D600EAC52A /* check-libraries.swift in Sources */,
 				CFEB7CDE233A28860060A97A /* transient-ProjectRoot-boardLimitBorderBottom.swift in Sources */,
 				CFB82C21276B904700BAD56E /* AutoLayoutTableView-column-NSImage.swift in Sources */,
-				CF8BE7572351166A00F95B3A /* EBReadOnlyPropertyController.swift in Sources */,
+				CF8BE7572351166A00F95B3A /* EBObservablePropertyController.swift in Sources */,
 				CF22F280275A73EE009C6FAC /* transient-BoardModel-backLayoutTextsSegments.swift in Sources */,
 				CF39CCB5268CC0B3004971F9 /* selectionController-AutoLayoutDeviceDocument-symbolTypeSelection.swift in Sources */,
 				CF00845021C42A91003627E9 /* transient-PackageOval-objectDisplay.swift in Sources */,
@@ -12240,7 +12240,7 @@
 				CFF858972687C201001B868C /* transient-AutoLayoutArtworkDocument-generatedFileCountString.swift in Sources */,
 				CF22F1C7275A73ED009C6FAC /* transient-BoardModel-inner2TracksSegments.swift in Sources */,
 				CFEABCF9267F32D700B715F9 /* AutoLayout-style.swift in Sources */,
-				CF9C63A825CABE5C00A00D5C /* EBReadOnlyPropertyController.swift in Sources */,
+				CF9C63A825CABE5C00A00D5C /* EBObservablePropertyController.swift in Sources */,
 				CF9C63A925CABE5C00A00D5C /* entity-SymbolInstanceInDevice.swift in Sources */,
 				CF9C63AD25CABE5C00A00D5C /* entity-PadProxyInDevice.swift in Sources */,
 				CFBC2038275E14EF0076697D /* extension-BoardConnector.swift in Sources */,

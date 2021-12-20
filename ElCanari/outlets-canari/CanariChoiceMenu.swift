@@ -143,7 +143,7 @@ final class CanariChoiceMenu : NSMenu, EBUserClassNameProtocol {
 //   Controller_CanariChoiceMenu_selectedTag
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariChoiceMenu_selectedTag : EBReadOnlyPropertyController {
+final class Controller_CanariChoiceMenu_selectedTag : EBObservablePropertyController {
 
   //····················································································································
 
@@ -175,7 +175,7 @@ final class Controller_CanariChoiceMenu_selectedTag : EBReadOnlyPropertyControll
 //   Controller_CanariChoiceMenu_selectedIndex
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariChoiceMenu_selectedIndex : EBReadOnlyPropertyController {
+final class Controller_CanariChoiceMenu_selectedIndex : EBObservablePropertyController {
 
   //····················································································································
 

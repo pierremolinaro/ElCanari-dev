@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGenericReadWritePropertyController <T> : EBReadOnlyPropertyController where T : Equatable {
+final class EBGenericReadWritePropertyController <T> : EBObservablePropertyController where T : Equatable {
 
   //····················································································································
 

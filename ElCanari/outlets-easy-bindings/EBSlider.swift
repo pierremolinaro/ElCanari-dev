@@ -113,7 +113,7 @@ final class EBSlider : NSSlider, EBUserClassNameProtocol {
 //   Controller Controller_EBSlider_doubleValue
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_EBSlider_doubleValue : EBReadOnlyPropertyController {
+final class Controller_EBSlider_doubleValue : EBObservablePropertyController {
 
   private let mOutlet: EBSlider
   private let mObject : EBReadWriteProperty_Double
@@ -140,7 +140,7 @@ final class Controller_EBSlider_doubleValue : EBReadOnlyPropertyController {
 //   Controller Controller_EBSlider_intValue
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_EBSlider_intValue : EBReadOnlyPropertyController {
+final class Controller_EBSlider_intValue : EBObservablePropertyController {
 
   private let mOutlet : EBSlider
   private let mObject : EBReadWriteProperty_Int

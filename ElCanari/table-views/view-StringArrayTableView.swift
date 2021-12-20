@@ -127,12 +127,12 @@ final class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableVi
   //  $array binding
   //····················································································································
 
-  private var mController : EBReadOnlyPropertyController? = nil
+  private var mController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_array (_ model : EBReadOnlyProperty_StringArray) {
-    self.mController = EBReadOnlyPropertyController (
+    self.mController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
     )

@@ -50,13 +50,13 @@ final class CanariNewComponentFromDevicePullDownButton : NSPopUpButton, EBUserCl
   // MARK: -
   //····················································································································
 
-  private var mCurrentNumberController : EBReadOnlyPropertyController? = nil
+  private var mCurrentNumberController : EBObservablePropertyController? = nil
   private var mCurrentPadNumber = 0
 
   //····················································································································
 
   final func bind_deviceNames (_ model : EBReadOnlyProperty_StringArray) {
-    self.mCurrentNumberController = EBReadOnlyPropertyController (
+    self.mCurrentNumberController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { self.update (fromPadNumber: model) }
      )

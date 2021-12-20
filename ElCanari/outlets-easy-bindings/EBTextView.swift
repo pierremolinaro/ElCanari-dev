@@ -49,7 +49,7 @@ final class EBTextView : NSTextView, NSTextViewDelegate, EBUserClassNameProtocol
 
   //····················································································································
 
-  private var mValueController : EBReadOnlyPropertyController? = nil
+  private var mValueController : EBObservablePropertyController? = nil
   private var mModel : EBReadWriteProperty_String? = nil
 
   //····················································································································
@@ -57,7 +57,7 @@ final class EBTextView : NSTextView, NSTextViewDelegate, EBUserClassNameProtocol
   final func bind_value (_ inObject : EBReadWriteProperty_String) {
     self.mModel = inObject
     self.delegate = self
-    self.mValueController = EBReadOnlyPropertyController (
+    self.mValueController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { self.updateValue (inObject) }
     )

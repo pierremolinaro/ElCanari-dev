@@ -77,7 +77,7 @@ final class AutoLayoutEnumPopUpButton : InternalAutoLayoutPopUpButton {
 //   Controller_EBPopUpButton_Index
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class Controller_AutoLayoutEnumPopUpButton_Index : EBReadOnlyPropertyController {
+fileprivate final class Controller_AutoLayoutEnumPopUpButton_Index : EBObservablePropertyController {
 
   //····················································································································
 

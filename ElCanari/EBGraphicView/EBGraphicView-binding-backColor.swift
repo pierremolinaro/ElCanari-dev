@@ -13,7 +13,7 @@ extension EBGraphicView {
   //····················································································································
 
   final func bind_backColor (_ model : EBReadOnlyProperty_NSColor) {
-    self.mBackColorController = EBReadOnlyPropertyController (
+    self.mBackColorController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateBackColor (from: model) }
     )

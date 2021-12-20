@@ -81,12 +81,12 @@ final class AutoLayoutIntObserverField : NSTextField, EBUserClassNameProtocol {
   //  observedValue binding
   //····················································································································
 
-  private var mController : EBReadOnlyPropertyController? = nil
+  private var mController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_observedValue (_ inObject : EBReadOnlyProperty_Int) -> Self {
-    self.mController = EBReadOnlyPropertyController (
+    self.mController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack:  { [weak self] in self?.update (from: inObject) }
     )

@@ -55,7 +55,7 @@ final class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFi
 
   //····················································································································
 
-  fileprivate var mValueController : EBReadOnlyPropertyController? = nil
+  fileprivate var mValueController : EBObservablePropertyController? = nil
 
   //····················································································································
 
@@ -63,7 +63,7 @@ final class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFi
     if self.formatter != nil {
       presentErrorWindow (#file, #line, "the EBTextObserverField outlet has a formatter")
     }
-    self.mValueController = EBReadOnlyPropertyController (observedObjects: [object], callBack: { self.updateValue (object) } )
+    self.mValueController = EBObservablePropertyController (observedObjects: [object], callBack: { self.updateValue (object) } )
   }
 
   //····················································································································
@@ -89,12 +89,12 @@ final class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFi
 
   //····················································································································
 
-  fileprivate var mBackColorController : EBReadOnlyPropertyController? = nil
+  fileprivate var mBackColorController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_backColor (_ object : EBReadOnlyProperty_NSColor) {
-    self.mBackColorController = EBReadOnlyPropertyController (observedObjects: [object], callBack: { [weak self] in self?.updateBackColor (object) } )
+    self.mBackColorController = EBObservablePropertyController (observedObjects: [object], callBack: { [weak self] in self?.updateBackColor (object) } )
   }
 
   //····················································································································

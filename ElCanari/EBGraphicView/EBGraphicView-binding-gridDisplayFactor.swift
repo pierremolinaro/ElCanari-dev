@@ -13,7 +13,7 @@ extension EBGraphicView {
   //····················································································································
 
   final func bind_gridDisplayFactor (_ model : EBReadOnlyProperty_Int) {
-    self.mGridDisplayFactorController = EBReadOnlyPropertyController (
+    self.mGridDisplayFactorController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateGridDisplayFactor (from: model) }
     )

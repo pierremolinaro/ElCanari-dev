@@ -153,12 +153,12 @@ final class ThreeStringArrayTableView : EBTableView, NSTableViewDataSource, NSTa
   //  $array binding
   //····················································································································
 
-  private var mController : EBReadOnlyPropertyController? = nil
+  private var mController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_array (_ model : EBReadOnlyProperty_ThreeStringArray) {
-    self.mController = EBReadOnlyPropertyController (
+    self.mController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
     )

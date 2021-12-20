@@ -67,13 +67,13 @@ final class AutoLayoutCanariPadRenumberPullDownButton : InternalAutoLayoutPopUpB
   // MARK: -
   //····················································································································
 
-  private var mCurrentNumberController : EBReadOnlyPropertyController? = nil
+  private var mCurrentNumberController : EBObservablePropertyController? = nil
   private var mCurrentPadNumber = 0
 
   //····················································································································
 
   final func bind_currentNumber (_ model : EBReadOnlyProperty_Int) -> Self {
-    self.mCurrentNumberController = EBReadOnlyPropertyController (
+    self.mCurrentNumberController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { self.update (fromPadNumber: model) }
      )
@@ -144,13 +144,13 @@ final class AutoLayoutCanariPadRenumberPullDownButton : InternalAutoLayoutPopUpB
   // MARK: -
   //····················································································································
 
-  private var mCurrentZoneController : EBReadOnlyPropertyController? = nil
+  private var mCurrentZoneController : EBObservablePropertyController? = nil
   private var mCurrentZoneName = ""
 
   //····················································································································
 
   final func bind_currentZoneName (_ model : EBReadOnlyProperty_String) -> Self {
-    self.mCurrentZoneController = EBReadOnlyPropertyController (
+    self.mCurrentZoneController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { self.update (fromZoneName: model) }
      )

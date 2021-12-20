@@ -171,12 +171,12 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
   //  $unconnectedPads binding
   //····················································································································
 
-  private var mController : EBReadOnlyPropertyController? = nil
+  private var mController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_netInfo (_ model : EBReadOnlyProperty_NetInfoArray) -> Self {
-    self.mController = EBReadOnlyPropertyController (
+    self.mController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateUnconnectedPadList (from: model) }
     )

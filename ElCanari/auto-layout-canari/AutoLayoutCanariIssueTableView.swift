@@ -214,12 +214,12 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
   //    $issues binding
   //····················································································································
 
-  private var mIssueController : EBReadOnlyPropertyController? = nil
+  private var mIssueController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_issues (_ inModel : EBReadOnlyProperty_CanariIssueArray) -> Self {
-    self.mIssueController = EBReadOnlyPropertyController (
+    self.mIssueController = EBObservablePropertyController (
       observedObjects: [inModel],
       callBack: { self.update (from: inModel) }
     )

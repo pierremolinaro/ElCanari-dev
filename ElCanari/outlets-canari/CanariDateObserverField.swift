@@ -56,12 +56,12 @@ final class CanariDateObserverField : NSTextField, EBUserClassNameProtocol, NSTe
 
   //····················································································································
 
-  private var mValueController : EBReadOnlyPropertyController? = nil
+  private var mValueController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_dateObserver (_ object : EBReadOnlyProperty_Date) {
-    self.mValueController = EBReadOnlyPropertyController (
+    self.mValueController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { self.updateOutlet (object) }
     )

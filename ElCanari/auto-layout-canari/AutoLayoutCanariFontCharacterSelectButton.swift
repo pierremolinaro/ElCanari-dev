@@ -142,12 +142,12 @@ final class AutoLayoutCanariFontCharacterSelectButton : NSButton, EBUserClassNam
   //  $characters binding
   //····················································································································
 
-  private var mCharactersController : EBReadOnlyPropertyController? = nil
+  private var mCharactersController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_characters (_ model : EBTransientProperty_DefinedCharactersInDevice) -> Self {
-    self.mCharactersController = EBReadOnlyPropertyController (
+    self.mCharactersController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in
         switch model.selection {
@@ -176,7 +176,7 @@ final class AutoLayoutCanariFontCharacterSelectButton : NSButton, EBUserClassNam
 ////   Controller_CanariFontCharacterSelectButton_codePoint
 ////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //
-//final class Controller_CanariFontCharacterSelectButton_codePoint : EBReadOnlyPropertyController {
+//final class Controller_CanariFontCharacterSelectButton_codePoint : EBObservablePropertyController {
 //
 //  private let mObject : EBReadWriteProperty_Int
 //  private let mOutlet : FontCharacterSelectButton

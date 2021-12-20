@@ -28,7 +28,7 @@ fileprivate final class DebugMenuVisibility : EBSwiftBaseObject {
   //····················································································································
 
   private var mDebugMenuItem = NSMenuItem (title: "Debug", action: nil, keyEquivalent: "")
-  private var mShowMenuController : EBReadOnlyPropertyController? = nil
+  private var mShowMenuController : EBObservablePropertyController? = nil
 
   //····················································································································
   //  Init
@@ -38,7 +38,7 @@ fileprivate final class DebugMenuVisibility : EBSwiftBaseObject {
     super.init ()
     let menu = NSMenu (title: "Debug")
     self.mDebugMenuItem.submenu = menu
-    self.mShowMenuController = EBReadOnlyPropertyController (
+    self.mShowMenuController = EBObservablePropertyController (
       observedObjects: [preferences_showDebugMenu_property],
       callBack: { self.updateDebugMenuVisibility () }
     )

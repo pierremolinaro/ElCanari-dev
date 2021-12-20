@@ -74,13 +74,13 @@ final class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProto
 
   //····················································································································
 
-  private var mController : EBReadOnlyPropertyController?
+  private var mController : EBObservablePropertyController?
 
   //····················································································································
 
   final func bind_dimensionAndUnit (_ dimension : EBReadOnlyProperty_Int,
                               _ unit : EBReadOnlyProperty_Int) {
-    self.mController = EBReadOnlyPropertyController (observedObjects: [dimension, unit], callBack: { self.updateOutlet (dimension: dimension, unit: unit) })
+    self.mController = EBObservablePropertyController (observedObjects: [dimension, unit], callBack: { self.updateOutlet (dimension: dimension, unit: unit) })
   }
 
   //····················································································································
@@ -98,7 +98,7 @@ final class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProto
 //   Controller Controller_CanariDimensionObserverTextField_dimensionAndUnit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//final class Controller_CanariDimensionObserverTextField_dimensionAndUnit : EBReadOnlyPropertyController {
+//final class Controller_CanariDimensionObserverTextField_dimensionAndUnit : EBObservablePropertyController {
 //
 //  //····················································································································
 //

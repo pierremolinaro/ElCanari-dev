@@ -12,7 +12,7 @@ import Cocoa
 //   Hidden binding
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private var gHiddenBindingDictionary = [NSView : EBReadOnlyPropertyController] ()
+private var gHiddenBindingDictionary = [NSView : EBObservablePropertyController] ()
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -38,7 +38,7 @@ extension NSView {
   final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
     var modelArray = [EBObservableObjectProtocol] ()
     inExpression.addModelsTo (&modelArray)
-    let controller = EBReadOnlyPropertyController (
+    let controller = EBObservablePropertyController (
       observedObjects: modelArray,
       callBack: { [weak self] in self?.updateHiddenState (from: inExpression.compute ()) }
     )

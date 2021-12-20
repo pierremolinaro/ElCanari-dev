@@ -38,7 +38,7 @@ final class CanariDefaultNetClassPopUpButton : EBPopUpButton {
 //   Controller_CanariDefaultNetClassPopUpButton
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariDefaultNetClassPopUpButton : EBReadOnlyPropertyController {
+final class Controller_CanariDefaultNetClassPopUpButton : EBObservablePropertyController {
 
   private let mObject : EBReadWriteProperty_String
   private let mOutlet : EBPopUpButton

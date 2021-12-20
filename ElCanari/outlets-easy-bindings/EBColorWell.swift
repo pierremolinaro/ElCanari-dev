@@ -68,7 +68,7 @@ final class EBColorWell : NSColorWell, EBUserClassNameProtocol {
 //   Controller_EBColorWell_color
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_EBColorWell_color : EBReadOnlyPropertyController {
+final class Controller_EBColorWell_color : EBObservablePropertyController {
 
   private let mObject : EBReadWriteProperty_NSColor
   private let mOutlet : EBColorWell

@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGenericEnumReadWritePropertyController <T : EBEnumProtocol> : EBReadOnlyPropertyController where T : Equatable {
+final class EBGenericEnumReadWritePropertyController <T : EBEnumProtocol> : EBObservablePropertyController where T : Equatable {
 
   //····················································································································
 

@@ -285,7 +285,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mUnderObjectsDisplayController : EBReadOnlyPropertyController?
+  final internal var mUnderObjectsDisplayController : EBObservablePropertyController?
 
   //····················································································································
   // MARK: -
@@ -302,7 +302,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mOverObjectsDisplayController : EBReadOnlyPropertyController? = nil
+  final internal var mOverObjectsDisplayController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -335,7 +335,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mArrowKeyMagnitudeController : EBReadOnlyPropertyController? = nil
+  final internal var mArrowKeyMagnitudeController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -355,7 +355,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
  //····················································································································
 
-  final internal var mShiftArrowKeyMagnitudeController : EBReadOnlyPropertyController? = nil
+  final internal var mShiftArrowKeyMagnitudeController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -372,7 +372,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mBackColorController : EBReadOnlyPropertyController? = nil
+  final internal var mBackColorController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -448,7 +448,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mMouseGridController : EBReadOnlyPropertyController? = nil
+  final internal var mMouseGridController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -562,7 +562,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mXPlacardUnitController : EBReadOnlyPropertyController? = nil
+  final internal var mXPlacardUnitController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -578,7 +578,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mYPlacardUnitController : EBReadOnlyPropertyController? = nil
+  final internal var mYPlacardUnitController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -597,7 +597,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   // MARK: -
   //····················································································································
 
-  final internal var mControlKeyHiliteDiameterController : EBReadOnlyPropertyController? = nil
+  final internal var mControlKeyHiliteDiameterController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -644,11 +644,11 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mHorizontalFlipController : EBReadOnlyPropertyController? = nil
+  final internal var mHorizontalFlipController : EBObservablePropertyController? = nil
 
   //····················································································································
 
-  final internal var mVerticalFlipController : EBReadOnlyPropertyController? = nil
+  final internal var mVerticalFlipController : EBObservablePropertyController? = nil
 
   //····················································································································
   // Grid Style
@@ -665,7 +665,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mGridStyleController : EBReadOnlyPropertyController? = nil
+  final internal var mGridStyleController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -681,7 +681,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mGridStepController : EBReadOnlyPropertyController? = nil
+  final internal var mGridStepController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -697,7 +697,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mGridDisplayFactorController : EBReadOnlyPropertyController? = nil
+  final internal var mGridDisplayFactorController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -713,7 +713,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mGridLineColorController : EBReadOnlyPropertyController? = nil
+  final internal var mGridLineColorController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -729,7 +729,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mGridCrossColorController : EBReadOnlyPropertyController? = nil
+  final internal var mGridCrossColorController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -777,10 +777,10 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
     }
   }
 
-  final var mBackgroundImageDataController : EBReadOnlyPropertyController? = nil
+  final var mBackgroundImageDataController : EBObservablePropertyController? = nil
 
   final var mBackgroundImageOpacity : CGFloat = 1.0
-  final var mBackgroundImageOpacityController : EBReadOnlyPropertyController? = nil
+  final var mBackgroundImageOpacityController : EBObservablePropertyController? = nil
 
   final var mBackgroundImageAffineTransform = NSAffineTransform () {
     didSet {
@@ -798,10 +798,10 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
     }
   }
 
-  final var mForegroundImageDataController : EBReadOnlyPropertyController? = nil
+  final var mForegroundImageDataController : EBObservablePropertyController? = nil
 
   final var mForegroundImageOpacity : CGFloat = 1.0
-  final var mForegroundImageOpacityController : EBReadOnlyPropertyController? = nil
+  final var mForegroundImageOpacityController : EBObservablePropertyController? = nil
 
   final var mForegroundImageAffineTransform = NSAffineTransform () {
     didSet {

@@ -82,7 +82,7 @@ final class CanariAngleTextField : NSTextField, EBUserClassNameProtocol, NSTextF
 //   Controller Controller_CanariAngleTextField_angle
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariAngleTextField_angle : EBReadOnlyPropertyController {
+final class Controller_CanariAngleTextField_angle : EBObservablePropertyController {
 
   private var mOutlet: CanariAngleTextField
   private var mAngle : EBReadWriteProperty_Int

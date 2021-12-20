@@ -13,7 +13,7 @@ extension EBGraphicView {
   //····················································································································
 
   final func bind_mouseGrid (_ model : EBReadOnlyProperty_Int) {
-    self.mMouseGridController = EBReadOnlyPropertyController (
+    self.mMouseGridController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateMouseGrid (from: model) }
     )

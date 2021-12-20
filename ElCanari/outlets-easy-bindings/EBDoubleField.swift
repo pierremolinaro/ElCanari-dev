@@ -125,7 +125,7 @@ final class EBDoubleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDel
 //   Controller_EBDoubleField_value
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_EBDoubleField_value : EBReadOnlyPropertyController {
+final class Controller_EBDoubleField_value : EBObservablePropertyController {
 
   private let mObject : EBReadWriteProperty_Double
   private let mOutlet : EBDoubleField

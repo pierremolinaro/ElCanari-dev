@@ -53,12 +53,12 @@ final class CanariMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mValueController : EBReadOnlyPropertyController? = nil
+  private var mValueController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_populateSubmenus (_ object : EBReadOnlyProperty_StringArray) {
-    self.mValueController = EBReadOnlyPropertyController (
+    self.mValueController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { self.updateOutlet (object) }
     )

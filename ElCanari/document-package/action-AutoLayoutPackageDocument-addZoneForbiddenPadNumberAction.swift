@@ -56,7 +56,7 @@ extension AutoLayoutPackageDocument {
         .bind_value (newFordiddenPadNumber_property, sendContinously: true)
         .set (min: 1)
    //-------------------------- Add Observer for new forbidden pad number
-      let observer = EBReadOnlyPropertyController (
+      let observer = EBObservablePropertyController (
         observedObjects: [newFordiddenPadNumber_property],
         callBack: { [weak self] in
           self?.proposedPadNumberDidChange (newFordiddenPadNumber_property, errorMessage_property, okButton)

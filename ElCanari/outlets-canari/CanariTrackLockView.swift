@@ -295,12 +295,12 @@ final class CanariTrackLockView : NSView, EBUserClassNameProtocol {
   //   ANGLE CONTROLLER
   //····················································································································
 
-  private var mAngleController : EBReadOnlyPropertyController? = nil
+  private var mAngleController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_angle (_ inObject : EBReadOnlyProperty_Int) {
-    self.mAngleController = EBReadOnlyPropertyController (
+    self.mAngleController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateAngle (inObject) }
     )
@@ -394,12 +394,12 @@ final class CanariTrackLockView : NSView, EBUserClassNameProtocol {
   //   P1 CONNECTED TO PAD CONTROLLER
   //····················································································································
 
-  private var mP1ConnectedToPadController : EBReadOnlyPropertyController? = nil
+  private var mP1ConnectedToPadController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_p1ConnectedToSomePad (_ inObject : EBReadOnlyProperty_Bool) {
-    self.mP1ConnectedToPadController = EBReadOnlyPropertyController (
+    self.mP1ConnectedToPadController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateP1ConnectedToSomePad (inObject) }
     )
@@ -427,12 +427,12 @@ final class CanariTrackLockView : NSView, EBUserClassNameProtocol {
   //   P2 CONNECTED TO PAD CONTROLLER
   //····················································································································
 
-  private var mP2ConnectedToPadController : EBReadOnlyPropertyController? = nil
+  private var mP2ConnectedToPadController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_p2ConnectedToSomePad (_ inObject : EBReadOnlyProperty_Bool) {
-    self.mP2ConnectedToPadController = EBReadOnlyPropertyController (
+    self.mP2ConnectedToPadController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateP2ConnectedToSomePad (inObject) }
     )

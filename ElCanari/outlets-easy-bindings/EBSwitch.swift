@@ -87,7 +87,7 @@ final class EBSwitch : NSButton, EBUserClassNameProtocol {
 //   Controller Controller_EBSwitch_value
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_EBSwitch_value : EBReadOnlyPropertyController {
+final class Controller_EBSwitch_value : EBObservablePropertyController {
 
   private let mOutlet : EBSwitch
   private let mObject : EBReadWriteProperty_Bool

@@ -85,12 +85,12 @@ final class AutoLayoutCanariFontCharacterGerberCodeTableView : AutoLayoutVertica
   //  value binding
   //····················································································································
 
-  private var mValueController : EBReadOnlyPropertyController? = nil
+  private var mValueController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_characterGerberCode (_ inObject : EBReadOnlyProperty_CharacterGerberCode) -> Self {
-    self.mValueController = EBReadOnlyPropertyController (
+    self.mValueController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.update (from: inObject) }
     )

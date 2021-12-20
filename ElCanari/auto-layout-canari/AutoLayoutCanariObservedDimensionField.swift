@@ -98,7 +98,7 @@ final class AutoLayoutCanariObservedDimensionField : NSTextField, EBUserClassNam
 //   Controller Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit : EBReadOnlyPropertyController {
+final class Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit : EBObservablePropertyController {
 
   private var mOutlet: AutoLayoutCanariObservedDimensionField
   private var mDimension : EBReadOnlyProperty_Int

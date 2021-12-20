@@ -28,7 +28,7 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
-  var mControllerArray = [EBReadOnlyPropertyController] ()
+  var mControllerArray = [EBObservablePropertyController] ()
 
   //····················································································································
 
@@ -55,7 +55,7 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
       let lastItem = self.lastItem
       var modelArray = [EBObservableObjectProtocol] ()
       inMenuItemDescriptor.expression.addModelsTo (&modelArray)
-      let controller = EBReadOnlyPropertyController (
+      let controller = EBObservablePropertyController (
         observedObjects: modelArray,
         callBack: { [weak self] in self?.enable (item: lastItem, from: inMenuItemDescriptor.expression.compute ()) }
       )
@@ -80,12 +80,12 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
   //  $items binding
   //····················································································································
 
-  private var mItemsController : EBReadOnlyPropertyController? = nil
+  private var mItemsController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_items (_ inObject : EBReadOnlyProperty_StringArray) -> Self {
-    self.mItemsController = EBReadOnlyPropertyController (
+    self.mItemsController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.update (from: inObject) }
     )

@@ -23,12 +23,12 @@ final class CanariLayerPopUpButton : EBPopUpButton {
 
   //····················································································································
 
-  private var mController : EBReadOnlyPropertyController? = nil
+  private var mController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_layerConfiguration (_ inLayerConfiguration : EBReadOnlyProperty_LayerConfiguration) {
-    self.mController = EBReadOnlyPropertyController (
+    self.mController = EBObservablePropertyController (
       observedObjects: [inLayerConfiguration],
       callBack: { self.update (from: inLayerConfiguration) }
     )

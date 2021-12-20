@@ -118,14 +118,14 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
   //  $segmentImage binding
   //····················································································································
 
-  private var mSegmentImageController : EBReadOnlyPropertyController? = nil
+  private var mSegmentImageController : EBObservablePropertyController? = nil
   private var mSegmentImageIndex = 0
 
   //····················································································································
 
   final func bind_segmentImage (_ inObject : EBObservableProperty <NSImage>, segmentIndex inSegmentIndex : Int) -> Self {
     self.mSegmentImageIndex = inSegmentIndex
-    self.mSegmentImageController = EBReadOnlyPropertyController (
+    self.mSegmentImageController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { self.updateImage (from: inObject) }
     )
@@ -147,14 +147,14 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
   //  $segmentTitle binding
   //····················································································································
 
-  private var mSegmentTitleController : EBReadOnlyPropertyController? = nil
+  private var mSegmentTitleController : EBObservablePropertyController? = nil
   private var mSegmentTitleIndex = 0
 
   //····················································································································
 
   final func bind_segmentTitle (_ inObject : EBObservableProperty <String>, segmentIndex inSegmentIndex : Int) -> Self {
     self.mSegmentTitleIndex = inSegmentIndex
-    self.mSegmentTitleController = EBReadOnlyPropertyController (
+    self.mSegmentTitleController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { self.updateTitle (from: inObject) }
     )

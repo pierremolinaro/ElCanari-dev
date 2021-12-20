@@ -98,10 +98,10 @@ final class AutoLayoutCanariSampleFontStringView : NSView, EBUserClassNameProtoc
 
   //····················································································································
 
-  private var mBezierPathBindingController : EBReadOnlyPropertyController?
+  private var mBezierPathBindingController : EBObservablePropertyController?
 
   final func bind_bezierPath (_ object : EBReadOnlyProperty_NSBezierPath) -> Self {
-    self.mBezierPathBindingController = EBReadOnlyPropertyController (
+    self.mBezierPathBindingController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateBezierPath (object) }
     )

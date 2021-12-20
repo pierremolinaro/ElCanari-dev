@@ -53,12 +53,12 @@ final class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
   //  version binding
   //····················································································································
 
-  private var mVersionController : EBReadOnlyPropertyController? = nil
+  private var mVersionController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_version (_ inObject : EBReadOnlyProperty_Int) -> Self {
-    self.mVersionController = EBReadOnlyPropertyController (
+    self.mVersionController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateVersion (from: inObject) }
     )
@@ -82,12 +82,12 @@ final class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
   //  versionShouldChange binding
   //····················································································································
 
-  private var mVersionShouldChangeController : EBReadOnlyPropertyController? = nil
+  private var mVersionShouldChangeController : EBObservablePropertyController? = nil
 
   //····················································································································
 
   final func bind_versionShouldChange (_ inObject : EBReadOnlyProperty_Bool) -> Self {
-    self.mVersionShouldChangeController = EBReadOnlyPropertyController (
+    self.mVersionShouldChangeController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateVersionShouldChange (from: inObject) }
     )
