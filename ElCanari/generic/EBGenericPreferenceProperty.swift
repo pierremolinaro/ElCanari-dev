@@ -8,7 +8,7 @@ import Cocoa
 //   EBGenericPreferenceProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGenericPreferenceProperty <T : EBStoredPropertyProtocol> : EBGenericStoredProperty <T> {
+final class EBGenericPreferenceProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T> {
 
   //····················································································································
 
@@ -18,11 +18,36 @@ final class EBGenericPreferenceProperty <T : EBStoredPropertyProtocol> : EBGener
 
   init (defaultValue inValue : T, prefKey inPreferenceKey : String) {
     self.mPreferenceKey = inPreferenceKey
-    super.init (defaultValue: inValue, undoManager: nil)
+    self.mValue = inValue
+    super.init ()
   //--- Read from preferences
     let possibleValue = UserDefaults.standard.object (forKey: inPreferenceKey)
-    if let value = possibleValue as? NSObject {
-      setProp (T.convertFromNSObject (object: value))
+    if let object = possibleValue as? NSObject {
+      let value = T.convertFromNSObject (object: object)
+      setProp (value)
+    }
+  }
+
+  //····················································································································
+  //  Value
+  //····················································································································
+
+  private var mValue : T
+
+  //····················································································································
+
+  var propval : T { return self.mValue }
+
+  //····················································································································
+
+  override var selection : EBSelection <T> { return .single (self.propval) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : T) {
+    if self.mValue != inValue {
+      self.mValue = inValue
+      self.observedObjectDidChange ()
     }
   }
 
@@ -34,6 +59,41 @@ final class EBGenericPreferenceProperty <T : EBStoredPropertyProtocol> : EBGener
   }
 
 
+  //····················································································································
+
+  final var validationFunction : (T, T) -> EBValidationResult <T> = defaultValidationFunction
+
+  //····················································································································
+
+  override func validateAndSetProp (_ candidateValue : T,
+                                    windowForSheet inWindow:NSWindow?) -> Bool {
+    var result = true
+    let validationResult = validationFunction (propval, candidateValue)
+    switch validationResult {
+    case .ok (let validatedValue) :
+      self.setProp (validatedValue)
+    case .rejectWithBeep :
+      result = false
+      __NSBeep ()
+    case .rejectWithAlert (let informativeText) :
+      result = false
+      let alert = NSAlert ()
+      alert.messageText = "The value " + String (describing: candidateValue) + " is invalid."
+      alert.informativeText = informativeText
+      alert.addButton (withTitle: "Ok")
+      alert.addButton (withTitle: "Discard Change")
+      if let window = inWindow {
+        alert.beginSheetModal (for:window) { (response : NSApplication.ModalResponse) in
+          if response == .alertSecondButtonReturn { // Discard Change
+            self.observedObjectDidChange ()
+          }
+        }
+      }else{
+        alert.runModal ()
+      }
+    }
+    return result
+  }
   //····················································································································
 
 }
