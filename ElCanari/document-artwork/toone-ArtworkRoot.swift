@@ -174,7 +174,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_fileGenerationParameterArray (_ inObserver : EBEvent) {
+  final func addEBObserverOf_fileGenerationParameterArray (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_fileGenerationParameterArray.insert (inObserver)
     if let object = self.propval {
       object.fileGenerationParameterArray_property.addEBObserver (inObserver)
@@ -183,7 +183,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func removeEBObserverOf_fileGenerationParameterArray (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_fileGenerationParameterArray (_ inObserver : EBObserverProtocol) {
     self.mObserversOf_fileGenerationParameterArray.remove (inObserver)
     if let object = self.propval {
       object.fileGenerationParameterArray_property.removeEBObserver (inObserver)

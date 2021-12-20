@@ -8,91 +8,27 @@ import Cocoa
 //   EBReadOnlyPropertyController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBReadOnlyPropertyController : EBOutletEvent {
-
-  //····················································································································
-
-  private var mPrivateObservedObjects : [EBObservableObjectProtocol]
-
-  //····················································································································
-
-  init (observedObjects : [EBObservableObjectProtocol], callBack: @escaping () -> Void) {
-    self.mPrivateObservedObjects = observedObjects
-    super.init ()
-    self.mEventCallBack = callBack
-    for object in observedObjects {
-      object.addEBObserver (self)
-    }
-  }
-
-  //····················································································································
-
-  override func unregister () {
-    super.unregister ()
-    for object in self.mPrivateObservedObjects {
-      object.removeEBObserver (self)
-    }
-    self.mPrivateObservedObjects.removeAll ()
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//class EBReadOnlyPropertyController : EBSwiftBaseObject { // EBOutletEvent {
+//class EBReadOnlyPropertyController : EBOutletEvent {
 //
 //  //····················································································································
 //
-//  final private var mPrivateObservedObjects : [EBObservableObjectProtocol]
-//  final var mEventCallBack : Optional < () -> Void > = nil
+//  private var mPrivateObservedObjects : [EBObservableObjectProtocol]
 //
 //  //····················································································································
 //
 //  init (observedObjects : [EBObservableObjectProtocol], callBack: @escaping () -> Void) {
 //    self.mPrivateObservedObjects = observedObjects
-//    self.mEventCallBack = callBack
 //    super.init ()
+//    self.mEventCallBack = callBack
 //    for object in observedObjects {
 //      object.addEBObserver (self)
 //    }
 //  }
 //
 //  //····················································································································
-//  //   observedObjectDidChange
-//  //····················································································································
 //
-//  func observedObjectDidChange () {
-////    if logEvents () {
-////      if gPendingOutletEvents.count == 0 {
-////        appendMessageString ("Post events\n")
-////      }
-////      let str = "  " +  self.explorerIndexString + String (describing: type (of: self)) + "\n"
-////      if !self.mEventIsPosted {
-////        appendMessageString (str)
-////      }else{ // Event already posted
-////        appendMessageString (str, color: NSColor.brown)
-////      }
-////    }
-//    if !self.mEventIsPosted {
-//      self.mEventIsPosted = true
-//      gPendingOutletEvents.append (self)
-//    }
-//  }
-//
-//  //····················································································································
-//  //   sendUpdateEvent
-//  //····················································································································
-//
-//  final func sendUpdateEvent () {
-//    self.mEventIsPosted = false
-//    self.mEventCallBack? ()
-//  }
-//
-//  //····················································································································
-//
-//  func unregister () {
+//  override func unregister () {
+//    super.unregister ()
 //    for object in self.mPrivateObservedObjects {
 //      object.removeEBObserver (self)
 //    }
@@ -102,5 +38,74 @@ class EBReadOnlyPropertyController : EBOutletEvent {
 //  //····················································································································
 //
 //}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class EBReadOnlyPropertyController : EBSwiftBaseObject, EBObserverProtocol {
+
+  //····················································································································
+
+  final private var mPrivateObservedObjects : [EBObservableObjectProtocol]
+  final var mEventCallBack : Optional < () -> Void > = nil
+  final private var mEventIsPosted = false
+
+  //····················································································································
+
+  init (observedObjects : [EBObservableObjectProtocol], callBack: @escaping () -> Void) {
+    self.mPrivateObservedObjects = observedObjects
+    self.mEventCallBack = callBack
+    super.init ()
+    for object in observedObjects {
+      object.addEBObserver (self)
+    }
+  }
+
+  //····················································································································
+  //   observedObjectDidChange
+  //····················································································································
+
+  func observedObjectDidChange () {
+//    if logEvents () {
+//      if gPendingOutletEvents.count == 0 {
+//        appendMessageString ("Post events\n")
+//      }
+//      let str = "  " +  self.explorerIndexString + String (describing: type (of: self)) + "\n"
+//      if !self.mEventIsPosted {
+//        appendMessageString (str)
+//      }else{ // Event already posted
+//        appendMessageString (str, color: NSColor.brown)
+//      }
+//    }
+    if !self.mEventIsPosted {
+      self.mEventIsPosted = true
+      DispatchQueue.main.async {
+        self.mEventIsPosted = false
+        self.mEventCallBack? ()
+      }
+//      gPendingOutletEvents.append (self)
+    }
+  }
+
+  //····················································································································
+  //   sendUpdateEvent
+  //····················································································································
+
+//  final func sendUpdateEvent () {
+//    self.mEventIsPosted = false
+//    self.mEventCallBack? ()
+//  }
+
+  //····················································································································
+
+  func unregister () {
+    for object in self.mPrivateObservedObjects {
+      object.removeEBObserver (self)
+    }
+    self.mPrivateObservedObjects.removeAll ()
+  }
+
+  //····················································································································
+
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
