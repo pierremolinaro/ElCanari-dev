@@ -218,67 +218,67 @@ final class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
   //  BINDINGS
   //····················································································································
 
-  final func bind_foregroundImageOpacity (_ inObject : EBGenericReadOnlyProperty <Double>) {
+  final func bind_foregroundImageOpacity (_ inObject : EBObservableProperty <Double>) {
     self.mGraphicView.bind_foregroundImageOpacity (inObject)
   }
 
   //····················································································································
 
-  final func bind_foregroundImageData (_ inObject : EBGenericReadOnlyProperty <Data>) {
+  final func bind_foregroundImageData (_ inObject : EBObservableProperty <Data>) {
     self.mGraphicView.bind_foregroundImageData (inObject)
   }
 
   //····················································································································
 
-  final func bind_backgroundImageData (_ inObject : EBGenericReadOnlyProperty <Data>) {
+  final func bind_backgroundImageData (_ inObject : EBObservableProperty <Data>) {
     self.mGraphicView.bind_backgroundImageData (inObject)
   }
 
   //····················································································································
 
-  final func bind_overObjectsDisplay (_ inObject : EBGenericReadOnlyProperty <EBShape>) {
+  final func bind_overObjectsDisplay (_ inObject : EBObservableProperty <EBShape>) {
     self.mGraphicView.bind_overObjectsDisplay (inObject)
   }
 
   //····················································································································
 
-  final func bind_underObjectsDisplay (_ inObject : EBGenericReadOnlyProperty <EBShape>) {
+  final func bind_underObjectsDisplay (_ inObject : EBObservableProperty <EBShape>) {
     self.mGraphicView.bind_underObjectsDisplay (inObject)
   }
 
   //····················································································································
 
-  final func bind_horizontalFlip (_ inObject : EBGenericReadOnlyProperty <Bool>) {
+  final func bind_horizontalFlip (_ inObject : EBObservableProperty <Bool>) {
     self.mGraphicView.bind_horizontalFlip (inObject)
   }
 
   //····················································································································
 
-  final func bind_verticalFlip (_ inObject : EBGenericReadOnlyProperty <Bool>) {
+  final func bind_verticalFlip (_ inObject : EBObservableProperty <Bool>) {
     self.mGraphicView.bind_verticalFlip (inObject)
   }
 
   //····················································································································
 
-  final func bind_mouseGrid (_ inObject : EBGenericReadOnlyProperty <Int>) {
+  final func bind_mouseGrid (_ inObject : EBObservableProperty <Int>) {
     self.mGraphicView.bind_mouseGrid (inObject)
   }
 
   //····················································································································
 
-  final func bind_gridStep (_ inObject : EBGenericReadOnlyProperty <Int>) {
+  final func bind_gridStep (_ inObject : EBObservableProperty <Int>) {
     self.mGraphicView.bind_gridStep (inObject)
   }
 
   //····················································································································
 
-  final func bind_arrowKeyMagnitude (_ inObject : EBGenericReadOnlyProperty <Int>) {
+  final func bind_arrowKeyMagnitude (_ inObject : EBObservableProperty <Int>) {
     self.mGraphicView.bind_arrowKeyMagnitude (inObject)
   }
 
   //····················································································································
 
-  final func bind_shiftArrowKeyMagnitude (_ inObject : EBGenericReadOnlyProperty <Int>) {
+  final func bind_shiftArrowKeyMagnitude (_ inObject : EBObservableProperty <Int>) {
     self.mGraphicView.bind_shiftArrowKeyMagnitude (inObject)
   }
 
@@ -290,19 +290,19 @@ final class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func bind_gridDisplayFactor (_ inObject : EBGenericReadOnlyProperty <Int>) {
+  final func bind_gridDisplayFactor (_ inObject : EBObservableProperty <Int>) {
     self.mGraphicView.bind_gridDisplayFactor (inObject)
   }
 
   //····················································································································
 
-  final func bind_gridLineColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) {
+  final func bind_gridLineColor (_ inObject : EBObservableProperty <NSColor>) {
     self.mGraphicView.bind_gridLineColor (inObject)
   }
 
   //····················································································································
 
-  final func bind_gridCrossColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) {
+  final func bind_gridCrossColor (_ inObject : EBObservableProperty <NSColor>) {
     self.mGraphicView.bind_gridCrossColor (inObject)
   }
 
@@ -314,7 +314,7 @@ final class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func bind_backColor (_ inObject : EBGenericReadOnlyProperty <NSColor>) {
+  final func bind_backColor (_ inObject : EBObservableProperty <NSColor>) {
     self.mGraphicView.bind_backColor (inObject)
   }
 

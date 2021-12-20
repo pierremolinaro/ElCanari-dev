@@ -8,7 +8,7 @@ import Cocoa
 //   EBGenericReadWriteProperty <T> (abstract class)
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBGenericReadWriteProperty <T : Equatable> : EBGenericReadOnlyProperty <T> {
+class EBGenericReadWriteProperty <T : Equatable> : EBObservableProperty <T> {
 
   //····················································································································
 

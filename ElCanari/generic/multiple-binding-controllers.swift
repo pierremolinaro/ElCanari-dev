@@ -121,7 +121,7 @@ indirect enum EBMultipleBindingBooleanExpression {
   case boolcmp (EBMultipleBindingBooleanExpression, MultipleBindingBooleanOperation, EBMultipleBindingBooleanExpression)
   case intcmp  (EBMultipleBindingIntegerExpression, MultipleBindingIntegerOperation, EBMultipleBindingIntegerExpression)
   case not (EBMultipleBindingBooleanExpression)
-  case id  (EBGenericReadOnlyProperty <Bool>)
+  case id  (EBObservableProperty <Bool>)
 
   func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
     switch self {
@@ -207,7 +207,7 @@ indirect enum EBMultipleBindingBooleanExpression {
 
 enum EBMultipleBindingIntegerExpression {
   case literalInt (Int)
-  case id (EBGenericReadOnlyProperty <Int>)
+  case id (EBObservableProperty <Int>)
 
   func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
     switch self {

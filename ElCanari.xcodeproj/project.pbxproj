@@ -146,8 +146,8 @@
 		CF07780623521A4E00F56EAB /* EBGenericTransientProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F523521A4E00F56EAB /* EBGenericTransientProperty.swift */; };
 		CF07780723521A4E00F56EAB /* EnumPropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F623521A4E00F56EAB /* EnumPropertyProtocol.swift */; };
 		CF07780823521A4E00F56EAB /* EnumPropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F623521A4E00F56EAB /* EnumPropertyProtocol.swift */; };
-		CF07780923521A4E00F56EAB /* EBGenericReadOnlyProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F723521A4E00F56EAB /* EBGenericReadOnlyProperty.swift */; };
-		CF07780A23521A4E00F56EAB /* EBGenericReadOnlyProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F723521A4E00F56EAB /* EBGenericReadOnlyProperty.swift */; };
+		CF07780923521A4E00F56EAB /* EBObservableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F723521A4E00F56EAB /* EBObservableProperty.swift */; };
+		CF07780A23521A4E00F56EAB /* EBObservableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F723521A4E00F56EAB /* EBObservableProperty.swift */; };
 		CF07780E23521A8300F56EAB /* EBPropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07780D23521A8300F56EAB /* EBPropertyProtocol.swift */; };
 		CF07780F23521A8300F56EAB /* EBPropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07780D23521A8300F56EAB /* EBPropertyProtocol.swift */; };
 		CF07781423521CB800F56EAB /* func-defaultValidationFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07781023521CB700F56EAB /* func-defaultValidationFunction.swift */; };
@@ -2340,8 +2340,8 @@
 		CF8A8A88275A44A700825DF9 /* SegmentForFontCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A8A82275A44A700825DF9 /* SegmentForFontCharacter.swift */; };
 		CF8B1B8121CC0F5800C124FC /* enum-PadNumbering.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8B1B8021CC0F5800C124FC /* enum-PadNumbering.swift */; };
 		CF8B1B8221CC0F5800C124FC /* enum-PadNumbering.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8B1B8021CC0F5800C124FC /* enum-PadNumbering.swift */; };
-		CF8BE73A23510FEC00F95B3A /* EBAbstractProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73623510FEB00F95B3A /* EBAbstractProperty.swift */; };
-		CF8BE73B23510FEC00F95B3A /* EBAbstractProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73623510FEB00F95B3A /* EBAbstractProperty.swift */; };
+		CF8BE73A23510FEC00F95B3A /* EBObservedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73623510FEB00F95B3A /* EBObservedObject.swift */; };
+		CF8BE73B23510FEC00F95B3A /* EBObservedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73623510FEB00F95B3A /* EBObservedObject.swift */; };
 		CF8BE73C23510FEC00F95B3A /* EBWeakEventSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73723510FEB00F95B3A /* EBWeakEventSet.swift */; };
 		CF8BE73D23510FEC00F95B3A /* EBWeakEventSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73723510FEB00F95B3A /* EBWeakEventSet.swift */; };
 		CF8BE73E23510FEC00F95B3A /* EBModelNotifierEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73823510FEC00F95B3A /* EBModelNotifierEvent.swift */; };
@@ -2803,7 +2803,7 @@
 		CF9C633625CABE5C00A00D5C /* transient-NetClassInProject-netWarningCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7BE4233A28120060A97A /* transient-NetClassInProject-netWarningCount.swift */; };
 		CF9C633725CABE5C00A00D5C /* transient-DeviceInProject-versionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7B7C233A26320060A97A /* transient-DeviceInProject-versionString.swift */; };
 		CF9C633925CABE5C00A00D5C /* transient-FontInProject-canRemoveFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4E03A4250A328C00079227 /* transient-FontInProject-canRemoveFont.swift */; };
-		CF9C633A25CABE5C00A00D5C /* EBGenericReadOnlyProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F723521A4E00F56EAB /* EBGenericReadOnlyProperty.swift */; };
+		CF9C633A25CABE5C00A00D5C /* EBObservableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F723521A4E00F56EAB /* EBObservableProperty.swift */; };
 		CF9C633D25CABE5C00A00D5C /* ApplicationDelegate-new-document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4634441BEE10890064C49B /* ApplicationDelegate-new-document.swift */; };
 		CF9C633E25CABE5C00A00D5C /* EBManagedXibDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDE5B21B4677C500036ACF /* EBManagedXibDocument.swift */; };
 		CF9C634025CABE5C00A00D5C /* transient-ProjectRoot-netNamesArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7C67233A28820060A97A /* transient-ProjectRoot-netNamesArray.swift */; };
@@ -3016,7 +3016,7 @@
 		CF9C64D325CABE5C00A00D5C /* transient-PackagePad-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF30CDE021C5709700CFE9CC /* transient-PackagePad-objectDisplay.swift */; };
 		CF9C64D525CABE5C00A00D5C /* toone-SlavePadInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA42F72229AEACE000AA8C8 /* toone-SlavePadInDevice.swift */; };
 		CF9C64D625CABE5C00A00D5C /* view-ThreeStringArrayTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFA7B472274821A00E2D69A /* view-ThreeStringArrayTableView.swift */; };
-		CF9C64D725CABE5C00A00D5C /* EBAbstractProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73623510FEB00F95B3A /* EBAbstractProperty.swift */; };
+		CF9C64D725CABE5C00A00D5C /* EBObservedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73623510FEB00F95B3A /* EBObservedObject.swift */; };
 		CF9C64D825CABE5C00A00D5C /* toone-PackageZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA42FE6229AEB68000AA8C8 /* toone-PackageZone.swift */; };
 		CF9C64DC25CABE5C00A00D5C /* EBGraphicView-binding-gridStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A6C0921C6B80200997A19 /* EBGraphicView-binding-gridStep.swift */; };
 		CF9C64DF25CABE5C00A00D5C /* transient-PackageModelImageDoublePoint-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2FF0C4242F79C30030E49A /* transient-PackageModelImageDoublePoint-selectionDisplay.swift */; };
@@ -4516,7 +4516,7 @@
 		CF0777F423521A4E00F56EAB /* EBGenericPropertyProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBGenericPropertyProxy.swift; sourceTree = "<group>"; };
 		CF0777F523521A4E00F56EAB /* EBGenericTransientProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBGenericTransientProperty.swift; sourceTree = "<group>"; };
 		CF0777F623521A4E00F56EAB /* EnumPropertyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumPropertyProtocol.swift; sourceTree = "<group>"; };
-		CF0777F723521A4E00F56EAB /* EBGenericReadOnlyProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBGenericReadOnlyProperty.swift; sourceTree = "<group>"; };
+		CF0777F723521A4E00F56EAB /* EBObservableProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBObservableProperty.swift; sourceTree = "<group>"; };
 		CF07780D23521A8300F56EAB /* EBPropertyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBPropertyProtocol.swift; sourceTree = "<group>"; };
 		CF07781023521CB700F56EAB /* func-defaultValidationFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "func-defaultValidationFunction.swift"; sourceTree = "<group>"; };
 		CF07781123521CB800F56EAB /* EBSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBSelection.swift; sourceTree = "<group>"; };
@@ -5350,7 +5350,7 @@
 		CF8A8A81275A44A700825DF9 /* customStore-characters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "customStore-characters.swift"; sourceTree = "<group>"; };
 		CF8A8A82275A44A700825DF9 /* SegmentForFontCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentForFontCharacter.swift; sourceTree = "<group>"; };
 		CF8B1B8021CC0F5800C124FC /* enum-PadNumbering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-PadNumbering.swift"; sourceTree = "<group>"; };
-		CF8BE73623510FEB00F95B3A /* EBAbstractProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBAbstractProperty.swift; sourceTree = "<group>"; };
+		CF8BE73623510FEB00F95B3A /* EBObservedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBObservedObject.swift; sourceTree = "<group>"; };
 		CF8BE73723510FEB00F95B3A /* EBWeakEventSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBWeakEventSet.swift; sourceTree = "<group>"; };
 		CF8BE73823510FEC00F95B3A /* EBModelNotifierEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBModelNotifierEvent.swift; sourceTree = "<group>"; };
 		CF8BE73923510FEC00F95B3A /* EBSignatureObserverProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBSignatureObserverProtocol.swift; sourceTree = "<group>"; };
@@ -6707,7 +6707,6 @@
 				CF61725E1B3C4BA900F3CA82 /* Application.swift */,
 				CF0777A62352100D00F56EAB /* BezierPathArray.swift */,
 				CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */,
-				CF8BE73623510FEB00F95B3A /* EBAbstractProperty.swift */,
 				CF9C602425CAB19700A00D5C /* EBAutoLayoutManagedDocument.swift */,
 				CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */,
 				CF0777E3235216F700F56EAB /* EBEnumPropertyProxy.swift */,
@@ -6720,7 +6719,7 @@
 				CF841C45275BB3880000EA26 /* EBGenericEnumReadWritePropertyController.swift */,
 				CF0777EF23521A4D00F56EAB /* EBGenericPreferenceProperty.swift */,
 				CF0777F423521A4E00F56EAB /* EBGenericPropertyProxy.swift */,
-				CF0777F723521A4E00F56EAB /* EBGenericReadOnlyProperty.swift */,
+				CF0777F723521A4E00F56EAB /* EBObservableProperty.swift */,
 				CF0777F123521A4D00F56EAB /* EBGenericReadWriteProperty.swift */,
 				CFA80DD325C0503700966D91 /* EBGenericReadWritePropertyController.swift */,
 				CF0777F323521A4D00F56EAB /* EBGenericStoredProperty.swift */,
@@ -6733,6 +6732,7 @@
 				CF8BE73823510FEC00F95B3A /* EBModelNotifierEvent.swift */,
 				CF0777D22352152F00F56EAB /* EBObject.swift */,
 				CF4C8F3825262ADC0046F831 /* EBObservableObjectProtocol.swift */,
+				CF8BE73623510FEB00F95B3A /* EBObservedObject.swift */,
 				CF549F5227707E1400D978D9 /* EBObserverProtocol.swift */,
 				CF07780D23521A8300F56EAB /* EBPropertyProtocol.swift */,
 				CF8BE7542351166A00F95B3A /* EBReadOnlyPropertyController.swift */,
@@ -9276,7 +9276,7 @@
 				CFEB7B8A233A26330060A97A /* transient-DeviceInProject-versionString.swift in Sources */,
 				CF711D4E275E1AD400280069 /* entity-DevicePinInProject.swift in Sources */,
 				CF4E03A5250A328D00079227 /* transient-FontInProject-canRemoveFont.swift in Sources */,
-				CF07780923521A4E00F56EAB /* EBGenericReadOnlyProperty.swift in Sources */,
+				CF07780923521A4E00F56EAB /* EBObservableProperty.swift in Sources */,
 				CF4634451BEE10890064C49B /* ApplicationDelegate-new-document.swift in Sources */,
 				CFEDE5B71B4677C500036ACF /* EBManagedXibDocument.swift in Sources */,
 				CFEB7C93233A28860060A97A /* transient-ProjectRoot-netNamesArray.swift in Sources */,
@@ -9730,7 +9730,7 @@
 				CFA430AF229AEC41000AA8C8 /* tomany-SymbolRoot.swift in Sources */,
 				CFA42F95229AEACF000AA8C8 /* toone-SlavePadInDevice.swift in Sources */,
 				CF8560C72677A34A00B62608 /* AutoLayoutGridView2.swift in Sources */,
-				CF8BE73A23510FEC00F95B3A /* EBAbstractProperty.swift in Sources */,
+				CF8BE73A23510FEC00F95B3A /* EBObservedObject.swift in Sources */,
 				CFA43011229AEB69000AA8C8 /* toone-PackageZone.swift in Sources */,
 				CF3AE26126F618AA004ABD8F /* enum-LayerConfiguration.swift in Sources */,
 				CFB7D85C2683A61C007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageOval.swift in Sources */,
@@ -10724,7 +10724,7 @@
 				CFEB7BF5233A28130060A97A /* transient-NetClassInProject-netWarningCount.swift in Sources */,
 				CF4E03A6250A328D00079227 /* transient-FontInProject-canRemoveFont.swift in Sources */,
 				CFEB7B8B233A26330060A97A /* transient-DeviceInProject-versionString.swift in Sources */,
-				CF07780A23521A4E00F56EAB /* EBGenericReadOnlyProperty.swift in Sources */,
+				CF07780A23521A4E00F56EAB /* EBObservableProperty.swift in Sources */,
 				CF5C4D36219F04D600EAC52A /* EBManagedObject.swift in Sources */,
 				CF6E147A21CD1144008E2180 /* entity-PackageZone.swift in Sources */,
 				CF8A09A72231969400A17B92 /* transient-SymbolInstanceInDevice-selectionDisplay.swift in Sources */,
@@ -11185,7 +11185,7 @@
 				CFDD6D4426A1B0F20050CB78 /* AutoLayoutCanariHorizontalAlignmentSegmentedControl.swift in Sources */,
 				CF8560EF2677A34C00B62608 /* AutoLayoutGridView2.swift in Sources */,
 				CFE85AA021A5C91300991A66 /* transient-SymbolSolidRect-selectionDisplay.swift in Sources */,
-				CF8BE73B23510FEC00F95B3A /* EBAbstractProperty.swift in Sources */,
+				CF8BE73B23510FEC00F95B3A /* EBObservedObject.swift in Sources */,
 				CF04AF2122761B7E00C70E99 /* extension-ProjectDocument-print.swift in Sources */,
 				CFD1EA8F274EE23B000AED8E /* tomany-SegmentForFontCharacter.swift in Sources */,
 				CF3AE26226F618AA004ABD8F /* enum-LayerConfiguration.swift in Sources */,
@@ -12125,7 +12125,7 @@
 				CFB7D85B2683A61C007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageOvalSelectionController.swift in Sources */,
 				CF9C633925CABE5C00A00D5C /* transient-FontInProject-canRemoveFont.swift in Sources */,
 				CFB7D78B2683A1B4007B9D3B /* EBAllocationDebug-debug.swift in Sources */,
-				CF9C633A25CABE5C00A00D5C /* EBGenericReadOnlyProperty.swift in Sources */,
+				CF9C633A25CABE5C00A00D5C /* EBObservableProperty.swift in Sources */,
 				CF9C633D25CABE5C00A00D5C /* ApplicationDelegate-new-document.swift in Sources */,
 				CF9C633E25CABE5C00A00D5C /* EBManagedXibDocument.swift in Sources */,
 				CFB7D8D62683A61D007B9D3B /* action-AutoLayoutPackageDocument-setDimensionTextOriginAtMidXAction.swift in Sources */,
@@ -12569,7 +12569,7 @@
 				CF9C64D325CABE5C00A00D5C /* transient-PackagePad-objectDisplay.swift in Sources */,
 				CF9C64D525CABE5C00A00D5C /* toone-SlavePadInDevice.swift in Sources */,
 				CF9C64D625CABE5C00A00D5C /* view-ThreeStringArrayTableView.swift in Sources */,
-				CF9C64D725CABE5C00A00D5C /* EBAbstractProperty.swift in Sources */,
+				CF9C64D725CABE5C00A00D5C /* EBObservedObject.swift in Sources */,
 				CF9C64D825CABE5C00A00D5C /* toone-PackageZone.swift in Sources */,
 				CF22F19D275A73ED009C6FAC /* entity-BoardModelPad.swift in Sources */,
 				CF22F2AA275A7EF5009C6FAC /* transient-AutoLayoutMergerDocument-statusMessage.swift in Sources */,

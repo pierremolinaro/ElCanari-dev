@@ -8,7 +8,7 @@ import Cocoa
 //   EBReadOnlyEnumProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBGenericReadOnlyProperty <T>, EBReadObservableEnumProtocol where T : Equatable {
+class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBObservableProperty <T>, EBReadObservableEnumProtocol where T : Equatable {
 
   //····················································································································
 

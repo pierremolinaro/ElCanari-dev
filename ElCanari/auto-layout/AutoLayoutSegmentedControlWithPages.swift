@@ -123,7 +123,7 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
 
   //····················································································································
 
-  final func bind_segmentImage (_ inObject : EBGenericReadOnlyProperty <NSImage>, segmentIndex inSegmentIndex : Int) -> Self {
+  final func bind_segmentImage (_ inObject : EBObservableProperty <NSImage>, segmentIndex inSegmentIndex : Int) -> Self {
     self.mSegmentImageIndex = inSegmentIndex
     self.mSegmentImageController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
@@ -134,7 +134,7 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
 
   //····················································································································
 
-  fileprivate func updateImage (from inObject : EBGenericReadOnlyProperty <NSImage>) {
+  fileprivate func updateImage (from inObject : EBObservableProperty <NSImage>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.setImage (nil, forSegment: self.mSegmentImageIndex)
@@ -152,7 +152,7 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
 
   //····················································································································
 
-  final func bind_segmentTitle (_ inObject : EBGenericReadOnlyProperty <String>, segmentIndex inSegmentIndex : Int) -> Self {
+  final func bind_segmentTitle (_ inObject : EBObservableProperty <String>, segmentIndex inSegmentIndex : Int) -> Self {
     self.mSegmentTitleIndex = inSegmentIndex
     self.mSegmentTitleController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
@@ -163,7 +163,7 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
 
   //····················································································································
 
-  fileprivate func updateTitle (from inObject : EBGenericReadOnlyProperty <String>) {
+  fileprivate func updateTitle (from inObject : EBObservableProperty <String>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.setLabel ("", forSegment: self.mSegmentTitleIndex)

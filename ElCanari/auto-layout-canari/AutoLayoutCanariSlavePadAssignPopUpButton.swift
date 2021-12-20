@@ -122,7 +122,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
 
  //····················································································································
 
-  final func bind_masterPadName (_ inObject : EBGenericReadOnlyProperty <String>) -> Self {
+  final func bind_masterPadName (_ inObject : EBObservableProperty <String>) -> Self {
     self.mSlavePadIndexController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
       callBack: { self.update (fromMasterPadName: inObject) }
@@ -132,7 +132,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
 
   //····················································································································
 
-  private func update (fromMasterPadName inObject : EBGenericReadOnlyProperty <String>) {
+  private func update (fromMasterPadName inObject : EBObservableProperty <String>) {
     _ = inObject.selection
     self.mSelectedSlavePadArray.removeAll ()
     self.mReferencedMasterPadArray.removeAll ()
@@ -160,7 +160,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
 
  //····················································································································
 
-  final func bind_masterPadObjectIndexArray (_ inObject : EBGenericReadOnlyProperty <IntArray>) -> Self {
+  final func bind_masterPadObjectIndexArray (_ inObject : EBObservableProperty <IntArray>) -> Self {
     self.mMasterPadIndexArrayIndexController = EBReadOnlyPropertyController (
       observedObjects: [inObject],
       callBack: { self.update (fromMasterPadIndexArray: inObject) }
@@ -170,7 +170,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
 
   //····················································································································
 
-  private func update (fromMasterPadIndexArray inObject : EBGenericReadOnlyProperty <IntArray>) {
+  private func update (fromMasterPadIndexArray inObject : EBObservableProperty <IntArray>) {
     self.mMasterPadArray.removeAll ()
     if let document = self.mDocument {
       switch inObject.selection {
