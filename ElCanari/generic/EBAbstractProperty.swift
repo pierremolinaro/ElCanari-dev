@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBAbstractProperty (abstract class)
+//   EBObservedObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBAbstractProperty : EBSwiftBaseObject {
+class EBObservedObject : EBSwiftBaseObject {
 
   private final var mObservers = EBWeakEventSet ()
 

@@ -67,7 +67,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
 
   //····················································································································
 
-  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty } // EBGraphicViewControllerProtocol
+  var selectedArrayDidChange_property : EBObservedObject { return self.mInternalSelectedArrayProperty } // EBGraphicViewControllerProtocol
   var selectedArray_property : ReadOnlyArrayOf_PackageModelImageDoublePoint { return self.mInternalSelectedArrayProperty }
 
   //····················································································································

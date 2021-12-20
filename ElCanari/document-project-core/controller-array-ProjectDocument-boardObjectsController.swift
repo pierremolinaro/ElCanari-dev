@@ -67,7 +67,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
 
   //····················································································································
 
-  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty } // EBGraphicViewControllerProtocol
+  var selectedArrayDidChange_property : EBObservedObject { return self.mInternalSelectedArrayProperty } // EBGraphicViewControllerProtocol
   var selectedArray_property : ReadOnlyArrayOf_BoardObject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································

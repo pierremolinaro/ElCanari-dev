@@ -25,7 +25,7 @@ protocol EBGraphicViewControllerProtocol : AnyObject {
 
   func computeSelectionShape ()
 
-  var selectedArrayDidChange_property : EBAbstractProperty { get }
+  var selectedArrayDidChange_property : EBObservedObject { get }
 
   var selectedGraphicObjectSet : EBReferenceSet <EBGraphicManagedObject> { get }
 

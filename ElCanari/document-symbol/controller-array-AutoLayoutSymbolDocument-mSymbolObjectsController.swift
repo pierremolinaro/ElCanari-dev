@@ -67,7 +67,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
 
   //····················································································································
 
-  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty } // EBGraphicViewControllerProtocol
+  var selectedArrayDidChange_property : EBObservedObject { return self.mInternalSelectedArrayProperty } // EBGraphicViewControllerProtocol
   var selectedArray_property : ReadOnlyArrayOf_SymbolObject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································

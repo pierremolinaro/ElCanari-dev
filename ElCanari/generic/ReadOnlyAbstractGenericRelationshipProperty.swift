@@ -8,7 +8,7 @@ import Cocoa
 //    ReadOnlyAbstractGenericRelationshipProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyAbstractGenericRelationshipProperty : EBAbstractProperty {
+class ReadOnlyAbstractGenericRelationshipProperty : EBObservedObject {
 
   //····················································································································
   //  Data clients
