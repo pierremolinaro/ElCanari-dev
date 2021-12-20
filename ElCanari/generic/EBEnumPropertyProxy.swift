@@ -8,7 +8,7 @@ import Cocoa
 //   EBPropertyEnumProxy <T : EnumPropertyProtocol>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T> {
+final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T>, EBObserverProtocol {
 
   //····················································································································
 

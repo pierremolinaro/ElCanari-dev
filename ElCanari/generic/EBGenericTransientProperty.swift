@@ -8,7 +8,7 @@ import Cocoa
 //   EBGenericTransientProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBGenericTransientProperty <T : Equatable> : EBGenericReadOnlyProperty <T> {
+class EBGenericTransientProperty <T : Equatable> : EBGenericReadOnlyProperty <T>, EBObserverProtocol {
 
   //····················································································································
 

@@ -8,7 +8,7 @@ import Cocoa
 //   EBAbstractProperty (abstract class)
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBAbstractProperty : EBEvent {
+class EBAbstractProperty : EBSwiftBaseObject {
 
   private final var mObservers = EBWeakEventSet ()
 
@@ -60,7 +60,7 @@ class EBAbstractProperty : EBEvent {
 
   //····················································································································
 
-  override func observedObjectDidChange () {
+  func observedObjectDidChange () {
     self.mObservers.apply ( {(_ observer : EBObserverProtocol) in observer.observedObjectDidChange () })
   }
 
