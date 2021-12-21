@@ -795,6 +795,11 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   }
   
   stackView mBoardBezierPathOutlineView vStack {
+    hStack $hidden #boardCurveObjectsController.selectedArray.count != 0 {
+      space
+      StaticLabel (title: "No Selected Board Limit Element", bold: no, size : .regular)
+      space
+    }
     GridView2 {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Shape", bold: yes, size : .small) {
@@ -896,7 +901,9 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
           }
         }
       )
+      $hidden #boardCurveObjectsController.selectedArray.count == 0
     }
+    space
   }
 
 //----------------- Board Contents tab

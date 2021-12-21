@@ -1170,7 +1170,18 @@ import Cocoa
 
   lazy var mBoardBezierPathOutlineView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutGridView2 ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+      .bind_hidden (.intcmp (.id (self.boardCurveObjectsController.selectedArray_property.count_property), .ne, .literalInt (0)))
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "No Selected Board Limit Element", bold: false, size: .regular)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_18 (), right: self.computeImplicitView_19 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_20 (), right: self.computeImplicitView_21 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_22 (), right: self.computeImplicitView_23 ())
@@ -1178,7 +1189,10 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_26 (), right: self.computeImplicitView_27 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_28 (), right: self.computeImplicitView_29 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_30 (), right: self.computeImplicitView_31 ())
-    vStackView.appendView (view_0)
+      .bind_hidden (.intcmp (.id (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)))
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_2)
     return vStackView
   } ()
 

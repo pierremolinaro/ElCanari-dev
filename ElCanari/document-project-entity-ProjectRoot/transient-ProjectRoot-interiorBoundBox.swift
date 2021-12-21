@@ -23,36 +23,40 @@ func transient_ProjectRoot_interiorBoundBox (
 ) -> CanariRect {
 //--- START OF USER ZONE 2
         switch self_mBoardShape {
-          case .bezierPathes :
-          var minX = CGFloat.greatestFiniteMagnitude
-          var maxX = CGFloat.leastNormalMagnitude
-          var minY = CGFloat.greatestFiniteMagnitude
-          var maxY = CGFloat.leastNormalMagnitude
-          for limit in self_mBorderCurves_descriptor {
-            let descriptor = limit.descriptor!
-            let p1 = descriptor.p1.cocoaPoint
-            let p2 = descriptor.p2.cocoaPoint
-            switch descriptor.shape {
-            case .line :
-              minX = min (minX, p1.x, p2.x)
-              maxX = max (maxX, p1.x, p2.x)
-              minY = min (minY, p1.y, p2.y)
-              maxY = max (maxY, p1.y, p2.y)
-            case .bezier :
-              let cp1 = descriptor.cp1.cocoaPoint
-              let cp2 = descriptor.cp2.cocoaPoint
-              var bp = EBBezierPath ()
-              bp.move (to: p1)
-              bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
-              let r = bp.bounds
-              minX = min (minX, r.minX)
-              maxX = max (maxX, r.maxX)
-              minY = min (minY, r.minY)
-              maxY = max (maxY, r.maxY)
+        case .bezierPathes :
+          if self_mBorderCurves_descriptor.count == 4 {
+            var minX = CGFloat.greatestFiniteMagnitude
+            var maxX = CGFloat.leastNormalMagnitude
+            var minY = CGFloat.greatestFiniteMagnitude
+            var maxY = CGFloat.leastNormalMagnitude
+            for limit in self_mBorderCurves_descriptor {
+              let descriptor = limit.descriptor!
+              let p1 = descriptor.p1.cocoaPoint
+              let p2 = descriptor.p2.cocoaPoint
+              switch descriptor.shape {
+              case .line :
+                minX = min (minX, p1.x, p2.x)
+                maxX = max (maxX, p1.x, p2.x)
+                minY = min (minY, p1.y, p2.y)
+                maxY = max (maxY, p1.y, p2.y)
+              case .bezier :
+                let cp1 = descriptor.cp1.cocoaPoint
+                let cp2 = descriptor.cp2.cocoaPoint
+                var bp = EBBezierPath ()
+                bp.move (to: p1)
+                bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
+                let r = bp.bounds
+                minX = min (minX, r.minX)
+                maxX = max (maxX, r.maxX)
+                minY = min (minY, r.minY)
+                maxY = max (maxY, r.maxY)
+              }
             }
+            let boundBox = NSRect (x: minX, y: minY, width: maxX - minX, height: maxY - minY)
+            return boundBox.canariRect
+          }else{
+            return CanariRect ()
           }
-          let boundBox = NSRect (x: minX, y: minY, width: maxX - minX, height: maxY - minY)
-          return boundBox.canariRect
         case .rectangular :
           let d = self_mBoardClearance + self_mBoardLimitsWidth
           return CanariRect (

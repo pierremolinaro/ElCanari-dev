@@ -31,7 +31,7 @@ func enum GridStyle.popupTitles {
   line : "Line Grid" ;
 }
 
-extern autolayout class GridView2 {
+extern autolayout class GridView2 $hidden {
   func set (spacing: Int)
   func set (margins: Int)
   func set (leftMargin: Int)
