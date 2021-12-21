@@ -908,8 +908,45 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 
 //----------------- Board Contents tab
 
-  stackView mBoardContentsPage vStack set (margins: 8) {
-    space
+  arrayController #boardObjectsController : root.mBoardObjects ;  
+  transient EBShape overDisplay dependsFrom self.rastnetShape, root.boardIssues ;
+  transient EBShape rastnetShape dependsFrom
+    root.mRastnetDisplay,
+    root.mRastnetDisplayedNetName,
+    root.mRastnetDisplayedComponentName,
+    root.mBoardObjects.all.netNameAndPadLocation,
+    #boardObjectsController.selectedArray.all.componentName
+  ;
+
+  stackView mBoardContentsPage hStack set (margins: 8) {
+    vStack {
+      hStack {
+        CanariBoardOperationPullDownButton [configurator boardOperationPullDownButtonConfigurator]
+        space
+      }
+      StaticLabel (title: "Azerty", bold: no, size : .small)
+      space
+    }
+    separator
+    GraphicView (minZoom: 10, maxZoom: 20_000) [outlet mBoardView] {
+      $underObjectsDisplay root.borderOutlineBackground
+      $overObjectsDisplay self.overDisplay
+      $horizontalFlip root.mBoardHorizontalFlip
+      $verticalFlip root.mBoardVerticalFlip
+      $graphicController #boardObjectsController
+      $gridStyle root.mBoardGridStyle
+      $gridDisplayFactor root.mBoardGridDisplayFactor
+      $gridLineColor prefs.lineColorGridForBoard
+      $gridCrossColor prefs.crossColorGridForBoard
+      $zoom root.mBoardZoom
+      $backColor prefs.boardBackgroundColorForBoard
+      $mouseGrid root.mBoardGridStep
+      $gridStep root.mBoardGridStep
+      $arrowKeyMagnitude root.mBoardGridStep
+      $shiftArrowKeyMagnitude root.boardGridStepMultipliedByDisplayFactor
+      $xPlacardUnit root.mBoardGridStepUnit
+      $yPlacardUnit root.mBoardGridStepUnit
+    }
   }
 
 //  outlet CanariSegmentedControl mBoardInspectorSegmentedControl $selectedPage root.mBoardSelectedInspector ;
@@ -936,29 +973,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //  transient String unplacedPackagesCountString dependsFrom self.unplacedPackageCount ;
 //  outlet EBTextObserverField mUnplacedPackagesCountTextField $valueObserver self.unplacedPackagesCountString ;
 //
-  arrayController #boardObjectsController : root.mBoardObjects ;
-//  
-//  transient EBShape overDisplay dependsFrom self.rastnetShape, root.boardIssues ;
 //
-//  outlet EBEnclosingGraphicView mBoardView
-//    $underObjectsDisplay root.borderOutlineBackground
-//    $overObjectsDisplay self.overDisplay
-//    $horizontalFlip root.mBoardHorizontalFlip
-//    $verticalFlip root.mBoardVerticalFlip
-//    $graphicController #boardObjectsController
-//    $gridStyle root.mBoardGridStyle
-//    $gridDisplayFactor root.mBoardGridDisplayFactor
-//    $gridLineColor prefs.lineColorGridForBoard
-//    $gridCrossColor prefs.crossColorGridForBoard
-//    $zoom root.mBoardZoom
-//    $backColor prefs.boardBackgroundColorForBoard
-//    $mouseGrid root.mBoardGridStep
-//    $gridStep root.mBoardGridStep
-//    $arrowKeyMagnitude root.mBoardGridStep
-//    $shiftArrowKeyMagnitude root.boardGridStepMultipliedByDisplayFactor
-//    $xPlacardUnit root.mBoardGridStepUnit
-//    $yPlacardUnit root.mBoardGridStepUnit
-//  ;
 //
 ////--- Menu items
 //  outlet CanariComponentsMenuItem mSelectComponentsMenuItem $components root.componentsPlacedInBoard ;
@@ -1319,9 +1334,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //  outlet CanariBoardComponentValueFontPopUpButton mBoardComponentValueFontPopUpButton
 //    $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
 //  ;
-
-
-//--- Product page
  
   //············································································
   //     Product Page

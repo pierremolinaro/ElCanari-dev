@@ -17,9 +17,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
       oldValue.mSchematicSheetOrientation_property.removeEBObserver (self.mSchematicSheetOrientation_property) // Stored property
-      oldValue.mRastnetDisplay_property.removeEBObserver (self.mRastnetDisplay_property) // Stored property
-      oldValue.mRastnetDisplayedNetName_property.removeEBObserver (self.mRastnetDisplayedNetName_property) // Stored property
-      oldValue.mRastnetDisplayedComponentName_property.removeEBObserver (self.mRastnetDisplayedComponentName_property) // Stored property
       oldValue.mArtworkName_property.removeEBObserver (self.mArtworkName_property) // Stored property
       oldValue.mArtworkVersion_property.removeEBObserver (self.mArtworkVersion_property) // Stored property
       oldValue.mPDFBoardBackgroundColor_property.removeEBObserver (self.mPDFBoardBackgroundColor_property) // Stored property
@@ -88,6 +85,9 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.mSchematicCustomWidthUnit_property.removeEBObserver (self.mSchematicCustomWidthUnit_property) // Stored property
       oldValue.mSchematicCustomHeight_property.removeEBObserver (self.mSchematicCustomHeight_property) // Stored property
       oldValue.mSchematicCustomHeightUnit_property.removeEBObserver (self.mSchematicCustomHeightUnit_property) // Stored property
+      oldValue.mRastnetDisplay_property.removeEBObserver (self.mRastnetDisplay_property) // Stored property
+      oldValue.mRastnetDisplayedNetName_property.removeEBObserver (self.mRastnetDisplayedNetName_property) // Stored property
+      oldValue.mRastnetDisplayedComponentName_property.removeEBObserver (self.mRastnetDisplayedComponentName_property) // Stored property
       oldValue.hasInnerElements_property.removeEBObserver (self.hasInnerElements_property) // Transient property
       oldValue.hasSixLayers_property.removeEBObserver (self.hasSixLayers_property) // Transient property
       oldValue.layerConfigurationString_property.removeEBObserver (self.layerConfigurationString_property) // Transient property
@@ -145,9 +145,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
       newValue.mSchematicSheetOrientation_property.addEBObserver (self.mSchematicSheetOrientation_property) // Stored property
-      newValue.mRastnetDisplay_property.addEBObserver (self.mRastnetDisplay_property) // Stored property
-      newValue.mRastnetDisplayedNetName_property.addEBObserver (self.mRastnetDisplayedNetName_property) // Stored property
-      newValue.mRastnetDisplayedComponentName_property.addEBObserver (self.mRastnetDisplayedComponentName_property) // Stored property
       newValue.mArtworkName_property.addEBObserver (self.mArtworkName_property) // Stored property
       newValue.mArtworkVersion_property.addEBObserver (self.mArtworkVersion_property) // Stored property
       newValue.mPDFBoardBackgroundColor_property.addEBObserver (self.mPDFBoardBackgroundColor_property) // Stored property
@@ -216,6 +213,9 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.mSchematicCustomWidthUnit_property.addEBObserver (self.mSchematicCustomWidthUnit_property) // Stored property
       newValue.mSchematicCustomHeight_property.addEBObserver (self.mSchematicCustomHeight_property) // Stored property
       newValue.mSchematicCustomHeightUnit_property.addEBObserver (self.mSchematicCustomHeightUnit_property) // Stored property
+      newValue.mRastnetDisplay_property.addEBObserver (self.mRastnetDisplay_property) // Stored property
+      newValue.mRastnetDisplayedNetName_property.addEBObserver (self.mRastnetDisplayedNetName_property) // Stored property
+      newValue.mRastnetDisplayedComponentName_property.addEBObserver (self.mRastnetDisplayedComponentName_property) // Stored property
       newValue.hasInnerElements_property.addEBObserver (self.hasInnerElements_property) // Transient property
       newValue.hasSixLayers_property.addEBObserver (self.hasSixLayers_property) // Transient property
       newValue.layerConfigurationString_property.addEBObserver (self.layerConfigurationString_property) // Transient property
@@ -277,24 +277,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mSchematicSheetOrientation_property = EBGenericTransientProperty <SchematicSheetOrientation?> ()
-
-  //····················································································································
-  //   Observers of 'mRastnetDisplay' stored property
-  //····················································································································
-
-  final let mRastnetDisplay_property = EBGenericTransientProperty <RastnetDisplay?> ()
-
-  //····················································································································
-  //   Observers of 'mRastnetDisplayedNetName' stored property
-  //····················································································································
-
-  final let mRastnetDisplayedNetName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-  //   Observers of 'mRastnetDisplayedComponentName' stored property
-  //····················································································································
-
-  final let mRastnetDisplayedComponentName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mArtworkName' stored property
@@ -703,6 +685,24 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mSchematicCustomHeightUnit_property = EBGenericTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'mRastnetDisplay' stored property
+  //····················································································································
+
+  final let mRastnetDisplay_property = EBGenericTransientProperty <RastnetDisplay?> ()
+
+  //····················································································································
+  //   Observers of 'mRastnetDisplayedNetName' stored property
+  //····················································································································
+
+  final let mRastnetDisplayedNetName_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'mRastnetDisplayedComponentName' stored property
+  //····················································································································
+
+  final let mRastnetDisplayedComponentName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'hasInnerElements' transient property
@@ -1200,51 +1200,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mSchematicSheetOrientation_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.mSchematicSheetOrientation_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure mRastnetDisplay simple stored property
-    self.mRastnetDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.mRastnetDisplay_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure mRastnetDisplayedNetName simple stored property
-    self.mRastnetDisplayedNetName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.mRastnetDisplayedNetName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure mRastnetDisplayedComponentName simple stored property
-    self.mRastnetDisplayedComponentName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.mRastnetDisplayedComponentName_property.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -2265,6 +2220,51 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mSchematicCustomHeightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.mSchematicCustomHeightUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mRastnetDisplay simple stored property
+    self.mRastnetDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mRastnetDisplay_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mRastnetDisplayedNetName simple stored property
+    self.mRastnetDisplayedNetName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mRastnetDisplayedNetName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mRastnetDisplayedComponentName simple stored property
+    self.mRastnetDisplayedComponentName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mRastnetDisplayedComponentName_property.selection {
         case .empty :
           return .empty
         case .multiple :

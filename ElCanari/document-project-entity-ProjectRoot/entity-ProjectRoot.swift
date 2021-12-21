@@ -12,24 +12,6 @@ protocol ProjectRoot_mSchematicSheetOrientation : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mRastnetDisplay : AnyObject {
-  var mRastnetDisplay : RastnetDisplay { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_mRastnetDisplayedNetName : AnyObject {
-  var mRastnetDisplayedNetName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_mRastnetDisplayedComponentName : AnyObject {
-  var mRastnetDisplayedComponentName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ProjectRoot_mArtworkName : AnyObject {
   var mArtworkName : String { get }
 }
@@ -438,6 +420,24 @@ protocol ProjectRoot_mSchematicCustomHeightUnit : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mRastnetDisplay : AnyObject {
+  var mRastnetDisplay : RastnetDisplay { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mRastnetDisplayedNetName : AnyObject {
+  var mRastnetDisplayedNetName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mRastnetDisplayedComponentName : AnyObject {
+  var mRastnetDisplayedComponentName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_artworkLayerConfiguration : AnyObject {
   var artworkLayerConfiguration : LayerConfiguration? { get }
 }
@@ -838,9 +838,6 @@ protocol ProjectRoot_schematicStatusImage : AnyObject {
 
 final class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicSheetOrientation,
-         ProjectRoot_mRastnetDisplay,
-         ProjectRoot_mRastnetDisplayedNetName,
-         ProjectRoot_mRastnetDisplayedComponentName,
          ProjectRoot_mArtworkName,
          ProjectRoot_mArtworkVersion,
          ProjectRoot_mPDFBoardBackgroundColor,
@@ -909,6 +906,9 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicCustomWidthUnit,
          ProjectRoot_mSchematicCustomHeight,
          ProjectRoot_mSchematicCustomHeightUnit,
+         ProjectRoot_mRastnetDisplay,
+         ProjectRoot_mRastnetDisplayedNetName,
+         ProjectRoot_mRastnetDisplayedComponentName,
          ProjectRoot_artworkLayerConfiguration,
          ProjectRoot_minPPTPTTTWdisplayUnit,
          ProjectRoot_minPPTPTTTW,
@@ -993,63 +993,6 @@ final class ProjectRoot : EBManagedObject,
   final var mSchematicSheetOrientation : SchematicSheetOrientation {
     get { return self.mSchematicSheetOrientation_property.propval }
     set { self.mSchematicSheetOrientation_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: mRastnetDisplay
-  //····················································································································
-
-  final let mRastnetDisplay_property : EBStoredProperty_RastnetDisplay
-
-  //····················································································································
-
-  final func reset_mRastnetDisplay_toDefaultValue () {
-    self.mRastnetDisplay = RastnetDisplay.allNets
-  }
-
-  //····················································································································
-
-  final var mRastnetDisplay : RastnetDisplay {
-    get { return self.mRastnetDisplay_property.propval }
-    set { self.mRastnetDisplay_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: mRastnetDisplayedNetName
-  //····················································································································
-
-  final let mRastnetDisplayedNetName_property : EBStoredProperty_String
-
-  //····················································································································
-
-  final func reset_mRastnetDisplayedNetName_toDefaultValue () {
-    self.mRastnetDisplayedNetName = ""
-  }
-
-  //····················································································································
-
-  final var mRastnetDisplayedNetName : String {
-    get { return self.mRastnetDisplayedNetName_property.propval }
-    set { self.mRastnetDisplayedNetName_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: mRastnetDisplayedComponentName
-  //····················································································································
-
-  final let mRastnetDisplayedComponentName_property : EBStoredProperty_String
-
-  //····················································································································
-
-  final func reset_mRastnetDisplayedComponentName_toDefaultValue () {
-    self.mRastnetDisplayedComponentName = ""
-  }
-
-  //····················································································································
-
-  final var mRastnetDisplayedComponentName : String {
-    get { return self.mRastnetDisplayedComponentName_property.propval }
-    set { self.mRastnetDisplayedComponentName_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -2435,6 +2378,63 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: mRastnetDisplay
+  //····················································································································
+
+  final let mRastnetDisplay_property : EBStoredProperty_RastnetDisplay
+
+  //····················································································································
+
+  final func reset_mRastnetDisplay_toDefaultValue () {
+    self.mRastnetDisplay = RastnetDisplay.allNets
+  }
+
+  //····················································································································
+
+  final var mRastnetDisplay : RastnetDisplay {
+    get { return self.mRastnetDisplay_property.propval }
+    set { self.mRastnetDisplay_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mRastnetDisplayedNetName
+  //····················································································································
+
+  final let mRastnetDisplayedNetName_property : EBStoredProperty_String
+
+  //····················································································································
+
+  final func reset_mRastnetDisplayedNetName_toDefaultValue () {
+    self.mRastnetDisplayedNetName = ""
+  }
+
+  //····················································································································
+
+  final var mRastnetDisplayedNetName : String {
+    get { return self.mRastnetDisplayedNetName_property.propval }
+    set { self.mRastnetDisplayedNetName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mRastnetDisplayedComponentName
+  //····················································································································
+
+  final let mRastnetDisplayedComponentName_property : EBStoredProperty_String
+
+  //····················································································································
+
+  final func reset_mRastnetDisplayedComponentName_toDefaultValue () {
+    self.mRastnetDisplayedComponentName = ""
+  }
+
+  //····················································································································
+
+  final var mRastnetDisplayedComponentName : String {
+    get { return self.mRastnetDisplayedComponentName_property.propval }
+    set { self.mRastnetDisplayedComponentName_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   To many property: mComponents
   //····················································································································
 
@@ -3768,9 +3768,6 @@ final class ProjectRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.a4Horizontal, undoManager: ebUndoManager)
-    self.mRastnetDisplay_property = EBStoredProperty_RastnetDisplay (defaultValue: RastnetDisplay.allNets, undoManager: ebUndoManager)
-    self.mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: ebUndoManager)
@@ -3839,6 +3836,9 @@ final class ProjectRoot : EBManagedObject,
     self.mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     self.mSchematicCustomHeight_property = EBStoredProperty_Int (defaultValue: 27000000, undoManager: ebUndoManager)
     self.mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mRastnetDisplay_property = EBStoredProperty_RastnetDisplay (defaultValue: RastnetDisplay.allNets, undoManager: ebUndoManager)
+    self.mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.mArtwork_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
@@ -5385,30 +5385,6 @@ final class ProjectRoot : EBManagedObject,
         valueExplorer: &self.mSchematicSheetOrientation_property.mValueExplorer
       )
       createEntryForPropertyNamed (
-        "mRastnetDisplay",
-        object: self.mRastnetDisplay_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mRastnetDisplay_property.mObserverExplorer,
-        valueExplorer: &self.mRastnetDisplay_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "mRastnetDisplayedNetName",
-        object: self.mRastnetDisplayedNetName_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mRastnetDisplayedNetName_property.mObserverExplorer,
-        valueExplorer: &self.mRastnetDisplayedNetName_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "mRastnetDisplayedComponentName",
-        object: self.mRastnetDisplayedComponentName_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mRastnetDisplayedComponentName_property.mObserverExplorer,
-        valueExplorer: &self.mRastnetDisplayedComponentName_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
         "mArtworkName",
         object: self.mArtworkName_property,
         y: &y,
@@ -5952,6 +5928,30 @@ final class ProjectRoot : EBManagedObject,
         observerExplorer: &self.mSchematicCustomHeightUnit_property.mObserverExplorer,
         valueExplorer: &self.mSchematicCustomHeightUnit_property.mValueExplorer
       )
+      createEntryForPropertyNamed (
+        "mRastnetDisplay",
+        object: self.mRastnetDisplay_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRastnetDisplay_property.mObserverExplorer,
+        valueExplorer: &self.mRastnetDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRastnetDisplayedNetName",
+        object: self.mRastnetDisplayedNetName_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRastnetDisplayedNetName_property.mObserverExplorer,
+        valueExplorer: &self.mRastnetDisplayedNetName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mRastnetDisplayedComponentName",
+        object: self.mRastnetDisplayedComponentName_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mRastnetDisplayedComponentName_property.mObserverExplorer,
+        valueExplorer: &self.mRastnetDisplayedComponentName_property.mValueExplorer
+      )
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "hasInnerElements",
@@ -6455,15 +6455,6 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.mObserverExplorer = nil
     self.mSchematicSheetOrientation_property.mValueExplorer = nil
-  //--- Atomic property: mRastnetDisplay
-    self.mRastnetDisplay_property.mObserverExplorer = nil
-    self.mRastnetDisplay_property.mValueExplorer = nil
-  //--- Atomic property: mRastnetDisplayedNetName
-    self.mRastnetDisplayedNetName_property.mObserverExplorer = nil
-    self.mRastnetDisplayedNetName_property.mValueExplorer = nil
-  //--- Atomic property: mRastnetDisplayedComponentName
-    self.mRastnetDisplayedComponentName_property.mObserverExplorer = nil
-    self.mRastnetDisplayedComponentName_property.mValueExplorer = nil
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.mObserverExplorer = nil
     self.mArtworkName_property.mValueExplorer = nil
@@ -6680,6 +6671,15 @@ final class ProjectRoot : EBManagedObject,
       self.mBorderCurves_property.mValueExplorer = nil
     //--- To many property: mBoardObjects
       self.mBoardObjects_property.mValueExplorer = nil
+  //--- Atomic property: mRastnetDisplay
+    self.mRastnetDisplay_property.mObserverExplorer = nil
+    self.mRastnetDisplay_property.mValueExplorer = nil
+  //--- Atomic property: mRastnetDisplayedNetName
+    self.mRastnetDisplayedNetName_property.mObserverExplorer = nil
+    self.mRastnetDisplayedNetName_property.mValueExplorer = nil
+  //--- Atomic property: mRastnetDisplayedComponentName
+    self.mRastnetDisplayedComponentName_property.mObserverExplorer = nil
+    self.mRastnetDisplayedComponentName_property.mValueExplorer = nil
     //--- To many property: mComponents
       self.mComponents_property.mValueExplorer = nil
     //--- Atomic proxy property: artworkLayerConfiguration
@@ -6771,12 +6771,6 @@ final class ProjectRoot : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
     //--- Atomic property: mSchematicSheetOrientation
       self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicSheetOrientation")
-    //--- Atomic property: mRastnetDisplay
-      self.mRastnetDisplay_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplay")
-    //--- Atomic property: mRastnetDisplayedNetName
-      self.mRastnetDisplayedNetName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedNetName")
-    //--- Atomic property: mRastnetDisplayedComponentName
-      self.mRastnetDisplayedComponentName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedComponentName")
     //--- Atomic property: mArtworkName
       self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkName")
     //--- Atomic property: mArtworkVersion
@@ -6949,6 +6943,12 @@ final class ProjectRoot : EBManagedObject,
       relationshipName: "mBoardObjects",
       intoDictionary: ioDictionary
     )
+    //--- Atomic property: mRastnetDisplay
+      self.mRastnetDisplay_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplay")
+    //--- Atomic property: mRastnetDisplayedNetName
+      self.mRastnetDisplayedNetName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedNetName")
+    //--- Atomic property: mRastnetDisplayedComponentName
+      self.mRastnetDisplayedComponentName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedComponentName")
   //--- To many property: mComponents
     self.store (
       managedObjectArray: self.mComponents_property.propval.values,
@@ -7102,12 +7102,6 @@ final class ProjectRoot : EBManagedObject,
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.readFrom (dictionary: inDictionary, forKey: "mSchematicSheetOrientation")
-  //--- Atomic property: mRastnetDisplay
-    self.mRastnetDisplay_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplay")
-  //--- Atomic property: mRastnetDisplayedNetName
-    self.mRastnetDisplayedNetName_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplayedNetName")
-  //--- Atomic property: mRastnetDisplayedComponentName
-    self.mRastnetDisplayedComponentName_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplayedComponentName")
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey: "mArtworkName")
   //--- Atomic property: mArtworkVersion
@@ -7244,6 +7238,12 @@ final class ProjectRoot : EBManagedObject,
     self.mSchematicCustomHeight_property.readFrom (dictionary: inDictionary, forKey: "mSchematicCustomHeight")
   //--- Atomic property: mSchematicCustomHeightUnit
     self.mSchematicCustomHeightUnit_property.readFrom (dictionary: inDictionary, forKey: "mSchematicCustomHeightUnit")
+  //--- Atomic property: mRastnetDisplay
+    self.mRastnetDisplay_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplay")
+  //--- Atomic property: mRastnetDisplayedNetName
+    self.mRastnetDisplayedNetName_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplayedNetName")
+  //--- Atomic property: mRastnetDisplayedComponentName
+    self.mRastnetDisplayedComponentName_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplayedComponentName")
   }
 
 
@@ -7255,9 +7255,6 @@ final class ProjectRoot : EBManagedObject,
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mSchematicSheetOrientation\n"
-    ioString += "mRastnetDisplay\n"
-    ioString += "mRastnetDisplayedNetName\n"
-    ioString += "mRastnetDisplayedComponentName\n"
     ioString += "mArtworkName\n"
     ioString += "mArtworkVersion\n"
     ioString += "mPDFBoardBackgroundColor\n"
@@ -7326,6 +7323,9 @@ final class ProjectRoot : EBManagedObject,
     ioString += "mSchematicCustomWidthUnit\n"
     ioString += "mSchematicCustomHeight\n"
     ioString += "mSchematicCustomHeightUnit\n"
+    ioString += "mRastnetDisplay\n"
+    ioString += "mRastnetDisplayedNetName\n"
+    ioString += "mRastnetDisplayedComponentName\n"
   //--- To one relationships
     ioString += "mArtwork\n"
     ioString += "mSelectedSheet\n"
@@ -7347,12 +7347,6 @@ final class ProjectRoot : EBManagedObject,
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mSchematicSheetOrientation.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.mRastnetDisplay.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.mRastnetDisplayedNetName.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.mRastnetDisplayedComponentName.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mArtworkName.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -7489,6 +7483,12 @@ final class ProjectRoot : EBManagedObject,
     self.mSchematicCustomHeight.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mSchematicCustomHeightUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRastnetDisplay.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRastnetDisplayedNetName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRastnetDisplayedComponentName.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.mArtwork {
@@ -7733,15 +7733,6 @@ final class ProjectRoot : EBManagedObject,
       if let range = inDictionary ["mSchematicSheetOrientation"], let value = SchematicSheetOrientation.unarchiveFromDataRange (inData, range) {
         self.mSchematicSheetOrientation = value
       }
-      if let range = inDictionary ["mRastnetDisplay"], let value = RastnetDisplay.unarchiveFromDataRange (inData, range) {
-        self.mRastnetDisplay = value
-      }
-      if let range = inDictionary ["mRastnetDisplayedNetName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mRastnetDisplayedNetName = value
-      }
-      if let range = inDictionary ["mRastnetDisplayedComponentName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mRastnetDisplayedComponentName = value
-      }
       if let range = inDictionary ["mArtworkName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mArtworkName = value
       }
@@ -7945,6 +7936,15 @@ final class ProjectRoot : EBManagedObject,
       }
       if let range = inDictionary ["mSchematicCustomHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mSchematicCustomHeightUnit = value
+      }
+      if let range = inDictionary ["mRastnetDisplay"], let value = RastnetDisplay.unarchiveFromDataRange (inData, range) {
+        self.mRastnetDisplay = value
+      }
+      if let range = inDictionary ["mRastnetDisplayedNetName"], let value = String.unarchiveFromDataRange (inData, range) {
+        self.mRastnetDisplayedNetName = value
+      }
+      if let range = inDictionary ["mRastnetDisplayedComponentName"], let value = String.unarchiveFromDataRange (inData, range) {
+        self.mRastnetDisplayedComponentName = value
       }
     //--- To one relationships
       if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {

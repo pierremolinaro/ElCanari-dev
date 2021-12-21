@@ -135,23 +135,6 @@ import Cocoa
   var mDataSelection = SelectionController_ProjectDocument_mDataSelection ()
 
   //····················································································································
-  //   Transient property: rastnetDisplayComponentNet
-  //····················································································································
-
-  final let rastnetDisplayComponentNet_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var rastnetDisplayComponentNet : Bool? {
-    switch self.rastnetDisplayComponentNet_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: documentFileName
   //····················································································································
 
@@ -331,6 +314,23 @@ import Cocoa
 
   final var rastnetDisplayOneNet : Bool? {
     switch self.rastnetDisplayOneNet_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: rastnetDisplayComponentNet
+  //····················································································································
+
+  final let rastnetDisplayComponentNet_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var rastnetDisplayComponentNet : Bool? {
+    switch self.rastnetDisplayComponentNet_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1704,26 +1704,6 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: rastnetDisplayComponentNet
-    self.rastnetDisplayComponentNet_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.mRastnetDisplay_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_rastnetDisplayComponentNet (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayComponentNet_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1929,6 +1909,26 @@ import Cocoa
       }
     }
     self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayOneNet_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: rastnetDisplayComponentNet
+    self.rastnetDisplayComponentNet_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.mRastnetDisplay_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_rastnetDisplayComponentNet (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayComponentNet_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3544,7 +3544,6 @@ import Cocoa
     self.componentSymbolSelectionController.unbind_selection ()
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
-    // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayComponentNet_property)
     // self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
     // self.netClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
@@ -3560,6 +3559,7 @@ import Cocoa
     // self.rootObject.mBoardObjects_property.removeEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
     // self.boardObjectsController.selectedArray_property.removeEBObserverOf_componentName (self.rastnetShape_property)
     // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayOneNet_property)
+    // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayComponentNet_property)
     // self.rootObject.mArtwork_property.removeEBObserver (self.artworlImportButtonTitle_property)
     // self.documentFileName_property.removeEBObserver (self.documentFilePathOk_property)
     // self.rootObject.artworkLayerConfiguration_property.removeEBObserver (self.layerConfigurationString_property)

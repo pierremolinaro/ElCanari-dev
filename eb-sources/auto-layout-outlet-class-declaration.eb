@@ -395,4 +395,7 @@ extern autolayout class CanariBoardRectangleView {
   $unit transient Int
 }
 
+extern autolayout class CanariBoardOperationPullDownButton {
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

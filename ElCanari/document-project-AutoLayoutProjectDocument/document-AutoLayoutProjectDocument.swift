@@ -233,6 +233,23 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: rastnetShape
+  //····················································································································
+
+  final let rastnetShape_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  final var rastnetShape : EBShape? {
+    switch self.rastnetShape_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: documentIsUnnamed
   //····················································································································
 
@@ -335,6 +352,23 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: overDisplay
+  //····················································································································
+
+  final let overDisplay_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  final var overDisplay : EBShape? {
+    switch self.overDisplay_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: emptyDrillFileExtensionImage
   //····················································································································
 
@@ -372,6 +406,7 @@ import Cocoa
   //    Outlets
   //····················································································································
 
+  weak final var mBoardView : AutoLayoutGraphicView? = nil
   weak final var mNetInfoTableView : AutoLayoutCanariNetDescriptionTableView? = nil
   weak final var mProductFileGenerationLogTextView : AutoLayoutTextObserverView? = nil
   weak final var mProductPageSegmentedControl : AutoLayoutSegmentedControlWithPages? = nil
@@ -1200,12 +1235,49 @@ import Cocoa
   //    VIEW mBoardContentsPage
   //····················································································································
 
-  lazy var mBoardContentsPage : AutoLayoutVerticalStackView = {
-    let vStackView = AutoLayoutVerticalStackView ()
+  lazy var mBoardContentsPage : AutoLayoutHorizontalStackView = {
+    let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: 8)
-    let view_0 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_0)
-    return vStackView
+    let view_0 = AutoLayoutVerticalStackView ()
+    do{
+      let view_0_0 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_0_0_0 = AutoLayoutCanariBoardOperationPullDownButton ()
+        self.configure_boardOperationPullDownButtonConfigurator (view_0_0_0) // Configurator
+        view_0_0.appendView (view_0_0_0)
+        let view_0_0_1 = AutoLayoutFlexibleSpace ()
+        view_0_0.appendView (view_0_0_1)
+      }
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "Azerty", bold: false, size: .small)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    hStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
+    hStackView.appendView (view_1)
+    let view_2 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 20000)
+      .bind_underObjectsDisplay (self.rootObject.borderOutlineBackground_property)
+      .bind_overObjectsDisplay (self.overDisplay_property)
+      .bind_horizontalFlip (self.rootObject.mBoardHorizontalFlip_property)
+      .bind_verticalFlip (self.rootObject.mBoardVerticalFlip_property)
+      .bind_gridStyle (self.rootObject.mBoardGridStyle_property)
+      .bind_gridDisplayFactor (self.rootObject.mBoardGridDisplayFactor_property)
+      .bind_gridLineColor (preferences_lineColorGridForBoard_property)
+      .bind_gridCrossColor (preferences_crossColorGridForBoard_property)
+      .bind_zoom (self.rootObject.mBoardZoom_property)
+      .bind_backColor (preferences_boardBackgroundColorForBoard_property)
+      .bind_mouseGrid (self.rootObject.mBoardGridStep_property)
+      .bind_gridStep (self.rootObject.mBoardGridStep_property)
+      .bind_arrowKeyMagnitude (self.rootObject.mBoardGridStep_property)
+      .bind_shiftArrowKeyMagnitude (self.rootObject.boardGridStepMultipliedByDisplayFactor_property)
+      .bind_xPlacardUnit (self.rootObject.mBoardGridStepUnit_property)
+      .bind_yPlacardUnit (self.rootObject.mBoardGridStepUnit_property)
+      .bind_graphic_controller (self.boardObjectsController)
+    self.mBoardView = view_2 // Outlet
+    hStackView.appendView (view_2)
+    return hStackView
   } ()
 
   //····················································································································
@@ -2757,6 +2829,30 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: rastnetShape
+    self.rastnetShape_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.mRastnetDisplay_property.selection, unwSelf.rootObject.mRastnetDisplayedNetName_property.selection, unwSelf.rootObject.mRastnetDisplayedComponentName_property.selection, unwSelf.rootObject.mBoardObjects_property.selection, unwSelf.boardObjectsController.selectedArray_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_AutoLayoutProjectDocument_rastnetShape (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetShape_property)
+    self.rootObject.mRastnetDisplayedNetName_property.addEBObserver (self.rastnetShape_property)
+    self.rootObject.mRastnetDisplayedComponentName_property.addEBObserver (self.rastnetShape_property)
+    self.rootObject.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
+    self.boardObjectsController.selectedArray_property.addEBObserverOf_componentName (self.rastnetShape_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Atomic property: documentIsUnnamed
     self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2873,6 +2969,27 @@ import Cocoa
       }
     }
     self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: overDisplay
+    self.overDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rastnetShape_property.selection, unwSelf.rootObject.boardIssues_property.selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_AutoLayoutProjectDocument_overDisplay (v0, v1))
+        case (.multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rastnetShape_property.addEBObserver (self.overDisplay_property)
+    self.rootObject.boardIssues_property.addEBObserver (self.overDisplay_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3015,12 +3132,19 @@ import Cocoa
     // self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
     // self.netClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
     // self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
+    // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetShape_property)
+    // self.rootObject.mRastnetDisplayedNetName_property.removeEBObserver (self.rastnetShape_property)
+    // self.rootObject.mRastnetDisplayedComponentName_property.removeEBObserver (self.rastnetShape_property)
+    // self.rootObject.mBoardObjects_property.removeEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
+    // self.boardObjectsController.selectedArray_property.removeEBObserverOf_componentName (self.rastnetShape_property)
     // self.documentFileName_property.removeEBObserver (self.documentIsUnnamed_property)
     // self.rootObject.drillDataFileExtension_property.removeEBObserver (self.emptyDrillFileExtension_property)
     // self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     // self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
     // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
+    // self.rastnetShape_property.removeEBObserver (self.overDisplay_property)
+    // self.rootObject.boardIssues_property.removeEBObserver (self.overDisplay_property)
     // self.emptyDrillFileExtension_property.removeEBObserver (self.emptyDrillFileExtensionImage_property)
     // self.mDataController.sortedArray_property.count_property.removeEBObserver (self.generatedFileCountString_property)
   //--------------------------- Remove targets / actions
