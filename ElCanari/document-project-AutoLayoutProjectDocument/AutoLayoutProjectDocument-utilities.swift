@@ -10,6 +10,24 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let kDragAndDropSymbol = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.schematic.symbol")
+let kDragAndDropComment = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.schematic.comment")
+let kDragAndDropWire = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.schematic.wire")
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+let kDragAndDropRestrictRectangle = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.restrict.rectangle")
+let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.text")
+let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.package")
+let kDragAndDropBoardLine = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.line")
+let kDragAndDropBoardTrack = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.track")
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 let SCHEMATIC_GRID_IN_MILS = 50
 let SCHEMATIC_GRID_IN_CANARI_UNIT = milsToCanariUnit (fromInt: SCHEMATIC_GRID_IN_MILS)
 let SCHEMATIC_GRID_IN_COCOA_UNIT  = milsToCocoaUnit (CGFloat (SCHEMATIC_GRID_IN_MILS))

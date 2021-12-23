@@ -2738,6 +2738,30 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   ToMany proxy: selectedSheetObjects
+  //····················································································································
+
+  var selectedSheetObjects_modelDidChangeController : EBObservablePropertyController? = nil
+  // var selectedSheetObjects_boundObjectDidChangeController : EBObservablePropertyController? = nil
+  let selectedSheetObjects_property = ProxyArrayOf_SchematicObject ()
+
+  //····················································································································
+
+  var selectedSheetObjects : EBReferenceArray <SchematicObject> {
+    get {
+      switch self.selectedSheetObjects_property.selection {
+      case .empty, .multiple :
+        return EBReferenceArray ()
+      case .single (let v) :
+        return EBReferenceArray (v)
+      }
+    }
+    set {
+      self.selectedSheetObjects_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
   //   Atomic proxy property: drillDataFileExtension
   //····················································································································
 
@@ -2782,30 +2806,6 @@ final class ProjectRoot : EBManagedObject,
     }
     set {
       self.fileGenerationParameterArray_property.setProp (newValue)
-    }
-  }
-
-  //····················································································································
-  //   ToMany proxy: selectedSheetObjects
-  //····················································································································
-
-  var selectedSheetObjects_modelDidChangeController : EBObservablePropertyController? = nil
-  // var selectedSheetObjects_boundObjectDidChangeController : EBObservablePropertyController? = nil
-  let selectedSheetObjects_property = ProxyArrayOf_SchematicObject ()
-
-  //····················································································································
-
-  var selectedSheetObjects : EBReferenceArray <SchematicObject> {
-    get {
-      switch self.selectedSheetObjects_property.selection {
-      case .empty, .multiple :
-        return EBReferenceArray ()
-      case .single (let v) :
-        return EBReferenceArray (v)
-      }
-    }
-    set {
-      self.selectedSheetObjects_property.setProp (newValue)
     }
   }
 
@@ -4194,6 +4194,19 @@ final class ProjectRoot : EBManagedObject,
       return self?.mSelectedSheet?.mSheetTitle_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mSelectedSheet_property.mSheetTitle_property.addEBObserver (self.selectedSheetTitle_property)
+  //--- ToMany proxy: selectedSheetObjects
+    do{
+      let controller = EBObservablePropertyController (
+        observedObjects: [self.mSelectedSheet_property],
+        callBack: { [weak self] in
+          if let me = self, let model = me.mSelectedSheet {
+            me.selectedSheetObjects_property.setModel (model.mObjects_property)
+          }
+        }
+      )
+      self.mSelectedSheet_property.addEBObserverOf_mObjects (controller)
+      self.selectedSheetObjects_modelDidChangeController = controller
+    }
   //--- Atomic proxy property: drillDataFileExtension
     self.drillDataFileExtension_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
@@ -4232,19 +4245,6 @@ final class ProjectRoot : EBManagedObject,
       )
       self.mArtwork_property.addEBObserverOf_fileGenerationParameterArray (controller)
       self.fileGenerationParameterArray_modelDidChangeController = controller
-    }
-  //--- ToMany proxy: selectedSheetObjects
-    do{
-      let controller = EBObservablePropertyController (
-        observedObjects: [self.mSelectedSheet_property],
-        callBack: { [weak self] in
-          if let me = self, let model = me.mSelectedSheet {
-            me.selectedSheetObjects_property.setModel (model.mObjects_property)
-          }
-        }
-      )
-      self.mSelectedSheet_property.addEBObserverOf_mObjects (controller)
-      self.selectedSheetObjects_modelDidChangeController = controller
     }
   //--- To one property: mArtwork
     self.mArtwork_property.ebUndoManager = self.ebUndoManager
@@ -5237,6 +5237,10 @@ final class ProjectRoot : EBManagedObject,
     self.selectedSheetTitle_property.mWriteModelFunction = nil
     self.selectedSheetTitle_property.mValidateAndWriteModelFunction = nil
     self.mSelectedSheet_property.mSheetTitle_property.removeEBObserver (self.selectedSheetTitle_property)
+  //--- ToMany proxy: selectedSheetObjects
+    self.selectedSheetObjects_property.setModel (nil)
+    self.selectedSheetObjects_modelDidChangeController?.unregister ()
+    self.selectedSheetObjects_modelDidChangeController = nil
   //--- Atomic proxy property: drillDataFileExtension
     self.drillDataFileExtension_property.mReadModelFunction = nil
     self.drillDataFileExtension_property.mWriteModelFunction = nil
@@ -5246,10 +5250,6 @@ final class ProjectRoot : EBManagedObject,
     self.fileGenerationParameterArray_property.setModel (nil)
     self.fileGenerationParameterArray_modelDidChangeController?.unregister ()
     self.fileGenerationParameterArray_modelDidChangeController = nil
-  //--- ToMany proxy: selectedSheetObjects
-    self.selectedSheetObjects_property.setModel (nil)
-    self.selectedSheetObjects_modelDidChangeController?.unregister ()
-    self.selectedSheetObjects_modelDidChangeController = nil
     // self.mArtwork_property.hasInnerElements_property.removeEBObserver (self.hasInnerElements_property)
     // self.artworkLayerConfiguration_property.removeEBObserver (self.hasSixLayers_property)
     // self.mLayerConfiguration_property.removeEBObserver (self.layerConfigurationString_property)
@@ -6718,13 +6718,13 @@ final class ProjectRoot : EBManagedObject,
     //--- Atomic proxy property: selectedSheetTitle
       self.selectedSheetTitle_property.mObserverExplorer = nil
       self.selectedSheetTitle_property.mValueExplorer = nil
+    //--- ToMany proxy: selectedSheetObjects
+      self.selectedSheetObjects_property.mObserverExplorer = nil
     //--- Atomic proxy property: drillDataFileExtension
       self.drillDataFileExtension_property.mObserverExplorer = nil
       self.drillDataFileExtension_property.mValueExplorer = nil
     //--- ToMany proxy: fileGenerationParameterArray
       self.fileGenerationParameterArray_property.mObserverExplorer = nil
-    //--- ToMany proxy: selectedSheetObjects
-      self.selectedSheetObjects_property.mObserverExplorer = nil
     //--- To one property: mArtwork
       self.mArtwork_property.mObserverExplorer = nil
       self.mArtwork_property.mValueExplorer = nil

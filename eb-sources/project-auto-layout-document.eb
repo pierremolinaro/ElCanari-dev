@@ -387,8 +387,29 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 
 //---------------------- Schematics Tab
 
+  arrayController #schematicObjectsController : root.selectedSheetObjects ;
+
   stackView mSchematicPage vStack set (margins: 8) {
-    space
+    hStack {
+      vStack {
+        StaticLabel (title: "TEMPORARY", bold: no, size: .regular)
+        space
+      }
+      separator
+      GraphicView (minZoom: 50, maxZoom: 1_000) [outlet mSchematicsView] {
+        $underObjectsDisplay root.schematicBackgroundDisplay
+        $overObjectsDisplay root.connectedPoints
+        $horizontalFlip root.mSchematicHorizontalFlip
+        $verticalFlip root.mSchematicVerticalFlip
+        $graphicController #schematicObjectsController
+        $gridStyle root.mSchematicGridStyle
+        $gridDisplayFactor root.mSchematicGridDisplayFactor
+        $gridLineColor prefs.lineColorGridForSchematic
+        $gridCrossColor prefs.dotColorGridForSchematic
+        $zoom root.mSchematicZoom
+        $backColor prefs.schematicBackColor
+      }
+    }
   }
   
 //  outlet CanariSegmentedControl mSchematicsInspectorSegmentedControl $selectedPage root.mSelectedSchematicInspector ;
@@ -502,23 +523,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //  action openSetDateDialogAction ;
 //  outlet EBButton mOpenSetDateDialogButton $run openSetDateDialogAction ;
 //
-////--- Schematics view
-//  arrayController #schematicObjectsController : root.selectedSheetObjects ;
-//
-//  outlet EBEnclosingGraphicView mSchematicsView
-//    $underObjectsDisplay root.schematicBackgroundDisplay
-//    $overObjectsDisplay root.connectedPoints
-//    $horizontalFlip root.mSchematicHorizontalFlip
-//    $verticalFlip root.mSchematicVerticalFlip
-//    $graphicController #schematicObjectsController
-//    $gridStyle root.mSchematicGridStyle
-//    $gridDisplayFactor root.mSchematicGridDisplayFactor
-//    $gridLineColor prefs.lineColorGridForSchematic
-//    $gridCrossColor prefs.dotColorGridForSchematic
-//    $zoom root.mSchematicZoom
-//    $backColor prefs.schematicBackColor
-//  ;
-//
+
 ////--- Selected Wire In schematics
 //  outlet CanariViewWithKeyView mSchematicsWireInspectorView ;
 //  selectionController WireInSchematic #wireInSchematicSelectionController :
@@ -920,15 +925,18 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 
   stackView mBoardContentsPage hStack set (margins: 8) {
     vStack {
-      hStack {
+      hStack set (spacing: 0) {
         CanariBoardOperationPullDownButton [configurator boardOperationPullDownButtonConfigurator]
         space
+        DragSourceButton (tooltip: "Add Restrict Rectangle") [configurator addRestrictRectangleButton] {
+    //       $image self.addSegmentButtonImage
+        }
       }
-      StaticLabel (title: "Azerty", bold: no, size : .small)
+      StaticLabel (title: "TEMPORARY", bold: no, size : .small)
       space
     }
     separator
-    GraphicView (minZoom: 10, maxZoom: 20_000) [outlet mBoardView] {
+    GraphicView (minZoom: 10, maxZoom: 20_000) [outlet mBoardView configurator boardView] {
       $underObjectsDisplay root.borderOutlineBackground
       $overObjectsDisplay self.overDisplay
       $horizontalFlip root.mBoardHorizontalFlip

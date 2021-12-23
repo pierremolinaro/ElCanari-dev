@@ -4,24 +4,6 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate let kDragAndDropSymbol = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.schematic.symbol")
-fileprivate let kDragAndDropComment = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.schematic.comment")
-fileprivate let kDragAndDropWire = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.schematic.wire")
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate let kDragAndDropRestrictRectangle = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.restrict.rectangle")
-fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.text")
-fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.package")
-fileprivate let kDragAndDropBoardLine = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.line")
-fileprivate let kDragAndDropBoardTrack = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.track")
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 @objc(CustomizedProjectDocument) final class CustomizedProjectDocument : ProjectDocument {
 
   //····················································································································

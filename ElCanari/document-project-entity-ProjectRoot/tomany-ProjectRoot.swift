@@ -142,8 +142,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.removeEBObserversOf_schematicHasErrorOrWarning_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_schematicStatusMessage_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_schematicStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_fileGenerationParameterArray_fromElementsOfSet (inAddedSet) // ToMany proxy
       self.removeEBObserversOf_selectedSheetObjects_fromElementsOfSet (inAddedSet) // ToMany proxy
+      self.removeEBObserversOf_fileGenerationParameterArray_fromElementsOfSet (inAddedSet) // ToMany proxy
     }
   //--- Add observers to added objects
     if !inAddedSet.isEmpty {
@@ -272,8 +272,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.addEBObserversOf_schematicHasErrorOrWarning_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_schematicStatusMessage_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_schematicStatusImage_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_fileGenerationParameterArray_toElementsOfSet (inAddedSet) // ToMany proxy
       self.addEBObserversOf_selectedSheetObjects_toElementsOfSet (inAddedSet) // ToMany proxy
+      self.addEBObserversOf_fileGenerationParameterArray_toElementsOfSet (inAddedSet) // ToMany proxy
    }
   }
 
@@ -4526,63 +4526,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'fileGenerationParameterArray' toMany proxy
-  //····················································································································
-
-  private final var mObserversOf_fileGenerationParameterArray = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_fileGenerationParameterArray (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_fileGenerationParameterArray.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.fileGenerationParameterArray_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_fileGenerationParameterArray (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_fileGenerationParameterArray.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.fileGenerationParameterArray_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_fileGenerationParameterArray_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    for managedObject in inSet.values {
-      self.mObserversOf_fileGenerationParameterArray.apply { (_ observer : EBObserverProtocol) in
-        managedObject.fileGenerationParameterArray_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_fileGenerationParameterArray_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_fileGenerationParameterArray.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.fileGenerationParameterArray_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectedSheetObjects' toMany proxy
   //····················································································································
 
@@ -4635,6 +4578,63 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.selectedSheetObjects_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'fileGenerationParameterArray' toMany proxy
+  //····················································································································
+
+  private final var mObserversOf_fileGenerationParameterArray = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_fileGenerationParameterArray (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_fileGenerationParameterArray.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.fileGenerationParameterArray_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_fileGenerationParameterArray (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_fileGenerationParameterArray.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.fileGenerationParameterArray_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_fileGenerationParameterArray_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_fileGenerationParameterArray.apply { (_ observer : EBObserverProtocol) in
+        managedObject.fileGenerationParameterArray_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_fileGenerationParameterArray_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    self.mObserversOf_fileGenerationParameterArray.apply { (_ observer : EBObserverProtocol) in
+      observer.observedObjectDidChange ()
+      for managedObject in inSet.values {
+        managedObject.fileGenerationParameterArray_property.removeEBObserver (observer)
       }
     }
   }

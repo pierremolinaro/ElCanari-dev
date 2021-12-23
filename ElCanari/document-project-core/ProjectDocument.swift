@@ -27,6 +27,42 @@ import Cocoa
   var projectDeviceController = Controller_ProjectDocument_projectDeviceController ()
 
   //····················································································································
+  //   Array controller: schematicObjectsController
+  //····················································································································
+
+  var schematicObjectsController = Controller_ProjectDocument_schematicObjectsController ()
+
+  //····················································································································
+  //   Selection controller: wireInSchematicSelectionController
+  //····················································································································
+
+  var wireInSchematicSelectionController = SelectionController_ProjectDocument_wireInSchematicSelectionController ()
+
+  //····················································································································
+  //   Selection controller: ncInSchematicSelectionController
+  //····················································································································
+
+  var ncInSchematicSelectionController = SelectionController_ProjectDocument_ncInSchematicSelectionController ()
+
+  //····················································································································
+  //   Selection controller: commentInSchematicSelectionController
+  //····················································································································
+
+  var commentInSchematicSelectionController = SelectionController_ProjectDocument_commentInSchematicSelectionController ()
+
+  //····················································································································
+  //   Selection controller: schematicLabelSelectionController
+  //····················································································································
+
+  var schematicLabelSelectionController = SelectionController_ProjectDocument_schematicLabelSelectionController ()
+
+  //····················································································································
+  //   Selection controller: componentSymbolSelectionController
+  //····················································································································
+
+  var componentSymbolSelectionController = SelectionController_ProjectDocument_componentSymbolSelectionController ()
+
+  //····················································································································
   //   Array controller: boardCurveObjectsController
   //····················································································································
 
@@ -91,42 +127,6 @@ import Cocoa
   //····················································································································
 
   var componentController = Controller_ProjectDocument_componentController ()
-
-  //····················································································································
-  //   Array controller: schematicObjectsController
-  //····················································································································
-
-  var schematicObjectsController = Controller_ProjectDocument_schematicObjectsController ()
-
-  //····················································································································
-  //   Selection controller: wireInSchematicSelectionController
-  //····················································································································
-
-  var wireInSchematicSelectionController = SelectionController_ProjectDocument_wireInSchematicSelectionController ()
-
-  //····················································································································
-  //   Selection controller: ncInSchematicSelectionController
-  //····················································································································
-
-  var ncInSchematicSelectionController = SelectionController_ProjectDocument_ncInSchematicSelectionController ()
-
-  //····················································································································
-  //   Selection controller: commentInSchematicSelectionController
-  //····················································································································
-
-  var commentInSchematicSelectionController = SelectionController_ProjectDocument_commentInSchematicSelectionController ()
-
-  //····················································································································
-  //   Selection controller: schematicLabelSelectionController
-  //····················································································································
-
-  var schematicLabelSelectionController = SelectionController_ProjectDocument_schematicLabelSelectionController ()
-
-  //····················································································································
-  //   Selection controller: componentSymbolSelectionController
-  //····················································································································
-
-  var componentSymbolSelectionController = SelectionController_ProjectDocument_componentSymbolSelectionController ()
 
   //····················································································································
   //   Selection controller: mDataSelection
@@ -1076,6 +1076,18 @@ import Cocoa
       self.projectFontController.addExplorer (name: "projectFontController", y:&y, view:view)
     //--- Array controller property: projectDeviceController
       self.projectDeviceController.addExplorer (name: "projectDeviceController", y:&y, view:view)
+    //--- Array controller property: schematicObjectsController
+      self.schematicObjectsController.addExplorer (name: "schematicObjectsController", y:&y, view:view)
+    //--- Selection controller property: wireInSchematicSelectionController
+      self.wireInSchematicSelectionController.addExplorer (name: "wireInSchematicSelectionController", y:&y, view:view)
+    //--- Selection controller property: ncInSchematicSelectionController
+      self.ncInSchematicSelectionController.addExplorer (name: "ncInSchematicSelectionController", y:&y, view:view)
+    //--- Selection controller property: commentInSchematicSelectionController
+      self.commentInSchematicSelectionController.addExplorer (name: "commentInSchematicSelectionController", y:&y, view:view)
+    //--- Selection controller property: schematicLabelSelectionController
+      self.schematicLabelSelectionController.addExplorer (name: "schematicLabelSelectionController", y:&y, view:view)
+    //--- Selection controller property: componentSymbolSelectionController
+      self.componentSymbolSelectionController.addExplorer (name: "componentSymbolSelectionController", y:&y, view:view)
     //--- Array controller property: boardCurveObjectsController
       self.boardCurveObjectsController.addExplorer (name: "boardCurveObjectsController", y:&y, view:view)
     //--- Selection controller property: boardCurveSelectionController
@@ -1098,18 +1110,6 @@ import Cocoa
       self.mDataController.addExplorer (name: "mDataController", y:&y, view:view)
     //--- Array controller property: componentController
       self.componentController.addExplorer (name: "componentController", y:&y, view:view)
-    //--- Array controller property: schematicObjectsController
-      self.schematicObjectsController.addExplorer (name: "schematicObjectsController", y:&y, view:view)
-    //--- Selection controller property: wireInSchematicSelectionController
-      self.wireInSchematicSelectionController.addExplorer (name: "wireInSchematicSelectionController", y:&y, view:view)
-    //--- Selection controller property: ncInSchematicSelectionController
-      self.ncInSchematicSelectionController.addExplorer (name: "ncInSchematicSelectionController", y:&y, view:view)
-    //--- Selection controller property: commentInSchematicSelectionController
-      self.commentInSchematicSelectionController.addExplorer (name: "commentInSchematicSelectionController", y:&y, view:view)
-    //--- Selection controller property: schematicLabelSelectionController
-      self.schematicLabelSelectionController.addExplorer (name: "schematicLabelSelectionController", y:&y, view:view)
-    //--- Selection controller property: componentSymbolSelectionController
-      self.componentSymbolSelectionController.addExplorer (name: "componentSymbolSelectionController", y:&y, view:view)
     //--- Selection controller property: mDataSelection
       self.mDataSelection.addExplorer (name: "mDataSelection", y:&y, view:view)
     //---
@@ -1596,6 +1596,42 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Array controller property: schematicObjectsController
+    self.schematicObjectsController.bind_model (self.rootObject.selectedSheetObjects_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: wireInSchematicSelectionController
+    self.wireInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: ncInSchematicSelectionController
+    self.ncInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: commentInSchematicSelectionController
+    self.commentInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: schematicLabelSelectionController
+    self.schematicLabelSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: componentSymbolSelectionController
+    self.componentSymbolSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Array controller property: boardCurveObjectsController
     self.boardCurveObjectsController.bind_model (self.rootObject.mBorderCurves_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
@@ -1658,42 +1694,6 @@ import Cocoa
     }
   //--- Array controller property: componentController
     self.componentController.bind_model (self.rootObject.mComponents_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Array controller property: schematicObjectsController
-    self.schematicObjectsController.bind_model (self.rootObject.selectedSheetObjects_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Selection controller property: wireInSchematicSelectionController
-    self.wireInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Selection controller property: ncInSchematicSelectionController
-    self.ncInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Selection controller property: commentInSchematicSelectionController
-    self.commentInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Selection controller property: schematicLabelSelectionController
-    self.schematicLabelSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Selection controller property: componentSymbolSelectionController
-    self.componentSymbolSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3508,6 +3508,18 @@ import Cocoa
     self.projectFontController.unbind_model ()
   //--- Array controller property: projectDeviceController
     self.projectDeviceController.unbind_model ()
+  //--- Array controller property: schematicObjectsController
+    self.schematicObjectsController.unbind_model ()
+  //--- Selection controller property: wireInSchematicSelectionController
+    self.wireInSchematicSelectionController.unbind_selection ()
+  //--- Selection controller property: ncInSchematicSelectionController
+    self.ncInSchematicSelectionController.unbind_selection ()
+  //--- Selection controller property: commentInSchematicSelectionController
+    self.commentInSchematicSelectionController.unbind_selection ()
+  //--- Selection controller property: schematicLabelSelectionController
+    self.schematicLabelSelectionController.unbind_selection ()
+  //--- Selection controller property: componentSymbolSelectionController
+    self.componentSymbolSelectionController.unbind_selection ()
   //--- Array controller property: boardCurveObjectsController
     self.boardCurveObjectsController.unbind_model ()
   //--- Selection controller property: boardCurveSelectionController
@@ -3530,18 +3542,6 @@ import Cocoa
     self.mDataController.unbind_model ()
   //--- Array controller property: componentController
     self.componentController.unbind_model ()
-  //--- Array controller property: schematicObjectsController
-    self.schematicObjectsController.unbind_model ()
-  //--- Selection controller property: wireInSchematicSelectionController
-    self.wireInSchematicSelectionController.unbind_selection ()
-  //--- Selection controller property: ncInSchematicSelectionController
-    self.ncInSchematicSelectionController.unbind_selection ()
-  //--- Selection controller property: commentInSchematicSelectionController
-    self.commentInSchematicSelectionController.unbind_selection ()
-  //--- Selection controller property: schematicLabelSelectionController
-    self.schematicLabelSelectionController.unbind_selection ()
-  //--- Selection controller property: componentSymbolSelectionController
-    self.componentSymbolSelectionController.unbind_selection ()
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
     // self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)

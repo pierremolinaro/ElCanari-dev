@@ -33,6 +33,12 @@ import Cocoa
   var projectDeviceController = Controller_AutoLayoutProjectDocument_projectDeviceController ()
 
   //····················································································································
+  //   Array controller: schematicObjectsController
+  //····················································································································
+
+  var schematicObjectsController = Controller_AutoLayoutProjectDocument_schematicObjectsController ()
+
+  //····················································································································
   //   Array controller: boardCurveObjectsController
   //····················································································································
 
@@ -410,6 +416,7 @@ import Cocoa
   weak final var mNetInfoTableView : AutoLayoutCanariNetDescriptionTableView? = nil
   weak final var mProductFileGenerationLogTextView : AutoLayoutTextObserverView? = nil
   weak final var mProductPageSegmentedControl : AutoLayoutSegmentedControlWithPages? = nil
+  weak final var mSchematicsView : AutoLayoutGraphicView? = nil
 
   //····················································································································
   //    Outlets
@@ -447,6 +454,8 @@ import Cocoa
       self.projectFontController.addExplorer (name: "projectFontController", y:&y, view:view)
     //--- Array controller property: projectDeviceController
       self.projectDeviceController.addExplorer (name: "projectDeviceController", y:&y, view:view)
+    //--- Array controller property: schematicObjectsController
+      self.schematicObjectsController.addExplorer (name: "schematicObjectsController", y:&y, view:view)
     //--- Array controller property: boardCurveObjectsController
       self.boardCurveObjectsController.addExplorer (name: "boardCurveObjectsController", y:&y, view:view)
     //--- Selection controller property: boardCurveSelectionController
@@ -1008,7 +1017,33 @@ import Cocoa
   lazy var mSchematicPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
-    let view_0 = AutoLayoutFlexibleSpace ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_0_0 = AutoLayoutStaticLabel (title: "TEMPORARY", bold: false, size: .regular)
+        view_0_0.appendView (view_0_0_0)
+        let view_0_0_1 = AutoLayoutFlexibleSpace ()
+        view_0_0.appendView (view_0_0_1)
+      }
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutGraphicView (minZoom: 50, maxZoom: 1000)
+        .bind_underObjectsDisplay (self.rootObject.schematicBackgroundDisplay_property)
+        .bind_overObjectsDisplay (self.rootObject.connectedPoints_property)
+        .bind_horizontalFlip (self.rootObject.mSchematicHorizontalFlip_property)
+        .bind_verticalFlip (self.rootObject.mSchematicVerticalFlip_property)
+        .bind_gridStyle (self.rootObject.mSchematicGridStyle_property)
+        .bind_gridDisplayFactor (self.rootObject.mSchematicGridDisplayFactor_property)
+        .bind_gridLineColor (preferences_lineColorGridForSchematic_property)
+        .bind_gridCrossColor (preferences_dotColorGridForSchematic_property)
+        .bind_zoom (self.rootObject.mSchematicZoom_property)
+        .bind_backColor (preferences_schematicBackColor_property)
+        .bind_graphic_controller (self.schematicObjectsController)
+      self.mSchematicsView = view_0_2 // Outlet
+      view_0.appendView (view_0_2)
+    }
     vStackView.appendView (view_0)
     return vStackView
   } ()
@@ -1241,15 +1276,19 @@ import Cocoa
     let view_0 = AutoLayoutVerticalStackView ()
     do{
       let view_0_0 = AutoLayoutHorizontalStackView ()
+        .set (spacing: 0)
       do{
         let view_0_0_0 = AutoLayoutCanariBoardOperationPullDownButton ()
         self.configure_boardOperationPullDownButtonConfigurator (view_0_0_0) // Configurator
         view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutFlexibleSpace ()
         view_0_0.appendView (view_0_0_1)
+        let view_0_0_2 = AutoLayoutDragSourceButton (tooltip: "Add Restrict Rectangle")
+        self.configure_addRestrictRectangleButton (view_0_0_2) // Configurator
+        view_0_0.appendView (view_0_0_2)
       }
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutStaticLabel (title: "Azerty", bold: false, size: .small)
+      let view_0_1 = AutoLayoutStaticLabel (title: "TEMPORARY", bold: false, size: .small)
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_2)
@@ -1276,6 +1315,7 @@ import Cocoa
       .bind_yPlacardUnit (self.rootObject.mBoardGridStepUnit_property)
       .bind_graphic_controller (self.boardObjectsController)
     self.mBoardView = view_2 // Outlet
+    self.configure_boardView (view_2) // Configurator
     hStackView.appendView (view_2)
     return hStackView
   } ()
@@ -2614,6 +2654,12 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Array controller property: schematicObjectsController
+    self.schematicObjectsController.bind_model (self.rootObject.selectedSheetObjects_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Array controller property: boardCurveObjectsController
     self.boardCurveObjectsController.bind_model (self.rootObject.mBorderCurves_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
@@ -3112,6 +3158,8 @@ import Cocoa
     self.projectFontController.unbind_model ()
   //--- Array controller property: projectDeviceController
     self.projectDeviceController.unbind_model ()
+  //--- Array controller property: schematicObjectsController
+    self.schematicObjectsController.unbind_model ()
   //--- Array controller property: boardCurveObjectsController
     self.boardCurveObjectsController.unbind_model ()
   //--- Selection controller property: boardCurveSelectionController
