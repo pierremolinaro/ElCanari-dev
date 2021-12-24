@@ -14,14 +14,14 @@ enum HorizontalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "onTheRight" : self = .onTheRight // 0
       case "center" : self = .center // 1
       case "onTheLeft" : self = .onTheLeft // 2
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

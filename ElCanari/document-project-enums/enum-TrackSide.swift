@@ -17,7 +17,7 @@ enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "front" : self = .front // 0
       case "back" : self = .back // 1
@@ -27,7 +27,7 @@ enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
       case "inner4" : self = .inner4 // 5
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

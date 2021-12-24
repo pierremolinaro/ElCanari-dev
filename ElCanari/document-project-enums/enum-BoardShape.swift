@@ -13,13 +13,13 @@ enum BoardShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "rectangular" : self = .rectangular // 0
       case "bezierPathes" : self = .bezierPathes // 1
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

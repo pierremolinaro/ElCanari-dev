@@ -14,14 +14,14 @@ enum SlavePadStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "traversing" : self = .traversing // 0
       case "componentSide" : self = .componentSide // 1
       case "oppositeSide" : self = .oppositeSide // 2
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

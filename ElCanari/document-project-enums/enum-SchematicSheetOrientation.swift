@@ -14,14 +14,14 @@ enum SchematicSheetOrientation : Int, EnumPropertyProtocol, Hashable, CaseIterab
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "a4Vertical" : self = .a4Vertical // 0
       case "a4Horizontal" : self = .a4Horizontal // 1
       case "custom" : self = .custom // 2
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

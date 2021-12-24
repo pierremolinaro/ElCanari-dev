@@ -14,14 +14,14 @@ enum PadShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "rect" : self = .rect // 0
       case "round" : self = .round // 1
       case "octo" : self = .octo // 2
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

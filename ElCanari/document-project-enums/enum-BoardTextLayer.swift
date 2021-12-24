@@ -15,7 +15,7 @@ enum BoardTextLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "legendFront" : self = .legendFront // 0
       case "layoutFront" : self = .layoutFront // 1
@@ -23,7 +23,7 @@ enum BoardTextLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
       case "legendBack" : self = .legendBack // 3
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

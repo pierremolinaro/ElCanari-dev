@@ -15,7 +15,7 @@ enum QuadrantRotation : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "rotation0" : self = .rotation0 // 0
       case "rotation90" : self = .rotation90 // 1
@@ -23,7 +23,7 @@ enum QuadrantRotation : Int, EnumPropertyProtocol, Hashable, CaseIterable {
       case "rotation270" : self = .rotation270 // 3
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

@@ -13,13 +13,13 @@ enum BoardLineLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "legendFront" : self = .legendFront // 0
       case "legendBack" : self = .legendBack // 1
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

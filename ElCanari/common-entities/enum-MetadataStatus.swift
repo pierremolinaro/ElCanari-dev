@@ -15,7 +15,7 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "unknown" : self = .unknown // 0
       case "ok" : self = .ok // 1
@@ -23,7 +23,7 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
       case "error" : self = .error // 3
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

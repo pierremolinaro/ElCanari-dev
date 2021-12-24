@@ -14,14 +14,14 @@ enum LayerConfiguration : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "twoLayers" : self = .twoLayers // 0
       case "fourLayers" : self = .fourLayers // 1
       case "sixLayers" : self = .sixLayers // 2
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

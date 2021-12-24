@@ -961,6 +961,7 @@
 		CF4634451BEE10890064C49B /* ApplicationDelegate-new-document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4634441BEE10890064C49B /* ApplicationDelegate-new-document.swift */; };
 		CF46523E2205CCE800E9E7E2 /* library-repository-perform-commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF46523D2205CCE800E9E7E2 /* library-repository-perform-commit.swift */; };
 		CF46523F2205CCE800E9E7E2 /* library-repository-perform-commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF46523D2205CCE800E9E7E2 /* library-repository-perform-commit.swift */; };
+		CF47F96B2775E111008A6D2C /* menu-select-restrict-rectangle-layers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47F96A2775E111008A6D2C /* menu-select-restrict-rectangle-layers.swift */; };
 		CF49C11A25D13A030082271E /* transient-SymbolPin-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69ABCA21A6C08000F5E49A /* transient-SymbolPin-selectionDisplay.swift */; };
 		CF49C11C25D13A030082271E /* transient-SymbolSolidRect-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE85A9721A5C91300991A66 /* transient-SymbolSolidRect-selectionDisplay.swift */; };
 		CF49C11E25D13A030082271E /* transient-SymbolText-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE85AA321A5D76600991A66 /* transient-SymbolText-objectDisplay.swift */; };
@@ -4852,6 +4853,7 @@
 		CF46301021EBC4EC00FF9A15 /* multiple-binding-controllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "multiple-binding-controllers.swift"; sourceTree = "<group>"; };
 		CF4634441BEE10890064C49B /* ApplicationDelegate-new-document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApplicationDelegate-new-document.swift"; sourceTree = "<group>"; };
 		CF46523D2205CCE800E9E7E2 /* library-repository-perform-commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "library-repository-perform-commit.swift"; sourceTree = "<group>"; };
+		CF47F96A2775E111008A6D2C /* menu-select-restrict-rectangle-layers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "menu-select-restrict-rectangle-layers.swift"; sourceTree = "<group>"; };
 		CF49EEB3275A455E00481930 /* validation-FontRoot-currentCharacterCodePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "validation-FontRoot-currentCharacterCodePoint.swift"; sourceTree = "<group>"; };
 		CF4A66242257EFF2003A7A7A /* ProjectDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDocument.swift; sourceTree = "<group>"; };
 		CF4A66252257EFF2003A7A7A /* ProjectDocument.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectDocument.xib; sourceTree = "<group>"; };
@@ -7021,6 +7023,7 @@
 		CF784E41275E2914001BC885 /* project — ProjectDocument - autolayout */ = {
 			isa = PBXGroup;
 			children = (
+				CF47F96A2775E111008A6D2C /* menu-select-restrict-rectangle-layers.swift */,
 				CFDE7C2F27663DCA00762C03 /* action-AutoLayoutProjectDocument-addComponentFromEmbeddedLibraryAction.swift */,
 				CFDE7B392766353200762C03 /* action-AutoLayoutProjectDocument-addComponentFromFileLibraryAction.swift */,
 				CF2285C52766762A00804193 /* action-AutoLayoutProjectDocument-addFontAction.swift */,
@@ -11767,6 +11770,7 @@
 				CF2853A427542981000BD372 /* controller-table-view-AutoLayoutFontDocument-selectedCharacterController.swift in Sources */,
 				CF22F191275A73ED009C6FAC /* transient-BoardModel-frontPadsBezierPaths.swift in Sources */,
 				CF9C61A825CABE5C00A00D5C /* extension-QuadrantRotation.swift in Sources */,
+				CF47F96B2775E111008A6D2C /* menu-select-restrict-rectangle-layers.swift in Sources */,
 				CF37916A269CBAFD00FA083F /* transient-AutoLayoutPackageDocument-issues.swift in Sources */,
 				CF2285D827667C7B00804193 /* action-AutoLayoutProjectDocument-resetFontVersionAction.swift in Sources */,
 				CF711DB1275E1B4000280069 /* entity-PointInSchematic.swift in Sources */,

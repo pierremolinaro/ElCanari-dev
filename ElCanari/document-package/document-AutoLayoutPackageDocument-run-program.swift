@@ -295,7 +295,21 @@ extension AutoLayoutPackageDocument {
     self.checkName ("numbering", inString, &ioIndex, &ioOk)
     let numberingIndex = ioIndex
     let numberingName = self.scanName (inString, &ioIndex, &ioOk)
-    let possibleZoneNumbering = PadNumbering (string: numberingName)
+//    let possibleZoneNumbering = PadNumbering (string: numberingName)
+    let possibleZoneNumbering : PadNumbering?
+    switch numberingName {
+      case "noNumbering" : possibleZoneNumbering = .noNumbering // 0
+      case "counterClock" : possibleZoneNumbering = .counterClock // 1
+      case "upRight" : possibleZoneNumbering = .upRight // 2
+      case "upLeft" : possibleZoneNumbering = .upLeft // 3
+      case "downRight" : possibleZoneNumbering = .downRight // 4
+      case "downLeft" : possibleZoneNumbering = .downLeft // 5
+      case "rightUp" : possibleZoneNumbering = .rightUp // 6
+      case "rightDown" : possibleZoneNumbering = .rightDown // 7
+      case "leftUp" : possibleZoneNumbering = .leftUp // 8
+      case "leftDown" : possibleZoneNumbering = .leftDown // 9
+      case _ : possibleZoneNumbering = nil
+    }
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageZone (self.ebUndoManager)
     object.x = x

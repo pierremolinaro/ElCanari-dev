@@ -13,13 +13,13 @@ enum PadStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "traversing" : self = .traversing // 0
       case "surface" : self = .surface // 1
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

@@ -20,7 +20,7 @@ enum RouteOrigin : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "center" : self = .center // 0
       case "bottomLeft" : self = .bottomLeft // 1
@@ -33,7 +33,7 @@ enum RouteOrigin : Int, EnumPropertyProtocol, Hashable, CaseIterable {
       case "middleLeft" : self = .middleLeft // 8
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

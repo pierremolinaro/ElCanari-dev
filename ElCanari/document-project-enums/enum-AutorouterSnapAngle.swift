@@ -14,14 +14,14 @@ enum AutorouterSnapAngle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "rectilinear" : self = .rectilinear // 0
       case "octolinear" : self = .octolinear // 1
       case "anyAngle" : self = .anyAngle // 2
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

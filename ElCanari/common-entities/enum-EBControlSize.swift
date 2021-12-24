@@ -14,14 +14,14 @@ enum EBControlSize : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "mini" : self = .mini // 0
       case "small" : self = .small // 1
       case "regular" : self = .regular // 2
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

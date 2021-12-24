@@ -15,7 +15,7 @@ enum TrackLockDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "unlocked" : self = .unlocked // 0
       case "locked" : self = .locked // 1
@@ -23,7 +23,7 @@ enum TrackLockDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
       case "rectilinear" : self = .rectilinear // 3
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

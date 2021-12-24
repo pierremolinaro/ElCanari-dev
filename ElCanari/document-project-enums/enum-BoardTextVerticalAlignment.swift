@@ -15,7 +15,7 @@ enum BoardTextVerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseItera
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "above" : self = .above // 0
       case "base" : self = .base // 1
@@ -23,7 +23,7 @@ enum BoardTextVerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseItera
       case "below" : self = .below // 3
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

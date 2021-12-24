@@ -13,13 +13,13 @@ enum AutorouterPreferredDirections : Int, EnumPropertyProtocol, Hashable, CaseIt
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "vFrontHback" : self = .vFrontHback // 0
       case "hFrontVback" : self = .hFrontVback // 1
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

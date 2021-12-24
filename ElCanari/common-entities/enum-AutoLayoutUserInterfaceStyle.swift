@@ -16,7 +16,7 @@ enum AutoLayoutUserInterfaceStyle : Int, EnumPropertyProtocol, Hashable, CaseIte
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "roundedBezel" : self = .roundedBezel // 0
       case "roundRect" : self = .roundRect // 1
@@ -25,7 +25,7 @@ enum AutoLayoutUserInterfaceStyle : Int, EnumPropertyProtocol, Hashable, CaseIte
       case "shadowlessSquare" : self = .shadowlessSquare // 4
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

@@ -26,6 +26,8 @@ extension AutoLayoutProjectDocument {
       scaleProvider: self.boardObjectsController
     )
     inOutlet.image = NSImage (named: "restrict-rect-in-board")
+    let menu = CanariSelectRestrictRectanglesMenu (size: .small)
+    inOutlet.mRightContextualMenu = menu
 //--- END OF USER ZONE 2
   }
 }

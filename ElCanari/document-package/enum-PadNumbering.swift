@@ -21,7 +21,7 @@ enum PadNumbering : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "noNumbering" : self = .noNumbering // 0
       case "counterClock" : self = .counterClock // 1
@@ -35,7 +35,7 @@ enum PadNumbering : Int, EnumPropertyProtocol, Hashable, CaseIterable {
       case "leftDown" : self = .leftDown // 9
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

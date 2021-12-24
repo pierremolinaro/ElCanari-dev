@@ -14,14 +14,14 @@ enum PadSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "traversing" : self = .traversing // 0
       case "front" : self = .front // 1
       case "back" : self = .back // 2
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

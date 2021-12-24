@@ -13,13 +13,13 @@ enum BorderCurveShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "line" : self = .line // 0
       case "bezier" : self = .bezier // 1
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

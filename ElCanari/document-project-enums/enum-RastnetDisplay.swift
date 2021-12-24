@@ -16,7 +16,7 @@ enum RastnetDisplay : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "hidden" : self = .hidden // 0
       case "allNets" : self = .allNets // 1
@@ -25,7 +25,7 @@ enum RastnetDisplay : Int, EnumPropertyProtocol, Hashable, CaseIterable {
       case "selectedComponents" : self = .selectedComponents // 4
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

@@ -15,7 +15,7 @@ enum VerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "above" : self = .above // 0
       case "base" : self = .base // 1
@@ -23,7 +23,7 @@ enum VerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
       case "below" : self = .below // 3
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

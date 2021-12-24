@@ -21,8 +21,8 @@ final class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDr
 
   //····················································································································
 
-  @IBOutlet var mRightContextualMenu : CanariChoiceMenu? = nil
-  @IBOutlet var mLeftContextualMenu : CanariChoiceMenu? = nil
+  var mRightContextualMenu : NSMenu? = nil
+  var mLeftContextualMenu : NSMenu? = nil
 
   //····················································································································
 
@@ -273,17 +273,19 @@ final class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDr
   //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {
+    super.draw (inDirtyRect)
     if debugAutoLayout () {
-//      DEBUG_FILL_COLOR.setFill ()
-//      NSBezierPath.fill (inDirtyRect)
       let bp = NSBezierPath (rect: self.bounds)
       bp.lineWidth = 1.0
       bp.lineJoinStyle = .round
       DEBUG_STROKE_COLOR.setStroke ()
       bp.stroke ()
     }
+    NSColor.white.setFill ()
+    NSBezierPath.fill (self.pullDownRightMenuRect ())
+    NSBezierPath.fill (self.pullDownLeftMenuRect ())
     let x : CGFloat = 0.75
-    let myGray = NSColor (red: x, green: x, blue: x, alpha: 1.0)
+    let myGray = NSColor (red: x, green: x, blue: x, alpha: 0.5)
     myGray.setFill ()
     switch self.mMouseZone {
     case .outside :
@@ -336,7 +338,6 @@ final class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDr
       NSColor.black.setFill ()
       path.fill ()
     }
-    super.draw (inDirtyRect)
   }
 
 

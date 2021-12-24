@@ -18,7 +18,7 @@ enum ConnectorSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "front" : self = .front // 0
       case "back" : self = .back // 1
@@ -29,7 +29,7 @@ enum ConnectorSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
       case "traversing" : self = .traversing // 6
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

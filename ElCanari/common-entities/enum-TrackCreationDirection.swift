@@ -14,14 +14,14 @@ enum TrackCreationDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable 
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "anyAngle" : self = .anyAngle // 0
       case "octolinear" : self = .octolinear // 1
       case "rectilinear" : self = .rectilinear // 2
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 

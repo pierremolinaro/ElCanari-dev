@@ -13,13 +13,13 @@ enum RouteDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  init? (string : String) {
+/*  init? (string : String) {
     switch string {
       case "from" : self = .from // 0
       case "to" : self = .to // 1
       case _ : return nil
     }
-  }
+  } */
 
   //····················································································································
 
