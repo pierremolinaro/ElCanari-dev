@@ -96,6 +96,7 @@ extern autolayout class Label (bold: Bool, size: EBControlSize) $enabled $hidden
 extern autolayout class SegmentedControlWithPages (documentView: view, equalWidth: Bool, size: EBControlSize) {
   func expandableWidth ()
   func addPage (title: String, tooltip: String, pageView : view)
+  func addPage (image: String, tooltip: String, pageView : view)
   $selectedPage property Int
   $segmentImage transient NSImage (segmentIndex : Int)
   $segmentTitle transient String (segmentIndex : Int)

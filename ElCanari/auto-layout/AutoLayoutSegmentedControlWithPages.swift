@@ -67,6 +67,26 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
 
   //····················································································································
 
+  final func addPage (image inImageName : String,
+                      tooltip inTooltipString : String,
+                      pageView inPageView : AutoLayoutAbstractStackView) -> Self {
+    self.segmentCount += 1
+    self.setImage (NSImage (named: inImageName), forSegment: self.segmentCount - 1)
+    self.setToolTip (inTooltipString, forSegment: self.segmentCount - 1)
+    if let segmentedCell = self.cell as? NSSegmentedCell {
+      segmentedCell.setToolTip (inTooltipString, forSegment: self.segmentCount - 1)
+    }
+    self.mPages.append (inPageView)
+    self.frame.size = self.intrinsicContentSize
+
+    if self.segmentCount == 1 {
+      self.setSelectedSegment (atIndex: 0)
+    }
+    return self
+  }
+
+  //····················································································································
+
   func setSelectedSegment (atIndex inIndex : Int) {
     self.selectedSegment = inIndex
     self.selectedSegmentDidChange (nil)

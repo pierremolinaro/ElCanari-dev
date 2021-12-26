@@ -798,14 +798,14 @@ protocol ProjectRoot_netNamesArray : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_unplacedSymbols : AnyObject {
-  var unplacedSymbols : StringTagArray? { get }
+protocol ProjectRoot_unplacedPackages : AnyObject {
+  var unplacedPackages : StringTagArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_unplacedPackages : AnyObject {
-  var unplacedPackages : StringTagArray? { get }
+protocol ProjectRoot_unplacedSymbols : AnyObject {
+  var unplacedSymbols : StringTagArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -975,8 +975,8 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_allClassNames,
          ProjectRoot_netWarningCount,
          ProjectRoot_netNamesArray,
-         ProjectRoot_unplacedSymbols,
          ProjectRoot_unplacedPackages,
+         ProjectRoot_unplacedSymbols,
          ProjectRoot_componentsPlacedInBoard,
          ProjectRoot_placedComponentNameArray,
          ProjectRoot_schematicHasErrorOrWarning,
@@ -3670,23 +3670,6 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: unplacedSymbols
-  //····················································································································
-
-  final let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
-
-  //····················································································································
-
-  final var unplacedSymbols : StringTagArray? {
-    switch self.unplacedSymbols_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: unplacedPackages
   //····················································································································
 
@@ -3696,6 +3679,23 @@ final class ProjectRoot : EBManagedObject,
 
   final var unplacedPackages : StringTagArray? {
     switch self.unplacedPackages_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: unplacedSymbols
+  //····················································································································
+
+  final let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
+
+  //····················································································································
+
+  final var unplacedSymbols : StringTagArray? {
+    switch self.unplacedSymbols_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -5056,22 +5056,6 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mNetClasses_property.addEBObserverOf_netsDescription (self.netNamesArray_property)
-  //--- Atomic property: unplacedSymbols
-    self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.mComponents_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectRoot_unplacedSymbols (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mComponents_property.addEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
   //--- Atomic property: unplacedPackages
     self.unplacedPackages_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5091,6 +5075,22 @@ final class ProjectRoot : EBManagedObject,
     self.mComponents_property.addEBObserverOf_componentName (self.unplacedPackages_property)
     self.mComponents_property.addEBObserverOf_mComponentValue (self.unplacedPackages_property)
     self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
+  //--- Atomic property: unplacedSymbols
+    self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mComponents_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_unplacedSymbols (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponents_property.addEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
   //--- Atomic property: componentsPlacedInBoard
     self.componentsPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5366,11 +5366,11 @@ final class ProjectRoot : EBManagedObject,
     // self.mNetClasses_property.removeEBObserverOf_mNetClassName (self.allClassNames_property)
     // self.mNetClasses_property.removeEBObserverOf_netWarningCount (self.netWarningCount_property)
     // self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netNamesArray_property)
-    // self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     // self.mComponents_property.removeEBObserver (self.unplacedPackages_property)
     // self.mComponents_property.removeEBObserverOf_componentName (self.unplacedPackages_property)
     // self.mComponents_property.removeEBObserverOf_mComponentValue (self.unplacedPackages_property)
     // self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
+    // self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     // self.mComponents_property.removeEBObserverOf_mNamePrefix (self.componentsPlacedInBoard_property)
     // self.mComponents_property.removeEBObserverOf_mNameIndex (self.componentsPlacedInBoard_property)
     // self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.componentsPlacedInBoard_property)
@@ -6357,20 +6357,20 @@ final class ProjectRoot : EBManagedObject,
         valueExplorer: &self.netNamesArray_property.mValueExplorer
       )
       createEntryForPropertyNamed (
-        "unplacedSymbols",
-        object: self.unplacedSymbols_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.unplacedSymbols_property.mObserverExplorer,
-        valueExplorer: &self.unplacedSymbols_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
         "unplacedPackages",
         object: self.unplacedPackages_property,
         y: &y,
         view: view,
         observerExplorer: &self.unplacedPackages_property.mObserverExplorer,
         valueExplorer: &self.unplacedPackages_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "unplacedSymbols",
+        object: self.unplacedSymbols_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.unplacedSymbols_property.mObserverExplorer,
+        valueExplorer: &self.unplacedSymbols_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "componentsPlacedInBoard",
