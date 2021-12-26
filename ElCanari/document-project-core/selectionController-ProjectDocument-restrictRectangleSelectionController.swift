@@ -36,6 +36,26 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
 
   let mIsInBackLayer_property = EBPropertyProxy_Bool ()
   //····················································································································
+  //   Selection observable property: mIsInInner1Layer
+  //····················································································································
+
+  let mIsInInner1Layer_property = EBPropertyProxy_Bool ()
+  //····················································································································
+  //   Selection observable property: mIsInInner2Layer
+  //····················································································································
+
+  let mIsInInner2Layer_property = EBPropertyProxy_Bool ()
+  //····················································································································
+  //   Selection observable property: mIsInInner3Layer
+  //····················································································································
+
+  let mIsInInner3Layer_property = EBPropertyProxy_Bool ()
+  //····················································································································
+  //   Selection observable property: mIsInInner4Layer
+  //····················································································································
+
+  let mIsInInner4Layer_property = EBPropertyProxy_Bool ()
+  //····················································································································
   //   Selection observable property: mX
   //····················································································································
 
@@ -79,6 +99,10 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     self.bind_property_mHeight ()
     self.bind_property_mIsInFrontLayer ()
     self.bind_property_mIsInBackLayer ()
+    self.bind_property_mIsInInner1Layer ()
+    self.bind_property_mIsInInner2Layer ()
+    self.bind_property_mIsInInner3Layer ()
+    self.bind_property_mIsInInner4Layer ()
     self.bind_property_mX ()
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
@@ -116,6 +140,26 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
     self.mIsInBackLayer_property.mWriteModelFunction = nil 
     self.mIsInBackLayer_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mIsInBackLayer (self.mIsInBackLayer_property)
+  //--- mIsInInner1Layer
+    self.mIsInInner1Layer_property.mReadModelFunction = nil 
+    self.mIsInInner1Layer_property.mWriteModelFunction = nil 
+    self.mIsInInner1Layer_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mIsInInner1Layer (self.mIsInInner1Layer_property)
+  //--- mIsInInner2Layer
+    self.mIsInInner2Layer_property.mReadModelFunction = nil 
+    self.mIsInInner2Layer_property.mWriteModelFunction = nil 
+    self.mIsInInner2Layer_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mIsInInner2Layer (self.mIsInInner2Layer_property)
+  //--- mIsInInner3Layer
+    self.mIsInInner3Layer_property.mReadModelFunction = nil 
+    self.mIsInInner3Layer_property.mWriteModelFunction = nil 
+    self.mIsInInner3Layer_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mIsInInner3Layer (self.mIsInInner3Layer_property)
+  //--- mIsInInner4Layer
+    self.mIsInInner4Layer_property.mReadModelFunction = nil 
+    self.mIsInInner4Layer_property.mWriteModelFunction = nil 
+    self.mIsInInner4Layer_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mIsInInner4Layer (self.mIsInInner4Layer_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
@@ -212,6 +256,38 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
         view: view,
         observerExplorer: &self.mIsInBackLayer_property.mObserverExplorer,
         valueExplorer: &self.mIsInBackLayer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsInInner1Layer",
+        object: self.mIsInInner1Layer_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsInInner1Layer_property.mObserverExplorer,
+        valueExplorer: &self.mIsInInner1Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsInInner2Layer",
+        object: self.mIsInInner2Layer_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsInInner2Layer_property.mObserverExplorer,
+        valueExplorer: &self.mIsInInner2Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsInInner3Layer",
+        object: self.mIsInInner3Layer_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsInInner3Layer_property.mObserverExplorer,
+        valueExplorer: &self.mIsInInner3Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsInInner4Layer",
+        object: self.mIsInInner4Layer_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsInInner4Layer_property.mObserverExplorer,
+        valueExplorer: &self.mIsInInner4Layer_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "mX",
@@ -614,6 +690,282 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
         case .single (let v) :
           for object in v {
             let result = object.mIsInBackLayer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mIsInInner1Layer () {
+    self.selectedArray_property.addEBObserverOf_mIsInInner1Layer (self.mIsInInner1Layer_property)
+    self.mIsInInner1Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mIsInInner1Layer_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mIsInInner1Layer_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mIsInInner1Layer_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mIsInInner1Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mIsInInner1Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mIsInInner2Layer () {
+    self.selectedArray_property.addEBObserverOf_mIsInInner2Layer (self.mIsInInner2Layer_property)
+    self.mIsInInner2Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mIsInInner2Layer_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mIsInInner2Layer_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mIsInInner2Layer_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mIsInInner2Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mIsInInner2Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mIsInInner3Layer () {
+    self.selectedArray_property.addEBObserverOf_mIsInInner3Layer (self.mIsInInner3Layer_property)
+    self.mIsInInner3Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mIsInInner3Layer_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mIsInInner3Layer_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mIsInInner3Layer_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mIsInInner3Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mIsInInner3Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mIsInInner4Layer () {
+    self.selectedArray_property.addEBObserverOf_mIsInInner4Layer (self.mIsInInner4Layer_property)
+    self.mIsInInner4Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mIsInInner4Layer_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mIsInInner4Layer_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mIsInInner4Layer_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mIsInInner4Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mIsInInner4Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

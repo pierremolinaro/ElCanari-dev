@@ -29,6 +29,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.mBoardLayerForNewText_property.removeEBObserver (self.mBoardLayerForNewText_property) // Stored property
       oldValue.mBoardLayerForNewLine_property.removeEBObserver (self.mBoardLayerForNewLine_property) // Stored property
       oldValue.mBoardSideForNewRestrictRectangle_property.removeEBObserver (self.mBoardSideForNewRestrictRectangle_property) // Stored property
+      oldValue.mNewRestrictRectangleLayers_property.removeEBObserver (self.mNewRestrictRectangleLayers_property) // Stored property
       oldValue.mAutoRouterPreferredDirections_property.removeEBObserver (self.mAutoRouterPreferredDirections_property) // Stored property
       oldValue.mAutorouterSnapAngle_property.removeEBObserver (self.mAutorouterSnapAngle_property) // Stored property
       oldValue.mRouteDirection_property.removeEBObserver (self.mRouteDirection_property) // Stored property
@@ -157,6 +158,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.mBoardLayerForNewText_property.addEBObserver (self.mBoardLayerForNewText_property) // Stored property
       newValue.mBoardLayerForNewLine_property.addEBObserver (self.mBoardLayerForNewLine_property) // Stored property
       newValue.mBoardSideForNewRestrictRectangle_property.addEBObserver (self.mBoardSideForNewRestrictRectangle_property) // Stored property
+      newValue.mNewRestrictRectangleLayers_property.addEBObserver (self.mNewRestrictRectangleLayers_property) // Stored property
       newValue.mAutoRouterPreferredDirections_property.addEBObserver (self.mAutoRouterPreferredDirections_property) // Stored property
       newValue.mAutorouterSnapAngle_property.addEBObserver (self.mAutorouterSnapAngle_property) // Stored property
       newValue.mRouteDirection_property.addEBObserver (self.mRouteDirection_property) // Stored property
@@ -349,6 +351,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardSideForNewRestrictRectangle_property = EBGenericTransientProperty <RestrictRectangleLayer?> ()
+
+  //····················································································································
+  //   Observers of 'mNewRestrictRectangleLayers' stored property
+  //····················································································································
+
+  final let mNewRestrictRectangleLayers_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mAutoRouterPreferredDirections' stored property
@@ -1380,6 +1388,21 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mBoardSideForNewRestrictRectangle_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.mBoardSideForNewRestrictRectangle_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mNewRestrictRectangleLayers simple stored property
+    self.mNewRestrictRectangleLayers_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mNewRestrictRectangleLayers_property.selection {
         case .empty :
           return .empty
         case .multiple :

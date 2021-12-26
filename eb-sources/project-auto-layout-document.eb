@@ -928,9 +928,13 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       hStack set (spacing: 0) {
         CanariBoardOperationPullDownButton [configurator boardOperationPullDownButtonConfigurator]
         space
-        DragSourceButton (tooltip: "Add Restrict Rectangle") [configurator addRestrictRectangleButton] {
-    //       $image self.addSegmentButtonImage
-        }
+        DragSourceButton (tooltip: "Add Restrict Rectangle;  the layers are set by the contextual menu.") [configurator addRestrictRectangleButton]
+        space
+        DragSourceButton (tooltip: "Add Line in Board;  the layer is set by the contextual menu.") [configurator addLineButton]
+        space
+        DragSourceButton (tooltip: "Add Text in Board; the layer is set by the contextual menu.") [configurator addTextButton]
+        space
+        DragSourceButton (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.") [configurator addTrackButton]
       }
       StaticLabel (title: "TEMPORARY", bold: no, size : .small)
       space

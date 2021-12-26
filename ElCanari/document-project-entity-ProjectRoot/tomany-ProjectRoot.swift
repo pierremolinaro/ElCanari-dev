@@ -30,6 +30,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.removeEBObserversOf_mBoardLayerForNewText_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mBoardLayerForNewLine_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mBoardSideForNewRestrictRectangle_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mNewRestrictRectangleLayers_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mAutoRouterPreferredDirections_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mAutorouterSnapAngle_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mRouteDirection_fromElementsOfSet (inRemovedSet) // Stored property
@@ -160,6 +161,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.addEBObserversOf_mBoardLayerForNewText_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mBoardLayerForNewLine_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mBoardSideForNewRestrictRectangle_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mNewRestrictRectangleLayers_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mAutoRouterPreferredDirections_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mAutorouterSnapAngle_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mRouteDirection_toElementsOfSet (inAddedSet) // Stored property
@@ -1040,6 +1042,65 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mBoardSideForNewRestrictRectangle_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mNewRestrictRectangleLayers' stored property
+  //····················································································································
+
+  private final var mObserversOf_mNewRestrictRectangleLayers = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mNewRestrictRectangleLayers (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mNewRestrictRectangleLayers.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNewRestrictRectangleLayers_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNewRestrictRectangleLayers (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mNewRestrictRectangleLayers.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNewRestrictRectangleLayers_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mNewRestrictRectangleLayers_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    if !self.mObserversOf_mNewRestrictRectangleLayers.isEmpty {
+      for managedObject in inSet.values {
+        self.mObserversOf_mNewRestrictRectangleLayers.apply { (_ observer : EBObserverProtocol) in
+          managedObject.mNewRestrictRectangleLayers_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mNewRestrictRectangleLayers_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    self.mObserversOf_mNewRestrictRectangleLayers.apply { (_ observer : EBObserverProtocol) in
+      observer.observedObjectDidChange ()
+      for managedObject in inSet.values {
+        managedObject.mNewRestrictRectangleLayers_property.removeEBObserver (observer)
       }
     }
   }
@@ -8941,6 +9002,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mBoardLayerForNewText (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLayerForNewLine (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardSideForNewRestrictRectangle (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mNewRestrictRectangleLayers (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAutoRouterPreferredDirections (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAutorouterSnapAngle (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mRouteDirection (self.mObserverForWritingPreferences)

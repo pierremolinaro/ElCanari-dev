@@ -20,6 +20,10 @@ func transient_BoardRestrictRectangle_objectDisplay (
        _ self_mHeight : Int,                         
        _ self_mIsInFrontLayer : Bool,                
        _ self_mIsInBackLayer : Bool,                 
+       _ self_mIsInInner1Layer : Bool,               
+       _ self_mIsInInner2Layer : Bool,               
+       _ self_mIsInInner3Layer : Bool,               
+       _ self_mIsInInner4Layer : Bool,               
        _ prefs_displayFrontRestrictRectangles : Bool,
        _ prefs_displayBackRestrictRectangles : Bool, 
        _ prefs_frontSideRestrictRectangleColorForBoard : NSColor,
@@ -29,8 +33,7 @@ func transient_BoardRestrictRectangle_objectDisplay (
         var shape = EBShape ()
         let display = (self_mIsInFrontLayer && prefs_displayFrontRestrictRectangles) || (self_mIsInBackLayer && prefs_displayBackRestrictRectangles)
         if display {
-          let r = CanariRect (left: self_mX, bottom: self_mY, width: self_mWidth, height: self_mHeight)
-          let cocoaRect = r.cocoaRect
+          let cocoaRect = CanariRect (left: self_mX, bottom: self_mY, width: self_mWidth, height: self_mHeight).cocoaRect
           let rectBP = EBBezierPath (rect: cocoaRect)
           let lg = max (cocoaRect.size.width, cocoaRect.size.height)
           let GRID_INTERVAL : CGFloat = 5.0

@@ -8482,7 +8482,7 @@ Locking</string>
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-385" y="-618"/>
+            <point key="canvasLocation" x="-514" y="-654"/>
         </menu>
         <menu id="jZm-hZ-0gW" userLabel="New Restrict Rectangle Side Menu" customClass="CanariChoiceMenu" customModule="ElCanari" customModuleProvider="target">
             <items>

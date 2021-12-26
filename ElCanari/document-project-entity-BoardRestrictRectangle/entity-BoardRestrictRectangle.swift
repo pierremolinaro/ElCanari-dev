@@ -36,6 +36,30 @@ protocol BoardRestrictRectangle_mIsInBackLayer : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardRestrictRectangle_mIsInInner1Layer : AnyObject {
+  var mIsInInner1Layer : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardRestrictRectangle_mIsInInner2Layer : AnyObject {
+  var mIsInInner2Layer : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardRestrictRectangle_mIsInInner3Layer : AnyObject {
+  var mIsInInner3Layer : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardRestrictRectangle_mIsInInner4Layer : AnyObject {
+  var mIsInInner4Layer : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardRestrictRectangle_mX : AnyObject {
   var mX : Int { get }
 }
@@ -68,6 +92,10 @@ final class BoardRestrictRectangle : BoardObject,
          BoardRestrictRectangle_mHeight,
          BoardRestrictRectangle_mIsInFrontLayer,
          BoardRestrictRectangle_mIsInBackLayer,
+         BoardRestrictRectangle_mIsInInner1Layer,
+         BoardRestrictRectangle_mIsInInner2Layer,
+         BoardRestrictRectangle_mIsInInner3Layer,
+         BoardRestrictRectangle_mIsInInner4Layer,
          BoardRestrictRectangle_mX,
          BoardRestrictRectangle_objectDisplay,
          BoardRestrictRectangle_selectionDisplay,
@@ -169,6 +197,82 @@ final class BoardRestrictRectangle : BoardObject,
   }
 
   //····················································································································
+  //   Atomic property: mIsInInner1Layer
+  //····················································································································
+
+  final let mIsInInner1Layer_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mIsInInner1Layer_toDefaultValue () {
+    self.mIsInInner1Layer = false
+  }
+
+  //····················································································································
+
+  final var mIsInInner1Layer : Bool {
+    get { return self.mIsInInner1Layer_property.propval }
+    set { self.mIsInInner1Layer_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mIsInInner2Layer
+  //····················································································································
+
+  final let mIsInInner2Layer_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mIsInInner2Layer_toDefaultValue () {
+    self.mIsInInner2Layer = false
+  }
+
+  //····················································································································
+
+  final var mIsInInner2Layer : Bool {
+    get { return self.mIsInInner2Layer_property.propval }
+    set { self.mIsInInner2Layer_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mIsInInner3Layer
+  //····················································································································
+
+  final let mIsInInner3Layer_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mIsInInner3Layer_toDefaultValue () {
+    self.mIsInInner3Layer = false
+  }
+
+  //····················································································································
+
+  final var mIsInInner3Layer : Bool {
+    get { return self.mIsInInner3Layer_property.propval }
+    set { self.mIsInInner3Layer_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mIsInInner4Layer
+  //····················································································································
+
+  final let mIsInInner4Layer_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mIsInInner4Layer_toDefaultValue () {
+    self.mIsInInner4Layer = false
+  }
+
+  //····················································································································
+
+  final var mIsInInner4Layer : Bool {
+    get { return self.mIsInInner4Layer_property.propval }
+    set { self.mIsInInner4Layer_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: mX
   //····················································································································
 
@@ -197,15 +301,19 @@ final class BoardRestrictRectangle : BoardObject,
     self.mHeight_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: ebUndoManager)
     self.mIsInFrontLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.mIsInBackLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mIsInInner1Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mIsInInner2Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mIsInInner3Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.mIsInInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mWidth_property.selection, unwSelf.mHeight_property.selection, unwSelf.mIsInFrontLayer_property.selection, unwSelf.mIsInBackLayer_property.selection, preferences_displayFrontRestrictRectangles_property.selection, preferences_displayBackRestrictRectangles_property.selection, preferences_frontSideRestrictRectangleColorForBoard_property.selection, preferences_backSideRestrictRectangleColorForBoard_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
-          return .single (transient_BoardRestrictRectangle_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mWidth_property.selection, unwSelf.mHeight_property.selection, unwSelf.mIsInFrontLayer_property.selection, unwSelf.mIsInBackLayer_property.selection, unwSelf.mIsInInner1Layer_property.selection, unwSelf.mIsInInner2Layer_property.selection, unwSelf.mIsInInner3Layer_property.selection, unwSelf.mIsInInner4Layer_property.selection, preferences_displayFrontRestrictRectangles_property.selection, preferences_displayBackRestrictRectangles_property.selection, preferences_frontSideRestrictRectangleColorForBoard_property.selection, preferences_backSideRestrictRectangleColorForBoard_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13)) :
+          return .single (transient_BoardRestrictRectangle_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -220,6 +328,10 @@ final class BoardRestrictRectangle : BoardObject,
     self.mHeight_property.addEBObserver (self.objectDisplay_property)
     self.mIsInFrontLayer_property.addEBObserver (self.objectDisplay_property)
     self.mIsInBackLayer_property.addEBObserver (self.objectDisplay_property)
+    self.mIsInInner1Layer_property.addEBObserver (self.objectDisplay_property)
+    self.mIsInInner2Layer_property.addEBObserver (self.objectDisplay_property)
+    self.mIsInInner3Layer_property.addEBObserver (self.objectDisplay_property)
+    self.mIsInInner4Layer_property.addEBObserver (self.objectDisplay_property)
     preferences_displayFrontRestrictRectangles_property.addEBObserver (self.objectDisplay_property)
     preferences_displayBackRestrictRectangles_property.addEBObserver (self.objectDisplay_property)
     preferences_frontSideRestrictRectangleColorForBoard_property.addEBObserver (self.objectDisplay_property)
@@ -227,10 +339,10 @@ final class BoardRestrictRectangle : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mWidth_property.selection, unwSelf.mHeight_property.selection, unwSelf.mIsInFrontLayer_property.selection, unwSelf.mIsInBackLayer_property.selection, preferences_hiliteWidthMultipliedByTen_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
-          return .single (transient_BoardRestrictRectangle_selectionDisplay (v0, v1, v2, v3, v4, v5, v6))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mWidth_property.selection, unwSelf.mHeight_property.selection, unwSelf.mIsInFrontLayer_property.selection, unwSelf.mIsInBackLayer_property.selection, unwSelf.mIsInInner1Layer_property.selection, unwSelf.mIsInInner2Layer_property.selection, unwSelf.mIsInInner3Layer_property.selection, unwSelf.mIsInInner4Layer_property.selection, preferences_hiliteWidthMultipliedByTen_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
+          return .single (transient_BoardRestrictRectangle_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -245,14 +357,18 @@ final class BoardRestrictRectangle : BoardObject,
     self.mHeight_property.addEBObserver (self.selectionDisplay_property)
     self.mIsInFrontLayer_property.addEBObserver (self.selectionDisplay_property)
     self.mIsInBackLayer_property.addEBObserver (self.selectionDisplay_property)
+    self.mIsInInner1Layer_property.addEBObserver (self.selectionDisplay_property)
+    self.mIsInInner2Layer_property.addEBObserver (self.selectionDisplay_property)
+    self.mIsInInner3Layer_property.addEBObserver (self.selectionDisplay_property)
+    self.mIsInInner4Layer_property.addEBObserver (self.selectionDisplay_property)
     preferences_hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mWidth_property.selection, unwSelf.mHeight_property.selection, unwSelf.mIsInFrontLayer_property.selection, unwSelf.mIsInBackLayer_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-          return .single (transient_BoardRestrictRectangle_signatureForERCChecking (v0, v1, v2, v3, v4, v5))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mWidth_property.selection, unwSelf.mHeight_property.selection, unwSelf.mIsInFrontLayer_property.selection, unwSelf.mIsInBackLayer_property.selection, unwSelf.mIsInInner1Layer_property.selection, unwSelf.mIsInInner2Layer_property.selection, unwSelf.mIsInInner3Layer_property.selection, unwSelf.mIsInInner4Layer_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+          return .single (transient_BoardRestrictRectangle_signatureForERCChecking (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -267,6 +383,10 @@ final class BoardRestrictRectangle : BoardObject,
     self.mHeight_property.addEBObserver (self.signatureForERCChecking_property)
     self.mIsInFrontLayer_property.addEBObserver (self.signatureForERCChecking_property)
     self.mIsInBackLayer_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mIsInInner1Layer_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mIsInInner2Layer_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mIsInInner3Layer_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mIsInInner4Layer_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -282,6 +402,10 @@ final class BoardRestrictRectangle : BoardObject,
     // self.mHeight_property.removeEBObserver (self.objectDisplay_property)
     // self.mIsInFrontLayer_property.removeEBObserver (self.objectDisplay_property)
     // self.mIsInBackLayer_property.removeEBObserver (self.objectDisplay_property)
+    // self.mIsInInner1Layer_property.removeEBObserver (self.objectDisplay_property)
+    // self.mIsInInner2Layer_property.removeEBObserver (self.objectDisplay_property)
+    // self.mIsInInner3Layer_property.removeEBObserver (self.objectDisplay_property)
+    // self.mIsInInner4Layer_property.removeEBObserver (self.objectDisplay_property)
     // preferences_displayFrontRestrictRectangles_property.removeEBObserver (self.objectDisplay_property)
     // preferences_displayBackRestrictRectangles_property.removeEBObserver (self.objectDisplay_property)
     // preferences_frontSideRestrictRectangleColorForBoard_property.removeEBObserver (self.objectDisplay_property)
@@ -292,6 +416,10 @@ final class BoardRestrictRectangle : BoardObject,
     // self.mHeight_property.removeEBObserver (self.selectionDisplay_property)
     // self.mIsInFrontLayer_property.removeEBObserver (self.selectionDisplay_property)
     // self.mIsInBackLayer_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mIsInInner1Layer_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mIsInInner2Layer_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mIsInInner3Layer_property.removeEBObserver (self.selectionDisplay_property)
+    // self.mIsInInner4Layer_property.removeEBObserver (self.selectionDisplay_property)
     // preferences_hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
     // self.mX_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mY_property.removeEBObserver (self.signatureForERCChecking_property)
@@ -299,6 +427,10 @@ final class BoardRestrictRectangle : BoardObject,
     // self.mHeight_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mIsInFrontLayer_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mIsInBackLayer_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.mIsInInner1Layer_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.mIsInInner2Layer_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.mIsInInner3Layer_property.removeEBObserver (self.signatureForERCChecking_property)
+    // self.mIsInInner4Layer_property.removeEBObserver (self.signatureForERCChecking_property)
   //--- Unregister properties for handling signature
   }
 
@@ -353,6 +485,38 @@ final class BoardRestrictRectangle : BoardObject,
         view: view,
         observerExplorer: &self.mIsInBackLayer_property.mObserverExplorer,
         valueExplorer: &self.mIsInBackLayer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsInInner1Layer",
+        object: self.mIsInInner1Layer_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsInInner1Layer_property.mObserverExplorer,
+        valueExplorer: &self.mIsInInner1Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsInInner2Layer",
+        object: self.mIsInInner2Layer_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsInInner2Layer_property.mObserverExplorer,
+        valueExplorer: &self.mIsInInner2Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsInInner3Layer",
+        object: self.mIsInInner3Layer_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsInInner3Layer_property.mObserverExplorer,
+        valueExplorer: &self.mIsInInner3Layer_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "mIsInInner4Layer",
+        object: self.mIsInInner4Layer_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mIsInInner4Layer_property.mObserverExplorer,
+        valueExplorer: &self.mIsInInner4Layer_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "mX",
@@ -414,6 +578,18 @@ final class BoardRestrictRectangle : BoardObject,
   //--- Atomic property: mIsInBackLayer
     self.mIsInBackLayer_property.mObserverExplorer = nil
     self.mIsInBackLayer_property.mValueExplorer = nil
+  //--- Atomic property: mIsInInner1Layer
+    self.mIsInInner1Layer_property.mObserverExplorer = nil
+    self.mIsInInner1Layer_property.mValueExplorer = nil
+  //--- Atomic property: mIsInInner2Layer
+    self.mIsInInner2Layer_property.mObserverExplorer = nil
+    self.mIsInInner2Layer_property.mValueExplorer = nil
+  //--- Atomic property: mIsInInner3Layer
+    self.mIsInInner3Layer_property.mObserverExplorer = nil
+    self.mIsInInner3Layer_property.mValueExplorer = nil
+  //--- Atomic property: mIsInInner4Layer
+    self.mIsInInner4Layer_property.mObserverExplorer = nil
+    self.mIsInInner4Layer_property.mValueExplorer = nil
   //--- Atomic property: mX
     self.mX_property.mObserverExplorer = nil
     self.mX_property.mValueExplorer = nil
@@ -456,6 +632,14 @@ final class BoardRestrictRectangle : BoardObject,
       self.mIsInFrontLayer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInFrontLayer")
     //--- Atomic property: mIsInBackLayer
       self.mIsInBackLayer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInBackLayer")
+    //--- Atomic property: mIsInInner1Layer
+      self.mIsInInner1Layer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInInner1Layer")
+    //--- Atomic property: mIsInInner2Layer
+      self.mIsInInner2Layer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInInner2Layer")
+    //--- Atomic property: mIsInInner3Layer
+      self.mIsInInner3Layer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInInner3Layer")
+    //--- Atomic property: mIsInInner4Layer
+      self.mIsInInner4Layer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInInner4Layer")
     //--- Atomic property: mX
       self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
   }
@@ -485,6 +669,14 @@ final class BoardRestrictRectangle : BoardObject,
     self.mIsInFrontLayer_property.readFrom (dictionary: inDictionary, forKey: "mIsInFrontLayer")
   //--- Atomic property: mIsInBackLayer
     self.mIsInBackLayer_property.readFrom (dictionary: inDictionary, forKey: "mIsInBackLayer")
+  //--- Atomic property: mIsInInner1Layer
+    self.mIsInInner1Layer_property.readFrom (dictionary: inDictionary, forKey: "mIsInInner1Layer")
+  //--- Atomic property: mIsInInner2Layer
+    self.mIsInInner2Layer_property.readFrom (dictionary: inDictionary, forKey: "mIsInInner2Layer")
+  //--- Atomic property: mIsInInner3Layer
+    self.mIsInInner3Layer_property.readFrom (dictionary: inDictionary, forKey: "mIsInInner3Layer")
+  //--- Atomic property: mIsInInner4Layer
+    self.mIsInInner4Layer_property.readFrom (dictionary: inDictionary, forKey: "mIsInInner4Layer")
   //--- Atomic property: mX
     self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
   }
@@ -502,6 +694,10 @@ final class BoardRestrictRectangle : BoardObject,
     ioString += "mHeight\n"
     ioString += "mIsInFrontLayer\n"
     ioString += "mIsInBackLayer\n"
+    ioString += "mIsInInner1Layer\n"
+    ioString += "mIsInInner2Layer\n"
+    ioString += "mIsInInner3Layer\n"
+    ioString += "mIsInInner4Layer\n"
     ioString += "mX\n"
   //--- To one relationships
   //--- To many relationships
@@ -523,6 +719,14 @@ final class BoardRestrictRectangle : BoardObject,
     self.mIsInFrontLayer.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mIsInBackLayer.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mIsInInner1Layer.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mIsInInner2Layer.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mIsInInner3Layer.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mIsInInner4Layer.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mX.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -555,6 +759,18 @@ final class BoardRestrictRectangle : BoardObject,
       }
       if let range = inDictionary ["mIsInBackLayer"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.mIsInBackLayer = value
+      }
+      if let range = inDictionary ["mIsInInner1Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.mIsInInner1Layer = value
+      }
+      if let range = inDictionary ["mIsInInner2Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.mIsInInner2Layer = value
+      }
+      if let range = inDictionary ["mIsInInner3Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.mIsInInner3Layer = value
+      }
+      if let range = inDictionary ["mIsInInner4Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.mIsInInner4Layer = value
       }
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mX = value

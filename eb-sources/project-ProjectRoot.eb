@@ -56,7 +56,11 @@ entity ProjectRoot {
   property TrackCreationDirection mDirectionForNewTrack default anyAngle ;
   property BoardTextLayer mBoardLayerForNewText default legendFront ;
   property BoardLineLayer mBoardLayerForNewLine default legendFront ;
+
+//--- Restrict rectangle
   property RestrictRectangleLayer mBoardSideForNewRestrictRectangle default frontSide ;
+//--- Bit 0 -> front, 1 : Back, 2 -> Inner 1, ... , 5 -> Inner 4
+  property Int mNewRestrictRectangleLayers default 1 ;
   
   property AutorouterPreferredDirections mAutoRouterPreferredDirections default vFrontHback ;
   property AutorouterSnapAngle mAutorouterSnapAngle default octolinear ;

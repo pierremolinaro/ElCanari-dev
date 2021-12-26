@@ -22,6 +22,10 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
       self.removeEBObserversOf_mHeight_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mIsInFrontLayer_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mIsInBackLayer_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mIsInInner1Layer_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mIsInInner2Layer_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mIsInInner3Layer_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mIsInInner4Layer_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
@@ -34,6 +38,10 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
       self.addEBObserversOf_mHeight_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mIsInFrontLayer_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mIsInBackLayer_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mIsInInner1Layer_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mIsInInner2Layer_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mIsInInner3Layer_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mIsInInner4Layer_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
@@ -332,6 +340,242 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mIsInBackLayer_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mIsInInner1Layer' stored property
+  //····················································································································
+
+  private final var mObserversOf_mIsInInner1Layer = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mIsInInner1Layer (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mIsInInner1Layer.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mIsInInner1Layer_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mIsInInner1Layer (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mIsInInner1Layer.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mIsInInner1Layer_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mIsInInner1Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    if !self.mObserversOf_mIsInInner1Layer.isEmpty {
+      for managedObject in inSet.values {
+        self.mObserversOf_mIsInInner1Layer.apply { (_ observer : EBObserverProtocol) in
+          managedObject.mIsInInner1Layer_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mIsInInner1Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    self.mObserversOf_mIsInInner1Layer.apply { (_ observer : EBObserverProtocol) in
+      observer.observedObjectDidChange ()
+      for managedObject in inSet.values {
+        managedObject.mIsInInner1Layer_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mIsInInner2Layer' stored property
+  //····················································································································
+
+  private final var mObserversOf_mIsInInner2Layer = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mIsInInner2Layer (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mIsInInner2Layer.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mIsInInner2Layer_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mIsInInner2Layer (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mIsInInner2Layer.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mIsInInner2Layer_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mIsInInner2Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    if !self.mObserversOf_mIsInInner2Layer.isEmpty {
+      for managedObject in inSet.values {
+        self.mObserversOf_mIsInInner2Layer.apply { (_ observer : EBObserverProtocol) in
+          managedObject.mIsInInner2Layer_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mIsInInner2Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    self.mObserversOf_mIsInInner2Layer.apply { (_ observer : EBObserverProtocol) in
+      observer.observedObjectDidChange ()
+      for managedObject in inSet.values {
+        managedObject.mIsInInner2Layer_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mIsInInner3Layer' stored property
+  //····················································································································
+
+  private final var mObserversOf_mIsInInner3Layer = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mIsInInner3Layer (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mIsInInner3Layer.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mIsInInner3Layer_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mIsInInner3Layer (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mIsInInner3Layer.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mIsInInner3Layer_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mIsInInner3Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    if !self.mObserversOf_mIsInInner3Layer.isEmpty {
+      for managedObject in inSet.values {
+        self.mObserversOf_mIsInInner3Layer.apply { (_ observer : EBObserverProtocol) in
+          managedObject.mIsInInner3Layer_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mIsInInner3Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    self.mObserversOf_mIsInInner3Layer.apply { (_ observer : EBObserverProtocol) in
+      observer.observedObjectDidChange ()
+      for managedObject in inSet.values {
+        managedObject.mIsInInner3Layer_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mIsInInner4Layer' stored property
+  //····················································································································
+
+  private final var mObserversOf_mIsInInner4Layer = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mIsInInner4Layer (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mIsInInner4Layer.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mIsInInner4Layer_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mIsInInner4Layer (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mIsInInner4Layer.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mIsInInner4Layer_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mIsInInner4Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    if !self.mObserversOf_mIsInInner4Layer.isEmpty {
+      for managedObject in inSet.values {
+        self.mObserversOf_mIsInInner4Layer.apply { (_ observer : EBObserverProtocol) in
+          managedObject.mIsInInner4Layer_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mIsInInner4Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    self.mObserversOf_mIsInInner4Layer.apply { (_ observer : EBObserverProtocol) in
+      observer.observedObjectDidChange ()
+      for managedObject in inSet.values {
+        managedObject.mIsInInner4Layer_property.removeEBObserver (observer)
       }
     }
   }
@@ -1148,6 +1392,10 @@ final class PreferencesArrayOf_BoardRestrictRectangle : StoredArrayOf_BoardRestr
     self.addEBObserverOf_mHeight (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mIsInFrontLayer (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mIsInBackLayer (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mIsInInner1Layer (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mIsInInner2Layer (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mIsInInner3Layer (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mIsInInner4Layer (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }

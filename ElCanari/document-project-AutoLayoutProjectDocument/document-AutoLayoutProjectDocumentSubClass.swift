@@ -170,22 +170,29 @@ let PAPER_GUTTER_HEIGHT_COCOA_UNIT : CGFloat =  13.0
   private func performAddRestrictRectangleDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
     let restrictRectangle = BoardRestrictRectangle (self.ebUndoManager)
-    switch self.rootObject.mBoardSideForNewRestrictRectangle {
-    case .frontSide :
-      restrictRectangle.mIsInFrontLayer = true
-      restrictRectangle.mIsInBackLayer = false
-    case .backSide :
-      restrictRectangle.mIsInFrontLayer = false
-      restrictRectangle.mIsInBackLayer = true
-    case .bothSides :
-      restrictRectangle.mIsInFrontLayer = true
-      restrictRectangle.mIsInBackLayer = true
-    }
+    let layers = self.rootObject.mNewRestrictRectangleLayers
+    restrictRectangle.mIsInFrontLayer  = (layers &  1) != 0
+    restrictRectangle.mIsInBackLayer   = (layers &  2) != 0
+    restrictRectangle.mIsInInner1Layer = (layers &  4) != 0
+    restrictRectangle.mIsInInner2Layer = (layers &  8) != 0
+    restrictRectangle.mIsInInner3Layer = (layers & 16) != 0
+    restrictRectangle.mIsInInner4Layer = (layers & 32) != 0
+//    switch self.rootObject.mBoardSideForNewRestrictRectangle {
+//    case .frontSide :
+//      restrictRectangle.mIsInFrontLayer = true
+//      restrictRectangle.mIsInBackLayer = false
+//    case .backSide :
+//      restrictRectangle.mIsInFrontLayer = false
+//      restrictRectangle.mIsInBackLayer = true
+//    case .bothSides :
+//      restrictRectangle.mIsInFrontLayer = true
+//      restrictRectangle.mIsInBackLayer = true
+//    }
     restrictRectangle.mX = p.x
     restrictRectangle.mY = p.y
     self.rootObject.mBoardObjects.append (restrictRectangle)
     self.boardObjectsController.setSelection ([restrictRectangle])
-    self.windowForSheet?.makeFirstResponder (self.mBoardView)
+    self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
   //····················································································································
@@ -199,7 +206,7 @@ let PAPER_GUTTER_HEIGHT_COCOA_UNIT : CGFloat =  13.0
     boardText.mFont = self.rootObject.mFonts.first!
     self.rootObject.mBoardObjects.append (boardText)
     self.boardObjectsController.setSelection ([boardText])
-    self.windowForSheet?.makeFirstResponder (self.mBoardView)
+    self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
   //····················································································································
@@ -222,7 +229,7 @@ let PAPER_GUTTER_HEIGHT_COCOA_UNIT : CGFloat =  13.0
           }
         }
       }
-      self.windowForSheet?.makeFirstResponder (self.mBoardView)
+      self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
     }
   }
 
@@ -238,7 +245,7 @@ let PAPER_GUTTER_HEIGHT_COCOA_UNIT : CGFloat =  13.0
     newLine.mY2 += p.y
     self.rootObject.mBoardObjects.append (newLine)
     self.boardObjectsController.setSelection ([newLine])
-    self.windowForSheet?.makeFirstResponder (self.mBoardView)
+    self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
   //····················································································································

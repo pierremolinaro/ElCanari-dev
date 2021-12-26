@@ -1283,9 +1283,24 @@ import Cocoa
         view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutFlexibleSpace ()
         view_0_0.appendView (view_0_0_1)
-        let view_0_0_2 = AutoLayoutDragSourceButton (tooltip: "Add Restrict Rectangle")
+        let view_0_0_2 = AutoLayoutDragSourceButton (tooltip: "Add Restrict Rectangle;  the layers are set by the contextual menu.")
         self.configure_addRestrictRectangleButton (view_0_0_2) // Configurator
         view_0_0.appendView (view_0_0_2)
+        let view_0_0_3 = AutoLayoutFlexibleSpace ()
+        view_0_0.appendView (view_0_0_3)
+        let view_0_0_4 = AutoLayoutDragSourceButton (tooltip: "Add Line in Board;  the layer is set by the contextual menu.")
+        self.configure_addLineButton (view_0_0_4) // Configurator
+        view_0_0.appendView (view_0_0_4)
+        let view_0_0_5 = AutoLayoutFlexibleSpace ()
+        view_0_0.appendView (view_0_0_5)
+        let view_0_0_6 = AutoLayoutDragSourceButton (tooltip: "Add Text in Board; the layer is set by the contextual menu.")
+        self.configure_addTextButton (view_0_0_6) // Configurator
+        view_0_0.appendView (view_0_0_6)
+        let view_0_0_7 = AutoLayoutFlexibleSpace ()
+        view_0_0.appendView (view_0_0_7)
+        let view_0_0_8 = AutoLayoutDragSourceButton (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.")
+        self.configure_addTrackButton (view_0_0_8) // Configurator
+        view_0_0.appendView (view_0_0_8)
       }
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutStaticLabel (title: "TEMPORARY", bold: false, size: .small)

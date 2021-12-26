@@ -19,7 +19,11 @@ func transient_BoardRestrictRectangle_signatureForERCChecking (
        _ self_mWidth : Int,                                    
        _ self_mHeight : Int,                                   
        _ self_mIsInFrontLayer : Bool,                          
-       _ self_mIsInBackLayer : Bool
+       _ self_mIsInBackLayer : Bool,                           
+       _ self_mIsInInner1Layer : Bool,                         
+       _ self_mIsInInner2Layer : Bool,                         
+       _ self_mIsInInner3Layer : Bool,                         
+       _ self_mIsInInner4Layer : Bool
 ) -> UInt32 {
 //--- START OF USER ZONE 2
         var crc : UInt32 = 0
@@ -29,6 +33,10 @@ func transient_BoardRestrictRectangle_signatureForERCChecking (
         crc.accumulateUInt32 (self_mHeight.ebHashValue ())
         crc.accumulateUInt32 (self_mIsInFrontLayer.ebHashValue ())
         crc.accumulateUInt32 (self_mIsInBackLayer.ebHashValue ())
+        crc.accumulateUInt32 (self_mIsInInner1Layer.ebHashValue ())
+        crc.accumulateUInt32 (self_mIsInInner2Layer.ebHashValue ())
+        crc.accumulateUInt32 (self_mIsInInner3Layer.ebHashValue ())
+        crc.accumulateUInt32 (self_mIsInInner4Layer.ebHashValue ())
         return crc
 //--- END OF USER ZONE 2
 }

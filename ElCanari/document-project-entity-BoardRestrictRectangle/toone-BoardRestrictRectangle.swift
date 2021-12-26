@@ -21,6 +21,10 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
       oldValue.mHeight_property.removeEBObserver (self.mHeight_property) // Stored property
       oldValue.mIsInFrontLayer_property.removeEBObserver (self.mIsInFrontLayer_property) // Stored property
       oldValue.mIsInBackLayer_property.removeEBObserver (self.mIsInBackLayer_property) // Stored property
+      oldValue.mIsInInner1Layer_property.removeEBObserver (self.mIsInInner1Layer_property) // Stored property
+      oldValue.mIsInInner2Layer_property.removeEBObserver (self.mIsInInner2Layer_property) // Stored property
+      oldValue.mIsInInner3Layer_property.removeEBObserver (self.mIsInInner3Layer_property) // Stored property
+      oldValue.mIsInInner4Layer_property.removeEBObserver (self.mIsInInner4Layer_property) // Stored property
       oldValue.mX_property.removeEBObserver (self.mX_property) // Stored property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
@@ -33,6 +37,10 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
       newValue.mHeight_property.addEBObserver (self.mHeight_property) // Stored property
       newValue.mIsInFrontLayer_property.addEBObserver (self.mIsInFrontLayer_property) // Stored property
       newValue.mIsInBackLayer_property.addEBObserver (self.mIsInBackLayer_property) // Stored property
+      newValue.mIsInInner1Layer_property.addEBObserver (self.mIsInInner1Layer_property) // Stored property
+      newValue.mIsInInner2Layer_property.addEBObserver (self.mIsInInner2Layer_property) // Stored property
+      newValue.mIsInInner3Layer_property.addEBObserver (self.mIsInInner3Layer_property) // Stored property
+      newValue.mIsInInner4Layer_property.addEBObserver (self.mIsInInner4Layer_property) // Stored property
       newValue.mX_property.addEBObserver (self.mX_property) // Stored property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
@@ -69,6 +77,30 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //····················································································································
 
   final let mIsInBackLayer_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'mIsInInner1Layer' stored property
+  //····················································································································
+
+  final let mIsInInner1Layer_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'mIsInInner2Layer' stored property
+  //····················································································································
+
+  final let mIsInInner2Layer_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'mIsInInner3Layer' stored property
+  //····················································································································
+
+  final let mIsInInner3Layer_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'mIsInInner4Layer' stored property
+  //····················································································································
+
+  final let mIsInInner4Layer_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mX' stored property
@@ -164,6 +196,66 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
     self.mIsInBackLayer_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.mIsInBackLayer_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mIsInInner1Layer simple stored property
+    self.mIsInInner1Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mIsInInner1Layer_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mIsInInner2Layer simple stored property
+    self.mIsInInner2Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mIsInInner2Layer_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mIsInInner3Layer simple stored property
+    self.mIsInInner3Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mIsInInner3Layer_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mIsInInner4Layer simple stored property
+    self.mIsInInner4Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mIsInInner4Layer_property.selection {
         case .empty :
           return .empty
         case .multiple :

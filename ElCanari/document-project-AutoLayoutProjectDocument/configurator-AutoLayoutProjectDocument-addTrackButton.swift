@@ -18,17 +18,34 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  final func configure_addRestrictRectangleButton (_ inOutlet : AutoLayoutDragSourceButton) {
+  final func configure_addTrackButton (_ inOutlet : AutoLayoutDragSourceButton) {
 //--- START OF USER ZONE 2
     inOutlet.register (
-      draggedType: kDragAndDropRestrictRectangle,
-      draggedObjectFactory: { return (BoardRestrictRectangle (nil), NSDictionary ()) },
+      draggedType: kDragAndDropBoardTrack,
+      draggedObjectImage: { [weak self] in return self?.boardTrackImageFactory () },
       scaleProvider: self.boardObjectsController
     )
-    inOutlet.image = NSImage (named: "restrict-rect-in-board")
-    let menu = CanariSelectRestrictRectanglesMenu (size: .small)
+    inOutlet.image = NSImage (named: "track-in-board")
+    inOutlet.imageScaling = .scaleProportionallyUpOrDown
+  //--- Left Menu
+    do {
+      let menu = EBChoiceMenu ()
+      menu.addItem (withTitle: "Any Angle", action: nil, keyEquivalent: "")
+      menu.addItem (withTitle: "Octolinear (45°)", action: nil, keyEquivalent: "")
+      menu.addItem (withTitle: "Rectilinear (90°)",  action: nil, keyEquivalent: "")
+      menu.bind_selectedIndex (self.rootObject.mDirectionForNewTrack_property)
+      inOutlet.mLeftContextualMenu = menu
+    }
+  //--- Right Menu
+    let menu = EBChoiceMenu ()
+    menu.addItem (withTitle: "Front Layer", action: nil, keyEquivalent: "")
+    menu.addItem (withTitle: "Back Layer", action: nil, keyEquivalent: "")
+    menu.addItem (withTitle: "Inner 1 Layer",  action: nil, keyEquivalent: "")
+    menu.addItem (withTitle: "Inner 2 Layer",  action: nil, keyEquivalent: "")
+    menu.addItem (withTitle: "Inner 3 Layer",  action: nil, keyEquivalent: "")
+    menu.addItem (withTitle: "Inner 4 Layer",  action: nil, keyEquivalent: "")
+    menu.bind_selectedIndex (self.rootObject.mBoardSideForNewTrack_property)
     inOutlet.mRightContextualMenu = menu
-    menu.bind_layers (self.rootObject.mNewRestrictRectangleLayers_property)
 //--- END OF USER ZONE 2
   }
 }

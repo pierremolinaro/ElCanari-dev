@@ -18,17 +18,20 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  final func configure_addRestrictRectangleButton (_ inOutlet : AutoLayoutDragSourceButton) {
+  final func configure_addLineButton (_ inOutlet : AutoLayoutDragSourceButton) {
 //--- START OF USER ZONE 2
     inOutlet.register (
-      draggedType: kDragAndDropRestrictRectangle,
-      draggedObjectFactory: { return (BoardRestrictRectangle (nil), NSDictionary ()) },
+      draggedType: kDragAndDropBoardLine,
+      draggedObjectFactory: { return (BoardLine (nil), NSDictionary ()) },
       scaleProvider: self.boardObjectsController
     )
-    inOutlet.image = NSImage (named: "restrict-rect-in-board")
-    let menu = CanariSelectRestrictRectanglesMenu (size: .small)
+    inOutlet.image = NSImage (named: "line-in-symbol")
+    inOutlet.imageScaling = .scaleProportionallyUpOrDown
+    let menu = EBChoiceMenu ()
+    menu.addItem (withTitle: "Legend, Front Side", action: nil, keyEquivalent: "")
+    menu.addItem (withTitle: "Legend, Back Side",  action: nil, keyEquivalent: "")
+    menu.bind_selectedIndex (self.rootObject.mBoardLayerForNewLine_property)
     inOutlet.mRightContextualMenu = menu
-    menu.bind_layers (self.rootObject.mNewRestrictRectangleLayers_property)
 //--- END OF USER ZONE 2
   }
 }

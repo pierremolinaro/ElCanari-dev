@@ -84,6 +84,12 @@ protocol ProjectRoot_mBoardSideForNewRestrictRectangle : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mNewRestrictRectangleLayers : AnyObject {
+  var mNewRestrictRectangleLayers : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mAutoRouterPreferredDirections : AnyObject {
   var mAutoRouterPreferredDirections : AutorouterPreferredDirections { get }
 }
@@ -850,6 +856,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_mBoardLayerForNewText,
          ProjectRoot_mBoardLayerForNewLine,
          ProjectRoot_mBoardSideForNewRestrictRectangle,
+         ProjectRoot_mNewRestrictRectangleLayers,
          ProjectRoot_mAutoRouterPreferredDirections,
          ProjectRoot_mAutorouterSnapAngle,
          ProjectRoot_mRouteDirection,
@@ -1221,6 +1228,25 @@ final class ProjectRoot : EBManagedObject,
   final var mBoardSideForNewRestrictRectangle : RestrictRectangleLayer {
     get { return self.mBoardSideForNewRestrictRectangle_property.propval }
     set { self.mBoardSideForNewRestrictRectangle_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mNewRestrictRectangleLayers
+  //····················································································································
+
+  final let mNewRestrictRectangleLayers_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mNewRestrictRectangleLayers_toDefaultValue () {
+    self.mNewRestrictRectangleLayers = 1
+  }
+
+  //····················································································································
+
+  final var mNewRestrictRectangleLayers : Int {
+    get { return self.mNewRestrictRectangleLayers_property.propval }
+    set { self.mNewRestrictRectangleLayers_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -3780,6 +3806,7 @@ final class ProjectRoot : EBManagedObject,
     self.mBoardLayerForNewText_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront, undoManager: ebUndoManager)
     self.mBoardLayerForNewLine_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront, undoManager: ebUndoManager)
     self.mBoardSideForNewRestrictRectangle_property = EBStoredProperty_RestrictRectangleLayer (defaultValue: RestrictRectangleLayer.frontSide, undoManager: ebUndoManager)
+    self.mNewRestrictRectangleLayers_property = EBStoredProperty_Int (defaultValue: 1, undoManager: ebUndoManager)
     self.mAutoRouterPreferredDirections_property = EBStoredProperty_AutorouterPreferredDirections (defaultValue: AutorouterPreferredDirections.vFrontHback, undoManager: ebUndoManager)
     self.mAutorouterSnapAngle_property = EBStoredProperty_AutorouterSnapAngle (defaultValue: AutorouterSnapAngle.octolinear, undoManager: ebUndoManager)
     self.mRouteDirection_property = EBStoredProperty_RouteDirection (defaultValue: RouteDirection.from, undoManager: ebUndoManager)
@@ -5481,6 +5508,14 @@ final class ProjectRoot : EBManagedObject,
         valueExplorer: &self.mBoardSideForNewRestrictRectangle_property.mValueExplorer
       )
       createEntryForPropertyNamed (
+        "mNewRestrictRectangleLayers",
+        object: self.mNewRestrictRectangleLayers_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mNewRestrictRectangleLayers_property.mObserverExplorer,
+        valueExplorer: &self.mNewRestrictRectangleLayers_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
         "mAutoRouterPreferredDirections",
         object: self.mAutoRouterPreferredDirections_property,
         y: &y,
@@ -6491,6 +6526,9 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: mBoardSideForNewRestrictRectangle
     self.mBoardSideForNewRestrictRectangle_property.mObserverExplorer = nil
     self.mBoardSideForNewRestrictRectangle_property.mValueExplorer = nil
+  //--- Atomic property: mNewRestrictRectangleLayers
+    self.mNewRestrictRectangleLayers_property.mObserverExplorer = nil
+    self.mNewRestrictRectangleLayers_property.mValueExplorer = nil
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.mObserverExplorer = nil
     self.mAutoRouterPreferredDirections_property.mValueExplorer = nil
@@ -6795,6 +6833,8 @@ final class ProjectRoot : EBManagedObject,
       self.mBoardLayerForNewLine_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLayerForNewLine")
     //--- Atomic property: mBoardSideForNewRestrictRectangle
       self.mBoardSideForNewRestrictRectangle_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSideForNewRestrictRectangle")
+    //--- Atomic property: mNewRestrictRectangleLayers
+      self.mNewRestrictRectangleLayers_property.storeIn (dictionary: ioDictionary, forKey: "mNewRestrictRectangleLayers")
     //--- Atomic property: mAutoRouterPreferredDirections
       self.mAutoRouterPreferredDirections_property.storeIn (dictionary: ioDictionary, forKey: "mAutoRouterPreferredDirections")
     //--- Atomic property: mAutorouterSnapAngle
@@ -7126,6 +7166,8 @@ final class ProjectRoot : EBManagedObject,
     self.mBoardLayerForNewLine_property.readFrom (dictionary: inDictionary, forKey: "mBoardLayerForNewLine")
   //--- Atomic property: mBoardSideForNewRestrictRectangle
     self.mBoardSideForNewRestrictRectangle_property.readFrom (dictionary: inDictionary, forKey: "mBoardSideForNewRestrictRectangle")
+  //--- Atomic property: mNewRestrictRectangleLayers
+    self.mNewRestrictRectangleLayers_property.readFrom (dictionary: inDictionary, forKey: "mNewRestrictRectangleLayers")
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.readFrom (dictionary: inDictionary, forKey: "mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle
@@ -7267,6 +7309,7 @@ final class ProjectRoot : EBManagedObject,
     ioString += "mBoardLayerForNewText\n"
     ioString += "mBoardLayerForNewLine\n"
     ioString += "mBoardSideForNewRestrictRectangle\n"
+    ioString += "mNewRestrictRectangleLayers\n"
     ioString += "mAutoRouterPreferredDirections\n"
     ioString += "mAutorouterSnapAngle\n"
     ioString += "mRouteDirection\n"
@@ -7371,6 +7414,8 @@ final class ProjectRoot : EBManagedObject,
     self.mBoardLayerForNewLine.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mBoardSideForNewRestrictRectangle.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mNewRestrictRectangleLayers.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mAutoRouterPreferredDirections.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -7768,6 +7813,9 @@ final class ProjectRoot : EBManagedObject,
       }
       if let range = inDictionary ["mBoardSideForNewRestrictRectangle"], let value = RestrictRectangleLayer.unarchiveFromDataRange (inData, range) {
         self.mBoardSideForNewRestrictRectangle = value
+      }
+      if let range = inDictionary ["mNewRestrictRectangleLayers"], let value = Int.unarchiveFromDataRange (inData, range) {
+        self.mNewRestrictRectangleLayers = value
       }
       if let range = inDictionary ["mAutoRouterPreferredDirections"], let value = AutorouterPreferredDirections.unarchiveFromDataRange (inData, range) {
         self.mAutoRouterPreferredDirections = value

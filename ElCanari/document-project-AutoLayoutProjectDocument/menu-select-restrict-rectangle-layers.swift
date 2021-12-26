@@ -14,7 +14,8 @@ final class CanariSelectRestrictRectanglesMenu : NSMenu, EBUserClassNameProtocol
 
   //····················································································································
 
-//  private var
+  private var mValue = 0
+
   //····················································································································
   // INIT
   //····················································································································
@@ -24,6 +25,8 @@ final class CanariSelectRestrictRectanglesMenu : NSMenu, EBUserClassNameProtocol
     noteObjectAllocation (self)
     let fontSize = NSFont.systemFontSize (for: inSize.cocoaControlSize)
     self.font = NSFont.systemFont (ofSize: fontSize)
+
+    self.autoenablesItems = false
 
     var menuItem = self.addItem (withTitle: "Front Layer", action: #selector (Self.menuItemAction (_:)), keyEquivalent: "")
     menuItem.tag = 0
@@ -67,58 +70,55 @@ final class CanariSelectRestrictRectanglesMenu : NSMenu, EBUserClassNameProtocol
   //····················································································································
 
   @objc private func menuItemAction (_ inSender : NSMenuItem) {
+    let value = self.mValue ^ (1 << inSender.tag)
+    _ = self.mLayersController?.updateModel (withCandidateValue: value, windowForSheet: nil)
   }
 
   //····················································································································
-  //  $populateSubmenus binding
+  //  $layers binding
   //····················································································································
 
-  @objc func revealInFinder (_ sender : NSMenuItem) {
-    let ws = NSWorkspace.shared
-    let title = sender.title
-    let ok = ws.open (URL (fileURLWithPath: title))
-    if !ok {
-      NSSound.beep ()
-      let alert = NSAlert ()
-      alert.messageText = "Cannot open the \(title) directory"
-      alert.informativeText = "This directory does not exist."
-      _ = alert.runModal ()
-    }
-  }
-
-  //····················································································································
-
-  private func updateOutlet (_ object : EBReadOnlyProperty_StringArray) {
+  private func updateOutlet (_ object : EBReadOnlyProperty_Int) {
     switch object.selection {
     case .empty, .multiple :
-      self.removeAllItems ()
-    case .single (let itemList) :
-      self.removeAllItems ()
-      for title in itemList {
-        let item = self.addItem (withTitle: title, action: #selector (CanariMenu.revealInFinder(_:)), keyEquivalent: "")
-        item.target = self
+      for item in self.items {
+        item.isEnabled = false
+        item.state = .off
+      }
+    case .single (let value) :
+      self.mValue = value
+      var v = value
+      for item in self.items {
+        let flag = (v & 1) != 0
+        item.state = flag ? .on : .off
+        if value.nonzeroBitCount <= 1 {
+          item.isEnabled = !flag
+        }else{
+          item.isEnabled = true
+        }
+        v >>= 1
       }
     }
   }
 
   //····················································································································
 
-  private var mValueController : EBObservablePropertyController? = nil
+  private var mLayersController : EBGenericReadWritePropertyController <Int>? = nil
 
   //····················································································································
 
-  final func bind_populateSubmenus (_ object : EBReadOnlyProperty_StringArray) {
-    self.mValueController = EBObservablePropertyController (
-      observedObjects: [object],
+  final func bind_layers (_ object : EBReadWriteProperty_Int) {
+    self.mLayersController = EBGenericReadWritePropertyController <Int> (
+      observedObject: object,
       callBack: { self.updateOutlet (object) }
     )
   }
 
   //····················································································································
 
-  final func unbind_populateSubmenus () {
-    self.mValueController?.unregister ()
-    self.mValueController = nil
+  final func unbind_layers () {
+    self.mLayersController?.unregister ()
+    self.mLayersController = nil
   }
 
   //····················································································································

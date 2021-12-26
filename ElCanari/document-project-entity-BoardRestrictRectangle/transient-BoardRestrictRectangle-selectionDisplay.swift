@@ -20,6 +20,10 @@ func transient_BoardRestrictRectangle_selectionDisplay (
        _ self_mHeight : Int,                            
        _ self_mIsInFrontLayer : Bool,                   
        _ self_mIsInBackLayer : Bool,                    
+       _ self_mIsInInner1Layer : Bool,                  
+       _ self_mIsInInner2Layer : Bool,                  
+       _ self_mIsInInner3Layer : Bool,                  
+       _ self_mIsInInner4Layer : Bool,                  
        _ prefs_hiliteWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2

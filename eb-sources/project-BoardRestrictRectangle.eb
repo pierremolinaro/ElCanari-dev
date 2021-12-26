@@ -12,10 +12,16 @@ graphic entity BoardRestrictRectangle : BoardObject {
 
   property Bool mIsInFrontLayer default yes ;
   property Bool mIsInBackLayer default yes ;
+  property Bool mIsInInner1Layer default no ;
+  property Bool mIsInInner2Layer default no ;
+  property Bool mIsInInner3Layer default no ;
+  property Bool mIsInInner4Layer default no ;
 
   override transient EBShape objectDisplay dependsFrom
     self.mX, self.mY, self.mWidth, self.mHeight,
     self.mIsInFrontLayer, self.mIsInBackLayer,
+    self.mIsInInner1Layer, self.mIsInInner2Layer,
+    self.mIsInInner3Layer, self.mIsInInner4Layer,
     prefs.displayFrontRestrictRectangles,
     prefs.displayBackRestrictRectangles,
     prefs.frontSideRestrictRectangleColorForBoard,
@@ -25,12 +31,16 @@ graphic entity BoardRestrictRectangle : BoardObject {
   override transient EBShape selectionDisplay dependsFrom
     self.mX, self.mY, self.mWidth, self.mHeight,
     self.mIsInFrontLayer, self.mIsInBackLayer,
+    self.mIsInInner1Layer, self.mIsInInner2Layer,
+    self.mIsInInner3Layer, self.mIsInInner4Layer,
     prefs.hiliteWidthMultipliedByTen
   ;
 
   override transient UInt32 signatureForERCChecking dependsFrom
     self.mX, self.mY, self.mWidth, self.mHeight,
-    self.mIsInFrontLayer, self.mIsInBackLayer ;
+    self.mIsInFrontLayer, self.mIsInBackLayer,
+    self.mIsInInner1Layer, self.mIsInInner2Layer,
+    self.mIsInInner3Layer, self.mIsInInner4Layer ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

@@ -81,6 +81,7 @@ final class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDr
 
   private var mDragType : NSPasteboard.PasteboardType? = nil
   private var mDraggedObjectFactory : Optional < () -> (EBGraphicManagedObject, NSDictionary)? > = nil
+  private var mDraggedObjectImage : Optional < () -> EBShape? > = nil
   private var mScaleProvider : EBGraphicViewControllerProtocol? = nil
 
   //····················································································································
@@ -90,6 +91,17 @@ final class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDr
                  scaleProvider : EBGraphicViewControllerProtocol) {
     self.mDragType = draggedType
     self.mDraggedObjectFactory = draggedObjectFactory
+    self.mScaleProvider = scaleProvider
+    scaleProvider.addPasteBoardType (draggedType)
+  }
+
+  //····················································································································
+
+  func register (draggedType : NSPasteboard.PasteboardType,
+                 draggedObjectImage : Optional < () -> EBShape? >,
+                 scaleProvider : EBGraphicViewControllerProtocol) {
+    self.mDragType = draggedType
+    self.mDraggedObjectImage = draggedObjectImage
     self.mScaleProvider = scaleProvider
     scaleProvider.addPasteBoardType (draggedType)
   }
@@ -146,7 +158,7 @@ final class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDr
     }else if let dragType = self.mDragType, self.isEnabled {
       let pasteboardItem = NSPasteboardItem ()
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
-    //--- Get dragged image
+    //--- Get dragged object
       if let (temporaryObject, additionalDict) = self.mDraggedObjectFactory? () {
         var transform = AffineTransform ()
         if let scaleProvider = self.mScaleProvider, scaleProvider.boundViews().count == 1 {
@@ -170,6 +182,38 @@ final class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDr
         let dataDictionary : NSDictionary = [
           OBJECT_DICTIONARY_KEY : [dict],
           OBJECT_ADDITIONAL_DICTIONARY_KEY : [additionalDict],
+          X_KEY : 0,
+          Y_KEY : 0
+        ]
+        pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
+      //--- Set dragged image
+        draggingItem.setDraggingFrame (r, contents: image)
+      //--- Begin
+        self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
+    //--- Get dragged image
+      }else if let shape = self.mDraggedObjectImage? () {
+        var transform = AffineTransform ()
+        if let scaleProvider = self.mScaleProvider, scaleProvider.boundViews().count == 1 {
+          let view = scaleProvider.boundViews() [0]
+          let scale = view.actualScale
+          let horizontalFlip : CGFloat = view.horizontalFlip ? -1.0 : 1.0
+          let verticalFlip   : CGFloat = view.verticalFlip   ? -1.0 : 1.0
+          transform.scale (x: scale * horizontalFlip, y: scale * verticalFlip)
+        }
+        let displayShape = shape.transformed (by: transform)
+        let rect : NSRect = displayShape.boundingBox
+        let image = buildPDFimage (frame: rect, shape: displayShape)
+      //--- Move image rect origin to mouse click location
+        let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+        var r = rect
+        r.origin.x += mouseDownLocation.x
+        r.origin.y += mouseDownLocation.y
+      //--- Associated data
+        let dict = NSMutableDictionary ()
+//        temporaryObject.saveIntoDictionary (dict)
+        let dataDictionary : NSDictionary = [
+          OBJECT_DICTIONARY_KEY : [dict],
+          OBJECT_ADDITIONAL_DICTIONARY_KEY : [], // [additionalDict],
           X_KEY : 0,
           Y_KEY : 0
         ]
