@@ -3157,6 +3157,9 @@
 		CF9FCCB927541A1E00345A34 /* transient-AutoLayoutFontDocument-statusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9FCCB727541A1E00345A34 /* transient-AutoLayoutFontDocument-statusMessage.swift */; };
 		CF9FCCBA27541A1E00345A34 /* transient-AutoLayoutFontDocument-statusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9FCCB827541A1E00345A34 /* transient-AutoLayoutFontDocument-statusImage.swift */; };
 		CF9FCCC827541D7300345A34 /* transient-AutoLayoutFontDocument-metadataStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9FCCC727541D7300345A34 /* transient-AutoLayoutFontDocument-metadataStatus.swift */; };
+		CFA0B7802779B907006E9309 /* transient-AutoLayoutProjectDocument-rastnetDisplayOneNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0B77F2779B907006E9309 /* transient-AutoLayoutProjectDocument-rastnetDisplayOneNet.swift */; };
+		CFA0B7822779B9FC006E9309 /* AutoLayoutElCanariSelectionPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0B7812779B9FC006E9309 /* AutoLayoutElCanariSelectionPopUpButton.swift */; };
+		CFA0B7842779BC9C006E9309 /* transient-AutoLayoutProjectDocument-rastnetDisplayComponentNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0B7832779BC9B006E9309 /* transient-AutoLayoutProjectDocument-rastnetDisplayComponentNet.swift */; };
 		CFA0DF5221C040EA00F94710 /* transient-AutoLayoutSymbolDocument-noIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0DF5121C040EA00F94710 /* transient-AutoLayoutSymbolDocument-noIssue.swift */; };
 		CFA0DF5321C040EA00F94710 /* transient-AutoLayoutSymbolDocument-noIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0DF5121C040EA00F94710 /* transient-AutoLayoutSymbolDocument-noIssue.swift */; };
 		CFA0E4EF21BBE87300E4D471 /* EBGraphicView-dragging-source.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0E4EE21BBE87300E4D471 /* EBGraphicView-dragging-source.swift */; };
@@ -5468,6 +5471,9 @@
 		CF9FCCB827541A1E00345A34 /* transient-AutoLayoutFontDocument-statusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutFontDocument-statusImage.swift"; sourceTree = "<group>"; };
 		CF9FCCC727541D7300345A34 /* transient-AutoLayoutFontDocument-metadataStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutFontDocument-metadataStatus.swift"; sourceTree = "<group>"; };
 		CFA085E921A17A6B00DFD00B /* Info-Release.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Release.plist"; sourceTree = "<group>"; };
+		CFA0B77F2779B907006E9309 /* transient-AutoLayoutProjectDocument-rastnetDisplayOneNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutProjectDocument-rastnetDisplayOneNet.swift"; sourceTree = "<group>"; };
+		CFA0B7812779B9FC006E9309 /* AutoLayoutElCanariSelectionPopUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutElCanariSelectionPopUpButton.swift; sourceTree = "<group>"; };
+		CFA0B7832779BC9B006E9309 /* transient-AutoLayoutProjectDocument-rastnetDisplayComponentNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutProjectDocument-rastnetDisplayComponentNet.swift"; sourceTree = "<group>"; };
 		CFA0DF5121C040EA00F94710 /* transient-AutoLayoutSymbolDocument-noIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutSymbolDocument-noIssue.swift"; sourceTree = "<group>"; };
 		CFA0E4EE21BBE87300E4D471 /* EBGraphicView-dragging-source.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-dragging-source.swift"; sourceTree = "<group>"; };
 		CFA0F3712284870500237022 /* extension-CGSize-NSSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGSize-NSSize.swift"; sourceTree = "<group>"; };
@@ -7046,11 +7052,6 @@
 		CF784E41275E2914001BC885 /* project — ProjectDocument - autolayout */ = {
 			isa = PBXGroup;
 			children = (
-				CF48F99B2778F93400CEE944 /* configurator-AutoLayoutProjectDocument-packageDragSourceTableViewConfigurator.swift */,
-				CF48F9992778F6CB00CEE944 /* transient-AutoLayoutProjectDocument-unplacedPackagesMessageString.swift */,
-				CF48F9962778F3D900CEE944 /* transient-AutoLayoutProjectDocument-unplacedPackageCount.swift */,
-				CF48F9952778F3D900CEE944 /* transient-AutoLayoutProjectDocument-unplacedPackagesCountString.swift */,
-				CF48F9932778E3FB00CEE944 /* configurator-AutoLayoutProjectDocument-boardInspectorConfigurator.swift */,
 				CFDE7C2F27663DCA00762C03 /* action-AutoLayoutProjectDocument-addComponentFromEmbeddedLibraryAction.swift */,
 				CFDE7B392766353200762C03 /* action-AutoLayoutProjectDocument-addComponentFromFileLibraryAction.swift */,
 				CF2285C52766762A00804193 /* action-AutoLayoutProjectDocument-addFontAction.swift */,
@@ -7085,9 +7086,11 @@
 				CF3304EC27734CBE00275263 /* configurator-AutoLayoutProjectDocument-addRestrictRectangleButton.swift */,
 				CF6CC7A82778B6ED007BA775 /* configurator-AutoLayoutProjectDocument-addTextButton.swift */,
 				CF6CC7AC2778BFC0007BA775 /* configurator-AutoLayoutProjectDocument-addTrackButton.swift */,
+				CF48F9932778E3FB00CEE944 /* configurator-AutoLayoutProjectDocument-boardInspectorConfigurator.swift */,
 				CF18209D27724F3600068AD6 /* configurator-AutoLayoutProjectDocument-boardOperationPullDownButtonConfigurator.swift */,
 				CF54A0462770C9D200D978D9 /* configurator-AutoLayoutProjectDocument-boardOutlineBaseConfigurator.swift */,
 				CF3304EE2773576A00275263 /* configurator-AutoLayoutProjectDocument-boardView.swift */,
+				CF48F99B2778F93400CEE944 /* configurator-AutoLayoutProjectDocument-packageDragSourceTableViewConfigurator.swift */,
 				CFB82B1C276B71CD00BAD56E /* configurator-AutoLayoutProjectDocument-pinsOfSelectedNetTableViewConfigurator.swift */,
 				CF54A0422770C52700D978D9 /* controller-array-AutoLayoutProjectDocument-boardCurveObjectsController.swift */,
 				CFDE7C452766654800762C03 /* controller-array-AutoLayoutProjectDocument-boardObjectsController.swift */,
@@ -7139,10 +7142,15 @@
 				CF72E5B1276A38670019E180 /* transient-AutoLayoutProjectDocument-netCountString.swift */,
 				CF13E24B27721E8C008A4D28 /* transient-AutoLayoutProjectDocument-overDisplay.swift */,
 				CF50D1DF27675A9E00B35C59 /* transient-AutoLayoutProjectDocument-pinPadAssignments.swift */,
+				CFA0B7832779BC9B006E9309 /* transient-AutoLayoutProjectDocument-rastnetDisplayComponentNet.swift */,
+				CFA0B77F2779B907006E9309 /* transient-AutoLayoutProjectDocument-rastnetDisplayOneNet.swift */,
 				CF13E24A27721E8C008A4D28 /* transient-AutoLayoutProjectDocument-rastnetShape.swift */,
 				CF04FCD027677BDF0062DF89 /* transient-AutoLayoutProjectDocument-selectedDeviceNames.swift */,
 				CF04FAEE276773F80062DF89 /* transient-AutoLayoutProjectDocument-selectedDevicePackageNames.swift */,
 				CF04FAEA2767719F0062DF89 /* transient-AutoLayoutProjectDocument-selectedDeviceSymbolNames.swift */,
+				CF48F9962778F3D900CEE944 /* transient-AutoLayoutProjectDocument-unplacedPackageCount.swift */,
+				CF48F9952778F3D900CEE944 /* transient-AutoLayoutProjectDocument-unplacedPackagesCountString.swift */,
+				CF48F9992778F6CB00CEE944 /* transient-AutoLayoutProjectDocument-unplacedPackagesMessageString.swift */,
 			);
 			name = "project — ProjectDocument - autolayout";
 			path = "ElCanari/document-project-AutoLayoutProjectDocument";
@@ -7644,6 +7652,7 @@
 				CFDD6D3526A1B0F10050CB78 /* AutoLayoutCanariUnitPopUpButton.swift */,
 				CF841C4D275BB8F60000EA26 /* AutoLayoutElCanariDragSourceTableView.swift */,
 				CFCD06C926A21C830095C56F /* AutoLayoutElCanariOrientationSegmentedControl.swift */,
+				CFA0B7812779B9FC006E9309 /* AutoLayoutElCanariSelectionPopUpButton.swift */,
 			);
 			name = "Auto Layout — El Canari";
 			path = "ElCanari/auto-layout-canari";
@@ -11891,6 +11900,7 @@
 				CFDD6D4826A1B0F20050CB78 /* AutoLayoutCanariAngleFieldAndSlider.swift in Sources */,
 				CF9C61ED25CABE5C00A00D5C /* transient-ProjectRoot-ercStatusImage.swift in Sources */,
 				CF9C61F025CABE5C00A00D5C /* multiple-binding-controllers.swift in Sources */,
+				CFA0B7802779B907006E9309 /* transient-AutoLayoutProjectDocument-rastnetDisplayOneNet.swift in Sources */,
 				CFB7D8972683A61C007B9D3B /* transient-AutoLayoutPackageDocument-addDimensionButtonImage.swift in Sources */,
 				CF9C61F125CABE5C00A00D5C /* CanariRect.swift in Sources */,
 				CFB7D8BE2683A61D007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageDimension.swift in Sources */,
@@ -12439,6 +12449,7 @@
 				CF51404F276BB867008DB542 /* extension-AutoLayoutProjectDocument-generate-product-pdf-files.swift in Sources */,
 				CF9C63F725CABE5C00A00D5C /* toone-PackagePad.swift in Sources */,
 				CF9C63F825CABE5C00A00D5C /* transient-SheetInProject-connexionWarnings.swift in Sources */,
+				CFA0B7842779BC9C006E9309 /* transient-AutoLayoutProjectDocument-rastnetDisplayComponentNet.swift in Sources */,
 				CFD1EABA274EE23B000AED8E /* transient-FontRoot-currentCharacterCodePointString.swift in Sources */,
 				CF22F197275A73ED009C6FAC /* transient-BoardModel-instanceCount.swift in Sources */,
 				CF9C63F925CABE5C00A00D5C /* transient-BoardConnector-netNameAndPadLocation.swift in Sources */,
@@ -12503,6 +12514,7 @@
 				CF9C642C25CABE5C00A00D5C /* transient-ProjectRoot-sheetIndexes.swift in Sources */,
 				CFB82B1D276B71CD00BAD56E /* configurator-AutoLayoutProjectDocument-pinsOfSelectedNetTableViewConfigurator.swift in Sources */,
 				CF9C642F25CABE5C00A00D5C /* transient-PackagePad-displayedPadName.swift in Sources */,
+				CFA0B7822779B9FC006E9309 /* AutoLayoutElCanariSelectionPopUpButton.swift in Sources */,
 				CF514052276BB867008DB542 /* extension-AutoLayoutProjectDocument-generate-product-gerber-files.swift in Sources */,
 				CF04FCD52767BA210062DF89 /* action-AutoLayoutProjectDocument-addNetClassAction.swift in Sources */,
 				CF9C643025CABE5C00A00D5C /* transient-NetClassInProject-viaPadDiameter.swift in Sources */,

@@ -4,7 +4,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+class AutoLayoutPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -12,6 +12,9 @@ final class AutoLayoutPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
     super.init (frame: NSRect (), pullsDown: false)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
+    self.controlSize = inSize.cocoaControlSize
+    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
   }
 
   //····················································································································

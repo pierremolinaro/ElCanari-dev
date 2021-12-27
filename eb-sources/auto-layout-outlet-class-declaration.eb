@@ -399,4 +399,8 @@ extern autolayout class CanariBoardRectangleView {
 extern autolayout class CanariBoardOperationPullDownButton {
 }
 
+extern autolayout class ElCanariSelectionPopUpButton (size: EBControlSize) $hidden {
+  $selectedNameInArray property String, transient StringArray
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

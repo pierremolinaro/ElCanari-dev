@@ -20,6 +20,10 @@ final class AutoLayoutColorWell : NSColorWell, EBUserClassNameProtocol {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
+    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+    self.setContentCompressionResistancePriority (.required, for: .vertical)
+
     self.target = self
     self.action = #selector (Self.action(_:))
   }

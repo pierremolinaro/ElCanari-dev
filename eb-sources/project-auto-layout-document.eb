@@ -995,6 +995,9 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     }
   }
   
+  transient Bool rastnetDisplayOneNet dependsFrom root.mRastnetDisplay ;
+  transient Bool rastnetDisplayComponentNet dependsFrom root.mRastnetDisplay ;
+
   stackView mBoardDisplayInspectorView vStack {
     VerticalScrollView (content:
       GridView2 {
@@ -1028,6 +1031,34 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
         addFirstBaseLineAligned (
           left: space,
           right: Checkbox (title: "Vertical", size : .small)  { $value root.mBoardVerticalFlip }
+        )
+        addFirstBaseLineAligned (
+          left: hStack { StaticLabel (title: "Rastnet", bold: yes, size: .small) space},
+          right: EnumPopUpButton (titles: enum RastnetDisplay.popupTitles, size: .small) { $selectedIndex root.mRastnetDisplay }
+        )
+        add (
+          single: ElCanariSelectionPopUpButton (size: .small) {
+            $selectedNameInArray root.mRastnetDisplayedNetName, root.netNamesArray
+            $hidden !self.rastnetDisplayOneNet
+          }
+        )
+        add (
+          single: ElCanariSelectionPopUpButton (size: .small) {
+            $selectedNameInArray root.mRastnetDisplayedComponentName, root.placedComponentNameArray
+            $hidden !self.rastnetDisplayComponentNet
+          }
+        )
+        add (
+          single: hStack { StaticLabel (title: "Warning and Error Circle", bold: yes, size: .small) space}
+        )
+        add (
+          single: LinearSlider (min: 0, max: 24, ticks: 13) { $doubleValue root.mErrorOrWarningIssueSize (sendContinously : yes) }
+        )
+        add (
+          single: hStack { StaticLabel (title: "Contextual Click Diameter", bold: yes, size: .small) space}
+        )
+        add (
+          single: LinearSlider (min: 10, max: 200, ticks: 10) { $doubleValue root.mControlKeyHiliteDiameter (sendContinously : yes) }
         )
         add (
           single: hStack { StaticLabel (title: "Display Inspector", bold: yes, size: .small) space}
@@ -1084,57 +1115,23 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
           left: hStack { space ColorWell { $color prefs.backSideRestrictRectangleColorForBoard (sendContinously:yes) } },
           right: Checkbox (title: "Back Side Restrict Rectangle", size : .small)  { $value prefs.displayBackRestrictRectangles }
         )
-        addFirstBaseLineAligned (
+        addCenterYAligned (
           left: hStack { space ColorWell { $color prefs.boardLimitsColorForBoard (sendContinously:yes) } },
           right: hStack { StaticLabel (title: "Board Limits", bold: no, size : .small) space }
         )
-        addFirstBaseLineAligned (
+        addCenterYAligned (
           left: hStack { space ColorWell { $color prefs.boardClearanceColorForBoard (sendContinously:yes) } },
           right: hStack { StaticLabel (title: "Board Clearance", bold: no, size : .small) space }
         )
-        addFirstBaseLineAligned (
+        addCenterYAligned (
           left: hStack { space ColorWell { $color prefs.boardBackgroundColorForBoard (sendContinously:yes) } },
           right: hStack { StaticLabel (title: "Background", bold: no, size : .small) space }
-        )
-        add (
-          single: hStack { StaticLabel (title: "Rastnet", bold: yes, size: .small) space}
-        )
-        add (
-          single: hStack { StaticLabel (title: "Warning and Error Circle", bold: yes, size: .small) space}
-        )
-        add (
-          single: LinearSlider (min: 0, max: 24, ticks: 13) { $doubleValue root.mErrorOrWarningIssueSize (sendContinously : yes) }
-        )
-        add (
-          single: hStack { StaticLabel (title: "Contextual Click Diameter", bold: yes, size: .small) space}
-        )
-        add (
-          single: LinearSlider (min: 10, max: 200, ticks: 10) { $doubleValue root.mControlKeyHiliteDiameter (sendContinously : yes) }
         )
       }
     )
     space 
   }
 
-//  outlet EBPopUpButton mRastnetDisplayPopUpButton $selectedIndex root.mRastnetDisplay ;
-//  transient Bool rastnetDisplayOneNet dependsFrom root.mRastnetDisplay ;
-//  outlet CanariSelectionPopUpButton mRasnetNetNameSelectionPopUpButton
-//    $selectedNameInArray root.mRastnetDisplayedNetName, root.netNamesArray
-//    $hidden !self.rastnetDisplayOneNet
-//  ;
-//  transient Bool rastnetDisplayComponentNet dependsFrom root.mRastnetDisplay ;
-//  outlet CanariSelectionPopUpButton mRasnetComponentNameSelectionPopUpButton
-//    $selectedNameInArray root.mRastnetDisplayedComponentName, root.placedComponentNameArray
-//    $hidden !self.rastnetDisplayComponentNet
-//  ;
-//  transient EBShape rastnetShape dependsFrom
-//    root.mRastnetDisplay,
-//    root.mRastnetDisplayedNetName,
-//    root.mRastnetDisplayedComponentName,
-//    root.mBoardObjects.all.netNameAndPadLocation,
-//    #boardObjectsController.selectedArray.all.componentName
-//  ;
-//  
   stackView mBoardRouterInspectorView vStack {
     space
   }

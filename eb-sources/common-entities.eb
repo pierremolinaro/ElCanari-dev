@@ -130,6 +130,14 @@ enum RastnetDisplay {
   hidden, allNets, oneNet, componentNets, selectedComponents
 }
 
+func enum RastnetDisplay.popupTitles {
+  hidden : "No" ;
+  allNets : "All Nets" ;
+  oneNet : "This Net" ;
+  componentNets : "Nets of Component" ;
+  selectedComponents : "Selected Components Nets" ;
+}
+
 //——————————————————————————————————————————————————————————————————————————————
 
 enum BoardTextLayer {
