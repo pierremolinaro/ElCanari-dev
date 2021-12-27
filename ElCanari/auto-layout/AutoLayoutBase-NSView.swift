@@ -9,14 +9,19 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutBaseView
+//   AutoLayoutBase_NSView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBaseView : NSView, EBUserClassNameProtocol {
+class AutoLayoutBase_NSView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init () {
+  private var mBackColor : NSColor? = nil
+
+  //····················································································································
+
+  init (backColor inBackColor : NSColor?) {
+    self.mBackColor = inBackColor
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -32,6 +37,15 @@ class AutoLayoutBaseView : NSView, EBUserClassNameProtocol {
 
   deinit {
     noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  override func draw (_ inDirtyRect: NSRect) {
+    if let backColor = self.mBackColor {
+      backColor.setFill ()
+      NSBezierPath.fill (self.bounds)
+    }
   }
 
   //····················································································································

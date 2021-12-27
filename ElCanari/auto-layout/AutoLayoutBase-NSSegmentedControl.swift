@@ -1,5 +1,5 @@
 //
-//  InternalAutoLayoutSegmentedControl.swift
+//  AutoLayoutBase-NSSegmentedControl.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 20/06/2021.
@@ -10,16 +10,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class InternalAutoLayoutSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
-
-  //····················································································································
-
-//  private let mEqualWidth : Bool
+class AutoLayoutBase_NSSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   //····················································································································
 
   init (equalWidth inEqualWidth : Bool, size inSize : EBControlSize) {
-//    self.mEqualWidth = inEqualWidth
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
 

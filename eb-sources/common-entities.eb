@@ -118,10 +118,21 @@ enum AutorouterPreferredDirections {
   vFrontHback, hFrontVback
 }
 
+func enum AutorouterPreferredDirections.popupTitles {
+  vFrontHback : "| Front Side, -- Back Side" ;
+  hFrontVback : "-- Front Side, | Back Side" ;
+}
+
 //——————————————————————————————————————————————————————————————————————————————
 
 enum AutorouterSnapAngle {
   rectilinear, octolinear, anyAngle
+}
+
+func enum AutorouterSnapAngle.popupTitles {
+  rectilinear : "Rectilinear Routing (90°)" ;
+  octolinear : "Octolinear Routing (45°)" ;
+  anyAngle : "Any Angle Routing" ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————
@@ -168,6 +179,11 @@ enum RouteDirection {
   from, to
 }
 
+func enum RouteDirection.popupTitles {
+  from : "From" ;
+  to : "To" ;
+}
+
 //——————————————————————————————————————————————————————————————————————————————
 
 enum RouteOrigin {
@@ -180,6 +196,18 @@ enum RouteOrigin {
   middleTop,
   topLeft,
   middleLeft
+}
+
+func enum RouteOrigin.popupTitles {
+  center : "Center" ;
+  bottomLeft : "Bottom Left" ;
+  middleBottom : "Middle Bottom" ;
+  bottomRight : "Bottom Right" ;
+  middleRight : "Middle Right" ;
+  topRight : "Top Right" ;
+  middleTop : "Middle Top" ;
+  topLeft : "Top Left" ;
+  middleLeft : "Middle Left" ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

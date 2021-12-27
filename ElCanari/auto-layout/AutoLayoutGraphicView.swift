@@ -18,7 +18,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   let mGraphicView = EBGraphicView (frame: NSRect ())
   var mScrollView : EBScrollView? = nil
-  fileprivate var mZoomPopUpButton : AutoLayoutBasePopUpButton? = nil
+  fileprivate var mZoomPopUpButton : AutoLayoutBase_NSPopUpButton? = nil
   fileprivate var mZoomToFitButton : AutoLayoutBaseButton? = nil
   fileprivate var mHelperTextField : NSTextField? = nil
   fileprivate var mFocusRing : AutoLayoutPrivateFocusRingView? = nil
@@ -117,8 +117,8 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  fileprivate func buildZoomPopUpButton (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) -> AutoLayoutBasePopUpButton {
-    let zoomPopUpButton = AutoLayoutBasePopUpButton (pullsDown: true, size: .small)
+  fileprivate func buildZoomPopUpButton (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) -> AutoLayoutBase_NSPopUpButton {
+    let zoomPopUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: true, size: .small)
     zoomPopUpButton.menu?.addItem (
       withTitle:"\(Int (self.mGraphicView.actualScale * 100.0)) %",
       action:nil,
@@ -157,7 +157,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
  //····················································································································
 
   final fileprivate func addPopupButtonItemForZoom (_ inZoom : Int,
-                                                    _ inPopUp : AutoLayoutBasePopUpButton,
+                                                    _ inPopUp : AutoLayoutBase_NSPopUpButton,
                                                     minZoom inMinZoom : Int,
                                                     maxZoom inMaxZoom : Int) {
     if (inZoom >= inMinZoom) && (inZoom <= inMaxZoom) {

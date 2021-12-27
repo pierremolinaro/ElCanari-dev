@@ -1133,29 +1133,129 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   }
 
   stackView mBoardRouterInspectorView vStack {
+    GridView2 {
+      add (
+        single: hStack { StaticLabel (title: "Board Settings", bold: yes, size: .small) space}
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Layers", bold: no, size: .small),
+        right: EnumPopUpButton (titles: enum LayerConfiguration.popupTitles, size: .small) {
+          $selectedIndex root.mLayerConfiguration
+          $run changeLayerConfigurationAction
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Clearance", bold: no, size: .small),
+        right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit }
+      )
+      add (
+        single: hStack { StaticLabel (title: "Autorouter Settings", bold: yes, size: .small) space}
+      )
+      add (
+        single: EnumPopUpButton (titles: enum AutorouterPreferredDirections.popupTitles, size: .small) {
+          $selectedIndex root.mAutoRouterPreferredDirections
+        }
+      )
+      add (
+        single: EnumPopUpButton (titles: enum AutorouterSnapAngle.popupTitles, size: .small) {
+          $selectedIndex root.mAutorouterSnapAngle
+        }
+      )
+      add (
+        single: hStack {
+          StaticLabel (title: "Route", bold: no, size: .small)
+          space
+          EnumPopUpButton (titles: enum RouteDirection.popupTitles, size: .small) {
+            $selectedIndex root.mRouteDirection
+          }
+          space
+          EnumPopUpButton (titles: enum RouteOrigin.popupTitles, size: .small) {
+            $selectedIndex root.mRouteOrigin
+          }
+        }
+      )
+      add (single:
+        TabView (equalWidth: yes, size: .small) {
+          addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView :
+            space
+          )
+          addTab (title: "Advanced", tooltip: "Autorouter Advanced Configuration", contentView :
+            space
+          )
+          $selectedPage root.mAutorouterInterfaceMode
+        }
+      )
+      add (
+        single: hStack { StaticLabel (title: "Tracks", bold: yes, size: .small) space}
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Top Layer Tracks", bold: no, size: .small),
+        right: Label (bold: yes, size : .small) { $title root.topSideTrackCountString }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Inner 1 Layer Tracks", bold: no, size: .small),
+        right: Label (bold: yes, size : .small) { $title root.inner1LayerTrackCountString }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Inner 2 Layer Tracks", bold: no, size: .small),
+        right: Label (bold: yes, size : .small) { $title root.inner2LayerTrackCountString }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Inner 3 Layer Tracks", bold: no, size: .small),
+        right: Label (bold: yes, size : .small) { $title root.inner3LayerTrackCountString }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Inner 4 Layer Tracks", bold: no, size: .small),
+        right: Label (bold: yes, size : .small) { $title root.inner4LayerTrackCountString }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Back Layer Tracks", bold: no, size: .small),
+        right: Label (bold: yes, size : .small) { $title root.backSideTrackCountString }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Total", bold: no, size: .small),
+        right: Label (bold: yes, size : .small) { $title root.trackCountString }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Trace Length", bold: no, size: .small),
+        right: hStack {
+          Label (bold: yes, size : .small) { $title root.trackLengthString }
+          CanariUnitPopUpButton (size : .small) { $unit root.mTrackLengthUnit }
+          space
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Via Count", bold: no, size: .small),
+        right: Label (bold: yes, size : .small) { $title root.viaCountString }
+      )
+      add (
+        single: Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
+      )
+    }
     space
   }
-  
 
+//  outlet EBTextObserverField mTrackLengthTextField $valueObserver root.trackLengthString ;
+//  outlet EBPopUpButton mTrackLengthUnitPopUp $selectedTag root.mTrackLengthUnit ;
+  
+  action changeLayerConfigurationAction ;
 
 ////--- Menu items
 //  outlet CanariComponentsMenuItem mSelectComponentsMenuItem $components root.componentsPlacedInBoard ;
 //  outlet CanariNetsMenuItem mSelectNetsMenuItem $nets root.netNamesArray ;
-//
-////--- Router inspector
-//  action changeLayerConfigurationAction ;
-//  outlet CanariLayerPopUpButton mLayerConfigurationPopUp
-//    $layerConfiguration root.mLayerConfiguration
-//    $run changeLayerConfigurationAction
-//  ;
-//
-//  outlet EBPopUpButton mLayoutClearancePopUp $selectedTag root.mLayoutClearanceUnit ;
-//  outlet CanariDimensionTextField mLayoutClearanceTextField
-//     $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit
-//  ;
-//
 //  outlet NSView mSaveDSNFileAuxiliaryView ;
 //  outlet EBSwitch mExportTrackAndViasToDSNSwitch ;
+//  
+//  action launchFreeRouterWithoutAnyDocument ;
+//  outlet EBButton mLaunchFreeRouterWithoutDocumentButton $run launchFreeRouterWithoutAnyDocument ;
+//
+////--- Autorouter Interface
+//  outlet EBSwitch mExportExistingTracksAndViasSwitch $value root.mExportExistingTracksAndVias ;
+//  action launchFreeRouterWithRouterDocument ;
+//  outlet EBButton mLaunchFreeRouterWithDocumentButton $run launchFreeRouterWithRouterDocument ;
+//  action importSESFromBasicTabAction ;
+//  outlet EBButton mImportSESFromBasicTabButton $run importSESFromBasicTabAction ;
+//
 
   stackView mBoardERCInspectorView vStack {
     hStack { space StaticLabel (title: "ERC Checking", bold: yes, size: .small) space}
@@ -1171,36 +1271,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   }
 
   action performERCCheckingAction ;
-  
-//  outlet EBPopUpButton mAutoRouterPreferredDirectionPopUp $selectedIndex root.mAutoRouterPreferredDirections ;
-//  outlet EBPopUpButton mAutorouterSnapAnglePopUp $selectedIndex root.mAutorouterSnapAngle ;
-//  outlet EBPopUpButton mAutoRouterRouteDirectionPopUp $selectedIndex root.mRouteDirection ;
-//  outlet EBPopUpButton mAutoRouterRouteOriginPopUp $selectedIndex root.mRouteOrigin ;
-//  
-//  action launchFreeRouterWithoutAnyDocument ;
-//  outlet EBButton mLaunchFreeRouterWithoutDocumentButton $run launchFreeRouterWithoutAnyDocument ;
-//
-//  outlet EBTextObserverField mTopSideTrackCountTextField $valueObserver root.topSideTrackCountString ;
-//  outlet EBTextObserverField mInner1LayerTrackCountTextField $valueObserver root.inner1LayerTrackCountString ;
-//  outlet EBTextObserverField mInner2LayerTrackCountTextField $valueObserver root.inner2LayerTrackCountString ;
-//  outlet EBTextObserverField mInner3LayerTrackCountTextField $valueObserver root.inner3LayerTrackCountString ;
-//  outlet EBTextObserverField mInner4LayerTrackCountTextField $valueObserver root.inner4LayerTrackCountString ;
-//  outlet EBTextObserverField mBackSideTrackCountTextField $valueObserver root.backSideTrackCountString ;
-//  outlet EBTextObserverField mTrackCountTextField $valueObserver root.trackCountString ;
-//  outlet EBTextObserverField mViaCountTextField $valueObserver root.viaCountString ;
-//  outlet EBTextObserverField mTrackLengthTextField $valueObserver root.trackLengthString ;
-//  outlet EBPopUpButton mTrackLengthUnitPopUp $selectedTag root.mTrackLengthUnit ;
-//
-////--- Autorouter Interface
-//  outlet CanariTabView mAutorouterInterfaceModeTabVView $selectedTabIndex root.mAutorouterInterfaceMode ;
-//  outlet EBSwitch mExportExistingTracksAndViasSwitch $value root.mExportExistingTracksAndVias ;
-//  action launchFreeRouterWithRouterDocument ;
-//  outlet EBButton mLaunchFreeRouterWithDocumentButton $run launchFreeRouterWithRouterDocument ;
-//  action importSESFromBasicTabAction ;
-//  outlet EBButton mImportSESFromBasicTabButton $run importSESFromBasicTabAction ;
-//
-////--- ERC Inspector
-//  outlet NSTextView mERCLogTextView ;
+
 //
 ////--- Board track inspector
 //  outlet CanariViewWithKeyView mBoardTrackInspectorView ;

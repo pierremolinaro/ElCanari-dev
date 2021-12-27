@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutPullDownButton : AutoLayoutBasePopUpButton {
+final class AutoLayoutPullDownButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 

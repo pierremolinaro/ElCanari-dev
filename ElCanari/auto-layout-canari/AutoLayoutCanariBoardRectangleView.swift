@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariBoardRectangleView : AutoLayoutBaseView {
+final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
 
   //····················································································································
 
@@ -22,8 +22,8 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBaseView {
 
   //····················································································································
 
-  override init () {
-    super.init ()
+  init () {
+    super.init (backColor: nil)
 
     self.setContentHuggingPriority (.init(rawValue: 1.0), for: .horizontal)
 

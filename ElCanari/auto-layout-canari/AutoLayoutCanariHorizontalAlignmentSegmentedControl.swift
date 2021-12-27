@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : InternalAutoLayoutSegmentedControl {
+final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase_NSSegmentedControl {
 
   //····················································································································
 

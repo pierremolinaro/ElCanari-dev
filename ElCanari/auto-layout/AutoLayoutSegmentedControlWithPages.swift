@@ -4,7 +4,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedControl {
+final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedControl {
 
   //····················································································································
 

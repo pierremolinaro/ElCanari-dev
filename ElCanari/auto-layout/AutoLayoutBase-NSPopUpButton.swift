@@ -1,5 +1,5 @@
 //
-//  AutoLayoutBasePopUpButton.swift
+//  AutoLayoutBase-NSPopUpButton.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 20/06/2021.
@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBasePopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+class AutoLayoutBase_NSPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 

@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariUnitPopUpButton : AutoLayoutBasePopUpButton {
+final class AutoLayoutCanariUnitPopUpButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 

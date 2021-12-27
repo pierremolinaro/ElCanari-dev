@@ -62,10 +62,6 @@ extern autolayout class GridView4 {
 }
 
 
-extern autolayout class TabView (size: EBControlSize) {
-  func addTab (title: String, contents: view)
-}
-
 extern autolayout class VerticalScrollView (content: view) {
 }
 
@@ -103,6 +99,11 @@ extern autolayout class SegmentedControlWithPages (documentView: view, equalWidt
   $selectedSegment property enum
 }
 
+extern autolayout class TabView (equalWidth: Bool, size: EBControlSize) {
+  func addTab (title: String, tooltip: String, contentView: view)
+  $selectedPage property Int
+}
+
 extern autolayout class SignatureField (size: EBControlSize) {
   $signature transient Int
 }
@@ -120,7 +121,7 @@ extern autolayout class ImageObserverView (size: EBControlSize) $hidden {
 extern autolayout class FlexibleSpace {
 }
 
-extern autolayout class EnumPopUpButton (titles: StringArray, size: EBControlSize) {
+extern autolayout class EnumPopUpButton (titles: StringArray, size: EBControlSize) $run {
   func expandableWidth ()
   $selectedIndex property enum
 }

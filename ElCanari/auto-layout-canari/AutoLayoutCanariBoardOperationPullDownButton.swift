@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariBoardOperationPullDownButton : AutoLayoutBasePopUpButton {
+final class AutoLayoutCanariBoardOperationPullDownButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
