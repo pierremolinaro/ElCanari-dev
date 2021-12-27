@@ -498,6 +498,8 @@ import Cocoa
   //····················································································································
 
   weak final var mBoardView : AutoLayoutGraphicView? = nil
+  weak final var mERCIssueTableView : AutoLayoutCanariIssueTableView? = nil
+  weak final var mERCLogTextView : AutoLayoutTextObserverView? = nil
   weak final var mNetInfoTableView : AutoLayoutCanariNetDescriptionTableView? = nil
   weak final var mProductFileGenerationLogTextView : AutoLayoutTextObserverView? = nil
   weak final var mProductPageSegmentedControl : AutoLayoutSegmentedControlWithPages? = nil
@@ -1508,8 +1510,37 @@ import Cocoa
 
   lazy var mBoardERCInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutFlexibleSpace ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "ERC Checking", bold: true, size: .small)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
     vStackView.appendView (view_0)
+    let view_1 = AutoLayoutCheckbox (title: "Check Clearance between Pads of the same Net", size: .small)
+      .set (width: 200, multiline: true)
+      .bind_value (self.rootObject.mCheckClearanceBetweenPadsOfSameNet_property)
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutButton (title: "Design Rule Check", size: .small)
+      .bind_run (
+        target: self,
+        selector: #selector (AutoLayoutProjectDocument.performERCCheckingAction (_:))
+      )
+    vStackView.appendView (view_2)
+    let view_3 = AutoLayoutVerticalSplitView ()
+    do{
+      let view_3_0 = AutoLayoutTextObserverView ()
+      self.mERCLogTextView = view_3_0 // Outlet
+      view_3.appendView (view_3_0)
+      let view_3_1 = AutoLayoutCanariIssueTableView (hasHideIssueButton: true)
+      self.mERCIssueTableView = view_3_1 // Outlet
+      self.configure_ercIssueTableViewConfigurator (view_3_1) // Configurator
+      view_3.appendView (view_3_1)
+    }
+    vStackView.appendView (view_3)
     return vStackView
   } ()
 
@@ -3107,8 +3138,8 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_72 (), right: self.computeImplicitView_73 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_74 (), right: self.computeImplicitView_75 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_76 (), right: self.computeImplicitView_77 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_78 (), right: self.computeImplicitView_79 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_80 (), right: self.computeImplicitView_81 ())
+      .addCenterYAligned (left: self.computeImplicitView_78 (), right: self.computeImplicitView_79 ())
+      .addCenterYAligned (left: self.computeImplicitView_80 (), right: self.computeImplicitView_81 ())
       .addCenterYAligned (left: self.computeImplicitView_82 (), right: self.computeImplicitView_83 ())
     return view
   }

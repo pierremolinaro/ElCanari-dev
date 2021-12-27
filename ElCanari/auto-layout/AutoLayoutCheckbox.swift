@@ -27,6 +27,7 @@ final class AutoLayoutCheckbox : NSButton, EBUserClassNameProtocol {
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
 
     self.setContentCompressionResistancePriority (.required, for: .vertical)
+    self.setContentHuggingPriority (.required, for: .vertical)
   }
 
   //····················································································································
@@ -51,11 +52,26 @@ final class AutoLayoutCheckbox : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-//  override var intrinsicContentSize : NSSize {
-//    let s = super.intrinsicContentSize
-//    Swift.print ("AutoLayoutCheckbox height \(s)")
-//    return s
-//  }
+  private var mWidth : CGFloat? = nil
+
+  //····················································································································
+
+  func set (width inWidth : Int, multiline inMultiLine : Bool) -> Self {
+    self.mWidth = CGFloat (inWidth)
+//    self.usesSingleLineMode = !inMultiLine
+//    self.cell?.truncatesLastVisibleLine = !inMultiLine
+    return self
+  }
+
+  //····················································································································
+
+  override var intrinsicContentSize : NSSize {
+    var s = super.intrinsicContentSize
+    if let w = self.mWidth {
+      s.width = w
+    }
+    return s
+  }
 
   //····················································································································
 

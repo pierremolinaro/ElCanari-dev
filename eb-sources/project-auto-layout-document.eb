@@ -1136,29 +1136,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     space
   }
   
-  stackView mBoardERCInspectorView vStack {
-    space
-  }
-  
 
-//  outlet CanariSegmentedControl mBoardInspectorSegmentedControl $selectedPage root.mBoardSelectedInspector ;
-//  outlet NSView mBaseBoardInspectorView ;
-//  outlet CanariViewWithKeyView mSelectedObjectsBoardInspectorView ;
-//  outlet CanariViewWithKeyView mUnplacedPackagesBoardInspectorView ;
-//  outlet CanariViewWithKeyView mGridZoomBoardInspectorView ;
-//  outlet CanariViewWithKeyView mDisplayBoardInspectorView ;
-//  outlet CanariViewWithKeyView mRouterBoardInspectorView ;
-//  outlet CanariViewWithKeyView mERCBoardInspectorView ;
-//
-//  outlet CanariDragSourceButton mAddRestrictRectangleButton ;
-//  outlet CanariDragSourceImageButton mAddTextInBoardButton ;
-//  outlet CanariChoiceMenu mLayerForNewTextMenu $selectedIndex root.mBoardLayerForNewText ;
-//  outlet CanariChoiceMenu mLayerForNewLineMenu $selectedIndex root.mBoardLayerForNewLine ;
-//  outlet CanariChoiceMenu mBoardSideForNewRestrictRectangleMenu $selectedIndex root.mBoardSideForNewRestrictRectangle ;
-//  outlet CanariDragSourceButton mAddLineInBoardButton ;
-//  outlet CanariDragSourceImageButton mAddTrackInBoardButton ;
-//  outlet CanariChoiceMenu mBoardSideForNewTrackMenu $selectedIndex root.mBoardSideForNewTrack ;
-//  outlet CanariChoiceMenu mBoardDirectionForNewTrackMenu $selectedIndex root.mDirectionForNewTrack ;
 
 ////--- Menu items
 //  outlet CanariComponentsMenuItem mSelectComponentsMenuItem $components root.componentsPlacedInBoard ;
@@ -1176,14 +1154,24 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //     $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit
 //  ;
 //
-//  outlet EBSwitch mCheckClearanceBetweenPadsOfSameNetSwitch $value root.mCheckClearanceBetweenPadsOfSameNet ;
-//
 //  outlet NSView mSaveDSNFileAuxiliaryView ;
 //  outlet EBSwitch mExportTrackAndViasToDSNSwitch ;
-//
-//  outlet IssueTableView mERCIssueTableView ;
-//  outlet EBButton mHideERCIssueButton ;
-//
+
+  stackView mBoardERCInspectorView vStack {
+    hStack { space StaticLabel (title: "ERC Checking", bold: yes, size: .small) space}
+    Checkbox (title: "Check Clearance between Pads of the same Net", size: .small) {
+      set (width: 200, multiline: yes)
+      $value root.mCheckClearanceBetweenPadsOfSameNet
+    }
+    Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
+    vSplit {
+      TextObserverView [outlet mERCLogTextView]
+      CanariIssueTableView (hasHideIssueButton : yes) [outlet mERCIssueTableView configurator ercIssueTableViewConfigurator]
+    }
+  }
+
+  action performERCCheckingAction ;
+  
 //  outlet EBPopUpButton mAutoRouterPreferredDirectionPopUp $selectedIndex root.mAutoRouterPreferredDirections ;
 //  outlet EBPopUpButton mAutorouterSnapAnglePopUp $selectedIndex root.mAutorouterSnapAngle ;
 //  outlet EBPopUpButton mAutoRouterRouteDirectionPopUp $selectedIndex root.mRouteDirection ;

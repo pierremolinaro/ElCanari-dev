@@ -16,6 +16,8 @@ class AutoLayoutVerticalSplitView : AutoLayoutAbstractSplitView {
 
   init () {
     super.init (dividersAreVertical: false)
+
+    self.setContentHuggingPriority (.defaultLow, for: .vertical)
   }
 
   //····················································································································

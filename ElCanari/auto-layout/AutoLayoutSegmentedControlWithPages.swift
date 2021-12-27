@@ -88,8 +88,16 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
   //····················································································································
 
   func setSelectedSegment (atIndex inIndex : Int) {
-    self.selectedSegment = inIndex
-    self.selectedSegmentDidChange (nil)
+    if self.segmentCount > 0 {
+      if inIndex < 0 {
+        self.selectedSegment = 0
+      }else if inIndex >= self.segmentCount {
+        self.selectedSegment = self.segmentCount - 1
+      }else{
+        self.selectedSegment = inIndex
+      }
+      self.selectedSegmentDidChange (nil)
+    }
   }
 
   //····················································································································
