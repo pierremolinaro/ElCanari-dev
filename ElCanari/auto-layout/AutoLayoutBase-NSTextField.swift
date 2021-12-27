@@ -1,5 +1,5 @@
 //
-//  AutoLayoutBaseTextField.swift
+//  AutoLayoutBase-NSTextField.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 20/12/2021.
@@ -9,10 +9,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutBaseTextField
+//   AutoLayoutBase_NSTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBaseTextField : NSTextField, EBUserClassNameProtocol {
+class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
 
   private let mWidth : CGFloat
 

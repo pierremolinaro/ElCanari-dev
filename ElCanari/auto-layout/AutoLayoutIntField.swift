@@ -10,7 +10,7 @@ import Cocoa
 //   AutoLayoutIntField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutIntField : AutoLayoutBaseTextField, NSTextFieldDelegate {
+final class AutoLayoutIntField : AutoLayoutBase_NSTextField, NSTextFieldDelegate {
 
   //····················································································································
 

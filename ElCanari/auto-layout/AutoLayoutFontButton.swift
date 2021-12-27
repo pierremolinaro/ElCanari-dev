@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutFontButton : AutoLayoutBaseButton {
+final class AutoLayoutFontButton : AutoLayoutBase_NSButton {
 
   //····················································································································
 

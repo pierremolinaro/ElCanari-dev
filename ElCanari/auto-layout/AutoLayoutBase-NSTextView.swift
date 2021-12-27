@@ -1,6 +1,6 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //
-//  InternalAutoLayoutTextView.swift
+//  AutoLayoutBase-NSTextView.swift
 //
 //  Created by Pierre Molinaro on 28/02/2021.
 //
@@ -12,7 +12,7 @@ import Cocoa
 // https://stackoverflow.com/questions/11237622/using-autolayout-with-expanding-nstextviews
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class InternalAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
+final class AutoLayoutBase_NSTextView : NSTextView, EBUserClassNameProtocol {
 
   //····················································································································
 

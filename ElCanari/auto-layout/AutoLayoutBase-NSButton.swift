@@ -1,5 +1,5 @@
 //
-//  AutoLayoutBaseButton.swift
+//  AutoLayoutBase-NSButton.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 20/06/2021.
@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBaseButton : NSButton, EBUserClassNameProtocol {
+class AutoLayoutBase_NSButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 

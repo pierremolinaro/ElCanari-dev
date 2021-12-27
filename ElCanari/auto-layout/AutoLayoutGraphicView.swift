@@ -19,7 +19,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   let mGraphicView = EBGraphicView (frame: NSRect ())
   var mScrollView : EBScrollView? = nil
   fileprivate var mZoomPopUpButton : AutoLayoutBase_NSPopUpButton? = nil
-  fileprivate var mZoomToFitButton : AutoLayoutBaseButton? = nil
+  fileprivate var mZoomToFitButton : AutoLayoutBase_NSButton? = nil
   fileprivate var mHelperTextField : NSTextField? = nil
   fileprivate var mFocusRing : AutoLayoutPrivateFocusRingView? = nil
 
@@ -108,8 +108,8 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  fileprivate func buildZoomToFitButton () -> AutoLayoutBaseButton {
-    let button = AutoLayoutBaseButton (title: "Zoom to Fit", size: .small)
+  fileprivate func buildZoomToFitButton () -> AutoLayoutBase_NSButton {
+    let button = AutoLayoutBase_NSButton (title: "Zoom to Fit", size: .small)
     button.target = self
     button.action = #selector (Self.setZoomToFitButton (_:))
     return button

@@ -36,6 +36,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.mRouteOrigin_property.removeEBObserver (self.mRouteOrigin_property) // Stored property
       oldValue.mAutorouterInterfaceMode_property.removeEBObserver (self.mAutorouterInterfaceMode_property) // Stored property
       oldValue.mExportExistingTracksAndVias_property.removeEBObserver (self.mExportExistingTracksAndVias_property) // Stored property
+      oldValue.mExportExistingTracksAndVias2_property.removeEBObserver (self.mExportExistingTracksAndVias2_property) // Stored property
       oldValue.mTrackLengthUnit_property.removeEBObserver (self.mTrackLengthUnit_property) // Stored property
       oldValue.mLayoutClearance_property.removeEBObserver (self.mLayoutClearance_property) // Stored property
       oldValue.mLayoutClearanceUnit_property.removeEBObserver (self.mLayoutClearanceUnit_property) // Stored property
@@ -165,6 +166,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.mRouteOrigin_property.addEBObserver (self.mRouteOrigin_property) // Stored property
       newValue.mAutorouterInterfaceMode_property.addEBObserver (self.mAutorouterInterfaceMode_property) // Stored property
       newValue.mExportExistingTracksAndVias_property.addEBObserver (self.mExportExistingTracksAndVias_property) // Stored property
+      newValue.mExportExistingTracksAndVias2_property.addEBObserver (self.mExportExistingTracksAndVias2_property) // Stored property
       newValue.mTrackLengthUnit_property.addEBObserver (self.mTrackLengthUnit_property) // Stored property
       newValue.mLayoutClearance_property.addEBObserver (self.mLayoutClearance_property) // Stored property
       newValue.mLayoutClearanceUnit_property.addEBObserver (self.mLayoutClearanceUnit_property) // Stored property
@@ -393,6 +395,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mExportExistingTracksAndVias_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'mExportExistingTracksAndVias2' stored property
+  //····················································································································
+
+  final let mExportExistingTracksAndVias2_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mTrackLengthUnit' stored property
@@ -1493,6 +1501,21 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mExportExistingTracksAndVias_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.mExportExistingTracksAndVias_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mExportExistingTracksAndVias2 simple stored property
+    self.mExportExistingTracksAndVias2_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mExportExistingTracksAndVias2_property.selection {
         case .empty :
           return .empty
         case .multiple :

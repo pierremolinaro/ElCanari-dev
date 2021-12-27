@@ -8,7 +8,7 @@ final class AutoLayoutRTFTextView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  fileprivate let mTextView = InternalAutoLayoutTextView ()
+  fileprivate let mTextView = AutoLayoutBase_NSTextView ()
 
   //····················································································································
 

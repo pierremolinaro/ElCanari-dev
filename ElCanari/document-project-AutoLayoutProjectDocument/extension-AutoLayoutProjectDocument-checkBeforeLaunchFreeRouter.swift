@@ -1,37 +1,61 @@
 //
-//  AutoLayoutBase-NSView.swift
+//  extension-ProjectDocument-checkBeforeLaunchFreeRouter.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 20/12/2021.
+//  Created by Pierre Molinaro on 13/11/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutBase_NSView
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBase_NSView : NSView, EBUserClassNameProtocol {
+extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  init () {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+  func checkSchematicsAndBeforeAndLaunchFreeRouteur (_ inCallBack : @escaping () -> Void) {
+     if !self.rootObject.schematicHasErrorOrWarning! {
+      self.checkAllComponentsAreInBoard (inCallBack)
+    }else{
+      let alert = NSAlert ()
+      alert.messageText = "There are issues in schematics. Continue anyway?"
+      alert.addButton (withTitle: "Cancel")
+      alert.addButton (withTitle: "Continue")
+      alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
+        if response == .alertSecondButtonReturn {
+          self.checkAllComponentsAreInBoard (inCallBack)
+        }
+      }
+    }
   }
 
   //····················································································································
 
-  required init? (coder inCoder : NSCoder) {
-    fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
+  fileprivate func checkAllComponentsAreInBoard (_ inCallBack : @escaping () -> Void) {
+    var unplacedComponentNames = [String] ()
+    for component in self.rootObject.mComponents.values {
+      if !component.isPlacedInBoard! {
+        unplacedComponentNames.append (component.componentName!)
+      }
+    }
+    if unplacedComponentNames.isEmpty {
+      inCallBack ()
+    }else{
+      unplacedComponentNames.sort ()
+      let alert = NSAlert ()
+      alert.messageText = (unplacedComponentNames.count == 1)
+        ? "There is 1 unplaced component in board. Continue anyway?"
+        : "There are \(unplacedComponentNames.count) unplaced components in board. Continue anyway?"
+      alert.informativeText = unplacedComponentNames.joined (separator: ", ")
+      alert.addButton (withTitle: "Cancel")
+      alert.addButton (withTitle: "Continue")
+      alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
+        if response == .alertSecondButtonReturn {
+          inCallBack ()
+        }
+      }
+    }
   }
 
   //····················································································································

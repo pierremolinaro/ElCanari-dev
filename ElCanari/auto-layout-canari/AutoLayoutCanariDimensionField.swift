@@ -10,7 +10,7 @@ import Cocoa
 //   AutoLayoutCanariDimensionField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariDimensionField : AutoLayoutBaseTextField, NSTextFieldDelegate {
+final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField, NSTextFieldDelegate {
 
   //····················································································································
 

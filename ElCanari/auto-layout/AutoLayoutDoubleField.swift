@@ -10,7 +10,7 @@ import Cocoa
 //   AutoLayoutDoubleField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutDoubleField : AutoLayoutBaseTextField, NSTextFieldDelegate {
+final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField, NSTextFieldDelegate {
 
   //····················································································································
 

@@ -22,8 +22,8 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  init () {
-    super.init (backColor: nil)
+  override init () {
+    super.init ()
 
     self.setContentHuggingPriority (.init(rawValue: 1.0), for: .horizontal)
 

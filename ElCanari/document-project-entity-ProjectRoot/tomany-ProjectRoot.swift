@@ -37,6 +37,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.removeEBObserversOf_mRouteOrigin_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mAutorouterInterfaceMode_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mExportExistingTracksAndVias_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mExportExistingTracksAndVias2_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mTrackLengthUnit_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mLayoutClearance_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mLayoutClearanceUnit_fromElementsOfSet (inRemovedSet) // Stored property
@@ -168,6 +169,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.addEBObserversOf_mRouteOrigin_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mAutorouterInterfaceMode_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mExportExistingTracksAndVias_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mExportExistingTracksAndVias2_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mTrackLengthUnit_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mLayoutClearance_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mLayoutClearanceUnit_toElementsOfSet (inAddedSet) // Stored property
@@ -1455,6 +1457,65 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mExportExistingTracksAndVias_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mExportExistingTracksAndVias2' stored property
+  //····················································································································
+
+  private final var mObserversOf_mExportExistingTracksAndVias2 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mExportExistingTracksAndVias2 (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mExportExistingTracksAndVias2.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mExportExistingTracksAndVias2_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mExportExistingTracksAndVias2 (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mExportExistingTracksAndVias2.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mExportExistingTracksAndVias2_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mExportExistingTracksAndVias2_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    if !self.mObserversOf_mExportExistingTracksAndVias2.isEmpty {
+      for managedObject in inSet.values {
+        self.mObserversOf_mExportExistingTracksAndVias2.apply { (_ observer : EBObserverProtocol) in
+          managedObject.mExportExistingTracksAndVias2_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mExportExistingTracksAndVias2_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    self.mObserversOf_mExportExistingTracksAndVias2.apply { (_ observer : EBObserverProtocol) in
+      observer.observedObjectDidChange ()
+      for managedObject in inSet.values {
+        managedObject.mExportExistingTracksAndVias2_property.removeEBObserver (observer)
       }
     }
   }
@@ -9009,6 +9070,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mRouteOrigin (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAutorouterInterfaceMode (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mExportExistingTracksAndVias (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mExportExistingTracksAndVias2 (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mTrackLengthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLayoutClearance (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLayoutClearanceUnit (self.mObserverForWritingPreferences)

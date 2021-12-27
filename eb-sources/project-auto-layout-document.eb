@@ -1177,10 +1177,47 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       add (single:
         TabView (equalWidth: yes, size: .small) {
           addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView :
-            space
+            vStack set (margins: 12) {
+              hStack {
+                space
+                Checkbox (title: "Export Tracks and Vias", size: .small) { $value root.mExportExistingTracksAndVias }
+                space
+              }
+              hStack {
+                space
+                Button (title: "Launch Free Router", size: .small) { $run launchFreeRouterWithRouterDocument }
+                space
+              }
+              hStack {
+                space
+                Button (title: "Import SES File", size: .small) { $run importSESFromBasicTabAction }
+                space
+              }
+            }
           )
           addTab (title: "Advanced", tooltip: "Autorouter Advanced Configuration", contentView :
-            space
+            vStack set (margins: 12) {
+              hStack {
+                space
+                Checkbox (title: "Export Tracks and Vias", size: .small) { $value root.mExportExistingTracksAndVias2 }
+                space
+              }
+              hStack {
+                space
+                Button (title: "Export DSN File…", size: .small) { $run exportDSNFileAction }
+                space
+              }
+              hStack {
+                space
+                Button (title: "Launch Free Router…", size: .small) { $run launchFreeRouterWithoutAnyDocument }
+                space
+              }
+              hStack {
+                space
+                Button (title: "Import SES File…", size: .small) { $run importSESFromExtendedTabAction }
+                space
+              }
+            }
           )
           $selectedPage root.mAutorouterInterfaceMode
         }
@@ -1234,28 +1271,20 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     }
     space
   }
-
-//  outlet EBTextObserverField mTrackLengthTextField $valueObserver root.trackLengthString ;
-//  outlet EBPopUpButton mTrackLengthUnitPopUp $selectedTag root.mTrackLengthUnit ;
   
   action changeLayerConfigurationAction ;
+  action launchFreeRouterWithRouterDocument ;
+  action launchFreeRouterWithoutRouterDocument ;
+  action importSESFromBasicTabAction ;
+  action importSESFromExtendedTabAction ;
+  action launchFreeRouterWithoutAnyDocument ;
+  action exportDSNFileAction ;
 
 ////--- Menu items
 //  outlet CanariComponentsMenuItem mSelectComponentsMenuItem $components root.componentsPlacedInBoard ;
 //  outlet CanariNetsMenuItem mSelectNetsMenuItem $nets root.netNamesArray ;
 //  outlet NSView mSaveDSNFileAuxiliaryView ;
 //  outlet EBSwitch mExportTrackAndViasToDSNSwitch ;
-//  
-//  action launchFreeRouterWithoutAnyDocument ;
-//  outlet EBButton mLaunchFreeRouterWithoutDocumentButton $run launchFreeRouterWithoutAnyDocument ;
-//
-////--- Autorouter Interface
-//  outlet EBSwitch mExportExistingTracksAndViasSwitch $value root.mExportExistingTracksAndVias ;
-//  action launchFreeRouterWithRouterDocument ;
-//  outlet EBButton mLaunchFreeRouterWithDocumentButton $run launchFreeRouterWithRouterDocument ;
-//  action importSESFromBasicTabAction ;
-//  outlet EBButton mImportSESFromBasicTabButton $run importSESFromBasicTabAction ;
-//
 
   stackView mBoardERCInspectorView vStack {
     hStack { space StaticLabel (title: "ERC Checking", bold: yes, size: .small) space}

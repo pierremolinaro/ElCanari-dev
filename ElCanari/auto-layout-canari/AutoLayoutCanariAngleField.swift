@@ -4,7 +4,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariAngleField : AutoLayoutBaseTextField, NSTextFieldDelegate {
+final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField, NSTextFieldDelegate {
 
   //····················································································································
   // Property

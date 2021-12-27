@@ -14,32 +14,29 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  private var mDocumentView = AutoLayoutBase_NSView (backColor: .secondaryLabelColor)
+  private var mDocumentView = MyTabDocumentView ()
   private var mPages = [NSView] ()
-  private var mSegmentedControl : AutoLayoutBase_NSSegmentedControl
+  private var mPopUpButton : AutoLayoutBase_NSPopUpButton
 
   //····················································································································
 
   init (equalWidth inEqualWidth : Bool,
         size inSize : EBControlSize) {
-    self.mSegmentedControl = AutoLayoutBase_NSSegmentedControl (equalWidth: inEqualWidth, size: inSize)
-//    self.mSegmentedControl.cell = MySegmentedControlCell ()
-//    self.mSegmentedControl.cell?.controlTint = . // setControlTint:NSClearControlTint
-    super.init (backColor: .yellow)
-
-//    self.mSegmentedControl.wantsLayer = true
-//    self.mSegmentedControl.layer?.backgroundColor = NSColor.red.cgColor
+    self.mPopUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: inSize)
+    super.init ()
 
     self.addSubview (self.mDocumentView)
-    self.addSubview (self.mSegmentedControl)
-//    self.target = self
-//    self.action = #selector (Self.selectedSegmentDidChange (_:))
+    self.addSubview (self.mPopUpButton)
+
+    self.mPopUpButton.target = self
+    self.mPopUpButton.action = #selector (Self.selectedItemDidChange (_:))
+
   //--- Permanent tab view constraints
-    var c = NSLayoutConstraint (item: self, attribute: .top, relatedBy: .equal, toItem: self.mSegmentedControl, attribute: .top, multiplier: 1.0, constant: 0.0)
+    var c = NSLayoutConstraint (item: self, attribute: .top, relatedBy: .equal, toItem: self.mPopUpButton, attribute: .top, multiplier: 1.0, constant: 0.0)
     var permanentConstraints = [c]
-    c = NSLayoutConstraint (item: self, attribute: .centerX, relatedBy: .equal, toItem: self.mSegmentedControl, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+    c = NSLayoutConstraint (item: self, attribute: .centerX, relatedBy: .equal, toItem: self.mPopUpButton, attribute: .centerX, multiplier: 1.0, constant: 0.0)
     permanentConstraints.append (c)
-    c = NSLayoutConstraint (item: self.mDocumentView, attribute: .top, relatedBy: .equal, toItem: self.mSegmentedControl, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+    c = NSLayoutConstraint (item: self.mDocumentView, attribute: .top, relatedBy: .equal, toItem: self.mPopUpButton, attribute: .centerY, multiplier: 1.0, constant: 0.0)
     permanentConstraints.append (c)
     c = NSLayoutConstraint (item: self.mDocumentView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0)
     permanentConstraints.append (c)
@@ -71,41 +68,52 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
 //  }
 
   //····················································································································
-  // ADD PAGE
+  // ADD TAB
   //····················································································································
 
   final func addTab (title inTitle : String,
                      tooltip inTooltipString : String,
                      contentView inPageView : NSView) -> Self {
-    self.mSegmentedControl.segmentCount += 1
-    self.mSegmentedControl.setLabel (inTitle, forSegment: self.mSegmentedControl.segmentCount - 1)
-    self.mSegmentedControl.setToolTip (inTooltipString, forSegment: self.mSegmentedControl.segmentCount - 1)
-//    if let segmentedCell = self.mSegmentedControl.cell as? NSSegmentedCell {
-//      segmentedCell.setToolTip (inTooltipString, forSegment: self.mSegmentedControl.segmentCount - 1)
-//     // segmentedCell.isOpaque = true
-////      segmentedCell.backgroundStyle = .raised
-//    }
+    self.mPopUpButton.addItem (withTitle: inTitle)
     self.mPages.append (inPageView)
-    self.frame.size = self.intrinsicContentSize
-
-    if self.mSegmentedControl.segmentCount == 1 {
-      self.setSelectedSegment (atIndex: 0)
-    }
     return self
   }
 
   //····················································································································
 
+  private var mCurrentTabView : NSView? = nil
+  private var mConstraints = [NSLayoutConstraint] ()
+
+  //····················································································································
+
   func setSelectedSegment (atIndex inIndex : Int) {
-    if self.mSegmentedControl.segmentCount > 0 {
+    if self.mPopUpButton.numberOfItems > 0 {
       if inIndex < 0 {
-        self.mSegmentedControl.selectedSegment = 0
-      }else if inIndex >= self.mSegmentedControl.segmentCount {
-        self.mSegmentedControl.selectedSegment = self.mSegmentedControl.segmentCount - 1
+        self.mPopUpButton.select (self.mPopUpButton.item (at: 0))
+      }else if inIndex >= self.mPopUpButton.numberOfItems {
+        self.mPopUpButton.select (self.mPopUpButton.item (at: self.mPopUpButton.numberOfItems - 1))
       }else{
-        self.mSegmentedControl.selectedSegment = inIndex
+        self.mPopUpButton.select (self.mPopUpButton.item (at: inIndex))
       }
-      self.selectedSegmentDidChange (nil)
+    //---
+      self.removeConstraints (self.mConstraints)
+      self.mConstraints.removeAll ()
+      if let currentTabView = self.mCurrentTabView {
+        currentTabView.removeFromSuperview ()
+        self.mCurrentTabView = nil
+      }
+      let view = self.mPages [self.mPopUpButton.indexOfSelectedItem]
+      self.mCurrentTabView = view
+      self.addSubview (view)
+      var c = NSLayoutConstraint (item: self, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+      self.mConstraints.append (c)
+      c = NSLayoutConstraint (item: self, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0.0)
+      self.mConstraints.append (c)
+      c = NSLayoutConstraint (item: self, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0.0)
+      self.mConstraints.append (c)
+      c = NSLayoutConstraint (item: self.mPopUpButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0.0)
+      self.mConstraints.append (c)
+      self.addConstraints (self.mConstraints)
     }
   }
 
@@ -113,15 +121,13 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
   // SELECTED TAB DID CHANGE
   //····················································································································
 
-  @objc func selectedSegmentDidChange (_ inSender : Any?) {
-//    let newPage = self.mPages [self.selectedSegment]
-//    let allSubViews = self.mDocumentView.subviews
-//    for view in allSubViews {
-//      self.mDocumentView.removeView (view) // Do not use view.removeFromSuperview ()
-//    }
-//    self.mDocumentView.appendView (newPage)
-//    _ = self.mSelectedTabIndexController?.updateModel (withCandidateValue: self.selectedSegment, windowForSheet: self.window)
-//    self.mSelectedSegmentController?.updateModel (self)
+  @objc func selectedItemDidChange (_ inSender : Any?) {
+    let idx = self.mPopUpButton.indexOfSelectedItem
+    if let controller = self.mSelectedTabIndexController {
+      _ = controller.updateModel (withCandidateValue: idx, windowForSheet: self.window)
+    }else{
+      self.setSelectedSegment (atIndex: idx)
+    }
   }
 
   //····················································································································
@@ -159,12 +165,18 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class MySegmentedControlCell : NSSegmentedCell {
+fileprivate class MyTabDocumentView : AutoLayoutBase_NSView {
 
-  override var isOpaque: Bool { return true }
+  //····················································································································
 
-  override func interiorBackgroundStyle (forSegment segment: Int) -> NSView.BackgroundStyle {
-    return .emphasized
+  override func draw (_ inDirtyRect: NSRect) {
+    NSColor.windowBackgroundColor.setFill ()
+    let bp = NSBezierPath (roundedRect: self.bounds, xRadius: 4.0, yRadius: 4.0)
+    bp.fill ()
   }
 
+  //····················································································································
+
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

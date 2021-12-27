@@ -14,7 +14,7 @@ final class AutoLayoutStaticTextView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  fileprivate let mTextView = InternalAutoLayoutTextView ()
+  fileprivate let mTextView = AutoLayoutBase_NSTextView ()
 
   //····················································································································
 
