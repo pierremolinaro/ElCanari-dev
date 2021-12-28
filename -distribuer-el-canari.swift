@@ -29,6 +29,7 @@ let BUILD_KIND = ProductKind.release
 //--------------------------------------------------------------------------------------------------
 
 let VERSION_CANARI = "1.4.10"
+let MAC_OS_MINIMUM_VERSION = "10.13"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
@@ -124,6 +125,7 @@ struct VersionDescriptor : Codable {
   var news = [String] ()
   var changes = [String] ()
   var date = ""
+  var osmin = ""
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -227,12 +229,12 @@ do{
   var versionDescriptor = VersionDescriptor ()
   versionDescriptor.edSignature = edSignature
   versionDescriptor.length = dmgLength
-//  versionDescriptor.build = buildString
   versionDescriptor.notes = NOTES
   versionDescriptor.bugfixes = BUGFIXES
   versionDescriptor.changes = CHANGES
   versionDescriptor.news = NEWS
   versionDescriptor.date = ISO8601DateFormatter ().string (from: dateConstruction)
+  versionDescriptor.osmin = MAC_OS_MINIMUM_VERSION
   let encoder = JSONEncoder ()
   encoder.outputFormatting = .prettyPrinted
   let jsonData = try encoder.encode (versionDescriptor)
