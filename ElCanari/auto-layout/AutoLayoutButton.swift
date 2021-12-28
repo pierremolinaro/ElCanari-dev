@@ -15,6 +15,23 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
 
   //····················································································································
 
+  override init (title inTitle : String, size inSize : EBControlSize) {
+    super.init (title: inTitle, size: inSize)
+
+    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+    self.setContentCompressionResistancePriority (.required, for: .vertical)
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    self.setContentHuggingPriority (.defaultLow, for: .vertical)
+  }
+
+  //····················································································································
+
+  required init? (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
   private var mWidth : CGFloat? = nil
   private var mHeight : CGFloat? = nil
 

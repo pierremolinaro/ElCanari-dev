@@ -1360,12 +1360,14 @@ import Cocoa
 
   lazy var mBoardContentsPage : AutoLayoutHorizontalStackView = {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (margins: 8)
+      .set (spacing: 0)
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
+      .set (spacing: 0)
     do{
       let view_0_0 = AutoLayoutHorizontalStackView ()
         .set (spacing: 0)
+        .set (margins: 8)
       do{
         let view_0_0_0 = AutoLayoutCanariBoardOperationPullDownButton ()
         self.configure_boardOperationPullDownButtonConfigurator (view_0_0_0) // Configurator
@@ -1392,18 +1394,25 @@ import Cocoa
         view_0_0.appendView (view_0_0_8)
       }
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutSegmentedControlWithPages (documentView: self.mBoardInspectorView, equalWidth: true, size: .small)
-        .expandableWidth ()
-        .addPage (title: "", tooltip: "Selected Element Inspector", pageView: self.mSelectedElementInspectorView)
-        .addPage (title: "", tooltip: "Insert Component in Board", pageView: self.mInsertComponentInBoardView)
-        .addPage (title: "", tooltip: "Display Inspector", pageView: self.mBoardDisplayInspectorView)
-        .addPage (image: "autorouter", tooltip: "Router Inspector", pageView: self.mBoardRouterInspectorView)
-        .addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: self.mBoardERCInspectorView)
-        .bind_selectedPage (self.rootObject.mBoardSelectedInspector_property)
-        .bind_segmentTitle (self.unplacedPackagesCountString_property, segmentIndex:1)
-      self.configure_boardInspectorConfigurator (view_0_1) // Configurator
+      let view_0_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
       view_0.appendView (view_0_1)
-      let view_0_2 = mBoardInspectorView
+      let view_0_2 = AutoLayoutVerticalStackView ()
+        .set (margins: 8)
+      do{
+        let view_0_2_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mBoardInspectorView, equalWidth: true, size: .small)
+          .expandableWidth ()
+          .addPage (title: "", tooltip: "Selected Element Inspector", pageView: self.mSelectedElementInspectorView)
+          .addPage (title: "", tooltip: "Insert Component in Board", pageView: self.mInsertComponentInBoardView)
+          .addPage (title: "", tooltip: "Display Inspector", pageView: self.mBoardDisplayInspectorView)
+          .addPage (image: "autorouter", tooltip: "Router Inspector", pageView: self.mBoardRouterInspectorView)
+          .addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: self.mBoardERCInspectorView)
+          .bind_selectedPage (self.rootObject.mBoardSelectedInspector_property)
+          .bind_segmentTitle (self.unplacedPackagesCountString_property, segmentIndex:1)
+        self.configure_boardInspectorConfigurator (view_0_2_0) // Configurator
+        view_0_2.appendView (view_0_2_0)
+        let view_0_2_1 = mBoardInspectorView
+        view_0_2.appendView (view_0_2_1)
+      }
       view_0.appendView (view_0_2)
     }
     hStackView.appendView (view_0)

@@ -27,7 +27,7 @@ final class AutoLayoutCheckbox : NSButton, EBUserClassNameProtocol {
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
 
     self.setContentCompressionResistancePriority (.required, for: .vertical)
-    self.setContentHuggingPriority (.required, for: .vertical)
+    self.setContentHuggingPriority (.defaultLow, for: .vertical)
   }
 
   //····················································································································

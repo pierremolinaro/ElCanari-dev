@@ -926,9 +926,9 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   transient String unplacedPackagesCountString dependsFrom self.unplacedPackageCount ;
   transient String unplacedPackagesMessageString dependsFrom self.unplacedPackageCount ;
 
-  stackView mBoardContentsPage hStack set (margins: 8) {
-    vStack set (width: 250) {
-      hStack set (spacing: 0) {
+  stackView mBoardContentsPage hStack set (spacing: 0) {
+    vStack set (width: 250) set (spacing: 0) {
+      hStack set (spacing: 0) set (margins: 8) {
         CanariBoardOperationPullDownButton [configurator boardOperationPullDownButtonConfigurator]
         space
         DragSourceButton (tooltip: "Add Restrict Rectangle;  the layers are set by the contextual menu.") [configurator addRestrictRectangleButton]
@@ -939,18 +939,21 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
         space
         DragSourceButton (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.") [configurator addTrackButton]
       }
-      SegmentedControlWithPages (documentView: stackView mBoardInspectorView, equalWidth: yes, size : .small) 
-        [configurator boardInspectorConfigurator] {
-        expandableWidth ()
-        addPage (title: "", tooltip: "Selected Element Inspector", pageView: stackView mSelectedElementInspectorView)
-        addPage (title: "", tooltip: "Insert Component in Board", pageView: stackView mInsertComponentInBoardView)
-        addPage (title: "", tooltip: "Display Inspector", pageView: stackView mBoardDisplayInspectorView)
-        addPage (image: "autorouter", tooltip: "Router Inspector", pageView: stackView mBoardRouterInspectorView)
-        addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: stackView mBoardERCInspectorView)
-        $selectedPage root.mBoardSelectedInspector
-        $segmentTitle self.unplacedPackagesCountString (segmentIndex : 1)
+      separator
+      vStack set (margins: 8) {
+        SegmentedControlWithPages (documentView: stackView mBoardInspectorView, equalWidth: yes, size : .small) 
+          [configurator boardInspectorConfigurator] {
+          expandableWidth ()
+          addPage (title: "", tooltip: "Selected Element Inspector", pageView: stackView mSelectedElementInspectorView)
+          addPage (title: "", tooltip: "Insert Component in Board", pageView: stackView mInsertComponentInBoardView)
+          addPage (title: "", tooltip: "Display Inspector", pageView: stackView mBoardDisplayInspectorView)
+          addPage (image: "autorouter", tooltip: "Router Inspector", pageView: stackView mBoardRouterInspectorView)
+          addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: stackView mBoardERCInspectorView)
+          $selectedPage root.mBoardSelectedInspector
+          $segmentTitle self.unplacedPackagesCountString (segmentIndex : 1)
+        }
+        stackViewRef mBoardInspectorView
       }
-      stackViewRef mBoardInspectorView
     }
     separator
     GraphicView (minZoom: 10, maxZoom: 20_000) [outlet mBoardView configurator boardView] {

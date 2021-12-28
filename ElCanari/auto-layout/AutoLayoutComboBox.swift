@@ -26,6 +26,7 @@ final class AutoLayoutComboBox : NSComboBox, EBUserClassNameProtocol, NSComboBox
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
+
     self.delegate = self
 //    self.isContinuous = true
   }
