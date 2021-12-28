@@ -1185,7 +1185,9 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
               }
               hStack {
                 space
-                Button (title: "Launch Free Router", size: .small) { $run launchFreeRouterWithRouterDocument }
+                ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 48, height: 48) {
+                  $run launchFreeRouterWithRouterDocument
+                }
                 space
               }
               hStack {
@@ -1209,7 +1211,9 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
               }
               hStack {
                 space
-                Button (title: "Launch Free Router…", size: .small) { $run launchFreeRouterWithoutAnyDocument }
+                ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 48, height: 48) {
+                  $run launchFreeRouterWithoutAnyDocument
+                }
                 space
               }
               hStack {
@@ -1279,12 +1283,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   action importSESFromExtendedTabAction ;
   action launchFreeRouterWithoutAnyDocument ;
   action exportDSNFileAction ;
-
-////--- Menu items
-//  outlet CanariComponentsMenuItem mSelectComponentsMenuItem $components root.componentsPlacedInBoard ;
-//  outlet CanariNetsMenuItem mSelectNetsMenuItem $nets root.netNamesArray ;
-//  outlet NSView mSaveDSNFileAuxiliaryView ;
-//  outlet EBSwitch mExportTrackAndViasToDSNSwitch ;
 
   stackView mBoardERCInspectorView vStack {
     hStack { space StaticLabel (title: "ERC Checking", bold: yes, size: .small) space}

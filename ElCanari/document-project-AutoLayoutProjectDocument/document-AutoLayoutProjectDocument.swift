@@ -3303,7 +3303,7 @@ import Cocoa
       do{
         let view_1_0 = AutoLayoutFlexibleSpace ()
         view_1.appendView (view_1_0)
-        let view_1_1 = AutoLayoutButton (title: "Launch Free Router", size: .small)
+        let view_1_1 = AutoLayoutImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 48, height: 48)
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutProjectDocument.launchFreeRouterWithRouterDocument (_:))
@@ -3368,7 +3368,7 @@ import Cocoa
       do{
         let view_2_0 = AutoLayoutFlexibleSpace ()
         view_2.appendView (view_2_0)
-        let view_2_1 = AutoLayoutButton (title: "Launch Free Router…", size: .small)
+        let view_2_1 = AutoLayoutImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 48, height: 48)
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutProjectDocument.launchFreeRouterWithoutAnyDocument (_:))

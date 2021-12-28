@@ -166,6 +166,9 @@
 		CF0B7B78250270540080642D /* file-metadata-text-format.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B7B76250270540080642D /* file-metadata-text-format.swift */; };
 		CF0B7B7A250271370080642D /* file-metadata-binary-format.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B7B79250271370080642D /* file-metadata-binary-format.swift */; };
 		CF0B7B7B250271370080642D /* file-metadata-binary-format.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B7B79250271370080642D /* file-metadata-binary-format.swift */; };
+		CF0E2733277B1DE300014F89 /* AutoLayoutImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E2732277B1DE300014F89 /* AutoLayoutImageButton.swift */; };
+		CF0E2734277B1DE300014F89 /* AutoLayoutImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E2732277B1DE300014F89 /* AutoLayoutImageButton.swift */; };
+		CF0E2735277B1DE300014F89 /* AutoLayoutImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E2732277B1DE300014F89 /* AutoLayoutImageButton.swift */; };
 		CF0E9CFE2229A5FA00124F04 /* entity-PackageInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E9CFD2229A5FA00124F04 /* entity-PackageInDevice.swift */; };
 		CF0E9CFF2229A5FA00124F04 /* entity-PackageInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E9CFD2229A5FA00124F04 /* entity-PackageInDevice.swift */; };
 		CF0E9D072229AC0E00124F04 /* transient-PackageInDevice-versionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E9D062229AC0E00124F04 /* transient-PackageInDevice-versionString.swift */; };
@@ -4582,6 +4585,7 @@
 		CF0AE88F21E0F56E00BE7EE2 /* enum-MetadataStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-MetadataStatus.swift"; sourceTree = "<group>"; };
 		CF0B7B76250270540080642D /* file-metadata-text-format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "file-metadata-text-format.swift"; sourceTree = "<group>"; };
 		CF0B7B79250271370080642D /* file-metadata-binary-format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "file-metadata-binary-format.swift"; sourceTree = "<group>"; };
+		CF0E2732277B1DE300014F89 /* AutoLayoutImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutImageButton.swift; sourceTree = "<group>"; };
 		CF0E9CFD2229A5FA00124F04 /* entity-PackageInDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-PackageInDevice.swift"; sourceTree = "<group>"; };
 		CF0E9D062229AC0E00124F04 /* transient-PackageInDevice-versionString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageInDevice-versionString.swift"; sourceTree = "<group>"; };
 		CF0EE34322C8C478008CB4A7 /* enum-ComponentSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-ComponentSide.swift"; sourceTree = "<group>"; };
@@ -7363,6 +7367,7 @@
 				CF26AF7D25EAB687000E3080 /* AutoLayoutHelpButton.swift */,
 				CF7B7396268C8BC00058FCD1 /* AutoLayoutHorizontalSplitView.swift */,
 				CF9C602F25CAB4FA00A00D5C /* AutoLayoutHorizontalStackView.swift */,
+				CF0E2732277B1DE300014F89 /* AutoLayoutImageButton.swift */,
 				CF8FCA3F25CD8C030036764B /* AutoLayoutImageObserverView.swift */,
 				CFCC545125D2E63E009C186D /* AutoLayoutIntField.swift */,
 				CF670EC6267911240057FCDE /* AutoLayoutIntObserverField.swift */,
@@ -9264,6 +9269,7 @@
 				CF7A0E8223007136008121AA /* transient-PackageRoot-counterClockNumbering.swift in Sources */,
 				CF711D27275E1AAB00280069 /* entity-DeviceMasterPadInProject.swift in Sources */,
 				CFEABD03267F591400B715F9 /* AutoLayoutBase-NSButton.swift in Sources */,
+				CF0E2733277B1DE300014F89 /* AutoLayoutImageButton.swift in Sources */,
 				CF39CCFC268CC0B4004971F9 /* transient-AutoLayoutDeviceDocument-mStatusMessage.swift in Sources */,
 				CF07781A23521CB800F56EAB /* PropertyKind.swift in Sources */,
 				CF71F9281B3EA3DF00FB5049 /* EBPopUpButton.swift in Sources */,
@@ -10721,6 +10727,7 @@
 				CF4253AD26A18C530029A581 /* AutoLayoutStaticTextView.swift in Sources */,
 				CF670EB02678A84A0057FCDE /* AutoLayoutObjectInspectorView.swift in Sources */,
 				CFE85A8D21A5C1C100991A66 /* CanariPoint.swift in Sources */,
+				CF0E2734277B1DE300014F89 /* AutoLayoutImageButton.swift in Sources */,
 				CF39CCFD268CC0B4004971F9 /* transient-AutoLayoutDeviceDocument-mStatusMessage.swift in Sources */,
 				CFEABD04267F591400B715F9 /* AutoLayoutBase-NSButton.swift in Sources */,
 				CF7A0E8323007136008121AA /* transient-PackageRoot-counterClockNumbering.swift in Sources */,
@@ -12535,6 +12542,7 @@
 				CF14418E2755451B006C3E1F /* AutoLayoutIntSlider.swift in Sources */,
 				CF9C640B25CABE5C00A00D5C /* transient-PackageRoot-freePadNumbering.swift in Sources */,
 				CF12F04D277A60C90066D4B0 /* action-AutoLayoutProjectDocument-exportDSNFileAction.swift in Sources */,
+				CF0E2735277B1DE300014F89 /* AutoLayoutImageButton.swift in Sources */,
 				CF711D41275E1AC900280069 /* tomany-DevicePadAssignmentInProject.swift in Sources */,
 				CFB82C0E276B89BE00BAD56E /* AutoLayoutTableView.swift in Sources */,
 				CF9C640C25CABE5C00A00D5C /* transient-MasterPadInDevice-padNumberDisplay.swift in Sources */,

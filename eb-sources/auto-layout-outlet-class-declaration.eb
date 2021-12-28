@@ -405,4 +405,7 @@ extern autolayout class ElCanariSelectionPopUpButton (size: EBControlSize) $hidd
   $selectedNameInArray property String, transient StringArray
 }
 
+extern autolayout class ImageButton (imageName: String, tooltip: String, width: Int, height: Int) $run {
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
