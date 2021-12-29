@@ -106,7 +106,7 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
     let leftColumn = AutoLayoutVerticalStackView ()
     self.mSearchField = AutoLayoutSearchField (width: 300, size: .regular).bind_value (preferences_artworkDialogFilterString_property, sendContinously: true)
     leftColumn.appendView (self.mSearchField)
-    leftColumn.appendFlexibleSpace ()
+ //   leftColumn.appendFlexibleSpace ()
     twoColumns.appendView (leftColumn)
     self.mTableView = AutoLayoutTableView (size: .small, addControlButtons: false)
     self.mTableView.configure (
