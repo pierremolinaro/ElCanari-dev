@@ -45,15 +45,15 @@ final class EBSwitch : NSButton, EBUserClassNameProtocol {
     switch inObject.selection {
     case .empty :
       self.state = NSControl.StateValue.off
-      self.enableFromValueBinding (false)
+      self.enableFromOldValueBinding (false)
     case .multiple :
       self.allowsMixedState = true
       self.state = NSControl.StateValue.mixed
-      self.enableFromValueBinding (true)
+      self.enableFromOldValueBinding (true)
     case .single (let v) :
       self.allowsMixedState = false
       self.state = v ? NSControl.StateValue.on : NSControl.StateValue.off
-      self.enableFromValueBinding (true)
+      self.enableFromOldValueBinding (true)
     }
   }
 

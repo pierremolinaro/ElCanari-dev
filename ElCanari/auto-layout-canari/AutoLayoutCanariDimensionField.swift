@@ -14,40 +14,15 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField, NSTextF
 
   //····················································································································
 
-//  init (width inWidth : Int, size inSize : EBControlSize) {
-//    super.init (frame: NSRect ())
-//    noteObjectAllocation (self)
-//    self.translatesAutoresizingMaskIntoConstraints = false
-//
-//    self.setContentCompressionResistancePriority (.required, for: .vertical)
-//
-//    self.controlSize = inSize.cocoaControlSize
-//    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-//    self.alignment = .center
-//  }
+  init (width inWidth : Int, size inSize : EBControlSize) {
+    super.init (optionalWidth: inWidth, size: inSize)
+  }
 
   //····················································································································
 
-//  required init? (coder inCoder : NSCoder) {
-//    fatalError ("init(coder:) has not been implemented")
-//  }
-
-  //····················································································································
-
-//  deinit {
-//    noteObjectDeallocation (self)
-//  }
-  
-  //····················································································································
-  //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible
-  //  So we need to define intrinsicContentSize.width explicitly
-  //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-
-  //····················································································································
-
-//  override var intrinsicContentSize : NSSize {
-//    let s = super.intrinsicContentSize
-//    return NSSize (width: 64.0, height: s.height)
-//  }
+  required init? (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
 
   //····················································································································
 
@@ -114,7 +89,7 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField, NSTextF
 
 final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObservablePropertyController {
 
-  private var mOutlet: AutoLayoutCanariDimensionField
+  private weak var mOutlet : AutoLayoutCanariDimensionField?
   private var mDimension : EBReadWriteProperty_Int
   private var mUnit : EBReadOnlyProperty_Int
 
@@ -122,17 +97,17 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
 
   init (dimension : EBReadWriteProperty_Int,
         unit : EBReadOnlyProperty_Int,
-        outlet : AutoLayoutCanariDimensionField) {
+        outlet inOutlet : AutoLayoutCanariDimensionField) {
     self.mDimension = dimension
     self.mUnit = unit
-    self.mOutlet = outlet
+    self.mOutlet = inOutlet
     super.init (
       observedObjects: [dimension, unit],
-      callBack: { outlet.updateOutlet () }
+      callBack: { [weak inOutlet] in inOutlet?.updateOutlet () }
     )
   //--- Target
-    self.mOutlet.target = self
-    self.mOutlet.action = #selector (Self.textFieldAction(_:))
+    inOutlet.target = self
+    inOutlet.action = #selector (Self.textFieldAction(_:))
   //--- Number formatter
     let numberFormatter = NumberFormatter ()
     numberFormatter.formatterBehavior = .behavior10_4
@@ -141,33 +116,35 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
     numberFormatter.minimumFractionDigits = 2
     numberFormatter.maximumFractionDigits = 2
     numberFormatter.isLenient = true
-    self.mOutlet.formatter = numberFormatter
+    inOutlet.formatter = numberFormatter
   }
 
   //····················································································································
 
-  override func unregister () {
-    super.unregister ()
-    self.mOutlet.target = nil
-    self.mOutlet.action = nil
-  }
+//  override func unregister () {
+//    super.unregister ()
+//    self.mOutlet.target = nil
+//    self.mOutlet.action = nil
+//  }
 
   //····················································································································
 
   fileprivate func updateOutlet () {
-    switch combine (self.mDimension.selection, unit: self.mUnit.selection) {
-    case .empty :
-      self.mOutlet.placeholderString = "No Selection"
-      self.mOutlet.stringValue = ""
-      self.mOutlet.enable (fromValueBinding: false)
-    case .multiple :
-      self.mOutlet.placeholderString = "Multiple Selection"
-      self.mOutlet.stringValue = ""
-      self.mOutlet.enable (fromValueBinding: true)
-    case .single (let propertyValue) :
-      self.mOutlet.placeholderString = nil
-      self.mOutlet.doubleValue = propertyValue
-      self.mOutlet.enable (fromValueBinding: true)
+    if let outlet = self.mOutlet {
+      switch combine (self.mDimension.selection, unit: self.mUnit.selection) {
+      case .empty :
+        outlet.placeholderString = "No Selection"
+        outlet.stringValue = ""
+        outlet.enable (fromValueBinding: false, outlet.enabledBindingController)
+      case .multiple :
+        outlet.placeholderString = "Multiple Selection"
+        outlet.stringValue = ""
+        outlet.enable (fromValueBinding: true, outlet.enabledBindingController)
+      case .single (let propertyValue) :
+        outlet.placeholderString = nil
+        outlet.doubleValue = propertyValue
+        outlet.enable (fromValueBinding: true, outlet.enabledBindingController)
+      }
     }
   }
 
@@ -178,7 +155,9 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
     case .empty, .multiple :
       return false
     case .single (let unit) :
-      if let formatter = self.mOutlet.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.mOutlet.stringValue) {
+      if let formatter = self.mOutlet?.formatter as? NumberFormatter,
+         let stringValue = self.mOutlet?.stringValue,
+         let outletValueNumber = formatter.number (from: stringValue) {
         let value = Int ((outletValueNumber.doubleValue * Double (unit)).rounded ())
         return self.mDimension.validateAndSetProp (value, windowForSheet: inSender.window)
       }else{

@@ -50,25 +50,11 @@ class AutoLayoutAbstractSplitView : NSSplitView, EBUserClassNameProtocol {
   //····················································································································
 
   @discardableResult final func appendView (_ inView : NSView) -> Self {
- //   inView.translatesAutoresizingMaskIntoConstraints = true
     self.addSubview (inView)
     self.setHoldingPriority (.init (rawValue: 250.0), forSubviewAt: self.subviews.count - 1)
-//    self.setHoldingPriority (.required, forSubviewAt: self.subviews.count - 1)
-//    if self.subviews.count > 1 {
-//      for i in 1 ..< self.subviews.count {
-//        self.setPosition (CGFloat (i) / CGFloat (self.subviews.count), ofDividerAt: i)
-//      }
-//    }
     return self
   }
 
-//  //····················································································································
-//
-//  override func layout () {
-//    super.layout ()
-//    Swift.print ("layout \(self.frame)")
-//  }
-//
   //····················································································································
   //   DRAW
   //····················································································································
@@ -88,6 +74,20 @@ class AutoLayoutAbstractSplitView : NSSplitView, EBUserClassNameProtocol {
       bp.stroke ()
     }
     super.draw (inDirtyRect)
+  }
+
+  //····················································································································
+  //  $hidden binding
+  //····················································································································
+
+  private var mHiddenBindingController : HiddenBindingController? = nil
+  var hiddenBindingController : HiddenBindingController? { return self.mHiddenBindingController }
+
+  //····················································································································
+
+  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
+    return self
   }
 
   //····················································································································

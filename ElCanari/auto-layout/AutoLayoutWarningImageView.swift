@@ -41,6 +41,20 @@ final class AutoLayoutWarningImageView : NSImageView, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  //  $hidden binding
+  //····················································································································
+
+  private var mHiddenBindingController : HiddenBindingController? = nil
+  var hiddenBindingController : HiddenBindingController? { return self.mHiddenBindingController }
+
+  //····················································································································
+
+  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
+    return self
+  }
+
+  //····················································································································
 
 }
 

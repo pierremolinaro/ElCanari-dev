@@ -17,14 +17,14 @@ extension NSControl : EnabledMultipleBindingProtocol {
 
   //····················································································································
 
-  func enableFromValueBinding (_ inValue : Bool) {
+  func enableFromOldValueBinding (_ inValue : Bool) {
     gEnabledFromValueBindingDictionary [self] = inValue
     self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
   }
 
   //····················································································································
 
-  func enableFromEnableBinding (_ inValue : Bool) {
+  func enableFromOldEnableBinding (_ inValue : Bool) {
     gEnabledBindingValueDictionary [self] = inValue
     self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
   }

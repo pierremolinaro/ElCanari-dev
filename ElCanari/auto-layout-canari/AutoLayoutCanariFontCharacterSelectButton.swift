@@ -2,7 +2,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariFontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
+final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton {
   private var mCharacterSelectionPopover : NSPopover? = nil
   private var mSelectionView : FontCharacterSelectView? = nil
   private var mDefinedCharacterSet = Set <Int> ()
@@ -18,24 +18,18 @@ final class AutoLayoutCanariFontCharacterSelectButton : NSButton, EBUserClassNam
   //····················································································································
 
   init () {
-    super.init (frame: NSRect ())
+    super.init (title: "", size: .small)
     noteObjectAllocation (self)
 
-    self.controlSize = .small
-    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+//    self.controlSize = .small
+//    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
   }
 
   //····················································································································
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -127,13 +121,13 @@ final class AutoLayoutCanariFontCharacterSelectButton : NSButton, EBUserClassNam
   fileprivate func updateCodePoint (_ object : EBReadOnlyProperty_Int) {
     switch object.selection {
     case .empty :
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
       self.title = ""
     case .single (let v) :
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
       self.mSelectedCharacterCode = v
     case .multiple :
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
       self.title = ""
     }
   }

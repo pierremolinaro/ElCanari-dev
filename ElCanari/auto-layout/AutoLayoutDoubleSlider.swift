@@ -8,7 +8,7 @@ import Cocoa
 //   AutoLayoutDoubleSlider
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutDoubleSlider : NSSlider, EBUserClassNameProtocol {
+final class AutoLayoutDoubleSlider : AutoLayoutBase_NSSlider {
 
   private var mWidth : Int
   
@@ -16,16 +16,14 @@ final class AutoLayoutDoubleSlider : NSSlider, EBUserClassNameProtocol {
 
   init (width inWidth : Int, min inMin : Int, max inMax : Int, ticks inTickCount : Int) {
     self.mWidth = inWidth
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init (min: inMin, max: inMax, ticks: inTickCount)
 
     if inWidth < 0 {
       _ = self.expandableWidth ()
     }
-    self.minValue = Double (inMin)
-    self.maxValue = Double (inMax)
-    self.numberOfTickMarks = inTickCount
+//    self.minValue = Double (inMin)
+//    self.maxValue = Double (inMax)
+//    self.numberOfTickMarks = inTickCount
     self.allowsTickMarkValuesOnly = true
   }
 
@@ -33,12 +31,6 @@ final class AutoLayoutDoubleSlider : NSSlider, EBUserClassNameProtocol {
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -68,10 +60,10 @@ final class AutoLayoutDoubleSlider : NSSlider, EBUserClassNameProtocol {
     switch object.selection {
     case .empty, .multiple :
       self.stringValue = "-"
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .single (let propertyValue) :
       self.doubleValue = propertyValue
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
     }
   }
 

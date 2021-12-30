@@ -12,14 +12,17 @@ class EBObservablePropertyController : EBOutletEvent {
 
   //····················································································································
 
-  final private var mPrivateObservedObjects : [EBObservableObjectProtocol]
+  final private var mPrivateObservedObjects = [WeakObservedObject] ()
 
   //····················································································································
 
-  init (observedObjects : [EBObservableObjectProtocol], callBack: @escaping () -> Void) {
-    self.mPrivateObservedObjects = observedObjects
+  init (observedObjects : [EBObservableObjectProtocol], callBack inCallBack : Optional <() -> Void>) {
+    for object in observedObjects {
+      self.mPrivateObservedObjects.append (WeakObservedObject (object))
+    }
+//    self.mPrivateObservedObjects = observedObjects
     super.init ()
-    self.mEventCallBack = callBack
+    self.mEventCallBack = inCallBack
     for object in observedObjects {
       object.addEBObserver (self)
     }
@@ -28,10 +31,28 @@ class EBObservablePropertyController : EBOutletEvent {
   //····················································································································
 
   override func unregister () {
-    for object in self.mPrivateObservedObjects {
-      object.removeEBObserver (self)
+    for weakObject in self.mPrivateObservedObjects {
+      weakObject.mWeakObservedObject?.removeEBObserver (self)
     }
     self.mPrivateObservedObjects.removeAll ()
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate struct WeakObservedObject {
+
+  //····················································································································
+
+  weak var mWeakObservedObject : EBObservableObjectProtocol?
+
+  //····················································································································
+
+  init (_ inObservedObject : EBObservableObjectProtocol) {
+    self.mWeakObservedObject = inObservedObject
   }
 
   //····················································································································

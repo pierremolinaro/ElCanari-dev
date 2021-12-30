@@ -4,16 +4,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
+final class AutoLayoutStaticLabel : AutoLayoutBase_NSTextField {
 
   //····················································································································
   // INIT
   //····················································································································
 
   init (title inTitle : String, bold inBold : Bool, size inSize : EBControlSize) {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init (optionalWidth: nil, size: inSize)
 
     self.stringValue = inTitle
     self.isBezeled = false
@@ -22,9 +20,9 @@ final class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
 
     self.isEditable = false
     self.alignment = .right
-    self.controlSize = inSize.cocoaControlSize
-    let size = NSFont.systemFontSize (for: self.controlSize)
-    self.font = inBold ? NSFont.boldSystemFont (ofSize:size) : NSFont.systemFont (ofSize: size)
+//    self.controlSize = inSize.cocoaControlSize
+//    let size = NSFont.systemFontSize (for: self.controlSize)
+//    self.font = inBold ? NSFont.boldSystemFont (ofSize:size) : NSFont.systemFont (ofSize: size)
     self.frame.size = self.intrinsicContentSize
   }
 
@@ -32,12 +30,6 @@ final class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -66,10 +58,10 @@ final class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func set (alignment inAlignment : TextAlignment) -> Self {
-    self.alignment = inAlignment.cocoaAlignment
-    return self
-  }
+//  final func set (alignment inAlignment : TextAlignment) -> Self {
+//    self.alignment = inAlignment.cocoaAlignment
+//    return self
+//  }
 
   //····················································································································
 

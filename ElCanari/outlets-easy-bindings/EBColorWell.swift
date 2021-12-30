@@ -35,13 +35,13 @@ final class EBColorWell : NSColorWell, EBUserClassNameProtocol {
   fileprivate func updateColor (_ object : EBReadOnlyProperty_NSColor) {
     switch object.selection {
     case .empty :
-      self.enableFromValueBinding (false)
+      self.enableFromOldValueBinding (false)
       self.stringValue = "-"
     case .single (let v) :
-      self.enableFromValueBinding (true)
+      self.enableFromOldValueBinding (true)
       self.color = v
     case .multiple :
-      self.enableFromValueBinding (false)
+      self.enableFromOldValueBinding (false)
       self.stringValue = "-"
     }
   }

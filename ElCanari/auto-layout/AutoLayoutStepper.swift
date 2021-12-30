@@ -12,14 +12,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutStepper : NSStepper, EBUserClassNameProtocol {
+final class AutoLayoutStepper : AutoLayoutBase_NSStepper {
 
   //····················································································································
 
-  init () {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+  override init () {
+    super.init ()
 
     self.minValue = 32.0
     self.maxValue = 65535
@@ -39,15 +37,9 @@ final class AutoLayoutStepper : NSStepper, EBUserClassNameProtocol {
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
   override func ebCleanUp () {
-    self.mColorController?.unregister ()
-    self.mColorController = nil
+    self.mValueController?.unregister ()
+    self.mValueController = nil
     super.ebCleanUp ()
   }
 
@@ -55,7 +47,7 @@ final class AutoLayoutStepper : NSStepper, EBUserClassNameProtocol {
 
   @objc func action (_ sender : AutoLayoutStepper) {
     let v = Int (self.doubleValue.rounded (.toNearestOrEven))
-    _ = self.mColorController?.updateModel (withCandidateValue: v, windowForSheet: self.window)
+    _ = self.mValueController?.updateModel (withCandidateValue: v, windowForSheet: self.window)
   }
 
 
@@ -72,16 +64,16 @@ final class AutoLayoutStepper : NSStepper, EBUserClassNameProtocol {
   fileprivate func updateStepper (from inObject : EBReadOnlyProperty_Int) {
     switch inObject.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .single (let v) :
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
       self.doubleValue = Double (v)
     }
   }
 
   //····················································································································
 
-  private var mColorController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mValueController : EBGenericReadWritePropertyController <Int>? = nil
   var mSendContinously = false
 
   //····················································································································
@@ -89,7 +81,7 @@ final class AutoLayoutStepper : NSStepper, EBUserClassNameProtocol {
   final func bind_value (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
     NSColorPanel.shared.showsAlpha = true
     self.mSendContinously = sendContinously
-    self.mColorController = EBGenericReadWritePropertyController <Int> (
+    self.mValueController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateStepper (from: inObject)  }
     )

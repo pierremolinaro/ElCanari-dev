@@ -18,8 +18,8 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField, NSTextFieldDelegate
 
   //····················································································································
 
-  override init (width inWidth : Int, size inSize : EBControlSize) {
-    super.init (width: inWidth, size: inSize)
+  init (width inWidth : Int, size inSize : EBControlSize) {
+    super.init (optionalWidth: inWidth, size: inSize)
 
   //--- Target
     self.target = self
@@ -151,15 +151,15 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField, NSTextFieldDelegate
   private func update (from model : EBReadOnlyProperty_Int) {
     switch model.selection {
     case .empty :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
       self.placeholderString = "No Selection"
       self.stringValue = ""
     case .single (let v) :
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
       self.placeholderString = nil
       self.intValue = Int32 (v)
     case .multiple :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
     }

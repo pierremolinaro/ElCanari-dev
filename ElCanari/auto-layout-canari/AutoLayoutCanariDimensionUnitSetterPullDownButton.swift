@@ -10,17 +10,15 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariDimensionUnitSetterPullDownButton : NSPopUpButton, EBUserClassNameProtocol {
+final class AutoLayoutCanariDimensionUnitSetterPullDownButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
   init (size inSize : EBControlSize) {
-    super.init (frame: NSRect (), pullsDown: true)
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init (pullsDown: true,size: inSize)
 
-    self.controlSize = inSize.cocoaControlSize
-    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+//    self.controlSize = inSize.cocoaControlSize
+//    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
     if let cell = self.cell as? NSPopUpButtonCell {
       cell.arrowPosition = .arrowAtBottom
@@ -40,12 +38,6 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : NSPopUpButton, E
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -138,10 +130,10 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : NSPopUpButton, E
 
   //····················································································································
 
-  override func updateAutoLayoutUserInterfaceStyle () {
-    super.updateAutoLayoutUserInterfaceStyle ()
-    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-  }
+//  override func updateAutoLayoutUserInterfaceStyle () {
+//    super.updateAutoLayoutUserInterfaceStyle ()
+//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+//  }
 
   //····················································································································
 

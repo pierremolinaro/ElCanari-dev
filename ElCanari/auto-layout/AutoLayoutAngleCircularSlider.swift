@@ -13,17 +13,15 @@ import Cocoa
 //   AutoLayoutAngleCircularSlider
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutAngleCircularSlider : NSSlider, EBUserClassNameProtocol {
+final class AutoLayoutAngleCircularSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
   init (size inSize : EBControlSize) {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init (min: 0, max: 3600, ticks: 360)
 
-    self.minValue = 0.0
-    self.maxValue = 360.0
+//    self.minValue = 0.0
+//    self.maxValue = 360.0
 
     self.controlSize = inSize.cocoaControlSize
     self.sliderType = .circular
@@ -33,12 +31,6 @@ final class AutoLayoutAngleCircularSlider : NSSlider, EBUserClassNameProtocol {
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -70,10 +62,10 @@ final class AutoLayoutAngleCircularSlider : NSSlider, EBUserClassNameProtocol {
     switch object.selection {
     case .empty, .multiple :
       self.stringValue = "-"
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .single (let propertyValue) :
       self.doubleValue = propertyValue
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
     }
   }
 
@@ -84,11 +76,11 @@ final class AutoLayoutAngleCircularSlider : NSSlider, EBUserClassNameProtocol {
   fileprivate func updateAngleValue (_ object : EBReadOnlyProperty_Int) {
     switch object.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
       self.doubleValue = 0.0
     case .single (let propertyValue) :
       self.doubleValue = Double ((90_000 + 360_000 - propertyValue) % 360_000) / 1000.0
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
     }
   }
 

@@ -4,14 +4,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
+final class AutoLayoutVersionField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
   init (size inSize : EBControlSize) {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init (optionalWidth: nil, size: inSize)
 
     self.isEditable = false
     self.isEnabled = true
@@ -19,20 +17,14 @@ final class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
     self.isBordered = false
     self.alignment = .center
 
-    self.controlSize = inSize.cocoaControlSize
-    self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize), weight: .semibold)
+//    self.controlSize = inSize.cocoaControlSize
+//    self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize), weight: .semibold)
   }
 
   //····················································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -70,10 +62,10 @@ final class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
   private func updateVersion (from inObject : EBReadOnlyProperty_Int) {
     switch inObject.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
       self.stringValue = "—"
     case .single (let v) :
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
       self.stringValue = String (v)
     }
   }

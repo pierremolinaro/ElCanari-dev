@@ -254,7 +254,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     if mTransmitSelectionChangeToDelegate {
       self.mDelegate?.tableViewSelectionDidChange (selectedRows: self.mTableView.selectedRowIndexes)
     }
-    self.mRemoveButton?.enable (fromEnableBinding: !self.mTableView.selectedRowIndexes.isEmpty)
+    self.mRemoveButton?.enable (fromEnableBinding: !self.mTableView.selectedRowIndexes.isEmpty, self.mTableView.enabledBindingController)
   }
 
   //····················································································································
@@ -383,6 +383,20 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
     if let array = inSender?.draggingPasteboard.readObjects (forClasses: [NSURL.self]) as? [URL] {
       self.mDragConcludeCallBack? (array)
     }
+  }
+
+  //····················································································································
+  //  $enabled binding
+  //····················································································································
+
+  private var mEnabledBindingController : EnabledBindingController? = nil
+  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
+
+  //····················································································································
+
+  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
+    return self
   }
 
   //····················································································································

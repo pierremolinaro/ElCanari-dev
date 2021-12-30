@@ -97,9 +97,9 @@ final class AutoLayoutPullDownButton : AutoLayoutBase_NSPopUpButton {
   private func update (from model : EBReadOnlyProperty_StringArray) {
     switch model.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .single (let titleArray) :
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
       while self.numberOfItems > 1 {
         self.removeItem (at: self.numberOfItems - 1)
       }

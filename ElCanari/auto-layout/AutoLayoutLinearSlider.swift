@@ -14,18 +14,13 @@ import Cocoa
 //   AutoLayoutLinearSlider
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutLinearSlider : NSSlider, EBUserClassNameProtocol {
+final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  init (min inMin : Int, max inMax : Int, ticks inMarkCount : Int) {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+  override init (min inMin : Int, max inMax : Int, ticks inMarkCount : Int) {
+    super.init (min: inMin, max: inMax, ticks: inMarkCount)
 
-    self.minValue = Double (inMin)
-    self.maxValue = Double (inMax)
-    self.numberOfTickMarks = inMarkCount
     self.controlSize = .small
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.sliderType = .linear
@@ -35,12 +30,6 @@ final class AutoLayoutLinearSlider : NSSlider, EBUserClassNameProtocol {
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -77,10 +66,10 @@ final class AutoLayoutLinearSlider : NSSlider, EBUserClassNameProtocol {
     switch object.selection {
     case .empty, .multiple :
       self.stringValue = "-"
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .single (let propertyValue) :
       self.doubleValue = propertyValue
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
     }
   }
 
@@ -107,10 +96,10 @@ final class AutoLayoutLinearSlider : NSSlider, EBUserClassNameProtocol {
     switch object.selection {
     case .empty, .multiple :
       self.stringValue = "-"
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .single (let propertyValue) :
       self.doubleValue = Double (propertyValue)
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
     }
   }
 

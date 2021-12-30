@@ -62,15 +62,29 @@ final class AutoLayoutColorWell : NSColorWell, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  //  $enabled binding
+  //····················································································································
+
+  private var mEnabledBindingController : EnabledBindingController? = nil
+  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
+
+  //····················································································································
+
+  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
+    return self
+  }
+
+  //····················································································································
   //  color binding
   //····················································································································
 
   fileprivate func updateColor (from inObject : EBReadOnlyProperty_NSColor) {
     switch inObject.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .single (let v) :
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
       self.color = v
     }
   }

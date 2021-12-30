@@ -248,7 +248,7 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
       self.mArtworkPath.toolTip = selectedEntry.mFullPath
       self.mArtworkTitle.stringValue = selectedEntry.artworkTitle ()
       self.mArtworkLayout.stringValue = selectedEntry.artworkLayoutString ()
-      self.mOkButton.enable (fromEnableBinding: true)
+      self.mOkButton.enable (fromEnableBinding: true, nil)
       self.mNoSelectedArtworkMessage.isHidden = true
       self.mArtworkDetailView.isHidden = false
       self.mSelectedEntry = selectedEntry
@@ -256,7 +256,7 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
       self.mArtworkStatus.stringValue = ""
       self.mArtworkPath.stringValue = ""
       self.mArtworkPath.toolTip = ""
-      self.mOkButton.enable (fromEnableBinding: false)
+      self.mOkButton.enable (fromEnableBinding: false, nil)
       self.mNoSelectedArtworkMessage.isHidden = false
       self.mArtworkDetailView.isHidden = true
       self.mSelectedEntry = nil

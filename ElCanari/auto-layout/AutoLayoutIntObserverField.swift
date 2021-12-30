@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutIntObserverField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutIntObserverField : NSTextField, EBUserClassNameProtocol {
+final class AutoLayoutIntObserverField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
@@ -21,9 +21,7 @@ final class AutoLayoutIntObserverField : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
   init (bold inBold : Bool, size inSize : EBControlSize) {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init (optionalWidth: nil, size: inSize)
 
     self.controlSize = inSize.cocoaControlSize
     let s = NSFont.systemFontSize (for: self.controlSize)
@@ -51,12 +49,6 @@ final class AutoLayoutIntObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
   override func ebCleanUp () {
     self.mController?.unregister ()
     self.mController = nil
@@ -72,10 +64,10 @@ final class AutoLayoutIntObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func set (alignment inAlignment : TextAlignment) -> Self {
-    self.alignment = inAlignment.cocoaAlignment
-    return self
-  }
+//  final func set (alignment inAlignment : TextAlignment) -> Self {
+//    self.alignment = inAlignment.cocoaAlignment
+//    return self
+//  }
 
   //····················································································································
   //  observedValue binding
@@ -98,15 +90,15 @@ final class AutoLayoutIntObserverField : NSTextField, EBUserClassNameProtocol {
   private func update (from model : EBReadOnlyProperty_Int) {
     switch model.selection {
     case .empty :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
       self.placeholderString = "—"
       self.stringValue = ""
     case .single (let v) :
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
       self.placeholderString = nil
       self.intValue = Int32 (v)
     case .multiple :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
     }

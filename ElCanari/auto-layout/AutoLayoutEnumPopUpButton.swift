@@ -39,10 +39,10 @@ final class AutoLayoutEnumPopUpButton : AutoLayoutBase_NSPopUpButton {
 
   func updateIndex (_ object : EBReadWriteObservableEnumProtocol) {
     if let v = object.rawValue () {
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
       self.selectItem (at: v)
     }else{
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     }
   }
 

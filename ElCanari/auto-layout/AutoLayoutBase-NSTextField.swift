@@ -14,12 +14,18 @@ import Cocoa
 
 class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
 
-  private let mWidth : CGFloat
+  //····················································································································
+
+  private let mWidth : CGFloat?
 
   //····················································································································
 
-  init (width inWidth : Int, size inSize : EBControlSize) {
-    self.mWidth = CGFloat (inWidth)
+  init (optionalWidth inOptionalWidth : Int?, size inSize : EBControlSize) {
+    if let w = inOptionalWidth {
+      self.mWidth = CGFloat (w)
+    }else{
+      self.mWidth = nil
+    }
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -68,10 +74,40 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
   //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-
   //····················································································································
 
-  final override var intrinsicContentSize : NSSize {
-    let s = super.intrinsicContentSize
-    // Swift.print ("AutoLayoutTextField height \(s.height)")
-    return NSSize (width: self.mWidth, height: s.height)
+  override var intrinsicContentSize : NSSize {
+    var s = super.intrinsicContentSize
+    if let w = self.mWidth {
+      s.width = w
+    }
+    return s
+  }
+
+  //····················································································································
+  //  $enabled binding
+  //····················································································································
+
+  private var mEnabledBindingController : EnabledBindingController? = nil
+  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
+
+  //····················································································································
+
+  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
+    return self
+  }
+
+  //····················································································································
+  //  $hidden binding
+  //····················································································································
+
+  private var mHiddenBindingController : HiddenBindingController? = nil
+  var hiddenBindingController : HiddenBindingController? { return self.mHiddenBindingController }
+
+  //····················································································································
+
+  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
+    return self
   }
 
   //····················································································································

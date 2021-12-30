@@ -68,6 +68,20 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  //  $enabled binding
+  //····················································································································
+
+  private var mEnabledBindingController : EnabledBindingController? = nil
+  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
+
+  //····················································································································
+
+  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
+    return self
+  }
+
+  //····················································································································
   //  image binding
   //····················································································································
 
@@ -75,13 +89,13 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
     switch object.selection {
     case .empty :
       self.image = nil
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .multiple :
       self.image = nil
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .single (let propertyValue) :
       self.image = propertyValue
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
     }
   }
 
@@ -107,13 +121,13 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
     switch object.selection {
     case .empty :
       self.toolTip = nil
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .multiple :
       self.toolTip = nil
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .single (let propertyValue) :
       self.toolTip = propertyValue
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
     }
   }
 
@@ -128,6 +142,20 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
       observedObjects: [object],
       callBack: { [weak self] in self?.updateTooltip (object) }
     )
+    return self
+  }
+
+  //····················································································································
+  //  $hidden binding
+  //····················································································································
+
+  private var mHiddenBindingController : HiddenBindingController? = nil
+  var hiddenBindingController : HiddenBindingController? { return self.mHiddenBindingController }
+
+  //····················································································································
+
+  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
     return self
   }
 

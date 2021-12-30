@@ -16,8 +16,8 @@ final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField, NSTextField
   // INIT
   //····················································································································
 
-  override init (width inWidth : Int, size inSize : EBControlSize) {
-    super.init (width: inWidth, size: inSize)
+  init (width inWidth : Int, size inSize : EBControlSize) {
+    super.init (optionalWidth: inWidth, size: inSize)
 
     self.delegate = self
     self.target = self
@@ -83,15 +83,15 @@ final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField, NSTextField
   private func update (from model : EBReadWriteProperty_Int) {
     switch model.selection {
     case .empty :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
       self.placeholderString = "No Selection"
       self.stringValue = ""
     case .single (let v) :
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
       self.placeholderString = nil
       self.doubleValue = Double (v) / 1000.0
     case .multiple :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
     }

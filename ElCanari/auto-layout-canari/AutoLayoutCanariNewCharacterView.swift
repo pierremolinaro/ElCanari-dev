@@ -86,7 +86,7 @@ private class InternalNewCharacterView : NSView, EBUserClassNameProtocol {
 
   init (okButton inOkButton : AutoLayoutSheetDefaultOkButton) {
     self.mOkButton = inOkButton
-    inOkButton.enable (fromEnableBinding: false)
+    inOkButton.enable (fromEnableBinding: false, nil)
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -214,10 +214,10 @@ private class InternalNewCharacterView : NSView, EBUserClassNameProtocol {
     let code = (line + 2) * 16 + column
     if mImplementedCharacterSet.contains (code) {
       self.mSelectedCharacter = nil
-      self.mOkButton?.enable (fromEnableBinding: false)
+      self.mOkButton?.enable (fromEnableBinding: false, nil)
     }else{
       self.mSelectedCharacter = code
-      self.mOkButton?.enable (fromEnableBinding: true)
+      self.mOkButton?.enable (fromEnableBinding: true, nil)
     }
   }
 

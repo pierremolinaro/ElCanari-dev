@@ -52,20 +52,18 @@ class AutoLayoutBase_NSSegmentedControl : NSSegmentedControl, EBUserClassNamePro
   }
 
   //····················································································································
+  //  $enabled binding
+  //····················································································································
 
-//  override final func resizeSubviews (withOldSize oldSize : NSSize) {
-//    super.resizeSubviews (withOldSize: oldSize)
-//    //Swift.print ("\(self.bounds)")
-//    if #available (OSX 10.13, *) {
-//    }else{
-//      if self.mEqualWidth, self.segmentCount > 1 {
-//        let width = self.bounds.size.width / CGFloat (self.segmentCount) - 3.0
-//        for i in 0 ..< self.segmentCount {
-//          self.setWidth (width, forSegment: i)
-//        }
-//      }
-//    }
-//  }
+  private var mEnabledBindingController : EnabledBindingController? = nil
+  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
+
+  //····················································································································
+
+  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
+    return self
+  }
 
   //····················································································································
 

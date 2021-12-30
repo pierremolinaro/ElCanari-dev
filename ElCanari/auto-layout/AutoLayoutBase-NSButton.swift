@@ -45,6 +45,34 @@ class AutoLayoutBase_NSButton : NSButton, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  //  $enabled binding
+  //····················································································································
+
+  private var mEnabledBindingController : EnabledBindingController? = nil
+  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
+
+  //····················································································································
+
+  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
+    return self
+  }
+
+  //····················································································································
+  //  $hidden binding
+  //····················································································································
+
+  private var mHiddenBindingController : HiddenBindingController? = nil
+  var hiddenBindingController : HiddenBindingController? { return self.mHiddenBindingController }
+
+  //····················································································································
+
+  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
+    return self
+  }
+
+  //····················································································································
 
 }
 

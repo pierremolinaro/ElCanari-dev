@@ -70,7 +70,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
   //····················································································································
 
   private func buildMenu () {
-    self.enable (fromValueBinding: self.mDocument != nil)
+    self.enable (fromValueBinding: self.mDocument != nil, nil)
     self.removeAllItems ()
     self.autoenablesItems = false
     if self.mReferencedMasterPadArray.count == 1 {

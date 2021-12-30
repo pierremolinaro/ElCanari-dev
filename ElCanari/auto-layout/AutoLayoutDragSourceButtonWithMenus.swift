@@ -1,8 +1,8 @@
 //
-//  AutoLayoutDragSourceButton.swift
-//  ElCanari-Debug-temporary
+//  AutoLayoutDragSourceButtonWithMenus.swift
+//  ElCanari
 //
-//  Created by Pierre Molinaro on 08/02/2021.
+//  Created by Pierre Molinaro on 30/12/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -17,7 +17,7 @@ fileprivate let PULL_DOWN_ARROW_TOP_MARGIN : CGFloat = 4.0
 // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSource {
+final class AutoLayoutDragSourceButtonWithMenus : AutoLayoutBase_NSButton, NSDraggingSource {
 
   //····················································································································
 
@@ -375,7 +375,6 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
       path.fill ()
     }
   }
-
 
   //····················································································································
   //   PULL DOWN MENU DETECTION RECTANGLE

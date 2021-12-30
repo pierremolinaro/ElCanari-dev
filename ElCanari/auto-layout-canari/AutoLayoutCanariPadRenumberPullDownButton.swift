@@ -39,19 +39,6 @@ final class AutoLayoutCanariPadRenumberPullDownButton : AutoLayoutBase_NSPopUpBu
   }
 
   //····················································································································
-
-//  deinit {
-//    noteObjectDeallocation (self)
-//  }
-
-  //····················································································································
-
-//  override func updateAutoLayoutUserInterfaceStyle () {
-//    super.updateAutoLayoutUserInterfaceStyle ()
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//  }
-  
-  //····················································································································
   // MARK: -
   //····················································································································
 
@@ -85,7 +72,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : AutoLayoutBase_NSPopUpBu
   private func update (fromPadNumber model : EBReadOnlyProperty_Int) {
     switch model.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .single (let v) :
       self.mCurrentPadNumber = v
       self.buildMenu ()
@@ -95,7 +82,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : AutoLayoutBase_NSPopUpBu
   //····················································································································
 
   private func buildMenu () {
-    self.enable (fromValueBinding: self.mDocument != nil)
+    self.enable (fromValueBinding: self.mDocument != nil, self.enabledBindingController)
     self.removeAllItems ()
     self.autoenablesItems = false
     if let document = self.mDocument {

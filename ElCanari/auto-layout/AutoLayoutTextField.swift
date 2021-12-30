@@ -12,9 +12,7 @@ import Cocoa
 //   AutoLayoutTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol {
-
-  private let mWidth : CGFloat
+final class AutoLayoutTextField : AutoLayoutBase_NSTextField {
 
   //····················································································································
   //  User information
@@ -25,15 +23,12 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
   init (width inWidth : Int, size inSize : EBControlSize) {
-    self.mWidth = CGFloat (inWidth)
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init (optionalWidth: inWidth, size: inSize)
 
     self.setContentCompressionResistancePriority (.required, for: .vertical)
 
-    self.controlSize = inSize.cocoaControlSize
-    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+//    self.controlSize = inSize.cocoaControlSize
+//    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.alignment = .center
 
     self.target = self
@@ -48,24 +43,18 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
+//  final func set (alignment inAlignment : TextAlignment) -> Self {
+//    self.alignment = inAlignment.cocoaAlignment
+//    return self
+//  }
 
   //····················································································································
 
-  final func set (alignment inAlignment : TextAlignment) -> Self {
-    self.alignment = inAlignment.cocoaAlignment
-    return self
-  }
-
-  //····················································································································
-
-  func multiLine () -> Self {
-    self.usesSingleLineMode = false
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
-    return self
-  }
+//  func multiLine () -> Self {
+//    self.usesSingleLineMode = false
+//    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
+//    return self
+//  }
 
   //····················································································································
   //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible
@@ -73,11 +62,11 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol {
   //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-
   //····················································································································
 
-  override var intrinsicContentSize : NSSize {
-    let s = super.intrinsicContentSize
-    // Swift.print ("AutoLayoutTextField height \(s.height)")
-    return NSSize (width: self.mWidth, height: s.height)
-  }
+//  override var intrinsicContentSize : NSSize {
+//    let s = super.intrinsicContentSize
+//    // Swift.print ("AutoLayoutTextField height \(s.height)")
+//    return NSSize (width: self.mWidth, height: s.height)
+//  }
 
   //····················································································································
 
@@ -120,15 +109,15 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol {
     case .empty :
       self.placeholderString = "No Selection"
       self.stringValue = ""
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .multiple :
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
     case .single (let propertyValue) :
       self.placeholderString = nil
       self.stringValue = propertyValue
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
     }
   }
 

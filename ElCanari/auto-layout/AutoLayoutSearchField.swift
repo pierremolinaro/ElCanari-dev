@@ -100,6 +100,19 @@ final class AutoLayoutSearchField : NSSearchField, EBUserClassNameProtocol, NSSe
   }
 
   //····················································································································
+  //  $enabled binding
+  //····················································································································
+
+  var mEnabledBindingController : EnabledBindingController? = nil
+
+  //····················································································································
+
+  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
+    return self
+  }
+
+  //····················································································································
   //  value binding
   //····················································································································
 
@@ -108,16 +121,16 @@ final class AutoLayoutSearchField : NSSearchField, EBUserClassNameProtocol, NSSe
     case .empty :
       self.placeholderString = "No Selection"
       self.stringValue = ""
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.mEnabledBindingController)
     case .multiple :
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.mEnabledBindingController)
     case .single (let propertyValue) :
       self.placeholderString = nil
       self.stringValue = propertyValue
       self.mDelegate? (propertyValue)
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.mEnabledBindingController)
     }
   }
 

@@ -8,45 +8,37 @@
 
 import Cocoa
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Hidden binding
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private var gHiddenBindingDictionary = [NSView : EBObservablePropertyController] ()
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
+////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//
 extension NSView {
-
-  //····················································································································
-
-  override func ebCleanUp () {
-    self.autoLayoutCleanUp ()
-    super.ebCleanUp ()
-    for view in self.subviews {
-      view.ebCleanUp ()
-    }
-  }
-
-  //····················································································································
-
+//  //····················································································································
+//
   @objc func autoLayoutCleanUp () {
-    gHiddenBindingDictionary [self] = nil
   }
 
   //····················································································································
-  //  $hidden binding
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class HiddenBindingController : EBObservablePropertyController {
+
   //····················································································································
 
-  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+  private weak var mOutlet : NSView?
+
+  //····················································································································
+
+  init (_ inExpression : EBMultipleBindingBooleanExpression, _ inOutlet : NSView) {
+    self.mOutlet = inOutlet
     var modelArray = [EBObservableObjectProtocol] ()
     inExpression.addModelsTo (&modelArray)
-    let controller = EBObservablePropertyController (
+    super.init (
       observedObjects: modelArray,
-      callBack: { [weak self] in self?.updateHiddenState (from: inExpression.compute ()) }
+      callBack: nil
     )
-    gHiddenBindingDictionary [self] = controller
-    return self
+    self.mEventCallBack = { [weak self] in self?.updateHiddenState (from: inExpression.compute ()) }
   }
 
   //····················································································································
@@ -54,11 +46,11 @@ extension NSView {
   fileprivate func updateHiddenState (from inObject : EBSelection <Bool>) {
     switch inObject {
     case .empty, .multiple :
-      self.isHidden = true
+      self.mOutlet?.isHidden = false
     case .single (let v) :
-      self.isHidden = v
+      self.mOutlet?.isHidden = v
     }
-    if let windowContentView = self.window?.contentView as? AutoLayoutWindowContentView {
+    if let windowContentView = self.mOutlet?.window?.contentView as? AutoLayoutWindowContentView {
       windowContentView.triggerNextKeyViewSettingComputation ()
     }
   }

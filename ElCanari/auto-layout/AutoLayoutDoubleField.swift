@@ -14,12 +14,14 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField, NSTextFieldDeleg
 
   //····················································································································
 
+//  private let mWidth : CGFloat
   private let mNumberFormatter = NumberFormatter ()
 
   //····················································································································
 
-  override init (width inWidth : Int, size inSize : EBControlSize) {
-    super.init (width: inWidth, size: inSize)
+  init (width inWidth : Int, size inSize : EBControlSize) {
+//    self.mWidth = CGFloat (inWidth)
+    super.init (optionalWidth: inWidth, size: inSize)
 
   //--- Target
     self.target = self
@@ -151,15 +153,15 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField, NSTextFieldDeleg
   private func update (from model : EBReadWriteProperty_Double) {
     switch model.selection {
     case .empty :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
       self.placeholderString = "No Selection"
       self.stringValue = ""
     case .single (let v) :
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
       self.placeholderString = nil
       self.doubleValue = CGFloat (v)
     case .multiple :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
     }

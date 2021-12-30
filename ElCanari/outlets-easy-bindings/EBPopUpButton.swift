@@ -86,15 +86,15 @@ class EBPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   fileprivate func updateOutlet (_ object : EBReadOnlyProperty_Int) {
     switch object.selection {
     case .empty :
-      self.enableFromValueBinding (false)
+      self.enableFromOldValueBinding (false)
     case .single (let v) :
-      self.enableFromValueBinding (true)
+      self.enableFromOldValueBinding (true)
       let result = self.selectItem (withTag: v)
       if !result {
         presentErrorWindow (#file, #line, "no item with tag: " + String (v))
       }
     case .multiple :
-      self.enableFromValueBinding (false)
+      self.enableFromOldValueBinding (false)
     }
   }
 
@@ -102,10 +102,10 @@ class EBPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   fileprivate func updateIndex (_ object : EBReadWriteObservableEnumProtocol) {
     if let v = object.rawValue () {
-      self.enableFromValueBinding (true)
+      self.enableFromOldValueBinding (true)
       self.selectItem (at: v)
     }else{
-      self.enableFromValueBinding (false)
+      self.enableFromOldValueBinding (false)
     }
   }
 

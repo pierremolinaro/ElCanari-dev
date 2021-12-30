@@ -12,14 +12,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCheckbox : NSButton, EBUserClassNameProtocol {
+final class AutoLayoutCheckbox : AutoLayoutBase_NSButton {
 
   //····················································································································
 
-  init (title inTitle : String, size inSize : EBControlSize) {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+  override init (title inTitle : String, size inSize : EBControlSize) {
+    super.init (title: inTitle, size: inSize)
 
     self.setButtonType (.switch)
     self.title = inTitle
@@ -34,12 +32,6 @@ final class AutoLayoutCheckbox : NSButton, EBUserClassNameProtocol {
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -88,15 +80,15 @@ final class AutoLayoutCheckbox : NSButton, EBUserClassNameProtocol {
     switch inObject.selection {
     case .empty :
       self.state = NSControl.StateValue.off
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .multiple :
       self.allowsMixedState = true
       self.state = NSControl.StateValue.mixed
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
     case .single (let v) :
       self.allowsMixedState = false
       self.state = v ? NSControl.StateValue.on : NSControl.StateValue.off
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
     }
   }
 

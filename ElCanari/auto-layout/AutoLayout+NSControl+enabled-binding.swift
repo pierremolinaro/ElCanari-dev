@@ -9,56 +9,54 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Enabled binding
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private var gEnabledFromValueBindingDictionary = [NSControl : Bool] ()
-private var gEnabledBindingValueDictionary = [NSControl : Bool] ()
-private var gEnabledBindingControllerDictionary = [NSControl : EBObservablePropertyController] ()
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension NSControl {
 
   //····················································································································
 
-  override func autoLayoutCleanUp () {
-    gEnabledFromValueBindingDictionary [self] = nil
-    gEnabledBindingValueDictionary [self] = nil
-    if let controller = gEnabledBindingControllerDictionary [self] {
-      controller.unregister ()
-      gEnabledBindingControllerDictionary [self] = nil
+  final func enable (fromValueBinding inValue : Bool, _ inEnableBindingController : EnabledBindingController?) {
+    if let controller = inEnableBindingController {
+      controller.enable (fromValueBinding: inValue)
+    }else{
+      self.isEnabled = inValue
     }
-    super.autoLayoutCleanUp ()
   }
 
   //····················································································································
-  //  $enabled binding
+
+  final func enable (fromEnableBinding inValue : Bool, _ inEnableBindingController : EnabledBindingController?) {
+    if let controller = inEnableBindingController {
+      controller.enable (fromEnableBinding: inValue)
+    }else{
+      self.isEnabled = inValue
+    }
+  }
+
   //····················································································································
 
-  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class EnabledBindingController : EBObservablePropertyController {
+
+  //····················································································································
+
+  private weak var mControlOutlet : NSControl?
+  private var mIsEnabledFromValueBinding = true
+  private var mIsEnabledFromEnabledBinding = true
+
+  //····················································································································
+
+  init (_ inExpression : EBMultipleBindingBooleanExpression, _ inOutlet : NSControl) {
+    self.mControlOutlet = inOutlet
     var modelArray = [EBObservableObjectProtocol] ()
     inExpression.addModelsTo (&modelArray)
-    let controller = EBObservablePropertyController (
+    super.init (
       observedObjects: modelArray,
-      callBack: { [weak self] in self?.updateEnableState (from: inExpression.compute ()) }
+      callBack: nil
     )
-    gEnabledBindingControllerDictionary [self] = controller
-    return self
-  }
-
-  //····················································································································
-
-  func enable (fromValueBinding inValue : Bool) {
-    gEnabledFromValueBindingDictionary [self] = inValue
-    self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
-  }
-
-  //····················································································································
-
-  func enable (fromEnableBinding inValue : Bool) {
-    gEnabledBindingValueDictionary [self] = inValue
-    self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
+    self.mEventCallBack = { [weak self] in self?.updateEnableState (from: inExpression.compute ()) }
   }
 
   //····················································································································
@@ -70,13 +68,26 @@ extension NSControl {
     case .single (let v) :
       self.enable (fromEnableBinding: v)
     }
-    if let windowContentView = self.window?.contentView as? AutoLayoutWindowContentView {
+    if let windowContentView = self.mControlOutlet?.window?.contentView as? AutoLayoutWindowContentView {
       windowContentView.triggerNextKeyViewSettingComputation ()
     }
   }
 
   //····················································································································
 
+  func enable (fromEnableBinding inValue : Bool) {
+    self.mIsEnabledFromEnabledBinding = inValue
+    self.mControlOutlet?.isEnabled = self.mIsEnabledFromValueBinding && self.mIsEnabledFromEnabledBinding
+  }
+
+  //····················································································································
+
+  func enable (fromValueBinding inValue : Bool) {
+    self.mIsEnabledFromValueBinding = inValue
+    self.mControlOutlet?.isEnabled = self.mIsEnabledFromValueBinding && self.mIsEnabledFromEnabledBinding
+  }
+
+  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

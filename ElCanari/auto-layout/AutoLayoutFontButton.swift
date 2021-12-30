@@ -94,10 +94,10 @@ final class AutoLayoutFontButton : AutoLayoutBase_NSButton {
   fileprivate func updateFont (_ object : EBReadOnlyProperty_NSFont) {
     switch object.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
       self.title = "—"
     case .single (let v) :
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
       self.mySetFont (font: v)
     }
   }

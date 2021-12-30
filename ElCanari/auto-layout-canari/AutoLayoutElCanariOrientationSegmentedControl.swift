@@ -37,12 +37,12 @@ final class AutoLayoutElCanariOrientationSegmentedControl : AutoLayoutBase_NSSeg
   func updateTag (from inObject : EBReadWriteProperty_QuadrantRotation) {
     switch inObject.selection {
     case .single (let v) :
-      self.enable (fromValueBinding: true)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
       self.selectedSegment = v.rawValue
     case .empty :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     case .multiple :
-      self.enable (fromValueBinding: false)
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     }
   }
 

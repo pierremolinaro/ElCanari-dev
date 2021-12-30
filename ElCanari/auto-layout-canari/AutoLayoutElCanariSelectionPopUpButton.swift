@@ -10,38 +10,52 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutElCanariSelectionPopUpButton : AutoLayoutPopUpButton {
+final class AutoLayoutElCanariSelectionPopUpButton : AutoLayoutBase_NSPopUpButton {
+
+  //····················································································································
+
+  init (size inSize : EBControlSize) {
+    super.init (pullsDown: false, size: inSize)
+  }
+
+  //····················································································································
+
+  required init? (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
 
   //····················································································································
   //  format binding
   //····················································································································
 
-  fileprivate func updateOutlet (_ inSelectedName : EBReadOnlyProperty_String,
-                                 _ inNameArray : EBReadOnlyProperty_StringArray) {
-    switch (inSelectedName.selection, inNameArray.selection) {
-    case (.single (let selectedName), .single (let netArray)) :
-      self.removeAllItems ()
-      do{
-        self.addItem (withTitle: "—")
-        self.lastItem?.target = self
-        self.lastItem?.action = #selector (Self.nameSelectionAction (_:))
-        self.lastItem?.isEnabled = true
-        self.select (self.lastItem)
-      }
-      let sortedNetArray = netArray.sorted ()
-      for name in sortedNetArray {
-        self.addItem (withTitle: name)
-        self.lastItem?.target = self
-        self.lastItem?.action = #selector (Self.nameSelectionAction (_:))
-        self.lastItem?.isEnabled = true
-        if name == selectedName {
+  fileprivate func updateOutlet (_ inOptionalSelectedName : EBReadOnlyProperty_String?,
+                                 _ inOptionalNameArray : EBReadOnlyProperty_StringArray?) {
+    if let selectedName = inOptionalSelectedName, let nameArray = inOptionalNameArray {
+      switch (selectedName.selection, nameArray.selection) {
+      case (.single (let selectedName), .single (let netArray)) :
+        self.removeAllItems ()
+        do{
+          self.addItem (withTitle: "—")
+          self.lastItem?.target = self
+          self.lastItem?.action = #selector (Self.nameSelectionAction (_:))
+          self.lastItem?.isEnabled = true
           self.select (self.lastItem)
         }
+        let sortedNetArray = netArray.sorted ()
+        for name in sortedNetArray {
+          self.addItem (withTitle: name)
+          self.lastItem?.target = self
+          self.lastItem?.action = #selector (Self.nameSelectionAction (_:))
+          self.lastItem?.isEnabled = true
+          if name == selectedName {
+            self.select (self.lastItem)
+          }
+        }
+        self.enable (fromValueBinding: true, self.enabledBindingController)
+      default :
+        self.removeAllItems ()
+        self.enable (fromValueBinding: false, self.enabledBindingController)
       }
-      self.enableFromValueBinding (true)
-    default :
-      self.removeAllItems ()
-      self.enableFromValueBinding (false)
     }
   }
 
@@ -60,16 +74,21 @@ final class AutoLayoutElCanariSelectionPopUpButton : AutoLayoutPopUpButton {
   //····················································································································
 
   final func bind_selectedNameInArray (_ inSelectedName : EBReadWriteProperty_String, _ inNameArray : EBReadOnlyProperty_StringArray) -> Self {
-    self.mController = Controller_ElCanariSelectionPopUpButton_selectedNameInArray (inSelectedName, inNameArray, outlet: self)
+    self.mController = Controller_ElCanariSelectionPopUpButton_selectedNameInArray (
+      inSelectedName,
+      inNameArray,
+      self,
+      callBack: { [weak self,  weak inSelectedName, weak inNameArray] in self?.updateOutlet (inSelectedName, inNameArray) }
+    )
     return self
   }
 
   //····················································································································
 
-  final func unbind_selectedNameInArray () {
-    self.mController?.unregister ()
-    self.mController = nil
-  }
+//  final func unbind_selectedNameInArray () {
+//    self.mController?.unregister ()
+//    self.mController = nil
+//  }
 
   //····················································································································
 
@@ -83,25 +102,24 @@ final class Controller_ElCanariSelectionPopUpButton_selectedNameInArray : EBObse
 
   //····················································································································
 
-  private let mSelectedName : EBReadWriteProperty_String
-  private let mNameArray : EBReadOnlyProperty_StringArray
-  private let mOutlet : AutoLayoutElCanariSelectionPopUpButton
+  private weak var mSelectedName : EBReadWriteProperty_String?
 
   //····················································································································
 
-  init (_ inSelectedName : EBReadWriteProperty_String, _ inNameArray : EBReadOnlyProperty_StringArray, outlet : AutoLayoutElCanariSelectionPopUpButton) {
+  init (_ inSelectedName : EBReadWriteProperty_String,
+        _ inNameArray : EBReadOnlyProperty_StringArray,
+        _ inOutlet : AutoLayoutElCanariSelectionPopUpButton,
+        callBack inCallBack : @escaping () -> Void) {
     self.mSelectedName = inSelectedName
-    self.mNameArray = inNameArray
-    self.mOutlet = outlet
-    super.init (observedObjects: [inSelectedName, inNameArray], callBack: { outlet.updateOutlet (inSelectedName, inNameArray) })
-    self.mOutlet.target = self
-    self.mOutlet.action = #selector (updateModelAction (_:))
+    super.init (observedObjects: [inSelectedName, inNameArray], callBack: inCallBack)
+    inOutlet.target = self
+    inOutlet.action = #selector (Self.updateModelAction (_:))
   }
 
   //····················································································································
 
   @objc func updateModelAction (_ inSender : NSMenuItem) {
-    _ = self.mSelectedName.validateAndSetProp (inSender.title, windowForSheet: nil)
+    _ = self.mSelectedName?.validateAndSetProp (inSender.title, windowForSheet: nil)
   }
 
   //····················································································································

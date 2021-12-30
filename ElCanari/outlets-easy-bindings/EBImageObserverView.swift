@@ -38,13 +38,13 @@ final class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
     switch object.selection {
     case .empty :
       self.image = nil
-      self.enableFromValueBinding (false)
+      self.enableFromOldValueBinding (false)
     case .multiple :
       self.image = nil
-      self.enableFromValueBinding (false)
+      self.enableFromOldValueBinding (false)
     case .single (let propertyValue) :
       self.image = propertyValue
-      self.enableFromValueBinding (true)
+      self.enableFromOldValueBinding (true)
     }
   }
 
@@ -73,13 +73,13 @@ final class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
     switch object.selection {
     case .empty :
       self.toolTip = nil
-      self.enableFromValueBinding (false)
+      self.enableFromOldValueBinding (false)
     case .multiple :
       self.toolTip = nil
-      self.enableFromValueBinding (false)
+      self.enableFromOldValueBinding (false)
     case .single (let propertyValue) :
       self.toolTip = propertyValue
-      self.enableFromValueBinding (true)
+      self.enableFromOldValueBinding (true)
     }
   }
 
