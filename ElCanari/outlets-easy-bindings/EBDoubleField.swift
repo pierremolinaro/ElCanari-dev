@@ -85,17 +85,17 @@ final class EBDoubleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDel
   fileprivate func updateDoubleValue (_ object : EBReadOnlyProperty_Double) {
     switch object.selection {
     case .empty :
-      self.enableFromOldValueBinding (false)
+      self.enableFromValueBinding (false)
       self.placeholderString = "No Selection"
       self.stringValue = ""
     case .single (let v) :
-      self.enableFromOldValueBinding (true)
+      self.enableFromValueBinding (true)
       self.placeholderString = nil
       self.doubleValue = v
     case .multiple :
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
-      self.enableFromOldValueBinding (true)
+      self.enableFromValueBinding (true)
     }
   }
 

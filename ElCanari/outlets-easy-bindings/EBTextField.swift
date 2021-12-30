@@ -66,15 +66,15 @@ final class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDeleg
     case .empty :
       self.placeholderString = "No selection"
       self.stringValue = ""
-      self.enableFromOldValueBinding (false)
+      self.enableFromValueBinding (false)
     case .multiple :
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
-      self.enableFromOldValueBinding (true)
+      self.enableFromValueBinding (true)
     case .single (let propertyValue) :
       self.placeholderString = nil
       self.stringValue = propertyValue
-      self.enableFromOldValueBinding (true)
+      self.enableFromValueBinding (true)
     }
   }
 

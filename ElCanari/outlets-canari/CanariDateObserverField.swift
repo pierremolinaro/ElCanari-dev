@@ -43,13 +43,13 @@ final class CanariDateObserverField : NSTextField, EBUserClassNameProtocol, NSTe
   private func updateOutlet (_ inObject : EBReadOnlyProperty_Date) {
     switch inObject.selection {
     case .empty :
-      self.enableFromOldValueBinding (false)
+      self.enableFromValueBinding (false)
       self.stringValue = "—"
     case .single (let v):
-      self.enableFromOldValueBinding (true)
+      self.enableFromValueBinding (true)
       self.objectValue = v
     case .multiple :
-      self.enableFromOldValueBinding (false)
+      self.enableFromValueBinding (false)
       self.stringValue = "—"
     }
   }

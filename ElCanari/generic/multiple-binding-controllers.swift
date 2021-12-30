@@ -57,7 +57,7 @@ final class MultipleBindingController_hidden : EBOutletEvent {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol EnabledMultipleBindingProtocol {
-  func enableFromOldEnableBinding (_ inEnable : Bool)
+  func enableFromEnableBinding (_ inEnable : Bool)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -85,9 +85,9 @@ final class MultipleBindingController_enabled : EBOutletEvent {
   private func updateOutlet (_ inModel : EBSelection <Bool>) {
     switch inModel {
     case .single (let b) :
-      self.mOutlet?.enableFromOldEnableBinding (b)
+      self.mOutlet?.enableFromEnableBinding (b)
     default :
-      self.mOutlet?.enableFromOldEnableBinding (false)
+      self.mOutlet?.enableFromEnableBinding (false)
     }
   }
 

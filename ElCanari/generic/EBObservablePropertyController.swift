@@ -20,7 +20,6 @@ class EBObservablePropertyController : EBOutletEvent {
     for object in observedObjects {
       self.mPrivateObservedObjects.append (WeakObservedObject (object))
     }
-//    self.mPrivateObservedObjects = observedObjects
     super.init ()
     self.mEventCallBack = inCallBack
     for object in observedObjects {

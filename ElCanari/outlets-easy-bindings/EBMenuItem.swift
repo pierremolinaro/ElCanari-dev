@@ -23,7 +23,7 @@ final class EBMenuItem : NSMenuItem, EBUserClassNameProtocol, EnabledMultipleBin
 
   //····················································································································
 
-  func enableFromOldEnableBinding (_ inValue : Bool) {
+  func enableFromEnableBinding (_ inValue : Bool) {
     self.isEnabled = inValue
   }
 

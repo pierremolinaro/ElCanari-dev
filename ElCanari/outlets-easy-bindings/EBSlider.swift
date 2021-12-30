@@ -48,10 +48,10 @@ final class EBSlider : NSSlider, EBUserClassNameProtocol {
     switch object.selection {
     case .empty, .multiple :
       self.stringValue = "-"
-      self.enableFromOldValueBinding (false)
+      self.enableFromValueBinding (false)
     case .single (let propertyValue) :
       self.doubleValue = propertyValue
-      self.enableFromOldValueBinding (true)
+      self.enableFromValueBinding (true)
     }
   }
 
@@ -81,10 +81,10 @@ final class EBSlider : NSSlider, EBUserClassNameProtocol {
     switch object.selection {
     case .empty, .multiple :
       self.stringValue = "-"
-      self.enableFromOldValueBinding (false)
+      self.enableFromValueBinding (false)
     case .single (let propertyValue) :
       self.doubleValue = Double (propertyValue)
-      self.enableFromOldValueBinding (true)
+      self.enableFromValueBinding (true)
     }
   }
 
