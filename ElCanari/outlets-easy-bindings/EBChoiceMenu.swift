@@ -106,16 +106,14 @@ final class Controller_EBChoiceMenu_selectedIndex : EBObservablePropertyControll
   //····················································································································
 
   private let mObject : EBReadWriteObservableEnumProtocol
-  private let mOutlet : EBChoiceMenu
 
   //····················································································································
 
-  init (object : EBReadWriteObservableEnumProtocol, outlet : EBChoiceMenu) {
+  init (object : EBReadWriteObservableEnumProtocol, outlet inOutlet : EBChoiceMenu) {
     self.mObject = object
-    self.mOutlet = outlet
-    super.init (observedObjects: [object], callBack: { outlet.updateOutletFromSelectedIndexController (object) } )
+    super.init (observedObjects: [object], callBack: { [weak inOutlet] in inOutlet?.updateOutletFromSelectedIndexController (object) } )
     var idx = 0
-    for item in outlet.items {
+    for item in inOutlet.items {
       item.target = self
       item.action = #selector (Self.updateModelAction (_:))
       item.tag = idx
@@ -127,13 +125,6 @@ final class Controller_EBChoiceMenu_selectedIndex : EBObservablePropertyControll
 
   @objc fileprivate func updateModelAction (_ inSender : NSMenuItem) {
     self.mObject.setFrom (rawValue: inSender.tag)
-//    var idx = 0
-//    for item in self.mOutlet.items {
-//      if item === inSender {
-//        self.mObject.setFrom (rawValue: idx)
-//      }
-//      idx += 1
-//    }
   }
 
   //····················································································································

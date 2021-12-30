@@ -227,7 +227,7 @@ final class AutoLayoutElCanariDragSourceTableView : NSScrollView, EBUserClassNam
   final func bind_models (_ model : EBReadOnlyProperty_StringTagArray) -> Self {
     self.mModelsController = EBObservablePropertyController (
       observedObjects: [model],
-      callBack: {self.update (from: model) }
+      callBack: { [weak self] in self?.update (from: model) }
     )
     return self
   }

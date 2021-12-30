@@ -110,7 +110,7 @@ final class CanariSelectRestrictRectanglesMenu : NSMenu, EBUserClassNameProtocol
   final func bind_layers (_ object : EBReadWriteProperty_Int) {
     self.mLayersController = EBGenericReadWritePropertyController <Int> (
       observedObject: object,
-      callBack: { self.updateOutlet (object) }
+      callBack: { [weak self] in self?.updateOutlet (object) }
     )
   }
 
