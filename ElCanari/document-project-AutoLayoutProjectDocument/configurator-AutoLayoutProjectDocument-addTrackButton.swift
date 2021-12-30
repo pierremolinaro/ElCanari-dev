@@ -18,15 +18,14 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  final func configure_addTrackButton (_ inOutlet : AutoLayoutDragSourceButton) {
+  final func configure_addTrackButton (_ inOutlet : AutoLayoutDragSourceButtonWithMenus) {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: kDragAndDropBoardTrack,
       draggedObjectImage: { [weak self] in return self?.boardTrackImageFactory () },
       scaleProvider: self.boardObjectsController
     )
-    inOutlet.image = NSImage (named: "track-in-board")
-    inOutlet.imageScaling = .scaleProportionallyUpOrDown
+    inOutlet.set (image: NSImage (named: "track-in-board"))
   //--- Left Menu
     do {
       let menu = EBChoiceMenu ()
@@ -34,7 +33,7 @@ extension AutoLayoutProjectDocument {
       menu.addItem (withTitle: "Octolinear (45°)", action: nil, keyEquivalent: "")
       menu.addItem (withTitle: "Rectilinear (90°)",  action: nil, keyEquivalent: "")
       menu.bind_selectedIndex (self.rootObject.mDirectionForNewTrack_property)
-      inOutlet.mLeftContextualMenu = menu
+      inOutlet.set (leftContextualMenu: menu)
     }
   //--- Right Menu
     let menu = EBChoiceMenu ()
@@ -45,7 +44,7 @@ extension AutoLayoutProjectDocument {
     menu.addItem (withTitle: "Inner 3 Layer",  action: nil, keyEquivalent: "")
     menu.addItem (withTitle: "Inner 4 Layer",  action: nil, keyEquivalent: "")
     menu.bind_selectedIndex (self.rootObject.mBoardSideForNewTrack_property)
-    inOutlet.mRightContextualMenu = menu
+    inOutlet.set (rightContextualMenu: menu)
 //--- END OF USER ZONE 2
   }
 }

@@ -20,7 +20,7 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init (optionalWidth inOptionalWidth : Int?, size inSize : EBControlSize) {
+  init (optionalWidth inOptionalWidth : Int?, bold inBold : Bool, size inSize : EBControlSize) {
     if let w = inOptionalWidth {
       self.mWidth = CGFloat (w)
     }else{
@@ -33,7 +33,8 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
     self.setContentCompressionResistancePriority (.required, for: .vertical)
 
     self.controlSize = inSize.cocoaControlSize
-    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+    let size = NSFont.systemFontSize (for: self.controlSize)
+    self.font = inBold ? NSFont.boldSystemFont (ofSize:size) : NSFont.systemFont (ofSize: size)
     self.alignment = .center
   }
 

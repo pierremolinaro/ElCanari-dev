@@ -17,7 +17,7 @@ final class AutoLayoutCanariObservedDimensionField : AutoLayoutBase_NSTextField,
   //····················································································································
 
   init (size inSize : EBControlSize) {
-    super.init (optionalWidth: nil, size: inSize)
+    super.init (optionalWidth: nil, bold: true, size: inSize)
 
 //    self.controlSize = inSize.cocoaControlSize
 //    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))

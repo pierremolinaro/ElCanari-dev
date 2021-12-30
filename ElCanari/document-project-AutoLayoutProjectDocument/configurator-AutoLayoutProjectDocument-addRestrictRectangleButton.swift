@@ -18,16 +18,16 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  final func configure_addRestrictRectangleButton (_ inOutlet : AutoLayoutDragSourceButton) {
+  final func configure_addRestrictRectangleButton (_ inOutlet : AutoLayoutDragSourceButtonWithMenus) {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: kDragAndDropRestrictRectangle,
       draggedObjectFactory: { return (BoardRestrictRectangle (nil), NSDictionary ()) },
       scaleProvider: self.boardObjectsController
     )
-    inOutlet.image = NSImage (named: "restrict-rect-in-board")
+    inOutlet.set (image: NSImage (named: "restrict-rect-in-board"))
     let menu = CanariSelectRestrictRectanglesMenu (size: .small)
-    inOutlet.mRightContextualMenu = menu
+    inOutlet.set (rightContextualMenu: menu)
     menu.bind_layers (self.rootObject.mNewRestrictRectangleLayers_property)
 //--- END OF USER ZONE 2
   }

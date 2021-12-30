@@ -9,7 +9,7 @@ final class AutoLayoutVersionField : AutoLayoutBase_NSTextField {
   //····················································································································
 
   init (size inSize : EBControlSize) {
-    super.init (optionalWidth: nil, size: inSize)
+    super.init (optionalWidth: nil, bold: false, size: inSize)
 
     self.isEditable = false
     self.isEnabled = true
@@ -18,7 +18,7 @@ final class AutoLayoutVersionField : AutoLayoutBase_NSTextField {
     self.alignment = .center
 
 //    self.controlSize = inSize.cocoaControlSize
-//    self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize), weight: .semibold)
+    self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize), weight: .semibold)
   }
 
   //····················································································································

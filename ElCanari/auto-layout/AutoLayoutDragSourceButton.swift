@@ -9,20 +9,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate let PULL_DOWN_ARROW_SIZE : CGFloat = 8.0
-fileprivate let PULL_DOWN_ARROW_TOP_MARGIN : CGFloat = 4.0
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSource {
-
-  //····················································································································
-
-  var mRightContextualMenu : NSMenu? = nil
-  var mLeftContextualMenu : NSMenu? = nil
 
   //····················································································································
 
@@ -142,12 +132,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
   //····················································································································
 
   override func mouseDown (with inEvent : NSEvent) {
-    let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-    if let menu = self.mRightContextualMenu, pullDownRightMenuRect ().contains (mouseDownLocation) {
-      NSMenu.popUpContextMenu (menu, with: inEvent, for: self)
-    }else if let menu = self.mLeftContextualMenu, self.pullDownLeftMenuRect ().contains (mouseDownLocation) {
-      NSMenu.popUpContextMenu (menu, with: inEvent, for: self)
-    }else if let dragType = self.mDragType, self.isEnabled {
+    if let dragType = self.mDragType, self.isEnabled {
       let pasteboardItem = NSPasteboardItem ()
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
     //--- Get dragged object
@@ -202,7 +187,6 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
         r.origin.y += mouseDownLocation.y
       //--- Associated data
         let dict = NSMutableDictionary ()
-//        temporaryObject.saveIntoDictionary (dict)
         let dataDictionary : NSDictionary = [
           OBJECT_DICTIONARY_KEY : [dict],
           OBJECT_ADDITIONAL_DICTIONARY_KEY : [], // [additionalDict],
@@ -216,6 +200,13 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
         self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
       }
     }
+  }
+
+  //····················································································································
+
+  override func mouseUp (with inEvent : NSEvent) {
+    self.mMouseIsInside = false
+    super.mouseUp (with: inEvent)
   }
 
   //····················································································································
@@ -246,18 +237,9 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
 
   //····················································································································
 
-  private enum MouseZone {
-    case outside
-    case insideRightPullDown
-    case insideLeftPullDown
-    case insideDrag
-  }
-
-  //····················································································································
-
-  private var mMouseZone = MouseZone.outside {
+  private var mMouseIsInside = false {
     didSet {
-      if self.mMouseZone != oldValue {
+      if self.mMouseIsInside != oldValue {
         self.needsDisplay = true
       }
     }
@@ -267,14 +249,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
 
   override func mouseEntered (with inEvent : NSEvent) {
     if self.isEnabled {
-      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-      if self.mRightContextualMenu != nil, self.pullDownRightMenuRect ().contains (mouseDownLocation) {
-        self.mMouseZone = .insideRightPullDown
-      }else if self.mLeftContextualMenu != nil, self.pullDownLeftMenuRect ().contains (mouseDownLocation) {
-        self.mMouseZone = .insideLeftPullDown
-      }else{
-        self.mMouseZone = .insideDrag
-      }
+      self.mMouseIsInside = true
     }
     super.mouseEntered (with: inEvent)
   }
@@ -284,15 +259,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
   override func mouseMoved (with inEvent : NSEvent) {
     if self.isEnabled {
       let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-      if self.mRightContextualMenu != nil, self.pullDownRightMenuRect ().contains (mouseDownLocation) {
-        self.mMouseZone = .insideRightPullDown
-      }else if self.mLeftContextualMenu != nil, self.pullDownLeftMenuRect ().contains (mouseDownLocation) {
-        self.mMouseZone = .insideLeftPullDown
-      }else if self.bounds.contains (mouseDownLocation){
-        self.mMouseZone = .insideDrag
-      }else{
-        self.mMouseZone = .outside
-      }
+      self.mMouseIsInside = self.bounds.contains (mouseDownLocation)
     }
     super.mouseMoved (with: inEvent)
   }
@@ -300,7 +267,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
   //····················································································································
 
   override func mouseExited (with inEvent : NSEvent) {
-    self.mMouseZone = .outside
+    self.mMouseIsInside = false
     super.mouseExited (with: inEvent)
   }
 
@@ -317,100 +284,12 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
       DEBUG_STROKE_COLOR.setStroke ()
       bp.stroke ()
     }
-    NSColor.white.setFill ()
-    NSBezierPath.fill (self.pullDownRightMenuRect ())
-    NSBezierPath.fill (self.pullDownLeftMenuRect ())
-    let x : CGFloat = 0.75
-    let myGray = NSColor (red: x, green: x, blue: x, alpha: 0.5)
-    myGray.setFill ()
-    switch self.mMouseZone {
-    case .outside :
-      ()
-    case .insideRightPullDown :
-      NSBezierPath.fill (self.pullDownRightMenuRect ())
-    case .insideLeftPullDown :
-      NSBezierPath.fill (self.pullDownLeftMenuRect ())
-    case .insideDrag :
-      let bp = NSBezierPath ()
-      let b = self.bounds
-      bp.move (to: NSPoint (x: b.minX, y: b.maxY))
-      let v = PULL_DOWN_ARROW_TOP_MARGIN + PULL_DOWN_ARROW_SIZE / 2.0
-      if self.mLeftContextualMenu != nil, self.mRightContextualMenu != nil {
-        bp.line (to: NSPoint (x: b.minX, y: b.minY + v))
-        bp.line (to: NSPoint (x: b.maxX, y: b.minY + v))
-      }else if self.mLeftContextualMenu != nil { // Only left contextual menu
-        bp.line (to: NSPoint (x: b.minX, y: b.minY + v))
-        bp.line (to: NSPoint (x: b.midX, y: b.minY + v))
-        bp.line (to: NSPoint (x: b.midX, y: b.minY))
-        bp.line (to: NSPoint (x: b.maxX, y: b.minY))
-      }else if self.mRightContextualMenu != nil { // Only right contextual menu
-        bp.line (to: NSPoint (x: b.minX, y: b.minY))
-        bp.line (to: NSPoint (x: b.midX, y: b.minY))
-        bp.line (to: NSPoint (x: b.midX, y: b.minY + v))
-        bp.line (to: NSPoint (x: b.maxX, y: b.minY + v))
-      }else{ // No contextual menu
-        bp.line (to: NSPoint (x: b.minX, y: b.minY))
-        bp.line (to: NSPoint (x: b.maxX, y: b.minY))
-      }
-      bp.line (to: NSPoint (x: b.maxX, y: b.maxY))
-      bp.close ()
-      bp.fill ()
+    if self.mMouseIsInside {
+      let x : CGFloat = 0.75
+      let myGray = NSColor (red: x, green: x, blue: x, alpha: 0.5)
+      myGray.setFill ()
+      NSBezierPath.fill (self.bounds)
     }
-    if self.mRightContextualMenu != nil {
-      var path = EBBezierPath ()
-      path.move (to: NSPoint (x: self.bounds.maxX - PULL_DOWN_ARROW_SIZE, y: self.bounds.minY + PULL_DOWN_ARROW_SIZE / 2.0))
-      path.line (to: NSPoint (x: self.bounds.maxX, y: self.bounds.minY + PULL_DOWN_ARROW_SIZE / 2.0))
-      path.line (to: NSPoint (x: self.bounds.maxX - PULL_DOWN_ARROW_SIZE / 2.0, y: self.bounds.minY))
-      path.close ()
-      NSColor.black.setFill ()
-      path.fill ()
-    }
-    if self.mLeftContextualMenu != nil {
-      var path = EBBezierPath ()
-      path.move (to: NSPoint (x: 0.0, y: self.bounds.minY + PULL_DOWN_ARROW_SIZE / 2.0))
-      path.line (to: NSPoint (x: PULL_DOWN_ARROW_SIZE, y: self.bounds.minY + PULL_DOWN_ARROW_SIZE / 2.0))
-      path.line (to: NSPoint (x: PULL_DOWN_ARROW_SIZE / 2.0, y: self.bounds.minY))
-      path.close ()
-      NSColor.black.setFill ()
-      path.fill ()
-    }
-  }
-
-
-  //····················································································································
-  //   PULL DOWN MENU DETECTION RECTANGLE
-  //····················································································································
-
-  fileprivate func pullDownRightMenuRect () -> NSRect {
-    let r : NSRect
-    if self.mRightContextualMenu != nil {
-      r = NSRect (
-        x: self.bounds.midX,
-        y: self.bounds.minY,
-        width: self.bounds.size.width / 2.0,
-        height: PULL_DOWN_ARROW_TOP_MARGIN + PULL_DOWN_ARROW_SIZE / 2.0
-      )
-    }else{
-      r = NSRect ()
-    }
-    return r
-  }
-
-  //····················································································································
-
-  fileprivate func pullDownLeftMenuRect () -> NSRect {
-    let r : NSRect
-    if self.mLeftContextualMenu != nil {
-      r = NSRect (
-        x: 0.0,
-        y: 0.0,
-        width: self.bounds.size.width / 2.0,
-        height: PULL_DOWN_ARROW_TOP_MARGIN + PULL_DOWN_ARROW_SIZE / 2.0
-      )
-    }else{
-      r = NSRect ()
-    }
-    return r
   }
 
   //····················································································································

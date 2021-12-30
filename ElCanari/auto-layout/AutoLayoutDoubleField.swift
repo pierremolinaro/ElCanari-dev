@@ -14,14 +14,12 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField, NSTextFieldDeleg
 
   //····················································································································
 
-//  private let mWidth : CGFloat
   private let mNumberFormatter = NumberFormatter ()
 
   //····················································································································
 
   init (width inWidth : Int, size inSize : EBControlSize) {
-//    self.mWidth = CGFloat (inWidth)
-    super.init (optionalWidth: inWidth, size: inSize)
+    super.init (optionalWidth: inWidth, bold: true, size: inSize)
 
   //--- Target
     self.target = self

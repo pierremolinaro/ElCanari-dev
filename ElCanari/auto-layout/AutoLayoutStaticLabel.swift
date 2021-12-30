@@ -11,7 +11,7 @@ final class AutoLayoutStaticLabel : AutoLayoutBase_NSTextField {
   //····················································································································
 
   init (title inTitle : String, bold inBold : Bool, size inSize : EBControlSize) {
-    super.init (optionalWidth: nil, size: inSize)
+    super.init (optionalWidth: nil, bold: inBold, size: inSize)
 
     self.stringValue = inTitle
     self.isBezeled = false
@@ -20,9 +20,6 @@ final class AutoLayoutStaticLabel : AutoLayoutBase_NSTextField {
 
     self.isEditable = false
     self.alignment = .right
-//    self.controlSize = inSize.cocoaControlSize
-//    let size = NSFont.systemFontSize (for: self.controlSize)
-//    self.font = inBold ? NSFont.boldSystemFont (ofSize:size) : NSFont.systemFont (ofSize: size)
     self.frame.size = self.intrinsicContentSize
   }
 

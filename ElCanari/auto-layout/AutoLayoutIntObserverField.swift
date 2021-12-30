@@ -21,7 +21,7 @@ final class AutoLayoutIntObserverField : AutoLayoutBase_NSTextField {
   //····················································································································
 
   init (bold inBold : Bool, size inSize : EBControlSize) {
-    super.init (optionalWidth: nil, size: inSize)
+    super.init (optionalWidth: nil, bold: inBold, size: inSize)
 
     self.controlSize = inSize.cocoaControlSize
     let s = NSFont.systemFontSize (for: self.controlSize)

@@ -18,20 +18,19 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  final func configure_addLineButton (_ inOutlet : AutoLayoutDragSourceButton) {
+  final func configure_addLineButton (_ inOutlet : AutoLayoutDragSourceButtonWithMenus) {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: kDragAndDropBoardLine,
       draggedObjectFactory: { return (BoardLine (nil), NSDictionary ()) },
       scaleProvider: self.boardObjectsController
     )
-    inOutlet.image = NSImage (named: "line-in-symbol")
-    inOutlet.imageScaling = .scaleProportionallyUpOrDown
+    inOutlet.set (image: NSImage (named: "line-in-symbol"))
     let menu = EBChoiceMenu ()
     menu.addItem (withTitle: "Legend, Front Side", action: nil, keyEquivalent: "")
     menu.addItem (withTitle: "Legend, Back Side",  action: nil, keyEquivalent: "")
     menu.bind_selectedIndex (self.rootObject.mBoardLayerForNewLine_property)
-    inOutlet.mRightContextualMenu = menu
+    inOutlet.set (rightContextualMenu: menu)
 //--- END OF USER ZONE 2
   }
 }
