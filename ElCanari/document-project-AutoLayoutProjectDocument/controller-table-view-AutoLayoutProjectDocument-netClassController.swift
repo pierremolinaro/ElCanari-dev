@@ -167,6 +167,8 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
     self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
   //--- Observe 'mNetClassName' column
     self.sortedArray_property.addEBObserverOf_mNetClassName (self.mSortedArrayValuesObserver)
+  //--- Observe 'mNetClassColor' column
+    self.sortedArray_property.addEBObserverOf_mNetClassColor (self.mSortedArrayValuesObserver)
   //--- Observe 'trackWidthString' column
     self.sortedArray_property.addEBObserverOf_trackWidthString (self.mSortedArrayValuesObserver)
   //--- Observe 'viaHoleDiameter' column
@@ -222,6 +224,17 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
       title: "Name",
       minWidth: 60,
       maxWidth: 150,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+  //--- Configure 'mNetClassColor' column
+    inTableView.addColumn_NSColor (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mNetClassColor },
+      valueSetterDelegate: nil,
+      sortDelegate: nil,
+      title: "Schematic Color",
+      minWidth: 80,
+      maxWidth: 100,
       headerAlignment: .left,
       contentAlignment: .left
     )

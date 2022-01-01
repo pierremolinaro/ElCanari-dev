@@ -873,6 +873,12 @@
 		CF3AE26326F618AA004ABD8F /* enum-LayerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3AE26026F618AA004ABD8F /* enum-LayerConfiguration.swift */; };
 		CF3AE26526F61964004ABD8F /* CanariLayerPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3AE26426F61964004ABD8F /* CanariLayerPopUpButton.swift */; };
 		CF3AE26626F61964004ABD8F /* CanariLayerPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3AE26426F61964004ABD8F /* CanariLayerPopUpButton.swift */; };
+		CF3B26A127808F010084F07C /* AutoLayoutTableView-column-NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B26A027808F010084F07C /* AutoLayoutTableView-column-NSColor.swift */; };
+		CF3B26A227808F010084F07C /* AutoLayoutTableView-column-NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B26A027808F010084F07C /* AutoLayoutTableView-column-NSColor.swift */; };
+		CF3B26A327808F010084F07C /* AutoLayoutTableView-column-NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B26A027808F010084F07C /* AutoLayoutTableView-column-NSColor.swift */; };
+		CF3B26A5278090530084F07C /* AutoLayoutViewWithBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B26A4278090530084F07C /* AutoLayoutViewWithBackground.swift */; };
+		CF3B26A6278090530084F07C /* AutoLayoutViewWithBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B26A4278090530084F07C /* AutoLayoutViewWithBackground.swift */; };
+		CF3B26A7278090530084F07C /* AutoLayoutViewWithBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B26A4278090530084F07C /* AutoLayoutViewWithBackground.swift */; };
 		CF3C12E4267F656D0021AE77 /* AutoLayoutBase-NSSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3C12E3267F656D0021AE77 /* AutoLayoutBase-NSSegmentedControl.swift */; };
 		CF3C12E5267F656D0021AE77 /* AutoLayoutBase-NSSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3C12E3267F656D0021AE77 /* AutoLayoutBase-NSSegmentedControl.swift */; };
 		CF3C12E6267F656D0021AE77 /* AutoLayoutBase-NSSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3C12E3267F656D0021AE77 /* AutoLayoutBase-NSSegmentedControl.swift */; };
@@ -4881,6 +4887,8 @@
 		CF39CD23268CC267004971F9 /* transient-SymbolTypeInDevice-documentSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolTypeInDevice-documentSize.swift"; sourceTree = "<group>"; };
 		CF3AE26026F618AA004ABD8F /* enum-LayerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-LayerConfiguration.swift"; sourceTree = "<group>"; };
 		CF3AE26426F61964004ABD8F /* CanariLayerPopUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariLayerPopUpButton.swift; sourceTree = "<group>"; };
+		CF3B26A027808F010084F07C /* AutoLayoutTableView-column-NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayoutTableView-column-NSColor.swift"; sourceTree = "<group>"; };
+		CF3B26A4278090530084F07C /* AutoLayoutViewWithBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutViewWithBackground.swift; sourceTree = "<group>"; };
 		CF3C12E3267F656D0021AE77 /* AutoLayoutBase-NSSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayoutBase-NSSegmentedControl.swift"; sourceTree = "<group>"; };
 		CF3C6B73275A21B100189435 /* action-AutoLayoutFontDocument-addSegmentAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutFontDocument-addSegmentAction.swift"; sourceTree = "<group>"; };
 		CF3C6B75275A24BD00189435 /* AutoLayoutStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutStepper.swift; sourceTree = "<group>"; };
@@ -7413,6 +7421,7 @@
 				CF617FA2275E7D34008F0C32 /* AutoLayoutViewByPrefixingAppIcon.swift */,
 				CF72E5AB276A38180019E180 /* AutoLayoutWarningImageView.swift */,
 				CF6D1271275FAAC6000F2BE6 /* AutoLayoutWindowContentView.swift */,
+				CF3B26A4278090530084F07C /* AutoLayoutViewWithBackground.swift */,
 			);
 			name = "Auto Layout";
 			path = "ElCanari/auto-layout";
@@ -7497,6 +7506,7 @@
 			isa = PBXGroup;
 			children = (
 				CFB82C1B276B8EE400BAD56E /* AutoLayoutTableView-column-Int.swift */,
+				CF3B26A027808F010084F07C /* AutoLayoutTableView-column-NSColor.swift */,
 				CFB82C23276B918100BAD56E /* AutoLayoutTableView-column-NSImage-Int.swift */,
 				CFB82C27276B922400BAD56E /* AutoLayoutTableView-column-NSImage-String.swift */,
 				CFB82C1F276B904700BAD56E /* AutoLayoutTableView-column-NSImage.swift */,
@@ -9014,6 +9024,7 @@
 				CF711F61275E1E6C00280069 /* selectionController-ProjectDocument-boardTrackSelectionController.swift in Sources */,
 				CF39CCD2268CC0B4004971F9 /* controller-table-view-AutoLayoutDeviceDocument-documentationController.swift in Sources */,
 				CF78DE97222D65CA00E89DCA /* transient-SlavePadInDevice-padNumberDisplay.swift in Sources */,
+				CF3B26A127808F010084F07C /* AutoLayoutTableView-column-NSColor.swift in Sources */,
 				CF711CD6275E1A5200280069 /* toone-BoardTrack.swift in Sources */,
 				CF7091A3275C0DDF00B00E54 /* transient-MergerRoot-layerConfigurationString.swift in Sources */,
 				CFEABCF7267F32D700B715F9 /* AutoLayout-style.swift in Sources */,
@@ -9036,6 +9047,7 @@
 				CF0777ED235216F800F56EAB /* EBEnumStoredProperty.swift in Sources */,
 				CFA430B1229AEC41000AA8C8 /* tomany-SymbolObject.swift in Sources */,
 				CFB7D75226839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-addSymbolOval.swift in Sources */,
+				CF3B26A5278090530084F07C /* AutoLayoutViewWithBackground.swift in Sources */,
 				CFC6325822F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift in Sources */,
 				CF711F22275E1E6C00280069 /* transient-ProjectDocument-rastnetShape.swift in Sources */,
 				CFD1EAA3274EE23B000AED8E /* entity-FontCharacter.swift in Sources */,
@@ -10475,6 +10487,7 @@
 				CFEB7CC0233A28860060A97A /* transient-ProjectRoot-schematicStatusImage.swift in Sources */,
 				CFA430C7229AECA7000AA8C8 /* tomany-PackageInDevice.swift in Sources */,
 				CF604DC821BC1BC1004F2311 /* EBScrollView.swift in Sources */,
+				CF3B26A227808F010084F07C /* AutoLayoutTableView-column-NSColor.swift in Sources */,
 				CFB7D76226839B90007B9D3B /* transient-AutoLayoutSymbolDocument-addBezierButtonImage.swift in Sources */,
 				CF711E05275E1C8D00280069 /* extension-PackageModelImageDoublePoint.swift in Sources */,
 				CF8BE750235112CC00F95B3A /* ReadOnlyAbstractArrayProperty.swift in Sources */,
@@ -10497,6 +10510,7 @@
 				CF69ABD221A6C08100F5E49A /* transient-SymbolPin-objectDisplay.swift in Sources */,
 				CFD1EA86274EE23B000AED8E /* transient-FontCharacter-gerberCodeInstructionCountMessage.swift in Sources */,
 				CF711F23275E1E6C00280069 /* transient-ProjectDocument-rastnetShape.swift in Sources */,
+				CF3B26A6278090530084F07C /* AutoLayoutViewWithBackground.swift in Sources */,
 				CFB7D8CF2683A61D007B9D3B /* action-AutoLayoutPackageDocument-setDimensionTextOriginAtMidYAction.swift in Sources */,
 				CF42D137275CF1A800B83712 /* document-AutoLayoutMergerDocument.swift in Sources */,
 				CF711FF8275E1EA300280069 /* extension-SheetInProject-drag-add-wire.swift in Sources */,
@@ -12037,6 +12051,7 @@
 				CF9C623B25CABE5C00A00D5C /* transient-DeviceSymbolInstanceInProject-filledBezierPath.swift in Sources */,
 				CF49C13525D13A030082271E /* tomany-SymbolSolidOval.swift in Sources */,
 				CF3C6B78275A24BD00189435 /* AutoLayoutStepper.swift in Sources */,
+				CF3B26A327808F010084F07C /* AutoLayoutTableView-column-NSColor.swift in Sources */,
 				CF9C623D25CABE5C00A00D5C /* enum-AutorouterSnapAngle.swift in Sources */,
 				CF9C623E25CABE5C00A00D5C /* tomany-PackageSegment.swift in Sources */,
 				CFB7D75A26839B90007B9D3B /* controller-array-AutoLayoutSymbolDocument-mSymbolObjectsController.swift in Sources */,
@@ -12686,6 +12701,7 @@
 				CF49C15F25D13A030082271E /* transient-SymbolText-issues.swift in Sources */,
 				CF9C648325CABE5C00A00D5C /* transient-BoardConnector-objectDisplay.swift in Sources */,
 				CF04FAEF276773F80062DF89 /* transient-AutoLayoutProjectDocument-selectedDevicePackageNames.swift in Sources */,
+				CF3B26A7278090530084F07C /* AutoLayoutViewWithBackground.swift in Sources */,
 				CF9C648525CABE5C00A00D5C /* library-repository-get-current-commit.swift in Sources */,
 				CF49C12C25D13A030082271E /* transient-SymbolSegment-selectionDisplay.swift in Sources */,
 				CF9C648625CABE5C00A00D5C /* action-Preferences-revealUserLibraryInFinderAction.swift in Sources */,

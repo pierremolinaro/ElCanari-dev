@@ -328,7 +328,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   autolayout tableViewController #netClassController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mNetClasses {
     column mNetClassName (title: "Name", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
        sortkey mNetClassName
-//    column "netcolor" EBTextObserverField $backColor self.mNetClassColor
+    column mNetClassColor (title: "Schematic Color", minWidth: 80, maxWidth: 100, headerAlignment: .left, contentAlignment: .left)
     column trackWidthString (title: "Width", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
        sortkey trackWidthString // mTrackWidth
     column viaHoleDiameter (title: "Via Hole Diameter", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
