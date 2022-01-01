@@ -10,13 +10,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutVerticalSplitView : AutoLayoutAbstractSplitView {
+class AutoLayoutVerticalSplitView : AutoLayoutBase_NSSplitView {
 
   //····················································································································
 
   init () {
     super.init (dividersAreVertical: false)
 
+    self.setContentHuggingPriority (.required, for: .horizontal)
+//    self.setContentHuggingPriority (.required, for: .vertical)
+//    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
     self.setContentHuggingPriority (.defaultLow, for: .vertical)
   }
 

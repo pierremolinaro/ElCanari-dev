@@ -112,7 +112,7 @@ extension AutoLayoutPackageDocument {
    //-------------------------- Dialog
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         observer.unregister ()
-        intField.autoLayoutCleanUp ()
+//        intField.autoLayoutCleanUp ()
         if inResponse == .stop {
           let newForbiddenPadNumber = newFordiddenPadNumber_property.propval
           let fpn = ForbiddenPadNumber (self.ebUndoManager)

@@ -4,7 +4,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutHorizontalStackView : AutoLayoutAbstractStackView {
+class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
 
   //····················································································································
   //   INIT

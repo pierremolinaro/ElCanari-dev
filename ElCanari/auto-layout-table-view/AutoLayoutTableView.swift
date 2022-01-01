@@ -70,14 +70,6 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   }
 
   //····················································································································
-
-  override func autoLayoutCleanUp () {
-    self.mAddButton?.autoLayoutCleanUp ()
-    self.mRemoveButton?.autoLayoutCleanUp ()
-    super.autoLayoutCleanUp ()
-  }
-
-  //····················································································································
   //  Configure table view
   //····················································································································
 
@@ -291,6 +283,7 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
+    self.setContentHuggingPriority (.defaultLow, for: .vertical)
     self.controlSize = inSize.cocoaControlSize
   }
 

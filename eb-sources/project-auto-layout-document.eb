@@ -140,17 +140,17 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   stackView mLibraryPage vStack set (margins: 8) {
     hStack {
       Button (title: "Remove Embedded Devices", size: .regular) {
-        expandableWidth ()
+//        expandableWidth ()
         $run removeEmbeddedDevicesAction
         $enabled root.mDevices.count > 0
       }
       Button (title: "Reset Device and Font Versions", size: .regular) {
-        expandableWidth ()
+//        expandableWidth ()
         $run resetDevicesAndFontsVersionAction
         $enabled (root.mDevices.count > 0) | (root.mFonts.count > 0)
       }
       Button (title: "Update Devices and Fonts", size: .regular) {
-        expandableWidth ()
+//        expandableWidth ()
         $run updateDevicesAndFontsAction
         $enabled (root.mDevices.count > 0) | (root.mFonts.count > 0)
       }
@@ -193,19 +193,19 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       }
       space
     }
-    hSplit { // hSplit
+    hSplit {
       TableView (size : .regular, addControlButtons: no) {
         set (width: 400)
         $tableValue #projectDeviceController
       }
       vStack {
         hStack { space StaticLabel (title: "Selected Device", bold: no, size: .regular) space }
-        hSplit {  // hSplit
+        hSplit {
           CanariProjectDeviceTableView (size : .regular) {
             set (width: 150)
             $array self.selectedDeviceNames
           }
-          vSplit { // vSplit
+          vSplit {
             CanariProjectDeviceSymbolTypeAndNameTableView (size : .regular) {
               set (width: 250)
               set (height: 200)

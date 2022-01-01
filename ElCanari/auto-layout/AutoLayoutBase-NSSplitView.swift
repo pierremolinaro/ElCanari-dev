@@ -1,5 +1,5 @@
 //
-//  AutoLayoutAbstractSplitView.swift
+//  AutoLayoutBase_NSSplitView.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 30/06/2021.
@@ -12,7 +12,7 @@ import Cocoa
 // Seee https://github.com/jwilling/JWSplitView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutAbstractSplitView : NSSplitView, EBUserClassNameProtocol {
+class AutoLayoutBase_NSSplitView : NSSplitView, EBUserClassNameProtocol {
 
   //····················································································································
   //   INIT

@@ -437,7 +437,7 @@ import Cocoa
   //    VIEW mSymbolPageInspectorMasterView
   //····················································································································
 
-  let mSymbolPageInspectorMasterView : AutoLayoutAbstractStackView = AutoLayoutVerticalStackView ()
+  let mSymbolPageInspectorMasterView : AutoLayoutBase_NSStackView = AutoLayoutVerticalStackView ()
 
   //····················································································································
   //    VIEW mSymbolPage

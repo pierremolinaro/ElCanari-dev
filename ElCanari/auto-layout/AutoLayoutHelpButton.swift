@@ -10,18 +10,18 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutHelpButton : NSButton, EBUserClassNameProtocol {
+final class AutoLayoutHelpButton : AutoLayoutBase_NSButton {
 
   //····················································································································
 
   init (size inSize : EBControlSize) {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.controlSize = inSize.cocoaControlSize
-    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-    self.title = ""
+    super.init (title: "", size: inSize)
+//    noteObjectAllocation (self)
+//    self.translatesAutoresizingMaskIntoConstraints = false
+//
+//    self.controlSize = inSize.cocoaControlSize
+//    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+//    self.title = ""
     self.bezelStyle = .helpButton
   }
 
@@ -33,9 +33,9 @@ final class AutoLayoutHelpButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
 
   //····················································································································
 

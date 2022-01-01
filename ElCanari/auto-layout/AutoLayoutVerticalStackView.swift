@@ -4,7 +4,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
+class AutoLayoutVerticalStackView : AutoLayoutBase_NSStackView {
 
   //····················································································································
   //   INIT
@@ -13,7 +13,7 @@ class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
   init () {
     super.init (orientation: .vertical)
     self.alignment = .width
-    self.distribution = .fill
+//    self.distribution = .fill
 
     self.setHuggingPriority (.required, for: .horizontal)
 //    self.setHuggingPriority (.required, for: .vertical)

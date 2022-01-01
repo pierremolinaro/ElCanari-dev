@@ -609,7 +609,7 @@ import Cocoa
   //    VIEW mPackagePageInspectorMasterView
   //····················································································································
 
-  let mPackagePageInspectorMasterView : AutoLayoutAbstractStackView = AutoLayoutVerticalStackView ()
+  let mPackagePageInspectorMasterView : AutoLayoutBase_NSStackView = AutoLayoutVerticalStackView ()
 
   //····················································································································
   //    VIEW mPackagePage

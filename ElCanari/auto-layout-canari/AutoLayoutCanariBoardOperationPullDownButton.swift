@@ -20,6 +20,8 @@ final class AutoLayoutCanariBoardOperationPullDownButton : AutoLayoutBase_NSPopU
     self.addItem (withTitle: "")
     self.lastItem?.image = NSImage (named: NSImage.smartBadgeTemplateName)
 
+//   self.isBordered = false
+//   self.imagePosition = .imageOnly
  }
 
   //····················································································································

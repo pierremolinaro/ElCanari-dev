@@ -796,7 +796,6 @@ import Cocoa
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Remove Embedded Devices", size: .regular)
-        .expandableWidth ()
         .bind_enabled (.intcmp (.id (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
@@ -804,7 +803,6 @@ import Cocoa
         )
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutButton (title: "Reset Device and Font Versions", size: .regular)
-        .expandableWidth ()
         .bind_enabled (.boolcmp (.intcmp (.id (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.id (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))))
         .bind_run (
           target: self,
@@ -812,7 +810,6 @@ import Cocoa
         )
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutButton (title: "Update Devices and Fonts", size: .regular)
-        .expandableWidth ()
         .bind_enabled (.boolcmp (.intcmp (.id (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.id (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))))
         .bind_run (
           target: self,

@@ -225,7 +225,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
   //--- Add Updated tracking area
     let trackingArea = NSTrackingArea (
       rect: self.bounds,
-      options: [.mouseEnteredAndExited, .mouseMoved, .activeInKeyWindow],
+      options: [.mouseEnteredAndExited, .activeInKeyWindow],
       owner: self,
       userInfo: nil
     )
@@ -256,13 +256,13 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
 
   //····················································································································
 
-  override func mouseMoved (with inEvent : NSEvent) {
-    if self.isEnabled {
-      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-      self.mMouseIsInside = self.bounds.contains (mouseDownLocation)
-    }
-    super.mouseMoved (with: inEvent)
-  }
+//  override func mouseMoved (with inEvent : NSEvent) {
+//    if self.isEnabled {
+//      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+//      self.mMouseIsInside = self.bounds.contains (mouseDownLocation)
+//    }
+//    super.mouseMoved (with: inEvent)
+//  }
 
   //····················································································································
 
@@ -276,6 +276,13 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
   //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {
+    if self.mMouseIsInside {
+//      let x : CGFloat = 0.75
+//      let myGray = NSColor (red: x, green: x, blue: x, alpha: 0.5)
+//      myGray.setFill ()
+      NSColor.selectedTextBackgroundColor.setFill  ()
+      NSBezierPath.fill (self.bounds)
+    }
     super.draw (inDirtyRect)
     if debugAutoLayout () {
       let bp = NSBezierPath (rect: self.bounds)
@@ -283,12 +290,6 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
       bp.lineJoinStyle = .round
       DEBUG_STROKE_COLOR.setStroke ()
       bp.stroke ()
-    }
-    if self.mMouseIsInside {
-      let x : CGFloat = 0.75
-      let myGray = NSColor (red: x, green: x, blue: x, alpha: 0.5)
-      myGray.setFill ()
-      NSBezierPath.fill (self.bounds)
     }
   }
 

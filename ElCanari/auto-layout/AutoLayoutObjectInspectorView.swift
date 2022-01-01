@@ -13,7 +13,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
   private let mDefaultInspectorView = AutoLayoutVerticalStackView ()
   private let mDefaultLabel = AutoLayoutStaticLabel (title: "", bold: true, size: .small).expandableWidth ().set (alignment: .center)
   private var mGraphicController : EBGraphicViewControllerProtocol? = nil
-  private var mInspectors = [(EBManagedObject.Type, AutoLayoutAbstractStackView)] ()
+  private var mInspectors = [(EBManagedObject.Type, AutoLayoutBase_NSStackView)] ()
   private let mObserver = EBOutletEvent ()
 
   //····················································································································
@@ -22,7 +22,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
 
   override init () {
   //--- Define default View
-    self.mDefaultInspectorView.appendView (mDefaultLabel)
+    self.mDefaultInspectorView.appendView (self.mDefaultLabel)
     self.mDefaultInspectorView.appendView (AutoLayoutFlexibleSpace ())
   //---
     super.init ()
@@ -50,7 +50,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
   //····················································································································
 
   final func addObjectInspector (forEntity inEntity : EBManagedObject.Type,
-                                 inspectorView inInspectorView : AutoLayoutAbstractStackView) -> Self {
+                                 inspectorView inInspectorView : AutoLayoutBase_NSStackView) -> Self {
     self.mInspectors.append ((inEntity, inInspectorView))
     return self
   }
@@ -72,7 +72,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
       self.removeView (view) // Do not use view.removeFromSuperview ()
     }
     if let selectedObjectSet = self.mGraphicController?.selectedGraphicObjectSet {
-      var selectedObjectsInspectorViewSet = Set <AutoLayoutAbstractStackView> ()
+      var selectedObjectsInspectorViewSet = Set <AutoLayoutBase_NSStackView> ()
       var someSelectedObjectsHasNoInspector = false
       for selectedObject in selectedObjectSet.values {
         var objectHasInspector = false

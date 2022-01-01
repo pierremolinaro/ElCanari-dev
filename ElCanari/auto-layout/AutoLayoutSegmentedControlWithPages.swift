@@ -8,12 +8,12 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
 
   //····················································································································
 
-  private var mDocumentView : AutoLayoutAbstractStackView
-  private var mPages = [AutoLayoutAbstractStackView] ()
+  private var mDocumentView : AutoLayoutBase_NSStackView
+  private var mPages = [AutoLayoutBase_NSStackView] ()
 
   //····················································································································
 
-  init (documentView inDocumentView : AutoLayoutAbstractStackView,
+  init (documentView inDocumentView : AutoLayoutBase_NSStackView,
         equalWidth inEqualWidth : Bool,
         size inSize : EBControlSize) {
     self.mDocumentView = inDocumentView
@@ -49,7 +49,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
 
   final func addPage (title inTitle : String,
                       tooltip inTooltipString : String,
-                      pageView inPageView : AutoLayoutAbstractStackView) -> Self {
+                      pageView inPageView : AutoLayoutBase_NSStackView) -> Self {
     self.segmentCount += 1
     self.setLabel (inTitle, forSegment: self.segmentCount - 1)
     self.setToolTip (inTooltipString, forSegment: self.segmentCount - 1)
@@ -69,7 +69,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
 
   final func addPage (image inImageName : String,
                       tooltip inTooltipString : String,
-                      pageView inPageView : AutoLayoutAbstractStackView) -> Self {
+                      pageView inPageView : AutoLayoutBase_NSStackView) -> Self {
     self.segmentCount += 1
     self.setImage (NSImage (named: inImageName), forSegment: self.segmentCount - 1)
     self.setToolTip (inTooltipString, forSegment: self.segmentCount - 1)

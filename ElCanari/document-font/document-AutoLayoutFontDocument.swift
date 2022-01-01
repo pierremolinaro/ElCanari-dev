@@ -275,7 +275,7 @@ import Cocoa
   //    VIEW mFontPageInspectorMasterView
   //····················································································································
 
-  let mFontPageInspectorMasterView : AutoLayoutAbstractStackView = AutoLayoutVerticalStackView ()
+  let mFontPageInspectorMasterView : AutoLayoutBase_NSStackView = AutoLayoutVerticalStackView ()
 
   //····················································································································
   //    VIEW mFontPage
