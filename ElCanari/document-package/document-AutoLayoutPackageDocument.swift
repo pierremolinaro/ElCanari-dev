@@ -3582,9 +3582,6 @@ import Cocoa
   //--- Call outlet linkers
     self.linker_issueTableViewToGraphicView (self.mPackageIssueTableView, self.mPackageGraphicView)
   //--- Assign main view to window
-/*    if let windowSize = self.windowForSheet?.frame.size {
-      mainView.frame.size = windowSize
-    } */
     self.windowForSheet?.contentView = AutoLayoutWindowContentView (view: mainView)
   }
 
@@ -3980,31 +3977,6 @@ import Cocoa
       Swift.print ("Configure properties \(durationMS) ms")
     }
   }
-
-  //····················································································································
-
-/*  final private func installBindings () {
-    let start = Date ()
-  //--------------------------- Install table view bindings
-  //--------------------------- Install ebView bindings
-  //--------------------------- Install regular bindings
-  //--------------------------- Install multiple bindings
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Install bindings \(durationMS) ms")
-    }
-  } */
-
-  //····················································································································
-
-/*  final private func setTargetsAndActions () {
-     let start = Date ()
-   //--------------------------- Set targets / actions
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Set target and actions \(durationMS) ms")
-    }
-  } */
 
   //····················································································································
   //   removeUserInterface

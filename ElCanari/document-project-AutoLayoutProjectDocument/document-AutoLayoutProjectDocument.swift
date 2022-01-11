@@ -1391,12 +1391,9 @@ import Cocoa
         view_0_0.appendView (view_0_0_8)
       }
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-      view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutVerticalStackView ()
-        .set (margins: 8)
+      let view_0_1 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_2_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mBoardInspectorView, equalWidth: true, size: .small)
+        let view_0_1_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mBoardInspectorView, equalWidth: true, size: .small)
           .expandableWidth ()
           .addPage (title: "", tooltip: "Selected Element Inspector", pageView: self.mSelectedElementInspectorView)
           .addPage (title: "", tooltip: "Insert Component in Board", pageView: self.mInsertComponentInBoardView)
@@ -1405,12 +1402,12 @@ import Cocoa
           .addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: self.mBoardERCInspectorView)
           .bind_selectedPage (self.rootObject.mBoardSelectedInspector_property)
           .bind_segmentTitle (self.unplacedPackagesCountString_property, segmentIndex:1)
-        self.configure_boardInspectorConfigurator (view_0_2_0) // Configurator
-        view_0_2.appendView (view_0_2_0)
-        let view_0_2_1 = mBoardInspectorView
-        view_0_2.appendView (view_0_2_1)
+        self.configure_boardInspectorConfigurator (view_0_1_0) // Configurator
+        view_0_1.appendView (view_0_1_0)
+        let view_0_1_1 = mBoardInspectorView
+        view_0_1.appendView (view_0_1_1)
       }
-      view_0.appendView (view_0_2)
+      view_0.appendView (view_0_1)
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
@@ -1445,6 +1442,7 @@ import Cocoa
 
   lazy var mSelectedElementInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
     let view_0 = AutoLayoutFlexibleSpace ()
     vStackView.appendView (view_0)
     return vStackView
@@ -1467,6 +1465,7 @@ import Cocoa
 
   lazy var mInsertComponentInBoardView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
@@ -1492,6 +1491,8 @@ import Cocoa
 
   lazy var mBoardDisplayInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+      .set (rightMargin: 0)
     let view_0 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_84 ())
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutFlexibleSpace ()
@@ -1505,6 +1506,7 @@ import Cocoa
 
   lazy var mBoardRouterInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
     let view_0 = AutoLayoutGridView2 ()
       .add (single: self.computeImplicitView_85 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_86 (), right: self.computeImplicitView_87 ())
@@ -1537,6 +1539,7 @@ import Cocoa
 
   lazy var mBoardERCInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
@@ -3008,7 +3011,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_75 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Front Side Restrict Rectangle", size: .small)
+    let view = AutoLayoutCheckbox (title: "Front Side Restrict Rect.", size: .small)
       .bind_value (preferences_displayFrontRestrictRectangles_property)
     return view
   }
@@ -3034,7 +3037,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_77 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Back Side Restrict Rectangle", size: .small)
+    let view = AutoLayoutCheckbox (title: "Back Side Restrict Rect.", size: .small)
       .bind_value (preferences_displayBackRestrictRectangles_property)
     return view
   }
@@ -3979,7 +3982,7 @@ import Cocoa
   //····················································································································
 
   override func ebBuildUserInterface () {
-  //--------------------------- Read documentFileName model
+    //--------------------------- Read documentFileName model
     self.documentFileName_property.mReadModelFunction = { [weak self] in
       if let r = self?.displayName {
         return .single (r)
@@ -3992,9 +3995,6 @@ import Cocoa
     let mainView = self.mDocumentMainView
   //--- Call outlet linkers
   //--- Assign main view to window
-/*    if let windowSize = self.windowForSheet?.frame.size {
-      mainView.frame.size = windowSize
-    } */
     self.windowForSheet?.contentView = AutoLayoutWindowContentView (view: mainView)
   }
 
@@ -4585,31 +4585,6 @@ import Cocoa
       Swift.print ("Configure properties \(durationMS) ms")
     }
   }
-
-  //····················································································································
-
-/*  final private func installBindings () {
-    let start = Date ()
-  //--------------------------- Install table view bindings
-  //--------------------------- Install ebView bindings
-  //--------------------------- Install regular bindings
-  //--------------------------- Install multiple bindings
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Install bindings \(durationMS) ms")
-    }
-  } */
-
-  //····················································································································
-
-/*  final private func setTargetsAndActions () {
-     let start = Date ()
-   //--------------------------- Set targets / actions
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Set target and actions \(durationMS) ms")
-    }
-  } */
 
   //····················································································································
   //   removeUserInterface

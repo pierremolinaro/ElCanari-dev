@@ -939,8 +939,8 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
         space
         DragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.") [configurator addTrackButton]
       }
-      separator
-      vStack set (margins: 8) {
+  //    separator
+      vStack {
         SegmentedControlWithPages (documentView: stackView mBoardInspectorView, equalWidth: yes, size : .small) 
           [configurator boardInspectorConfigurator] {
           expandableWidth ()
@@ -978,7 +978,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   }
 
   
-  stackView mSelectedElementInspectorView vStack {
+  stackView mSelectedElementInspectorView vStack set (margins: 8) {
     space
   }
 
@@ -986,7 +986,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     space
   }
   
-  stackView mInsertComponentInBoardView vStack {
+  stackView mInsertComponentInBoardView vStack set (margins: 8) {
     hStack {
       space
       Label (bold: yes, size: .small) { $title self.unplacedPackagesMessageString }
@@ -1001,7 +1001,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   transient Bool rastnetDisplayOneNet dependsFrom root.mRastnetDisplay ;
   transient Bool rastnetDisplayComponentNet dependsFrom root.mRastnetDisplay ;
 
-  stackView mBoardDisplayInspectorView vStack {
+  stackView mBoardDisplayInspectorView vStack set (margins: 8) set (rightMargin: 0) {
     VerticalScrollView (content:
       GridView2 {
         add (
@@ -1112,11 +1112,11 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.frontSideRestrictRectangleColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Front Side Restrict Rectangle", size : .small)  { $value prefs.displayFrontRestrictRectangles }
+          right: Checkbox (title: "Front Side Restrict Rect.", size : .small)  { $value prefs.displayFrontRestrictRectangles }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.backSideRestrictRectangleColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Back Side Restrict Rectangle", size : .small)  { $value prefs.displayBackRestrictRectangles }
+          right: Checkbox (title: "Back Side Restrict Rect.", size : .small)  { $value prefs.displayBackRestrictRectangles }
         )
         addCenterYAligned (
           left: hStack { space ColorWell { $color prefs.boardLimitsColorForBoard (sendContinously:yes) } },
@@ -1135,7 +1135,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     space 
   }
 
-  stackView mBoardRouterInspectorView vStack {
+  stackView mBoardRouterInspectorView vStack set (margins: 8) {
     GridView2 {
       add (
         single: hStack { StaticLabel (title: "Board Settings", bold: yes, size: .small) space}
@@ -1287,7 +1287,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   action launchFreeRouterWithoutAnyDocument ;
   action exportDSNFileAction ;
 
-  stackView mBoardERCInspectorView vStack {
+  stackView mBoardERCInspectorView vStack set (margins: 8) {
     hStack { space StaticLabel (title: "ERC Checking", bold: yes, size: .small) space}
     Checkbox (title: "Check Clearance between Pads of the same Net", size: .small) {
       set (width: 200, multiline: yes)
