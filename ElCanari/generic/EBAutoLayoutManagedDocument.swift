@@ -14,6 +14,7 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
 
   private final var mReadMetadataStatus : UInt8 = 0
   private final var mMetadataDictionary = [String : Any] ()
+  private final var mSplashScreenWindow : EBWindow? = nil
 
   //····················································································································
   //    Document File Format
@@ -104,11 +105,36 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
   //    READ DOCUMENT FROM FILE
   //····················································································································
 
-  override func read (from data : Data, ofType typeName : String) throws {
+  override func read (from inData : Data, ofType typeName : String) throws {
+  //--- Show "Opening xxx…" splash window ?
+    if inData.count > 1_000_000 {
+      let window = EBWindow (
+        contentRect: NSRect (x: 0.0, y: 0.0, width: 450.0, height: 100.0),
+        styleMask: [.titled],
+        backing: .buffered,
+        defer: true
+      )
+      self.mSplashScreenWindow = window
+      window.title = "Opening " + self.displayName + "…"
+      let vStackView = AutoLayoutVerticalStackView ()
+      vStackView.appendView (AutoLayoutFlexibleSpace ())
+      let hStackView = AutoLayoutHorizontalStackView ()
+      hStackView.appendView (AutoLayoutFlexibleSpace ())
+      hStackView.appendView (AutoLayoutSpinningProgressIndicator ())
+      hStackView.appendView (AutoLayoutFlexibleSpace ())
+      vStackView.appendView (hStackView)
+      vStackView.appendView (AutoLayoutFlexibleSpace ())
+      window.contentView = vStackView
+      window.isReleasedWhenClosed = false
+      window.center ()
+      window.makeKeyAndOrderFront (nil)
+      RunLoop.current.run (until: Date ())
+    }
+
     self.ebUndoManager.disableUndoRegistration ()
   //--- Load file
     let startLoadFile = Date ()
-    let documentData = try loadEasyBindingFile (fromData: data, documentName: self.displayName, undoManager: self.ebUndoManager)
+    let documentData = try loadEasyBindingFile (fromData: inData, documentName: self.displayName, undoManager: self.ebUndoManager)
     self.mManagedDocumentFileFormat = documentData.documentFileFormat
     if LOG_OPERATION_DURATION {
       Swift.print ("Load File \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms, format \(documentData.documentFileFormat.string)")
@@ -160,8 +186,8 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
     self.mSignatureObserver.addEBObserver (self.mVersionShouldChangeObserver)
   //--- Create the window and set the content view
     let s = self.windowDefaultSize ()
-    let windowWidth = (self.mMetadataDictionary [WINDOW_WIDTH_METADATADICTIONARY_KEY] as? CGFloat) ?? s.width
-    let windowHeight = self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] as? CGFloat ?? s.height
+    let windowWidth  = (self.mMetadataDictionary [WINDOW_WIDTH_METADATADICTIONARY_KEY] as? CGFloat) ?? s.width
+    let windowHeight = (self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] as? CGFloat) ?? s.height
     let window = NSWindow (
       contentRect: NSRect(x: 0.0, y: 0.0, width: windowWidth, height: windowHeight),
       styleMask: self.windowStyleMask (),
@@ -173,38 +199,18 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
   //---
     let windowController = NSWindowController (window: window)
     self.addWindowController (windowController)
-  //--- Build temporary view
-//    let vStackView = AutoLayoutVerticalStackView ()
-//    vStackView.appendView (AutoLayoutFlexibleSpace ())
-//    let hStackView = AutoLayoutHorizontalStackView ()
-//    hStackView.appendView (AutoLayoutFlexibleSpace ())
-//    hStackView.appendView (AutoLayoutSpinningProgressIndicator ())
-//    hStackView.appendView (AutoLayoutFlexibleSpace ())
-//    vStackView.appendView (AutoLayoutFlexibleSpace ())
-//    window.contentView = vStackView
   //--- Build user interface
-//    let deadline = DispatchTime.now () + DispatchTimeInterval.seconds (3)
-//    DispatchQueue.main.asyncAfter (deadline: deadline) {
-//      self.ebBuildUserInterface ()
-//      flushOutletEvents ()
-//    }
-//    DispatchQueue.main.async {
-      self.ebBuildUserInterface ()
-      flushOutletEvents ()
-//    }
+    self.ebBuildUserInterface ()
+    flushOutletEvents ()
+    if let window = self.mSplashScreenWindow {
+      window.orderOut (nil)
+      self.mSplashScreenWindow = nil
+    }
   }
 
   //····················································································································
 
   func ebBuildUserInterface () {
-//    let vStackView = AutoLayoutVerticalStackView ()
-//    vStackView.appendView (AutoLayoutFlexibleSpace ())
-//    let hStackView = AutoLayoutHorizontalStackView ()
-//    hStackView.appendView (AutoLayoutFlexibleSpace ())
-//    hStackView.appendView (AutoLayoutStaticLabel (title: "Undefined User Interface", bold: true, size: .regular))
-//    hStackView.appendView (AutoLayoutFlexibleSpace ())
-//    vStackView.appendView (AutoLayoutFlexibleSpace ())
-//    self.windowForSheet?.contentView = vStackView
   }
 
   //····················································································································

@@ -13,9 +13,14 @@ final class AutoLayoutSpinningProgressIndicator : NSProgressIndicator, EBUserCla
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
+    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+    self.setContentCompressionResistancePriority (.required, for: .vertical)
+
     self.isIndeterminate = true
     self.style = .spinning
     self.usesThreadedAnimation = true
+    self.controlSize = .regular
+    self.isDisplayedWhenStopped = true
     self.startAnimation (nil)
   }
 
@@ -33,11 +38,11 @@ final class AutoLayoutSpinningProgressIndicator : NSProgressIndicator, EBUserCla
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.stopAnimation (nil)
-    self.usesThreadedAnimation = false
-    super.ebCleanUp ()
-  }
+//  override func ebCleanUp () {
+//    self.stopAnimation (nil)
+//    self.usesThreadedAnimation = false
+//    super.ebCleanUp ()
+//  }
 
   //····················································································································
 
