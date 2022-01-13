@@ -12,6 +12,12 @@ protocol NetInProject_mNetName : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol NetInProject_mWarnsExactlyOneLabel : AnyObject {
+  var mWarnsExactlyOneLabel : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol NetInProject_netClassName : AnyObject {
   var netClassName : String? { get }
 }
@@ -58,6 +64,7 @@ protocol NetInProject_trackCount : AnyObject {
 
 final class NetInProject : EBManagedObject,
          NetInProject_mNetName,
+         NetInProject_mWarnsExactlyOneLabel,
          NetInProject_netClassName,
          NetInProject_netClassTrackWidth,
          NetInProject_netClassViaHoleDiameter,
@@ -98,6 +105,25 @@ final class NetInProject : EBManagedObject,
   final var mNetName : String {
     get { return self.mNetName_property.propval }
     set { self.mNetName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mWarnsExactlyOneLabel
+  //····················································································································
+
+  final let mWarnsExactlyOneLabel_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mWarnsExactlyOneLabel_toDefaultValue () {
+    self.mWarnsExactlyOneLabel = true
+  }
+
+  //····················································································································
+
+  final var mWarnsExactlyOneLabel : Bool {
+    get { return self.mWarnsExactlyOneLabel_property.propval }
+    set { self.mWarnsExactlyOneLabel_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -266,6 +292,7 @@ final class NetInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
+    self.mWarnsExactlyOneLabel_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     super.init (ebUndoManager)
     self.mNetClass_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
@@ -452,6 +479,14 @@ final class NetInProject : EBManagedObject,
         observerExplorer: &self.mNetName_property.mObserverExplorer,
         valueExplorer: &self.mNetName_property.mValueExplorer
       )
+      createEntryForPropertyNamed (
+        "mWarnsExactlyOneLabel",
+        object: self.mWarnsExactlyOneLabel_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mWarnsExactlyOneLabel_property.mObserverExplorer,
+        valueExplorer: &self.mWarnsExactlyOneLabel_property.mValueExplorer
+      )
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
         "netClassName",
@@ -547,6 +582,9 @@ final class NetInProject : EBManagedObject,
   //--- Atomic property: mNetName
     self.mNetName_property.mObserverExplorer = nil
     self.mNetName_property.mValueExplorer = nil
+  //--- Atomic property: mWarnsExactlyOneLabel
+    self.mWarnsExactlyOneLabel_property.mObserverExplorer = nil
+    self.mWarnsExactlyOneLabel_property.mValueExplorer = nil
     //--- To many property: mTracks
       self.mTracks_property.mValueExplorer = nil
     //--- To one property: mNetClass
@@ -592,6 +630,8 @@ final class NetInProject : EBManagedObject,
     )
     //--- Atomic property: mNetName
       self.mNetName_property.storeIn (dictionary: ioDictionary, forKey: "mNetName")
+    //--- Atomic property: mWarnsExactlyOneLabel
+      self.mWarnsExactlyOneLabel_property.storeIn (dictionary: ioDictionary, forKey: "mWarnsExactlyOneLabel")
   //--- To many property: mTracks
     self.store (
       managedObjectArray: self.mTracks_property.propval.values,
@@ -656,6 +696,8 @@ final class NetInProject : EBManagedObject,
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mNetName
     self.mNetName_property.readFrom (dictionary: inDictionary, forKey: "mNetName")
+  //--- Atomic property: mWarnsExactlyOneLabel
+    self.mWarnsExactlyOneLabel_property.readFrom (dictionary: inDictionary, forKey: "mWarnsExactlyOneLabel")
   }
 
 
@@ -667,6 +709,7 @@ final class NetInProject : EBManagedObject,
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mNetName\n"
+    ioString += "mWarnsExactlyOneLabel\n"
   //--- To one relationships
     ioString += "mNetClass\n"
   //--- To many relationships
@@ -682,6 +725,8 @@ final class NetInProject : EBManagedObject,
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mNetName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mWarnsExactlyOneLabel.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.mNetClass {
@@ -766,6 +811,9 @@ final class NetInProject : EBManagedObject,
     //--- Atomic properties
       if let range = inDictionary ["mNetName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mNetName = value
+      }
+      if let range = inDictionary ["mWarnsExactlyOneLabel"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.mWarnsExactlyOneLabel = value
       }
     //--- To one relationships
       if let range = inDictionary ["mNetClass"], let objectIndex = inData.base62EncodedInt (range: range) {

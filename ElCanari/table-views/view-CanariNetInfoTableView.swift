@@ -55,6 +55,8 @@ final class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTable
       }
       if columnIdentifier.rawValue == "netname" {
         result?.textField?.stringValue = self.mDataSource [inRowIndex].netName
+      }else if columnIdentifier.rawValue == "warnsExactlyOneLabel" {
+        result?.textField?.stringValue = self.mDataSource [inRowIndex].warnsExactlyOneLabel ? "yes" : "no"
       }else if columnIdentifier.rawValue == "netclass" {
         result?.textField?.stringValue = self.mDataSource [inRowIndex].netClassName
       }else if columnIdentifier.rawValue == "tracks" {

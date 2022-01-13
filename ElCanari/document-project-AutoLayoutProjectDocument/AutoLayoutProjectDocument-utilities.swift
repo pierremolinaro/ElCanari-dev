@@ -146,6 +146,7 @@ struct NetInfo : Hashable {
   let pinCount : Int
   let labelCount : Int
   let trackCount : Int
+  let warnsExactlyOneLabel : Bool
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

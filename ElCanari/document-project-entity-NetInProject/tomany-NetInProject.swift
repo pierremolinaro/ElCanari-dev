@@ -18,6 +18,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {
       self.removeEBObserversOf_mNetName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mWarnsExactlyOneLabel_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_netClassName_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (inRemovedSet) // Transient property
@@ -29,6 +30,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   //--- Add observers to added objects
     if !inAddedSet.isEmpty {
       self.addEBObserversOf_mNetName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mWarnsExactlyOneLabel_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_netClassName_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_netClassTrackWidth_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (inAddedSet) // Transient property
@@ -94,6 +96,65 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mNetName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mWarnsExactlyOneLabel' stored property
+  //····················································································································
+
+  private final var mObserversOf_mWarnsExactlyOneLabel = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mWarnsExactlyOneLabel (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mWarnsExactlyOneLabel.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mWarnsExactlyOneLabel_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mWarnsExactlyOneLabel (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mWarnsExactlyOneLabel.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mWarnsExactlyOneLabel_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mWarnsExactlyOneLabel_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+    if !self.mObserversOf_mWarnsExactlyOneLabel.isEmpty {
+      for managedObject in inSet.values {
+        self.mObserversOf_mWarnsExactlyOneLabel.apply { (_ observer : EBObserverProtocol) in
+          managedObject.mWarnsExactlyOneLabel_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mWarnsExactlyOneLabel_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+    self.mObserversOf_mWarnsExactlyOneLabel.apply { (_ observer : EBObserverProtocol) in
+      observer.observedObjectDidChange ()
+      for managedObject in inSet.values {
+        managedObject.mWarnsExactlyOneLabel_property.removeEBObserver (observer)
       }
     }
   }
@@ -1071,6 +1132,7 @@ final class PreferencesArrayOf_NetInProject : StoredArrayOf_NetInProject {
       self.setProp (objectArray)
     }
     self.addEBObserverOf_mNetName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mWarnsExactlyOneLabel (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

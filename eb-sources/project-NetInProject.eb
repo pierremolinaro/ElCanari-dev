@@ -8,6 +8,7 @@ entity NetInProject {
   toMany BoardTrack mTracks inverse toOne mNet ;
  
   property String mNetName default "" ;
+  property Bool mWarnsExactlyOneLabel default yes ;
  
   transient String netClassName dependsFrom self.mNetClass.one.mNetClassName ;
   transient Int netClassTrackWidth dependsFrom self.mNetClass.one.mTrackWidth ;

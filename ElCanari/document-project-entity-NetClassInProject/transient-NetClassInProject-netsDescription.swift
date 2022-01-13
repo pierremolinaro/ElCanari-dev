@@ -8,7 +8,8 @@ import Cocoa
 
 //--- START OF USER ZONE 1
 
-fileprivate func computeSubnets (_ inPointArray : NetInfoPointArray) -> (StatusStringArray, Bool) { // ( ..., has warning)
+fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
+                                 _ inPointArray : NetInfoPointArray) -> (StatusStringArray, Bool) { // ( ..., has warning)
 //--- Wire dictionary (for compute subnet accessibility)
   var wireDictionary = [Int : NetInfoPointArray] ()
   for point in inPointArray {
@@ -21,6 +22,7 @@ fileprivate func computeSubnets (_ inPointArray : NetInfoPointArray) -> (StatusS
     }
   }
 //---
+  var netLabelCount = 0
   var subnetDescriptionStrings = [(Bool, String)] ()
   var unExploredPointSet = Set (inPointArray)
   while let aPoint = unExploredPointSet.first {
@@ -58,6 +60,7 @@ fileprivate func computeSubnets (_ inPointArray : NetInfoPointArray) -> (StatusS
         labelArray.append (label)
       }
     }
+    netLabelCount += labelArray.count
     var subnetDescription : String
     if pinArray.count == 0 {
       subnetDescription = "No pin"
@@ -98,6 +101,11 @@ fileprivate func computeSubnets (_ inPointArray : NetInfoPointArray) -> (StatusS
       statusStringArray.append (StatusString (status: severalLabels ? .ok : .warning, string: descriptionString))
     }
   }
+//--- Exactly one label ?
+  if inWarnsExactlyOneLabel && (netLabelCount == 1) {
+    hasWarning = true
+    statusStringArray.append (StatusString (status: .warning, string: "Exactly one label"))
+  }
 //---
   return (statusStringArray, hasWarning)
 }
@@ -111,6 +119,7 @@ func transient_NetClassInProject_netsDescription (
        _ self_mNets_trackCount : [NetInProject_trackCount],
        _ self_mNets_mNetName : [NetInProject_mNetName],
        _ self_mNets_netSchematicPointsInfo : [NetInProject_netSchematicPointsInfo],
+       _ self_mNets_mWarnsExactlyOneLabel : [NetInProject_mWarnsExactlyOneLabel],
        _ self_mNetClassName : String
 ) -> NetInfoArray {
 //--- START OF USER ZONE 2
@@ -120,6 +129,7 @@ func transient_NetClassInProject_netsDescription (
           let netName = self_mNets_mNetName [idx].mNetName
           let trackCount = self_mNets_trackCount [idx].trackCount!
           let netPointInfo = self_mNets_netSchematicPointsInfo [idx].netSchematicPointsInfo!
+          let warnsExactlyOneLabel = self_mNets_mWarnsExactlyOneLabel [idx].mWarnsExactlyOneLabel
           var pinCount = 0
           var labelCount = 0
           for point in netPointInfo {
@@ -128,7 +138,7 @@ func transient_NetClassInProject_netsDescription (
               pinCount += 1
             }
           }
-          let (subnets, subnetsHaveWarning) = computeSubnets (netPointInfo)
+          let (subnets, subnetsHaveWarning) = computeSubnets (warnsExactlyOneLabel, netPointInfo)
           let netInfo = NetInfo (
             netIdentifier: self_mNets [idx].objectIdentifier, 
             netName: netName,
@@ -138,7 +148,8 @@ func transient_NetClassInProject_netsDescription (
             subnetsHaveWarning : subnetsHaveWarning,
             pinCount: pinCount,
             labelCount: labelCount,
-            trackCount: trackCount
+            trackCount: trackCount,
+            warnsExactlyOneLabel: warnsExactlyOneLabel
           )
           array.append (netInfo)
           idx += 1

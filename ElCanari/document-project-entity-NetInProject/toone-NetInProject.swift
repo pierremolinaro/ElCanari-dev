@@ -17,6 +17,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
       oldValue.mNetName_property.removeEBObserver (self.mNetName_property) // Stored property
+      oldValue.mWarnsExactlyOneLabel_property.removeEBObserver (self.mWarnsExactlyOneLabel_property) // Stored property
       oldValue.netClassName_property.removeEBObserver (self.netClassName_property) // Transient property
       oldValue.netClassTrackWidth_property.removeEBObserver (self.netClassTrackWidth_property) // Transient property
       oldValue.netClassViaHoleDiameter_property.removeEBObserver (self.netClassViaHoleDiameter_property) // Transient property
@@ -28,6 +29,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
       newValue.mNetName_property.addEBObserver (self.mNetName_property) // Stored property
+      newValue.mWarnsExactlyOneLabel_property.addEBObserver (self.mWarnsExactlyOneLabel_property) // Stored property
       newValue.netClassName_property.addEBObserver (self.netClassName_property) // Transient property
       newValue.netClassTrackWidth_property.addEBObserver (self.netClassTrackWidth_property) // Transient property
       newValue.netClassViaHoleDiameter_property.addEBObserver (self.netClassViaHoleDiameter_property) // Transient property
@@ -43,6 +45,12 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //····················································································································
 
   final let mNetName_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'mWarnsExactlyOneLabel' stored property
+  //····················································································································
+
+  final let mWarnsExactlyOneLabel_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'netClassName' transient property
@@ -144,6 +152,21 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     self.mNetName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.mNetName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mWarnsExactlyOneLabel simple stored property
+    self.mWarnsExactlyOneLabel_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mWarnsExactlyOneLabel_property.selection {
         case .empty :
           return .empty
         case .multiple :

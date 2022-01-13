@@ -16,6 +16,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
 
   private let mTableView = AutoLayoutTableView (size: .regular, addControlButtons: false)
   private var mDataSource = NetInfoArray ()
+  private weak var mDocument : AutoLayoutProjectDocument? = nil
 
   //····················································································································
 
@@ -72,6 +73,49 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
       headerAlignment: .left,
       contentAlignment: .left
     )
+    self.mTableView.addColumn_Int (
+      valueGetterDelegate: { [weak self] in
+        return self?.mDataSource [$0].labelCount ?? 0
+      },
+      valueSetterDelegate: nil,
+      sortDelegate: { [weak self] (ascending) in
+        self?.mDataSource.sort { ascending ? ($0.labelCount < $1.labelCount) : ($0.labelCount > $1.labelCount) }
+      },
+      title: "Labels",
+      minWidth: 60,
+      maxWidth: 100,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+    self.mTableView.addColumn_Bool (
+      valueGetterDelegate: { [weak self] in
+        return self?.mDataSource [$0].warnsExactlyOneLabel ?? false
+      },
+      valueSetterDelegate: { [weak self] (inRowIndex : Int, inValue : Bool) in
+         if let rootObject = self?.mDocument?.rootObject, let dataSource = self?.mDataSource {
+           let netName = dataSource [inRowIndex].netName
+           for netClass in rootObject.mNetClasses.values {
+             for net in netClass.mNets.values {
+               if net.mNetName == netName {
+                 net.mWarnsExactlyOneLabel = inValue
+               }
+             }
+           }
+         }
+      },
+      sortDelegate: { [weak self] (ascending) in
+        self?.mDataSource.sort {
+          let key0 = $0.warnsExactlyOneLabel && ($0.labelCount == 1)
+          let key1 = $1.warnsExactlyOneLabel && ($1.labelCount == 1)
+          return ascending ? (key0 < key1) : (key0 > key1)
+        }
+      },
+      title: "Warns One Label",
+      minWidth: 60,
+      maxWidth: 150,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
     self.mTableView.addColumn_NSImage_Int (
       valueGetterDelegate: { [weak self] in
         let n = self?.mDataSource [$0].subnets.count
@@ -119,6 +163,12 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  func setDocument (_ inDocument : AutoLayoutProjectDocument) {
+    self.mDocument = inDocument
   }
 
   //····················································································································

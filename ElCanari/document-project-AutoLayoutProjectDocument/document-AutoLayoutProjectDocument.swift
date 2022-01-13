@@ -1078,6 +1078,7 @@ import Cocoa
       let view_1_0 = AutoLayoutCanariNetDescriptionTableView ()
         .bind_netInfo (self.rootObject.netsDescription_property)
       self.mNetInfoTableView = view_1_0 // Outlet
+      self.configure_netDescriptionTableViewConfigurator (view_1_0) // Configurator
       view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutVerticalStackView ()
       do{

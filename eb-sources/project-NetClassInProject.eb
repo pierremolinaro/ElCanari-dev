@@ -41,6 +41,7 @@ entity NetClassInProject {
     self.mNets.all.trackCount,
     self.mNets.all.mNetName,
     self.mNets.all.netSchematicPointsInfo,
+    self.mNets.all.mWarnsExactlyOneLabel,
     self.mNetClassName ;
 
   transient Int netWarningCount dependsFrom self.netsDescription ;

@@ -909,10 +909,10 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: netsDescription
     self.netsDescription_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNets_property.selection, unwSelf.mNets_property.selection, unwSelf.mNets_property.selection, unwSelf.mNets_property.selection, unwSelf.mNetClassName_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-          return .single (transient_NetClassInProject_netsDescription (v0, v1, v2, v3, v4))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (unwSelf.mNets_property.selection, unwSelf.mNets_property.selection, unwSelf.mNets_property.selection, unwSelf.mNets_property.selection, unwSelf.mNets_property.selection, unwSelf.mNetClassName_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+          return .single (transient_NetClassInProject_netsDescription (v0, v1, v2, v3, v4, v5))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -925,6 +925,7 @@ final class NetClassInProject : EBManagedObject,
     self.mNets_property.addEBObserverOf_trackCount (self.netsDescription_property)
     self.mNets_property.addEBObserverOf_mNetName (self.netsDescription_property)
     self.mNets_property.addEBObserverOf_netSchematicPointsInfo (self.netsDescription_property)
+    self.mNets_property.addEBObserverOf_mWarnsExactlyOneLabel (self.netsDescription_property)
     self.mNetClassName_property.addEBObserver (self.netsDescription_property)
   //--- Atomic property: netWarningCount
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
@@ -973,6 +974,7 @@ final class NetClassInProject : EBManagedObject,
     // self.mNets_property.removeEBObserverOf_trackCount (self.netsDescription_property)
     // self.mNets_property.removeEBObserverOf_mNetName (self.netsDescription_property)
     // self.mNets_property.removeEBObserverOf_netSchematicPointsInfo (self.netsDescription_property)
+    // self.mNets_property.removeEBObserverOf_mWarnsExactlyOneLabel (self.netsDescription_property)
     // self.mNetClassName_property.removeEBObserver (self.netsDescription_property)
     // self.netsDescription_property.removeEBObserver (self.netWarningCount_property)
   //--- Unregister properties for handling signature

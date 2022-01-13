@@ -372,7 +372,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       space
     }
     hSplit {
-      CanariNetDescriptionTableView [outlet mNetInfoTableView] { $netInfo root.netsDescription }
+      CanariNetDescriptionTableView [outlet mNetInfoTableView configurator netDescriptionTableViewConfigurator] { $netInfo root.netsDescription }
       vStack {
         StaticLabel (title: "Pins of Selected Net", bold: no, size: .regular){ set (alignment: .center) set (width: 300) }
         TableView (size: .regular, addControlButtons: no) [configurator pinsOfSelectedNetTableViewConfigurator]

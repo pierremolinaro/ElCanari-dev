@@ -199,10 +199,10 @@ extension ProjectDocument {
       candidateSymbolTypeDictionary [symbolTypeName] = pinNameSet
     }
   //---
-    let currentSymbolTypeSet = Set (currentSymbolTypeDictionary.keys)
-    let candidateSymbolTypeSet = Set (candidateSymbolTypeDictionary.keys)
-    let missingSymbols = currentSymbolTypeSet.subtracting (candidateSymbolTypeSet)
-    let unknownSymbols = candidateSymbolTypeSet.subtracting (currentSymbolTypeSet)
+    let currentSymbolTypeSet : Set <String> = Set (currentSymbolTypeDictionary.keys)
+    let candidateSymbolTypeSet : Set <String> = Set (candidateSymbolTypeDictionary.keys)
+    let missingSymbols : Set <String> = currentSymbolTypeSet.subtracting (candidateSymbolTypeSet)
+    let unknownSymbols : Set <String> = candidateSymbolTypeSet.subtracting (currentSymbolTypeSet)
     for p in missingSymbols {
       result += "\n  - the candidate device has no '\(p)' symbol type"
     }
