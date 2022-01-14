@@ -30,6 +30,31 @@ extension AutoLayoutProjectDocument {
   internal func performERCChecking () -> Bool {
     self.mERCLogTextView?.clear ()
     var issues = [CanariIssue] ()
+  //--- Remove tracks without connectors
+//    var boardObjects = [BoardObject] ()
+//    for object in self.rootObject.mBoardObjects.values {
+//      if let track = object as? BoardTrack {
+//        let removeTrack = (track.mConnectorP1 == nil) || (track.mConnectorP2 == nil)
+//        if removeTrack {
+//          Swift.print ("removeTrack")
+//          track.mConnectorP1 = nil
+//          track.mConnectorP2 = nil
+//          track.mNet = nil
+//        }else{
+//          boardObjects.append (track)
+//        }
+//      }else if let connector = object as? BoardConnector {
+//        let removeConnector = ((connector.mTracksP1.count + connector.mTracksP2.count) == 0) && (connector.mComponent == nil)
+//        if removeConnector {
+//          Swift.print ("removeConnector")
+//        }else{
+//          boardObjects.append (connector)
+//        }
+//      }else{
+//        boardObjects.append (object)
+//      }
+//    }
+//    self.rootObject.mBoardObjects = EBReferenceArray (boardObjects)
   //--- Checkings
     self.checkVersusArtwork (&issues)
     if let artwork = self.rootObject.mArtwork {

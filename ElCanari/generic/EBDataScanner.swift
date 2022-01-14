@@ -23,6 +23,7 @@ struct EBDataScanner {
   //····················································································································
 
   var data : Data { return self.mData }
+  var index : Int { return self.mReadIndex }
 
   //····················································································································
 
@@ -338,7 +339,9 @@ struct EBDataScanner {
         self.mReadIndex += 1
       }
     }
-    return NSRange (location: start, length: self.mReadIndex - start - 1)
+    let range = NSRange (location: start, length: self.mReadIndex - start - 1)
+//    Swift.print ("RANGE \(range.location) \(range.length)")
+    return range
   }
 
   //····················································································································

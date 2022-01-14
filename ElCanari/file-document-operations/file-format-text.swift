@@ -120,19 +120,11 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     let className = classDefinition [classIndex].0
     let managedObject = newInstanceOfEntityNamed (inUndoManager, className)!
     objectArray.append (managedObject)
-    var readPropertyValues = true
     var valueDictionary = [String : NSRange] ()
-    var propertyIndex = 0
-    while readPropertyValues, ioDataScanner.ok () {
-      if ioDataScanner.test (byte: ASCII.at.rawValue) {
-        readPropertyValues = false
-      }else if ioDataScanner.eof () {
-        readPropertyValues = false
-      }else{
+    if propertyNameArray.count > 0 {
+      for propertyIndex in 0 ..< propertyNameArray.count {
         let propertyRange = ioDataScanner.getLineRangeAndAdvance ()
         valueDictionary [propertyNameArray [propertyIndex]] = propertyRange
-        propertyIndex += 1
-        // Swift.print ("  PROPERTY VALUE: '\(propertyValue)'")
       }
     }
     propertyValueArray.append (valueDictionary)
@@ -229,6 +221,7 @@ func dataForTextualSaveOperation (from inDocumentData : EBDocumentData) throws -
   for object in objectArray {
     let key = String (describing: type (of: object as Any))
     let classIndex = classDictionary [key]!
+  //  Swift.print ("\(classIndex)")
     fileStringData.append (ascii: .at)
     fileStringData.append (base62Encoded: classIndex)
     fileStringData.append (ascii: .lineFeed)

@@ -107,7 +107,7 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
 
   override func read (from inData : Data, ofType typeName : String) throws {
   //--- Show "Opening xxx…" splash window ?
-    if inData.count > 1_000_000 {
+    if inData.count > 300_000 {
       let window = EBWindow (
         contentRect: NSRect (x: 0.0, y: 0.0, width: 450.0, height: 100.0),
         styleMask: [.titled],
