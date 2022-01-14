@@ -16,6 +16,7 @@ class EBManagedXibDocument : EBManagedDocument {
 
   private final var mReadMetadataStatus : UInt8 = 0
   private final var mMetadataDictionary = [String : Any] ()
+  private final var mSplashScreenWindow : EBWindow? = nil
 
   //····················································································································
   //    Document File Format
@@ -105,11 +106,36 @@ class EBManagedXibDocument : EBManagedDocument {
   //    READ DOCUMENT FROM FILE
   //····················································································································
 
-  override func read (from data : Data, ofType typeName : String) throws {
+  override func read (from inData : Data, ofType typeName : String) throws {
+  //--- Show "Opening xxx…" splash window ?
+    if inData.count > 300_000 {
+      let window = EBWindow (
+        contentRect: NSRect (x: 0.0, y: 0.0, width: 450.0, height: 100.0),
+        styleMask: [.titled],
+        backing: .buffered,
+        defer: true
+      )
+      self.mSplashScreenWindow = window
+      window.title = "Opening " + self.displayName + "…"
+      let vStackView = AutoLayoutVerticalStackView ()
+      vStackView.appendView (AutoLayoutFlexibleSpace ())
+      let hStackView = AutoLayoutHorizontalStackView ()
+      hStackView.appendView (AutoLayoutFlexibleSpace ())
+      hStackView.appendView (AutoLayoutSpinningProgressIndicator ())
+      hStackView.appendView (AutoLayoutFlexibleSpace ())
+      vStackView.appendView (hStackView)
+      vStackView.appendView (AutoLayoutFlexibleSpace ())
+      window.contentView = vStackView
+      window.isReleasedWhenClosed = false
+      window.center ()
+      window.makeKeyAndOrderFront (nil)
+      RunLoop.current.run (until: Date ())
+    }
+
     self.ebUndoManager.disableUndoRegistration ()
   //--- Load file
     let startLoadFile = Date ()
-    let documentData = try loadEasyBindingFile (fromData: data, documentName: self.displayName, undoManager: self.ebUndoManager)
+    let documentData = try loadEasyBindingFile (fromData: inData, documentName: self.displayName, undoManager: self.ebUndoManager)
     self.mManagedDocumentFileFormat = documentData.documentFileFormat
     if LOG_OPERATION_DURATION {
       Swift.print ("Load File \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms, format \(documentData.documentFileFormat.string)")
@@ -172,6 +198,10 @@ class EBManagedXibDocument : EBManagedDocument {
       unwrappedWindowForSheet.setFrame (windowFrame, display: true)
     }
     flushOutletEvents ()
+    if let window = self.mSplashScreenWindow {
+      window.orderOut (nil)
+      self.mSplashScreenWindow = nil
+    }
   }
 
   //····················································································································
