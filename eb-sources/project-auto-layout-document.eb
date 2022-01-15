@@ -1303,7 +1303,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   stackView mSelectedElementInspectorView vStack set (margins: 8) {
     ObjectInspectorView {
       addObjectInspector (forEntity: entity BoardTrack, inspectorView: stackView mBoardTrackInspectorView)
- //     addObjectInspector (forEntity: entity SymbolPin, inspectorView: stackView mSymbolPinInspectorView)
+      addObjectInspector (forEntity: entity BoardConnector, inspectorView: stackView mBoardConnectorInspectorView)
       $graphicController #boardObjectsController
     }
     space
@@ -1417,45 +1417,71 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     space
   }
 
-////--- Board Connector inspector
-//  outlet CanariViewWithKeyView mBoardConnectorInspectorView ;
-//  selectionController BoardConnector #boardConnectorSelectionController :
-//    #boardObjectsController.selectedArray
-//  ;
-//
-//  outlet EBTextObserverField mViaNetNameTextField $valueObserver #boardConnectorSelectionController.netNameFromTracks ;
-//
-//  outlet EBTextObserverField mViaNetClassNameTextField $valueObserver #boardConnectorSelectionController.netClassName ;
-//
-//  outlet EBPopUpButton mViaDefaultHoleDiameterUnitPopUp
-//    $selectedTag #boardConnectorSelectionController.mDefaultHoleDiameterUnit ;
-//  outlet CanariDimensionObserverTextField mViaDefaultHoleDiameterTextField
-//     $dimensionAndUnit #boardConnectorSelectionController.viaDefaultHoleDiameter,
-//     #boardConnectorSelectionController.mDefaultHoleDiameterUnit
-//  ;
-//  outlet EBPopUpButton mViaCustomHoleDiameterUnitPopUp
-//    $selectedTag #boardConnectorSelectionController.mCustomHoleDiameterUnit ;
-//  outlet CanariDimensionTextField mViaCustomHoleDiameterTextField
-//     $dimensionAndUnit #boardConnectorSelectionController.mCustomHoleDiameter,
-//     #boardConnectorSelectionController.mCustomHoleDiameterUnit
-//  ;
-//  outlet EBSwitch mUsesCustomHoleDiameterSwitch $value #boardConnectorSelectionController.mUsesCustomHoleDiameter ;
-//
-//  outlet EBPopUpButton mViaDefaultPadDiameterUnitPopUp
-//    $selectedTag #boardConnectorSelectionController.mDefaultPadDiameterUnit ;
-//  outlet CanariDimensionObserverTextField mViaDefaultPadDiameterTextField
-//     $dimensionAndUnit #boardConnectorSelectionController.viaDefaultPadDiameter,
-//     #boardConnectorSelectionController.mDefaultPadDiameterUnit
-//  ;
-//  outlet EBPopUpButton mViaCustomPadDiameterUnitPopUp
-//    $selectedTag #boardConnectorSelectionController.mCustomPadDiameterUnit ;
-//  outlet CanariDimensionTextField mViaCustomPadDiameterTextField
-//     $dimensionAndUnit #boardConnectorSelectionController.mCustomPadDiameter,
-//     #boardConnectorSelectionController.mCustomPadDiameterUnit
-//  ;
-//  outlet EBSwitch mUsesCustomPadDiameterSwitch $value #boardConnectorSelectionController.mUsesCustomPadDiameter ;
-//
-//
+//--- Board Connector inspector
+  selectionController BoardConnector #boardConnectorSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+
+  stackView mBoardConnectorInspectorView vStack {
+    hStack { space StaticLabel (title: "Via Inspector", bold: yes, size: .small) space }
+    GridView2 {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Net Name", bold: no, size: .small),
+        right: Label (bold: yes, size: .small) {
+          set (alignment: .left)
+          expandableWidth ()
+          $title #boardConnectorSelectionController.netNameFromTracks
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Net Class Name", bold: no, size: .small),
+        right: Label (bold: yes, size: .small) {
+          set (alignment: .left)
+          expandableWidth ()
+          $title #boardConnectorSelectionController.netClassName
+        }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Hole Diameter", bold: no, size: .small) { set (alignment: .left) expandableWidth () },
+        right: Checkbox (title: "Use Custom", size: .small) { $value #boardConnectorSelectionController.mUsesCustomHoleDiameter }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "From Net Class", bold: no, size: .small) { $hidden #boardConnectorSelectionController.mUsesCustomHoleDiameter } ,
+        right: CanariObservedDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardConnectorSelectionController.viaDefaultHoleDiameter, #boardConnectorSelectionController.mDefaultHoleDiameterUnit
+          $hidden #boardConnectorSelectionController.mUsesCustomHoleDiameter
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Custom", bold: no, size: .small) { $hidden ! #boardConnectorSelectionController.mUsesCustomHoleDiameter },
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardConnectorSelectionController.mCustomHoleDiameter, #boardConnectorSelectionController.mCustomHoleDiameterUnit
+          $hidden ! #boardConnectorSelectionController.mUsesCustomHoleDiameter
+        }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Pad Diameter", bold: no, size: .small) { set (alignment: .left) expandableWidth () },
+        right: Checkbox (title: "Use Custom", size: .small) { $value #boardConnectorSelectionController.mUsesCustomPadDiameter }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "From Net Class", bold: no, size: .small) { $hidden #boardConnectorSelectionController.mUsesCustomPadDiameter } ,
+        right: CanariObservedDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardConnectorSelectionController.viaDefaultPadDiameter, #boardConnectorSelectionController.mDefaultPadDiameterUnit
+          $hidden #boardConnectorSelectionController.mUsesCustomPadDiameter
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Custom", bold: no, size: .small) { $hidden ! #boardConnectorSelectionController.mUsesCustomPadDiameter },
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardConnectorSelectionController.mCustomPadDiameter, #boardConnectorSelectionController.mCustomPadDiameterUnit
+          $hidden ! #boardConnectorSelectionController.mUsesCustomPadDiameter
+        }
+      )     
+    }
+  }
+
 ////--- Board line inspector
 //  outlet CanariViewWithKeyView mBoardLineInspectorView ;
 //  selectionController BoardLine #boardLineSelectionController :
