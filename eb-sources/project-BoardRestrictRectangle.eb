@@ -24,7 +24,15 @@ graphic entity BoardRestrictRectangle : BoardObject {
     self.mIsInInner3Layer, self.mIsInInner4Layer,
     prefs.displayFrontRestrictRectangles,
     prefs.displayBackRestrictRectangles,
+    prefs.displayInner1RestrictRectangles,
+    prefs.displayInner2RestrictRectangles,
+    prefs.displayInner3RestrictRectangles,
+    prefs.displayInner4RestrictRectangles,
     prefs.frontSideRestrictRectangleColorForBoard,
+    prefs.inner1SideRestrictRectangleColorForBoard,
+    prefs.inner2SideRestrictRectangleColorForBoard,
+    prefs.inner3SideRestrictRectangleColorForBoard,
+    prefs.inner4SideRestrictRectangleColorForBoard,
     prefs.backSideRestrictRectangleColorForBoard
   ;
 

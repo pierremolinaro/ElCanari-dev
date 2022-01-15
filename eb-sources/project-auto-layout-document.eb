@@ -1062,55 +1062,71 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.frontSidePadColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Front Side Pads", size : .small)  { $value prefs.displayFrontPadsForBoard }
+          right: Checkbox (title: "Front Side Pads", size : .small)  { expandableHeight  () $value prefs.displayFrontPadsForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.backSidePadColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Back Side Pads", size : .small)  { $value prefs.displayBackPadsForBoard }
+          right: Checkbox (title: "Back Side Pads", size : .small)  { expandableHeight  () $value prefs.displayBackPadsForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.padNumberColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Pad Numbers", size : .small)  { $value prefs.displayPadNumbersForBoard }
+          right: Checkbox (title: "Pad Numbers", size : .small)  { expandableHeight  () $value prefs.displayPadNumbersForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.frontSideLegendColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Front Side Legend", size : .small)  { $value prefs.displayFrontLegendForBoard }
+          right: Checkbox (title: "Front Side Legend", size : .small)  { expandableHeight  () $value prefs.displayFrontLegendForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.backSideLegendColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Back Side Legend", size : .small)  { $value prefs.displayFrontLegendForBoard }
+          right: Checkbox (title: "Back Side Legend", size : .small)  { expandableHeight  () $value prefs.displayFrontLegendForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.frontSideLayoutColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Front Side Layout", size : .small)  { $value prefs.displayFrontLayoutForBoard }
+          right: Checkbox (title: "Front Side Layout", size : .small)  { expandableHeight  () $value prefs.displayFrontLayoutForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.inner1LayoutColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Inner 1 Layout", size : .small)  { $value prefs.displayInner1LayoutForBoard }
+          right: Checkbox (title: "Inner 1 Layout", size : .small)  { expandableHeight  () $value prefs.displayInner1LayoutForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.inner2LayoutColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Inner 2 Layout", size : .small)  { $value prefs.displayInner2LayoutForBoard }
+          right: Checkbox (title: "Inner 2 Layout", size : .small)  { expandableHeight  () $value prefs.displayInner2LayoutForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.inner3LayoutColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Inner 3 Layout", size : .small)  { $value prefs.displayInner3LayoutForBoard }
+          right: Checkbox (title: "Inner 3 Layout", size : .small)  { expandableHeight  () $value prefs.displayInner3LayoutForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.inner4LayoutColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Inner 4 Layout", size : .small)  { $value prefs.displayInner4LayoutForBoard }
+          right: Checkbox (title: "Inner 4 Layout", size : .small)  { expandableHeight  () $value prefs.displayInner4LayoutForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.backSideLayoutColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Back Side Layout", size : .small)  { $value prefs.displayBackLayoutForBoard }
+          right: Checkbox (title: "Back Side Layout", size : .small)  { expandableHeight  () $value prefs.displayBackLayoutForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.frontSideRestrictRectangleColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Front Side Restrict Rect.", size : .small)  { $value prefs.displayFrontRestrictRectangles }
+          right: Checkbox (title: "Front Layer Restrict Rect.", size : .small)  { expandableHeight  () $value prefs.displayFrontRestrictRectangles }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.backSideRestrictRectangleColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Back Side Restrict Rect.", size : .small)  { $value prefs.displayBackRestrictRectangles }
+          right: Checkbox (title: "Back Layer Restrict Rect.", size : .small)  { expandableHeight  () $value prefs.displayBackRestrictRectangles }
+        )
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { $color prefs.inner1SideRestrictRectangleColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Inner1 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value prefs.displayInner1RestrictRectangles }
+        )
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { $color prefs.inner2SideRestrictRectangleColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Inner2 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value prefs.displayInner2RestrictRectangles }
+        )
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { $color prefs.inner3SideRestrictRectangleColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Inner3 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value prefs.displayInner3RestrictRectangles }
+        )
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { $color prefs.inner4SideRestrictRectangleColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Inner4 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value prefs.displayInner4RestrictRectangles }
         )
         addCenterYAligned (
           left: hStack { space ColorWell { $color prefs.boardLimitsColorForBoard (sendContinously:yes) } },
@@ -1305,6 +1321,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       addObjectInspector (forEntity: entity BoardTrack, inspectorView: stackView mBoardTrackInspectorView)
       addObjectInspector (forEntity: entity BoardConnector, inspectorView: stackView mBoardConnectorInspectorView)
       addObjectInspector (forEntity: entity BoardLine, inspectorView: stackView mBoardLineInspectorView)
+      addObjectInspector (forEntity: entity BoardRestrictRectangle, inspectorView: stackView mRestrictRectangleInspectorView)
       $graphicController #boardObjectsController
     }
     space
@@ -1529,46 +1546,23 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     }
   }
 
-//
-//  outlet EBPopUpButton mBoardLineX1UnitPopUp $selectedTag #boardLineSelectionController.mX1Unit ;
-//  outlet CanariDimensionTextField mBoardLineX1TextField
-//     $dimensionAndUnit #boardLineSelectionController.mX1, #boardLineSelectionController.mX1Unit
-//  ;
-//
-//  outlet EBPopUpButton mBoardLineY1UnitPopUp $selectedTag #boardLineSelectionController.mY1Unit ;
-//  outlet CanariDimensionTextField mBoardLineY1TextField
-//     $dimensionAndUnit #boardLineSelectionController.mY1, #boardLineSelectionController.mY1Unit
-//  ;
-//
-//  outlet EBPopUpButton mBoardLineX2UnitPopUp $selectedTag #boardLineSelectionController.mX2Unit ;
-//  outlet CanariDimensionTextField mBoardLineX2TextField
-//     $dimensionAndUnit #boardLineSelectionController.mX2, #boardLineSelectionController.mX2Unit
-//  ;
-//
-//  outlet EBPopUpButton mBoardLineY2UnitPopUp $selectedTag #boardLineSelectionController.mY2Unit ;
-//  outlet CanariDimensionTextField mBoardLineY2TextField
-//     $dimensionAndUnit #boardLineSelectionController.mY2, #boardLineSelectionController.mY2Unit
-//  ;
-//
-//
-//
-//
-////--- Restrict rectangle inspector
-//  outlet CanariViewWithKeyView mRestrictRectangleInspectorView ;
-//  selectionController BoardRestrictRectangle #restrictRectangleSelectionController :
-//    #boardObjectsController.selectedArray
-//  ;
-//
-//  outlet EBSwitch mFrontRestrictRectangleSwitch
-//    $value #restrictRectangleSelectionController.mIsInFrontLayer
-//    $enabled #restrictRectangleSelectionController.mIsInBackLayer
-//  ;
-//
-//  outlet EBSwitch mBackRestrictRectangleSwitch
-//    $value #restrictRectangleSelectionController.mIsInBackLayer
-//    $enabled #restrictRectangleSelectionController.mIsInFrontLayer
-//  ;
-//
+//--- Restrict rectangle inspector
+  selectionController BoardRestrictRectangle #restrictRectangleSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+
+  stackView mRestrictRectangleInspectorView vStack {
+    hStack { space StaticLabel (title: "Restrict Rectangle Inspector", bold: yes, size: .small) space }
+    ElCanariRestrictRectangleView {
+      $front #restrictRectangleSelectionController.mIsInFrontLayer
+      $back #restrictRectangleSelectionController.mIsInBackLayer
+      $inner1 #restrictRectangleSelectionController.mIsInInner1Layer
+      $inner2 #restrictRectangleSelectionController.mIsInInner2Layer
+      $inner3 #restrictRectangleSelectionController.mIsInInner3Layer
+      $inner4 #restrictRectangleSelectionController.mIsInInner4Layer
+    }
+  }
+
 ////--- Text inspector
 //  outlet CanariViewWithKeyView mBoardTextInspectorView ;
 //  selectionController BoardText #boardTextSelectionController :
@@ -1602,6 +1596,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //  
 //  outlet EBSwitch mBoardTextObliqueSwitch $value #boardTextSelectionController.mOblique ;
 //
+
 ////--- Component inspector
 //  outlet CanariViewWithKeyView mComponentInBoardInspectorView ;
 //  selectionController ComponentInProject #componentInBoardSelectionController :

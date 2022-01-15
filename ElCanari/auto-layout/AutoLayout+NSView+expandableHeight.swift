@@ -1,8 +1,8 @@
 //
-//  AutoLayout-extension-NSView-.swift
+//  AutoLayout+NSView+expandableHeight.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 30/06/2021.
+//  Created by Pierre Molinaro on 15/01/2022.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -14,8 +14,8 @@ extension NSView {
 
   //····················································································································
 
-  final func expandableWidth () -> Self {
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+  final func expandableHeight () -> Self {
+    self.setContentHuggingPriority (.defaultLow, for: .vertical)
     return self
   }
 

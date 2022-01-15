@@ -284,6 +284,18 @@ prefs {
   property Bool displayBackRestrictRectangles default yes ;
   property NSColor backSideRestrictRectangleColorForBoard default green;
   outlet EBColorWell mBoardBottomSideRestrictRectangleColorWell $color self.backSideRestrictRectangleColorForBoard (sendContinously:yes) ;
+//--- Inner 1 Restrict Rectangle Color
+  property Bool displayInner1RestrictRectangles default yes ;
+  property NSColor inner1SideRestrictRectangleColorForBoard default yellow;
+//--- Inner 2 Restrict Rectangle Color
+  property Bool displayInner2RestrictRectangles default yes ;
+  property NSColor inner2SideRestrictRectangleColorForBoard default orange;
+//--- Inner 3 Restrict Rectangle Color
+  property Bool displayInner3RestrictRectangles default yes ;
+  property NSColor inner3SideRestrictRectangleColorForBoard default purple;
+//--- Inner 4 Restrict Rectangle Color
+  property Bool displayInner4RestrictRectangles default yes ;
+  property NSColor inner4SideRestrictRectangleColorForBoard default magenta ;
 //--- Front Side Legend Color
   property Bool displayFrontLegendForBoard default yes ;
   property NSColor frontSideLegendColorForBoard default brown;

@@ -77,6 +77,14 @@ let Preferences_displayFrontRestrictRectangles = "Preferences:displayFrontRestri
 let Preferences_frontSideRestrictRectangleColorForBoard = "Preferences:frontSideRestrictRectangleColorForBoard"
 let Preferences_displayBackRestrictRectangles = "Preferences:displayBackRestrictRectangles"
 let Preferences_backSideRestrictRectangleColorForBoard = "Preferences:backSideRestrictRectangleColorForBoard"
+let Preferences_displayInner1RestrictRectangles = "Preferences:displayInner1RestrictRectangles"
+let Preferences_inner1SideRestrictRectangleColorForBoard = "Preferences:inner1SideRestrictRectangleColorForBoard"
+let Preferences_displayInner2RestrictRectangles = "Preferences:displayInner2RestrictRectangles"
+let Preferences_inner2SideRestrictRectangleColorForBoard = "Preferences:inner2SideRestrictRectangleColorForBoard"
+let Preferences_displayInner3RestrictRectangles = "Preferences:displayInner3RestrictRectangles"
+let Preferences_inner3SideRestrictRectangleColorForBoard = "Preferences:inner3SideRestrictRectangleColorForBoard"
+let Preferences_displayInner4RestrictRectangles = "Preferences:displayInner4RestrictRectangles"
+let Preferences_inner4SideRestrictRectangleColorForBoard = "Preferences:inner4SideRestrictRectangleColorForBoard"
 let Preferences_displayFrontLegendForBoard = "Preferences:displayFrontLegendForBoard"
 let Preferences_frontSideLegendColorForBoard = "Preferences:frontSideLegendColorForBoard"
 let Preferences_displayFrontLayoutForBoard = "Preferences:displayFrontLayoutForBoard"
@@ -1067,6 +1075,110 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var preferences_backSideRestrictRectangleColorForBoard : NSColor {
     get { return preferences_backSideRestrictRectangleColorForBoard_property.propval }
     set { preferences_backSideRestrictRectangleColorForBoard_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: displayInner1RestrictRectangles
+//····················································································································
+
+  let preferences_displayInner1RestrictRectangles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayInner1RestrictRectangles)
+
+//····················································································································
+
+  var preferences_displayInner1RestrictRectangles : Bool {
+    get { return preferences_displayInner1RestrictRectangles_property.propval }
+    set { preferences_displayInner1RestrictRectangles_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: inner1SideRestrictRectangleColorForBoard
+//····················································································································
+
+  let preferences_inner1SideRestrictRectangleColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.yellow, prefKey: Preferences_inner1SideRestrictRectangleColorForBoard)
+
+//····················································································································
+
+  var preferences_inner1SideRestrictRectangleColorForBoard : NSColor {
+    get { return preferences_inner1SideRestrictRectangleColorForBoard_property.propval }
+    set { preferences_inner1SideRestrictRectangleColorForBoard_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: displayInner2RestrictRectangles
+//····················································································································
+
+  let preferences_displayInner2RestrictRectangles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayInner2RestrictRectangles)
+
+//····················································································································
+
+  var preferences_displayInner2RestrictRectangles : Bool {
+    get { return preferences_displayInner2RestrictRectangles_property.propval }
+    set { preferences_displayInner2RestrictRectangles_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: inner2SideRestrictRectangleColorForBoard
+//····················································································································
+
+  let preferences_inner2SideRestrictRectangleColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_inner2SideRestrictRectangleColorForBoard)
+
+//····················································································································
+
+  var preferences_inner2SideRestrictRectangleColorForBoard : NSColor {
+    get { return preferences_inner2SideRestrictRectangleColorForBoard_property.propval }
+    set { preferences_inner2SideRestrictRectangleColorForBoard_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: displayInner3RestrictRectangles
+//····················································································································
+
+  let preferences_displayInner3RestrictRectangles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayInner3RestrictRectangles)
+
+//····················································································································
+
+  var preferences_displayInner3RestrictRectangles : Bool {
+    get { return preferences_displayInner3RestrictRectangles_property.propval }
+    set { preferences_displayInner3RestrictRectangles_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: inner3SideRestrictRectangleColorForBoard
+//····················································································································
+
+  let preferences_inner3SideRestrictRectangleColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.purple, prefKey: Preferences_inner3SideRestrictRectangleColorForBoard)
+
+//····················································································································
+
+  var preferences_inner3SideRestrictRectangleColorForBoard : NSColor {
+    get { return preferences_inner3SideRestrictRectangleColorForBoard_property.propval }
+    set { preferences_inner3SideRestrictRectangleColorForBoard_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: displayInner4RestrictRectangles
+//····················································································································
+
+  let preferences_displayInner4RestrictRectangles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayInner4RestrictRectangles)
+
+//····················································································································
+
+  var preferences_displayInner4RestrictRectangles : Bool {
+    get { return preferences_displayInner4RestrictRectangles_property.propval }
+    set { preferences_displayInner4RestrictRectangles_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: inner4SideRestrictRectangleColorForBoard
+//····················································································································
+
+  let preferences_inner4SideRestrictRectangleColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.magenta, prefKey: Preferences_inner4SideRestrictRectangleColorForBoard)
+
+//····················································································································
+
+  var preferences_inner4SideRestrictRectangleColorForBoard : NSColor {
+    get { return preferences_inner4SideRestrictRectangleColorForBoard_property.propval }
+    set { preferences_inner4SideRestrictRectangleColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································

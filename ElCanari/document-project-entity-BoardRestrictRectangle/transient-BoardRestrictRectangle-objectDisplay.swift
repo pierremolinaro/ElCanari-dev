@@ -26,59 +26,77 @@ func transient_BoardRestrictRectangle_objectDisplay (
        _ self_mIsInInner4Layer : Bool,               
        _ prefs_displayFrontRestrictRectangles : Bool,
        _ prefs_displayBackRestrictRectangles : Bool, 
+       _ prefs_displayInner1RestrictRectangles : Bool,
+       _ prefs_displayInner2RestrictRectangles : Bool,
+       _ prefs_displayInner3RestrictRectangles : Bool,
+       _ prefs_displayInner4RestrictRectangles : Bool,
        _ prefs_frontSideRestrictRectangleColorForBoard : NSColor,
+       _ prefs_inner1SideRestrictRectangleColorForBoard : NSColor,
+       _ prefs_inner2SideRestrictRectangleColorForBoard : NSColor,
+       _ prefs_inner3SideRestrictRectangleColorForBoard : NSColor,
+       _ prefs_inner4SideRestrictRectangleColorForBoard : NSColor,
        _ prefs_backSideRestrictRectangleColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
+        let GRID_INTERVAL : CGFloat = 2.0
+        let GRID_LINE_WIDTH : CGFloat = 0.5
+        func buildLines (_ inRect : NSRect, _ inOffset : CGFloat)  -> EBBezierPath {
+          let lg = max (inRect.size.width, inRect.size.height)
+          var bp = EBBezierPath ()
+          bp.lineWidth = GRID_LINE_WIDTH
+          bp.lineJoinStyle = .round
+          bp.lineCapStyle = .round
+          var x = inRect.minX + inOffset * GRID_INTERVAL
+          while x < inRect.maxX {
+            bp.move (to: NSPoint (x: x, y: inRect.minY))
+            bp.relativeLine (to: NSPoint (x: lg, y: lg))
+            x += GRID_INTERVAL * 6.0
+          }
+          var y = inRect.minY + GRID_INTERVAL * 6.0 - inOffset * GRID_INTERVAL
+          while y < inRect.maxY {
+            bp.move (to: NSPoint (x: inRect.minX, y: y))
+            bp.relativeLine (to: NSPoint (x: lg, y: lg))
+            y += GRID_INTERVAL * 6.0
+          }
+          return bp
+        }
         var shape = EBShape ()
         let display = (self_mIsInFrontLayer && prefs_displayFrontRestrictRectangles) || (self_mIsInBackLayer && prefs_displayBackRestrictRectangles)
         if display {
+//          let count = (front ? 1 : 0) + (back ? 1 : 0) + (inner1 ? 1 : 0) + (inner2 ? 1 : 0) + (inner3 ? 1 : 0) + (inner4 ? 1 : 0)
           let cocoaRect = CanariRect (left: self_mX, bottom: self_mY, width: self_mWidth, height: self_mHeight).cocoaRect
           let rectBP = EBBezierPath (rect: cocoaRect)
-          let lg = max (cocoaRect.size.width, cocoaRect.size.height)
-          let GRID_INTERVAL : CGFloat = 5.0
-          let GRID_LINE_WIDTH : CGFloat = 0.5
         //--- Transparent background (for selection)
           shape.add (filled: [rectBP], nil)
-        //--- Back layer
-          if self_mIsInBackLayer && prefs_displayBackRestrictRectangles {
-            var bp = EBBezierPath ()
-            bp.lineWidth = GRID_LINE_WIDTH
-            bp.lineJoinStyle = .round
-            bp.lineCapStyle = .round
-            var x = cocoaRect.minX
-            while x < cocoaRect.maxX {
-              bp.move (to: NSPoint (x: x, y: cocoaRect.maxY))
-              bp.relativeLine (to: NSPoint (x: lg, y: -lg))
-              x += GRID_INTERVAL
-            }
-            var y = cocoaRect.maxY - GRID_INTERVAL
-            while y > cocoaRect.minY {
-              bp.move (to: NSPoint (x: cocoaRect.minX, y: y))
-              bp.relativeLine (to: NSPoint (x: lg, y: -lg))
-              y -= GRID_INTERVAL
-            }
-            shape.add (stroke: [bp], prefs_backSideRestrictRectangleColorForBoard, clip: .inside (rectBP))
-          }
         //--- Front layer
           if self_mIsInFrontLayer && prefs_displayFrontRestrictRectangles {
-            var bp = EBBezierPath ()
-            bp.lineWidth = GRID_LINE_WIDTH
-            bp.lineJoinStyle = .round
-            bp.lineCapStyle = .round
-            var x = cocoaRect.minX
-            while x < cocoaRect.maxX {
-              bp.move (to: NSPoint (x: x, y: cocoaRect.minY))
-              bp.relativeLine (to: NSPoint (x: lg, y: lg))
-              x += GRID_INTERVAL
-            }
-            var y = cocoaRect.minY + GRID_INTERVAL
-            while y < cocoaRect.maxY {
-              bp.move (to: NSPoint (x: cocoaRect.minX, y: y))
-              bp.relativeLine (to: NSPoint (x: lg, y: lg))
-              y += GRID_INTERVAL
-            }
+            let bp = buildLines (cocoaRect, 0.0)
             shape.add (stroke: [bp], prefs_frontSideRestrictRectangleColorForBoard, clip: .inside (rectBP))
+          }
+        //--- Back layer
+          if self_mIsInBackLayer && prefs_displayBackRestrictRectangles {
+            let bp = buildLines (cocoaRect, 1.0)
+            shape.add (stroke: [bp], prefs_backSideRestrictRectangleColorForBoard, clip: .inside (rectBP))
+          }
+        //--- Inner1 layer
+          if self_mIsInInner1Layer && prefs_displayInner1RestrictRectangles {
+            let bp = buildLines (cocoaRect, 2.0)
+            shape.add (stroke: [bp], prefs_inner1SideRestrictRectangleColorForBoard, clip: .inside (rectBP))
+          }
+        //--- Inner2 layer
+          if self_mIsInInner2Layer && prefs_displayInner2RestrictRectangles {
+            let bp = buildLines (cocoaRect, 3.0)
+            shape.add (stroke: [bp], prefs_inner2SideRestrictRectangleColorForBoard, clip: .inside (rectBP))
+          }
+        //--- Inner3 layer
+          if self_mIsInInner3Layer && prefs_displayInner3RestrictRectangles {
+            let bp = buildLines (cocoaRect, 4.0)
+            shape.add (stroke: [bp], prefs_inner3SideRestrictRectangleColorForBoard, clip: .inside (rectBP))
+          }
+        //--- Inner4 layer
+          if self_mIsInInner4Layer && prefs_displayInner4RestrictRectangles {
+            let bp = buildLines (cocoaRect, 5.0)
+            shape.add (stroke: [bp], prefs_inner4SideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
         //--- Append rect frame
           do{
@@ -89,6 +107,14 @@ func transient_BoardRestrictRectangle_objectDisplay (
             let frameColor : NSColor
             if self_mIsInFrontLayer {
               frameColor = prefs_frontSideRestrictRectangleColorForBoard
+            }else if self_mIsInInner1Layer {
+              frameColor = prefs_inner1SideRestrictRectangleColorForBoard
+            }else if self_mIsInInner2Layer {
+              frameColor = prefs_inner2SideRestrictRectangleColorForBoard
+            }else if self_mIsInInner3Layer {
+              frameColor = prefs_inner3SideRestrictRectangleColorForBoard
+            }else if self_mIsInInner4Layer {
+              frameColor = prefs_inner4SideRestrictRectangleColorForBoard
             }else{
               frameColor = prefs_backSideRestrictRectangleColorForBoard
             }
