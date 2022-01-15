@@ -69,7 +69,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
       },
       title: "Pins",
       minWidth: 60,
-      maxWidth: 250,
+      maxWidth: 60,
       headerAlignment: .left,
       contentAlignment: .left
     )
@@ -83,7 +83,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
       },
       title: "Labels",
       minWidth: 60,
-      maxWidth: 100,
+      maxWidth: 60,
       headerAlignment: .left,
       contentAlignment: .left
     )
@@ -112,7 +112,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
       },
       title: "Warns One Label",
       minWidth: 60,
-      maxWidth: 150,
+      maxWidth: 100,
       headerAlignment: .left,
       contentAlignment: .left
     )
@@ -132,7 +132,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
       },
       title: "Subnets",
       minWidth: 60,
-      maxWidth: 250,
+      maxWidth: 60,
       headerAlignment: .left,
       contentAlignment: .left
     )
@@ -152,7 +152,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
       },
       title: "Tracks in Board",
       minWidth: 60,
-      maxWidth: 250,
+      maxWidth: 100,
       headerAlignment: .left,
       contentAlignment: .left
     )

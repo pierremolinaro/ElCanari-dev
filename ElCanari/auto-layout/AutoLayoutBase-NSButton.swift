@@ -23,6 +23,11 @@ class AutoLayoutBase_NSButton : NSButton, EBUserClassNameProtocol {
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+
+    self.setContentCompressionResistancePriority (.required, for: .vertical)
+    self.setContentHuggingPriority (.required, for: .vertical)
+    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
   }
 
   //····················································································································

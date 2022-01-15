@@ -102,10 +102,10 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
     }
   }
 //--- Exactly one label ?
-//  if inWarnsExactlyOneLabel && (netLabelCount == 1) {
-//    hasWarning = true
-//    statusStringArray.append (StatusString (status: .warning, string: "Exactly one label"))
-//  }
+  if inWarnsExactlyOneLabel && (netLabelCount == 1) {
+    hasWarning = true
+    statusStringArray.append (StatusString (status: .warning, string: "Exactly one label"))
+  }
 //---
   return (statusStringArray, hasWarning)
 }

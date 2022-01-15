@@ -1551,7 +1551,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutCheckbox (title: "Check Clearance between Pads of the same Net", size: .small)
+    let view_1 = AutoLayoutCheckbox (title: "Check Clearance\nbetween Pads of the same Net", size: .small)
       .set (width: 200, multiline: true)
       .bind_value (self.rootObject.mCheckClearanceBetweenPadsOfSameNet_property)
     vStackView.appendView (view_1)

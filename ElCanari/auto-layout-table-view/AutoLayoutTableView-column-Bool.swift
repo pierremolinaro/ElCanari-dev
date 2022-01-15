@@ -80,7 +80,10 @@ fileprivate class InternalBoolTableColumn : AutoLayoutTableColumn {
 
   override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
     let checkbox = AutoLayoutBase_NSButton (title: "", size: .small)
+    checkbox.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    checkbox.setContentHuggingPriority (.defaultLow, for: .vertical)
     checkbox.setButtonType (.switch)
+
     let editable = self.mValueSetterDelegate != nil
     if let value = self.mValueGetterDelegate (inRowIndex) {
       checkbox.state = value ? .on : .off

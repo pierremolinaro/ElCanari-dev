@@ -18,10 +18,10 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
   override init (title inTitle : String, size inSize : EBControlSize) {
     super.init (title: inTitle, size: inSize)
 
-    self.setContentCompressionResistancePriority (.required, for: .horizontal)
-    self.setContentCompressionResistancePriority (.required, for: .vertical)
-    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
-    self.setContentHuggingPriority (.defaultLow, for: .vertical)
+//    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+//    self.setContentCompressionResistancePriority (.required, for: .vertical)
+//    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
+//    self.setContentHuggingPriority (.defaultLow, for: .vertical)
   }
 
   //····················································································································

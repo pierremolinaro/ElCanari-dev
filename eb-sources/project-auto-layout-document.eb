@@ -1288,8 +1288,8 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   action exportDSNFileAction ;
 
   stackView mBoardERCInspectorView vStack set (margins: 8) {
-    hStack { space StaticLabel (title: "ERC Checking", bold: yes, size: .small) space}
-    Checkbox (title: "Check Clearance between Pads of the same Net", size: .small) {
+    hStack { space StaticLabel (title: "ERC Checking", bold: yes, size: .small) space }
+    Checkbox (title: "Check Clearance\nbetween Pads of the same Net", size: .small) {
       set (width: 200, multiline: yes)
       $value root.mCheckClearanceBetweenPadsOfSameNet
     }
