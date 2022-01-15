@@ -1291,6 +1291,7 @@
 		CF56026B2792FEE400479AB6 /* selectionController-AutoLayoutProjectDocument-boardTrackSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF56026A2792FEE400479AB6 /* selectionController-AutoLayoutProjectDocument-boardTrackSelectionController.swift */; };
 		CF56026D2793158300479AB6 /* AutoLayoutElCanariTrackLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF56026C2793158300479AB6 /* AutoLayoutElCanariTrackLockView.swift */; };
 		CF56026F279324C700479AB6 /* selectionController-AutoLayoutProjectDocument-boardConnectorSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF56026E279324C600479AB6 /* selectionController-AutoLayoutProjectDocument-boardConnectorSelectionController.swift */; };
+		CF56027127932DF400479AB6 /* selectionController-AutoLayoutProjectDocument-boardLineSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF56027027932DF400479AB6 /* selectionController-AutoLayoutProjectDocument-boardLineSelectionController.swift */; };
 		CF5632B421A2BFBF0026B7B7 /* entity-SymbolSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5632B321A2BFBF0026B7B7 /* entity-SymbolSegment.swift */; };
 		CF5632B521A2BFBF0026B7B7 /* entity-SymbolSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5632B321A2BFBF0026B7B7 /* entity-SymbolSegment.swift */; };
 		CF5632B821A2C2550026B7B7 /* transient-SymbolSegment-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5632B621A2C2550026B7B7 /* transient-SymbolSegment-selectionDisplay.swift */; };
@@ -5022,6 +5023,7 @@
 		CF56026A2792FEE400479AB6 /* selectionController-AutoLayoutProjectDocument-boardTrackSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-boardTrackSelectionController.swift"; sourceTree = "<group>"; };
 		CF56026C2793158300479AB6 /* AutoLayoutElCanariTrackLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutElCanariTrackLockView.swift; sourceTree = "<group>"; };
 		CF56026E279324C600479AB6 /* selectionController-AutoLayoutProjectDocument-boardConnectorSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-boardConnectorSelectionController.swift"; sourceTree = "<group>"; };
+		CF56027027932DF400479AB6 /* selectionController-AutoLayoutProjectDocument-boardLineSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-boardLineSelectionController.swift"; sourceTree = "<group>"; };
 		CF5632B321A2BFBF0026B7B7 /* entity-SymbolSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SymbolSegment.swift"; sourceTree = "<group>"; };
 		CF5632B621A2C2550026B7B7 /* transient-SymbolSegment-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolSegment-selectionDisplay.swift"; sourceTree = "<group>"; };
 		CF5632B721A2C2550026B7B7 /* transient-SymbolSegment-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolSegment-objectDisplay.swift"; sourceTree = "<group>"; };
@@ -7199,6 +7201,7 @@
 				CF47F96A2775E111008A6D2C /* menu-select-restrict-rectangle-layers.swift */,
 				CF56026E279324C600479AB6 /* selectionController-AutoLayoutProjectDocument-boardConnectorSelectionController.swift */,
 				CF54A0442770C95F00D978D9 /* selectionController-AutoLayoutProjectDocument-boardCurveSelectionController.swift */,
+				CF56027027932DF400479AB6 /* selectionController-AutoLayoutProjectDocument-boardLineSelectionController.swift */,
 				CF56026A2792FEE400479AB6 /* selectionController-AutoLayoutProjectDocument-boardTrackSelectionController.swift */,
 				CF51402A276BB1A0008DB542 /* selectionController-AutoLayoutProjectDocument-mDataSelection.swift */,
 				CF50D0EF2767493800B35C59 /* selectionController-AutoLayoutProjectDocument-mDeviceSelectionController.swift */,
@@ -12633,6 +12636,7 @@
 				CF2285D4276678E900804193 /* transient-FontInProject-componentNamesCount.swift in Sources */,
 				CF3C6B74275A21B200189435 /* action-AutoLayoutFontDocument-addSegmentAction.swift in Sources */,
 				CF9C643925CABE5C00A00D5C /* transient-BoardConnector-actualHoleDiameter.swift in Sources */,
+				CF56027127932DF400479AB6 /* selectionController-AutoLayoutProjectDocument-boardLineSelectionController.swift in Sources */,
 				CF711DF2275E1C2400280069 /* toone-DeviceSymbolTypeInProject.swift in Sources */,
 				CF9C643F25CABE5C00A00D5C /* transient-LabelInSchematic-objectDisplay.swift in Sources */,
 				CFB7D8942683A61C007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageDimensionSelectionController.swift in Sources */,

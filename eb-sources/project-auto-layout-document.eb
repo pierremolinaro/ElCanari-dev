@@ -1304,6 +1304,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     ObjectInspectorView {
       addObjectInspector (forEntity: entity BoardTrack, inspectorView: stackView mBoardTrackInspectorView)
       addObjectInspector (forEntity: entity BoardConnector, inspectorView: stackView mBoardConnectorInspectorView)
+      addObjectInspector (forEntity: entity BoardLine, inspectorView: stackView mBoardLineInspectorView)
       $graphicController #boardObjectsController
     }
     space
@@ -1482,18 +1483,52 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     }
   }
 
-////--- Board line inspector
-//  outlet CanariViewWithKeyView mBoardLineInspectorView ;
-//  selectionController BoardLine #boardLineSelectionController :
-//    #boardObjectsController.selectedArray
-//  ;
-//
-//  outlet EBPopUpButton mBoardLineWidthUnitPopUp $selectedTag #boardLineSelectionController.mWidthUnit ;
-//  outlet CanariDimensionTextField mBoardLineWidthTextField
-//     $dimensionAndUnit #boardLineSelectionController.mWidth, #boardLineSelectionController.mWidthUnit
-//  ;
-//
-//  outlet EBPopUpButton mBoardLineLayerPopUpButton $selectedIndex #boardLineSelectionController.mLayer ;
+//--- Board line inspector
+  selectionController BoardLine #boardLineSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+
+  stackView mBoardLineInspectorView vStack {
+    hStack { space StaticLabel (title: "Line Inspector", bold: yes, size: .small) space }
+    GridView2 {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Width", bold: no, size: .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardLineSelectionController.mWidth, #boardLineSelectionController.mWidthUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Side", bold: no, size: .small),
+        right: EnumPopUpButton (titles: enum BoardLineLayer.popupTitles, size: .small) { $selectedIndex #boardLineSelectionController.mLayer }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: hStack { StaticLabel (title: "P1", bold: no, size: .small) space StaticLabel (title: "X", bold: no, size: .small) },
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardLineSelectionController.mX1, #boardLineSelectionController.mX1Unit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Y", bold: no, size: .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardLineSelectionController.mY1, #boardLineSelectionController.mY1Unit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: hStack { StaticLabel (title: "P2", bold: no, size: .small) space StaticLabel (title: "X", bold: no, size: .small) },
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardLineSelectionController.mX2, #boardLineSelectionController.mX2Unit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Y", bold: no, size: .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardLineSelectionController.mY2, #boardLineSelectionController.mY2Unit
+        }
+      )
+    }
+  }
+
 //
 //  outlet EBPopUpButton mBoardLineX1UnitPopUp $selectedTag #boardLineSelectionController.mX1Unit ;
 //  outlet CanariDimensionTextField mBoardLineX1TextField

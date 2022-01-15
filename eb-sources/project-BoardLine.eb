@@ -6,6 +6,11 @@ enum BoardLineLayer {
   legendFront, legendBack
 }
 
+func enum BoardLineLayer.popupTitles {
+  legendFront : "Legend Front Side" ;
+  legendBack : "Legend Back Side" ;
+ }
+
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic entity BoardLine : BoardObject { 
