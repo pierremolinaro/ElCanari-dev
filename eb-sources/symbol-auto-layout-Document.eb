@@ -135,7 +135,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
     GridView2 {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Pin Name", bold: no, size: .small),
-        right: TextField (width: 56, size: .small) { expandableWidth () $value #mSymbolTextSelectionController.text (sendContinously : yes) }
+        right: TextField (minWidth: 56, size: .small) { expandableWidth () $value #mSymbolTextSelectionController.text (sendContinously : yes) }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Alignment", bold: no, size: .small),
@@ -153,7 +153,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
     GridView2 {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Value", bold: no, size: .small),
-        right: TextField (width: 56, size: .small) { expandableWidth () $value #mSymbolPinSelectionController.name (sendContinously : yes) }
+        right: TextField (minWidth: 56, size: .small) { expandableWidth () $value #mSymbolPinSelectionController.name (sendContinously : yes) }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Name Alignment", bold: no, size: .small),

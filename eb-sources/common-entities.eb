@@ -155,6 +155,13 @@ enum BoardTextLayer {
   legendFront, layoutFront, layoutBack, legendBack
 }
 
+func enum BoardTextLayer.popupTitles {
+  legendFront : "Legend Front Layer" ;
+  layoutFront : "Layout Front Layer" ;
+  layoutBack  : "Layout Back Layer" ;
+  legendBack : "Legend Back Layer" ;
+}
+
 //——————————————————————————————————————————————————————————————————————————————
 
 enum BoardTextVerticalAlignment {

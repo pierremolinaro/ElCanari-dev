@@ -70,7 +70,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
   action resetVersionAndSignatureAction ;
 
   stackView mDescriptionPage vStack set (margins: 8) {
-    TextField (width: 56, size : .regular) { expandableWidth () set (alignment: .left) $value root.title (sendContinously: yes) }
+    TextField (minWidth: 56, size : .regular) { expandableWidth () set (alignment: .left) $value root.title (sendContinously: yes) }
     hStack {
       space
       StaticLabel (title: "Layout", bold: no, size : .regular)
@@ -152,7 +152,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
     hStack set (margins: 8) {
       hStack setFirstBaselineAlignment ()  {
         StaticLabel (title: "Drill File Extension", bold: no, size : .small)
-        TextField (width: 56, size : .small) { $value root.drillDataFileExtension (sendContinously: yes) }
+        TextField (minWidth: 56, size : .small) { $value root.drillDataFileExtension (sendContinously: yes) }
       }
       ImageObserverView (size: .small) { $image self.emptyDrillFileExtensionImage }
       space
@@ -169,7 +169,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
         hStack {
           hStack setFirstBaselineAlignment () {
             StaticLabel (title: "File Extension", bold: yes, size : .small)
-            TextField (width: 56, size : .small) { $value #mDataSelection.fileExtension (sendContinously: yes) }
+            TextField (minWidth: 56, size : .small) { $value #mDataSelection.fileExtension (sendContinously: yes) }
           }
           ImageObserverView (size: .small) { $image #mDataSelection.emptyFileExtensionImage }
          space

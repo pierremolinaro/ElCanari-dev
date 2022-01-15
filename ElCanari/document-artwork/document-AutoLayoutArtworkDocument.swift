@@ -278,7 +278,7 @@ import Cocoa
   lazy var mDescriptionPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
-    let view_0 = AutoLayoutTextField (width: 56, size: .regular)
+    let view_0 = AutoLayoutTextField (minWidth: 56, size: .regular)
       .expandableWidth ()
       .set (alignment: .left)
       .bind_value (self.rootObject.title_property, sendContinously:true)
@@ -410,7 +410,7 @@ import Cocoa
       do{
         let view_0_0_0 = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .small)
         view_0_0.appendView (view_0_0_0)
-        let view_0_0_1 = AutoLayoutTextField (width: 56, size: .small)
+        let view_0_0_1 = AutoLayoutTextField (minWidth: 56, size: .small)
           .bind_value (self.rootObject.drillDataFileExtension_property, sendContinously:true)
         view_0_0.appendView (view_0_0_1)
       }
@@ -453,7 +453,7 @@ import Cocoa
           do{
             let view_2_2_0_0_0 = AutoLayoutStaticLabel (title: "File Extension", bold: true, size: .small)
             view_2_2_0_0.appendView (view_2_2_0_0_0)
-            let view_2_2_0_0_1 = AutoLayoutTextField (width: 56, size: .small)
+            let view_2_2_0_0_1 = AutoLayoutTextField (minWidth: 56, size: .small)
               .bind_value (self.mDataSelection.fileExtension_property, sendContinously:true)
             view_2_2_0_0.appendView (view_2_2_0_0_1)
           }

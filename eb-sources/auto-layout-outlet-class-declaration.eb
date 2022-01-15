@@ -47,21 +47,20 @@ extern autolayout class GridView2 $hidden {
   func addSeparator ()
 }
 
-extern autolayout class GridView4 {
-  func set (spacing: Int)
-  func set (margins: Int)
-  func set (leftMargin: Int)
-  func set (rightMargin: Int)
-  func set (topMargin: Int)
-  func set (bottomMargin: Int)
-  func set (width: Int)
-  func addFirstBaseLineAligned (first : view, second: view, third: view, fourth: view)
-  func addCenterYAligned (first : view, second: view, third: view, fourth: view)
-  func add (single : view)
-  func flexibleSpace ()
-  func addSeparator ()
-}
-
+//extern autolayout class GridView4 {
+//  func set (spacing: Int)
+//  func set (margins: Int)
+//  func set (leftMargin: Int)
+//  func set (rightMargin: Int)
+//  func set (topMargin: Int)
+//  func set (bottomMargin: Int)
+//  func set (width: Int)
+//  func addFirstBaseLineAligned (first : view, second: view, third: view, fourth: view)
+//  func addCenterYAligned (first : view, second: view, third: view, fourth: view)
+//  func add (single : view)
+//  func flexibleSpace ()
+//  func addSeparator ()
+//}
 
 extern autolayout class VerticalScrollView (content: view) {
 }
@@ -75,6 +74,7 @@ extern autolayout class StaticLabel (title : String, bold: Bool, size: EBControl
   func set (alignment: TextAlignment)
   func set (width: Int)
   func expandableWidth ()
+  func expandableHeight ()
   func setOrangeTextColor ()
   func setRedTextColor ()
 }
@@ -136,7 +136,7 @@ extern autolayout class CanariUnitPopUpButton (size: EBControlSize) $hidden {
   $unit property Int
 }
 
-extern autolayout class CanariDimensionField (width: Int, size: EBControlSize) $hidden {
+extern autolayout class CanariDimensionField (minWidth: Int, size: EBControlSize) $hidden {
   $dimensionAndUnit property Int, property Int
 }
 
@@ -165,10 +165,10 @@ extern autolayout class Button (title: String, size: EBControlSize) $enabled $ru
   func set (height: Int)
 }
 
-extern autolayout class TextField (width: Int, size: EBControlSize) $enabled {
+extern autolayout class TextField (minWidth: Int, size: EBControlSize) $enabled {
   func set (alignment: TextAlignment)
   func expandableWidth ()
-  func multiLine ()
+  func automaticallyAdjustHeight (maxWidth : Int)
   $value property String (sendContinously : Bool)
 }
 
@@ -212,7 +212,7 @@ extern autolayout class DragSourceButtonWithMenus (tooltip: String) $enabled {
   $image transient NSImage
 }
 
-extern autolayout class IntField (width: Int, size: EBControlSize) $enabled $hidden {
+extern autolayout class IntField (minWidth: Int, size: EBControlSize) $enabled $hidden {
   $value property Int (sendContinously: Bool)
   func set (min: Int)
   func set (max: Int)
@@ -225,7 +225,7 @@ extern autolayout class IntObserverField (bold: Bool, size: EBControlSize) $enab
   $observedValue transient Int
 }
 
-extern autolayout class DoubleField (width: Int, size: EBControlSize) $enabled {
+extern autolayout class DoubleField (minWidth: Int, size: EBControlSize) $enabled {
   $value property Double (sendContinously: Bool)
 }
 
@@ -258,11 +258,11 @@ extern autolayout class ObjectInspectorView $graphicController {
   func addObjectInspector (forEntity: entity, inspectorView: view)
 }
 
-extern autolayout class CanariAngleField (width: Int, size: EBControlSize) {
+extern autolayout class CanariAngleField (minWidth: Int, size: EBControlSize) {
   $angle property Int
 }
 
-extern autolayout class CanariAngleFieldAndSlider (width: Int, size: EBControlSize) $enabled {
+extern autolayout class CanariAngleFieldAndSlider (fieldMinWidth: Int, size: EBControlSize) $enabled {
   $angle property Int
 }
 
@@ -292,6 +292,11 @@ extern autolayout class CanariDimensionUnitSetterPullDownButton (size: EBControl
 extern autolayout class CanariHorizontalAlignmentSegmentedControl (size: EBControlSize) {
   func expandableWidth ()
   $alignment property HorizontalAlignment
+}
+
+extern autolayout class CanariVerticalAlignmentSegmentedControl (size: EBControlSize) {
+  func expandableWidth ()
+  $alignment property VerticalAlignment
 }
 
 extern autolayout class StaticImageView (name: String) {

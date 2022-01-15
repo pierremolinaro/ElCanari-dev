@@ -1703,7 +1703,7 @@ import Cocoa
       let view_0 = AutoLayoutStaticLabel (title: "From", bold: false, size: .small)
         .bind_hidden (.not (.id (self.rootObject.counterClockNumbering_property)))
       view.appendView (view_0)
-      let view_1 = AutoLayoutIntField (width: 45, size: .small)
+      let view_1 = AutoLayoutIntField (minWidth: 45, size: .small)
         .set (min: 0)
         .set (max: 360)
         .set (format: "##0°")
@@ -2148,7 +2148,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_83 () -> NSView {
-    let view = AutoLayoutCanariAngleFieldAndSlider (width: 64, size: .small)
+    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
       .bind_angle (self.mPackageArcSelectionController.startAngle_property)
     return view
   }
@@ -2167,7 +2167,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_85 () -> NSView {
-    let view = AutoLayoutCanariAngleField (width: 64, size: .small)
+    let view = AutoLayoutCanariAngleField (minWidth: 64, size: .small)
       .bind_angle (self.mPackageArcSelectionController.arcAngle_property)
     return view
   }
@@ -2577,7 +2577,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_128 () -> NSView {
-    let view = AutoLayoutTextField (width: 56, size: .small)
+    let view = AutoLayoutTextField (minWidth: 56, size: .small)
       .bind_value (self.mPackageZoneSelectionController.zoneName_property, sendContinously:true)
     return view
   }

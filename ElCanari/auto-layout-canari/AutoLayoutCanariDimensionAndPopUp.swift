@@ -22,8 +22,8 @@ final class AutoLayoutCanariDimensionAndPopUp : AutoLayoutHorizontalStackView {
   //····················································································································
 
   init (size inSize : EBControlSize) {
-    self.mDimensionField = AutoLayoutCanariDimensionField (width: 64, size: inSize)
-    self.mUnitPopUpButton =  AutoLayoutCanariUnitPopUpButton (size: inSize)
+    self.mDimensionField  = AutoLayoutCanariDimensionField (minWidth: 64, size: inSize)
+    self.mUnitPopUpButton = AutoLayoutCanariUnitPopUpButton (size: inSize)
     self.mUnitPopUpButton.setContentHuggingPriority (.defaultLow, for: .vertical)
     super.init ()
     _ = self.setFirstBaselineAlignment ()

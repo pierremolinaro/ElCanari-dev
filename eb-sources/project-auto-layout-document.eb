@@ -825,13 +825,13 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       addFirstBaseLineAligned (
         left: hStack setFirstBaselineAlignment () {
           StaticLabel (title: "X", bold: no, size : .small) { expandableWidth () }
-          CanariDimensionField (width: 80, size: .small) {
+          CanariDimensionField (minWidth: 80, size: .small) {
             $dimensionAndUnit #boardCurveSelectionController.mX, root.mBoardSelectedCurveDisplayUnit
           }
         },
         right: hStack setFirstBaselineAlignment () {
           StaticLabel (title: "Y", bold: no, size : .small) { expandableWidth () }
-          CanariDimensionField (width: 80, size: .small) {
+          CanariDimensionField (minWidth: 80, size: .small) {
             $dimensionAndUnit #boardCurveSelectionController.mY, root.mBoardSelectedCurveDisplayUnit
           }
         }
@@ -868,7 +868,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
             expandableWidth ()
             $hidden #boardCurveSelectionController.isLine
           }
-          CanariDimensionField (width: 80, size: .small) {
+          CanariDimensionField (minWidth: 80, size: .small) {
             $hidden #boardCurveSelectionController.isLine
             $dimensionAndUnit #boardCurveSelectionController.mCPX1, root.mBoardLimitControlPointsDisplayUnit
           }
@@ -878,7 +878,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
             expandableWidth ()
             $hidden #boardCurveSelectionController.isLine
           }
-          CanariDimensionField (width: 80, size: .small) {
+          CanariDimensionField (minWidth: 80, size: .small) {
             $hidden #boardCurveSelectionController.isLine
             $dimensionAndUnit #boardCurveSelectionController.mCPY1, root.mBoardLimitControlPointsDisplayUnit
           }
@@ -890,7 +890,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
             expandableWidth ()
             $hidden #boardCurveSelectionController.isLine
           }
-          CanariDimensionField (width: 80, size: .small) {
+          CanariDimensionField (minWidth: 80, size: .small) {
             $hidden #boardCurveSelectionController.isLine
             $dimensionAndUnit #boardCurveSelectionController.mCPX2, root.mBoardLimitControlPointsDisplayUnit
           }
@@ -900,7 +900,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
             expandableWidth ()
             $hidden #boardCurveSelectionController.isLine
           }
-          CanariDimensionField (width: 80, size: .small) {
+          CanariDimensionField (minWidth: 80, size: .small) {
             $hidden #boardCurveSelectionController.isLine
             $dimensionAndUnit #boardCurveSelectionController.mCPY2, root.mBoardLimitControlPointsDisplayUnit
           }
@@ -1322,6 +1322,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       addObjectInspector (forEntity: entity BoardConnector, inspectorView: stackView mBoardConnectorInspectorView)
       addObjectInspector (forEntity: entity BoardLine, inspectorView: stackView mBoardLineInspectorView)
       addObjectInspector (forEntity: entity BoardRestrictRectangle, inspectorView: stackView mRestrictRectangleInspectorView)
+      addObjectInspector (forEntity: entity BoardText, inspectorView: stackView mBoardTextInspectorView)
       $graphicController #boardObjectsController
     }
     space
@@ -1397,7 +1398,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Track Angle", bold: no, size: .small),
-        right: CanariAngleFieldAndSlider (width: 64, size: .small) {
+        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
           $angle #boardTrackSelectionController.trackDirectionInDegrees
           $enabled #boardTrackSelectionController.trackCanRotate
         }
@@ -1563,39 +1564,61 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     }
   }
 
-////--- Text inspector
-//  outlet CanariViewWithKeyView mBoardTextInspectorView ;
-//  selectionController BoardText #boardTextSelectionController :
-//    #boardObjectsController.selectedArray
-//  ;
-//
-//  outlet EBTextField mBoardTextTextField $value #boardTextSelectionController.mText (sendContinously : yes) ;
-//
-//  outlet EBDoubleField mBoardTextFontSizeField
-//    $value #boardTextSelectionController.mFontSize (sendContinously : no, autoFormatter : no)
-//  ;
-//
-//  outlet EBPopUpButton mBoardTextLayerPopUpButton $selectedIndex #boardTextSelectionController.mLayer ;
-//
-//  outlet CanariEnumSegmentedControl mBoardTextHorizontalAlignmentSegmentedControl
-//    $selectedSegment #boardTextSelectionController.mHorizontalAlignment
-//  ;
-//
-//  outlet CanariEnumSegmentedControl mBoardTextVerticalAlignmentSegmentedControl
-//    $selectedSegment #boardTextSelectionController.mVerticalAlignment
-//  ;
-//  
-//  outlet CanariAngleTextField mBoardTextRotationTextField $angle #boardTextSelectionController.mRotation ;
-//  outlet CanariAngleSlider mBoardTextRotationSlider $angle #boardTextSelectionController.mRotation ;
-//  
+//--- Text inspector
+  selectionController BoardText #boardTextSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+
+  stackView mBoardTextInspectorView vStack {
+    hStack { space StaticLabel (title: "Text Inspector", bold: yes, size: .small) space }
+    GridView2 {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Text", bold: no, size: .small) { expandableHeight () },
+        right: TextField (minWidth: 150, size: .small) { automaticallyAdjustHeight (maxWidth: 150) $value #boardTextSelectionController.mText (sendContinously : yes) }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Font", bold: no, size: .small),
+        right: space
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Size", bold: no, size: .small),
+        right: DoubleField (minWidth: 64, size: .small) {
+          $value #boardTextSelectionController.mFontSize (sendContinously: yes)
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Weight", bold: no, size: .small),
+        right: DoubleField (minWidth: 64, size: .small) {
+          $value #boardTextSelectionController.mWeight (sendContinously: yes)
+        }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: Checkbox (title: "Oblique", size: .small) { $value #boardTextSelectionController.mOblique }
+      ) 
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Horizontal", bold: no, size: .small),
+        right: CanariHorizontalAlignmentSegmentedControl (size: .small) { $alignment #boardTextSelectionController.mHorizontalAlignment }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Vertical", bold: no, size: .small),
+        right: CanariVerticalAlignmentSegmentedControl (size: .small) { $alignment #boardTextSelectionController.mVerticalAlignment }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Rotation", bold: no, size: .small),
+        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #boardTextSelectionController.mRotation }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Side", bold: no, size: .small),
+        right: EnumPopUpButton (titles: enum BoardTextLayer.popupTitles, size: .small) { $selectedIndex #boardTextSelectionController.mLayer } 
+      )
+    }
+  }
+
 //  outlet CanariBoardTextFontPopUpButton mBoardTextFontPopUpButton ;
-//  
-//  outlet EBDoubleField mBoardTextWeightTextField
-//    $value #boardTextSelectionController.mWeight ( sendContinously : no, autoFormatter: no)
-//  ;
-//  
-//  outlet EBSwitch mBoardTextObliqueSwitch $value #boardTextSelectionController.mOblique ;
-//
 
 ////--- Component inspector
 //  outlet CanariViewWithKeyView mComponentInBoardInspectorView ;
@@ -1800,7 +1823,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     hStack set (margins: 8) {
       hStack setFirstBaselineAlignment ()  {
         StaticLabel (title: "Drill File Extension", bold: no, size : .small)
-        TextField (width: 56, size : .small) { $value root.drillDataFileExtension (sendContinously: yes) }
+        TextField (minWidth: 56, size : .small) { $value root.drillDataFileExtension (sendContinously: yes) }
       }
       ImageObserverView (size: .small) { $image self.emptyDrillFileExtensionImage }
       space
@@ -1815,7 +1838,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
         hStack {
           hStack setFirstBaselineAlignment () {
             StaticLabel (title: "File Extension", bold: yes, size : .small)
-            TextField (width: 56, size : .small) { $value #mDataSelection.fileExtension (sendContinously: yes) }
+            TextField (minWidth: 56, size : .small) { $value #mDataSelection.fileExtension (sendContinously: yes) }
           }
           ImageObserverView (size: .small) { $image #mDataSelection.emptyFileExtensionImage }
          space

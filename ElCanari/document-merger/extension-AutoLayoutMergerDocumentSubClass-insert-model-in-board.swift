@@ -59,8 +59,8 @@ extension AutoLayoutMergerDocumentSubClass {
         lastItem?.representedObject = model
       }
     //--- X and Y Count
-      let xCountTextField = AutoLayoutIntField (width: 56, size: .small).bind_value (self.mInsertArrayOfBoardsXCount, sendContinously: true)
-      let yCountTextField = AutoLayoutIntField (width: 56, size: .small).bind_value (self.mInsertArrayOfBoardsYCount, sendContinously: true)
+      let xCountTextField = AutoLayoutIntField (minWidth: 56, size: .small).bind_value (self.mInsertArrayOfBoardsXCount, sendContinously: true)
+      let yCountTextField = AutoLayoutIntField (minWidth: 56, size: .small).bind_value (self.mInsertArrayOfBoardsYCount, sendContinously: true)
     //--- Orientation
       let orientationSegmentedControl = AutoLayoutElCanariOrientationSegmentedControl (size: .small)
         .bind_orientation (self.mInsertArrayOfBoardsOrientation)

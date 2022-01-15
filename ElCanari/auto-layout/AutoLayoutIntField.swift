@@ -18,7 +18,7 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField, NSTextFieldDelegate
 
   //····················································································································
 
-  init (width inWidth : Int, size inSize : EBControlSize) {
+  init (minWidth inWidth : Int, size inSize : EBControlSize) {
     super.init (optionalWidth: inWidth, bold: true, size: inSize)
 
   //--- Target

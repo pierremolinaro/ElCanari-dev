@@ -14,7 +14,7 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField, NSTextF
 
   //····················································································································
 
-  init (width inWidth : Int, size inSize : EBControlSize) {
+  init (minWidth inWidth : Int, size inSize : EBControlSize) {
     super.init (optionalWidth: inWidth, bold: true, size: inSize)
   }
 

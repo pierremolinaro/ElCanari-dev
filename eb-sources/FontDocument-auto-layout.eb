@@ -105,7 +105,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
       GridView2 {
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Size", bold: no, size: .small),
-          right: DoubleField (width: 64, size: .small) { $value prefs.sampleStringSize (sendContinously: yes) }
+          right: DoubleField (minWidth: 64, size: .small) { $value prefs.sampleStringSize (sendContinously: yes) }
         )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Width", bold: no, size: .small),
@@ -131,7 +131,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
   stackView mSelectedCharacterInspectorView vStack {
     hStack {
       StaticLabel (title: "Font Nominal Size", bold: yes, size: .small)
-      IntField (width: 56, size: .small) { $value root.nominalSize (sendContinously:no) }
+      IntField (minWidth: 56, size: .small) { $value root.nominalSize (sendContinously:no) }
       space
     }
     separator
@@ -142,7 +142,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
     }
     hStack {
       DoubleSlider (width: -1, min: 0, max: 1, ticks: 11) { $value prefs.fontEditionTransparency }
-      DoubleField (width: 56, size: .small) { $value prefs.fontEditionTransparency (sendContinously:no) }
+      DoubleField (minWidth: 56, size: .small) { $value prefs.fontEditionTransparency (sendContinously:no) }
     }
     separator
     hStack {
@@ -168,7 +168,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
     }
     hStack {
       IntSlider (width: -1, min: 0, max: 32, ticks: 33) { $value #characterSelection.advance }
-      IntField (width: 56, size: .small) { $value #characterSelection.advance (sendContinously:no) }
+      IntField (minWidth: 56, size: .small) { $value #characterSelection.advance (sendContinously:no) }
     }
     hStack {
       StaticLabel (title: "Warns", bold: no, size: .small)

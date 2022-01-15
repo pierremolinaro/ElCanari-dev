@@ -1,111 +1,96 @@
 //
-//  AutoLayoutTextField.swift
-//  ElCanari
+//  AutoLayoutCanariVerticalAlignmentSegmentedControl.swift
+//  ElCanari-Debug-temporary
 //
-//  Created by Pierre Molinaro on 15/06/2021.
+//  Created by Pierre Molinaro on 15/01/2022.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutTextField
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutTextField : AutoLayoutBase_NSTextField {
-
-  //····················································································································
-  //  User information
-  //····················································································································
-
-  var mTextFieldUserInfo : Any? = nil // Not used, freely available for user
+final class AutoLayoutCanariVerticalAlignmentSegmentedControl : AutoLayoutBase_NSSegmentedControl {
 
   //····················································································································
 
-  init (minWidth inWidth : Int, size inSize : EBControlSize) {
-    super.init (optionalWidth: inWidth, bold: true, size: inSize)
+  init (size inSize : EBControlSize) {
+    super.init (equalWidth: true, size: inSize)
 
-    self.setContentCompressionResistancePriority (.required, for: .vertical)
-
-    self.alignment = .center
+    self.segmentDistribution = .fillEqually
 
     self.target = self
-    self.action = #selector (Self.ebAction(_:))
+    self.action = #selector (Self.selectedSegmentDidChange (_:))
+
+    self.addSegment (withImageNamed: "alignmentBottom")
+    self.addSegment (withImageNamed: "alignmentBaseline")
+    self.addSegment (withImageNamed: "alignmentMiddle")
+    self.addSegment (withImageNamed: "alignmentTop")
   }
 
   //····················································································································
 
-  required init? (coder inCoder : NSCoder) {
+  required init?(coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
 
 //  override func ebCleanUp () {
-//    self.mValueController?.unregister ()
-//    self.mValueController = nil
+//    self.mAlignmentController?.unregister ()
+//    self.mAlignmentController = nil
 //    super.ebCleanUp ()
 //  }
 
   //····················································································································
+  // ADD PAGE
+  //····················································································································
 
-  var mTextDidChange : Optional < () -> Void>  = nil {
-    didSet {
-      self.mTextDidChange? ()
+  final func addSegment (withImageNamed inImageName : String) {
+    let idx = self.segmentCount
+    self.segmentCount += 1
+    if let image = NSImage (named: inImageName) {
+      self.setImage (image, forSegment: idx)
+      self.setImageScaling (.scaleProportionallyUpOrDown, forSegment: idx)
+      self.setLabel ("", forSegment: idx)
+    }else{
+      self.setLabel ("?", forSegment: idx)
     }
   }
 
   //····················································································································
+  // SELECTED TAB DID CHANGE
+  //····················································································································
 
-  @objc func ebAction (_ inUnusedSender : Any?) {
-    _ = self.mValueController?.updateModel (withCandidateValue: self.stringValue, windowForSheet: self.window)
+  @objc func selectedSegmentDidChange (_ inSender : Any?) {
+    _ = self.mObject?.setFrom (rawValue: self.selectedSegment)
   }
 
   //····················································································································
-
-  override func textDidChange (_ inNotification : Notification) {
-    super.textDidChange (inNotification)
-    self.mTextDidChange? ()
-    if self.isContinuous {
-      self.ebAction (nil)
-    }
-  }
-
-  //····················································································································
-  //  value binding
+  //  $alignment binding
   //····················································································································
 
-  fileprivate func updateOutlet (_ inModel : EBReadOnlyProperty_String) {
-    switch inModel.selection {
-    case .empty :
-      self.placeholderString = "No Selection"
-      self.stringValue = ""
-      self.enable (fromValueBinding: false, self.enabledBindingController)
-    case .multiple :
-      self.placeholderString = "Multiple Selection"
-      self.stringValue = ""
-      self.enable (fromValueBinding: true, self.enabledBindingController)
-    case .single (let propertyValue) :
-      self.placeholderString = nil
-      self.stringValue = propertyValue
-      self.enable (fromValueBinding: true, self.enabledBindingController)
-    }
-  }
+  private var mAlignmentController : EBObservablePropertyController? = nil
+  private var mObject : EBReadWriteObservableEnumProtocol? = nil
 
   //····················································································································
 
-  private var mValueController : EBGenericReadWritePropertyController <String>? = nil
-
-  //····················································································································
-
-  final func bind_value (_ inModel : EBReadWriteProperty_String, sendContinously inContinuous : Bool) -> Self {
-    self.isContinuous = inContinuous
-    self.mValueController = EBGenericReadWritePropertyController <String> (
-      observedObject: inModel,
-      callBack: { [weak self] in self?.updateOutlet (inModel) }
+  final func bind_alignment (_ inObject : EBReadWriteEnumProperty <BoardTextVerticalAlignment>) -> Self {
+    self.mObject = inObject
+    self.mAlignmentController = EBObservablePropertyController (
+      observedObjects: [inObject],
+      callBack: { [weak self] in self?.update (from: inObject) }
     )
     return self
   }
+
+  //····················································································································
+
+  fileprivate func update (from inObject : EBReadWriteEnumProperty <BoardTextVerticalAlignment>) {
+    self.selectedSegment = inObject.rawValue () ?? 0
+    self.selectedSegmentDidChange (nil)
+  }
+
 
   //····················································································································
 

@@ -16,7 +16,7 @@ final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField, NSTextField
   // INIT
   //····················································································································
 
-  init (width inWidth : Int, size inSize : EBControlSize) {
+  init (minWidth inWidth : Int, size inSize : EBControlSize) {
     super.init (optionalWidth: inWidth, bold: true, size: inSize)
 
     self.delegate = self

@@ -19,6 +19,11 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
   private let mWidth : CGFloat?
 
   //····················································································································
+  // https://www.generacodice.com/en/articolo/4221090/how-to-let-nstextfield-grow-with-the-text-in-auto-layout
+
+  private var mAutomaticallyAdjustHeight = false
+
+  //····················································································································
 
   init (optionalWidth inOptionalWidth : Int?, bold inBold : Bool, size inSize : EBControlSize) {
     if let w = inOptionalWidth {
@@ -63,10 +68,21 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func multiLine () -> Self {
-    self.usesSingleLineMode = false
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
+  final func automaticallyAdjustHeight (maxWidth inMaxWidth : Int) -> Self {
+ //   self.usesSingleLineMode = false
+    self.mAutomaticallyAdjustHeight = true
+    self.preferredMaxLayoutWidth = CGFloat (inMaxWidth)
+    self.cell?.wraps = true
+    self.lineBreakMode = .byWordWrapping
+ //   self.setContentHuggingPriority (.defaultLow, for: .vertical)
     return self
+  }
+
+  //····················································································································
+
+  override func textDidChange (_ notification : Notification) {
+    super.textDidChange (notification)
+    self.invalidateIntrinsicContentSize ()
   }
 
   //····················································································································
@@ -76,11 +92,22 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
   override var intrinsicContentSize : NSSize {
-    var s = super.intrinsicContentSize
-    if let w = self.mWidth {
-      s.width = w
+    if self.mAutomaticallyAdjustHeight, let cell = self.cell {
+      var frame = self.frame
+      let width = self.mWidth ?? frame.size.width
+      // Make the frame very high, while keeping the width
+      frame.size.height = CGFloat.greatestFiniteMagnitude;
+      // Calculate new height within the frame
+      // with practically infinite height.
+      let height = cell.cellSize (forBounds: frame).height
+      return NSSize (width: width, height: height)
+    }else{
+      var s = super.intrinsicContentSize
+      if let w = self.mWidth {
+        s.width = w
+      }
+      return s
     }
-    return s
   }
 
   //····················································································································

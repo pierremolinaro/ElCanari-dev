@@ -17,6 +17,8 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase
   init (size inSize : EBControlSize) {
     super.init (equalWidth: true, size: inSize)
 
+    self.segmentDistribution = .fillEqually
+
     self.target = self
     self.action = #selector (Self.selectedSegmentDidChange (_:))
 
@@ -33,11 +35,11 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mAlignmentController?.unregister ()
-    self.mAlignmentController = nil
-    super.ebCleanUp ()
-  }
+//  override func ebCleanUp () {
+//    self.mAlignmentController?.unregister ()
+//    self.mAlignmentController = nil
+//    super.ebCleanUp ()
+//  }
 
   //····················································································································
   // ADD PAGE
@@ -72,7 +74,7 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase
 
   //····················································································································
 
-  final func bind_alignment (_ inObject : EBReadWriteObservableEnumProtocol) -> Self {
+  final func bind_alignment (_ inObject : EBReadWriteEnumProperty <HorizontalAlignment>) -> Self {
     self.mObject = inObject
     self.mAlignmentController = EBObservablePropertyController (
       observedObjects: [inObject],
@@ -83,11 +85,10 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase
 
   //····················································································································
 
-  fileprivate func update (from inObject : EBReadWriteObservableEnumProtocol) {
+  fileprivate func update (from inObject : EBReadWriteEnumProperty <HorizontalAlignment>) {
     self.selectedSegment = inObject.rawValue () ?? 0
     self.selectedSegmentDidChange (nil)
   }
-
 
   //····················································································································
 

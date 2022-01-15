@@ -407,7 +407,7 @@ import Cocoa
     do{
       let view_0_0 = AutoLayoutStaticLabel (title: "Font Nominal Size", bold: true, size: .small)
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutIntField (width: 56, size: .small)
+      let view_0_1 = AutoLayoutIntField (minWidth: 56, size: .small)
         .bind_value (self.rootObject.nominalSize_property, sendContinously:false)
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
@@ -431,7 +431,7 @@ import Cocoa
       let view_3_0 = AutoLayoutDoubleSlider (width: -1, min: 0, max: 1, ticks: 11)
         .bind_value (preferences_fontEditionTransparency_property)
       view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutDoubleField (width: 56, size: .small)
+      let view_3_1 = AutoLayoutDoubleField (minWidth: 56, size: .small)
         .bind_value (preferences_fontEditionTransparency_property, sendContinously:false)
       view_3.appendView (view_3_1)
     }
@@ -496,7 +496,7 @@ import Cocoa
       let view_8_0 = AutoLayoutIntSlider (width: -1, min: 0, max: 32, ticks: 33)
         .bind_value (self.characterSelection.advance_property)
       view_8.appendView (view_8_0)
-      let view_8_1 = AutoLayoutIntField (width: 56, size: .small)
+      let view_8_1 = AutoLayoutIntField (minWidth: 56, size: .small)
         .bind_value (self.characterSelection.advance_property, sendContinously:false)
       view_8.appendView (view_8_1)
     }
@@ -592,7 +592,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_1 () -> NSView {
-    let view = AutoLayoutDoubleField (width: 64, size: .small)
+    let view = AutoLayoutDoubleField (minWidth: 64, size: .small)
       .bind_value (preferences_sampleStringSize_property, sendContinously:true)
     return view
   }

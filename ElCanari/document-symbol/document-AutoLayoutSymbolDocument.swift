@@ -756,7 +756,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_1 () -> NSView {
-    let view = AutoLayoutTextField (width: 56, size: .small)
+    let view = AutoLayoutTextField (minWidth: 56, size: .small)
       .expandableWidth ()
       .bind_value (self.mSymbolTextSelectionController.text_property, sendContinously:true)
     return view
@@ -796,7 +796,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_5 () -> NSView {
-    let view = AutoLayoutTextField (width: 56, size: .small)
+    let view = AutoLayoutTextField (minWidth: 56, size: .small)
       .expandableWidth ()
       .bind_value (self.mSymbolPinSelectionController.name_property, sendContinously:true)
     return view

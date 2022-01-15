@@ -252,7 +252,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
             left: space,
             right: hStack {
                StaticLabel (title: "From", bold: no, size : .small) { $hidden !root.counterClockNumbering}
-               IntField (width: 45, size : .small) {
+               IntField (minWidth: 45, size : .small) {
                  set (min: 0)
                  set (max: 360)
                  set (format: "##0°")
@@ -511,13 +511,13 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Start Angle", bold: no, size : .small),
-        right: CanariAngleFieldAndSlider (width: 64, size: .small) {
+        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
           $angle #mPackageArcSelectionController.startAngle
         }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Angle", bold: no, size : .small),
-        right: CanariAngleField (width: 64, size: .small) {
+        right: CanariAngleField (minWidth: 64, size: .small) {
           $angle #mPackageArcSelectionController.arcAngle
         }
       )
@@ -687,7 +687,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Name", bold: no, size : .small),
-        right: TextField (width: 56, size : .small) {
+        right: TextField (minWidth: 56, size : .small) {
           $value #mPackageZoneSelectionController.zoneName (sendContinously: yes)
         }
       )
