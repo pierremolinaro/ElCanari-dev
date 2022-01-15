@@ -28,13 +28,15 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.4.10"
+let VERSION_CANARI = "1.4.11"
 let MAC_OS_MINIMUM_VERSION = "10.13"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Correction lecture format texte"
 ]
 let CHANGES : [String] = [
+  "Utilisation de Sparkle 2.0.0"
 ]
 let NEWS : [String] = [
 ]
