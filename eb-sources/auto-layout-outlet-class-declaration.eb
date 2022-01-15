@@ -261,7 +261,7 @@ extern autolayout class CanariAngleField (width: Int, size: EBControlSize) {
   $angle property Int
 }
 
-extern autolayout class CanariAngleFieldAndSlider (width: Int, size: EBControlSize) {
+extern autolayout class CanariAngleFieldAndSlider (width: Int, size: EBControlSize) $enabled {
   $angle property Int
 }
 
@@ -411,6 +411,14 @@ extern autolayout class ElCanariSelectionPopUpButton (size: EBControlSize) $hidd
 }
 
 extern autolayout class ImageButton (imageName: String, tooltip: String, width: Int, height: Int) $run {
+}
+
+extern autolayout class ElCanariTrackLockView {
+  $angle property Int
+  $manualLockP1 property Bool
+  $manualLockP2 property Bool
+  $p1ConnectedToSomePad transient Bool
+  $p2ConnectedToSomePad transient Bool
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

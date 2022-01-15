@@ -78,6 +78,12 @@ final class EnabledBindingController : EBObservablePropertyController {
   func enable (fromEnableBinding inValue : Bool) {
     self.mIsEnabledFromEnabledBinding = inValue
     self.mControlOutlet?.isEnabled = self.mIsEnabledFromValueBinding && self.mIsEnabledFromEnabledBinding
+    if let outlet = self.mControlOutlet as? NSTextField {
+      outlet.isEditable = self.mIsEnabledFromValueBinding && self.mIsEnabledFromEnabledBinding
+    }
+    if let windowContentView = self.mControlOutlet?.window?.contentView as? AutoLayoutWindowContentView {
+      windowContentView.triggerNextKeyViewSettingComputation ()
+    }
   }
 
   //····················································································································
@@ -85,6 +91,12 @@ final class EnabledBindingController : EBObservablePropertyController {
   func enable (fromValueBinding inValue : Bool) {
     self.mIsEnabledFromValueBinding = inValue
     self.mControlOutlet?.isEnabled = self.mIsEnabledFromValueBinding && self.mIsEnabledFromEnabledBinding
+    if let outlet = self.mControlOutlet as? NSTextField {
+      outlet.isEditable = self.mIsEnabledFromValueBinding && self.mIsEnabledFromEnabledBinding
+    }
+    if let windowContentView = self.mControlOutlet?.window?.contentView as? AutoLayoutWindowContentView {
+      windowContentView.triggerNextKeyViewSettingComputation ()
+    }
   }
 
   //····················································································································

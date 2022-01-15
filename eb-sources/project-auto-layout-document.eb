@@ -939,18 +939,19 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
         space
         DragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.") [configurator addTrackButton]
       }
-  //    separator
       vStack {
-        SegmentedControlWithPages (documentView: stackView mBoardInspectorView, equalWidth: yes, size : .small) 
-          [configurator boardInspectorConfigurator] {
-          expandableWidth ()
-          addPage (title: "", tooltip: "Selected Element Inspector", pageView: stackView mSelectedElementInspectorView)
-          addPage (title: "", tooltip: "Insert Component in Board", pageView: stackView mInsertComponentInBoardView)
-          addPage (title: "", tooltip: "Display Inspector", pageView: stackView mBoardDisplayInspectorView)
-          addPage (image: "autorouter", tooltip: "Router Inspector", pageView: stackView mBoardRouterInspectorView)
-          addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: stackView mBoardERCInspectorView)
-          $selectedPage root.mBoardSelectedInspector
-          $segmentTitle self.unplacedPackagesCountString (segmentIndex : 1)
+        hStack set (leftMargin: 8) set (rightMargin: 8) {
+          SegmentedControlWithPages (documentView: stackView mBoardInspectorView, equalWidth: yes, size : .small) 
+            [configurator boardInspectorConfigurator] {
+            expandableWidth ()
+            addPage (title: "", tooltip: "Selected Element Inspector", pageView: stackView mSelectedElementInspectorView)
+            addPage (title: "", tooltip: "Insert Component in Board", pageView: stackView mInsertComponentInBoardView)
+            addPage (title: "", tooltip: "Display Inspector", pageView: stackView mBoardDisplayInspectorView)
+            addPage (image: "autorouter", tooltip: "Router Inspector", pageView: stackView mBoardRouterInspectorView)
+            addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: stackView mBoardERCInspectorView)
+            $selectedPage root.mBoardSelectedInspector
+            $segmentTitle self.unplacedPackagesCountString (segmentIndex : 1)
+          }
         }
         stackViewRef mBoardInspectorView
       }
@@ -977,15 +978,8 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     }
   }
 
-  
-  stackView mSelectedElementInspectorView vStack set (margins: 8) {
-    space
-  }
+  stackView mBoardInspectorView : vStack ;
 
-  stackView mBoardInspectorView vStack {
-    space
-  }
-  
   stackView mInsertComponentInBoardView vStack set (margins: 8) {
     hStack {
       space
@@ -1301,82 +1295,128 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   }
 
   action performERCCheckingAction ;
+  
+//----------------------------------------------------------------------------------------------------------------------
+//   Selected objects inspector
+//----------------------------------------------------------------------------------------------------------------------
 
-//
-////--- Board track inspector
-//  outlet CanariViewWithKeyView mBoardTrackInspectorView ;
-//  selectionController BoardTrack #boardTrackSelectionController :
-//    #boardObjectsController.selectedArray
-//  ;
-//
-//  outlet EBSwitch mIsPreservedByAutoRouterSwitch $value #boardTrackSelectionController.mIsPreservedByAutoRouter ;
-//
-//  outlet EBPopUpButton mBoardTrackSidePopUpButton $selectedIndex #boardTrackSelectionController.mSide ;
-//
-//  outlet EBTextObserverField mTrackNetNameTextField $valueObserver #boardTrackSelectionController.netName ;
-//
-//  outlet EBTextObserverField mTrackNetClassNameTextField $valueObserver #boardTrackSelectionController.netClassName ;
-//
-//  outlet EBPopUpButton mTrackDefaultWidthUnitPopUp $selectedTag #boardTrackSelectionController.mDefaultTrackWidthUnit ;
-//  outlet CanariDimensionObserverTextField mTrackDefaultWidthTextField
-//     $dimensionAndUnit #boardTrackSelectionController.netClassTrackWidth, #boardTrackSelectionController.mDefaultTrackWidthUnit
-//  ;
-//
-//  outlet EBPopUpButton mTrackCustomWidthUnitPopUp $selectedTag #boardTrackSelectionController.mCustomTrackWidthUnit ;
-//  outlet CanariDimensionTextField mTrackCustomWidthTextField
-//     $dimensionAndUnit #boardTrackSelectionController.mCustomTrackWidth, #boardTrackSelectionController.mCustomTrackWidthUnit
-//  ;
-//
-//  outlet EBSwitch mUsesCustomTrackWidthSwitch $value #boardTrackSelectionController.mUsesCustomTrackWidth ;
-//
-//  outlet CanariAngleTextField mTrackInBoardRotationTextField
-//    $angle #boardTrackSelectionController.trackDirectionInDegrees
-//    $enabled #boardTrackSelectionController.trackCanRotate
-//  ;
-//
-//  outlet CanariAngleSlider mTrackInBoardRotationSlider
-//    $angle #boardTrackSelectionController.trackDirectionInDegrees
-//    $enabled #boardTrackSelectionController.trackCanRotate
-//  ;
-//
-//  outlet CanariTrackLockView mTrackLockView
-//    $angle #boardTrackSelectionController.trackDirectionInDegrees
-//    $manualLockP1 #boardTrackSelectionController.mManualLockP1
-//    $manualLockP2 #boardTrackSelectionController.mManualLockP2
-//    $p1ConnectedToSomePad #boardTrackSelectionController.p1ConnectedToSomePad
-//    $p2ConnectedToSomePad #boardTrackSelectionController.p2ConnectedToSomePad
-//  ;
-//
-//  outlet EBPopUpButton mDirectionLockOnKnobDraggingPopUpButton
-//    $selectedIndex #boardTrackSelectionController.mDirectionLockOnKnobDragging
-//  ;
-//  
-//  outlet CanariDimensionTextField mBoardTrackP1xTextField
-//     $dimensionAndUnit #boardTrackSelectionController.computedP1X, #boardTrackSelectionController.mP1XUnit
-//    $enabled #boardTrackSelectionController.p1CanMove
-//  ;
-//  outlet EBPopUpButton mBoardTrackP1xUnitPopUp $selectedTag #boardTrackSelectionController.mP1XUnit ;
-//
-//  outlet CanariDimensionTextField mBoardTrackP1yTextField
-//    $dimensionAndUnit #boardTrackSelectionController.computedP1Y, #boardTrackSelectionController.mP1YUnit
-//    $enabled #boardTrackSelectionController.p1CanMove
-//  ;
-//  outlet EBPopUpButton mBoardTrackP1yUnitPopUp $selectedTag #boardTrackSelectionController.mP1YUnit ;
-//
-//  outlet CanariDimensionTextField mBoardTrackP2xTextField
-//    $dimensionAndUnit #boardTrackSelectionController.computedP2X, #boardTrackSelectionController.mP2XUnit
-//    $enabled #boardTrackSelectionController.p2CanMove
-//  ;
-//  outlet EBPopUpButton mBoardTrackP2xUnitPopUp $selectedTag #boardTrackSelectionController.mP2XUnit ;
-//
-// outlet CanariDimensionTextField mBoardTrackP2yTextField
-//    $dimensionAndUnit #boardTrackSelectionController.computedP2Y, #boardTrackSelectionController.mP2YUnit
-//    $enabled #boardTrackSelectionController.p2CanMove
-//  ;
-//  outlet EBPopUpButton mBoardTrackP2yUnitPopUp $selectedTag #boardTrackSelectionController.mP2YUnit ;
-//
-//
-//
+  stackView mSelectedElementInspectorView vStack set (margins: 8) {
+    ObjectInspectorView {
+      addObjectInspector (forEntity: entity BoardTrack, inspectorView: stackView mBoardTrackInspectorView)
+ //     addObjectInspector (forEntity: entity SymbolPin, inspectorView: stackView mSymbolPinInspectorView)
+      $graphicController #boardObjectsController
+    }
+    space
+  }
+
+//--- Board track
+  selectionController BoardTrack #boardTrackSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+
+  stackView mBoardTrackInspectorView vStack {
+    hStack { space StaticLabel (title: "Board Track", bold: yes, size: .small) space }
+    GridView2 {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Net Name", bold: no, size: .small),
+        right: Label (bold: yes, size: .small) {
+          set (alignment: .left)
+          expandableWidth ()
+          $title #boardTrackSelectionController.netName
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Net Class Name", bold: no, size: .small),
+        right: Label (bold: yes, size: .small) {
+          set (alignment: .left)
+          expandableWidth ()
+          $title #boardTrackSelectionController.netClassName
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Side", bold: no, size: .small),
+        right: EnumPopUpButton (titles: enum TrackSide.popupTitles, size: .small) {
+          $selectedIndex #boardTrackSelectionController.mSide
+        }
+      )
+      add (
+        single: Checkbox (title: "Is Preserved by Auto Router", size : .small) { $value #boardTrackSelectionController.mIsPreservedByAutoRouter }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Track Width", bold: no, size: .small) { set (alignment: .left) expandableWidth () },
+        right: Checkbox (title: "Use Custom", size: .small) { $value #boardTrackSelectionController.mUsesCustomTrackWidth }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "From Net Class", bold: no, size: .small) { $hidden #boardTrackSelectionController.mUsesCustomTrackWidth } ,
+        right: CanariObservedDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardTrackSelectionController.netClassTrackWidth, #boardTrackSelectionController.mDefaultTrackWidthUnit
+          $hidden #boardTrackSelectionController.mUsesCustomTrackWidth
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Custom", bold: no, size: .small) { $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth },
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardTrackSelectionController.mCustomTrackWidth, #boardTrackSelectionController.mCustomTrackWidthUnit
+          $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth
+        }
+      )
+      addSeparator ()
+      add (single:
+        ElCanariTrackLockView {
+          $angle #boardTrackSelectionController.trackDirectionInDegrees
+          $manualLockP1 #boardTrackSelectionController.mManualLockP1
+          $manualLockP2 #boardTrackSelectionController.mManualLockP2
+          $p1ConnectedToSomePad #boardTrackSelectionController.p1ConnectedToSomePad
+          $p2ConnectedToSomePad #boardTrackSelectionController.p2ConnectedToSomePad
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "On Knob Dragging", bold: no, size: .small),
+        right: EnumPopUpButton (titles: enum TrackLockDirection.popupTitles, size: .small) {
+          $selectedIndex #boardTrackSelectionController.mDirectionLockOnKnobDragging
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Track Angle", bold: no, size: .small),
+        right: CanariAngleFieldAndSlider (width: 64, size: .small) {
+          $angle #boardTrackSelectionController.trackDirectionInDegrees
+          $enabled #boardTrackSelectionController.trackCanRotate
+        }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: hStack { StaticLabel (title: "P1", bold: no, size: .small) space StaticLabel (title: "X", bold: no, size: .small) },
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardTrackSelectionController.computedP1X, #boardTrackSelectionController.mP1XUnit
+          $enabled #boardTrackSelectionController.p1CanMove
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Y", bold: no, size: .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardTrackSelectionController.computedP1Y, #boardTrackSelectionController.mP1YUnit
+          $enabled #boardTrackSelectionController.p1CanMove
+        }
+      )
+      addFirstBaseLineAligned (
+        left: hStack { StaticLabel (title: "P2", bold: no, size: .small) space StaticLabel (title: "X", bold: no, size: .small) },
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardTrackSelectionController.computedP2X, #boardTrackSelectionController.mP2XUnit
+          $enabled #boardTrackSelectionController.p2CanMove
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Y", bold: no, size: .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardTrackSelectionController.computedP2Y, #boardTrackSelectionController.mP2YUnit
+          $enabled #boardTrackSelectionController.p2CanMove
+        }
+      )
+    }
+    space
+  }
+
 ////--- Board Connector inspector
 //  outlet CanariViewWithKeyView mBoardConnectorInspectorView ;
 //  selectionController BoardConnector #boardConnectorSelectionController :

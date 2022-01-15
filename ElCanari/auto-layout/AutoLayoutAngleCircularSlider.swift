@@ -11,6 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   AutoLayoutAngleCircularSlider
+//  Min Value : 0, max Value : 3600
+//  Current value :    0 -> knob at top
+//                   900 -> knob at right
+//                  1800 -> knob at bottom
+//                  2700 -> knob at left
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class AutoLayoutAngleCircularSlider : AutoLayoutBase_NSSlider {
@@ -20,11 +25,9 @@ final class AutoLayoutAngleCircularSlider : AutoLayoutBase_NSSlider {
   init (size inSize : EBControlSize) {
     super.init (min: 0, max: 3600, ticks: 360)
 
-//    self.minValue = 0.0
-//    self.maxValue = 360.0
-
     self.controlSize = inSize.cocoaControlSize
     self.sliderType = .circular
+ //   self.doubleValue = 1800.0
   }
 
   //····················································································································
@@ -44,7 +47,7 @@ final class AutoLayoutAngleCircularSlider : AutoLayoutBase_NSSlider {
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    let value = (450_000 - Int ((self.doubleValue * 1000.0).rounded ())) % 360_000
+    let value = (450_000 - Int ((self.doubleValue * 100.0).rounded ())) % 360_000
     _ = self.mAngleController?.updateModel (
       withCandidateValue: value,
       windowForSheet: self.window
@@ -79,7 +82,7 @@ final class AutoLayoutAngleCircularSlider : AutoLayoutBase_NSSlider {
       self.enable (fromValueBinding: false, self.enabledBindingController)
       self.doubleValue = 0.0
     case .single (let propertyValue) :
-      self.doubleValue = Double ((90_000 + 360_000 - propertyValue) % 360_000) / 1000.0
+      self.doubleValue = Double ((90_000 + 360_000 - propertyValue) % 360_000) / 100.0
       self.enable (fromValueBinding: true, self.enabledBindingController)
     }
   }

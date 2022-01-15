@@ -6,10 +6,26 @@ enum TrackSide {
   front, back, inner1, inner2, inner3, inner4
 }
 
+func enum TrackSide.popupTitles {
+  front : "Front" ;
+  back : "Back" ;
+  inner1 : "Inner 1" ;
+  inner2 : "Inner 2" ;
+  inner3 : "Inner 3" ;
+  inner4 : "Inner 4" ;
+}
+
 //——————————————————————————————————————————————————————————————————————————————
 
 enum TrackLockDirection {
   unlocked, locked, octolinear, rectilinear
+}
+
+func enum TrackLockDirection.popupTitles {
+  unlocked : "Free Angle" ;
+  locked : "Locked Angle" ;
+  octolinear : "Octolinear" ;
+  rectilinear : "Rectilinear" ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————
