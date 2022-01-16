@@ -175,7 +175,7 @@ extension ProjectDocument {
     leftColumn.appendView (AutoLayoutStaticLabel (title: inTitle, bold: true, size: .regular).set (alignment: .center).expandableWidth ())
     leftColumn.appendFlexibleSpace ()
   //--- New Name
-    let newNameTextField = AutoLayoutTextField (width: 100, size: .regular).expandableWidth ()
+    let newNameTextField = AutoLayoutTextField (minWidth: 100, size: .regular).expandableWidth ()
     newNameTextField.stringValue = inInitialName
     do {
       let hStack = AutoLayoutHorizontalStackView ()

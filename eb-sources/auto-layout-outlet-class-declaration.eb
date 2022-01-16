@@ -436,4 +436,9 @@ extern autolayout class ElCanariRestrictRectangleView {
   $inner4 property Bool
 }
 
+extern autolayout class ElCanariBoardFontPopUpButton $run {
+  $currentFontName transient String
+  $fontNames transient StringArray
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

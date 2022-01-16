@@ -34,7 +34,7 @@ extension ProjectDocument {
       layoutView.appendView (AutoLayoutStaticLabel (title: panelTitle, bold: true, size: .regular).expandableWidth ().set (alignment: .center))
       layoutView.appendFlexibleSpace ()
     //---
-      let netClassNameTextField = AutoLayoutTextField (width: 100, size: .regular).expandableWidth ()
+      let netClassNameTextField = AutoLayoutTextField (minWidth: 100, size: .regular).expandableWidth ()
       netClassNameTextField.stringValue = inNetClass.mNetClassName
       do{
         let left = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .regular)

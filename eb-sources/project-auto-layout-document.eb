@@ -1579,7 +1579,11 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Font", bold: no, size: .small),
-        right: space
+        right: ElCanariBoardFontPopUpButton {
+          $currentFontName #boardTextSelectionController.fontName
+          $fontNames root.fontNameArray
+          $run setBoardTextFontAction
+        }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Size", bold: no, size: .small),
@@ -1618,8 +1622,8 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     }
   }
 
-//  outlet CanariBoardTextFontPopUpButton mBoardTextFontPopUpButton ;
-
+  action setBoardTextFontAction ;
+  
 ////--- Component inspector
 //  outlet CanariViewWithKeyView mComponentInBoardInspectorView ;
 //  selectionController ComponentInProject #componentInBoardSelectionController :

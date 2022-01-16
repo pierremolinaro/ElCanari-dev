@@ -780,6 +780,12 @@ protocol ProjectRoot_borderViewBackground : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_fontNameArray : AnyObject {
+  var fontNameArray : StringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_deviceNames : AnyObject {
   var deviceNames : StringArray? { get }
 }
@@ -978,6 +984,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_borderElementCountString,
          ProjectRoot_borderOutlineBackground,
          ProjectRoot_borderViewBackground,
+         ProjectRoot_fontNameArray,
          ProjectRoot_deviceNames,
          ProjectRoot_allClassNames,
          ProjectRoot_netWarningCount,
@@ -3628,6 +3635,23 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: fontNameArray
+  //····················································································································
+
+  final let fontNameArray_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  final var fontNameArray : StringArray? {
+    switch self.fontNameArray_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: deviceNames
   //····················································································································
 
@@ -5019,6 +5043,22 @@ final class ProjectRoot : EBManagedObject,
     preferences_boardBackgroundColorForBoard_property.addEBObserver (self.borderViewBackground_property)
     self.borderOutlineBackground_property.addEBObserver (self.borderViewBackground_property)
     self.mBoardObjects_property.addEBObserverOf_objectDisplay (self.borderViewBackground_property)
+  //--- Atomic property: fontNameArray
+    self.fontNameArray_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mFonts_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_fontNameArray (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mFonts_property.addEBObserverOf_mFontName (self.fontNameArray_property)
   //--- Atomic property: deviceNames
     self.deviceNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5389,6 +5429,7 @@ final class ProjectRoot : EBManagedObject,
     // preferences_boardBackgroundColorForBoard_property.removeEBObserver (self.borderViewBackground_property)
     // self.borderOutlineBackground_property.removeEBObserver (self.borderViewBackground_property)
     // self.mBoardObjects_property.removeEBObserverOf_objectDisplay (self.borderViewBackground_property)
+    // self.mFonts_property.removeEBObserverOf_mFontName (self.fontNameArray_property)
     // self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
     // self.mNetClasses_property.removeEBObserverOf_mNetClassName (self.allClassNames_property)
     // self.mNetClasses_property.removeEBObserverOf_netWarningCount (self.netWarningCount_property)
@@ -6358,6 +6399,14 @@ final class ProjectRoot : EBManagedObject,
         view: view,
         observerExplorer: &self.borderViewBackground_property.mObserverExplorer,
         valueExplorer: &self.borderViewBackground_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "fontNameArray",
+        object: self.fontNameArray_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.fontNameArray_property.mObserverExplorer,
+        valueExplorer: &self.fontNameArray_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "deviceNames",

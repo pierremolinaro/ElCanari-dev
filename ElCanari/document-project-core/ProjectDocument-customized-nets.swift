@@ -220,7 +220,7 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
         let right = AutoLayoutStaticLabel (title: inNet.mNetName, bold: true, size: .regular).set (alignment: .left)
         _ = gridView.addFirstBaseLineAligned (left: left, right: right)
       }
-      let newNameTextField = AutoLayoutTextField (width: 200, size: .regular).expandableWidth().set (alignment: .left)
+      let newNameTextField = AutoLayoutTextField (minWidth: 200, size: .regular).expandableWidth().set (alignment: .left)
       do{
         let left = AutoLayoutStaticLabel (title: "New Net Name", bold: false, size: .regular).set (alignment: .right)
         _ = gridView.addFirstBaseLineAligned (left: left, right: newNameTextField)

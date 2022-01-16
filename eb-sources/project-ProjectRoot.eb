@@ -193,6 +193,7 @@ entity ProjectRoot {
 
 //--- Schematic
   toMany FontInProject mFonts ;
+  transient StringArray fontNameArray dependsFrom self.mFonts.all.mFontName ;
   toMany DeviceInProject mDevices ;
   toMany ComponentInProject mComponents ;
   toMany NetClassInProject mNetClasses ;

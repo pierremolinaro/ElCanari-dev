@@ -133,6 +133,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.removeEBObserversOf_borderElementCountString_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_borderOutlineBackground_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_borderViewBackground_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_fontNameArray_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_deviceNames_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_allClassNames_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_netWarningCount_fromElementsOfSet (inRemovedSet) // Transient property
@@ -265,6 +266,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.addEBObserversOf_borderElementCountString_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_borderOutlineBackground_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_borderViewBackground_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_fontNameArray_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_deviceNames_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_allClassNames_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_netWarningCount_toElementsOfSet (inAddedSet) // Transient property
@@ -7850,6 +7852,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     for managedObject in inSet.values {
       self.mObserversOf_borderViewBackground.apply { (_ observer : EBObserverProtocol) in
         managedObject.borderViewBackground_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'fontNameArray' transient property
+  //····················································································································
+
+  private final var mObserversOf_fontNameArray = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_fontNameArray (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_fontNameArray.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.fontNameArray_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_fontNameArray (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_fontNameArray.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.fontNameArray_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_fontNameArray_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_fontNameArray.apply { (_ observer : EBObserverProtocol) in
+        managedObject.fontNameArray_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_fontNameArray_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_fontNameArray.apply { (_ observer : EBObserverProtocol) in
+        managedObject.fontNameArray_property.removeEBObserver (observer)
       }
     }
   }

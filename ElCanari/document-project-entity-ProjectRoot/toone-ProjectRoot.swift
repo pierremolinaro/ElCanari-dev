@@ -132,6 +132,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.borderElementCountString_property.removeEBObserver (self.borderElementCountString_property) // Transient property
       oldValue.borderOutlineBackground_property.removeEBObserver (self.borderOutlineBackground_property) // Transient property
       oldValue.borderViewBackground_property.removeEBObserver (self.borderViewBackground_property) // Transient property
+      oldValue.fontNameArray_property.removeEBObserver (self.fontNameArray_property) // Transient property
       oldValue.deviceNames_property.removeEBObserver (self.deviceNames_property) // Transient property
       oldValue.allClassNames_property.removeEBObserver (self.allClassNames_property) // Transient property
       oldValue.netWarningCount_property.removeEBObserver (self.netWarningCount_property) // Transient property
@@ -262,6 +263,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.borderElementCountString_property.addEBObserver (self.borderElementCountString_property) // Transient property
       newValue.borderOutlineBackground_property.addEBObserver (self.borderOutlineBackground_property) // Transient property
       newValue.borderViewBackground_property.addEBObserver (self.borderViewBackground_property) // Transient property
+      newValue.fontNameArray_property.addEBObserver (self.fontNameArray_property) // Transient property
       newValue.deviceNames_property.addEBObserver (self.deviceNames_property) // Transient property
       newValue.allClassNames_property.addEBObserver (self.allClassNames_property) // Transient property
       newValue.netWarningCount_property.addEBObserver (self.netWarningCount_property) // Transient property
@@ -971,6 +973,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let borderViewBackground_property = EBGenericTransientProperty <EBShape?> ()
+
+  //····················································································································
+  //   Observers of 'fontNameArray' transient property
+  //····················································································································
+
+  final let fontNameArray_property = EBGenericTransientProperty <StringArray?> ()
 
   //····················································································································
   //   Observers of 'deviceNames' transient property
@@ -2941,6 +2949,21 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.borderViewBackground_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.borderViewBackground_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure fontNameArray transient property
+    self.fontNameArray_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.fontNameArray_property.selection {
         case .empty :
           return .empty
         case .multiple :

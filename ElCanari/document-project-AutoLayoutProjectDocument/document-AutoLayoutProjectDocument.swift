@@ -4575,7 +4575,13 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_182 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
+    let view = AutoLayoutElCanariBoardFontPopUpButton ()
+      .bind_currentFontName (self.boardTextSelectionController.fontName_property)
+      .bind_fontNames (self.rootObject.fontNameArray_property)
+      .bind_run (
+        target: self,
+        selector: #selector (AutoLayoutProjectDocument.setBoardTextFontAction (_:))
+      )
     return view
   }
 
