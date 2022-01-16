@@ -113,7 +113,7 @@ extension CustomizedProjectDocument {
       let currentSymbolName = inSymbolUnderMouse.componentName! + ":" + inSymbolUnderMouse.mSymbolInstanceName
       layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Exchange '\(currentSymbolName)' symbol with…", bold: true, size: .regular))
     //---
-      let popUpButton = AutoLayoutPopUpButton (size: .regular).expandableWidth ()
+      let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
       layoutView.appendFlexibleSpace ()
       layoutView.appendView (popUpButton)
       layoutView.appendFlexibleSpace ()

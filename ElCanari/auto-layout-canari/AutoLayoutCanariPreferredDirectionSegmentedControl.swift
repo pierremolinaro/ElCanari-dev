@@ -1,103 +1,84 @@
+//
+//  AutoLayoutCanariPreferredDirectionSegmentedControl.swift
+//  ElCanari-Debug-temporary
+//
+//  Created by Pierre Molinaro on 16/01/2022.
+//
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutStaticLabel : AutoLayoutBase_NSTextField {
+final class AutoLayoutCanariPreferredDirectionSegmentedControl : AutoLayoutBase_NSSegmentedControl {
 
   //····················································································································
-  // INIT
-  //····················································································································
 
-  init (title inTitle : String, bold inBold : Bool, size inSize : EBControlSize) {
-    super.init (optionalWidth: nil, bold: inBold, size: inSize)
+  init () {
+    super.init (equalWidth: true, size: .small)
 
-    self.stringValue = inTitle
-    self.isBezeled = false
-    self.isBordered = false
-    self.drawsBackground = false
-
-    self.isEditable = false
-    self.alignment = .right
-    self.frame.size = self.intrinsicContentSize
+    self.segmentCount = 4
+    self.setLabel ("➡︎",   forSegment: 0)
+    self.setLabel ("⬆︎",  forSegment: 1)
+    self.setLabel ("⬅︎", forSegment: 2)
+    self.setLabel ("⬇︎", forSegment: 3)
   }
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
+  required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
 
-  override func draw (_ inDirtyRect : NSRect) {
-    if debugAutoLayout () {
-//      DEBUG_FILL_COLOR.setFill ()
-//      NSBezierPath.fill (inDirtyRect)
-      let bp = NSBezierPath (rect: self.bounds)
-      bp.lineWidth = 1.0
-      bp.lineJoinStyle = .round
-      DEBUG_STROKE_COLOR.setStroke ()
-      bp.stroke ()
+  func updateTag (from inObject : EBReadWriteProperty_Int) {
+    switch inObject.selection {
+    case .single (let v) :
+      self.enable (fromValueBinding: true, self.enabledBindingController)
+      switch v {
+      case 0 :
+        self.selectedSegment = 0
+      case 90_000 :
+        self.selectedSegment = 1
+      case 180_000 :
+        self.selectedSegment = 2
+      case 270_000 :
+        self.selectedSegment = 3
+      default:
+        self.selectedSegment = -1
+      }
+    case .empty, .multiple :
+      self.enable (fromValueBinding: false, self.enabledBindingController)
     }
-    super.draw (inDirtyRect)
   }
 
   //····················································································································
-  // SET TEXT color
+
+  override func sendAction (_ action : Selector?, to : Any?) -> Bool {
+//    let orientation = QuadrantRotation (rawValue: self.selectedSegment)!
+//    _ = self.mAngleController?.updateModel (withCandidateValue: orientation, windowForSheet: self.window)
+    return super.sendAction (action, to: to)
+  }
+
+  //····················································································································
+  //  $angle binding
   //····················································································································
 
-  final func setTextColor (_ inTextColor : NSColor) -> Self {
-    self.textColor = inTextColor
+  private var mAngleController : EBGenericReadWritePropertyController <Int>? = nil
+
+  //····················································································································
+
+  final func bind_angle (_ inObject : EBReadWriteProperty_Int) -> Self {
+    self.mAngleController = EBGenericReadWritePropertyController <Int> (
+      observedObject: inObject,
+      callBack: { [weak self] in self?.updateTag (from: inObject) }
+    )
     return self
   }
-
-  //····················································································································
-
-//  final func set (alignment inAlignment : TextAlignment) -> Self {
-//    self.alignment = inAlignment.cocoaAlignment
-//    return self
-//  }
-
-  //····················································································································
-
-//  private var mWidth : CGFloat? = nil
-  
-  //····················································································································
-
-//  final func set (width inWidth : Int) -> Self {
-//    self.mWidth = CGFloat (inWidth)
-//    return self
-//  }
-
-  //····················································································································
-
-  final func setOrangeTextColor () -> Self {
-    self.textColor = .orange
-    return self
-  }
-
-  //····················································································································
-
-  final func setRedTextColor () -> Self {
-    self.textColor = .red
-    return self
-  }
-
-  //····················································································································
-
-//  override var intrinsicContentSize : NSSize {
-//    var s = super.intrinsicContentSize
-//    if let w = self.mWidth {
-//      s.width = w
-//    }
-//    return s
-//  }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-

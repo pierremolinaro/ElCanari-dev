@@ -50,7 +50,7 @@ extension AutoLayoutProjectDocument {
           .expandableWidth().set (alignment: .left)
         _ = gridView.addFirstBaseLineAligned (left: left, right: right)
       }
-      let popupButton = AutoLayoutPopUpButton (size: .regular).expandableWidth ()
+      let popupButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
       let stringAttributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: 0.0)
       ]

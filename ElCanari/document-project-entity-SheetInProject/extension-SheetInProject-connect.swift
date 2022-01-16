@@ -168,7 +168,7 @@ extension SheetInProject {
   //---
     layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Performing Connection will Merge Several Subnets.", bold: true, size: .regular))
     layoutView.appendFlexibleSpace ()
-    let popupButton = AutoLayoutPopUpButton (size: .regular).expandableWidth()
+    let popupButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth()
     for net in netArray {
       popupButton.addItem (withTitle: net.mNetName)
       popupButton.lastItem?.representedObject = net

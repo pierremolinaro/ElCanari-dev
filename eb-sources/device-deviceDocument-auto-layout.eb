@@ -398,7 +398,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 
   stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
     hStack setFirstBaselineAlignment () {
-      StaticLabel (title: "Device Prefix", bold: no, size : .small) { set (width: 84) }
+      StaticLabel (title: "Device Prefix", bold: no, size : .small) { set (minWidth: 84) }
       TextField (minWidth: 56, size : .small) { $value root.mPrefix (sendContinously : yes) }
       StaticLabel (title: "This field only accepts lowercase abd uppercase ASCII letters.", bold: no, size : .small)
       space

@@ -16,7 +16,7 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private let mWidth : CGFloat?
+  private var mWidth : CGFloat?
 
   //····················································································································
   // https://www.generacodice.com/en/articolo/4221090/how-to-let-nstextfield-grow-with-the-text-in-auto-layout
@@ -63,6 +63,13 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
 
   final func set (alignment inAlignment : TextAlignment) -> Self {
     self.alignment = inAlignment.cocoaAlignment
+    return self
+  }
+
+  //····················································································································
+
+  func set (minWidth inWidth : Int) -> Self {
+    self.mWidth = CGFloat (inWidth)
     return self
   }
 

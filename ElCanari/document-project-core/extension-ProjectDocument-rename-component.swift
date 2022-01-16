@@ -80,7 +80,7 @@ extension CustomizedProjectDocument {
     //---
       do{
         let left = AutoLayoutStaticLabel (title: "New Index", bold: false, size: .regular).set (alignment: .right)
-        let popup = AutoLayoutPopUpButton (size: .regular)
+        let popup = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular)
         self.mRenameComponentIndexesPopUpButton = popup
         self.populateIndexesPopupButton (self.mComponentCurrentIndex)
         popup.target = self

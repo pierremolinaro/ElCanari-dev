@@ -19,7 +19,7 @@ fileprivate class RenameContext : EBSwiftBaseObject {
   var mComponentNewIndex : Int
   var mComponentNewPrefix : String
   let mComboBox = AutoLayoutComboBox (width: 80)
-  let mIndexesPopUpButton = AutoLayoutPopUpButton (size: .regular)
+  let mIndexesPopUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular)
   let mErrorLabel = AutoLayoutStaticLabel (title: "", bold: true, size: .regular).setRedTextColor ().set (alignment: .right)
   let mOkButton : AutoLayoutSheetDefaultOkButton
   let mDocument : AutoLayoutProjectDocument

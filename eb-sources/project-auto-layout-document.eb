@@ -374,7 +374,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     hSplit {
       CanariNetDescriptionTableView [outlet mNetInfoTableView configurator netDescriptionTableViewConfigurator] { $netInfo root.netsDescription }
       vStack {
-        StaticLabel (title: "Pins of Selected Net", bold: no, size: .regular){ set (alignment: .center) set (width: 300) }
+        StaticLabel (title: "Pins of Selected Net", bold: no, size: .regular){ set (alignment: .center) set (minWidth: 300) }
         TableView (size: .regular, addControlButtons: no) [configurator pinsOfSelectedNetTableViewConfigurator]
       }
     }
@@ -840,14 +840,14 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
         left: hStack setFirstBaselineAlignment () {
           StaticLabel (title: "X", bold: no, size : .small) { expandableWidth () }
           Label (bold: yes, size: .small) {
-            set (width: 80) set (alignment: .center)
+            set (minWidth: 80) set (alignment: .center)
             $title #boardCurveSelectionController.p2Xstring
           }
         },
         right: hStack setFirstBaselineAlignment () {
           StaticLabel (title: "Y", bold: no, size : .small) { expandableWidth () }
           Label (bold: yes, size: .small) {
-            set (width: 80) set (alignment: .center)
+            set (minWidth: 80) set (alignment: .center)
             $title #boardCurveSelectionController.p2Ystring
           }
         }
@@ -1323,6 +1323,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       addObjectInspector (forEntity: entity BoardLine, inspectorView: stackView mBoardLineInspectorView)
       addObjectInspector (forEntity: entity BoardRestrictRectangle, inspectorView: stackView mRestrictRectangleInspectorView)
       addObjectInspector (forEntity: entity BoardText, inspectorView: stackView mBoardTextInspectorView)
+      addObjectInspector (forEntity: entity ComponentInProject, inspectorView: stackView mComponentInBoardInspectorView)
       $graphicController #boardObjectsController
     }
     space
@@ -1624,103 +1625,134 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 
   action setBoardTextFontAction ;
   
-////--- Component inspector
-//  outlet CanariViewWithKeyView mComponentInBoardInspectorView ;
-//  selectionController ComponentInProject #componentInBoardSelectionController :
-//    #boardObjectsController.selectedArray
-//  ;
-//
-//  outlet CanariBoolPopUpButton mSlavePadsShouldBeRoutedPopUpButton
-//    $value #componentInBoardSelectionController.mSlavePadsShouldBeRouted (
-//      item0: "should be insulated",
-//      item1: "should be routed"
-//    )
-//    $enabled #componentInBoardSelectionController.hasSlavePads
-//  ;
-//
-//
-//  outlet EBSwitch mDisplayLegendSwitch $value #componentInBoardSelectionController.mDisplayLegend ;
-//
-//  outlet EBSwitch mShowRotationKnobInBoardSwitch $value prefs.mShowRotationKnobInBoard ;
-//
-//  outlet EBPopUpButton mComponentInBoardCenterXPopUp $selectedTag #componentInBoardSelectionController.mXUnit ;
-//  outlet CanariDimensionTextField mComponentInBoardCenterXTextField
-//     $dimensionAndUnit #componentInBoardSelectionController.mX, #componentInBoardSelectionController.mXUnit
-//  ;
-//
-//  outlet EBPopUpButton mComponentInBoardCenterYPopUp $selectedTag #componentInBoardSelectionController.mYUnit ;
-//  outlet CanariDimensionTextField mComponentInBoardCenterYTextField
-//     $dimensionAndUnit #componentInBoardSelectionController.mY, #componentInBoardSelectionController.mYUnit
-//  ;
-//
-//  outlet CanariBoardComponentPackagePopUpButton mComponentPackagePopUpButton ;
-//
-//  outlet CanariAngleTextField mBoardComponentRotationTextField $angle #componentInBoardSelectionController.mRotation ;
-//  outlet CanariAngleSlider mBoardComponentRotationSlider $angle #componentInBoardSelectionController.mRotation ;
-//  outlet CanariOrientationSegmentedControl mBoardComponentRotationSegmentedControl
-//    $angle #componentInBoardSelectionController.mRotation
-//  ;
-//
-//  outlet EBPopUpButton mBoardComponentSidePopUpButton $selectedIndex #componentInBoardSelectionController.mSide ;
-//
-//  outlet EBSwitch mDisplayComponentNameSwitch
-//    $value #componentInBoardSelectionController.mNameIsVisibleInBoard
-//  ;
-//  outlet EBDoubleField mComponentNameFontSizeField
-//    $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no, autoFormatter : no)
-//    $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
-//  ;
-//  
-//  outlet CanariAngleTextField mComponentNameRotationTextField
-//    $angle #componentInBoardSelectionController.mNameRotation
-//    $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
-//  ;
-//  outlet CanariAngleSlider mComponentNameRotationSlider
-//    $angle #componentInBoardSelectionController.mNameRotation
-//    $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
-//  ;
-//  outlet CanariOrientationSegmentedControl mComponentNameRotationSegmentedControl
-//    $angle #componentInBoardSelectionController.mNameRotation
-//    $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
-//  ;
-//
-//  outlet EBTextObserverField mBoardComponentNameTextField
-//    $valueObserver #componentInBoardSelectionController.componentName
-//  ;
-//
-//  outlet CanariBoardComponentNameFontPopUpButton mBoardComponentNameFontPopUpButton
-//    $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
-//  ;
-//
-//
-//  outlet EBSwitch mDisplayComponentValueSwitch $value #componentInBoardSelectionController.mValueIsVisibleInBoard ;
-//  outlet EBDoubleField mComponentValueFontSizeField
-//    $value #componentInBoardSelectionController.mValueFontSize (sendContinously : no, autoFormatter : no)
-//    $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
-//  ;
-//
-//  outlet CanariAngleTextField mComponentValueRotationTextField
-//    $angle #componentInBoardSelectionController.mValueRotation
-//    $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
-//  ;
-//  outlet CanariAngleSlider mComponentValueRotationSlider
-//    $angle #componentInBoardSelectionController.mValueRotation
-//    $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
-//  ;
-//  outlet CanariOrientationSegmentedControl mComponentValueRotationSegmentedControl
-//    $angle #componentInBoardSelectionController.mValueRotation
-//    $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
-//  ;
-//
-//  outlet EBTextField mBoardComponentValueTextField
-//    $value #componentInBoardSelectionController.mComponentValue (sendContinously : yes)
-//    $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
-//  ;
-//
-//  outlet CanariBoardComponentValueFontPopUpButton mBoardComponentValueFontPopUpButton
-//    $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
-//  ;
- 
+//--- Component inspector
+  selectionController ComponentInProject #componentInBoardSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+
+  stackView mComponentInBoardInspectorView vStack {
+    hStack { space StaticLabel (title: "Component Inspector", bold: yes, size: .small) space }
+    GridView2 {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Name", bold: yes, size: .small) { set (alignment: .left) },
+        right: Label (bold: yes, size: .small) { set (alignment: .left) $title #componentInBoardSelectionController.componentName }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: Checkbox (title: "Display Name", size: .small) { $value #componentInBoardSelectionController.mNameIsVisibleInBoard }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Size", bold: no, size: .small),
+        right: DoubleField (minWidth: 64, size: .small) {
+          $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no)
+          $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Font", bold: no, size: .small),
+        right: ElCanariBoardFontPopUpButton {
+          $currentFontName #componentInBoardSelectionController.componentNameFontName
+          $fontNames root.fontNameArray
+          $run setComponentNameFontAction
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Rotation", bold: no, size: .small),
+        right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mNameRotation }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+          $angle #componentInBoardSelectionController.mNameRotation
+          $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
+        }
+      )
+      addSeparator ()
+      add (single: Checkbox (title: "Draw Component Legend", size: .small) { $value #componentInBoardSelectionController.mDisplayLegend })
+      addSeparator ()
+      add (single: StaticLabel (title: "Package", bold: yes, size: .small) { set (alignment: .left) })
+      add (single: ElCanariBoardComponentPackagePopUpButton [configurator componentPackagePopUpButtonConfigurator])
+      add (single: Checkbox (title: "Show Rotation Knob", size: .small) { $value prefs.mShowRotationKnobInBoard })
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Rotation", bold: no, size: .small),
+        right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mRotation }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+          $angle #componentInBoardSelectionController.mRotation
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Center X", bold: no, size: .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #componentInBoardSelectionController.mX, #componentInBoardSelectionController.mXUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Center Y", bold: no, size: .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #componentInBoardSelectionController.mY, #componentInBoardSelectionController.mYUnit
+        }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Value", bold: yes, size: .small) { set (alignment: .left) },
+        right: TextField (minWidth: 150, size: .small) {
+          automaticallyAdjustHeight (maxWidth: 150)
+          $value #componentInBoardSelectionController.mComponentValue (sendContinously : yes)
+    //    $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
+        }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: Checkbox (title: "Display Value", size: .small) { $value #componentInBoardSelectionController.mValueIsVisibleInBoard }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Size", bold: no, size: .small),
+        right: DoubleField (minWidth: 64, size: .small) {
+          $value #componentInBoardSelectionController.mValueFontSize (sendContinously : no)
+         // $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Font", bold: no, size: .small),
+        right: ElCanariBoardFontPopUpButton {
+          $currentFontName #componentInBoardSelectionController.componentValueFontName
+          $fontNames root.fontNameArray
+          $run setComponentValueFontAction
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Rotation", bold: no, size: .small),
+        right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mValueRotation }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+          $angle #componentInBoardSelectionController.mValueRotation
+          $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
+        }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Slave Pads", bold: yes, size: .small) { set (alignment: .left) },
+        right: BoolPopUpButton (title0: "should be insulated", title1: "should be routed") {
+          $value #componentInBoardSelectionController.mSlavePadsShouldBeRouted
+          $enabled #componentInBoardSelectionController.hasSlavePads
+        }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Side", bold: yes, size: .small) { set (alignment: .left) },
+        right: EnumPopUpButton (titles: enum ComponentSide.popupTitles, size: .small) { $selectedIndex #componentInBoardSelectionController.mSide }
+      )
+    }
+  }
+
+  action setComponentNameFontAction ;
+  action setComponentValueFontAction ;
+   
   //············································································
   //     Product Page
   //············································································

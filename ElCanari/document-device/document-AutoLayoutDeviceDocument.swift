@@ -920,7 +920,7 @@ import Cocoa
       .setFirstBaselineAlignment ()
     do{
       let view_0_0 = AutoLayoutStaticLabel (title: "Device Prefix", bold: false, size: .small)
-        .set (width: 84)
+        .set (minWidth: 84)
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutTextField (minWidth: 56, size: .small)
         .bind_value (self.rootObject.mPrefix_property, sendContinously:true)

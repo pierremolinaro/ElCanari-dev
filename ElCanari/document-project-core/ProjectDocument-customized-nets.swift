@@ -303,7 +303,7 @@ extension CustomizedProjectDocument : NSTextFieldDelegate {
       layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Merge Subnet into an Existing Net", bold: true, size: .regular))
       layoutView.appendFlexibleSpace ()
     //---
-      let popUpButton = AutoLayoutPopUpButton (size: .regular).expandableWidth ()
+      let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
       var nets = [NetInProject] ()
       for netClass in self.rootObject.mNetClasses.values {
         for net in netClass.mNets.values {

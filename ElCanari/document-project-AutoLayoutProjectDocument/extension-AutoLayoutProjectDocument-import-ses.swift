@@ -59,7 +59,7 @@ extension AutoLayoutProjectDocumentSubClass {
       .expandableWidth ()
     rightColumn.appendView (title)
     let importSESTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular)
-      .set (width: 250)
+      .set (minWidth: 250)
       .set (alignment: .left)
     rightColumn.appendView (importSESTextField)
     let importSESProgressIndicator = AutoLayoutProgressIndicator ().expandableWidth ()

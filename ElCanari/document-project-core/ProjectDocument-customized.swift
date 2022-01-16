@@ -95,7 +95,7 @@ import Cocoa
 
   var mRenameComponentPrefixComboxBox : AutoLayoutComboBox? = nil
   var mRenameComponentErrorMessageTextField : AutoLayoutStaticLabel? = nil
-  var mRenameComponentIndexesPopUpButton : AutoLayoutPopUpButton? = nil
+  var mRenameComponentIndexesPopUpButton : AutoLayoutBase_NSPopUpButton? = nil
   var mRenameComponentValidationButton : AutoLayoutSheetDefaultOkButton? = nil
   var mComponentCurrentPrefix = ""
   var mComponentCurrentIndex = 0

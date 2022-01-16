@@ -42,7 +42,7 @@ extension CustomizedProjectDocument {
     //---
       layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Select Net Class", bold: true, size: .regular))
     //---
-      let popUpButton = AutoLayoutPopUpButton (size: .regular).expandableWidth ()
+      let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
       layoutView.appendFlexibleSpace ()
       layoutView.appendView (popUpButton)
       layoutView.appendFlexibleSpace ()

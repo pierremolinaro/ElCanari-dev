@@ -72,7 +72,7 @@ extern autolayout class ElCanariOrientationSegmentedControl (size: EBControlSize
 
 extern autolayout class StaticLabel (title : String, bold: Bool, size: EBControlSize) $enabled $hidden {
   func set (alignment: TextAlignment)
-  func set (width: Int)
+  func set (minWidth: Int)
   func expandableWidth ()
   func expandableHeight ()
   func setOrangeTextColor ()
@@ -87,7 +87,8 @@ extern autolayout class Label (bold: Bool, size: EBControlSize) $enabled $hidden
   func setRedTextColor ()
   func expandableWidth ()
   func set (alignment: TextAlignment)
-  func set (width: Int)
+  func set (minWidth: Int)
+  func automaticallyAdjustHeight (maxWidth : Int)
 }
 
 extern autolayout class SegmentedControlWithPages (documentView: view, equalWidth: Bool, size: EBControlSize) {
@@ -130,6 +131,10 @@ extern autolayout class EnumPopUpButton (titles: StringArray, size: EBControlSiz
 extern autolayout class TaggedPopUpButton {
   $selectedTag property Int
   func add (title: String, withTag: Int)
+}
+
+extern autolayout class BoolPopUpButton (title0: String, title1: String) $enabled {
+  $value property Bool
 }
 
 extern autolayout class CanariUnitPopUpButton (size: EBControlSize) $hidden {
@@ -439,6 +444,13 @@ extern autolayout class ElCanariRestrictRectangleView {
 extern autolayout class ElCanariBoardFontPopUpButton $run {
   $currentFontName transient String
   $fontNames transient StringArray
+}
+
+extern autolayout class ElCanariBoardComponentPackagePopUpButton {
+}
+
+extern autolayout class CanariPreferredDirectionSegmentedControl $enabled {
+  $angle property Int
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

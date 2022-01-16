@@ -4,6 +4,11 @@ enum ComponentSide {
   front, back
 }
 
+func enum ComponentSide.popupTitles {
+  front : "Front Side" ;
+  back : "Back Side" ;
+}
+
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic entity ComponentInProject : BoardObject {

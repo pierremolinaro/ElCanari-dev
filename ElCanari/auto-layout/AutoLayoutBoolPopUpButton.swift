@@ -1,103 +1,76 @@
+//
+//  AutoLayoutBoolPopUpButton.swift
+//  ElCanari-Debug-temporary
+//
+//  Created by Pierre Molinaro on 16/01/2022.
+//
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutStaticLabel : AutoLayoutBase_NSTextField {
+final class AutoLayoutBoolPopUpButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
-  // INIT
-  //····················································································································
 
-  init (title inTitle : String, bold inBold : Bool, size inSize : EBControlSize) {
-    super.init (optionalWidth: nil, bold: inBold, size: inSize)
-
-    self.stringValue = inTitle
-    self.isBezeled = false
-    self.isBordered = false
-    self.drawsBackground = false
-
-    self.isEditable = false
-    self.alignment = .right
-    self.frame.size = self.intrinsicContentSize
+  init (title0 inTitle0 : String, title1 inTitle1 : String) {
+    super.init (pullsDown: false, size: .small)
+    self.addItem (withTitle: inTitle0)
+    self.addItem (withTitle: inTitle1)
   }
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
+  required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
 
-  override func draw (_ inDirtyRect : NSRect) {
-    if debugAutoLayout () {
-//      DEBUG_FILL_COLOR.setFill ()
-//      NSBezierPath.fill (inDirtyRect)
-      let bp = NSBezierPath (rect: self.bounds)
-      bp.lineWidth = 1.0
-      bp.lineJoinStyle = .round
-      DEBUG_STROKE_COLOR.setStroke ()
-      bp.stroke ()
+//  override func ebCleanUp () {
+//    self.mValueController?.unregister ()
+//    self.mValueController = nil
+//    super.ebCleanUp ()
+//  }
+
+  //····················································································································
+
+  func updateIndex (_ inObject : EBObservableProperty <Bool>) {
+    switch inObject.selection {
+    case .empty, .multiple :
+      self.enable (fromValueBinding: false, self.enabledBindingController)
+    case .single (let v) :
+      self.selectItem (at: v ? 1 : 0)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
     }
-    super.draw (inDirtyRect)
   }
 
   //····················································································································
-  // SET TEXT color
+
+  override func sendAction (_ action : Selector?, to : Any?) -> Bool {
+    _ = self.mValueController?.updateModel (withCandidateValue: self.indexOfSelectedItem > 0, windowForSheet: self.window)
+    return super.sendAction (action, to: to)
+  }
+
+  //····················································································································
+  //  $value binding
   //····················································································································
 
-  final func setTextColor (_ inTextColor : NSColor) -> Self {
-    self.textColor = inTextColor
+  private var mValueController : EBGenericReadWritePropertyController <Bool>? = nil
+
+  //····················································································································
+
+  final func bind_value (_ inObject : EBReadWriteProperty_Bool) -> Self {
+    self.mValueController = EBGenericReadWritePropertyController <Bool> (
+      observedObject: inObject,
+      callBack: { [weak self] in self?.updateIndex (inObject) }
+    )
     return self
   }
-
-  //····················································································································
-
-//  final func set (alignment inAlignment : TextAlignment) -> Self {
-//    self.alignment = inAlignment.cocoaAlignment
-//    return self
-//  }
-
-  //····················································································································
-
-//  private var mWidth : CGFloat? = nil
-  
-  //····················································································································
-
-//  final func set (width inWidth : Int) -> Self {
-//    self.mWidth = CGFloat (inWidth)
-//    return self
-//  }
-
-  //····················································································································
-
-  final func setOrangeTextColor () -> Self {
-    self.textColor = .orange
-    return self
-  }
-
-  //····················································································································
-
-  final func setRedTextColor () -> Self {
-    self.textColor = .red
-    return self
-  }
-
-  //····················································································································
-
-//  override var intrinsicContentSize : NSSize {
-//    var s = super.intrinsicContentSize
-//    if let w = self.mWidth {
-//      s.width = w
-//    }
-//    return s
-//  }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-

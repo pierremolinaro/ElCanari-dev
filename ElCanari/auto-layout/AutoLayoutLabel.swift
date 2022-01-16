@@ -4,16 +4,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
+final class AutoLayoutLabel : AutoLayoutBase_NSTextField {
 
   //····················································································································
   // INIT
   //····················································································································
 
   init (bold inBold : Bool, size inSize : EBControlSize) {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init (optionalWidth: nil, bold: inBold, size: inSize)
 
     self.isBezeled = false
     self.isBordered = false
@@ -29,12 +27,6 @@ final class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -78,31 +70,31 @@ final class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func set (alignment inAlignment : TextAlignment) -> Self {
-    self.alignment = inAlignment.cocoaAlignment
-    return self
-  }
+//  final func set (alignment inAlignment : TextAlignment) -> Self {
+//    self.alignment = inAlignment.cocoaAlignment
+//    return self
+//  }
 
   //····················································································································
 
-  private var mWidth : CGFloat? = nil
+//  private var mWidth : CGFloat? = nil
 
   //····················································································································
 
-  func set (width inWidth : Int) -> Self {
-    self.mWidth = CGFloat (inWidth)
-    return self
-  }
+//  func set (width inWidth : Int) -> Self {
+//    self.mWidth = CGFloat (inWidth)
+//    return self
+//  }
 
   //····················································································································
 
-  final override var intrinsicContentSize : NSSize {
-    var s = super.intrinsicContentSize
-    if let w = self.mWidth {
-      s.width = w
-    }
-    return s
-  }
+//  final override var intrinsicContentSize : NSSize {
+//    var s = super.intrinsicContentSize
+//    if let w = self.mWidth {
+//      s.width = w
+//    }
+//    return s
+//  }
 
   //····················································································································
   //  $title binding
