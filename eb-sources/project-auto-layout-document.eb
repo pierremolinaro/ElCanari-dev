@@ -735,14 +735,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   }
 
   stackView mBoardOutlineInspectorView vStack {
-    hStack { space StaticLabel (title: "Board Shape", bold: yes, size : .small) space }
-    SegmentedControlWithPages (documentView: stackView mBoardShapeBaseView, equalWidth: yes, size : .small) {
-      addPage (title: "Rectangular", tooltip: "", pageView: stackView mBoardRectangularOutlineView)
-      addPage (title: "Bezier Pathes", tooltip: "", pageView: stackView mBoardBezierPathOutlineView)
-      $selectedSegment root.mBoardShape
-    }
-    stackViewRef mBoardShapeBaseView
-    separator
     hStack { space StaticLabel (title: "Outlines", bold: yes, size : .small) space }
     GridView2 {
       addFirstBaseLineAligned (
@@ -776,6 +768,14 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       $right root.boardLimitBorderRight
       $unit root.mBoardLimitsBoundingBoxUnit
     }
+    separator
+    hStack { space StaticLabel (title: "Board Shape", bold: yes, size : .small) space }
+    SegmentedControlWithPages (documentView: stackView mBoardShapeBaseView, equalWidth: yes, size : .small) {
+      addPage (title: "Rectangular", tooltip: "", pageView: stackView mBoardRectangularOutlineView)
+      addPage (title: "Bezier Pathes", tooltip: "", pageView: stackView mBoardBezierPathOutlineView)
+      $selectedSegment root.mBoardShape
+    }
+    stackViewRef mBoardShapeBaseView
     space
   }
 
@@ -802,10 +802,11 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   stackView mBoardBezierPathOutlineView vStack {
     hStack $hidden #boardCurveObjectsController.selectedArray.count != 0 {
       space
-      StaticLabel (title: "No Selected Board Limit Element", bold: no, size : .regular)
+      StaticLabel (title: "No Selected Board Limit Element", bold: yes, size : .small)
       space
     }
     GridView2 {
+      add (single: hStack { space StaticLabel (title: "Selected Board Limit Element", bold: yes, size : .small) space })
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Shape", bold: yes, size : .small) {
           set (alignment: .left)
@@ -908,7 +909,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       )
       $hidden #boardCurveObjectsController.selectedArray.count == 0
     }
-    space
   }
 
 //----------------- Board Contents tab
