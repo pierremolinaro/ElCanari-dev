@@ -388,11 +388,16 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //---------------------- Schematics Tab
 
   arrayController #schematicObjectsController : root.selectedSheetObjects ;
+  action selectAllConnectedElementsInSchematicsAction ;
+  action moveSelectedToSheetInSchematicsAction ;
 
   stackView mSchematicPage hStack {
     vStack set (width: 250) set (spacing: 0) {
       hStack set (spacing: 0) set (margins: 8) {
-        CanariBoardOperationPullDownButton [configurator schematicsOperationPullDownButtonConfigurator]
+        PullDownButton (title: "", size: .small) [configurator schematicPullDownButtonConfigurator] {
+          add (item: menuItem "Select all Connected Elements" $run selectAllConnectedElementsInSchematicsAction )
+          add (item: menuItem "Move Selected Elements to Sheet…" $run moveSelectedToSheetInSchematicsAction )
+        }
         space
 //        DragSourceButtonWithMenus (tooltip: "Add Restrict Rectangle;  the layers are set by the contextual menu.") [configurator addRestrictRectangleButton]
 //        space
@@ -448,33 +453,33 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   stackView mInsertSymbolInSchematicView vStack set (margins: 8) {
   }  
   
-  stackView mSchematicHotKeysInspectorView vStack set (margins: 8) {
+  stackView mSchematicsSheetInspectorView  vStack set (margins: 8) {
   }  
-  
-  stackView mSchematicsSheetInspectorView vStack set (margins: 8) {
-  }  
-  
+    
 
 //  outlet CanariDragSourceButton mAddCommentButton ;
 //  outlet CanariDragSourceButton mAddWireButton ;
 //  outlet CanariDefaultNetClassPopUpButton mCanariDefaultNetClassPopUpButton
 //    $netClasses root.mDefaultNetClassName, root.allClassNames ;
 //
-////--- Hot keys inspector
-//  outlet NSTextField mConnectSchematicHotKeyTextField ;
-//  outlet NSTextField mDisconnectSchematicHotKeyTextField ;
-//  outlet NSTextField mAddWirePointSchematicHotKeyTextField ;
-//  outlet NSTextField mRemoveWirePointSchematicHotKeyTextField ;
-//  outlet NSTextField mAddLeftLabelSchematicHotKeyTextField ;
-//  outlet NSTextField mAddRightLabelSchematicHotKeyTextField ;
-//  outlet NSTextField mAddTopLabelSchematicHotKeyTextField ;
-//  outlet NSTextField mAddBottomSchematicHotKeyTextField ;
-//  outlet NSTextField mAddNCSchematicHotKeyTextField ;
-//  outlet NSTextField mDisconnectAllSymbolPinsSchematicHotKeyTextField ;
-//  outlet NSTextField mConnectAllSymbolPinsSchematicHotKeyTextField ;
-//  outlet NSTextField mAddNCToAllSymbolPinsSchematicHotKeyTextField ;
-//  outlet NSTextField mExchangeSymbolSchematicHotKeyTextField ;
-//   
+//--- Hot keys inspector
+  stackView mSchematicHotKeysInspectorView vStack set (margins: 8) {
+    StaticLabel (title: "Hot Keys", bold: yes, size: .small) { expandableWidth () set (alignment: .center) }
+    StaticLabel (title: "[A] Connect all Symbol Pins", bold: no, size: .small) [outlet mConnectAllSymbolPinsSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "[B] Add Bottom Label", bold: no, size: .small) [outlet mAddBottomSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "[C] Connect", bold: no, size: .small) [outlet mConnectSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "[D] Disconnect", bold: no, size: .small) [outlet mDisconnectSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "[E] Disconnect All Symbol Pins", bold: no, size: .small) [outlet mDisconnectAllSymbolPinsSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "[L] Add Left Label", bold: no, size: .small) [outlet mAddLeftLabelSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "[M] Set NC to Symbol Pins", bold: no, size: .small) [outlet mAddNCToAllSymbolPinsSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "[N] Set NC", bold: no, size: .small) [outlet mAddNCSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "[P] Remove Wire Point", bold: no, size: .small) [outlet mRemoveWirePointSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "[R] Add Right Label", bold: no, size: .small) [outlet mAddRightLabelSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "[T] Add Top Label", bold: no, size: .small) [outlet mAddTopLabelSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "[X] Exchange Symbol…", bold: no, size: .small) [outlet mExchangeSymbolSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "[W] Insert Wire Point", bold: no, size: .small) [outlet mAddWirePointSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
+  }  
+
 ////--- Unplaced symbols inspector
 //  outlet CanariDragSourceTableView mUnplacedSymbolsTableView $models root.unplacedSymbols ;
 //
@@ -533,17 +538,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
             left: StaticLabel (title: "Symbols, placed Component", bold: no, size : .small),
             right: ColorWell { $color prefs.symbolColorForSchematic (sendContinously:yes) } 
           )
-//          addFirstBaseLineAligned (
-//            left: StaticLabel (title: "Symbols Drawing Width", bold: no, size : .small),
-//            right: TaggedPopUpButton {
-//              add (title: "0.5 Point",   withTag:  5)
-//              add (title: "1.0 Point",  withTag:  10)
-//              add (title: "1.5 Point",  withTag:  15)
-//              add (title: "2.0 Point",  withTag:  20)
-//              add (title: "2.5 Point",  withTag:  25)
-//              $selectedTag prefs.symbolDrawingWidthMultipliedByTenForSchematic
-//            }
-//          )
           add (single:
             hStack {
               space

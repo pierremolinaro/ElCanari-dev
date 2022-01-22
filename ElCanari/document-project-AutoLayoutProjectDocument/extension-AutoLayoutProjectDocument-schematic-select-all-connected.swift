@@ -7,17 +7,10 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
-import ElCanari_Debug_temporary
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension AutoLayoutProjectDocumentSubClass {
-
-  //····················································································································
-
-  @IBAction func selectedAllConnectedElementsInSchematicsAction (_ inSender : Any?) {
-    _ = self.selectAllConnectedElementsInSchematics ()
-  }
+extension AutoLayoutProjectDocument {
 
   //····················································································································
 

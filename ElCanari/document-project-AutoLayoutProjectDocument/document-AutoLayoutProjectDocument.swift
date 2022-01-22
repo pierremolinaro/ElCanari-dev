@@ -567,12 +567,25 @@ import Cocoa
   //    Outlets
   //····················································································································
 
+  weak final var mAddBottomSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
+  weak final var mAddLeftLabelSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
+  weak final var mAddNCSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
+  weak final var mAddNCToAllSymbolPinsSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
+  weak final var mAddRightLabelSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
+  weak final var mAddTopLabelSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
+  weak final var mAddWirePointSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
   weak final var mBoardView : AutoLayoutGraphicView? = nil
+  weak final var mConnectAllSymbolPinsSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
+  weak final var mConnectSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
+  weak final var mDisconnectAllSymbolPinsSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
+  weak final var mDisconnectSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
   weak final var mERCIssueTableView : AutoLayoutCanariIssueTableView? = nil
   weak final var mERCLogTextView : AutoLayoutTextObserverView? = nil
+  weak final var mExchangeSymbolSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
   weak final var mNetInfoTableView : AutoLayoutCanariNetDescriptionTableView? = nil
   weak final var mProductFileGenerationLogTextView : AutoLayoutTextObserverView? = nil
   weak final var mProductPageSegmentedControl : AutoLayoutSegmentedControlWithPages? = nil
+  weak final var mRemoveWirePointSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
   weak final var mSchematicsView : AutoLayoutGraphicView? = nil
   weak final var mUnplacedPackageTableView : AutoLayoutElCanariDragSourceTableView? = nil
 
@@ -1192,8 +1205,10 @@ import Cocoa
         .set (spacing: 0)
         .set (margins: 8)
       do{
-        let view_0_0_0 = AutoLayoutCanariBoardOperationPullDownButton ()
-        self.configure_schematicsOperationPullDownButtonConfigurator (view_0_0_0) // Configurator
+        let view_0_0_0 = AutoLayoutPullDownButton (title: "", size: .small)
+          .add (item: AutoLayoutMenuItemDescriptor (title: "Select all Connected Elements", target: self, selector: #selector (AutoLayoutProjectDocument.selectAllConnectedElementsInSchematicsAction (_:)), expression: .empty))
+          .add (item: AutoLayoutMenuItemDescriptor (title: "Move Selected Elements to Sheet…", target: self, selector: #selector (AutoLayoutProjectDocument.moveSelectedToSheetInSchematicsAction (_:)), expression: .empty))
+        self.configure_schematicPullDownButtonConfigurator (view_0_0_0) // Configurator
         view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutFlexibleSpace ()
         view_0_0.appendView (view_0_0_1)
@@ -1276,22 +1291,91 @@ import Cocoa
   } ()
 
   //····················································································································
-  //    VIEW mSchematicHotKeysInspectorView
-  //····················································································································
-
-  lazy var mSchematicHotKeysInspectorView : AutoLayoutVerticalStackView = {
-    let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
-    return vStackView
-  } ()
-
-  //····················································································································
   //    VIEW mSchematicsSheetInspectorView
   //····················································································································
 
   lazy var mSchematicsSheetInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSchematicHotKeysInspectorView
+  //····················································································································
+
+  lazy var mSchematicHotKeysInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    let view_0 = AutoLayoutStaticLabel (title: "Hot Keys", bold: true, size: .small)
+      .expandableWidth ()
+      .set (alignment: .center)
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutStaticLabel (title: "[A] Connect all Symbol Pins", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
+    self.mConnectAllSymbolPinsSchematicHotKeyTextField = view_1 // Outlet
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutStaticLabel (title: "[B] Add Bottom Label", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
+    self.mAddBottomSchematicHotKeyTextField = view_2 // Outlet
+    vStackView.appendView (view_2)
+    let view_3 = AutoLayoutStaticLabel (title: "[C] Connect", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
+    self.mConnectSchematicHotKeyTextField = view_3 // Outlet
+    vStackView.appendView (view_3)
+    let view_4 = AutoLayoutStaticLabel (title: "[D] Disconnect", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
+    self.mDisconnectSchematicHotKeyTextField = view_4 // Outlet
+    vStackView.appendView (view_4)
+    let view_5 = AutoLayoutStaticLabel (title: "[E] Disconnect All Symbol Pins", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
+    self.mDisconnectAllSymbolPinsSchematicHotKeyTextField = view_5 // Outlet
+    vStackView.appendView (view_5)
+    let view_6 = AutoLayoutStaticLabel (title: "[L] Add Left Label", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
+    self.mAddLeftLabelSchematicHotKeyTextField = view_6 // Outlet
+    vStackView.appendView (view_6)
+    let view_7 = AutoLayoutStaticLabel (title: "[M] Set NC to Symbol Pins", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
+    self.mAddNCToAllSymbolPinsSchematicHotKeyTextField = view_7 // Outlet
+    vStackView.appendView (view_7)
+    let view_8 = AutoLayoutStaticLabel (title: "[N] Set NC", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
+    self.mAddNCSchematicHotKeyTextField = view_8 // Outlet
+    vStackView.appendView (view_8)
+    let view_9 = AutoLayoutStaticLabel (title: "[P] Remove Wire Point", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
+    self.mRemoveWirePointSchematicHotKeyTextField = view_9 // Outlet
+    vStackView.appendView (view_9)
+    let view_10 = AutoLayoutStaticLabel (title: "[R] Add Right Label", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
+    self.mAddRightLabelSchematicHotKeyTextField = view_10 // Outlet
+    vStackView.appendView (view_10)
+    let view_11 = AutoLayoutStaticLabel (title: "[T] Add Top Label", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
+    self.mAddTopLabelSchematicHotKeyTextField = view_11 // Outlet
+    vStackView.appendView (view_11)
+    let view_12 = AutoLayoutStaticLabel (title: "[X] Exchange Symbol…", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
+    self.mExchangeSymbolSchematicHotKeyTextField = view_12 // Outlet
+    vStackView.appendView (view_12)
+    let view_13 = AutoLayoutStaticLabel (title: "[W] Insert Wire Point", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
+    self.mAddWirePointSchematicHotKeyTextField = view_13 // Outlet
+    vStackView.appendView (view_13)
     return vStackView
   } ()
 
@@ -6836,8 +6920,8 @@ import Cocoa
     self.mSchematicsInspectorView.ebCleanUp ()
     self.mSelectedSchematicElementInspectorView.ebCleanUp ()
     self.mInsertSymbolInSchematicView.ebCleanUp ()
-    self.mSchematicHotKeysInspectorView.ebCleanUp ()
     self.mSchematicsSheetInspectorView.ebCleanUp ()
+    self.mSchematicHotKeysInspectorView.ebCleanUp ()
     self.mSchematicsGridAndFlipInspectorView.ebCleanUp ()
     self.mBoardOutlinePage.ebCleanUp ()
     self.mBoardOutlineBaseView.ebCleanUp ()

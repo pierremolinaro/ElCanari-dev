@@ -18,9 +18,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  final func configure_schematicsOperationPullDownButtonConfigurator (_ inOutlet : AutoLayoutCanariBoardOperationPullDownButton) {
+  final func configure_schematicPullDownButtonConfigurator (_ inOutlet : AutoLayoutPullDownButton) {
 //--- START OF USER ZONE 2
-
+        inOutlet.item (at: 0)?.image = NSImage (named: NSImage.smartBadgeTemplateName)
+        inOutlet.item (at: 1)?.keyEquivalent = "a"
+        inOutlet.item (at: 1)?.keyEquivalentModifierMask = [.option, .command]
+        inOutlet.item (at: 2)?.keyEquivalent = "m"
+        inOutlet.item (at: 2)?.keyEquivalentModifierMask = [.option, .command]
 //--- END OF USER ZONE 2
   }
 }

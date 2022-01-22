@@ -4003,7 +4003,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                             <clipView key="contentView" id="WFI-pb-BTm">
                                 <rect key="frame" x="1" y="1" width="467" height="310"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" typeSelect="NO" autosaveName="NET_TABLEVIEW" rowSizeStyle="automatic" headerView="14849" viewBased="YES" id="3068" customClass="CanariNetInfoTableView" customModule="ElCanari" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="539" height="287"/>
@@ -4258,7 +4258,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="rNg-H5-Cb2">
                                             <rect key="frame" x="1" y="1" width="200" height="272"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="14879" viewBased="YES" id="14882" customClass="StatusStringArrayTableView" customModule="ElCanari" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="249"/>
