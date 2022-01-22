@@ -138,8 +138,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.removeEBObserversOf_allClassNames_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_netWarningCount_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_netNamesArray_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_unplacedPackages_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_unplacedPackages_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_componentsPlacedInBoard_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_placedComponentNameArray_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_schematicHasErrorOrWarning_fromElementsOfSet (inRemovedSet) // Transient property
@@ -271,8 +271,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.addEBObserversOf_allClassNames_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_netWarningCount_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_netNamesArray_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_unplacedPackages_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_unplacedSymbols_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_unplacedPackages_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_componentsPlacedInBoard_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_placedComponentNameArray_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_schematicHasErrorOrWarning_toElementsOfSet (inAddedSet) // Transient property
@@ -8137,62 +8137,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'unplacedPackages' transient property
-  //····················································································································
-
-  private final var mObserversOf_unplacedPackages = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_unplacedPackages (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_unplacedPackages.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.unplacedPackages_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_unplacedPackages (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_unplacedPackages.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.unplacedPackages_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_unplacedPackages_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    for managedObject in inSet.values {
-      self.mObserversOf_unplacedPackages.apply { (_ observer : EBObserverProtocol) in
-        managedObject.unplacedPackages_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_unplacedPackages_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    for managedObject in inSet.values {
-      self.mObserversOf_unplacedPackages.apply { (_ observer : EBObserverProtocol) in
-        managedObject.unplacedPackages_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
@@ -8244,6 +8188,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     for managedObject in inSet.values {
       self.mObserversOf_unplacedSymbols.apply { (_ observer : EBObserverProtocol) in
         managedObject.unplacedSymbols_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'unplacedPackages' transient property
+  //····················································································································
+
+  private final var mObserversOf_unplacedPackages = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_unplacedPackages (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_unplacedPackages.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.unplacedPackages_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_unplacedPackages (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_unplacedPackages.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.unplacedPackages_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_unplacedPackages_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_unplacedPackages.apply { (_ observer : EBObserverProtocol) in
+        managedObject.unplacedPackages_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_unplacedPackages_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_unplacedPackages.apply { (_ observer : EBObserverProtocol) in
+        managedObject.unplacedPackages_property.removeEBObserver (observer)
       }
     }
   }

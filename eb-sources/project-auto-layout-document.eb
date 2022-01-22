@@ -389,37 +389,72 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 
   arrayController #schematicObjectsController : root.selectedSheetObjects ;
 
-  stackView mSchematicPage vStack set (margins: 8) {
-    hStack {
+  stackView mSchematicPage hStack {
+    vStack set (width: 250) set (spacing: 0) {
+      hStack set (spacing: 0) set (margins: 8) {
+        CanariBoardOperationPullDownButton [configurator schematicsOperationPullDownButtonConfigurator]
+        space
+//        DragSourceButtonWithMenus (tooltip: "Add Restrict Rectangle;  the layers are set by the contextual menu.") [configurator addRestrictRectangleButton]
+//        space
+//        DragSourceButtonWithMenus (tooltip: "Add Line in Board;  the layer is set by the contextual menu.") [configurator addLineButton]
+//        space
+//        DragSourceButtonWithMenus (tooltip: "Add Text in Board; the layer is set by the contextual menu.") [configurator addTextButton]
+//        space
+//        DragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.") [configurator addTrackButton]
+      }
       vStack {
-        StaticLabel (title: "TEMPORARY", bold: no, size: .regular)
+        hStack set (leftMargin: 8) set (rightMargin: 8) {
+          SegmentedControlWithPages (documentView: stackView mSchematicsInspectorView, equalWidth: yes, size : .small) 
+            [configurator schematicInspectorConfigurator] {
+            expandableWidth ()
+            addPage (title: "", tooltip: "Selected Element Inspector", pageView: stackView mSelectedSchematicElementInspectorView)
+            addPage (title: "", tooltip: "Hot Keys", pageView: stackView mSchematicHotKeysInspectorView)
+            addPage (title: "", tooltip: "Insert Symbol in Schematic", pageView: stackView mInsertSymbolInSchematicView)
+            addPage (image: "", tooltip: "Grid and Flip Inspector", pageView: stackView mSchematicsGridAndFlipInspectorView)
+            addPage (title: "", tooltip: "Sheet Inspector", pageView: stackView mSchematicsSheetInspectorView)
+            $selectedPage root. mSelectedSchematicInspector
+            $segmentTitle self.unplacedSymbolsCountString (segmentIndex : 2)
+          }
+        }
+        stackViewRef mSchematicsInspectorView
         space
       }
-      separator
-      GraphicView (minZoom: 50, maxZoom: 1_000) [outlet mSchematicsView] {
-        $underObjectsDisplay root.schematicBackgroundDisplay
-        $overObjectsDisplay root.connectedPoints
-        $horizontalFlip root.mSchematicHorizontalFlip
-        $verticalFlip root.mSchematicVerticalFlip
-        $graphicController #schematicObjectsController
-        $gridStyle root.mSchematicGridStyle
-        $gridDisplayFactor root.mSchematicGridDisplayFactor
-        $gridLineColor prefs.lineColorGridForSchematic
-        $gridCrossColor prefs.dotColorGridForSchematic
-        $zoom root.mSchematicZoom
-        $backColor prefs.schematicBackColor
-      }
+    }
+    separator
+    GraphicView (minZoom: 50, maxZoom: 1_000) [outlet mSchematicsView] {
+      $underObjectsDisplay root.schematicBackgroundDisplay
+      $overObjectsDisplay root.connectedPoints
+      $horizontalFlip root.mSchematicHorizontalFlip
+      $verticalFlip root.mSchematicVerticalFlip
+      $graphicController #schematicObjectsController
+      $gridStyle root.mSchematicGridStyle
+      $gridDisplayFactor root.mSchematicGridDisplayFactor
+      $gridLineColor prefs.lineColorGridForSchematic
+      $gridCrossColor prefs.dotColorGridForSchematic
+      $zoom root.mSchematicZoom
+      $backColor prefs.schematicBackColor
     }
   }
+
+  transient Int unplacedSymbolsCount dependsFrom root.unplacedSymbols ;
+  transient String unplacedSymbolsCountString dependsFrom self.unplacedSymbolsCount ;
+
+  stackView mSchematicsInspectorView vStack set (margins: 8) {
+  }  
+
+  stackView mSelectedSchematicElementInspectorView vStack set (margins: 8) {
+  }  
   
-//  outlet CanariSegmentedControl mSchematicsInspectorSegmentedControl $selectedPage root.mSelectedSchematicInspector ;
-//  outlet NSView mBaseSchematicsInspectorView ;
-//  outlet CanariViewWithKeyView mSelectedObjectsSchematicsInspectorView ;
-//  outlet CanariViewWithKeyView mHotKeysSchematicInspectorView ;
-//  outlet CanariViewWithKeyView mGridZoomSchematicsInspectorView ;
-//  outlet CanariViewWithKeyView mUnplacedSymbolsSchematicsInspectorView ;
-//  outlet CanariViewWithKeyView mSchematicsSheetsInspectorView ;
-//
+  stackView mInsertSymbolInSchematicView vStack set (margins: 8) {
+  }  
+  
+  stackView mSchematicHotKeysInspectorView vStack set (margins: 8) {
+  }  
+  
+  stackView mSchematicsSheetInspectorView vStack set (margins: 8) {
+  }  
+  
+
 //  outlet CanariDragSourceButton mAddCommentButton ;
 //  outlet CanariDragSourceButton mAddWireButton ;
 //  outlet CanariDefaultNetClassPopUpButton mCanariDefaultNetClassPopUpButton
@@ -442,48 +477,135 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 //   
 ////--- Unplaced symbols inspector
 //  outlet CanariDragSourceTableView mUnplacedSymbolsTableView $models root.unplacedSymbols ;
-//  transient Int unplacedSymbolsCount dependsFrom root.unplacedSymbols ;
-//  transient String unplacedSymbolsCountString dependsFrom self.unplacedSymbolsCount ;
-//  outlet EBTextObserverField mUnplacedSymbolsTextField $valueObserver self.unplacedSymbolsCountString ;
 //
-////--- Grid and Flip inspector
-//  outlet EBSwitch mSchematicsHorizontalFlipSwitch $value root.mSchematicHorizontalFlip ;
-//  outlet EBSwitch mSchematicsVerticalFlipSwitch $value root.mSchematicVerticalFlip ;
-//  outlet EBPopUpButton mSchematicsGridStylePopUpButton $selectedIndex root.mSchematicGridStyle ;
-//  outlet EBPopUpButton mSchematicsGridDisplayFactorPopUpButton $selectedTag root.mSchematicGridDisplayFactor ;
-//  outlet EBColorWell mDotColorGridForSchematicColorWell $color prefs.dotColorGridForSchematic (sendContinously:yes) ;
-//  outlet EBColorWell mLineColorGridForSchematicColorWell $color prefs.lineColorGridForSchematic (sendContinously:yes) ;
-//  outlet EBColorWell mSchematicBackColorColorWell $color prefs.schematicBackColor (sendContinously: yes) ;
-//  outlet EBColorWell mSchematicFrameColorColorWell $color prefs.schematicFrameColor (sendContinously: yes) ;
-//
+//--- Grid and Flip inspector
+  stackView mSchematicsGridAndFlipInspectorView vStack set (margins: 8) {
+    TabView (equalWidth: yes, size: .small) {
+      addTab (title: "Grid and Flip", tooltip: "Grid and Flip", contentView : 
+        GridView2 {
+          set (margins: 8)
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Grid Step", bold: no, size : .small),
+            right: StaticLabel (title: "50 mils", bold: yes, size : .small)
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Display Grid", bold: no, size : .small),
+            right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.mSchematicGridStyle }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Every", bold: no, size : .small),
+            right: TaggedPopUpButton {
+              add (title: "1 Step",   withTag:  1)
+              add (title: "2 Steps",  withTag:  2)
+              add (title: "4 Steps",  withTag:  4)
+              add (title: "5 Steps",  withTag:  5)
+              add (title: "8 Steps",  withTag:  8)
+              add (title: "10 Steps", withTag: 10)
+              $selectedTag root. mSchematicGridDisplayFactor
+            }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Flip", bold: no, size : .small),
+            right: Checkbox (title: "Horizontal", size : .small) { $value root.mSchematicHorizontalFlip }
+          )
+          addFirstBaseLineAligned (
+            left: FlexibleSpace,
+            right: Checkbox (title: "Vertical", size : .small) { $value root.mSchematicVerticalFlip }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Cross Grid Color", bold: no, size : .small),
+            right: hStack { ColorWell { $color prefs.dotColorGridForSchematic (sendContinously:yes) } space }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Line Grid Color", bold: no, size : .small),
+            right: hStack { ColorWell { $color prefs.lineColorGridForSchematic (sendContinously:yes) } space }
+          )
+        }
+      )
+      addTab (title: "Colors and Font", tooltip: "Colors and Font", contentView:
+        GridView2 {
+          set (margins: 8)
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Symbols, unplaced Component", bold: no, size : .small),
+            right: ColorWell { $color prefs.symbolColorForUnplacedComponentsForSchematic (sendContinously:yes) } 
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Symbols, placed Component", bold: no, size : .small),
+            right: ColorWell { $color prefs.symbolColorForSchematic (sendContinously:yes) } 
+          )
+//          addFirstBaseLineAligned (
+//            left: StaticLabel (title: "Symbols Drawing Width", bold: no, size : .small),
+//            right: TaggedPopUpButton {
+//              add (title: "0.5 Point",   withTag:  5)
+//              add (title: "1.0 Point",  withTag:  10)
+//              add (title: "1.5 Point",  withTag:  15)
+//              add (title: "2.0 Point",  withTag:  20)
+//              add (title: "2.5 Point",  withTag:  25)
+//              $selectedTag prefs.symbolDrawingWidthMultipliedByTenForSchematic
+//            }
+//          )
+          add (single:
+            hStack {
+              space
+              StaticLabel (title: "Symbols Drawing Width", bold: no, size : .small)
+              TaggedPopUpButton {
+                add (title: "0.5 Point",   withTag:  5)
+                add (title: "1.0 Point",  withTag:  10)
+                add (title: "1.5 Point",  withTag:  15)
+                add (title: "2.0 Point",  withTag:  20)
+                add (title: "2.5 Point",  withTag:  25)
+                $selectedTag prefs.symbolDrawingWidthMultipliedByTenForSchematic
+              }
+            }
+          )
+          addSeparator ()
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Component Name", bold: no, size : .small),
+            right: ColorWell { $color prefs.componentNameColorForSchematic (sendContinously:yes) } 
+          )
+          add (single: FontButton (size: .small) { $fontValue prefs.componentNameFontForSchematic })
+          addSeparator ()
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Component Value", bold: no, size : .small),
+            right: ColorWell { $color prefs.componentValueColorForSchematic (sendContinously:yes) } 
+          )
+          add (single: FontButton (size: .small) { $fontValue prefs.componentValueFontForSchematic })
+          addSeparator ()
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Pin Name", bold: no, size : .small),
+            right: ColorWell { $color prefs.pinNameColorForSchematic (sendContinously:yes) } 
+          )
+          add (single: FontButton (size: .small) { $fontValue prefs.pinNameFontForSchematic })
+          addSeparator ()
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Pin Number", bold: no, size : .small),
+            right: ColorWell { $color prefs.pinNumberColorForSchematic (sendContinously:yes) } 
+          )
+          add (single: FontButton (size: .small) { $fontValue prefs.pinNumberFontForSchematic })
+          addSeparator ()
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Connection", bold: no, size : .small),
+            right: ColorWell { $color prefs.connectionColorForSchematic (sendContinously:yes) } 
+          )
+          addSeparator ()
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Background Color", bold: no, size : .small),
+            right: ColorWell { $color prefs.schematicBackColor (sendContinously:yes) }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Frame Color", bold: no, size : .small),
+            right: ColorWell { $color prefs.schematicFrameColor (sendContinously:yes) }
+          )
+        }
+      )
+    }
+  }  
+  
 ////----------------- Color and Font inspector
 //
-////--- Symbol color for placed components
-//  outlet EBColorWell mSymbolColorForSchematicColorWell $color prefs.symbolColorForSchematic (sendContinously:yes) ;
-////--- Symbol color for unplaced components
-//  outlet EBColorWell mUnplacedComponentsColorForSchematicColorWell $color prefs.symbolColorForUnplacedComponentsForSchematic (sendContinously:yes) ;
 ////--- Symbol drawing line width
 //  outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton $selectedTag prefs.symbolDrawingWidthMultipliedByTenForSchematic ;
-////--- Component Name Color
-//  outlet EBColorWell mComponentNameColorForSchematicColorWell $color prefs.componentNameColorForSchematic (sendContinously:yes) ;
-////--- Component Name Font
-//  outlet EBFontButton mComponentNameFontForSchematicFontButton $fontValue prefs.componentNameFontForSchematic ;
-////--- Component Value Color
-//  outlet EBColorWell mComponentValueColorForSchematicColorWell $color prefs.componentValueColorForSchematic (sendContinously:yes) ;
-////--- Component Value Font
-//  outlet EBFontButton mComponentValueFontForSchematicFontButton $fontValue prefs.componentValueFontForSchematic ;
-////--- Pin Name Color
-//  outlet EBColorWell mPinNameColorForSchematicColorWell $color prefs.pinNameColorForSchematic (sendContinously:yes) ;
-////--- Pin Name Font
-//  outlet EBFontButton mPinNameFontForSchematicFontButton $fontValue prefs.pinNameFontForSchematic ;
-////--- Pin Number Color
-//  outlet EBColorWell mPinNumberColorForSchematicColorWell $color prefs.pinNumberColorForSchematic (sendContinously:yes) ;
-////--- Pin Number Font
-//  outlet EBFontButton mPinNumberFontForSchematicFontButton $fontValue prefs.pinNumberFontForSchematic ;
-////--- Connection Color
-//  outlet EBColorWell mConnectionColorForSchematicColorWell $color prefs.connectionColorForSchematic (sendContinously:yes) ;
-//
-//
+
 ////--- Sheet inspector
 //  outlet EBTextField mSchematicsTitleTextField $value root.mSchematicTitle (sendContinously : yes) ;
 //  outlet EBTextField mSchematicsVersionTextField $value root.mSchematicVersion (sendContinously : yes) ;

@@ -27,9 +27,10 @@ class AutoLayoutBase_NSSegmentedControl : NSSegmentedControl, EBUserClassNamePro
     if inEqualWidth {
       self.segmentDistribution = .fillEqually // #available (OSX 10.13, *)
     }
-//    if #available (OSX 10.13, *) {
-//      self.setValue (NSNumber (value: 2), forKey: "segmentDistribution") // fillEqually
-//    }
+    self.setContentCompressionResistancePriority (.required, for: .vertical)
+    self.setContentHuggingPriority (.required, for: .vertical)
+    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
   }
 
   //····················································································································

@@ -441,6 +441,40 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: unplacedSymbolsCount
+  //····················································································································
+
+  final let unplacedSymbolsCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var unplacedSymbolsCount : Int? {
+    switch self.unplacedSymbolsCount_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: unplacedSymbolsCountString
+  //····················································································································
+
+  final let unplacedSymbolsCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var unplacedSymbolsCountString : String? {
+    switch self.unplacedSymbolsCountString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: unplacedPackageCount
   //····················································································································
 
@@ -501,40 +535,6 @@ import Cocoa
 
   final var canChangePackage : Bool? {
     switch self.canChangePackage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: unplacedSymbolsCount
-  //····················································································································
-
-  final let unplacedSymbolsCount_property = EBTransientProperty_Int ()
-
-  //····················································································································
-
-  final var unplacedSymbolsCount : Int? {
-    switch self.unplacedSymbolsCount_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: unplacedSymbolsCountString
-  //····················································································································
-
-  final let unplacedSymbolsCountString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var unplacedSymbolsCountString : String? {
-    switch self.unplacedSymbolsCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -2053,6 +2053,46 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: unplacedSymbolsCount
+    self.unplacedSymbolsCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.unplacedSymbols_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_unplacedSymbolsCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.unplacedSymbols_property.addEBObserver (self.unplacedSymbolsCount_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: unplacedSymbolsCountString
+    self.unplacedSymbolsCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.unplacedSymbolsCount_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_unplacedSymbolsCountString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.unplacedSymbolsCount_property.addEBObserver (self.unplacedSymbolsCountString_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Atomic property: unplacedPackageCount
     self.unplacedPackageCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2130,46 +2170,6 @@ import Cocoa
       }
     }
     self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: unplacedSymbolsCount
-    self.unplacedSymbolsCount_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.unplacedSymbols_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_unplacedSymbolsCount (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.unplacedSymbols_property.addEBObserver (self.unplacedSymbolsCount_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: unplacedSymbolsCountString
-    self.unplacedSymbolsCountString_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.unplacedSymbolsCount_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectDocument_unplacedSymbolsCountString (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.unplacedSymbolsCount_property.addEBObserver (self.unplacedSymbolsCountString_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3566,13 +3566,13 @@ import Cocoa
     // self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
+    // self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
+    // self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
     // self.rootObject.unplacedPackages_property.removeEBObserver (self.unplacedPackageCount_property)
     // self.unplacedPackageCount_property.removeEBObserver (self.unplacedPackagesCountString_property)
     // self.rastnetShape_property.removeEBObserver (self.overDisplay_property)
     // self.rootObject.boardIssues_property.removeEBObserver (self.overDisplay_property)
     // self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
-    // self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
-    // self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
   //--------------------------- Remove targets / actions
     self.mAddComponentButton?.target = nil
     self.mDuplicateSelectedComponentsActionButton?.target = nil

@@ -137,8 +137,8 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.allClassNames_property.removeEBObserver (self.allClassNames_property) // Transient property
       oldValue.netWarningCount_property.removeEBObserver (self.netWarningCount_property) // Transient property
       oldValue.netNamesArray_property.removeEBObserver (self.netNamesArray_property) // Transient property
-      oldValue.unplacedPackages_property.removeEBObserver (self.unplacedPackages_property) // Transient property
       oldValue.unplacedSymbols_property.removeEBObserver (self.unplacedSymbols_property) // Transient property
+      oldValue.unplacedPackages_property.removeEBObserver (self.unplacedPackages_property) // Transient property
       oldValue.componentsPlacedInBoard_property.removeEBObserver (self.componentsPlacedInBoard_property) // Transient property
       oldValue.placedComponentNameArray_property.removeEBObserver (self.placedComponentNameArray_property) // Transient property
       oldValue.schematicHasErrorOrWarning_property.removeEBObserver (self.schematicHasErrorOrWarning_property) // Transient property
@@ -268,8 +268,8 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.allClassNames_property.addEBObserver (self.allClassNames_property) // Transient property
       newValue.netWarningCount_property.addEBObserver (self.netWarningCount_property) // Transient property
       newValue.netNamesArray_property.addEBObserver (self.netNamesArray_property) // Transient property
-      newValue.unplacedPackages_property.addEBObserver (self.unplacedPackages_property) // Transient property
       newValue.unplacedSymbols_property.addEBObserver (self.unplacedSymbols_property) // Transient property
+      newValue.unplacedPackages_property.addEBObserver (self.unplacedPackages_property) // Transient property
       newValue.componentsPlacedInBoard_property.addEBObserver (self.componentsPlacedInBoard_property) // Transient property
       newValue.placedComponentNameArray_property.addEBObserver (self.placedComponentNameArray_property) // Transient property
       newValue.schematicHasErrorOrWarning_property.addEBObserver (self.schematicHasErrorOrWarning_property) // Transient property
@@ -1005,16 +1005,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   final let netNamesArray_property = EBGenericTransientProperty <StringArray?> ()
 
   //····················································································································
-  //   Observers of 'unplacedPackages' transient property
-  //····················································································································
-
-  final let unplacedPackages_property = EBGenericTransientProperty <StringTagArray?> ()
-
-  //····················································································································
   //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
   final let unplacedSymbols_property = EBGenericTransientProperty <StringTagArray?> ()
+
+  //····················································································································
+  //   Observers of 'unplacedPackages' transient property
+  //····················································································································
+
+  final let unplacedPackages_property = EBGenericTransientProperty <StringTagArray?> ()
 
   //····················································································································
   //   Observers of 'componentsPlacedInBoard' transient property
@@ -3035,10 +3035,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-  //--- Configure unplacedPackages transient property
-    self.unplacedPackages_property.mReadModelFunction = { [weak self] in
+  //--- Configure unplacedSymbols transient property
+    self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
-        switch model.unplacedPackages_property.selection {
+        switch model.unplacedSymbols_property.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -3050,10 +3050,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-  //--- Configure unplacedSymbols transient property
-    self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
+  //--- Configure unplacedPackages transient property
+    self.unplacedPackages_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
-        switch model.unplacedSymbols_property.selection {
+        switch model.unplacedPackages_property.selection {
         case .empty :
           return .empty
         case .multiple :

@@ -54,20 +54,6 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
   }
 
   //····················································································································
-
-//  override func ebCleanUp () {
-//    self.mSelectedTabIndexController?.unregister ()
-//    self.mSelectedTabIndexController = nil
-//    self.mSegmentImageController?.unregister ()
-//    self.mSegmentImageController = nil
-//    self.mSegmentTitleController?.unregister ()
-//    self.mSegmentTitleController = nil
-//    self.mSelectedSegmentController?.unregister ()
-//    self.mSelectedSegmentController = nil
-//    super.ebCleanUp ()
-//  }
-
-  //····················································································································
   // ADD TAB
   //····················································································································
 
@@ -76,6 +62,9 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
                      contentView inPageView : NSView) -> Self {
     self.mPopUpButton.addItem (withTitle: inTitle)
     self.mPages.append (inPageView)
+    if self.mPages.count == 1 {
+      self.setSelectedSegment (atIndex: 0)
+    }
     return self
   }
 
