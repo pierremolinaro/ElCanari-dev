@@ -15,6 +15,7 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
   private final var mReadMetadataStatus : UInt8 = 0
   private final var mMetadataDictionary = [String : Any] ()
   private final var mSplashScreenWindow : EBWindow? = nil
+  private final var mSplashTextField : AutoLayoutLabel? = nil
 
   //····················································································································
   //    Document File Format
@@ -115,9 +116,15 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
         defer: true
       )
       self.mSplashScreenWindow = window
+      let textField = AutoLayoutLabel (bold: true, size: .small)
+        .set (alignment: .center)
+        .expandableWidth ()
+      self.mSplashTextField = textField
+      textField.stringValue = "Loading File…"
       window.title = "Opening " + self.displayName + "…"
       let vStackView = AutoLayoutVerticalStackView ()
       vStackView.appendView (AutoLayoutFlexibleSpace ())
+      vStackView.appendView (textField)
       let hStackView = AutoLayoutHorizontalStackView ()
       hStackView.appendView (AutoLayoutFlexibleSpace ())
       hStackView.appendView (AutoLayoutSpinningProgressIndicator ())
@@ -200,10 +207,15 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
     let windowController = NSWindowController (window: window)
     self.addWindowController (windowController)
   //--- Build user interface
+    if let textField = self.mSplashTextField {
+      textField.stringValue = "Build User Interface…"
+      RunLoop.current.run (until: Date ())
+    }
     self.ebBuildUserInterface ()
     flushOutletEvents ()
     if let window = self.mSplashScreenWindow {
       window.orderOut (nil)
+      self.mSplashTextField = nil
       self.mSplashScreenWindow = nil
     }
   }
