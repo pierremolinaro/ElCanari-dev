@@ -39,6 +39,12 @@ import Cocoa
   var schematicObjectsController = Controller_AutoLayoutProjectDocument_schematicObjectsController ()
 
   //····················································································································
+  //   Selection controller: wireInSchematicSelectionController
+  //····················································································································
+
+  var wireInSchematicSelectionController = SelectionController_AutoLayoutProjectDocument_wireInSchematicSelectionController ()
+
+  //····················································································································
   //   Array controller: boardCurveObjectsController
   //····················································································································
 
@@ -645,6 +651,8 @@ import Cocoa
       self.projectDeviceController.addExplorer (name: "projectDeviceController", y:&y, view:view)
     //--- Array controller property: schematicObjectsController
       self.schematicObjectsController.addExplorer (name: "schematicObjectsController", y:&y, view:view)
+    //--- Selection controller property: wireInSchematicSelectionController
+      self.wireInSchematicSelectionController.addExplorer (name: "wireInSchematicSelectionController", y:&y, view:view)
     //--- Array controller property: boardCurveObjectsController
       self.boardCurveObjectsController.addExplorer (name: "boardCurveObjectsController", y:&y, view:view)
     //--- Selection controller property: boardCurveSelectionController
@@ -1303,16 +1311,6 @@ import Cocoa
   } ()
 
   //····················································································································
-  //    VIEW mSelectedSchematicElementInspectorView
-  //····················································································································
-
-  lazy var mSelectedSchematicElementInspectorView : AutoLayoutVerticalStackView = {
-    let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
-    return vStackView
-  } ()
-
-  //····················································································································
   //    VIEW mSchematicHotKeysInspectorView
   //····················································································································
 
@@ -1431,13 +1429,19 @@ import Cocoa
       .expandableWidth ()
       .set (alignment: .center)
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutPopUpButton (size: .small)
-    self.configure_sheetPopUpButtonConfigurator (view_1) // Configurator
+    let view_1 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_1_0 = AutoLayoutPopUpButton (size: .small)
+      self.configure_sheetPopUpButtonConfigurator (view_1_0) // Configurator
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutStepper ()
+      self.configure_sheetStepperConfigurator (view_1_1) // Configurator
+      view_1.appendView (view_1_1)
+    }
     vStackView.appendView (view_1)
     let view_2 = AutoLayoutHorizontalStackView ()
     do{
       let view_2_0 = AutoLayoutButton (title: "New Sheet", size: .small)
-        .expandableHeight ()
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.newSheetAction (_:))
@@ -1446,26 +1450,12 @@ import Cocoa
       let view_2_1 = AutoLayoutFlexibleSpace ()
       view_2.appendView (view_2_1)
       let view_2_2 = AutoLayoutButton (title: "Delete Sheet", size: .small)
-        .expandableHeight ()
         .bind_enabled (.intcmp (.id (self.rootObject.mSheets_property.count_property), .gt, .literalInt (1)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.deleteSheetAction (_:))
         )
       view_2.appendView (view_2_2)
-      let view_2_3 = AutoLayoutFlexibleSpace ()
-      view_2.appendView (view_2_3)
-      let view_2_4 = AutoLayoutVerticalStackView ()
-        .set (spacing: 0)
-      do{
-        let view_2_4_0 = AutoLayoutButton (title: "Up", size: .small)
-        self.configure_previousSheetButtonConfigurator (view_2_4_0) // Configurator
-        view_2_4.appendView (view_2_4_0)
-        let view_2_4_1 = AutoLayoutButton (title: "Down", size: .small)
-        self.configure_nextSheetButtonConfigurator (view_2_4_1) // Configurator
-        view_2_4.appendView (view_2_4_1)
-      }
-      view_2.appendView (view_2_4)
     }
     vStackView.appendView (view_2)
     let view_3 = AutoLayoutStaticLabel (title: "Selected Sheet Name", bold: false, size: .small)
@@ -1487,6 +1477,61 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_47 (), right: self.computeImplicitView_48 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_49 (), right: self.computeImplicitView_50 ())
     vStackView.appendView (view_6)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSelectedSchematicElementInspectorView
+  //····················································································································
+
+  lazy var mSelectedSchematicElementInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 8)
+    let view_0 = AutoLayoutObjectInspectorView ()
+      .addObjectInspector (forEntity: WireInSchematic.self, inspectorView: self.mSchematicsWireInspectorView)
+      .bind_graphic_controller (self.schematicObjectsController)
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSchematicsWireInspectorView
+  //····················································································································
+
+  lazy var mSchematicsWireInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutStaticLabel (title: "Wire Inspector", bold: true, size: .small)
+      .expandableWidth ()
+      .set (alignment: .center)
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_1_0 = AutoLayoutStaticLabel (title: "Net", bold: false, size: .small)
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutLabel (bold: true, size: .small)
+        .expandableWidth ()
+        .bind_title (self.wireInSchematicSelectionController.netName_property)
+      view_1.appendView (view_1_1)
+    }
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutButton (title: "Rename Net with Automatic Name", size: .small)
+      .expandableWidth ()
+      .bind_enabled (.boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)))
+      .bind_run (
+        target: self,
+        selector: #selector (AutoLayoutProjectDocument.renameSchematicWireNetAction (_:))
+      )
+    vStackView.appendView (view_2)
+    let view_3 = AutoLayoutButton (title: "Rename Net…", size: .small)
+      .expandableWidth ()
+      .bind_enabled (.boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)))
+      .bind_run (
+        target: self,
+        selector: #selector (AutoLayoutProjectDocument.renameWireNetWithNewAutomaticNameAction (_:))
+      )
+    vStackView.appendView (view_3)
     return vStackView
   } ()
 
@@ -6506,6 +6551,12 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Selection controller property: wireInSchematicSelectionController
+    self.wireInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Array controller property: boardCurveObjectsController
     self.boardCurveObjectsController.bind_model (self.rootObject.mBorderCurves_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
@@ -7171,11 +7222,12 @@ import Cocoa
     self.mNetListPage.ebCleanUp ()
     self.mSchematicPage.ebCleanUp ()
     self.mSchematicsInspectorView.ebCleanUp ()
-    self.mSelectedSchematicElementInspectorView.ebCleanUp ()
     self.mSchematicHotKeysInspectorView.ebCleanUp ()
     self.mInsertSymbolInSchematicView.ebCleanUp ()
     self.mSchematicsGridAndFlipInspectorView.ebCleanUp ()
     self.mSchematicsSheetInspectorView.ebCleanUp ()
+    self.mSelectedSchematicElementInspectorView.ebCleanUp ()
+    self.mSchematicsWireInspectorView.ebCleanUp ()
     self.mBoardOutlinePage.ebCleanUp ()
     self.mBoardOutlineBaseView.ebCleanUp ()
     self.mBoardOutlineGridAndFlipView.ebCleanUp ()
@@ -7220,6 +7272,8 @@ import Cocoa
     self.projectDeviceController.unbind_model ()
   //--- Array controller property: schematicObjectsController
     self.schematicObjectsController.unbind_model ()
+  //--- Selection controller property: wireInSchematicSelectionController
+    self.wireInSchematicSelectionController.unbind_selection ()
   //--- Array controller property: boardCurveObjectsController
     self.boardCurveObjectsController.unbind_model ()
   //--- Selection controller property: boardCurveSelectionController

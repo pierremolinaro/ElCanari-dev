@@ -19,8 +19,7 @@ final class ProjectSheetController : EBOutletEvent {
   //····················································································································
 
   private var mSheetPopUpButton : AutoLayoutPopUpButton? = nil
-  private var mPreviousSheetButton : AutoLayoutButton? = nil
-  private var mNextSheetButton : AutoLayoutButton? = nil
+  private var mStepper : AutoLayoutStepper? = nil
   private weak var mDocument : AutoLayoutProjectDocument? = nil
 
   //····················································································································
@@ -39,36 +38,14 @@ final class ProjectSheetController : EBOutletEvent {
 
  //····················································································································
 
-  func register (previousSheet inButton : AutoLayoutButton) {
-    self.mPreviousSheetButton = inButton
-    self.mPreviousSheetButton?.target = self
-    self.mPreviousSheetButton?.action = #selector (Self.sheetUpAction (_:))
-
+  func register (stepper inStepper : AutoLayoutStepper) {
+    self.mStepper = inStepper
+    inStepper.minValue = 0.0
+    inStepper.maxValue = 0.0
+    inStepper.increment = 1.0
+    inStepper.target = self
+    inStepper.action = #selector (Self.stepperAction (_:))
   }
-
- //····················································································································
-
-  func register (nextSheet inButton : AutoLayoutButton) {
-    self.mNextSheetButton = inButton
-    self.mNextSheetButton?.target = self
-    self.mNextSheetButton?.action = #selector (Self.sheetDownAction (_:))
-  }
-
-  //····················································································································
-
-//  override func unregister () {
-//    super.unregister ()
-//    if let document = self.mDocument {
-//      document.rootObject.mSheets_property.removeEBObserverOf_mSheetTitle (self)
-//      document.rootObject.mSheets_property.removeEBObserverOf_connexionWarnings (self)
-//      document.rootObject.mSheets_property.removeEBObserverOf_connexionErrors (self)
-//      document.rootObject.mSelectedSheet_property.removeEBObserver (self)
-//    }
-//    self.mDocument = nil
-//    self.mSheetPopUpButton = nil
-//    self.mPreviousSheetButton = nil
-//    self.mNextSheetButton = nil
-//  }
 
   //····················································································································
   // MARK: -
@@ -76,8 +53,6 @@ final class ProjectSheetController : EBOutletEvent {
 
   private func updatePopUpButton () {
     self.mSheetPopUpButton?.removeAllItems ()
-    self.mPreviousSheetButton?.isEnabled = false
-    self.mNextSheetButton?.isEnabled = false
     let selectedSheet = self.mDocument?.rootObject.mSelectedSheet
     let sheets = self.mDocument?.rootObject.mSheets.values ?? []
     var idx = 0
@@ -106,10 +81,9 @@ final class ProjectSheetController : EBOutletEvent {
       self.mSheetPopUpButton?.lastItem?.target = self
       self.mSheetPopUpButton?.lastItem?.action = #selector (Self.selectionDidChangeAction (_:))
       self.mSheetPopUpButton?.lastItem?.isEnabled = true
+      self.mStepper?.maxValue = Double (sheets.count - 1)
       if sheet === selectedSheet {
         self.mSheetPopUpButton?.selectItem (at: idx)
-        self.mPreviousSheetButton?.isEnabled = idx > 0
-        self.mNextSheetButton?.isEnabled = idx < (sheets.count - 1)
       }
       idx += 1
     }
@@ -117,32 +91,21 @@ final class ProjectSheetController : EBOutletEvent {
 
   //····················································································································
 
-  @objc func selectionDidChangeAction (_ inSender : NSMenuItem) {
-    let selectedIndex = inSender.tag
-    let sheets = self.mDocument?.rootObject.mSheets.values ?? []
-    self.mDocument?.rootObject.mSelectedSheet = sheets [selectedIndex]
-  }
-
-
-  //····················································································································
-
-  @objc func sheetUpAction (_ inSender : EBButton) {
-    if let rootObject = self.mDocument?.rootObject,
-       let selectedSheet = rootObject.mSelectedSheet,
-       let idx = rootObject.mSheets.firstIndex (of: selectedSheet) {
-        rootObject.mSheets.remove (at: idx)
-        rootObject.mSheets.insert (selectedSheet, at: idx - 1)
+  @objc private func selectionDidChangeAction (_ inSender : NSMenuItem) {
+    if let rootObject = self.mDocument?.rootObject {
+      let selectedIndex = inSender.tag
+      let sheets = rootObject.mSheets.values
+      rootObject.mSelectedSheet = sheets [selectedIndex]
     }
   }
 
   //····················································································································
 
-  @objc func sheetDownAction (_ inSender : EBButton) {
-    if let rootObject = self.mDocument?.rootObject,
-       let selectedSheet = rootObject.mSelectedSheet,
-       let idx = rootObject.mSheets.firstIndex (of: selectedSheet) {
-        rootObject.mSheets.remove (at: idx)
-        rootObject.mSheets.insert (selectedSheet, at: idx + 1)
+  @objc private func stepperAction (_ inSender : AutoLayoutStepper) {
+    if let rootObject = self.mDocument?.rootObject {
+      let idx = Int (inSender.doubleValue)
+      let sheets = rootObject.mSheets.values
+      rootObject.mSelectedSheet = sheets [sheets.count - 1 - idx]
     }
   }
 

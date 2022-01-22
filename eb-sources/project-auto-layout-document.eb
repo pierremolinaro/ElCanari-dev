@@ -445,9 +445,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   stackView mSchematicsInspectorView vStack set (margins: 8) {
   }  
 
-  stackView mSelectedSchematicElementInspectorView vStack set (margins: 8) {
-  }  
-
 //--- Hot keys inspector
   stackView mSchematicHotKeysInspectorView vStack set (margins: 8) {
     StaticLabel (title: "Hot Keys", bold: yes, size: .small) { expandableWidth () set (alignment: .center) }
@@ -589,16 +586,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //--- Sheet inspector
   stackView mSchematicsSheetInspectorView  vStack set (margins: 8) {
     StaticLabel (title: "Sheet Inspector", bold: yes, size: .small) { expandableWidth () set (alignment: .center) }
-    PopUpButton (size: .small) [configurator sheetPopUpButtonConfigurator] // All bindings done programmatically
     hStack {
-      Button (title: "New Sheet", size: .small) { expandableHeight () $run newSheetAction }
+      PopUpButton (size: .small) [configurator sheetPopUpButtonConfigurator]
+      Stepper [configurator sheetStepperConfigurator]
+    }
+    hStack {
+      Button (title: "New Sheet", size: .small) { $run newSheetAction }
       space
-      Button (title: "Delete Sheet", size: .small) { expandableHeight () $run deleteSheetAction $enabled root.mSheets.count > 1 }
-      space
-      vStack set (spacing: 0) {
-        Button (title: "Up", size: .small) [configurator previousSheetButtonConfigurator]
-        Button (title: "Down", size: .small) [configurator nextSheetButtonConfigurator]
-      }
+      Button (title: "Delete Sheet", size: .small) { $run deleteSheetAction $enabled root.mSheets.count > 1 }
     }
     StaticLabel (title: "Selected Sheet Name", bold: no, size: .small) { expandableWidth () set (alignment: .left) }
     TextField (minWidth: 150, size: .small) { automaticallyAdjustHeight (maxWidth: 150) $value root.selectedSheetTitle (sendContinously : yes) }
@@ -624,7 +619,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Size", bold: no, size: .small),
         right: EnumSegmentedControl (titles: enum SchematicSheetOrientation.popupTitles, equalWidth: no, size: .small)
-         [configurator sheetOrientationSegmentedControlConfigurator] { $selectedSegment root.mSchematicSheetOrientation }
+        [configurator sheetOrientationSegmentedControlConfigurator] { $selectedSegment root.mSchematicSheetOrientation }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Width", bold: no, size: .small) { $hidden !self.schematicSheetOrientationIsCustom },
@@ -649,25 +644,44 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action setDateToNowAction ;
   action openSetDateDialogAction ;
   
+//----------------------------------------------------------------------------------------------------------------------
+//   Schematic selected objects inspector
+//----------------------------------------------------------------------------------------------------------------------
 
-////--- Selected Wire In schematics
-//  outlet CanariViewWithKeyView mSchematicsWireInspectorView ;
-//  selectionController WireInSchematic #wireInSchematicSelectionController :
-//    #schematicObjectsController.selectedArray
-//  ;
-//
-//  outlet EBTextObserverField mWireNetNameTextField
-//    $valueObserver #wireInSchematicSelectionController.netName
-//  ;
-//
-//  outlet EBButton mWireRenameNetButton // Action set in IB
-//    $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
-//  ;
-//
-//  outlet EBButton mWireRenameNetWithUniqueNewNameButton // Action set in IB
-//    $enabled (#wireInSchematicSelectionController.selectedArray.count > 0) & #wireInSchematicSelectionController.hasNet
-//  ;
-//  
+  stackView mSelectedSchematicElementInspectorView vStack set (margins: 8) {
+    ObjectInspectorView {
+      addObjectInspector (forEntity: entity WireInSchematic, inspectorView: stackView mSchematicsWireInspectorView)
+      $graphicController #schematicObjectsController
+    }
+    space
+  }
+
+//--- Selected Wire In schematics
+  selectionController WireInSchematic #wireInSchematicSelectionController :
+    #schematicObjectsController.selectedArray
+  ;
+  
+  stackView mSchematicsWireInspectorView vStack {
+    StaticLabel (title: "Wire Inspector", bold: yes, size: .small) { expandableWidth () set (alignment: .center) }
+    hStack {
+      StaticLabel (title: "Net", bold: no, size: .small)
+      Label (bold: yes, size: .small) { expandableWidth ()  $title #wireInSchematicSelectionController.netName }
+    }
+    Button (title: "Rename Net with Automatic Name", size: .small) {
+      expandableWidth ()
+      $run renameSchematicWireNetAction
+      $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
+    }
+    Button (title: "Rename Net…", size: .small) {
+      expandableWidth ()
+      $run renameWireNetWithNewAutomaticNameAction
+      $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
+    }
+  }
+
+  action renameSchematicWireNetAction ;
+  action renameWireNetWithNewAutomaticNameAction ;
+
 //  outlet EBButton mSchematicWireMergeSubnetButton  // Action set in IB
 //    $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
 //  ;
@@ -1439,7 +1453,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action performERCCheckingAction ;
   
 //----------------------------------------------------------------------------------------------------------------------
-//   Selected objects inspector
+//   Board selected objects inspector
 //----------------------------------------------------------------------------------------------------------------------
 
   stackView mSelectedElementInspectorView vStack set (margins: 8) {

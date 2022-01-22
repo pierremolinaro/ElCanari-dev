@@ -18,6 +18,11 @@ class AutoLayoutBase_NSStepper : NSStepper, EBUserClassNameProtocol {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
+    self.setContentCompressionResistancePriority (.required, for: .vertical)
+    self.setContentHuggingPriority (.required, for: .vertical)
+    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+    self.setContentHuggingPriority (.required, for: .horizontal)
   }
 
   //····················································································································
@@ -31,13 +36,6 @@ class AutoLayoutBase_NSStepper : NSStepper, EBUserClassNameProtocol {
   deinit {
     noteObjectDeallocation (self)
   }
-
-  //····················································································································
-
-//  override final func updateAutoLayoutUserInterfaceStyle () {
-//    super.updateAutoLayoutUserInterfaceStyle ()
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//  }
 
   //····················································································································
   //  $enabled binding

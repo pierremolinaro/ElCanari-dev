@@ -18,10 +18,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  final func configure_previousSheetButtonConfigurator (_ inOutlet : AutoLayoutButton) {
+  final func configure_sheetStepperConfigurator (_ inOutlet : AutoLayoutStepper) {
 //--- START OF USER ZONE 2
-        inOutlet.title = "⬆︎"
-        self.mSheetController.register (previousSheet: inOutlet)
+         self.mSheetController.register (stepper: inOutlet)
 //--- END OF USER ZONE 2
   }
 }
