@@ -2395,6 +2395,8 @@
 		CF9C1C1B279C4D030018CCDB /* extension-AutoLayoutProjectDocument-schematic-select-all-connected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C1C1A279C4D030018CCDB /* extension-AutoLayoutProjectDocument-schematic-select-all-connected.swift */; };
 		CF9C1C1D279C4EE40018CCDB /* action-AutoLayoutProjectDocument-moveSelectedToSheetInSchematicsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C1C1C279C4EE40018CCDB /* action-AutoLayoutProjectDocument-moveSelectedToSheetInSchematicsAction.swift */; };
 		CF9C1C1F279C51800018CCDB /* configurator-AutoLayoutProjectDocument-schematicPullDownButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C1C1E279C517F0018CCDB /* configurator-AutoLayoutProjectDocument-schematicPullDownButtonConfigurator.swift */; };
+		CF9C1C21279C57290018CCDB /* configurator-AutoLayoutProjectDocument-symbolDragSourceTableViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C1C20279C57280018CCDB /* configurator-AutoLayoutProjectDocument-symbolDragSourceTableViewConfigurator.swift */; };
+		CF9C1C23279C59100018CCDB /* configurator-AutoLayoutProjectDocument-schematicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C1C22279C59100018CCDB /* configurator-AutoLayoutProjectDocument-schematicView.swift */; };
 		CF9C605525CABE5C00A00D5C /* ZoomInToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BB1B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff */; };
 		CF9C605625CABE5C00A00D5C /* A4vertical.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172701B3C4CD600F3CA82 /* A4vertical.pdf */; };
 		CF9C605725CABE5C00A00D5C /* line-in-symbol.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172931B3C4CD600F3CA82 /* line-in-symbol.pdf */; };
@@ -5520,6 +5522,8 @@
 		CF9C1C1A279C4D030018CCDB /* extension-AutoLayoutProjectDocument-schematic-select-all-connected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-AutoLayoutProjectDocument-schematic-select-all-connected.swift"; sourceTree = "<group>"; };
 		CF9C1C1C279C4EE40018CCDB /* action-AutoLayoutProjectDocument-moveSelectedToSheetInSchematicsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-moveSelectedToSheetInSchematicsAction.swift"; sourceTree = "<group>"; };
 		CF9C1C1E279C517F0018CCDB /* configurator-AutoLayoutProjectDocument-schematicPullDownButtonConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-schematicPullDownButtonConfigurator.swift"; sourceTree = "<group>"; };
+		CF9C1C20279C57280018CCDB /* configurator-AutoLayoutProjectDocument-symbolDragSourceTableViewConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-symbolDragSourceTableViewConfigurator.swift"; sourceTree = "<group>"; };
+		CF9C1C22279C59100018CCDB /* configurator-AutoLayoutProjectDocument-schematicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-schematicView.swift"; sourceTree = "<group>"; };
 		CF9C602425CAB19700A00D5C /* EBAutoLayoutManagedDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBAutoLayoutManagedDocument.swift; sourceTree = "<group>"; };
 		CF9C602D25CAB4FA00A00D5C /* AutoLayoutSpinningProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutSpinningProgressIndicator.swift; sourceTree = "<group>"; };
 		CF9C603125CAB4FA00A00D5C /* AutoLayoutFlexibleSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutFlexibleSpace.swift; sourceTree = "<group>"; };
@@ -7230,6 +7234,8 @@
 				CFB82B1C276B71CD00BAD56E /* configurator-AutoLayoutProjectDocument-pinsOfSelectedNetTableViewConfigurator.swift */,
 				CF7F5068279C1C1A007BB908 /* configurator-AutoLayoutProjectDocument-schematicInspectorConfigurator.swift */,
 				CF9C1C1E279C517F0018CCDB /* configurator-AutoLayoutProjectDocument-schematicPullDownButtonConfigurator.swift */,
+				CF9C1C22279C59100018CCDB /* configurator-AutoLayoutProjectDocument-schematicView.swift */,
+				CF9C1C20279C57280018CCDB /* configurator-AutoLayoutProjectDocument-symbolDragSourceTableViewConfigurator.swift */,
 				CF54A0422770C52700D978D9 /* controller-array-AutoLayoutProjectDocument-boardCurveObjectsController.swift */,
 				CFDE7C452766654800762C03 /* controller-array-AutoLayoutProjectDocument-boardObjectsController.swift */,
 				CF3304F027735C3E00275263 /* controller-array-AutoLayoutProjectDocument-schematicObjectsController.swift */,
@@ -12965,6 +12971,7 @@
 				CF9C64BA25CABE5C00A00D5C /* view-StringArrayTableView.swift in Sources */,
 				CF22F24B275A73EE009C6FAC /* transient-MergerBoardInstance-modelName.swift in Sources */,
 				CF841E3A275C05750000EA26 /* action-AutoLayoutMergerDocument-generateProductFilesAction.swift in Sources */,
+				CF9C1C23279C59100018CCDB /* configurator-AutoLayoutProjectDocument-schematicView.swift in Sources */,
 				CFB4C0832794668300C509A9 /* AutoLayoutDoubleSlider.swift in Sources */,
 				CF1820A227724FF000068AD6 /* extension-AutoLayoutProjectDocument-board-menu-actions.swift in Sources */,
 				CF22F1F7275A73ED009C6FAC /* transient-BoardModel-frontLegendLinesSegments.swift in Sources */,
@@ -13074,6 +13081,7 @@
 				CF12F03B277A55650066D4B0 /* extension-AutoLayoutProjectDocumentSubClass-launchFreeRouterWithRouterDocument.swift in Sources */,
 				CF9C651825CABE5C00A00D5C /* library-repository-perform-commit.swift in Sources */,
 				CFB7D8E82683A61D007B9D3B /* transient-AutoLayoutPackageDocument-addGuideButtonImage.swift in Sources */,
+				CF9C1C21279C57290018CCDB /* configurator-AutoLayoutProjectDocument-symbolDragSourceTableViewConfigurator.swift in Sources */,
 				CF4D3E47276A423800013196 /* AutoLayoutProjectDocument-utilities.swift in Sources */,
 				CF9C651B25CABE5C00A00D5C /* buildPDFimage.swift in Sources */,
 				CF711D9F275E1B2A00280069 /* toone-NetClassInProject.swift in Sources */,

@@ -113,7 +113,7 @@ let PAPER_GUTTER_HEIGHT_COCOA_UNIT : CGFloat =  13.0
                                   event dragEvent: NSEvent,
                                   offset dragImageOffset: NSPointPointer) -> NSImage {
     var resultImage = NSImage (named: NSImage.Name ("exclamation"))!
- /*   if inSourceTableView == self.mUnplacedSymbolsTableView,
+    if inSourceTableView == self.mUnplacedSymbolsTableView,
       let schematicsView = self.mSchematicsView?.mGraphicView,
       dragRows.count == 1,
       let idx = dragRows.first {
@@ -159,7 +159,7 @@ let PAPER_GUTTER_HEIGHT_COCOA_UNIT : CGFloat =  13.0
         var scaledP = af.transform (p)
         dragImageOffset.initialize (from: &scaledP, count: 1)
       }
-    }else */ if inSourceTableView == self.mUnplacedPackageTableView,
+    }else if inSourceTableView == self.mUnplacedPackageTableView,
            let boardView = self.mBoardView?.mGraphicView,
            dragRows.count == 1,
            let idx = dragRows.first {

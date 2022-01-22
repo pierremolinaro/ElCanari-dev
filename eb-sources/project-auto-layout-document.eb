@@ -426,7 +426,7 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       }
     }
     separator
-    GraphicView (minZoom: 50, maxZoom: 1_000) [outlet mSchematicsView] {
+    GraphicView (minZoom: 50, maxZoom: 1_000) [outlet mSchematicsView configurator schematicView] {
       $underObjectsDisplay root.schematicBackgroundDisplay
       $overObjectsDisplay root.connectedPoints
       $horizontalFlip root.mSchematicHorizontalFlip
@@ -449,13 +449,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 
   stackView mSelectedSchematicElementInspectorView vStack set (margins: 8) {
   }  
-  
-  stackView mInsertSymbolInSchematicView vStack set (margins: 8) {
-  }  
-  
-  stackView mSchematicsSheetInspectorView  vStack set (margins: 8) {
-  }  
-    
 
 //  outlet CanariDragSourceButton mAddCommentButton ;
 //  outlet CanariDragSourceButton mAddWireButton ;
@@ -480,9 +473,14 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
     StaticLabel (title: "[W] Insert Wire Point", bold: no, size: .small) [outlet mAddWirePointSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
   }  
 
-////--- Unplaced symbols inspector
-//  outlet CanariDragSourceTableView mUnplacedSymbolsTableView $models root.unplacedSymbols ;
-//
+//--- Unplaced symbols inspector
+  stackView mInsertSymbolInSchematicView vStack set (margins: 8) {
+    ElCanariDragSourceTableView 
+    [outlet mUnplacedSymbolsTableView configurator symbolDragSourceTableViewConfigurator] {
+      $models root.unplacedSymbols
+    }
+  }  
+  
 //--- Grid and Flip inspector
   stackView mSchematicsGridAndFlipInspectorView vStack set (margins: 8) {
     TabView (equalWidth: yes, size: .small) {
@@ -594,13 +592,15 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
       )
     }
   }  
-  
-////----------------- Color and Font inspector
-//
-////--- Symbol drawing line width
-//  outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton $selectedTag prefs.symbolDrawingWidthMultipliedByTenForSchematic ;
 
-////--- Sheet inspector
+//--- Sheet inspector
+  stackView mSchematicsSheetInspectorView  vStack set (margins: 8) {
+    GridView2 {
+      add (single: StaticLabel (title: "Sheet Inspector", bold: yes, size: .small) { expandableWidth () set (alignment: .center) })
+    }
+  }  
+    
+
 //  outlet EBTextField mSchematicsTitleTextField $value root.mSchematicTitle (sendContinously : yes) ;
 //  outlet EBTextField mSchematicsVersionTextField $value root.mSchematicVersion (sendContinously : yes) ;
 //  outlet CanariEnumSegmentedControl mSchematicsSheetOrientationSegmentedControl
