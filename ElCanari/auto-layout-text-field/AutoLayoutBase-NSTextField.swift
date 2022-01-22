@@ -81,7 +81,7 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
     self.preferredMaxLayoutWidth = CGFloat (inMaxWidth)
     self.cell?.wraps = true
     self.lineBreakMode = .byWordWrapping
- //   self.setContentHuggingPriority (.defaultLow, for: .vertical)
+    self.invalidateIntrinsicContentSize ()
     return self
   }
 

@@ -137,6 +137,9 @@ extern autolayout class BoolPopUpButton (title0: String, title1: String) $enable
   $value property Bool
 }
 
+extern autolayout class PopUpButton (size: EBControlSize) {
+}
+
 extern autolayout class CanariUnitPopUpButton (size: EBControlSize) $hidden {
   $unit property Int
 }
@@ -166,6 +169,7 @@ extern autolayout class LinearSlider (min: Int, max: Int, ticks: Int) $enabled $
 
 extern autolayout class Button (title: String, size: EBControlSize) $enabled $run $hidden {
   func expandableWidth ()
+  func expandableHeight ()
   func set (width: Int)
   func set (height: Int)
 }
@@ -451,6 +455,14 @@ extern autolayout class ElCanariBoardComponentPackagePopUpButton {
 
 extern autolayout class CanariPreferredDirectionSegmentedControl $enabled {
   $angle property Int
+}
+
+extern autolayout class ElCanariDefaultNetClassPopUpButton {
+  $netClasses property String, transient StringArray // Net class names
+}
+
+extern autolayout class EnumSegmentedControl (titles: StringArray, equalWidth: Bool, size: EBControlSize) {
+  $selectedSegment property enum
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -17,7 +17,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {
-      self.removeEBObserversOf_mSchematicSheetOrientation_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mArtworkName_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mArtworkVersion_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mPDFBoardBackgroundColor_fromElementsOfSet (inRemovedSet) // Stored property
@@ -88,6 +87,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.removeEBObserversOf_mSchematicCustomWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mSchematicCustomHeight_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mSchematicCustomHeightUnit_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mSchematicSheetOrientation_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mRastnetDisplay_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mRastnetDisplayedNetName_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mRastnetDisplayedComponentName_fromElementsOfSet (inRemovedSet) // Stored property
@@ -99,8 +99,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.removeEBObserversOf_boardShapeIsRectangular_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_connectedPoints_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_sheetGeometry_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_schematicBackgroundDisplay_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_sheetIndexes_fromElementsOfSet (inRemovedSet) // Transient property
@@ -136,6 +134,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.removeEBObserversOf_fontNameArray_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_deviceNames_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_allClassNames_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_sheetGeometry_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_schematicBackgroundDisplay_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_netWarningCount_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_netNamesArray_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (inRemovedSet) // Transient property
@@ -150,7 +150,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     }
   //--- Add observers to added objects
     if !inAddedSet.isEmpty {
-      self.addEBObserversOf_mSchematicSheetOrientation_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mArtworkName_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mArtworkVersion_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mPDFBoardBackgroundColor_toElementsOfSet (inAddedSet) // Stored property
@@ -221,6 +220,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.addEBObserversOf_mSchematicCustomWidthUnit_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mSchematicCustomHeight_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mSchematicCustomHeightUnit_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mSchematicSheetOrientation_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mRastnetDisplay_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mRastnetDisplayedNetName_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mRastnetDisplayedComponentName_toElementsOfSet (inAddedSet) // Stored property
@@ -232,8 +232,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.addEBObserversOf_boardShapeIsRectangular_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_connectedPoints_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_sheetGeometry_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_schematicBackgroundDisplay_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_connexionWarningString_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_connexionErrorString_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_sheetIndexes_toElementsOfSet (inAddedSet) // Transient property
@@ -269,6 +267,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.addEBObserversOf_fontNameArray_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_deviceNames_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_allClassNames_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_sheetGeometry_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_schematicBackgroundDisplay_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_netWarningCount_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_netNamesArray_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_unplacedSymbols_toElementsOfSet (inAddedSet) // Transient property
@@ -281,65 +281,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.addEBObserversOf_selectedSheetObjects_toElementsOfSet (inAddedSet) // ToMany proxy
       self.addEBObserversOf_fileGenerationParameterArray_toElementsOfSet (inAddedSet) // ToMany proxy
    }
-  }
-
-  //····················································································································
-  //   Observers of 'mSchematicSheetOrientation' stored property
-  //····················································································································
-
-  private final var mObserversOf_mSchematicSheetOrientation = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSchematicSheetOrientation (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mSchematicSheetOrientation.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mSchematicSheetOrientation_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mSchematicSheetOrientation (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mSchematicSheetOrientation.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mSchematicSheetOrientation_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mSchematicSheetOrientation_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    if !self.mObserversOf_mSchematicSheetOrientation.isEmpty {
-      for managedObject in inSet.values {
-        self.mObserversOf_mSchematicSheetOrientation.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mSchematicSheetOrientation_property.addEBObserver (observer)
-        }
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSchematicSheetOrientation_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_mSchematicSheetOrientation.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mSchematicSheetOrientation_property.removeEBObserver (observer)
-      }
-    }
   }
 
   //····················································································································
@@ -4473,6 +4414,65 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'mSchematicSheetOrientation' stored property
+  //····················································································································
+
+  private final var mObserversOf_mSchematicSheetOrientation = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSchematicSheetOrientation (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSchematicSheetOrientation.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicSheetOrientation_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSchematicSheetOrientation (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSchematicSheetOrientation.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicSheetOrientation_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSchematicSheetOrientation_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    if !self.mObserversOf_mSchematicSheetOrientation.isEmpty {
+      for managedObject in inSet.values {
+        self.mObserversOf_mSchematicSheetOrientation.apply { (_ observer : EBObserverProtocol) in
+          managedObject.mSchematicSheetOrientation_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSchematicSheetOrientation_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    self.mObserversOf_mSchematicSheetOrientation.apply { (_ observer : EBObserverProtocol) in
+      observer.observedObjectDidChange ()
+      for managedObject in inSet.values {
+        managedObject.mSchematicSheetOrientation_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'mRastnetDisplay' stored property
   //····················································································································
 
@@ -5948,118 +5948,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     for managedObject in inSet.values {
       self.mObserversOf_connectedPoints.apply { (_ observer : EBObserverProtocol) in
         managedObject.connectedPoints_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'sheetGeometry' transient property
-  //····················································································································
-
-  private final var mObserversOf_sheetGeometry = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_sheetGeometry (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_sheetGeometry.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.sheetGeometry_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_sheetGeometry (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_sheetGeometry.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.sheetGeometry_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_sheetGeometry_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    for managedObject in inSet.values {
-      self.mObserversOf_sheetGeometry.apply { (_ observer : EBObserverProtocol) in
-        managedObject.sheetGeometry_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_sheetGeometry_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    for managedObject in inSet.values {
-      self.mObserversOf_sheetGeometry.apply { (_ observer : EBObserverProtocol) in
-        managedObject.sheetGeometry_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'schematicBackgroundDisplay' transient property
-  //····················································································································
-
-  private final var mObserversOf_schematicBackgroundDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_schematicBackgroundDisplay (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_schematicBackgroundDisplay.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.schematicBackgroundDisplay_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_schematicBackgroundDisplay (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_schematicBackgroundDisplay.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.schematicBackgroundDisplay_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_schematicBackgroundDisplay_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    for managedObject in inSet.values {
-      self.mObserversOf_schematicBackgroundDisplay.apply { (_ observer : EBObserverProtocol) in
-        managedObject.schematicBackgroundDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_schematicBackgroundDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    for managedObject in inSet.values {
-      self.mObserversOf_schematicBackgroundDisplay.apply { (_ observer : EBObserverProtocol) in
-        managedObject.schematicBackgroundDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -8025,6 +7913,118 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'sheetGeometry' transient property
+  //····················································································································
+
+  private final var mObserversOf_sheetGeometry = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_sheetGeometry (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_sheetGeometry.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.sheetGeometry_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_sheetGeometry (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_sheetGeometry.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.sheetGeometry_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_sheetGeometry_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_sheetGeometry.apply { (_ observer : EBObserverProtocol) in
+        managedObject.sheetGeometry_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_sheetGeometry_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_sheetGeometry.apply { (_ observer : EBObserverProtocol) in
+        managedObject.sheetGeometry_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'schematicBackgroundDisplay' transient property
+  //····················································································································
+
+  private final var mObserversOf_schematicBackgroundDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_schematicBackgroundDisplay (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_schematicBackgroundDisplay.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.schematicBackgroundDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_schematicBackgroundDisplay (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_schematicBackgroundDisplay.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.schematicBackgroundDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_schematicBackgroundDisplay_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_schematicBackgroundDisplay.apply { (_ observer : EBObserverProtocol) in
+        managedObject.schematicBackgroundDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_schematicBackgroundDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_schematicBackgroundDisplay.apply { (_ observer : EBObserverProtocol) in
+        managedObject.schematicBackgroundDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'netWarningCount' transient property
   //····················································································································
 
@@ -9108,7 +9108,6 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mSchematicSheetOrientation (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mArtworkName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mArtworkVersion (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mPDFBoardBackgroundColor (self.mObserverForWritingPreferences)
@@ -9179,6 +9178,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mSchematicCustomWidthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSchematicCustomHeight (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSchematicCustomHeightUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSchematicSheetOrientation (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mRastnetDisplay (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mRastnetDisplayedNetName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mRastnetDisplayedComponentName (self.mObserverForWritingPreferences)

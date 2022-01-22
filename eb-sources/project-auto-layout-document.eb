@@ -2,7 +2,7 @@
 //     P R O J E C T    D O C U M E N T
 //------------------------------------------------------------------------------
 
-autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumentMainView {
+autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperClass root ProjectRoot stackView mDocumentMainView {
 
   stackView mPageMasterView vStack { }
 
@@ -391,10 +391,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   action selectAllConnectedElementsInSchematicsAction ;
   action moveSelectedToSheetInSchematicsAction ;
 
-//  outlet CanariDefaultNetClassPopUpButton mCanariDefaultNetClassPopUpButton
-//    $netClasses root.mDefaultNetClassName, root.allClassNames ;
-//
-
   stackView mSchematicPage hStack {
     vStack set (width: 250) set (spacing: 0) {
       hStack set (spacing: 0) set (margins: 8) {
@@ -406,6 +402,8 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
         DragSourceButton (tooltip: "Add Comment") [configurator addCommentInSchematicsButton]
         space
         DragSourceButton (tooltip: "Add Wire; hint: option click starts a new wire.") [configurator addWireInschematicsButton]
+        space
+        ElCanariDefaultNetClassPopUpButton { $netClasses root.mDefaultNetClassName, root.allClassNames }
       }
       vStack {
         hStack set (leftMargin: 8) set (rightMargin: 8) {
@@ -590,50 +588,67 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
 
 //--- Sheet inspector
   stackView mSchematicsSheetInspectorView  vStack set (margins: 8) {
+    StaticLabel (title: "Sheet Inspector", bold: yes, size: .small) { expandableWidth () set (alignment: .center) }
+    PopUpButton (size: .small) [configurator sheetPopUpButtonConfigurator] // All bindings done programmatically
+    hStack {
+      Button (title: "New Sheet", size: .small) { expandableHeight () $run newSheetAction }
+      space
+      Button (title: "Delete Sheet", size: .small) { expandableHeight () $run deleteSheetAction $enabled root.mSheets.count > 1 }
+      space
+      vStack set (spacing: 0) {
+        Button (title: "Up", size: .small) [configurator previousSheetButtonConfigurator]
+        Button (title: "Down", size: .small) [configurator nextSheetButtonConfigurator]
+      }
+    }
+    StaticLabel (title: "Selected Sheet Name", bold: no, size: .small) { expandableWidth () set (alignment: .left) }
+    TextField (minWidth: 150, size: .small) { automaticallyAdjustHeight (maxWidth: 150) $value root.selectedSheetTitle (sendContinously : yes) }
+    separator
     GridView2 {
-      add (single: StaticLabel (title: "Sheet Inspector", bold: yes, size: .small) { expandableWidth () set (alignment: .center) })
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Title", bold: no, size: .small) { expandableHeight () },
+        right: TextField (minWidth: 150, size: .small) { automaticallyAdjustHeight (maxWidth: 150) $value root.mSchematicTitle (sendContinously : yes) }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Version", bold: no, size: .small),
+        right: TextField (minWidth: 150, size: .small) { $value root.mSchematicVersion (sendContinously : yes) }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Date", bold: no, size: .small),
+        right: hStack {
+          Button (title: "Set…", size: .small) { $run openSetDateDialogAction }
+          space 
+          Button (title: "Set to Now", size: .small) { $run setDateToNowAction }
+        }
+      )
+      addSeparator ()     
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Size", bold: no, size: .small),
+        right: EnumSegmentedControl (titles: enum SchematicSheetOrientation.popupTitles, equalWidth: no, size: .small)
+         [configurator sheetOrientationSegmentedControlConfigurator] { $selectedSegment root.mSchematicSheetOrientation }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Width", bold: no, size: .small) { $hidden !self.schematicSheetOrientationIsCustom },
+        right: CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mSchematicCustomWidth, root.mSchematicCustomWidthUnit
+          $hidden !self.schematicSheetOrientationIsCustom
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Height", bold: no, size: .small) { $hidden !self.schematicSheetOrientationIsCustom },
+        right: CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mSchematicCustomHeight, root.mSchematicCustomHeightUnit
+          $hidden !self.schematicSheetOrientationIsCustom
+        }
+      )
     }
   }  
-    
-
-//  outlet EBTextField mSchematicsTitleTextField $value root.mSchematicTitle (sendContinously : yes) ;
-//  outlet EBTextField mSchematicsVersionTextField $value root.mSchematicVersion (sendContinously : yes) ;
-//  outlet CanariEnumSegmentedControl mSchematicsSheetOrientationSegmentedControl
-//    $selectedSegment root.mSchematicSheetOrientation
-//  ;
-//
-//  outlet EBPopUpButton mSchematicCustomWidthUnitPopUp $selectedTag root.mSchematicCustomWidthUnit ;
-//  outlet CanariDimensionTextField mSchematicCustomWidthTextField
-//     $dimensionAndUnit root.mSchematicCustomWidth, root.mSchematicCustomWidthUnit
-//  ;
-//
-//  outlet EBPopUpButton mSchematicCustomHeightUnitPopUp $selectedTag root.mSchematicCustomHeightUnit ;
-//  outlet CanariDimensionTextField mSchematicCustomHeightTextField
-//     $dimensionAndUnit root.mSchematicCustomHeight, root.mSchematicCustomHeightUnit
-//  ;
-//
-//  transient Bool schematicSheetOrientationIsCustom dependsFrom root.mSchematicSheetOrientation ;
-//  outlet NSView mSchematicCustomSizeView $hidden !self.schematicSheetOrientationIsCustom ;
-//  
-//  outlet EBTextField mSelectedSheetTitleTextField $value root.selectedSheetTitle (sendContinously : yes) ;
-//
-//  outlet EBPopUpButton mSheetPopUpButton ; // All bindings done programmatically
-//  outlet EBButton mSheetUpButton ; // All bindings done programmatically
-//  outlet EBButton mSheetDownButton ; // All bindings done programmatically
-//
-//  action newSheetAction ;
-//  outlet EBButton mNewSheetButton $run newSheetAction ;
-//
-//  action removeSheetAction ;
-//  outlet EBButton mRemoveSheetButton $run removeSheetAction $enabled root.mSheets.count > 1 ;
-//
-//
-//  action setDateToNowAction ;
-//  outlet EBButton mSetDateToNowButton $run setDateToNowAction ;
-//
-//  action openSetDateDialogAction ;
-//  outlet EBButton mOpenSetDateDialogButton $run openSetDateDialogAction ;
-//
+ 
+  transient Bool schematicSheetOrientationIsCustom dependsFrom root.mSchematicSheetOrientation ; 
+  action newSheetAction ;
+  action deleteSheetAction ;
+  action setDateToNowAction ;
+  action openSetDateDialogAction ;
+  
 
 ////--- Selected Wire In schematics
 //  outlet CanariViewWithKeyView mSchematicsWireInspectorView ;

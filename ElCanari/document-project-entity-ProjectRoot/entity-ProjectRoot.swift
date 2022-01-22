@@ -6,12 +6,6 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicSheetOrientation : AnyObject {
-  var mSchematicSheetOrientation : SchematicSheetOrientation { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ProjectRoot_mArtworkName : AnyObject {
   var mArtworkName : String { get }
 }
@@ -432,6 +426,12 @@ protocol ProjectRoot_mSchematicCustomHeightUnit : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mSchematicSheetOrientation : AnyObject {
+  var mSchematicSheetOrientation : SchematicSheetOrientation { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mRastnetDisplay : AnyObject {
   var mRastnetDisplay : RastnetDisplay { get }
 }
@@ -572,18 +572,6 @@ protocol ProjectRoot_selectedSheetIssues : AnyObject {
 
 protocol ProjectRoot_connectedPoints : AnyObject {
   var connectedPoints : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_sheetGeometry : AnyObject {
-  var sheetGeometry : SchematicSheetGeometry? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_schematicBackgroundDisplay : AnyObject {
-  var schematicBackgroundDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -798,6 +786,18 @@ protocol ProjectRoot_allClassNames : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_sheetGeometry : AnyObject {
+  var sheetGeometry : SchematicSheetGeometry? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_schematicBackgroundDisplay : AnyObject {
+  var schematicBackgroundDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_netWarningCount : AnyObject {
   var netWarningCount : Int? { get }
 }
@@ -855,7 +855,6 @@ protocol ProjectRoot_schematicStatusImage : AnyObject {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ProjectRoot : EBManagedObject,
-         ProjectRoot_mSchematicSheetOrientation,
          ProjectRoot_mArtworkName,
          ProjectRoot_mArtworkVersion,
          ProjectRoot_mPDFBoardBackgroundColor,
@@ -926,6 +925,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicCustomWidthUnit,
          ProjectRoot_mSchematicCustomHeight,
          ProjectRoot_mSchematicCustomHeightUnit,
+         ProjectRoot_mSchematicSheetOrientation,
          ProjectRoot_mRastnetDisplay,
          ProjectRoot_mRastnetDisplayedNetName,
          ProjectRoot_mRastnetDisplayedComponentName,
@@ -950,8 +950,6 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_boardShapeIsRectangular,
          ProjectRoot_selectedSheetIssues,
          ProjectRoot_connectedPoints,
-         ProjectRoot_sheetGeometry,
-         ProjectRoot_schematicBackgroundDisplay,
          ProjectRoot_connexionWarningString,
          ProjectRoot_connexionErrorString,
          ProjectRoot_sheetIndexes,
@@ -987,6 +985,8 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_fontNameArray,
          ProjectRoot_deviceNames,
          ProjectRoot_allClassNames,
+         ProjectRoot_sheetGeometry,
+         ProjectRoot_schematicBackgroundDisplay,
          ProjectRoot_netWarningCount,
          ProjectRoot_netNamesArray,
          ProjectRoot_unplacedSymbols,
@@ -996,25 +996,6 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_schematicHasErrorOrWarning,
          ProjectRoot_schematicStatusMessage,
          ProjectRoot_schematicStatusImage {
-
-  //····················································································································
-  //   Atomic property: mSchematicSheetOrientation
-  //····················································································································
-
-  final let mSchematicSheetOrientation_property : EBStoredProperty_SchematicSheetOrientation
-
-  //····················································································································
-
-  final func reset_mSchematicSheetOrientation_toDefaultValue () {
-    self.mSchematicSheetOrientation = SchematicSheetOrientation.a4Horizontal
-  }
-
-  //····················································································································
-
-  final var mSchematicSheetOrientation : SchematicSheetOrientation {
-    get { return self.mSchematicSheetOrientation_property.propval }
-    set { self.mSchematicSheetOrientation_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mArtworkName
@@ -2407,6 +2388,25 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: mSchematicSheetOrientation
+  //····················································································································
+
+  final let mSchematicSheetOrientation_property : EBStoredProperty_SchematicSheetOrientation
+
+  //····················································································································
+
+  final func reset_mSchematicSheetOrientation_toDefaultValue () {
+    self.mSchematicSheetOrientation = SchematicSheetOrientation.a4Horizontal
+  }
+
+  //····················································································································
+
+  final var mSchematicSheetOrientation : SchematicSheetOrientation {
+    get { return self.mSchematicSheetOrientation_property.propval }
+    set { self.mSchematicSheetOrientation_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   To many property: mBorderCurves
   //····················································································································
 
@@ -3057,40 +3057,6 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: sheetGeometry
-  //····················································································································
-
-  final let sheetGeometry_property = EBTransientProperty_SchematicSheetGeometry ()
-
-  //····················································································································
-
-  final var sheetGeometry : SchematicSheetGeometry? {
-    switch self.sheetGeometry_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: schematicBackgroundDisplay
-  //····················································································································
-
-  final let schematicBackgroundDisplay_property = EBTransientProperty_EBShape ()
-
-  //····················································································································
-
-  final var schematicBackgroundDisplay : EBShape? {
-    switch self.schematicBackgroundDisplay_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: connexionWarningString
   //····················································································································
 
@@ -3686,6 +3652,40 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: sheetGeometry
+  //····················································································································
+
+  final let sheetGeometry_property = EBTransientProperty_SchematicSheetGeometry ()
+
+  //····················································································································
+
+  final var sheetGeometry : SchematicSheetGeometry? {
+    switch self.sheetGeometry_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: schematicBackgroundDisplay
+  //····················································································································
+
+  final let schematicBackgroundDisplay_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  final var schematicBackgroundDisplay : EBShape? {
+    switch self.schematicBackgroundDisplay_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: netWarningCount
   //····················································································································
 
@@ -3843,7 +3843,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
-    self.mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.a4Horizontal, undoManager: ebUndoManager)
     self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: ebUndoManager)
@@ -3914,6 +3913,7 @@ final class ProjectRoot : EBManagedObject,
     self.mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     self.mSchematicCustomHeight_property = EBStoredProperty_Int (defaultValue: 27000000, undoManager: ebUndoManager)
     self.mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.a4Horizontal, undoManager: ebUndoManager)
     self.mRastnetDisplay_property = EBStoredProperty_RastnetDisplay (defaultValue: RastnetDisplay.allNets, undoManager: ebUndoManager)
     self.mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
@@ -4459,48 +4459,6 @@ final class ProjectRoot : EBManagedObject,
     }
     self.mSelectedSheet_property.connectedPoints_property.addEBObserver (self.connectedPoints_property)
     self.selectedSheetIssues_property.addEBObserver (self.connectedPoints_property)
-  //--- Atomic property: sheetGeometry
-    self.sheetGeometry_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.mSchematicSheetOrientation_property.selection, unwSelf.mSchematicCustomWidth_property.selection, unwSelf.mSchematicCustomHeight_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
-          return .single (transient_ProjectRoot_sheetGeometry (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mSchematicSheetOrientation_property.addEBObserver (self.sheetGeometry_property)
-    self.mSchematicCustomWidth_property.addEBObserver (self.sheetGeometry_property)
-    self.mSchematicCustomHeight_property.addEBObserver (self.sheetGeometry_property)
-  //--- Atomic property: schematicBackgroundDisplay
-    self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.mSchematicTitle_property.selection, unwSelf.mSchematicVersion_property.selection, unwSelf.sheetGeometry_property.selection, unwSelf.mSelectedSheet_property.mSheetTitle_property.selection, unwSelf.mSheets_property.selection, unwSelf.mSelectedSheet_property.selection, unwSelf.mSchematicDate_property.selection, preferences_schematicBackColor_property.selection, preferences_schematicFrameColor_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
-          return .single (transient_ProjectRoot_schematicBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mSchematicTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicVersion_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.sheetGeometry_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSelectedSheet_property.mSheetTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSheets_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSelectedSheet_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicDate_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    preferences_schematicBackColor_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    preferences_schematicFrameColor_property.addEBObserver (self.schematicBackgroundDisplay_property)
   //--- Atomic property: connexionWarningString
     self.connexionWarningString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5091,6 +5049,48 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mNetClasses_property.addEBObserverOf_mNetClassName (self.allClassNames_property)
+  //--- Atomic property: sheetGeometry
+    self.sheetGeometry_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mSchematicSheetOrientation_property.selection, unwSelf.mSchematicCustomWidth_property.selection, unwSelf.mSchematicCustomHeight_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_ProjectRoot_sheetGeometry (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicSheetOrientation_property.addEBObserver (self.sheetGeometry_property)
+    self.mSchematicCustomWidth_property.addEBObserver (self.sheetGeometry_property)
+    self.mSchematicCustomHeight_property.addEBObserver (self.sheetGeometry_property)
+  //--- Atomic property: schematicBackgroundDisplay
+    self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mSchematicTitle_property.selection, unwSelf.mSchematicVersion_property.selection, unwSelf.sheetGeometry_property.selection, unwSelf.mSelectedSheet_property.mSheetTitle_property.selection, unwSelf.mSheets_property.selection, unwSelf.mSelectedSheet_property.selection, unwSelf.mSchematicDate_property.selection, preferences_schematicBackColor_property.selection, preferences_schematicFrameColor_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+          return .single (transient_ProjectRoot_schematicBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicVersion_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.sheetGeometry_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSelectedSheet_property.mSheetTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSheets_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSelectedSheet_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicDate_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    preferences_schematicBackColor_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    preferences_schematicFrameColor_property.addEBObserver (self.schematicBackgroundDisplay_property)
   //--- Atomic property: netWarningCount
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5355,18 +5355,6 @@ final class ProjectRoot : EBManagedObject,
     // self.mSelectedSheet_property.issues_property.removeEBObserver (self.selectedSheetIssues_property)
     // self.mSelectedSheet_property.connectedPoints_property.removeEBObserver (self.connectedPoints_property)
     // self.selectedSheetIssues_property.removeEBObserver (self.connectedPoints_property)
-    // self.mSchematicSheetOrientation_property.removeEBObserver (self.sheetGeometry_property)
-    // self.mSchematicCustomWidth_property.removeEBObserver (self.sheetGeometry_property)
-    // self.mSchematicCustomHeight_property.removeEBObserver (self.sheetGeometry_property)
-    // self.mSchematicTitle_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // self.mSchematicVersion_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // self.sheetGeometry_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // self.mSelectedSheet_property.mSheetTitle_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // self.mSheets_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // self.mSelectedSheet_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // self.mSchematicDate_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // preferences_schematicBackColor_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    // preferences_schematicFrameColor_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     // self.mSheets_property.removeEBObserverOf_connexionWarnings (self.connexionWarningString_property)
     // self.mSheets_property.removeEBObserverOf_connexionErrors (self.connexionErrorString_property)
     // self.mSheets_property.removeEBObserver (self.sheetIndexes_property)
@@ -5432,6 +5420,18 @@ final class ProjectRoot : EBManagedObject,
     // self.mFonts_property.removeEBObserverOf_mFontName (self.fontNameArray_property)
     // self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
     // self.mNetClasses_property.removeEBObserverOf_mNetClassName (self.allClassNames_property)
+    // self.mSchematicSheetOrientation_property.removeEBObserver (self.sheetGeometry_property)
+    // self.mSchematicCustomWidth_property.removeEBObserver (self.sheetGeometry_property)
+    // self.mSchematicCustomHeight_property.removeEBObserver (self.sheetGeometry_property)
+    // self.mSchematicTitle_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // self.mSchematicVersion_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // self.sheetGeometry_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // self.mSelectedSheet_property.mSheetTitle_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // self.mSheets_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // self.mSelectedSheet_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // self.mSchematicDate_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // preferences_schematicBackColor_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    // preferences_schematicFrameColor_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     // self.mNetClasses_property.removeEBObserverOf_netWarningCount (self.netWarningCount_property)
     // self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netNamesArray_property)
     // self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
@@ -5471,14 +5471,6 @@ final class ProjectRoot : EBManagedObject,
   #if BUILD_OBJECT_EXPLORER
     override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
       super.populateExplorerWindow (&y, view:view)
-      createEntryForPropertyNamed (
-        "mSchematicSheetOrientation",
-        object: self.mSchematicSheetOrientation_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mSchematicSheetOrientation_property.mObserverExplorer,
-        valueExplorer: &self.mSchematicSheetOrientation_property.mValueExplorer
-      )
       createEntryForPropertyNamed (
         "mArtworkName",
         object: self.mArtworkName_property,
@@ -6040,6 +6032,14 @@ final class ProjectRoot : EBManagedObject,
         valueExplorer: &self.mSchematicCustomHeightUnit_property.mValueExplorer
       )
       createEntryForPropertyNamed (
+        "mSchematicSheetOrientation",
+        object: self.mSchematicSheetOrientation_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSchematicSheetOrientation_property.mObserverExplorer,
+        valueExplorer: &self.mSchematicSheetOrientation_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
         "mRastnetDisplay",
         object: self.mRastnetDisplay_property,
         y: &y,
@@ -6127,22 +6127,6 @@ final class ProjectRoot : EBManagedObject,
         view: view,
         observerExplorer: &self.connectedPoints_property.mObserverExplorer,
         valueExplorer: &self.connectedPoints_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "sheetGeometry",
-        object: self.sheetGeometry_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.sheetGeometry_property.mObserverExplorer,
-        valueExplorer: &self.sheetGeometry_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "schematicBackgroundDisplay",
-        object: self.schematicBackgroundDisplay_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.schematicBackgroundDisplay_property.mObserverExplorer,
-        valueExplorer: &self.schematicBackgroundDisplay_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "connexionWarningString",
@@ -6425,6 +6409,22 @@ final class ProjectRoot : EBManagedObject,
         valueExplorer: &self.allClassNames_property.mValueExplorer
       )
       createEntryForPropertyNamed (
+        "sheetGeometry",
+        object: self.sheetGeometry_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.sheetGeometry_property.mObserverExplorer,
+        valueExplorer: &self.sheetGeometry_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "schematicBackgroundDisplay",
+        object: self.schematicBackgroundDisplay_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.schematicBackgroundDisplay_property.mObserverExplorer,
+        valueExplorer: &self.schematicBackgroundDisplay_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
         "netWarningCount",
         object: self.netWarningCount_property,
         y: &y,
@@ -6571,9 +6571,6 @@ final class ProjectRoot : EBManagedObject,
 
   #if BUILD_OBJECT_EXPLORER
     override func clearObjectExplorer () {
-  //--- Atomic property: mSchematicSheetOrientation
-    self.mSchematicSheetOrientation_property.mObserverExplorer = nil
-    self.mSchematicSheetOrientation_property.mValueExplorer = nil
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.mObserverExplorer = nil
     self.mArtworkName_property.mValueExplorer = nil
@@ -6792,6 +6789,9 @@ final class ProjectRoot : EBManagedObject,
       self.mDevices_property.mValueExplorer = nil
     //--- To many property: mNetClasses
       self.mNetClasses_property.mValueExplorer = nil
+  //--- Atomic property: mSchematicSheetOrientation
+    self.mSchematicSheetOrientation_property.mObserverExplorer = nil
+    self.mSchematicSheetOrientation_property.mValueExplorer = nil
     //--- To many property: mBorderCurves
       self.mBorderCurves_property.mValueExplorer = nil
     //--- To many property: mBoardObjects
@@ -6894,8 +6894,6 @@ final class ProjectRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    //--- Atomic property: mSchematicSheetOrientation
-      self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicSheetOrientation")
     //--- Atomic property: mArtworkName
       self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkName")
     //--- Atomic property: mArtworkVersion
@@ -7060,6 +7058,8 @@ final class ProjectRoot : EBManagedObject,
       relationshipName: "mNetClasses",
       intoDictionary: ioDictionary
     )
+    //--- Atomic property: mSchematicSheetOrientation
+      self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicSheetOrientation")
   //--- To many property: mBorderCurves
     self.store (
       managedObjectArray: self.mBorderCurves_property.propval.values,
@@ -7229,8 +7229,6 @@ final class ProjectRoot : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mSchematicSheetOrientation
-    self.mSchematicSheetOrientation_property.readFrom (dictionary: inDictionary, forKey: "mSchematicSheetOrientation")
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey: "mArtworkName")
   //--- Atomic property: mArtworkVersion
@@ -7371,6 +7369,8 @@ final class ProjectRoot : EBManagedObject,
     self.mSchematicCustomHeight_property.readFrom (dictionary: inDictionary, forKey: "mSchematicCustomHeight")
   //--- Atomic property: mSchematicCustomHeightUnit
     self.mSchematicCustomHeightUnit_property.readFrom (dictionary: inDictionary, forKey: "mSchematicCustomHeightUnit")
+  //--- Atomic property: mSchematicSheetOrientation
+    self.mSchematicSheetOrientation_property.readFrom (dictionary: inDictionary, forKey: "mSchematicSheetOrientation")
   //--- Atomic property: mRastnetDisplay
     self.mRastnetDisplay_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplay")
   //--- Atomic property: mRastnetDisplayedNetName
@@ -7387,7 +7387,6 @@ final class ProjectRoot : EBManagedObject,
   override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
-    ioString += "mSchematicSheetOrientation\n"
     ioString += "mArtworkName\n"
     ioString += "mArtworkVersion\n"
     ioString += "mPDFBoardBackgroundColor\n"
@@ -7458,6 +7457,7 @@ final class ProjectRoot : EBManagedObject,
     ioString += "mSchematicCustomWidthUnit\n"
     ioString += "mSchematicCustomHeight\n"
     ioString += "mSchematicCustomHeightUnit\n"
+    ioString += "mSchematicSheetOrientation\n"
     ioString += "mRastnetDisplay\n"
     ioString += "mRastnetDisplayedNetName\n"
     ioString += "mRastnetDisplayedComponentName\n"
@@ -7481,8 +7481,6 @@ final class ProjectRoot : EBManagedObject,
   override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    self.mSchematicSheetOrientation.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
     self.mArtworkName.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mArtworkVersion.appendPropertyValueTo (&ioData)
@@ -7622,6 +7620,8 @@ final class ProjectRoot : EBManagedObject,
     self.mSchematicCustomHeight.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mSchematicCustomHeightUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSchematicSheetOrientation.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mRastnetDisplay.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -7869,9 +7869,6 @@ final class ProjectRoot : EBManagedObject,
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
-      if let range = inDictionary ["mSchematicSheetOrientation"], let value = SchematicSheetOrientation.unarchiveFromDataRange (inData, range) {
-        self.mSchematicSheetOrientation = value
-      }
       if let range = inDictionary ["mArtworkName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mArtworkName = value
       }
@@ -8081,6 +8078,9 @@ final class ProjectRoot : EBManagedObject,
       }
       if let range = inDictionary ["mSchematicCustomHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mSchematicCustomHeightUnit = value
+      }
+      if let range = inDictionary ["mSchematicSheetOrientation"], let value = SchematicSheetOrientation.unarchiveFromDataRange (inData, range) {
+        self.mSchematicSheetOrientation = value
       }
       if let range = inDictionary ["mRastnetDisplay"], let value = RastnetDisplay.unarchiveFromDataRange (inData, range) {
         self.mRastnetDisplay = value

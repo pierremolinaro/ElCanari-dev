@@ -112,6 +112,12 @@ func enum QuadrantRotation.popupTitles {
 
 enum SchematicSheetOrientation { a4Vertical, a4Horizontal, custom }
 
+func enum SchematicSheetOrientation.popupTitles {
+  a4Vertical : "A4 V" ;
+  a4Horizontal : "A4 H" ;
+  custom : "Custom" ;
+}
+
 //——————————————————————————————————————————————————————————————————————————————
 
 enum AutorouterPreferredDirections {

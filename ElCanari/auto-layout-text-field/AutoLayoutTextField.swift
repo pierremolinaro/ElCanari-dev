@@ -41,14 +41,6 @@ final class AutoLayoutTextField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-//  override func ebCleanUp () {
-//    self.mValueController?.unregister ()
-//    self.mValueController = nil
-//    super.ebCleanUp ()
-//  }
-
-  //····················································································································
-
   var mTextDidChange : Optional < () -> Void>  = nil {
     didSet {
       self.mTextDidChange? ()
@@ -90,6 +82,7 @@ final class AutoLayoutTextField : AutoLayoutBase_NSTextField {
       self.stringValue = propertyValue
       self.enable (fromValueBinding: true, self.enabledBindingController)
     }
+    self.invalidateIntrinsicContentSize ()
   }
 
   //····················································································································
