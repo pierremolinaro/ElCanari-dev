@@ -391,6 +391,10 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   action selectAllConnectedElementsInSchematicsAction ;
   action moveSelectedToSheetInSchematicsAction ;
 
+//  outlet CanariDefaultNetClassPopUpButton mCanariDefaultNetClassPopUpButton
+//    $netClasses root.mDefaultNetClassName, root.allClassNames ;
+//
+
   stackView mSchematicPage hStack {
     vStack set (width: 250) set (spacing: 0) {
       hStack set (spacing: 0) set (margins: 8) {
@@ -399,13 +403,9 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
           add (item: menuItem "Move Selected Elements to Sheet…" $run moveSelectedToSheetInSchematicsAction )
         }
         space
-//        DragSourceButtonWithMenus (tooltip: "Add Restrict Rectangle;  the layers are set by the contextual menu.") [configurator addRestrictRectangleButton]
-//        space
-//        DragSourceButtonWithMenus (tooltip: "Add Line in Board;  the layer is set by the contextual menu.") [configurator addLineButton]
-//        space
-//        DragSourceButtonWithMenus (tooltip: "Add Text in Board; the layer is set by the contextual menu.") [configurator addTextButton]
-//        space
-//        DragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.") [configurator addTrackButton]
+        DragSourceButton (tooltip: "Add Comment") [configurator addCommentInSchematicsButton]
+        space
+        DragSourceButton (tooltip: "Add Wire; hint: option click starts a new wire.") [configurator addWireInschematicsButton]
       }
       vStack {
         hStack set (leftMargin: 8) set (rightMargin: 8) {
@@ -450,11 +450,6 @@ autoLayoutDocument AutoLayoutProjectDocument root ProjectRoot stackView mDocumen
   stackView mSelectedSchematicElementInspectorView vStack set (margins: 8) {
   }  
 
-//  outlet CanariDragSourceButton mAddCommentButton ;
-//  outlet CanariDragSourceButton mAddWireButton ;
-//  outlet CanariDefaultNetClassPopUpButton mCanariDefaultNetClassPopUpButton
-//    $netClasses root.mDefaultNetClassName, root.allClassNames ;
-//
 //--- Hot keys inspector
   stackView mSchematicHotKeysInspectorView vStack set (margins: 8) {
     StaticLabel (title: "Hot Keys", bold: yes, size: .small) { expandableWidth () set (alignment: .center) }

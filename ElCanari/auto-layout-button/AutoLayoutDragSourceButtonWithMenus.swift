@@ -67,9 +67,14 @@ final class AutoLayoutDragSourceButtonWithMenus : AutoLayoutBase_NSView {
 
   //····················································································································
 
+  func set (title inTitle : String, font inOptionalFont : NSFont?) {
+    self.mDragSourceButton.set (title: inTitle, font: inOptionalFont)
+  }
+
+  //····················································································································
+
   func set (image inImage : NSImage?) {
-    self.mDragSourceButton.image = inImage
-    self.mDragSourceButton.imageScaling = .scaleProportionallyUpOrDown
+    self.mDragSourceButton.set (image: inImage)
   }
 
   //····················································································································

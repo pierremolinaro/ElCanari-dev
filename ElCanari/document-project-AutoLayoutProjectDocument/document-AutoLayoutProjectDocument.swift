@@ -1213,6 +1213,14 @@ import Cocoa
         view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutFlexibleSpace ()
         view_0_0.appendView (view_0_0_1)
+        let view_0_0_2 = AutoLayoutDragSourceButton (tooltip: "Add Comment")
+        self.configure_addCommentInSchematicsButton (view_0_0_2) // Configurator
+        view_0_0.appendView (view_0_0_2)
+        let view_0_0_3 = AutoLayoutFlexibleSpace ()
+        view_0_0.appendView (view_0_0_3)
+        let view_0_0_4 = AutoLayoutDragSourceButton (tooltip: "Add Wire; hint: option click starts a new wire.")
+        self.configure_addWireInschematicsButton (view_0_0_4) // Configurator
+        view_0_0.appendView (view_0_0_4)
       }
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()

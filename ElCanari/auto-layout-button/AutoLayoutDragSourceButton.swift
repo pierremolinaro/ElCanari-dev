@@ -39,6 +39,23 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
 
   //····················································································································
 
+  func set (title inTitle : String, font inOptionalFont : NSFont?) {
+    self.title = inTitle
+    self.image = nil
+    if let font = inOptionalFont {
+      self.font = font
+    }
+  }
+
+  //····················································································································
+
+  func set (image inImage : NSImage?) {
+    self.image = inImage
+    self.imageScaling = .scaleProportionallyUpOrDown
+  }
+
+  //····················································································································
+
   override var fittingSize : NSSize {
     return NSSize (width: 23.0, height: 23.0)
   }
