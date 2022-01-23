@@ -695,6 +695,8 @@
 		CF3558E3279D87B3000BFC9B /* selectionController-AutoLayoutProjectDocument-commentInSchematicSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558E2279D87B3000BFC9B /* selectionController-AutoLayoutProjectDocument-commentInSchematicSelectionController.swift */; };
 		CF3558E6279D9007000BFC9B /* configurator-AutoLayoutProjectDocument-labelHAlignmentSegmendControlConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558E4279D9006000BFC9B /* configurator-AutoLayoutProjectDocument-labelHAlignmentSegmendControlConfigurator.swift */; };
 		CF3558E7279D9007000BFC9B /* configurator-AutoLayoutProjectDocument-labelVAlignmentSegmendControlConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558E5279D9006000BFC9B /* configurator-AutoLayoutProjectDocument-labelVAlignmentSegmendControlConfigurator.swift */; };
+		CF3558E9279D94A2000BFC9B /* selectionController-AutoLayoutProjectDocument-componentSymbolSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558E8279D94A1000BFC9B /* selectionController-AutoLayoutProjectDocument-componentSymbolSelectionController.swift */; };
+		CF3558EB279D9659000BFC9B /* action-AutoLayoutProjectDocument-renameComponentFromSelectedSymbolAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558EA279D9658000BFC9B /* action-AutoLayoutProjectDocument-renameComponentFromSelectedSymbolAction.swift */; };
 		CF35A54621A825BC00A0E500 /* extension-NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */; };
 		CF35A54721A825BC00A0E500 /* extension-NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */; };
 		CF35A54821A825BC00A0E500 /* extension-CGPoint-NSPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */; };
@@ -4908,6 +4910,8 @@
 		CF3558E2279D87B3000BFC9B /* selectionController-AutoLayoutProjectDocument-commentInSchematicSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-commentInSchematicSelectionController.swift"; sourceTree = "<group>"; };
 		CF3558E4279D9006000BFC9B /* configurator-AutoLayoutProjectDocument-labelHAlignmentSegmendControlConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-labelHAlignmentSegmendControlConfigurator.swift"; sourceTree = "<group>"; };
 		CF3558E5279D9006000BFC9B /* configurator-AutoLayoutProjectDocument-labelVAlignmentSegmendControlConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-labelVAlignmentSegmendControlConfigurator.swift"; sourceTree = "<group>"; };
+		CF3558E8279D94A1000BFC9B /* selectionController-AutoLayoutProjectDocument-componentSymbolSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-componentSymbolSelectionController.swift"; sourceTree = "<group>"; };
+		CF3558EA279D9658000BFC9B /* action-AutoLayoutProjectDocument-renameComponentFromSelectedSymbolAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-renameComponentFromSelectedSymbolAction.swift"; sourceTree = "<group>"; };
 		CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-NSBezierPath.swift"; sourceTree = "<group>"; };
 		CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGPoint-NSPoint.swift"; sourceTree = "<group>"; };
 		CF35A54421A825BC00A0E500 /* extension-CGRect-NSRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGRect-NSRect.swift"; sourceTree = "<group>"; };
@@ -7283,6 +7287,7 @@
 				CF04FCDD2767BFDC0062DF89 /* action-AutoLayoutProjectDocument-removeNetClassAction.swift */,
 				CFDE7C372766607000762C03 /* action-AutoLayoutProjectDocument-removeSelectedComponentsAction.swift */,
 				CF50D0E7276740F500B35C59 /* action-AutoLayoutProjectDocument-removeSelectedDeviceAction.swift */,
+				CF3558EA279D9658000BFC9B /* action-AutoLayoutProjectDocument-renameComponentFromSelectedSymbolAction.swift */,
 				CF3558D8279D733F000BFC9B /* action-AutoLayoutProjectDocument-renameLabelNetWithNewAutomaticNameAction.swift */,
 				CF72E5B0276A38660019E180 /* action-AutoLayoutProjectDocument-renameNetAction.swift */,
 				CF3558D9279D733F000BFC9B /* action-AutoLayoutProjectDocument-renameSchematicLabelNetAction.swift */,
@@ -7380,6 +7385,7 @@
 				CF56026A2792FEE400479AB6 /* selectionController-AutoLayoutProjectDocument-boardTrackSelectionController.swift */,
 				CF3558E2279D87B3000BFC9B /* selectionController-AutoLayoutProjectDocument-commentInSchematicSelectionController.swift */,
 				CFB4C01B27942AFF00C509A9 /* selectionController-AutoLayoutProjectDocument-componentInBoardSelectionController.swift */,
+				CF3558E8279D94A1000BFC9B /* selectionController-AutoLayoutProjectDocument-componentSymbolSelectionController.swift */,
 				CF51402A276BB1A0008DB542 /* selectionController-AutoLayoutProjectDocument-mDataSelection.swift */,
 				CF50D0EF2767493800B35C59 /* selectionController-AutoLayoutProjectDocument-mDeviceSelectionController.swift */,
 				CF3558D6279D6B4A000BFC9B /* selectionController-AutoLayoutProjectDocument-ncInSchematicSelectionController.swift */,
@@ -12400,6 +12406,7 @@
 				CF711D4D275E1AD400280069 /* tomany-DevicePinInProject.swift in Sources */,
 				CFB4C06B2794662800C509A9 /* AutoLayoutBoolPopUpButton.swift in Sources */,
 				CFBC202D275E14B60076697D /* extension-MergerBoardInstance.swift in Sources */,
+				CF3558E9279D94A2000BFC9B /* selectionController-AutoLayoutProjectDocument-componentSymbolSelectionController.swift in Sources */,
 				CF9C625725CABE5C00A00D5C /* transient-MasterPadInDevice-backSideFilledBezierPathArray.swift in Sources */,
 				CF9C625A25CABE5C00A00D5C /* EBPropertyProtocol.swift in Sources */,
 				CF49C15125D13A030082271E /* tomany-SymbolRoot.swift in Sources */,
@@ -13168,6 +13175,7 @@
 				CF9C64ED25CABE5C00A00D5C /* transient-FontInProject-descriptor.swift in Sources */,
 				CF9DE3392679F0610064234B /* AutoLayoutApplicationImage.swift in Sources */,
 				CF9C64F125CABE5C00A00D5C /* enum-PadNumbering.swift in Sources */,
+				CF3558EB279D9659000BFC9B /* action-AutoLayoutProjectDocument-renameComponentFromSelectedSymbolAction.swift in Sources */,
 				CF9C64F225CABE5C00A00D5C /* transient-BoardText-objectDisplay.swift in Sources */,
 				CFB7D74E26839B90007B9D3B /* transient-AutoLayoutSymbolDocument-addSegmentButtonImage.swift in Sources */,
 				CF071E8E275BA3CD00FF2772 /* action-AutoLayoutMergerDocument-moveUpAction.swift in Sources */,

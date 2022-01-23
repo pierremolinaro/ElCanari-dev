@@ -654,6 +654,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addObjectInspector (forEntity: entity NCInSchematic, inspectorView: stackView mNCInSchematicsInspectorView)
       addObjectInspector (forEntity: entity LabelInSchematic, inspectorView: stackView mSchematicsLabelInspectorView)
       addObjectInspector (forEntity: entity CommentInSchematic, inspectorView: stackView mCommentInSchematicsInspectorView)
+      addObjectInspector (forEntity: entity ComponentSymbolInProject, inspectorView: stackView mComponentSymbolInspectorView)
       $graphicController #schematicObjectsController
     }
     space
@@ -793,43 +794,67 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
   }
   
-////--- Selected symbol in schematic inspector
-//  outlet CanariViewWithKeyView mComponentSymbolInspectorView ;
-//  selectionController ComponentSymbolInProject #componentSymbolSelectionController :
-//    #schematicObjectsController.selectedArray
-//  ;
-//
-//  outlet EBSwitch mComponentSymbolShowComponentValueSwitch
-//    $value #componentSymbolSelectionController.mDisplayComponentValue
-//  ;
-//  outlet EBTextObserverField mComponentSymbolComponentNameTextField
-//    $valueObserver #componentSymbolSelectionController.componentName
-//  ;
-//
-//  outlet EBButton mRenameComponentFromComponentSymbolButton // Action set in IB
-//    $enabled #schematicObjectsController.selectedArray.count == 1
-//  ;
-//
-//  outlet EBTextField mComponentSymbolValueTextField
-//    $value #componentSymbolSelectionController.componentValueProxy (sendContinously : yes)
-//  ;
-//
-//  outlet EBTextObserverField mComponentSymbolDeviceNameTextField
-//    $valueObserver #componentSymbolSelectionController.deviceName
-//  ;
-//
-//  outlet EBTextObserverField mComponentSymbolTypeNameTextField
-//    $valueObserver #componentSymbolSelectionController.mSymbolTypeName
-//  ;
-//
-//  outlet EBTextObserverField mComponentSymbolInstanceNameTextField
-//    $valueObserver #componentSymbolSelectionController.mSymbolInstanceName
-//  ;
-//
-//  outlet CanariQuadrantSegmentedControl mSymbolRotationSegmentedControl
-//     $quadrant #componentSymbolSelectionController.mRotation ;
-//
-//  outlet EBSwitch mSymbolMirrorSwitch $value #componentSymbolSelectionController.mMirror ;
+//--- Selected symbol in schematic inspector
+  selectionController ComponentSymbolInProject #componentSymbolSelectionController :
+    #schematicObjectsController.selectedArray
+  ;
+  stackView mComponentSymbolInspectorView vStack {
+    StaticLabel (title: "Symbol Inspector", bold: yes, size: .small) { expandableWidth () set (alignment: .center) }
+    GridView2 {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Orientation", bold: no, size: .small),
+        right: EnumSegmentedControl (titles: enum QuadrantRotation.degreesTitles, equalWidth: yes, size: .small) {
+          $selectedSegment #componentSymbolSelectionController.mRotation
+        }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: Checkbox (title: "Mirror", size : .small) { $value #componentSymbolSelectionController.mMirror }
+      )
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Component Name", bold: no, size: .small)
+      Label (bold: yes, size: .small) { expandableWidth () set (alignment: .left) $title #componentSymbolSelectionController.componentName }
+    }
+    Button (title: "Rename Component…", size: .small) {
+      expandableWidth ()
+      $enabled #schematicObjectsController.selectedArray.count == 1
+      $run renameComponentFromSelectedSymbolAction
+    }
+    separator
+    Checkbox (title: "Show Component Value", size : .small) { $value #componentSymbolSelectionController.mDisplayComponentValue }
+    hStack {
+      StaticLabel (title: "Component Value", bold: no, size: .small)
+      TextField (minWidth: 100, size: .small) {
+        expandableWidth ()
+        $value #componentSymbolSelectionController.componentValueProxy (sendContinously: yes)
+      }
+    }
+    separator
+    StaticLabel (title: "Symbol Instance Name", bold: no, size: .small) { expandableWidth () set (alignment: .center) }
+    Label (bold: yes, size: .small) {
+      expandableWidth () 
+      set (alignment: .center) 
+      $title #componentSymbolSelectionController.mSymbolInstanceName
+    }
+    separator
+    StaticLabel (title: "Symbol Type Name", bold: no, size: .small) { expandableWidth () set (alignment: .center) }
+    Label (bold: yes, size: .small) {
+      expandableWidth () 
+      set (alignment: .center) 
+      $title #componentSymbolSelectionController.mSymbolTypeName
+    }
+    separator
+    StaticLabel (title: "Device Name", bold: no, size: .small) { expandableWidth () set (alignment: .center) }
+    Label (bold: yes, size: .small) {
+      expandableWidth () 
+      set (alignment: .center) 
+      $title #componentSymbolSelectionController.deviceName
+    }
+  }
+
+  action renameComponentFromSelectedSymbolAction ;
 
 //----------------- Board limits tab
   stackView mBoardOutlinePage hStack {
