@@ -653,6 +653,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addObjectInspector (forEntity: entity WireInSchematic, inspectorView: stackView mSchematicsWireInspectorView)
       addObjectInspector (forEntity: entity NCInSchematic, inspectorView: stackView mNCInSchematicsInspectorView)
       addObjectInspector (forEntity: entity LabelInSchematic, inspectorView: stackView mSchematicsLabelInspectorView)
+      addObjectInspector (forEntity: entity CommentInSchematic, inspectorView: stackView mCommentInSchematicsInspectorView)
       $graphicController #schematicObjectsController
     }
     space
@@ -760,35 +761,38 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action insulateSubnetFromCurrentNetForSelectedLabelAction ;
   
 //--- Selected comment in schematic inspector
-//  outlet CanariViewWithKeyView mCommentInSchematicsInspectorView ;
-//  selectionController CommentInSchematic #commentInSchematicSelectionController :
-//    #schematicObjectsController.selectedArray
-//  ;
-//
-//  outlet EBTextField mCommentInSchematicsTextField
-//    $value #commentInSchematicSelectionController.mComment (sendContinously : yes)
-//  ;
-//
-//  outlet EBDoubleField mCommentSizeInSchematicsTextField
-//    $value #commentInSchematicSelectionController.mSize (sendContinously : no, autoFormatter : no)
-//  ;
-//
-//  outlet EBSlider mCommentSizeInSchematicsSlider
-//    $doubleValue #commentInSchematicSelectionController.mSize (sendContinously : yes)
-//  ;
-//
-//  outlet EBColorWell mCommentColorInSchematicsTextField
-//    $color #commentInSchematicSelectionController.mColor (sendContinously : yes)
-//  ;
-//
-//  outlet CanariEnumSegmentedControl mCommentInSchematicsHorizontalAlignmentSegmentedControl
-//    $selectedSegment #commentInSchematicSelectionController.mHorizontalAlignment
-//  ;
-//
-//  outlet CanariEnumSegmentedControl mCommentInSchematicsVerticalAlignmentSegmentedControl
-//    $selectedSegment #commentInSchematicSelectionController.mVerticalAlignment
-//  ;
-//
+  selectionController CommentInSchematic #commentInSchematicSelectionController :
+    #schematicObjectsController.selectedArray
+  ;
+
+  stackView mCommentInSchematicsInspectorView vStack {
+    StaticLabel (title: "Comment Inspector", bold: yes, size: .small) { expandableWidth () set (alignment: .center) }
+    TextField (minWidth: 210, size: .small) {
+      automaticallyAdjustHeight (maxWidth: 210)
+      $value #commentInSchematicSelectionController.mComment (sendContinously : yes)
+    }
+    GridView2 {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Color", bold: no, size: .small),
+        right: ColorWell { $color #commentInSchematicSelectionController.mColor (sendContinously:yes) }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Size", bold: no, size: .small),
+        right: DoubleField (minWidth: 64, size: .small) { $value #commentInSchematicSelectionController.mSize (sendContinously:yes) }
+      )
+    }
+    LinearSlider (min: 4, max: 20, ticks: 17) { setAllowsTickMarkValuesOnly () $doubleValue #commentInSchematicSelectionController.mSize (sendContinously:yes) }
+    separator
+    StaticLabel (title: "Alignment", bold: no, size: .small) { expandableWidth () set (alignment: .left) }
+    EnumSegmentedControl (titles: enum HorizontalAlignment.popupTitles, equalWidth: yes, size: .small) [configurator labelHAlignmentSegmendControlConfigurator] {
+      $selectedSegment #commentInSchematicSelectionController.mHorizontalAlignment
+    }
+    EnumSegmentedControl (titles: enum VerticalAlignment.popupTitles, equalWidth: yes, size: .small) [configurator labelVAlignmentSegmendControlConfigurator] {
+      $selectedSegment #commentInSchematicSelectionController.mVerticalAlignment
+    }
+  }
+  
 ////--- Selected symbol in schematic inspector
 //  outlet CanariViewWithKeyView mComponentSymbolInspectorView ;
 //  selectionController ComponentSymbolInProject #componentSymbolSelectionController :

@@ -692,6 +692,9 @@
 		CF3558DD279D7534000BFC9B /* configurator-AutoLayoutProjectDocument-selectedLabelNetPopUpButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558DC279D7534000BFC9B /* configurator-AutoLayoutProjectDocument-selectedLabelNetPopUpButtonConfigurator.swift */; };
 		CF3558DF279D76A7000BFC9B /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedLabelAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558DE279D76A6000BFC9B /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedLabelAction.swift */; };
 		CF3558E1279D7733000BFC9B /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedLabelAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558E0279D7733000BFC9B /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedLabelAction.swift */; };
+		CF3558E3279D87B3000BFC9B /* selectionController-AutoLayoutProjectDocument-commentInSchematicSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558E2279D87B3000BFC9B /* selectionController-AutoLayoutProjectDocument-commentInSchematicSelectionController.swift */; };
+		CF3558E6279D9007000BFC9B /* configurator-AutoLayoutProjectDocument-labelHAlignmentSegmendControlConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558E4279D9006000BFC9B /* configurator-AutoLayoutProjectDocument-labelHAlignmentSegmendControlConfigurator.swift */; };
+		CF3558E7279D9007000BFC9B /* configurator-AutoLayoutProjectDocument-labelVAlignmentSegmendControlConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558E5279D9006000BFC9B /* configurator-AutoLayoutProjectDocument-labelVAlignmentSegmendControlConfigurator.swift */; };
 		CF35A54621A825BC00A0E500 /* extension-NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */; };
 		CF35A54721A825BC00A0E500 /* extension-NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */; };
 		CF35A54821A825BC00A0E500 /* extension-CGPoint-NSPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */; };
@@ -4902,6 +4905,9 @@
 		CF3558DC279D7534000BFC9B /* configurator-AutoLayoutProjectDocument-selectedLabelNetPopUpButtonConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-selectedLabelNetPopUpButtonConfigurator.swift"; sourceTree = "<group>"; };
 		CF3558DE279D76A6000BFC9B /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedLabelAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedLabelAction.swift"; sourceTree = "<group>"; };
 		CF3558E0279D7733000BFC9B /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedLabelAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedLabelAction.swift"; sourceTree = "<group>"; };
+		CF3558E2279D87B3000BFC9B /* selectionController-AutoLayoutProjectDocument-commentInSchematicSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-commentInSchematicSelectionController.swift"; sourceTree = "<group>"; };
+		CF3558E4279D9006000BFC9B /* configurator-AutoLayoutProjectDocument-labelHAlignmentSegmendControlConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-labelHAlignmentSegmendControlConfigurator.swift"; sourceTree = "<group>"; };
+		CF3558E5279D9006000BFC9B /* configurator-AutoLayoutProjectDocument-labelVAlignmentSegmendControlConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-labelVAlignmentSegmendControlConfigurator.swift"; sourceTree = "<group>"; };
 		CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-NSBezierPath.swift"; sourceTree = "<group>"; };
 		CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGPoint-NSPoint.swift"; sourceTree = "<group>"; };
 		CF35A54421A825BC00A0E500 /* extension-CGRect-NSRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGRect-NSRect.swift"; sourceTree = "<group>"; };
@@ -7309,6 +7315,8 @@
 				CF3304EE2773576A00275263 /* configurator-AutoLayoutProjectDocument-boardView.swift */,
 				CFB4C02527944A7000C509A9 /* configurator-AutoLayoutProjectDocument-componentPackagePopUpButtonConfigurator.swift */,
 				CFA0B7872779D6FF006E9309 /* configurator-AutoLayoutProjectDocument-ercIssueTableViewConfigurator.swift */,
+				CF3558E4279D9006000BFC9B /* configurator-AutoLayoutProjectDocument-labelHAlignmentSegmendControlConfigurator.swift */,
+				CF3558E5279D9006000BFC9B /* configurator-AutoLayoutProjectDocument-labelVAlignmentSegmendControlConfigurator.swift */,
 				CFC9D2612790741800371ACF /* configurator-AutoLayoutProjectDocument-netDescriptionTableViewConfigurator.swift */,
 				CF48F99B2778F93400CEE944 /* configurator-AutoLayoutProjectDocument-packageDragSourceTableViewConfigurator.swift */,
 				CFB82B1C276B71CD00BAD56E /* configurator-AutoLayoutProjectDocument-pinsOfSelectedNetTableViewConfigurator.swift */,
@@ -7370,6 +7378,7 @@
 				CF56027027932DF400479AB6 /* selectionController-AutoLayoutProjectDocument-boardLineSelectionController.swift */,
 				CF56027A27935C4900479AB6 /* selectionController-AutoLayoutProjectDocument-boardTextSelectionController.swift */,
 				CF56026A2792FEE400479AB6 /* selectionController-AutoLayoutProjectDocument-boardTrackSelectionController.swift */,
+				CF3558E2279D87B3000BFC9B /* selectionController-AutoLayoutProjectDocument-commentInSchematicSelectionController.swift */,
 				CFB4C01B27942AFF00C509A9 /* selectionController-AutoLayoutProjectDocument-componentInBoardSelectionController.swift */,
 				CF51402A276BB1A0008DB542 /* selectionController-AutoLayoutProjectDocument-mDataSelection.swift */,
 				CF50D0EF2767493800B35C59 /* selectionController-AutoLayoutProjectDocument-mDeviceSelectionController.swift */,
@@ -11855,6 +11864,7 @@
 				CF3558DD279D7534000BFC9B /* configurator-AutoLayoutProjectDocument-selectedLabelNetPopUpButtonConfigurator.swift in Sources */,
 				CF9C609325CABE5C00A00D5C /* transient-SymbolInstanceInDevice-objectDisplay.swift in Sources */,
 				CFD1EA7E274EE23A000AED8E /* tomany-FontCharacter.swift in Sources */,
+				CF3558E7279D9007000BFC9B /* configurator-AutoLayoutProjectDocument-labelVAlignmentSegmendControlConfigurator.swift in Sources */,
 				CF9C609625CABE5C00A00D5C /* transient-ProjectRoot-boardGridStepMultipliedByDisplayFactor.swift in Sources */,
 				CF22F215275A73EE009C6FAC /* transient-MergerRoot-boardWidth.swift in Sources */,
 				CF49C15825D13A030082271E /* entity-SymbolSolidRect.swift in Sources */,
@@ -12416,6 +12426,7 @@
 				CF2853A727542AF8000BD372 /* AutoLayoutCanariFontCharacterView.swift in Sources */,
 				CF9C627425CABE5C00A00D5C /* transient-NetClassInProject-allowTracksOnBackSideString.swift in Sources */,
 				CFC1326126FB4EBB0027AC93 /* EBReferenceSet.swift in Sources */,
+				CF3558E3279D87B3000BFC9B /* selectionController-AutoLayoutProjectDocument-commentInSchematicSelectionController.swift in Sources */,
 				CF31551A275CD6D800ED1FA8 /* transient-AutoLayoutMergerDocument-incorrectDocumentFileDetailedErrorMessage.swift in Sources */,
 				CF49C13B25D13A030082271E /* transient-SymbolPin-objectDisplay.swift in Sources */,
 				CF9C627725CABE5C00A00D5C /* transient-PackageInDevice-frontSidePadFilledBezierPathArray.swift in Sources */,
@@ -12825,6 +12836,7 @@
 				CF9C63E225CABE5C00A00D5C /* EBGraphicView-dragging-source.swift in Sources */,
 				CF54A0452770C95F00D978D9 /* selectionController-AutoLayoutProjectDocument-boardCurveSelectionController.swift in Sources */,
 				CF9C63E325CABE5C00A00D5C /* transient-PackageSlavePad-selectionDisplay.swift in Sources */,
+				CF3558E6279D9007000BFC9B /* configurator-AutoLayoutProjectDocument-labelHAlignmentSegmendControlConfigurator.swift in Sources */,
 				CFB4C01C27942AFF00C509A9 /* selectionController-AutoLayoutProjectDocument-componentInBoardSelectionController.swift in Sources */,
 				CF9C1C19279C4C3A0018CCDB /* action-AutoLayoutProjectDocument-selectAllConnectedElementsInSchematicsAction.swift in Sources */,
 				CFB7D8912683A61C007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageSlavePad.swift in Sources */,

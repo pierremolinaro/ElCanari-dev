@@ -166,6 +166,7 @@ extern autolayout class Checkbox (title: String, size: EBControlSize) $enabled $
 extern autolayout class LinearSlider (min: Int, max: Int, ticks: Int) $enabled $hidden {
   $intValue property Int (sendContinously : Bool)
   $doubleValue property Double (sendContinously : Bool)
+  func setAllowsTickMarkValuesOnly ()
 }
 
 extern autolayout class Button (title: String, size: EBControlSize) $enabled $run $hidden {

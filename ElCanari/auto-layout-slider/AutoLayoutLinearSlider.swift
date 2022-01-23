@@ -34,12 +34,9 @@ final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mDoubleValueController?.unregister ()
-    self.mDoubleValueController = nil
-    self.mIntValueController?.unregister ()
-    self.mIntValueController = nil
-    super.ebCleanUp ()
+  func setAllowsTickMarkValuesOnly () -> Self {
+    self.allowsTickMarkValuesOnly = true
+    return self
   }
 
   //····················································································································

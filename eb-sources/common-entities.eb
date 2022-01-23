@@ -89,10 +89,23 @@ enum HorizontalAlignment {
   onTheRight, center, onTheLeft
 }
 
+func enum HorizontalAlignment.popupTitles {
+  onTheRight : "Right" ;
+  center : "Center" ;
+  onTheLeft : "Left" ;
+}
+
 //——————————————————————————————————————————————————————————————————————————————
 
 enum VerticalAlignment {
   above, base, center, below
+}
+
+func enum VerticalAlignment.popupTitles {
+  above : "above" ;
+  base : "base" ;
+  center : "center" ;
+  below : "below" ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————
