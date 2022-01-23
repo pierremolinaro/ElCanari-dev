@@ -651,7 +651,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   stackView mSelectedSchematicElementInspectorView vStack set (margins: 8) {
     ObjectInspectorView {
       addObjectInspector (forEntity: entity WireInSchematic, inspectorView: stackView mSchematicsWireInspectorView)
-      $graphicController #schematicObjectsController
+      addObjectInspector (forEntity: entity NCInSchematic, inspectorView: stackView mNCInSchematicsInspectorView)
+       $graphicController #schematicObjectsController
     }
     space
   }
@@ -662,7 +663,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   ;
   
   stackView mSchematicsWireInspectorView vStack {
-    StaticLabel (title: "Wire Inspector", bold: yes, size: .small) { expandableWidth () }
+    StaticLabel (title: "Wire Inspector", bold: yes, size: .small) { expandableWidth () set (alignment: .center) }
     hStack {
       StaticLabel (title: "Net", bold: no, size: .small)
       Label (bold: yes, size: .small) { expandableWidth () set (alignment: .left) $title #wireInSchematicSelectionController.netName }
@@ -699,18 +700,19 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action mergeSubnetIntoAnExistingNetForSelectedWireAction ;
   action insulateSubnetFromCurrentNetForSelectedWireAction ;
 
-//  outlet EBPopUpButton mSchematicWireNetClassButton ;
-
 //--- Selected NC In schematics
-//  outlet CanariViewWithKeyView mNCInSchematicsInspectorView ;
-//  selectionController NCInSchematic #ncInSchematicSelectionController :
-//    #schematicObjectsController.selectedArray
-//  ;
-//
-//  outlet CanariQuadrantSegmentedControl mNCRotationSegmentedControl
-//     $quadrant #ncInSchematicSelectionController.mOrientation ;
-//
-////--- Selected comment in schematic inspector
+  selectionController NCInSchematic #ncInSchematicSelectionController :
+    #schematicObjectsController.selectedArray
+  ;
+
+  stackView mNCInSchematicsInspectorView vStack {
+    StaticLabel (title: "NC Inspector", bold: yes, size: .small) { expandableWidth () set (alignment: .center) }
+    EnumSegmentedControl (titles: enum QuadrantRotation.popupTitles, equalWidth: yes, size: .small) {
+      $selectedSegment #ncInSchematicSelectionController.mOrientation
+    }
+  }
+
+//--- Selected comment in schematic inspector
 //  outlet CanariViewWithKeyView mCommentInSchematicsInspectorView ;
 //  selectionController CommentInSchematic #commentInSchematicSelectionController :
 //    #schematicObjectsController.selectedArray

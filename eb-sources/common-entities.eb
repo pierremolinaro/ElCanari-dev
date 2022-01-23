@@ -102,10 +102,10 @@ enum QuadrantRotation {
 }
 
 func enum QuadrantRotation.popupTitles {
-  rotation0 : "0" ;
-  rotation90 : "90" ;
-  rotation180 : "180" ;
-  rotation270 : "270" ;
+  rotation0 : "0°" ;
+  rotation90 : "90°" ;
+  rotation180 : "180°" ;
+  rotation270 : "270°" ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

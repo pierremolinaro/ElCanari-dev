@@ -45,6 +45,12 @@ import Cocoa
   var wireInSchematicSelectionController = SelectionController_AutoLayoutProjectDocument_wireInSchematicSelectionController ()
 
   //····················································································································
+  //   Selection controller: ncInSchematicSelectionController
+  //····················································································································
+
+  var ncInSchematicSelectionController = SelectionController_AutoLayoutProjectDocument_ncInSchematicSelectionController ()
+
+  //····················································································································
   //   Selection controller: schematicLabelSelectionController
   //····················································································································
 
@@ -659,6 +665,8 @@ import Cocoa
       self.schematicObjectsController.addExplorer (name: "schematicObjectsController", y:&y, view:view)
     //--- Selection controller property: wireInSchematicSelectionController
       self.wireInSchematicSelectionController.addExplorer (name: "wireInSchematicSelectionController", y:&y, view:view)
+    //--- Selection controller property: ncInSchematicSelectionController
+      self.ncInSchematicSelectionController.addExplorer (name: "ncInSchematicSelectionController", y:&y, view:view)
     //--- Selection controller property: schematicLabelSelectionController
       self.schematicLabelSelectionController.addExplorer (name: "schematicLabelSelectionController", y:&y, view:view)
     //--- Array controller property: boardCurveObjectsController
@@ -1497,6 +1505,7 @@ import Cocoa
       .set (margins: 8)
     let view_0 = AutoLayoutObjectInspectorView ()
       .addObjectInspector (forEntity: WireInSchematic.self, inspectorView: self.mSchematicsWireInspectorView)
+      .addObjectInspector (forEntity: NCInSchematic.self, inspectorView: self.mNCInSchematicsInspectorView)
       .bind_graphic_controller (self.schematicObjectsController)
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutFlexibleSpace ()
@@ -1512,6 +1521,7 @@ import Cocoa
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Wire Inspector", bold: true, size: .small)
       .expandableWidth ()
+      .set (alignment: .center)
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
     do{
@@ -1568,6 +1578,22 @@ import Cocoa
         selector: #selector (AutoLayoutProjectDocument.insulateSubnetFromCurrentNetForSelectedWireAction (_:))
       )
     vStackView.appendView (view_7)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mNCInSchematicsInspectorView
+  //····················································································································
+
+  lazy var mNCInSchematicsInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutStaticLabel (title: "NC Inspector", bold: true, size: .small)
+      .expandableWidth ()
+      .set (alignment: .center)
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutEnumSegmentedControl (titles: QuadrantRotation.popupTitles (), equalWidth: true, size: .small)
+      .bind_selectedSegment (self.ncInSchematicSelectionController.mOrientation_property)
+    vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -6593,6 +6619,12 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Selection controller property: ncInSchematicSelectionController
+    self.ncInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Selection controller property: schematicLabelSelectionController
     self.schematicLabelSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
     if LOG_OPERATION_DURATION {
@@ -7270,6 +7302,7 @@ import Cocoa
     self.mSchematicsSheetInspectorView.ebCleanUp ()
     self.mSelectedSchematicElementInspectorView.ebCleanUp ()
     self.mSchematicsWireInspectorView.ebCleanUp ()
+    self.mNCInSchematicsInspectorView.ebCleanUp ()
     self.mBoardOutlinePage.ebCleanUp ()
     self.mBoardOutlineBaseView.ebCleanUp ()
     self.mBoardOutlineGridAndFlipView.ebCleanUp ()
@@ -7316,6 +7349,8 @@ import Cocoa
     self.schematicObjectsController.unbind_model ()
   //--- Selection controller property: wireInSchematicSelectionController
     self.wireInSchematicSelectionController.unbind_selection ()
+  //--- Selection controller property: ncInSchematicSelectionController
+    self.ncInSchematicSelectionController.unbind_selection ()
   //--- Selection controller property: schematicLabelSelectionController
     self.schematicLabelSelectionController.unbind_selection ()
   //--- Array controller property: boardCurveObjectsController
