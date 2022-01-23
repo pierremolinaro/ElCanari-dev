@@ -91,7 +91,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.mRastnetDisplayedNetName_property.removeEBObserver (self.mRastnetDisplayedNetName_property) // Stored property
       oldValue.mRastnetDisplayedComponentName_property.removeEBObserver (self.mRastnetDisplayedComponentName_property) // Stored property
       oldValue.hasInnerElements_property.removeEBObserver (self.hasInnerElements_property) // Transient property
-      oldValue.hasSixLayers_property.removeEBObserver (self.hasSixLayers_property) // Transient property
       oldValue.layerConfigurationString_property.removeEBObserver (self.layerConfigurationString_property) // Transient property
       oldValue.boardGridStepMultipliedByDisplayFactor_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property) // Transient property
       oldValue.boardLimitsGridStepMultipliedByDisplayFactor_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
@@ -103,6 +102,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.sheetIndexes_property.removeEBObserver (self.sheetIndexes_property) // Transient property
       oldValue.netsDescription_property.removeEBObserver (self.netsDescription_property) // Transient property
       oldValue.boardIssues_property.removeEBObserver (self.boardIssues_property) // Transient property
+      oldValue.hasSixLayers_property.removeEBObserver (self.hasSixLayers_property) // Transient property
       oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
       oldValue.ercStatusImage_property.removeEBObserver (self.ercStatusImage_property) // Transient property
       oldValue.ercStatusMessage_property.removeEBObserver (self.ercStatusMessage_property) // Transient property
@@ -222,7 +222,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.mRastnetDisplayedNetName_property.addEBObserver (self.mRastnetDisplayedNetName_property) // Stored property
       newValue.mRastnetDisplayedComponentName_property.addEBObserver (self.mRastnetDisplayedComponentName_property) // Stored property
       newValue.hasInnerElements_property.addEBObserver (self.hasInnerElements_property) // Transient property
-      newValue.hasSixLayers_property.addEBObserver (self.hasSixLayers_property) // Transient property
       newValue.layerConfigurationString_property.addEBObserver (self.layerConfigurationString_property) // Transient property
       newValue.boardGridStepMultipliedByDisplayFactor_property.addEBObserver (self.boardGridStepMultipliedByDisplayFactor_property) // Transient property
       newValue.boardLimitsGridStepMultipliedByDisplayFactor_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
@@ -234,6 +233,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.sheetIndexes_property.addEBObserver (self.sheetIndexes_property) // Transient property
       newValue.netsDescription_property.addEBObserver (self.netsDescription_property) // Transient property
       newValue.boardIssues_property.addEBObserver (self.boardIssues_property) // Transient property
+      newValue.hasSixLayers_property.addEBObserver (self.hasSixLayers_property) // Transient property
       newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
       newValue.ercStatusImage_property.addEBObserver (self.ercStatusImage_property) // Transient property
       newValue.ercStatusMessage_property.addEBObserver (self.ercStatusMessage_property) // Transient property
@@ -729,12 +729,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   final let hasInnerElements_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-  //   Observers of 'hasSixLayers' transient property
-  //····················································································································
-
-  final let hasSixLayers_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
   //   Observers of 'layerConfigurationString' transient property
   //····················································································································
 
@@ -799,6 +793,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let boardIssues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+
+  //····················································································································
+  //   Observers of 'hasSixLayers' transient property
+  //····················································································································
+
+  final let hasSixLayers_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
@@ -2345,21 +2345,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-  //--- Configure hasSixLayers transient property
-    self.hasSixLayers_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.hasSixLayers_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
   //--- Configure layerConfigurationString transient property
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2514,6 +2499,21 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.boardIssues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.boardIssues_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure hasSixLayers transient property
+    self.hasSixLayers_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.hasSixLayers_property.selection {
         case .empty :
           return .empty
         case .multiple :

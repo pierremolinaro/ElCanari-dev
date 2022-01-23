@@ -92,7 +92,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.removeEBObserversOf_mRastnetDisplayedNetName_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mRastnetDisplayedComponentName_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_hasInnerElements_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_hasSixLayers_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_layerConfigurationString_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_boardGridStepMultipliedByDisplayFactor_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_boardLimitsGridStepMultipliedByDisplayFactor_fromElementsOfSet (inRemovedSet) // Transient property
@@ -104,6 +103,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.removeEBObserversOf_sheetIndexes_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_netsDescription_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_boardIssues_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_hasSixLayers_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_ercStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_ercStatusMessage_fromElementsOfSet (inRemovedSet) // Transient property
@@ -225,7 +225,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.addEBObserversOf_mRastnetDisplayedNetName_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mRastnetDisplayedComponentName_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_hasInnerElements_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_hasSixLayers_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_layerConfigurationString_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_boardGridStepMultipliedByDisplayFactor_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_boardLimitsGridStepMultipliedByDisplayFactor_toElementsOfSet (inAddedSet) // Transient property
@@ -237,6 +236,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       self.addEBObserversOf_sheetIndexes_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_netsDescription_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_boardIssues_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_hasSixLayers_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_ercStatusImage_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_ercStatusMessage_toElementsOfSet (inAddedSet) // Transient property
@@ -4764,63 +4764,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'artworkLayerConfiguration' proxy property
-  //····················································································································
-
-  private final var mObserversOf_artworkLayerConfiguration = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_artworkLayerConfiguration (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_artworkLayerConfiguration.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.artworkLayerConfiguration_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_artworkLayerConfiguration (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_artworkLayerConfiguration.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.artworkLayerConfiguration_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_artworkLayerConfiguration_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    for managedObject in inSet.values {
-      self.mObserversOf_artworkLayerConfiguration.apply { (_ observer : EBObserverProtocol) in
-        managedObject.artworkLayerConfiguration_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_artworkLayerConfiguration_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    self.mObserversOf_artworkLayerConfiguration.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.artworkLayerConfiguration_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'minPPTPTTTWdisplayUnit' proxy property
   //····················································································································
 
@@ -5334,6 +5277,63 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'artworkLayerConfiguration' proxy property
+  //····················································································································
+
+  private final var mObserversOf_artworkLayerConfiguration = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_artworkLayerConfiguration (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_artworkLayerConfiguration.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.artworkLayerConfiguration_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_artworkLayerConfiguration (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_artworkLayerConfiguration.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.artworkLayerConfiguration_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_artworkLayerConfiguration_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_artworkLayerConfiguration.apply { (_ observer : EBObserverProtocol) in
+        managedObject.artworkLayerConfiguration_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_artworkLayerConfiguration_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    self.mObserversOf_artworkLayerConfiguration.apply { (_ observer : EBObserverProtocol) in
+      observer.observedObjectDidChange ()
+      for managedObject in inSet.values {
+        managedObject.artworkLayerConfiguration_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'artworkTitle' proxy property
   //····················································································································
 
@@ -5556,62 +5556,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     for managedObject in inSet.values {
       self.mObserversOf_hasInnerElements.apply { (_ observer : EBObserverProtocol) in
         managedObject.hasInnerElements_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'hasSixLayers' transient property
-  //····················································································································
-
-  private final var mObserversOf_hasSixLayers = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_hasSixLayers (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_hasSixLayers.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.hasSixLayers_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_hasSixLayers (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_hasSixLayers.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.hasSixLayers_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_hasSixLayers_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    for managedObject in inSet.values {
-      self.mObserversOf_hasSixLayers.apply { (_ observer : EBObserverProtocol) in
-        managedObject.hasSixLayers_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_hasSixLayers_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
-    for managedObject in inSet.values {
-      self.mObserversOf_hasSixLayers.apply { (_ observer : EBObserverProtocol) in
-        managedObject.hasSixLayers_property.removeEBObserver (observer)
       }
     }
   }
@@ -6228,6 +6172,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     for managedObject in inSet.values {
       self.mObserversOf_boardIssues.apply { (_ observer : EBObserverProtocol) in
         managedObject.boardIssues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'hasSixLayers' transient property
+  //····················································································································
+
+  private final var mObserversOf_hasSixLayers = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_hasSixLayers (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_hasSixLayers.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasSixLayers_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_hasSixLayers (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_hasSixLayers.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasSixLayers_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_hasSixLayers_toElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_hasSixLayers.apply { (_ observer : EBObserverProtocol) in
+        managedObject.hasSixLayers_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_hasSixLayers_fromElementsOfSet (_ inSet : EBReferenceSet <ProjectRoot>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_hasSixLayers.apply { (_ observer : EBObserverProtocol) in
+        managedObject.hasSixLayers_property.removeEBObserver (observer)
       }
     }
   }

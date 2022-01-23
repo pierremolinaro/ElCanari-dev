@@ -517,3 +517,97 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//  EBVersionShouldChangeObserver
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverEvent? = nil // SOULD BE WEAK
+  private var mSignatureAtStartUp : UInt32 = 0
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        return .single (unwSelf.mSignatureAtStartUp != unwSelf.signature ())
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func setSignatureObserverAndUndoManager (_ signatureObserver : EBSignatureObserverEvent, _ ebUndoManager : EBUndoManager?) {
+    self.mUndoManager = ebUndoManager
+    self.mSignatureObserver = signatureObserver
+    self.mSignatureAtStartUp = signatureObserver.signature ()
+  }
+
+  //····················································································································
+
+  final func updateStartUpSignature () {
+    if let signatureObserver = self.mSignatureObserver {
+      self.mSignatureAtStartUp = signatureObserver.signature ()
+      self.observedObjectDidChange ()
+    }
+  }
+
+  //····················································································································
+
+  func signature () -> UInt32 {
+    if let signatureObserver = self.mSignatureObserver {
+      return signatureObserver.signature ()
+    }else{
+      return 0
+    }
+  }
+
+  //····················································································································
+
+  func clearSignatureCache () {
+    self.observedObjectDidChange ()
+  }
+
+  //····················································································································
+  // clearStartUpSignature
+  //····················································································································
+
+  func clearStartUpSignature () {
+    self.mUndoManager?.registerUndo (withTarget: self, selector:#selector (performUndo(_:)), object:NSNumber (value: mSignatureAtStartUp))
+    self.mSignatureAtStartUp = 0
+    self.observedObjectDidChange ()
+  }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : NSNumber) {
+    self.mUndoManager?.registerUndo (withTarget: self, selector:#selector (performUndo(_:)), object:NSNumber (value: mSignatureAtStartUp))
+    self.mSignatureAtStartUp = oldValue.uint32Value
+    self.observedObjectDidChange ()
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func appendShowExploreDocumentWindowMenuItem (_ inMenu : NSMenu) {
+  #if BUILD_OBJECT_EXPLORER
+    let menuItem = NSMenuItem (
+      title: "Explore document",
+      action: #selector (EBAutoLayoutManagedDocument.showObjectExplorerWindow (_:)),
+      keyEquivalent: ""
+    )
+    menuItem.keyEquivalentModifierMask = [.command, .control]
+    inMenu.addItem (menuItem)
+  #endif
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -450,12 +450,6 @@ protocol ProjectRoot_mRastnetDisplayedComponentName : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_artworkLayerConfiguration : AnyObject {
-  var artworkLayerConfiguration : LayerConfiguration? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ProjectRoot_minPPTPTTTWdisplayUnit : AnyObject {
   var minPPTPTTTWdisplayUnit : Int? { get }
 }
@@ -510,6 +504,12 @@ protocol ProjectRoot_artworkComments : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_artworkLayerConfiguration : AnyObject {
+  var artworkLayerConfiguration : LayerConfiguration? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_artworkTitle : AnyObject {
   var artworkTitle : String? { get }
 }
@@ -530,12 +530,6 @@ protocol ProjectRoot_drillDataFileExtension : AnyObject {
 
 protocol ProjectRoot_hasInnerElements : AnyObject {
   var hasInnerElements : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_hasSixLayers : AnyObject {
-  var hasSixLayers : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -602,6 +596,12 @@ protocol ProjectRoot_netsDescription : AnyObject {
 
 protocol ProjectRoot_boardIssues : AnyObject {
   var boardIssues : CanariIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_hasSixLayers : AnyObject {
+  var hasSixLayers : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -929,7 +929,6 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_mRastnetDisplay,
          ProjectRoot_mRastnetDisplayedNetName,
          ProjectRoot_mRastnetDisplayedComponentName,
-         ProjectRoot_artworkLayerConfiguration,
          ProjectRoot_minPPTPTTTWdisplayUnit,
          ProjectRoot_minPPTPTTTW,
          ProjectRoot_minValueForOARdisplayUnit,
@@ -939,11 +938,11 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_minValueForBoardLimitWidth,
          ProjectRoot_minValueForBoardLimitWidthDisplayUnit,
          ProjectRoot_artworkComments,
+         ProjectRoot_artworkLayerConfiguration,
          ProjectRoot_artworkTitle,
          ProjectRoot_selectedSheetTitle,
          ProjectRoot_drillDataFileExtension,
          ProjectRoot_hasInnerElements,
-         ProjectRoot_hasSixLayers,
          ProjectRoot_layerConfigurationString,
          ProjectRoot_boardGridStepMultipliedByDisplayFactor,
          ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor,
@@ -955,6 +954,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_sheetIndexes,
          ProjectRoot_netsDescription,
          ProjectRoot_boardIssues,
+         ProjectRoot_hasSixLayers,
          ProjectRoot_signatureForERCChecking,
          ProjectRoot_ercStatusImage,
          ProjectRoot_ercStatusMessage,
@@ -2509,30 +2509,6 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Atomic proxy property: artworkLayerConfiguration
-  //····················································································································
-
-  let artworkLayerConfiguration_property = EBPropertyProxy_LayerConfiguration ()
-
-  //····················································································································
-
-  var artworkLayerConfiguration : LayerConfiguration? {
-    get {
-      switch self.artworkLayerConfiguration_property.selection {
-      case .empty, .multiple :
-        return nil
-      case .single (let v) :
-        return v
-      }
-    }
-    set {
-      if let unwrappedNewValue = newValue {
-        self.artworkLayerConfiguration_property.setProp (unwrappedNewValue)
-      }
-    }
-  }
-
-  //····················································································································
   //   Atomic proxy property: minPPTPTTTWdisplayUnit
   //····················································································································
 
@@ -2749,6 +2725,30 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Atomic proxy property: artworkLayerConfiguration
+  //····················································································································
+
+  let artworkLayerConfiguration_property = EBPropertyProxy_LayerConfiguration ()
+
+  //····················································································································
+
+  var artworkLayerConfiguration : LayerConfiguration? {
+    get {
+      switch self.artworkLayerConfiguration_property.selection {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.artworkLayerConfiguration_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
   //   Atomic proxy property: artworkTitle
   //····················································································································
 
@@ -2904,23 +2904,6 @@ final class ProjectRoot : EBManagedObject,
 
   final var hasInnerElements : Bool? {
     switch self.hasInnerElements_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: hasSixLayers
-  //····················································································································
-
-  final let hasSixLayers_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var hasSixLayers : Bool? {
-    switch self.hasSixLayers_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -3134,6 +3117,23 @@ final class ProjectRoot : EBManagedObject,
 
   final var boardIssues : CanariIssueArray? {
     switch self.boardIssues_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: hasSixLayers
+  //····················································································································
+
+  final let hasSixLayers_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var hasSixLayers : Bool? {
+    switch self.hasSixLayers_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -3960,32 +3960,6 @@ final class ProjectRoot : EBManagedObject,
     )
   //--- To many property: mComponents (no option)
     self.mComponents_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic proxy property: artworkLayerConfiguration
-    self.artworkLayerConfiguration_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mArtwork_property {
-        switch object.layerConfiguration_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let optionalV) :
-          if let v = optionalV {
-            return .single (v)
-          }else{
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.artworkLayerConfiguration_property.mWriteModelFunction = { [weak self] (_ inValue : LayerConfiguration) in
-      self?.mArtwork?.layerConfiguration = inValue
-    }
-    self.artworkLayerConfiguration_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : LayerConfiguration, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.layerConfiguration_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
-    self.mArtwork_property.layerConfiguration_property.addEBObserver (self.artworkLayerConfiguration_property)
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
@@ -4220,6 +4194,32 @@ final class ProjectRoot : EBManagedObject,
       return self?.mArtwork?.comments_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mArtwork_property.comments_property.addEBObserver (self.artworkComments_property)
+  //--- Atomic proxy property: artworkLayerConfiguration
+    self.artworkLayerConfiguration_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mArtwork_property {
+        switch object.layerConfiguration_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.artworkLayerConfiguration_property.mWriteModelFunction = { [weak self] (_ inValue : LayerConfiguration) in
+      self?.mArtwork?.layerConfiguration = inValue
+    }
+    self.artworkLayerConfiguration_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : LayerConfiguration, _ inWindow : NSWindow?) -> Bool in
+      return self?.mArtwork?.layerConfiguration_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mArtwork_property.layerConfiguration_property.addEBObserver (self.artworkLayerConfiguration_property)
   //--- Atomic proxy property: artworkTitle
     self.artworkTitle_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
@@ -4342,22 +4342,6 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mArtwork_property.hasInnerElements_property.addEBObserver (self.hasInnerElements_property)
-  //--- Atomic property: hasSixLayers
-    self.hasSixLayers_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.artworkLayerConfiguration_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectRoot_hasSixLayers (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.artworkLayerConfiguration_property.addEBObserver (self.hasSixLayers_property)
   //--- Atomic property: layerConfigurationString
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4539,6 +4523,22 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mBoardObjects_property.addEBObserverOf_issues (self.boardIssues_property)
+  //--- Atomic property: hasSixLayers
+    self.hasSixLayers_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.artworkLayerConfiguration_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_hasSixLayers (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.artworkLayerConfiguration_property.addEBObserver (self.hasSixLayers_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5271,11 +5271,6 @@ final class ProjectRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-  //--- Atomic proxy property: artworkLayerConfiguration
-    self.artworkLayerConfiguration_property.mReadModelFunction = nil
-    self.artworkLayerConfiguration_property.mWriteModelFunction = nil
-    self.artworkLayerConfiguration_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.layerConfiguration_property.removeEBObserver (self.artworkLayerConfiguration_property)
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = nil
     self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = nil
@@ -5321,6 +5316,11 @@ final class ProjectRoot : EBManagedObject,
     self.artworkComments_property.mWriteModelFunction = nil
     self.artworkComments_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.comments_property.removeEBObserver (self.artworkComments_property)
+  //--- Atomic proxy property: artworkLayerConfiguration
+    self.artworkLayerConfiguration_property.mReadModelFunction = nil
+    self.artworkLayerConfiguration_property.mWriteModelFunction = nil
+    self.artworkLayerConfiguration_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.layerConfiguration_property.removeEBObserver (self.artworkLayerConfiguration_property)
   //--- Atomic proxy property: artworkTitle
     self.artworkTitle_property.mReadModelFunction = nil
     self.artworkTitle_property.mWriteModelFunction = nil
@@ -5345,7 +5345,6 @@ final class ProjectRoot : EBManagedObject,
     self.fileGenerationParameterArray_modelDidChangeController?.unregister ()
     self.fileGenerationParameterArray_modelDidChangeController = nil
     // self.mArtwork_property.hasInnerElements_property.removeEBObserver (self.hasInnerElements_property)
-    // self.artworkLayerConfiguration_property.removeEBObserver (self.hasSixLayers_property)
     // self.mLayerConfiguration_property.removeEBObserver (self.layerConfigurationString_property)
     // self.mBoardGridStep_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
     // self.mBoardGridDisplayFactor_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
@@ -5360,6 +5359,7 @@ final class ProjectRoot : EBManagedObject,
     // self.mSheets_property.removeEBObserver (self.sheetIndexes_property)
     // self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netsDescription_property)
     // self.mBoardObjects_property.removeEBObserverOf_issues (self.boardIssues_property)
+    // self.artworkLayerConfiguration_property.removeEBObserver (self.hasSixLayers_property)
     // self.mBoardObjects_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
     // self.mArtwork_property.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mLastERCCheckingIsSuccess_property.removeEBObserver (self.ercStatusImage_property)
@@ -6073,14 +6073,6 @@ final class ProjectRoot : EBManagedObject,
         valueExplorer: &self.hasInnerElements_property.mValueExplorer
       )
       createEntryForPropertyNamed (
-        "hasSixLayers",
-        object: self.hasSixLayers_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.hasSixLayers_property.mObserverExplorer,
-        valueExplorer: &self.hasSixLayers_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
         "layerConfigurationString",
         object: self.layerConfigurationString_property,
         y: &y,
@@ -6167,6 +6159,14 @@ final class ProjectRoot : EBManagedObject,
         view: view,
         observerExplorer: &self.boardIssues_property.mObserverExplorer,
         valueExplorer: &self.boardIssues_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "hasSixLayers",
+        object: self.hasSixLayers_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.hasSixLayers_property.mObserverExplorer,
+        valueExplorer: &self.hasSixLayers_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "signatureForERCChecking",
@@ -6807,9 +6807,6 @@ final class ProjectRoot : EBManagedObject,
     self.mRastnetDisplayedComponentName_property.mValueExplorer = nil
     //--- To many property: mComponents
       self.mComponents_property.mValueExplorer = nil
-    //--- Atomic proxy property: artworkLayerConfiguration
-      self.artworkLayerConfiguration_property.mObserverExplorer = nil
-      self.artworkLayerConfiguration_property.mValueExplorer = nil
     //--- Atomic proxy property: minPPTPTTTWdisplayUnit
       self.minPPTPTTTWdisplayUnit_property.mObserverExplorer = nil
       self.minPPTPTTTWdisplayUnit_property.mValueExplorer = nil
@@ -6837,6 +6834,9 @@ final class ProjectRoot : EBManagedObject,
     //--- Atomic proxy property: artworkComments
       self.artworkComments_property.mObserverExplorer = nil
       self.artworkComments_property.mValueExplorer = nil
+    //--- Atomic proxy property: artworkLayerConfiguration
+      self.artworkLayerConfiguration_property.mObserverExplorer = nil
+      self.artworkLayerConfiguration_property.mValueExplorer = nil
     //--- Atomic proxy property: artworkTitle
       self.artworkTitle_property.mObserverExplorer = nil
       self.artworkTitle_property.mValueExplorer = nil

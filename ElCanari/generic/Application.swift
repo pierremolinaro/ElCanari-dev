@@ -98,7 +98,7 @@ let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
     flushModelEvents ()
     #if BUILD_OBJECT_EXPLORER
       for doc in NSDocumentController.shared.documents {
-        if let document = doc as? EBManagedXibDocument {
+        if let document = doc as? EBAutoLayoutManagedDocument {
           document.updateReachableEntitiesPopUpButton ()
         }
       }
