@@ -677,7 +677,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
           vStack {
             StaticLabel (title: "Add Model", bold: yes, size : .small) { expandableWidth () set (alignment: .left) }
             HelpButton (size : .small) { $run showBoardHelpAction }
-            EnumPopUpButton (titles: enum QuadrantRotation.popupTitles, size: .small) {
+            EnumPopUpButton (titles: enum QuadrantRotation.degreesTitles, size: .small) {
               expandableWidth ()
               $selectedIndex root.modelInsertionRotation
             }

@@ -101,11 +101,18 @@ enum QuadrantRotation {
   rotation0, rotation90, rotation180, rotation270
 }
 
-func enum QuadrantRotation.popupTitles {
+func enum QuadrantRotation.degreesTitles {
   rotation0 : "0°" ;
   rotation90 : "90°" ;
   rotation180 : "180°" ;
   rotation270 : "270°" ;
+}
+
+func enum QuadrantRotation.directionTitles {
+  rotation0 : "Right" ;
+  rotation90 : "Above" ;
+  rotation180 : "Left" ;
+  rotation270 : "Below" ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

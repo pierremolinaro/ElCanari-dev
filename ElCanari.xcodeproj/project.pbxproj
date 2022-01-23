@@ -687,6 +687,11 @@
 		CF3558D3279D6575000BFC9B /* selectionController-AutoLayoutProjectDocument-schematicLabelSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558D2279D6575000BFC9B /* selectionController-AutoLayoutProjectDocument-schematicLabelSelectionController.swift */; };
 		CF3558D5279D6726000BFC9B /* configurator-AutoLayoutProjectDocument-selectedWireNetPopUpButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558D4279D6726000BFC9B /* configurator-AutoLayoutProjectDocument-selectedWireNetPopUpButtonConfigurator.swift */; };
 		CF3558D7279D6B4B000BFC9B /* selectionController-AutoLayoutProjectDocument-ncInSchematicSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558D6279D6B4A000BFC9B /* selectionController-AutoLayoutProjectDocument-ncInSchematicSelectionController.swift */; };
+		CF3558DA279D7340000BFC9B /* action-AutoLayoutProjectDocument-renameLabelNetWithNewAutomaticNameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558D8279D733F000BFC9B /* action-AutoLayoutProjectDocument-renameLabelNetWithNewAutomaticNameAction.swift */; };
+		CF3558DB279D7340000BFC9B /* action-AutoLayoutProjectDocument-renameSchematicLabelNetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558D9279D733F000BFC9B /* action-AutoLayoutProjectDocument-renameSchematicLabelNetAction.swift */; };
+		CF3558DD279D7534000BFC9B /* configurator-AutoLayoutProjectDocument-selectedLabelNetPopUpButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558DC279D7534000BFC9B /* configurator-AutoLayoutProjectDocument-selectedLabelNetPopUpButtonConfigurator.swift */; };
+		CF3558DF279D76A7000BFC9B /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedLabelAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558DE279D76A6000BFC9B /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedLabelAction.swift */; };
+		CF3558E1279D7733000BFC9B /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedLabelAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558E0279D7733000BFC9B /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedLabelAction.swift */; };
 		CF35A54621A825BC00A0E500 /* extension-NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */; };
 		CF35A54721A825BC00A0E500 /* extension-NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */; };
 		CF35A54821A825BC00A0E500 /* extension-CGPoint-NSPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */; };
@@ -4892,6 +4897,11 @@
 		CF3558D2279D6575000BFC9B /* selectionController-AutoLayoutProjectDocument-schematicLabelSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-schematicLabelSelectionController.swift"; sourceTree = "<group>"; };
 		CF3558D4279D6726000BFC9B /* configurator-AutoLayoutProjectDocument-selectedWireNetPopUpButtonConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-selectedWireNetPopUpButtonConfigurator.swift"; sourceTree = "<group>"; };
 		CF3558D6279D6B4A000BFC9B /* selectionController-AutoLayoutProjectDocument-ncInSchematicSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-ncInSchematicSelectionController.swift"; sourceTree = "<group>"; };
+		CF3558D8279D733F000BFC9B /* action-AutoLayoutProjectDocument-renameLabelNetWithNewAutomaticNameAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-renameLabelNetWithNewAutomaticNameAction.swift"; sourceTree = "<group>"; };
+		CF3558D9279D733F000BFC9B /* action-AutoLayoutProjectDocument-renameSchematicLabelNetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-renameSchematicLabelNetAction.swift"; sourceTree = "<group>"; };
+		CF3558DC279D7534000BFC9B /* configurator-AutoLayoutProjectDocument-selectedLabelNetPopUpButtonConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-selectedLabelNetPopUpButtonConfigurator.swift"; sourceTree = "<group>"; };
+		CF3558DE279D76A6000BFC9B /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedLabelAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedLabelAction.swift"; sourceTree = "<group>"; };
+		CF3558E0279D7733000BFC9B /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedLabelAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedLabelAction.swift"; sourceTree = "<group>"; };
 		CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-NSBezierPath.swift"; sourceTree = "<group>"; };
 		CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGPoint-NSPoint.swift"; sourceTree = "<group>"; };
 		CF35A54421A825BC00A0E500 /* extension-CGRect-NSRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGRect-NSRect.swift"; sourceTree = "<group>"; };
@@ -7232,13 +7242,6 @@
 		CF784E41275E2914001BC885 /* project — ProjectDocument - autolayout */ = {
 			isa = PBXGroup;
 			children = (
-				CF3558D6279D6B4A000BFC9B /* selectionController-AutoLayoutProjectDocument-ncInSchematicSelectionController.swift */,
-				CF3558D4279D6726000BFC9B /* configurator-AutoLayoutProjectDocument-selectedWireNetPopUpButtonConfigurator.swift */,
-				CF3558D2279D6575000BFC9B /* selectionController-AutoLayoutProjectDocument-schematicLabelSelectionController.swift */,
-				CF3558CE279D64B5000BFC9B /* controller-popup-net-class-from-selected-labels.swift */,
-				CF3558CF279D64B6000BFC9B /* controller-popup-net-class-from-selected-wires.swift */,
-				CF3558CA279D628E000BFC9B /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedWireAction.swift */,
-				CF3558C8279D612F000BFC9B /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedWireAction.swift */,
 				CFDE7C2F27663DCA00762C03 /* action-AutoLayoutProjectDocument-addComponentFromEmbeddedLibraryAction.swift */,
 				CFDE7B392766353200762C03 /* action-AutoLayoutProjectDocument-addComponentFromFileLibraryAction.swift */,
 				CF2285C52766762A00804193 /* action-AutoLayoutProjectDocument-addFontAction.swift */,
@@ -7258,9 +7261,13 @@
 				CF514025276BB19F008DB542 /* action-AutoLayoutProjectDocument-importArtworkAction.swift */,
 				CF12F040277A5A970066D4B0 /* action-AutoLayoutProjectDocument-importSESFromBasicTabAction.swift */,
 				CF12F04A277A5F610066D4B0 /* action-AutoLayoutProjectDocument-importSESFromExtendedTabAction.swift */,
+				CF3558E0279D7733000BFC9B /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedLabelAction.swift */,
+				CF3558CA279D628E000BFC9B /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedWireAction.swift */,
 				CF12F046277A5E560066D4B0 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutAnyDocument.swift */,
 				CF12F047277A5E560066D4B0 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutRouterDocument.swift */,
 				CF12F038277A54A10066D4B0 /* action-AutoLayoutProjectDocument-launchFreeRouterWithRouterDocument.swift */,
+				CF3558DE279D76A6000BFC9B /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedLabelAction.swift */,
+				CF3558C8279D612F000BFC9B /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedWireAction.swift */,
 				CF9C1C1C279C4EE40018CCDB /* action-AutoLayoutProjectDocument-moveSelectedToSheetInSchematicsAction.swift */,
 				CF9C1C34279C74A70018CCDB /* action-AutoLayoutProjectDocument-newSheetAction.swift */,
 				CF9C1C3C279C7E580018CCDB /* action-AutoLayoutProjectDocument-openSetDateDialogAction.swift */,
@@ -7270,7 +7277,9 @@
 				CF04FCDD2767BFDC0062DF89 /* action-AutoLayoutProjectDocument-removeNetClassAction.swift */,
 				CFDE7C372766607000762C03 /* action-AutoLayoutProjectDocument-removeSelectedComponentsAction.swift */,
 				CF50D0E7276740F500B35C59 /* action-AutoLayoutProjectDocument-removeSelectedDeviceAction.swift */,
+				CF3558D8279D733F000BFC9B /* action-AutoLayoutProjectDocument-renameLabelNetWithNewAutomaticNameAction.swift */,
 				CF72E5B0276A38660019E180 /* action-AutoLayoutProjectDocument-renameNetAction.swift */,
+				CF3558D9279D733F000BFC9B /* action-AutoLayoutProjectDocument-renameSchematicLabelNetAction.swift */,
 				CF9C1C4E279CA6C10018CCDB /* action-AutoLayoutProjectDocument-renameSchematicWireNetAction.swift */,
 				CFDE7C332766412400762C03 /* action-AutoLayoutProjectDocument-renameSelectedComponentsAction.swift */,
 				CF9C1C50279CA7F50018CCDB /* action-AutoLayoutProjectDocument-renameWireNetWithNewAutomaticNameAction.swift */,
@@ -7288,7 +7297,6 @@
 				CF2285D927667D8800804193 /* action-AutoLayoutProjectDocument-updateFontAction.swift */,
 				CF50D0ED276743D600B35C59 /* action-AutoLayoutProjectDocument-updateSelectedDeviceAction.swift */,
 				CF4D3E45276A423800013196 /* AutoLayoutProjectDocument-utilities.swift */,
-				CF9C1C32279C72970018CCDB /* document-AutoLayoutProjectDocumentSuperClass.swift */,
 				CF9C1C24279C5A720018CCDB /* configurator-AutoLayoutProjectDocument-addCommentInSchematicsButton.swift */,
 				CF6CC7A227789D8C007BA775 /* configurator-AutoLayoutProjectDocument-addLineButton.swift */,
 				CF3304EC27734CBE00275263 /* configurator-AutoLayoutProjectDocument-addRestrictRectangleButton.swift */,
@@ -7307,6 +7315,8 @@
 				CF7F5068279C1C1A007BB908 /* configurator-AutoLayoutProjectDocument-schematicInspectorConfigurator.swift */,
 				CF9C1C1E279C517F0018CCDB /* configurator-AutoLayoutProjectDocument-schematicPullDownButtonConfigurator.swift */,
 				CF9C1C22279C59100018CCDB /* configurator-AutoLayoutProjectDocument-schematicView.swift */,
+				CF3558DC279D7534000BFC9B /* configurator-AutoLayoutProjectDocument-selectedLabelNetPopUpButtonConfigurator.swift */,
+				CF3558D4279D6726000BFC9B /* configurator-AutoLayoutProjectDocument-selectedWireNetPopUpButtonConfigurator.swift */,
 				CF9C1C48279C97090018CCDB /* configurator-AutoLayoutProjectDocument-sheetOrientationSegmentedControlConfigurator.swift */,
 				CF9C1C2E279C6B2D0018CCDB /* configurator-AutoLayoutProjectDocument-sheetPopUpButtonConfigurator.swift */,
 				CF9C1C4A279C9C320018CCDB /* configurator-AutoLayoutProjectDocument-sheetStepperConfigurator.swift */,
@@ -7314,6 +7324,8 @@
 				CF54A0422770C52700D978D9 /* controller-array-AutoLayoutProjectDocument-boardCurveObjectsController.swift */,
 				CFDE7C452766654800762C03 /* controller-array-AutoLayoutProjectDocument-boardObjectsController.swift */,
 				CF3304F027735C3E00275263 /* controller-array-AutoLayoutProjectDocument-schematicObjectsController.swift */,
+				CF3558CE279D64B5000BFC9B /* controller-popup-net-class-from-selected-labels.swift */,
+				CF3558CF279D64B6000BFC9B /* controller-popup-net-class-from-selected-wires.swift */,
 				CF9C1C30279C6C7D0018CCDB /* controller-ProjectSheetController.swift */,
 				CFDE7B352766321C00762C03 /* controller-table-view-AutoLayoutProjectDocument-componentController.swift */,
 				CF514026276BB19F008DB542 /* controller-table-view-AutoLayoutProjectDocument-mDataController.swift */,
@@ -7322,6 +7334,7 @@
 				CF2285C7276678BF00804193 /* controller-table-view-AutoLayoutProjectDocument-projectFontController.swift */,
 				CF784E44275E2989001BC885 /* document-AutoLayoutProjectDocument.swift */,
 				CF784E46275E302C001BC885 /* document-AutoLayoutProjectDocumentSubClass.swift */,
+				CF9C1C32279C72970018CCDB /* document-AutoLayoutProjectDocumentSuperClass.swift */,
 				CFDE7B3D2766362200762C03 /* extension-AutoLayoutProjectDocument-add-components.swift */,
 				CF3304F227735DB200275263 /* extension-AutoLayoutProjectDocument-add-drag-track.swift */,
 				CF04FCD62767BAEC0062DF89 /* extension-AutoLayoutProjectDocument-add-edit-net-class.swift */,
@@ -7360,7 +7373,9 @@
 				CFB4C01B27942AFF00C509A9 /* selectionController-AutoLayoutProjectDocument-componentInBoardSelectionController.swift */,
 				CF51402A276BB1A0008DB542 /* selectionController-AutoLayoutProjectDocument-mDataSelection.swift */,
 				CF50D0EF2767493800B35C59 /* selectionController-AutoLayoutProjectDocument-mDeviceSelectionController.swift */,
+				CF3558D6279D6B4A000BFC9B /* selectionController-AutoLayoutProjectDocument-ncInSchematicSelectionController.swift */,
 				CF560272279330AB00479AB6 /* selectionController-AutoLayoutProjectDocument-restrictRectangleSelectionController.swift */,
+				CF3558D2279D6575000BFC9B /* selectionController-AutoLayoutProjectDocument-schematicLabelSelectionController.swift */,
 				CF9C1C4C279CA2D40018CCDB /* selectionController-AutoLayoutProjectDocument-wireInSchematicSelectionController.swift */,
 				CFDE7C3B2766620C00762C03 /* transient-AutoLayoutProjectDocument-canChangePackage.swift */,
 				CF04FCDC2767BFDB0062DF89 /* transient-AutoLayoutProjectDocument-canRemoveNetClasses.swift */,
@@ -11837,6 +11852,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF3558DD279D7534000BFC9B /* configurator-AutoLayoutProjectDocument-selectedLabelNetPopUpButtonConfigurator.swift in Sources */,
 				CF9C609325CABE5C00A00D5C /* transient-SymbolInstanceInDevice-objectDisplay.swift in Sources */,
 				CFD1EA7E274EE23A000AED8E /* tomany-FontCharacter.swift in Sources */,
 				CF9C609625CABE5C00A00D5C /* transient-ProjectRoot-boardGridStepMultipliedByDisplayFactor.swift in Sources */,
@@ -12205,8 +12221,10 @@
 				CF49C14225D13A030082271E /* entity-SymbolRoot.swift in Sources */,
 				CF711D0B275E1A7900280069 /* entity-ComponentSymbolInProject.swift in Sources */,
 				CFDE7B402766367F00762C03 /* extension-AutoLayoutProjectDocument-devices.swift in Sources */,
+				CF3558E1279D7733000BFC9B /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedLabelAction.swift in Sources */,
 				CFB4C0622794662800C509A9 /* AutoLayoutBase-NSPopUpButton.swift in Sources */,
 				CF711CE2275E1A6200280069 /* tomany-BorderCurve.swift in Sources */,
+				CF3558DF279D76A7000BFC9B /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedLabelAction.swift in Sources */,
 				CF711CC2275E1A4400280069 /* entity-BoardText.swift in Sources */,
 				CF9C61BA25CABE5C00A00D5C /* entity-PackageGuide.swift in Sources */,
 				CF9C61BB25CABE5C00A00D5C /* EBDataScanner.swift in Sources */,
@@ -12365,6 +12383,7 @@
 				CF711CD5275E1A5200280069 /* tomany-BoardTrack.swift in Sources */,
 				CF22F203275A73ED009C6FAC /* transient-BoardModel-inner3TracksBezierPaths.swift in Sources */,
 				CF9C625625CABE5C00A00D5C /* enum-QuadrantRotation.swift in Sources */,
+				CF3558DB279D7340000BFC9B /* action-AutoLayoutProjectDocument-renameSchematicLabelNetAction.swift in Sources */,
 				CF514039276BB1A1008DB542 /* transient-AutoLayoutProjectDocument-incorrectDocumentFileDetailedErrorMessage.swift in Sources */,
 				CFF858A02687C201001B868C /* transient-AutoLayoutArtworkDocument-statusImage.swift in Sources */,
 				CF711E1E275E1C8E00280069 /* extension-PackageSlavePad.swift in Sources */,
@@ -12550,6 +12569,7 @@
 				CFB7D8852683A61C007B9D3B /* transient-AutoLayoutPackageDocument-statusMessage.swift in Sources */,
 				CFB7D78A26839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-symbolGraphicView.swift in Sources */,
 				CF9C62FA25CABE5C00A00D5C /* transient-WireInSchematic-netName.swift in Sources */,
+				CF3558DA279D7340000BFC9B /* action-AutoLayoutProjectDocument-renameLabelNetWithNewAutomaticNameAction.swift in Sources */,
 				CF9C62FD25CABE5C00A00D5C /* computed-BoardTrack-computedP2Y.swift in Sources */,
 				CF9C62FE25CABE5C00A00D5C /* transient-WireInSchematic-selectionDisplay.swift in Sources */,
 				CF9C62FF25CABE5C00A00D5C /* transient-SheetInProject-issues.swift in Sources */,

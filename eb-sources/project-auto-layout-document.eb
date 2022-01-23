@@ -652,7 +652,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     ObjectInspectorView {
       addObjectInspector (forEntity: entity WireInSchematic, inspectorView: stackView mSchematicsWireInspectorView)
       addObjectInspector (forEntity: entity NCInSchematic, inspectorView: stackView mNCInSchematicsInspectorView)
-       $graphicController #schematicObjectsController
+      addObjectInspector (forEntity: entity LabelInSchematic, inspectorView: stackView mSchematicsLabelInspectorView)
+      $graphicController #schematicObjectsController
     }
     space
   }
@@ -668,14 +669,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       StaticLabel (title: "Net", bold: no, size: .small)
       Label (bold: yes, size: .small) { expandableWidth () set (alignment: .left) $title #wireInSchematicSelectionController.netName }
     }
-    Button (title: "Rename Net with Automatic Name", size: .small) {
-      expandableWidth ()
-      $run renameSchematicWireNetAction
-      $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
-    }
     Button (title: "Rename Net…", size: .small) {
       expandableWidth ()
       $run renameWireNetWithNewAutomaticNameAction
+      $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
+    }
+    Button (title: "Rename Net with Automatic Name", size: .small) {
+      expandableWidth ()
+      $run renameSchematicWireNetAction
       $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
     }
     hStack {
@@ -707,11 +708,57 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView mNCInSchematicsInspectorView vStack {
     StaticLabel (title: "NC Inspector", bold: yes, size: .small) { expandableWidth () set (alignment: .center) }
-    EnumSegmentedControl (titles: enum QuadrantRotation.popupTitles, equalWidth: yes, size: .small) {
+    EnumSegmentedControl (titles: enum QuadrantRotation.directionTitles, equalWidth: yes, size: .small) {
       $selectedSegment #ncInSchematicSelectionController.mOrientation
     }
   }
 
+//--- Selected label in schematic inspector
+  selectionController LabelInSchematic #schematicLabelSelectionController :
+    #schematicObjectsController.selectedArray
+  ;
+
+  stackView mSchematicsLabelInspectorView vStack {
+    StaticLabel (title: "Label Inspector", bold: yes, size: .small) { expandableWidth () set (alignment: .center) }
+    EnumSegmentedControl (titles: enum QuadrantRotation.directionTitles, equalWidth: yes, size: .small) {
+      $selectedSegment #schematicLabelSelectionController.mOrientation
+    }
+    hStack {
+      StaticLabel (title: "Net", bold: no, size: .small)
+      Label (bold: yes, size: .small) { expandableWidth () set (alignment: .left) $title #schematicLabelSelectionController.netName }
+    }
+    Button (title: "Rename Net…", size: .small) {
+      expandableWidth ()
+      $run renameSchematicLabelNetAction
+      $enabled #schematicLabelSelectionController.selectedArray.count == 1
+    }
+    Button (title: "Rename Net with Automatic Name", size: .small) {
+      expandableWidth ()
+      $run renameLabelNetWithNewAutomaticNameAction
+      $enabled #schematicLabelSelectionController.selectedArray.count == 1
+    }
+    hStack {
+      StaticLabel (title: "Net Class", bold: no, size: .small)
+      PopUpButton (size: .small) [configurator selectedLabelNetPopUpButtonConfigurator] { expandableWidth () }
+    }
+    separator
+    Button (title: "Merge Subnet into an Existing Net…", size: .small) {
+      expandableWidth ()
+      $run mergeSubnetIntoAnExistingNetForSelectedLabelAction
+      $enabled #schematicLabelSelectionController.selectedArray.count == 1
+    }
+    Button (title: "Insulate Subnet from Current Net", size: .small) {
+      expandableWidth ()
+      $run insulateSubnetFromCurrentNetForSelectedLabelAction
+      $enabled #schematicLabelSelectionController.selectedArray.count == 1
+    }
+  }
+
+  action renameLabelNetWithNewAutomaticNameAction ;
+  action renameSchematicLabelNetAction ;
+  action mergeSubnetIntoAnExistingNetForSelectedLabelAction ;
+  action insulateSubnetFromCurrentNetForSelectedLabelAction ;
+  
 //--- Selected comment in schematic inspector
 //  outlet CanariViewWithKeyView mCommentInSchematicsInspectorView ;
 //  selectionController CommentInSchematic #commentInSchematicSelectionController :
@@ -741,33 +788,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //  outlet CanariEnumSegmentedControl mCommentInSchematicsVerticalAlignmentSegmentedControl
 //    $selectedSegment #commentInSchematicSelectionController.mVerticalAlignment
 //  ;
-//
-////--- Selected label in schematic inspector
-//  outlet CanariViewWithKeyView mSchematicsLabelInspectorView ;
-  selectionController LabelInSchematic #schematicLabelSelectionController :
-    #schematicObjectsController.selectedArray
-  ;
-//
-//  outlet CanariQuadrantSegmentedControl mSchematicsLabelRotationSegmentedControl
-//     $quadrant #schematicLabelSelectionController.mOrientation ;
-//
-//  outlet EBTextObserverField mSchematicsLabelNetNameTextField
-//    $valueObserver #schematicLabelSelectionController.netName
-//  ;
-//
-//  outlet EBButton mSchematicsLabelRenameNetButton // Action set in IB
-//    $enabled #schematicLabelSelectionController.selectedArray.count == 1
-//  ;
-//  
-//  outlet EBButton mSchematicLabelMergeSubnetButton  // Action set in IB
-//    $enabled #schematicLabelSelectionController.selectedArray.count == 1
-//  ;
-
-//  outlet EBButton mSchematicLabelInsulateSubnetButton  // Action set in IB
-//    $enabled #schematicLabelSelectionController.selectedArray.count == 1
-//  ;
-//  
-//  outlet EBPopUpButton mSchematicLabelNetClassButton ;
 //
 ////--- Selected symbol in schematic inspector
 //  outlet CanariViewWithKeyView mComponentSymbolInspectorView ;

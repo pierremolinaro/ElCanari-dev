@@ -3184,7 +3184,7 @@ import Cocoa
             selector: #selector (AutoLayoutMergerDocument.showBoardHelpAction (_:))
           )
         view_0.appendView (view_0_1)
-        let view_0_2 = AutoLayoutEnumPopUpButton (titles: QuadrantRotation.popupTitles (), size: .small)
+        let view_0_2 = AutoLayoutEnumPopUpButton (titles: QuadrantRotation.degreesTitles (), size: .small)
           .expandableWidth ()
           .bind_selectedIndex (self.rootObject.modelInsertionRotation_property)
         view_0.appendView (view_0_2)

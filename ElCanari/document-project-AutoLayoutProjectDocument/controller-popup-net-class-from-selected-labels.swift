@@ -32,38 +32,49 @@ final class CanariPopUpButtonControllerForNetClassFromSelectedLabels : EBOutletE
   }
 
   //····················································································································
-  //  MODEL BINDING
-  //····················································································································
 
-  final func bind_model (_ inArrayModel : ReadWriteArrayOf_NetClassInProject,
-                         _ inSelection : SelectionController_AutoLayoutProjectDocument_schematicLabelSelectionController) {
+  final func register (_ inArrayModel : ReadWriteArrayOf_NetClassInProject,
+                       _ inSelection : SelectionController_AutoLayoutProjectDocument_schematicLabelSelectionController,
+                       popUpButton inPopUpButton : NSPopUpButton) {
     self.mArrayModel = inArrayModel
     inArrayModel.addEBObserverOf_mNetClassName (self)
     self.mSelection = inSelection
     inSelection.selectedArray_property.addEBObserverOf_netClassName (self)
-    self.modelDidChange ()
-  }
-
-  //····················································································································
-
-  final func unbind_model () {
-    self.mArrayModel?.removeEBObserverOf_mNetClassName (self)
-    self.mArrayModel = nil
-    self.mSelection?.selectedArray_property.removeEBObserverOf_netClassName (self)
-    self.mSelection = nil
- }
-
-  //····················································································································
-  //  OUTLETS
-  //····················································································································
-
-  func attachPopUpButton (_ inPopUpButton : NSPopUpButton?) {
     self.mOutlet = inPopUpButton
     self.modelDidChange ()
   }
 
   //····················································································································
+  //  MODEL BINDING
+  //····················································································································
+
+//  final func bind_model (_ inArrayModel : ReadWriteArrayOf_NetClassInProject,
+//                         _ inSelection : SelectionController_AutoLayoutProjectDocument_schematicLabelSelectionController) {
+//    self.mArrayModel = inArrayModel
+//    inArrayModel.addEBObserverOf_mNetClassName (self)
+//    self.mSelection = inSelection
+//    inSelection.selectedArray_property.addEBObserverOf_netClassName (self)
+//    self.modelDidChange ()
+//  }
+
+  //····················································································································
+
+//  final func unbind_model () {
+//    self.mArrayModel?.removeEBObserverOf_mNetClassName (self)
+//    self.mArrayModel = nil
+//    self.mSelection?.selectedArray_property.removeEBObserverOf_netClassName (self)
+//    self.mSelection = nil
+// }
+
+  //····················································································································
   //  OUTLETS
+  //····················································································································
+
+//  func attachPopUpButton (_ inPopUpButton : NSPopUpButton?) {
+//    self.mOutlet = inPopUpButton
+//    self.modelDidChange ()
+//  }
+
   //····················································································································
 
   private func modelDidChange () {

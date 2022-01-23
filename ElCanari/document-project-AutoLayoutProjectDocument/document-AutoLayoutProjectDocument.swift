@@ -1506,6 +1506,7 @@ import Cocoa
     let view_0 = AutoLayoutObjectInspectorView ()
       .addObjectInspector (forEntity: WireInSchematic.self, inspectorView: self.mSchematicsWireInspectorView)
       .addObjectInspector (forEntity: NCInSchematic.self, inspectorView: self.mNCInSchematicsInspectorView)
+      .addObjectInspector (forEntity: LabelInSchematic.self, inspectorView: self.mSchematicsLabelInspectorView)
       .bind_graphic_controller (self.schematicObjectsController)
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutFlexibleSpace ()
@@ -1534,20 +1535,20 @@ import Cocoa
       view_1.appendView (view_1_1)
     }
     vStackView.appendView (view_1)
-    let view_2 = AutoLayoutButton (title: "Rename Net with Automatic Name", size: .small)
-      .expandableWidth ()
-      .bind_enabled (.boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)))
-      .bind_run (
-        target: self,
-        selector: #selector (AutoLayoutProjectDocument.renameSchematicWireNetAction (_:))
-      )
-    vStackView.appendView (view_2)
-    let view_3 = AutoLayoutButton (title: "Rename Net…", size: .small)
+    let view_2 = AutoLayoutButton (title: "Rename Net…", size: .small)
       .expandableWidth ()
       .bind_enabled (.boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutProjectDocument.renameWireNetWithNewAutomaticNameAction (_:))
+      )
+    vStackView.appendView (view_2)
+    let view_3 = AutoLayoutButton (title: "Rename Net with Automatic Name", size: .small)
+      .expandableWidth ()
+      .bind_enabled (.boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)))
+      .bind_run (
+        target: self,
+        selector: #selector (AutoLayoutProjectDocument.renameSchematicWireNetAction (_:))
       )
     vStackView.appendView (view_3)
     let view_4 = AutoLayoutHorizontalStackView ()
@@ -1591,9 +1592,80 @@ import Cocoa
       .expandableWidth ()
       .set (alignment: .center)
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutEnumSegmentedControl (titles: QuadrantRotation.popupTitles (), equalWidth: true, size: .small)
+    let view_1 = AutoLayoutEnumSegmentedControl (titles: QuadrantRotation.directionTitles (), equalWidth: true, size: .small)
       .bind_selectedSegment (self.ncInSchematicSelectionController.mOrientation_property)
     vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSchematicsLabelInspectorView
+  //····················································································································
+
+  lazy var mSchematicsLabelInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutStaticLabel (title: "Label Inspector", bold: true, size: .small)
+      .expandableWidth ()
+      .set (alignment: .center)
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutEnumSegmentedControl (titles: QuadrantRotation.directionTitles (), equalWidth: true, size: .small)
+      .bind_selectedSegment (self.schematicLabelSelectionController.mOrientation_property)
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_2_0 = AutoLayoutStaticLabel (title: "Net", bold: false, size: .small)
+      view_2.appendView (view_2_0)
+      let view_2_1 = AutoLayoutLabel (bold: true, size: .small)
+        .expandableWidth ()
+        .set (alignment: .left)
+        .bind_title (self.schematicLabelSelectionController.netName_property)
+      view_2.appendView (view_2_1)
+    }
+    vStackView.appendView (view_2)
+    let view_3 = AutoLayoutButton (title: "Rename Net…", size: .small)
+      .expandableWidth ()
+      .bind_enabled (.intcmp (.id (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
+      .bind_run (
+        target: self,
+        selector: #selector (AutoLayoutProjectDocument.renameSchematicLabelNetAction (_:))
+      )
+    vStackView.appendView (view_3)
+    let view_4 = AutoLayoutButton (title: "Rename Net with Automatic Name", size: .small)
+      .expandableWidth ()
+      .bind_enabled (.intcmp (.id (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
+      .bind_run (
+        target: self,
+        selector: #selector (AutoLayoutProjectDocument.renameLabelNetWithNewAutomaticNameAction (_:))
+      )
+    vStackView.appendView (view_4)
+    let view_5 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_5_0 = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .small)
+      view_5.appendView (view_5_0)
+      let view_5_1 = AutoLayoutPopUpButton (size: .small)
+        .expandableWidth ()
+      self.configure_selectedLabelNetPopUpButtonConfigurator (view_5_1) // Configurator
+      view_5.appendView (view_5_1)
+    }
+    vStackView.appendView (view_5)
+    let view_6 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+    vStackView.appendView (view_6)
+    let view_7 = AutoLayoutButton (title: "Merge Subnet into an Existing Net…", size: .small)
+      .expandableWidth ()
+      .bind_enabled (.intcmp (.id (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
+      .bind_run (
+        target: self,
+        selector: #selector (AutoLayoutProjectDocument.mergeSubnetIntoAnExistingNetForSelectedLabelAction (_:))
+      )
+    vStackView.appendView (view_7)
+    let view_8 = AutoLayoutButton (title: "Insulate Subnet from Current Net", size: .small)
+      .expandableWidth ()
+      .bind_enabled (.intcmp (.id (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
+      .bind_run (
+        target: self,
+        selector: #selector (AutoLayoutProjectDocument.insulateSubnetFromCurrentNetForSelectedLabelAction (_:))
+      )
+    vStackView.appendView (view_8)
     return vStackView
   } ()
 
@@ -7303,6 +7375,7 @@ import Cocoa
     self.mSelectedSchematicElementInspectorView.ebCleanUp ()
     self.mSchematicsWireInspectorView.ebCleanUp ()
     self.mNCInSchematicsInspectorView.ebCleanUp ()
+    self.mSchematicsLabelInspectorView.ebCleanUp ()
     self.mBoardOutlinePage.ebCleanUp ()
     self.mBoardOutlineBaseView.ebCleanUp ()
     self.mBoardOutlineGridAndFlipView.ebCleanUp ()
