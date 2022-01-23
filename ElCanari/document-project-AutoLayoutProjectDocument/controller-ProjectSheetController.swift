@@ -41,10 +41,11 @@ final class ProjectSheetController : EBOutletEvent {
   func register (stepper inStepper : AutoLayoutStepper) {
     self.mStepper = inStepper
     inStepper.minValue = 0.0
-    inStepper.maxValue = 0.0
+ //   inStepper.maxValue = 0.0
     inStepper.increment = 1.0
     inStepper.target = self
     inStepper.action = #selector (Self.stepperAction (_:))
+    self.updatePopUpButton ()
   }
 
   //····················································································································
@@ -55,6 +56,7 @@ final class ProjectSheetController : EBOutletEvent {
     self.mSheetPopUpButton?.removeAllItems ()
     let selectedSheet = self.mDocument?.rootObject.mSelectedSheet
     let sheets = self.mDocument?.rootObject.mSheets.values ?? []
+    self.mStepper?.maxValue = Double (sheets.count - 1)
     var idx = 0
     for sheet in sheets {
     //--- Build title
@@ -81,9 +83,9 @@ final class ProjectSheetController : EBOutletEvent {
       self.mSheetPopUpButton?.lastItem?.target = self
       self.mSheetPopUpButton?.lastItem?.action = #selector (Self.selectionDidChangeAction (_:))
       self.mSheetPopUpButton?.lastItem?.isEnabled = true
-      self.mStepper?.maxValue = Double (sheets.count - 1)
       if sheet === selectedSheet {
         self.mSheetPopUpButton?.selectItem (at: idx)
+        self.mStepper?.doubleValue = Double (sheets.count - 1 - idx)
       }
       idx += 1
     }
@@ -103,7 +105,7 @@ final class ProjectSheetController : EBOutletEvent {
 
   @objc private func stepperAction (_ inSender : AutoLayoutStepper) {
     if let rootObject = self.mDocument?.rootObject {
-      let idx = Int (inSender.doubleValue)
+      let idx = Int (inSender.doubleValue.rounded (.toNearestOrEven))
       let sheets = rootObject.mSheets.values
       rootObject.mSelectedSheet = sheets [sheets.count - 1 - idx]
     }

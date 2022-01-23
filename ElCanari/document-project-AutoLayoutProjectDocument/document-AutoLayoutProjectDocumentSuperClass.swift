@@ -16,6 +16,13 @@ class AutoLayoutProjectDocumentSuperClass : EBAutoLayoutManagedDocument {
   let mSheetController = ProjectSheetController ()
 
   //····················································································································
+  //  POP UP BUTTON CONTROLLERS FOR SELECTING NET CLASS
+  //····················································································································
+
+  let mSelectedWireNetClassPopUpController = CanariPopUpButtonControllerForNetClassFromSelectedWires ()
+  let mSelectedLabelNetClassPopUpController = CanariPopUpButtonControllerForNetClassFromSelectedLabels ()
+
+  //····················································································································
 
 }
 

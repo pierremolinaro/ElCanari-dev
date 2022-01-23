@@ -45,6 +45,12 @@ import Cocoa
   var wireInSchematicSelectionController = SelectionController_AutoLayoutProjectDocument_wireInSchematicSelectionController ()
 
   //····················································································································
+  //   Selection controller: schematicLabelSelectionController
+  //····················································································································
+
+  var schematicLabelSelectionController = SelectionController_AutoLayoutProjectDocument_schematicLabelSelectionController ()
+
+  //····················································································································
   //   Array controller: boardCurveObjectsController
   //····················································································································
 
@@ -653,6 +659,8 @@ import Cocoa
       self.schematicObjectsController.addExplorer (name: "schematicObjectsController", y:&y, view:view)
     //--- Selection controller property: wireInSchematicSelectionController
       self.wireInSchematicSelectionController.addExplorer (name: "wireInSchematicSelectionController", y:&y, view:view)
+    //--- Selection controller property: schematicLabelSelectionController
+      self.schematicLabelSelectionController.addExplorer (name: "schematicLabelSelectionController", y:&y, view:view)
     //--- Array controller property: boardCurveObjectsController
       self.boardCurveObjectsController.addExplorer (name: "boardCurveObjectsController", y:&y, view:view)
     //--- Selection controller property: boardCurveSelectionController
@@ -1504,7 +1512,6 @@ import Cocoa
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Wire Inspector", bold: true, size: .small)
       .expandableWidth ()
-      .set (alignment: .center)
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
     do{
@@ -1512,6 +1519,7 @@ import Cocoa
       view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutLabel (bold: true, size: .small)
         .expandableWidth ()
+        .set (alignment: .left)
         .bind_title (self.wireInSchematicSelectionController.netName_property)
       view_1.appendView (view_1_1)
     }
@@ -1532,6 +1540,34 @@ import Cocoa
         selector: #selector (AutoLayoutProjectDocument.renameWireNetWithNewAutomaticNameAction (_:))
       )
     vStackView.appendView (view_3)
+    let view_4 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_4_0 = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .small)
+      view_4.appendView (view_4_0)
+      let view_4_1 = AutoLayoutPopUpButton (size: .small)
+        .expandableWidth ()
+      self.configure_selectedWireNetPopUpButtonConfigurator (view_4_1) // Configurator
+      view_4.appendView (view_4_1)
+    }
+    vStackView.appendView (view_4)
+    let view_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+    vStackView.appendView (view_5)
+    let view_6 = AutoLayoutButton (title: "Merge Subnet into an Existing Net…", size: .small)
+      .expandableWidth ()
+      .bind_enabled (.boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)))
+      .bind_run (
+        target: self,
+        selector: #selector (AutoLayoutProjectDocument.mergeSubnetIntoAnExistingNetForSelectedWireAction (_:))
+      )
+    vStackView.appendView (view_6)
+    let view_7 = AutoLayoutButton (title: "Insulate Subnet from Current Net", size: .small)
+      .expandableWidth ()
+      .bind_enabled (.boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)))
+      .bind_run (
+        target: self,
+        selector: #selector (AutoLayoutProjectDocument.insulateSubnetFromCurrentNetForSelectedWireAction (_:))
+      )
+    vStackView.appendView (view_7)
     return vStackView
   } ()
 
@@ -6557,6 +6593,12 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Selection controller property: schematicLabelSelectionController
+    self.schematicLabelSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Array controller property: boardCurveObjectsController
     self.boardCurveObjectsController.bind_model (self.rootObject.mBorderCurves_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
@@ -7274,6 +7316,8 @@ import Cocoa
     self.schematicObjectsController.unbind_model ()
   //--- Selection controller property: wireInSchematicSelectionController
     self.wireInSchematicSelectionController.unbind_selection ()
+  //--- Selection controller property: schematicLabelSelectionController
+    self.schematicLabelSelectionController.unbind_selection ()
   //--- Array controller property: boardCurveObjectsController
     self.boardCurveObjectsController.unbind_model ()
   //--- Selection controller property: boardCurveSelectionController

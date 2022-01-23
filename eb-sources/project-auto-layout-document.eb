@@ -662,10 +662,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   ;
   
   stackView mSchematicsWireInspectorView vStack {
-    StaticLabel (title: "Wire Inspector", bold: yes, size: .small) { expandableWidth () set (alignment: .center) }
+    StaticLabel (title: "Wire Inspector", bold: yes, size: .small) { expandableWidth () }
     hStack {
       StaticLabel (title: "Net", bold: no, size: .small)
-      Label (bold: yes, size: .small) { expandableWidth ()  $title #wireInSchematicSelectionController.netName }
+      Label (bold: yes, size: .small) { expandableWidth () set (alignment: .left) $title #wireInSchematicSelectionController.netName }
     }
     Button (title: "Rename Net with Automatic Name", size: .small) {
       expandableWidth ()
@@ -677,22 +677,31 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       $run renameWireNetWithNewAutomaticNameAction
       $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
     }
+    hStack {
+      StaticLabel (title: "Net Class", bold: no, size: .small)
+      PopUpButton (size: .small) [configurator selectedWireNetPopUpButtonConfigurator] { expandableWidth () }
+    }
+    separator
+    Button (title: "Merge Subnet into an Existing Net…", size: .small) {
+      expandableWidth ()
+      $run mergeSubnetIntoAnExistingNetForSelectedWireAction
+      $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
+    }
+    Button (title: "Insulate Subnet from Current Net", size: .small) {
+      expandableWidth ()
+      $run insulateSubnetFromCurrentNetForSelectedWireAction
+      $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
+    }
   }
 
   action renameSchematicWireNetAction ;
   action renameWireNetWithNewAutomaticNameAction ;
+  action mergeSubnetIntoAnExistingNetForSelectedWireAction ;
+  action insulateSubnetFromCurrentNetForSelectedWireAction ;
 
-//  outlet EBButton mSchematicWireMergeSubnetButton  // Action set in IB
-//    $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
-//  ;
-//
-//  outlet EBButton mSchematicWireInsulateSubnetButton  // Action set in IB
-//    $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
-//  ;
-//  
 //  outlet EBPopUpButton mSchematicWireNetClassButton ;
-//
-////--- Selected NC In schematics
+
+//--- Selected NC In schematics
 //  outlet CanariViewWithKeyView mNCInSchematicsInspectorView ;
 //  selectionController NCInSchematic #ncInSchematicSelectionController :
 //    #schematicObjectsController.selectedArray
@@ -733,9 +742,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //
 ////--- Selected label in schematic inspector
 //  outlet CanariViewWithKeyView mSchematicsLabelInspectorView ;
-//  selectionController LabelInSchematic #schematicLabelSelectionController :
-//    #schematicObjectsController.selectedArray
-//  ;
+  selectionController LabelInSchematic #schematicLabelSelectionController :
+    #schematicObjectsController.selectedArray
+  ;
 //
 //  outlet CanariQuadrantSegmentedControl mSchematicsLabelRotationSegmentedControl
 //     $quadrant #schematicLabelSelectionController.mOrientation ;
