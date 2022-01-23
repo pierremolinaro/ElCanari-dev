@@ -9,13 +9,6 @@ prefs {
 //! General
 
 prefs {
-//  property NSColor errorMessageColor   default red;
-//  property NSColor warningMessageColor default orange;
-//  property NSColor successMessageColor default blue;
-//  outlet EBColorWell mErrorMessageColorColorWell   $color self.errorMessageColor (sendContinously:yes) ;
-//  outlet EBColorWell mWarningMessageColorColorWell $color self.warningMessageColor (sendContinously:yes) ;
-//  outlet EBColorWell mSuccessMessageColorColorWell $color self.successMessageColor (sendContinously:yes) ;
-
   property Bool showDebugMenu default no ;
   outlet EBSwitch mShowDebugMenuSwitch $value self.showDebugMenu ;
 

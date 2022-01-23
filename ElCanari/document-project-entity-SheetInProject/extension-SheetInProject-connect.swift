@@ -113,8 +113,6 @@ extension SheetInProject {
 
   func connect (points inPoints : [PointInSchematic],
                 window inWindow : NSWindow,
-//                panelForMergingSeveralSubnet inPanel : NSPanel,
-//                popUpButtonForMergingSeveralSubnet inPopUp : EBPopUpButton,
                 newNetCreator inNewNetCreator : () -> NetInProject,
                 updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping () -> Void) {
     let (points, netArray) = self.tryToConnectWithoutDialog (

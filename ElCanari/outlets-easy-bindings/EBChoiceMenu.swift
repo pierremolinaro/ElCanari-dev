@@ -23,14 +23,6 @@ final class EBChoiceMenu : NSMenu, EBUserClassNameProtocol {
   init () {
     super.init (title: "")
     noteObjectAllocation (self)
-
-//    var idx = 0
-//    for item in self.items {
-//      item.target = self
-//      item.action = #selector (Self.menuItemAction (_:))
-//      item.tag = idx
-//      idx += 1
-//    }
   }
 
   //····················································································································
@@ -56,12 +48,6 @@ final class EBChoiceMenu : NSMenu, EBUserClassNameProtocol {
       idx += 1
     }
   }
-
-  //····················································································································
-
-//  @objc fileprivate func menuItemAction (_ inSender : NSMenuItem) {
-//    self.mSelectedIndexController?.updateModel (inSender)
-//  }
 
   //····················································································································
   //  selectedIndex binding
