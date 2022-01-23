@@ -392,15 +392,6 @@ final class Controller_AutoLayoutProjectDocument_schematicObjectsController : Re
 
   //····················································································································
 
-  final func bind_ebView (_ inView : EBEnclosingGraphicView?) {
-    if let ebView = inView?.mGraphicView {
-      self.mEBGraphicViews.insert (ebView)
-      ebView.set (controller: self)
-    }
-  }
-
-  //····················································································································
-
   final func unbind_ebView (_ inEBView : EBGraphicView?) {
     if let ebView = inEBView {
       ebView.updateObjectDisplay ([])
@@ -408,16 +399,6 @@ final class Controller_AutoLayoutProjectDocument_schematicObjectsController : Re
       self.mEBGraphicViews.remove (ebView)
     }
   }
-  //····················································································································
-
-  final func unbind_ebView (_ inView : EBEnclosingGraphicView?) {
-    if let ebView = inView?.mGraphicView {
-      ebView.updateObjectDisplay ([])
-      ebView.updateSelectionShape ([])
-      self.mEBGraphicViews.remove (ebView)
-    }
-  }
-
 
   //····················································································································
   //    Explorer

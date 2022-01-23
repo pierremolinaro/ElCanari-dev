@@ -15,15 +15,13 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   //····················································································································
 
   required init? (coder : NSCoder) {
-    super.init (coder: coder)
-    noteObjectAllocation (self)
-    DispatchQueue.main.async { self.configureGraphicView () }
+    fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
 
-  override init (frame : NSRect) {
-    super.init (frame: frame)
+  init () {
+    super.init (frame: NSRect ())
     noteObjectAllocation (self)
     DispatchQueue.main.async { self.configureGraphicView () }
  }
@@ -107,11 +105,11 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final weak var mFocusRingView : EBFocusRingViewProtocol? = nil // SHOULD be weak
+  final weak var mFocusRingView : EBFocusRingView? = nil // SHOULD be weak
 
   //····················································································································
 
-  final func set (focusRingView inView : EBFocusRingViewProtocol) {
+  final func set (focusRingView inView : EBFocusRingView) {
     self.mFocusRingView = inView
   }
 

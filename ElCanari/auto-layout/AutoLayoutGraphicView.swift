@@ -16,12 +16,12 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  let mGraphicView = EBGraphicView (frame: NSRect ())
+  let mGraphicView = EBGraphicView ()
   var mScrollView : EBScrollView? = nil
   fileprivate var mZoomPopUpButton : AutoLayoutBase_NSPopUpButton? = nil
   fileprivate var mZoomToFitButton : AutoLayoutBase_NSButton? = nil
   fileprivate var mHelperTextField : NSTextField? = nil
-  fileprivate var mFocusRing : AutoLayoutPrivateFocusRingView? = nil
+  fileprivate var mFocusRing : EBFocusRingView? = nil
 
   //····················································································································
 
@@ -30,8 +30,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   //---
     _ = self.set (spacing: 0)
   //---
-    let MARGIN = Int (FOCUS_RING_MARGIN)
-    let hStack = AutoLayoutHorizontalStackView ().set (margins: MARGIN)
+    let hStack = AutoLayoutHorizontalStackView ().set (margins: FOCUS_RING_MARGIN)
     hStack.alignment = .firstBaseline
     self.appendView (hStack)
   //--- Build popup button
@@ -48,13 +47,12 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     self.mHelperTextField = helperTextField
     hStack.appendView (AutoLayoutFlexibleSpace ())
   //--- Build focus ring
-    let focusRingView = AutoLayoutPrivateFocusRingView ().set (margins: MARGIN)
+    let focusRingView = EBFocusRingView ()
     self.appendView (focusRingView)
     self.mFocusRing = focusRingView
-    // focusRingView.setFocusRing (true)
     self.mGraphicView.set (focusRingView: focusRingView)
   //--- Build scroll view
-    let scrollView = buildScrollView (minZoom: inMinZoom, maxZoom: inMaxZoom)
+    let scrollView = self.buildScrollView (minZoom: inMinZoom, maxZoom: inMaxZoom)
     focusRingView.appendView (scrollView)
     self.mScrollView = scrollView
 
@@ -334,44 +332,6 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   final var grid : Int {
     return self.mGraphicView.mGridStepInCanariUnit
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate class AutoLayoutPrivateFocusRingView : AutoLayoutHorizontalStackView, EBFocusRingViewProtocol {
-
-  //····················································································································
-  //  FOCUS RING
-  //····················································································································
-
-  private var mHasFocusRing = false {
-    didSet {
-      self.needsDisplay = true
-    }
-  }
-
-  //····················································································································
-
-  func setFocusRing (_ inValue : Bool) {
-    self.mHasFocusRing = inValue
-  }
-
-  //····················································································································
-
-  override func draw (_ inDirtyRect : NSRect) {
-    super.draw (inDirtyRect)
-    if self.mHasFocusRing {
-      let w = (FOCUS_RING_MARGIN - 1.0) / 2.0
-      let r = self.bounds.insetBy (dx: w, dy: w)
-      let bp = NSBezierPath (roundedRect: r, xRadius: w / 2.0, yRadius: w / 2.0)
-      bp.lineWidth = w * 2.0
-      RING_COLOR.setStroke ()
-      bp.stroke ()
-    }
   }
 
   //····················································································································
