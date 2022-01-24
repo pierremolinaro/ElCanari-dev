@@ -92,7 +92,6 @@ final class AutoLayoutCanariObservedDimensionField : AutoLayoutBase_NSTextField,
 
 final class Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit : EBObservablePropertyController {
 
-  private var mOutlet: AutoLayoutCanariObservedDimensionField
   private var mDimension : EBReadOnlyProperty_Int
   private var mUnit : EBReadOnlyProperty_Int
 
@@ -100,13 +99,12 @@ final class Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit :
 
   init (dimension : EBReadOnlyProperty_Int,
         unit : EBReadOnlyProperty_Int,
-        outlet : AutoLayoutCanariObservedDimensionField) {
+        outlet inOutlet : AutoLayoutCanariObservedDimensionField) {
     self.mDimension = dimension
     self.mUnit = unit
-    self.mOutlet = outlet
     super.init (
       observedObjects: [dimension, unit],
-      callBack: { outlet.updateOutlet (dimension: dimension, unit: unit) }
+      callBack: { [weak inOutlet] in inOutlet?.updateOutlet (dimension: dimension, unit: unit) }
     )
   //--- Number formatter
     let numberFormatter = NumberFormatter ()
@@ -116,7 +114,7 @@ final class Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit :
     numberFormatter.minimumFractionDigits = 2
     numberFormatter.maximumFractionDigits = 2
     numberFormatter.isLenient = true
-    self.mOutlet.formatter = numberFormatter
+    inOutlet.formatter = numberFormatter
   }
 
   //····················································································································

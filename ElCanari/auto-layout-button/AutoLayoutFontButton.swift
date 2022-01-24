@@ -29,28 +29,6 @@ final class AutoLayoutFontButton : AutoLayoutBase_NSButton {
     fatalError ("init(coder:) has not been implemented")
   }
 
-
-  //····················································································································
-
-  override func ebCleanUp () {
-    self.mValueController?.unregister ()
-    self.mValueController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
-//  deinit {
-//    noteObjectDeallocation (self)
-//  }
-
-  //····················································································································
-
-//  override func updateAutoLayoutUserInterfaceStyle () {
-//    super.updateAutoLayoutUserInterfaceStyle ()
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//  }
-
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
@@ -72,7 +50,7 @@ final class AutoLayoutFontButton : AutoLayoutBase_NSButton {
 
   //····················································································································
 
-  @objc func changeFont (_ sender : Any?) {
+  @objc private func changeFont (_ sender : Any?) {
     if let font = self.mFont, let fontManager = sender as? NSFontManager {
       let newFont = fontManager.convert (font)
       _ = self.mValueController?.updateModel (withCandidateValue: newFont, windowForSheet: self.window)

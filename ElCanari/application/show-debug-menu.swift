@@ -40,7 +40,7 @@ fileprivate final class DebugMenuVisibility : EBSwiftBaseObject {
     self.mDebugMenuItem.submenu = menu
     self.mShowMenuController = EBObservablePropertyController (
       observedObjects: [preferences_showDebugMenu_property],
-      callBack: { self.updateDebugMenuVisibility () }
+      callBack: { [weak self] in self?.updateDebugMenuVisibility () }
     )
     appendAllocationDebugMenuItems (menu)
     appendShowTransientEventLogWindowMenuItem (menu)

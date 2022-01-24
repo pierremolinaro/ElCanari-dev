@@ -89,7 +89,7 @@ final class EBSwitch : NSButton, EBUserClassNameProtocol {
 
 final class Controller_EBSwitch_value : EBObservablePropertyController {
 
-  private let mOutlet : EBSwitch
+  private weak var mOutlet : EBSwitch? = nil
   private let mObject : EBReadWriteProperty_Bool
 
   //····················································································································
@@ -97,13 +97,15 @@ final class Controller_EBSwitch_value : EBObservablePropertyController {
   init (object : EBReadWriteProperty_Bool, outlet : EBSwitch) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects: [object], callBack: { outlet.updateValue(object) })
+    super.init (observedObjects: [object], callBack: { [weak outlet] in outlet?.updateValue(object) })
   }
 
   //····················································································································
 
   func updateModel () {
-    self.mObject.setProp (self.mOutlet.state == NSControl.StateValue.on)
+    if let outlet = self.mOutlet {
+      self.mObject.setProp (outlet.state == NSControl.StateValue.on)
+    }
   }
 }
 

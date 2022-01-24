@@ -68,15 +68,6 @@ final class AutoLayoutSearchField : NSSearchField, EBUserClassNameProtocol, NSSe
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mValueController?.unregister ()
-    self.mValueController = nil
-    self.mDelegate = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   func setDelegate (_ inDelegate : @escaping (String) -> Void) {
     self.mDelegate = inDelegate
     inDelegate (self.stringValue)

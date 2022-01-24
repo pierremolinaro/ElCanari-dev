@@ -58,7 +58,7 @@ fileprivate final class Controller_CanariDefaultNetClassPopUpButton : EBObservab
     self.mOutlet = inOutlet
     super.init (
       observedObjects: [inSelectedNetClassName, inNetClassNames],
-      callBack: { } // self cannot be captured before init completed
+      callBack: nil // self cannot be captured before init completed
     )
     self.mEventCallBack = { [weak self] in self?.updateOutlet (inSelectedNetClassName, inNetClassNames) }
   }

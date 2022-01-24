@@ -104,7 +104,7 @@ final class EBFontButton : NSButton, EBUserClassNameProtocol {
 final class Controller_EBFontButton_fontValue : EBObservablePropertyController {
 
   fileprivate let mObject : EBReadWriteProperty_NSFont
-  private let mOutlet : EBFontButton
+  private weak var mOutlet : EBFontButton? = nil
 
   //····················································································································
 
@@ -116,16 +116,10 @@ final class Controller_EBFontButton_fontValue : EBObservablePropertyController {
 
   //····················································································································
 
-  override func unregister () {
-    super.unregister ()
-    self.mOutlet.target = nil
-    self.mOutlet.action = nil
-  }
-
-  //····················································································································
-
   func updateModel (sender : EBFontButton) {
-    _ = self.mObject.validateAndSetProp (self.mOutlet.font!, windowForSheet: sender.window)
+    if let font = self.mOutlet?.font {
+      _ = self.mObject.validateAndSetProp (font, windowForSheet: sender.window)
+    }
   }
 
   //····················································································································

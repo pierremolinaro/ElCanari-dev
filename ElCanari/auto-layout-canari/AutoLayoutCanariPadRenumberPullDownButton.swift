@@ -62,7 +62,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : AutoLayoutBase_NSPopUpBu
   final func bind_currentNumber (_ model : EBReadOnlyProperty_Int) -> Self {
     self.mCurrentNumberController = EBObservablePropertyController (
       observedObjects: [model],
-      callBack: { self.update (fromPadNumber: model) }
+      callBack: { [weak self] in self?.update (fromPadNumber: model) }
      )
      return self
   }
@@ -139,7 +139,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : AutoLayoutBase_NSPopUpBu
   final func bind_currentZoneName (_ model : EBReadOnlyProperty_String) -> Self {
     self.mCurrentZoneController = EBObservablePropertyController (
       observedObjects: [model],
-      callBack: { self.update (fromZoneName: model) }
+      callBack: { [weak self] in self?.update (fromZoneName: model) }
      )
      return self
   }

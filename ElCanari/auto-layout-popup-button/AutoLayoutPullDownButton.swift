@@ -32,17 +32,6 @@ final class AutoLayoutPullDownButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    for controller in self.mControllerArray {
-      controller.unregister ()
-    }
-    self.mItemsController?.unregister ()
-    self.mItemsController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   final func add (item inMenuItemDescriptor : AutoLayoutMenuItemDescriptor) -> Self {
     self.addItem (withTitle: inMenuItemDescriptor.title)
     self.lastItem?.target = inMenuItemDescriptor.target
@@ -52,12 +41,12 @@ final class AutoLayoutPullDownButton : AutoLayoutBase_NSPopUpButton {
     case .empty :
       ()
     default :
-      let lastItem = self.lastItem
+      let optionalLastItem = self.lastItem
       var modelArray = [EBObservableObjectProtocol] ()
       inMenuItemDescriptor.expression.addModelsTo (&modelArray)
       let controller = EBObservablePropertyController (
         observedObjects: modelArray,
-        callBack: { [weak self] in self?.enable (item: lastItem, from: inMenuItemDescriptor.expression.compute ()) }
+        callBack: { [weak self, weak optionalLastItem] in self?.enable (item: optionalLastItem, from: inMenuItemDescriptor.expression.compute ()) }
       )
       self.mControllerArray.append (controller)
     }

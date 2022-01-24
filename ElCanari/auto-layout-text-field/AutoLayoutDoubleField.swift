@@ -42,16 +42,6 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField, NSTextFieldDeleg
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mValueController?.unregister ()
-    self.mValueController = nil
-    self.delegate = nil
-    self.formatter = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   final func set (min inMin : Int) -> Self {
     self.mNumberFormatter.minimum = NSNumber (value: inMin)
     return self

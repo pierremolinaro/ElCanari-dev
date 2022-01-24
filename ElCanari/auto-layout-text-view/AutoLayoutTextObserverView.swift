@@ -53,14 +53,6 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mValueController?.unregister ()
-    self.mValueController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   deinit {
     noteObjectDeallocation (self)
   }

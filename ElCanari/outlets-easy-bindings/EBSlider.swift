@@ -115,7 +115,7 @@ final class EBSlider : NSSlider, EBUserClassNameProtocol {
 
 final class Controller_EBSlider_doubleValue : EBObservablePropertyController {
 
-  private let mOutlet: EBSlider
+  private weak var mOutlet: EBSlider? = nil
   private let mObject : EBReadWriteProperty_Double
 
   //····················································································································
@@ -123,13 +123,15 @@ final class Controller_EBSlider_doubleValue : EBObservablePropertyController {
   init (object : EBReadWriteProperty_Double, outlet : EBSlider) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], callBack: { outlet.updateDoubleValue (object) })
+    super.init (observedObjects:[object], callBack: { [weak outlet] in outlet?.updateDoubleValue (object) })
   }
 
   //····················································································································
 
   func updateModel () {
-    _ = self.mObject.validateAndSetProp (self.mOutlet.doubleValue, windowForSheet: self.mOutlet.window)
+    if let outlet = self.mOutlet {
+      _ = self.mObject.validateAndSetProp (outlet.doubleValue, windowForSheet: outlet.window)
+    }
   }
 
   //····················································································································
@@ -142,7 +144,7 @@ final class Controller_EBSlider_doubleValue : EBObservablePropertyController {
 
 final class Controller_EBSlider_intValue : EBObservablePropertyController {
 
-  private let mOutlet : EBSlider
+  private weak var mOutlet : EBSlider? = nil
   private let mObject : EBReadWriteProperty_Int
 
   //····················································································································
@@ -150,13 +152,15 @@ final class Controller_EBSlider_intValue : EBObservablePropertyController {
   init (object : EBReadWriteProperty_Int, outlet : EBSlider) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects: [object], callBack: { outlet.updateIntValue (object) })
+    super.init (observedObjects: [object], callBack: { [weak outlet] in outlet?.updateIntValue (object) })
   }
 
   //····················································································································
 
   func updateModel () {
-    _ = self.mObject.validateAndSetProp (Int (round (self.mOutlet.doubleValue)), windowForSheet: self.mOutlet.window)
+    if let outlet = self.mOutlet {
+      _ = self.mObject.validateAndSetProp (Int (round (outlet.doubleValue)), windowForSheet: outlet.window)
+    }
   }
 
   //····················································································································

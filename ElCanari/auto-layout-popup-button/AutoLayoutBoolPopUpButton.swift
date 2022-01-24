@@ -28,14 +28,6 @@ final class AutoLayoutBoolPopUpButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
-//  override func ebCleanUp () {
-//    self.mValueController?.unregister ()
-//    self.mValueController = nil
-//    super.ebCleanUp ()
-//  }
-
-  //····················································································································
-
   func updateIndex (_ inObject : EBObservableProperty <Bool>) {
     switch inObject.selection {
     case .empty, .multiple :

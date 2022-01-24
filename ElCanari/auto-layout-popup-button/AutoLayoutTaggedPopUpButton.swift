@@ -20,14 +20,6 @@ final class AutoLayoutTaggedPopUpButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mSelectedTagController?.unregister ()
-    self.mSelectedTagController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   final func add (title inTitle : String, withTag inTag : Int) -> Self {
     self.addItem (withTitle: inTitle)
     self.lastItem?.tag = inTag

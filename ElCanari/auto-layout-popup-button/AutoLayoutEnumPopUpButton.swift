@@ -29,14 +29,6 @@ final class AutoLayoutEnumPopUpButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mSelectedIndexController?.unregister ()
-    self.mSelectedIndexController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   func updateIndex (_ object : EBReadWriteObservableEnumProtocol) {
     if let v = object.rawValue () {
       self.enable (fromValueBinding: true, self.enabledBindingController)

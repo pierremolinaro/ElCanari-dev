@@ -51,13 +51,13 @@ final class AutoLayoutBase_NSTextView : NSTextView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.layoutManager?.removeTextContainer (at: 0)
-    self.mTextStorage.removeLayoutManager (self.mLayoutManager)
-    self.textContainer?.layoutManager = nil
-    self.textContainer = nil
-    super.ebCleanUp ()
-  }
+//  override func ebCleanUp () {
+//    self.layoutManager?.removeTextContainer (at: 0)
+//    self.mTextStorage.removeLayoutManager (self.mLayoutManager)
+//    self.textContainer?.layoutManager = nil
+//    self.textContainer = nil
+//    super.ebCleanUp ()
+//  }
 
   //····················································································································
 

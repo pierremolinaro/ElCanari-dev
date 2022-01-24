@@ -38,14 +38,6 @@ final class AutoLayoutAngleCircularSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mAngleController?.unregister ()
-    self.mAngleController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     let value = (450_000 - Int ((self.doubleValue * 100.0).rounded ())) % 360_000
     _ = self.mAngleController?.updateModel (

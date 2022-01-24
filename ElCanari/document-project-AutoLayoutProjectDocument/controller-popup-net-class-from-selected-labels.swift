@@ -20,7 +20,7 @@ final class CanariPopUpButtonControllerForNetClassFromSelectedLabels : EBOutletE
 
   private var mArrayModel : ReadWriteArrayOf_NetClassInProject? = nil
   private var mSelection : SelectionController_AutoLayoutProjectDocument_schematicLabelSelectionController? = nil
-  private var mOutlet : NSPopUpButton? = nil
+  private weak var mOutlet : NSPopUpButton? = nil
 
   //····················································································································
   //  INIT

@@ -16,7 +16,7 @@ final class HiddenBindingController : EBObservablePropertyController {
 
   //····················································································································
 
-  private weak var mOutlet : NSView?
+  private weak var mOutlet : NSView? = nil
 
   //····················································································································
 

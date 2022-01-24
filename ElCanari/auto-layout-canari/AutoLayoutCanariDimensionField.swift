@@ -89,7 +89,7 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField, NSTextF
 
 final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObservablePropertyController {
 
-  private weak var mOutlet : AutoLayoutCanariDimensionField?
+  private weak var mOutlet : AutoLayoutCanariDimensionField? = nil
   private var mDimension : EBReadWriteProperty_Int
   private var mUnit : EBReadOnlyProperty_Int
 

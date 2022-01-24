@@ -157,7 +157,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     self.mSegmentImageIndex = inSegmentIndex
     self.mSegmentImageController = EBObservablePropertyController (
       observedObjects: [inObject],
-      callBack: { self.updateImage (from: inObject) }
+      callBack: { [weak self] in self?.updateImage (from: inObject) }
     )
     return self
   }
@@ -186,7 +186,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     self.mSegmentTitleIndex = inSegmentIndex
     self.mSegmentTitleController = EBObservablePropertyController (
       observedObjects: [inObject],
-      callBack: { self.updateTitle (from: inObject) }
+      callBack: { [weak self] in self?.updateTitle (from: inObject) }
     )
     return self
   }
@@ -235,20 +235,22 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
 fileprivate final class Controller_AutoLayoutSegmentedControl_selectedSegment : EBObservablePropertyController {
 
   private let mObject : EBReadWriteObservableEnumProtocol
-  private let mOutlet : AutoLayoutSegmentedControlWithPages
+  private weak var mOutlet : AutoLayoutSegmentedControlWithPages? = nil
 
   //····················································································································
 
-  init (object : EBReadWriteObservableEnumProtocol, outlet : AutoLayoutSegmentedControlWithPages) {
+  init (object : EBReadWriteObservableEnumProtocol, outlet inOutlet : AutoLayoutSegmentedControlWithPages) {
     self.mObject = object
-    self.mOutlet = outlet
-    super.init (observedObjects:[object], callBack: { outlet.updateSelectedSegment (object) })
+    self.mOutlet = inOutlet
+    super.init (observedObjects: [object], callBack: { [weak inOutlet] in inOutlet?.updateSelectedSegment (object) })
   }
 
   //····················································································································
 
   func updateModel (_ sender : AutoLayoutSegmentedControlWithPages) {
-    self.mObject.setFrom (rawValue: self.mOutlet.selectedSegment)
+    if let outlet = self.mOutlet {
+      self.mObject.setFrom (rawValue: outlet.selectedSegment)
+    }
   }
 
   //····················································································································

@@ -139,20 +139,22 @@ final class Controller_EBPopUpButton_selectedTag : EBObservablePropertyControlle
   //····················································································································
 
   private let mObject : EBReadWriteProperty_Int
-  private let mOutlet : EBPopUpButton
+  private weak var mOutlet : EBPopUpButton? = nil
 
   //····················································································································
 
   init (object : EBReadWriteProperty_Int, outlet : EBPopUpButton) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects: [object], callBack: { outlet.updateOutlet (object) })
+    super.init (observedObjects: [object], callBack: { [weak outlet] in outlet?.updateOutlet (object) })
   }
 
   //····················································································································
 
   func updateModel (sender : EBPopUpButton) {
-    _ = mObject.validateAndSetProp (self.mOutlet.selectedTag (), windowForSheet: sender.window)
+    if let outlet = self.mOutlet {
+      _ = mObject.validateAndSetProp (outlet.selectedTag (), windowForSheet: sender.window)
+    }
   }
 
   //····················································································································
@@ -167,20 +169,22 @@ final class Controller_EBPopUpButton_Index : EBObservablePropertyController {
   //····················································································································
 
   private let mObject : EBReadWriteObservableEnumProtocol
-  private let mOutlet : EBPopUpButton
+  private weak var mOutlet : EBPopUpButton? = nil
 
   //····················································································································
 
   init (object : EBReadWriteObservableEnumProtocol, outlet : EBPopUpButton) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], callBack: { outlet.updateIndex (object) } )
+    super.init (observedObjects:[object], callBack: { [weak outlet] in outlet?.updateIndex (object) } )
   }
 
   //····················································································································
 
   func updateModel (sender : EBPopUpButton) {
-    self.mObject.setFrom (rawValue: self.mOutlet.indexOfSelectedItem)
+    if let outlet = self.mOutlet {
+      self.mObject.setFrom (rawValue: outlet.indexOfSelectedItem)
+    }
   }
 
   //····················································································································

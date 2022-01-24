@@ -2,7 +2,6 @@
 //     P A C K A G E    D O C U M E N T
 //----------------------------------------------------------------------------------------------------------------------
 
-//autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperClass root PackageRoot stackView mDocumentMainView {
 autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumentMainView {
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -87,7 +86,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Grid Step", bold: no, size : .small),
-          right: CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit }
+          right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit }
         )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Flip", bold: no, size : .small),

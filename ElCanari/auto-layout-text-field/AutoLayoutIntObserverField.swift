@@ -49,25 +49,10 @@ final class AutoLayoutIntObserverField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mController?.unregister ()
-    self.mController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   final func set (format inFormatString : String) -> Self {
     self.mNumberFormatter.format = inFormatString
     return self
   }
-
-  //····················································································································
-
-//  final func set (alignment inAlignment : TextAlignment) -> Self {
-//    self.alignment = inAlignment.cocoaAlignment
-//    return self
-//  }
 
   //····················································································································
   //  observedValue binding

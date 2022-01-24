@@ -166,30 +166,4 @@ final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton 
 
 }
 
-////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-////   Controller_CanariFontCharacterSelectButton_codePoint
-////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//
-//final class Controller_CanariFontCharacterSelectButton_codePoint : EBObservablePropertyController {
-//
-//  private let mObject : EBReadWriteProperty_Int
-//  private let mOutlet : FontCharacterSelectButton
-//
-//  //····················································································································
-//
-//  init (object : EBReadWriteProperty_Int, outlet : FontCharacterSelectButton) {
-//    mObject = object
-//    mOutlet = outlet
-//    super.init (observedObjects: [object], callBack: { outlet.updateCodePoint (object) })
-//  }
-//
-//  //····················································································································
-//
-//  fileprivate func updateModel () {
-//    _ = self.mObject.validateAndSetProp (Int (self.mOutlet.mSelectedCharacterCode), windowForSheet:mOutlet.window)
-//  }
-//
-//  //····················································································································
-//}
-//
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

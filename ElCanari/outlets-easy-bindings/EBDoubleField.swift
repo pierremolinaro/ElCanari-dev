@@ -128,7 +128,7 @@ final class EBDoubleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDel
 final class Controller_EBDoubleField_value : EBObservablePropertyController {
 
   private let mObject : EBReadWriteProperty_Double
-  private let mOutlet : EBDoubleField
+  private weak var mOutlet : EBDoubleField? = nil
 
   //····················································································································
 
@@ -139,30 +139,24 @@ final class Controller_EBDoubleField_value : EBObservablePropertyController {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects: [object], callBack: { outlet.updateDoubleValue (object) } )
-    self.mOutlet.target = self
-    self.mOutlet.action = #selector(Controller_EBDoubleField_value.action(_:))
+    outlet.target = self
+    outlet.action = #selector(Controller_EBDoubleField_value.action(_:))
     if autoFormatter {
       let formatter = NumberFormatter ()
-      self.mOutlet.formatter = formatter
-    }else if self.mOutlet.formatter == nil {
+      outlet.formatter = formatter
+    }else if outlet.formatter == nil {
       presentErrorWindow (#file, #line, "the outlet has no formatter")
-    }else if !(mOutlet.formatter is NumberFormatter) {
+    }else if !(outlet.formatter is NumberFormatter) {
       presentErrorWindow (#file, #line, "the formatter should be an NSNumberFormatter")
     }
   }
 
   //····················································································································
 
-  override func unregister () {
-    super.unregister ()
-    self.mOutlet.target = nil
-    self.mOutlet.action = nil
-  }
-
-  //····················································································································
-
   @objc func action (_ sender : EBDoubleField) {
-    _ = self.mObject.validateAndSetProp (self.mOutlet.doubleValue, windowForSheet: sender.window)
+    if let outlet = self.mOutlet {
+      _ = self.mObject.validateAndSetProp (outlet.doubleValue, windowForSheet: sender.window)
+    }
   }
 
   //····················································································································

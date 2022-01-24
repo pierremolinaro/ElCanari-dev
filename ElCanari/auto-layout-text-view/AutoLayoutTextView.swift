@@ -53,14 +53,6 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mValueController?.unregister ()
-    self.mValueController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   deinit {
     noteObjectDeallocation (self)
   }
@@ -71,6 +63,8 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
     get { return self.mTextView.string }
     set { self.mTextView.string = newValue }
   }
+
+  //····················································································································
 
   var textStorage : NSTextStorage? { self.mTextView.textStorage }
 

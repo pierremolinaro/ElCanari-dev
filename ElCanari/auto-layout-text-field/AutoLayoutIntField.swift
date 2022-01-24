@@ -40,17 +40,7 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField, NSTextFieldDelegate
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
-
-  override func ebCleanUp () {
-    self.mValueController?.unregister ()
-    self.mValueController = nil
-    self.delegate = nil
-    self.formatter = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
+ //····················································································································
 
   final func set (min inMin : Int) -> Self {
     self.mNumberFormatter.minimum = NSNumber (value: inMin)

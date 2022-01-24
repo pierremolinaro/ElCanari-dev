@@ -21,7 +21,7 @@ extension NSView : HiddenEBProtocol {
 
 final class MultipleBindingController_hidden : EBOutletEvent {
 
-  private let mOutlet : HiddenEBProtocol?
+  private weak var mOutlet : HiddenEBProtocol? = nil
 
   //····················································································································
 
@@ -56,7 +56,7 @@ final class MultipleBindingController_hidden : EBOutletEvent {
 //   MultipleBindingController_enabled
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol EnabledMultipleBindingProtocol {
+protocol EnabledMultipleBindingProtocol : AnyObject {
   func enableFromEnableBinding (_ inEnable : Bool)
 }
 
@@ -64,7 +64,7 @@ protocol EnabledMultipleBindingProtocol {
 
 final class MultipleBindingController_enabled : EBOutletEvent {
 
-  private let mOutlet : EnabledMultipleBindingProtocol?
+  private weak var mOutlet : EnabledMultipleBindingProtocol? = nil
 
   //····················································································································
 

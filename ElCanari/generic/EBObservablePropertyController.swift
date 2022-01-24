@@ -34,6 +34,7 @@ class EBObservablePropertyController : EBOutletEvent {
       weakObject.mWeakObservedObject?.removeEBObserver (self)
     }
     self.mPrivateObservedObjects.removeAll ()
+    self.mEventCallBack = nil
   }
 
   //····················································································································

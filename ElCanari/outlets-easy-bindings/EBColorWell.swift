@@ -71,30 +71,24 @@ final class EBColorWell : NSColorWell, EBUserClassNameProtocol {
 final class Controller_EBColorWell_color : EBObservablePropertyController {
 
   private let mObject : EBReadWriteProperty_NSColor
-  private let mOutlet : EBColorWell
+  private weak var mOutlet : EBColorWell? = nil
 
   //····················································································································
 
   init (object : EBReadWriteProperty_NSColor, outlet : EBColorWell) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], callBack: { outlet.updateColor (object) } )
-    self.mOutlet.target = self
-    self.mOutlet.action = #selector(Controller_EBColorWell_color.action(_:))
-  }
-
-  //····················································································································
-
-  override func unregister () {
-    super.unregister ()
-    self.mOutlet.target = nil
-    self.mOutlet.action = nil
+    super.init (observedObjects:[object], callBack: { [weak outlet] in outlet?.updateColor (object) } )
+    self.mOutlet?.target = self
+    self.mOutlet?.action = #selector(Controller_EBColorWell_color.action(_:))
   }
 
   //····················································································································
 
   @objc func action (_ sender : EBColorWell) {
-    _ = self.mObject.validateAndSetProp (self.mOutlet.color, windowForSheet: sender.window)
+    if let outlet = self.mOutlet {
+      _ = self.mObject.validateAndSetProp (outlet.color, windowForSheet: sender.window)
+    }
   }
 
   //····················································································································

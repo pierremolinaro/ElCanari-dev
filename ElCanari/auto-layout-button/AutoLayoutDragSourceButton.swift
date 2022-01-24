@@ -67,21 +67,13 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
   }
 
   //····················································································································
-
-  override func ebCleanUp () {
-    self.mImageController?.unregister ()
-    self.mImageController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
   //  Drag type and object type name
   //····················································································································
 
   private var mDragType : NSPasteboard.PasteboardType? = nil
   private var mDraggedObjectFactory : Optional < () -> (EBGraphicManagedObject, NSDictionary)? > = nil
   private var mDraggedObjectImage : Optional < () -> EBShape? > = nil
-  private var mScaleProvider : EBGraphicViewControllerProtocol? = nil
+  private weak var mScaleProvider : EBGraphicViewControllerProtocol? = nil // Should de WEAK
 
   //····················································································································
 

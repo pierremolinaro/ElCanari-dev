@@ -31,14 +31,6 @@ final class AutoLayoutLabel : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mTitleController?.unregister ()
-    self.mTitleController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   override func draw (_ inDirtyRect : NSRect) {
     if debugAutoLayout () {
       let bp = NSBezierPath (rect: self.bounds)

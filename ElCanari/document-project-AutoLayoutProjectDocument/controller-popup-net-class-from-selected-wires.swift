@@ -20,7 +20,7 @@ final class CanariPopUpButtonControllerForNetClassFromSelectedWires : EBOutletEv
 
   private var mArrayModel : ReadWriteArrayOf_NetClassInProject? = nil
   private var mSelection : SelectionController_AutoLayoutProjectDocument_wireInSchematicSelectionController? = nil
-  private var mOutlet : NSPopUpButton? = nil
+  private weak var mOutlet : NSPopUpButton? = nil
 
   //····················································································································
   //  INIT

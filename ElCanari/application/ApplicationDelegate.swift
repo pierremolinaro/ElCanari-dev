@@ -186,7 +186,6 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
          changeAutoLayoutUserInterfaceStyle (to: preferences_mAutoLayoutStyle)
       }
     )
-
   }
 
   //····················································································································

@@ -14,7 +14,7 @@ import Cocoa
 
 final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
-    //····················································································································
+  //····················································································································
 
   init () {
     super.init (frame: NSRect (), pullsDown: false)
@@ -125,7 +125,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
   final func bind_masterPadName (_ inObject : EBObservableProperty <String>) -> Self {
     self.mSlavePadIndexController = EBObservablePropertyController (
       observedObjects: [inObject],
-      callBack: { self.update (fromMasterPadName: inObject) }
+      callBack: { [weak self] in self?.update (fromMasterPadName: inObject) }
     )
     return self
   }
@@ -163,7 +163,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
   final func bind_masterPadObjectIndexArray (_ inObject : EBObservableProperty <IntArray>) -> Self {
     self.mMasterPadIndexArrayIndexController = EBObservablePropertyController (
       observedObjects: [inObject],
-      callBack: { self.update (fromMasterPadIndexArray: inObject) }
+      callBack: { [weak self] in self?.update (fromMasterPadIndexArray: inObject) }
     )
     return self
   }
