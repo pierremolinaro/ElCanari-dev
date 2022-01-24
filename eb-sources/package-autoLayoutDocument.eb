@@ -112,17 +112,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       separator
       GridView2 {
         set (leftMargin: 20) set (rightMargin: 20)
-        addFirstBaseLineAligned (
-          left: PullDownButton (title: "Action", size : .small) {
-            add (item: menuItem "Paste Model Image" $run loadModelImageFromPasteboardAction $enabled !root.hasModelImage)
-            add (item: menuItem "Load DIL16 Embedded Model Image" $run loadDIL16ModelImageFromResourcesAction $enabled !root.hasModelImage)
-            add (item: menuItem "Copy Model Image" $run copyModelImageAction $enabled root.hasModelImage)
-            add (item: menuItem "Remove Model Image" $run removeModelImageAction $enabled root.hasModelImage)
-            add (item: menuItem "Reset Green and Brown Points" $run resetModelImagePointsAction $enabled root.hasModelImage)
-          },
-          right: Label (bold: no, size : .small) { $title root.modelImageSizeString }
-        )
-        add (single: CanariDimensionUnitSetterPullDownButton (size : .small) {
+x        add (single: CanariDimensionUnitSetterPullDownButton (size : .small) {
            expandableWidth ()
            $hidden !root.hasModelImage
            $setter6 root.mDimensionUnitFirstModelPointX, root.mDimensionUnitFirstModelPointY,

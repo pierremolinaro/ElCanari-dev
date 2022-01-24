@@ -34,16 +34,6 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mSlavePadIndexController?.unregister ()
-    self.mSlavePadIndexController = nil
-    self.mMasterPadIndexArrayIndexController?.unregister ()
-    self.mMasterPadIndexArrayIndexController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   deinit {
     noteObjectDeallocation (self)
   }

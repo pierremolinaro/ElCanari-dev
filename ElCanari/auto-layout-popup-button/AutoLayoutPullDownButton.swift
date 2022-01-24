@@ -41,12 +41,12 @@ final class AutoLayoutPullDownButton : AutoLayoutBase_NSPopUpButton {
     case .empty :
       ()
     default :
-      let optionalLastItem = self.lastItem
+      let idx = self.numberOfItems - 1
       var modelArray = [EBObservableObjectProtocol] ()
       inMenuItemDescriptor.expression.addModelsTo (&modelArray)
       let controller = EBObservablePropertyController (
         observedObjects: modelArray,
-        callBack: { [weak self, weak optionalLastItem] in self?.enable (item: optionalLastItem, from: inMenuItemDescriptor.expression.compute ()) }
+        callBack: { [weak self] in self?.enable (itemIndex: idx, from: inMenuItemDescriptor.expression) }
       )
       self.mControllerArray.append (controller)
     }
@@ -56,12 +56,13 @@ final class AutoLayoutPullDownButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
-  fileprivate func enable (item inMenuItem : NSMenuItem?, from inObject : EBSelection <Bool>) {
-    switch inObject {
+  private func enable (itemIndex inIndex : Int, from inObject : EBMultipleBindingBooleanExpression) {
+    let menuItem = self.item (at: inIndex)
+    switch inObject.compute () {
     case .empty, .multiple :
-      inMenuItem?.isEnabled = false
+      menuItem?.isEnabled = false
     case .single (let v) :
-      inMenuItem?.isEnabled = v
+      menuItem?.isEnabled = v
     }
   }
 

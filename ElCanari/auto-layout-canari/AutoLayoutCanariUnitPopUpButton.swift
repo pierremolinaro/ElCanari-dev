@@ -35,14 +35,6 @@ final class AutoLayoutCanariUnitPopUpButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mSelectedUnitController?.unregister ()
-    self.mSelectedUnitController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   fileprivate func add (title inTitle : String, withTag inTag : Int) {
     self.addItem (withTitle: inTitle)
     self.lastItem?.tag = inTag

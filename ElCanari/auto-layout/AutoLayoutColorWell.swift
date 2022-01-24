@@ -42,14 +42,6 @@ final class AutoLayoutColorWell : NSColorWell, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mColorController?.unregister ()
-    self.mColorController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   @objc func action (_ sender : AutoLayoutColorWell) {
     _ = self.mColorController?.updateModel(withCandidateValue: self.color, windowForSheet: self.window)
   }

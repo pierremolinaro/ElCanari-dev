@@ -42,15 +42,6 @@ class AutoLayoutBase_NSStackView : NSStackView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    for view in self.subviews {
-      view.ebCleanUp ()
-    }
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   @discardableResult final func appendView (_ inView : NSView) -> Self {
     self.addView (inView, in: .leading)
     return self

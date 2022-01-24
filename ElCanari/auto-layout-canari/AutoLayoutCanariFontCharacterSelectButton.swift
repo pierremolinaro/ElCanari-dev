@@ -19,7 +19,6 @@ final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton 
 
   init () {
     super.init (title: "", size: .small)
-    noteObjectAllocation (self)
 
 //    self.controlSize = .small
 //    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
@@ -99,7 +98,7 @@ final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton 
 
   //····················································································································
 
-  final func bind_codePoint (_ object:EBReadWriteProperty_Int) -> Self {
+  final func bind_codePoint (_ object : EBReadWriteProperty_Int) -> Self {
     self.mCodePointController = EBGenericReadWritePropertyController <Int> (
       observedObject: object,
       callBack: { [weak self] in self?.updateCodePoint (object) }
@@ -140,11 +139,11 @@ final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton 
 
   //····················································································································
 
-  final func bind_characters (_ model : EBTransientProperty_DefinedCharactersInDevice) -> Self {
+  final func bind_characters (_ inModel : EBTransientProperty_DefinedCharactersInDevice) -> Self {
     self.mCharactersController = EBObservablePropertyController (
-      observedObjects: [model],
+      observedObjects: [inModel],
       callBack: { [weak self] in
-        switch model.selection {
+        switch inModel.selection {
         case .empty, .multiple :
           self?.setDefinedCharacterSet ([])
         case .single (let s) :

@@ -89,16 +89,6 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mIssueController?.unregister ()
-    self.mIssueController = nil
-    self.mTableView.dataSource = nil
-    self.mTableView.delegate = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   @objc fileprivate func hideIssueAction (_ inSender : Any?) {
     self.mTableView.deselectAll (inSender)
   }

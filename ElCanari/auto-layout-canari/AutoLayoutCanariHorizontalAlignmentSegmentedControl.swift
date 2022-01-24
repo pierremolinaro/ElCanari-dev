@@ -34,14 +34,6 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase
   }
 
   //····················································································································
-
-//  override func ebCleanUp () {
-//    self.mAlignmentController?.unregister ()
-//    self.mAlignmentController = nil
-//    super.ebCleanUp ()
-//  }
-
-  //····················································································································
   // ADD PAGE
   //····················································································································
 

@@ -40,15 +40,6 @@ class AutoLayoutBase_NSSplitView : NSSplitView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    for view in self.subviews {
-      view.ebCleanUp ()
-    }
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   @discardableResult final func appendView (_ inView : NSView) -> Self {
     self.addSubview (inView)
     self.setHoldingPriority (.init (rawValue: 250.0), forSubviewAt: self.subviews.count - 1)

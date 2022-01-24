@@ -30,20 +30,6 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
   }
 
   //····················································································································
-
-  override func ebCleanUp () {
-    self.mSelectedTabIndexController?.unregister ()
-    self.mSelectedTabIndexController = nil
-    self.mSegmentImageController?.unregister ()
-    self.mSegmentImageController = nil
-    self.mSegmentTitleController?.unregister ()
-    self.mSegmentTitleController = nil
-    self.mSelectedSegmentController?.unregister ()
-    self.mSelectedSegmentController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
   // ADD PAGE
   //····················································································································
 

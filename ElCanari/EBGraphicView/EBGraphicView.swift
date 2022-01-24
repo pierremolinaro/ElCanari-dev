@@ -67,34 +67,34 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.unbind_arrowKeyMagnitude ()
-    self.unbind_backColor ()
-    self.unbind_backgroundImageOpacity ()
-    self.unbind_foregroundImageData ()
-    self.unbind_gridCrossColor ()
-    self.unbind_gridDisplayFactor ()
-    self.unbind_gridLineColor ()
-    self.unbind_gridStep ()
-    self.unbind_gridStyle ()
-    self.unbind_horizontalFlip ()
-    self.unbind_mouseGrid ()
-    self.unbind_overObjectsDisplay ()
-    self.unbind_shiftArrowKeyMagnitude ()
-    self.unbind_underObjectsDisplay ()
-    self.unbind_verticalFlip ()
-    self.unbind_xPlacardUnit ()
-    self.unbind_yPlacardUnit ()
-    self.unbind_zoom ()
-    self.mViewController = nil
-    self.removeXYHelperWindow ()
-    NotificationCenter.default.removeObserver (
-      self,
-      name: NSView.frameDidChangeNotification,
-      object: self
-    )
-    super.ebCleanUp ()
-  }
+//  override func ebCleanUp () {
+//    self.unbind_arrowKeyMagnitude ()
+//    self.unbind_backColor ()
+//    self.unbind_backgroundImageOpacity ()
+//    self.unbind_foregroundImageData ()
+//    self.unbind_gridCrossColor ()
+//    self.unbind_gridDisplayFactor ()
+//    self.unbind_gridLineColor ()
+//    self.unbind_gridStep ()
+//    self.unbind_gridStyle ()
+//    self.unbind_horizontalFlip ()
+//    self.unbind_mouseGrid ()
+//    self.unbind_overObjectsDisplay ()
+//    self.unbind_shiftArrowKeyMagnitude ()
+//    self.unbind_underObjectsDisplay ()
+//    self.unbind_verticalFlip ()
+//    self.unbind_xPlacardUnit ()
+//    self.unbind_yPlacardUnit ()
+//    self.unbind_zoom ()
+//    self.mViewController = nil
+//    self.removeXYHelperWindow ()
+//    NotificationCenter.default.removeObserver (
+//      self,
+//      name: NSView.frameDidChangeNotification,
+//      object: self
+//    )
+//    super.ebCleanUp ()
+//  }
 
   //····················································································································
 

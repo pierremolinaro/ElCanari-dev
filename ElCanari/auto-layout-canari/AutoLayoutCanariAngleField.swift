@@ -41,14 +41,6 @@ final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField, NSTextField
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mAngleController?.unregister ()
-    self.mAngleController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
   override func draw (_ inDirtyRect : NSRect) {
     if debugAutoLayout () {
 //      DEBUG_FILL_COLOR.setFill ()

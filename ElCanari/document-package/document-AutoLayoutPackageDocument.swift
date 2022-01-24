@@ -1443,7 +1443,11 @@ import Cocoa
 
   fileprivate final func computeImplicitView_14 () -> NSView {
     let view = AutoLayoutPullDownButton (title: "Action", size: .small)
-      .add (item: AutoLayoutMenuItemDescriptor (title: "Paste Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadModelImageFromPasteboardAction (_:)), expression: .empty))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Paste Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadModelImageFromPasteboardAction (_:)), expression: .not (.id (self.rootObject.hasModelImage_property))))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Load DIL16 Embedded Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadDIL16ModelImageFromResourcesAction (_:)), expression: .not (.id (self.rootObject.hasModelImage_property))))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Copy Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.copyModelImageAction (_:)), expression: .id (self.rootObject.hasModelImage_property)))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Remove Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.removeModelImageAction (_:)), expression: .id (self.rootObject.hasModelImage_property)))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Reset Green and Brown Points", target: self, selector: #selector (AutoLayoutPackageDocument.resetModelImagePointsAction (_:)), expression: .id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -4009,32 +4013,31 @@ import Cocoa
   override func removeUserInterface () {
     super.removeUserInterface ()
   //--------------------------- Clean up auto layout views
-    self.mPageMasterView.ebCleanUp ()
-    self.mDocumentMainView.ebCleanUp ()
-    self.mModelImagePage.ebCleanUp ()
-    self.mPackagePageInspectorMasterView.ebCleanUp ()
-    self.mPackagePage.ebCleanUp ()
-    self.mIssuesInspectorView.ebCleanUp ()
-    self.mSelectedObjectsInspectorView.ebCleanUp ()
-    self.mSegmentInspectorView.ebCleanUp ()
-    self.mBezierCurveInspectorView.ebCleanUp ()
-    self.mOvalInspectorView.ebCleanUp ()
-    self.mArcInspectorView.ebCleanUp ()
-    self.mGuideInspectorView.ebCleanUp ()
-    self.mDimensionInspectorView.ebCleanUp ()
-    self.mZoneInspectorView.ebCleanUp ()
-    self.mMasterPadInspectorView.ebCleanUp ()
-    self.mSlavePadInspectorView.ebCleanUp ()
-    self.mGridZoomInspectorView.ebCleanUp ()
-    self.mDisplayInspectorView.ebCleanUp ()
-    self.mProgramPage.ebCleanUp ()
-    self.mInfosPage.ebCleanUp ()
-    let toolbarItems = self.windowForSheet?.toolbar?.items ?? []
+    // self.mPageMasterView.ebCleanUp ()
+    // self.mDocumentMainView.ebCleanUp ()
+    // self.mModelImagePage.ebCleanUp ()
+    // self.mPackagePageInspectorMasterView.ebCleanUp ()
+    // self.mPackagePage.ebCleanUp ()
+    // self.mIssuesInspectorView.ebCleanUp ()
+    // self.mSelectedObjectsInspectorView.ebCleanUp ()
+    // self.mSegmentInspectorView.ebCleanUp ()
+    // self.mBezierCurveInspectorView.ebCleanUp ()
+    // self.mOvalInspectorView.ebCleanUp ()
+    // self.mArcInspectorView.ebCleanUp ()
+    // self.mGuideInspectorView.ebCleanUp ()
+    // self.mDimensionInspectorView.ebCleanUp ()
+    // self.mZoneInspectorView.ebCleanUp ()
+    // self.mMasterPadInspectorView.ebCleanUp ()
+    // self.mSlavePadInspectorView.ebCleanUp ()
+    // self.mGridZoomInspectorView.ebCleanUp ()
+    // self.mDisplayInspectorView.ebCleanUp ()
+    // self.mProgramPage.ebCleanUp ()
+    // self.mInfosPage.ebCleanUp ()
+    /* let toolbarItems = self.windowForSheet?.toolbar?.items ?? []
     for item in toolbarItems {
       item.view?.ebCleanUp ()
-    }
+    } */
   //--------------------------- Unbind regular bindings
-  //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
   //--- Array controller property: mModelImageObjectsController
     self.mModelImageObjectsController.unbind_model ()
