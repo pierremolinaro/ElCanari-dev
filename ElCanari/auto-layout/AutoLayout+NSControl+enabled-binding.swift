@@ -42,7 +42,7 @@ final class EnabledBindingController : EBObservablePropertyController {
 
   //····················································································································
 
-  private weak var mControlOutlet : NSControl?
+  private weak var mControlOutlet : NSControl? = nil
   private var mIsEnabledFromValueBinding = true
   private var mIsEnabledFromEnabledBinding = true
 

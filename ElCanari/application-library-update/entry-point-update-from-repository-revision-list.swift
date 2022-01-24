@@ -222,13 +222,13 @@ final class LibraryCommitListController : EBObjcBaseObject {  // SHOULD INHERIT 
   //   ebCleanUp
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mTableView?.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "commit"))?.unbind (NSBindingName.value)
-    self.mTableView?.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "date"))?.unbind (NSBindingName.value)
-    self.mTableView?.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "message"))?.unbind (NSBindingName.value)
-    self.mArrayController.content = nil
-    super.ebCleanUp ()
-  }
+//  override func ebCleanUp () {
+//    self.mTableView?.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "commit"))?.unbind (NSBindingName.value)
+//    self.mTableView?.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "date"))?.unbind (NSBindingName.value)
+//    self.mTableView?.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "message"))?.unbind (NSBindingName.value)
+//    self.mArrayController.content = nil
+//    super.ebCleanUp ()
+//  }
 
   //····················································································································
 
@@ -264,7 +264,7 @@ fileprivate func displayRepositoryCommitList (_ revisions : [LibraryRevisionDesc
     inLogTextView.appendMessageString ("  Dialog has been cancelled\n")
     result = nil
   }
-  gLibraryCommitListController?.ebCleanUp ()
+//  gLibraryCommitListController?.ebCleanUp ()
   gLibraryCommitListController = nil
   return result
 }
