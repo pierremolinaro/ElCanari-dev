@@ -344,7 +344,7 @@ import Cocoa
         .setCenterAlignment ()
       do{
         let view_0_1_0 = AutoLayoutButton (title: "Display Settings", size: .regular)
-          .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.selectedPageIndex_property), .le, MultipleBindingLiteralInt (1)))
+          .bind_enabled (.intcmp (.prop (self.rootObject.selectedPageIndex_property), .le, .literalInt (1)))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutMergerDocument.showPrefsForSettingMergerDisplayAction (_:))
@@ -395,7 +395,7 @@ import Cocoa
     let view_0 = AutoLayoutVerticalStackView ()
       .set (bottomMargin: 8)
       .set (width: 250)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.showDisplaySettingView_property)))
+      .bind_hidden (.not (.prop (self.rootObject.showDisplaySettingView_property)))
     do{
       let view_0_0 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_64 ())
       view_0.appendView (view_0_0)
@@ -418,7 +418,7 @@ import Cocoa
     let view_1 = AutoLayoutVerticalStackView ()
       .set (margins: 8)
       .set (width: 250)
-      .bind_hidden (.MultipleBindingProp (self.rootObject.showDisplaySettingView_property))
+      .bind_hidden (.prop (self.rootObject.showDisplaySettingView_property))
     do{
       let view_1_0 = AutoLayoutHorizontalStackView ()
       do{
@@ -431,7 +431,7 @@ import Cocoa
         view_1_0.appendView (view_1_0_0)
         let view_1_0_1 = AutoLayoutButton (title: "Update…", size: .small)
           .expandableWidth ()
-          .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.mBoardModelController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+          .bind_enabled (.intcmp (.prop (self.mBoardModelController.selectedArray_property.count_property), .gt, .literalInt (0)))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutMergerDocument.updateBoardModelAction (_:))
@@ -439,7 +439,7 @@ import Cocoa
         view_1_0.appendView (view_1_0_1)
         let view_1_0_2 = AutoLayoutButton (title: "-", size: .small)
           .set (width: 40)
-          .bind_enabled (MultipleBindingBoolOp (MultipleBindingIntCmp (.MultipleBindingProp (self.mBoardModelController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)), .and, MultipleBindingIntCmp (.MultipleBindingProp (self.mBoardModelSelection.instanceCount_property), .eq, MultipleBindingLiteralInt (0))))
+          .bind_enabled (. boolcmp (.intcmp (.prop (self.mBoardModelController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.prop (self.mBoardModelSelection.instanceCount_property), .eq, .literalInt (0))))
           .bind_run (
             target: mBoardModelController,
             selector: #selector (Controller_AutoLayoutMergerDocument_mBoardModelController.remove (_:))
@@ -468,7 +468,7 @@ import Cocoa
       .bind_horizontalFlip (preferences_mergerModelViewHorizontalFlip_property)
       .bind_verticalFlip (preferences_mergerModelViewVerticalFlip_property)
       .bind_overObjectsDisplay (self.mBoardModelSelection.imageForModel_property)
-      .bind_hidden (MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.boardModels_property.count_property), .eq, MultipleBindingLiteralInt (0)))
+      .bind_hidden (.intcmp (.prop (self.rootObject.boardModels_property.count_property), .eq, .literalInt (0)))
     hStackView.appendView (view_3)
     let view_4 = AutoLayoutVerticalStackView ()
     do{
@@ -479,7 +479,7 @@ import Cocoa
         let view_4_1_0 = AutoLayoutFlexibleSpace ()
         view_4_1.appendView (view_4_1_0)
         let view_4_1_1 = AutoLayoutStaticLabel (title: "No Model", bold: true, size: .regular)
-          .bind_hidden (MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.boardModels_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+          .bind_hidden (.intcmp (.prop (self.rootObject.boardModels_property.count_property), .gt, .literalInt (0)))
         view_4_1.appendView (view_4_1_1)
         let view_4_1_2 = AutoLayoutFlexibleSpace ()
         view_4_1.appendView (view_4_1_2)
@@ -510,7 +510,7 @@ import Cocoa
     let view_0 = AutoLayoutVerticalStackView ()
       .set (bottomMargin: 8)
       .set (width: 250)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.showDisplaySettingView_property)))
+      .bind_hidden (.not (.prop (self.rootObject.showDisplaySettingView_property)))
     do{
       let view_0_0 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_141 ())
       view_0.appendView (view_0_0)
@@ -533,7 +533,7 @@ import Cocoa
     let view_1 = AutoLayoutVerticalStackView ()
       .set (margins: 8)
       .set (width: 250)
-      .bind_hidden (.MultipleBindingProp (self.rootObject.showDisplaySettingView_property))
+      .bind_hidden (.prop (self.rootObject.showDisplaySettingView_property))
     do{
       let view_1_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mBoardBaseInspectorView, equalWidth: true, size: .regular)
         .expandableWidth ()
@@ -624,7 +624,7 @@ import Cocoa
       do{
         let view_0_0_0 = AutoLayoutButton (title: "Import Artwork…", size: .regular)
           .expandableWidth ()
-          .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.mArtwork_none)))
+          .bind_hidden (.not (.prop (self.rootObject.mArtwork_none)))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutMergerDocument.importArtworkAction (_:))
@@ -632,7 +632,7 @@ import Cocoa
         view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutButton (title: "Detach Artwork", size: .regular)
           .expandableWidth ()
-          .bind_hidden (.MultipleBindingProp (self.rootObject.mArtwork_none))
+          .bind_hidden (.prop (self.rootObject.mArtwork_none))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutMergerDocument.detachArtworkAction (_:))
@@ -645,7 +645,7 @@ import Cocoa
         view_0_0.appendView (view_0_0_2)
         let view_0_0_3 = AutoLayoutButton (title: "Generate Files", size: .regular)
           .expandableWidth ()
-          .bind_enabled (MultipleBindingBoolOp (MultipleBindingBoolOp (MultipleBindingNot (.MultipleBindingProp (self.rootObject.mArtwork_none)), .and, MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.boardInstances_property.count_property), .gt, MultipleBindingLiteralInt (0))), .and, MultipleBindingNot (.MultipleBindingProp (self.documentIsUnnamed_property))))
+          .bind_enabled (. boolcmp (. boolcmp (.not (.prop (self.rootObject.mArtwork_none)), .and, .intcmp (.prop (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0))), .and, .not (.prop (self.documentIsUnnamed_property))))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutMergerDocument.generateProductFilesAction (_:))
@@ -674,7 +674,7 @@ import Cocoa
     }
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.mArtwork_none)))
+      .bind_hidden (.not (.prop (self.rootObject.mArtwork_none)))
     do{
       let view_1_0 = AutoLayoutFlexibleSpace ()
       view_1.appendView (view_1_0)
@@ -693,7 +693,7 @@ import Cocoa
     }
     vStackView.appendView (view_1)
     let view_2 = AutoLayoutVerticalStackView ()
-      .bind_hidden (.MultipleBindingProp (self.rootObject.mArtwork_none))
+      .bind_hidden (.prop (self.rootObject.mArtwork_none))
     do{
       let view_2_0 = AutoLayoutHorizontalStackView ()
       do{
@@ -807,7 +807,7 @@ import Cocoa
           view_1_2_0.appendView (view_1_2_0_2)
           let view_1_2_0_3 = AutoLayoutStaticLabel (title: "Empty Data File", bold: true, size: .small)
             .setOrangeTextColor ()
-            .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.mDataSelection.hasNoData_property)))
+            .bind_hidden (.not (.prop (self.mDataSelection.hasNoData_property)))
           view_1_2_0.appendView (view_1_2_0_3)
         }
         view_1_2.appendView (view_1_2_0)
@@ -967,7 +967,7 @@ import Cocoa
           view_1_2_16.appendView (view_1_2_16_0)
           let view_1_2_16_1 = AutoLayoutCanariDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.mDataSelection.padHoleDiameterInPDF_property, self.mDataSelection.measurementUnitForPadHoleInPDF_property)
-            .bind_enabled (.MultipleBindingProp (self.mDataSelection.drawPadHolesInPDF_property))
+            .bind_enabled (.prop (self.mDataSelection.drawPadHolesInPDF_property))
           view_1_2_16.appendView (view_1_2_16_1)
           let view_1_2_16_2 = AutoLayoutFlexibleSpace ()
           view_1_2_16.appendView (view_1_2_16_2)
@@ -3224,7 +3224,7 @@ import Cocoa
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "Limits Overlap", size: .small)
         .bind_value (self.rootObject.overlapingArrangment_property)
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.boardInstances_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+        .bind_enabled (.intcmp (.prop (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0)))
       view.appendView (view_2)
     }
     return view
@@ -3248,11 +3248,11 @@ import Cocoa
     do{
       let view_0 = AutoLayoutCanariDimensionAndPopUp (size: .small)
         .bind_dimensionAndUnit (self.rootObject.boardManualWidth_property, self.rootObject.boardWidthUnit_property)
-        .bind_hidden (.MultipleBindingProp (self.rootObject.automaticBoardSize_property))
+        .bind_hidden (.prop (self.rootObject.automaticBoardSize_property))
       view.appendView (view_0)
       let view_1 = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
         .bind_dimensionAndUnit (self.rootObject.boardWidth_property, self.rootObject.boardWidthUnit_property)
-        .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.automaticBoardSize_property)))
+        .bind_hidden (.not (.prop (self.rootObject.automaticBoardSize_property)))
       view.appendView (view_1)
     }
     return view
@@ -3276,11 +3276,11 @@ import Cocoa
     do{
       let view_0 = AutoLayoutCanariDimensionAndPopUp (size: .small)
         .bind_dimensionAndUnit (self.rootObject.boardManualHeight_property, self.rootObject.boardHeightUnit_property)
-        .bind_hidden (.MultipleBindingProp (self.rootObject.automaticBoardSize_property))
+        .bind_hidden (.prop (self.rootObject.automaticBoardSize_property))
       view.appendView (view_0)
       let view_1 = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
         .bind_dimensionAndUnit (self.rootObject.boardHeight_property, self.rootObject.boardHeightUnit_property)
-        .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.automaticBoardSize_property)))
+        .bind_hidden (.not (.prop (self.rootObject.automaticBoardSize_property)))
       view.appendView (view_1)
     }
     return view
@@ -3460,7 +3460,7 @@ import Cocoa
           let view_1_0_0 = AutoLayoutFlexibleSpace ()
           view_1_0.appendView (view_1_0_0)
           let view_1_0_1 = AutoLayoutButton (title: "Up", size: .small)
-            .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.mBoardInstanceController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
               selector: #selector (AutoLayoutMergerDocument.moveUpAction (_:))
@@ -3473,14 +3473,14 @@ import Cocoa
         let view_1_1 = AutoLayoutHorizontalStackView ()
         do{
           let view_1_1_0 = AutoLayoutButton (title: "Left", size: .small)
-            .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.mBoardInstanceController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
               selector: #selector (AutoLayoutMergerDocument.moveLeftAction (_:))
             )
           view_1_1.appendView (view_1_1_0)
           let view_1_1_1 = AutoLayoutButton (title: "Right", size: .small)
-            .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.mBoardInstanceController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
               selector: #selector (AutoLayoutMergerDocument.moveRightAction (_:))
@@ -3493,7 +3493,7 @@ import Cocoa
           let view_1_2_0 = AutoLayoutFlexibleSpace ()
           view_1_2.appendView (view_1_2_0)
           let view_1_2_1 = AutoLayoutButton (title: "Down", size: .small)
-            .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.mBoardInstanceController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
               selector: #selector (AutoLayoutMergerDocument.moveDownAction (_:))
@@ -3626,7 +3626,7 @@ import Cocoa
   fileprivate final func computeImplicitView_176 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
       .bind_value (self.mDataSelection.drawTraversingPads_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasInnerElements_property)))
+      .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -3645,8 +3645,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_178 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
-      .bind_enabled (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
-      .bind_hidden (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
+      .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -3666,7 +3666,7 @@ import Cocoa
   fileprivate final func computeImplicitView_180 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasInnerElements_property)))
+      .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -3677,7 +3677,7 @@ import Cocoa
   fileprivate final func computeImplicitView_181 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasInnerElements_property)))
+      .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -3687,8 +3687,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_182 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
-      .bind_enabled (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
-      .bind_hidden (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
+      .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -3698,8 +3698,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_183 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
-      .bind_enabled (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
-      .bind_hidden (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
+      .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -3710,7 +3710,7 @@ import Cocoa
   fileprivate final func computeImplicitView_184 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasSixLayers_property)))
+      .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
     return view
   }
 
@@ -3721,7 +3721,7 @@ import Cocoa
   fileprivate final func computeImplicitView_185 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasSixLayers_property)))
+      .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
     return view
   }
 
@@ -3731,8 +3731,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_186 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
-      .bind_enabled (.MultipleBindingProp (self.rootObject.hasSixLayers_property))
-      .bind_hidden (.MultipleBindingProp (self.rootObject.hasSixLayers_property))
+      .bind_enabled (.prop (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.prop (self.rootObject.hasSixLayers_property))
     return view
   }
 
@@ -3742,8 +3742,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_187 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
-      .bind_enabled (.MultipleBindingProp (self.rootObject.hasSixLayers_property))
-      .bind_hidden (.MultipleBindingProp (self.rootObject.hasSixLayers_property))
+      .bind_enabled (.prop (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.prop (self.rootObject.hasSixLayers_property))
     return view
   }
 

@@ -97,286 +97,286 @@ final class MultipleBindingController_enabled : EBOutletEvent {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBMultipleBindingBooleanExpression : EBUserClassNameProtocol {
-
-  //····················································································································
-
-  init () {
-    noteObjectAllocation (self)
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
-  func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
-  }
-
-  //····················································································································
-
-  func compute () -> EBSelection <Bool> {
-     return .empty
-  }
-
-  //····················································································································
-
-  class MultipleBindingProp : EBMultipleBindingBooleanExpression {
-
-    private weak var mProperty : EBObservableProperty <Bool>?
-
-    init (_ inProperty : EBObservableProperty <Bool>) {
-      self.mProperty = inProperty
-    }
-
-    override func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
-      if let property = self.mProperty {
-        ioModelArray.append (property)
-      }
-    }
-
-    override func compute () -> EBSelection <Bool> {
-      self.mProperty?.selection ?? .empty
-    }
-
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class EBMultipleBindingIntegerExpression : EBUserClassNameProtocol {
-
-  //····················································································································
-
-  init () {
-    noteObjectAllocation (self)
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
-  func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
-  }
-
-  //····················································································································
-
-  func compute () -> EBSelection <Int> {
-     return .empty
-  }
-
-  //····················································································································
-
-  class MultipleBindingProp : EBMultipleBindingIntegerExpression {
-
-    private weak var mProperty : EBObservableProperty <Int>?
-
-    init (_ inProperty : EBObservableProperty <Int>) {
-      self.mProperty = inProperty
-    }
-
-    override func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
-      if let property = self.mProperty {
-        ioModelArray.append (property)
-      }
-    }
-
-    override func compute () -> EBSelection <Int> {
-      self.mProperty?.selection ?? .empty
-    }
-
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class MultipleBindingNot : EBMultipleBindingBooleanExpression {
-
-  //····················································································································
-
-  private let mExpression : EBMultipleBindingBooleanExpression
-
-  //····················································································································
-
-  init (_ inExpression : EBMultipleBindingBooleanExpression) {
-    self.mExpression = inExpression
-  }
-
-  //····················································································································
-
-  override func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
-    self.mExpression.addModelsTo (&ioModelArray)
-  }
-
-  //····················································································································
-
-  override func compute () -> EBSelection <Bool> {
-     switch self.mExpression.compute () {
-     case .empty :
-       return .empty
-     case .multiple :
-       return .multiple
-     case .single (let v) :
-       return .single (!v)
-     }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class MultipleBindingLiteralInt : EBMultipleBindingIntegerExpression {
-
-  //····················································································································
-
-  private let mValue : Int
-
-  //····················································································································
-
-  init (_ inValue : Int) {
-    self.mValue = inValue
-  }
-
-  //····················································································································
-
-  override func compute () -> EBSelection <Int> {
-    return .single (self.mValue)
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class MultipleBindingBoolOp : EBMultipleBindingBooleanExpression {
-
-  //····················································································································
-
-  private let mLeft : EBMultipleBindingBooleanExpression
-  private let mOp : MultipleBindingBooleanOperation
-  private let mRight : EBMultipleBindingBooleanExpression
-
-  //····················································································································
-
-  init (_ inLeft : EBMultipleBindingBooleanExpression,
-        _ inOp : MultipleBindingBooleanOperation,
-        _ inRight : EBMultipleBindingBooleanExpression) {
-    self.mLeft = inLeft
-    self.mOp = inOp
-    self.mRight = inRight
-  }
-
-  //····················································································································
-
-  override func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
-    self.mLeft.addModelsTo (&ioModelArray)
-    self.mRight.addModelsTo (&ioModelArray)
-  }
-
-  //····················································································································
-
-  override func compute () -> EBSelection <Bool> {
-     switch (self.mLeft.compute (), self.mRight.compute ()) {
-     case (.empty, _) :
-       return .empty
-     case (_, .empty) :
-       return .empty
-     case (.multiple, _) :
-       return .multiple
-     case (_, .multiple) :
-       return .multiple
-     case (.single (let left), .single (let right)) :
-        switch self.mOp {
-        case .or :
-          return .single (left || right)
-        case .and :
-          return .single (left && right)
-        case .xor :
-          return .single (left != right)
-        }
-     }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class MultipleBindingIntCmp : EBMultipleBindingBooleanExpression {
-
-  //····················································································································
-
-  private let mLeft : EBMultipleBindingIntegerExpression
-  private let mOp : MultipleBindingIntegerOperation
-  private let mRight : EBMultipleBindingIntegerExpression
-
-  //····················································································································
-
-  init (_ inLeft : EBMultipleBindingIntegerExpression,
-        _ inOp : MultipleBindingIntegerOperation,
-        _ inRight : EBMultipleBindingIntegerExpression) {
-    self.mLeft = inLeft
-    self.mOp = inOp
-    self.mRight = inRight
-  }
-
-  //····················································································································
-
-  override func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
-    self.mLeft.addModelsTo (&ioModelArray)
-    self.mRight.addModelsTo (&ioModelArray)
-  }
-
-  //····················································································································
-
-  override func compute () -> EBSelection <Bool> {
-     switch (self.mLeft.compute (), self.mRight.compute ()) {
-     case (.empty, _) :
-       return .empty
-     case (_, .empty) :
-       return .empty
-     case (.multiple, _) :
-       return .multiple
-     case (_, .multiple) :
-       return .multiple
-     case (.single (let left), .single (let right)) :
-        switch self.mOp {
-        case .eq :
-          return .single (left == right)
-        case .ne :
-          return .single (left != right)
-        case .lt :
-          return .single (left < right)
-        case .le :
-          return .single (left <= right)
-        case .gt :
-          return .single (left > right)
-        case .ge :
-          return .single (left >= right)
-        }
-     }
-  }
-
-  //····················································································································
-
-}
+//class EBMultipleBindingBooleanExpression : EBUserClassNameProtocol {
+//
+//  //····················································································································
+//
+//  init () {
+//    noteObjectAllocation (self)
+//  }
+//
+//  //····················································································································
+//
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
+//
+//  //····················································································································
+//
+//  func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
+//  }
+//
+//  //····················································································································
+//
+//  func compute () -> EBSelection <Bool> {
+//     return .empty
+//  }
+//
+//  //····················································································································
+//
+//  class MultipleBindingProp : EBMultipleBindingBooleanExpression {
+//
+//    private weak var mProperty : EBObservableProperty <Bool>?
+//
+//    init (_ inProperty : EBObservableProperty <Bool>) {
+//      self.mProperty = inProperty
+//    }
+//
+//    override func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
+//      if let property = self.mProperty {
+//        ioModelArray.append (property)
+//      }
+//    }
+//
+//    override func compute () -> EBSelection <Bool> {
+//      self.mProperty?.selection ?? .empty
+//    }
+//
+//  }
+//
+//  //····················································································································
+//
+//}
+//
+////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//
+//class EBMultipleBindingIntegerExpression : EBUserClassNameProtocol {
+//
+//  //····················································································································
+//
+//  init () {
+//    noteObjectAllocation (self)
+//  }
+//
+//  //····················································································································
+//
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
+//
+//  //····················································································································
+//
+//  func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
+//  }
+//
+//  //····················································································································
+//
+//  func compute () -> EBSelection <Int> {
+//     return .empty
+//  }
+//
+//  //····················································································································
+//
+//  class MultipleBindingProp : EBMultipleBindingIntegerExpression {
+//
+//    private weak var mProperty : EBObservableProperty <Int>?
+//
+//    init (_ inProperty : EBObservableProperty <Int>) {
+//      self.mProperty = inProperty
+//    }
+//
+//    override func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
+//      if let property = self.mProperty {
+//        ioModelArray.append (property)
+//      }
+//    }
+//
+//    override func compute () -> EBSelection <Int> {
+//      self.mProperty?.selection ?? .empty
+//    }
+//
+//  }
+//
+//  //····················································································································
+//
+//}
+//
+////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//
+//class MultipleBindingNot : EBMultipleBindingBooleanExpression {
+//
+//  //····················································································································
+//
+//  private let mExpression : EBMultipleBindingBooleanExpression
+//
+//  //····················································································································
+//
+//  init (_ inExpression : EBMultipleBindingBooleanExpression) {
+//    self.mExpression = inExpression
+//  }
+//
+//  //····················································································································
+//
+//  override func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
+//    self.mExpression.addModelsTo (&ioModelArray)
+//  }
+//
+//  //····················································································································
+//
+//  override func compute () -> EBSelection <Bool> {
+//     switch self.mExpression.compute () {
+//     case .empty :
+//       return .empty
+//     case .multiple :
+//       return .multiple
+//     case .single (let v) :
+//       return .single (!v)
+//     }
+//  }
+//
+//  //····················································································································
+//
+//}
+//
+////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//
+//class MultipleBindingLiteralInt : EBMultipleBindingIntegerExpression {
+//
+//  //····················································································································
+//
+//  private let mValue : Int
+//
+//  //····················································································································
+//
+//  init (_ inValue : Int) {
+//    self.mValue = inValue
+//  }
+//
+//  //····················································································································
+//
+//  override func compute () -> EBSelection <Int> {
+//    return .single (self.mValue)
+//  }
+//
+//  //····················································································································
+//
+//}
+//
+////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//
+//class MultipleBindingBoolOp : EBMultipleBindingBooleanExpression {
+//
+//  //····················································································································
+//
+//  private let mLeft : EBMultipleBindingBooleanExpression
+//  private let mOp : MultipleBindingBooleanOperation
+//  private let mRight : EBMultipleBindingBooleanExpression
+//
+//  //····················································································································
+//
+//  init (_ inLeft : EBMultipleBindingBooleanExpression,
+//        _ inOp : MultipleBindingBooleanOperation,
+//        _ inRight : EBMultipleBindingBooleanExpression) {
+//    self.mLeft = inLeft
+//    self.mOp = inOp
+//    self.mRight = inRight
+//  }
+//
+//  //····················································································································
+//
+//  override func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
+//    self.mLeft.addModelsTo (&ioModelArray)
+//    self.mRight.addModelsTo (&ioModelArray)
+//  }
+//
+//  //····················································································································
+//
+//  override func compute () -> EBSelection <Bool> {
+//     switch (self.mLeft.compute (), self.mRight.compute ()) {
+//     case (.empty, _) :
+//       return .empty
+//     case (_, .empty) :
+//       return .empty
+//     case (.multiple, _) :
+//       return .multiple
+//     case (_, .multiple) :
+//       return .multiple
+//     case (.single (let left), .single (let right)) :
+//        switch self.mOp {
+//        case .or :
+//          return .single (left || right)
+//        case .and :
+//          return .single (left && right)
+//        case .xor :
+//          return .single (left != right)
+//        }
+//     }
+//  }
+//
+//  //····················································································································
+//
+//}
+//
+////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//
+//class MultipleBindingIntCmp : EBMultipleBindingBooleanExpression {
+//
+//  //····················································································································
+//
+//  private let mLeft : EBMultipleBindingIntegerExpression
+//  private let mOp : MultipleBindingIntegerOperation
+//  private let mRight : EBMultipleBindingIntegerExpression
+//
+//  //····················································································································
+//
+//  init (_ inLeft : EBMultipleBindingIntegerExpression,
+//        _ inOp : MultipleBindingIntegerOperation,
+//        _ inRight : EBMultipleBindingIntegerExpression) {
+//    self.mLeft = inLeft
+//    self.mOp = inOp
+//    self.mRight = inRight
+//  }
+//
+//  //····················································································································
+//
+//  override func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
+//    self.mLeft.addModelsTo (&ioModelArray)
+//    self.mRight.addModelsTo (&ioModelArray)
+//  }
+//
+//  //····················································································································
+//
+//  override func compute () -> EBSelection <Bool> {
+//     switch (self.mLeft.compute (), self.mRight.compute ()) {
+//     case (.empty, _) :
+//       return .empty
+//     case (_, .empty) :
+//       return .empty
+//     case (.multiple, _) :
+//       return .multiple
+//     case (_, .multiple) :
+//       return .multiple
+//     case (.single (let left), .single (let right)) :
+//        switch self.mOp {
+//        case .eq :
+//          return .single (left == right)
+//        case .ne :
+//          return .single (left != right)
+//        case .lt :
+//          return .single (left < right)
+//        case .le :
+//          return .single (left <= right)
+//        case .gt :
+//          return .single (left > right)
+//        case .ge :
+//          return .single (left >= right)
+//        }
+//     }
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -399,116 +399,116 @@ enum MultipleBindingIntegerOperation {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//indirect enum EBMultipleBindingBooleanExpression {
-//  case empty
-//  case boolcmp (EBMultipleBindingBooleanExpression, MultipleBindingBooleanOperation, EBMultipleBindingBooleanExpression)
-//  case intcmp  (EBMultipleBindingIntegerExpression, MultipleBindingIntegerOperation, EBMultipleBindingIntegerExpression)
-//  case not (EBMultipleBindingBooleanExpression)
-//  case id  (EBObservableProperty <Bool>)
-//
-//  func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
-//    switch self {
-//    case .empty :
-//      ()
-//    case .boolcmp (let left, _, let right) :
-//      left.addModelsTo (&ioModelArray)
-//      right.addModelsTo (&ioModelArray)
-//    case .intcmp (let left, _, let right) :
-//      left.addModelsTo (&ioModelArray)
-//      right.addModelsTo (&ioModelArray)
-//    case .not (let bindingExp) :
-//      bindingExp.addModelsTo (&ioModelArray)
-//    case .id  (let model) :
-//      ioModelArray.append (model)
-//    }
-//  }
-//
-//  func compute () -> EBSelection <Bool> {
-//    switch self {
-//    case .empty :
-//      return .empty
-//    case .boolcmp (let left, let op, let right) :
-//      let leftSelection = left.compute ()
-//      let rightSelection = right.compute ()
-//      switch (leftSelection, rightSelection) {
-//      case (.empty, _), (_, .empty) :
-//        return .empty
-//      case (_, .multiple), (.multiple, _) :
-//        return .multiple
-//      case (.single (let v), .single (let w)) :
-//        switch op {
-//        case .and :
-//          return .single (v && w)
-//        case .or :
-//          return .single (v || w)
-//        case .xor :
-//          return .single (v != w)
-//        }
-//      }
-//    case .intcmp (let left, let op, let right) :
-//      let leftSelection = left.compute ()
-//      let rightSelection = right.compute ()
-//      switch (leftSelection, rightSelection) {
-//      case (.empty, _), (_, .empty) :
-//        return .empty
-//      case (_, .multiple), (.multiple, _) :
-//        return .multiple
-//      case (.single (let v), .single (let w)) :
-//        switch op {
-//        case .eq :
-//          return .single (v == w)
-//        case .ne :
-//          return .single (v != w)
-//        case .lt :
-//          return .single (v < w)
-//        case .le :
-//          return .single (v <= w)
-//        case .gt :
-//          return .single (v > w)
-//        case .ge :
-//          return .single (v >= w)
-//        }
-//      }
-//    case .not (let bindingExp) :
-//      let selection = bindingExp.compute ()
-//      switch selection {
-//      case .empty :
-//        return .empty
-//      case .single (let v) :
-//        return .single (!v)
-//      case .multiple :
-//        return .multiple
-//      }
-//    case .id  (let model) :
-//      return model.selection
-//    }
-//  }
-//
-//}
+indirect enum EBMultipleBindingBooleanExpression {
+  case empty
+  case boolcmp (EBMultipleBindingBooleanExpression, MultipleBindingBooleanOperation, EBMultipleBindingBooleanExpression)
+  case intcmp  (EBMultipleBindingIntegerExpression, MultipleBindingIntegerOperation, EBMultipleBindingIntegerExpression)
+  case not  (EBMultipleBindingBooleanExpression)
+  case prop (EBObservableProperty <Bool>)
+
+  func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
+    switch self {
+    case .empty :
+      ()
+    case .boolcmp (let left, _, let right) :
+      left.addModelsTo (&ioModelArray)
+      right.addModelsTo (&ioModelArray)
+    case .intcmp (let left, _, let right) :
+      left.addModelsTo (&ioModelArray)
+      right.addModelsTo (&ioModelArray)
+    case .not (let bindingExp) :
+      bindingExp.addModelsTo (&ioModelArray)
+    case .prop  (let model) :
+      ioModelArray.append (model)
+    }
+  }
+
+  func compute () -> EBSelection <Bool> {
+    switch self {
+    case .empty :
+      return .empty
+    case .boolcmp (let left, let op, let right) :
+      let leftSelection = left.compute ()
+      let rightSelection = right.compute ()
+      switch (leftSelection, rightSelection) {
+      case (.empty, _), (_, .empty) :
+        return .empty
+      case (_, .multiple), (.multiple, _) :
+        return .multiple
+      case (.single (let v), .single (let w)) :
+        switch op {
+        case .and :
+          return .single (v && w)
+        case .or :
+          return .single (v || w)
+        case .xor :
+          return .single (v != w)
+        }
+      }
+    case .intcmp (let left, let op, let right) :
+      let leftSelection = left.compute ()
+      let rightSelection = right.compute ()
+      switch (leftSelection, rightSelection) {
+      case (.empty, _), (_, .empty) :
+        return .empty
+      case (_, .multiple), (.multiple, _) :
+        return .multiple
+      case (.single (let v), .single (let w)) :
+        switch op {
+        case .eq :
+          return .single (v == w)
+        case .ne :
+          return .single (v != w)
+        case .lt :
+          return .single (v < w)
+        case .le :
+          return .single (v <= w)
+        case .gt :
+          return .single (v > w)
+        case .ge :
+          return .single (v >= w)
+        }
+      }
+    case .not (let bindingExp) :
+      let selection = bindingExp.compute ()
+      switch selection {
+      case .empty :
+        return .empty
+      case .single (let v) :
+        return .single (!v)
+      case .multiple :
+        return .multiple
+      }
+    case .prop  (let model) :
+      return model.selection
+    }
+  }
+
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//enum EBMultipleBindingIntegerExpression {
-//  case literalInt (Int)
-//  case id (EBObservableProperty <Int>)
-//
-//  func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
-//    switch self {
-//    case .literalInt :
-//      ()
-//    case .id (let model) :
-//      ioModelArray.append (model)
-//    }
-//  }
-//
-//  func compute () -> EBSelection <Int> {
-//    switch self {
-//    case .literalInt (let v) :
-//      return .single (v)
-//    case .id (let model) :
-//      return model.selection
-//    }
-//  }
-//}
+enum EBMultipleBindingIntegerExpression {
+  case literalInt (Int)
+  case prop (EBObservableProperty <Int>)
+
+  func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
+    switch self {
+    case .literalInt :
+      ()
+    case .prop (let model) :
+      ioModelArray.append (model)
+    }
+  }
+
+  func compute () -> EBSelection <Int> {
+    switch self {
+    case .literalInt (let v) :
+      return .single (v)
+    case .prop (let model) :
+      return model.selection
+    }
+  }
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

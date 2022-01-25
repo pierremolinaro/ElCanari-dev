@@ -881,7 +881,7 @@ import Cocoa
       view_0.appendView (view_0_6)
       let view_0_7 = AutoLayoutButton (title: "Duplicate", size: .small)
         .expandableWidth ()
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.componentController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+        .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.duplicateSelectedComponentsAction (_:))
@@ -889,7 +889,7 @@ import Cocoa
       view_0.appendView (view_0_7)
       let view_0_8 = AutoLayoutButton (title: "Rename…", size: .small)
         .expandableWidth ()
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.componentController.selectedArray_property.count_property), .eq, MultipleBindingLiteralInt (1)))
+        .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .eq, .literalInt (1)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.renameSelectedComponentsAction (_:))
@@ -897,7 +897,7 @@ import Cocoa
       view_0.appendView (view_0_8)
       let view_0_9 = AutoLayoutButton (title: "Remove", size: .small)
         .expandableWidth ()
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.componentController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+        .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.removeSelectedComponentsAction (_:))
@@ -905,7 +905,7 @@ import Cocoa
       view_0.appendView (view_0_9)
       let view_0_10 = AutoLayoutButton (title: "Change Package…", size: .small)
         .expandableWidth ()
-        .bind_enabled (.MultipleBindingProp (self.canChangePackage_property))
+        .bind_enabled (.prop (self.canChangePackage_property))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.changePackageOfSelectedComponentsAction (_:))
@@ -913,7 +913,7 @@ import Cocoa
       view_0.appendView (view_0_10)
       let view_0_11 = AutoLayoutButton (title: "Change Value…", size: .small)
         .expandableWidth ()
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.componentController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+        .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.changeValueOfSelectedComponentsAction (_:))
@@ -921,7 +921,7 @@ import Cocoa
       view_0.appendView (view_0_11)
       let view_0_12 = AutoLayoutButton (title: "Reveal in Board", size: .small)
         .expandableWidth ()
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.componentController.selectedArray_property.count_property), .eq, MultipleBindingLiteralInt (1)))
+        .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .eq, .literalInt (1)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.revealPackageOfSelectedComponentsAction (_:))
@@ -949,21 +949,21 @@ import Cocoa
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Remove Embedded Devices", size: .regular)
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.mDevices_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+        .bind_enabled (.intcmp (.prop (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.removeEmbeddedDevicesAction (_:))
         )
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutButton (title: "Reset Device and Font Versions", size: .regular)
-        .bind_enabled (MultipleBindingBoolOp (MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.mDevices_property.count_property), .gt, MultipleBindingLiteralInt (0)), .or, MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.mFonts_property.count_property), .gt, MultipleBindingLiteralInt (0))))
+        .bind_enabled (.boolcmp (.intcmp (.prop (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.prop (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.resetDevicesAndFontsVersionAction (_:))
         )
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutButton (title: "Update Devices and Fonts", size: .regular)
-        .bind_enabled (MultipleBindingBoolOp (MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.mDevices_property.count_property), .gt, MultipleBindingLiteralInt (0)), .or, MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.mFonts_property.count_property), .gt, MultipleBindingLiteralInt (0))))
+        .bind_enabled (.boolcmp (.intcmp (.prop (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.prop (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.updateDevicesAndFontsAction (_:))
@@ -1009,35 +1009,35 @@ import Cocoa
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Edit Selected Device", size: .regular)
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.projectDeviceController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+        .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.editSelectedDeviceAction (_:))
         )
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutButton (title: "Reset Selected Device Version", size: .regular)
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.projectDeviceController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+        .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.resetSelectedDeviceVersionAction (_:))
         )
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutButton (title: "Remove Selected Device", size: .regular)
-        .bind_enabled (.MultipleBindingProp (self.canRemoveSelectedDevices_property))
+        .bind_enabled (.prop (self.canRemoveSelectedDevices_property))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.removeSelectedDeviceAction (_:))
         )
       view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutButton (title: "Export Selected Device", size: .regular)
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.projectDeviceController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+        .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.exportSelectedDeviceAction (_:))
         )
       view_0.appendView (view_0_3)
       let view_0_4 = AutoLayoutButton (title: "Update Selected Device…", size: .regular)
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.projectDeviceController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+        .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.updateSelectedDeviceAction (_:))
@@ -1113,28 +1113,28 @@ import Cocoa
         )
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutButton (title: "Edit Selected Font", size: .regular)
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.projectFontController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+        .bind_enabled (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.editFontAction (_:))
         )
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutButton (title: "Reset Selected Font Version", size: .regular)
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.projectFontController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+        .bind_enabled (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.resetFontVersionAction (_:))
         )
       view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutButton (title: "Update Selected Fonts", size: .regular)
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.projectFontController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+        .bind_enabled (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.updateFontAction (_:))
         )
       view_0.appendView (view_0_3)
       let view_0_4 = AutoLayoutButton (title: "Remove Selected Font", size: .regular)
-        .bind_enabled (MultipleBindingBoolOp (MultipleBindingIntCmp (.MultipleBindingProp (self.projectFontController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)), .and, .MultipleBindingProp (self.canRemoveSelectedFonts_property)))
+        .bind_enabled (. boolcmp (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .prop (self.canRemoveSelectedFonts_property)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.removeFontAction (_:))
@@ -1166,14 +1166,14 @@ import Cocoa
         )
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutButton (title: "Edit Selected Net Class", size: .regular)
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.netClassController.selectedArray_property.count_property), .eq, MultipleBindingLiteralInt (1)))
+        .bind_enabled (.intcmp (.prop (self.netClassController.selectedArray_property.count_property), .eq, .literalInt (1)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.editNetClassAction (_:))
         )
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutButton (title: "Remove Selected Net Class", size: .regular)
-        .bind_enabled (.MultipleBindingProp (self.canRemoveNetClasses_property))
+        .bind_enabled (.prop (self.canRemoveNetClasses_property))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.removeNetClassAction (_:))
@@ -1202,25 +1202,25 @@ import Cocoa
         .bind_title (self.netCountString_property)
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutButton (title: "Rename Net…", size: .regular)
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.netCount_property), .gt, MultipleBindingLiteralInt (0)))
+        .bind_enabled (.intcmp (.prop (self.netCount_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.renameNetAction (_:))
         )
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutButton (title: "Select Net Class…", size: .regular)
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.netCount_property), .gt, MultipleBindingLiteralInt (0)))
+        .bind_enabled (.intcmp (.prop (self.netCount_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.selectNetClassAction (_:))
         )
       view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutWarningImageView ()
-        .bind_hidden (MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.netWarningCount_property), .eq, MultipleBindingLiteralInt (0)))
+        .bind_hidden (.intcmp (.prop (self.rootObject.netWarningCount_property), .eq, .literalInt (0)))
       view_0.appendView (view_0_3)
       let view_0_4 = AutoLayoutIntObserverField (bold: true, size: .regular)
         .bind_observedValue (self.rootObject.netWarningCount_property)
-        .bind_hidden (MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.netWarningCount_property), .eq, MultipleBindingLiteralInt (0)))
+        .bind_hidden (.intcmp (.prop (self.rootObject.netWarningCount_property), .eq, .literalInt (0)))
       view_0.appendView (view_0_4)
       let view_0_5 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_5)
@@ -1264,8 +1264,8 @@ import Cocoa
         .set (margins: 8)
       do{
         let view_0_0_0 = AutoLayoutPullDownButton (title: "", size: .small)
-          .add (item: AutoLayoutMenuItemDescriptor (title: "Select all Connected Elements", target: self, selector: #selector (AutoLayoutProjectDocument.selectAllConnectedElementsInSchematicsAction (_:)), enableBinding: EBMultipleBindingBooleanExpression ()))
-          .add (item: AutoLayoutMenuItemDescriptor (title: "Move Selected Elements to Sheet…", target: self, selector: #selector (AutoLayoutProjectDocument.moveSelectedToSheetInSchematicsAction (_:)), enableBinding: EBMultipleBindingBooleanExpression ()))
+          .add (item: AutoLayoutMenuItemDescriptor (title: "Select all Connected Elements", target: self, selector: #selector (AutoLayoutProjectDocument.selectAllConnectedElementsInSchematicsAction (_:)), enableBinding: .empty))
+          .add (item: AutoLayoutMenuItemDescriptor (title: "Move Selected Elements to Sheet…", target: self, selector: #selector (AutoLayoutProjectDocument.moveSelectedToSheetInSchematicsAction (_:)), enableBinding: .empty))
         self.configure_schematicPullDownButtonConfigurator (view_0_0_0) // Configurator
         view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutFlexibleSpace ()
@@ -1482,7 +1482,7 @@ import Cocoa
       let view_2_1 = AutoLayoutFlexibleSpace ()
       view_2.appendView (view_2_1)
       let view_2_2 = AutoLayoutButton (title: "Delete Sheet", size: .small)
-        .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.mSheets_property.count_property), .gt, MultipleBindingLiteralInt (1)))
+        .bind_enabled (.intcmp (.prop (self.rootObject.mSheets_property.count_property), .gt, .literalInt (1)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.deleteSheetAction (_:))
@@ -1555,7 +1555,7 @@ import Cocoa
     vStackView.appendView (view_1)
     let view_2 = AutoLayoutButton (title: "Rename Net…", size: .small)
       .expandableWidth ()
-      .bind_enabled (MultipleBindingBoolOp (MultipleBindingIntCmp (.MultipleBindingProp (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, MultipleBindingLiteralInt (1)), .and, .MultipleBindingProp (self.wireInSchematicSelectionController.hasNet_property)))
+      .bind_enabled (. boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutProjectDocument.renameWireNetWithNewAutomaticNameAction (_:))
@@ -1563,7 +1563,7 @@ import Cocoa
     vStackView.appendView (view_2)
     let view_3 = AutoLayoutButton (title: "Rename Net with Automatic Name", size: .small)
       .expandableWidth ()
-      .bind_enabled (MultipleBindingBoolOp (MultipleBindingIntCmp (.MultipleBindingProp (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, MultipleBindingLiteralInt (1)), .and, .MultipleBindingProp (self.wireInSchematicSelectionController.hasNet_property)))
+      .bind_enabled (. boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutProjectDocument.renameSchematicWireNetAction (_:))
@@ -1583,7 +1583,7 @@ import Cocoa
     vStackView.appendView (view_5)
     let view_6 = AutoLayoutButton (title: "Merge Subnet into an Existing Net…", size: .small)
       .expandableWidth ()
-      .bind_enabled (MultipleBindingBoolOp (MultipleBindingIntCmp (.MultipleBindingProp (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, MultipleBindingLiteralInt (1)), .and, .MultipleBindingProp (self.wireInSchematicSelectionController.hasNet_property)))
+      .bind_enabled (. boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutProjectDocument.mergeSubnetIntoAnExistingNetForSelectedWireAction (_:))
@@ -1591,7 +1591,7 @@ import Cocoa
     vStackView.appendView (view_6)
     let view_7 = AutoLayoutButton (title: "Insulate Subnet from Current Net", size: .small)
       .expandableWidth ()
-      .bind_enabled (MultipleBindingBoolOp (MultipleBindingIntCmp (.MultipleBindingProp (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, MultipleBindingLiteralInt (1)), .and, .MultipleBindingProp (self.wireInSchematicSelectionController.hasNet_property)))
+      .bind_enabled (. boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutProjectDocument.insulateSubnetFromCurrentNetForSelectedWireAction (_:))
@@ -1642,7 +1642,7 @@ import Cocoa
     vStackView.appendView (view_2)
     let view_3 = AutoLayoutButton (title: "Rename Net…", size: .small)
       .expandableWidth ()
-      .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, MultipleBindingLiteralInt (1)))
+      .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutProjectDocument.renameSchematicLabelNetAction (_:))
@@ -1650,7 +1650,7 @@ import Cocoa
     vStackView.appendView (view_3)
     let view_4 = AutoLayoutButton (title: "Rename Net with Automatic Name", size: .small)
       .expandableWidth ()
-      .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, MultipleBindingLiteralInt (1)))
+      .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutProjectDocument.renameLabelNetWithNewAutomaticNameAction (_:))
@@ -1670,7 +1670,7 @@ import Cocoa
     vStackView.appendView (view_6)
     let view_7 = AutoLayoutButton (title: "Merge Subnet into an Existing Net…", size: .small)
       .expandableWidth ()
-      .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, MultipleBindingLiteralInt (1)))
+      .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutProjectDocument.mergeSubnetIntoAnExistingNetForSelectedLabelAction (_:))
@@ -1678,7 +1678,7 @@ import Cocoa
     vStackView.appendView (view_7)
     let view_8 = AutoLayoutButton (title: "Insulate Subnet from Current Net", size: .small)
       .expandableWidth ()
-      .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, MultipleBindingLiteralInt (1)))
+      .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutProjectDocument.insulateSubnetFromCurrentNetForSelectedLabelAction (_:))
@@ -1756,7 +1756,7 @@ import Cocoa
     vStackView.appendView (view_3)
     let view_4 = AutoLayoutButton (title: "Rename Component…", size: .small)
       .expandableWidth ()
-      .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.schematicObjectsController.selectedArray_property.count_property), .eq, MultipleBindingLiteralInt (1)))
+      .bind_enabled (.intcmp (.prop (self.schematicObjectsController.selectedArray_property.count_property), .eq, .literalInt (1)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutProjectDocument.renameComponentFromSelectedSymbolAction (_:))
@@ -2006,7 +2006,7 @@ import Cocoa
   lazy var mBoardBezierPathOutlineView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (MultipleBindingIntCmp (.MultipleBindingProp (self.boardCurveObjectsController.selectedArray_property.count_property), .ne, MultipleBindingLiteralInt (0)))
+      .bind_hidden (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .ne, .literalInt (0)))
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_0)
@@ -2025,7 +2025,7 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_86 (), right: self.computeImplicitView_87 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_88 (), right: self.computeImplicitView_89 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_90 (), right: self.computeImplicitView_91 ())
-      .bind_hidden (MultipleBindingIntCmp (.MultipleBindingProp (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, MultipleBindingLiteralInt (0)))
+      .bind_hidden (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)))
     vStackView.appendView (view_1)
     return vStackView
   } ()
@@ -2483,7 +2483,7 @@ import Cocoa
       do{
         let view_0_0_0 = AutoLayoutButton (title: "Import Artwork…", size: .regular)
           .expandableWidth ()
-          .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.mArtwork_none)))
+          .bind_hidden (.not (.prop (self.rootObject.mArtwork_none)))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutProjectDocument.importArtworkAction (_:))
@@ -2491,7 +2491,7 @@ import Cocoa
         view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutButton (title: "Detach Artwork", size: .regular)
           .expandableWidth ()
-          .bind_hidden (.MultipleBindingProp (self.rootObject.mArtwork_none))
+          .bind_hidden (.prop (self.rootObject.mArtwork_none))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutProjectDocument.detachArtworkAction (_:))
@@ -2504,7 +2504,7 @@ import Cocoa
         view_0_0.appendView (view_0_0_2)
         let view_0_0_3 = AutoLayoutButton (title: "Generate Files", size: .regular)
           .expandableWidth ()
-          .bind_enabled (MultipleBindingBoolOp (MultipleBindingNot (.MultipleBindingProp (self.rootObject.mArtwork_none)), .and, MultipleBindingNot (.MultipleBindingProp (self.documentIsUnnamed_property))))
+          .bind_enabled (. boolcmp (.not (.prop (self.rootObject.mArtwork_none)), .and, .not (.prop (self.documentIsUnnamed_property))))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutProjectDocument.generateProductFilesAction (_:))
@@ -2533,7 +2533,7 @@ import Cocoa
     }
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.mArtwork_none)))
+      .bind_hidden (.not (.prop (self.rootObject.mArtwork_none)))
     do{
       let view_1_0 = AutoLayoutFlexibleSpace ()
       view_1.appendView (view_1_0)
@@ -2552,7 +2552,7 @@ import Cocoa
     }
     vStackView.appendView (view_1)
     let view_2 = AutoLayoutVerticalStackView ()
-      .bind_hidden (.MultipleBindingProp (self.rootObject.mArtwork_none))
+      .bind_hidden (.prop (self.rootObject.mArtwork_none))
     do{
       let view_2_0 = AutoLayoutHorizontalStackView ()
       do{
@@ -2666,7 +2666,7 @@ import Cocoa
           view_1_2_0.appendView (view_1_2_0_2)
           let view_1_2_0_3 = AutoLayoutStaticLabel (title: "Empty Data File", bold: true, size: .small)
             .setOrangeTextColor ()
-            .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.mDataSelection.hasNoData_property)))
+            .bind_hidden (.not (.prop (self.mDataSelection.hasNoData_property)))
           view_1_2_0.appendView (view_1_2_0_3)
         }
         view_1_2.appendView (view_1_2_0)
@@ -2826,7 +2826,7 @@ import Cocoa
           view_1_2_16.appendView (view_1_2_16_0)
           let view_1_2_16_1 = AutoLayoutCanariDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.mDataSelection.padHoleDiameterInPDF_property, self.mDataSelection.measurementUnitForPadHoleInPDF_property)
-            .bind_enabled (.MultipleBindingProp (self.mDataSelection.drawPadHolesInPDF_property))
+            .bind_enabled (.prop (self.mDataSelection.drawPadHolesInPDF_property))
           view_1_2_16.appendView (view_1_2_16_1)
           let view_1_2_16_2 = AutoLayoutFlexibleSpace ()
           view_1_2_16.appendView (view_1_2_16_2)
@@ -3508,7 +3508,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_47 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.schematicSheetOrientationIsCustom_property)))
+      .bind_hidden (.not (.prop (self.schematicSheetOrientationIsCustom_property)))
     return view
   }
 
@@ -3519,7 +3519,7 @@ import Cocoa
   fileprivate final func computeImplicitView_48 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.rootObject.mSchematicCustomWidth_property, self.rootObject.mSchematicCustomWidthUnit_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.schematicSheetOrientationIsCustom_property)))
+      .bind_hidden (.not (.prop (self.schematicSheetOrientationIsCustom_property)))
     return view
   }
 
@@ -3529,7 +3529,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_49 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.schematicSheetOrientationIsCustom_property)))
+      .bind_hidden (.not (.prop (self.schematicSheetOrientationIsCustom_property)))
     return view
   }
 
@@ -3540,7 +3540,7 @@ import Cocoa
   fileprivate final func computeImplicitView_50 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.rootObject.mSchematicCustomHeight_property, self.rootObject.mSchematicCustomHeightUnit_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.schematicSheetOrientationIsCustom_property)))
+      .bind_hidden (.not (.prop (self.schematicSheetOrientationIsCustom_property)))
     return view
   }
 
@@ -3937,7 +3937,7 @@ import Cocoa
   fileprivate final func computeImplicitView_86 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Control Points", bold: true, size: .small)
       .set (alignment: .left)
-      .bind_hidden (.MultipleBindingProp (self.boardCurveSelectionController.isLine_property))
+      .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
     return view
   }
 
@@ -3948,7 +3948,7 @@ import Cocoa
   fileprivate final func computeImplicitView_87 () -> NSView {
     let view = AutoLayoutCanariUnitPopUpButton (size: .small)
       .bind_unit (self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
-      .bind_hidden (.MultipleBindingProp (self.boardCurveSelectionController.isLine_property))
+      .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
     return view
   }
 
@@ -3962,11 +3962,11 @@ import Cocoa
     do{
       let view_0 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small)
         .expandableWidth ()
-        .bind_hidden (.MultipleBindingProp (self.boardCurveSelectionController.isLine_property))
+        .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_0)
       let view_1 = AutoLayoutCanariDimensionField (minWidth: 80, size: .small)
         .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPX1_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
-        .bind_hidden (.MultipleBindingProp (self.boardCurveSelectionController.isLine_property))
+        .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_1)
     }
     return view
@@ -3982,11 +3982,11 @@ import Cocoa
     do{
       let view_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small)
         .expandableWidth ()
-        .bind_hidden (.MultipleBindingProp (self.boardCurveSelectionController.isLine_property))
+        .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_0)
       let view_1 = AutoLayoutCanariDimensionField (minWidth: 80, size: .small)
         .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPY1_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
-        .bind_hidden (.MultipleBindingProp (self.boardCurveSelectionController.isLine_property))
+        .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_1)
     }
     return view
@@ -4002,11 +4002,11 @@ import Cocoa
     do{
       let view_0 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small)
         .expandableWidth ()
-        .bind_hidden (.MultipleBindingProp (self.boardCurveSelectionController.isLine_property))
+        .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_0)
       let view_1 = AutoLayoutCanariDimensionField (minWidth: 80, size: .small)
         .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPX2_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
-        .bind_hidden (.MultipleBindingProp (self.boardCurveSelectionController.isLine_property))
+        .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_1)
     }
     return view
@@ -4022,11 +4022,11 @@ import Cocoa
     do{
       let view_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small)
         .expandableWidth ()
-        .bind_hidden (.MultipleBindingProp (self.boardCurveSelectionController.isLine_property))
+        .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_0)
       let view_1 = AutoLayoutCanariDimensionField (minWidth: 80, size: .small)
         .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPY2_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
-        .bind_hidden (.MultipleBindingProp (self.boardCurveSelectionController.isLine_property))
+        .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_1)
     }
     return view
@@ -4180,7 +4180,7 @@ import Cocoa
   fileprivate final func computeImplicitView_105 () -> NSView {
     let view = AutoLayoutElCanariSelectionPopUpButton (size: .small)
       .bind_selectedNameInArray (self.rootObject.mRastnetDisplayedNetName_property, self.rootObject.netNamesArray_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rastnetDisplayOneNet_property)))
+      .bind_hidden (.not (.prop (self.rastnetDisplayOneNet_property)))
     return view
   }
 
@@ -4191,7 +4191,7 @@ import Cocoa
   fileprivate final func computeImplicitView_106 () -> NSView {
     let view = AutoLayoutElCanariSelectionPopUpButton (size: .small)
       .bind_selectedNameInArray (self.rootObject.mRastnetDisplayedComponentName_property, self.rootObject.placedComponentNameArray_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rastnetDisplayComponentNet_property)))
+      .bind_hidden (.not (.prop (self.rastnetDisplayComponentNet_property)))
     return view
   }
 
@@ -5404,7 +5404,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_194 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small)
-      .bind_hidden (.MultipleBindingProp (self.boardTrackSelectionController.mUsesCustomTrackWidth_property))
+      .bind_hidden (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property))
     return view
   }
 
@@ -5415,7 +5415,7 @@ import Cocoa
   fileprivate final func computeImplicitView_195 () -> NSView {
     let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.boardTrackSelectionController.netClassTrackWidth_property, self.boardTrackSelectionController.mDefaultTrackWidthUnit_property)
-      .bind_hidden (.MultipleBindingProp (self.boardTrackSelectionController.mUsesCustomTrackWidth_property))
+      .bind_hidden (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property))
     return view
   }
 
@@ -5425,7 +5425,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_196 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Custom", bold: false, size: .small)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
+      .bind_hidden (.not (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
     return view
   }
 
@@ -5436,7 +5436,7 @@ import Cocoa
   fileprivate final func computeImplicitView_197 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.boardTrackSelectionController.mCustomTrackWidth_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
+      .bind_hidden (.not (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
     return view
   }
 
@@ -5489,7 +5489,7 @@ import Cocoa
   fileprivate final func computeImplicitView_202 () -> NSView {
     let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
       .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
-      .bind_enabled (.MultipleBindingProp (self.boardTrackSelectionController.trackCanRotate_property))
+      .bind_enabled (.prop (self.boardTrackSelectionController.trackCanRotate_property))
     return view
   }
 
@@ -5517,7 +5517,7 @@ import Cocoa
   fileprivate final func computeImplicitView_204 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP1X_property, self.boardTrackSelectionController.mP1XUnit_property)
-      .bind_enabled (.MultipleBindingProp (self.boardTrackSelectionController.p1CanMove_property))
+      .bind_enabled (.prop (self.boardTrackSelectionController.p1CanMove_property))
     return view
   }
 
@@ -5537,7 +5537,7 @@ import Cocoa
   fileprivate final func computeImplicitView_206 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP1Y_property, self.boardTrackSelectionController.mP1YUnit_property)
-      .bind_enabled (.MultipleBindingProp (self.boardTrackSelectionController.p1CanMove_property))
+      .bind_enabled (.prop (self.boardTrackSelectionController.p1CanMove_property))
     return view
   }
 
@@ -5565,7 +5565,7 @@ import Cocoa
   fileprivate final func computeImplicitView_208 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP2X_property, self.boardTrackSelectionController.mP2XUnit_property)
-      .bind_enabled (.MultipleBindingProp (self.boardTrackSelectionController.p2CanMove_property))
+      .bind_enabled (.prop (self.boardTrackSelectionController.p2CanMove_property))
     return view
   }
 
@@ -5585,7 +5585,7 @@ import Cocoa
   fileprivate final func computeImplicitView_210 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP2Y_property, self.boardTrackSelectionController.mP2YUnit_property)
-      .bind_enabled (.MultipleBindingProp (self.boardTrackSelectionController.p2CanMove_property))
+      .bind_enabled (.prop (self.boardTrackSelectionController.p2CanMove_property))
     return view
   }
 
@@ -5658,7 +5658,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_217 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small)
-      .bind_hidden (.MultipleBindingProp (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property))
+      .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property))
     return view
   }
 
@@ -5669,7 +5669,7 @@ import Cocoa
   fileprivate final func computeImplicitView_218 () -> NSView {
     let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.boardConnectorSelectionController.viaDefaultHoleDiameter_property, self.boardConnectorSelectionController.mDefaultHoleDiameterUnit_property)
-      .bind_hidden (.MultipleBindingProp (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property))
+      .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property))
     return view
   }
 
@@ -5679,7 +5679,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_219 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Custom", bold: false, size: .small)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property)))
+      .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property)))
     return view
   }
 
@@ -5690,7 +5690,7 @@ import Cocoa
   fileprivate final func computeImplicitView_220 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.boardConnectorSelectionController.mCustomHoleDiameter_property, self.boardConnectorSelectionController.mCustomHoleDiameterUnit_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property)))
+      .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property)))
     return view
   }
 
@@ -5721,7 +5721,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_223 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small)
-      .bind_hidden (.MultipleBindingProp (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property))
+      .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property))
     return view
   }
 
@@ -5732,7 +5732,7 @@ import Cocoa
   fileprivate final func computeImplicitView_224 () -> NSView {
     let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.boardConnectorSelectionController.viaDefaultPadDiameter_property, self.boardConnectorSelectionController.mDefaultPadDiameterUnit_property)
-      .bind_hidden (.MultipleBindingProp (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property))
+      .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property))
     return view
   }
 
@@ -5742,7 +5742,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_225 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Custom", bold: false, size: .small)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property)))
+      .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property)))
     return view
   }
 
@@ -5753,7 +5753,7 @@ import Cocoa
   fileprivate final func computeImplicitView_226 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.boardConnectorSelectionController.mCustomPadDiameter_property, self.boardConnectorSelectionController.mCustomPadDiameterUnit_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property)))
+      .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property)))
     return view
   }
 
@@ -6121,7 +6121,7 @@ import Cocoa
   fileprivate final func computeImplicitView_262 () -> NSView {
     let view = AutoLayoutDoubleField (minWidth: 64, size: .small)
       .bind_value (self.componentInBoardSelectionController.mNameFontSize_property, sendContinously:false)
-      .bind_enabled (.MultipleBindingProp (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property))
+      .bind_enabled (.prop (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property))
     return view
   }
 
@@ -6184,7 +6184,7 @@ import Cocoa
   fileprivate final func computeImplicitView_268 () -> NSView {
     let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
       .bind_angle (self.componentInBoardSelectionController.mNameRotation_property)
-      .bind_enabled (.MultipleBindingProp (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property))
+      .bind_enabled (.prop (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property))
     return view
   }
 
@@ -6422,7 +6422,7 @@ import Cocoa
   fileprivate final func computeImplicitView_292 () -> NSView {
     let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
       .bind_angle (self.componentInBoardSelectionController.mValueRotation_property)
-      .bind_enabled (.MultipleBindingProp (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property))
+      .bind_enabled (.prop (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property))
     return view
   }
 
@@ -6443,7 +6443,7 @@ import Cocoa
   fileprivate final func computeImplicitView_294 () -> NSView {
     let view = AutoLayoutBoolPopUpButton (title0: "should be insulated", title1: "should be routed")
       .bind_value (self.componentInBoardSelectionController.mSlavePadsShouldBeRouted_property)
-      .bind_enabled (.MultipleBindingProp (self.componentInBoardSelectionController.hasSlavePads_property))
+      .bind_enabled (.prop (self.componentInBoardSelectionController.hasSlavePads_property))
     return view
   }
 
@@ -6582,7 +6582,7 @@ import Cocoa
   fileprivate final func computeImplicitView_307 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
       .bind_value (self.mDataSelection.drawTraversingPads_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasInnerElements_property)))
+      .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -6601,8 +6601,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_309 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
-      .bind_enabled (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
-      .bind_hidden (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
+      .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -6622,7 +6622,7 @@ import Cocoa
   fileprivate final func computeImplicitView_311 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasInnerElements_property)))
+      .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -6633,7 +6633,7 @@ import Cocoa
   fileprivate final func computeImplicitView_312 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasInnerElements_property)))
+      .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -6643,8 +6643,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_313 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
-      .bind_enabled (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
-      .bind_hidden (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
+      .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -6654,8 +6654,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_314 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
-      .bind_enabled (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
-      .bind_hidden (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
+      .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -6666,7 +6666,7 @@ import Cocoa
   fileprivate final func computeImplicitView_315 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasSixLayers_property)))
+      .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
     return view
   }
 
@@ -6677,7 +6677,7 @@ import Cocoa
   fileprivate final func computeImplicitView_316 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
-      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasSixLayers_property)))
+      .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
     return view
   }
 
@@ -6687,8 +6687,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_317 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
-      .bind_enabled (.MultipleBindingProp (self.rootObject.hasSixLayers_property))
-      .bind_hidden (.MultipleBindingProp (self.rootObject.hasSixLayers_property))
+      .bind_enabled (.prop (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.prop (self.rootObject.hasSixLayers_property))
     return view
   }
 
@@ -6698,8 +6698,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_318 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
-      .bind_enabled (.MultipleBindingProp (self.rootObject.hasSixLayers_property))
-      .bind_hidden (.MultipleBindingProp (self.rootObject.hasSixLayers_property))
+      .bind_enabled (.prop (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.prop (self.rootObject.hasSixLayers_property))
     return view
   }
 

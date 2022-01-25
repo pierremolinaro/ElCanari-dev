@@ -402,21 +402,21 @@ import Cocoa
         let view_1_1_2 = AutoLayoutHorizontalStackView ()
         do{
           let view_1_1_2_0 = AutoLayoutButton (title: "-", size: .small)
-            .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.documentationController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+            .bind_enabled (.intcmp (.prop (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
               selector: #selector (AutoLayoutDeviceDocument.removeDocumentationAction (_:))
             )
           view_1_1_2.appendView (view_1_1_2_0)
           let view_1_1_2_1 = AutoLayoutButton (title: "Show Documentation", size: .small)
-            .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.documentationController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+            .bind_enabled (.intcmp (.prop (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
               selector: #selector (AutoLayoutDeviceDocument.showDocAction (_:))
             )
           view_1_1_2.appendView (view_1_1_2_1)
           let view_1_1_2_2 = AutoLayoutButton (title: "Save as…", size: .small)
-            .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.documentationController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+            .bind_enabled (.intcmp (.prop (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
               selector: #selector (AutoLayoutDeviceDocument.saveDocAction (_:))
@@ -457,7 +457,7 @@ import Cocoa
         view_0_1.appendView (view_0_1_0)
         let view_0_1_1 = AutoLayoutCanariAddSymbolInstancePullDownButton ()
           .bind_symbolTypeNames (self.rootObject.symbolTypeNames_property)
-          .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.mSymbolTypes_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+          .bind_enabled (.intcmp (.prop (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0)))
         self.configure_addSymbolInstancePullDownButton (view_0_1_1) // Configurator
         view_0_1.appendView (view_0_1_1)
         let view_0_1_2 = AutoLayoutFlexibleSpace ()
@@ -636,14 +636,14 @@ import Cocoa
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Reset Symbols and Packages Version and Signature", size: .small)
-        .bind_enabled (MultipleBindingBoolOp (MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.mPackages_property.count_property), .gt, MultipleBindingLiteralInt (0)), .or, MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.mSymbolTypes_property.count_property), .gt, MultipleBindingLiteralInt (0))))
+        .bind_enabled (.boolcmp (.intcmp (.prop (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.prop (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutDeviceDocument.resetSymbolsAndPackagesVersion (_:))
         )
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutButton (title: "Update Symbols and Packages", size: .small)
-        .bind_enabled (MultipleBindingBoolOp (MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.mPackages_property.count_property), .gt, MultipleBindingLiteralInt (0)), .or, MultipleBindingIntCmp (.MultipleBindingProp (self.rootObject.mSymbolTypes_property.count_property), .gt, MultipleBindingLiteralInt (0))))
+        .bind_enabled (.boolcmp (.intcmp (.prop (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.prop (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutDeviceDocument.updateSymbolsAndPackagesAction (_:))
@@ -675,7 +675,7 @@ import Cocoa
           do{
             let view_1_0_1_1_0 = AutoLayoutButton (title: "Reset Version", size: .small)
               .expandableWidth ()
-              .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.symbolTypeController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+              .bind_enabled (.intcmp (.prop (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
                 target: self,
                 selector: #selector (AutoLayoutDeviceDocument.resetSelectedSymbolVersion (_:))
@@ -683,7 +683,7 @@ import Cocoa
             view_1_0_1_1.appendView (view_1_0_1_1_0)
             let view_1_0_1_1_1 = AutoLayoutButton (title: "Update", size: .small)
               .expandableWidth ()
-              .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.symbolTypeController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+              .bind_enabled (.intcmp (.prop (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
                 target: self,
                 selector: #selector (AutoLayoutDeviceDocument.updateSelectedSymbols (_:))
@@ -691,7 +691,7 @@ import Cocoa
             view_1_0_1_1.appendView (view_1_0_1_1_1)
             let view_1_0_1_1_2 = AutoLayoutButton (title: "Export…", size: .small)
               .expandableWidth ()
-              .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.symbolTypeController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+              .bind_enabled (.intcmp (.prop (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
                 target: self,
                 selector: #selector (AutoLayoutDeviceDocument.exportSelectedSymbols (_:))
@@ -699,7 +699,7 @@ import Cocoa
             view_1_0_1_1.appendView (view_1_0_1_1_2)
             let view_1_0_1_1_3 = AutoLayoutButton (title: "Edit", size: .small)
               .expandableWidth ()
-              .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.symbolTypeController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+              .bind_enabled (.intcmp (.prop (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
                 target: self,
                 selector: #selector (AutoLayoutDeviceDocument.editSelectedSymbols (_:))
@@ -707,7 +707,7 @@ import Cocoa
             view_1_0_1_1.appendView (view_1_0_1_1_3)
             let view_1_0_1_1_4 = AutoLayoutButton (title: "Remove", size: .small)
               .expandableWidth ()
-              .bind_enabled (MultipleBindingBoolOp (MultipleBindingIntCmp (.MultipleBindingProp (self.symbolTypeController.selectedArray_property.count_property), .eq, MultipleBindingLiteralInt (1)), .and, MultipleBindingIntCmp (.MultipleBindingProp (self.symbolTypeSelection.instanceCount_property), .eq, MultipleBindingLiteralInt (0))))
+              .bind_enabled (. boolcmp (.intcmp (.prop (self.symbolTypeController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .intcmp (.prop (self.symbolTypeSelection.instanceCount_property), .eq, .literalInt (0))))
               .bind_run (
                 target: self,
                 selector: #selector (AutoLayoutDeviceDocument.removeUselessSymbolTypeAction (_:))
@@ -740,7 +740,7 @@ import Cocoa
           do{
             let view_1_1_1_1_0 = AutoLayoutButton (title: "Reset Version", size: .small)
               .expandableWidth ()
-              .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.packageController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+              .bind_enabled (.intcmp (.prop (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
                 target: self,
                 selector: #selector (AutoLayoutDeviceDocument.resetSelectedPackageVersion (_:))
@@ -748,7 +748,7 @@ import Cocoa
             view_1_1_1_1.appendView (view_1_1_1_1_0)
             let view_1_1_1_1_1 = AutoLayoutButton (title: "Update", size: .small)
               .expandableWidth ()
-              .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.packageController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+              .bind_enabled (.intcmp (.prop (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
                 target: self,
                 selector: #selector (AutoLayoutDeviceDocument.updateSelectedPackages (_:))
@@ -756,7 +756,7 @@ import Cocoa
             view_1_1_1_1.appendView (view_1_1_1_1_1)
             let view_1_1_1_1_2 = AutoLayoutButton (title: "Export…", size: .small)
               .expandableWidth ()
-              .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.packageController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+              .bind_enabled (.intcmp (.prop (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
                 target: self,
                 selector: #selector (AutoLayoutDeviceDocument.exportSelectedPackages (_:))
@@ -764,7 +764,7 @@ import Cocoa
             view_1_1_1_1.appendView (view_1_1_1_1_2)
             let view_1_1_1_1_3 = AutoLayoutButton (title: "Edit", size: .small)
               .expandableWidth ()
-              .bind_enabled (MultipleBindingIntCmp (.MultipleBindingProp (self.packageController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)))
+              .bind_enabled (.intcmp (.prop (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
                 target: self,
                 selector: #selector (AutoLayoutDeviceDocument.editSelectedPackages (_:))
@@ -791,7 +791,7 @@ import Cocoa
     let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutHorizontalSplitView ()
-      .bind_hidden (MultipleBindingBoolOp (MultipleBindingNot (.MultipleBindingProp (self.rootObject.packagePadNameSetsAreConsistent_property)), .or, MultipleBindingNot (.MultipleBindingProp (self.rootObject.symbolNameAreConsistent_property))))
+      .bind_hidden (.boolcmp (.not (.prop (self.rootObject.packagePadNameSetsAreConsistent_property)), .or, .not (.prop (self.rootObject.symbolNameAreConsistent_property))))
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
         .set (minWidth: 100)
@@ -830,7 +830,7 @@ import Cocoa
         view_0_2.appendView (view_0_2_1)
         let view_0_2_2 = AutoLayoutButton (title: "- Bind →", size: .regular)
           .expandableWidth ()
-          .bind_enabled (MultipleBindingBoolOp (.MultipleBindingProp (self.hasUnconnectedPad_property), .and, .MultipleBindingProp (self.hasUnconnectedPin_property)))
+          .bind_enabled (. boolcmp (.prop (self.hasUnconnectedPad_property), .and, .prop (self.hasUnconnectedPin_property)))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutDeviceDocument.performBindAction (_:))
@@ -838,7 +838,7 @@ import Cocoa
         view_0_2.appendView (view_0_2_2)
         let view_0_2_3 = AutoLayoutButton (title: "- NC →", size: .regular)
           .expandableWidth ()
-          .bind_enabled (.MultipleBindingProp (self.hasUnconnectedPad_property))
+          .bind_enabled (.prop (self.hasUnconnectedPad_property))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutDeviceDocument.performNCAction (_:))
@@ -848,7 +848,7 @@ import Cocoa
         view_0_2.appendView (view_0_2_4)
         let view_0_2_5 = AutoLayoutButton (title: "← Unbind -", size: .regular)
           .expandableWidth ()
-          .bind_enabled (.MultipleBindingProp (self.hasAssignedPadProxies_property))
+          .bind_enabled (.prop (self.hasAssignedPadProxies_property))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutDeviceDocument.performUnbindAction (_:))
@@ -856,7 +856,7 @@ import Cocoa
         view_0_2.appendView (view_0_2_5)
         let view_0_2_6 = AutoLayoutButton (title: "← Unbind All -", size: .regular)
           .expandableWidth ()
-          .bind_enabled (.MultipleBindingProp (self.hasAssignedPadProxies_property))
+          .bind_enabled (.prop (self.hasAssignedPadProxies_property))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutDeviceDocument.performUnbindAllAction (_:))
@@ -883,7 +883,7 @@ import Cocoa
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (MultipleBindingBoolOp (.MultipleBindingProp (self.rootObject.packagePadNameSetsAreConsistent_property), .and, .MultipleBindingProp (self.rootObject.symbolNameAreConsistent_property)))
+      .bind_hidden (. boolcmp (.prop (self.rootObject.packagePadNameSetsAreConsistent_property), .and, .prop (self.rootObject.symbolNameAreConsistent_property)))
     do{
       let view_1_0 = AutoLayoutFlexibleSpace ()
       view_1.appendView (view_1_0)
