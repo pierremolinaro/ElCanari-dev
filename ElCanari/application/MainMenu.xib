@@ -61,7 +61,13 @@
                             </menuItem>
                             <menuItem title="Preferences…" keyEquivalent="," id="5402">
                                 <connections>
-                                    <action selector="makeKeyAndOrderFront:" target="5382" id="5403"/>
+                                    <action selector="showPreferencesWindowAction:" target="lAs-GB-mIJ" id="4SQ-5M-cIt"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Preferences (previous)…" id="FJE-mK-TVj">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="makeKeyAndOrderFront:" target="5382" id="iYD-GW-g9o"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="143">
@@ -499,7 +505,7 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-532" y="-1820"/>
+            <point key="canvasLocation" x="-730" y="-1938"/>
         </menu>
         <customObject id="212" userLabel="Application Delegate" customClass="ApplicationDelegate">
             <connections>
@@ -2077,7 +2083,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="PcB-tf-SfN">
                         <rect key="frame" x="1" y="1" width="398" height="91"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="UserLibraryTableView" rowSizeStyle="automatic" headerView="5743" viewBased="YES" id="5740" customClass="EBTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="398" height="74"/>
@@ -2358,7 +2364,7 @@ Gw
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="26.5" y="145"/>
+            <point key="canvasLocation" x="354" y="121"/>
         </window>
         <window title="Library Update" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="PMPerformLibaryUpdateWindow" animationBehavior="default" id="6227" userLabel="Window : Update Dialog" customClass="EBWindow" customModule="ElCanari" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>

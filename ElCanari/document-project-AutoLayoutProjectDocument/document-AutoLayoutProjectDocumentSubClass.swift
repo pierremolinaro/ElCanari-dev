@@ -107,7 +107,7 @@ let PAPER_GUTTER_HEIGHT_COCOA_UNIT : CGFloat =  13.0
   // Providing the drag image, called by a source drag table view (CanariDragSourceTableView)
   //····················································································································
 
-  override func dragImageForRows (source inSourceTableView : AutoLayoutElCanariDragSourceTableView,
+  override func dragImageForRows (source inSourceTableView : AutoLayoutCanariDragSourceTableView,
                                   with dragRows: IndexSet,
                                   tableColumns: [NSTableColumn],
                                   event dragEvent: NSEvent,

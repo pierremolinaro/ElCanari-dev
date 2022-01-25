@@ -634,8 +634,8 @@ import Cocoa
   weak final var mProductPageSegmentedControl : AutoLayoutSegmentedControlWithPages? = nil
   weak final var mRemoveWirePointSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
   weak final var mSchematicsView : AutoLayoutGraphicView? = nil
-  weak final var mUnplacedPackageTableView : AutoLayoutElCanariDragSourceTableView? = nil
-  weak final var mUnplacedSymbolsTableView : AutoLayoutElCanariDragSourceTableView? = nil
+  weak final var mUnplacedPackageTableView : AutoLayoutCanariDragSourceTableView? = nil
+  weak final var mUnplacedSymbolsTableView : AutoLayoutCanariDragSourceTableView? = nil
 
   //····················································································································
   //    Outlets
@@ -1280,7 +1280,7 @@ import Cocoa
         view_0_0.appendView (view_0_0_4)
         let view_0_0_5 = AutoLayoutFlexibleSpace ()
         view_0_0.appendView (view_0_0_5)
-        let view_0_0_6 = AutoLayoutElCanariDefaultNetClassPopUpButton ()
+        let view_0_0_6 = AutoLayoutCanariDefaultNetClassPopUpButton ()
           .bind_netClasses (self.rootObject.mDefaultNetClassName_property, self.rootObject.allClassNames_property)
         view_0_0.appendView (view_0_0_6)
       }
@@ -1428,7 +1428,7 @@ import Cocoa
   lazy var mInsertSymbolInSchematicView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
-    let view_0 = AutoLayoutElCanariDragSourceTableView ()
+    let view_0 = AutoLayoutCanariDragSourceTableView ()
       .bind_models (self.rootObject.unplacedSymbols_property)
     self.mUnplacedSymbolsTableView = view_0 // Outlet
     self.configure_symbolDragSourceTableViewConfigurator (view_0) // Configurator
@@ -2145,7 +2145,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutElCanariDragSourceTableView ()
+    let view_1 = AutoLayoutCanariDragSourceTableView ()
       .bind_models (self.rootObject.unplacedPackages_property)
     self.mUnplacedPackageTableView = view_1 // Outlet
     self.configure_packageDragSourceTableViewConfigurator (view_1) // Configurator
@@ -2378,7 +2378,7 @@ import Cocoa
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutElCanariRestrictRectangleView ()
+    let view_1 = AutoLayoutCanariRestrictRectangleView ()
       .bind_front (self.restrictRectangleSelectionController.mIsInFrontLayer_property)
       .bind_back (self.restrictRectangleSelectionController.mIsInBackLayer_property)
       .bind_inner1 (self.restrictRectangleSelectionController.mIsInInner1Layer_property)
@@ -4178,7 +4178,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_105 () -> NSView {
-    let view = AutoLayoutElCanariSelectionPopUpButton (size: .small)
+    let view = AutoLayoutCanariSelectionPopUpButton (size: .small)
       .bind_selectedNameInArray (self.rootObject.mRastnetDisplayedNetName_property, self.rootObject.netNamesArray_property)
       .bind_hidden (.not (.prop (self.rastnetDisplayOneNet_property)))
     return view
@@ -4189,7 +4189,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_106 () -> NSView {
-    let view = AutoLayoutElCanariSelectionPopUpButton (size: .small)
+    let view = AutoLayoutCanariSelectionPopUpButton (size: .small)
       .bind_selectedNameInArray (self.rootObject.mRastnetDisplayedComponentName_property, self.rootObject.placedComponentNameArray_property)
       .bind_hidden (.not (.prop (self.rastnetDisplayComponentNet_property)))
     return view
@@ -5445,7 +5445,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_198 () -> NSView {
-    let view = AutoLayoutElCanariTrackLockView ()
+    let view = AutoLayoutCanariTrackLockView ()
       .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
       .bind_manualLockP1 (self.boardTrackSelectionController.mManualLockP1_property)
       .bind_manualLockP2 (self.boardTrackSelectionController.mManualLockP2_property)
@@ -5922,7 +5922,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_242 () -> NSView {
-    let view = AutoLayoutElCanariBoardFontPopUpButton ()
+    let view = AutoLayoutCanariBoardFontPopUpButton ()
       .bind_currentFontName (self.boardTextSelectionController.fontName_property)
       .bind_fontNames (self.rootObject.fontNameArray_property)
       .bind_run (
@@ -6139,7 +6139,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_264 () -> NSView {
-    let view = AutoLayoutElCanariBoardFontPopUpButton ()
+    let view = AutoLayoutCanariBoardFontPopUpButton ()
       .bind_currentFontName (self.componentInBoardSelectionController.componentNameFontName_property)
       .bind_fontNames (self.rootObject.fontNameArray_property)
       .bind_run (
@@ -6213,7 +6213,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_271 () -> NSView {
-    let view = AutoLayoutElCanariBoardComponentPackagePopUpButton ()
+    let view = AutoLayoutCanariBoardComponentPackagePopUpButton ()
     self.configure_componentPackagePopUpButtonConfigurator (view) // Configurator
     return view
   }
@@ -6377,7 +6377,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_288 () -> NSView {
-    let view = AutoLayoutElCanariBoardFontPopUpButton ()
+    let view = AutoLayoutCanariBoardFontPopUpButton ()
       .bind_currentFontName (self.componentInBoardSelectionController.componentValueFontName_property)
       .bind_fontNames (self.rootObject.fontNameArray_property)
       .bind_run (
@@ -6837,9 +6837,6 @@ import Cocoa
     let mainView = self.mDocumentMainView
   //--- Call outlet linkers
   //--- Assign main view to window
-/*    if let windowSize = self.windowForSheet?.frame.size {
-      mainView.frame.size = windowSize
-    } */
     self.windowForSheet?.contentView = AutoLayoutWindowContentView (view: mainView)
   }
 
@@ -7556,31 +7553,6 @@ import Cocoa
       Swift.print ("Configure properties \(durationMS) ms")
     }
   }
-
-  //····················································································································
-
-/*  final private func installBindings () {
-    let start = Date ()
-  //--------------------------- Install table view bindings
-  //--------------------------- Install ebView bindings
-  //--------------------------- Install regular bindings
-  //--------------------------- Install multiple bindings
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Install bindings \(durationMS) ms")
-    }
-  } */
-
-  //····················································································································
-
-/*  final private func setTargetsAndActions () {
-     let start = Date ()
-   //--------------------------- Set targets / actions
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Set target and actions \(durationMS) ms")
-    }
-  } */
 
   //····················································································································
   //   removeUserInterface

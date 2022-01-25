@@ -2,74 +2,9 @@
 //   Canari Outlets
 //——————————————————————————————————————————————————————————————————————————————
 
-extern outlet class CanariBoolPopUpButton $enabled ;
-binding CanariBoolPopUpButton $value : property Bool {item0 : String, item1 : String} ;
-
-extern outlet class CanariTrackLockView ;
-binding CanariTrackLockView $angle : transient Int ;
-binding CanariTrackLockView $manualLockP1 : property Bool ;
-binding CanariTrackLockView $manualLockP2 : property Bool ;
-binding CanariTrackLockView $p1ConnectedToSomePad : transient Bool ;
-binding CanariTrackLockView $p2ConnectedToSomePad : transient Bool ;
-
-extern outlet class CanariChoiceMenu ;
-binding CanariChoiceMenu $selectedIndex : property enum ;
-binding CanariChoiceMenu $selectedTag : property Int ;
-
-extern outlet class CanariTabView $enabled ;
-binding CanariTabView $selectedTabIndex : property Int ;
-
-extern outlet class CanariOrientationSegmentedControl $enabled ;
-binding CanariOrientationSegmentedControl $angle : property Int ;
-
-extern outlet class CanariDefaultNetClassPopUpButton ;
-binding CanariDefaultNetClassPopUpButton $netClasses : property String, transient StringArray ; // Net class names
-
-extern outlet class CanariComponentsMenuItem ;
-binding CanariComponentsMenuItem $components : transient StringTagArray ; // Prefix, index
-
-extern outlet class CanariNetsMenuItem ;
-binding CanariNetsMenuItem $nets : transient StringArray ;
-
-extern outlet class CanariSelectionPopUpButton $hidden ;
-binding CanariSelectionPopUpButton $selectedNameInArray : property String, transient StringArray ;
-
-extern outlet class CanariObserverSwitch ;
-binding CanariObserverSwitch $valueObserver : transient Bool ;
-
-extern outlet class NSDatePicker ;
-
-extern outlet class DeviceSymbolTypesTableView : EBTableView ;
-binding DeviceSymbolTypesTableView $symbolDictionary : transient DeviceSymbolDictionary ;
-
-extern outlet class StringArrayTableView : EBTableView ;
-binding StringArrayTableView $array : transient StringArray ;
-
-extern outlet class TwoStringArrayTableView : EBTableView ;
-binding TwoStringArrayTableView $array : transient TwoStringArray ;
-
-extern outlet class ThreeStringArrayTableView : EBTableView ;
-binding ThreeStringArrayTableView $array : transient ThreeStringArray ;
-
 extern outlet class CanariToolbar ;
 
-extern outlet class NSTabView : NSControl ;
-
 extern outlet class NSTableView ;
-
-extern outlet class CanariComboBox ;
-
-extern outlet class CanariNewComponentFromDevicePullDownButton ;
-binding CanariNewComponentFromDevicePullDownButton $deviceNames : transient StringArray ;
-
-extern outlet class CanariBoardTextFontPopUpButton ;
-extern outlet class CanariBoardComponentNameFontPopUpButton : NSControl ;
-extern outlet class CanariBoardComponentValueFontPopUpButton : NSControl ;
-extern outlet class CanariBoardComponentPackagePopUpButton ;
-
-extern outlet class NSPanel ;
-
-extern outlet class NSImageView $hidden ;
 
 extern outlet class NSButton ;
 
@@ -77,98 +12,12 @@ extern outlet class NSScrollView : NSView ;
 
 extern outlet class NSTextField : NSControl ;
 
-extern outlet class NSSegmentedControl ;
-
-extern outlet class UnconnectedPadsInDeviceTableView : EBTableView ;
-binding UnconnectedPadsInDeviceTableView $unconnectedPads : transient StringArray ;
-
-extern outlet class UnconnectedSymbolPinsInDeviceTableView : EBTableView ;
-binding UnconnectedSymbolPinsInDeviceTableView $unconnectedPins : transient UnconnectedSymbolPinsInDevice ;
-
-extern outlet class AssignedPadProxysInDeviceTableView : EBTableView ;
-binding AssignedPadProxysInDeviceTableView $assignedPadProxies : transient AssignedPadProxiesInDevice ;
-
-extern outlet class CanariDragSourceButton : NSControl ;
-extern outlet class CanariDragSourceImageButton : NSControl ;
-
-extern outlet class AddSymbolInstancePullDownButton : EBPopUpButton ;
-binding AddSymbolInstancePullDownButton $symbolTypeNames : transient StringArray ;
-
-extern outlet class DeviceDocumentationTableView : EBTableView ;
-
-extern outlet class IssueTableView : NSView ;
-binding IssueTableView $issues : transient CanariIssueArray ;
-
-extern outlet class CanariDimensionTextField $enabled ;
-binding CanariDimensionTextField $dimensionAndUnit : property Int, property Int ;
-
-extern outlet class CanariDimensionObserverTextField ;
-binding CanariDimensionObserverTextField $dimensionAndUnit : transient Int, property Int ;
-
-extern outlet class CanariPadRenumberingPullDownButton : NSControl ;
-binding CanariPadRenumberingPullDownButton $currentNumber : transient Int ;
-binding CanariPadRenumberingPullDownButton $currentZoneName : transient String ;
-
-extern outlet class CanariSlavePadAssignmentPopUpButton ;
-binding CanariSlavePadAssignmentPopUpButton $masterPadName : transient String ;
-binding CanariSlavePadAssignmentPopUpButton $masterPadObjectIndexArray : transient IntArray ;
-
-extern outlet class FontCharacterSelectButton $enabled ;
-binding FontCharacterSelectButton $codePoint : property Int ;
-binding FontCharacterSelectButton $characters : transient DefinedCharactersInDevice ;
-
-extern outlet class CanariSegmentedControl ;
-binding CanariSegmentedControl $selectedPage : property Int ;
-
-extern outlet class CanariEnumSegmentedControl ;
-binding CanariEnumSegmentedControl $selectedSegment : property enum ;
-
-extern outlet class CanariAngleTextField $enabled ;
-binding CanariAngleTextField $angle : property Int ;
-
-
-extern outlet class CanariAngleSlider : NSControl ;
-binding CanariAngleSlider $angle : property Int ;
-
-extern outlet class CanariQuadrantSegmentedControl : NSView ;
-binding CanariQuadrantSegmentedControl $quadrant : property QuadrantRotation ;
-
-extern outlet class CanariSignatureField ;
-binding CanariSignatureField $signature : transient Int ;
-
-
-extern outlet class CanariVersionField ;
-binding CanariVersionField $version : transient Int ;
-
-binding CanariVersionField $versionShouldChange : transient Bool ;
-
-extern outlet class CanariViewWithKeyView : NSView ;
-
-extern outlet class NSSplitView : NSView ;
-
 extern outlet class CanariMenu ;
 binding CanariMenu $populateSubmenus : transient StringArray ;
 
 extern outlet class CanariDateObserverField : NSTextField ;
 binding CanariDateObserverField $dateObserver : transient Date ;
 
-extern outlet class CanariLayerPopUpButton $run ;
-binding CanariLayerPopUpButton $layerConfiguration : transient LayerConfiguration ;
-
-//——————————————————————————————————————————————————————————————————————————————
-
-extern outlet class NSBox : NSView ;
 extern outlet class NSTextView  : NSView ;
-extern outlet class NSPopUpButton  : NSView ;
-
-//——————————————————————————————————————————————————————————————————————————————
-
-extern outlet class CanariNetInfoTableView ;
-binding CanariNetInfoTableView $netInfo : transient NetInfoArray ;
-
-//——————————————————————————————————————————————————————————————————————————————
-
-extern outlet class CanariDragSourceTableView ;
-binding CanariDragSourceTableView $models : transient StringTagArray ;
 
 //——————————————————————————————————————————————————————————————————————————————

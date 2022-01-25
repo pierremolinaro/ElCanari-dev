@@ -682,7 +682,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
               $selectedIndex root.modelInsertionRotation
             }
           }
-          ElCanariDragSourceTableView
+          CanariDragSourceTableView
             [outlet mModelDragSourceTableView configurator boardModelDragSourceTableView]
             { $models root.modelNames }
         }
@@ -765,7 +765,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         }
       )
       add (single:
-        ElCanariOrientationSegmentedControl (size : .small) {
+        CanariOrientationSegmentedControl (size : .small) {
           expandableWidth ()
           $orientation #mBoardInstanceSelection.instanceRotation
         }

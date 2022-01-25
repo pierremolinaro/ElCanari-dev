@@ -239,7 +239,7 @@ import Cocoa
   weak final var mBoardIssueTableView : AutoLayoutCanariIssueTableView? = nil
   weak final var mComposedBoardGraphicView : AutoLayoutGraphicView? = nil
   weak final var mLogTextView : AutoLayoutTextObserverView? = nil
-  weak final var mModelDragSourceTableView : AutoLayoutElCanariDragSourceTableView? = nil
+  weak final var mModelDragSourceTableView : AutoLayoutCanariDragSourceTableView? = nil
   weak final var mProductPageSegmentedControl : AutoLayoutSegmentedControlWithPages? = nil
 
   //····················································································································
@@ -3190,7 +3190,7 @@ import Cocoa
         view_0.appendView (view_0_2)
       }
       view.appendView (view_0)
-      let view_1 = AutoLayoutElCanariDragSourceTableView ()
+      let view_1 = AutoLayoutCanariDragSourceTableView ()
         .bind_models (self.rootObject.modelNames_property)
       self.mModelDragSourceTableView = view_1 // Outlet
       self.configure_boardModelDragSourceTableView (view_1) // Configurator
@@ -3427,7 +3427,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_163 () -> NSView {
-    let view = AutoLayoutElCanariOrientationSegmentedControl (size: .small)
+    let view = AutoLayoutCanariOrientationSegmentedControl (size: .small)
       .expandableWidth ()
       .bind_orientation (self.mBoardInstanceSelection.instanceRotation_property)
     return view
@@ -3882,9 +3882,6 @@ import Cocoa
   //--- Call outlet linkers
     self.linker_issueTableViewToGraphicView (self.mBoardIssueTableView, self.mComposedBoardGraphicView)
   //--- Assign main view to window
-/*    if let windowSize = self.windowForSheet?.frame.size {
-      mainView.frame.size = windowSize
-    } */
     self.windowForSheet?.contentView = AutoLayoutWindowContentView (view: mainView)
   }
 
@@ -4169,31 +4166,6 @@ import Cocoa
       Swift.print ("Configure properties \(durationMS) ms")
     }
   }
-
-  //····················································································································
-
-/*  final private func installBindings () {
-    let start = Date ()
-  //--------------------------- Install table view bindings
-  //--------------------------- Install ebView bindings
-  //--------------------------- Install regular bindings
-  //--------------------------- Install multiple bindings
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Install bindings \(durationMS) ms")
-    }
-  } */
-
-  //····················································································································
-
-/*  final private func setTargetsAndActions () {
-     let start = Date ()
-   //--------------------------- Set targets / actions
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Set target and actions \(durationMS) ms")
-    }
-  } */
 
   //····················································································································
   //   removeUserInterface

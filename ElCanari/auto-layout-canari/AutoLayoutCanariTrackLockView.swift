@@ -1,5 +1,5 @@
 //
-//  AutoLayoutElCanariTrackLockView.swift
+//  AutoLayoutCanariTrackLockView.swift
 //  ElCanari-Debug-temporary
 //
 //  Created by Pierre Molinaro on 15/01/2022.
@@ -14,10 +14,10 @@ fileprivate let KNOB_DIAMETER : CGFloat = 9.0
 fileprivate let TEXT_OFFSET : CGFloat = 3.0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutElCanariTrackLockView
+//   AutoLayoutCanariTrackLockView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutElCanariTrackLockView : AutoLayoutBase_NSView {
+final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 

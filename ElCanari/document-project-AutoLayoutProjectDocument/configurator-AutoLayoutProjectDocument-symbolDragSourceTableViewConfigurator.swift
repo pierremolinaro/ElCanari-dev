@@ -18,7 +18,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  final func configure_symbolDragSourceTableViewConfigurator (_ inOutlet : AutoLayoutElCanariDragSourceTableView) {
+  final func configure_symbolDragSourceTableViewConfigurator (_ inOutlet : AutoLayoutCanariDragSourceTableView) {
 //--- START OF USER ZONE 2
         inOutlet.register (document: self, draggedType: kDragAndDropSymbol)
 //--- END OF USER ZONE 2

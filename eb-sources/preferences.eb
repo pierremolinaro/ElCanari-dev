@@ -16,6 +16,11 @@ prefs {
   outlet EBPopUpButton mAutoLayoutStylePopUpButton $selectedIndex self.mAutoLayoutStyle ;
 
   outlet NSTextField mSULastCheckTimeTextField ;
+  
+  stackView mPrefsMainView vStack set (spacing: 0) {
+     StaticLabel (title: "Azerty", bold: yes, size: .regular)
+  }
+  
 }
 
 //——————————————————————————————————————————————————————————————————————————————

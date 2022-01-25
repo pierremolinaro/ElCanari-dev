@@ -1,8 +1,8 @@
 //
-//  AutoLayoutElCanariBoardFontPopUpButton.swift
+//  AutoLayoutCanariRestrictRectangleView.swift
 //  ElCanari-Debug-temporary
 //
-//  Created by Pierre Molinaro on 16/01/2022.
+//  Created by Pierre Molinaro on 15/01/2022.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -10,90 +10,108 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutElCanariBoardFontPopUpButton : AutoLayoutBase_NSPopUpButton {
+final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  init () {
-    super.init (pullsDown: false, size: .small)
-  }
+  private let mFrontLayerCheckBox = AutoLayoutCheckbox (title: "Front Layer", size: .small)
+  private let mBackLayerCheckBox = AutoLayoutCheckbox (title: "Back Layer", size: .small)
+  private let mInner1LayerCheckBox = AutoLayoutCheckbox (title: "Inner1 Layer", size: .small)
+  private let mInner2LayerCheckBox = AutoLayoutCheckbox (title: "Inner2 Layer", size: .small)
+  private let mInner3LayerCheckBox = AutoLayoutCheckbox (title: "Inner3 Layer", size: .small)
+  private let mInner4LayerCheckBox = AutoLayoutCheckbox (title: "Inner4 Layer", size: .small)
 
   //····················································································································
 
-  required init?(coder inCoder: NSCoder) {
+  required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
-  // BUILD POPUP
-  //····················································································································
 
-  private func buildPopUpButton () {
-    self.removeAllItems ()
-    for str in self.mFontNames {
-      self.addItem (withTitle: str)
-      if str == self.mCurrentFontName {
-        self.selectItem (at: self.numberOfItems - 1)
-      }
-    }
+  override init () {
+    super.init ()
+    self.appendView (self.mFrontLayerCheckBox)
+    self.appendView (self.mBackLayerCheckBox)
+    self.appendView (self.mInner1LayerCheckBox)
+    self.appendView (self.mInner2LayerCheckBox)
+    self.appendView (self.mInner3LayerCheckBox)
+    self.appendView (self.mInner4LayerCheckBox)
   }
 
   //····················································································································
-  //  $currentFontName binding
-  //····················································································································
 
-  private var mCurrentFontNameController : EBObservablePropertyController? = nil
-  private var mCurrentFontName : String? = nil
-
-  //····················································································································
-
-  final func bind_currentFontName (_ inObject : EBReadOnlyProperty_String) -> Self {
-    self.mCurrentFontNameController = EBObservablePropertyController (
-      observedObjects: [inObject],
-      callBack: { [weak self] in self?.updateCurrentFontName (from: inObject) }
-    )
+  func bind_front (_ inModel : EBReadWriteProperty_Bool) -> Self {
+    _ = self.mFrontLayerCheckBox.bind_value (inModel)
+      .bind_run (target: self, selector: #selector (Self.checkBoxAction (_:)))
     return self
   }
 
   //····················································································································
 
-  fileprivate func updateCurrentFontName (from inObject : EBReadOnlyProperty_String) {
-    switch inObject.selection {
-    case .empty, .multiple :
-      self.mCurrentFontName = nil
-    case .single (let v) :
-      self.mCurrentFontName = v
-    }
-    self.buildPopUpButton ()
-  }
-
-  //····················································································································
-  //  $currentFontName binding
-  //····················································································································
-
-  private var mFontNamesController : EBObservablePropertyController? = nil
-  private var mFontNames = [String] ()
-
-  //····················································································································
-
-  final func bind_fontNames (_ inObject : EBReadOnlyProperty_StringArray) -> Self {
-    self.mFontNamesController = EBObservablePropertyController (
-      observedObjects: [inObject],
-      callBack: { [weak self] in self?.updateFontNames (from: inObject) }
-    )
+  func bind_back (_ inModel : EBReadWriteProperty_Bool) -> Self {
+    _ = self.mBackLayerCheckBox.bind_value (inModel)
+      .bind_run (target: self, selector: #selector (Self.checkBoxAction (_:)))
     return self
   }
 
   //····················································································································
 
-  fileprivate func updateFontNames (from inObject : EBReadOnlyProperty_StringArray) {
-    switch inObject.selection {
-    case .empty, .multiple :
-      self.mFontNames = []
-    case .single (let v) :
-      self.mFontNames = v
+  func bind_inner1 (_ inModel : EBReadWriteProperty_Bool) -> Self {
+    _ = self.mInner1LayerCheckBox.bind_value (inModel)
+      .bind_run (target: self, selector: #selector (Self.checkBoxAction (_:)))
+    return self
+  }
+
+  //····················································································································
+
+  func bind_inner2 (_ inModel : EBReadWriteProperty_Bool) -> Self {
+    _ = self.mInner2LayerCheckBox.bind_value (inModel)
+      .bind_run (target: self, selector: #selector (Self.checkBoxAction (_:)))
+    return self
+  }
+
+  //····················································································································
+
+  func bind_inner3 (_ inModel : EBReadWriteProperty_Bool) -> Self {
+    _ = self.mInner3LayerCheckBox.bind_value (inModel)
+      .bind_run (target: self, selector: #selector (Self.checkBoxAction (_:)))
+    return self
+  }
+
+  //····················································································································
+
+  func bind_inner4 (_ inModel : EBReadWriteProperty_Bool) -> Self {
+    _ = self.mInner4LayerCheckBox.bind_value (inModel)
+      .bind_run (target: self, selector: #selector (Self.checkBoxAction (_:)))
+    return self
+  }
+
+  //····················································································································
+
+  @objc private func checkBoxAction (_ inSender : Any?) {
+    let front  = self.mFrontLayerCheckBox.state == .on
+    let back   = self.mBackLayerCheckBox.state == .on
+    let inner1 = self.mInner1LayerCheckBox.state == .on
+    let inner2 = self.mInner2LayerCheckBox.state == .on
+    let inner3 = self.mInner3LayerCheckBox.state == .on
+    let inner4 = self.mInner4LayerCheckBox.state == .on
+    let count = (front ? 1 : 0) + (back ? 1 : 0) + (inner1 ? 1 : 0) + (inner2 ? 1 : 0) + (inner3 ? 1 : 0) + (inner4 ? 1 : 0)
+    if count > 1 {
+      self.mFrontLayerCheckBox.enable  (fromEnableBinding: true, nil)
+      self.mBackLayerCheckBox.enable   (fromEnableBinding: true, nil)
+      self.mInner1LayerCheckBox.enable (fromEnableBinding: true, nil)
+      self.mInner2LayerCheckBox.enable (fromEnableBinding: true, nil)
+      self.mInner3LayerCheckBox.enable (fromEnableBinding: true, nil)
+      self.mInner4LayerCheckBox.enable (fromEnableBinding: true, nil)
+    }else{
+      self.mFrontLayerCheckBox.enable  (fromEnableBinding: !front, nil)
+      self.mBackLayerCheckBox.enable   (fromEnableBinding: !back, nil)
+      self.mInner1LayerCheckBox.enable (fromEnableBinding: !inner1, nil)
+      self.mInner2LayerCheckBox.enable (fromEnableBinding: !inner2, nil)
+      self.mInner3LayerCheckBox.enable (fromEnableBinding: !inner3, nil)
+      self.mInner4LayerCheckBox.enable (fromEnableBinding: !inner4, nil)
     }
-    self.buildPopUpButton ()
   }
 
   //····················································································································

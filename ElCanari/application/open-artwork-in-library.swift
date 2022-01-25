@@ -210,8 +210,6 @@ fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUse
   //····················································································································
 
   deinit {
-//    self.mOkButton.ebCleanUp ()
-//    self.mSearchField.ebCleanUp ()
     noteObjectDeallocation (self)
   }
 

@@ -1,5 +1,5 @@
 //
-//  AutoLayoutElCanariDefaultNetClassPopUpButton.swift
+//  AutoLayoutCanariDefaultNetClassPopUpButton.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 01/10/2019.
@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutElCanariDefaultNetClassPopUpButton : AutoLayoutBase_NSPopUpButton {
+final class AutoLayoutCanariDefaultNetClassPopUpButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
@@ -47,13 +47,13 @@ final class AutoLayoutElCanariDefaultNetClassPopUpButton : AutoLayoutBase_NSPopU
 fileprivate final class Controller_CanariDefaultNetClassPopUpButton : EBObservablePropertyController {
 
   private let mObject : EBReadWriteProperty_String
-  private weak var mOutlet : AutoLayoutElCanariDefaultNetClassPopUpButton? = nil
+  private weak var mOutlet : AutoLayoutCanariDefaultNetClassPopUpButton? = nil
 
   //····················································································································
 
   init (_ inSelectedNetClassName : EBReadWriteProperty_String,
         _ inNetClassNames : EBReadOnlyProperty_StringArray,
-        _ inOutlet : AutoLayoutElCanariDefaultNetClassPopUpButton) {
+        _ inOutlet : AutoLayoutCanariDefaultNetClassPopUpButton) {
     self.mObject = inSelectedNetClassName
     self.mOutlet = inOutlet
     super.init (

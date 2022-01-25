@@ -62,7 +62,7 @@ extension AutoLayoutMergerDocumentSubClass {
       let xCountTextField = AutoLayoutIntField (minWidth: 56, size: .small).bind_value (self.mInsertArrayOfBoardsXCount, sendContinously: true)
       let yCountTextField = AutoLayoutIntField (minWidth: 56, size: .small).bind_value (self.mInsertArrayOfBoardsYCount, sendContinously: true)
     //--- Orientation
-      let orientationSegmentedControl = AutoLayoutElCanariOrientationSegmentedControl (size: .small)
+      let orientationSegmentedControl = AutoLayoutCanariOrientationSegmentedControl (size: .small)
         .bind_orientation (self.mInsertArrayOfBoardsOrientation)
     //--- Build panel
       let panel = NSPanel (

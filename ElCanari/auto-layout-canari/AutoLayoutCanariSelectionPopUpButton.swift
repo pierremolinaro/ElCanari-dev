@@ -1,5 +1,5 @@
 //
-//  AutoLayoutElCanariSelectionPopUpButton.swift
+//  AutoLayoutCanariSelectionPopUpButton.swift
 //  ElCanari-Debug-temporary
 //
 //  Created by Pierre Molinaro on 27/12/2021.
@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutElCanariSelectionPopUpButton : AutoLayoutBase_NSPopUpButton {
+final class AutoLayoutCanariSelectionPopUpButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
@@ -108,7 +108,7 @@ final class Controller_ElCanariSelectionPopUpButton_selectedNameInArray : EBObse
 
   init (_ inSelectedName : EBReadWriteProperty_String,
         _ inNameArray : EBReadOnlyProperty_StringArray,
-        _ inOutlet : AutoLayoutElCanariSelectionPopUpButton,
+        _ inOutlet : AutoLayoutCanariSelectionPopUpButton,
         callBack inCallBack : @escaping () -> Void) {
     self.mSelectedName = inSelectedName
     super.init (observedObjects: [inSelectedName, inNameArray], callBack: inCallBack)

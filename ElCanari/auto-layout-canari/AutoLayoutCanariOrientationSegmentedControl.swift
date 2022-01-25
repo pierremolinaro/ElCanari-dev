@@ -1,5 +1,5 @@
 //
-//  AutoLayoutElCanariOrientationSegmentedControl.swift
+//  AutoLayoutCanariOrientationSegmentedControl.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 16/07/2021.
@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutElCanariOrientationSegmentedControl : AutoLayoutBase_NSSegmentedControl {
+final class AutoLayoutCanariOrientationSegmentedControl : AutoLayoutBase_NSSegmentedControl {
 
   //····················································································································
 

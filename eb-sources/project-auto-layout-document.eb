@@ -403,7 +403,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         space
         DragSourceButton (tooltip: "Add Wire; hint: option click starts a new wire.") [configurator addWireInschematicsButton]
         space
-        ElCanariDefaultNetClassPopUpButton { $netClasses root.mDefaultNetClassName, root.allClassNames }
+        CanariDefaultNetClassPopUpButton { $netClasses root.mDefaultNetClassName, root.allClassNames }
       }
       vStack {
         hStack set (leftMargin: 8) set (rightMargin: 8) {
@@ -465,7 +465,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //--- Unplaced symbols inspector
   stackView mInsertSymbolInSchematicView vStack set (margins: 8) {
-    ElCanariDragSourceTableView 
+    CanariDragSourceTableView 
     [outlet mUnplacedSymbolsTableView configurator symbolDragSourceTableViewConfigurator] {
       $models root.unplacedSymbols
     }
@@ -1186,7 +1186,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       Label (bold: yes, size: .small) { $title self.unplacedPackagesMessageString }
       space
     }
-    ElCanariDragSourceTableView 
+    CanariDragSourceTableView 
     [outlet mUnplacedPackageTableView configurator packageDragSourceTableViewConfigurator] {
       $models root.unplacedPackages
     }
@@ -1234,13 +1234,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           right: EnumPopUpButton (titles: enum RastnetDisplay.popupTitles, size: .small) { $selectedIndex root.mRastnetDisplay }
         )
         add (
-          single: ElCanariSelectionPopUpButton (size: .small) {
+          single: CanariSelectionPopUpButton (size: .small) {
             $selectedNameInArray root.mRastnetDisplayedNetName, root.netNamesArray
             $hidden !self.rastnetDisplayOneNet
           }
         )
         add (
-          single: ElCanariSelectionPopUpButton (size: .small) {
+          single: CanariSelectionPopUpButton (size: .small) {
             $selectedNameInArray root.mRastnetDisplayedComponentName, root.placedComponentNameArray
             $hidden !self.rastnetDisplayComponentNet
           }
@@ -1583,7 +1583,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addSeparator ()
       add (single:
-        ElCanariTrackLockView {
+        CanariTrackLockView {
           $angle #boardTrackSelectionController.trackDirectionInDegrees
           $manualLockP1 #boardTrackSelectionController.mManualLockP1
           $manualLockP2 #boardTrackSelectionController.mManualLockP2
@@ -1755,7 +1755,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView mRestrictRectangleInspectorView vStack {
     hStack { space StaticLabel (title: "Restrict Rectangle Inspector", bold: yes, size: .small) space }
-    ElCanariRestrictRectangleView {
+    CanariRestrictRectangleView {
       $front #restrictRectangleSelectionController.mIsInFrontLayer
       $back #restrictRectangleSelectionController.mIsInBackLayer
       $inner1 #restrictRectangleSelectionController.mIsInInner1Layer
@@ -1780,7 +1780,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Font", bold: no, size: .small),
-        right: ElCanariBoardFontPopUpButton {
+        right: CanariBoardFontPopUpButton {
           $currentFontName #boardTextSelectionController.fontName
           $fontNames root.fontNameArray
           $run setBoardTextFontAction
@@ -1850,7 +1850,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Font", bold: no, size: .small),
-        right: ElCanariBoardFontPopUpButton {
+        right: CanariBoardFontPopUpButton {
           $currentFontName #componentInBoardSelectionController.componentNameFontName
           $fontNames root.fontNameArray
           $run setComponentNameFontAction
@@ -1871,7 +1871,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       add (single: Checkbox (title: "Draw Component Legend", size: .small) { $value #componentInBoardSelectionController.mDisplayLegend })
       addSeparator ()
       add (single: StaticLabel (title: "Package", bold: yes, size: .small) { set (alignment: .left) })
-      add (single: ElCanariBoardComponentPackagePopUpButton [configurator componentPackagePopUpButtonConfigurator])
+      add (single: CanariBoardComponentPackagePopUpButton [configurator componentPackagePopUpButtonConfigurator])
       add (single: Checkbox (title: "Show Rotation Knob", size: .small) { $value prefs.mShowRotationKnobInBoard })
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Rotation", bold: no, size: .small),
@@ -1917,7 +1917,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Font", bold: no, size: .small),
-        right: ElCanariBoardFontPopUpButton {
+        right: CanariBoardFontPopUpButton {
           $currentFontName #componentInBoardSelectionController.componentValueFontName
           $fontNames root.fontNameArray
           $run setComponentValueFontAction

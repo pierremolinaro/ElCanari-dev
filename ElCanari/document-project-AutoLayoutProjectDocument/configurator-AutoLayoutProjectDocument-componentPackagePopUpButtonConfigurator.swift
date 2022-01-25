@@ -18,7 +18,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  final func configure_componentPackagePopUpButtonConfigurator (_ inOutlet : AutoLayoutElCanariBoardComponentPackagePopUpButton) {
+  final func configure_componentPackagePopUpButtonConfigurator (_ inOutlet : AutoLayoutCanariBoardComponentPackagePopUpButton) {
 //--- START OF USER ZONE 2
        inOutlet.register (selectionController: self.componentInBoardSelectionController.selectedArray_property)
 //--- END OF USER ZONE 2

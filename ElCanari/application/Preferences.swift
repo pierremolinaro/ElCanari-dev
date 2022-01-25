@@ -2838,6 +2838,45 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 @objc(Preferences) final class Preferences : EBObjcBaseObject, NSWindowDelegate {
 
   //····················································································································
+
+  private var mWindow : EBWindow? = nil
+
+  //····················································································································
+  //    Show Preferences window
+  //····················································································································
+
+  @IBAction func showPreferencesWindowAction (_ inSender : Any?) {
+    let window : EBWindow
+    if let w = self.mWindow {
+      window = w
+    }else{
+      window = EBWindow (
+        contentRect: NSRect (x: 0, y: 0, width: 680, height: 600),
+        styleMask: [.closable, .titled],
+        backing: .buffered,
+        defer: false
+      )
+      self.mWindow = window
+      window.title = "Preferences"
+      window.isReleasedWhenClosed = false
+      window.contentView = AutoLayoutWindowContentView (view: self.mPrefsMainView)
+    }
+    window.makeKeyAndOrderFront (nil)
+  }
+
+  //····················································································································
+  //    VIEW mPrefsMainView
+  //····················································································································
+
+  lazy var mPrefsMainView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (spacing: 0)
+    let view_0 = AutoLayoutStaticLabel (title: "Azerty", bold: true, size: .regular)
+    vStackView.appendView (view_0)
+    return vStackView
+  } ()
+
+  //····················································································································
   //    Outlets
   //····················································································································
 

@@ -1,5 +1,5 @@
 //
-//  AutoLayoutElCanariBoardComponentPackagePopUpButton.swift
+//  AutoLayoutCanariBoardComponentPackagePopUpButton.swift
 //  ElCanari-Debug-temporary
 //
 //  Created by Pierre Molinaro on 16/01/2022.
@@ -9,10 +9,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutElCanariBoardComponentPackagePopUpButton
+//   AutoLayoutCanariBoardComponentPackagePopUpButton
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutElCanariBoardComponentPackagePopUpButton : AutoLayoutBase_NSPopUpButton {
+final class AutoLayoutCanariBoardComponentPackagePopUpButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
@@ -45,19 +45,6 @@ final class AutoLayoutElCanariBoardComponentPackagePopUpButton : AutoLayoutBase_
     inSelectedObjects.addEBObserverOf_selectedPackageName (observer)
     inSelectedObjects.addEBObserverOf_mPackages (observer)
   }
-
-  //····················································································································
-
-//  func unregister () {
-//    if let observer = self.mObserver {
-//      observer.mEventCallBack = nil
-//      self.mSelectedObjects?.removeEBObserver (observer)
-//      self.mSelectedObjects?.removeEBObserverOf_selectedPackageName (observer)
-//      self.mSelectedObjects?.removeEBObserverOf_mPackages (observer)
-//      self.mObserver = nil
-//    }
-//    self.mSelectedObjects = nil
-//  }
 
   //····················································································································
 

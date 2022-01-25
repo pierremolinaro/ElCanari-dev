@@ -1,5 +1,5 @@
 //
-//  AutoLayoutElCanariDragSourceTableView.swift
+//  AutoLayoutCanariDragSourceTableView.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 04/12/2021.
@@ -24,10 +24,10 @@ struct StringTag : Hashable {
 typealias StringTagArray = [StringTag]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutElCanariDragSourceTableView
+//   AutoLayoutCanariDragSourceTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutElCanariDragSourceTableView : NSScrollView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
+final class AutoLayoutCanariDragSourceTableView : NSScrollView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
 
   private let mTableView = InternalDragSourceTableView ()
 
@@ -261,7 +261,7 @@ final class AutoLayoutElCanariDragSourceTableView : NSScrollView, EBUserClassNam
 fileprivate final class InternalDragSourceTableView : NSTableView, EBUserClassNameProtocol {
 
   weak var mDocument : EBAutoLayoutManagedDocument? = nil
-  weak var mSource : AutoLayoutElCanariDragSourceTableView? = nil
+  weak var mSource : AutoLayoutCanariDragSourceTableView? = nil
 
   //····················································································································
   // INIT

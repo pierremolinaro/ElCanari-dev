@@ -18,7 +18,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutMergerDocument {
-  final func configure_boardModelDragSourceTableView (_ inOutlet : AutoLayoutElCanariDragSourceTableView) {
+  final func configure_boardModelDragSourceTableView (_ inOutlet : AutoLayoutCanariDragSourceTableView) {
 //--- START OF USER ZONE 2
         inOutlet.register (document: self, draggedType: kDragAndDropMergerModelType)
 //--- END OF USER ZONE 2
