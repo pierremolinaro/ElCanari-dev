@@ -17,20 +17,6 @@ enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "front" : self = .front // 0
-      case "back" : self = .back // 1
-      case "inner1" : self = .inner1 // 2
-      case "inner2" : self = .inner2 // 3
-      case "inner3" : self = .inner3 // 4
-      case "inner4" : self = .inner4 // 5
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .front : return "front" // 0

@@ -13,16 +13,6 @@ enum BoardShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "rectangular" : self = .rectangular // 0
-      case "bezierPathes" : self = .bezierPathes // 1
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .rectangular : return "rectangular" // 0

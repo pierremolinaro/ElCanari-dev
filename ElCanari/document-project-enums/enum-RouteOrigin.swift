@@ -20,23 +20,6 @@ enum RouteOrigin : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "center" : self = .center // 0
-      case "bottomLeft" : self = .bottomLeft // 1
-      case "middleBottom" : self = .middleBottom // 2
-      case "bottomRight" : self = .bottomRight // 3
-      case "middleRight" : self = .middleRight // 4
-      case "topRight" : self = .topRight // 5
-      case "middleTop" : self = .middleTop // 6
-      case "topLeft" : self = .topLeft // 7
-      case "middleLeft" : self = .middleLeft // 8
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .center : return "center" // 0

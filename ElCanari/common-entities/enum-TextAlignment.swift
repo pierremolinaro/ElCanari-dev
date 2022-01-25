@@ -14,17 +14,6 @@ enum TextAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "left" : self = .left // 0
-      case "right" : self = .right // 1
-      case "center" : self = .center // 2
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .left : return "left" // 0

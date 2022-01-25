@@ -14,17 +14,6 @@ enum RestrictRectangleLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable 
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "frontSide" : self = .frontSide // 0
-      case "backSide" : self = .backSide // 1
-      case "bothSides" : self = .bothSides // 2
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .frontSide : return "frontSide" // 0

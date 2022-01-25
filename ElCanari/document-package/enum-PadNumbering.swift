@@ -21,24 +21,6 @@ enum PadNumbering : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "noNumbering" : self = .noNumbering // 0
-      case "counterClock" : self = .counterClock // 1
-      case "upRight" : self = .upRight // 2
-      case "upLeft" : self = .upLeft // 3
-      case "downRight" : self = .downRight // 4
-      case "downLeft" : self = .downLeft // 5
-      case "rightUp" : self = .rightUp // 6
-      case "rightDown" : self = .rightDown // 7
-      case "leftUp" : self = .leftUp // 8
-      case "leftDown" : self = .leftDown // 9
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .noNumbering : return "noNumbering" // 0

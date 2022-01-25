@@ -13,16 +13,6 @@ enum ComponentSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "front" : self = .front // 0
-      case "back" : self = .back // 1
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .front : return "front" // 0

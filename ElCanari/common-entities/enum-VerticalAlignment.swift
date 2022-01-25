@@ -15,18 +15,6 @@ enum VerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "above" : self = .above // 0
-      case "base" : self = .base // 1
-      case "center" : self = .center // 2
-      case "below" : self = .below // 3
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .above : return "above" // 0

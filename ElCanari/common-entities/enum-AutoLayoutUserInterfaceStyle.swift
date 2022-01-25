@@ -16,19 +16,6 @@ enum AutoLayoutUserInterfaceStyle : Int, EnumPropertyProtocol, Hashable, CaseIte
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "roundedBezel" : self = .roundedBezel // 0
-      case "roundRect" : self = .roundRect // 1
-      case "texturedRounded" : self = .texturedRounded // 2
-      case "texturedSquare" : self = .texturedSquare // 3
-      case "shadowlessSquare" : self = .shadowlessSquare // 4
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .roundedBezel : return "roundedBezel" // 0

@@ -15,18 +15,6 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "unknown" : self = .unknown // 0
-      case "ok" : self = .ok // 1
-      case "warning" : self = .warning // 2
-      case "error" : self = .error // 3
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .unknown : return "unknown" // 0

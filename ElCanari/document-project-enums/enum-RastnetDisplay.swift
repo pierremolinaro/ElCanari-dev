@@ -16,19 +16,6 @@ enum RastnetDisplay : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "hidden" : self = .hidden // 0
-      case "allNets" : self = .allNets // 1
-      case "oneNet" : self = .oneNet // 2
-      case "componentNets" : self = .componentNets // 3
-      case "selectedComponents" : self = .selectedComponents // 4
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .hidden : return "hidden" // 0

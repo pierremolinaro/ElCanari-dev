@@ -14,17 +14,6 @@ enum EBControlSize : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "mini" : self = .mini // 0
-      case "small" : self = .small // 1
-      case "regular" : self = .regular // 2
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .mini : return "mini" // 0

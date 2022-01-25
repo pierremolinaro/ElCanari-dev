@@ -15,18 +15,6 @@ enum TrackLockDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "unlocked" : self = .unlocked // 0
-      case "locked" : self = .locked // 1
-      case "octolinear" : self = .octolinear // 2
-      case "rectilinear" : self = .rectilinear // 3
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .unlocked : return "unlocked" // 0

@@ -14,17 +14,6 @@ enum GridStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "noGrid" : self = .noGrid // 0
-      case "cross" : self = .cross // 1
-      case "line" : self = .line // 2
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .noGrid : return "noGrid" // 0

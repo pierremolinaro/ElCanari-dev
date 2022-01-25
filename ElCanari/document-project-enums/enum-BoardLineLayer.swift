@@ -13,16 +13,6 @@ enum BoardLineLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "legendFront" : self = .legendFront // 0
-      case "legendBack" : self = .legendBack // 1
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .legendFront : return "legendFront" // 0

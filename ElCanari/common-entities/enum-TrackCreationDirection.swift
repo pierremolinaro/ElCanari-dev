@@ -14,17 +14,6 @@ enum TrackCreationDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable 
 
   //····················································································································
 
-/*  init? (string : String) {
-    switch string {
-      case "anyAngle" : self = .anyAngle // 0
-      case "octolinear" : self = .octolinear // 1
-      case "rectilinear" : self = .rectilinear // 2
-      case _ : return nil
-    }
-  } */
-
-  //····················································································································
-
   func descriptionForExplorer () -> String {
     switch self {
       case .anyAngle : return "anyAngle" // 0
