@@ -465,7 +465,7 @@ import Cocoa
           view_2_2_0.appendView (view_2_2_0_2)
           let view_2_2_0_3 = AutoLayoutStaticLabel (title: "Empty Data File", bold: true, size: .small)
             .setOrangeTextColor ()
-            .bind_hidden (.not (.id (self.mDataSelection.hasNoData_property)))
+            .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.mDataSelection.hasNoData_property)))
           view_2_2_0.appendView (view_2_2_0_3)
         }
         view_2_2.appendView (view_2_2_0)
@@ -629,7 +629,7 @@ import Cocoa
           view_2_2_16.appendView (view_2_2_16_1)
           let view_2_2_16_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.mDataSelection.padHoleDiameterInPDF_property, self.mDataSelection.measurementUnitForPadHoleInPDF_property)
-            .bind_enabled (.id (self.mDataSelection.drawPadHolesInPDF_property))
+            .bind_enabled (.MultipleBindingProp (self.mDataSelection.drawPadHolesInPDF_property))
           view_2_2_16.appendView (view_2_2_16_2)
         }
         view_2_2.appendView (view_2_2_16)
@@ -783,7 +783,7 @@ import Cocoa
   fileprivate final func computeImplicitView_12 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
       .bind_value (self.mDataSelection.drawTraversingPads_property)
-      .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
+      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -802,8 +802,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_14 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
-      .bind_enabled (.id (self.rootObject.hasInnerElements_property))
-      .bind_hidden (.id (self.rootObject.hasInnerElements_property))
+      .bind_enabled (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -823,7 +823,7 @@ import Cocoa
   fileprivate final func computeImplicitView_16 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
-      .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
+      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -834,7 +834,7 @@ import Cocoa
   fileprivate final func computeImplicitView_17 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
-      .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
+      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -844,8 +844,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_18 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
-      .bind_enabled (.id (self.rootObject.hasInnerElements_property))
-      .bind_hidden (.id (self.rootObject.hasInnerElements_property))
+      .bind_enabled (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -855,8 +855,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_19 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
-      .bind_enabled (.id (self.rootObject.hasInnerElements_property))
-      .bind_hidden (.id (self.rootObject.hasInnerElements_property))
+      .bind_enabled (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.MultipleBindingProp (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -867,7 +867,7 @@ import Cocoa
   fileprivate final func computeImplicitView_20 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
-      .bind_hidden (.not (.id (self.rootObject.hasSixLayers_property)))
+      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasSixLayers_property)))
     return view
   }
 
@@ -878,7 +878,7 @@ import Cocoa
   fileprivate final func computeImplicitView_21 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
       .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
-      .bind_hidden (.not (.id (self.rootObject.hasSixLayers_property)))
+      .bind_hidden (MultipleBindingNot (.MultipleBindingProp (self.rootObject.hasSixLayers_property)))
     return view
   }
 
@@ -888,8 +888,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_22 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
-      .bind_enabled (.id (self.rootObject.hasSixLayers_property))
-      .bind_hidden (.id (self.rootObject.hasSixLayers_property))
+      .bind_enabled (.MultipleBindingProp (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.MultipleBindingProp (self.rootObject.hasSixLayers_property))
     return view
   }
 
@@ -899,8 +899,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_23 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
-      .bind_enabled (.id (self.rootObject.hasSixLayers_property))
-      .bind_hidden (.id (self.rootObject.hasSixLayers_property))
+      .bind_enabled (.MultipleBindingProp (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.MultipleBindingProp (self.rootObject.hasSixLayers_property))
     return view
   }
 

@@ -112,7 +112,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       separator
       GridView2 {
         set (leftMargin: 20) set (rightMargin: 20)
-x        add (single: CanariDimensionUnitSetterPullDownButton (size : .small) {
+        add (single: CanariDimensionUnitSetterPullDownButton (size : .small) {
            expandableWidth ()
            $hidden !root.hasModelImage
            $setter6 root.mDimensionUnitFirstModelPointX, root.mDimensionUnitFirstModelPointY,

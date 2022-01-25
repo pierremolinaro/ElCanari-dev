@@ -36,20 +36,15 @@ final class AutoLayoutPullDownButton : AutoLayoutBase_NSPopUpButton {
     self.addItem (withTitle: inMenuItemDescriptor.title)
     self.lastItem?.target = inMenuItemDescriptor.target
     self.lastItem?.action = inMenuItemDescriptor.selector
-  //--- Add Enabled binding ?
-    switch inMenuItemDescriptor.expression {
-    case .empty :
-      ()
-    default :
-      let idx = self.numberOfItems - 1
-      var modelArray = [EBObservableObjectProtocol] ()
-      inMenuItemDescriptor.expression.addModelsTo (&modelArray)
-      let controller = EBObservablePropertyController (
-        observedObjects: modelArray,
-        callBack: { [weak self] in self?.enable (itemIndex: idx, from: inMenuItemDescriptor.expression) }
-      )
-      self.mControllerArray.append (controller)
-    }
+  //--- Add Enabled binding
+//    let idx = self.numberOfItems - 1
+//    var modelArray = [EBObservableObjectProtocol] ()
+//    inMenuItemDescriptor.enableBinding.addModelsTo (&modelArray)
+//    let controller = EBObservablePropertyController (
+//      observedObjects: modelArray,
+//      callBack: { [weak self] in self?.enable (itemIndex: idx, from: inMenuItemDescriptor.enableBinding) }
+//    )
+//    self.mControllerArray.append (controller)
   //---
     return self
   }

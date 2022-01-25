@@ -3304,28 +3304,28 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: .not (.id (preferences_checkForSystemLibraryAtStartUp_property)),
+        computeFunction: MultipleBindingNot (.MultipleBindingProp (preferences_checkForSystemLibraryAtStartUp_property)),
         outlet: self.nextSystemLibraryCheckDate
       )
       self.mController_nextSystemLibraryCheckDate_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: .not (.id (preferences_checkForSystemLibraryAtStartUp_property)),
+        computeFunction: MultipleBindingNot (.MultipleBindingProp (preferences_checkForSystemLibraryAtStartUp_property)),
         outlet: self.systemLibraryCheckTimeIntervalPopupButton
       )
       self.mController_systemLibraryCheckTimeIntervalPopupButton_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: .not (.id (preferences_checkForSystemLibraryAtStartUp_property)),
+        computeFunction: MultipleBindingNot (.MultipleBindingProp (preferences_checkForSystemLibraryAtStartUp_property)),
         outlet: self.systemLibraryCheckTimeIntervalTitleTextField
       )
       self.mController_systemLibraryCheckTimeIntervalTitleTextField_hidden = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (preferences_additionnalLibraryArrayController.selectedArray_property.count_property), .gt, .literalInt (0)),
+        computeFunction: MultipleBindingIntCmp (.MultipleBindingProp (preferences_additionnalLibraryArrayController.selectedArray_property.count_property), .gt, MultipleBindingLiteralInt (0)),
         outlet: self.mRemoveLibraryEntryButton
       )
       self.mController_mRemoveLibraryEntryButton_enabled = controller

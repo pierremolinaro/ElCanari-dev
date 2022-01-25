@@ -10,14 +10,33 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct AutoLayoutMenuItemDescriptor {
+final class AutoLayoutMenuItemDescriptor : EBUserClassNameProtocol {
 
   //····················································································································
 
   let title : String
   let target : NSObject?
   let selector : Selector?
-  let expression : EBMultipleBindingBooleanExpression
+  let enableBinding : EBMultipleBindingBooleanExpression
+
+  //····················································································································
+
+  init (title inTitle : String,
+        target inTarget : NSObject?,
+        selector inSelector : Selector?,
+        enableBinding inBinding : EBMultipleBindingBooleanExpression) {
+    self.title = inTitle
+    self.target = inTarget
+    self.selector = inSelector
+    self.enableBinding = inBinding
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   //····················································································································
 

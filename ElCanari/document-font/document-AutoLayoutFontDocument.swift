@@ -443,7 +443,7 @@ import Cocoa
       let view_5_0 = AutoLayoutStaticLabel (title: "Current Character", bold: true, size: .small)
       view_5.appendView (view_5_0)
       let view_5_1 = AutoLayoutButton (title: "Delete", size: .small)
-        .bind_enabled (.id (self.canDeleteCurrentCharacter_property))
+        .bind_enabled (.MultipleBindingProp (self.canDeleteCurrentCharacter_property))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutFontDocument.deleteCurrentCharacterAction (_:))
