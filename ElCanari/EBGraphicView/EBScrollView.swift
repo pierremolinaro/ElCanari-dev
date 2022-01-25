@@ -47,7 +47,7 @@ final class EBScrollView : NSScrollView, EBUserClassNameProtocol {
   // MARK: -
   //····················································································································
 
-  fileprivate weak final var mDocument : EBManagedDocument? = nil // For handling drag destination
+  fileprivate weak var mDocument : EBManagedDocument? = nil // For handling drag destination
 
   //····················································································································
 
