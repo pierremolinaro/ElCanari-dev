@@ -2,10 +2,31 @@
 prefs {
   outlet EBWindow mPrefsWindow ;
   outlet CanariToolbar mToolbar ;
+  
+  
 }
 
 //——————————————————————————————————————————————————————————————————————————————
+//! Main View
 
+prefs {
+  stackView mPrefsMainView vStack set (spacing: 0) {
+    SegmentedControlWithPages (documentView: stackView mPrefsPageView, equalWidth: no, size : .regular) {
+      addPage (title: "General", tooltip: "", pageView: stackView mPrefsGeneralPage)
+      addPage (title: "Application Update", tooltip: "", pageView: stackView mPrefsAppUpdatePage)
+    }
+    separator
+    stackViewRef mPrefsPageView
+  }
+  
+  stackView mPrefsPageView vStack set (spacing: 0) {
+  }
+  
+  stackView mPrefsGeneralPage vStack set (margins: 12) {
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————
 //! General
 
 prefs {
@@ -16,11 +37,32 @@ prefs {
   outlet EBPopUpButton mAutoLayoutStylePopUpButton $selectedIndex self.mAutoLayoutStyle ;
 
   outlet NSTextField mSULastCheckTimeTextField ;
-  
-  stackView mPrefsMainView vStack set (spacing: 0) {
-     StaticLabel (title: "Azerty", bold: yes, size: .regular)
+}
+
+//——————————————————————————————————————————————————————————————————————————————
+//! Application Update
+
+prefs {
+  stackView mPrefsAppUpdatePage vStack set (margins: 12) {
+    StaticLabel (title: "Application Update", bold: yes, size: .regular) { expandableWidth () set (alignment: .center) }
+    hStack {
+      Button (title: "Check for Application Updates…", size: .regular) { $run checkForAppUpdateAction }
+      StaticLabel (title: "Using…", bold: no, size: .regular) [configurator usingSparkleTextFieldConfigurator]
+      space
+    }
+    hStack {
+      Checkbox (title: "Automatically Check for Updates", size: .regular) [configurator automaticallyCheckForUpdatesConfigurator]
+      PopUpButton (size: .regular) [configurator updateCheckIntervalPopUpButtonConfigurator]
+      space
+    }
+    hStack {
+      StaticLabel (title: "Last Check Time", bold: no, size: .regular)
+      StaticLabel (title: "?", bold: no, size: .regular) [configurator sparkleLastCheckTimeTextFieldConfigurator]
+      space
+    }
   }
-  
+
+  action checkForAppUpdateAction ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

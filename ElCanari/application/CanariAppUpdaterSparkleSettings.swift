@@ -11,10 +11,14 @@ import Cocoa
 import Sparkle
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+var gCanariAppUpdaterSettings : CanariAppUpdaterSettings? = nil
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //  http://sparkle-project.org/documentation/preferences-ui/
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariAppUpdaterSettings) final class CanariAppUpdaterSettings : NSObject, EBUserClassNameProtocol {
+@objc(CanariAppUpdaterSettings) final class CanariAppUpdaterSettings : NSObject {
 
   //····················································································································
   //   Outlets
@@ -30,25 +34,27 @@ import Sparkle
 
   override init () {
     super.init ()
-    noteObjectAllocation (self)
+    gCanariAppUpdaterSettings = self
+//    noteObjectAllocation (self)
   }
   
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
 
   //····················································································································
   // Sparkle 2.x
   //····················································································································
 
   private let mUpdaterController = Sparkle.SPUStandardUpdaterController (updaterDelegate: nil, userDriverDelegate: nil)
+  private var mSparkleVersionString = "?"
 
   //····················································································································
 
   override func awakeFromNib () {
-    let updater = mUpdaterController.updater
+    let updater = self.mUpdaterController.updater
     self.mCheckNowForUpdateButton?.target = self
     self.mCheckNowForUpdateButton?.action = #selector (Self.checkForUpdatesAction (_:))
     self.mCheckNowForUpdateMenuItem?.target = self
@@ -82,6 +88,7 @@ import Sparkle
           if let sparkleVersionString = plist ["CFBundleShortVersionString"] as? String {
             // NSLog ("\(sparkleVersionString)")
             self.mSparkleVersionTextField?.stringValue = "Using Sparkle " + sparkleVersionString
+            self.mSparkleVersionString = sparkleVersionString
           }
         }
       }catch let error {
@@ -92,60 +99,42 @@ import Sparkle
 
   //····················································································································
 
-  @objc private func checkForUpdatesAction (_ inSender : Any?) {
+  @objc func checkForUpdatesAction (_ inSender : Any?) {
     self.mUpdaterController.updater.checkForUpdates ()
   }
 
   //····················································································································
-  // Sparkle 1.x
-  //····················································································································
 
-//  override func awakeFromNib () {
-//    if let updater = Sparkle.SUUpdater.shared () {
-//      self.mCheckNowForUpdateButton?.target = updater
-//      self.mCheckNowForUpdateButton?.action = #selector (Sparkle.SUUpdater.checkForUpdates (_:))
-//      self.mCheckNowForUpdateMenuItem?.target = updater
-//      self.mCheckNowForUpdateMenuItem?.action = #selector (Sparkle.SUUpdater.checkForUpdates (_:))
-//      self.mUpdateCheckbox?.bind (
-//        NSBindingName.value,
-//        to: updater,
-//        withKeyPath: "automaticallyChecksForUpdates",
-//        options: nil
-//      )
-//      self.mUpdateIntervalPopUpButton?.bind (
-//        NSBindingName.selectedTag,
-//        to: updater,
-//        withKeyPath: "updateCheckInterval",
-//        options: nil
-//      )
-//      self.mUpdateIntervalPopUpButton?.bind (
-//        NSBindingName.enabled,
-//        to: updater,
-//        withKeyPath: "automaticallyChecksForUpdates",
-//        options: nil
-//      )
-//    //--- Now, we explore application bundle for finding sparkle version
-//      if let frameworkURL = Bundle.main.privateFrameworksURL {
-//        let infoPlistURL = frameworkURL.appendingPathComponent ("Sparkle.framework/Versions/Current/Resources/Info.plist")
-//        // print ("\(infoPlistURL)")
-//        do{
-//          let data : Data = try Data (contentsOf: infoPlistURL)
-//          // NSLog ("\(data)")
-//          if let plist = try PropertyListSerialization.propertyList (from:data, format:nil) as? NSDictionary {
-//            if let sparkleVersionString = plist ["CFBundleShortVersionString"] as? String {
-//              // NSLog ("\(sparkleVersionString)")
-//              self.mSparkleVersionTextField?.stringValue = "Using Sparkle " + sparkleVersionString
-//            }
-//          }
-//        }catch let error {
-//          NSLog ("Cannot read Sparkle plist: error \(error)")
-//        }
-//      }
-//    }
-//  }
+  var sparkleVersionString : String { return self.mSparkleVersionString }
 
   //····················································································································
 
+  func configureAutomaticallyCheckForUpdatesButton (_ inOutlet : NSButton) {
+    inOutlet.bind (
+      NSBindingName.value,
+      to: self.mUpdaterController.updater,
+      withKeyPath: "automaticallyChecksForUpdates",
+      options: nil
+    )
+  }
+
+ //····················································································································
+
+  func configureCheckIntervalPopUpButton (_ inOutlet : NSPopUpButton) {
+    let updater = self.mUpdaterController.updater
+    inOutlet.bind (
+      NSBindingName.selectedTag,
+      to: updater,
+      withKeyPath: "updateCheckInterval",
+      options: nil
+    )
+    inOutlet.bind (
+      NSBindingName.enabled,
+      to: updater,
+      withKeyPath: "automaticallyChecksForUpdates",
+      options: nil
+    )
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

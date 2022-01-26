@@ -21,7 +21,7 @@ var gApplicationDelegate : ApplicationDelegate? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private let SU_LAST_CHECK_TIME = "SULastCheckTime"
+let SU_LAST_CHECK_TIME = "SULastCheckTime"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -88,8 +88,10 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
     if let lastCheckTimeTextField = g_Preferences?.mSULastCheckTimeTextField {
       if let date = UserDefaults.standard.value (forKey: SU_LAST_CHECK_TIME) {
         lastCheckTimeTextField.objectValue = date
+  //      g_Preferences?.mSparkleLastCheckTimeTextField?.objectValue = date
       }else{
         lastCheckTimeTextField.objectValue = "—"
+//        g_Preferences?.mSparkleLastCheckTimeTextField?.objectValue = "—"
       }
     }
   }
