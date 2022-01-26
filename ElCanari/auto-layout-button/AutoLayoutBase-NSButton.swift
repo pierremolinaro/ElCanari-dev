@@ -15,7 +15,7 @@ class AutoLayoutBase_NSButton : NSButton, EBUserClassNameProtocol {
   //····················································································································
 
   init (title inTitle : String, size inSize : EBControlSize) {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 

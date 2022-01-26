@@ -21,7 +21,7 @@ final class AutoLayoutDroppableImageView : NSImageView, EBUserClassNameProtocol 
 
    init (width inWidth : Int) {
     self.mImageWidth = CGFloat (inWidth)
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 

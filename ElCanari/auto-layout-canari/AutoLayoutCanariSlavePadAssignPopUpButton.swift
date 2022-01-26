@@ -17,7 +17,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
   //····················································································································
 
   init () {
-    super.init (frame: NSRect (), pullsDown: false)
+    super.init (frame: .zero, pullsDown: false)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 

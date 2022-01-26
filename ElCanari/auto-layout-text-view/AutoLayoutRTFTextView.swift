@@ -13,7 +13,7 @@ final class AutoLayoutRTFTextView : NSScrollView, EBUserClassNameProtocol {
   //····················································································································
 
   init (editable inIsEditable : Bool) {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 

@@ -9,7 +9,7 @@ final class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
   init (size inSize : EBControlSize) {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 

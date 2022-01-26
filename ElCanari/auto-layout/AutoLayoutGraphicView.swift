@@ -73,14 +73,14 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   //····················································································································
 
   fileprivate func buildScrollView (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) -> EBScrollView {
-    let scrollView = EBScrollView (frame: NSRect ())
+    let scrollView = EBScrollView (frame: .zero)
     scrollView.minMagnification = CGFloat (inMinZoom) / 100.0
     scrollView.maxMagnification = CGFloat (inMaxZoom) / 100.0
     scrollView.allowsMagnification = true
     scrollView.hasHorizontalScroller = true
     scrollView.hasVerticalScroller = true
     scrollView.autohidesScrollers = false
-    scrollView.contentView = NSClipView (frame: NSRect ())
+    scrollView.contentView = NSClipView (frame: .zero)
     scrollView.documentView = self.mGraphicView
     scrollView.drawsBackground = false
     scrollView.contentView.drawsBackground = false
@@ -91,7 +91,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   //····················································································································
 
   fileprivate func buildHelperTextField () -> NSTextField {
-    let tf = NSTextField (frame: NSRect ())
+    let tf = NSTextField (frame: .zero)
     tf.isBezeled = false
     tf.isBordered = false
     tf.drawsBackground = false

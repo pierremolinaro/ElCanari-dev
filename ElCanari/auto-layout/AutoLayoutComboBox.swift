@@ -22,7 +22,7 @@ final class AutoLayoutComboBox : NSComboBox, EBUserClassNameProtocol, NSComboBox
 
   init (width inWidth : Int) {
     self.mWidth = CGFloat (inWidth)
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 

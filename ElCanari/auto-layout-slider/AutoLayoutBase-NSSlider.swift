@@ -19,7 +19,7 @@ class AutoLayoutBase_NSSlider : NSSlider, EBUserClassNameProtocol {
   //····················································································································
 
   init (min inMin : Int, max inMax : Int, ticks inMarkCount : Int) {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 

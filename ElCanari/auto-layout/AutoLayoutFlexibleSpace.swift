@@ -11,7 +11,7 @@ final class AutoLayoutFlexibleSpace : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   init () {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)

@@ -23,7 +23,7 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   init (size inSize : EBControlSize) {
     self.mSize = inSize
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
     self.imageScaling = .scaleProportionallyUpOrDown

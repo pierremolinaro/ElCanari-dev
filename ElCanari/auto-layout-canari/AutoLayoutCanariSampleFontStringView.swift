@@ -15,7 +15,7 @@ final class AutoLayoutCanariSampleFontStringView : NSView, EBUserClassNameProtoc
   //····················································································································
 
   init () {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
   }
 

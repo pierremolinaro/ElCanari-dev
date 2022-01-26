@@ -240,7 +240,7 @@ final fileprivate class EmbeddedAutoLayoutScrollView : NSScrollView, EBUserClass
   //····················································································································
 
   init () {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
   }
 
@@ -267,7 +267,7 @@ final fileprivate class EmbeddedAutoLayoutTableView : NSTableView, EBUserClassNa
   //····················································································································
 
   init () {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
   }
 

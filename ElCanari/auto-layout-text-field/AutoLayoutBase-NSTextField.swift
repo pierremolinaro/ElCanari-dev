@@ -31,7 +31,7 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
     }else{
       self.mWidth = nil
     }
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 

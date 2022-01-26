@@ -19,7 +19,7 @@ final class AutoLayoutStaticImageView : NSImageView, EBUserClassNameProtocol {
   //····················································································································
 
   init (name inImageName : String) {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
@@ -33,7 +33,7 @@ final class AutoLayoutStaticImageView : NSImageView, EBUserClassNameProtocol {
   //····················································································································
 
   init (image inImage : NSImage?) {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 

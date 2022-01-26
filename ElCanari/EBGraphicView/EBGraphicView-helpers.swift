@@ -32,15 +32,15 @@ extension EBGraphicView {
   //····················································································································
 
   final private func buildXYHelperWindow () -> NSWindow {
-    let window = NSWindow (contentRect: NSRect (), styleMask: .borderless, backing: .buffered, defer: false)
+    let window = NSWindow (contentRect: .zero, styleMask: .borderless, backing: .buffered, defer: false)
     window.backgroundColor = NSColor.clear
     window.isOpaque = false
     window.isExcludedFromWindowsMenu = true
     window.orderFront (nil)
-    let view = EBHelperViewWithBackground (frame: NSRect ())
+    let view = EBHelperViewWithBackground (frame: .zero)
     window.contentView = view
   //--- X
-    let xPlacard = NSTextField (frame: NSRect ())
+    let xPlacard = NSTextField (frame: .zero)
     xPlacard.isBezeled = false
     xPlacard.isBordered = false
     xPlacard.drawsBackground = true
@@ -51,7 +51,7 @@ extension EBGraphicView {
     xPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
     view.addSubview (xPlacard)
   //--- Y
-    let yPlacard = NSTextField (frame: NSRect ())
+    let yPlacard = NSTextField (frame: .zero)
     yPlacard.isBezeled = false
     yPlacard.isBordered = false
     yPlacard.drawsBackground = true

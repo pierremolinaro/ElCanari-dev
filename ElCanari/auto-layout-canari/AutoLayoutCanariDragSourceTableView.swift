@@ -42,7 +42,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, EBUserClassNameP
   //····················································································································
 
   init () {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
 //    self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
 
@@ -274,7 +274,7 @@ fileprivate final class InternalDragSourceTableView : NSTableView, EBUserClassNa
   //····················································································································
 
   init () {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
   }
 

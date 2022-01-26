@@ -29,7 +29,7 @@ final class AutoLayoutCanariCharacterView : NSScrollView, EBUserClassNameProtoco
 
   init (okButton inOkButton : AutoLayoutSheetDefaultOkButton) {
     self.mCharacterView = InternalNewCharacterView (okButton: inOkButton)
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
@@ -87,7 +87,7 @@ private class InternalNewCharacterView : NSView, EBUserClassNameProtocol {
   init (okButton inOkButton : AutoLayoutSheetDefaultOkButton) {
     self.mOkButton = inOkButton
     inOkButton.enable (fromEnableBinding: false, nil)
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)

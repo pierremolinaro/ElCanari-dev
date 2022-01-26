@@ -11,7 +11,7 @@ class AutoLayoutBase_NSStackView : NSStackView, EBUserClassNameProtocol {
   //····················································································································
 
   init (orientation inOrientation : NSUserInterfaceLayoutOrientation) {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 

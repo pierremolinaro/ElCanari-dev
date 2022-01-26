@@ -60,6 +60,7 @@ prefs {
       StaticLabel (title: "?", bold: no, size: .regular) [configurator sparkleLastCheckTimeTextFieldConfigurator]
       space
     }
+    WebView (url: "https://pierremolinaro.github.io/ElCanari-distribution/release-notes.html")
   }
 
   action checkForAppUpdateAction ;

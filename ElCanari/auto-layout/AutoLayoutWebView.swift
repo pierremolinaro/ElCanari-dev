@@ -1,36 +1,37 @@
 //
-//  AutoLayoutWarningImageView.swift
+//  AutoLayoutWebView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 14/12/2021.
+//  Created by Pierre Molinaro on 26/01/2022.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
+import WebKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutWarningImageView
+//   AutoLayoutWebView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutWarningImageView : NSImageView, EBUserClassNameProtocol {
+class AutoLayoutWebView : WKWebView, EBUserClassNameProtocol, WKUIDelegate {
 
   //····················································································································
 
-  init () {
-    super.init (frame: .zero)
+  init (url inURL : String) {
+    let webConfiguration = WKWebViewConfiguration ()
+    super.init (frame: .zero, configuration: webConfiguration)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.image = NSImage (named: warningStatusImageName)
-    self.imageScaling = .scaleProportionallyUpOrDown
-    self.imageFrameStyle = .none
-
-    self.frame.size = self.intrinsicContentSize
+    if let url = URL (string: inURL) {
+      let myRequest = URLRequest (url: url)
+      self.load (myRequest)
+    }
   }
 
   //····················································································································
 
-  required init? (coder : NSCoder) {
+  required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
@@ -38,20 +39,6 @@ final class AutoLayoutWarningImageView : NSImageView, EBUserClassNameProtocol {
 
   deinit {
     noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-  //  $hidden binding
-  //····················································································································
-
-  private var mHiddenBindingController : HiddenBindingController? = nil
-  var hiddenBindingController : HiddenBindingController? { return self.mHiddenBindingController }
-
-  //····················································································································
-
-  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
-    return self
   }
 
   //····················································································································

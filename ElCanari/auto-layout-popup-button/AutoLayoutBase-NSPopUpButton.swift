@@ -15,7 +15,7 @@ class AutoLayoutBase_NSPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   //····················································································································
 
   init (pullsDown inPullsDown : Bool, size inSize : EBControlSize) {
-    super.init (frame: NSRect (), pullsDown: inPullsDown)
+    super.init (frame: .zero, pullsDown: inPullsDown)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 

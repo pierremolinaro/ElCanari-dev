@@ -126,6 +126,8 @@ var g_Preferences : Preferences? = nil
       view_3.appendView (view_3_2)
     }
     vStackView.appendView (view_3)
+    let view_4 = AutoLayoutWebView (url: "https://pierremolinaro.github.io/ElCanari-distribution/release-notes.html")
+    vStackView.appendView (view_4)
     return vStackView
   } ()
 

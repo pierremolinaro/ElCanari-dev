@@ -20,7 +20,7 @@ class AutoLayoutVerticalScrollView : NSScrollView, EBUserClassNameProtocol {
   //····················································································································
 
   init (content inDocumentView : NSView) {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
@@ -55,7 +55,7 @@ fileprivate final class MyFlippedClipView : NSClipView, EBUserClassNameProtocol 
   //····················································································································
 
   init () {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
   }
 

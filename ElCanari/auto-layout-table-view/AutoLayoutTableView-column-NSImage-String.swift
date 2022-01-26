@@ -89,7 +89,7 @@ fileprivate class InternalImageStringTableColumn : AutoLayoutTableColumn {
     let imageView = AutoLayoutStaticImageView (image: value.1)
     hStack.appendView (imageView)
 
-    let textField = NSTextField (frame: NSRect ())
+    let textField = NSTextField (frame: .zero)
     textField.translatesAutoresizingMaskIntoConstraints = false
     hStack.appendView (textField)
 

@@ -19,7 +19,7 @@ class AutoLayoutBase_NSSplitView : NSSplitView, EBUserClassNameProtocol {
   //····················································································································
 
   init (dividersAreVertical inFlag : Bool) {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 

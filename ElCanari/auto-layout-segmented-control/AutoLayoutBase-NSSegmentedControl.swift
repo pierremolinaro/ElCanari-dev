@@ -15,7 +15,7 @@ class AutoLayoutBase_NSSegmentedControl : NSSegmentedControl, EBUserClassNamePro
   //····················································································································
 
   init (equalWidth inEqualWidth : Bool, size inSize : EBControlSize) {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
 
     self.translatesAutoresizingMaskIntoConstraints = false

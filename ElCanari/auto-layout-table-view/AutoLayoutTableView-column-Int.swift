@@ -87,7 +87,7 @@ fileprivate class InternalIntTableColumn : AutoLayoutTableColumn {
   //····················································································································
 
   override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
-    let textField = NSTextField (frame: NSRect ())
+    let textField = NSTextField (frame: .zero)
     textField.translatesAutoresizingMaskIntoConstraints = false
 
     textField.tag = inRowIndex

@@ -3813,6 +3813,9 @@
 		CFB80EA127A1AB9A0084F73F /* configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB80EA027A1AB9A0084F73F /* configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift */; };
 		CFB80EA227A1AB9A0084F73F /* configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB80EA027A1AB9A0084F73F /* configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift */; };
 		CFB80EA327A1AB9A0084F73F /* configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB80EA027A1AB9A0084F73F /* configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift */; };
+		CFB80EA527A1B1470084F73F /* AutoLayoutWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB80EA427A1B1470084F73F /* AutoLayoutWebView.swift */; };
+		CFB80EA627A1B1470084F73F /* AutoLayoutWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB80EA427A1B1470084F73F /* AutoLayoutWebView.swift */; };
+		CFB80EA727A1B1470084F73F /* AutoLayoutWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB80EA427A1B1470084F73F /* AutoLayoutWebView.swift */; };
 		CFB82B1D276B71CD00BAD56E /* configurator-AutoLayoutProjectDocument-pinsOfSelectedNetTableViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB82B1C276B71CD00BAD56E /* configurator-AutoLayoutProjectDocument-pinsOfSelectedNetTableViewConfigurator.swift */; };
 		CFB82C0C276B89BE00BAD56E /* AutoLayoutTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB82C0B276B89BE00BAD56E /* AutoLayoutTableView.swift */; };
 		CFB82C0D276B89BE00BAD56E /* AutoLayoutTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB82C0B276B89BE00BAD56E /* AutoLayoutTableView.swift */; };
@@ -5760,6 +5763,7 @@
 		CFB7D8EC2683A731007B9D3B /* transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueImage.swift"; sourceTree = "<group>"; };
 		CFB7D8ED2683A732007B9D3B /* transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueString.swift"; sourceTree = "<group>"; };
 		CFB80EA027A1AB9A0084F73F /* configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift"; sourceTree = "<group>"; };
+		CFB80EA427A1B1470084F73F /* AutoLayoutWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutWebView.swift; sourceTree = "<group>"; };
 		CFB82B1C276B71CD00BAD56E /* configurator-AutoLayoutProjectDocument-pinsOfSelectedNetTableViewConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-pinsOfSelectedNetTableViewConfigurator.swift"; sourceTree = "<group>"; };
 		CFB82C0B276B89BE00BAD56E /* AutoLayoutTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutTableView.swift; sourceTree = "<group>"; };
 		CFB82C0F276B89E400BAD56E /* AutoLayoutTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutTableViewDelegate.swift; sourceTree = "<group>"; };
@@ -7281,6 +7285,7 @@
 				CF617FA2275E7D34008F0C32 /* AutoLayoutViewByPrefixingAppIcon.swift */,
 				CF3B26A4278090530084F07C /* AutoLayoutViewWithBackground.swift */,
 				CF72E5AB276A38180019E180 /* AutoLayoutWarningImageView.swift */,
+				CFB80EA427A1B1470084F73F /* AutoLayoutWebView.swift */,
 				CF6D1271275FAAC6000F2BE6 /* AutoLayoutWindowContentView.swift */,
 			);
 			name = "Auto Layout";
@@ -9007,6 +9012,7 @@
 				CF711CFA275E1A7000280069 /* tomany-CommentInSchematic.swift in Sources */,
 				CF2285E02766812B00804193 /* AutoLayoutScrollView.swift in Sources */,
 				CF2B9CE221C2A8D100EE5683 /* entity-PackageRoot.swift in Sources */,
+				CFB80EA527A1B1470084F73F /* AutoLayoutWebView.swift in Sources */,
 				CF4EA9FE26F671C500F01746 /* transient-NetClassInProject-allowTracksOnInner3LayerString.swift in Sources */,
 				CF784E53275E3581001BC885 /* ProjectRoot-customized-tracks.swift in Sources */,
 				CF711E10275E1C8D00280069 /* extension-PackageGuide.swift in Sources */,
@@ -10503,6 +10509,7 @@
 				CF2285E12766812B00804193 /* AutoLayoutScrollView.swift in Sources */,
 				CF35590E279D9F3B000BFC9B /* action-AutoLayoutProjectDocument-revealPackageOfSelectedComponentsAction.swift in Sources */,
 				CF171D8B26FB999B00A1BCB2 /* EBReferenceArray.swift in Sources */,
+				CFB80EA627A1B1470084F73F /* AutoLayoutWebView.swift in Sources */,
 				CFC6325922F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift in Sources */,
 				CF3558EE279D9F3B000BFC9B /* extension-AutoLayoutProjectDocumentSubClass-schematic-hot-keys.swift in Sources */,
 				CF49EEC5275A499500481930 /* document-AutoLayoutFont-sub-class.swift in Sources */,
@@ -11999,6 +12006,7 @@
 				CF9C61E125CABE5C00A00D5C /* transient-ComponentInProject-componentPadDictionary.swift in Sources */,
 				CFB7D84F2683A61C007B9D3B /* document-AutoLayoutPackageDocument-make-slave-pad.swift in Sources */,
 				CF9C61E425CABE5C00A00D5C /* transient-PackageSlavePad-padNameWithZoneName.swift in Sources */,
+				CFB80EA727A1B1470084F73F /* AutoLayoutWebView.swift in Sources */,
 				CF9C61E825CABE5C00A00D5C /* transient-ProjectRoot-boardInteriorTop.swift in Sources */,
 				CF9C61E925CABE5C00A00D5C /* file-format-text.swift in Sources */,
 				CFDD6D4826A1B0F20050CB78 /* AutoLayoutCanariAngleFieldAndSlider.swift in Sources */,

@@ -27,12 +27,12 @@ final class AutoLayoutOneStringArrayTableView : NSScrollView, EBUserClassNamePro
 
   //····················································································································
 
-  private var mTableView = NSTableView (frame: NSRect ())
+  private var mTableView = NSTableView (frame: .zero)
 
   //····················································································································
 
   init () {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
 //    self.translatesAutoresizingMaskIntoConstraints = false
 //    self.mTableView.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
@@ -105,7 +105,7 @@ final class AutoLayoutOneStringArrayTableView : NSScrollView, EBUserClassNamePro
                   row inRowIndex : Int) -> NSView? {
     let result = NSTableCellView ()
     result.translatesAutoresizingMaskIntoConstraints = false
-    let textField = NSTextField (frame: NSRect ())
+    let textField = NSTextField (frame: .zero)
     textField.translatesAutoresizingMaskIntoConstraints = false
 
     //Swift.print (self.mDataSource [inRowIndex])

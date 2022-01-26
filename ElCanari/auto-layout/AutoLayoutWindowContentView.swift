@@ -17,7 +17,7 @@ final class AutoLayoutWindowContentView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   init (view inView : NSView) {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
@@ -126,7 +126,7 @@ fileprivate final class HiliteView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   init () {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
   }

@@ -22,7 +22,7 @@ final class CanariPDFWindow : EBWindow, NSToolbarDelegate {
 
   //····················································································································
 
-  private let mPDFView = PDFView (frame: NSRect ())
+  private let mPDFView = PDFView (frame: .zero)
   private let mData : Data
 
   //····················································································································

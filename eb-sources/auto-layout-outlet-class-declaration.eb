@@ -452,4 +452,7 @@ extern autolayout class EnumSegmentedControl (titles: StringArray, equalWidth: B
   $selectedSegment property enum
 }
 
+extern autolayout class WebView (url: String) {
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

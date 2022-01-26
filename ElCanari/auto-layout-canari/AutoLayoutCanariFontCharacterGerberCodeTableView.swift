@@ -21,7 +21,7 @@ final class AutoLayoutCanariFontCharacterGerberCodeTableView : AutoLayoutVertica
 
   //····················································································································
 
-  private let mScrollView = NSScrollView (frame: NSRect ())
+  private let mScrollView = NSScrollView (frame: .zero)
   private let mTableView = PrivateTableView ()
 
   //····················································································································
@@ -135,7 +135,7 @@ final class AutoLayoutCanariFontCharacterGerberCodeTableView : AutoLayoutVertica
   func tableView (_ tableView : NSTableView,
                   viewFor inTableColumn: NSTableColumn?,
                   row inRowIndex: Int) -> NSView? {
-    let textField = NSTextField (frame: NSRect ())
+    let textField = NSTextField (frame: .zero)
     textField.translatesAutoresizingMaskIntoConstraints = false
 
     textField.tag = inRowIndex
@@ -169,7 +169,7 @@ fileprivate final class PrivateTableView : NSTableView, EBUserClassNameProtocol 
   //····················································································································
 
   init () {
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
   }

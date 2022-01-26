@@ -23,7 +23,7 @@ final class AutoLayoutSearchField : NSSearchField, EBUserClassNameProtocol, NSSe
 
   init (width inWidth : Int, size inSize : EBControlSize) {
     self.mWidth = CGFloat (inWidth)
-    super.init (frame: NSRect ())
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
