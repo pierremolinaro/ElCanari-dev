@@ -284,14 +284,25 @@ import Cocoa
   lazy var mFontPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
-    let view_0 = AutoLayoutCanariSampleFontStringView ()
-      .bind_bezierPath (self.rootObject.sampleStringBezierPath_property)
-    vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutVerticalStackView ()
+      let view_0_0 = AutoLayoutTextField (minWidth: 200, size: .small)
+        .expandableWidth ()
+        .bind_value (preferences_sampleString_property, sendContinously:true)
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutDoubleField (minWidth: 60, size: .small)
+        .bind_value (preferences_sampleStringSize_property, sendContinously:true)
+      view_0.appendView (view_0_1)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutCanariSampleFontStringView ()
+      .bind_bezierPath (self.rootObject.sampleStringBezierPath_property)
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_2_0 = AutoLayoutVerticalStackView ()
       do{
-        let view_1_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mFontPageInspectorMasterView, equalWidth: true, size: .small)
+        let view_2_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mFontPageInspectorMasterView, equalWidth: true, size: .small)
           .expandableWidth ()
           .addPage (title: "", tooltip: "Selected Character Inspector", pageView: self.mSelectedCharacterInspectorView)
           .addPage (title: "", tooltip: "Sample String Inspector", pageView: self.mSampleStringInspectorView)
@@ -299,32 +310,32 @@ import Cocoa
           .bind_selectedPage (self.rootObject.selectedInspector_property)
           .bind_segmentImage (self.statusImage_property, segmentIndex:2)
           .bind_segmentTitle (self.statusTitle_property, segmentIndex:2)
-        self.mFontInspectorSegmentedControl = view_1_0_0 // Outlet
-        self.configure_fontPageSegmentedControl (view_1_0_0) // Configurator
-        view_1_0.appendView (view_1_0_0)
-        let view_1_0_1 = AutoLayoutVerticalStackView ()
+        self.mFontInspectorSegmentedControl = view_2_0_0 // Outlet
+        self.configure_fontPageSegmentedControl (view_2_0_0) // Configurator
+        view_2_0.appendView (view_2_0_0)
+        let view_2_0_1 = AutoLayoutVerticalStackView ()
           .set (leftMargin: 20)
           .set (rightMargin: 20)
           .set (bottomMargin: 20)
           .set (spacing: 12)
         do{
-          let view_1_0_1_0 = self.mFontPageInspectorMasterView
-          view_1_0_1.appendView (view_1_0_1_0)
+          let view_2_0_1_0 = self.mFontPageInspectorMasterView
+          view_2_0_1.appendView (view_2_0_1_0)
         }
-        view_1_0.appendView (view_1_0_1)
+        view_2_0.appendView (view_2_0_1)
       }
-      view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutCanariFontCharacterView ()
+      view_2.appendView (view_2_0)
+      let view_2_1 = AutoLayoutCanariFontCharacterView ()
         .bind_advance (self.characterSelection.advance_property)
         .bind_characterSegmentList (self.characterSelection.segmentArrayForDrawing_property)
         .bind_transparency (preferences_fontEditionTransparency_property)
         .bind_displayFlow (preferences_showGerberDrawingFlow_property)
         .bind_displayDrawingIndexes (preferences_showGerberDrawingIndexes_property)
-      self.mFontGraphicView = view_1_1 // Outlet
-      self.configure_fontGraphicView (view_1_1) // Configurator
-      view_1.appendView (view_1_1)
+      self.mFontGraphicView = view_2_1 // Outlet
+      self.configure_fontGraphicView (view_2_1) // Configurator
+      view_2.appendView (view_2_1)
     }
-    vStackView.appendView (view_1)
+    vStackView.appendView (view_2)
     return vStackView
   } ()
 

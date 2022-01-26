@@ -21,7 +21,7 @@ extension Preferences {
   final func configure_usingSparkleTextFieldConfigurator (_ inOutlet : AutoLayoutStaticLabel) {
 //--- START OF USER ZONE 2
         if let appUpdaterSettings = gCanariAppUpdaterSettings {
-          inOutlet.stringValue = "Using Sparkle " + appUpdaterSettings.sparkleVersionString
+          inOutlet.stringValue = "Using Sparkle " + appUpdaterSettings.sparkleVersionString ()
         }
 //--- END OF USER ZONE 2
   }

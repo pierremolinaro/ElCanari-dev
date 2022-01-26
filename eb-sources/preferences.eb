@@ -12,7 +12,7 @@ prefs {
 prefs {
   stackView mPrefsMainView vStack set (spacing: 0) {
     SegmentedControlWithPages (documentView: stackView mPrefsPageView, equalWidth: no, size : .regular) {
-      addPage (title: "General", tooltip: "", pageView: stackView mPrefsGeneralPage)
+      addPage (title: "General", tooltip: "", pageView: stackView mPrefsUserInterfacePage)
       addPage (title: "Application Update", tooltip: "", pageView: stackView mPrefsAppUpdatePage)
     }
     separator
@@ -21,9 +21,7 @@ prefs {
   
   stackView mPrefsPageView vStack set (spacing: 0) {
   }
-  
-  stackView mPrefsGeneralPage vStack set (margins: 12) {
-  }
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————
@@ -31,12 +29,12 @@ prefs {
 
 prefs {
   property Bool showDebugMenu default no ;
-  outlet EBSwitch mShowDebugMenuSwitch $value self.showDebugMenu ;
+//  outlet EBSwitch mShowDebugMenuSwitch $value self.showDebugMenu ;
 
   property AutoLayoutUserInterfaceStyle mAutoLayoutStyle default roundedBezel ;
-  outlet EBPopUpButton mAutoLayoutStylePopUpButton $selectedIndex self.mAutoLayoutStyle ;
+//  outlet EBPopUpButton mAutoLayoutStylePopUpButton $selectedIndex self.mAutoLayoutStyle ;
 
-  outlet NSTextField mSULastCheckTimeTextField ;
+//  outlet NSTextField mSULastCheckTimeTextField ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————
@@ -68,12 +66,47 @@ prefs {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-//! Selection hilite
+//! User Interface
 prefs {
   property NSColor selectionHiliteColor default cyan;
-  outlet EBColorWell mSelectionHiliteColorColorWell $color self.selectionHiliteColor (sendContinously:yes);
+//  outlet EBColorWell mSelectionHiliteColorColorWell $color self.selectionHiliteColor (sendContinously: yes);
   property Int hiliteWidthMultipliedByTen default 15 ; // 1,5 pt
-  outlet EBPopUpButton selectionHilitePopupButton $selectedTag self.hiliteWidthMultipliedByTen ;
+//  outlet EBPopUpButton selectionHilitePopupButton $selectedTag self.hiliteWidthMultipliedByTen ;
+
+  
+  stackView mPrefsUserInterfacePage vStack set (margins: 12) {
+    StaticLabel (title: "User Interface", bold: yes, size: .regular) { expandableWidth () set (alignment: .center) }
+    GridView2 {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Selection Width", bold: no, size: .regular),
+        right: ColorWell { $color prefs.selectionHiliteColor (sendContinously: yes) }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Selection Hilite Color", bold: no, size: .regular),
+        right: TaggedPopUpButton {
+          add (title: "0.5 Point", withTag:  5)
+          add (title: "1.0 Point", withTag: 10)
+          add (title: "1.5 Point", withTag: 15)
+          add (title: "2.0 Points", withTag: 20)
+          add (title: "2.5 Points", withTag: 25)
+          $selectedTag prefs.hiliteWidthMultipliedByTen
+        }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "User Interface Style", bold: no, size: .regular),
+        right: EnumPopUpButton (titles: enum AutoLayoutUserInterfaceStyle.popupTitles, size: .regular) {
+          $selectedIndex prefs.mAutoLayoutStyle
+        }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: Checkbox (title: "Show Debug Menu", size: .regular) { $value prefs.showDebugMenu }
+      )
+    }
+    space
+  }
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————
@@ -123,21 +156,21 @@ prefs {
 prefs {
 //--- Symbol Color
   property NSColor symbolColor default brown;
-  outlet EBColorWell mSymbolColorColorWell $color self.symbolColor (sendContinously:yes) ;
+//  outlet EBColorWell mSymbolColorColorWell $color self.symbolColor (sendContinously:yes) ;
 //--- Symbol Grid Colors
   property NSColor crossColorOfSymbolGrid   default black;
-  outlet EBColorWell mCrossColorOfSymbolGridColorWell $color self.crossColorOfSymbolGrid (sendContinously:yes) ;
+//  outlet EBColorWell mCrossColorOfSymbolGridColorWell $color self.crossColorOfSymbolGrid (sendContinously:yes) ;
   property NSColor lineColorOfSymbolGrid  default gray;
-  outlet EBColorWell mLineColorOfSymbolGridColorWell $color self.lineColorOfSymbolGrid (sendContinously:yes) ;
+//  outlet EBColorWell mLineColorOfSymbolGridColorWell $color self.lineColorOfSymbolGrid (sendContinously:yes) ;
 //--- Symbol Background Color
   property NSColor symbolBackgroundColor default white;
-  outlet EBColorWell mSymbolBackgroundColorColorWell $color self.symbolBackgroundColor (sendContinously:yes) ;
+//  outlet EBColorWell mSymbolBackgroundColorColorWell $color self.symbolBackgroundColor (sendContinously:yes) ;
 //--- Drawing Width
   property Int symbolDrawingWidthMultipliedByTen default 5 ;
-  outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenPopupButton $selectedTag self.symbolDrawingWidthMultipliedByTen ;
+//  outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenPopupButton $selectedTag self.symbolDrawingWidthMultipliedByTen ;
 //--- Pin Symbol Font
   property NSFont pinNameFont default 6 ;
-  outlet EBFontButton mPinNameFontButton $fontValue self.pinNameFont ;
+//  outlet EBFontButton mPinNameFontButton $fontValue self.pinNameFont ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————
@@ -147,47 +180,47 @@ prefs {
 prefs {
 //--- Package Grid Colors
   property NSColor crossColorOfPackageGrid  default white;
-  outlet EBColorWell mDotColorOfPackageGridColorWell $color self.crossColorOfPackageGrid (sendContinously:yes) ;
+//  outlet EBColorWell mDotColorOfPackageGridColorWell $color self.crossColorOfPackageGrid (sendContinously:yes) ;
   property NSColor lineColorOfPackageGrid default gray;
-  outlet EBColorWell mLineColorOfPackageGridColorWell $color self.lineColorOfPackageGrid (sendContinously:yes) ;
+//  outlet EBColorWell mLineColorOfPackageGridColorWell $color self.lineColorOfPackageGrid (sendContinously:yes) ;
 //--- Background Color
   property NSColor packageBackgroundColor default black;
-  outlet EBColorWell mPackageBackgroundColorColorWell $color self.packageBackgroundColor (sendContinously:yes) ;
+//  outlet EBColorWell mPackageBackgroundColorColorWell $color self.packageBackgroundColor (sendContinously:yes) ;
 //--- Package Color
   property NSColor packageColor default brown;
-  outlet EBColorWell mPackageColorColorWell $color self.packageColor (sendContinously:yes) ;
+//  outlet EBColorWell mPackageColorColorWell $color self.packageColor (sendContinously:yes) ;
 //--- Front Side Pad Color
   property NSColor frontSidePadColor default blue;
-  outlet EBColorWell mTopSidePadColorWell $color self.frontSidePadColor (sendContinously:yes) ;
+//  outlet EBColorWell mTopSidePadColorWell $color self.frontSidePadColor (sendContinously:yes) ;
   property Bool displayPackageFrontSidePads default yes ;
 //--- Back Side Pad Color
   property NSColor backSidePadColor default green;
-  outlet EBColorWell mBottomSidePadColorWell $color self.backSidePadColor (sendContinously:yes) ;
+//  outlet EBColorWell mBottomSidePadColorWell $color self.backSidePadColor (sendContinously:yes) ;
   property Bool displayPackageBackSidePads default yes ;
 //--- Pad Number Color
   property NSColor padNumberColor default red;
-  outlet EBColorWell mPadNumberColorColorWell $color self.padNumberColor (sendContinously:yes) ;
+//  outlet EBColorWell mPadNumberColorColorWell $color self.padNumberColor (sendContinously:yes) ;
 //--- Pad Number Font
   property NSFont padNumberFont default 3 ;
-  outlet EBFontButton mPadFontButton $fontValue self.padNumberFont ;
+//  outlet EBFontButton mPadFontButton $fontValue self.padNumberFont ;
   property Bool showPadNumber default yes ;
 //--- Package Guide Color
   property NSColor packageGuideColor default yellow;
-  outlet EBColorWell mPackageGuideColorWell $color self.packageGuideColor (sendContinously:yes) ;
+//  outlet EBColorWell mPackageGuideColorWell $color self.packageGuideColor (sendContinously:yes) ;
 //--- Package Dimension Color
   property NSColor packageDimensionColor default orange;
-  outlet EBColorWell mPackageDimensionColorWell $color self.packageDimensionColor (sendContinously:yes) ;
+//  outlet EBColorWell mPackageDimensionColorWell $color self.packageDimensionColor (sendContinously:yes) ;
 //--- Dimension Font
   property NSFont dimensionFont default 2 ; // toolTipsFontOfSize:2 ;
-  outlet EBFontButton mDimensionFontButton $fontValue self.dimensionFont ;
+//  outlet EBFontButton mDimensionFontButton $fontValue self.dimensionFont ;
 //--- Pad Zone Color
   property NSColor padZoneColor default magenta;
-  outlet EBColorWell mPadZoneColorColorWell $color self.padZoneColor (sendContinously:yes) ;
+//  outlet EBColorWell mPadZoneColorColorWell $color self.padZoneColor (sendContinously:yes) ;
 //--- Pad Zone Font
   property NSFont padZoneFont default 3 ;
 //--- Drawing width
   property Int packageDrawingWidthMultipliedByTen default 15 ;
-  outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag self.packageDrawingWidthMultipliedByTen ;
+//  outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag self.packageDrawingWidthMultipliedByTen ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————
@@ -400,20 +433,20 @@ prefs {
 prefs {
 //--- Sample String
   property String sampleString default "The quick brown fox jumps over the lazy dog" ;
-  outlet EBTextField mSampleStringField $value self.sampleString (sendContinously:yes);
+//  outlet EBTextField mSampleStringField $value self.sampleString (sendContinously:yes);
 //--- Sample Font size
   property Double sampleStringSize default 24.0 ;
-  outlet EBDoubleField mSampleStringSizeField $value self.sampleStringSize (sendContinously:yes, autoFormatter:no);
+//  outlet EBDoubleField mSampleStringSizeField $value self.sampleStringSize (sendContinously:yes, autoFormatter:no);
 //--- Display order
   property Bool showGerberDrawingFlow default yes ;
-  outlet EBSwitch mShowGerberDrawingFlowCheckbox $value self.showGerberDrawingFlow ;
+//  outlet EBSwitch mShowGerberDrawingFlowCheckbox $value self.showGerberDrawingFlow ;
 //--- Display indexes
   property Bool showGerberDrawingIndexes default yes ;
-  outlet EBSwitch mShowGerberDrawingIndexesCheckbox $value self.showGerberDrawingIndexes ;
+//  outlet EBSwitch mShowGerberDrawingIndexesCheckbox $value self.showGerberDrawingIndexes ;
 //--- Edition transparency
   property Double fontEditionTransparency default 0.5 ;
-  outlet EBSlider mEditionTransparencySlider $doubleValue self.fontEditionTransparency (sendContinously:yes) ;
-  outlet EBDoubleField mEditionTransparencyTextField $value self.fontEditionTransparency (sendContinously:yes, autoFormatter:no) ;
+//  outlet EBSlider mEditionTransparencySlider $doubleValue self.fontEditionTransparency (sendContinously:yes) ;
+//  outlet EBDoubleField mEditionTransparencyTextField $value self.fontEditionTransparency (sendContinously:yes, autoFormatter:no) ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

@@ -47,7 +47,7 @@ var g_Preferences : Preferences? = nil
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     let view_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPrefsPageView, equalWidth: false, size: .regular)
-      .addPage (title: "General", tooltip: "", pageView: self.mPrefsGeneralPage)
+      .addPage (title: "General", tooltip: "", pageView: self.mPrefsUserInterfacePage)
       .addPage (title: "Application Update", tooltip: "", pageView: self.mPrefsAppUpdatePage)
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
@@ -64,16 +64,6 @@ var g_Preferences : Preferences? = nil
   lazy var mPrefsPageView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
-    return vStackView
-  } ()
-
-  //····················································································································
-  //    VIEW mPrefsGeneralPage
-  //····················································································································
-
-  lazy var mPrefsGeneralPage : AutoLayoutVerticalStackView = {
-    let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 12)
     return vStackView
   } ()
 
@@ -132,6 +122,110 @@ var g_Preferences : Preferences? = nil
   } ()
 
   //····················································································································
+  //    VIEW mPrefsUserInterfacePage
+  //····················································································································
+
+  lazy var mPrefsUserInterfacePage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 12)
+    let view_0 = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular)
+      .expandableWidth ()
+      .set (alignment: .center)
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutGridView2 ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
+      .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_6 (), right: self.computeImplicitView_7 ())
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_2)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    IMPLICIT VIEW 0
+  //····················································································································
+
+  fileprivate final func computeImplicitView_0 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Selection Width", bold: false, size: .regular)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 1
+  //····················································································································
+
+  fileprivate final func computeImplicitView_1 () -> NSView {
+    let view = AutoLayoutColorWell ()
+      .bind_color (preferences_selectionHiliteColor_property, sendContinously:true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 2
+  //····················································································································
+
+  fileprivate final func computeImplicitView_2 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 3
+  //····················································································································
+
+  fileprivate final func computeImplicitView_3 () -> NSView {
+    let view = AutoLayoutTaggedPopUpButton ()
+      .add (title: "0.5 Point", withTag: 5)
+      .add (title: "1.0 Point", withTag: 10)
+      .add (title: "1.5 Point", withTag: 15)
+      .add (title: "2.0 Points", withTag: 20)
+      .add (title: "2.5 Points", withTag: 25)
+      .bind_selectedTag (preferences_hiliteWidthMultipliedByTen_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 4
+  //····················································································································
+
+  fileprivate final func computeImplicitView_4 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "User Interface Style", bold: false, size: .regular)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 5
+  //····················································································································
+
+  fileprivate final func computeImplicitView_5 () -> NSView {
+    let view = AutoLayoutEnumPopUpButton (titles: AutoLayoutUserInterfaceStyle.popupTitles (), size: .regular)
+      .bind_selectedIndex (preferences_mAutoLayoutStyle_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 6
+  //····················································································································
+
+  fileprivate final func computeImplicitView_6 () -> NSView {
+    let view = AutoLayoutFlexibleSpace ()
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 7
+  //····················································································································
+
+  fileprivate final func computeImplicitView_7 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Show Debug Menu", size: .regular)
+      .bind_value (preferences_showDebugMenu_property)
+    return view
+  }
+
+  //····················································································································
   //    Outlets
   //····················································································································
 
@@ -142,7 +236,6 @@ var g_Preferences : Preferences? = nil
 
   @IBOutlet var mAddLibraryEntryButton : EBButton? = nil
   @IBOutlet var mAdditionnalLibraryArrayTableView : EBTableView? = nil
-  @IBOutlet var mAutoLayoutStylePopUpButton : EBPopUpButton? = nil
   @IBOutlet var mBoardBackgroundColorWell : EBColorWell? = nil
   @IBOutlet var mBoardBottomSideLayoutColorWell : EBColorWell? = nil
   @IBOutlet var mBoardBottomSideLegendColorWell : EBColorWell? = nil
@@ -168,7 +261,6 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mBoardTopSideRestrictRectangleColorWell : EBColorWell? = nil
   @IBOutlet var mBoardWarningBackgroundColorWell : EBColorWell? = nil
   @IBOutlet var mBottomSidePadColorDorDeviveColorWell : EBColorWell? = nil
-  @IBOutlet var mBottomSidePadColorWell : EBColorWell? = nil
   @IBOutlet var mCancelButtonInLibraryUpdateWindow : EBButton? = nil
   @IBOutlet var mCheckForLibraryUpdatesButton : NSButton? = nil
   @IBOutlet var mCheckForSystemLibraryAtStartUpSwitch : EBSwitch? = nil
@@ -181,12 +273,7 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mComponentValueColorForSchematicColorWell : EBColorWell? = nil
   @IBOutlet var mComponentValueFontForSchematicFontButton : EBFontButton? = nil
   @IBOutlet var mConnectionColorForSchematicColorWell : EBColorWell? = nil
-  @IBOutlet var mCrossColorOfSymbolGridColorWell : EBColorWell? = nil
-  @IBOutlet var mDimensionFontButton : EBFontButton? = nil
   @IBOutlet var mDotColorGridForSchematicColorWell : EBColorWell? = nil
-  @IBOutlet var mDotColorOfPackageGridColorWell : EBColorWell? = nil
-  @IBOutlet var mEditionTransparencySlider : EBSlider? = nil
-  @IBOutlet var mEditionTransparencyTextField : EBDoubleField? = nil
   @IBOutlet var mInformativeTextInLibraryUpdateWindow : EBTextField? = nil
   @IBOutlet var mLibraryRepositoryCommitButton : NSButton? = nil
   @IBOutlet var mLibraryRepositoryCurrentReleaseTextField : NSTextField? = nil
@@ -200,28 +287,17 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mLibraryUpdateWindow : EBWindow? = nil
   @IBOutlet var mLibraryUploadWindow : EBWindow? = nil
   @IBOutlet var mLineColorGridForSchematicColorWell : EBColorWell? = nil
-  @IBOutlet var mLineColorOfPackageGridColorWell : EBColorWell? = nil
-  @IBOutlet var mLineColorOfSymbolGridColorWell : EBColorWell? = nil
   @IBOutlet var mMenuRevealInFinder_artworks : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_devices : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_fonts : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_packages : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_symbols : CanariMenu? = nil
-  @IBOutlet var mPackageBackgroundColorColorWell : EBColorWell? = nil
-  @IBOutlet var mPackageColorColorWell : EBColorWell? = nil
   @IBOutlet var mPackageColorForDeviceColorWell : EBColorWell? = nil
-  @IBOutlet var mPackageDimensionColorWell : EBColorWell? = nil
   @IBOutlet var mPackageDrawingWidthMultipliedByTenForDevicePopupButton : EBPopUpButton? = nil
-  @IBOutlet var mPackageDrawingWidthMultipliedByTenPopupButton : EBPopUpButton? = nil
-  @IBOutlet var mPackageGuideColorWell : EBColorWell? = nil
   @IBOutlet var mPackageNameFontForDeviceFontButton : EBFontButton? = nil
-  @IBOutlet var mPadFontButton : EBFontButton? = nil
-  @IBOutlet var mPadNumberColorColorWell : EBColorWell? = nil
   @IBOutlet var mPadNumberColorForDeviceColorWell : EBColorWell? = nil
   @IBOutlet var mPadNumberFontForDeviceFontButton : EBFontButton? = nil
-  @IBOutlet var mPadZoneColorColorWell : EBColorWell? = nil
   @IBOutlet var mPinNameColorForSchematicColorWell : EBColorWell? = nil
-  @IBOutlet var mPinNameFontButton : EBFontButton? = nil
   @IBOutlet var mPinNameFontForDeviceFontButton : EBFontButton? = nil
   @IBOutlet var mPinNameFontForSchematicFontButton : EBFontButton? = nil
   @IBOutlet var mPinNumberColorForSchematicColorWell : EBColorWell? = nil
@@ -230,37 +306,25 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mProgressIndicatorInLibraryUpdateWindow : EBProgressIndicator? = nil
   @IBOutlet var mRemoveLibraryEntryButton : EBButton? = nil
   @IBOutlet var mRevealInFinderLibraryInUserApplicationSupportButton : EBButton? = nil
-  @IBOutlet var mSULastCheckTimeTextField : NSTextField? = nil
-  @IBOutlet var mSampleStringField : EBTextField? = nil
-  @IBOutlet var mSampleStringSizeField : EBDoubleField? = nil
-  @IBOutlet var mSelectionHiliteColorColorWell : EBColorWell? = nil
   @IBOutlet var mSetLibraryRepositoryButton : NSButton? = nil
   @IBOutlet var mSetUserAndPasswordButton : NSButton? = nil
-  @IBOutlet var mShowDebugMenuSwitch : EBSwitch? = nil
-  @IBOutlet var mShowGerberDrawingFlowCheckbox : EBSwitch? = nil
-  @IBOutlet var mShowGerberDrawingIndexesCheckbox : EBSwitch? = nil
   @IBOutlet var mSymbolAndPackageBackgroundColorForDeviceColorWell : EBColorWell? = nil
   @IBOutlet var mSymbolAndPackageGridDotColorForDeviceColorWell : EBColorWell? = nil
   @IBOutlet var mSymbolAndPackageLineDotColorForDeviceColorWell : EBColorWell? = nil
-  @IBOutlet var mSymbolBackgroundColorColorWell : EBColorWell? = nil
-  @IBOutlet var mSymbolColorColorWell : EBColorWell? = nil
   @IBOutlet var mSymbolColorForDeviceColorWell : EBColorWell? = nil
   @IBOutlet var mSymbolColorForSchematicColorWell : EBColorWell? = nil
   @IBOutlet var mSymbolDrawingWidthMultipliedByTenForDevicePopupButton : EBPopUpButton? = nil
   @IBOutlet var mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton : EBPopUpButton? = nil
-  @IBOutlet var mSymbolDrawingWidthMultipliedByTenPopupButton : EBPopUpButton? = nil
   @IBOutlet var mSymbolNameFontForDeviceFontButton : EBFontButton? = nil
   @IBOutlet var mTableViewInLibraryUpdateWindow : EBTableView? = nil
   @IBOutlet var mToolbar : CanariToolbar? = nil
   @IBOutlet var mTopSidePadColorForDeviceColorWell : EBColorWell? = nil
-  @IBOutlet var mTopSidePadColorWell : EBColorWell? = nil
   @IBOutlet var mUnplacedComponentsColorForSchematicColorWell : EBColorWell? = nil
   @IBOutlet var mUpDateButtonInLibraryUpdateWindow : EBButton? = nil
   @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : EBMenuItem? = nil
   @IBOutlet var mUseLibraryInUserApplicationSupportPathCheckBox : EBSwitch? = nil
   @IBOutlet var mUserAndPasswordTextField : NSTextField? = nil
   @IBOutlet var nextSystemLibraryCheckDate : CanariDateObserverField? = nil
-  @IBOutlet var selectionHilitePopupButton : EBPopUpButton? = nil
   @IBOutlet var systemLibraryCheckTimeIntervalPopupButton : EBPopUpButton? = nil
   @IBOutlet var systemLibraryCheckTimeIntervalTitleTextField : NSTextField? = nil
 
@@ -388,7 +452,6 @@ var g_Preferences : Preferences? = nil
   override func awakeFromNib () {
     checkOutletConnection (self.mAddLibraryEntryButton, "mAddLibraryEntryButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAdditionnalLibraryArrayTableView, "mAdditionnalLibraryArrayTableView", EBTableView.self, #file, #line)
-    checkOutletConnection (self.mAutoLayoutStylePopUpButton, "mAutoLayoutStylePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardBackgroundColorWell, "mBoardBackgroundColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mBoardBottomSideLayoutColorWell, "mBoardBottomSideLayoutColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mBoardBottomSideLegendColorWell, "mBoardBottomSideLegendColorWell", EBColorWell.self, #file, #line)
@@ -414,7 +477,6 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mBoardTopSideRestrictRectangleColorWell, "mBoardTopSideRestrictRectangleColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mBoardWarningBackgroundColorWell, "mBoardWarningBackgroundColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mBottomSidePadColorDorDeviveColorWell, "mBottomSidePadColorDorDeviveColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBottomSidePadColorWell, "mBottomSidePadColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mCancelButtonInLibraryUpdateWindow, "mCancelButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
     checkOutletConnection (self.mCheckForLibraryUpdatesButton, "mCheckForLibraryUpdatesButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mCheckForSystemLibraryAtStartUpSwitch, "mCheckForSystemLibraryAtStartUpSwitch", EBSwitch.self, #file, #line)
@@ -427,12 +489,7 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mComponentValueColorForSchematicColorWell, "mComponentValueColorForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mComponentValueFontForSchematicFontButton, "mComponentValueFontForSchematicFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mConnectionColorForSchematicColorWell, "mConnectionColorForSchematicColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mCrossColorOfSymbolGridColorWell, "mCrossColorOfSymbolGridColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mDimensionFontButton, "mDimensionFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mDotColorGridForSchematicColorWell, "mDotColorGridForSchematicColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mDotColorOfPackageGridColorWell, "mDotColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mEditionTransparencySlider, "mEditionTransparencySlider", EBSlider.self, #file, #line)
-    checkOutletConnection (self.mEditionTransparencyTextField, "mEditionTransparencyTextField", EBDoubleField.self, #file, #line)
     checkOutletConnection (self.mInformativeTextInLibraryUpdateWindow, "mInformativeTextInLibraryUpdateWindow", EBTextField.self, #file, #line)
     checkOutletConnection (self.mLibraryRepositoryCommitButton, "mLibraryRepositoryCommitButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mLibraryRepositoryCurrentReleaseTextField, "mLibraryRepositoryCurrentReleaseTextField", NSTextField.self, #file, #line)
@@ -446,28 +503,17 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mLibraryUpdateWindow, "mLibraryUpdateWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mLibraryUploadWindow, "mLibraryUploadWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mLineColorGridForSchematicColorWell, "mLineColorGridForSchematicColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mLineColorOfPackageGridColorWell, "mLineColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mLineColorOfSymbolGridColorWell, "mLineColorOfSymbolGridColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_artworks, "mMenuRevealInFinder_artworks", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_devices, "mMenuRevealInFinder_devices", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_fonts, "mMenuRevealInFinder_fonts", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_packages, "mMenuRevealInFinder_packages", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_symbols, "mMenuRevealInFinder_symbols", CanariMenu.self, #file, #line)
-    checkOutletConnection (self.mPackageBackgroundColorColorWell, "mPackageBackgroundColorColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mPackageColorColorWell, "mPackageColorColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mPackageColorForDeviceColorWell, "mPackageColorForDeviceColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mPackageDimensionColorWell, "mPackageDimensionColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mPackageDrawingWidthMultipliedByTenForDevicePopupButton, "mPackageDrawingWidthMultipliedByTenForDevicePopupButton", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mPackageDrawingWidthMultipliedByTenPopupButton, "mPackageDrawingWidthMultipliedByTenPopupButton", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mPackageGuideColorWell, "mPackageGuideColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mPackageNameFontForDeviceFontButton, "mPackageNameFontForDeviceFontButton", EBFontButton.self, #file, #line)
-    checkOutletConnection (self.mPadFontButton, "mPadFontButton", EBFontButton.self, #file, #line)
-    checkOutletConnection (self.mPadNumberColorColorWell, "mPadNumberColorColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mPadNumberColorForDeviceColorWell, "mPadNumberColorForDeviceColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mPadNumberFontForDeviceFontButton, "mPadNumberFontForDeviceFontButton", EBFontButton.self, #file, #line)
-    checkOutletConnection (self.mPadZoneColorColorWell, "mPadZoneColorColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mPinNameColorForSchematicColorWell, "mPinNameColorForSchematicColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mPinNameFontButton, "mPinNameFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mPinNameFontForDeviceFontButton, "mPinNameFontForDeviceFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mPinNameFontForSchematicFontButton, "mPinNameFontForSchematicFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mPinNumberColorForSchematicColorWell, "mPinNumberColorForSchematicColorWell", EBColorWell.self, #file, #line)
@@ -476,68 +522,33 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mProgressIndicatorInLibraryUpdateWindow, "mProgressIndicatorInLibraryUpdateWindow", EBProgressIndicator.self, #file, #line)
     checkOutletConnection (self.mRemoveLibraryEntryButton, "mRemoveLibraryEntryButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRevealInFinderLibraryInUserApplicationSupportButton, "mRevealInFinderLibraryInUserApplicationSupportButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mSULastCheckTimeTextField, "mSULastCheckTimeTextField", NSTextField.self, #file, #line)
-    checkOutletConnection (self.mSampleStringField, "mSampleStringField", EBTextField.self, #file, #line)
-    checkOutletConnection (self.mSampleStringSizeField, "mSampleStringSizeField", EBDoubleField.self, #file, #line)
-    checkOutletConnection (self.mSelectionHiliteColorColorWell, "mSelectionHiliteColorColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSetLibraryRepositoryButton, "mSetLibraryRepositoryButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mSetUserAndPasswordButton, "mSetUserAndPasswordButton", NSButton.self, #file, #line)
-    checkOutletConnection (self.mShowDebugMenuSwitch, "mShowDebugMenuSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mShowGerberDrawingFlowCheckbox, "mShowGerberDrawingFlowCheckbox", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mShowGerberDrawingIndexesCheckbox, "mShowGerberDrawingIndexesCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolAndPackageBackgroundColorForDeviceColorWell, "mSymbolAndPackageBackgroundColorForDeviceColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSymbolAndPackageGridDotColorForDeviceColorWell, "mSymbolAndPackageGridDotColorForDeviceColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSymbolAndPackageLineDotColorForDeviceColorWell, "mSymbolAndPackageLineDotColorForDeviceColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mSymbolBackgroundColorColorWell, "mSymbolBackgroundColorColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mSymbolColorColorWell, "mSymbolColorColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSymbolColorForDeviceColorWell, "mSymbolColorForDeviceColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSymbolColorForSchematicColorWell, "mSymbolColorForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSymbolDrawingWidthMultipliedByTenForDevicePopupButton, "mSymbolDrawingWidthMultipliedByTenForDevicePopupButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton, "mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mSymbolDrawingWidthMultipliedByTenPopupButton, "mSymbolDrawingWidthMultipliedByTenPopupButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSymbolNameFontForDeviceFontButton, "mSymbolNameFontForDeviceFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mTableViewInLibraryUpdateWindow, "mTableViewInLibraryUpdateWindow", EBTableView.self, #file, #line)
     checkOutletConnection (self.mToolbar, "mToolbar", CanariToolbar.self, #file, #line)
     checkOutletConnection (self.mTopSidePadColorForDeviceColorWell, "mTopSidePadColorForDeviceColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mTopSidePadColorWell, "mTopSidePadColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mUnplacedComponentsColorForSchematicColorWell, "mUnplacedComponentsColorForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mUpDateButtonInLibraryUpdateWindow, "mUpDateButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpDateLibraryMenuItemInCanariMenu, "mUpDateLibraryMenuItemInCanariMenu", EBMenuItem.self, #file, #line)
     checkOutletConnection (self.mUseLibraryInUserApplicationSupportPathCheckBox, "mUseLibraryInUserApplicationSupportPathCheckBox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mUserAndPasswordTextField, "mUserAndPasswordTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.nextSystemLibraryCheckDate, "nextSystemLibraryCheckDate", CanariDateObserverField.self, #file, #line)
-    checkOutletConnection (self.selectionHilitePopupButton, "selectionHilitePopupButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.systemLibraryCheckTimeIntervalPopupButton, "systemLibraryCheckTimeIntervalPopupButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.systemLibraryCheckTimeIntervalTitleTextField, "systemLibraryCheckTimeIntervalTitleTextField", NSTextField.self, #file, #line)
   //--------------------------- Install bindings
-    mShowDebugMenuSwitch?.bind_value (preferences_showDebugMenu_property)
-    mAutoLayoutStylePopUpButton?.bind_selectedIndex (preferences_mAutoLayoutStyle_property)
-    mSelectionHiliteColorColorWell?.bind_color (preferences_selectionHiliteColor_property, sendContinously:true)
-    selectionHilitePopupButton?.bind_selectedTag (preferences_hiliteWidthMultipliedByTen_property)
     mMenuRevealInFinder_symbols?.bind_populateSubmenus (preferences_mValueRevealInFinder_symbols_property)
     mMenuRevealInFinder_packages?.bind_populateSubmenus (preferences_mValueRevealInFinder_packages_property)
     mMenuRevealInFinder_devices?.bind_populateSubmenus (preferences_mValueRevealInFinder_devices_property)
     mMenuRevealInFinder_fonts?.bind_populateSubmenus (preferences_mValueRevealInFinder_fonts_property)
     mMenuRevealInFinder_artworks?.bind_populateSubmenus (preferences_mValueRevealInFinder_artworks_property)
-    mSymbolColorColorWell?.bind_color (preferences_symbolColor_property, sendContinously:true)
-    mCrossColorOfSymbolGridColorWell?.bind_color (preferences_crossColorOfSymbolGrid_property, sendContinously:true)
-    mLineColorOfSymbolGridColorWell?.bind_color (preferences_lineColorOfSymbolGrid_property, sendContinously:true)
-    mSymbolBackgroundColorColorWell?.bind_color (preferences_symbolBackgroundColor_property, sendContinously:true)
-    mSymbolDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (preferences_symbolDrawingWidthMultipliedByTen_property)
-    mPinNameFontButton?.bind_fontValue (preferences_pinNameFont_property)
-    mDotColorOfPackageGridColorWell?.bind_color (preferences_crossColorOfPackageGrid_property, sendContinously:true)
-    mLineColorOfPackageGridColorWell?.bind_color (preferences_lineColorOfPackageGrid_property, sendContinously:true)
-    mPackageBackgroundColorColorWell?.bind_color (preferences_packageBackgroundColor_property, sendContinously:true)
-    mPackageColorColorWell?.bind_color (preferences_packageColor_property, sendContinously:true)
-    mTopSidePadColorWell?.bind_color (preferences_frontSidePadColor_property, sendContinously:true)
-    mBottomSidePadColorWell?.bind_color (preferences_backSidePadColor_property, sendContinously:true)
-    mPadNumberColorColorWell?.bind_color (preferences_padNumberColor_property, sendContinously:true)
-    mPadFontButton?.bind_fontValue (preferences_padNumberFont_property)
-    mPackageGuideColorWell?.bind_color (preferences_packageGuideColor_property, sendContinously:true)
-    mPackageDimensionColorWell?.bind_color (preferences_packageDimensionColor_property, sendContinously:true)
-    mDimensionFontButton?.bind_fontValue (preferences_dimensionFont_property)
-    mPadZoneColorColorWell?.bind_color (preferences_padZoneColor_property, sendContinously:true)
-    mPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (preferences_packageDrawingWidthMultipliedByTen_property)
     mSymbolAndPackageGridDotColorForDeviceColorWell?.bind_color (preferences_mSymbolAndPackageGridDotColorForDevice_property, sendContinously:true)
     mSymbolAndPackageLineDotColorForDeviceColorWell?.bind_color (preferences_mSymbolAndPackageGridLineColorForDevice_property, sendContinously:true)
     mSymbolAndPackageBackgroundColorForDeviceColorWell?.bind_color (preferences_mSymbolAndPackageBackgroundColorForDevice_property, sendContinously:true)
@@ -590,12 +601,6 @@ var g_Preferences : Preferences? = nil
     mBoardPadFontButton?.bind_fontValue (preferences_padNumberFontForBoard_property)
     mBoardPadNumberColorWell?.bind_color (preferences_padNumberColorForBoard_property, sendContinously:true)
     mBoardPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (preferences_packageDrawingWidthMultpliedByTenForBoard_property)
-    mSampleStringField?.bind_value (preferences_sampleString_property, sendContinously:true)
-    mSampleStringSizeField?.bind_value (preferences_sampleStringSize_property, sendContinously:true, autoFormatter:false)
-    mShowGerberDrawingFlowCheckbox?.bind_value (preferences_showGerberDrawingFlow_property)
-    mShowGerberDrawingIndexesCheckbox?.bind_value (preferences_showGerberDrawingIndexes_property)
-    mEditionTransparencySlider?.bind_doubleValue (preferences_fontEditionTransparency_property, sendContinously:true)
-    mEditionTransparencyTextField?.bind_value (preferences_fontEditionTransparency_property, sendContinously:true, autoFormatter:false)
     mUseLibraryInUserApplicationSupportPathCheckBox?.bind_value (preferences_usesUserLibrary_property)
     mCheckForSystemLibraryAtStartUpSwitch?.bind_value (preferences_checkForSystemLibraryAtStartUp_property)
     nextSystemLibraryCheckDate?.bind_dateObserver (preferences_mLastSystemLibraryCheckTime_property)

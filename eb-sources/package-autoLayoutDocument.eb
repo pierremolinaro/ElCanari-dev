@@ -978,7 +978,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         left: StaticLabel (title: "Pad Numbering", bold: no, size : .small),
         right: hStack setCenterYAlignment () {
           ColorWell { $color prefs.padNumberColor (sendContinously:no) }
-          Checkbox (title: "Show", size : .small) { $value prefs.showPadNumber }
+          Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.showPadNumber }
           space
         }
       )
@@ -990,7 +990,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         left: StaticLabel (title: "Top Side Pads", bold: no, size : .small),
         right: hStack setCenterYAlignment () {
           ColorWell { $color prefs.frontSidePadColor (sendContinously:no) }
-          Checkbox (title: "Show", size : .small) { $value prefs.displayPackageFrontSidePads }
+          Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.displayPackageFrontSidePads }
           space
         }
       )
@@ -998,7 +998,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         left: StaticLabel (title: "Back Side Pads", bold: no, size : .small),
         right: hStack setCenterYAlignment () {
           ColorWell { $color prefs.backSidePadColor (sendContinously:no) }
-          Checkbox (title: "Show", size : .small) { $value prefs.displayPackageBackSidePads }
+          Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.displayPackageBackSidePads }
           space
         }
       )

@@ -13,7 +13,7 @@ import Cocoa
 extension Preferences {
   @objc func checkForAppUpdateAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        gCanariAppUpdaterSettings?.checkForUpdatesAction (sender)
+        gCanariAppUpdaterSettings?.checkForUpdatesAction ()
 //--- END OF USER ZONE 2
   }
 }

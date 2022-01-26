@@ -24,11 +24,11 @@ var gCanariAppUpdaterSettings : CanariAppUpdaterSettings? = nil
   //   Outlets
   //····················································································································
 
-  @IBOutlet private var mUpdateCheckbox : NSButton?
-  @IBOutlet private var mUpdateIntervalPopUpButton : NSPopUpButton?
-  @IBOutlet private var mSparkleVersionTextField : NSTextField?
-  @IBOutlet private var mCheckNowForUpdateButton : NSButton?
-  @IBOutlet private var mCheckNowForUpdateMenuItem : NSMenuItem?
+//  @IBOutlet private var mUpdateCheckbox : NSButton?
+//  @IBOutlet private var mUpdateIntervalPopUpButton : NSPopUpButton?
+//  @IBOutlet private var mSparkleVersionTextField : NSTextField?
+//  @IBOutlet private var mCheckNowForUpdateButton : NSButton?
+//  @IBOutlet private var mCheckNowForUpdateMenuItem : NSMenuItem?
 
   //····················································································································
 
@@ -42,63 +42,74 @@ var gCanariAppUpdaterSettings : CanariAppUpdaterSettings? = nil
   //····················································································································
 
   private let mUpdaterController = Sparkle.SPUStandardUpdaterController (updaterDelegate: nil, userDriverDelegate: nil)
-  private var mSparkleVersionString = "?"
+//  private var mSparkleVersionString = "?"
 
   //····················································································································
 
-  override func awakeFromNib () {
-    let updater = self.mUpdaterController.updater
-    self.mCheckNowForUpdateButton?.target = self
-    self.mCheckNowForUpdateButton?.action = #selector (Self.checkForUpdatesAction (_:))
-    self.mCheckNowForUpdateMenuItem?.target = self
-    self.mCheckNowForUpdateMenuItem?.action = #selector (Self.checkForUpdatesAction (_:))
-    self.mUpdateCheckbox?.bind (
-      NSBindingName.value,
-      to: updater,
-      withKeyPath: "automaticallyChecksForUpdates",
-      options: nil
-    )
-    self.mUpdateIntervalPopUpButton?.bind (
-      NSBindingName.selectedTag,
-      to: updater,
-      withKeyPath: "updateCheckInterval",
-      options: nil
-    )
-    self.mUpdateIntervalPopUpButton?.bind (
-      NSBindingName.enabled,
-      to: updater,
-      withKeyPath: "automaticallyChecksForUpdates",
-      options: nil
-    )
-  //--- Now, we explore application bundle for finding sparkle version
-    if let frameworkURL = Bundle.main.privateFrameworksURL {
-      let infoPlistURL = frameworkURL.appendingPathComponent ("Sparkle.framework/Versions/Current/Resources/Info.plist")
-      // print ("\(infoPlistURL)")
-      do{
-        let data : Data = try Data (contentsOf: infoPlistURL)
-        // NSLog ("\(data)")
-        if let plist = try PropertyListSerialization.propertyList (from:data, format:nil) as? NSDictionary {
-          if let sparkleVersionString = plist ["CFBundleShortVersionString"] as? String {
-            // NSLog ("\(sparkleVersionString)")
-            self.mSparkleVersionTextField?.stringValue = "Using Sparkle " + sparkleVersionString
-            self.mSparkleVersionString = sparkleVersionString
-          }
-        }
-      }catch let error {
-        NSLog ("Cannot read Sparkle plist: error \(error)")
-      }
-    }
-  }
+//  override func awakeFromNib () {
+//    let updater = self.mUpdaterController.updater
+//    self.mCheckNowForUpdateButton?.target = self
+//    self.mCheckNowForUpdateButton?.action = #selector (Self.checkForUpdatesAction (_:))
+//    self.mCheckNowForUpdateMenuItem?.target = self
+//    self.mCheckNowForUpdateMenuItem?.action = #selector (Self.checkForUpdatesAction (_:))
+//    self.mUpdateCheckbox?.bind (
+//      NSBindingName.value,
+//      to: updater,
+//      withKeyPath: "automaticallyChecksForUpdates",
+//      options: nil
+//    )
+//    self.mUpdateIntervalPopUpButton?.bind (
+//      NSBindingName.selectedTag,
+//      to: updater,
+//      withKeyPath: "updateCheckInterval",
+//      options: nil
+//    )
+//    self.mUpdateIntervalPopUpButton?.bind (
+//      NSBindingName.enabled,
+//      to: updater,
+//      withKeyPath: "automaticallyChecksForUpdates",
+//      options: nil
+//    )
+//  //--- Now, we explore application bundle for finding sparkle version
+//    if let frameworkURL = Bundle.main.privateFrameworksURL {
+//      let infoPlistURL = frameworkURL.appendingPathComponent ("Sparkle.framework/Versions/Current/Resources/Info.plist")
+//      // print ("\(infoPlistURL)")
+//      do{
+//        let data : Data = try Data (contentsOf: infoPlistURL)
+//        // NSLog ("\(data)")
+//        if let plist = try PropertyListSerialization.propertyList (from:data, format:nil) as? NSDictionary {
+//          if let sparkleVersionString = plist ["CFBundleShortVersionString"] as? String {
+//            // NSLog ("\(sparkleVersionString)")
+//       //     self.mSparkleVersionTextField?.stringValue = "Using Sparkle " + sparkleVersionString
+//            self.mSparkleVersionString = sparkleVersionString
+//          }
+//        }
+//      }catch let error {
+//        NSLog ("Cannot read Sparkle plist: error \(error)")
+//      }
+//    }
+//  }
 
   //····················································································································
 
-  @objc func checkForUpdatesAction (_ inSender : Any?) {
+  func checkForUpdatesAction () {
     self.mUpdaterController.updater.checkForUpdates ()
   }
 
   //····················································································································
 
-  var sparkleVersionString : String { return self.mSparkleVersionString }
+  func sparkleVersionString () -> String {
+    var result = "?"
+    if let frameworkURL = Bundle.main.privateFrameworksURL {
+      let infoPlistURL = frameworkURL.appendingPathComponent ("Sparkle.framework/Versions/Current/Resources/Info.plist")
+      if let data : Data = try? Data (contentsOf: infoPlistURL),
+         let plist = try? PropertyListSerialization.propertyList (from: data, format: nil) as? NSDictionary,
+         let sparkleVersionString = plist ["CFBundleShortVersionString"] as? String {
+            result = sparkleVersionString
+      }
+    }
+    return result
+  }
 
   //····················································································································
 
@@ -128,6 +139,9 @@ var gCanariAppUpdaterSettings : CanariAppUpdaterSettings? = nil
       options: nil
     )
   }
+
+ //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
