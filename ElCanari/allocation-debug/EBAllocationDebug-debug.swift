@@ -19,7 +19,6 @@ private let UPDATE_TIMER_PERIOD : Double = 0.5
 private let prefsEnableObjectAllocationDebugString        = "EBAllocationDebug:enableObjectAllocationDebug"
 private let prefsEnableObjectAllocationStatsWindowVisible = "EBAllocationDebug:allocationStatsWindowVisible"
 private let prefsEnableObjectAllocationStatsDisplayFilter = "EBAllocationDebug:allocationStatsDisplayFilter"
-private let prefsReuseTableViewCells                      = "EBAllocationDebug:reuseTableViewCells"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -58,16 +57,6 @@ func noteObjectDeallocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALW
       DispatchQueue.main.async { pmNoteObjectDeallocation (className) }
     }
   }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func reuseTableViewCells () -> Bool {
-  var result = !gEnableObjectAllocationDebug
-  if !result {
-    result = UserDefaults.standard.bool (forKey: prefsReuseTableViewCells)
-  }
-  return result
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -165,11 +154,6 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
     prefKey: prefsEnableObjectAllocationDebugString
   )
 
-  private var mReuseTableViewCells = EBPreferencesProperty_Bool (
-    defaultValue: false,
-    prefKey: prefsReuseTableViewCells
-  )
-
   private var mTotalAllocated = EBStoredProperty_Int (defaultValue: 0, undoManager: nil)
 
   private var mCurrentlyAllocated = EBStoredProperty_Int (defaultValue: 0, undoManager: nil)
@@ -191,18 +175,13 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
     size: .small
   )
 
-  fileprivate var mReuseTableViewCellsCheckbox = AutoLayoutCheckbox (
-    title: "Reuse TableView Cells",
-    size: .small
-  )
-
   fileprivate var mTotalAllocatedLabel = AutoLayoutIntObserverField (bold: true, size: .small)
 
   fileprivate var mCurrentlyAllocatedLabel = AutoLayoutIntObserverField (bold: true, size: .small)
 
   fileprivate var mPerformSnapShotButton = AutoLayoutButton (title: "Snap Shot", size: .small)
 
-  fileprivate var mFilterPopUpButton = AutoLayoutTaggedPopUpButton ()
+  fileprivate var mFilterPopUpButton = AutoLayoutTaggedPopUpButton (size: .small)
     .add (title: "All Classes", withTag: 0)
     .add (title: "Allocated Classes", withTag: 1)
     .add (title: "Differences with Snap Shot", withTag: 2)
@@ -218,7 +197,6 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
    //--- Bindings
      _ = self.mAllocationStatsWindowVisibleAtLaunchCheckbox.bind_value (self.mAllocationStatsWindowVisibleAtLaunch)
      _ = self.mEnableAllocationDebugCheckbox.bind_value (self.mEnableAllocationDebug)
-     _ = self.mReuseTableViewCellsCheckbox.bind_value (self.mReuseTableViewCells)
      _ = self.mTotalAllocatedLabel.bind_observedValue (self.mTotalAllocated)
      _ = self.mCurrentlyAllocatedLabel.bind_observedValue (self.mCurrentlyAllocated)
      _ = self.mPerformSnapShotButton.bind_run (target: self, selector: #selector (Self.performSnapShotAction (_:)))
@@ -291,12 +269,6 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
           .addFirstBaseLineAligned (
             left: self.mEnableAllocationDebugCheckbox,
             right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small)
-              .set (alignment: .left).expandableWidth ()
-          )
-          .addSeparator ()
-          .addFirstBaseLineAligned (
-            left: self.mReuseTableViewCellsCheckbox,
-            right: AutoLayoutStaticLabel (title: "If Checked, table view cells may be not released.", bold: true, size: .small)
               .set (alignment: .left).expandableWidth ()
           )
           .addSeparator ()

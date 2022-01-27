@@ -8,8 +8,8 @@ final class AutoLayoutTaggedPopUpButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
-  init () {
-    super.init (pullsDown: false, size: .small)
+  init (size inSize : EBControlSize) {
+    super.init (pullsDown: false, size: inSize)
   }
 
   //····················································································································

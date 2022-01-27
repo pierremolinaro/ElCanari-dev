@@ -113,7 +113,7 @@ extern autolayout class EnumPopUpButton (titles: StringArray, size: EBControlSiz
   $selectedIndex property enum
 }
 
-extern autolayout class TaggedPopUpButton {
+extern autolayout class TaggedPopUpButton (size: EBControlSize) {
   $selectedTag property Int
   func add (title: String, withTag: Int)
 }

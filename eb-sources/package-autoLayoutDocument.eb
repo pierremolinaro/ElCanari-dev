@@ -68,7 +68,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Grid Display", bold: no, size : .small),
           right:
-            TaggedPopUpButton {
+            TaggedPopUpButton (size: .small) {
               add (title: "1 Step", withTag: 1)
               add (title: "2 Steps", withTag: 2)
               add (title: "5 Steps", withTag: 5)
@@ -901,7 +901,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Grid Display", bold: no, size : .small),
-        right:  TaggedPopUpButton {
+        right:  TaggedPopUpButton (size: .small) {
           add (title: "1 Step", withTag: 1)
           add (title: "2 Steps", withTag: 2)
           add (title: "5 Steps", withTag: 5)
@@ -964,7 +964,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Line Width", bold: no, size : .small),
-        right: TaggedPopUpButton {
+        right: TaggedPopUpButton (size: .small) {
           add (title: "0.5 Point", withTag: 5)
           add (title: "1.0 Point", withTag: 10)
           add (title: "1.5 Point", withTag: 15)

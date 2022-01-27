@@ -27,7 +27,7 @@ var g_Preferences : Preferences? = nil
     }else{
       window = EBWindow (
         contentRect: NSRect (x: 0, y: 0, width: 680, height: 600),
-        styleMask: [.closable, .titled],
+        styleMask: [.closable, .resizable, .titled],
         backing: .buffered,
         defer: false
       )
@@ -177,7 +177,7 @@ var g_Preferences : Preferences? = nil
   //····················································································································
 
   fileprivate final func computeImplicitView_3 () -> NSView {
-    let view = AutoLayoutTaggedPopUpButton ()
+    let view = AutoLayoutTaggedPopUpButton (size: .regular)
       .add (title: "0.5 Point", withTag: 5)
       .add (title: "1.0 Point", withTag: 10)
       .add (title: "1.5 Point", withTag: 15)
@@ -268,12 +268,6 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mCheckLibraryResultTextView : NSTextView? = nil
   @IBOutlet var mCheckingForLibraryUpdateProgressIndicator : EBProgressIndicator? = nil
   @IBOutlet var mCheckingForLibraryUpdateWindow : EBWindow? = nil
-  @IBOutlet var mComponentNameColorForSchematicColorWell : EBColorWell? = nil
-  @IBOutlet var mComponentNameFontForSchematicFontButton : EBFontButton? = nil
-  @IBOutlet var mComponentValueColorForSchematicColorWell : EBColorWell? = nil
-  @IBOutlet var mComponentValueFontForSchematicFontButton : EBFontButton? = nil
-  @IBOutlet var mConnectionColorForSchematicColorWell : EBColorWell? = nil
-  @IBOutlet var mDotColorGridForSchematicColorWell : EBColorWell? = nil
   @IBOutlet var mInformativeTextInLibraryUpdateWindow : EBTextField? = nil
   @IBOutlet var mLibraryRepositoryCommitButton : NSButton? = nil
   @IBOutlet var mLibraryRepositoryCurrentReleaseTextField : NSTextField? = nil
@@ -286,7 +280,6 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mLibraryUpdateLogTextView : NSTextView? = nil
   @IBOutlet var mLibraryUpdateWindow : EBWindow? = nil
   @IBOutlet var mLibraryUploadWindow : EBWindow? = nil
-  @IBOutlet var mLineColorGridForSchematicColorWell : EBColorWell? = nil
   @IBOutlet var mMenuRevealInFinder_artworks : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_devices : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_fonts : CanariMenu? = nil
@@ -297,11 +290,7 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mPackageNameFontForDeviceFontButton : EBFontButton? = nil
   @IBOutlet var mPadNumberColorForDeviceColorWell : EBColorWell? = nil
   @IBOutlet var mPadNumberFontForDeviceFontButton : EBFontButton? = nil
-  @IBOutlet var mPinNameColorForSchematicColorWell : EBColorWell? = nil
   @IBOutlet var mPinNameFontForDeviceFontButton : EBFontButton? = nil
-  @IBOutlet var mPinNameFontForSchematicFontButton : EBFontButton? = nil
-  @IBOutlet var mPinNumberColorForSchematicColorWell : EBColorWell? = nil
-  @IBOutlet var mPinNumberFontForSchematicFontButton : EBFontButton? = nil
   @IBOutlet var mPrefsWindow : EBWindow? = nil
   @IBOutlet var mProgressIndicatorInLibraryUpdateWindow : EBProgressIndicator? = nil
   @IBOutlet var mRemoveLibraryEntryButton : EBButton? = nil
@@ -312,14 +301,11 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mSymbolAndPackageGridDotColorForDeviceColorWell : EBColorWell? = nil
   @IBOutlet var mSymbolAndPackageLineDotColorForDeviceColorWell : EBColorWell? = nil
   @IBOutlet var mSymbolColorForDeviceColorWell : EBColorWell? = nil
-  @IBOutlet var mSymbolColorForSchematicColorWell : EBColorWell? = nil
   @IBOutlet var mSymbolDrawingWidthMultipliedByTenForDevicePopupButton : EBPopUpButton? = nil
-  @IBOutlet var mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mSymbolNameFontForDeviceFontButton : EBFontButton? = nil
   @IBOutlet var mTableViewInLibraryUpdateWindow : EBTableView? = nil
   @IBOutlet var mToolbar : CanariToolbar? = nil
   @IBOutlet var mTopSidePadColorForDeviceColorWell : EBColorWell? = nil
-  @IBOutlet var mUnplacedComponentsColorForSchematicColorWell : EBColorWell? = nil
   @IBOutlet var mUpDateButtonInLibraryUpdateWindow : EBButton? = nil
   @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : EBMenuItem? = nil
   @IBOutlet var mUseLibraryInUserApplicationSupportPathCheckBox : EBSwitch? = nil
@@ -484,12 +470,6 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mCheckLibraryResultTextView, "mCheckLibraryResultTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mCheckingForLibraryUpdateProgressIndicator, "mCheckingForLibraryUpdateProgressIndicator", EBProgressIndicator.self, #file, #line)
     checkOutletConnection (self.mCheckingForLibraryUpdateWindow, "mCheckingForLibraryUpdateWindow", EBWindow.self, #file, #line)
-    checkOutletConnection (self.mComponentNameColorForSchematicColorWell, "mComponentNameColorForSchematicColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mComponentNameFontForSchematicFontButton, "mComponentNameFontForSchematicFontButton", EBFontButton.self, #file, #line)
-    checkOutletConnection (self.mComponentValueColorForSchematicColorWell, "mComponentValueColorForSchematicColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mComponentValueFontForSchematicFontButton, "mComponentValueFontForSchematicFontButton", EBFontButton.self, #file, #line)
-    checkOutletConnection (self.mConnectionColorForSchematicColorWell, "mConnectionColorForSchematicColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mDotColorGridForSchematicColorWell, "mDotColorGridForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mInformativeTextInLibraryUpdateWindow, "mInformativeTextInLibraryUpdateWindow", EBTextField.self, #file, #line)
     checkOutletConnection (self.mLibraryRepositoryCommitButton, "mLibraryRepositoryCommitButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mLibraryRepositoryCurrentReleaseTextField, "mLibraryRepositoryCurrentReleaseTextField", NSTextField.self, #file, #line)
@@ -502,7 +482,6 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mLibraryUpdateLogTextView, "mLibraryUpdateLogTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mLibraryUpdateWindow, "mLibraryUpdateWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mLibraryUploadWindow, "mLibraryUploadWindow", EBWindow.self, #file, #line)
-    checkOutletConnection (self.mLineColorGridForSchematicColorWell, "mLineColorGridForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_artworks, "mMenuRevealInFinder_artworks", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_devices, "mMenuRevealInFinder_devices", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_fonts, "mMenuRevealInFinder_fonts", CanariMenu.self, #file, #line)
@@ -513,11 +492,7 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mPackageNameFontForDeviceFontButton, "mPackageNameFontForDeviceFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mPadNumberColorForDeviceColorWell, "mPadNumberColorForDeviceColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mPadNumberFontForDeviceFontButton, "mPadNumberFontForDeviceFontButton", EBFontButton.self, #file, #line)
-    checkOutletConnection (self.mPinNameColorForSchematicColorWell, "mPinNameColorForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mPinNameFontForDeviceFontButton, "mPinNameFontForDeviceFontButton", EBFontButton.self, #file, #line)
-    checkOutletConnection (self.mPinNameFontForSchematicFontButton, "mPinNameFontForSchematicFontButton", EBFontButton.self, #file, #line)
-    checkOutletConnection (self.mPinNumberColorForSchematicColorWell, "mPinNumberColorForSchematicColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mPinNumberFontForSchematicFontButton, "mPinNumberFontForSchematicFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mPrefsWindow, "mPrefsWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mProgressIndicatorInLibraryUpdateWindow, "mProgressIndicatorInLibraryUpdateWindow", EBProgressIndicator.self, #file, #line)
     checkOutletConnection (self.mRemoveLibraryEntryButton, "mRemoveLibraryEntryButton", EBButton.self, #file, #line)
@@ -528,14 +503,11 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mSymbolAndPackageGridDotColorForDeviceColorWell, "mSymbolAndPackageGridDotColorForDeviceColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSymbolAndPackageLineDotColorForDeviceColorWell, "mSymbolAndPackageLineDotColorForDeviceColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSymbolColorForDeviceColorWell, "mSymbolColorForDeviceColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mSymbolColorForSchematicColorWell, "mSymbolColorForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSymbolDrawingWidthMultipliedByTenForDevicePopupButton, "mSymbolDrawingWidthMultipliedByTenForDevicePopupButton", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton, "mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSymbolNameFontForDeviceFontButton, "mSymbolNameFontForDeviceFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mTableViewInLibraryUpdateWindow, "mTableViewInLibraryUpdateWindow", EBTableView.self, #file, #line)
     checkOutletConnection (self.mToolbar, "mToolbar", CanariToolbar.self, #file, #line)
     checkOutletConnection (self.mTopSidePadColorForDeviceColorWell, "mTopSidePadColorForDeviceColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mUnplacedComponentsColorForSchematicColorWell, "mUnplacedComponentsColorForSchematicColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mUpDateButtonInLibraryUpdateWindow, "mUpDateButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpDateLibraryMenuItemInCanariMenu, "mUpDateLibraryMenuItemInCanariMenu", EBMenuItem.self, #file, #line)
     checkOutletConnection (self.mUseLibraryInUserApplicationSupportPathCheckBox, "mUseLibraryInUserApplicationSupportPathCheckBox", EBSwitch.self, #file, #line)
@@ -563,20 +535,6 @@ var g_Preferences : Preferences? = nil
     mPinNameFontForDeviceFontButton?.bind_fontValue (preferences_mPinNameFontForDevice_property)
     mSymbolDrawingWidthMultipliedByTenForDevicePopupButton?.bind_selectedTag (preferences_symbolDrawingWidthForDeviceMultipliedByTen_property)
     mPackageDrawingWidthMultipliedByTenForDevicePopupButton?.bind_selectedTag (preferences_packageDrawingWidthForDeviceMultipliedByTen_property)
-    mDotColorGridForSchematicColorWell?.bind_color (preferences_dotColorGridForSchematic_property, sendContinously:true)
-    mLineColorGridForSchematicColorWell?.bind_color (preferences_lineColorGridForSchematic_property, sendContinously:true)
-    mUnplacedComponentsColorForSchematicColorWell?.bind_color (preferences_symbolColorForUnplacedComponentsForSchematic_property, sendContinously:true)
-    mSymbolColorForSchematicColorWell?.bind_color (preferences_symbolColorForSchematic_property, sendContinously:true)
-    mComponentNameColorForSchematicColorWell?.bind_color (preferences_componentNameColorForSchematic_property, sendContinously:true)
-    mComponentNameFontForSchematicFontButton?.bind_fontValue (preferences_componentNameFontForSchematic_property)
-    mComponentValueColorForSchematicColorWell?.bind_color (preferences_componentValueColorForSchematic_property, sendContinously:true)
-    mComponentValueFontForSchematicFontButton?.bind_fontValue (preferences_componentValueFontForSchematic_property)
-    mPinNameFontForSchematicFontButton?.bind_fontValue (preferences_pinNameFontForSchematic_property)
-    mPinNameColorForSchematicColorWell?.bind_color (preferences_pinNameColorForSchematic_property, sendContinously:true)
-    mPinNumberFontForSchematicFontButton?.bind_fontValue (preferences_pinNumberFontForSchematic_property)
-    mPinNumberColorForSchematicColorWell?.bind_color (preferences_pinNumberColorForSchematic_property, sendContinously:true)
-    mConnectionColorForSchematicColorWell?.bind_color (preferences_connectionColorForSchematic_property, sendContinously:true)
-    mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton?.bind_selectedTag (preferences_symbolDrawingWidthMultipliedByTenForSchematic_property)
     mBoardDotColorGridColorWell?.bind_color (preferences_crossColorGridForBoard_property, sendContinously:true)
     mBoardLineColorGridColorWell?.bind_color (preferences_lineColorGridForBoard_property, sendContinously:true)
     mBoardBackgroundColorWell?.bind_color (preferences_boardBackgroundColorForBoard_property, sendContinously:true)

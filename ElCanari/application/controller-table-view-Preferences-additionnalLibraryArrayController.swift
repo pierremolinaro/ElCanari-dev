@@ -466,9 +466,6 @@ fileprivate final class Delegate_Preferences_additionnalLibraryArrayController :
       case .single (let v) :
         if let tableColumnIdentifier = inTableColumn?.identifier,
           let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
-          if !reuseTableViewCells () {
-            result.identifier = nil // So result cannot be reused, will be freed
-          }
           let object = v [inRowIndex]
           if tableColumnIdentifier.rawValue == "uses", let cell = result as? EBSwitch_TableViewCell {
             cell.mUnbindFunction = { [weak cell] in

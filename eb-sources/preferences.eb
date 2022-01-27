@@ -83,7 +83,7 @@ prefs {
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Selection Hilite Color", bold: no, size: .regular),
-        right: TaggedPopUpButton {
+        right: TaggedPopUpButton (size: .regular) {
           add (title: "0.5 Point", withTag:  5)
           add (title: "1.0 Point", withTag: 10)
           add (title: "1.5 Point", withTag: 15)
@@ -279,45 +279,45 @@ prefs {
   property NSColor schematicFrameColor default black ;
 //--- Schematic Grid Colors
   property NSColor dotColorGridForSchematic  default black;
-  outlet EBColorWell mDotColorGridForSchematicColorWell $color self.dotColorGridForSchematic (sendContinously:yes) ;
+//  outlet EBColorWell mDotColorGridForSchematicColorWell $color self.dotColorGridForSchematic (sendContinously:yes) ;
   property NSColor lineColorGridForSchematic default gray;
-  outlet EBColorWell mLineColorGridForSchematicColorWell $color self.lineColorGridForSchematic (sendContinously:yes) ;
+//  outlet EBColorWell mLineColorGridForSchematicColorWell $color self.lineColorGridForSchematic (sendContinously:yes) ;
 //--- Symbol color for unplaced components
   property NSColor symbolColorForUnplacedComponentsForSchematic default darkGray;
-  outlet EBColorWell mUnplacedComponentsColorForSchematicColorWell $color self.symbolColorForUnplacedComponentsForSchematic (sendContinously:yes) ;
+//  outlet EBColorWell mUnplacedComponentsColorForSchematicColorWell $color self.symbolColorForUnplacedComponentsForSchematic (sendContinously:yes) ;
 //--- Symbol color
   property NSColor symbolColorForSchematic default brown;
-  outlet EBColorWell mSymbolColorForSchematicColorWell $color self.symbolColorForSchematic (sendContinously:yes) ;
+//  outlet EBColorWell mSymbolColorForSchematicColorWell $color self.symbolColorForSchematic (sendContinously:yes) ;
 //--- Component Name Color
   property NSColor componentNameColorForSchematic default brown;
-  outlet EBColorWell mComponentNameColorForSchematicColorWell $color self.componentNameColorForSchematic (sendContinously:yes) ;
+//  outlet EBColorWell mComponentNameColorForSchematicColorWell $color self.componentNameColorForSchematic (sendContinously:yes) ;
 //--- Component Name Font
   property NSFont componentNameFontForSchematic default 6 ; // toolTipsFontOfSize:6 ;
-  outlet EBFontButton mComponentNameFontForSchematicFontButton $fontValue self.componentNameFontForSchematic ;
+//  outlet EBFontButton mComponentNameFontForSchematicFontButton $fontValue self.componentNameFontForSchematic ;
 //--- Component Value Color
   property NSColor componentValueColorForSchematic default brown;
-  outlet EBColorWell mComponentValueColorForSchematicColorWell $color self.componentValueColorForSchematic (sendContinously:yes) ;
+//  outlet EBColorWell mComponentValueColorForSchematicColorWell $color self.componentValueColorForSchematic (sendContinously:yes) ;
 //--- Component Name Font
   property NSFont componentValueFontForSchematic default 6 ; // toolTipsFontOfSize:6 ;
-  outlet EBFontButton mComponentValueFontForSchematicFontButton $fontValue self.componentValueFontForSchematic ;
+//  outlet EBFontButton mComponentValueFontForSchematicFontButton $fontValue self.componentValueFontForSchematic ;
 //--- Pin Name Font
   property NSFont pinNameFontForSchematic default 6 ; // toolTipsFontOfSize:6;
-  outlet EBFontButton mPinNameFontForSchematicFontButton $fontValue self.pinNameFontForSchematic ;
+//  outlet EBFontButton mPinNameFontForSchematicFontButton $fontValue self.pinNameFontForSchematic ;
 //--- Pin Name Color
   property NSColor pinNameColorForSchematic default brown;
-  outlet EBColorWell mPinNameColorForSchematicColorWell $color self.pinNameColorForSchematic (sendContinously:yes) ;
+//  outlet EBColorWell mPinNameColorForSchematicColorWell $color self.pinNameColorForSchematic (sendContinously:yes) ;
 //--- Pin Number Font
   property NSFont pinNumberFontForSchematic default 6 ; // toolTipsFontOfSize:6 ;
-  outlet EBFontButton mPinNumberFontForSchematicFontButton $fontValue self.pinNumberFontForSchematic ;
+//  outlet EBFontButton mPinNumberFontForSchematicFontButton $fontValue self.pinNumberFontForSchematic ;
 //--- Pin Number Color
   property NSColor pinNumberColorForSchematic default darkGray;
-  outlet EBColorWell mPinNumberColorForSchematicColorWell $color self.pinNumberColorForSchematic (sendContinously:yes) ;
+//  outlet EBColorWell mPinNumberColorForSchematicColorWell $color self.pinNumberColorForSchematic (sendContinously:yes) ;
 //--- Connection Color
   property NSColor connectionColorForSchematic default black;
-  outlet EBColorWell mConnectionColorForSchematicColorWell $color self.connectionColorForSchematic (sendContinously:yes) ;
+//  outlet EBColorWell mConnectionColorForSchematicColorWell $color self.connectionColorForSchematic (sendContinously:yes) ;
 //--- Symbol drawing line width
   property Int symbolDrawingWidthMultipliedByTenForSchematic default 5 ;
-  outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton $selectedTag self.symbolDrawingWidthMultipliedByTenForSchematic ;
+//  outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton $selectedTag self.symbolDrawingWidthMultipliedByTenForSchematic ;
 //--- 
 }
 

@@ -3028,7 +3028,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_5 () -> NSView {
-    let view = AutoLayoutTaggedPopUpButton ()
+    let view = AutoLayoutTaggedPopUpButton (size: .small)
       .add (title: "1 Step", withTag: 1)
       .add (title: "2 Steps", withTag: 2)
       .add (title: "4 Steps", withTag: 4)
@@ -3193,7 +3193,7 @@ import Cocoa
       view.appendView (view_0)
       let view_1 = AutoLayoutStaticLabel (title: "Symbols Drawing Width", bold: false, size: .small)
       view.appendView (view_1)
-      let view_2 = AutoLayoutTaggedPopUpButton ()
+      let view_2 = AutoLayoutTaggedPopUpButton (size: .small)
         .add (title: "0.5 Point", withTag: 5)
         .add (title: "1.0 Point", withTag: 10)
         .add (title: "1.5 Point", withTag: 15)
@@ -3672,7 +3672,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_64 () -> NSView {
-    let view = AutoLayoutTaggedPopUpButton ()
+    let view = AutoLayoutTaggedPopUpButton (size: .small)
       .add (title: "1 Step", withTag: 1)
       .add (title: "2 Steps", withTag: 2)
       .add (title: "4 Steps", withTag: 4)
@@ -4099,7 +4099,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_98 () -> NSView {
-    let view = AutoLayoutTaggedPopUpButton ()
+    let view = AutoLayoutTaggedPopUpButton (size: .small)
       .add (title: "1 Step", withTag: 1)
       .add (title: "2 Steps", withTag: 2)
       .add (title: "4 Steps", withTag: 4)
