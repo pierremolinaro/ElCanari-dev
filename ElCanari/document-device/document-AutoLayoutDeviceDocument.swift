@@ -576,89 +576,25 @@ import Cocoa
       .set (width: 250)
       .set (margins: 8)
     do{
-      let view_0_0 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_0_0_0 = AutoLayoutButton (title: "Add Package From File Library…", size: .small)
-          .expandableWidth ()
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutDeviceDocument.addPackageFromLibraryAction (_:))
-          )
-        view_0_0.appendView (view_0_0_0)
-      }
+      let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mSymbolPageInspectorView, equalWidth: true, size: .small)
+        .expandableWidth ()
+        .addPage (title: "", tooltip: "", pageView: self.mPackagePageOperationView)
+        .addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: self.mPackageGridZoomInspectorView)
+        .bind_selectedPage (self.rootObject.mSelectedPackageInspectorIndex_property)
+      self.configure_packageInspectorSegmentedControl (view_0_0) // Configurator
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutHorizontalStackView ()
+      let view_0_1 = AutoLayoutVerticalStackView ()
+        .set (leftMargin: 20)
+        .set (rightMargin: 20)
+        .set (bottomMargin: 20)
+        .set (spacing: 12)
       do{
-        let view_0_1_0 = AutoLayoutCheckbox (title: "Horizontal Flip", size: .small)
-          .bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property)
+        let view_0_1_0 = mSymbolPageInspectorView
         view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = AutoLayoutFlexibleSpace ()
-        view_0_1.appendView (view_0_1_1)
       }
       view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_0_2_0 = AutoLayoutCheckbox (title: "Horizontal Flip", size: .small)
-          .bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property)
-        view_0_2.appendView (view_0_2_0)
-        let view_0_2_1 = AutoLayoutFlexibleSpace ()
-        view_0_2.appendView (view_0_2_1)
-      }
+      let view_0_2 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutHorizontalStackView ()
-        .setCenterYAlignment ()
-      do{
-        let view_0_3_0 = AutoLayoutColorWell ()
-          .bind_color (preferences_packageColor_property, sendContinously:false)
-        view_0_3.appendView (view_0_3_0)
-        let view_0_3_1 = AutoLayoutCheckbox (title: "Display Packages", size: .small)
-          .bind_value (self.rootObject.mShowPackages_property)
-        view_0_3.appendView (view_0_3_1)
-        let view_0_3_2 = AutoLayoutFlexibleSpace ()
-        view_0_3.appendView (view_0_3_2)
-      }
-      view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutHorizontalStackView ()
-        .setCenterYAlignment ()
-      do{
-        let view_0_4_0 = AutoLayoutColorWell ()
-          .bind_color (preferences_padNumberColor_property, sendContinously:false)
-        view_0_4.appendView (view_0_4_0)
-        let view_0_4_1 = AutoLayoutCheckbox (title: "Display Pad Numbers", size: .small)
-          .bind_value (self.rootObject.mShowPackagePadNumbers_property)
-        view_0_4.appendView (view_0_4_1)
-        let view_0_4_2 = AutoLayoutFlexibleSpace ()
-        view_0_4.appendView (view_0_4_2)
-      }
-      view_0.appendView (view_0_4)
-      let view_0_5 = AutoLayoutHorizontalStackView ()
-        .setCenterYAlignment ()
-      do{
-        let view_0_5_0 = AutoLayoutColorWell ()
-          .bind_color (preferences_frontSidePadColor_property, sendContinously:false)
-        view_0_5.appendView (view_0_5_0)
-        let view_0_5_1 = AutoLayoutCheckbox (title: "Display Front Side Pads", size: .small)
-          .bind_value (self.rootObject.mShowPackageFrontPads_property)
-        view_0_5.appendView (view_0_5_1)
-        let view_0_5_2 = AutoLayoutFlexibleSpace ()
-        view_0_5.appendView (view_0_5_2)
-      }
-      view_0.appendView (view_0_5)
-      let view_0_6 = AutoLayoutHorizontalStackView ()
-        .setCenterYAlignment ()
-      do{
-        let view_0_6_0 = AutoLayoutColorWell ()
-          .bind_color (preferences_backSidePadColor_property, sendContinously:false)
-        view_0_6.appendView (view_0_6_0)
-        let view_0_6_1 = AutoLayoutCheckbox (title: "Display Back Side Pads", size: .small)
-          .bind_value (self.rootObject.mShowPackageBackPads_property)
-        view_0_6.appendView (view_0_6_1)
-        let view_0_6_2 = AutoLayoutFlexibleSpace ()
-        view_0_6.appendView (view_0_6_2)
-      }
-      view_0.appendView (view_0_6)
-      let view_0_7 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_7)
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
@@ -667,9 +603,127 @@ import Cocoa
       .bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property)
       .bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property)
       .bind_zoom (self.rootObject.mPackageDisplayZoom_property)
+      .bind_backColor (preferences_mPackageBackColorForDevice_property)
       .bind_graphic_controller (self.packageDisplayController)
     hStackView.appendView (view_2)
     return hStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mPackageGridZoomInspectorView
+  //····················································································································
+
+  lazy var mPackageGridZoomInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutStaticLabel (title: "Display Inspector", bold: true, size: .small)
+      .set (alignment: .center)
+      .expandableWidth ()
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutGridView2 ()
+      .addCenterYAligned (left: self.computeImplicitView_14 (), right: self.computeImplicitView_15 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_16 (), right: self.computeImplicitView_17 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_18 (), right: self.computeImplicitView_19 ())
+      .addCenterYAligned (left: self.computeImplicitView_20 (), right: self.computeImplicitView_21 ())
+      .addCenterYAligned (left: self.computeImplicitView_22 (), right: self.computeImplicitView_23 ())
+      .addCenterYAligned (left: self.computeImplicitView_24 (), right: self.computeImplicitView_25 ())
+      .addCenterYAligned (left: self.computeImplicitView_26 (), right: self.computeImplicitView_27 ())
+      .addCenterYAligned (left: self.computeImplicitView_28 (), right: self.computeImplicitView_29 ())
+      .addCenterYAligned (left: self.computeImplicitView_30 (), right: self.computeImplicitView_31 ())
+      .addCenterYAligned (left: self.computeImplicitView_32 (), right: self.computeImplicitView_33 ())
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mPackagePageOperationView
+  //····················································································································
+
+  lazy var mPackagePageOperationView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (width: 250)
+      .set (margins: 8)
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutButton (title: "Add Package From File Library…", size: .small)
+        .expandableWidth ()
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutDeviceDocument.addPackageFromLibraryAction (_:))
+        )
+      view_0.appendView (view_0_0)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_1_0 = AutoLayoutCheckbox (title: "Horizontal Flip", size: .small)
+        .bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property)
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutFlexibleSpace ()
+      view_1.appendView (view_1_1)
+    }
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_2_0 = AutoLayoutCheckbox (title: "Horizontal Flip", size: .small)
+        .bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property)
+      view_2.appendView (view_2_0)
+      let view_2_1 = AutoLayoutFlexibleSpace ()
+      view_2.appendView (view_2_1)
+    }
+    vStackView.appendView (view_2)
+    let view_3 = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_3_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_packageColor_property, sendContinously:false)
+      view_3.appendView (view_3_0)
+      let view_3_1 = AutoLayoutCheckbox (title: "Display Packages", size: .small)
+        .bind_value (self.rootObject.mShowPackages_property)
+      view_3.appendView (view_3_1)
+      let view_3_2 = AutoLayoutFlexibleSpace ()
+      view_3.appendView (view_3_2)
+    }
+    vStackView.appendView (view_3)
+    let view_4 = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_4_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_padNumberColor_property, sendContinously:false)
+      view_4.appendView (view_4_0)
+      let view_4_1 = AutoLayoutCheckbox (title: "Display Pad Numbers", size: .small)
+        .bind_value (self.rootObject.mShowPackagePadNumbers_property)
+      view_4.appendView (view_4_1)
+      let view_4_2 = AutoLayoutFlexibleSpace ()
+      view_4.appendView (view_4_2)
+    }
+    vStackView.appendView (view_4)
+    let view_5 = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_5_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_frontSidePadColor_property, sendContinously:false)
+      view_5.appendView (view_5_0)
+      let view_5_1 = AutoLayoutCheckbox (title: "Display Front Side Pads", size: .small)
+        .bind_value (self.rootObject.mShowPackageFrontPads_property)
+      view_5.appendView (view_5_1)
+      let view_5_2 = AutoLayoutFlexibleSpace ()
+      view_5.appendView (view_5_2)
+    }
+    vStackView.appendView (view_5)
+    let view_6 = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
+    do{
+      let view_6_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_backSidePadColor_property, sendContinously:false)
+      view_6.appendView (view_6_0)
+      let view_6_1 = AutoLayoutCheckbox (title: "Display Back Side Pads", size: .small)
+        .bind_value (self.rootObject.mShowPackageBackPads_property)
+      view_6.appendView (view_6_1)
+      let view_6_2 = AutoLayoutFlexibleSpace ()
+      view_6.appendView (view_6_2)
+    }
+    vStackView.appendView (view_6)
+    return vStackView
   } ()
 
   //····················································································································
@@ -1174,6 +1228,231 @@ import Cocoa
   }
 
   //····················································································································
+  //    IMPLICIT VIEW 14
+  //····················································································································
+
+  fileprivate final func computeImplicitView_14 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 15
+  //····················································································································
+
+  fileprivate final func computeImplicitView_15 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_mPackageBackColorForDevice_property, sendContinously:false)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 16
+  //····················································································································
+
+  fileprivate final func computeImplicitView_16 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 17
+  //····················································································································
+
+  fileprivate final func computeImplicitView_17 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
+      .bind_value (preferences_mPackageHorizontalFlipForDevice_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 18
+  //····················································································································
+
+  fileprivate final func computeImplicitView_18 () -> NSView {
+    let view = AutoLayoutFlexibleSpace ()
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 19
+  //····················································································································
+
+  fileprivate final func computeImplicitView_19 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
+      .bind_value (preferences_mPackageVerticalFlipForDevice_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 20
+  //····················································································································
+
+  fileprivate final func computeImplicitView_20 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Package", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 21
+  //····················································································································
+
+  fileprivate final func computeImplicitView_21 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_mPackageColorForDevice_property, sendContinously:false)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 22
+  //····················································································································
+
+  fileprivate final func computeImplicitView_22 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Package Width", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 23
+  //····················································································································
+
+  fileprivate final func computeImplicitView_23 () -> NSView {
+    let view = AutoLayoutTaggedPopUpButton (size: .small)
+      .add (title: "0.5 Point", withTag: 5)
+      .add (title: "1.0 Point", withTag: 10)
+      .add (title: "1.5 Point", withTag: 15)
+      .add (title: "2.0 Points", withTag: 20)
+      .add (title: "2.5 Points", withTag: 25)
+      .bind_selectedTag (preferences_packageDrawingWidthForDeviceMultipliedByTen_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 24
+  //····················································································································
+
+  fileprivate final func computeImplicitView_24 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Front Side Pad", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 25
+  //····················································································································
+
+  fileprivate final func computeImplicitView_25 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_mFrontSidePadColorForDevice_property, sendContinously:false)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 26
+  //····················································································································
+
+  fileprivate final func computeImplicitView_26 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Back Side Pad", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 27
+  //····················································································································
+
+  fileprivate final func computeImplicitView_27 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_mBottomSidePadColorForDevice_property, sendContinously:false)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 28
+  //····················································································································
+
+  fileprivate final func computeImplicitView_28 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Pad Number", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 29
+  //····················································································································
+
+  fileprivate final func computeImplicitView_29 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_mPadNumberColorForDevice_property, sendContinously:false)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 30
+  //····················································································································
+
+  fileprivate final func computeImplicitView_30 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Pad Number Font", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 31
+  //····················································································································
+
+  fileprivate final func computeImplicitView_31 () -> NSView {
+    let view = AutoLayoutFontButton (size: .small)
+      .bind_fontValue (preferences_mPadNumberFontForDevice_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 32
+  //····················································································································
+
+  fileprivate final func computeImplicitView_32 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Package Name Font", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 33
+  //····················································································································
+
+  fileprivate final func computeImplicitView_33 () -> NSView {
+    let view = AutoLayoutFontButton (size: .small)
+      .bind_fontValue (preferences_mPackageNameFontForDevice_property)
+    return view
+  }
+
+  //····················································································································
   //    Build User Interface
   //····················································································································
 
@@ -1455,6 +1734,8 @@ import Cocoa
     // self.mSymbolPageOperationView.ebCleanUp ()
     // self.mSymbolGridZoomInspectorView.ebCleanUp ()
     // self.mPackagesPage.ebCleanUp ()
+    // self.mPackageGridZoomInspectorView.ebCleanUp ()
+    // self.mPackagePageOperationView.ebCleanUp ()
     // self.mLibraryPage.ebCleanUp ()
     // self.mAssignmentsPage.ebCleanUp ()
     // self.mInfosPage.ebCleanUp ()

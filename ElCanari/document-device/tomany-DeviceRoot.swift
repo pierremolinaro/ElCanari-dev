@@ -19,6 +19,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
     if !inRemovedSet.isEmpty {
       self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mSelectedSymbolInspectorIndex_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mSelectedPackageInspectorIndex_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mTitle_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mImageData_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mPrefix_fromElementsOfSet (inRemovedSet) // Stored property
@@ -46,6 +47,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
     if !inAddedSet.isEmpty {
       self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mSelectedSymbolInspectorIndex_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mSelectedPackageInspectorIndex_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mTitle_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mImageData_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mPrefix_toElementsOfSet (inAddedSet) // Stored property
@@ -185,6 +187,65 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSelectedSymbolInspectorIndex_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSelectedPackageInspectorIndex' stored property
+  //····················································································································
+
+  private final var mObserversOf_mSelectedPackageInspectorIndex = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSelectedPackageInspectorIndex (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSelectedPackageInspectorIndex.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSelectedPackageInspectorIndex_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSelectedPackageInspectorIndex (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSelectedPackageInspectorIndex.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSelectedPackageInspectorIndex_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSelectedPackageInspectorIndex_toElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
+    if !self.mObserversOf_mSelectedPackageInspectorIndex.isEmpty {
+      for managedObject in inSet.values {
+        self.mObserversOf_mSelectedPackageInspectorIndex.apply { (_ observer : EBObserverProtocol) in
+          managedObject.mSelectedPackageInspectorIndex_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSelectedPackageInspectorIndex_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
+    self.mObserversOf_mSelectedPackageInspectorIndex.apply { (_ observer : EBObserverProtocol) in
+      observer.observedObjectDidChange ()
+      for managedObject in inSet.values {
+        managedObject.mSelectedPackageInspectorIndex_property.removeEBObserver (observer)
       }
     }
   }
@@ -2039,6 +2100,7 @@ final class PreferencesArrayOf_DeviceRoot : StoredArrayOf_DeviceRoot {
     }
     self.addEBObserverOf_mSelectedPageIndex (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSelectedSymbolInspectorIndex (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSelectedPackageInspectorIndex (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mTitle (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mImageData (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mPrefix (self.mObserverForWritingPreferences)

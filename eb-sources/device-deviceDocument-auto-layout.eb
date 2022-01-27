@@ -94,7 +94,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   action saveDocAction ;
 
 //······················································································································
-//   SYMBOLS mSelectedSymbolInspectorIndex
+//   SYMBOLS
 //······················································································································
 
   stackView mSymbolsPage hStack {
@@ -203,39 +203,15 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 
   stackView mPackagesPage hStack {
     vStack set (width: 250) set (margins: 8) {
-      hStack {
-        Button (title: "Add Package From File Library…", size : .small) {
-          expandableWidth ()
-          $run addPackageFromLibraryAction
-        }
+      SegmentedControlWithPages (documentView: stackView mSymbolPageInspectorView, equalWidth: yes, size: .small)
+        [configurator packageInspectorSegmentedControl] {
+        expandableWidth ()
+        addPage (title: "", tooltip: "", pageView: stackView mPackagePageOperationView)
+        addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: stackView mPackageGridZoomInspectorView)
+        $selectedPage root. mSelectedPackageInspectorIndex
       }
-      hStack {
-        Checkbox (title: "Horizontal Flip", size : .small) { $value root.mPackageDisplayHorizontalFlip }
-        space
-      }
-      hStack {
-        Checkbox (title: "Horizontal Flip", size : .small) { $value root.mPackageDisplayHorizontalFlip }
-        space
-      }
-      hStack setCenterYAlignment () {
-        ColorWell { $color prefs.packageColor (sendContinously: no) }
-        Checkbox (title: "Display Packages", size : .small) { $value root.mShowPackages }
-        space
-      }
-      hStack setCenterYAlignment () {
-        ColorWell { $color prefs.padNumberColor (sendContinously: no) }
-        Checkbox (title: "Display Pad Numbers", size : .small) { $value root.mShowPackagePadNumbers }
-        space
-      }
-      hStack setCenterYAlignment () {
-        ColorWell { $color prefs.frontSidePadColor (sendContinously: no) }
-        Checkbox (title: "Display Front Side Pads", size : .small) { $value root.mShowPackageFrontPads }
-        space
-      }
-      hStack setCenterYAlignment () {
-        ColorWell { $color prefs.backSidePadColor (sendContinously: no) }
-        Checkbox (title: "Display Back Side Pads", size : .small) { $value root.mShowPackageBackPads }
-        space
+      vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
+        stackViewRef mSymbolPageInspectorView
       }
       space
     }
@@ -245,6 +221,97 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       $verticalFlip root.mPackageDisplayVerticalFlip
       $graphicController #packageDisplayController
       $zoom root.mPackageDisplayZoom
+      $backColor prefs.mPackageBackColorForDevice
+    }
+  }
+
+  stackView mPackageGridZoomInspectorView vStack {
+    StaticLabel (title: "Display Inspector", bold: yes, size : .small) { set (alignment: .center) expandableWidth () }
+    GridView2 {
+      addCenterYAligned (
+        left: StaticLabel (title: "Background", bold: no, size: .small),
+        right: hStack { ColorWell { $color prefs.mPackageBackColorForDevice (sendContinously:no) } space }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Flip", bold: no, size: .small),
+        right: Checkbox (title: "Horizontal", size : .small) { $value prefs.mPackageHorizontalFlipForDevice }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: Checkbox (title: "Vertical", size : .small) { $value prefs.mPackageVerticalFlipForDevice }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Package", bold: no, size: .small),
+        right: hStack { ColorWell { $color prefs.mPackageColorForDevice (sendContinously:no) } space }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Package Width", bold: no, size: .small),
+        right: TaggedPopUpButton (size: .small) {
+          add (title: "0.5 Point", withTag: 5)
+          add (title: "1.0 Point", withTag: 10)
+          add (title: "1.5 Point", withTag: 15)
+          add (title: "2.0 Points", withTag: 20)
+          add (title: "2.5 Points", withTag: 25)
+          $selectedTag prefs.packageDrawingWidthForDeviceMultipliedByTen
+        }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Front Side Pad", bold: no, size: .small),
+        right: hStack { ColorWell { $color prefs.mFrontSidePadColorForDevice (sendContinously:no) } space }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Back Side Pad", bold: no, size: .small),
+        right: hStack { ColorWell { $color prefs.mBottomSidePadColorForDevice (sendContinously:no) } space }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Pad Number", bold: no, size: .small),
+        right: hStack { ColorWell { $color prefs.mPadNumberColorForDevice (sendContinously:no) } space }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Pad Number Font", bold: no, size: .small),
+        right: FontButton (size: .small) { $fontValue prefs.mPadNumberFontForDevice }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Package Name Font", bold: no, size: .small),
+        right: FontButton (size: .small) { $fontValue prefs.mPackageNameFontForDevice }
+      )
+    }
+  }
+
+  stackView mPackagePageOperationView vStack set (width: 250) set (margins: 8) {
+    hStack {
+      Button (title: "Add Package From File Library…", size : .small) {
+        expandableWidth ()
+        $run addPackageFromLibraryAction
+      }
+    }
+    hStack {
+      Checkbox (title: "Horizontal Flip", size : .small) { $value root.mPackageDisplayHorizontalFlip }
+      space
+    }
+    hStack {
+      Checkbox (title: "Horizontal Flip", size : .small) { $value root.mPackageDisplayHorizontalFlip }
+      space
+    }
+    hStack setCenterYAlignment () {
+      ColorWell { $color prefs.packageColor (sendContinously: no) }
+      Checkbox (title: "Display Packages", size : .small) { $value root.mShowPackages }
+      space
+    }
+    hStack setCenterYAlignment () {
+      ColorWell { $color prefs.padNumberColor (sendContinously: no) }
+      Checkbox (title: "Display Pad Numbers", size : .small) { $value root.mShowPackagePadNumbers }
+      space
+    }
+    hStack setCenterYAlignment () {
+      ColorWell { $color prefs.frontSidePadColor (sendContinously: no) }
+      Checkbox (title: "Display Front Side Pads", size : .small) { $value root.mShowPackageFrontPads }
+      space
+    }
+    hStack setCenterYAlignment () {
+      ColorWell { $color prefs.backSidePadColor (sendContinously: no) }
+      Checkbox (title: "Display Back Side Pads", size : .small) { $value root.mShowPackageBackPads }
+      space
     }
   }    
 

@@ -568,10 +568,6 @@
             </view>
             <toolbar key="toolbar" implicitIdentifier="00979A14-5E6B-4C3F-9A6D-DD8031FA3EBB" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="rgk-24-hN8" customClass="CanariToolbar">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="7996130F-C584-4256-BBB4-39A3037DC207" label="Device" paletteLabel="Device" tag="-1" image="device" autovalidates="NO" selectable="YES" id="YlP-0Q-seM">
-                        <size key="minSize" width="22" height="22"/>
-                        <size key="maxSize" width="22" height="22"/>
-                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="F16ABF11-3125-440A-B352-0BF497181EED" label="Library" paletteLabel="Library" tag="6" image="library" autovalidates="NO" selectable="YES" id="eaG-Ff-ocf">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
@@ -582,7 +578,6 @@
                     <toolbarItem reference="BPZ-Xq-8x4"/>
                     <toolbarItem reference="BPZ-Xq-8x4"/>
                     <toolbarItem reference="BPZ-Xq-8x4"/>
-                    <toolbarItem reference="YlP-0Q-seM"/>
                     <toolbarItem reference="BPZ-Xq-8x4"/>
                     <toolbarItem reference="BPZ-Xq-8x4"/>
                     <toolbarItem reference="BPZ-Xq-8x4"/>
@@ -592,9 +587,7 @@
                 </defaultToolbarItems>
                 <connections>
                     <outlet property="mMasterView" destination="5399" id="X0F-hk-Clo"/>
-                    <outlet property="mTab3" destination="YlP-0Q-seM" id="EMB-Jc-kJE"/>
                     <outlet property="mTab7" destination="eaG-Ff-ocf" id="O0g-fe-iRg"/>
-                    <outlet property="mView3" destination="5528" id="Ib2-hi-u5G"/>
                     <outlet property="mView7" destination="5726" id="9XS-Ri-P0B"/>
                 </connections>
             </toolbar>
@@ -603,139 +596,6 @@
             </connections>
             <point key="canvasLocation" x="681" y="25"/>
         </window>
-        <customView id="5528" userLabel="Page : Device Prefs">
-            <rect key="frame" x="0.0" y="0.0" width="390" height="519"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <box fixedFrame="YES" title="Packages" translatesAutoresizingMaskIntoConstraints="NO" id="5530">
-                    <rect key="frame" x="17" y="16" width="356" height="220"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <view key="contentView" id="LyC-vl-2eU">
-                        <rect key="frame" x="3" y="3" width="350" height="202"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="156" translatesAutoresizingMaskIntoConstraints="NO" id="5554">
-                                <rect key="frame" x="11" y="118" width="160" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Top Side Pad Color:" id="5555">
-                                    <font key="font" metaFont="message" size="11"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5553" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
-                                <rect key="frame" x="176" y="113" width="54" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </colorWell>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="130" translatesAutoresizingMaskIntoConstraints="NO" id="5552">
-                                <rect key="frame" x="11" y="66" width="134" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Pad Number Color:" id="5556">
-                                    <font key="font" metaFont="message" size="11"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5551" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
-                                <rect key="frame" x="176" y="62" width="54" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </colorWell>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5550" customClass="EBFontButton" customModule="ElCanari" customModuleProvider="target">
-                                <rect key="frame" x="176" y="36" width="157" height="22"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="Font for pad number…" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5557">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="message" size="11"/>
-                                </buttonCell>
-                            </button>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="130" translatesAutoresizingMaskIntoConstraints="NO" id="5549">
-                                <rect key="frame" x="11" y="40" width="134" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Pad Number Font:" id="5558">
-                                    <font key="font" metaFont="message" size="11"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="156" translatesAutoresizingMaskIntoConstraints="NO" id="5548">
-                                <rect key="frame" x="11" y="144" width="160" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Package Line Width:" id="5559">
-                                    <font key="font" metaFont="message" size="11"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5547" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                                <rect key="frame" x="176" y="140" width="115" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="square" title="0.5 Point" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" tag="5" inset="2" preferredEdge="maxY" selectedItem="5562" id="5560">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="message" size="11"/>
-                                    <menu key="menu" title="OtherViews" id="5561">
-                                        <items>
-                                            <menuItem title="0.5 Point" state="on" tag="5" id="5562"/>
-                                            <menuItem title="1 Point" tag="10" id="5566"/>
-                                            <menuItem title="1.5 Point" tag="15" id="5565"/>
-                                            <menuItem title="2 Points" tag="20" id="5564"/>
-                                            <menuItem title="2.5 Points" tag="25" id="5563"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="156" translatesAutoresizingMaskIntoConstraints="NO" id="5546">
-                                <rect key="frame" x="11" y="170" width="160" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Package Color:" id="5567">
-                                    <font key="font" metaFont="message" size="11"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5545" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
-                                <rect key="frame" x="176" y="166" width="54" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </colorWell>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5544" customClass="EBFontButton" customModule="ElCanari" customModuleProvider="target">
-                                <rect key="frame" x="176" y="10" width="157" height="22"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="Font for package name…" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5568">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="message" size="11"/>
-                                </buttonCell>
-                            </button>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="130" translatesAutoresizingMaskIntoConstraints="NO" id="5543">
-                                <rect key="frame" x="11" y="14" width="134" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Package Name Font:" id="5569">
-                                    <font key="font" metaFont="message" size="11"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="156" translatesAutoresizingMaskIntoConstraints="NO" id="5542">
-                                <rect key="frame" x="11" y="92" width="160" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Bottom Side Pad Color:" id="5570">
-                                    <font key="font" metaFont="message" size="11"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5541" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
-                                <rect key="frame" x="176" y="88" width="54" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </colorWell>
-                        </subviews>
-                    </view>
-                </box>
-            </subviews>
-            <point key="canvasLocation" x="848" y="462.5"/>
-        </customView>
         <customView id="5726" userLabel="Page : Library Prefs">
             <rect key="frame" x="0.0" y="0.0" width="487" height="361"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1163,7 +1023,6 @@ Gw
             <connections>
                 <outlet property="mAddLibraryEntryButton" destination="5738" id="OU4-50-WER"/>
                 <outlet property="mAdditionnalLibraryArrayTableView" destination="5740" id="oGz-JM-e2p"/>
-                <outlet property="mBottomSidePadColorDorDeviveColorWell" destination="5541" id="8o6-Y9-4SS"/>
                 <outlet property="mCancelButtonInLibraryUpdateWindow" destination="6230" id="Xlr-bm-VVS"/>
                 <outlet property="mCheckForLibraryUpdatesButton" destination="5761" id="1kO-n6-5DQ"/>
                 <outlet property="mCheckForSystemLibraryAtStartUpSwitch" destination="6165" id="GQd-oh-fr6"/>
@@ -1188,11 +1047,6 @@ Gw
                 <outlet property="mMenuRevealInFinder_fonts" destination="1465" id="WRU-dg-RSi"/>
                 <outlet property="mMenuRevealInFinder_packages" destination="1459" id="Ent-eb-dy6"/>
                 <outlet property="mMenuRevealInFinder_symbols" destination="1456" id="Kmo-7E-H9s"/>
-                <outlet property="mPackageColorForDeviceColorWell" destination="5545" id="vXT-uC-Ub8"/>
-                <outlet property="mPackageDrawingWidthMultipliedByTenForDevicePopupButton" destination="5547" id="Kqe-DG-Leg"/>
-                <outlet property="mPackageNameFontForDeviceFontButton" destination="5544" id="FE2-Lr-wzk"/>
-                <outlet property="mPadNumberColorForDeviceColorWell" destination="5551" id="4aX-Jl-bwa"/>
-                <outlet property="mPadNumberFontForDeviceFontButton" destination="5550" id="04b-3d-nK2"/>
                 <outlet property="mPrefsWindow" destination="5382" id="7wy-sw-1zQ"/>
                 <outlet property="mProgressIndicatorInLibraryUpdateWindow" destination="6254" id="NVp-IZ-GiW"/>
                 <outlet property="mRemoveLibraryEntryButton" destination="5737" id="s89-Ll-TKd"/>
@@ -1201,7 +1055,6 @@ Gw
                 <outlet property="mSetUserAndPasswordButton" destination="SyU-mo-jqJ" id="xgA-b3-zUP"/>
                 <outlet property="mTableViewInLibraryUpdateWindow" destination="6241" id="muq-id-8zw"/>
                 <outlet property="mToolbar" destination="rgk-24-hN8" id="9es-rF-F0d"/>
-                <outlet property="mTopSidePadColorForDeviceColorWell" destination="5553" id="oUN-8d-wzK"/>
                 <outlet property="mUpDateButtonInLibraryUpdateWindow" destination="6236" id="59n-Jt-hQa"/>
                 <outlet property="mUpDateLibraryMenuItemInCanariMenu" destination="tfP-CB-tqy" id="IJJ-Y7-ZtK"/>
                 <outlet property="mUseLibraryInUserApplicationSupportPathCheckBox" destination="6265" id="vka-hJ-Ojs"/>
@@ -2444,7 +2297,6 @@ Gw
     <resources>
         <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
-        <image name="device" width="28.799999237060547" height="28.799999237060547"/>
         <image name="imageCell:5747:image" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T

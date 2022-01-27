@@ -18,6 +18,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     if let oldValue = inOldValue {
       oldValue.mSelectedPageIndex_property.removeEBObserver (self.mSelectedPageIndex_property) // Stored property
       oldValue.mSelectedSymbolInspectorIndex_property.removeEBObserver (self.mSelectedSymbolInspectorIndex_property) // Stored property
+      oldValue.mSelectedPackageInspectorIndex_property.removeEBObserver (self.mSelectedPackageInspectorIndex_property) // Stored property
       oldValue.mTitle_property.removeEBObserver (self.mTitle_property) // Stored property
       oldValue.mImageData_property.removeEBObserver (self.mImageData_property) // Stored property
       oldValue.mPrefix_property.removeEBObserver (self.mPrefix_property) // Stored property
@@ -45,6 +46,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     if let newValue = self.mInternalValue {
       newValue.mSelectedPageIndex_property.addEBObserver (self.mSelectedPageIndex_property) // Stored property
       newValue.mSelectedSymbolInspectorIndex_property.addEBObserver (self.mSelectedSymbolInspectorIndex_property) // Stored property
+      newValue.mSelectedPackageInspectorIndex_property.addEBObserver (self.mSelectedPackageInspectorIndex_property) // Stored property
       newValue.mTitle_property.addEBObserver (self.mTitle_property) // Stored property
       newValue.mImageData_property.addEBObserver (self.mImageData_property) // Stored property
       newValue.mPrefix_property.addEBObserver (self.mPrefix_property) // Stored property
@@ -81,6 +83,12 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //····················································································································
 
   final let mSelectedSymbolInspectorIndex_property = EBGenericTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'mSelectedPackageInspectorIndex' stored property
+  //····················································································································
+
+  final let mSelectedPackageInspectorIndex_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mTitle' stored property
@@ -359,6 +367,21 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     self.mSelectedSymbolInspectorIndex_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.mSelectedSymbolInspectorIndex_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mSelectedPackageInspectorIndex simple stored property
+    self.mSelectedPackageInspectorIndex_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mSelectedPackageInspectorIndex_property.selection {
         case .empty :
           return .empty
         case .multiple :

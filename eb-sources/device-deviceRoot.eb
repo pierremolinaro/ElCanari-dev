@@ -4,6 +4,7 @@ entity DeviceRoot {
 //--- Selected page index
   property Int mSelectedPageIndex default 0 ;
   property Int mSelectedSymbolInspectorIndex default 0 ;
+  property Int mSelectedPackageInspectorIndex default 0 ;
 
 //--- Title
   property @signature String mTitle default "" ;

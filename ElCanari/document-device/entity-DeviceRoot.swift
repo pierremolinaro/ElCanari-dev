@@ -18,6 +18,12 @@ protocol DeviceRoot_mSelectedSymbolInspectorIndex : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol DeviceRoot_mSelectedPackageInspectorIndex : AnyObject {
+  var mSelectedPackageInspectorIndex : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol DeviceRoot_mTitle : AnyObject {
   var mTitle : String { get }
 }
@@ -155,6 +161,7 @@ protocol DeviceRoot_issues : AnyObject {
 final class DeviceRoot : EBManagedObject,
          DeviceRoot_mSelectedPageIndex,
          DeviceRoot_mSelectedSymbolInspectorIndex,
+         DeviceRoot_mSelectedPackageInspectorIndex,
          DeviceRoot_mTitle,
          DeviceRoot_mImageData,
          DeviceRoot_mPrefix,
@@ -214,6 +221,25 @@ final class DeviceRoot : EBManagedObject,
   final var mSelectedSymbolInspectorIndex : Int {
     get { return self.mSelectedSymbolInspectorIndex_property.propval }
     set { self.mSelectedSymbolInspectorIndex_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mSelectedPackageInspectorIndex
+  //····················································································································
+
+  final let mSelectedPackageInspectorIndex_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mSelectedPackageInspectorIndex_toDefaultValue () {
+    self.mSelectedPackageInspectorIndex = 0
+  }
+
+  //····················································································································
+
+  final var mSelectedPackageInspectorIndex : Int {
+    get { return self.mSelectedPackageInspectorIndex_property.propval }
+    set { self.mSelectedPackageInspectorIndex_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -696,6 +722,7 @@ final class DeviceRoot : EBManagedObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mSelectedSymbolInspectorIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mSelectedPackageInspectorIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
     self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
@@ -988,6 +1015,14 @@ final class DeviceRoot : EBManagedObject,
         valueExplorer: &self.mSelectedSymbolInspectorIndex_property.mValueExplorer
       )
       createEntryForPropertyNamed (
+        "mSelectedPackageInspectorIndex",
+        object: self.mSelectedPackageInspectorIndex_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSelectedPackageInspectorIndex_property.mObserverExplorer,
+        valueExplorer: &self.mSelectedPackageInspectorIndex_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
         "mTitle",
         object: self.mTitle_property,
         y: &y,
@@ -1217,6 +1252,9 @@ final class DeviceRoot : EBManagedObject,
   //--- Atomic property: mSelectedSymbolInspectorIndex
     self.mSelectedSymbolInspectorIndex_property.mObserverExplorer = nil
     self.mSelectedSymbolInspectorIndex_property.mValueExplorer = nil
+  //--- Atomic property: mSelectedPackageInspectorIndex
+    self.mSelectedPackageInspectorIndex_property.mObserverExplorer = nil
+    self.mSelectedPackageInspectorIndex_property.mValueExplorer = nil
   //--- Atomic property: mTitle
     self.mTitle_property.mObserverExplorer = nil
     self.mTitle_property.mValueExplorer = nil
@@ -1301,6 +1339,8 @@ final class DeviceRoot : EBManagedObject,
       self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedPageIndex")
     //--- Atomic property: mSelectedSymbolInspectorIndex
       self.mSelectedSymbolInspectorIndex_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedSymbolInspectorIndex")
+    //--- Atomic property: mSelectedPackageInspectorIndex
+      self.mSelectedPackageInspectorIndex_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedPackageInspectorIndex")
     //--- Atomic property: mTitle
       self.mTitle_property.storeIn (dictionary: ioDictionary, forKey: "mTitle")
     //--- Atomic property: mImageData
@@ -1446,6 +1486,8 @@ final class DeviceRoot : EBManagedObject,
     self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey: "mSelectedPageIndex")
   //--- Atomic property: mSelectedSymbolInspectorIndex
     self.mSelectedSymbolInspectorIndex_property.readFrom (dictionary: inDictionary, forKey: "mSelectedSymbolInspectorIndex")
+  //--- Atomic property: mSelectedPackageInspectorIndex
+    self.mSelectedPackageInspectorIndex_property.readFrom (dictionary: inDictionary, forKey: "mSelectedPackageInspectorIndex")
   //--- Atomic property: mTitle
     self.mTitle_property.readFrom (dictionary: inDictionary, forKey: "mTitle")
   //--- Atomic property: mImageData
@@ -1482,6 +1524,7 @@ final class DeviceRoot : EBManagedObject,
   //--- Atomic properties
     ioString += "mSelectedPageIndex\n"
     ioString += "mSelectedSymbolInspectorIndex\n"
+    ioString += "mSelectedPackageInspectorIndex\n"
     ioString += "mTitle\n"
     ioString += "mImageData\n"
     ioString += "mPrefix\n"
@@ -1513,6 +1556,8 @@ final class DeviceRoot : EBManagedObject,
     self.mSelectedPageIndex.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mSelectedSymbolInspectorIndex.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSelectedPackageInspectorIndex.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mTitle.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -1713,6 +1758,9 @@ final class DeviceRoot : EBManagedObject,
       }
       if let range = inDictionary ["mSelectedSymbolInspectorIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mSelectedSymbolInspectorIndex = value
+      }
+      if let range = inDictionary ["mSelectedPackageInspectorIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
+        self.mSelectedPackageInspectorIndex = value
       }
       if let range = inDictionary ["mTitle"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mTitle = value
