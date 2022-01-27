@@ -236,30 +236,6 @@ var g_Preferences : Preferences? = nil
 
   @IBOutlet var mAddLibraryEntryButton : EBButton? = nil
   @IBOutlet var mAdditionnalLibraryArrayTableView : EBTableView? = nil
-  @IBOutlet var mBoardBackgroundColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardBottomSideLayoutColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardBottomSideLegendColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardBottomSidePadColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardBottomSideRestrictRectangleColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardClearanceColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardDotColorGridColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardDrawErrorBackgroundCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardDrawWarningBackgroundCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardErrorBackgroundColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardInner1LayoutColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardInner2LayoutColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardInner3LayoutColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardInner4LayoutColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardLimitsColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardLineColorGridColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardPackageDrawingWidthMultipliedByTenPopupButton : EBPopUpButton? = nil
-  @IBOutlet var mBoardPadFontButton : EBFontButton? = nil
-  @IBOutlet var mBoardPadNumberColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardTopSideLayoutColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardTopSideLegendColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardTopSidePadColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardTopSideRestrictRectangleColorWell : EBColorWell? = nil
-  @IBOutlet var mBoardWarningBackgroundColorWell : EBColorWell? = nil
   @IBOutlet var mBottomSidePadColorDorDeviveColorWell : EBColorWell? = nil
   @IBOutlet var mCancelButtonInLibraryUpdateWindow : EBButton? = nil
   @IBOutlet var mCheckForLibraryUpdatesButton : NSButton? = nil
@@ -438,30 +414,6 @@ var g_Preferences : Preferences? = nil
   override func awakeFromNib () {
     checkOutletConnection (self.mAddLibraryEntryButton, "mAddLibraryEntryButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAdditionnalLibraryArrayTableView, "mAdditionnalLibraryArrayTableView", EBTableView.self, #file, #line)
-    checkOutletConnection (self.mBoardBackgroundColorWell, "mBoardBackgroundColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardBottomSideLayoutColorWell, "mBoardBottomSideLayoutColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardBottomSideLegendColorWell, "mBoardBottomSideLegendColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardBottomSidePadColorWell, "mBoardBottomSidePadColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardBottomSideRestrictRectangleColorWell, "mBoardBottomSideRestrictRectangleColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardClearanceColorWell, "mBoardClearanceColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardDotColorGridColorWell, "mBoardDotColorGridColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardDrawErrorBackgroundCheckbox, "mBoardDrawErrorBackgroundCheckbox", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mBoardDrawWarningBackgroundCheckbox, "mBoardDrawWarningBackgroundCheckbox", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mBoardErrorBackgroundColorWell, "mBoardErrorBackgroundColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardInner1LayoutColorWell, "mBoardInner1LayoutColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardInner2LayoutColorWell, "mBoardInner2LayoutColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardInner3LayoutColorWell, "mBoardInner3LayoutColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardInner4LayoutColorWell, "mBoardInner4LayoutColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardLimitsColorWell, "mBoardLimitsColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardLineColorGridColorWell, "mBoardLineColorGridColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardPackageDrawingWidthMultipliedByTenPopupButton, "mBoardPackageDrawingWidthMultipliedByTenPopupButton", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mBoardPadFontButton, "mBoardPadFontButton", EBFontButton.self, #file, #line)
-    checkOutletConnection (self.mBoardPadNumberColorWell, "mBoardPadNumberColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardTopSideLayoutColorWell, "mBoardTopSideLayoutColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardTopSideLegendColorWell, "mBoardTopSideLegendColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardTopSidePadColorWell, "mBoardTopSidePadColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardTopSideRestrictRectangleColorWell, "mBoardTopSideRestrictRectangleColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mBoardWarningBackgroundColorWell, "mBoardWarningBackgroundColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mBottomSidePadColorDorDeviveColorWell, "mBottomSidePadColorDorDeviveColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mCancelButtonInLibraryUpdateWindow, "mCancelButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
     checkOutletConnection (self.mCheckForLibraryUpdatesButton, "mCheckForLibraryUpdatesButton", NSButton.self, #file, #line)
@@ -535,30 +487,6 @@ var g_Preferences : Preferences? = nil
     mPinNameFontForDeviceFontButton?.bind_fontValue (preferences_mPinNameFontForDevice_property)
     mSymbolDrawingWidthMultipliedByTenForDevicePopupButton?.bind_selectedTag (preferences_symbolDrawingWidthForDeviceMultipliedByTen_property)
     mPackageDrawingWidthMultipliedByTenForDevicePopupButton?.bind_selectedTag (preferences_packageDrawingWidthForDeviceMultipliedByTen_property)
-    mBoardDotColorGridColorWell?.bind_color (preferences_crossColorGridForBoard_property, sendContinously:true)
-    mBoardLineColorGridColorWell?.bind_color (preferences_lineColorGridForBoard_property, sendContinously:true)
-    mBoardBackgroundColorWell?.bind_color (preferences_boardBackgroundColorForBoard_property, sendContinously:true)
-    mBoardErrorBackgroundColorWell?.bind_color (preferences_errorBackgroundColorForBoard_property, sendContinously:true)
-    mBoardDrawErrorBackgroundCheckbox?.bind_value (preferences_drawErrorBackgroundForBoard_property)
-    mBoardWarningBackgroundColorWell?.bind_color (preferences_warningBackgroundColorForBoard_property, sendContinously:true)
-    mBoardDrawWarningBackgroundCheckbox?.bind_value (preferences_drawWarningBackgroundForBoard_property)
-    mBoardLimitsColorWell?.bind_color (preferences_boardLimitsColorForBoard_property, sendContinously:true)
-    mBoardClearanceColorWell?.bind_color (preferences_boardClearanceColorForBoard_property, sendContinously:true)
-    mBoardTopSideRestrictRectangleColorWell?.bind_color (preferences_frontSideRestrictRectangleColorForBoard_property, sendContinously:true)
-    mBoardBottomSideRestrictRectangleColorWell?.bind_color (preferences_backSideRestrictRectangleColorForBoard_property, sendContinously:true)
-    mBoardTopSideLegendColorWell?.bind_color (preferences_frontSideLegendColorForBoard_property, sendContinously:true)
-    mBoardTopSideLayoutColorWell?.bind_color (preferences_frontSideLayoutColorForBoard_property, sendContinously:true)
-    mBoardBottomSideLayoutColorWell?.bind_color (preferences_backSideLayoutColorForBoard_property, sendContinously:true)
-    mBoardInner1LayoutColorWell?.bind_color (preferences_inner1LayoutColorForBoard_property, sendContinously:true)
-    mBoardInner2LayoutColorWell?.bind_color (preferences_inner2LayoutColorForBoard_property, sendContinously:true)
-    mBoardInner3LayoutColorWell?.bind_color (preferences_inner3LayoutColorForBoard_property, sendContinously:true)
-    mBoardInner4LayoutColorWell?.bind_color (preferences_inner4LayoutColorForBoard_property, sendContinously:true)
-    mBoardBottomSideLegendColorWell?.bind_color (preferences_backSideLegendColorForBoard_property, sendContinously:true)
-    mBoardTopSidePadColorWell?.bind_color (preferences_frontSidePadColorForBoard_property, sendContinously:true)
-    mBoardBottomSidePadColorWell?.bind_color (preferences_backSidePadColorForBoard_property, sendContinously:true)
-    mBoardPadFontButton?.bind_fontValue (preferences_padNumberFontForBoard_property)
-    mBoardPadNumberColorWell?.bind_color (preferences_padNumberColorForBoard_property, sendContinously:true)
-    mBoardPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (preferences_packageDrawingWidthMultpliedByTenForBoard_property)
     mUseLibraryInUserApplicationSupportPathCheckBox?.bind_value (preferences_usesUserLibrary_property)
     mCheckForSystemLibraryAtStartUpSwitch?.bind_value (preferences_checkForSystemLibraryAtStartUp_property)
     nextSystemLibraryCheckDate?.bind_dateObserver (preferences_mLastSystemLibraryCheckTime_property)

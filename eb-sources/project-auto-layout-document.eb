@@ -1230,6 +1230,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           right: Checkbox (title: "Vertical", size : .small)  { $value root.mBoardVerticalFlip }
         )
         addFirstBaseLineAligned (
+          left: StaticLabel (title: "Cross Grid", bold: no, size: .small),
+          right: hStack { ColorWell { $color prefs.crossColorGridForBoard (sendContinously:yes) } space }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Line Grid", bold: no, size: .small),
+          right: hStack { ColorWell { $color prefs.lineColorGridForBoard (sendContinously:yes) } space }
+        )
+        addFirstBaseLineAligned (
           left: hStack { StaticLabel (title: "Rastnet", bold: yes, size: .small) space},
           right: EnumPopUpButton (titles: enum RastnetDisplay.popupTitles, size: .small) { $selectedIndex root.mRastnetDisplay }
         )
@@ -1261,6 +1269,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           single: hStack { StaticLabel (title: "Display Inspector", bold: yes, size: .small) space}
         )
         addFirstBaseLineAligned (
+          left: StaticLabel (title: "Pad Number", bold: no, size: .small),
+          right: FontButton (size: .small) { $fontValue prefs.padNumberFontForBoard }
+        )
+        addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.frontSidePadColorForBoard (sendContinously:yes) } },
           right: Checkbox (title: "Front Side Pads", size : .small)  { expandableHeight  () $value prefs.displayFrontPadsForBoard }
         )
@@ -1271,6 +1283,17 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.padNumberColorForBoard (sendContinously:yes) } },
           right: Checkbox (title: "Pad Numbers", size : .small)  { expandableHeight  () $value prefs.displayPadNumbersForBoard }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Package Width", bold: no, size: .small),
+          right: TaggedPopUpButton (size: .small) {
+            add (title: "0.5 Point",   withTag:  5)
+            add (title: "1.0 Point",  withTag:  10)
+            add (title: "1.5 Point",  withTag:  15)
+            add (title: "2.0 Point",  withTag:  20)
+            add (title: "2.5 Point",  withTag:  25)
+            $selectedTag prefs.packageDrawingWidthMultpliedByTenForBoard
+          }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { $color prefs.frontSideLegendColorForBoard (sendContinously:yes) } },
@@ -1339,6 +1362,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         addCenterYAligned (
           left: hStack { space ColorWell { $color prefs.boardBackgroundColorForBoard (sendContinously:yes) } },
           right: hStack { StaticLabel (title: "Background", bold: no, size : .small) space }
+        )
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { $color prefs.errorBackgroundColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Error Background", size : .small)  { expandableHeight  () $value prefs.drawErrorBackgroundForBoard }
+        )
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { $color prefs.warningBackgroundColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Warning Background", size : .small)  { expandableHeight  () $value prefs.drawWarningBackgroundForBoard }
         )
       }
     )
