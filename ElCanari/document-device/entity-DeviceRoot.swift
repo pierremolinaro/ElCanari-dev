@@ -12,6 +12,12 @@ protocol DeviceRoot_mSelectedPageIndex : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol DeviceRoot_mSelectedSymbolInspectorIndex : AnyObject {
+  var mSelectedSymbolInspectorIndex : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol DeviceRoot_mTitle : AnyObject {
   var mTitle : String { get }
 }
@@ -84,18 +90,6 @@ protocol DeviceRoot_mSymbolDisplayZoom : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mSymbolDisplayHorizontalFlip : AnyObject {
-  var mSymbolDisplayHorizontalFlip : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol DeviceRoot_mSymbolDisplayVerticalFlip : AnyObject {
-  var mSymbolDisplayVerticalFlip : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol DeviceRoot_imageIsValid : AnyObject {
   var imageIsValid : Bool? { get }
 }
@@ -160,6 +154,7 @@ protocol DeviceRoot_issues : AnyObject {
 
 final class DeviceRoot : EBManagedObject,
          DeviceRoot_mSelectedPageIndex,
+         DeviceRoot_mSelectedSymbolInspectorIndex,
          DeviceRoot_mTitle,
          DeviceRoot_mImageData,
          DeviceRoot_mPrefix,
@@ -172,8 +167,6 @@ final class DeviceRoot : EBManagedObject,
          DeviceRoot_mShowPackageFrontPads,
          DeviceRoot_mShowPackageBackPads,
          DeviceRoot_mSymbolDisplayZoom,
-         DeviceRoot_mSymbolDisplayHorizontalFlip,
-         DeviceRoot_mSymbolDisplayVerticalFlip,
          DeviceRoot_imageIsValid,
          DeviceRoot_unconnectedPins,
          DeviceRoot_inconsistentPackagePadNameSetsMessage,
@@ -202,6 +195,25 @@ final class DeviceRoot : EBManagedObject,
   final var mSelectedPageIndex : Int {
     get { return self.mSelectedPageIndex_property.propval }
     set { self.mSelectedPageIndex_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mSelectedSymbolInspectorIndex
+  //····················································································································
+
+  final let mSelectedSymbolInspectorIndex_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mSelectedSymbolInspectorIndex_toDefaultValue () {
+    self.mSelectedSymbolInspectorIndex = 0
+  }
+
+  //····················································································································
+
+  final var mSelectedSymbolInspectorIndex : Int {
+    get { return self.mSelectedSymbolInspectorIndex_property.propval }
+    set { self.mSelectedSymbolInspectorIndex_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -430,44 +442,6 @@ final class DeviceRoot : EBManagedObject,
   final var mSymbolDisplayZoom : Int {
     get { return self.mSymbolDisplayZoom_property.propval }
     set { self.mSymbolDisplayZoom_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: mSymbolDisplayHorizontalFlip
-  //····················································································································
-
-  final let mSymbolDisplayHorizontalFlip_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final func reset_mSymbolDisplayHorizontalFlip_toDefaultValue () {
-    self.mSymbolDisplayHorizontalFlip = false
-  }
-
-  //····················································································································
-
-  final var mSymbolDisplayHorizontalFlip : Bool {
-    get { return self.mSymbolDisplayHorizontalFlip_property.propval }
-    set { self.mSymbolDisplayHorizontalFlip_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: mSymbolDisplayVerticalFlip
-  //····················································································································
-
-  final let mSymbolDisplayVerticalFlip_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final func reset_mSymbolDisplayVerticalFlip_toDefaultValue () {
-    self.mSymbolDisplayVerticalFlip = false
-  }
-
-  //····················································································································
-
-  final var mSymbolDisplayVerticalFlip : Bool {
-    get { return self.mSymbolDisplayVerticalFlip_property.propval }
-    set { self.mSymbolDisplayVerticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -721,6 +695,7 @@ final class DeviceRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
+    self.mSelectedSymbolInspectorIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
     self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
@@ -733,8 +708,6 @@ final class DeviceRoot : EBManagedObject,
     self.mShowPackageFrontPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400, undoManager: ebUndoManager)
-    self.mSymbolDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mSymbolDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     super.init (ebUndoManager)
   //--- To many property: mDocs (no option)
     self.mDocs_property.ebUndoManager = self.ebUndoManager
@@ -1007,6 +980,14 @@ final class DeviceRoot : EBManagedObject,
         valueExplorer: &self.mSelectedPageIndex_property.mValueExplorer
       )
       createEntryForPropertyNamed (
+        "mSelectedSymbolInspectorIndex",
+        object: self.mSelectedSymbolInspectorIndex_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.mSelectedSymbolInspectorIndex_property.mObserverExplorer,
+        valueExplorer: &self.mSelectedSymbolInspectorIndex_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
         "mTitle",
         object: self.mTitle_property,
         y: &y,
@@ -1101,22 +1082,6 @@ final class DeviceRoot : EBManagedObject,
         view: view,
         observerExplorer: &self.mSymbolDisplayZoom_property.mObserverExplorer,
         valueExplorer: &self.mSymbolDisplayZoom_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "mSymbolDisplayHorizontalFlip",
-        object: self.mSymbolDisplayHorizontalFlip_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mSymbolDisplayHorizontalFlip_property.mObserverExplorer,
-        valueExplorer: &self.mSymbolDisplayHorizontalFlip_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "mSymbolDisplayVerticalFlip",
-        object: self.mSymbolDisplayVerticalFlip_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mSymbolDisplayVerticalFlip_property.mObserverExplorer,
-        valueExplorer: &self.mSymbolDisplayVerticalFlip_property.mValueExplorer
       )
       createEntryForTitle ("Properties", y: &y, view: view)
       createEntryForPropertyNamed (
@@ -1249,6 +1214,9 @@ final class DeviceRoot : EBManagedObject,
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.mObserverExplorer = nil
     self.mSelectedPageIndex_property.mValueExplorer = nil
+  //--- Atomic property: mSelectedSymbolInspectorIndex
+    self.mSelectedSymbolInspectorIndex_property.mObserverExplorer = nil
+    self.mSelectedSymbolInspectorIndex_property.mValueExplorer = nil
   //--- Atomic property: mTitle
     self.mTitle_property.mObserverExplorer = nil
     self.mTitle_property.mValueExplorer = nil
@@ -1285,12 +1253,6 @@ final class DeviceRoot : EBManagedObject,
   //--- Atomic property: mSymbolDisplayZoom
     self.mSymbolDisplayZoom_property.mObserverExplorer = nil
     self.mSymbolDisplayZoom_property.mValueExplorer = nil
-  //--- Atomic property: mSymbolDisplayHorizontalFlip
-    self.mSymbolDisplayHorizontalFlip_property.mObserverExplorer = nil
-    self.mSymbolDisplayHorizontalFlip_property.mValueExplorer = nil
-  //--- Atomic property: mSymbolDisplayVerticalFlip
-    self.mSymbolDisplayVerticalFlip_property.mObserverExplorer = nil
-    self.mSymbolDisplayVerticalFlip_property.mValueExplorer = nil
     //--- To many property: mDocs
       self.mDocs_property.mValueExplorer = nil
     //--- To many property: mSymbolInstances
@@ -1337,6 +1299,8 @@ final class DeviceRoot : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
     //--- Atomic property: mSelectedPageIndex
       self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedPageIndex")
+    //--- Atomic property: mSelectedSymbolInspectorIndex
+      self.mSelectedSymbolInspectorIndex_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedSymbolInspectorIndex")
     //--- Atomic property: mTitle
       self.mTitle_property.storeIn (dictionary: ioDictionary, forKey: "mTitle")
     //--- Atomic property: mImageData
@@ -1361,10 +1325,6 @@ final class DeviceRoot : EBManagedObject,
       self.mShowPackageBackPads_property.storeIn (dictionary: ioDictionary, forKey: "mShowPackageBackPads")
     //--- Atomic property: mSymbolDisplayZoom
       self.mSymbolDisplayZoom_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolDisplayZoom")
-    //--- Atomic property: mSymbolDisplayHorizontalFlip
-      self.mSymbolDisplayHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolDisplayHorizontalFlip")
-    //--- Atomic property: mSymbolDisplayVerticalFlip
-      self.mSymbolDisplayVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolDisplayVerticalFlip")
   //--- To many property: mDocs
     self.store (
       managedObjectArray: self.mDocs_property.propval.values,
@@ -1484,6 +1444,8 @@ final class DeviceRoot : EBManagedObject,
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey: "mSelectedPageIndex")
+  //--- Atomic property: mSelectedSymbolInspectorIndex
+    self.mSelectedSymbolInspectorIndex_property.readFrom (dictionary: inDictionary, forKey: "mSelectedSymbolInspectorIndex")
   //--- Atomic property: mTitle
     self.mTitle_property.readFrom (dictionary: inDictionary, forKey: "mTitle")
   //--- Atomic property: mImageData
@@ -1508,10 +1470,6 @@ final class DeviceRoot : EBManagedObject,
     self.mShowPackageBackPads_property.readFrom (dictionary: inDictionary, forKey: "mShowPackageBackPads")
   //--- Atomic property: mSymbolDisplayZoom
     self.mSymbolDisplayZoom_property.readFrom (dictionary: inDictionary, forKey: "mSymbolDisplayZoom")
-  //--- Atomic property: mSymbolDisplayHorizontalFlip
-    self.mSymbolDisplayHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey: "mSymbolDisplayHorizontalFlip")
-  //--- Atomic property: mSymbolDisplayVerticalFlip
-    self.mSymbolDisplayVerticalFlip_property.readFrom (dictionary: inDictionary, forKey: "mSymbolDisplayVerticalFlip")
   }
 
 
@@ -1523,6 +1481,7 @@ final class DeviceRoot : EBManagedObject,
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mSelectedPageIndex\n"
+    ioString += "mSelectedSymbolInspectorIndex\n"
     ioString += "mTitle\n"
     ioString += "mImageData\n"
     ioString += "mPrefix\n"
@@ -1535,8 +1494,6 @@ final class DeviceRoot : EBManagedObject,
     ioString += "mShowPackageFrontPads\n"
     ioString += "mShowPackageBackPads\n"
     ioString += "mSymbolDisplayZoom\n"
-    ioString += "mSymbolDisplayHorizontalFlip\n"
-    ioString += "mSymbolDisplayVerticalFlip\n"
   //--- To one relationships
   //--- To many relationships
     ioString += "mDocs\n"
@@ -1554,6 +1511,8 @@ final class DeviceRoot : EBManagedObject,
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mSelectedPageIndex.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSelectedSymbolInspectorIndex.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mTitle.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -1578,10 +1537,6 @@ final class DeviceRoot : EBManagedObject,
     self.mShowPackageBackPads.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mSymbolDisplayZoom.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.mSymbolDisplayHorizontalFlip.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.mSymbolDisplayVerticalFlip.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
@@ -1756,6 +1711,9 @@ final class DeviceRoot : EBManagedObject,
       if let range = inDictionary ["mSelectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mSelectedPageIndex = value
       }
+      if let range = inDictionary ["mSelectedSymbolInspectorIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
+        self.mSelectedSymbolInspectorIndex = value
+      }
       if let range = inDictionary ["mTitle"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mTitle = value
       }
@@ -1791,12 +1749,6 @@ final class DeviceRoot : EBManagedObject,
       }
       if let range = inDictionary ["mSymbolDisplayZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mSymbolDisplayZoom = value
-      }
-      if let range = inDictionary ["mSymbolDisplayHorizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mSymbolDisplayHorizontalFlip = value
-      }
-      if let range = inDictionary ["mSymbolDisplayVerticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mSymbolDisplayVerticalFlip = value
       }
     //--- To one relationships
     //--- To many relationships

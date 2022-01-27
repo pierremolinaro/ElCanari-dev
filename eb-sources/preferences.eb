@@ -201,14 +201,13 @@ prefs {
 //! Device pane
 
 prefs {
-//--- Grid Colors
-  property NSColor mSymbolAndPackageGridDotColorForDevice default black;
-  outlet EBColorWell mSymbolAndPackageGridDotColorForDeviceColorWell $color self.mSymbolAndPackageGridDotColorForDevice (sendContinously:yes) ;
-  property NSColor mSymbolAndPackageGridLineColorForDevice  default gray;
-  outlet EBColorWell mSymbolAndPackageLineDotColorForDeviceColorWell $color self.mSymbolAndPackageGridLineColorForDevice (sendContinously:yes) ;
 //--- Package Color
   property NSColor mSymbolAndPackageBackgroundColorForDevice default white;
-  outlet EBColorWell mSymbolAndPackageBackgroundColorForDeviceColorWell $color self.mSymbolAndPackageBackgroundColorForDevice (sendContinously:yes) ;
+//--- Background Color
+  property NSColor mSymbolBackColorForDevice default white;
+//--- Flip
+  property Bool mSymbolHorizontalFlipForDevice default no;
+  property Bool mSymbolVerticalFlipForDevice default no;
 //--- Package Color
   property NSColor mPackageColorForDevice default brown;
   outlet EBColorWell mPackageColorForDeviceColorWell $color self.mPackageColorForDevice (sendContinously:yes) ;
@@ -228,16 +227,12 @@ prefs {
   outlet EBFontButton mPadNumberFontForDeviceFontButton $fontValue self.mPadNumberFontForDevice ;
 //--- Symbol Color
   property NSColor mSymbolColorForDevice default brown;
-  outlet EBColorWell mSymbolColorForDeviceColorWell $color self.mSymbolColorForDevice (sendContinously:yes) ;
 //--- Symbol Name Font
   property NSFont mSymbolNameFontForDevice default 9 ; //toolTipsFontOfSize:9 ;
-  outlet EBFontButton mSymbolNameFontForDeviceFontButton $fontValue self.mSymbolNameFontForDevice ;
 //--- Pin Name Font
   property NSFont mPinNameFontForDevice default 6 ; //toolTipsFontOfSize:6 ;
-  outlet EBFontButton mPinNameFontForDeviceFontButton $fontValue self.mPinNameFontForDevice ;
 //--- Symbol drawing width
   property Int symbolDrawingWidthForDeviceMultipliedByTen default 15 ;
-  outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenForDevicePopupButton $selectedTag self.symbolDrawingWidthForDeviceMultipliedByTen ;
 //--- Package drawing width
   property Int packageDrawingWidthForDeviceMultipliedByTen default 15 ;
   outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenForDevicePopupButton $selectedTag self.packageDrawingWidthForDeviceMultipliedByTen ;

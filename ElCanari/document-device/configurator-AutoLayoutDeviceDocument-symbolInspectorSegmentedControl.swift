@@ -17,18 +17,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension AutoLayoutSymbolDocument {
-  final func configure_symbolPageSegmentedControl (_ inOutlet : AutoLayoutSegmentedControlWithPages) {
+extension AutoLayoutDeviceDocument {
+  final func configure_symbolInspectorSegmentedControl (_ inOutlet : AutoLayoutSegmentedControlWithPages) {
 //--- START OF USER ZONE 2
         inOutlet.setLabel ("🛠", forSegment: 0)
         inOutlet.setLabel ("🔍", forSegment: 1)
-        inOutlet.setLabel ("🔍", forSegment: 2)
-
-         inOutlet.setLabel ("P", forSegment: 2)
-
-         inOutlet.setImage (NSImage.statusSuccess, forSegment: 3)
-         inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 3)
-         inOutlet.setLabel ("", forSegment: 3)
 //--- END OF USER ZONE 2
   }
 }

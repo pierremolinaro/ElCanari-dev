@@ -94,54 +94,108 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   action saveDocAction ;
 
 //······················································································································
-//   SYMBOLS
+//   SYMBOLS mSelectedSymbolInspectorIndex
 //······················································································································
 
   stackView mSymbolsPage hStack {
     vStack set (width: 250) set (margins: 8) {
-      StaticLabel (title: "Add Symbol From", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
-      hStack {
-        Button (title: "File Library…", size : .small) { $run addSymbolFromLibraryAction }
-        CanariAddSymbolInstancePullDownButton [configurator addSymbolInstancePullDownButton] {
-          $enabled root.mSymbolTypes.count > 0
-          $symbolTypeNames root.symbolTypeNames
-        }
-        space
-      }
-      StaticLabel (title: "Flip", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
-      hStack {
-        Checkbox (title: "Horizontal Flip", size : .small) { $value root.mSymbolDisplayHorizontalFlip }
-        Checkbox (title: "Vertical Flip", size : .small) { $value root.mSymbolDisplayVerticalFlip }
-        space
-      }
-      StaticLabel (title: "Symbol Type", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
-      Label (bold: yes, size : .small) {
-        set (alignment: .center)
+      SegmentedControlWithPages (documentView: stackView mSymbolPageInspectorView, equalWidth: yes, size: .small)
+        [configurator symbolInspectorSegmentedControl] {
         expandableWidth ()
-        $title #symbolInstanceSelection.symbolTypeName
-      }      
-      StaticLabel (title: "Symbol Name", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
-      TextField (minWidth: 70, size : .small) {
-        expandableWidth ()
-        $value #symbolInstanceSelection.mInstanceName  (sendContinously : yes)
+        addPage (title: "", tooltip: "", pageView: stackView mSymbolPageOperationView)
+        addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: stackView mSymbolGridZoomInspectorView)
+        $selectedPage root. mSelectedSymbolInspectorIndex
       }
-      StaticLabel (title: "Symbol Errors", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
-      TextObserverView { setRedTextColor () $observedValue root.inconsistentSymbolNameSetMessage }
+      vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
+        stackViewRef mSymbolPageInspectorView
+      }
       space
     }
     separator
     GraphicView (minZoom: 10, maxZoom: 4000) {
-      $horizontalFlip root.mSymbolDisplayHorizontalFlip
-      $verticalFlip root.mSymbolDisplayVerticalFlip
+      $horizontalFlip prefs.mSymbolHorizontalFlipForDevice
+      $verticalFlip prefs.mSymbolHorizontalFlipForDevice
       $graphicController #symbolDisplayController
       $zoom root.mSymbolDisplayZoom
+      $backColor prefs.mSymbolBackColorForDevice
     }
+  }
+  
+  stackView mSymbolPageInspectorView hStack {
+  }
+  
+  stackView mSymbolPageOperationView vStack set (width: 250) set (margins: 8) {
+    StaticLabel (title: "Add Symbol From", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
+    hStack {
+      Button (title: "File Library…", size : .small) { $run addSymbolFromLibraryAction }
+      CanariAddSymbolInstancePullDownButton [configurator addSymbolInstancePullDownButton] {
+        $enabled root.mSymbolTypes.count > 0
+        $symbolTypeNames root.symbolTypeNames
+      }
+      space
+    }
+    StaticLabel (title: "Symbol Type", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
+    Label (bold: yes, size : .small) {
+      set (alignment: .center)
+      expandableWidth ()
+      $title #symbolInstanceSelection.symbolTypeName
+    }      
+    StaticLabel (title: "Symbol Name", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
+    TextField (minWidth: 70, size : .small) {
+      expandableWidth ()
+      $value #symbolInstanceSelection.mInstanceName  (sendContinously : yes)
+    }
+    StaticLabel (title: "Symbol Errors", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
+    TextObserverView { setRedTextColor () $observedValue root.inconsistentSymbolNameSetMessage }
+    space
   }    
 
   arrayController #symbolDisplayController : root.mSymbolInstances ;
   selectionController SymbolInstanceInDevice #symbolInstanceSelection : #symbolDisplayController.selectedArray ;
 
   action addSymbolFromLibraryAction ;
+
+  
+  stackView mSymbolGridZoomInspectorView vStack {
+    StaticLabel (title: "Display Inspector", bold: yes, size : .small) { set (alignment: .center) expandableWidth () }
+    GridView2 {
+      addCenterYAligned (
+        left: StaticLabel (title: "Background", bold: no, size: .small),
+        right: hStack { ColorWell { $color prefs.mSymbolBackColorForDevice (sendContinously:no) } space }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Flip", bold: no, size: .small),
+        right: Checkbox (title: "Horizontal", size : .small) { $value prefs.mSymbolHorizontalFlipForDevice }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: Checkbox (title: "Vertical", size : .small) { $value prefs.mSymbolVerticalFlipForDevice }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Symbol Color", bold: no, size: .small),
+        right: hStack { ColorWell { $color prefs.mSymbolColorForDevice (sendContinously:no) } space }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Symbol Width", bold: no, size: .small),
+        right: TaggedPopUpButton (size: .small) {
+          add (title: "0.5 Point", withTag: 5)
+          add (title: "1.0 Point", withTag: 10)
+          add (title: "1.5 Point", withTag: 15)
+          add (title: "2.0 Points", withTag: 20)
+          add (title: "2.5 Points", withTag: 25)
+          $selectedTag prefs.symbolDrawingWidthForDeviceMultipliedByTen
+        }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Symbol Name Font", bold: no, size: .small),
+        right: FontButton (size: .small) { $fontValue prefs.mSymbolNameFontForDevice }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Pin Name Font", bold: no, size: .small),
+        right: FontButton (size: .small) { $fontValue prefs.mPinNameFontForDevice }
+      )
+    }
+  }
 
 //······················································································································
 //   PACKAGES

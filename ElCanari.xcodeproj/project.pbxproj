@@ -3380,6 +3380,9 @@
 		CFABB0CB27A29A1F0007A1F9 /* EBImageObserverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5199971BF26C2600A63CF0 /* EBImageObserverView.swift */; };
 		CFABB0CC27A29A490007A1F9 /* EBProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB0F5EB1BDBC9F700939954 /* EBProgressIndicator.swift */; };
 		CFABB0CD27A29A910007A1F9 /* CanariDateObserverField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB63F96211B7B25000A09F1 /* CanariDateObserverField.swift */; };
+		CFABB1BA27A2B0D40007A1F9 /* configurator-AutoLayoutDeviceDocument-symbolInspectorSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFABB1B927A2B0D40007A1F9 /* configurator-AutoLayoutDeviceDocument-symbolInspectorSegmentedControl.swift */; };
+		CFABB1BB27A2B0D40007A1F9 /* configurator-AutoLayoutDeviceDocument-symbolInspectorSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFABB1B927A2B0D40007A1F9 /* configurator-AutoLayoutDeviceDocument-symbolInspectorSegmentedControl.swift */; };
+		CFABB1BC27A2B0D40007A1F9 /* configurator-AutoLayoutDeviceDocument-symbolInspectorSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFABB1B927A2B0D40007A1F9 /* configurator-AutoLayoutDeviceDocument-symbolInspectorSegmentedControl.swift */; };
 		CFAE00ED25C6C485004083C5 /* transient-ComponentInProject-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE00EC25C6C485004083C5 /* transient-ComponentInProject-signatureForERCChecking.swift */; };
 		CFAE00EE25C6C485004083C5 /* transient-ComponentInProject-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE00EC25C6C485004083C5 /* transient-ComponentInProject-signatureForERCChecking.swift */; };
 		CFAFA54324F26F2C002D48BE /* ElCanariCursors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAFA54224F26F2C002D48BE /* ElCanariCursors.swift */; };
@@ -5603,6 +5606,7 @@
 		CFAA052E22F1D4F300030A0C /* EBLinePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBLinePath.swift; sourceTree = "<group>"; };
 		CFAA74181B46955400327BAE /* entity-ArtworkFileGenerationParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-ArtworkFileGenerationParameters.swift"; sourceTree = "<group>"; };
 		CFAB36A423786D68000C9954 /* transient-PackageObject-knobSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageObject-knobSize.swift"; sourceTree = "<group>"; };
+		CFABB1B927A2B0D40007A1F9 /* configurator-AutoLayoutDeviceDocument-symbolInspectorSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutDeviceDocument-symbolInspectorSegmentedControl.swift"; sourceTree = "<group>"; };
 		CFAE00EC25C6C485004083C5 /* transient-ComponentInProject-signatureForERCChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ComponentInProject-signatureForERCChecking.swift"; sourceTree = "<group>"; };
 		CFAFA54224F26F2C002D48BE /* ElCanariCursors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElCanariCursors.swift; sourceTree = "<group>"; };
 		CFB0F5EB1BDBC9F700939954 /* EBProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBProgressIndicator.swift; sourceTree = "<group>"; };
@@ -7122,6 +7126,7 @@
 		CF85624921E7CB110032F52D /* document — device */ = {
 			isa = PBXGroup;
 			children = (
+				CFABB1B927A2B0D40007A1F9 /* configurator-AutoLayoutDeviceDocument-symbolInspectorSegmentedControl.swift */,
 				CF39CC98268CC0B1004971F9 /* action-AutoLayoutDeviceDocument-addPackageFromLibraryAction.swift */,
 				CF39CC8E268CC0B0004971F9 /* action-AutoLayoutDeviceDocument-addSymbolFromLibraryAction.swift */,
 				CF39CCA3268CC0B3004971F9 /* action-AutoLayoutDeviceDocument-editSelectedPackages.swift */,
@@ -8683,6 +8688,7 @@
 				CF42D131275CF1A600B83712 /* controller-table-view-AutoLayoutMergerDocument-mDataController.swift in Sources */,
 				CF2FF0CD242F79C40030E49A /* toone-PackageModelImageDoublePoint.swift in Sources */,
 				CF6B32E821C8F75000E3B985 /* transient-PackageGuide-selectionDisplay.swift in Sources */,
+				CFABB1BA27A2B0D40007A1F9 /* configurator-AutoLayoutDeviceDocument-symbolInspectorSegmentedControl.swift in Sources */,
 				CFEB7BA2233A26F20060A97A /* transient-DevicePinInProject-pinQualifiedName.swift in Sources */,
 				CFA42F99229AEACF000AA8C8 /* toone-SymbolPinTypeInDevice.swift in Sources */,
 				CF315515275CC90800ED1FA8 /* transient-MergerRoot-hasSixLayers.swift in Sources */,
@@ -10178,6 +10184,7 @@
 				CF42D159275CF1A900B83712 /* controller-table-view-AutoLayoutMergerDocument-mDataController.swift in Sources */,
 				CF2FF0CE242F79C40030E49A /* toone-PackageModelImageDoublePoint.swift in Sources */,
 				CFEB7B6C233A260F0060A97A /* transient-ComponentSymbolInProject-selectionDisplay.swift in Sources */,
+				CFABB1BB27A2B0D40007A1F9 /* configurator-AutoLayoutDeviceDocument-symbolInspectorSegmentedControl.swift in Sources */,
 				CF711E3A275E1CC600280069 /* extension-SymbolText.swift in Sources */,
 				CF30CDEA21C5709800CFE9CC /* entity-PackagePad.swift in Sources */,
 				CFEB7BA3233A26F20060A97A /* transient-DevicePinInProject-pinQualifiedName.swift in Sources */,
@@ -11673,6 +11680,7 @@
 				CF9C60F925CABE5C00A00D5C /* enum-PadShape.swift in Sources */,
 				CF22F284275A73EE009C6FAC /* tomany-MergerBoardInstance.swift in Sources */,
 				CF711E3B275E1CC600280069 /* extension-SymbolText.swift in Sources */,
+				CFABB1BC27A2B0D40007A1F9 /* configurator-AutoLayoutDeviceDocument-symbolInspectorSegmentedControl.swift in Sources */,
 				CF711FF0275E1EA300280069 /* extension-SheetInProject-add-label.swift in Sources */,
 				CF49C13625D13A030082271E /* transient-SymbolBezierCurve-objectDisplay.swift in Sources */,
 				CF9C60FB25CABE5C00A00D5C /* toone-MasterPadInDevice.swift in Sources */,

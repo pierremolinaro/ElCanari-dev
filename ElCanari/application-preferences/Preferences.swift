@@ -266,19 +266,12 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mPackageNameFontForDeviceFontButton : EBFontButton? = nil
   @IBOutlet var mPadNumberColorForDeviceColorWell : EBColorWell? = nil
   @IBOutlet var mPadNumberFontForDeviceFontButton : EBFontButton? = nil
-  @IBOutlet var mPinNameFontForDeviceFontButton : EBFontButton? = nil
   @IBOutlet var mPrefsWindow : EBWindow? = nil
   @IBOutlet var mProgressIndicatorInLibraryUpdateWindow : EBProgressIndicator? = nil
   @IBOutlet var mRemoveLibraryEntryButton : EBButton? = nil
   @IBOutlet var mRevealInFinderLibraryInUserApplicationSupportButton : EBButton? = nil
   @IBOutlet var mSetLibraryRepositoryButton : NSButton? = nil
   @IBOutlet var mSetUserAndPasswordButton : NSButton? = nil
-  @IBOutlet var mSymbolAndPackageBackgroundColorForDeviceColorWell : EBColorWell? = nil
-  @IBOutlet var mSymbolAndPackageGridDotColorForDeviceColorWell : EBColorWell? = nil
-  @IBOutlet var mSymbolAndPackageLineDotColorForDeviceColorWell : EBColorWell? = nil
-  @IBOutlet var mSymbolColorForDeviceColorWell : EBColorWell? = nil
-  @IBOutlet var mSymbolDrawingWidthMultipliedByTenForDevicePopupButton : EBPopUpButton? = nil
-  @IBOutlet var mSymbolNameFontForDeviceFontButton : EBFontButton? = nil
   @IBOutlet var mTableViewInLibraryUpdateWindow : EBTableView? = nil
   @IBOutlet var mToolbar : CanariToolbar? = nil
   @IBOutlet var mTopSidePadColorForDeviceColorWell : EBColorWell? = nil
@@ -444,19 +437,12 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mPackageNameFontForDeviceFontButton, "mPackageNameFontForDeviceFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mPadNumberColorForDeviceColorWell, "mPadNumberColorForDeviceColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mPadNumberFontForDeviceFontButton, "mPadNumberFontForDeviceFontButton", EBFontButton.self, #file, #line)
-    checkOutletConnection (self.mPinNameFontForDeviceFontButton, "mPinNameFontForDeviceFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mPrefsWindow, "mPrefsWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mProgressIndicatorInLibraryUpdateWindow, "mProgressIndicatorInLibraryUpdateWindow", EBProgressIndicator.self, #file, #line)
     checkOutletConnection (self.mRemoveLibraryEntryButton, "mRemoveLibraryEntryButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRevealInFinderLibraryInUserApplicationSupportButton, "mRevealInFinderLibraryInUserApplicationSupportButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSetLibraryRepositoryButton, "mSetLibraryRepositoryButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mSetUserAndPasswordButton, "mSetUserAndPasswordButton", NSButton.self, #file, #line)
-    checkOutletConnection (self.mSymbolAndPackageBackgroundColorForDeviceColorWell, "mSymbolAndPackageBackgroundColorForDeviceColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mSymbolAndPackageGridDotColorForDeviceColorWell, "mSymbolAndPackageGridDotColorForDeviceColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mSymbolAndPackageLineDotColorForDeviceColorWell, "mSymbolAndPackageLineDotColorForDeviceColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mSymbolColorForDeviceColorWell, "mSymbolColorForDeviceColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mSymbolDrawingWidthMultipliedByTenForDevicePopupButton, "mSymbolDrawingWidthMultipliedByTenForDevicePopupButton", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mSymbolNameFontForDeviceFontButton, "mSymbolNameFontForDeviceFontButton", EBFontButton.self, #file, #line)
     checkOutletConnection (self.mTableViewInLibraryUpdateWindow, "mTableViewInLibraryUpdateWindow", EBTableView.self, #file, #line)
     checkOutletConnection (self.mToolbar, "mToolbar", CanariToolbar.self, #file, #line)
     checkOutletConnection (self.mTopSidePadColorForDeviceColorWell, "mTopSidePadColorForDeviceColorWell", EBColorWell.self, #file, #line)
@@ -473,19 +459,12 @@ var g_Preferences : Preferences? = nil
     mMenuRevealInFinder_devices?.bind_populateSubmenus (preferences_mValueRevealInFinder_devices_property)
     mMenuRevealInFinder_fonts?.bind_populateSubmenus (preferences_mValueRevealInFinder_fonts_property)
     mMenuRevealInFinder_artworks?.bind_populateSubmenus (preferences_mValueRevealInFinder_artworks_property)
-    mSymbolAndPackageGridDotColorForDeviceColorWell?.bind_color (preferences_mSymbolAndPackageGridDotColorForDevice_property, sendContinously:true)
-    mSymbolAndPackageLineDotColorForDeviceColorWell?.bind_color (preferences_mSymbolAndPackageGridLineColorForDevice_property, sendContinously:true)
-    mSymbolAndPackageBackgroundColorForDeviceColorWell?.bind_color (preferences_mSymbolAndPackageBackgroundColorForDevice_property, sendContinously:true)
     mPackageColorForDeviceColorWell?.bind_color (preferences_mPackageColorForDevice_property, sendContinously:true)
     mTopSidePadColorForDeviceColorWell?.bind_color (preferences_mFrontSidePadColorForDevice_property, sendContinously:true)
     mBottomSidePadColorDorDeviveColorWell?.bind_color (preferences_mBottomSidePadColorForDevice_property, sendContinously:true)
     mPadNumberColorForDeviceColorWell?.bind_color (preferences_mPadNumberColorForDevice_property, sendContinously:true)
     mPackageNameFontForDeviceFontButton?.bind_fontValue (preferences_mPadNumberFontForDevice_property)
     mPadNumberFontForDeviceFontButton?.bind_fontValue (preferences_mPadNumberFontForDevice_property)
-    mSymbolColorForDeviceColorWell?.bind_color (preferences_mSymbolColorForDevice_property, sendContinously:true)
-    mSymbolNameFontForDeviceFontButton?.bind_fontValue (preferences_mSymbolNameFontForDevice_property)
-    mPinNameFontForDeviceFontButton?.bind_fontValue (preferences_mPinNameFontForDevice_property)
-    mSymbolDrawingWidthMultipliedByTenForDevicePopupButton?.bind_selectedTag (preferences_symbolDrawingWidthForDeviceMultipliedByTen_property)
     mPackageDrawingWidthMultipliedByTenForDevicePopupButton?.bind_selectedTag (preferences_packageDrawingWidthForDeviceMultipliedByTen_property)
     mUseLibraryInUserApplicationSupportPathCheckBox?.bind_value (preferences_usesUserLibrary_property)
     mCheckForSystemLibraryAtStartUpSwitch?.bind_value (preferences_checkForSystemLibraryAtStartUp_property)
@@ -591,9 +570,10 @@ fileprivate let Preferences_dimensionFont = "Preferences:dimensionFont"
 fileprivate let Preferences_padZoneColor = "Preferences:padZoneColor"
 fileprivate let Preferences_padZoneFont = "Preferences:padZoneFont"
 fileprivate let Preferences_packageDrawingWidthMultipliedByTen = "Preferences:packageDrawingWidthMultipliedByTen"
-fileprivate let Preferences_mSymbolAndPackageGridDotColorForDevice = "Preferences:mSymbolAndPackageGridDotColorForDevice"
-fileprivate let Preferences_mSymbolAndPackageGridLineColorForDevice = "Preferences:mSymbolAndPackageGridLineColorForDevice"
 fileprivate let Preferences_mSymbolAndPackageBackgroundColorForDevice = "Preferences:mSymbolAndPackageBackgroundColorForDevice"
+fileprivate let Preferences_mSymbolBackColorForDevice = "Preferences:mSymbolBackColorForDevice"
+fileprivate let Preferences_mSymbolHorizontalFlipForDevice = "Preferences:mSymbolHorizontalFlipForDevice"
+fileprivate let Preferences_mSymbolVerticalFlipForDevice = "Preferences:mSymbolVerticalFlipForDevice"
 fileprivate let Preferences_mPackageColorForDevice = "Preferences:mPackageColorForDevice"
 fileprivate let Preferences_mFrontSidePadColorForDevice = "Preferences:mFrontSidePadColorForDevice"
 fileprivate let Preferences_mBottomSidePadColorForDevice = "Preferences:mBottomSidePadColorForDevice"
@@ -1076,32 +1056,6 @@ fileprivate let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSyst
   }
 
 //····················································································································
-//   Atomic property: mSymbolAndPackageGridDotColorForDevice
-//····················································································································
-
-  let preferences_mSymbolAndPackageGridDotColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_mSymbolAndPackageGridDotColorForDevice)
-
-//····················································································································
-
-  var preferences_mSymbolAndPackageGridDotColorForDevice : NSColor {
-    get { return preferences_mSymbolAndPackageGridDotColorForDevice_property.propval }
-    set { preferences_mSymbolAndPackageGridDotColorForDevice_property.setProp (newValue) }
-  }
-
-//····················································································································
-//   Atomic property: mSymbolAndPackageGridLineColorForDevice
-//····················································································································
-
-  let preferences_mSymbolAndPackageGridLineColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mSymbolAndPackageGridLineColorForDevice)
-
-//····················································································································
-
-  var preferences_mSymbolAndPackageGridLineColorForDevice : NSColor {
-    get { return preferences_mSymbolAndPackageGridLineColorForDevice_property.propval }
-    set { preferences_mSymbolAndPackageGridLineColorForDevice_property.setProp (newValue) }
-  }
-
-//····················································································································
 //   Atomic property: mSymbolAndPackageBackgroundColorForDevice
 //····················································································································
 
@@ -1112,6 +1066,45 @@ fileprivate let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSyst
   var preferences_mSymbolAndPackageBackgroundColorForDevice : NSColor {
     get { return preferences_mSymbolAndPackageBackgroundColorForDevice_property.propval }
     set { preferences_mSymbolAndPackageBackgroundColorForDevice_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mSymbolBackColorForDevice
+//····················································································································
+
+  let preferences_mSymbolBackColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_mSymbolBackColorForDevice)
+
+//····················································································································
+
+  var preferences_mSymbolBackColorForDevice : NSColor {
+    get { return preferences_mSymbolBackColorForDevice_property.propval }
+    set { preferences_mSymbolBackColorForDevice_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mSymbolHorizontalFlipForDevice
+//····················································································································
+
+  let preferences_mSymbolHorizontalFlipForDevice_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mSymbolHorizontalFlipForDevice)
+
+//····················································································································
+
+  var preferences_mSymbolHorizontalFlipForDevice : Bool {
+    get { return preferences_mSymbolHorizontalFlipForDevice_property.propval }
+    set { preferences_mSymbolHorizontalFlipForDevice_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mSymbolVerticalFlipForDevice
+//····················································································································
+
+  let preferences_mSymbolVerticalFlipForDevice_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mSymbolVerticalFlipForDevice)
+
+//····················································································································
+
+  var preferences_mSymbolVerticalFlipForDevice : Bool {
+    get { return preferences_mSymbolVerticalFlipForDevice_property.propval }
+    set { preferences_mSymbolVerticalFlipForDevice_property.setProp (newValue) }
   }
 
 //····················································································································

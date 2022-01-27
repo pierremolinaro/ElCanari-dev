@@ -443,81 +443,127 @@ import Cocoa
       .set (width: 250)
       .set (margins: 8)
     do{
-      let view_0_0 = AutoLayoutStaticLabel (title: "Add Symbol From", bold: true, size: .small)
-        .set (alignment: .left)
+      let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mSymbolPageInspectorView, equalWidth: true, size: .small)
         .expandableWidth ()
+        .addPage (title: "", tooltip: "", pageView: self.mSymbolPageOperationView)
+        .addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: self.mSymbolGridZoomInspectorView)
+        .bind_selectedPage (self.rootObject.mSelectedSymbolInspectorIndex_property)
+      self.configure_symbolInspectorSegmentedControl (view_0_0) // Configurator
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutHorizontalStackView ()
+      let view_0_1 = AutoLayoutVerticalStackView ()
+        .set (leftMargin: 20)
+        .set (rightMargin: 20)
+        .set (bottomMargin: 20)
+        .set (spacing: 12)
       do{
-        let view_0_1_0 = AutoLayoutButton (title: "File Library…", size: .small)
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutDeviceDocument.addSymbolFromLibraryAction (_:))
-          )
+        let view_0_1_0 = mSymbolPageInspectorView
         view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = AutoLayoutCanariAddSymbolInstancePullDownButton ()
-          .bind_symbolTypeNames (self.rootObject.symbolTypeNames_property)
-          .bind_enabled (.intcmp (.prop (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0)))
-        self.configure_addSymbolInstancePullDownButton (view_0_1_1) // Configurator
-        view_0_1.appendView (view_0_1_1)
-        let view_0_1_2 = AutoLayoutFlexibleSpace ()
-        view_0_1.appendView (view_0_1_2)
       }
       view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutStaticLabel (title: "Flip", bold: true, size: .small)
-        .set (alignment: .left)
-        .expandableWidth ()
+      let view_0_2 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_0_3_0 = AutoLayoutCheckbox (title: "Horizontal Flip", size: .small)
-          .bind_value (self.rootObject.mSymbolDisplayHorizontalFlip_property)
-        view_0_3.appendView (view_0_3_0)
-        let view_0_3_1 = AutoLayoutCheckbox (title: "Vertical Flip", size: .small)
-          .bind_value (self.rootObject.mSymbolDisplayVerticalFlip_property)
-        view_0_3.appendView (view_0_3_1)
-        let view_0_3_2 = AutoLayoutFlexibleSpace ()
-        view_0_3.appendView (view_0_3_2)
-      }
-      view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutStaticLabel (title: "Symbol Type", bold: true, size: .small)
-        .set (alignment: .left)
-        .expandableWidth ()
-      view_0.appendView (view_0_4)
-      let view_0_5 = AutoLayoutLabel (bold: true, size: .small)
-        .set (alignment: .center)
-        .expandableWidth ()
-        .bind_title (self.symbolInstanceSelection.symbolTypeName_property)
-      view_0.appendView (view_0_5)
-      let view_0_6 = AutoLayoutStaticLabel (title: "Symbol Name", bold: true, size: .small)
-        .set (alignment: .left)
-        .expandableWidth ()
-      view_0.appendView (view_0_6)
-      let view_0_7 = AutoLayoutTextField (minWidth: 70, size: .small)
-        .expandableWidth ()
-        .bind_value (self.symbolInstanceSelection.mInstanceName_property, sendContinously:true)
-      view_0.appendView (view_0_7)
-      let view_0_8 = AutoLayoutStaticLabel (title: "Symbol Errors", bold: true, size: .small)
-        .set (alignment: .left)
-        .expandableWidth ()
-      view_0.appendView (view_0_8)
-      let view_0_9 = AutoLayoutTextObserverView ()
-        .setRedTextColor ()
-        .bind_observedValue (self.rootObject.inconsistentSymbolNameSetMessage_property)
-      view_0.appendView (view_0_9)
-      let view_0_10 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_10)
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
     hStackView.appendView (view_1)
     let view_2 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
-      .bind_horizontalFlip (self.rootObject.mSymbolDisplayHorizontalFlip_property)
-      .bind_verticalFlip (self.rootObject.mSymbolDisplayVerticalFlip_property)
+      .bind_horizontalFlip (preferences_mSymbolHorizontalFlipForDevice_property)
+      .bind_verticalFlip (preferences_mSymbolHorizontalFlipForDevice_property)
       .bind_zoom (self.rootObject.mSymbolDisplayZoom_property)
+      .bind_backColor (preferences_mSymbolBackColorForDevice_property)
       .bind_graphic_controller (self.symbolDisplayController)
     hStackView.appendView (view_2)
     return hStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSymbolPageInspectorView
+  //····················································································································
+
+  lazy var mSymbolPageInspectorView : AutoLayoutHorizontalStackView = {
+    let hStackView = AutoLayoutHorizontalStackView ()
+    return hStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSymbolPageOperationView
+  //····················································································································
+
+  lazy var mSymbolPageOperationView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (width: 250)
+      .set (margins: 8)
+    let view_0 = AutoLayoutStaticLabel (title: "Add Symbol From", bold: true, size: .small)
+      .set (alignment: .left)
+      .expandableWidth ()
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_1_0 = AutoLayoutButton (title: "File Library…", size: .small)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutDeviceDocument.addSymbolFromLibraryAction (_:))
+        )
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutCanariAddSymbolInstancePullDownButton ()
+        .bind_symbolTypeNames (self.rootObject.symbolTypeNames_property)
+        .bind_enabled (.intcmp (.prop (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0)))
+      self.configure_addSymbolInstancePullDownButton (view_1_1) // Configurator
+      view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutFlexibleSpace ()
+      view_1.appendView (view_1_2)
+    }
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutStaticLabel (title: "Symbol Type", bold: true, size: .small)
+      .set (alignment: .left)
+      .expandableWidth ()
+    vStackView.appendView (view_2)
+    let view_3 = AutoLayoutLabel (bold: true, size: .small)
+      .set (alignment: .center)
+      .expandableWidth ()
+      .bind_title (self.symbolInstanceSelection.symbolTypeName_property)
+    vStackView.appendView (view_3)
+    let view_4 = AutoLayoutStaticLabel (title: "Symbol Name", bold: true, size: .small)
+      .set (alignment: .left)
+      .expandableWidth ()
+    vStackView.appendView (view_4)
+    let view_5 = AutoLayoutTextField (minWidth: 70, size: .small)
+      .expandableWidth ()
+      .bind_value (self.symbolInstanceSelection.mInstanceName_property, sendContinously:true)
+    vStackView.appendView (view_5)
+    let view_6 = AutoLayoutStaticLabel (title: "Symbol Errors", bold: true, size: .small)
+      .set (alignment: .left)
+      .expandableWidth ()
+    vStackView.appendView (view_6)
+    let view_7 = AutoLayoutTextObserverView ()
+      .setRedTextColor ()
+      .bind_observedValue (self.rootObject.inconsistentSymbolNameSetMessage_property)
+    vStackView.appendView (view_7)
+    let view_8 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_8)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSymbolGridZoomInspectorView
+  //····················································································································
+
+  lazy var mSymbolGridZoomInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutStaticLabel (title: "Display Inspector", bold: true, size: .small)
+      .set (alignment: .center)
+      .expandableWidth ()
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutGridView2 ()
+      .addCenterYAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
+      .addCenterYAligned (left: self.computeImplicitView_6 (), right: self.computeImplicitView_7 ())
+      .addCenterYAligned (left: self.computeImplicitView_8 (), right: self.computeImplicitView_9 ())
+      .addCenterYAligned (left: self.computeImplicitView_10 (), right: self.computeImplicitView_11 ())
+      .addCenterYAligned (left: self.computeImplicitView_12 (), right: self.computeImplicitView_13 ())
+    vStackView.appendView (view_1)
+    return vStackView
   } ()
 
   //····················································································································
@@ -978,6 +1024,156 @@ import Cocoa
   } ()
 
   //····················································································································
+  //    IMPLICIT VIEW 0
+  //····················································································································
+
+  fileprivate final func computeImplicitView_0 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 1
+  //····················································································································
+
+  fileprivate final func computeImplicitView_1 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_mSymbolBackColorForDevice_property, sendContinously:false)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 2
+  //····················································································································
+
+  fileprivate final func computeImplicitView_2 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 3
+  //····················································································································
+
+  fileprivate final func computeImplicitView_3 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
+      .bind_value (preferences_mSymbolHorizontalFlipForDevice_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 4
+  //····················································································································
+
+  fileprivate final func computeImplicitView_4 () -> NSView {
+    let view = AutoLayoutFlexibleSpace ()
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 5
+  //····················································································································
+
+  fileprivate final func computeImplicitView_5 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
+      .bind_value (preferences_mSymbolVerticalFlipForDevice_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 6
+  //····················································································································
+
+  fileprivate final func computeImplicitView_6 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Symbol Color", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 7
+  //····················································································································
+
+  fileprivate final func computeImplicitView_7 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_mSymbolColorForDevice_property, sendContinously:false)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 8
+  //····················································································································
+
+  fileprivate final func computeImplicitView_8 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Symbol Width", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 9
+  //····················································································································
+
+  fileprivate final func computeImplicitView_9 () -> NSView {
+    let view = AutoLayoutTaggedPopUpButton (size: .small)
+      .add (title: "0.5 Point", withTag: 5)
+      .add (title: "1.0 Point", withTag: 10)
+      .add (title: "1.5 Point", withTag: 15)
+      .add (title: "2.0 Points", withTag: 20)
+      .add (title: "2.5 Points", withTag: 25)
+      .bind_selectedTag (preferences_symbolDrawingWidthForDeviceMultipliedByTen_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 10
+  //····················································································································
+
+  fileprivate final func computeImplicitView_10 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Symbol Name Font", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 11
+  //····················································································································
+
+  fileprivate final func computeImplicitView_11 () -> NSView {
+    let view = AutoLayoutFontButton (size: .small)
+      .bind_fontValue (preferences_mSymbolNameFontForDevice_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 12
+  //····················································································································
+
+  fileprivate final func computeImplicitView_12 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Pin Name Font", bold: false, size: .small)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 13
+  //····················································································································
+
+  fileprivate final func computeImplicitView_13 () -> NSView {
+    let view = AutoLayoutFontButton (size: .small)
+      .bind_fontValue (preferences_mPinNameFontForDevice_property)
+    return view
+  }
+
+  //····················································································································
   //    Build User Interface
   //····················································································································
 
@@ -1255,6 +1451,9 @@ import Cocoa
     // self.mDocumentMainView.ebCleanUp ()
     // self.mDescriptionPage.ebCleanUp ()
     // self.mSymbolsPage.ebCleanUp ()
+    // self.mSymbolPageInspectorView.ebCleanUp ()
+    // self.mSymbolPageOperationView.ebCleanUp ()
+    // self.mSymbolGridZoomInspectorView.ebCleanUp ()
     // self.mPackagesPage.ebCleanUp ()
     // self.mLibraryPage.ebCleanUp ()
     // self.mAssignmentsPage.ebCleanUp ()

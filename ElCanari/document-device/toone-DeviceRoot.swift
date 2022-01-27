@@ -17,6 +17,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
       oldValue.mSelectedPageIndex_property.removeEBObserver (self.mSelectedPageIndex_property) // Stored property
+      oldValue.mSelectedSymbolInspectorIndex_property.removeEBObserver (self.mSelectedSymbolInspectorIndex_property) // Stored property
       oldValue.mTitle_property.removeEBObserver (self.mTitle_property) // Stored property
       oldValue.mImageData_property.removeEBObserver (self.mImageData_property) // Stored property
       oldValue.mPrefix_property.removeEBObserver (self.mPrefix_property) // Stored property
@@ -29,8 +30,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
       oldValue.mShowPackageFrontPads_property.removeEBObserver (self.mShowPackageFrontPads_property) // Stored property
       oldValue.mShowPackageBackPads_property.removeEBObserver (self.mShowPackageBackPads_property) // Stored property
       oldValue.mSymbolDisplayZoom_property.removeEBObserver (self.mSymbolDisplayZoom_property) // Stored property
-      oldValue.mSymbolDisplayHorizontalFlip_property.removeEBObserver (self.mSymbolDisplayHorizontalFlip_property) // Stored property
-      oldValue.mSymbolDisplayVerticalFlip_property.removeEBObserver (self.mSymbolDisplayVerticalFlip_property) // Stored property
       oldValue.imageIsValid_property.removeEBObserver (self.imageIsValid_property) // Transient property
       oldValue.unconnectedPins_property.removeEBObserver (self.unconnectedPins_property) // Transient property
       oldValue.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.inconsistentPackagePadNameSetsMessage_property) // Transient property
@@ -45,6 +44,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
       newValue.mSelectedPageIndex_property.addEBObserver (self.mSelectedPageIndex_property) // Stored property
+      newValue.mSelectedSymbolInspectorIndex_property.addEBObserver (self.mSelectedSymbolInspectorIndex_property) // Stored property
       newValue.mTitle_property.addEBObserver (self.mTitle_property) // Stored property
       newValue.mImageData_property.addEBObserver (self.mImageData_property) // Stored property
       newValue.mPrefix_property.addEBObserver (self.mPrefix_property) // Stored property
@@ -57,8 +57,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
       newValue.mShowPackageFrontPads_property.addEBObserver (self.mShowPackageFrontPads_property) // Stored property
       newValue.mShowPackageBackPads_property.addEBObserver (self.mShowPackageBackPads_property) // Stored property
       newValue.mSymbolDisplayZoom_property.addEBObserver (self.mSymbolDisplayZoom_property) // Stored property
-      newValue.mSymbolDisplayHorizontalFlip_property.addEBObserver (self.mSymbolDisplayHorizontalFlip_property) // Stored property
-      newValue.mSymbolDisplayVerticalFlip_property.addEBObserver (self.mSymbolDisplayVerticalFlip_property) // Stored property
       newValue.imageIsValid_property.addEBObserver (self.imageIsValid_property) // Transient property
       newValue.unconnectedPins_property.addEBObserver (self.unconnectedPins_property) // Transient property
       newValue.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.inconsistentPackagePadNameSetsMessage_property) // Transient property
@@ -77,6 +75,12 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //····················································································································
 
   final let mSelectedPageIndex_property = EBGenericTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'mSelectedSymbolInspectorIndex' stored property
+  //····················································································································
+
+  final let mSelectedSymbolInspectorIndex_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mTitle' stored property
@@ -149,18 +153,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //····················································································································
 
   final let mSymbolDisplayZoom_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-  //   Observers of 'mSymbolDisplayHorizontalFlip' stored property
-  //····················································································································
-
-  final let mSymbolDisplayHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-  //   Observers of 'mSymbolDisplayVerticalFlip' stored property
-  //····················································································································
-
-  final let mSymbolDisplayVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'imageIsValid' transient property
@@ -363,6 +355,21 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
+  //--- Configure mSelectedSymbolInspectorIndex simple stored property
+    self.mSelectedSymbolInspectorIndex_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mSelectedSymbolInspectorIndex_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
   //--- Configure mTitle simple stored property
     self.mTitle_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -532,36 +539,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     self.mSymbolDisplayZoom_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.mSymbolDisplayZoom_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure mSymbolDisplayHorizontalFlip simple stored property
-    self.mSymbolDisplayHorizontalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.mSymbolDisplayHorizontalFlip_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure mSymbolDisplayVerticalFlip simple stored property
-    self.mSymbolDisplayVerticalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.mSymbolDisplayVerticalFlip_property.selection {
         case .empty :
           return .empty
         case .multiple :

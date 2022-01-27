@@ -3,6 +3,7 @@
 entity DeviceRoot {
 //--- Selected page index
   property Int mSelectedPageIndex default 0 ;
+  property Int mSelectedSymbolInspectorIndex default 0 ;
 
 //--- Title
   property @signature String mTitle default "" ;
@@ -58,8 +59,8 @@ entity DeviceRoot {
   toMany @signature SymbolInstanceInDevice mSymbolInstances ;
 
   property Int mSymbolDisplayZoom default 400 ;
-  property Bool mSymbolDisplayHorizontalFlip default no ;
-  property Bool mSymbolDisplayVerticalFlip default no ;
+//  property Bool mSymbolDisplayHorizontalFlip default no ;
+//  property Bool mSymbolDisplayVerticalFlip default no ;
 
   transient StringArray symbolTypeNames dependsFrom self.mSymbolTypes.all.mTypeName ;
 

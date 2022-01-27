@@ -18,6 +18,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {
       self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_mSelectedSymbolInspectorIndex_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mTitle_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mImageData_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mPrefix_fromElementsOfSet (inRemovedSet) // Stored property
@@ -30,8 +31,6 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       self.removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mSymbolDisplayZoom_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mSymbolDisplayHorizontalFlip_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mSymbolDisplayVerticalFlip_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_imageIsValid_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (inRemovedSet) // Transient property
@@ -46,6 +45,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //--- Add observers to added objects
     if !inAddedSet.isEmpty {
       self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_mSelectedSymbolInspectorIndex_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mTitle_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mImageData_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mPrefix_toElementsOfSet (inAddedSet) // Stored property
@@ -58,8 +58,6 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       self.addEBObserversOf_mShowPackageFrontPads_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mShowPackageBackPads_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mSymbolDisplayZoom_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mSymbolDisplayHorizontalFlip_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mSymbolDisplayVerticalFlip_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_imageIsValid_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_unconnectedPins_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (inAddedSet) // Transient property
@@ -128,6 +126,65 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSelectedPageIndex_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSelectedSymbolInspectorIndex' stored property
+  //····················································································································
+
+  private final var mObserversOf_mSelectedSymbolInspectorIndex = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSelectedSymbolInspectorIndex (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSelectedSymbolInspectorIndex.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSelectedSymbolInspectorIndex_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSelectedSymbolInspectorIndex (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSelectedSymbolInspectorIndex.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSelectedSymbolInspectorIndex_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSelectedSymbolInspectorIndex_toElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
+    if !self.mObserversOf_mSelectedSymbolInspectorIndex.isEmpty {
+      for managedObject in inSet.values {
+        self.mObserversOf_mSelectedSymbolInspectorIndex.apply { (_ observer : EBObserverProtocol) in
+          managedObject.mSelectedSymbolInspectorIndex_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSelectedSymbolInspectorIndex_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
+    self.mObserversOf_mSelectedSymbolInspectorIndex.apply { (_ observer : EBObserverProtocol) in
+      observer.observedObjectDidChange ()
+      for managedObject in inSet.values {
+        managedObject.mSelectedSymbolInspectorIndex_property.removeEBObserver (observer)
       }
     }
   }
@@ -836,124 +893,6 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.mSymbolDisplayZoom_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mSymbolDisplayHorizontalFlip' stored property
-  //····················································································································
-
-  private final var mObserversOf_mSymbolDisplayHorizontalFlip = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSymbolDisplayHorizontalFlip (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mSymbolDisplayHorizontalFlip.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mSymbolDisplayHorizontalFlip_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mSymbolDisplayHorizontalFlip (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mSymbolDisplayHorizontalFlip.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mSymbolDisplayHorizontalFlip_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mSymbolDisplayHorizontalFlip_toElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
-    if !self.mObserversOf_mSymbolDisplayHorizontalFlip.isEmpty {
-      for managedObject in inSet.values {
-        self.mObserversOf_mSymbolDisplayHorizontalFlip.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mSymbolDisplayHorizontalFlip_property.addEBObserver (observer)
-        }
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSymbolDisplayHorizontalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
-    self.mObserversOf_mSymbolDisplayHorizontalFlip.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mSymbolDisplayHorizontalFlip_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mSymbolDisplayVerticalFlip' stored property
-  //····················································································································
-
-  private final var mObserversOf_mSymbolDisplayVerticalFlip = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSymbolDisplayVerticalFlip (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mSymbolDisplayVerticalFlip.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mSymbolDisplayVerticalFlip_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mSymbolDisplayVerticalFlip (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mSymbolDisplayVerticalFlip.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mSymbolDisplayVerticalFlip_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mSymbolDisplayVerticalFlip_toElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
-    if !self.mObserversOf_mSymbolDisplayVerticalFlip.isEmpty {
-      for managedObject in inSet.values {
-        self.mObserversOf_mSymbolDisplayVerticalFlip.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mSymbolDisplayVerticalFlip_property.addEBObserver (observer)
-        }
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSymbolDisplayVerticalFlip_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceRoot>) {
-    self.mObserversOf_mSymbolDisplayVerticalFlip.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mSymbolDisplayVerticalFlip_property.removeEBObserver (observer)
       }
     }
   }
@@ -2099,6 +2038,7 @@ final class PreferencesArrayOf_DeviceRoot : StoredArrayOf_DeviceRoot {
       self.setProp (objectArray)
     }
     self.addEBObserverOf_mSelectedPageIndex (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSelectedSymbolInspectorIndex (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mTitle (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mImageData (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mPrefix (self.mObserverForWritingPreferences)
@@ -2111,8 +2051,6 @@ final class PreferencesArrayOf_DeviceRoot : StoredArrayOf_DeviceRoot {
     self.addEBObserverOf_mShowPackageFrontPads (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mShowPackageBackPads (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSymbolDisplayZoom (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSymbolDisplayHorizontalFlip (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSymbolDisplayVerticalFlip (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
