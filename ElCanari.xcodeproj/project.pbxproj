@@ -2430,6 +2430,9 @@
 		CF8BE7572351166A00F95B3A /* EBObservablePropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */; };
 		CF8BE7582351166A00F95B3A /* EBTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7552351166A00F95B3A /* EBTableCellView.swift */; };
 		CF8BE7592351166A00F95B3A /* EBTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7552351166A00F95B3A /* EBTableCellView.swift */; };
+		CF8CA2AB27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8CA2AA27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift */; };
+		CF8CA2AC27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8CA2AA27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift */; };
+		CF8CA2AD27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8CA2AA27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift */; };
 		CF8DC24525C5F80400BC1DE6 /* enum-RestrictRectangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8DC24425C5F80400BC1DE6 /* enum-RestrictRectangleLayer.swift */; };
 		CF8DC24625C5F80400BC1DE6 /* enum-RestrictRectangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8DC24425C5F80400BC1DE6 /* enum-RestrictRectangleLayer.swift */; };
 		CF8DDB4D21C25958009B74B1 /* EBGraphicView-draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8DDB4C21C25957009B74B1 /* EBGraphicView-draw.swift */; };
@@ -5431,6 +5434,7 @@
 		CF8BE751235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyAbstractObjectProperty.swift; sourceTree = "<group>"; };
 		CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBObservablePropertyController.swift; sourceTree = "<group>"; };
 		CF8BE7552351166A00F95B3A /* EBTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBTableCellView.swift; sourceTree = "<group>"; };
+		CF8CA2AA27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift"; sourceTree = "<group>"; };
 		CF8DC24425C5F80400BC1DE6 /* enum-RestrictRectangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-RestrictRectangleLayer.swift"; sourceTree = "<group>"; };
 		CF8DDB4C21C25957009B74B1 /* EBGraphicView-draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-draw.swift"; sourceTree = "<group>"; };
 		CF8E2A5722268CE5008A2A62 /* transient-DeviceRoot-imageIsValid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceRoot-imageIsValid.swift"; sourceTree = "<group>"; };
@@ -6835,6 +6839,7 @@
 		CF62175227A19E1F00D02368 /* Application — Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				CF8CA2AA27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift */,
 				CF62175B27A19E4D00D02368 /* action-Preferences-addLibraryEntryAction.swift */,
 				CF62175627A19E4C00D02368 /* action-Preferences-checkForAppUpdateAction.swift */,
 				CF62175427A19E4C00D02368 /* action-Preferences-checkLibraryAction.swift */,
@@ -9026,6 +9031,7 @@
 				CFEB7CD9233A28860060A97A /* transient-ProjectRoot-ercStatusImage.swift in Sources */,
 				CF46301121EBC4EC00FF9A15 /* multiple-binding-controllers.swift in Sources */,
 				CF3559CF279D9F3D000BFC9B /* action-AutoLayoutProjectDocument-renameSelectedComponentsAction.swift in Sources */,
+				CF8CA2AB27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift in Sources */,
 				CFE85A8F21A5C2EB00991A66 /* CanariRect.swift in Sources */,
 				CFE85AAD21A5D76600991A66 /* entity-SymbolText.swift in Sources */,
 				CF49EEC9275A499700481930 /* controller-table-view-AutoLayoutFontDocument-selectedCharacterController.swift in Sources */,
@@ -10521,6 +10527,7 @@
 				CF355A39279D9F8C000BFC9B /* AutoLayoutCanariProjectDeviceTableView.swift in Sources */,
 				CF49EEB9275A499500481930 /* controller-table-view-AutoLayoutFontDocument-selectedCharacterController.swift in Sources */,
 				CFEB7B81233A26330060A97A /* transient-DeviceInProject-sizeString.swift in Sources */,
+				CF8CA2AC27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift in Sources */,
 				CFEB7CA4233A28860060A97A /* transient-ProjectRoot-schematicStatusMessage.swift in Sources */,
 				CFE85A9021A5C2EB00991A66 /* CanariRect.swift in Sources */,
 				CF8560F72677A34C00B62608 /* AutoLayout+NSView+hidden-binding.swift in Sources */,
@@ -12016,6 +12023,7 @@
 				CF9C620425CABE5C00A00D5C /* tomany-DeviceRoot.swift in Sources */,
 				CF9C1C2D279C6A3E0018CCDB /* AutoLayoutPopUpButton.swift in Sources */,
 				CF9C620525CABE5C00A00D5C /* EBGraphicView.swift in Sources */,
+				CF8CA2AD27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift in Sources */,
 				CF18209C277249BE00068AD6 /* AutoLayoutCanariBoardOperationPullDownButton.swift in Sources */,
 				CF39CCDD268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-updateSymbolsAndPackagesAction.swift in Sources */,
 				CFB7D8C42683A61D007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageMasterPad.swift in Sources */,

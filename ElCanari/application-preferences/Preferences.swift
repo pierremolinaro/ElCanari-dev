@@ -47,8 +47,9 @@ var g_Preferences : Preferences? = nil
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     let view_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPrefsPageView, equalWidth: false, size: .regular)
-      .addPage (title: "General", tooltip: "", pageView: self.mPrefsUserInterfacePage)
-      .addPage (title: "Application Update", tooltip: "", pageView: self.mPrefsAppUpdatePage)
+      .addPage (title: "General", tooltip: "General", pageView: self.mPrefsUserInterfacePage)
+      .addPage (title: "Application Update", tooltip: "Application Update", pageView: self.mPrefsAppUpdatePage)
+      .addPage (title: "Library", tooltip: "Library", pageView: self.mPrefsLibraryPage)
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     vStackView.appendView (view_1)
@@ -141,6 +142,44 @@ var g_Preferences : Preferences? = nil
     vStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpace ()
     vStackView.appendView (view_2)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mPrefsLibraryPage
+  //····················································································································
+
+  lazy var mPrefsLibraryPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 12)
+    let view_0 = AutoLayoutStaticLabel (title: "System Library", bold: true, size: .regular)
+      .expandableWidth ()
+      .set (alignment: .left)
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_1_0 = AutoLayoutButton (title: "", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (Preferences.revealUserLibraryInFinderAction (_:))
+        )
+      self.configure_revealInFinderSystemLibraryButtonConfigurator (view_1_0) // Configurator
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutFlexibleSpace ()
+      view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutCheckbox (title: "Uses", size: .regular)
+        .bind_value (preferences_usesUserLibrary_property)
+      view_1.appendView (view_1_2)
+    }
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutStaticLabel (title: "User Libraries", bold: true, size: .regular)
+      .expandableWidth ()
+      .set (alignment: .left)
+    vStackView.appendView (view_2)
+    let view_3 = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular)
+      .expandableWidth ()
+      .set (alignment: .left)
+    vStackView.appendView (view_3)
     return vStackView
   } ()
 
