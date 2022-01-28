@@ -13,7 +13,7 @@ import Cocoa
 extension Preferences {
   @objc func showSystemLibraryLogAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    ENTER USER CODE HERE
+
 //--- END OF USER ZONE 2
   }
 }
