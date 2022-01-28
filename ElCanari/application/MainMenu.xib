@@ -600,14 +600,6 @@
             <rect key="frame" x="0.0" y="0.0" width="487" height="361"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button toolTip="Reveal this directory in Finder" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6278" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="55" y="302" width="360" height="17"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="--- system library path ---" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6279">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="message" size="11"/>
-                    </buttonCell>
-                </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5738" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="52" y="77" width="22" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -621,7 +613,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="PcB-tf-SfN">
                         <rect key="frame" x="1" y="1" width="398" height="91"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="UserLibraryTableView" rowSizeStyle="automatic" headerView="5743" viewBased="YES" id="5740" customClass="EBTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="398" height="74"/>
@@ -768,29 +760,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IMe-Qv-bBs" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="369" y="278" width="98" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Weekly" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="iiN-Ml-rca" id="obk-oe-Duk">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="message" size="11"/>
-                        <menu key="menu" id="UVB-TA-ZwJ">
-                            <items>
-                                <menuItem title="Daily" id="ldG-8Q-rrL"/>
-                                <menuItem title="Weekly" state="on" tag="1" id="iiN-Ml-rca"/>
-                                <menuItem title="Monthly" tag="2" id="G3H-K9-aYK"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6165" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="280" y="278" width="83" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="At Start-Up" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="6166">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="message" size="11"/>
-                    </buttonCell>
-                </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nM8-3Z-Ust" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="54" y="252" width="120" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -839,25 +808,6 @@
                     <connections>
                         <action selector="makeKeyAndOrderFront:" target="752" id="6003"/>
                     </connections>
-                </button>
-                <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5761" customClass="LibraryUpdateButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="55" y="278" width="218" height="17"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="Check for System Library Updates…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" focusRingType="none" inset="2" id="5762">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="message" size="11"/>
-                        <connections>
-                            <action selector="updateLibrary:" target="212" id="BiT-pS-hnb"/>
-                        </connections>
-                    </buttonCell>
-                </button>
-                <button toolTip="Includes this directory in Canari Library search path" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6265" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="420" y="301" width="49" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Uses" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" lineBreakMode="truncatingMiddle" truncatesLastVisibleLine="YES" state="on" inset="2" id="6266">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="message" size="11"/>
-                    </buttonCell>
                 </button>
             </subviews>
             <point key="canvasLocation" x="-134.5" y="-267.5"/>
@@ -1024,8 +974,6 @@ Gw
                 <outlet property="mAddLibraryEntryButton" destination="5738" id="OU4-50-WER"/>
                 <outlet property="mAdditionnalLibraryArrayTableView" destination="5740" id="oGz-JM-e2p"/>
                 <outlet property="mCancelButtonInLibraryUpdateWindow" destination="6230" id="Xlr-bm-VVS"/>
-                <outlet property="mCheckForLibraryUpdatesButton" destination="5761" id="1kO-n6-5DQ"/>
-                <outlet property="mCheckForSystemLibraryAtStartUpSwitch" destination="6165" id="GQd-oh-fr6"/>
                 <outlet property="mCheckLibraryAction" destination="5758" id="nj8-9B-iFa"/>
                 <outlet property="mCheckLibraryResultTextView" destination="755" id="SIY-oS-aJC"/>
                 <outlet property="mCheckingForLibraryUpdateProgressIndicator" destination="6221" id="U9t-ri-t3x"/>
@@ -1050,17 +998,14 @@ Gw
                 <outlet property="mPrefsWindow" destination="5382" id="7wy-sw-1zQ"/>
                 <outlet property="mProgressIndicatorInLibraryUpdateWindow" destination="6254" id="NVp-IZ-GiW"/>
                 <outlet property="mRemoveLibraryEntryButton" destination="5737" id="s89-Ll-TKd"/>
-                <outlet property="mRevealInFinderLibraryInUserApplicationSupportButton" destination="6278" id="MDq-My-iht"/>
                 <outlet property="mSetLibraryRepositoryButton" destination="nId-KG-x1P" id="gQ6-bQ-a1Q"/>
                 <outlet property="mSetUserAndPasswordButton" destination="SyU-mo-jqJ" id="xgA-b3-zUP"/>
                 <outlet property="mTableViewInLibraryUpdateWindow" destination="6241" id="muq-id-8zw"/>
                 <outlet property="mToolbar" destination="rgk-24-hN8" id="9es-rF-F0d"/>
                 <outlet property="mUpDateButtonInLibraryUpdateWindow" destination="6236" id="59n-Jt-hQa"/>
                 <outlet property="mUpDateLibraryMenuItemInCanariMenu" destination="tfP-CB-tqy" id="IJJ-Y7-ZtK"/>
-                <outlet property="mUseLibraryInUserApplicationSupportPathCheckBox" destination="6265" id="vka-hJ-Ojs"/>
                 <outlet property="mUserAndPasswordTextField" destination="lXf-Xe-cVA" id="GKw-yy-fVf"/>
                 <outlet property="nextSystemLibraryCheckDate" destination="z0R-Xy-yGB" id="fd7-lR-mFh"/>
-                <outlet property="systemLibraryCheckTimeIntervalPopupButton" destination="IMe-Qv-bBs" id="BIu-vq-akB"/>
                 <outlet property="systemLibraryCheckTimeIntervalTitleTextField" destination="FqY-uW-mJE" id="lJG-n3-YnE"/>
             </connections>
         </customObject>
@@ -1079,7 +1024,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="Ojy-ZP-Pgt">
                             <rect key="frame" x="1" y="1" width="655" height="358"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" selectionGranularity="word" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" usesRuler="YES" textCompletion="NO" id="3UV-MD-e0D">
                                     <rect key="frame" x="0.0" y="0.0" width="655" height="358"/>

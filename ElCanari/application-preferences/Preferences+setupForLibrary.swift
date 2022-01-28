@@ -68,17 +68,19 @@ extension Preferences {
     do{
       let path = systemLibraryPath ()
       let pathExists = fm.fileExists (atPath: path)
-      self.mRevealInFinderLibraryInUserApplicationSupportButton?.isEnabled = pathExists
+      self.mRevealInFinderSystemLibraryButton?.toolTip = path
+      self.mRevealInFinderSystemLibraryButton?.title = path
+      self.mRevealInFinderSystemLibraryButton?.isEnabled = pathExists
     }
   //--- User Library
-    do{
-      let path = userLibraryPath ()
-      let pathExists = fm.fileExists (atPath: path)
-      self.mRevealInFinderLibraryInUserApplicationSupportButton?.toolTip = path
-      self.mRevealInFinderLibraryInUserApplicationSupportButton?.title = path
-      self.mRevealInFinderLibraryInUserApplicationSupportButton?.isEnabled = pathExists
-      self.mUseLibraryInUserApplicationSupportPathCheckBox?.isEnabled = pathExists
-    }
+//    do{
+//      let path = userLibraryPath ()
+//      let pathExists = fm.fileExists (atPath: path)
+//      self.mRevealInFinderSystemLibraryButton?.toolTip = path
+//      self.mRevealInFinderSystemLibraryButton?.title = path
+//      self.mRevealInFinderSystemLibraryButton?.isEnabled = pathExists
+//      self.mUseLibraryInUserApplicationSupportPathCheckBox?.isEnabled = pathExists
+//    }
   }
 
   //····················································································································

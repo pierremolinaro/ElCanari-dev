@@ -163,6 +163,7 @@ var g_Preferences : Preferences? = nil
           target: self,
           selector: #selector (Preferences.revealUserLibraryInFinderAction (_:))
         )
+      self.mRevealInFinderSystemLibraryButton = view_1_0 // Outlet
       self.configure_revealInFinderSystemLibraryButtonConfigurator (view_1_0) // Configurator
       view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutFlexibleSpace ()
@@ -172,14 +173,48 @@ var g_Preferences : Preferences? = nil
       view_1.appendView (view_1_2)
     }
     vStackView.appendView (view_1)
-    let view_2 = AutoLayoutStaticLabel (title: "User Libraries", bold: true, size: .regular)
-      .expandableWidth ()
-      .set (alignment: .left)
+    let view_2 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_2_0 = AutoLayoutButton (title: "Check for System Library Updates…", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (Preferences.checkSystemLibraryUpdateAction (_:))
+        )
+      self.mCheckForLibraryUpdatesButton = view_2_0 // Outlet
+      view_2.appendView (view_2_0)
+      let view_2_1 = AutoLayoutFlexibleSpace ()
+      view_2.appendView (view_2_1)
+      let view_2_2 = AutoLayoutCheckbox (title: "At Start Up", size: .regular)
+        .bind_value (preferences_checkForSystemLibraryAtStartUp_property)
+      view_2.appendView (view_2_2)
+      let view_2_3 = AutoLayoutFlexibleSpace ()
+      view_2.appendView (view_2_3)
+      let view_2_4 = AutoLayoutPopUpButton (size: .regular)
+        .bind_enabled (.prop (preferences_checkForSystemLibraryAtStartUp_property))
+      self.configure_lastSystemLibraryCheckTimeButtonConfigurator (view_2_4) // Configurator
+      view_2.appendView (view_2_4)
+    }
     vStackView.appendView (view_2)
-    let view_3 = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular)
+    let view_3 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_3_0 = AutoLayoutButton (title: "Show Log Window", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (Preferences.showSystemLibraryLogAction (_:))
+        )
+      view_3.appendView (view_3_0)
+      let view_3_1 = AutoLayoutFlexibleSpace ()
+      view_3.appendView (view_3_1)
+    }
+    vStackView.appendView (view_3)
+    let view_4 = AutoLayoutStaticLabel (title: "User Libraries", bold: true, size: .regular)
       .expandableWidth ()
       .set (alignment: .left)
-    vStackView.appendView (view_3)
+    vStackView.appendView (view_4)
+    let view_5 = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular)
+      .expandableWidth ()
+      .set (alignment: .left)
+    vStackView.appendView (view_5)
     return vStackView
   } ()
 
@@ -268,6 +303,8 @@ var g_Preferences : Preferences? = nil
   //    Outlets
   //····················································································································
 
+  var mCheckForLibraryUpdatesButton : AutoLayoutButton? = nil
+  var mRevealInFinderSystemLibraryButton : AutoLayoutButton? = nil
 
   //····················································································································
   //    Outlets
@@ -276,8 +313,6 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mAddLibraryEntryButton : EBButton? = nil
   @IBOutlet var mAdditionnalLibraryArrayTableView : EBTableView? = nil
   @IBOutlet var mCancelButtonInLibraryUpdateWindow : EBButton? = nil
-  @IBOutlet var mCheckForLibraryUpdatesButton : NSButton? = nil
-  @IBOutlet var mCheckForSystemLibraryAtStartUpSwitch : EBSwitch? = nil
   @IBOutlet var mCheckLibraryAction : EBButton? = nil
   @IBOutlet var mCheckLibraryResultTextView : NSTextView? = nil
   @IBOutlet var mCheckingForLibraryUpdateProgressIndicator : EBProgressIndicator? = nil
@@ -302,17 +337,14 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mPrefsWindow : EBWindow? = nil
   @IBOutlet var mProgressIndicatorInLibraryUpdateWindow : EBProgressIndicator? = nil
   @IBOutlet var mRemoveLibraryEntryButton : EBButton? = nil
-  @IBOutlet var mRevealInFinderLibraryInUserApplicationSupportButton : EBButton? = nil
   @IBOutlet var mSetLibraryRepositoryButton : NSButton? = nil
   @IBOutlet var mSetUserAndPasswordButton : NSButton? = nil
   @IBOutlet var mTableViewInLibraryUpdateWindow : EBTableView? = nil
   @IBOutlet var mToolbar : CanariToolbar? = nil
   @IBOutlet var mUpDateButtonInLibraryUpdateWindow : EBButton? = nil
   @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : EBMenuItem? = nil
-  @IBOutlet var mUseLibraryInUserApplicationSupportPathCheckBox : EBSwitch? = nil
   @IBOutlet var mUserAndPasswordTextField : NSTextField? = nil
   @IBOutlet var nextSystemLibraryCheckDate : CanariDateObserverField? = nil
-  @IBOutlet var systemLibraryCheckTimeIntervalPopupButton : EBPopUpButton? = nil
   @IBOutlet var systemLibraryCheckTimeIntervalTitleTextField : NSTextField? = nil
 
   //····················································································································
@@ -320,7 +352,6 @@ var g_Preferences : Preferences? = nil
   //····················································································································
 
   private var mController_nextSystemLibraryCheckDate_hidden : MultipleBindingController_hidden?
-  private var mController_systemLibraryCheckTimeIntervalPopupButton_hidden : MultipleBindingController_hidden?
   private var mController_systemLibraryCheckTimeIntervalTitleTextField_hidden : MultipleBindingController_hidden?
   private var mController_mRemoveLibraryEntryButton_enabled : MultipleBindingController_enabled?
 
@@ -440,8 +471,6 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mAddLibraryEntryButton, "mAddLibraryEntryButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAdditionnalLibraryArrayTableView, "mAdditionnalLibraryArrayTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mCancelButtonInLibraryUpdateWindow, "mCancelButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
-    checkOutletConnection (self.mCheckForLibraryUpdatesButton, "mCheckForLibraryUpdatesButton", NSButton.self, #file, #line)
-    checkOutletConnection (self.mCheckForSystemLibraryAtStartUpSwitch, "mCheckForSystemLibraryAtStartUpSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mCheckLibraryAction, "mCheckLibraryAction", EBButton.self, #file, #line)
     checkOutletConnection (self.mCheckLibraryResultTextView, "mCheckLibraryResultTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mCheckingForLibraryUpdateProgressIndicator, "mCheckingForLibraryUpdateProgressIndicator", EBProgressIndicator.self, #file, #line)
@@ -466,17 +495,14 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mPrefsWindow, "mPrefsWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mProgressIndicatorInLibraryUpdateWindow, "mProgressIndicatorInLibraryUpdateWindow", EBProgressIndicator.self, #file, #line)
     checkOutletConnection (self.mRemoveLibraryEntryButton, "mRemoveLibraryEntryButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mRevealInFinderLibraryInUserApplicationSupportButton, "mRevealInFinderLibraryInUserApplicationSupportButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSetLibraryRepositoryButton, "mSetLibraryRepositoryButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mSetUserAndPasswordButton, "mSetUserAndPasswordButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mTableViewInLibraryUpdateWindow, "mTableViewInLibraryUpdateWindow", EBTableView.self, #file, #line)
     checkOutletConnection (self.mToolbar, "mToolbar", CanariToolbar.self, #file, #line)
     checkOutletConnection (self.mUpDateButtonInLibraryUpdateWindow, "mUpDateButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpDateLibraryMenuItemInCanariMenu, "mUpDateLibraryMenuItemInCanariMenu", EBMenuItem.self, #file, #line)
-    checkOutletConnection (self.mUseLibraryInUserApplicationSupportPathCheckBox, "mUseLibraryInUserApplicationSupportPathCheckBox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mUserAndPasswordTextField, "mUserAndPasswordTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.nextSystemLibraryCheckDate, "nextSystemLibraryCheckDate", CanariDateObserverField.self, #file, #line)
-    checkOutletConnection (self.systemLibraryCheckTimeIntervalPopupButton, "systemLibraryCheckTimeIntervalPopupButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.systemLibraryCheckTimeIntervalTitleTextField, "systemLibraryCheckTimeIntervalTitleTextField", NSTextField.self, #file, #line)
   //--------------------------- Install bindings
     mMenuRevealInFinder_symbols?.bind_populateSubmenus (preferences_mValueRevealInFinder_symbols_property)
@@ -484,10 +510,7 @@ var g_Preferences : Preferences? = nil
     mMenuRevealInFinder_devices?.bind_populateSubmenus (preferences_mValueRevealInFinder_devices_property)
     mMenuRevealInFinder_fonts?.bind_populateSubmenus (preferences_mValueRevealInFinder_fonts_property)
     mMenuRevealInFinder_artworks?.bind_populateSubmenus (preferences_mValueRevealInFinder_artworks_property)
-    mUseLibraryInUserApplicationSupportPathCheckBox?.bind_value (preferences_usesUserLibrary_property)
-    mCheckForSystemLibraryAtStartUpSwitch?.bind_value (preferences_checkForSystemLibraryAtStartUp_property)
     nextSystemLibraryCheckDate?.bind_dateObserver (preferences_mLastSystemLibraryCheckTime_property)
-    systemLibraryCheckTimeIntervalPopupButton?.bind_selectedTag (preferences_systemLibraryCheckTimeInterval_property)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_hidden (
@@ -495,13 +518,6 @@ var g_Preferences : Preferences? = nil
         outlet: self.nextSystemLibraryCheckDate
       )
       self.mController_nextSystemLibraryCheckDate_hidden = controller
-    }
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: .not (.prop (preferences_checkForSystemLibraryAtStartUp_property)),
-        outlet: self.systemLibraryCheckTimeIntervalPopupButton
-      )
-      self.mController_systemLibraryCheckTimeIntervalPopupButton_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
@@ -520,8 +536,6 @@ var g_Preferences : Preferences? = nil
   //--------------------------- Array controller
     preferences_additionnalLibraryArrayController.bind_tableView (self.mAdditionnalLibraryArrayTableView)
   //--------------------------- Set targets / actions
-    self.mRevealInFinderLibraryInUserApplicationSupportButton?.target = self
-    self.mRevealInFinderLibraryInUserApplicationSupportButton?.action = #selector (Preferences.revealUserLibraryInFinderAction (_:))
     self.mAddLibraryEntryButton?.target = self
     self.mAddLibraryEntryButton?.action = #selector (Preferences.addLibraryEntryAction (_:))
     self.mRemoveLibraryEntryButton?.target = preferences_additionnalLibraryArrayController
@@ -564,204 +578,204 @@ var g_Preferences : Preferences? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate let Preferences_mAutoLayoutStyle = "Preferences:mAutoLayoutStyle"
-fileprivate let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
-fileprivate let Preferences_symbolColor = "Preferences:symbolColor"
-fileprivate let Preferences_crossColorOfSymbolGrid = "Preferences:crossColorOfSymbolGrid"
-fileprivate let Preferences_lineColorOfSymbolGrid = "Preferences:lineColorOfSymbolGrid"
-fileprivate let Preferences_symbolBackgroundColor = "Preferences:symbolBackgroundColor"
-fileprivate let Preferences_symbolDrawingWidthMultipliedByTen = "Preferences:symbolDrawingWidthMultipliedByTen"
-fileprivate let Preferences_crossColorOfPackageGrid = "Preferences:crossColorOfPackageGrid"
-fileprivate let Preferences_lineColorOfPackageGrid = "Preferences:lineColorOfPackageGrid"
-fileprivate let Preferences_packageBackgroundColor = "Preferences:packageBackgroundColor"
-fileprivate let Preferences_packageColor = "Preferences:packageColor"
-fileprivate let Preferences_frontSidePadColor = "Preferences:frontSidePadColor"
-fileprivate let Preferences_displayPackageFrontSidePads = "Preferences:displayPackageFrontSidePads"
-fileprivate let Preferences_backSidePadColor = "Preferences:backSidePadColor"
-fileprivate let Preferences_displayPackageBackSidePads = "Preferences:displayPackageBackSidePads"
-fileprivate let Preferences_padNumberColor = "Preferences:padNumberColor"
-fileprivate let Preferences_padNumberFont = "Preferences:padNumberFont"
-fileprivate let Preferences_showPadNumber = "Preferences:showPadNumber"
-fileprivate let Preferences_packageGuideColor = "Preferences:packageGuideColor"
-fileprivate let Preferences_packageDimensionColor = "Preferences:packageDimensionColor"
-fileprivate let Preferences_dimensionFont = "Preferences:dimensionFont"
-fileprivate let Preferences_padZoneColor = "Preferences:padZoneColor"
-fileprivate let Preferences_padZoneFont = "Preferences:padZoneFont"
-fileprivate let Preferences_packageDrawingWidthMultipliedByTen = "Preferences:packageDrawingWidthMultipliedByTen"
-fileprivate let Preferences_mSymbolBackColorForDevice = "Preferences:mSymbolBackColorForDevice"
-fileprivate let Preferences_mPackageBackColorForDevice = "Preferences:mPackageBackColorForDevice"
-fileprivate let Preferences_mSymbolHorizontalFlipForDevice = "Preferences:mSymbolHorizontalFlipForDevice"
-fileprivate let Preferences_mSymbolVerticalFlipForDevice = "Preferences:mSymbolVerticalFlipForDevice"
-fileprivate let Preferences_mPackageHorizontalFlipForDevice = "Preferences:mPackageHorizontalFlipForDevice"
-fileprivate let Preferences_mPackageVerticalFlipForDevice = "Preferences:mPackageVerticalFlipForDevice"
-fileprivate let Preferences_mPackageColorForDevice = "Preferences:mPackageColorForDevice"
-fileprivate let Preferences_mFrontSidePadColorForDevice = "Preferences:mFrontSidePadColorForDevice"
-fileprivate let Preferences_mBottomSidePadColorForDevice = "Preferences:mBottomSidePadColorForDevice"
-fileprivate let Preferences_mPadNumberColorForDevice = "Preferences:mPadNumberColorForDevice"
-fileprivate let Preferences_mPackageNameFontForDevice = "Preferences:mPackageNameFontForDevice"
-fileprivate let Preferences_mPadNumberFontForDevice = "Preferences:mPadNumberFontForDevice"
-fileprivate let Preferences_mSymbolColorForDevice = "Preferences:mSymbolColorForDevice"
-fileprivate let Preferences_mSymbolNameFontForDevice = "Preferences:mSymbolNameFontForDevice"
-fileprivate let Preferences_mPinNameFontForDevice = "Preferences:mPinNameFontForDevice"
-fileprivate let Preferences_symbolDrawingWidthForDeviceMultipliedByTen = "Preferences:symbolDrawingWidthForDeviceMultipliedByTen"
-fileprivate let Preferences_packageDrawingWidthForDeviceMultipliedByTen = "Preferences:packageDrawingWidthForDeviceMultipliedByTen"
-fileprivate let Preferences_schematicBackColor = "Preferences:schematicBackColor"
-fileprivate let Preferences_schematicFrameColor = "Preferences:schematicFrameColor"
-fileprivate let Preferences_dotColorGridForSchematic = "Preferences:dotColorGridForSchematic"
-fileprivate let Preferences_lineColorGridForSchematic = "Preferences:lineColorGridForSchematic"
-fileprivate let Preferences_symbolColorForUnplacedComponentsForSchematic = "Preferences:symbolColorForUnplacedComponentsForSchematic"
-fileprivate let Preferences_symbolColorForSchematic = "Preferences:symbolColorForSchematic"
-fileprivate let Preferences_componentNameColorForSchematic = "Preferences:componentNameColorForSchematic"
-fileprivate let Preferences_componentNameFontForSchematic = "Preferences:componentNameFontForSchematic"
-fileprivate let Preferences_componentValueColorForSchematic = "Preferences:componentValueColorForSchematic"
-fileprivate let Preferences_componentValueFontForSchematic = "Preferences:componentValueFontForSchematic"
-fileprivate let Preferences_pinNameFontForSchematic = "Preferences:pinNameFontForSchematic"
-fileprivate let Preferences_pinNameColorForSchematic = "Preferences:pinNameColorForSchematic"
-fileprivate let Preferences_pinNumberFontForSchematic = "Preferences:pinNumberFontForSchematic"
-fileprivate let Preferences_pinNumberColorForSchematic = "Preferences:pinNumberColorForSchematic"
-fileprivate let Preferences_connectionColorForSchematic = "Preferences:connectionColorForSchematic"
-fileprivate let Preferences_symbolDrawingWidthMultipliedByTenForSchematic = "Preferences:symbolDrawingWidthMultipliedByTenForSchematic"
-fileprivate let Preferences_crossColorGridForBoard = "Preferences:crossColorGridForBoard"
-fileprivate let Preferences_lineColorGridForBoard = "Preferences:lineColorGridForBoard"
-fileprivate let Preferences_boardBackgroundColorForBoard = "Preferences:boardBackgroundColorForBoard"
-fileprivate let Preferences_errorBackgroundColorForBoard = "Preferences:errorBackgroundColorForBoard"
-fileprivate let Preferences_drawErrorBackgroundForBoard = "Preferences:drawErrorBackgroundForBoard"
-fileprivate let Preferences_warningBackgroundColorForBoard = "Preferences:warningBackgroundColorForBoard"
-fileprivate let Preferences_drawWarningBackgroundForBoard = "Preferences:drawWarningBackgroundForBoard"
-fileprivate let Preferences_boardLimitsColorForBoard = "Preferences:boardLimitsColorForBoard"
-fileprivate let Preferences_boardClearanceColorForBoard = "Preferences:boardClearanceColorForBoard"
-fileprivate let Preferences_displayFrontRestrictRectangles = "Preferences:displayFrontRestrictRectangles"
-fileprivate let Preferences_frontSideRestrictRectangleColorForBoard = "Preferences:frontSideRestrictRectangleColorForBoard"
-fileprivate let Preferences_displayBackRestrictRectangles = "Preferences:displayBackRestrictRectangles"
-fileprivate let Preferences_backSideRestrictRectangleColorForBoard = "Preferences:backSideRestrictRectangleColorForBoard"
-fileprivate let Preferences_displayInner1RestrictRectangles = "Preferences:displayInner1RestrictRectangles"
-fileprivate let Preferences_inner1SideRestrictRectangleColorForBoard = "Preferences:inner1SideRestrictRectangleColorForBoard"
-fileprivate let Preferences_displayInner2RestrictRectangles = "Preferences:displayInner2RestrictRectangles"
-fileprivate let Preferences_inner2SideRestrictRectangleColorForBoard = "Preferences:inner2SideRestrictRectangleColorForBoard"
-fileprivate let Preferences_displayInner3RestrictRectangles = "Preferences:displayInner3RestrictRectangles"
-fileprivate let Preferences_inner3SideRestrictRectangleColorForBoard = "Preferences:inner3SideRestrictRectangleColorForBoard"
-fileprivate let Preferences_displayInner4RestrictRectangles = "Preferences:displayInner4RestrictRectangles"
-fileprivate let Preferences_inner4SideRestrictRectangleColorForBoard = "Preferences:inner4SideRestrictRectangleColorForBoard"
-fileprivate let Preferences_displayFrontLegendForBoard = "Preferences:displayFrontLegendForBoard"
-fileprivate let Preferences_frontSideLegendColorForBoard = "Preferences:frontSideLegendColorForBoard"
-fileprivate let Preferences_displayFrontLayoutForBoard = "Preferences:displayFrontLayoutForBoard"
-fileprivate let Preferences_frontSideLayoutColorForBoard = "Preferences:frontSideLayoutColorForBoard"
-fileprivate let Preferences_displayBackLayoutForBoard = "Preferences:displayBackLayoutForBoard"
-fileprivate let Preferences_backSideLayoutColorForBoard = "Preferences:backSideLayoutColorForBoard"
-fileprivate let Preferences_displayInner1LayoutForBoard = "Preferences:displayInner1LayoutForBoard"
-fileprivate let Preferences_inner1LayoutColorForBoard = "Preferences:inner1LayoutColorForBoard"
-fileprivate let Preferences_displayInner2LayoutForBoard = "Preferences:displayInner2LayoutForBoard"
-fileprivate let Preferences_inner2LayoutColorForBoard = "Preferences:inner2LayoutColorForBoard"
-fileprivate let Preferences_displayInner3LayoutForBoard = "Preferences:displayInner3LayoutForBoard"
-fileprivate let Preferences_inner3LayoutColorForBoard = "Preferences:inner3LayoutColorForBoard"
-fileprivate let Preferences_displayInner4LayoutForBoard = "Preferences:displayInner4LayoutForBoard"
-fileprivate let Preferences_inner4LayoutColorForBoard = "Preferences:inner4LayoutColorForBoard"
-fileprivate let Preferences_displayBackLegendForBoard = "Preferences:displayBackLegendForBoard"
-fileprivate let Preferences_backSideLegendColorForBoard = "Preferences:backSideLegendColorForBoard"
-fileprivate let Preferences_displayFrontPadsForBoard = "Preferences:displayFrontPadsForBoard"
-fileprivate let Preferences_frontSidePadColorForBoard = "Preferences:frontSidePadColorForBoard"
-fileprivate let Preferences_displayBackPadsForBoard = "Preferences:displayBackPadsForBoard"
-fileprivate let Preferences_backSidePadColorForBoard = "Preferences:backSidePadColorForBoard"
-fileprivate let Preferences_displayPadNumbersForBoard = "Preferences:displayPadNumbersForBoard"
-fileprivate let Preferences_padNumberFontForBoard = "Preferences:padNumberFontForBoard"
-fileprivate let Preferences_padNumberColorForBoard = "Preferences:padNumberColorForBoard"
-fileprivate let Preferences_packageDrawingWidthMultpliedByTenForBoard = "Preferences:packageDrawingWidthMultpliedByTenForBoard"
-fileprivate let Preferences_mShowRotationKnobInBoard = "Preferences:mShowRotationKnobInBoard"
-fileprivate let Preferences_sampleString = "Preferences:sampleString"
-fileprivate let Preferences_showGerberDrawingFlow = "Preferences:showGerberDrawingFlow"
-fileprivate let Preferences_showGerberDrawingIndexes = "Preferences:showGerberDrawingIndexes"
-fileprivate let Preferences_fontEditionTransparency = "Preferences:fontEditionTransparency"
-fileprivate let Preferences_checkForSystemLibraryAtStartUp = "Preferences:checkForSystemLibraryAtStartUp"
-fileprivate let Preferences_systemLibraryCheckTimeInterval = "Preferences:systemLibraryCheckTimeInterval"
-fileprivate let Preferences_mergerModelViewHorizontalFlip = "Preferences:mergerModelViewHorizontalFlip"
-fileprivate let Preferences_mergerModelViewVerticalFlip = "Preferences:mergerModelViewVerticalFlip"
-fileprivate let Preferences_mergerModelViewDisplayHoles = "Preferences:mergerModelViewDisplayHoles"
-fileprivate let Preferences_mergerModelViewDisplayVias = "Preferences:mergerModelViewDisplayVias"
-fileprivate let Preferences_mergerModelViewDisplayFrontPads = "Preferences:mergerModelViewDisplayFrontPads"
-fileprivate let Preferences_mergerModelViewDisplayInternalBoardsLimits = "Preferences:mergerModelViewDisplayInternalBoardsLimits"
-fileprivate let Preferences_mergerModelViewDisplayBoardLimits = "Preferences:mergerModelViewDisplayBoardLimits"
-fileprivate let Preferences_mergerModelViewDisplayFrontComponentNames = "Preferences:mergerModelViewDisplayFrontComponentNames"
-fileprivate let Preferences_mergerModelViewDisplayFrontComponentValues = "Preferences:mergerModelViewDisplayFrontComponentValues"
-fileprivate let Preferences_mergerModelViewDisplayFrontPackages = "Preferences:mergerModelViewDisplayFrontPackages"
-fileprivate let Preferences_mergerModelViewDisplayFrontLegendTexts = "Preferences:mergerModelViewDisplayFrontLegendTexts"
-fileprivate let Preferences_mergerModelViewDisplayFrontTracks = "Preferences:mergerModelViewDisplayFrontTracks"
-fileprivate let Preferences_mergerModelViewDisplayInner1Tracks = "Preferences:mergerModelViewDisplayInner1Tracks"
-fileprivate let Preferences_mergerModelViewDisplayInner2Tracks = "Preferences:mergerModelViewDisplayInner2Tracks"
-fileprivate let Preferences_mergerModelViewDisplayInner3Tracks = "Preferences:mergerModelViewDisplayInner3Tracks"
-fileprivate let Preferences_mergerModelViewDisplayInner4Tracks = "Preferences:mergerModelViewDisplayInner4Tracks"
-fileprivate let Preferences_mergerModelViewDisplayFrontLayoutTexts = "Preferences:mergerModelViewDisplayFrontLayoutTexts"
-fileprivate let Preferences_mergerModelViewDisplayBackPads = "Preferences:mergerModelViewDisplayBackPads"
-fileprivate let Preferences_mergerModelViewDisplayTraversingPads = "Preferences:mergerModelViewDisplayTraversingPads"
-fileprivate let Preferences_mergerModelViewDisplayBackComponentNames = "Preferences:mergerModelViewDisplayBackComponentNames"
-fileprivate let Preferences_mergerModelViewDisplayBackComponentValues = "Preferences:mergerModelViewDisplayBackComponentValues"
-fileprivate let Preferences_mergerModelViewDisplayBackLegendTexts = "Preferences:mergerModelViewDisplayBackLegendTexts"
-fileprivate let Preferences_mergerModelViewDisplayBackPackages = "Preferences:mergerModelViewDisplayBackPackages"
-fileprivate let Preferences_mergerModelViewDisplayBackTracks = "Preferences:mergerModelViewDisplayBackTracks"
-fileprivate let Preferences_mergerModelViewDisplayBackLayoutTexts = "Preferences:mergerModelViewDisplayBackLayoutTexts"
-fileprivate let Preferences_mergerModelViewDisplayFrontLegendLines = "Preferences:mergerModelViewDisplayFrontLegendLines"
-fileprivate let Preferences_mergerModelViewDisplayBackLegendLines = "Preferences:mergerModelViewDisplayBackLegendLines"
-fileprivate let Preferences_mergerBoardViewHorizontalFlip = "Preferences:mergerBoardViewHorizontalFlip"
-fileprivate let Preferences_mergerBoardViewVerticalFlip = "Preferences:mergerBoardViewVerticalFlip"
-fileprivate let Preferences_mergerBoardViewDisplayHoles = "Preferences:mergerBoardViewDisplayHoles"
-fileprivate let Preferences_mergerBoardViewDisplayVias = "Preferences:mergerBoardViewDisplayVias"
-fileprivate let Preferences_mergerBoardViewDisplayFrontPads = "Preferences:mergerBoardViewDisplayFrontPads"
-fileprivate let Preferences_mergerBoardViewDisplayTraversingPads = "Preferences:mergerBoardViewDisplayTraversingPads"
-fileprivate let Preferences_mergerBoardViewDisplayInternalBoardsLimits = "Preferences:mergerBoardViewDisplayInternalBoardsLimits"
-fileprivate let Preferences_mergerBoardViewDisplayBoardLimits = "Preferences:mergerBoardViewDisplayBoardLimits"
-fileprivate let Preferences_mergerBoardViewDisplayFrontComponentNames = "Preferences:mergerBoardViewDisplayFrontComponentNames"
-fileprivate let Preferences_mergerBoardViewDisplayFrontComponentValues = "Preferences:mergerBoardViewDisplayFrontComponentValues"
-fileprivate let Preferences_mergerBoardViewDisplayFrontPackages = "Preferences:mergerBoardViewDisplayFrontPackages"
-fileprivate let Preferences_mergerBoardViewDisplayFrontLegendTexts = "Preferences:mergerBoardViewDisplayFrontLegendTexts"
-fileprivate let Preferences_mergerBoardViewDisplayFrontTracks = "Preferences:mergerBoardViewDisplayFrontTracks"
-fileprivate let Preferences_mergerBoardViewDisplayInner1Tracks = "Preferences:mergerBoardViewDisplayInner1Tracks"
-fileprivate let Preferences_mergerBoardViewDisplayInner2Tracks = "Preferences:mergerBoardViewDisplayInner2Tracks"
-fileprivate let Preferences_mergerBoardViewDisplayInner3Tracks = "Preferences:mergerBoardViewDisplayInner3Tracks"
-fileprivate let Preferences_mergerBoardViewDisplayInner4Tracks = "Preferences:mergerBoardViewDisplayInner4Tracks"
-fileprivate let Preferences_mergerBoardViewDisplayFrontLayoutTexts = "Preferences:mergerBoardViewDisplayFrontLayoutTexts"
-fileprivate let Preferences_mergerBoardViewDisplayBackPads = "Preferences:mergerBoardViewDisplayBackPads"
-fileprivate let Preferences_mergerBoardViewDisplayBackComponentNames = "Preferences:mergerBoardViewDisplayBackComponentNames"
-fileprivate let Preferences_mergerBoardViewDisplayBackComponentValues = "Preferences:mergerBoardViewDisplayBackComponentValues"
-fileprivate let Preferences_mergerBoardViewDisplayBackLegendTexts = "Preferences:mergerBoardViewDisplayBackLegendTexts"
-fileprivate let Preferences_mergerBoardViewDisplayBackPackages = "Preferences:mergerBoardViewDisplayBackPackages"
-fileprivate let Preferences_mergerBoardViewDisplayBackTracks = "Preferences:mergerBoardViewDisplayBackTracks"
-fileprivate let Preferences_mergerBoardViewDisplayBackLayoutTexts = "Preferences:mergerBoardViewDisplayBackLayoutTexts"
-fileprivate let Preferences_mergerBoardViewDisplayFrontLegendLines = "Preferences:mergerBoardViewDisplayFrontLegendLines"
-fileprivate let Preferences_mergerBoardViewDisplayBackLegendLines = "Preferences:mergerBoardViewDisplayBackLegendLines"
-fileprivate let Preferences_mergerColorHoles = "Preferences:mergerColorHoles"
-fileprivate let Preferences_mergerColorVias = "Preferences:mergerColorVias"
-fileprivate let Preferences_mergerColorFrontPads = "Preferences:mergerColorFrontPads"
-fileprivate let Preferences_mergerColorBoardLimits = "Preferences:mergerColorBoardLimits"
-fileprivate let Preferences_mergerColorInternalBoardsLimits = "Preferences:mergerColorInternalBoardsLimits"
-fileprivate let Preferences_mergerColorFrontComponentNames = "Preferences:mergerColorFrontComponentNames"
-fileprivate let Preferences_mergerColorFrontComponentValues = "Preferences:mergerColorFrontComponentValues"
-fileprivate let Preferences_mergerColorFrontPackages = "Preferences:mergerColorFrontPackages"
-fileprivate let Preferences_mergerColorFrontLegendTexts = "Preferences:mergerColorFrontLegendTexts"
-fileprivate let Preferences_mergerColorFrontTracks = "Preferences:mergerColorFrontTracks"
-fileprivate let Preferences_mergerColorInner1Tracks = "Preferences:mergerColorInner1Tracks"
-fileprivate let Preferences_mergerColorInner2Tracks = "Preferences:mergerColorInner2Tracks"
-fileprivate let Preferences_mergerColorInner3Tracks = "Preferences:mergerColorInner3Tracks"
-fileprivate let Preferences_mergerColorInner4Tracks = "Preferences:mergerColorInner4Tracks"
-fileprivate let Preferences_mergerColorFrontLayoutTexts = "Preferences:mergerColorFrontLayoutTexts"
-fileprivate let Preferences_mergerColorBackPads = "Preferences:mergerColorBackPads"
-fileprivate let Preferences_mergerColorTraversingPads = "Preferences:mergerColorTraversingPads"
-fileprivate let Preferences_mergerColorBackComponentNames = "Preferences:mergerColorBackComponentNames"
-fileprivate let Preferences_mergerColorBackComponentValues = "Preferences:mergerColorBackComponentValues"
-fileprivate let Preferences_mergerColorBackLegendTexts = "Preferences:mergerColorBackLegendTexts"
-fileprivate let Preferences_mergerColorBackPackages = "Preferences:mergerColorBackPackages"
-fileprivate let Preferences_mergerColorBackTracks = "Preferences:mergerColorBackTracks"
-fileprivate let Preferences_mergerColorBackLayoutTexts = "Preferences:mergerColorBackLayoutTexts"
-fileprivate let Preferences_mergerColorFrontLegendLines = "Preferences:mergerColorFrontLegendLines"
-fileprivate let Preferences_mergerColorBackLegendLines = "Preferences:mergerColorBackLegendLines"
-fileprivate let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
-fileprivate let Preferences_artworkDialogFilterString = "Preferences:artworkDialogFilterString"
-fileprivate let Preferences_showDebugMenu = "Preferences:showDebugMenu"
-fileprivate let Preferences_selectionHiliteColor = "Preferences:selectionHiliteColor"
-fileprivate let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedByTen"
+let Preferences_mAutoLayoutStyle = "Preferences:mAutoLayoutStyle"
+let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
+let Preferences_symbolColor = "Preferences:symbolColor"
+let Preferences_crossColorOfSymbolGrid = "Preferences:crossColorOfSymbolGrid"
+let Preferences_lineColorOfSymbolGrid = "Preferences:lineColorOfSymbolGrid"
+let Preferences_symbolBackgroundColor = "Preferences:symbolBackgroundColor"
+let Preferences_symbolDrawingWidthMultipliedByTen = "Preferences:symbolDrawingWidthMultipliedByTen"
+let Preferences_crossColorOfPackageGrid = "Preferences:crossColorOfPackageGrid"
+let Preferences_lineColorOfPackageGrid = "Preferences:lineColorOfPackageGrid"
+let Preferences_packageBackgroundColor = "Preferences:packageBackgroundColor"
+let Preferences_packageColor = "Preferences:packageColor"
+let Preferences_frontSidePadColor = "Preferences:frontSidePadColor"
+let Preferences_displayPackageFrontSidePads = "Preferences:displayPackageFrontSidePads"
+let Preferences_backSidePadColor = "Preferences:backSidePadColor"
+let Preferences_displayPackageBackSidePads = "Preferences:displayPackageBackSidePads"
+let Preferences_padNumberColor = "Preferences:padNumberColor"
+let Preferences_padNumberFont = "Preferences:padNumberFont"
+let Preferences_showPadNumber = "Preferences:showPadNumber"
+let Preferences_packageGuideColor = "Preferences:packageGuideColor"
+let Preferences_packageDimensionColor = "Preferences:packageDimensionColor"
+let Preferences_dimensionFont = "Preferences:dimensionFont"
+let Preferences_padZoneColor = "Preferences:padZoneColor"
+let Preferences_padZoneFont = "Preferences:padZoneFont"
+let Preferences_packageDrawingWidthMultipliedByTen = "Preferences:packageDrawingWidthMultipliedByTen"
+let Preferences_mSymbolBackColorForDevice = "Preferences:mSymbolBackColorForDevice"
+let Preferences_mPackageBackColorForDevice = "Preferences:mPackageBackColorForDevice"
+let Preferences_mSymbolHorizontalFlipForDevice = "Preferences:mSymbolHorizontalFlipForDevice"
+let Preferences_mSymbolVerticalFlipForDevice = "Preferences:mSymbolVerticalFlipForDevice"
+let Preferences_mPackageHorizontalFlipForDevice = "Preferences:mPackageHorizontalFlipForDevice"
+let Preferences_mPackageVerticalFlipForDevice = "Preferences:mPackageVerticalFlipForDevice"
+let Preferences_mPackageColorForDevice = "Preferences:mPackageColorForDevice"
+let Preferences_mFrontSidePadColorForDevice = "Preferences:mFrontSidePadColorForDevice"
+let Preferences_mBottomSidePadColorForDevice = "Preferences:mBottomSidePadColorForDevice"
+let Preferences_mPadNumberColorForDevice = "Preferences:mPadNumberColorForDevice"
+let Preferences_mPackageNameFontForDevice = "Preferences:mPackageNameFontForDevice"
+let Preferences_mPadNumberFontForDevice = "Preferences:mPadNumberFontForDevice"
+let Preferences_mSymbolColorForDevice = "Preferences:mSymbolColorForDevice"
+let Preferences_mSymbolNameFontForDevice = "Preferences:mSymbolNameFontForDevice"
+let Preferences_mPinNameFontForDevice = "Preferences:mPinNameFontForDevice"
+let Preferences_symbolDrawingWidthForDeviceMultipliedByTen = "Preferences:symbolDrawingWidthForDeviceMultipliedByTen"
+let Preferences_packageDrawingWidthForDeviceMultipliedByTen = "Preferences:packageDrawingWidthForDeviceMultipliedByTen"
+let Preferences_schematicBackColor = "Preferences:schematicBackColor"
+let Preferences_schematicFrameColor = "Preferences:schematicFrameColor"
+let Preferences_dotColorGridForSchematic = "Preferences:dotColorGridForSchematic"
+let Preferences_lineColorGridForSchematic = "Preferences:lineColorGridForSchematic"
+let Preferences_symbolColorForUnplacedComponentsForSchematic = "Preferences:symbolColorForUnplacedComponentsForSchematic"
+let Preferences_symbolColorForSchematic = "Preferences:symbolColorForSchematic"
+let Preferences_componentNameColorForSchematic = "Preferences:componentNameColorForSchematic"
+let Preferences_componentNameFontForSchematic = "Preferences:componentNameFontForSchematic"
+let Preferences_componentValueColorForSchematic = "Preferences:componentValueColorForSchematic"
+let Preferences_componentValueFontForSchematic = "Preferences:componentValueFontForSchematic"
+let Preferences_pinNameFontForSchematic = "Preferences:pinNameFontForSchematic"
+let Preferences_pinNameColorForSchematic = "Preferences:pinNameColorForSchematic"
+let Preferences_pinNumberFontForSchematic = "Preferences:pinNumberFontForSchematic"
+let Preferences_pinNumberColorForSchematic = "Preferences:pinNumberColorForSchematic"
+let Preferences_connectionColorForSchematic = "Preferences:connectionColorForSchematic"
+let Preferences_symbolDrawingWidthMultipliedByTenForSchematic = "Preferences:symbolDrawingWidthMultipliedByTenForSchematic"
+let Preferences_crossColorGridForBoard = "Preferences:crossColorGridForBoard"
+let Preferences_lineColorGridForBoard = "Preferences:lineColorGridForBoard"
+let Preferences_boardBackgroundColorForBoard = "Preferences:boardBackgroundColorForBoard"
+let Preferences_errorBackgroundColorForBoard = "Preferences:errorBackgroundColorForBoard"
+let Preferences_drawErrorBackgroundForBoard = "Preferences:drawErrorBackgroundForBoard"
+let Preferences_warningBackgroundColorForBoard = "Preferences:warningBackgroundColorForBoard"
+let Preferences_drawWarningBackgroundForBoard = "Preferences:drawWarningBackgroundForBoard"
+let Preferences_boardLimitsColorForBoard = "Preferences:boardLimitsColorForBoard"
+let Preferences_boardClearanceColorForBoard = "Preferences:boardClearanceColorForBoard"
+let Preferences_displayFrontRestrictRectangles = "Preferences:displayFrontRestrictRectangles"
+let Preferences_frontSideRestrictRectangleColorForBoard = "Preferences:frontSideRestrictRectangleColorForBoard"
+let Preferences_displayBackRestrictRectangles = "Preferences:displayBackRestrictRectangles"
+let Preferences_backSideRestrictRectangleColorForBoard = "Preferences:backSideRestrictRectangleColorForBoard"
+let Preferences_displayInner1RestrictRectangles = "Preferences:displayInner1RestrictRectangles"
+let Preferences_inner1SideRestrictRectangleColorForBoard = "Preferences:inner1SideRestrictRectangleColorForBoard"
+let Preferences_displayInner2RestrictRectangles = "Preferences:displayInner2RestrictRectangles"
+let Preferences_inner2SideRestrictRectangleColorForBoard = "Preferences:inner2SideRestrictRectangleColorForBoard"
+let Preferences_displayInner3RestrictRectangles = "Preferences:displayInner3RestrictRectangles"
+let Preferences_inner3SideRestrictRectangleColorForBoard = "Preferences:inner3SideRestrictRectangleColorForBoard"
+let Preferences_displayInner4RestrictRectangles = "Preferences:displayInner4RestrictRectangles"
+let Preferences_inner4SideRestrictRectangleColorForBoard = "Preferences:inner4SideRestrictRectangleColorForBoard"
+let Preferences_displayFrontLegendForBoard = "Preferences:displayFrontLegendForBoard"
+let Preferences_frontSideLegendColorForBoard = "Preferences:frontSideLegendColorForBoard"
+let Preferences_displayFrontLayoutForBoard = "Preferences:displayFrontLayoutForBoard"
+let Preferences_frontSideLayoutColorForBoard = "Preferences:frontSideLayoutColorForBoard"
+let Preferences_displayBackLayoutForBoard = "Preferences:displayBackLayoutForBoard"
+let Preferences_backSideLayoutColorForBoard = "Preferences:backSideLayoutColorForBoard"
+let Preferences_displayInner1LayoutForBoard = "Preferences:displayInner1LayoutForBoard"
+let Preferences_inner1LayoutColorForBoard = "Preferences:inner1LayoutColorForBoard"
+let Preferences_displayInner2LayoutForBoard = "Preferences:displayInner2LayoutForBoard"
+let Preferences_inner2LayoutColorForBoard = "Preferences:inner2LayoutColorForBoard"
+let Preferences_displayInner3LayoutForBoard = "Preferences:displayInner3LayoutForBoard"
+let Preferences_inner3LayoutColorForBoard = "Preferences:inner3LayoutColorForBoard"
+let Preferences_displayInner4LayoutForBoard = "Preferences:displayInner4LayoutForBoard"
+let Preferences_inner4LayoutColorForBoard = "Preferences:inner4LayoutColorForBoard"
+let Preferences_displayBackLegendForBoard = "Preferences:displayBackLegendForBoard"
+let Preferences_backSideLegendColorForBoard = "Preferences:backSideLegendColorForBoard"
+let Preferences_displayFrontPadsForBoard = "Preferences:displayFrontPadsForBoard"
+let Preferences_frontSidePadColorForBoard = "Preferences:frontSidePadColorForBoard"
+let Preferences_displayBackPadsForBoard = "Preferences:displayBackPadsForBoard"
+let Preferences_backSidePadColorForBoard = "Preferences:backSidePadColorForBoard"
+let Preferences_displayPadNumbersForBoard = "Preferences:displayPadNumbersForBoard"
+let Preferences_padNumberFontForBoard = "Preferences:padNumberFontForBoard"
+let Preferences_padNumberColorForBoard = "Preferences:padNumberColorForBoard"
+let Preferences_packageDrawingWidthMultpliedByTenForBoard = "Preferences:packageDrawingWidthMultpliedByTenForBoard"
+let Preferences_mShowRotationKnobInBoard = "Preferences:mShowRotationKnobInBoard"
+let Preferences_sampleString = "Preferences:sampleString"
+let Preferences_showGerberDrawingFlow = "Preferences:showGerberDrawingFlow"
+let Preferences_showGerberDrawingIndexes = "Preferences:showGerberDrawingIndexes"
+let Preferences_fontEditionTransparency = "Preferences:fontEditionTransparency"
+let Preferences_checkForSystemLibraryAtStartUp = "Preferences:checkForSystemLibraryAtStartUp"
+let Preferences_systemLibraryCheckTimeInterval = "Preferences:systemLibraryCheckTimeInterval"
+let Preferences_mergerModelViewHorizontalFlip = "Preferences:mergerModelViewHorizontalFlip"
+let Preferences_mergerModelViewVerticalFlip = "Preferences:mergerModelViewVerticalFlip"
+let Preferences_mergerModelViewDisplayHoles = "Preferences:mergerModelViewDisplayHoles"
+let Preferences_mergerModelViewDisplayVias = "Preferences:mergerModelViewDisplayVias"
+let Preferences_mergerModelViewDisplayFrontPads = "Preferences:mergerModelViewDisplayFrontPads"
+let Preferences_mergerModelViewDisplayInternalBoardsLimits = "Preferences:mergerModelViewDisplayInternalBoardsLimits"
+let Preferences_mergerModelViewDisplayBoardLimits = "Preferences:mergerModelViewDisplayBoardLimits"
+let Preferences_mergerModelViewDisplayFrontComponentNames = "Preferences:mergerModelViewDisplayFrontComponentNames"
+let Preferences_mergerModelViewDisplayFrontComponentValues = "Preferences:mergerModelViewDisplayFrontComponentValues"
+let Preferences_mergerModelViewDisplayFrontPackages = "Preferences:mergerModelViewDisplayFrontPackages"
+let Preferences_mergerModelViewDisplayFrontLegendTexts = "Preferences:mergerModelViewDisplayFrontLegendTexts"
+let Preferences_mergerModelViewDisplayFrontTracks = "Preferences:mergerModelViewDisplayFrontTracks"
+let Preferences_mergerModelViewDisplayInner1Tracks = "Preferences:mergerModelViewDisplayInner1Tracks"
+let Preferences_mergerModelViewDisplayInner2Tracks = "Preferences:mergerModelViewDisplayInner2Tracks"
+let Preferences_mergerModelViewDisplayInner3Tracks = "Preferences:mergerModelViewDisplayInner3Tracks"
+let Preferences_mergerModelViewDisplayInner4Tracks = "Preferences:mergerModelViewDisplayInner4Tracks"
+let Preferences_mergerModelViewDisplayFrontLayoutTexts = "Preferences:mergerModelViewDisplayFrontLayoutTexts"
+let Preferences_mergerModelViewDisplayBackPads = "Preferences:mergerModelViewDisplayBackPads"
+let Preferences_mergerModelViewDisplayTraversingPads = "Preferences:mergerModelViewDisplayTraversingPads"
+let Preferences_mergerModelViewDisplayBackComponentNames = "Preferences:mergerModelViewDisplayBackComponentNames"
+let Preferences_mergerModelViewDisplayBackComponentValues = "Preferences:mergerModelViewDisplayBackComponentValues"
+let Preferences_mergerModelViewDisplayBackLegendTexts = "Preferences:mergerModelViewDisplayBackLegendTexts"
+let Preferences_mergerModelViewDisplayBackPackages = "Preferences:mergerModelViewDisplayBackPackages"
+let Preferences_mergerModelViewDisplayBackTracks = "Preferences:mergerModelViewDisplayBackTracks"
+let Preferences_mergerModelViewDisplayBackLayoutTexts = "Preferences:mergerModelViewDisplayBackLayoutTexts"
+let Preferences_mergerModelViewDisplayFrontLegendLines = "Preferences:mergerModelViewDisplayFrontLegendLines"
+let Preferences_mergerModelViewDisplayBackLegendLines = "Preferences:mergerModelViewDisplayBackLegendLines"
+let Preferences_mergerBoardViewHorizontalFlip = "Preferences:mergerBoardViewHorizontalFlip"
+let Preferences_mergerBoardViewVerticalFlip = "Preferences:mergerBoardViewVerticalFlip"
+let Preferences_mergerBoardViewDisplayHoles = "Preferences:mergerBoardViewDisplayHoles"
+let Preferences_mergerBoardViewDisplayVias = "Preferences:mergerBoardViewDisplayVias"
+let Preferences_mergerBoardViewDisplayFrontPads = "Preferences:mergerBoardViewDisplayFrontPads"
+let Preferences_mergerBoardViewDisplayTraversingPads = "Preferences:mergerBoardViewDisplayTraversingPads"
+let Preferences_mergerBoardViewDisplayInternalBoardsLimits = "Preferences:mergerBoardViewDisplayInternalBoardsLimits"
+let Preferences_mergerBoardViewDisplayBoardLimits = "Preferences:mergerBoardViewDisplayBoardLimits"
+let Preferences_mergerBoardViewDisplayFrontComponentNames = "Preferences:mergerBoardViewDisplayFrontComponentNames"
+let Preferences_mergerBoardViewDisplayFrontComponentValues = "Preferences:mergerBoardViewDisplayFrontComponentValues"
+let Preferences_mergerBoardViewDisplayFrontPackages = "Preferences:mergerBoardViewDisplayFrontPackages"
+let Preferences_mergerBoardViewDisplayFrontLegendTexts = "Preferences:mergerBoardViewDisplayFrontLegendTexts"
+let Preferences_mergerBoardViewDisplayFrontTracks = "Preferences:mergerBoardViewDisplayFrontTracks"
+let Preferences_mergerBoardViewDisplayInner1Tracks = "Preferences:mergerBoardViewDisplayInner1Tracks"
+let Preferences_mergerBoardViewDisplayInner2Tracks = "Preferences:mergerBoardViewDisplayInner2Tracks"
+let Preferences_mergerBoardViewDisplayInner3Tracks = "Preferences:mergerBoardViewDisplayInner3Tracks"
+let Preferences_mergerBoardViewDisplayInner4Tracks = "Preferences:mergerBoardViewDisplayInner4Tracks"
+let Preferences_mergerBoardViewDisplayFrontLayoutTexts = "Preferences:mergerBoardViewDisplayFrontLayoutTexts"
+let Preferences_mergerBoardViewDisplayBackPads = "Preferences:mergerBoardViewDisplayBackPads"
+let Preferences_mergerBoardViewDisplayBackComponentNames = "Preferences:mergerBoardViewDisplayBackComponentNames"
+let Preferences_mergerBoardViewDisplayBackComponentValues = "Preferences:mergerBoardViewDisplayBackComponentValues"
+let Preferences_mergerBoardViewDisplayBackLegendTexts = "Preferences:mergerBoardViewDisplayBackLegendTexts"
+let Preferences_mergerBoardViewDisplayBackPackages = "Preferences:mergerBoardViewDisplayBackPackages"
+let Preferences_mergerBoardViewDisplayBackTracks = "Preferences:mergerBoardViewDisplayBackTracks"
+let Preferences_mergerBoardViewDisplayBackLayoutTexts = "Preferences:mergerBoardViewDisplayBackLayoutTexts"
+let Preferences_mergerBoardViewDisplayFrontLegendLines = "Preferences:mergerBoardViewDisplayFrontLegendLines"
+let Preferences_mergerBoardViewDisplayBackLegendLines = "Preferences:mergerBoardViewDisplayBackLegendLines"
+let Preferences_mergerColorHoles = "Preferences:mergerColorHoles"
+let Preferences_mergerColorVias = "Preferences:mergerColorVias"
+let Preferences_mergerColorFrontPads = "Preferences:mergerColorFrontPads"
+let Preferences_mergerColorBoardLimits = "Preferences:mergerColorBoardLimits"
+let Preferences_mergerColorInternalBoardsLimits = "Preferences:mergerColorInternalBoardsLimits"
+let Preferences_mergerColorFrontComponentNames = "Preferences:mergerColorFrontComponentNames"
+let Preferences_mergerColorFrontComponentValues = "Preferences:mergerColorFrontComponentValues"
+let Preferences_mergerColorFrontPackages = "Preferences:mergerColorFrontPackages"
+let Preferences_mergerColorFrontLegendTexts = "Preferences:mergerColorFrontLegendTexts"
+let Preferences_mergerColorFrontTracks = "Preferences:mergerColorFrontTracks"
+let Preferences_mergerColorInner1Tracks = "Preferences:mergerColorInner1Tracks"
+let Preferences_mergerColorInner2Tracks = "Preferences:mergerColorInner2Tracks"
+let Preferences_mergerColorInner3Tracks = "Preferences:mergerColorInner3Tracks"
+let Preferences_mergerColorInner4Tracks = "Preferences:mergerColorInner4Tracks"
+let Preferences_mergerColorFrontLayoutTexts = "Preferences:mergerColorFrontLayoutTexts"
+let Preferences_mergerColorBackPads = "Preferences:mergerColorBackPads"
+let Preferences_mergerColorTraversingPads = "Preferences:mergerColorTraversingPads"
+let Preferences_mergerColorBackComponentNames = "Preferences:mergerColorBackComponentNames"
+let Preferences_mergerColorBackComponentValues = "Preferences:mergerColorBackComponentValues"
+let Preferences_mergerColorBackLegendTexts = "Preferences:mergerColorBackLegendTexts"
+let Preferences_mergerColorBackPackages = "Preferences:mergerColorBackPackages"
+let Preferences_mergerColorBackTracks = "Preferences:mergerColorBackTracks"
+let Preferences_mergerColorBackLayoutTexts = "Preferences:mergerColorBackLayoutTexts"
+let Preferences_mergerColorFrontLegendLines = "Preferences:mergerColorFrontLegendLines"
+let Preferences_mergerColorBackLegendLines = "Preferences:mergerColorBackLegendLines"
+let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
+let Preferences_artworkDialogFilterString = "Preferences:artworkDialogFilterString"
+let Preferences_showDebugMenu = "Preferences:showDebugMenu"
+let Preferences_selectionHiliteColor = "Preferences:selectionHiliteColor"
+let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedByTen"
 fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
-fileprivate let Preferences_pinNameFont = "Preferences:pinNameFont"
-fileprivate let Preferences_mFreeRouterGuiDefaultFileContents = "Preferences:mFreeRouterGuiDefaultFileContents"
-fileprivate let Preferences_sampleStringSize = "Preferences:sampleStringSize"
-fileprivate let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
+let Preferences_pinNameFont = "Preferences:pinNameFont"
+let Preferences_mFreeRouterGuiDefaultFileContents = "Preferences:mFreeRouterGuiDefaultFileContents"
+let Preferences_sampleStringSize = "Preferences:sampleStringSize"
+let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
 
 //····················································································································
 //   Atomic property: mAutoLayoutStyle

@@ -2,8 +2,6 @@
 prefs {
   outlet EBWindow mPrefsWindow ;
   outlet CanariToolbar mToolbar ;
-  
-  
 }
 
 //——————————————————————————————————————————————————————————————————————————————
@@ -375,28 +373,48 @@ prefs {
   stackView mPrefsLibraryPage vStack set (margins: 12) {
     StaticLabel (title: "System Library", bold: yes, size: .regular) { expandableWidth () set (alignment: .left) }
     hStack {
-      Button (title: "", size: .regular) [configurator revealInFinderSystemLibraryButtonConfigurator] {
+      Button (title: "", size: .regular) [
+        outlet mRevealInFinderSystemLibraryButton
+        configurator revealInFinderSystemLibraryButtonConfigurator
+      ] {
         $run revealUserLibraryInFinderAction
       }
       space
       Checkbox (title: "Uses", size: .regular) { $value prefs.usesUserLibrary }
     }
+    hStack {
+      Button (title: "Check for System Library Updates…", size: .regular) [
+        outlet mCheckForLibraryUpdatesButton
+      ] {
+        $run checkSystemLibraryUpdateAction
+      }
+      space
+      Checkbox (title: "At Start Up", size: .regular) { $value prefs.checkForSystemLibraryAtStartUp }
+      space
+      PopUpButton (size: .regular) [
+        configurator lastSystemLibraryCheckTimeButtonConfigurator
+      ] {
+        $enabled prefs.checkForSystemLibraryAtStartUp
+      }
+    }
+    hStack {
+      Button (title: "Show Log Window", size: .regular) { $run showSystemLibraryLogAction }
+      space
+    }
     StaticLabel (title: "User Libraries", bold: yes, size: .regular) { expandableWidth () set (alignment: .left) }
     StaticLabel (title: "System Library + User Libraries", bold: yes, size: .regular) { expandableWidth () set (alignment: .left) }
   }
   
+  action showSystemLibraryLogAction ;
   externFunc setupForLibrary calledBy awakeFromNib ;
-
-//--- User Library Path
   action revealUserLibraryInFinderAction ;
-  outlet EBButton mRevealInFinderLibraryInUserApplicationSupportButton $run revealUserLibraryInFinderAction ;
+  action checkSystemLibraryUpdateAction ;
+
 //--- Using User Library path
   property Bool usesUserLibrary default yes ;
-  outlet EBSwitch mUseLibraryInUserApplicationSupportPathCheckBox $value self.usesUserLibrary ;
 
 //--- Update System Library path at startup
   property Bool checkForSystemLibraryAtStartUp default yes ;
-  outlet EBSwitch mCheckForSystemLibraryAtStartUpSwitch $value self.checkForSystemLibraryAtStartUp ;
 
   property Date mLastSystemLibraryCheckTime default distantPast ;
 
@@ -406,10 +424,6 @@ prefs {
   ;
   property Int systemLibraryCheckTimeInterval default 0 ;
 
-  outlet EBPopUpButton systemLibraryCheckTimeIntervalPopupButton
-    $selectedTag self.systemLibraryCheckTimeInterval
-    $hidden !self.checkForSystemLibraryAtStartUp
-  ;
   outlet NSTextField systemLibraryCheckTimeIntervalTitleTextField $hidden !self.checkForSystemLibraryAtStartUp ;
 
   outlet NSTextView mLibraryUpdateLogTextView ;
@@ -451,7 +465,6 @@ prefs {
 //--- Progress window during repository list download
   outlet EBWindow mCheckingForLibraryUpdateWindow ;
   outlet EBProgressIndicator mCheckingForLibraryUpdateProgressIndicator ;
-  outlet NSButton mCheckForLibraryUpdatesButton ;
 //--- Dialog for library updating
   outlet EBWindow mLibraryUpdateWindow ;
   outlet EBProgressIndicator mProgressIndicatorInLibraryUpdateWindow ;

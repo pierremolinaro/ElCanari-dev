@@ -122,7 +122,7 @@ extern autolayout class BoolPopUpButton (title0: String, title1: String) $enable
   $value property Bool
 }
 
-extern autolayout class PopUpButton (size: EBControlSize) {
+extern autolayout class PopUpButton (size: EBControlSize) $enabled {
   func expandableWidth ()
 }
 
