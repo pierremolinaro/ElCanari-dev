@@ -91,6 +91,7 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : Auto
     }
     enableItemsAfterCompletion ()
   }
+  preferences_mLastSystemLibraryCheckTime = Date ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

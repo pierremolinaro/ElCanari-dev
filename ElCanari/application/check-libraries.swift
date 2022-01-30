@@ -12,9 +12,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func checkLibrary (_ window : NSWindow,
-                   logView : NSTextView?) {
+                   logView : AutoLayoutStaticTextView) {
 //--- Clear Log
-  logView?.clear ()
+  logView.clear ()
   var errorCount = 0
   var warningCount = 0
   do{
@@ -43,23 +43,23 @@ func checkLibrary (_ window : NSWindow,
   //--- Checking Artworks
     try checkArtworkLibrary (logView, errorCount:&errorCount, warningCount:&warningCount)
   //--- Summary
-    logView?.appendMessageString ("\n")
+    logView.appendMessageString ("\n")
     if errorCount == 0 {
-      logView?.appendSuccessString ("No error")
+      logView.appendSuccessString ("No error")
     }else if errorCount == 1 {
-      logView?.appendErrorString ("1 error")
+      logView.appendErrorString ("1 error")
     }else{
-      logView?.appendErrorString (String (errorCount) + " errors")
+      logView.appendErrorString (String (errorCount) + " errors")
     }
-    logView?.appendMessageString ("; ")
+    logView.appendMessageString ("; ")
     if warningCount == 0 {
-      logView?.appendSuccessString ("No warning")
+      logView.appendSuccessString ("No warning")
     }else if (warningCount == 1) {
-      logView?.appendWarningString ("1 warning")
+      logView.appendWarningString ("1 warning")
     }else{
-      logView?.appendWarningString (String (warningCount) + " warnings")
+      logView.appendWarningString (String (warningCount) + " warnings")
     }
-    logView?.appendMessageString (".")
+    logView.appendMessageString (".")
     if (errorCount + warningCount) > 0 {
       let alert = NSAlert ()
       alert.messageText = "There are inconsistencies in the librairies"
@@ -68,7 +68,7 @@ func checkLibrary (_ window : NSWindow,
       alert.informativeText = "Select the 'Show Log Window' button for details."
       alert.beginSheetModal (for: window) { inReturnCode in
         if inReturnCode == .alertSecondButtonReturn {
-          logView?.window?.makeKeyAndOrderFront (nil)
+          logView.window?.makeKeyAndOrderFront (nil)
         }
       }
     }else{
@@ -129,7 +129,7 @@ private struct PMDeviceDictionaryEntry {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
-                                            logView : NSTextView?,
+                                            logView : AutoLayoutStaticTextView,
                                             deviceDict:inout [String : PMDeviceDictionaryEntry]) throws {
   let deviceName = ((deviceFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
 //--- Get metadata dictionary
@@ -140,7 +140,7 @@ private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
   if let n = possibleVersionNumber as? NSNumber {
     version = n.intValue
   }else{
-    throw badFormatErrorForFileAtPath (deviceFullPath, code:#line)
+    throw badFormatErrorForFileAtPath (deviceFullPath, code: #line)
   }
 //--- Embedded symbol dictionary
   let possibleSymbolDictionary : Any? = metadata.metadataDictionary [DEVICE_SYMBOL_METADATA_DICTIONARY_KEY]
@@ -204,13 +204,13 @@ private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
 
 private func performDeviceLibraryEnumerationAtPath (_ inPackageLibraryPath : String,
                                                     deviceDict: inout [String : PMDeviceDictionaryEntry],
-                                                    logView : NSTextView?) throws {
+                                                    logView : AutoLayoutStaticTextView) throws {
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inPackageLibraryPath) {
     for path in unwSubpaths {
       if path.pathExtension == "ElCanariDevice" {
         let fullsubpath = inPackageLibraryPath.appendingPathComponent (path)
-        try checkDeviceLibraryCheckAtPath (fullsubpath, logView:logView, deviceDict:&deviceDict)
+        try checkDeviceLibraryCheckAtPath (fullsubpath, logView: logView, deviceDict:&deviceDict)
       }
     }
   }
@@ -219,25 +219,25 @@ private func performDeviceLibraryEnumerationAtPath (_ inPackageLibraryPath : Str
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-private func checkDeviceLibrary (_ logView : NSTextView?,
+private func checkDeviceLibrary (_ logView : AutoLayoutStaticTextView,
                                  symbolDict : [String : PMSymbolDictionaryEntry],
                                  packageDict : [String : PMPackageDictionaryEntry],
                                  deviceToUpdateSet : inout Set <String>,
                                  errorCount : inout Int,
                                  warningCount : inout Int) throws {
   var deviceDict : [String : PMDeviceDictionaryEntry] = [:]
-  logView?.appendMessageString ("\nChecking devices library...\n")
+  logView.appendMessageString ("\nChecking devices library...\n")
   for path in existingLibraryPathArray () {
     let deviceLibraryPath = deviceLibraryPathForPath (path)
-    logView?.appendMessageString ("  Directory \(deviceLibraryPath)...\n")
-    try performDeviceLibraryEnumerationAtPath (deviceLibraryPath, deviceDict:&deviceDict, logView:logView)
+    logView.appendMessageString ("  Directory \(deviceLibraryPath)...\n")
+    try performDeviceLibraryEnumerationAtPath (deviceLibraryPath, deviceDict: &deviceDict, logView: logView)
   }
 //--- Display duplicate device count
   let foundDevices = deviceDict.count
   if foundDevices <= 1 {
-    logView?.appendSuccessString ("  Found \(foundDevices) part\n")
+    logView.appendSuccessString ("  Found \(foundDevices) part\n")
   }else{
-    logView?.appendSuccessString ("  Found \(foundDevices) parts\n")
+    logView.appendSuccessString ("  Found \(foundDevices) parts\n")
   }
 //--- Display duplicate entries and invalid entries
   for (deviceName, entry) in deviceDict {
@@ -249,20 +249,20 @@ private func checkDeviceLibrary (_ logView : NSTextView?,
       for path in entry.mPathArray {
         errorString += "    - \(path)\n"
       }
-      logView?.appendErrorString (errorString)
+      logView.appendErrorString (errorString)
       errorCount += 1
     }
     case .pmPartHasUnknownStatus :
-      logView?.appendErrorString ("  Error; '\(deviceName)' device has unknown status\n")
+      logView.appendErrorString ("  Error; '\(deviceName)' device has unknown status\n")
       errorCount += 1
     case .pmPartHasInvalidName :
-      logView?.appendErrorString ("  Error; '\(deviceName)' device has an invalid name\n")
+      logView.appendErrorString ("  Error; '\(deviceName)' device has an invalid name\n")
       errorCount += 1
     case .pmPartHasError :
-      logView?.appendErrorString ("  Error; '\(deviceName)' device contains error(s)\n")
+      logView.appendErrorString ("  Error; '\(deviceName)' device contains error(s)\n")
       errorCount += 1
     case .pmPartHasWarning :
-      logView?.appendErrorString ("  Error; '\(deviceName)' device contains warning(s)\n")
+      logView.appendErrorString ("  Error; '\(deviceName)' device contains warning(s)\n")
       errorCount += 1
     case .pmPartIsValid :
     //--- Check imported symbols
@@ -273,7 +273,7 @@ private func checkDeviceLibrary (_ logView : NSTextView?,
           message += "' device contains the '"
           message += importedSymbolName
           message += "' symbol, but this symbol is not defined by the library\n"
-          logView?.appendErrorString (message)
+          logView.appendErrorString (message)
           errorCount += 1
         }else if symbolDict [importedSymbolName]!.mVersion != importedSymbolVersion {
           deviceToUpdateSet.insert (entry.mPathArray[0])
@@ -286,7 +286,7 @@ private func checkDeviceLibrary (_ logView : NSTextView?,
           message += ", but this symbol has version "
           message += String (symbolDict [importedSymbolName]!.mVersion)
           message += " in library\n"
-          logView?.appendErrorString (message)
+          logView.appendErrorString (message)
           errorCount += 1
         }
       }
@@ -298,7 +298,7 @@ private func checkDeviceLibrary (_ logView : NSTextView?,
           message += "' device contains the '"
           message += importedPackageName
           message += "' package, but this package is not defined by the library\n"
-          logView?.appendErrorString (message)
+          logView.appendErrorString (message)
           errorCount += 1
         }else if packageDict [importedPackageName]!.mVersion != importedPackageVersion {
           deviceToUpdateSet.insert (entry.mPathArray[0])
@@ -311,7 +311,7 @@ private func checkDeviceLibrary (_ logView : NSTextView?,
           message += ", but this package has version "
           message += String (packageDict [importedPackageName]!.mVersion)
           message += " in library\n"
-          logView?.appendErrorString (message)
+          logView.appendErrorString (message)
           errorCount += 1
         }
       }
@@ -344,7 +344,7 @@ private struct PMSymbolDictionaryEntry {
 
 
 private func checkSymbolLibraryCheckAtPath (_ symbolFullPath : String,
-                                            logView : NSTextView?,
+                                            logView : AutoLayoutStaticTextView,
                                             symbolDict:inout [String : PMSymbolDictionaryEntry]) throws {
   let symbolName = ((symbolFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
   // print ("symbolFullPath \(symbolFullPath)")
@@ -389,14 +389,14 @@ private func checkSymbolLibraryCheckAtPath (_ symbolFullPath : String,
 
 private func performSymbolLibraryEnumerationAtPath (_ inSymbolLibraryPath : String,
                                                     symbolDict: inout [String : PMSymbolDictionaryEntry],
-                                                    logView : NSTextView?) throws {
+                                                    logView : AutoLayoutStaticTextView) throws {
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inSymbolLibraryPath) {
   //  print ("unwSubpaths \(unwSubpaths)")
     for path in unwSubpaths {
       if path.pathExtension == "ElCanariSymbol" {
         let fullsubpath = inSymbolLibraryPath.appendingPathComponent (path)
-        try checkSymbolLibraryCheckAtPath (fullsubpath, logView:logView, symbolDict:&symbolDict)
+        try checkSymbolLibraryCheckAtPath (fullsubpath, logView: logView, symbolDict: &symbolDict)
       }
     }
   }
@@ -405,22 +405,22 @@ private func performSymbolLibraryEnumerationAtPath (_ inSymbolLibraryPath : Stri
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-private func checkSymbolLibrary (_ logView : NSTextView?,
+private func checkSymbolLibrary (_ logView : AutoLayoutStaticTextView,
                                  symbolDict : inout [String : PMSymbolDictionaryEntry],
                                  errorCount : inout Int,
                                  warningCount : inout Int) throws {
-  logView?.appendMessageString ("Checking symbols library...\n")
+  logView.appendMessageString ("Checking symbols library...\n")
   for path in existingLibraryPathArray () {
     let symbolLibraryPath = symbolLibraryPathForPath (path)
-    logView?.appendMessageString ("  Directory \(symbolLibraryPath)...\n")
-    try performSymbolLibraryEnumerationAtPath (symbolLibraryPath, symbolDict:&symbolDict, logView:logView)
+    logView.appendMessageString ("  Directory \(symbolLibraryPath)...\n")
+    try performSymbolLibraryEnumerationAtPath (symbolLibraryPath, symbolDict: &symbolDict, logView: logView)
   }
 //--- Display duplicate symbol count
   let foundSymbols = symbolDict.count
   if foundSymbols <= 1 {
-    logView?.appendSuccessString ("  Found \(foundSymbols) part\n")
+    logView.appendSuccessString ("  Found \(foundSymbols) part\n")
   }else{
-    logView?.appendSuccessString ("  Found \(foundSymbols) parts\n")
+    logView.appendSuccessString ("  Found \(foundSymbols) parts\n")
   }
 //--- Display duplicate entries for symbols, invalid entries
   for (symbolName, entry) in symbolDict {
@@ -431,20 +431,20 @@ private func checkSymbolLibrary (_ logView : NSTextView?,
       for path in entry.mPathArray {
         errorString += "    - \(path)\n"
       }
-      logView?.appendErrorString (errorString)
+      logView.appendErrorString (errorString)
       errorCount += 1
     }
     case .pmPartHasUnknownStatus :
-      logView?.appendErrorString ("  Error; '\(symbolName)' symbol has unknown status\n")
+      logView.appendErrorString ("  Error; '\(symbolName)' symbol has unknown status\n")
       errorCount += 1
     case .pmPartHasInvalidName :
-      logView?.appendErrorString ("  Error; '\(symbolName)' symbol has an invalid name\n")
+      logView.appendErrorString ("  Error; '\(symbolName)' symbol has an invalid name\n")
       errorCount += 1
     case .pmPartHasError :
-      logView?.appendErrorString ("  Error; '\(symbolName)' symbol contains error(s)\n")
+      logView.appendErrorString ("  Error; '\(symbolName)' symbol contains error(s)\n")
       errorCount += 1
     case .pmPartHasWarning :
-      logView?.appendErrorString ("  Error; '\(symbolName)' symbol contains warning(s)\n")
+      logView.appendErrorString ("  Error; '\(symbolName)' symbol contains warning(s)\n")
       errorCount += 1
     case .pmPartIsValid :
       break
@@ -477,8 +477,8 @@ private struct PMPackageDictionaryEntry {
 
 
 private func checkPackageLibraryCheckAtPath (_ packageFullPath : String,
-                                             logView : NSTextView?,
-                                             packageDict:inout [String : PMPackageDictionaryEntry]) throws {
+                                             logView : AutoLayoutStaticTextView,
+                                             packageDict: inout [String : PMPackageDictionaryEntry]) throws {
   let packageName = ((packageFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
   let metadata = try getFileMetadata (atPath: packageFullPath)
   let possibleVersionNumber : Any? = metadata.metadataDictionary [PMPackageVersion]
@@ -521,13 +521,13 @@ private func checkPackageLibraryCheckAtPath (_ packageFullPath : String,
 
 private func performPackageLibraryEnumerationAtPath (_ inPackageLibraryPath : String,
                                                     packageDict: inout [String : PMPackageDictionaryEntry],
-                                                    logView : NSTextView?) throws {
+                                                    logView : AutoLayoutStaticTextView) throws {
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inPackageLibraryPath) {
     for path in unwSubpaths {
       if path.pathExtension == "ElCanariPackage" {
         let fullsubpath = inPackageLibraryPath.appendingPathComponent (path)
-        try checkPackageLibraryCheckAtPath (fullsubpath, logView:logView, packageDict:&packageDict)
+        try checkPackageLibraryCheckAtPath (fullsubpath, logView: logView, packageDict: &packageDict)
       }
     }
   }
@@ -536,22 +536,22 @@ private func performPackageLibraryEnumerationAtPath (_ inPackageLibraryPath : St
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-private func checkPackageLibrary (_ logView : NSTextView?,
+private func checkPackageLibrary (_ logView : AutoLayoutStaticTextView,
                                   packageDict : inout [String : PMPackageDictionaryEntry],
                                   errorCount : inout Int,
                                   warningCount : inout Int) throws {
-  logView?.appendMessageString ("\nChecking packages library...\n")
+  logView.appendMessageString ("\nChecking packages library...\n")
   for path in existingLibraryPathArray () {
     let packageLibraryPath = packageLibraryPathForPath (path)
-    logView?.appendMessageString ("  Directory \(packageLibraryPath)...\n")
+    logView.appendMessageString ("  Directory \(packageLibraryPath)...\n")
     try performPackageLibraryEnumerationAtPath (packageLibraryPath, packageDict: &packageDict, logView: logView)
   }
 //--- Display duplicate package count
   let foundPackages = packageDict.count
   if foundPackages <= 1 {
-    logView?.appendSuccessString ("  Found \(foundPackages) part\n")
+    logView.appendSuccessString ("  Found \(foundPackages) part\n")
   }else{
-    logView?.appendSuccessString ("  Found \(foundPackages) parts\n")
+    logView.appendSuccessString ("  Found \(foundPackages) parts\n")
   }
 //--- Display duplicate entries for symbols, invalid entries
   for (packageName, entry) in packageDict {
@@ -562,20 +562,20 @@ private func checkPackageLibrary (_ logView : NSTextView?,
       for path in entry.mPathArray {
         errorString += "    - \(path)\n"
       }
-      logView?.appendErrorString (errorString)
+      logView.appendErrorString (errorString)
       errorCount += 1
     }
     case .pmPartHasUnknownStatus :
-      logView?.appendErrorString ("  Error; '\(packageName)' package has unknown status\n")
+      logView.appendErrorString ("  Error; '\(packageName)' package has unknown status\n")
       errorCount += 1
     case .pmPartHasInvalidName :
-      logView?.appendErrorString ("  Error; '\(packageName)' package has an invalid name\n")
+      logView.appendErrorString ("  Error; '\(packageName)' package has an invalid name\n")
       errorCount += 1
     case .pmPartHasError :
-      logView?.appendErrorString ("  Error; '\(packageName)' package contains error(s)\n")
+      logView.appendErrorString ("  Error; '\(packageName)' package contains error(s)\n")
       errorCount += 1
     case .pmPartHasWarning :
-      logView?.appendErrorString ("  Error; '\(packageName)' package contains warning(s)\n")
+      logView.appendErrorString ("  Error; '\(packageName)' package contains warning(s)\n")
       errorCount += 1
     case .pmPartIsValid :
       break
@@ -607,7 +607,7 @@ private struct PMFontDictionaryEntry {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func checkFontLibraryCheckAtPath (_ fontFullPath : String,
-                                          logView : NSTextView?,
+                                          logView : AutoLayoutStaticTextView,
                                           fontDict:inout [String : PMFontDictionaryEntry]) throws {
   let fontName = ((fontFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
   let metadata = try getFileMetadata (atPath: fontFullPath)
@@ -653,13 +653,13 @@ private func checkFontLibraryCheckAtPath (_ fontFullPath : String,
 
 private func performFontLibraryEnumerationAtPath (_ inFontLibraryPath : String,
                                                   fontDict: inout [String : PMFontDictionaryEntry],
-                                                  logView : NSTextView?) throws {
+                                                  logView : AutoLayoutStaticTextView) throws {
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inFontLibraryPath) {
     for path in unwSubpaths {
       if path.pathExtension == "ElCanariFont" {
         let fullsubpath = inFontLibraryPath.appendingPathComponent (path)
-        try checkFontLibraryCheckAtPath (fullsubpath, logView:logView, fontDict:&fontDict)
+        try checkFontLibraryCheckAtPath (fullsubpath, logView: logView, fontDict: &fontDict)
       }
     }
   }
@@ -668,22 +668,22 @@ private func performFontLibraryEnumerationAtPath (_ inFontLibraryPath : String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-private func checkFontLibrary (_ logView : NSTextView?,
+private func checkFontLibrary (_ logView : AutoLayoutStaticTextView,
                                errorCount : inout Int,
                                warningCount : inout Int) throws {
   var fontDict : [String : PMFontDictionaryEntry] = [:]
-  logView?.appendMessageString ("\nChecking font library...\n")
+  logView.appendMessageString ("\nChecking font library...\n")
   for path in existingLibraryPathArray () {
     let fontLibraryPath = fontLibraryPathForPath (path)
-    logView?.appendMessageString ("  Directory \(fontLibraryPath)...\n")
+    logView.appendMessageString ("  Directory \(fontLibraryPath)...\n")
     try performFontLibraryEnumerationAtPath (fontLibraryPath, fontDict: &fontDict, logView: logView)
   }
 //--- Display duplicate font count
   let foundFonts = fontDict.count
   if foundFonts <= 1 {
-    logView?.appendSuccessString ("  Found \(foundFonts) part\n")
+    logView.appendSuccessString ("  Found \(foundFonts) part\n")
   }else{
-    logView?.appendSuccessString ("  Found \(foundFonts) parts\n")
+    logView.appendSuccessString ("  Found \(foundFonts) parts\n")
   }
 //--- Display duplicate entries for font, invalid entries
   for (fontName, entry) in fontDict {
@@ -694,20 +694,20 @@ private func checkFontLibrary (_ logView : NSTextView?,
       for path in entry.mPathArray {
         errorString += "    - \(path)\n"
       }
-      logView?.appendErrorString (errorString)
+      logView.appendErrorString (errorString)
       errorCount += 1
     }
     case .pmPartHasUnknownStatus :
-      logView?.appendErrorString ("  Error; '\(fontName)' font has unknown status\n")
+      logView.appendErrorString ("  Error; '\(fontName)' font has unknown status\n")
       errorCount += 1
     case .pmPartHasInvalidName :
-      logView?.appendErrorString ("  Error; '\(fontName)' font has an invalid name\n")
+      logView.appendErrorString ("  Error; '\(fontName)' font has an invalid name\n")
       errorCount += 1
     case .pmPartHasError :
-      logView?.appendErrorString ("  Error; '\(fontName)' font contains error(s)\n")
+      logView.appendErrorString ("  Error; '\(fontName)' font contains error(s)\n")
       errorCount += 1
     case .pmPartHasWarning :
-      logView?.appendErrorString ("  Error; '\(fontName)' font contains warning(s)\n")
+      logView.appendErrorString ("  Error; '\(fontName)' font contains warning(s)\n")
       errorCount += 1
     case .pmPartIsValid :
       break
@@ -739,7 +739,7 @@ private struct PMArtworkDictionaryEntry {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func checkArtworkLibraryCheckAtPath (_ artworkFullPath : String,
-                                             logView : NSTextView?,
+                                             logView : AutoLayoutStaticTextView,
                                              artworkDict: inout [String : PMArtworkDictionaryEntry]) throws {
   let packageName = ((artworkFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
   let metadata = try getFileMetadata (atPath: artworkFullPath)
@@ -773,14 +773,14 @@ private func checkArtworkLibraryCheckAtPath (_ artworkFullPath : String,
 
 
 private func performArtworkLibraryEnumerationAtPath (_ inPackageLibraryPath : String,
-                                                    artworkDict: inout [String : PMArtworkDictionaryEntry],
-                                                    logView : NSTextView?) throws {
+                                                     artworkDict: inout [String : PMArtworkDictionaryEntry],
+                                                     logView : AutoLayoutStaticTextView) throws {
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inPackageLibraryPath) {
     for path in unwSubpaths {
       if path.pathExtension == "ElCanariArtwork" {
         let fullsubpath = inPackageLibraryPath.appendingPathComponent (path)
-        try checkArtworkLibraryCheckAtPath (fullsubpath, logView:logView, artworkDict:&artworkDict)
+        try checkArtworkLibraryCheckAtPath (fullsubpath, logView: logView, artworkDict: &artworkDict)
       }
     }
   }
@@ -789,22 +789,22 @@ private func performArtworkLibraryEnumerationAtPath (_ inPackageLibraryPath : St
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-private func checkArtworkLibrary (_ logView : NSTextView?,
+private func checkArtworkLibrary (_ logView : AutoLayoutStaticTextView,
                                   errorCount : inout Int,
                                   warningCount : inout Int) throws {
   var artworkDict : [String : PMArtworkDictionaryEntry] = [:]
-  logView?.appendMessageString ("\nChecking artworks library...\n")
+  logView.appendMessageString ("\nChecking artworks library...\n")
   for path in existingLibraryPathArray () {
     let artworkLibraryPath = artworkLibraryPathForPath (path)
-    logView?.appendMessageString ("  Directory \(artworkLibraryPath)...\n")
-    try performArtworkLibraryEnumerationAtPath (artworkLibraryPath, artworkDict:&artworkDict, logView:logView)
+    logView.appendMessageString ("  Directory \(artworkLibraryPath)...\n")
+    try performArtworkLibraryEnumerationAtPath (artworkLibraryPath, artworkDict: &artworkDict, logView: logView)
   }
 //--- Display duplicate package count
   let foundPackages = artworkDict.count
   if foundPackages <= 1 {
-    logView?.appendSuccessString ("  Found \(foundPackages) part\n")
+    logView.appendSuccessString ("  Found \(foundPackages) part\n")
   }else{
-    logView?.appendSuccessString ("  Found \(foundPackages) parts\n")
+    logView.appendSuccessString ("  Found \(foundPackages) parts\n")
   }
 //--- Display duplicate entries for symbols, invalid entries
   for (artworkName, entry) in artworkDict {
@@ -815,20 +815,20 @@ private func checkArtworkLibrary (_ logView : NSTextView?,
       for path in entry.mPathArray {
         errorString += "    - \(path)\n"
       }
-      logView?.appendErrorString (errorString)
+      logView.appendErrorString (errorString)
       errorCount += 1
     }
     case .pmPartHasUnknownStatus :
-      logView?.appendErrorString ("  Error; '\(artworkName)' artwork has unknown status\n")
+      logView.appendErrorString ("  Error; '\(artworkName)' artwork has unknown status\n")
       errorCount += 1
     case .pmPartHasInvalidName :
-      logView?.appendErrorString ("  Error; '\(artworkName)' artwork has an invalid name\n")
+      logView.appendErrorString ("  Error; '\(artworkName)' artwork has an invalid name\n")
       errorCount += 1
     case .pmPartHasError :
-      logView?.appendErrorString ("  Error; '\(artworkName)' artwork contains error(s)\n")
+      logView.appendErrorString ("  Error; '\(artworkName)' artwork contains error(s)\n")
       errorCount += 1
     case .pmPartHasWarning :
-      logView?.appendErrorString ("  Error; '\(artworkName)' artwork contains warning(s)\n")
+      logView.appendErrorString ("  Error; '\(artworkName)' artwork contains warning(s)\n")
       errorCount += 1
     case .pmPartIsValid :
       break

@@ -197,14 +197,21 @@ var g_Preferences : Preferences? = nil
     vStackView.appendView (view_2)
     let view_3 = AutoLayoutHorizontalStackView ()
     do{
-      let view_3_0 = AutoLayoutButton (title: "Show Log Window", size: .regular)
+      let view_3_0 = AutoLayoutButton (title: "Show Library Update Log Window", size: .regular)
         .bind_run (
           target: self,
           selector: #selector (Preferences.showSystemLibraryLogAction (_:))
         )
       view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutFlexibleSpace ()
+      let view_3_1 = AutoLayoutStaticLabel (title: "Last Check", bold: false, size: .regular)
+        .expandableWidth ()
+        .set (alignment: .left)
       view_3.appendView (view_3_1)
+      let view_3_2 = AutoLayoutDateLabel (bold: false, size: .regular)
+        .bind_date (preferences_mLastSystemLibraryCheckTime_property)
+      view_3.appendView (view_3_2)
+      let view_3_3 = AutoLayoutFlexibleSpace ()
+      view_3.appendView (view_3_3)
     }
     vStackView.appendView (view_3)
     let view_4 = AutoLayoutStaticLabel (title: "User Libraries", bold: true, size: .regular)
@@ -215,6 +222,24 @@ var g_Preferences : Preferences? = nil
       .expandableWidth ()
       .set (alignment: .left)
     vStackView.appendView (view_5)
+    let view_6 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_6_0 = AutoLayoutButton (title: "Check Library Consistency", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (Preferences.checkLibraryAction (_:))
+        )
+      view_6.appendView (view_6_0)
+      let view_6_1 = AutoLayoutButton (title: "Show Library Consistency Log Window", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (Preferences.showLibraryConsistencyLogWindowAction (_:))
+        )
+      view_6.appendView (view_6_1)
+      let view_6_2 = AutoLayoutFlexibleSpace ()
+      view_6.appendView (view_6_2)
+    }
+    vStackView.appendView (view_6)
     return vStackView
   } ()
 
@@ -313,8 +338,6 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mAddLibraryEntryButton : EBButton? = nil
   @IBOutlet var mAdditionnalLibraryArrayTableView : EBTableView? = nil
   @IBOutlet var mCancelButtonInLibraryUpdateWindow : EBButton? = nil
-  @IBOutlet var mCheckLibraryAction : EBButton? = nil
-  @IBOutlet var mCheckLibraryResultTextView : NSTextView? = nil
   @IBOutlet var mCheckingForLibraryUpdateProgressIndicator : EBProgressIndicator? = nil
   @IBOutlet var mCheckingForLibraryUpdateWindow : EBWindow? = nil
   @IBOutlet var mInformativeTextInLibraryUpdateWindow : EBTextField? = nil
@@ -343,15 +366,11 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mUpDateButtonInLibraryUpdateWindow : EBButton? = nil
   @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : EBMenuItem? = nil
   @IBOutlet var mUserAndPasswordTextField : NSTextField? = nil
-  @IBOutlet var nextSystemLibraryCheckDate : CanariDateObserverField? = nil
-  @IBOutlet var systemLibraryCheckTimeIntervalTitleTextField : NSTextField? = nil
 
   //····················································································································
   //    Multiple bindings controllers
   //····················································································································
 
-  private var mController_nextSystemLibraryCheckDate_hidden : MultipleBindingController_hidden?
-  private var mController_systemLibraryCheckTimeIntervalTitleTextField_hidden : MultipleBindingController_hidden?
   private var mController_mRemoveLibraryEntryButton_enabled : MultipleBindingController_enabled?
 
   //····················································································································
@@ -470,8 +489,6 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mAddLibraryEntryButton, "mAddLibraryEntryButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAdditionnalLibraryArrayTableView, "mAdditionnalLibraryArrayTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mCancelButtonInLibraryUpdateWindow, "mCancelButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
-    checkOutletConnection (self.mCheckLibraryAction, "mCheckLibraryAction", EBButton.self, #file, #line)
-    checkOutletConnection (self.mCheckLibraryResultTextView, "mCheckLibraryResultTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mCheckingForLibraryUpdateProgressIndicator, "mCheckingForLibraryUpdateProgressIndicator", EBProgressIndicator.self, #file, #line)
     checkOutletConnection (self.mCheckingForLibraryUpdateWindow, "mCheckingForLibraryUpdateWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mInformativeTextInLibraryUpdateWindow, "mInformativeTextInLibraryUpdateWindow", EBTextField.self, #file, #line)
@@ -500,30 +517,13 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mUpDateButtonInLibraryUpdateWindow, "mUpDateButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpDateLibraryMenuItemInCanariMenu, "mUpDateLibraryMenuItemInCanariMenu", EBMenuItem.self, #file, #line)
     checkOutletConnection (self.mUserAndPasswordTextField, "mUserAndPasswordTextField", NSTextField.self, #file, #line)
-    checkOutletConnection (self.nextSystemLibraryCheckDate, "nextSystemLibraryCheckDate", CanariDateObserverField.self, #file, #line)
-    checkOutletConnection (self.systemLibraryCheckTimeIntervalTitleTextField, "systemLibraryCheckTimeIntervalTitleTextField", NSTextField.self, #file, #line)
   //--------------------------- Install bindings
     mMenuRevealInFinder_symbols?.bind_populateSubmenus (preferences_mValueRevealInFinder_symbols_property)
     mMenuRevealInFinder_packages?.bind_populateSubmenus (preferences_mValueRevealInFinder_packages_property)
     mMenuRevealInFinder_devices?.bind_populateSubmenus (preferences_mValueRevealInFinder_devices_property)
     mMenuRevealInFinder_fonts?.bind_populateSubmenus (preferences_mValueRevealInFinder_fonts_property)
     mMenuRevealInFinder_artworks?.bind_populateSubmenus (preferences_mValueRevealInFinder_artworks_property)
-    nextSystemLibraryCheckDate?.bind_dateObserver (preferences_mLastSystemLibraryCheckTime_property)
   //--------------------------- Install multiple bindings
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: .not (.prop (preferences_checkForSystemLibraryAtStartUp_property)),
-        outlet: self.nextSystemLibraryCheckDate
-      )
-      self.mController_nextSystemLibraryCheckDate_hidden = controller
-    }
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: .not (.prop (preferences_checkForSystemLibraryAtStartUp_property)),
-        outlet: self.systemLibraryCheckTimeIntervalTitleTextField
-      )
-      self.mController_systemLibraryCheckTimeIntervalTitleTextField_hidden = controller
-    }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: .intcmp (.prop (preferences_additionnalLibraryArrayController.selectedArray_property.count_property), .gt, .literalInt (0)),
@@ -538,8 +538,6 @@ var g_Preferences : Preferences? = nil
     self.mAddLibraryEntryButton?.action = #selector (Preferences.addLibraryEntryAction (_:))
     self.mRemoveLibraryEntryButton?.target = preferences_additionnalLibraryArrayController
     self.mRemoveLibraryEntryButton?.action = #selector (Controller_Preferences_additionnalLibraryArrayController.remove (_:))
-    self.mCheckLibraryAction?.target = self
-    self.mCheckLibraryAction?.action = #selector (Preferences.checkLibraryAction (_:))
   //--------------------------- Extern functions
     self.setupForLibrary ()
   }

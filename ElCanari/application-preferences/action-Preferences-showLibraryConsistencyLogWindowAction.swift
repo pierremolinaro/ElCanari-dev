@@ -11,13 +11,32 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @objc func checkLibraryAction (_ sender : NSObject?) {
+  @objc func showLibraryConsistencyLogWindowAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let button = sender as? NSButton,
-       let myWindow = button.window,
-       let logView = self.mLibraryConsistencyLogTextView {
-      checkLibrary (myWindow, logView: logView)
+    let window : EBWindow
+    if let w = self.mLibraryConsistencyLogWindow {
+      window = w
+    }else{
+      window = EBWindow (
+        contentRect: NSRect (x: 0, y: 0, width: 500, height: 400),
+        styleMask: [.closable, .resizable, .titled],
+        backing: .buffered,
+        defer: false
+      )
+      self.mLibraryConsistencyLogWindow = window
+      window.setFrameAutosaveName ("LibraryConsistencyLogWindowSettings")
+      window.title = "Library Consistency Log"
+      window.isReleasedWhenClosed = false
+      let textView = AutoLayoutStaticTextView (string: "")
+        .expandableWidth ()
+        .expandableHeight ()
+        .setScroller (horizontal: true, vertical: true)
+
+      self.mLibraryConsistencyLogTextView = textView
+      window.contentView = textView
+//      window.contentView = AutoLayoutWindowContentView (view: textView)
     }
+    window.makeKeyAndOrderFront (nil)
 //--- END OF USER ZONE 2
   }
 }

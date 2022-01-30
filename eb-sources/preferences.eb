@@ -398,14 +398,25 @@ prefs {
       }
     }
     hStack {
-      Button (title: "Show Log Window", size: .regular) { $run showSystemLibraryLogAction }
+      Button (title: "Show Library Update Log Window", size: .regular) { $run showSystemLibraryLogAction }
+      StaticLabel (title: "Last Check", bold: no, size: .regular) { expandableWidth () set (alignment: .left) }
+      DateLabel (bold: no, size: .regular) {
+        $date prefs.mLastSystemLibraryCheckTime
+//        $hidden !prefs.checkForSystemLibraryAtStartUp   
+      }
       space
     }
     StaticLabel (title: "User Libraries", bold: yes, size: .regular) { expandableWidth () set (alignment: .left) }
     StaticLabel (title: "System Library + User Libraries", bold: yes, size: .regular) { expandableWidth () set (alignment: .left) }
+    hStack {
+      Button (title: "Check Library Consistency", size: .regular) { $run checkLibraryAction }
+      Button (title: "Show Library Consistency Log Window", size: .regular) { $run showLibraryConsistencyLogWindowAction }
+      space
+    }
   }
   
   action showSystemLibraryLogAction ;
+  action showLibraryConsistencyLogWindowAction ;
   externFunc setupForLibrary calledBy awakeFromNib ;
   action revealUserLibraryInFinderAction ;
   action checkSystemLibraryUpdateAction ;
@@ -418,15 +429,13 @@ prefs {
 
   property Date mLastSystemLibraryCheckTime default distantPast ;
 
-  outlet CanariDateObserverField nextSystemLibraryCheckDate
-    $dateObserver self.mLastSystemLibraryCheckTime
-    $hidden !self.checkForSystemLibraryAtStartUp
-  ;
+//  outlet CanariDateObserverField nextSystemLibraryCheckDate
+//    $dateObserver self.mLastSystemLibraryCheckTime
+//    $hidden !self.checkForSystemLibraryAtStartUp
+//  ;
   property Int systemLibraryCheckTimeInterval default 0 ;
 
-  outlet NSTextField systemLibraryCheckTimeIntervalTitleTextField $hidden !self.checkForSystemLibraryAtStartUp ;
-
- // outlet NSTextView mLibraryUpdateLogTextView ;
+//  outlet NSTextField systemLibraryCheckTimeIntervalTitleTextField $hidden !self.checkForSystemLibraryAtStartUp ;
 
 //--- Array of additionnal libraries
   toMany CanariLibraryEntry additionnalLibraryArray ;
@@ -449,9 +458,8 @@ prefs {
   ;
 //--- Check Library button
   action checkLibraryAction ;
-  outlet EBButton mCheckLibraryAction $run checkLibraryAction ;
 //--- Check Library result text view
-  outlet NSTextView mCheckLibraryResultTextView ;
+//  outlet NSTextView mCheckLibraryResultTextView ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

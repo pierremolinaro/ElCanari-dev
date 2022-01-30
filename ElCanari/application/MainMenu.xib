@@ -511,47 +511,6 @@
                 <outlet property="mOpenAllDialogAccessoryCheckBox" destination="waY-Tm-X9Z" id="GAF-Q8-lpY"/>
             </connections>
         </customObject>
-        <window title="Library Checking Log" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="PMCheckLibrariesWindowLocation" animationBehavior="default" id="752" userLabel="Window: CheckLibrariesLogWindow">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="129" y="235" width="672" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
-            <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="753">
-                <rect key="frame" x="0.0" y="0.0" width="672" height="360"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="754">
-                        <rect key="frame" x="0.0" y="0.0" width="672" height="360"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <clipView key="contentView" drawsBackground="NO" id="Rhl-iD-0Uh">
-                            <rect key="frame" x="1" y="1" width="655" height="358"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="755">
-                                    <rect key="frame" x="0.0" y="0.0" width="655" height="358"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="655" height="358"/>
-                                    <size key="maxSize" width="1327" height="10000000"/>
-                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                </textView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="5355">
-                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="5354">
-                            <rect key="frame" x="656" y="1" width="15" height="358"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="-68" y="-151"/>
-        </window>
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="PrefsWindowAutosave" animationBehavior="default" id="5382" userLabel="Window : Preferences" customClass="EBWindow" customModule="ElCanari" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="0.0" y="59" width="518" height="400"/>
@@ -733,42 +692,6 @@
                         <font key="font" metaFont="message" size="11"/>
                     </buttonCell>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5758" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="52" y="19" width="120" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title=" Check" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5759">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="message" size="11"/>
-                    </buttonCell>
-                </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z0R-Xy-yGB" customClass="CanariDateObserverField" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="279" y="254" width="190" height="14"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="8b3-7M-44S">
-                        <dateFormatter key="formatter" dateStyle="long" timeStyle="short" id="7aC-XD-xZa"/>
-                        <font key="font" metaFont="message" size="11"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FqY-uW-mJE">
-                    <rect key="frame" x="180" y="254" width="95" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Last Check Time:" id="Dvx-8P-W8p">
-                        <font key="font" metaFont="message" size="11"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QTj-BL-S2h">
-                    <rect key="frame" x="33" y="327" width="89" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="System Library" id="vv2-7K-aGq">
-                        <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cSr-Mr-dts">
                     <rect key="frame" x="32" y="218" width="83" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -778,26 +701,6 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ncz-Dr-96W">
-                    <rect key="frame" x="33" y="44" width="181" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="System Library + User Libraries" id="FG7-iB-4ya">
-                        <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5757">
-                    <rect key="frame" x="182" y="19" width="120" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="Show Log Window" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5760">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="message" size="11"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="makeKeyAndOrderFront:" target="752" id="6003"/>
-                    </connections>
-                </button>
             </subviews>
             <point key="canvasLocation" x="-134.5" y="-267.5"/>
         </customView>
@@ -963,8 +866,6 @@ Gw
                 <outlet property="mAddLibraryEntryButton" destination="5738" id="OU4-50-WER"/>
                 <outlet property="mAdditionnalLibraryArrayTableView" destination="5740" id="oGz-JM-e2p"/>
                 <outlet property="mCancelButtonInLibraryUpdateWindow" destination="6230" id="Xlr-bm-VVS"/>
-                <outlet property="mCheckLibraryAction" destination="5758" id="nj8-9B-iFa"/>
-                <outlet property="mCheckLibraryResultTextView" destination="755" id="SIY-oS-aJC"/>
                 <outlet property="mCheckingForLibraryUpdateProgressIndicator" destination="6221" id="U9t-ri-t3x"/>
                 <outlet property="mCheckingForLibraryUpdateWindow" destination="6215" id="1xF-fb-FaI"/>
                 <outlet property="mInformativeTextInLibraryUpdateWindow" destination="6232" id="Dt2-8e-xuV"/>
@@ -993,8 +894,6 @@ Gw
                 <outlet property="mUpDateButtonInLibraryUpdateWindow" destination="6236" id="59n-Jt-hQa"/>
                 <outlet property="mUpDateLibraryMenuItemInCanariMenu" destination="tfP-CB-tqy" id="IJJ-Y7-ZtK"/>
                 <outlet property="mUserAndPasswordTextField" destination="lXf-Xe-cVA" id="GKw-yy-fVf"/>
-                <outlet property="nextSystemLibraryCheckDate" destination="z0R-Xy-yGB" id="fd7-lR-mFh"/>
-                <outlet property="systemLibraryCheckTimeIntervalTitleTextField" destination="FqY-uW-mJE" id="lJG-n3-YnE"/>
             </connections>
         </customObject>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="qM1-Dc-ODN" userLabel="Window : Open Symbol in Library">

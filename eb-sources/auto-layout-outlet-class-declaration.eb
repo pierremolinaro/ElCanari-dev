@@ -76,6 +76,14 @@ extern autolayout class Label (bold: Bool, size: EBControlSize) $enabled $hidden
   func automaticallyAdjustHeight (maxWidth : Int)
 }
 
+extern autolayout class DateLabel (bold: Bool, size: EBControlSize) $enabled $hidden {
+  $date transient Date
+  func expandableWidth ()
+  func set (alignment: TextAlignment)
+  func set (minWidth: Int)
+  func automaticallyAdjustHeight (maxWidth : Int)
+}
+
 extern autolayout class SegmentedControlWithPages (documentView: view, equalWidth: Bool, size: EBControlSize) {
   func expandableWidth ()
   func addPage (title: String, tooltip: String, pageView : view)
