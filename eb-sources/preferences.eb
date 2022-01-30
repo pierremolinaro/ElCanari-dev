@@ -1,26 +1,25 @@
-
-prefs {
-  outlet EBWindow mPrefsWindow ;
-  outlet CanariToolbar mToolbar ;
-}
-
 //——————————————————————————————————————————————————————————————————————————————
 //! Main View
 
 prefs {
   stackView mPrefsMainView vStack set (spacing: 0) {
-    SegmentedControlWithPages (documentView: stackView mPrefsPageView, equalWidth: no, size : .regular) {
-      addPage (title: "General", tooltip: "General", pageView: stackView mPrefsUserInterfacePage)
-      addPage (title: "Application Update", tooltip: "Application Update", pageView: stackView mPrefsAppUpdatePage)
-      addPage (title: "Library", tooltip: "Library", pageView: stackView mPrefsLibraryPage)
+    hStack {
+      space
+      SegmentedControlWithPages (documentView: stackView mPrefsPageView, equalWidth: no, size : .regular) {
+        addPage (image: "settings", tooltip: "User Interface", pageView: stackView mPrefsUserInterfacePage)
+        addPage (image: "update", tooltip: "Application Update", pageView: stackView mPrefsAppUpdatePage)
+        addPage (image: "library", tooltip: "Library", pageView: stackView mPrefsLibraryPage)
+        $selectedPage prefs.mSelectedPrefsPage
+      }
+      space
     }
-    separator
     stackViewRef mPrefsPageView
   }
   
   stackView mPrefsPageView vStack set (spacing: 0) {
   }
 
+  property Int mSelectedPrefsPage default 0 ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————
@@ -52,7 +51,9 @@ prefs {
       StaticLabel (title: "?", bold: no, size: .regular) [configurator sparkleLastCheckTimeTextFieldConfigurator]
       space
     }
-    WebView (url: "https://pierremolinaro.github.io/ElCanari-distribution/release-notes.html")
+    WebView (url: "https://pierremolinaro.github.io/ElCanari-distribution/release-notes.html") {
+      set (minHeight: 500)
+    }
   }
 
   action checkForAppUpdateAction ;
@@ -70,10 +71,10 @@ prefs {
     GridView2 {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Selection Width", bold: no, size: .regular),
-        right: ColorWell { $color prefs.selectionHiliteColor (sendContinously: yes) }
+        right: hStack { ColorWell { $color prefs.selectionHiliteColor (sendContinously: yes) } space }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Selection Hilite Color", bold: no, size: .regular),
+        left: StaticLabel (title: "Selection Hilite Color", bold: no, size: .regular) { notExpandableWidth () },
         right: TaggedPopUpButton (size: .regular) {
           add (title: "0.5 Point", withTag:  5)
           add (title: "1.0 Point", withTag: 10)
@@ -83,10 +84,10 @@ prefs {
           $selectedTag prefs.hiliteWidthMultipliedByTen
         }
       )
-      addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "User Interface Style", bold: no, size: .regular),
         right: EnumPopUpButton (titles: enum AutoLayoutUserInterfaceStyle.popupTitles, size: .regular) {
+          notExpandableWidth ()
           $selectedIndex prefs.mAutoLayoutStyle
         }
       )
@@ -95,7 +96,6 @@ prefs {
         right: Checkbox (title: "Show Debug Menu", size: .regular) { $value prefs.showDebugMenu }
       )
     }
-    space
   }
 
 }

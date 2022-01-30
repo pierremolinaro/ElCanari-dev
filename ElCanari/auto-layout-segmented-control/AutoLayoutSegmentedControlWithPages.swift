@@ -56,11 +56,16 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
   final func addPage (image inImageName : String,
                       tooltip inTooltipString : String,
                       pageView inPageView : AutoLayoutBase_NSStackView) -> Self {
+    let n = self.segmentCount
     self.segmentCount += 1
-    self.setImage (NSImage (named: inImageName), forSegment: self.segmentCount - 1)
-    self.setToolTip (inTooltipString, forSegment: self.segmentCount - 1)
+ //   self.setLabel ("", forSegment: n)
+ //   self.setAlignment (.center, forSegment: n)
+    self.setImage (NSImage (named: inImageName), forSegment: n)
+    self.setImageScaling (.scaleProportionallyUpOrDown, forSegment: n)
+
+    self.setToolTip (inTooltipString, forSegment: n)
     if let segmentedCell = self.cell as? NSSegmentedCell {
-      segmentedCell.setToolTip (inTooltipString, forSegment: self.segmentCount - 1)
+      segmentedCell.setToolTip (inTooltipString, forSegment: n)
     }
     self.mPages.append (inPageView)
     self.frame.size = self.intrinsicContentSize

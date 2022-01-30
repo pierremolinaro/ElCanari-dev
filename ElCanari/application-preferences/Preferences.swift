@@ -26,7 +26,7 @@ var g_Preferences : Preferences? = nil
       window = w
     }else{
       window = EBWindow (
-        contentRect: NSRect (x: 0, y: 0, width: 680, height: 600),
+        contentRect: .zero,
         styleMask: [.closable, .resizable, .titled],
         backing: .buffered,
         defer: false
@@ -47,15 +47,22 @@ var g_Preferences : Preferences? = nil
   lazy var mPrefsMainView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
-    let view_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPrefsPageView, equalWidth: false, size: .regular)
-      .addPage (title: "General", tooltip: "General", pageView: self.mPrefsUserInterfacePage)
-      .addPage (title: "Application Update", tooltip: "Application Update", pageView: self.mPrefsAppUpdatePage)
-      .addPage (title: "Library", tooltip: "Library", pageView: self.mPrefsLibraryPage)
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutSegmentedControlWithPages (documentView: self.mPrefsPageView, equalWidth: false, size: .regular)
+        .addPage (image: "settings", tooltip: "User Interface", pageView: self.mPrefsUserInterfacePage)
+        .addPage (image: "update", tooltip: "Application Update", pageView: self.mPrefsAppUpdatePage)
+        .addPage (image: "library", tooltip: "Library", pageView: self.mPrefsLibraryPage)
+        .bind_selectedPage (preferences_mSelectedPrefsPage_property)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+    let view_1 = mPrefsPageView
     vStackView.appendView (view_1)
-    let view_2 = mPrefsPageView
-    vStackView.appendView (view_2)
     return vStackView
   } ()
 
@@ -119,6 +126,7 @@ var g_Preferences : Preferences? = nil
     }
     vStackView.appendView (view_3)
     let view_4 = AutoLayoutWebView (url: "https://pierremolinaro.github.io/ElCanari-distribution/release-notes.html")
+      .set (minHeight: 500)
     vStackView.appendView (view_4)
     return vStackView
   } ()
@@ -137,12 +145,9 @@ var g_Preferences : Preferences? = nil
     let view_1 = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
-      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_6 (), right: self.computeImplicitView_7 ())
     vStackView.appendView (view_1)
-    let view_2 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_2)
     return vStackView
   } ()
 
@@ -274,8 +279,14 @@ var g_Preferences : Preferences? = nil
   //····················································································································
 
   fileprivate final func computeImplicitView_1 () -> NSView {
-    let view = AutoLayoutColorWell ()
-      .bind_color (preferences_selectionHiliteColor_property, sendContinously:true)
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_selectionHiliteColor_property, sendContinously:true)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
     return view
   }
 
@@ -285,6 +296,7 @@ var g_Preferences : Preferences? = nil
 
   fileprivate final func computeImplicitView_2 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular)
+      .notExpandableWidth ()
     return view
   }
 
@@ -371,12 +383,10 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mMenuRevealInFinder_fonts : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_packages : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_symbols : CanariMenu? = nil
-  @IBOutlet var mPrefsWindow : EBWindow? = nil
   @IBOutlet var mProgressIndicatorInLibraryUpdateWindow : EBProgressIndicator? = nil
   @IBOutlet var mSetLibraryRepositoryButton : NSButton? = nil
   @IBOutlet var mSetUserAndPasswordButton : NSButton? = nil
   @IBOutlet var mTableViewInLibraryUpdateWindow : EBTableView? = nil
-  @IBOutlet var mToolbar : CanariToolbar? = nil
   @IBOutlet var mUpDateButtonInLibraryUpdateWindow : EBButton? = nil
   @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : EBMenuItem? = nil
   @IBOutlet var mUserAndPasswordTextField : NSTextField? = nil
@@ -518,12 +528,10 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mMenuRevealInFinder_fonts, "mMenuRevealInFinder_fonts", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_packages, "mMenuRevealInFinder_packages", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_symbols, "mMenuRevealInFinder_symbols", CanariMenu.self, #file, #line)
-    checkOutletConnection (self.mPrefsWindow, "mPrefsWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mProgressIndicatorInLibraryUpdateWindow, "mProgressIndicatorInLibraryUpdateWindow", EBProgressIndicator.self, #file, #line)
     checkOutletConnection (self.mSetLibraryRepositoryButton, "mSetLibraryRepositoryButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mSetUserAndPasswordButton, "mSetUserAndPasswordButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mTableViewInLibraryUpdateWindow, "mTableViewInLibraryUpdateWindow", EBTableView.self, #file, #line)
-    checkOutletConnection (self.mToolbar, "mToolbar", CanariToolbar.self, #file, #line)
     checkOutletConnection (self.mUpDateButtonInLibraryUpdateWindow, "mUpDateButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpDateLibraryMenuItemInCanariMenu, "mUpDateLibraryMenuItemInCanariMenu", EBMenuItem.self, #file, #line)
     checkOutletConnection (self.mUserAndPasswordTextField, "mUserAndPasswordTextField", NSTextField.self, #file, #line)
@@ -572,6 +580,7 @@ var g_Preferences : Preferences? = nil
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 let Preferences_mAutoLayoutStyle = "Preferences:mAutoLayoutStyle"
+let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedByTen"
 let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
 let Preferences_symbolColor = "Preferences:symbolColor"
 let Preferences_crossColorOfSymbolGrid = "Preferences:crossColorOfSymbolGrid"
@@ -761,9 +770,9 @@ let Preferences_mergerColorFrontLegendLines = "Preferences:mergerColorFrontLegen
 let Preferences_mergerColorBackLegendLines = "Preferences:mergerColorBackLegendLines"
 let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
 let Preferences_artworkDialogFilterString = "Preferences:artworkDialogFilterString"
+let Preferences_mSelectedPrefsPage = "Preferences:mSelectedPrefsPage"
 let Preferences_showDebugMenu = "Preferences:showDebugMenu"
 let Preferences_selectionHiliteColor = "Preferences:selectionHiliteColor"
-let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedByTen"
 fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
 let Preferences_pinNameFont = "Preferences:pinNameFont"
 let Preferences_mFreeRouterGuiDefaultFileContents = "Preferences:mFreeRouterGuiDefaultFileContents"
@@ -781,6 +790,19 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var preferences_mAutoLayoutStyle : AutoLayoutUserInterfaceStyle {
     get { return preferences_mAutoLayoutStyle_property.propval }
     set { preferences_mAutoLayoutStyle_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: hiliteWidthMultipliedByTen
+//····················································································································
+
+  let preferences_hiliteWidthMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 15, prefKey: Preferences_hiliteWidthMultipliedByTen)
+
+//····················································································································
+
+  var preferences_hiliteWidthMultipliedByTen : Int {
+    get { return preferences_hiliteWidthMultipliedByTen_property.propval }
+    set { preferences_hiliteWidthMultipliedByTen_property.setProp (newValue) }
   }
 
 //····················································································································
@@ -3241,6 +3263,19 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
 //····················································································································
+//   Atomic property: mSelectedPrefsPage
+//····················································································································
+
+  let preferences_mSelectedPrefsPage_property = EBPreferencesProperty_Int (defaultValue: 0, prefKey: Preferences_mSelectedPrefsPage)
+
+//····················································································································
+
+  var preferences_mSelectedPrefsPage : Int {
+    get { return preferences_mSelectedPrefsPage_property.propval }
+    set { preferences_mSelectedPrefsPage_property.setProp (newValue) }
+  }
+
+//····················································································································
 //   Atomic property: showDebugMenu
 //····················································································································
 
@@ -3264,19 +3299,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var preferences_selectionHiliteColor : NSColor {
     get { return preferences_selectionHiliteColor_property.propval }
     set { preferences_selectionHiliteColor_property.setProp (newValue) }
-  }
-
-//····················································································································
-//   Atomic property: hiliteWidthMultipliedByTen
-//····················································································································
-
-  let preferences_hiliteWidthMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 15, prefKey: Preferences_hiliteWidthMultipliedByTen)
-
-//····················································································································
-
-  var preferences_hiliteWidthMultipliedByTen : Int {
-    get { return preferences_hiliteWidthMultipliedByTen_property.propval }
-    set { preferences_hiliteWidthMultipliedByTen_property.setProp (newValue) }
   }
 
 //····················································································································

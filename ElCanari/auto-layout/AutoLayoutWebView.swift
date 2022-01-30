@@ -43,6 +43,24 @@ class AutoLayoutWebView : WKWebView, EBUserClassNameProtocol, WKUIDelegate {
 
   //····················································································································
 
+  private var mMinHeight : CGFloat? = nil
+
+  //····················································································································
+
+  func set (minHeight inMinHeight : Int) -> Self {
+    self.mMinHeight = CGFloat (inMinHeight)
+    return self
+  }
+
+  //····················································································································
+
+  override var intrinsicContentSize: NSSize {
+    var s = super.intrinsicContentSize
+    if let h = self.mMinHeight, s.height < h {
+      s.height = h
+    }
+    return s
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

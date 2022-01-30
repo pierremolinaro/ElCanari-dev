@@ -55,24 +55,6 @@ final class AutoLayoutStaticLabel : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-//  final func set (alignment inAlignment : TextAlignment) -> Self {
-//    self.alignment = inAlignment.cocoaAlignment
-//    return self
-//  }
-
-  //····················································································································
-
-//  private var mWidth : CGFloat? = nil
-  
-  //····················································································································
-
-//  final func set (width inWidth : Int) -> Self {
-//    self.mWidth = CGFloat (inWidth)
-//    return self
-//  }
-
-  //····················································································································
-
   final func setOrangeTextColor () -> Self {
     self.textColor = .orange
     return self
@@ -84,16 +66,6 @@ final class AutoLayoutStaticLabel : AutoLayoutBase_NSTextField {
     self.textColor = .red
     return self
   }
-
-  //····················································································································
-
-//  override var intrinsicContentSize : NSSize {
-//    var s = super.intrinsicContentSize
-//    if let w = self.mWidth {
-//      s.width = w
-//    }
-//    return s
-//  }
 
   //····················································································································
 

@@ -15,7 +15,14 @@ extension NSView {
   //····················································································································
 
   final func expandableWidth () -> Self {
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    return self
+  }
+
+  //····················································································································
+
+  final func notExpandableWidth () -> Self {
+    self.setContentHuggingPriority (.required, for: .horizontal)
     return self
   }
 

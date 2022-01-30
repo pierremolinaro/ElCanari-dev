@@ -129,6 +129,11 @@ fileprivate final class HiliteView : NSView, EBUserClassNameProtocol {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    self.setContentHuggingPriority (.defaultLow, for: .vertical)
+    self.setContentCompressionResistancePriority (.defaultLow, for: .horizontal)
+    self.setContentCompressionResistancePriority (.defaultLow, for: .vertical)
   }
 
   //····················································································································

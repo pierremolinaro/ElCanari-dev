@@ -60,6 +60,7 @@ extern autolayout class StaticLabel (title : String, bold: Bool, size: EBControl
   func set (minWidth: Int)
   func expandableWidth ()
   func expandableHeight ()
+  func notExpandableWidth ()
   func setOrangeTextColor ()
   func setRedTextColor ()
 }
@@ -118,6 +119,7 @@ extern autolayout class FlexibleSpace {
 
 extern autolayout class EnumPopUpButton (titles: StringArray, size: EBControlSize) $run {
   func expandableWidth ()
+  func notExpandableWidth ()
   $selectedIndex property enum
 }
 
@@ -461,6 +463,7 @@ extern autolayout class EnumSegmentedControl (titles: StringArray, equalWidth: B
 }
 
 extern autolayout class WebView (url: String) {
+  func set (minHeight : Int)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
