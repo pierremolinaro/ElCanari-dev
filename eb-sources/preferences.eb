@@ -408,6 +408,12 @@ prefs {
     }
     StaticLabel (title: "User Libraries", bold: yes, size: .regular) { expandableWidth () set (alignment: .left) }
     TableView (size : .small, addControlButtons: no) { $tableValue #userLibraryArrayController }
+    hStack set (spacing: 0) {
+      Button (title: "+", size: .mini) { $run addLibraryEntryAction }
+//      Button (title: "-", size: .mini) {
+//      }
+      space
+    }
     StaticLabel (title: "System Library + User Libraries", bold: yes, size: .regular) { expandableWidth () set (alignment: .left) }
     hStack {
       Button (title: "Check Library Consistency", size: .regular) { $run checkLibraryAction }

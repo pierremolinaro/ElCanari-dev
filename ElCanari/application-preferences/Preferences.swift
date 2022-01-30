@@ -222,28 +222,41 @@ var g_Preferences : Preferences? = nil
     let view_5 = AutoLayoutTableView (size: .small, addControlButtons: false)
     preferences_userLibraryArrayController.bind_tableView (view_5)
     vStackView.appendView (view_5)
-    let view_6 = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular)
+    let view_6 = AutoLayoutHorizontalStackView ()
+      .set (spacing: 0)
+    do{
+      let view_6_0 = AutoLayoutButton (title: "+", size: .mini)
+        .bind_run (
+          target: self,
+          selector: #selector (Preferences.addLibraryEntryAction (_:))
+        )
+      view_6.appendView (view_6_0)
+      let view_6_1 = AutoLayoutFlexibleSpace ()
+      view_6.appendView (view_6_1)
+    }
+    vStackView.appendView (view_6)
+    let view_7 = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular)
       .expandableWidth ()
       .set (alignment: .left)
-    vStackView.appendView (view_6)
-    let view_7 = AutoLayoutHorizontalStackView ()
+    vStackView.appendView (view_7)
+    let view_8 = AutoLayoutHorizontalStackView ()
     do{
-      let view_7_0 = AutoLayoutButton (title: "Check Library Consistency", size: .regular)
+      let view_8_0 = AutoLayoutButton (title: "Check Library Consistency", size: .regular)
         .bind_run (
           target: self,
           selector: #selector (Preferences.checkLibraryAction (_:))
         )
-      view_7.appendView (view_7_0)
-      let view_7_1 = AutoLayoutButton (title: "Show Library Consistency Log Window", size: .regular)
+      view_8.appendView (view_8_0)
+      let view_8_1 = AutoLayoutButton (title: "Show Library Consistency Log Window", size: .regular)
         .bind_run (
           target: self,
           selector: #selector (Preferences.showLibraryConsistencyLogWindowAction (_:))
         )
-      view_7.appendView (view_7_1)
-      let view_7_2 = AutoLayoutFlexibleSpace ()
-      view_7.appendView (view_7_2)
+      view_8.appendView (view_8_1)
+      let view_8_2 = AutoLayoutFlexibleSpace ()
+      view_8.appendView (view_8_2)
     }
-    vStackView.appendView (view_7)
+    vStackView.appendView (view_8)
     return vStackView
   } ()
 
