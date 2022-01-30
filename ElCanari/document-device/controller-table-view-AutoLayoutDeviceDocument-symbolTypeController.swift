@@ -238,6 +238,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
     )
   //---
     self.mTableViewArray.append (inTableView)
+    inTableView.sortAndReloadData ()
   }
 
   //····················································································································

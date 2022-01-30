@@ -200,6 +200,7 @@ final class Controller_AutoLayoutMergerDocument_mDataController : EBObjcBaseObje
     )
   //---
     self.mTableViewArray.append (inTableView)
+    inTableView.sortAndReloadData ()
   }
 
   //····················································································································

@@ -44,7 +44,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
     root.boardInstances.all.instanceRect, root.boardInstances.all.boardLimitWidth
   ;
   action showPrefsForSettingMergerDisplayAction ;
-  autolayout tableViewController #mBoardModelController (allowsEmptySelection:no, allowsMultipleSelection:no) root.boardModels {
+  tableViewController #mBoardModelController (allowsEmptySelection:no, allowsMultipleSelection:no) root.boardModels {
     column name (title: "", minWidth: 100, maxWidth: 300, headerAlignment: .center, contentAlignment: .right)
   }
 
@@ -1046,7 +1046,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   transient Bool emptyDrillFileExtension dependsFrom root.drillDataFileExtension ;
   transient String generatedFileCountString dependsFrom #mDataController.sortedArray.count ;
 
-  autolayout tableViewController #mDataController (allowsEmptySelection:no, allowsMultipleSelection:no) root.fileGenerationParameterArray {
+  tableViewController #mDataController (allowsEmptySelection:no, allowsMultipleSelection:no) root.fileGenerationParameterArray {
     editableColumn name (title: "Name", minWidth: 60, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey name
     column parameterStatusImage (title: "", minWidth: 30, maxWidth: 30, headerAlignment: .center, contentAlignment: .center)
   }

@@ -272,6 +272,7 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : EBObjcB
     )
   //---
     self.mTableViewArray.append (inTableView)
+    inTableView.sortAndReloadData ()
   }
 
   //····················································································································

@@ -370,6 +370,7 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
     )
   //---
     self.mTableViewArray.append (inTableView)
+    inTableView.sortAndReloadData ()
   }
 
   //····················································································································

@@ -614,7 +614,6 @@
 		CF2FF0D7242F79C40030E49A /* transient-PackageModelImageDoublePoint-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2FF0CA242F79C40030E49A /* transient-PackageModelImageDoublePoint-objectDisplay.swift */; };
 		CF2FF0D8242F79C40030E49A /* transient-PackageModelImageDoublePoint-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2FF0CA242F79C40030E49A /* transient-PackageModelImageDoublePoint-objectDisplay.swift */; };
 		CF3086531B4008F5005D3BCE /* EBTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3086521B4008F5005D3BCE /* EBTableView.swift */; };
-		CF3086551B401259005D3BCE /* controller-table-view-Preferences-additionnalLibraryArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3086541B401259005D3BCE /* controller-table-view-Preferences-additionnalLibraryArrayController.swift */; };
 		CF30969922397B5E00507740 /* extension-Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF30969822397B5E00507740 /* extension-Int.swift */; };
 		CF30CDE321C5709800CFE9CC /* transient-PackagePad-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF30CDDF21C5709700CFE9CC /* transient-PackagePad-issues.swift */; };
 		CF30CDE421C5709800CFE9CC /* transient-PackagePad-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF30CDDF21C5709700CFE9CC /* transient-PackagePad-issues.swift */; };
@@ -1664,7 +1663,6 @@
 		CF5C4D53219F04D600EAC52A /* check-libraries.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE533BF1B4307BA00F2E13A /* check-libraries.swift */; };
 		CF5C4D5D219F04D600EAC52A /* CanariLibraryEntryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8455E31BF0CAB4000A1680 /* CanariLibraryEntryDelegate.swift */; };
 		CF5C4D60219F04D600EAC52A /* GeometricCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF880FEE1DDB85F400954D4E /* GeometricCircle.swift */; };
-		CF5C4D64219F04D600EAC52A /* controller-table-view-Preferences-additionnalLibraryArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3086541B401259005D3BCE /* controller-table-view-Preferences-additionnalLibraryArrayController.swift */; };
 		CF5C4D74219F04D600EAC52A /* action-CanariLibraryEntry-revealLibraryInFinderAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC4AF21BF2732D00EFB30A /* action-CanariLibraryEntry-revealLibraryInFinderAction.swift */; };
 		CF5C4D7E219F04D600EAC52A /* entity-SegmentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B06F8213EC3C9005D6B37 /* entity-SegmentEntity.swift */; };
 		CF5C4D85219F04D600EAC52A /* GeometricOblong.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC3EDBA1DE0C10900445A35 /* GeometricOblong.swift */; };
@@ -2973,7 +2971,6 @@
 		CF9C63F825CABE5C00A00D5C /* transient-SheetInProject-connexionWarnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7CF8233A2A030060A97A /* transient-SheetInProject-connexionWarnings.swift */; };
 		CF9C63F925CABE5C00A00D5C /* transient-BoardConnector-netNameAndPadLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7A92233A23270060A97A /* transient-BoardConnector-netNameAndPadLocation.swift */; };
 		CF9C63FD25CABE5C00A00D5C /* phase4-appendLocalFilesToLibraryFileDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3ACC21FC84E000DE503C /* phase4-appendLocalFilesToLibraryFileDictionary.swift */; };
-		CF9C640025CABE5C00A00D5C /* controller-table-view-Preferences-additionnalLibraryArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3086541B401259005D3BCE /* controller-table-view-Preferences-additionnalLibraryArrayController.swift */; };
 		CF9C640125CABE5C00A00D5C /* transient-LabelInSchematic-netName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7BCC233A27CA0060A97A /* transient-LabelInSchematic-netName.swift */; };
 		CF9C640225CABE5C00A00D5C /* transient-ComponentSymbolInProject-componentName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7B65233A260F0060A97A /* transient-ComponentSymbolInProject-componentName.swift */; };
 		CF9C640325CABE5C00A00D5C /* EBGraphicView-binding-zoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF968AFC21BBD68D0010175E /* EBGraphicView-binding-zoom.swift */; };
@@ -3850,6 +3847,9 @@
 		CFB8DDBF27A6E4440097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift */; };
 		CFB8DDC027A6E4440097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift */; };
 		CFB8DDC127A6E9000097DF9A /* EBTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF71F9231B3EA3DF00FB5049 /* EBTextField.swift */; };
+		CFB8DEB227A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DEB127A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift */; };
+		CFB8DEB327A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DEB127A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift */; };
+		CFB8DEB427A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DEB127A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift */; };
 		CFB9E20222D344EE00D681BF /* enum-TrackSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */; };
 		CFB9E20322D344EE00D681BF /* enum-TrackSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */; };
 		CFBAB0B420DE786C00476FB7 /* canari-conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAB0B320DE786C00476FB7 /* canari-conversions.swift */; };
@@ -4892,7 +4892,6 @@
 		CF2FF0C9242F79C40030E49A /* transient-PackageRoot-secondPointY.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageRoot-secondPointY.swift"; sourceTree = "<group>"; };
 		CF2FF0CA242F79C40030E49A /* transient-PackageModelImageDoublePoint-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageModelImageDoublePoint-objectDisplay.swift"; sourceTree = "<group>"; };
 		CF3086521B4008F5005D3BCE /* EBTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBTableView.swift; sourceTree = "<group>"; };
-		CF3086541B401259005D3BCE /* controller-table-view-Preferences-additionnalLibraryArrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-table-view-Preferences-additionnalLibraryArrayController.swift"; sourceTree = "<group>"; };
 		CF30969822397B5E00507740 /* extension-Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-Int.swift"; sourceTree = "<group>"; };
 		CF30CDDF21C5709700CFE9CC /* transient-PackagePad-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackagePad-issues.swift"; sourceTree = "<group>"; };
 		CF30CDE021C5709700CFE9CC /* transient-PackagePad-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackagePad-objectDisplay.swift"; sourceTree = "<group>"; };
@@ -5788,6 +5787,7 @@
 		CFB8DDB127A6CFF20097DF9A /* Preferences_SuperClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences_SuperClass.swift; sourceTree = "<group>"; };
 		CFB8DDB927A6DE030097DF9A /* AutoLayoutDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutDateLabel.swift; sourceTree = "<group>"; };
 		CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-showLibraryConsistencyLogWindowAction.swift"; sourceTree = "<group>"; };
+		CFB8DEB127A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-table-view-Preferences-userLibraryArrayController.swift"; sourceTree = "<group>"; };
 		CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-TrackSide.swift"; sourceTree = "<group>"; };
 		CFBAB0B320DE786C00476FB7 /* canari-conversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "canari-conversions.swift"; sourceTree = "<group>"; };
 		CFBC202A275E14B60076697D /* extension-MergerBoardInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-MergerBoardInstance.swift"; sourceTree = "<group>"; };
@@ -6689,7 +6689,6 @@
 				CF8455E31BF0CAB4000A1680 /* CanariLibraryEntryDelegate.swift */,
 				CF4B7C741BEBEA7C00627E76 /* CanariToolbar.swift */,
 				CFE533BF1B4307BA00F2E13A /* check-libraries.swift */,
-				CF3086541B401259005D3BCE /* controller-table-view-Preferences-additionnalLibraryArrayController.swift */,
 				CF5182D921B8486C0035533A /* entity-CanariLibraryEntry.swift */,
 				CF57F66425D46242004EB3AF /* Info-Debug-temporary.plist */,
 				CF6172581B3C4B4300F3CA82 /* Info-Debug.plist */,
@@ -6858,13 +6857,13 @@
 		CF62175227A19E1F00D02368 /* Application — Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift */,
 				CF62175B27A19E4D00D02368 /* action-Preferences-addLibraryEntryAction.swift */,
 				CF62175627A19E4C00D02368 /* action-Preferences-checkForAppUpdateAction.swift */,
 				CF62175427A19E4C00D02368 /* action-Preferences-checkLibraryAction.swift */,
 				CF5220A427A2EC38004FEEB2 /* action-Preferences-checkSystemLibraryUpdateAction.swift */,
 				CF62175927A19E4D00D02368 /* action-Preferences-createUserLibraryAction.swift */,
 				CF62175D27A19E4D00D02368 /* action-Preferences-revealUserLibraryInFinderAction.swift */,
+				CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift */,
 				CF52219727A2F558004FEEB2 /* action-Preferences-showSystemLibraryLogAction.swift */,
 				CF62187A27A1A3E900D02368 /* configurator-Preferences-automaticallyCheckForUpdatesConfigurator.swift */,
 				CF5220A827A2EF49004FEEB2 /* configurator-Preferences-lastSystemLibraryCheckTimeButtonConfigurator.swift */,
@@ -6872,6 +6871,7 @@
 				CFB80EA027A1AB9A0084F73F /* configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift */,
 				CF62187E27A1A57B00D02368 /* configurator-Preferences-updateCheckIntervalPopUpButtonConfigurator.swift */,
 				CF62187627A1A10C00D02368 /* configurator-Preferences-usingSparkleTextFieldConfigurator.swift */,
+				CFB8DEB127A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift */,
 				CFB8DDB127A6CFF20097DF9A /* Preferences_SuperClass.swift */,
 				CF62175E27A19E4D00D02368 /* Preferences.swift */,
 				CF62175827A19E4C00D02368 /* Preferences+setupForLibrary.swift */,
@@ -9600,6 +9600,7 @@
 				CFEB7AF0233A247F0060A97A /* transient-BoardRestrictRectangle-selectionDisplay.swift in Sources */,
 				CFA430BB229AEC41000AA8C8 /* tomany-SymbolBezierCurve.swift in Sources */,
 				CF07780723521A4E00F56EAB /* EnumPropertyProtocol.swift in Sources */,
+				CFB8DEB227A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift in Sources */,
 				CFEB7B0D233A24BF0060A97A /* transient-BoardTrack-signatureForERCChecking.swift in Sources */,
 				CF711E0D275E1C8D00280069 /* extension-PackageSegment.swift in Sources */,
 				CF711DB5275E1B4000280069 /* toone-PointInSchematic.swift in Sources */,
@@ -9651,7 +9652,6 @@
 				CF71200E275E1F2B00280069 /* extension-PointlInSchematic.swift in Sources */,
 				CFEB7AAF233A23270060A97A /* transient-BoardConnector-netNameAndPadLocation.swift in Sources */,
 				CFCD3ACD21FC84E000DE503C /* phase4-appendLocalFilesToLibraryFileDictionary.swift in Sources */,
-				CF3086551B401259005D3BCE /* controller-table-view-Preferences-additionnalLibraryArrayController.swift in Sources */,
 				CF712003275E1EA300280069 /* extension-SheetInProject-points.swift in Sources */,
 				CFEB7BD5233A27CB0060A97A /* transient-LabelInSchematic-netName.swift in Sources */,
 				CF355A2D279D9F3E000BFC9B /* transient-AutoLayoutProjectDocument-unplacedSymbolsCount.swift in Sources */,
@@ -11101,6 +11101,7 @@
 				CF711E0E275E1C8D00280069 /* extension-PackageSegment.swift in Sources */,
 				CFEB7B0E233A24BF0060A97A /* transient-BoardTrack-signatureForERCChecking.swift in Sources */,
 				CFEB7C2B233A284A0060A97A /* transient-PointInSchematic-netInfoForPoint.swift in Sources */,
+				CFB8DEB327A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift in Sources */,
 				CF5C4D5D219F04D600EAC52A /* CanariLibraryEntryDelegate.swift in Sources */,
 				CF92C3C122BEC30900C221B2 /* EBBezierPath.swift in Sources */,
 				CF2285D0276678E900804193 /* transient-FontInProject-textCount.swift in Sources */,
@@ -11150,7 +11151,6 @@
 				CF4D084121C2F18000380ACA /* entity-PackageSegment.swift in Sources */,
 				CFCD3ACE21FC84E000DE503C /* phase4-appendLocalFilesToLibraryFileDictionary.swift in Sources */,
 				CF71200F275E1F2B00280069 /* extension-PointlInSchematic.swift in Sources */,
-				CF5C4D64219F04D600EAC52A /* controller-table-view-Preferences-additionnalLibraryArrayController.swift in Sources */,
 				CFA42FFC229AEB68000AA8C8 /* tomany-PackageRoot.swift in Sources */,
 				CFEB7BD6233A27CB0060A97A /* transient-LabelInSchematic-netName.swift in Sources */,
 				CF712004275E1EA300280069 /* extension-SheetInProject-points.swift in Sources */,
@@ -12602,6 +12602,7 @@
 				CF711DCC275E1B7300280069 /* tomany-SchematicObject.swift in Sources */,
 				CFB4C0802794668300C509A9 /* AutoLayoutAngleCircularSlider.swift in Sources */,
 				CF841D40275BC3F00000EA26 /* configurator-AutoLayoutMergerDocument-boardModelDragSourceTableView.swift in Sources */,
+				CFB8DEB427A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift in Sources */,
 				CF22F1CA275A73ED009C6FAC /* transient-MergerBoardInstance-objectDisplay.swift in Sources */,
 				CF22F227275A73EE009C6FAC /* entity-BoardModelVia.swift in Sources */,
 				CF9C63E825CABE5C00A00D5C /* transient-PadProxyInDevice-isConnected.swift in Sources */,
@@ -12631,7 +12632,6 @@
 				CF62177227A19E4E00D02368 /* Preferences+setupForLibrary.swift in Sources */,
 				CF73BE1E25DAFF2A00090625 /* AutoLayout-debug.swift in Sources */,
 				CF9C63FD25CABE5C00A00D5C /* phase4-appendLocalFilesToLibraryFileDictionary.swift in Sources */,
-				CF9C640025CABE5C00A00D5C /* controller-table-view-Preferences-additionnalLibraryArrayController.swift in Sources */,
 				CF56026D2793158300479AB6 /* AutoLayoutCanariTrackLockView.swift in Sources */,
 				CF39CCEC268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-updateSelectedPackages.swift in Sources */,
 				CF2285DE27667E6300804193 /* action-AutoLayoutProjectDocument-removeFontAction.swift in Sources */,

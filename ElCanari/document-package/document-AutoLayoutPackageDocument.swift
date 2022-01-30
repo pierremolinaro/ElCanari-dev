@@ -3962,31 +3962,6 @@ import Cocoa
 
   override func removeUserInterface () {
     super.removeUserInterface ()
-  //--------------------------- Clean up auto layout views
-    // self.mPageMasterView.ebCleanUp ()
-    // self.mDocumentMainView.ebCleanUp ()
-    // self.mModelImagePage.ebCleanUp ()
-    // self.mPackagePageInspectorMasterView.ebCleanUp ()
-    // self.mPackagePage.ebCleanUp ()
-    // self.mIssuesInspectorView.ebCleanUp ()
-    // self.mSelectedObjectsInspectorView.ebCleanUp ()
-    // self.mSegmentInspectorView.ebCleanUp ()
-    // self.mBezierCurveInspectorView.ebCleanUp ()
-    // self.mOvalInspectorView.ebCleanUp ()
-    // self.mArcInspectorView.ebCleanUp ()
-    // self.mGuideInspectorView.ebCleanUp ()
-    // self.mDimensionInspectorView.ebCleanUp ()
-    // self.mZoneInspectorView.ebCleanUp ()
-    // self.mMasterPadInspectorView.ebCleanUp ()
-    // self.mSlavePadInspectorView.ebCleanUp ()
-    // self.mGridZoomInspectorView.ebCleanUp ()
-    // self.mDisplayInspectorView.ebCleanUp ()
-    // self.mProgramPage.ebCleanUp ()
-    // self.mInfosPage.ebCleanUp ()
-    /* let toolbarItems = self.windowForSheet?.toolbar?.items ?? []
-    for item in toolbarItems {
-      item.view?.ebCleanUp ()
-    } */
   //--------------------------- Unbind regular bindings
   //--------------------------- Unbind array controllers
   //--- Array controller property: mModelImageObjectsController

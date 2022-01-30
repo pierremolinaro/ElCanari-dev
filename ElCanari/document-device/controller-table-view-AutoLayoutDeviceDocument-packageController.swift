@@ -221,6 +221,7 @@ final class Controller_AutoLayoutDeviceDocument_packageController : EBObjcBaseOb
     )
   //---
     self.mTableViewArray.append (inTableView)
+    inTableView.sortAndReloadData ()
   }
 
   //····················································································································

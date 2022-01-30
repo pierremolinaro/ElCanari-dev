@@ -83,8 +83,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     }
   }
 
-
-  autolayout tableViewController #documentationController (allowsEmptySelection:yes, allowsMultipleSelection:no) root.mDocs {
+  tableViewController #documentationController (allowsEmptySelection:yes, allowsMultipleSelection:no) root.mDocs {
     column mFileName (title: "File Name", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mFileName
     column fileSize (title: "Size (bytes)", minWidth: 120, maxWidth: 120, headerAlignment: .right, contentAlignment: .right) sortkey fileSize
   }
@@ -326,7 +325,6 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   action resetSymbolsAndPackagesVersion ;
   action updateSymbolsAndPackagesAction ;
 
-  autolayout
   tableViewController #symbolTypeController (allowsEmptySelection:no, allowsMultipleSelection:no) root.mSymbolTypes {
     column versionString (title: "Version", minWidth: 60, maxWidth: 60, headerAlignment: .center, contentAlignment: .center) sortkey versionString
     column instanceCount (title: "Instances", minWidth: 80, maxWidth: 80, headerAlignment: .center, contentAlignment: .center) sortkey instanceCount
@@ -336,7 +334,6 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 
   selectionController SymbolTypeInDevice #symbolTypeSelection : #symbolTypeController.selectedArray ;
 
-  autolayout
   tableViewController #packageController (allowsEmptySelection:no, allowsMultipleSelection:no) root.mPackages {
     column versionString (title: "Version", minWidth: 60, maxWidth: 60, headerAlignment: .center, contentAlignment: .center) sortkey versionString
     column mName (title: "Package", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mName

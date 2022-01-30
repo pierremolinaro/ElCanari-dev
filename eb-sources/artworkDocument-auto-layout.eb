@@ -140,7 +140,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 
   transient NSImage emptyDrillFileExtensionImage dependsFrom root.emptyDrillFileExtension ;
 
-  autolayout tableViewController #mDataController (allowsEmptySelection:no, allowsMultipleSelection:no) root.fileGenerationParameterArray {
+  tableViewController #mDataController (allowsEmptySelection:no, allowsMultipleSelection:no) root.fileGenerationParameterArray {
     editableColumn name (title: "Name", minWidth: 60, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey name
     column parameterStatusImage (title: "", minWidth: 30, maxWidth: 30, headerAlignment: .center, contentAlignment: .center)
   }

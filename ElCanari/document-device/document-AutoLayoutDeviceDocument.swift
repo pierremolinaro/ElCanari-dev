@@ -1725,24 +1725,6 @@ import Cocoa
 
   override func removeUserInterface () {
     super.removeUserInterface ()
-  //--------------------------- Clean up auto layout views
-    // self.mPageMasterView.ebCleanUp ()
-    // self.mDocumentMainView.ebCleanUp ()
-    // self.mDescriptionPage.ebCleanUp ()
-    // self.mSymbolsPage.ebCleanUp ()
-    // self.mSymbolPageInspectorView.ebCleanUp ()
-    // self.mSymbolPageOperationView.ebCleanUp ()
-    // self.mSymbolGridZoomInspectorView.ebCleanUp ()
-    // self.mPackagesPage.ebCleanUp ()
-    // self.mPackageGridZoomInspectorView.ebCleanUp ()
-    // self.mPackagePageOperationView.ebCleanUp ()
-    // self.mLibraryPage.ebCleanUp ()
-    // self.mAssignmentsPage.ebCleanUp ()
-    // self.mInfosPage.ebCleanUp ()
-    /* let toolbarItems = self.windowForSheet?.toolbar?.items ?? []
-    for item in toolbarItems {
-      item.view?.ebCleanUp ()
-    } */
   //--------------------------- Unbind regular bindings
   //--------------------------- Unbind array controllers
   //--- Array controller property: packageController

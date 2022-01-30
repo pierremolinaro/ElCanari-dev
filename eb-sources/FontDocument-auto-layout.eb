@@ -48,7 +48,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 //  Font Page
 //------------------------------------------------------------------------------
 
-  autolayout tableViewController #selectedCharacterController
+  tableViewController #selectedCharacterController
      (allowsEmptySelection: no, allowsMultipleSelection: no) root.characters ;
   selectionController FontCharacter #characterSelection : #selectedCharacterController.selectedArray ;
 

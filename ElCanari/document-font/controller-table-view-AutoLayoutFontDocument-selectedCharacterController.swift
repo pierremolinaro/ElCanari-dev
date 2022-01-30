@@ -158,6 +158,7 @@ final class Controller_AutoLayoutFontDocument_selectedCharacterController : EBOb
     )
   //---
     self.mTableViewArray.append (inTableView)
+    inTableView.sortAndReloadData ()
   }
 
   //····················································································································

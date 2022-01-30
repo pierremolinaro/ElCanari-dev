@@ -120,7 +120,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action changeValueOfSelectedComponentsAction ;
   action revealPackageOfSelectedComponentsAction ;
 
-  autolayout tableViewController #componentController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mComponents {
+  tableViewController #componentController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mComponents {
      column componentName (title: "Name", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
        sortkey componentName
      column deviceName (title: "Device", minWidth: 60, maxWidth: 300, headerAlignment: .left, contentAlignment: .left)
@@ -274,7 +274,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   transient StringArray selectedDeviceNames dependsFrom
     #projectDeviceController.selectedArray.all.symbolAndTypesNames ;
  
-  autolayout tableViewController #projectFontController (allowsEmptySelection:no, allowsMultipleSelection:no) root.mFonts {
+  tableViewController #projectFontController (allowsEmptySelection:no, allowsMultipleSelection:no) root.mFonts {
      column mFontName (title: "Font Name", minWidth: 60, maxWidth: 550, headerAlignment: .left, contentAlignment: .left)
        sortkey mFontName
      column versionString (title: "Version", minWidth: 60, maxWidth: 100, headerAlignment: .center, contentAlignment: .center)
@@ -289,7 +289,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
        sortkey componentValuesCount
   }
 
-  autolayout tableViewController #projectDeviceController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mDevices {
+  tableViewController #projectDeviceController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mDevices {
      column mDeviceName (title: "Name", minWidth: 60, maxWidth: 600, headerAlignment: .left, contentAlignment: .left)
        sortkey mDeviceName
      column versionString (title: "Version", minWidth: 60, maxWidth: 150, headerAlignment: .center, contentAlignment: .center)
@@ -325,7 +325,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action removeNetClassAction ;
   transient Bool canRemoveNetClasses dependsFrom root.mNetClasses.count, #netClassController.selectedArray.all.canRemove ;
   
-  autolayout tableViewController #netClassController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mNetClasses {
+  tableViewController #netClassController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mNetClasses {
     column mNetClassName (title: "Name", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
        sortkey mNetClassName
     column mNetClassColor (title: "Schematic Color", minWidth: 80, maxWidth: 100, headerAlignment: .left, contentAlignment: .left)
@@ -2202,7 +2202,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   transient Bool emptyDrillFileExtension dependsFrom root.drillDataFileExtension ;
   transient String generatedFileCountString dependsFrom #mDataController.sortedArray.count ;
 
-  autolayout tableViewController #mDataController (allowsEmptySelection:no, allowsMultipleSelection:no) root.fileGenerationParameterArray {
+  tableViewController #mDataController (allowsEmptySelection:no, allowsMultipleSelection:no) root.fileGenerationParameterArray {
     editableColumn name (title: "Name", minWidth: 60, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey name
     column parameterStatusImage (title: "", minWidth: 30, maxWidth: 30, headerAlignment: .center, contentAlignment: .center)
   }

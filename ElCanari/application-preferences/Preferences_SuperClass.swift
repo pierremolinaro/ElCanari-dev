@@ -24,6 +24,31 @@ class Preferences_SuperClass : EBObjcBaseObject {
 
   //····················································································································
 
+  final func setUpLibraryUpdateLogWindow () -> EBWindow {
+    if let window = self.mLibraryUpdateLogWindow {
+      return window
+    }else{
+      let window = EBWindow (
+        contentRect: NSRect (x: 0, y: 0, width: 500, height: 400),
+        styleMask: [.closable, .resizable, .titled],
+        backing: .buffered,
+        defer: false
+      )
+      self.mLibraryUpdateLogWindow = window
+      window.setFrameAutosaveName ("LibraryUpdateLogWindowSettings")
+      window.title = "Library Update Log"
+      window.isReleasedWhenClosed = false
+      let textView = AutoLayoutStaticTextView (string: "")
+        .expandableWidth ()
+        .expandableHeight ()
+        .setScroller (horizontal: true, vertical: true)
+
+      self.mLibraryUpdateLogTextView = textView
+      window.contentView = textView
+//      window.contentView = AutoLayoutWindowContentView (view: textView)
+      return window
+    }
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

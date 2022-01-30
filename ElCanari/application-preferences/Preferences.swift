@@ -32,6 +32,7 @@ var g_Preferences : Preferences? = nil
         defer: false
       )
       self.mWindow = window
+      window.setFrameAutosaveName ("PrefsWindowSettings")
       window.title = "Preferences"
       window.isReleasedWhenClosed = false
       window.contentView = AutoLayoutWindowContentView (view: self.mPrefsMainView)
@@ -218,28 +219,31 @@ var g_Preferences : Preferences? = nil
       .expandableWidth ()
       .set (alignment: .left)
     vStackView.appendView (view_4)
-    let view_5 = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular)
+    let view_5 = AutoLayoutTableView (size: .small, addControlButtons: false)
+    preferences_userLibraryArrayController.bind_tableView (view_5)
+    vStackView.appendView (view_5)
+    let view_6 = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular)
       .expandableWidth ()
       .set (alignment: .left)
-    vStackView.appendView (view_5)
-    let view_6 = AutoLayoutHorizontalStackView ()
+    vStackView.appendView (view_6)
+    let view_7 = AutoLayoutHorizontalStackView ()
     do{
-      let view_6_0 = AutoLayoutButton (title: "Check Library Consistency", size: .regular)
+      let view_7_0 = AutoLayoutButton (title: "Check Library Consistency", size: .regular)
         .bind_run (
           target: self,
           selector: #selector (Preferences.checkLibraryAction (_:))
         )
-      view_6.appendView (view_6_0)
-      let view_6_1 = AutoLayoutButton (title: "Show Library Consistency Log Window", size: .regular)
+      view_7.appendView (view_7_0)
+      let view_7_1 = AutoLayoutButton (title: "Show Library Consistency Log Window", size: .regular)
         .bind_run (
           target: self,
           selector: #selector (Preferences.showLibraryConsistencyLogWindowAction (_:))
         )
-      view_6.appendView (view_6_1)
-      let view_6_2 = AutoLayoutFlexibleSpace ()
-      view_6.appendView (view_6_2)
+      view_7.appendView (view_7_1)
+      let view_7_2 = AutoLayoutFlexibleSpace ()
+      view_7.appendView (view_7_2)
     }
-    vStackView.appendView (view_6)
+    vStackView.appendView (view_7)
     return vStackView
   } ()
 
@@ -332,11 +336,9 @@ var g_Preferences : Preferences? = nil
   var mRevealInFinderSystemLibraryButton : AutoLayoutButton? = nil
 
   //····················································································································
-  //    Outlets
+  //    Outlets (EX)
   //····················································································································
 
-  @IBOutlet var mAddLibraryEntryButton : EBButton? = nil
-  @IBOutlet var mAdditionnalLibraryArrayTableView : EBTableView? = nil
   @IBOutlet var mCancelButtonInLibraryUpdateWindow : EBButton? = nil
   @IBOutlet var mCheckingForLibraryUpdateProgressIndicator : EBProgressIndicator? = nil
   @IBOutlet var mCheckingForLibraryUpdateWindow : EBWindow? = nil
@@ -358,7 +360,6 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mMenuRevealInFinder_symbols : CanariMenu? = nil
   @IBOutlet var mPrefsWindow : EBWindow? = nil
   @IBOutlet var mProgressIndicatorInLibraryUpdateWindow : EBProgressIndicator? = nil
-  @IBOutlet var mRemoveLibraryEntryButton : EBButton? = nil
   @IBOutlet var mSetLibraryRepositoryButton : NSButton? = nil
   @IBOutlet var mSetUserAndPasswordButton : NSButton? = nil
   @IBOutlet var mTableViewInLibraryUpdateWindow : EBTableView? = nil
@@ -371,7 +372,6 @@ var g_Preferences : Preferences? = nil
   //    Multiple bindings controllers
   //····················································································································
 
-  private var mController_mRemoveLibraryEntryButton_enabled : MultipleBindingController_enabled?
 
   //····················································································································
   //    Undo Manager
@@ -400,8 +400,8 @@ var g_Preferences : Preferences? = nil
   //--- Read from preferences
   //--- To many property: additionnalLibraryArray (no option)
     preferences_additionnalLibraryArray_property.ebUndoManager = self.ebUndoManager
-  //--- Array controller property: additionnalLibraryArrayController
-    preferences_additionnalLibraryArrayController.bind_model (preferences_additionnalLibraryArray_property, self.ebUndoManager)
+  //--- Array controller property: userLibraryArrayController
+    preferences_userLibraryArrayController.bind_model (preferences_additionnalLibraryArray_property, self.ebUndoManager)
   //--- Atomic property: mValueRevealInFinder_packages
     preferences_mValueRevealInFinder_packages_property.mReadModelFunction = {
         switch (preferences_usesUserLibrary_property.selection, preferences_additionnalLibraryArray_property.selection, preferences_additionnalLibraryArray_property.selection) {
@@ -486,8 +486,6 @@ var g_Preferences : Preferences? = nil
   //····················································································································
 
   override func awakeFromNib () {
-    checkOutletConnection (self.mAddLibraryEntryButton, "mAddLibraryEntryButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mAdditionnalLibraryArrayTableView, "mAdditionnalLibraryArrayTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mCancelButtonInLibraryUpdateWindow, "mCancelButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
     checkOutletConnection (self.mCheckingForLibraryUpdateProgressIndicator, "mCheckingForLibraryUpdateProgressIndicator", EBProgressIndicator.self, #file, #line)
     checkOutletConnection (self.mCheckingForLibraryUpdateWindow, "mCheckingForLibraryUpdateWindow", EBWindow.self, #file, #line)
@@ -509,7 +507,6 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mMenuRevealInFinder_symbols, "mMenuRevealInFinder_symbols", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mPrefsWindow, "mPrefsWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mProgressIndicatorInLibraryUpdateWindow, "mProgressIndicatorInLibraryUpdateWindow", EBProgressIndicator.self, #file, #line)
-    checkOutletConnection (self.mRemoveLibraryEntryButton, "mRemoveLibraryEntryButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSetLibraryRepositoryButton, "mSetLibraryRepositoryButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mSetUserAndPasswordButton, "mSetUserAndPasswordButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mTableViewInLibraryUpdateWindow, "mTableViewInLibraryUpdateWindow", EBTableView.self, #file, #line)
@@ -524,20 +521,8 @@ var g_Preferences : Preferences? = nil
     mMenuRevealInFinder_fonts?.bind_populateSubmenus (preferences_mValueRevealInFinder_fonts_property)
     mMenuRevealInFinder_artworks?.bind_populateSubmenus (preferences_mValueRevealInFinder_artworks_property)
   //--------------------------- Install multiple bindings
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.prop (preferences_additionnalLibraryArrayController.selectedArray_property.count_property), .gt, .literalInt (0)),
-        outlet: self.mRemoveLibraryEntryButton
-      )
-      self.mController_mRemoveLibraryEntryButton_enabled = controller
-    }
   //--------------------------- Array controller
-    preferences_additionnalLibraryArrayController.bind_tableView (self.mAdditionnalLibraryArrayTableView)
   //--------------------------- Set targets / actions
-    self.mAddLibraryEntryButton?.target = self
-    self.mAddLibraryEntryButton?.action = #selector (Preferences.addLibraryEntryAction (_:))
-    self.mRemoveLibraryEntryButton?.target = preferences_additionnalLibraryArrayController
-    self.mRemoveLibraryEntryButton?.action = #selector (Controller_Preferences_additionnalLibraryArrayController.remove (_:))
   //--------------------------- Extern functions
     self.setupForLibrary ()
   }
@@ -548,9 +533,8 @@ var g_Preferences : Preferences? = nil
 
   @objc func applicationWillTerminateAction (_ : NSNotification) {
   //--------------------------- Array controller
-    preferences_additionnalLibraryArrayController.unbind_tableView (self.mAdditionnalLibraryArrayTableView)
-  //--- Array controller property: additionnalLibraryArrayController
-    preferences_additionnalLibraryArrayController.unbind_model ()
+  //--- Array controller property: userLibraryArrayController
+    preferences_userLibraryArrayController.unbind_model ()
     // self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_packages_property)
     // self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_packages_property)
     // self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_packages_property)
@@ -3348,10 +3332,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
 //····················································································································
-//   Array controller: additionnalLibraryArrayController
+//   Array controller: userLibraryArrayController
 //····················································································································
 
-  var preferences_additionnalLibraryArrayController = Controller_Preferences_additionnalLibraryArrayController ()
+  var preferences_userLibraryArrayController = Controller_Preferences_userLibraryArrayController ()
 
 //····················································································································
 //   Transient property: mValueRevealInFinder_packages

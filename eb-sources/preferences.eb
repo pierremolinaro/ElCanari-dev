@@ -407,6 +407,7 @@ prefs {
       space
     }
     StaticLabel (title: "User Libraries", bold: yes, size: .regular) { expandableWidth () set (alignment: .left) }
+    TableView (size : .small, addControlButtons: no) { $tableValue #userLibraryArrayController }
     StaticLabel (title: "System Library + User Libraries", bold: yes, size: .regular) { expandableWidth () set (alignment: .left) }
     hStack {
       Button (title: "Check Library Consistency", size: .regular) { $run checkLibraryAction }
@@ -426,40 +427,23 @@ prefs {
 
 //--- Update System Library path at startup
   property Bool checkForSystemLibraryAtStartUp default yes ;
-
   property Date mLastSystemLibraryCheckTime default distantPast ;
-
-//  outlet CanariDateObserverField nextSystemLibraryCheckDate
-//    $dateObserver self.mLastSystemLibraryCheckTime
-//    $hidden !self.checkForSystemLibraryAtStartUp
-//  ;
   property Int systemLibraryCheckTimeInterval default 0 ;
-
-//  outlet NSTextField systemLibraryCheckTimeIntervalTitleTextField $hidden !self.checkForSystemLibraryAtStartUp ;
 
 //--- Array of additionnal libraries
   toMany CanariLibraryEntry additionnalLibraryArray ;
-  outlet EBTableView mAdditionnalLibraryArrayTableView $tableValue #additionnalLibraryArrayController ;
-  tableViewController #additionnalLibraryArrayController {
-    allowsEmptySelection:no, allowsMultipleSelection:no
-  } self.additionnalLibraryArray {
-     column "uses" EBSwitch $value self.mUses
-     column "status" EBImageObserverView $image self.mStatusImage
-     column "path" EBButton $run revealLibraryInFinderAction $title self.mPath
+  
+  tableViewController #userLibraryArrayController (allowsEmptySelection: no, allowsMultipleSelection: no) self.additionnalLibraryArray {
+    column mPath (title: "Library Path", minWidth: 300, maxWidth: 900, headerAlignment: .center, contentAlignment: .left)
+    column mStatusImage (title: "Status", minWidth: 50, maxWidth: 50, headerAlignment: .center, contentAlignment: .center)
+    editableColumn mUses (title: "Uses", minWidth: 50, maxWidth: 50, headerAlignment: .center, contentAlignment: .center)
   }
+
 //--- Add Entry Button
   action addLibraryEntryAction ;
-  outlet EBButton mAddLibraryEntryButton $run addLibraryEntryAction ;
 
-//--- Remove Entry Button
-  outlet EBButton mRemoveLibraryEntryButton
-    $run #additionnalLibraryArrayController.remove
-    $enabled #additionnalLibraryArrayController.selectedArray.count > 0
-  ;
 //--- Check Library button
   action checkLibraryAction ;
-//--- Check Library result text view
-//  outlet NSTextView mCheckLibraryResultTextView ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

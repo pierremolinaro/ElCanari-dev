@@ -200,6 +200,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBObjcBaseObj
     )
   //---
     self.mTableViewArray.append (inTableView)
+    inTableView.sortAndReloadData ()
   }
 
   //····················································································································
