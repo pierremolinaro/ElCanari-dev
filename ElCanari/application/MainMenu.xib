@@ -760,17 +760,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nM8-3Z-Ust" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="54" y="252" width="120" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="Show Log Window" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="fRL-zb-OS4">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="message" size="11"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="makeKeyAndOrderFront:" target="bxN-1Z-0E8" id="Xey-j0-1Zb"/>
-                    </connections>
-                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QTj-BL-S2h">
                     <rect key="frame" x="33" y="327" width="89" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -987,7 +976,6 @@ Gw
                 <outlet property="mLibraryRepositoryTextField" destination="Mt0-6n-szx" id="Jc9-WA-fHk"/>
                 <outlet property="mLibraryRevisionListScrollView" destination="3ph-dI-ghr" id="bnI-TL-nve"/>
                 <outlet property="mLibraryRevisionListTableView" destination="lsM-NG-KWR" id="I8X-5y-GJD"/>
-                <outlet property="mLibraryUpdateLogTextView" destination="3UV-MD-e0D" id="UpG-5r-3OT"/>
                 <outlet property="mLibraryUpdateWindow" destination="6227" id="qrY-sc-flT"/>
                 <outlet property="mLibraryUploadWindow" destination="SFC-4d-lQe" id="Q7g-lp-vgh"/>
                 <outlet property="mMenuRevealInFinder_artworks" destination="1469" id="0Ra-8e-L6n"/>
@@ -1009,47 +997,6 @@ Gw
                 <outlet property="systemLibraryCheckTimeIntervalTitleTextField" destination="FqY-uW-mJE" id="lJG-n3-YnE"/>
             </connections>
         </customObject>
-        <window title="Library Update Log" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="PMLogLibraryUpdateWindowLocation" animationBehavior="default" id="bxN-1Z-0E8" userLabel="Window: log library update">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="129" y="235" width="672" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
-            <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="0k1-xl-dW6">
-                <rect key="frame" x="0.0" y="0.0" width="672" height="360"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlR-bK-ay5">
-                        <rect key="frame" x="0.0" y="0.0" width="672" height="360"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <clipView key="contentView" drawsBackground="NO" id="Ojy-ZP-Pgt">
-                            <rect key="frame" x="1" y="1" width="655" height="358"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" selectionGranularity="word" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" usesRuler="YES" textCompletion="NO" id="3UV-MD-e0D">
-                                    <rect key="frame" x="0.0" y="0.0" width="655" height="358"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="655" height="358"/>
-                                    <size key="maxSize" width="1327" height="10000000"/>
-                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                </textView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="ESD-U7-dVu">
-                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="hFQ-vO-1vW">
-                            <rect key="frame" x="656" y="1" width="15" height="358"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="358" y="592"/>
-        </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="qM1-Dc-ODN" userLabel="Window : Open Symbol in Library">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>

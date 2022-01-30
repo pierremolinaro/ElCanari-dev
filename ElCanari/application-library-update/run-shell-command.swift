@@ -12,7 +12,7 @@ import Cocoa
 
 func getRemoteFileData (_ inRelativeFilePath : String,
                         _ ioPossibleAlert : inout NSAlert?,
-                        _ inLogTextView : NSTextView,
+                        _ inLogTextView : AutoLayoutStaticTextView,
                         _ inProxy : [String]) -> Data? {
   let arguments = [
     "-s", // Silent mode, do not show download progress
@@ -47,7 +47,9 @@ enum ShellCommandStatus {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func runShellCommandAndGetDataOutput (_ command : String, _ arguments : [String], _ inLogTextView : NSTextView? = nil) -> ShellCommandStatus {
+func runShellCommandAndGetDataOutput (_ command : String,
+                                      _ arguments : [String],
+                                      _ inLogTextView : AutoLayoutStaticTextView? = nil) -> ShellCommandStatus {
   var commandString = command
   for s in arguments {
     if s.contains ("'") {

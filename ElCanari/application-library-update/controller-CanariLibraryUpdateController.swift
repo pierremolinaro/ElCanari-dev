@@ -20,7 +20,7 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
 
   private let mActionArray : [LibraryOperationElement]
   private let mNewRepositoryFileDictionary : [String : CanariLibraryFileDescriptor]
-  private let mLogTextView : NSTextView
+  private let mLogTextView : AutoLayoutStaticTextView
 
   //····················································································································
   //   Init
@@ -28,7 +28,7 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
 
   init (_ inActionArray : [LibraryOperationElement],
         _ inNewLocalDescriptionDictionary : [String : CanariLibraryFileDescriptor],
-        _ inLogTextView : NSTextView) {
+        _ inLogTextView : AutoLayoutStaticTextView) {
     mCurrentActionArray = inActionArray
     mActionArray = inActionArray
     mNewRepositoryFileDictionary = inNewLocalDescriptionDictionary

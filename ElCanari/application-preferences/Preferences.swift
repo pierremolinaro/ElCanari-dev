@@ -10,7 +10,7 @@ var g_Preferences : Preferences? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Preferences) final class Preferences : EBObjcBaseObject, NSWindowDelegate {
+@objc(Preferences) final class Preferences : Preferences_SuperClass, NSWindowDelegate {
 
   //····················································································································
 
@@ -326,7 +326,6 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mLibraryRepositoryTextField : NSTextField? = nil
   @IBOutlet var mLibraryRevisionListScrollView : NSScrollView? = nil
   @IBOutlet var mLibraryRevisionListTableView : NSTableView? = nil
-  @IBOutlet var mLibraryUpdateLogTextView : NSTextView? = nil
   @IBOutlet var mLibraryUpdateWindow : EBWindow? = nil
   @IBOutlet var mLibraryUploadWindow : EBWindow? = nil
   @IBOutlet var mMenuRevealInFinder_artworks : CanariMenu? = nil
@@ -484,7 +483,6 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mLibraryRepositoryTextField, "mLibraryRepositoryTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mLibraryRevisionListScrollView, "mLibraryRevisionListScrollView", NSScrollView.self, #file, #line)
     checkOutletConnection (self.mLibraryRevisionListTableView, "mLibraryRevisionListTableView", NSTableView.self, #file, #line)
-    checkOutletConnection (self.mLibraryUpdateLogTextView, "mLibraryUpdateLogTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mLibraryUpdateWindow, "mLibraryUpdateWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mLibraryUploadWindow, "mLibraryUploadWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_artworks, "mMenuRevealInFinder_artworks", CanariMenu.self, #file, #line)

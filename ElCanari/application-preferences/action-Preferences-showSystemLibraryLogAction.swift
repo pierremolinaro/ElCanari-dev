@@ -13,7 +13,30 @@ import Cocoa
 extension Preferences {
   @objc func showSystemLibraryLogAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
+    let window : EBWindow
+    if let w = self.mLibraryUpdateLogWindow {
+      window = w
+    }else{
+      window = EBWindow (
+        contentRect: NSRect (x: 0, y: 0, width: 500, height: 400),
+        styleMask: [.closable, .resizable, .titled],
+        backing: .buffered,
+        defer: false
+      )
+      self.mLibraryUpdateLogWindow = window
+      window.setFrameAutosaveName ("LibraryUpdateLogWindowSettings")
+      window.title = "Library Update Log"
+      window.isReleasedWhenClosed = false
+      let textView = AutoLayoutStaticTextView (string: "")
+        .expandableWidth ()
+        .expandableHeight ()
+        .setScroller (horizontal: true, vertical: true)
 
+      self.mLibraryUpdateLogTextView = textView
+      window.contentView = textView
+//      window.contentView = AutoLayoutWindowContentView (view: textView)
+    }
+    window.makeKeyAndOrderFront (nil)
 //--- END OF USER ZONE 2
   }
 }

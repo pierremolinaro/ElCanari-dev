@@ -10,7 +10,7 @@ import Cocoa
 
 func phase2_readOrDownloadLibraryFileDictionary (_ possibleStoredCurrentCommit : Int?,
                                                  _ remoteCurrentCommit : Int,
-                                                 _ inLogTextView : NSTextView,
+                                                 _ inLogTextView : AutoLayoutStaticTextView,
                                                  _ inProxy : [String],
                                                  _ ioPossibleAlert : inout NSAlert?) -> [String : LibraryContentsDescriptor] {
   var libraryFileDictionary = [String : LibraryContentsDescriptor] ()

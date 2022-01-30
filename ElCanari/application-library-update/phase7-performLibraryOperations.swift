@@ -20,7 +20,7 @@ private var gCanariLibraryUpdateController : CanariLibraryUpdateController? = ni
 
 func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationElement],
                                       _ inNewLocalDescriptionDictionary : [String : CanariLibraryFileDescriptor],
-                                      _ inLogTextView : NSTextView) {
+                                      _ inLogTextView : AutoLayoutStaticTextView) {
   inLogTextView.appendMessageString ("Phase 7: Display Update Dialog and perform operation\n", color: NSColor.purple)
 //--- Perform library update in main thread
   DispatchQueue.main.async {
@@ -75,7 +75,7 @@ func cancelLibraryUpdate () {
 
 func commitAllActions (_ inActionArray : [LibraryOperationElement],
                        _ inNewRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
-                       _ inLogTextView : NSTextView) {
+                       _ inLogTextView : AutoLayoutStaticTextView) {
 //--- Update UI
   gCanariLibraryUpdateController?.unbind ()
   gCanariLibraryUpdateController = nil
@@ -136,7 +136,7 @@ func commitAllActions (_ inActionArray : [LibraryOperationElement],
 //    deleteOrphanDirectories
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func deleteOrphanDirectories (_ inLogTextView : NSTextView) throws {
+private func deleteOrphanDirectories (_ inLogTextView : AutoLayoutStaticTextView) throws {
   let fm = FileManager ()
   let currentLibraryContents = try fm.subpathsOfDirectory (atPath: systemLibraryPath ())
   var directoryArray = [String] ()

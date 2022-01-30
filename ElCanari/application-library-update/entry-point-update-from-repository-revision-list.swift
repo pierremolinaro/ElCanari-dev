@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func startLibraryRevisionListOperation (_ inLogTextView : NSTextView) {
+func startLibraryRevisionListOperation (_ inLogTextView : AutoLayoutStaticTextView) {
   inLogTextView.appendMessageString ("Start getting library revision list\n", color: NSColor.blue)
 //--- Disable update buttons
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
@@ -86,7 +86,7 @@ func startLibraryRevisionListOperation (_ inLogTextView : NSTextView) {
 
 private func getRepositoryCommitList (_ ioPossibleAlert : inout NSAlert?,
                                       _ inProxy : [String],
-                                      _ inLogTextView : NSTextView) -> [LibraryRevisionDescriptor] {
+                                      _ inLogTextView : AutoLayoutStaticTextView) -> [LibraryRevisionDescriptor] {
   var revisions = [LibraryRevisionDescriptor] ()
 //--- Get lastest commit
   let possibleRemoteCurrentCommit = getRemoteCurrentCommit (inLogTextView, &ioPossibleAlert, inProxy)
@@ -242,7 +242,7 @@ var gLibraryCommitListController : LibraryCommitListController? = nil
 
 fileprivate func displayRepositoryCommitList (_ revisions : [LibraryRevisionDescriptor],
                                               _ proxy : [String],
-                                              _ inLogTextView : NSTextView) -> Int? {
+                                              _ inLogTextView : AutoLayoutStaticTextView) -> Int? {
   gLibraryCommitListController = LibraryCommitListController (revisions, g_Preferences?.mLibraryRevisionListTableView)
   let alert = NSAlert ()
   alert.messageText = "Select Library Revision"

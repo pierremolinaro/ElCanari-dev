@@ -8,7 +8,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
- func phase3_readLibraryDescriptionFileContents (_ inLogTextView : NSTextView) -> [String : CanariLibraryFileDescriptor] {
+ func phase3_readLibraryDescriptionFileContents (_ inLogTextView : AutoLayoutStaticTextView) -> [String : CanariLibraryFileDescriptor] {
   inLogTextView.appendMessageString ("Phase 3: enumerate local files\n", color: NSColor.purple)
   var libraryFileDictionary = [String : CanariLibraryFileDescriptor] ()
   if let propertyList = libraryDescriptionFileContents () {
@@ -37,7 +37,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func writeLibraryDescriptionPlistFile (_ inRepositoryFileDictionary: [String : CanariLibraryFileDescriptor],
-                                       _ inLogTextView : NSTextView) throws {
+                                       _ inLogTextView : AutoLayoutStaticTextView) throws {
   inLogTextView.appendMessageString ("  Write Library Description Plist File [path — repositorySHA — size]\n")
   for (path, value) in inRepositoryFileDictionary {
     inLogTextView.appendMessageString ("    [\(path) — \(value.mSHA) — \(value.mSize)]\n")

@@ -38,6 +38,8 @@ final class AutoLayoutStaticTextView : NSScrollView, EBUserClassNameProtocol {
     self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
     self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
     self.mTextView.textContainer?.widthTracksTextView = true
+    self.mTextView.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    self.mTextView.setContentHuggingPriority (.defaultLow, for: .vertical)
 
     self.drawsBackground = false
     self.documentView = self.mTextView
@@ -59,7 +61,13 @@ final class AutoLayoutStaticTextView : NSScrollView, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  // setRedTextColor
+
+  final func setScroller (horizontal inHorizontal : Bool, vertical inVertical : Bool) -> Self {
+    self.hasHorizontalScroller = inHorizontal
+    self.hasVerticalScroller = inVertical
+    return self
+  }
+
   //····················································································································
 
   final func setRedTextColor () -> Self {

@@ -36,7 +36,7 @@ final class LibraryOperationElement : EBObjcBaseObject { // SHOULD INHERIT FROM 
   let mCommit : Int
   let mSizeInRepository : Int
   let mFileSHA : String
-  let mLogTextView : NSTextView
+  let mLogTextView : AutoLayoutStaticTextView
   let mProxy : [String]
 
   var mOperation : LibraryOperation {
@@ -55,7 +55,7 @@ final class LibraryOperationElement : EBObjcBaseObject { // SHOULD INHERIT FROM 
         sizeInRepository inSizeInRepository : Int,
         fileSHA inFileSHA : String,
         operation inOperation : LibraryOperation,
-        logTextView inLogTextView: NSTextView,
+        logTextView inLogTextView: AutoLayoutStaticTextView,
         proxy inProxy: [String]) {
     self.mRelativePath = inRelativePath
     self.mCommit = commit

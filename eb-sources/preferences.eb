@@ -426,7 +426,7 @@ prefs {
 
   outlet NSTextField systemLibraryCheckTimeIntervalTitleTextField $hidden !self.checkForSystemLibraryAtStartUp ;
 
-  outlet NSTextView mLibraryUpdateLogTextView ;
+ // outlet NSTextView mLibraryUpdateLogTextView ;
 
 //--- Array of additionnal libraries
   toMany CanariLibraryEntry additionnalLibraryArray ;

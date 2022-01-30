@@ -9,7 +9,7 @@ let CURL = "/usr/bin/curl"
 //   LIBRARY UPDATE ENTRY POINT
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTextView) {
+func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : AutoLayoutStaticTextView) {
   inLogTextView.appendMessageString ("Start library update operation\n", color: NSColor.blue)
 //--- Disable update buttons
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
@@ -102,7 +102,7 @@ func enableItemsAfterCompletion () {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func getRemoteCurrentCommit (_ inLogTextView : NSTextView,
+func getRemoteCurrentCommit (_ inLogTextView : AutoLayoutStaticTextView,
                              _ ioPossibleAlert : inout NSAlert?,
                              _ inProxy : [String]) -> Int? {
   if let data = getRemoteFileData ("lastCommit.txt", &ioPossibleAlert, inLogTextView, inProxy) {
