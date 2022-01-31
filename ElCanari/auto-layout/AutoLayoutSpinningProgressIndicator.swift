@@ -8,7 +8,7 @@ final class AutoLayoutSpinningProgressIndicator : NSProgressIndicator, EBUserCla
 
   //····················································································································
 
-  init () {
+  init (size inSize : EBControlSize) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -19,7 +19,7 @@ final class AutoLayoutSpinningProgressIndicator : NSProgressIndicator, EBUserCla
     self.isIndeterminate = true
     self.style = .spinning
     self.usesThreadedAnimation = true
-    self.controlSize = .regular
+    self.controlSize = inSize.cocoaControlSize
     self.isDisplayedWhenStopped = true
     self.startAnimation (nil)
   }

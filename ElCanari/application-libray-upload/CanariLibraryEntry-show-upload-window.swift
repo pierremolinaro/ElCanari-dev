@@ -10,9 +10,9 @@ extension CanariLibraryEntry {
 
   //····················································································································
 
-  internal func showUploadDialog (_ inLibraryPath : String) {
+  internal func showUploadDialog () {
     if let window = g_Preferences?.mLibraryUploadWindow {
-      window.title = "Library Repository Management for " + inLibraryPath
+      window.title = "Library Repository Management for " + self.mPath
     //--- User and password
       self.set (userAndPassword: self.mUserAndPasswordTag)
     //--- Commit button

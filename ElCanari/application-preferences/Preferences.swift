@@ -228,16 +228,29 @@ var g_Preferences : Preferences? = nil
     preferences_userLibraryArrayController.bind_tableView (view_5)
     vStackView.appendView (view_5)
     let view_6 = AutoLayoutHorizontalStackView ()
-      .set (spacing: 0)
     do{
-      let view_6_0 = AutoLayoutButton (title: "+", size: .mini)
+      let view_6_0 = AutoLayoutButton (title: "+", size: .regular)
         .bind_run (
           target: self,
           selector: #selector (Preferences.addLibraryEntryAction (_:))
         )
       view_6.appendView (view_6_0)
-      let view_6_1 = AutoLayoutFlexibleSpace ()
+      let view_6_1 = AutoLayoutButton (title: "Reveal in Finder", size: .regular)
+        .bind_enabled (.intcmp (.prop (preferences_userLibraryArrayController.selectedArray_property.count_property), .eq, .literalInt (1)))
+        .bind_run (
+          target: self,
+          selector: #selector (Preferences.revealInFinderLibraryFolderAction (_:))
+        )
       view_6.appendView (view_6_1)
+      let view_6_2 = AutoLayoutButton (title: "-", size: .regular)
+        .bind_enabled (.intcmp (.prop (preferences_userLibraryArrayController.sortedArray_property.count_property), .gt, .literalInt (0)))
+        .bind_run (
+          target: self,
+          selector: #selector (Preferences.removeLibraryEntryAction (_:))
+        )
+      view_6.appendView (view_6_2)
+      let view_6_3 = AutoLayoutFlexibleSpace ()
+      view_6.appendView (view_6_3)
     }
     vStackView.appendView (view_6)
     let view_7 = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular)

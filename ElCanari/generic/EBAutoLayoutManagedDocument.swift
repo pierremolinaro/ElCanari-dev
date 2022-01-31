@@ -127,7 +127,7 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
       vStackView.appendView (textField)
       let hStackView = AutoLayoutHorizontalStackView ()
       hStackView.appendView (AutoLayoutFlexibleSpace ())
-      hStackView.appendView (AutoLayoutSpinningProgressIndicator ())
+      hStackView.appendView (AutoLayoutSpinningProgressIndicator (size: .regular))
       hStackView.appendView (AutoLayoutFlexibleSpace ())
       vStackView.appendView (hStackView)
       vStackView.appendView (AutoLayoutFlexibleSpace ())

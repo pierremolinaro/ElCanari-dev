@@ -73,12 +73,10 @@ class Preferences_SuperClass : EBObjcBaseObject {
       window.isReleasedWhenClosed = false
 
       let contents = AutoLayoutVerticalStackView ()
-//      contents.appendFlexibleSpace ()
-//      contents.appendView (AutoLayoutStaticLabel (title: "Checking for Library Update…", bold: true, size: .small))
       contents.appendFlexibleSpace ()
       let hStack = AutoLayoutHorizontalStackView ()
       hStack.appendFlexibleSpace ()
-      hStack.appendView (AutoLayoutSpinningProgressIndicator ())
+      hStack.appendView (AutoLayoutSpinningProgressIndicator (size: .regular))
       hStack.appendFlexibleSpace ()
       contents.appendView (hStack)
       contents.appendFlexibleSpace ()

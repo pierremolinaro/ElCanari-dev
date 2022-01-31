@@ -408,10 +408,16 @@ prefs {
     }
     StaticLabel (title: "User Libraries", bold: yes, size: .regular) { expandableWidth () set (alignment: .left) }
     TableView (size : .small, addControlButtons: no) { $tableValue #userLibraryArrayController }
-    hStack set (spacing: 0) {
-      Button (title: "+", size: .mini) { $run addLibraryEntryAction }
-//      Button (title: "-", size: .mini) {
-//      }
+    hStack  {
+      Button (title: "+", size: .regular) { $run addLibraryEntryAction }
+      Button (title: "Reveal in Finder", size: . regular) {
+         $run revealInFinderLibraryFolderAction
+         $enabled #userLibraryArrayController.selectedArray.count == 1
+      }
+      Button (title: "-", size: . regular) {
+         $run removeLibraryEntryAction
+         $enabled #userLibraryArrayController.selectedArray.count > 0
+      }
       space
     }
     StaticLabel (title: "System Library + User Libraries", bold: yes, size: .regular) { expandableWidth () set (alignment: .left) }
@@ -423,6 +429,8 @@ prefs {
   }
   
   action showSystemLibraryLogAction ;
+  action removeLibraryEntryAction ;
+  action revealInFinderLibraryFolderAction ;
   action showLibraryConsistencyLogWindowAction ;
   externFunc setupForLibrary calledBy awakeFromNib ;
   action revealUserLibraryInFinderAction ;
@@ -591,8 +599,6 @@ entity CanariLibraryEntry {
   property String mPath default "Hello" ;
   property Bool mUses default yes ;
   transient NSImage mStatusImage dependsFrom self.mPath ;
-
-  action revealLibraryInFinderAction ;
 
   property String mLibraryRepositoryURL default "" ;
   property String mUserAndPasswordTag default "" ;
