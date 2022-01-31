@@ -461,8 +461,8 @@ prefs {
   outlet NSScrollView mLibraryRevisionListScrollView ;
   outlet NSTableView mLibraryRevisionListTableView ;
 //--- Progress window during repository list download
-  outlet EBWindow mCheckingForLibraryUpdateWindow ;
-  outlet EBProgressIndicator mCheckingForLibraryUpdateProgressIndicator ;
+//  outlet EBWindow mCheckingForLibraryUpdateWindow ;
+//  outlet EBProgressIndicator mCheckingForLibraryUpdateProgressIndicator ;
 //--- Dialog for library updating
   outlet EBWindow mLibraryUpdateWindow ;
   outlet EBProgressIndicator mProgressIndicatorInLibraryUpdateWindow ;

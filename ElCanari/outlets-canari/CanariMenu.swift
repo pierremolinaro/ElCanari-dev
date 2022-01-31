@@ -66,10 +66,10 @@ final class CanariMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func unbind_populateSubmenus () {
-    self.mValueController?.unregister ()
-    self.mValueController = nil
-  }
+//  final func unbind_populateSubmenus () {
+//    self.mValueController?.unregister ()
+//    self.mValueController = nil
+//  }
 
   //····················································································································
 

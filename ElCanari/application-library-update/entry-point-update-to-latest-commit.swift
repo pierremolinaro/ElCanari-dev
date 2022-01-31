@@ -9,7 +9,7 @@ let CURL = "/usr/bin/curl"
 //   LIBRARY UPDATE ENTRY POINT
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : AutoLayoutStaticTextView) {
+func startLibraryUpdateOperation (showProgressWindow inShowWindow : Bool, _ inLogTextView : AutoLayoutStaticTextView) {
   inLogTextView.appendMessageString ("Start library update operation\n", color: NSColor.blue)
 //--- Disable update buttons
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
@@ -17,7 +17,10 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : Auto
 //-------- Cleat log window
   inLogTextView.clear ()
 //-------- Show "Check for update" window
-  inWindow?.makeKeyAndOrderFront (nil)
+ // inWindow?.makeKeyAndOrderFront (nil)
+  if inShowWindow {
+    g_Preferences?.showCheckingForLibraryUpdateWindow ()
+  }
 //-------- ⓪ Get system proxy
   inLogTextView.appendMessageString ("Phase 0: Get proxy (if any)\n", color: NSColor.purple)
   let proxy = getSystemProxy (inLogTextView)
@@ -67,20 +70,25 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : Auto
 //-------- ⑥ Order out "Check for update" window
   inLogTextView.appendMessageString ("Phase 6: library is up to date ?\n", color: NSColor.purple)
   let ok = possibleAlert == nil
-  if let window = inWindow {
+  if inShowWindow {
     if (possibleAlert == nil) && (libraryOperations.count == 0) {
-      inLogTextView.appendSuccessString ("  The library is up to date\n")
-      possibleAlert = NSAlert ()
-      possibleAlert?.messageText = "The library is up to date"
-    }
-    if let alert = possibleAlert {
-      alert.beginSheetModal (
-        for: window,
-        completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) }
-      )
+      g_Preferences?.showUpToDateAlertSheetForLibraryUpdateWindow ()
     }else{
-      window.orderOut (nil)
+      g_Preferences?.hideCheckingForLibraryUpdateWindow ()
     }
+//      inLogTextView.appendSuccessString ("  The library is up to date\n")
+//      possibleAlert = NSAlert ()
+//      possibleAlert?.messageText = "The library is up to date"
+//    }
+//    if let alert = possibleAlert {
+//      alert.beginSheetModal (
+//        for: window,
+//        completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) }
+//      )
+//    }else{
+//      g_Preferences?.hideCheckingForLibraryUpdateWindow ()
+//      window.orderOut (nil)
+//    }
   }
 //-------- ⑦ If ok and there are update operations, perform library update
   if ok && (libraryOperations.count != 0) {

@@ -49,6 +49,66 @@ class Preferences_SuperClass : EBObjcBaseObject {
       return window
     }
   }
+
+  //····················································································································
+
+  private var mCheckingForLibraryUpdateWindow : EBWindow? = nil
+
+  //····················································································································
+
+  final func showCheckingForLibraryUpdateWindow () {
+    let window : EBWindow
+    if let w = self.mCheckingForLibraryUpdateWindow {
+      window = w
+    }else{
+      window = EBWindow (
+        contentRect: NSRect (x: 0, y: 0, width: 250, height: 100),
+        styleMask: [.titled],
+        backing: .buffered,
+        defer: false
+      )
+      self.mCheckingForLibraryUpdateWindow = window
+      window.setFrameAutosaveName ("CheckForLibraryUpdatesWindowSettings")
+      window.title = "Checking for Library Updates…"
+      window.isReleasedWhenClosed = false
+
+      let contents = AutoLayoutVerticalStackView ()
+//      contents.appendFlexibleSpace ()
+//      contents.appendView (AutoLayoutStaticLabel (title: "Checking for Library Update…", bold: true, size: .small))
+      contents.appendFlexibleSpace ()
+      let hStack = AutoLayoutHorizontalStackView ()
+      hStack.appendFlexibleSpace ()
+      hStack.appendView (AutoLayoutSpinningProgressIndicator ())
+      hStack.appendFlexibleSpace ()
+      contents.appendView (hStack)
+      contents.appendFlexibleSpace ()
+
+      window.contentView = contents
+    }
+    window.makeKeyAndOrderFront (nil)
+  }
+
+  //····················································································································
+
+  final func hideCheckingForLibraryUpdateWindow () {
+    self.mCheckingForLibraryUpdateWindow?.orderOut (nil)
+  }
+
+  //····················································································································
+
+  final func showUpToDateAlertSheetForLibraryUpdateWindow () {
+    if let window = self.mCheckingForLibraryUpdateWindow {
+      let alert = NSAlert ()
+      alert.messageText = "The library is up to date"
+      alert.beginSheetModal (
+        for: window,
+        completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) }
+      )
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

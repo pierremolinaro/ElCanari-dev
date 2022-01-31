@@ -330,6 +330,7 @@ var g_Preferences : Preferences? = nil
 
   fileprivate final func computeImplicitView_5 () -> NSView {
     let view = AutoLayoutEnumPopUpButton (titles: AutoLayoutUserInterfaceStyle.popupTitles (), size: .regular)
+      .notExpandableWidth ()
       .bind_selectedIndex (preferences_mAutoLayoutStyle_property)
     return view
   }
@@ -365,8 +366,6 @@ var g_Preferences : Preferences? = nil
   //····················································································································
 
   @IBOutlet var mCancelButtonInLibraryUpdateWindow : EBButton? = nil
-  @IBOutlet var mCheckingForLibraryUpdateProgressIndicator : EBProgressIndicator? = nil
-  @IBOutlet var mCheckingForLibraryUpdateWindow : EBWindow? = nil
   @IBOutlet var mInformativeTextInLibraryUpdateWindow : EBTextField? = nil
   @IBOutlet var mLibraryRepositoryCommitButton : NSButton? = nil
   @IBOutlet var mLibraryRepositoryCurrentReleaseTextField : NSTextField? = nil
@@ -510,8 +509,6 @@ var g_Preferences : Preferences? = nil
 
   override func awakeFromNib () {
     checkOutletConnection (self.mCancelButtonInLibraryUpdateWindow, "mCancelButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
-    checkOutletConnection (self.mCheckingForLibraryUpdateProgressIndicator, "mCheckingForLibraryUpdateProgressIndicator", EBProgressIndicator.self, #file, #line)
-    checkOutletConnection (self.mCheckingForLibraryUpdateWindow, "mCheckingForLibraryUpdateWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mInformativeTextInLibraryUpdateWindow, "mInformativeTextInLibraryUpdateWindow", EBTextField.self, #file, #line)
     checkOutletConnection (self.mLibraryRepositoryCommitButton, "mLibraryRepositoryCommitButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mLibraryRepositoryCurrentReleaseTextField, "mLibraryRepositoryCurrentReleaseTextField", NSTextField.self, #file, #line)

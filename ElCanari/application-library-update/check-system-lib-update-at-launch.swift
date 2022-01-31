@@ -30,7 +30,7 @@ extension ApplicationDelegate {
         }
         let checkDate = Date (timeInterval: nextInterval, since:lastCheckDate)
         if checkDate < Date () {
-          startLibraryUpdateOperation (nil, logTextView)
+          startLibraryUpdateOperation (showProgressWindow: false, logTextView)
           preferences_mLastSystemLibraryCheckTime = Date ()
         }
       }else{

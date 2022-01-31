@@ -14,13 +14,13 @@ extension Preferences {
   @objc func checkSystemLibraryUpdateAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     if let logTextView = g_Preferences?.mLibraryUpdateLogTextView {
-      g_Preferences?.mCheckingForLibraryUpdateProgressIndicator?.startAnimation (nil)
+//      g_Preferences?.mCheckingForLibraryUpdateProgressIndicator?.startAnimation (nil)
       let optionKey : Bool = NSApp.currentEvent?.modifierFlags.contains (.option) ?? false
       // Swift.print ("optionKey \(optionKey)")
       if optionKey {
         startLibraryRevisionListOperation (logTextView)
       }else{
-        startLibraryUpdateOperation (g_Preferences?.mCheckingForLibraryUpdateWindow, logTextView)
+        startLibraryUpdateOperation (showProgressWindow: true, logTextView)
       }
     }
 //--- END OF USER ZONE 2

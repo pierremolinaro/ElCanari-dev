@@ -28,7 +28,7 @@ var gCanariAppUpdaterSettings : CanariAppUpdaterSettings? = nil
 //  @IBOutlet private var mUpdateIntervalPopUpButton : NSPopUpButton?
 //  @IBOutlet private var mSparkleVersionTextField : NSTextField?
 //  @IBOutlet private var mCheckNowForUpdateButton : NSButton?
-//  @IBOutlet private var mCheckNowForUpdateMenuItem : NSMenuItem?
+  @IBOutlet private var mCheckNowForUpdateMenuItem : NSMenuItem?
 
   //····················································································································
 
@@ -46,12 +46,12 @@ var gCanariAppUpdaterSettings : CanariAppUpdaterSettings? = nil
 
   //····················································································································
 
-//  override func awakeFromNib () {
+  override func awakeFromNib () {
 //    let updater = self.mUpdaterController.updater
 //    self.mCheckNowForUpdateButton?.target = self
 //    self.mCheckNowForUpdateButton?.action = #selector (Self.checkForUpdatesAction (_:))
-//    self.mCheckNowForUpdateMenuItem?.target = self
-//    self.mCheckNowForUpdateMenuItem?.action = #selector (Self.checkForUpdatesAction (_:))
+    self.mCheckNowForUpdateMenuItem?.target = self
+    self.mCheckNowForUpdateMenuItem?.action = #selector (Self.checkForUpdatesAction (_:))
 //    self.mUpdateCheckbox?.bind (
 //      NSBindingName.value,
 //      to: updater,
@@ -88,11 +88,11 @@ var gCanariAppUpdaterSettings : CanariAppUpdaterSettings? = nil
 //        NSLog ("Cannot read Sparkle plist: error \(error)")
 //      }
 //    }
-//  }
+  }
 
   //····················································································································
 
-  func checkForUpdatesAction () {
+  @objc func checkForUpdatesAction (_ inUnusedSender : Any?) {
     self.mUpdaterController.updater.checkForUpdates ()
   }
 
