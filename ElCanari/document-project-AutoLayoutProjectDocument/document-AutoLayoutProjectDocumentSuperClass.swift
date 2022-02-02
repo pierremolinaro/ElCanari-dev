@@ -23,6 +23,12 @@ class AutoLayoutProjectDocumentSuperClass : EBAutoLayoutManagedDocument {
   let mSelectedLabelNetClassPopUpController = CanariPopUpButtonControllerForNetClassFromSelectedLabels ()
 
   //····················································································································
+  //  WIRE CREATED BY AN OPTION CLICK
+  //····················································································································
+
+  var mWireCreatedByOptionClick : WireInSchematic? = nil
+
+  //····················································································································
 
 }
 

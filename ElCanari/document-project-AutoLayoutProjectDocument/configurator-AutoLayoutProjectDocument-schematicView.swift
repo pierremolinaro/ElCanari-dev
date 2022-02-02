@@ -20,8 +20,31 @@ import Cocoa
 extension AutoLayoutProjectDocument {
   final func configure_schematicView (_ inOutlet : AutoLayoutGraphicView) {
 //--- START OF USER ZONE 2
-          inOutlet.mScrollView?.register (document: self)
-          inOutlet.mGraphicView.ebRegister (draggedTypes: [kDragAndDropSymbol, kDragAndDropComment, kDragAndDropWire])
+    inOutlet.mScrollView?.register (document: self)
+    inOutlet.mGraphicView.ebRegister (draggedTypes: [kDragAndDropSymbol, kDragAndDropComment, kDragAndDropWire])
+
+    inOutlet.mGraphicView.mGridStepInCanariUnit = SCHEMATIC_GRID_IN_CANARI_UNIT
+    inOutlet.mGraphicView.set (mouseGridInCanariUnit: SCHEMATIC_GRID_IN_CANARI_UNIT)
+    inOutlet.mGraphicView.set (arrowKeyMagnitude : SCHEMATIC_GRID_IN_CANARI_UNIT)
+    inOutlet.mGraphicView.set (shiftArrowKeyMagnitude : SCHEMATIC_GRID_IN_CANARI_UNIT * 4)
+    inOutlet.mGraphicView.mContextualMenuBuilder = { [weak self] in return self?.populateContextualClickOnSchematics ($0) }
+    inOutlet.mGraphicView.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new wire"
+
+    inOutlet.mGraphicView.setOptionMouseCallbacks (
+      start: { [weak self] (inUnalignedMouseLocation) in self?.startWireCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
+      continue: { [weak self] (inUnalignedMouseLocation, inModifierFlags) in self?.continueWireCreationOnOptionMouseDragged (at: inUnalignedMouseLocation, inModifierFlags) },
+      abort: { [weak self] in self?.abortWireCreationOnOptionMouseUp () },
+      helper: { [weak self] (inModifierFlags) in self?.helperStringForWireCreation (inModifierFlags) },
+      stop: { [weak self] (inUnalignedMouseLocation) in self?.stopWireCreationOnOptionMouseUp (at: inUnalignedMouseLocation) ?? false }
+    )
+
+    self.schematicObjectsController.mAfterObjectRemovingCallback = { [weak self] in self?.updateSchematicPointsAndNets () }
+    inOutlet.mGraphicView.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
+      self?.mouseMovedOrFlagsChangedInSchematic (unalignedMouseLocation)
+    }
+    inOutlet.mGraphicView.setMouseExitCallback { [weak self] in self?.mouseExitInSchematic () }
+    self.mouseExitInSchematic ()
+    inOutlet.mGraphicView.setKeyDownCallback { [weak self] (mouseLocation, key) in self?.keyDownInSchematic (mouseLocation, key) }
 //--- END OF USER ZONE 2
   }
 }
