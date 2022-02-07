@@ -20,8 +20,27 @@ import Cocoa
 extension AutoLayoutProjectDocument {
   final func configure_boardView (_ inOutlet : AutoLayoutGraphicView) {
 //--- START OF USER ZONE 2
-          inOutlet.mScrollView?.register (document: self)
-          inOutlet.mGraphicView.ebRegister (draggedTypes: [kDragAndDropRestrictRectangle, kDragAndDropBoardText, kDragAndDropBoardPackage, kDragAndDropBoardLine, kDragAndDropBoardTrack])
+  //--- Set document to scroll view for enabling drag and drop of components
+     inOutlet.mScrollView?.register (document: self)
+     inOutlet.mGraphicView.ebRegister (draggedTypes: [kDragAndDropRestrictRectangle, kDragAndDropBoardText, kDragAndDropBoardPackage, kDragAndDropBoardLine, kDragAndDropBoardTrack])
+  //--- Option click for creating track
+     inOutlet.mGraphicView.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new track"
+     inOutlet.mGraphicView.setOptionMouseCallbacks (
+       start: { [weak self] (inUnalignedMouseLocation) in self?.startTrackCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
+       continue: { [weak self] (inUnalignedMouseLocation, inModifierFlags) in self?.continueTrackCreationOnOptionMouseDragged (at: inUnalignedMouseLocation, inModifierFlags) },
+       abort: { [weak self] in self?.abortTrackCreationOnOptionMouseUp () },
+       helper: { [weak self] (inModifierFlags) in self?.helperStringForTrackCreation (inModifierFlags) },
+       stop: { [weak self] (inUnalignedMouseLocation) in self?.stopTrackCreationOnOptionMouseUp (at: inUnalignedMouseLocation) ?? false }
+     )
+     inOutlet.mGraphicView.mDrawFrameIssue = false
+  //--- Contextual menu
+     inOutlet.mGraphicView.mContextualMenuBuilder = { [weak self] in return self?.populateContextualClickOnBoard ($0) }
+  //----
+    inOutlet.mGraphicView.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
+      self?.mouseMovedOrFlagsChangedInBoard (unalignedMouseLocation)
+    }
+
+
 //--- END OF USER ZONE 2
   }
 }

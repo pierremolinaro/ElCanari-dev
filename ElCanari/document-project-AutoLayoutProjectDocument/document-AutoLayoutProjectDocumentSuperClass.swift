@@ -29,6 +29,12 @@ class AutoLayoutProjectDocumentSuperClass : EBAutoLayoutManagedDocument {
   var mWireCreatedByOptionClick : WireInSchematic? = nil
 
   //····················································································································
+  //  TRACK CREATED BY AN OPTION CLICK
+  //····················································································································
+
+  var mTrackCreatedByOptionClick : BoardTrack? = nil
+
+  //····················································································································
 
 }
 
