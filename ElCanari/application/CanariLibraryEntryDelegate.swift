@@ -64,7 +64,6 @@ final class CanariLibraryEntryDelegate : EBSwiftBaseObject, EBObserverProtocol {
         FSEventStreamCreateFlags (kFSEventStreamCreateFlagNoDefer | kFSEventStreamCreateFlagWatchRoot)
       )
       if let stream = possibleStream {
-   //     FSEventStreamScheduleWithRunLoop (stream, CFRunLoopGetCurrent(), "" as CFString) // CFRunLoopMode.defaultMode)
         FSEventStreamScheduleWithRunLoop (stream, CFRunLoopGetMain (), "" as CFString) // CFRunLoopMode.defaultMode)
         FSEventStreamStart (stream)
       }

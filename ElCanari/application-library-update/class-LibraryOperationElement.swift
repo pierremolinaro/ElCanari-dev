@@ -142,9 +142,9 @@ final class LibraryOperationElement : EBObjcBaseObject { // SHOULD INHERIT FROM 
           let fileHandle = pipe.fileHandleForReading
         //--- Launch
           task.launch ()
+        //--- Loop until all data is got, or download is cancelled
           var data = Data ()
           var hasData = true
-        //--- Loop until all data is got, or download is cancelled
           while hasData && !inController.shouldCancel {
             let newData = fileHandle.availableData
             hasData = newData.count > 0

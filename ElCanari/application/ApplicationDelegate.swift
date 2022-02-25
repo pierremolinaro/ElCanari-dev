@@ -72,48 +72,13 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
     self.checkForLibraryUpdateAtLaunch ()
     instanciateDebugMenuVisibilityObjectOnDidFinishLaunchingNotification ()
     self.addAutoLayoutUserInterfaceStyleObserver ()
-  //--- Observe last update application last check time
-//    UserDefaults.standard.addObserver (
-//      self,
-//      forKeyPath: SU_LAST_CHECK_TIME,
-//      options: .new,
-//      context: nil
-//    )
-//    self.updateApplicationLastCheckTime ()
   }
 
   //····················································································································
 
-//  fileprivate func updateApplicationLastCheckTime () {
-//    if let lastCheckTimeTextField = g_Preferences?.mSULastCheckTimeTextField {
-//      if let date = UserDefaults.standard.value (forKey: SU_LAST_CHECK_TIME) {
-//        lastCheckTimeTextField.objectValue = date
-//  //      g_Preferences?.mSparkleLastCheckTimeTextField?.objectValue = date
-//      }else{
-//        lastCheckTimeTextField.objectValue = "—"
-////        g_Preferences?.mSparkleLastCheckTimeTextField?.objectValue = "—"
-//      }
-//    }
+//  deinit {
+//    UserDefaults.standard.removeObserver (self, forKeyPath: SU_LAST_CHECK_TIME, context: nil)
 //  }
-
-  //····················································································································
-
-//  override func observeValue (forKeyPath keyPath: String?,
-//                              of object: Any?,
-//                              change: [NSKeyValueChangeKey : Any]?,
-//                              context: UnsafeMutableRawPointer?) {
-//    if keyPath == SU_LAST_CHECK_TIME {
-//      self.updateApplicationLastCheckTime ()
-//    }else{
-//      super.observeValue (forKeyPath: keyPath, of: object, change: change, context: context)
-//    }
-//  }
-
-  //····················································································································
-
-  deinit {
-    UserDefaults.standard.removeObserver (self, forKeyPath: SU_LAST_CHECK_TIME, context: nil)
-  }
 
   //····················································································································
   //   SAVE ALL ACTION

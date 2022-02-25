@@ -7,10 +7,6 @@
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>ElCanariArtwork</string>
-			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>elCanariArtwork</string>
 			<key>CFBundleTypeIconSystemGenerated</key>
@@ -20,17 +16,15 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
-			<string>Owner</string>
-			<key>LSTypeIsPackage</key>
-			<integer>0</integer>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).artwork</string>
+			</array>
 			<key>NSDocumentClass</key>
 			<string>AutoLayoutArtworkDocumentSubClass</string>
 		</dict>
 		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>ElCanariFont</string>
-			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>elCanariFont</string>
 			<key>CFBundleTypeIconSystemGenerated</key>
@@ -40,19 +34,15 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
-			<string>Owner</string>
+			<string>Default</string>
 			<key>LSItemContentTypes</key>
-			<array/>
-			<key>LSTypeIsPackage</key>
-			<integer>0</integer>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).font</string>
+			</array>
 			<key>NSDocumentClass</key>
 			<string>AutoLayoutFontDocumentSubClass</string>
 		</dict>
 		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>ElCanariMerger</string>
-			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>elCanariMerger</string>
 			<key>CFBundleTypeIconSystemGenerated</key>
@@ -63,16 +53,14 @@
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
 			<string>Owner</string>
-			<key>LSTypeIsPackage</key>
-			<integer>0</integer>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).merger</string>
+			</array>
 			<key>NSDocumentClass</key>
 			<string>AutoLayoutMergerDocumentSubClass</string>
 		</dict>
 		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>ElCanariSymbol</string>
-			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>elCanariSymbol</string>
 			<key>CFBundleTypeIconSystemGenerated</key>
@@ -83,16 +71,14 @@
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
 			<string>Owner</string>
-			<key>LSTypeIsPackage</key>
-			<integer>0</integer>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).symbol</string>
+			</array>
 			<key>NSDocumentClass</key>
 			<string>AutoLayoutSymbolDocumentSubClass</string>
 		</dict>
 		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>ElCanariPackage</string>
-			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>elCanariPackage</string>
 			<key>CFBundleTypeIconSystemGenerated</key>
@@ -102,19 +88,15 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
-			<string>Owner</string>
+			<string>Default</string>
 			<key>LSItemContentTypes</key>
-			<array/>
-			<key>LSTypeIsPackage</key>
-			<integer>0</integer>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).package</string>
+			</array>
 			<key>NSDocumentClass</key>
 			<string>AutoLayoutPackageDocumentSubClass</string>
 		</dict>
 		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>ElCanariDevice</string>
-			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>elCanariDevice</string>
 			<key>CFBundleTypeIconSystemGenerated</key>
@@ -124,17 +106,15 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
-			<string>Owner</string>
-			<key>LSTypeIsPackage</key>
-			<integer>0</integer>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).device</string>
+			</array>
 			<key>NSDocumentClass</key>
 			<string>AutoLayoutDeviceDocumentSubClass</string>
 		</dict>
 		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>ElCanariProject</string>
-			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>elCanariProject</string>
 			<key>CFBundleTypeIconSystemGenerated</key>
@@ -144,9 +124,11 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
-			<string>Owner</string>
-			<key>LSTypeIsPackage</key>
-			<integer>0</integer>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).project</string>
+			</array>
 			<key>NSDocumentClass</key>
 			<string>AutoLayoutProjectDocumentSubClass</string>
 		</dict>
@@ -179,5 +161,176 @@
 	<string>https://raw.githubusercontent.com/pierremolinaro/ElCanari-distribution/master/rss.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>sPAH6SHKXy7urzL1MEmQrY+fgETb6YSh70iV7UuYr9A=</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Package</string>
+			<key>UTTypeIconFile</key>
+			<string>elCanariPackage</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>elCanariPackage</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).package</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>ElCanariPackage</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Device</string>
+			<key>UTTypeIconFile</key>
+			<string>elCanariDevice</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>elCanariDevice</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).device</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>ElCanariDevice</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Symbol</string>
+			<key>UTTypeIconFile</key>
+			<string>elCanariSymbol</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>elCanariSymbol</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).symbol</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>ElCanariSymbol</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Merger</string>
+			<key>UTTypeIconFile</key>
+			<string>elCanariMerger</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>elCanariMerger</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).merger</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>ElCanariMerger</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Artwork</string>
+			<key>UTTypeIconFile</key>
+			<string>elCanariArtwork</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>elCanariArtwork</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).artwork</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>ElCanariArtwork</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Font</string>
+			<key>UTTypeIconFile</key>
+			<string>elCanariFont</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>elCanariFont</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).font</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>ElCanariFont</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Project</string>
+			<key>UTTypeIconFile</key>
+			<string>elCanariProject</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>elCanariProject</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).project</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>ElCanariProject</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
