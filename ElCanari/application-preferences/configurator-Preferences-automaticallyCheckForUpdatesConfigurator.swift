@@ -20,7 +20,7 @@ import Cocoa
 extension Preferences {
   final func configure_automaticallyCheckForUpdatesConfigurator (_ inOutlet : AutoLayoutCheckbox) {
 //--- START OF USER ZONE 2
-        gCanariAppUpdaterSettings?.configureAutomaticallyCheckForUpdatesButton (inOutlet)
+        gApplicationDelegate?.configureAutomaticallyCheckForUpdatesButton (inOutlet)
 //--- END OF USER ZONE 2
   }
 }

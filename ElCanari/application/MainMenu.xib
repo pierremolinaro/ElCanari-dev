@@ -30,11 +30,6 @@
                 <outlet property="mTableView" destination="VFc-HM-9i9" id="kuE-8Q-J8A"/>
             </connections>
         </customObject>
-        <customObject id="n5I-oj-7oR" customClass="CanariAppUpdaterSettings">
-            <connections>
-                <outlet property="mCheckNowForUpdateMenuItem" destination="1186" id="P7M-9R-Jgp"/>
-            </connections>
-        </customObject>
         <menu title="MainMenu" systemMenu="main" id="29" userLabel="MainMenu">
             <items>
                 <menuItem title="ElCanari" id="56">
@@ -499,7 +494,7 @@
         </menu>
         <customObject id="212" userLabel="Application Delegate" customClass="ApplicationDelegate">
             <connections>
-                <outlet property="mCanariAppUpdaterSettings" destination="n5I-oj-7oR" id="pTg-0I-V3B"/>
+                <outlet property="mCheckNowForUpdateMenuItem" destination="1186" id="yVp-G6-p2r"/>
                 <outlet property="mMaintenanceLogTextField" destination="J85-rD-Vai" id="SJK-mN-eCW"/>
                 <outlet property="mMaintenanceLogTextView" destination="F4C-OC-oT7" id="oyD-oI-fZb"/>
                 <outlet property="mOpenAllDialogAccessoryCheckBox" destination="waY-Tm-X9Z" id="GAF-Q8-lpY"/>
@@ -1049,7 +1044,7 @@ Gw
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <clipView key="contentView" id="6n7-gt-QHJ">
                 <rect key="frame" x="1" y="1" width="498" height="133"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="pld-Qr-mwV" id="lsM-NG-KWR">
                         <rect key="frame" x="0.0" y="0.0" width="498" height="110"/>
@@ -1107,7 +1102,7 @@ Gw
                 <rect key="frame" x="224" y="17" width="15" height="102"/>
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
-            <tableHeaderView key="headerView" id="pld-Qr-mwV">
+            <tableHeaderView key="headerView" wantsLayer="YES" id="pld-Qr-mwV">
                 <rect key="frame" x="0.0" y="0.0" width="498" height="23"/>
                 <autoresizingMask key="autoresizingMask"/>
             </tableHeaderView>
@@ -1331,7 +1326,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="mW6-YR-vtl">
                             <rect key="frame" x="0.0" y="0.0" width="250" height="302"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="F4C-OC-oT7">
                                     <rect key="frame" x="0.0" y="0.0" width="250" height="302"/>

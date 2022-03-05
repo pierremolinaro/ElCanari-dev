@@ -7,6 +7,7 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
+import Sparkle
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -37,24 +38,32 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
   }
 
   //····················································································································
-
-  @IBOutlet private var mCanariAppUpdaterSettings : CanariAppUpdaterSettings? = nil // Only for retaining object
-
-  @IBOutlet internal var mOpenAllDialogAccessoryCheckBox : NSButton? = nil
-
-  //····················································································································
-  //  Theses outlets are used in ApplicationDelegate-maintenance.swift
+  //  Outlets
   //····················································································································
 
-  @IBOutlet internal var mMaintenanceLogTextView : NSTextView? = nil
+  @IBOutlet var mCheckNowForUpdateMenuItem : NSMenuItem? = nil
 
-  @IBOutlet internal var mMaintenanceLogTextField : NSTextField? = nil
+  @IBOutlet var mOpenAllDialogAccessoryCheckBox : NSButton? = nil
 
-  internal var mCount = 0
-  internal var mHandledFiles = [String] ()
-  internal var mTotalFileCount = 0
-  internal var mHandledFileCount = 0
-  internal var mStartDate = Date ()
+  //····················································································································
+  //  Theses outlets are used in ApplicationDelegate-batch.swift
+  //····················································································································
+
+  @IBOutlet var mMaintenanceLogTextView : NSTextView? = nil
+
+  @IBOutlet var mMaintenanceLogTextField : NSTextField? = nil
+
+  var mCount = 0
+  var mHandledFiles = [String] ()
+  var mTotalFileCount = 0
+  var mHandledFileCount = 0
+  var mStartDate = Date ()
+
+  //····················································································································
+  // Sparkle 2.x
+  //····················································································································
+
+  let mUpdaterController = Sparkle.SPUStandardUpdaterController (updaterDelegate: nil, userDriverDelegate: nil)
 
   //····················································································································
   //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH
@@ -73,12 +82,6 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
     instanciateDebugMenuVisibilityObjectOnDidFinishLaunchingNotification ()
     self.addAutoLayoutUserInterfaceStyleObserver ()
   }
-
-  //····················································································································
-
-//  deinit {
-//    UserDefaults.standard.removeObserver (self, forKeyPath: SU_LAST_CHECK_TIME, context: nil)
-//  }
 
   //····················································································································
   //   SAVE ALL ACTION
