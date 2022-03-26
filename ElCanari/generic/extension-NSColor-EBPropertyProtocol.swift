@@ -26,16 +26,18 @@ extension NSColor : EBStoredPropertyProtocol {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> Self {
-    let string = object as! String
-    return Self.unarchiveFromString (string: string) as! Self
+  static func convertFromNSObject (object inObject : NSObject) -> Self {
+    if let string = inObject as? String {
+      return Self.unarchiveFromString (string: string) as! Self
+    }else{ // Old color save
+      let data = inObject as! Data
+      return (try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData (data)) as! Self
+    }
   }
 
   //····················································································································
 
   func archiveToString () -> String {
-  //  let rgbColor = self.colorUsingColorSpace
- //   let rgbColor = self.usingColorSpaceName (.calibratedRGB)!
     let rgbColor = self.usingColorSpace (.genericRGB)!
     let red = rgbColor.redComponent
     let green = rgbColor.greenComponent
@@ -48,7 +50,6 @@ extension NSColor : EBStoredPropertyProtocol {
   //····················································································································
 
   static func unarchiveFromData (data : Data) -> NSObject? {
-//    return NSKeyedUnarchiver.unarchiveObject (with: data) as? NSColor
     return try? NSKeyedUnarchiver.unarchivedObject (ofClass: NSColor.self, from: data)
   }
 

@@ -11,7 +11,7 @@ extension ApplicationDelegate {
   @IBAction func actionNewMergerDocument (_ inSender : AnyObject) {
     let dc = NSDocumentController.shared 
     do{
-      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "El Canari Merger")
+      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "name.pcmolinaro.elcanari.merger")
       if let newDocument = possibleNewDocument as? NSDocument {
         dc.addDocument (newDocument)
         newDocument.makeWindowControllers ()
@@ -27,7 +27,7 @@ extension ApplicationDelegate {
   @IBAction func actionNewArtworkDocument (_ inSender : AnyObject) {
     let dc = NSDocumentController.shared 
     do{
-      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "El Canari Artwork")
+      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "name.pcmolinaro.elcanari.artwork")
       if let newDocument = possibleNewDocument as? NSDocument {
         dc.addDocument (newDocument)
         newDocument.makeWindowControllers ()
@@ -43,7 +43,7 @@ extension ApplicationDelegate {
   @IBAction func actionNewFontDocument (_ inSender : AnyObject) {
     let dc = NSDocumentController.shared
     do{
-      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "El Canari Font")
+      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "name.pcmolinaro.elcanari.font")
       if let newDocument = possibleNewDocument as? NSDocument {
         dc.addDocument (newDocument)
         newDocument.makeWindowControllers ()
@@ -59,7 +59,7 @@ extension ApplicationDelegate {
   @IBAction func actionNewSymbolDocument (_ inSender : AnyObject) {
     let dc = NSDocumentController.shared
     do{
-      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "El Canari Symbol")
+      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "name.pcmolinaro.elcanari.symbol")
       if let newDocument = possibleNewDocument as? NSDocument {
         dc.addDocument (newDocument)
         newDocument.makeWindowControllers ()
@@ -75,7 +75,7 @@ extension ApplicationDelegate {
   @IBAction func actionNewPackageDocument (_ inSender : AnyObject) {
     let dc = NSDocumentController.shared
     do{
-      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "El Canari Package")
+      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "name.pcmolinaro.elcanari.package")
       if let newDocument = possibleNewDocument as? NSDocument {
         dc.addDocument (newDocument)
         newDocument.makeWindowControllers ()
@@ -91,7 +91,7 @@ extension ApplicationDelegate {
   @IBAction func actionNewDeviceDocument (_ inSender : AnyObject) {
     let dc = NSDocumentController.shared
     do{
-      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "El Canari Device")
+      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "name.pcmolinaro.elcanari.device")
       if let newDocument = possibleNewDocument as? NSDocument {
         dc.addDocument (newDocument)
         newDocument.makeWindowControllers ()
@@ -107,7 +107,7 @@ extension ApplicationDelegate {
   @IBAction func actionNewProjectDocument (_ inSender : AnyObject) {
     let dc = NSDocumentController.shared
     do{
-      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "El Canari Project")
+      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "name.pcmolinaro.elcanari.project")
       if let newDocument = possibleNewDocument as? NSDocument {
         dc.addDocument (newDocument)
         newDocument.makeWindowControllers ()
