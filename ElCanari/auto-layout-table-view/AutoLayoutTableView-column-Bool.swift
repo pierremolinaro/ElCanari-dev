@@ -105,6 +105,7 @@ fileprivate class InternalBoolTableColumn : AutoLayoutTableColumn {
     if let checkbox = inSender as? NSButton {
       let newValue = checkbox.state == .on
       let rowIndex = checkbox.tag
+      self.tableView?.selectRowIndexes (IndexSet (integer: rowIndex), byExtendingSelection: false)
       self.mValueSetterDelegate? (rowIndex, newValue)
     }
   }

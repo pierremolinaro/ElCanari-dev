@@ -40,7 +40,6 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     self.mTableView.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
     self.mTableView.usesAutomaticRowHeights = true // #available macOS 10.13
     _ = self.setIntercellSpacing (horizontal: 5, vertical: 5)
-
   //--- Configure scroll view
     self.mScrollView.translatesAutoresizingMaskIntoConstraints = false
     self.mScrollView.hasVerticalScroller = true
@@ -164,6 +163,8 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     // Swift.print ("AutoLayoutTableView reloads data")
   //--- Current selected row
     let currentSelectedRow = self.mTableView.selectedRow // < 0 if no selected row
+//    let currentClipViewOrigin : NSPoint? = self.mScrollView.clipViewOrigin ()
+//    Swift.print ("currentSelectedRow \(currentSelectedRow), currentClipViewOrigin \(currentClipViewOrigin)")
   //--- Reload; reloading change selection, so we temporary disable transmitting selection change to delegate
     self.mTransmitSelectionChangeToDelegate = false
     self.mDelegate?.beginSorting ()
@@ -181,7 +182,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     if let selectedObjectIndexes = self.mDelegate?.indexesOfSelectedObjects () {
       self.mTableView.selectRowIndexes (selectedObjectIndexes, byExtendingSelection: false)
       if selectedObjectIndexes.isEmpty {
-        self.mDelegate?.tableViewSelectionDidChange (selectedRows:  IndexSet ())
+        self.mDelegate?.tableViewSelectionDidChange (selectedRows: IndexSet ())
       }
     }
   //--- Ensure selection non empty ?
@@ -197,9 +198,14 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
       }
     }
   //--- Scroll to make selection visible
-    if self.mTableView.selectedRow >= 0 {
-      DispatchQueue.main.async { self.mTableView.scrollRowToVisible (self.mTableView.selectedRow) }
-    }
+//    DispatchQueue.main.async {
+      if self.mTableView.selectedRow >= 0 {
+        self.mTableView.scrollRowToVisible (self.mTableView.selectedRow)
+//      }else{
+//        self.mScrollView.setClipViewOrigin (currentClipViewOrigin)
+      }
+//      self.mScrollView.setClipViewOrigin (currentClipViewOrigin)
+//    }
   }
 
   //····················································································································

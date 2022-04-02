@@ -43,6 +43,27 @@ class AutoLayoutScrollView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
+//  func clipViewOrigin () -> NSPoint? {
+//    if let clipView = self.contentView () {
+//      return clipView.convert (clipView.frame.origin, to: self)
+//    }else{
+//      return nil
+//    }
+//  }
+
+  //····················································································································
+
+//  func setClipViewOrigin (_ inCurrentClipViewOrigin : NSPoint?) {
+//    if let currentClipViewOrigin = inCurrentClipViewOrigin, let clipView = self.contentView () as? NSClipView {
+//      self.scroll (clipView, to: NSPoint (x: currentClipViewOrigin.x, y: -currentClipViewOrigin.y))
+////      var f = clipView.frame
+////      f.origin = currentClipViewOrigin
+////      clipView.frame = f
+//    }
+//  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
