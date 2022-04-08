@@ -11,16 +11,14 @@ extension EBGraphicView {
   //····················································································································
 
   final override func keyDown (with inEvent : NSEvent) {
-    let amount : Int = inEvent.modifierFlags.contains (.shift)
-      ? self.shiftArrowKeyMagnitude
-      : self.arrowKeyMagnitude
-    // Swift.print ("Modifiers \(inEvent.modifierFlags)")
     if let characters = inEvent.characters,
        let myWindow = self.window,
        !inEvent.modifierFlags.contains (.option),
        !inEvent.modifierFlags.contains (.control),
        !inEvent.modifierFlags.contains (.command) {
-      // Swift.print ("Empty modifiers : \(characters)")
+      let amount : Int = inEvent.modifierFlags.contains (.shift)
+        ? self.shiftArrowKeyMagnitude
+        : self.arrowKeyMagnitude
       for character in characters.unicodeScalars {
         switch (character) {
         case NSEvent.SpecialKey (rawValue: 27).unicodeScalar : // Escape

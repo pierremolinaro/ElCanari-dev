@@ -73,7 +73,7 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
         if let data = try? Data (contentsOf: URL (fileURLWithPath: systemLibraryPath () + "/" + path)) {
            upToDate = data.count == localDescription.mSize
            if upToDate {
-             upToDate = sha1 (data) == localDescription.mSHA
+             upToDate = sha1 (data: data) == localDescription.mSHA
            }
         }else{
            upToDate = false

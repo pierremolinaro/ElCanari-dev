@@ -104,7 +104,7 @@ func libraryDescriptionFileContents () -> [[String : Any]]? {
     let absoluteFilePath = systemLibraryPath () + "/" + REPOSITORY_DESCRIPTION_PLIST_FILE_NAME
     do{
       let fm = FileManager ()
-      if let data = fm.contents(atPath: absoluteFilePath), libraryDescriptionFileSHA == sha1 (data) {
+      if let data = fm.contents(atPath: absoluteFilePath), libraryDescriptionFileSHA == sha1 (data: data) {
         do{
           if let propertyList = try PropertyListSerialization.propertyList (from: data, format: nil) as? [[String : Any]] {
             result = propertyList

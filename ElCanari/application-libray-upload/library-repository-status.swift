@@ -203,7 +203,7 @@ struct LibraryContentsDescriptor {
     mRelativePath = relativePath
     mCommit = commit
     mSize = contents.count
-    mSHA = sha1 (contents)
+    mSHA = sha1 (data: contents)
   }
 
   //····················································································································

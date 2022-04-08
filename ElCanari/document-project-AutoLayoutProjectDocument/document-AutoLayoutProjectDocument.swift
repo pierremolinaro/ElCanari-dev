@@ -1202,6 +1202,7 @@ import Cocoa
         .bind_title (self.netCountString_property)
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutButton (title: "Rename Net…", size: .regular)
+        .set (commandKeyEquivalent: "r")
         .bind_enabled (.intcmp (.prop (self.netCount_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
@@ -1209,6 +1210,7 @@ import Cocoa
         )
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutButton (title: "Select Net Class…", size: .regular)
+        .set (commandKeyEquivalent: "k")
         .bind_enabled (.intcmp (.prop (self.netCount_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
@@ -1584,6 +1586,7 @@ import Cocoa
     vStackView.appendView (view_5)
     let view_6 = AutoLayoutButton (title: "Merge Subnet into an Existing Net…", size: .small)
       .expandableWidth ()
+      .set (commandKeyEquivalent: "m")
       .bind_enabled (. boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
       .bind_run (
         target: self,
@@ -1672,6 +1675,7 @@ import Cocoa
     vStackView.appendView (view_6)
     let view_7 = AutoLayoutButton (title: "Merge Subnet into an Existing Net…", size: .small)
       .expandableWidth ()
+      .set (commandKeyEquivalent: "m")
       .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
       .bind_run (
         target: self,

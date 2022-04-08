@@ -357,10 +357,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       Label (bold: yes, size: .regular) { $title self.netCountString }
       Button (title: "Rename Net…", size: .regular) {
-        $run renameNetAction
+       set (commandKeyEquivalent: "r")
+       $run renameNetAction
         $enabled self.netCount > 0
       }
       Button (title: "Select Net Class…", size: .regular) {
+        set (commandKeyEquivalent: "k")
         $run selectNetClassAction
         $enabled self.netCount > 0
       }
@@ -689,6 +691,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     separator
     Button (title: "Merge Subnet into an Existing Net…", size: .small) {
       expandableWidth ()
+      set (commandKeyEquivalent: "m")
       $run mergeSubnetIntoAnExistingNetForSelectedWireAction
       $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
     }
@@ -748,6 +751,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     separator
     Button (title: "Merge Subnet into an Existing Net…", size: .small) {
       expandableWidth ()
+      set (commandKeyEquivalent: "m")
       $run mergeSubnetIntoAnExistingNetForSelectedLabelAction
       $enabled #schematicLabelSelectionController.selectedArray.count == 1
     }
