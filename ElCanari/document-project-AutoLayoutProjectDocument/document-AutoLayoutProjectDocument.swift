@@ -1555,10 +1555,11 @@ import Cocoa
     vStackView.appendView (view_1)
     let view_2 = AutoLayoutButton (title: "Rename Net…", size: .small)
       .expandableWidth ()
+      .set (commandKeyEquivalent: "r")
       .bind_enabled (. boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
       .bind_run (
         target: self,
-        selector: #selector (AutoLayoutProjectDocument.renameWireNetWithNewAutomaticNameAction (_:))
+        selector: #selector (AutoLayoutProjectDocument.renameSchematicWireNetAction (_:))
       )
     vStackView.appendView (view_2)
     let view_3 = AutoLayoutButton (title: "Rename Net with Automatic Name", size: .small)
@@ -1566,7 +1567,7 @@ import Cocoa
       .bind_enabled (. boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
       .bind_run (
         target: self,
-        selector: #selector (AutoLayoutProjectDocument.renameSchematicWireNetAction (_:))
+        selector: #selector (AutoLayoutProjectDocument.renameWireNetWithNewAutomaticNameAction (_:))
       )
     vStackView.appendView (view_3)
     let view_4 = AutoLayoutHorizontalStackView ()
@@ -1642,6 +1643,7 @@ import Cocoa
     vStackView.appendView (view_2)
     let view_3 = AutoLayoutButton (title: "Rename Net…", size: .small)
       .expandableWidth ()
+      .set (commandKeyEquivalent: "r")
       .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
       .bind_run (
         target: self,

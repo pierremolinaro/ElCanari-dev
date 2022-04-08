@@ -673,12 +673,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     Button (title: "Rename Net…", size: .small) {
       expandableWidth ()
-      $run renameWireNetWithNewAutomaticNameAction
+      set (commandKeyEquivalent: "r")
+      $run renameSchematicWireNetAction
       $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
     }
     Button (title: "Rename Net with Automatic Name", size: .small) {
       expandableWidth ()
-      $run renameSchematicWireNetAction
+      $run renameWireNetWithNewAutomaticNameAction
       $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
     }
     hStack {
@@ -731,6 +732,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     Button (title: "Rename Net…", size: .small) {
       expandableWidth ()
+      set (commandKeyEquivalent: "r")
       $run renameSchematicLabelNetAction
       $enabled #schematicLabelSelectionController.selectedArray.count == 1
     }

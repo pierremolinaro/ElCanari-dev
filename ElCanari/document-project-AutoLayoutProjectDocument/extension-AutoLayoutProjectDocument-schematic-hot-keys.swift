@@ -79,7 +79,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func keyDownInSchematic (_ inUnalignedMouseLocation : NSPoint, _ inKey : UnicodeScalar) {
+  func keyDownInSchematic (_ inUnalignedMouseLocation : NSPoint, _ inKey : UnicodeScalar) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       let canariUnalignedMouseDownLocation = inUnalignedMouseLocation.canariPoint
       let canariAlignedMouseDownLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)

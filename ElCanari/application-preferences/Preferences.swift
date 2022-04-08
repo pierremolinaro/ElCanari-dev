@@ -243,7 +243,7 @@ var g_Preferences : Preferences? = nil
         )
       view_6.appendView (view_6_1)
       let view_6_2 = AutoLayoutButton (title: "-", size: .regular)
-        .bind_enabled (.intcmp (.prop (preferences_userLibraryArrayController.sortedArray_property.count_property), .gt, .literalInt (0)))
+        .bind_enabled (.intcmp (.prop (preferences_userLibraryArrayController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (Preferences.removeLibraryEntryAction (_:))

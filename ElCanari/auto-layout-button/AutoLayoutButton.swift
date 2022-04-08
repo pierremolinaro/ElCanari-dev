@@ -51,6 +51,15 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
 
   //····················································································································
 
+  final func set (commandKeyEquivalent inKeyEquivalent : String) -> Self {
+    self.keyEquivalent = inKeyEquivalent
+    self.keyEquivalentModifierMask = .command
+    self.title += " [⌘\(inKeyEquivalent.uppercased ())]"
+    return self
+  }
+
+  //····················································································································
+
   override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
     if let w = self.mWidth {

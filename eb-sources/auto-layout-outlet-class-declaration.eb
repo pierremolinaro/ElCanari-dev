@@ -167,6 +167,7 @@ extern autolayout class LinearSlider (min: Int, max: Int, ticks: Int) $enabled $
 extern autolayout class Button (title: String, size: EBControlSize) $enabled $run $hidden {
   func expandableWidth ()
   func expandableHeight ()
+  func set (commandKeyEquivalent: String)
   func set (width: Int)
   func set (height: Int)
 }
