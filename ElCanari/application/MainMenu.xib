@@ -498,7 +498,6 @@
                 <outlet property="mCheckNowForUpdateMenuItem" destination="1186" id="yVp-G6-p2r"/>
                 <outlet property="mMaintenanceLogTextField" destination="J85-rD-Vai" id="SJK-mN-eCW"/>
                 <outlet property="mMaintenanceLogTextView" destination="F4C-OC-oT7" id="oyD-oI-fZb"/>
-                <outlet property="mOpenAllDialogAccessoryCheckBox" destination="waY-Tm-X9Z" id="GAF-Q8-lpY"/>
             </connections>
         </customObject>
         <customObject id="lAs-GB-mIJ" userLabel="Preferences" customClass="Preferences">
@@ -908,15 +907,6 @@ Gw
             </view>
             <point key="canvasLocation" x="-1475" y="-666"/>
         </window>
-        <button verticalHuggingPriority="750" id="waY-Tm-X9Z">
-            <rect key="frame" x="0.0" y="0.0" width="91" height="18"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <buttonCell key="cell" type="check" title="Animates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="92g-Aw-y3l">
-                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                <font key="font" metaFont="system"/>
-            </buttonCell>
-            <point key="canvasLocation" x="-193.5" y="-1203"/>
-        </button>
         <window identifier="libraryUploadWindowPosition" title="Library Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="SFC-4d-lQe" customClass="EBWindow" customModule="ElCanari" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>

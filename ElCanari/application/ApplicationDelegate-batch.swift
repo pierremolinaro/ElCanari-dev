@@ -85,7 +85,7 @@ extension ApplicationDelegate {
               if response == .alertFirstButtonReturn {
                 let message = "Opening \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")\n"
                 self.mMaintenanceLogTextView?.appendMessageString (message)
-                let animating = (self.mOpenAllDialogAccessoryCheckBox?.state ?? .on) == .on
+                let animating = self.mOpenAllDialogAccessoryCheckBox.state == .on
                 var count = 0
                 for fullPath in retainedFiles {
                   dc.openDocument (
