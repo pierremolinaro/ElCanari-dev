@@ -509,8 +509,6 @@
                 <outlet property="mLibraryRepositoryLogTextView" destination="gbV-Al-Z5s" id="amG-tJ-zyn"/>
                 <outlet property="mLibraryRepositoryStatusButton" destination="IKq-Og-gw6" id="2Gn-S4-byS"/>
                 <outlet property="mLibraryRepositoryTextField" destination="Mt0-6n-szx" id="Jc9-WA-fHk"/>
-                <outlet property="mLibraryRevisionListScrollView" destination="3ph-dI-ghr" id="bnI-TL-nve"/>
-                <outlet property="mLibraryRevisionListTableView" destination="lsM-NG-KWR" id="I8X-5y-GJD"/>
                 <outlet property="mLibraryUploadWindow" destination="SFC-4d-lQe" id="Q7g-lp-vgh"/>
                 <outlet property="mMenuRevealInFinder_artworks" destination="1469" id="0Ra-8e-L6n"/>
                 <outlet property="mMenuRevealInFinder_devices" destination="1462" id="sbT-Ii-sGw"/>
@@ -919,75 +917,6 @@ Gw
             </buttonCell>
             <point key="canvasLocation" x="-193.5" y="-1203"/>
         </button>
-        <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="3ph-dI-ghr" userLabel="Repository Commit List">
-            <rect key="frame" x="0.0" y="0.0" width="500" height="135"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <clipView key="contentView" id="6n7-gt-QHJ">
-                <rect key="frame" x="1" y="1" width="498" height="133"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="pld-Qr-mwV" id="lsM-NG-KWR">
-                        <rect key="frame" x="0.0" y="0.0" width="498" height="110"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <size key="intercellSpacing" width="3" height="2"/>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
-                        <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                        <tableColumns>
-                            <tableColumn identifier="commit" editable="NO" width="50" minWidth="10" maxWidth="3.4028234663852886e+38" id="TiI-qS-y6v">
-                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Commit">
-                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </tableHeaderCell>
-                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Wul-m2-sNP">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                            </tableColumn>
-                            <tableColumn identifier="date" editable="NO" width="220" minWidth="40" maxWidth="1000" id="eSE-FD-QOM">
-                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Date">
-                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                </tableHeaderCell>
-                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="41J-C9-k7x">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                            </tableColumn>
-                            <tableColumn identifier="message" editable="NO" width="177" minWidth="40" maxWidth="1000" id="Fmy-6a-oaN">
-                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Message">
-                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                </tableHeaderCell>
-                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="95g-7E-ENG">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                            </tableColumn>
-                        </tableColumns>
-                    </tableView>
-                </subviews>
-            </clipView>
-            <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="nvH-a6-HvT">
-                <rect key="frame" x="1" y="119" width="498" height="15"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </scroller>
-            <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Fj6-4m-pWJ">
-                <rect key="frame" x="224" y="17" width="15" height="102"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </scroller>
-            <tableHeaderView key="headerView" wantsLayer="YES" id="pld-Qr-mwV">
-                <rect key="frame" x="0.0" y="0.0" width="498" height="23"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </tableHeaderView>
-            <point key="canvasLocation" x="-890" y="-459"/>
-        </scrollView>
         <window identifier="libraryUploadWindowPosition" title="Library Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="SFC-4d-lQe" customClass="EBWindow" customModule="ElCanari" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>

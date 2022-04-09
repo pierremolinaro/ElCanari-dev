@@ -140,7 +140,7 @@ final class LibraryRevisionDescriptor : EBObjcBaseObject { // SHOULD INHERIT FRO
   //   Properties
   //····················································································································
 
-  let mDate : Date
+  let mDateString : String
   let mCommitIndex : Int
   let mMessage : String
 
@@ -148,87 +148,141 @@ final class LibraryRevisionDescriptor : EBObjcBaseObject { // SHOULD INHERIT FRO
   //   init
   //····················································································································
 
-  init (_ date : Date, _ commitIndex : Int, _ message : String) {
-    self.mDate = date
+  init (_ inDate : Date, _ commitIndex : Int, _ message : String) {
+    let formatter = DateFormatter ()
+    formatter.dateStyle = .medium
+    formatter.timeStyle = .medium
+    self.mDateString = formatter.string (from: inDate)
     self.mCommitIndex = commitIndex
     self.mMessage = message
   }
 
   //····················································································································
 
-  @objc dynamic var message : String { return self.mMessage }
-
-  //····················································································································
-
-  @objc dynamic var commit : String { return "\(self.mCommitIndex)" }
-
-  //····················································································································
-
-  @objc dynamic var date : String {
-    let formatter = DateFormatter ()
-    formatter.dateStyle = .medium
-    formatter.timeStyle = .medium
-    return formatter.string (from: self.mDate)
-  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class LibraryCommitListController : EBObjcBaseObject {  // SHOULD INHERIT FROM NSObject
+fileprivate final class LibraryCommitListController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //   Properties
   //····················································································································
 
   let mRevisions : [LibraryRevisionDescriptor]
-  let mArrayController = NSArrayController ()
-  let mTableView : Optional <NSTableView>
+  let mTableView : AutoLayoutTableView
 
   //····················································································································
   //   init
   //····················································································································
 
-  init (_ revisions : [LibraryRevisionDescriptor], _ inTableView : NSTableView?) {
-    self.mRevisions = revisions
-    self.mTableView = inTableView
+  init (_ inRevisions : [LibraryRevisionDescriptor]) {
+    self.mRevisions = inRevisions
+    self.mTableView = AutoLayoutTableView (size: .regular, addControlButtons: false)
     super.init ()
-    if let tableView = inTableView {
-      tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "commit"))?.bind (
-        NSBindingName.value,
-        to: self.mArrayController,
-        withKeyPath: "arrangedObjects.commit",
-        options: nil
-      )
-      tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "message"))?.bind (
-        NSBindingName.value,
-        to: self.mArrayController,
-        withKeyPath: "arrangedObjects.message",
-        options: nil
-      )
-      tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "date"))?.bind (
-        NSBindingName.value,
-        to: self.mArrayController,
-        withKeyPath: "arrangedObjects.date",
-        options: nil
-      )
-      self.mArrayController.content = self.mRevisions
-    }
+  //--- Configure tableview
+    self.mTableView.configure (
+      allowsEmptySelection: false,
+      allowsMultipleSelection: false,
+      rowCountCallBack: { [weak self] in self?.mRevisions.count ?? 0 },
+      delegate: self
+    )
+    self.mTableView.addColumn_Int (
+      valueGetterDelegate: { [weak self] in self?.mRevisions [$0].mCommitIndex },
+      valueSetterDelegate: nil,
+      sortDelegate: nil,
+      title: "Commit",
+      minWidth: 50,
+      maxWidth: 50,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+    self.mTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in self?.mRevisions [$0].mDateString },
+      valueSetterDelegate: nil,
+      sortDelegate: nil,
+      title: "Date",
+      minWidth: 150,
+      maxWidth: 150,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+    self.mTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in self?.mRevisions [$0].mMessage },
+      valueSetterDelegate: nil,
+      sortDelegate: nil,
+      title: "Titre",
+      minWidth: 200,
+      maxWidth: 500,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+    self.mTableView.sortAndReloadData ()
   }
 
   //····················································································································
-  //   ebCleanUp
+  //   AutoLayoutTableViewDelegate
   //····················································································································
 
-//  override func ebCleanUp () {
-//    self.mTableView?.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "commit"))?.unbind (NSBindingName.value)
-//    self.mTableView?.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "date"))?.unbind (NSBindingName.value)
-//    self.mTableView?.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "message"))?.unbind (NSBindingName.value)
-//    self.mArrayController.content = nil
-//    super.ebCleanUp ()
-//  }
+  func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
+  }
+
+  func indexesOfSelectedObjects() -> IndexSet {
+    return IndexSet ()
+  }
+
+  func addEntry () {
+  }
+
+  func removeSelectedEntries() {
+  }
+
+  func beginSorting() {
+  }
+
+  func endSorting () {
+  }
+
+  //····················································································································
+
+  func dialog (_ inLogTextView : AutoLayoutStaticTextView) -> Int? {
+  //--- Build Panel
+    let panel = NSPanel (
+      contentRect: NSRect (x: 0, y: 0, width: 600, height: 300),
+      styleMask: [.titled, .resizable],
+      backing: .buffered,
+      defer: false
+    )
+    panel.title = "Library Update"
+    panel.hasShadow = true
+  //--- Main view
+    let mainView = AutoLayoutVerticalStackView ().set (margins: 20)
+  //--- Informative text
+    let informativeText = AutoLayoutLabel (bold: false, size: .regular).set (alignment: .center).expandableWidth ()
+    informativeText.stringValue = "Select Library Revision"
+    mainView.appendView (informativeText)
+  //--- Table view
+    mainView.appendView (self.mTableView)
+  //--- Last line
+    let lastLine = AutoLayoutHorizontalStackView ()
+    lastLine.appendFlexibleSpace ()
+    let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false)
+    lastLine.appendView (cancelButton)
+    let upDateButton = AutoLayoutSheetDefaultOkButton (title: "Update", size: .regular, sheet: panel, isInitialFirstResponder: true)
+    lastLine.appendView (upDateButton)
+    mainView.appendView (lastLine)
+  //--- Set autolayout view to panel
+    panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: AutoLayoutWindowContentView (view: mainView))
+  //--- Run modal
+    DispatchQueue.main.async { self.mTableView.scrollRowToVisible (row: 0) }
+    let response = NSApp.runModal (for: panel)
+  //--- response
+    if response == .stop {
+      return self.mRevisions [self.mTableView.selectedRow].mCommitIndex
+    }else{
+      return nil
+    }
+  }
 
   //····················································································································
 
@@ -236,36 +290,11 @@ final class LibraryCommitListController : EBObjcBaseObject {  // SHOULD INHERIT 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-var gLibraryCommitListController : LibraryCommitListController? = nil
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 fileprivate func displayRepositoryCommitList (_ revisions : [LibraryRevisionDescriptor],
                                               _ proxy : [String],
                                               _ inLogTextView : AutoLayoutStaticTextView) -> Int? {
-  gLibraryCommitListController = LibraryCommitListController (revisions, g_Preferences?.mLibraryRevisionListTableView)
-  let alert = NSAlert ()
-  alert.messageText = "Select Library Revision"
-  alert.accessoryView = g_Preferences?.mLibraryRevisionListScrollView
-  alert.addButton (withTitle: "Ok")
-  alert.addButton (withTitle: "Cancel")
-  let response = alert.runModal ()
-  var result : Int?
-  if response == .alertFirstButtonReturn, let selectedRow = g_Preferences?.mLibraryRevisionListTableView?.selectedRow {
-    if selectedRow >= 0 {
-      let commitIndex = revisions [selectedRow].mCommitIndex
-      result = commitIndex
-      inLogTextView.appendMessageString ("  Selected commit index from dialog: \(commitIndex)\n")
-    }else{
-      inLogTextView.appendErrorString ("  Invalid selected row from dialog: \(selectedRow)\n")
-      result = nil
-    }
-  }else{
-    inLogTextView.appendMessageString ("  Dialog has been cancelled\n")
-    result = nil
-  }
-//  gLibraryCommitListController?.ebCleanUp ()
-  gLibraryCommitListController = nil
+  let libraryCommitListController = LibraryCommitListController (revisions)
+  let result = libraryCommitListController.dialog (inLogTextView)
   return result
 }
 

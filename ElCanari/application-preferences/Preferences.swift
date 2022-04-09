@@ -384,8 +384,6 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mLibraryRepositoryLogTextView : NSTextView? = nil
   @IBOutlet var mLibraryRepositoryStatusButton : NSButton? = nil
   @IBOutlet var mLibraryRepositoryTextField : NSTextField? = nil
-  @IBOutlet var mLibraryRevisionListScrollView : NSScrollView? = nil
-  @IBOutlet var mLibraryRevisionListTableView : NSTableView? = nil
   @IBOutlet var mLibraryUploadWindow : EBWindow? = nil
   @IBOutlet var mMenuRevealInFinder_artworks : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_devices : CanariMenu? = nil
@@ -521,8 +519,6 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mLibraryRepositoryLogTextView, "mLibraryRepositoryLogTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mLibraryRepositoryStatusButton, "mLibraryRepositoryStatusButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mLibraryRepositoryTextField, "mLibraryRepositoryTextField", NSTextField.self, #file, #line)
-    checkOutletConnection (self.mLibraryRevisionListScrollView, "mLibraryRevisionListScrollView", NSScrollView.self, #file, #line)
-    checkOutletConnection (self.mLibraryRevisionListTableView, "mLibraryRevisionListTableView", NSTableView.self, #file, #line)
     checkOutletConnection (self.mLibraryUploadWindow, "mLibraryUploadWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_artworks, "mMenuRevealInFinder_artworks", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_devices, "mMenuRevealInFinder_devices", CanariMenu.self, #file, #line)

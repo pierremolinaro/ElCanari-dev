@@ -2,8 +2,6 @@
 //   Canari Outlets
 //——————————————————————————————————————————————————————————————————————————————
 
-extern outlet class CanariToolbar ;
-
 extern outlet class NSTableView ;
 
 extern outlet class NSButton ;
@@ -14,9 +12,6 @@ extern outlet class NSTextField : NSControl ;
 
 extern outlet class CanariMenu ;
 binding CanariMenu $populateSubmenus : transient StringArray ;
-
-extern outlet class CanariDateObserverField : NSTextField ;
-binding CanariDateObserverField $dateObserver : transient Date ;
 
 extern outlet class NSTextView  : NSView ;
 

@@ -159,6 +159,12 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   //····················································································································
 
+  func scrollRowToVisible (row inRow : Int) {
+    self.mTableView.scrollRowToVisible (inRow)
+  }
+
+  //····················································································································
+
   func sortAndReloadData () {
     // Swift.print ("AutoLayoutTableView reloads data")
   //--- Current selected row

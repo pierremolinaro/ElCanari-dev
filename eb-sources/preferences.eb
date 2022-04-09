@@ -465,16 +465,7 @@ prefs {
 //! Library update
 
 prefs {
-//--- Library repository commit list
-  outlet NSScrollView mLibraryRevisionListScrollView ;
-  outlet NSTableView mLibraryRevisionListTableView ;
 //--- Dialog for library updating
-//  outlet EBWindow mLibraryUpdateWindow ;
-//  outlet EBProgressIndicator mProgressIndicatorInLibraryUpdateWindow ;
-//  outlet EBTextField mInformativeTextInLibraryUpdateWindow ;
-//  outlet EBTableView mTableViewInLibraryUpdateWindow ;
-//  outlet EBButton mUpDateButtonInLibraryUpdateWindow ;
-//  outlet EBButton mCancelButtonInLibraryUpdateWindow ;
   outlet EBMenuItem mUpDateLibraryMenuItemInCanariMenu ;
 
 //--- Dialog for library uploader
@@ -585,7 +576,6 @@ prefs {
 
 prefs {
   property String artworkDialogFilterString default "" ;
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————

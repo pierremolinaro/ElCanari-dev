@@ -85,10 +85,11 @@ func runShellCommandAndGetDataOutput (_ command : String,
   let response : ShellCommandStatus
   if status != 0 {
     response = .error (status)
+    inLogTextView?.appendMessageString ("  Result code: error \(status)\n")
   }else{
     response = .ok (data)
+    inLogTextView?.appendMessageString ("  Result code: ok\n")
   }
-  inLogTextView?.appendMessageString ("  Result code: \(response)\n")
   return response
 }
 
