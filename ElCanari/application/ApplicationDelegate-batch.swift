@@ -77,24 +77,19 @@ extension ApplicationDelegate {
           }else{
             let alert = NSAlert ()
             alert.messageText = "Open \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
-            alert.accessoryView = self.mOpenAllDialogAccessoryCheckBox
-            alert.informativeText = "Animating is slower, but you have a visual effect during documents opening."
             alert.addButton (withTitle: "Ok")
             alert.addButton (withTitle: "Cancel")
             alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
               if response == .alertFirstButtonReturn {
                 let message = "Opening \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")\n"
                 self.mMaintenanceLogTextView?.appendMessageString (message)
-                let animating = self.mOpenAllDialogAccessoryCheckBox.state == .on
                 var count = 0
                 for fullPath in retainedFiles {
                   dc.openDocument (
                     withContentsOf: URL (fileURLWithPath: fullPath),
                     display: true
                   ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
-                    if animating {
-                      _ = RunLoop.main.run (mode: .default, before: Date ())
-                    }
+                    _ = RunLoop.main.run (mode: .default, before: Date ())
                     if document != nil {
                       count += 1
                       let message = (count > 1)

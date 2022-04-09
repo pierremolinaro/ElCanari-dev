@@ -33,7 +33,6 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
   //····················································································································
 
   override init () {
-    self.mOpenAllDialogAccessoryCheckBox = NSButton (checkboxWithTitle: "Animates", target: nil, action: nil)
     super.init ()
     gApplicationDelegate = self
   }
@@ -43,8 +42,6 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
   //····················································································································
 
   @IBOutlet var mCheckNowForUpdateMenuItem : NSMenuItem? = nil
-
-  var mOpenAllDialogAccessoryCheckBox : NSButton
 
   //····················································································································
   //  Theses outlets are used in ApplicationDelegate-batch.swift
