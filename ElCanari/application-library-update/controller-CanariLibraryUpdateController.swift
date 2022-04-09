@@ -10,9 +10,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariLibraryUpdateController : EBSwiftBaseObject {
+private let parallelDownloadCount = 4
 
-  private let mArrayController = NSArrayController ()
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class CanariLibraryUpdateController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
 
   private var mCurrentActionArray : [LibraryOperationElement]
   private var mCurrentParallelActionCount = 0
@@ -23,17 +25,100 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
   private let mLogTextView : AutoLayoutStaticTextView
 
   //····················································································································
+  //   Properties
+  //····················································································································
+
+  private let mLibraryUpdatePanel : NSPanel
+  private let mProgressIndicator : AutoLayoutProgressIndicator
+  private let mInformativeText : AutoLayoutLabel
+  private let mTableView : AutoLayoutTableView
+  private let mUpDateButton : AutoLayoutButton
+  private let mCancelButton : AutoLayoutSheetCancelButton
+
+  //····················································································································
   //   Init
   //····················································································································
 
   init (_ inActionArray : [LibraryOperationElement],
         _ inNewLocalDescriptionDictionary : [String : CanariLibraryFileDescriptor],
-        _ inLogTextView : AutoLayoutStaticTextView) {
-    mCurrentActionArray = inActionArray
-    mActionArray = inActionArray
-    mNewRepositoryFileDictionary = inNewLocalDescriptionDictionary
-    mLogTextView = inLogTextView
+        _ inLogTextView : AutoLayoutStaticTextView,
+        _ inProgressMaxValue : Double,
+        _ inInformativeText : String) {
+    self.mCurrentActionArray = inActionArray
+    self.mActionArray = inActionArray
+    self.mNewRepositoryFileDictionary = inNewLocalDescriptionDictionary
+    self.mLogTextView = inLogTextView
+  //--- Build Panel
+    self.mLibraryUpdatePanel = NSPanel (
+      contentRect: NSRect (x: 0, y: 0, width: 800, height: 400),
+      styleMask: [.titled, .resizable],
+      backing: .buffered,
+      defer: false
+    )
+    self.mLibraryUpdatePanel.title = "Library Update"
+    self.mLibraryUpdatePanel.hasShadow = true
+  //--- Main view
+    let mainView = AutoLayoutVerticalStackView ().set (margins: 20)
+  //--- Informative text
+    self.mInformativeText = AutoLayoutLabel (bold: false, size: .regular).set (alignment: .left).expandableWidth ()
+    self.mInformativeText.stringValue = inInformativeText
+    mainView.appendView (self.mInformativeText)
+  //--- Table view
+    self.mTableView = AutoLayoutTableView (size: .small, addControlButtons: false).expandableWidth ()
+    mainView.appendView (self.mTableView)
+  //--- Last line
+    let lastLine = AutoLayoutHorizontalStackView () //.expandableWidth ()
+    self.mProgressIndicator = AutoLayoutProgressIndicator ()
+    self.mProgressIndicator.minValue = 0.0
+    self.mProgressIndicator.maxValue = inProgressMaxValue
+    self.mProgressIndicator.doubleValue = 0.0
+    self.mProgressIndicator.isIndeterminate = false
+    lastLine.appendView (self.mProgressIndicator)
+    lastLine.appendFlexibleSpace ()
+    self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: self.mLibraryUpdatePanel, isInitialFirstResponder: false)
+    lastLine.appendView (self.mCancelButton)
+    self.mUpDateButton = AutoLayoutButton (title: "Update All", size: .regular)
+    lastLine.appendView (self.mUpDateButton)
+    mainView.appendView (lastLine)
+  //--- Set autolayout view to panel
+    self.mLibraryUpdatePanel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: AutoLayoutWindowContentView (view: mainView))
+  //--- Super init
     super.init ()
+  //--- Configure tableview
+    self.mTableView.configure (
+      allowsEmptySelection: false,
+      allowsMultipleSelection: false,
+      rowCountCallBack: { [weak self] in self?.mCurrentActionArray.count ?? 0 },
+      delegate: self
+    )
+    self.mTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in self?.mCurrentActionArray [$0].mRelativePath },
+      valueSetterDelegate: nil,
+      sortDelegate: nil,
+      title: "Name",
+      minWidth: 440,
+      maxWidth: 2_000,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+    self.mTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in self?.mCurrentActionArray [$0].actionName },
+      valueSetterDelegate: nil,
+      sortDelegate: nil,
+      title: "Action",
+      minWidth: 200,
+      maxWidth: 2_000,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+    self.mTableView.sortAndReloadData ()
+  //--- Configure buttons
+    self.mCancelButton.target = self
+    self.mCancelButton.action = #selector (Self.cancelLibraryUpdateAction (_:))
+    self.mUpDateButton.target = self
+    self.mUpDateButton.action = #selector (Self.startLibraryUpdateAction (_:))
+  //--- Show library update window
+    self.mLibraryUpdatePanel.makeKeyAndOrderFront (nil)
   }
 
   //····················································································································
@@ -56,32 +141,55 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
   //  Cocoa bindings
   //····················································································································
 
-  func bind () {
-    if let tableView = g_Preferences?.mTableViewInLibraryUpdateWindow {
-      tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"))?.bind (
-        NSBindingName.value,
-        to: self.mArrayController,
-        withKeyPath: "arrangedObjects.relativePath",
-        options: nil
-      )
-      tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "action"))?.bind (
-        NSBindingName.value,
-        to: self.mArrayController,
-        withKeyPath: "arrangedObjects.actionName",
-        options: nil
-      )
-      self.mArrayController.content = self.mCurrentActionArray
-    }
-  }
+//  func bind () {
+//    if let tableView = g_Preferences?.mTableView {
+//      tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"))?.bind (
+//        NSBindingName.value,
+//        to: self.mArrayController,
+//        withKeyPath: "arrangedObjects.relativePath",
+//        options: nil
+//      )
+//      tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "action"))?.bind (
+//        NSBindingName.value,
+//        to: self.mArrayController,
+//        withKeyPath: "arrangedObjects.actionName",
+//        options: nil
+//      )
+//      self.mArrayController.content = self.mCurrentActionArray
+//    }
+//  }
 
   //····················································································································
 
-  func unbind () { //--- Remove bindings
-    if let tableView = g_Preferences?.mTableViewInLibraryUpdateWindow {
-      tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"))?.unbind (NSBindingName.value)
-      tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "action"))?.unbind (NSBindingName.value)
-      mArrayController.content = nil
-    }
+//  func unbind () { //--- Remove bindings
+//    if let tableView = g_Preferences?.mTableView {
+//      tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"))?.unbind (NSBindingName.value)
+//      tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "action"))?.unbind (NSBindingName.value)
+//      mArrayController.content = nil
+//    }
+//  }
+
+  //····················································································································
+  //  AutoLayoutTableViewDelegate methods
+  //····················································································································
+
+  func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
+  }
+
+  func indexesOfSelectedObjects() -> IndexSet {
+    return IndexSet ()
+  }
+
+  func addEntry () {
+  }
+
+  func removeSelectedEntries () {
+  }
+
+  func beginSorting() {
+  }
+
+  func endSorting() {
   }
 
   //····················································································································
@@ -94,7 +202,7 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
       self.mCurrentParallelActionCount += 1
       self.mActionArray [self.mNextActionIndex - 1].beginAction (self)
     }
- }
+  }
 
   //····················································································································
   //   elementActionDidEnd (runs in main thread)
@@ -112,17 +220,18 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
   //--- Remove corresponding entry in table view
     if let idx = self.mCurrentActionArray.firstIndex (of: inElement) {
       self.mCurrentActionArray.remove (at: idx)
-      DispatchQueue.main.async { self.mArrayController.content = self.mCurrentActionArray }
+      self.mTableView.sortAndReloadData ()
+//      DispatchQueue.main.async { self.mArrayController.content = self.mCurrentActionArray }
     }
   //--- Update progress indicator
     self.updateProgressIndicator ()
   //--- Update remaining operation count
     if self.mCurrentActionArray.count == 0 {
-      g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "Commiting changes…"
+      self.mInformativeText.stringValue = "Commiting changes…"
     }else if self.mCurrentActionArray.count == 1 {
-      g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "1 element to update"
-   }else{
-      g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "\(self.mCurrentActionArray.count) elements to update"
+      self.mInformativeText.stringValue = "1 element to update"
+    }else{
+      self.mInformativeText.stringValue = "\(self.mCurrentActionArray.count) elements to update"
     }
   //--- Launch next action, if any
     if self.mNextActionIndex < self.mActionArray.count {
@@ -146,7 +255,38 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
     for action in self.mActionArray {
       progressCurrentValue += action.currentIndicatorValue
     }
-    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.doubleValue = progressCurrentValue
+    self.mProgressIndicator.doubleValue = progressCurrentValue
+  }
+
+  //····················································································································
+
+  @objc func cancelLibraryUpdateAction (_ inSender : AnyObject) {
+   self.mLibraryUpdatePanel.orderOut (nil)
+  //--- Cancel current downloadings
+    self.cancel ()
+    self.startLibraryUpdateAction (inSender)
+  }
+
+  //····················································································································
+
+  @objc func startLibraryUpdateAction (_ inSender : AnyObject) {
+    self.mUpDateButton.isEnabled = false
+  //--- Launch parallel downloads
+    for _ in 1...parallelDownloadCount {
+      self.launchElementDownload ()
+    }
+  }
+
+  //····················································································································
+
+  func orderOutLibraryUpdatePanel () {
+    self.mLibraryUpdatePanel.orderOut (nil)
+  }
+
+  //····················································································································
+
+  func panelForSheet () -> NSPanel {
+    return self.mLibraryUpdatePanel
   }
 
   //····················································································································

@@ -378,8 +378,6 @@ var g_Preferences : Preferences? = nil
   //    Outlets (EX)
   //····················································································································
 
-  @IBOutlet var mCancelButtonInLibraryUpdateWindow : EBButton? = nil
-  @IBOutlet var mInformativeTextInLibraryUpdateWindow : EBTextField? = nil
   @IBOutlet var mLibraryRepositoryCommitButton : NSButton? = nil
   @IBOutlet var mLibraryRepositoryCurrentReleaseTextField : NSTextField? = nil
   @IBOutlet var mLibraryRepositoryLoadCurrentReleaseButton : NSButton? = nil
@@ -388,18 +386,14 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mLibraryRepositoryTextField : NSTextField? = nil
   @IBOutlet var mLibraryRevisionListScrollView : NSScrollView? = nil
   @IBOutlet var mLibraryRevisionListTableView : NSTableView? = nil
-  @IBOutlet var mLibraryUpdateWindow : EBWindow? = nil
   @IBOutlet var mLibraryUploadWindow : EBWindow? = nil
   @IBOutlet var mMenuRevealInFinder_artworks : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_devices : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_fonts : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_packages : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_symbols : CanariMenu? = nil
-  @IBOutlet var mProgressIndicatorInLibraryUpdateWindow : EBProgressIndicator? = nil
   @IBOutlet var mSetLibraryRepositoryButton : NSButton? = nil
   @IBOutlet var mSetUserAndPasswordButton : NSButton? = nil
-  @IBOutlet var mTableViewInLibraryUpdateWindow : EBTableView? = nil
-  @IBOutlet var mUpDateButtonInLibraryUpdateWindow : EBButton? = nil
   @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : EBMenuItem? = nil
   @IBOutlet var mUserAndPasswordTextField : NSTextField? = nil
 
@@ -521,8 +515,6 @@ var g_Preferences : Preferences? = nil
   //····················································································································
 
   override func awakeFromNib () {
-    checkOutletConnection (self.mCancelButtonInLibraryUpdateWindow, "mCancelButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
-    checkOutletConnection (self.mInformativeTextInLibraryUpdateWindow, "mInformativeTextInLibraryUpdateWindow", EBTextField.self, #file, #line)
     checkOutletConnection (self.mLibraryRepositoryCommitButton, "mLibraryRepositoryCommitButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mLibraryRepositoryCurrentReleaseTextField, "mLibraryRepositoryCurrentReleaseTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mLibraryRepositoryLoadCurrentReleaseButton, "mLibraryRepositoryLoadCurrentReleaseButton", NSButton.self, #file, #line)
@@ -531,18 +523,14 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mLibraryRepositoryTextField, "mLibraryRepositoryTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mLibraryRevisionListScrollView, "mLibraryRevisionListScrollView", NSScrollView.self, #file, #line)
     checkOutletConnection (self.mLibraryRevisionListTableView, "mLibraryRevisionListTableView", NSTableView.self, #file, #line)
-    checkOutletConnection (self.mLibraryUpdateWindow, "mLibraryUpdateWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mLibraryUploadWindow, "mLibraryUploadWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_artworks, "mMenuRevealInFinder_artworks", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_devices, "mMenuRevealInFinder_devices", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_fonts, "mMenuRevealInFinder_fonts", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_packages, "mMenuRevealInFinder_packages", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_symbols, "mMenuRevealInFinder_symbols", CanariMenu.self, #file, #line)
-    checkOutletConnection (self.mProgressIndicatorInLibraryUpdateWindow, "mProgressIndicatorInLibraryUpdateWindow", EBProgressIndicator.self, #file, #line)
     checkOutletConnection (self.mSetLibraryRepositoryButton, "mSetLibraryRepositoryButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mSetUserAndPasswordButton, "mSetUserAndPasswordButton", NSButton.self, #file, #line)
-    checkOutletConnection (self.mTableViewInLibraryUpdateWindow, "mTableViewInLibraryUpdateWindow", EBTableView.self, #file, #line)
-    checkOutletConnection (self.mUpDateButtonInLibraryUpdateWindow, "mUpDateButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpDateLibraryMenuItemInCanariMenu, "mUpDateLibraryMenuItemInCanariMenu", EBMenuItem.self, #file, #line)
     checkOutletConnection (self.mUserAndPasswordTextField, "mUserAndPasswordTextField", NSTextField.self, #file, #line)
   //--------------------------- Install bindings

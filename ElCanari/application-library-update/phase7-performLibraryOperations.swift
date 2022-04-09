@@ -10,10 +10,6 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private let parallelDownloadCount = 4
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 private var gCanariLibraryUpdateController : CanariLibraryUpdateController? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -25,49 +21,56 @@ func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationE
 //--- Perform library update in main thread
   DispatchQueue.main.async {
   //--- Configure informative text in library update window
+    let inInformativeText : String
     if inLibraryOperations.count == 1 {
-      g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "1 element to update"
+      inInformativeText = "1 element to update"
    }else{
-      g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "\(inLibraryOperations.count) elements to update"
+      inInformativeText = "\(inLibraryOperations.count) elements to update"
     }
     var progressMaxValue = 0.0
     for action in inLibraryOperations {
       progressMaxValue += action.maxIndicatorValue
     }
   //--- Enable buttons
-    g_Preferences?.mUpDateButtonInLibraryUpdateWindow?.isEnabled = true
-    g_Preferences?.mCancelButtonInLibraryUpdateWindow?.isEnabled = true
+//    g_Preferences?.mUpDateButtonInLibraryUpdateWindow?.isEnabled = true
+//    g_Preferences?.mCancelButtonInLibraryUpdateWindow?.isEnabled = true
   //--- Configure progress indicator in library update window
-    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.minValue = 0.0
-    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.maxValue = progressMaxValue
-    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.doubleValue = 0.0
-    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.isIndeterminate = false
+//    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.minValue = 0.0
+//    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.maxValue = progressMaxValue
+//    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.doubleValue = 0.0
+//    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.isIndeterminate = false
   //--- Configure table view in library update window
-    gCanariLibraryUpdateController = CanariLibraryUpdateController (inLibraryOperations, inNewLocalDescriptionDictionary, inLogTextView)
-    gCanariLibraryUpdateController?.bind ()
+    gCanariLibraryUpdateController = CanariLibraryUpdateController (
+      inLibraryOperations,
+      inNewLocalDescriptionDictionary,
+      inLogTextView,
+      progressMaxValue,
+      inInformativeText
+    )
+//    gCanariLibraryUpdateController?.bind ()
   //--- Show library update window
-    g_Preferences?.mLibraryUpdateWindow?.makeKeyAndOrderFront (nil)
+//    g_Preferences?.mLibraryUpdateWindow?.makeKeyAndOrderFront (nil)
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func startLibraryUpdate () {
-  g_Preferences?.mUpDateButtonInLibraryUpdateWindow?.isEnabled = false
-//--- Launch parallel downloads
-  for _ in 1...parallelDownloadCount {
-    gCanariLibraryUpdateController?.launchElementDownload ()
-  }
-}
+//func startLibraryUpdate () {
+//  g_Preferences?.mUpDateButtonInLibraryUpdateWindow?.isEnabled = false
+////--- Launch parallel downloads
+//  for _ in 1...parallelDownloadCount {
+//    gCanariLibraryUpdateController?.launchElementDownload ()
+//  }
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func cancelLibraryUpdate () {
-  g_Preferences?.mCancelButtonInLibraryUpdateWindow?.window?.orderOut (nil)
-//--- Cancel current downloadings
-  gCanariLibraryUpdateController?.cancel ()
-  startLibraryUpdate ()
-}
+//func cancelLibraryUpdate () {
+//  g_Preferences?.mCancelButtonInLibraryUpdateWindow?.window?.orderOut (nil)
+////--- Cancel current downloadings
+//  gCanariLibraryUpdateController?.cancel ()
+//  startLibraryUpdate ()
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   C O M M I T    U P D A T E S   I N   F I L E    S Y S T E M
@@ -77,8 +80,9 @@ func commitAllActions (_ inActionArray : [LibraryOperationElement],
                        _ inNewRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
                        _ inLogTextView : AutoLayoutStaticTextView) {
 //--- Update UI
-  gCanariLibraryUpdateController?.unbind ()
-  gCanariLibraryUpdateController = nil
+//  gCanariLibraryUpdateController?.unbind ()
+//  gCanariLibraryUpdateController?.orderOutLibraryUpdatePanel ()
+//  gCanariLibraryUpdateController = nil
 //--- Commit change only if all actions has been successdully completed
   var newRepositoryFileDictionary = inNewRepositoryFileDictionary
   var performCommit = true
@@ -99,35 +103,33 @@ func commitAllActions (_ inActionArray : [LibraryOperationElement],
   }
 //--- Perform commit
   if !performCommit {
-    g_Preferences?.mLibraryUpdateWindow?.orderOut (nil)
+    gCanariLibraryUpdateController?.orderOutLibraryUpdatePanel ()
     enableItemsAfterCompletion ()
-  }else{
-    if let window = g_Preferences?.mLibraryUpdateWindow {
-      do{
-        for action in inActionArray {
-          try action.commit ()
-        }
-      //--- Delete orphean directories
-        try deleteOrphanDirectories (inLogTextView)
-      //--- Write library description plist file
-        try writeLibraryDescriptionPlistFile (newRepositoryFileDictionary, inLogTextView)
-      //--- Completed!
-        inLogTextView.appendSuccessString ("Done.")
-        let alert = NSAlert ()
-        alert.messageText = "Update completed, the library is up to date"
-        alert.beginSheetModal (
-          for: window,
-          completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) ; enableItemsAfterCompletion () }
-        )
-      }catch let error {
-        let alert = NSAlert ()
-        alert.messageText = "Cannot commit changes"
-        alert.informativeText = "A file system operation returns \(error) error"
-        alert.beginSheetModal (
-          for: window,
-          completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) ; enableItemsAfterCompletion () }
-        )
+  }else if let window = gCanariLibraryUpdateController?.panelForSheet () {
+    do{
+      for action in inActionArray {
+        try action.commit ()
       }
+    //--- Delete orphean directories
+      try deleteOrphanDirectories (inLogTextView)
+    //--- Write library description plist file
+      try writeLibraryDescriptionPlistFile (newRepositoryFileDictionary, inLogTextView)
+    //--- Completed!
+      inLogTextView.appendSuccessString ("Done.")
+      let alert = NSAlert ()
+      alert.messageText = "Update completed, the library is up to date"
+      alert.beginSheetModal (
+        for: window,
+        completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) ; enableItemsAfterCompletion () }
+      )
+    }catch let error {
+      let alert = NSAlert ()
+      alert.messageText = "Cannot commit changes"
+      alert.informativeText = "A file system operation returns \(error) error"
+      alert.beginSheetModal (
+        for: window,
+        completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) ; enableItemsAfterCompletion () }
+      )
     }
   }
 }

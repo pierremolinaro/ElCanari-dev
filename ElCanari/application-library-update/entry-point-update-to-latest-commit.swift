@@ -76,19 +76,6 @@ func startLibraryUpdateOperation (showProgressWindow inShowWindow : Bool, _ inLo
     }else{
       g_Preferences?.hideCheckingForLibraryUpdateWindow ()
     }
-//      inLogTextView.appendSuccessString ("  The library is up to date\n")
-//      possibleAlert = NSAlert ()
-//      possibleAlert?.messageText = "The library is up to date"
-//    }
-//    if let alert = possibleAlert {
-//      alert.beginSheetModal (
-//        for: window,
-//        completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) }
-//      )
-//    }else{
-//      g_Preferences?.hideCheckingForLibraryUpdateWindow ()
-//      window.orderOut (nil)
-//    }
   }
 //-------- ⑦ If ok and there are update operations, perform library update
   if ok && (libraryOperations.count != 0) {

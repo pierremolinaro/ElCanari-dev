@@ -26,6 +26,8 @@ final class AutoLayoutApplicationImage : NSImageView, EBUserClassNameProtocol {
     self.imageFrameStyle = .none
     self.frame.size = self.intrinsicContentSize
     self.image = NSApplication.shared.applicationIconImage
+    self.setContentHuggingPriority (.required, for: .horizontal)
+    self.setContentHuggingPriority (.required, for: .vertical)
   }
 
   //····················································································································

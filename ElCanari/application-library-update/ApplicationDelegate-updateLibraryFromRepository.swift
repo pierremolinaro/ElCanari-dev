@@ -20,15 +20,15 @@ extension ApplicationDelegate {
 
   //····················································································································
 
-  @IBAction func cancelLibraryUpdateAction (_ inSender : AnyObject) {
-    cancelLibraryUpdate ()
-  }
+//  @IBAction func cancelLibraryUpdateAction (_ inSender : AnyObject) {
+//    cancelLibraryUpdate ()
+//  }
 
   //····················································································································
 
-  @IBAction func performLibraryUpdateAction (_ inSender : AnyObject) {
-    startLibraryUpdate ()
-  }
+//  @IBAction func performLibraryUpdateAction (_ inSender : AnyObject) {
+//    startLibraryUpdate ()
+//  }
 
   //····················································································································
 

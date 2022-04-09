@@ -129,26 +129,26 @@ final class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDeleg
 //   EBTextField_TableViewCell
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBTextField_TableViewCell) final class EBTextField_TableViewCell : EBTableCellView {
-
-  //····················································································································
-
-  @IBOutlet var mCellOutlet : EBTextField? = nil
-
-  //····················································································································
-
-  func checkOutlet (_ columnName : String, file:String, line:Int) {
-    checkOutletConnection (self.mCellOutlet, "\"\(columnName)\" column view", EBTextField.self, file, line)
-  }
-
-  //····················································································································
-
-  func update () {
-    self.mCellOutlet?.mValueController?.mEventCallBack? ()
-  }
-
-  //····················································································································
-
-}
+//@objc(EBTextField_TableViewCell) final class EBTextField_TableViewCell : EBTableCellView {
+//
+//  //····················································································································
+//
+//  @IBOutlet var mCellOutlet : EBTextField? = nil
+//
+//  //····················································································································
+//
+//  func checkOutlet (_ columnName : String, file:String, line:Int) {
+//    checkOutletConnection (self.mCellOutlet, "\"\(columnName)\" column view", EBTextField.self, file, line)
+//  }
+//
+//  //····················································································································
+//
+//  func update () {
+//    self.mCellOutlet?.mValueController?.mEventCallBack? ()
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

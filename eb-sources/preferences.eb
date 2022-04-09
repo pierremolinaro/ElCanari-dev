@@ -469,12 +469,12 @@ prefs {
   outlet NSScrollView mLibraryRevisionListScrollView ;
   outlet NSTableView mLibraryRevisionListTableView ;
 //--- Dialog for library updating
-  outlet EBWindow mLibraryUpdateWindow ;
-  outlet EBProgressIndicator mProgressIndicatorInLibraryUpdateWindow ;
-  outlet EBTextField mInformativeTextInLibraryUpdateWindow ;
-  outlet EBTableView mTableViewInLibraryUpdateWindow ;
-  outlet EBButton mUpDateButtonInLibraryUpdateWindow ;
-  outlet EBButton mCancelButtonInLibraryUpdateWindow ;
+//  outlet EBWindow mLibraryUpdateWindow ;
+//  outlet EBProgressIndicator mProgressIndicatorInLibraryUpdateWindow ;
+//  outlet EBTextField mInformativeTextInLibraryUpdateWindow ;
+//  outlet EBTableView mTableViewInLibraryUpdateWindow ;
+//  outlet EBButton mUpDateButtonInLibraryUpdateWindow ;
+//  outlet EBButton mCancelButtonInLibraryUpdateWindow ;
   outlet EBMenuItem mUpDateLibraryMenuItemInCanariMenu ;
 
 //--- Dialog for library uploader
