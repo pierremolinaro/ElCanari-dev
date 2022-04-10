@@ -14,18 +14,18 @@ var g_Preferences : Preferences? = nil
 
   //····················································································································
 
-  private var mWindow : EBWindow? = nil
+  private var mWindow : CanariWindow? = nil
 
   //····················································································································
   //    Show Preferences window
   //····················································································································
 
   @IBAction func showPreferencesWindowAction (_ inSender : Any?) {
-    let window : EBWindow
+    let window : CanariWindow
     if let w = self.mWindow {
       window = w
     }else{
-      window = EBWindow (
+      window = CanariWindow (
         contentRect: .zero,
         styleMask: [.closable, .resizable, .titled],
         backing: .buffered,

@@ -18,7 +18,7 @@ fileprivate let SaveAsToolbarIdentifier = NSToolbarItem.Identifier ("SaveAs")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariPDFWindow : EBWindow, NSToolbarDelegate {
+final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
 
   //····················································································································
 

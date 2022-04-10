@@ -14,7 +14,7 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
 
   private final var mReadMetadataStatus : UInt8 = 0
   private final var mMetadataDictionary = [String : Any] ()
-  private final var mSplashScreenWindow : EBWindow? = nil
+  private final var mSplashScreenWindow : CanariWindow? = nil
   private final var mSplashTextField : AutoLayoutLabel? = nil
 
   //····················································································································
@@ -109,7 +109,7 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
   override func read (from inData : Data, ofType typeName : String) throws {
   //--- Show "Opening xxx…" splash window ?
     if inData.count > 300_000 {
-      let window = EBWindow (
+      let window = CanariWindow (
         contentRect: NSRect (x: 0.0, y: 0.0, width: 450.0, height: 100.0),
         styleMask: [.titled],
         backing: .buffered,

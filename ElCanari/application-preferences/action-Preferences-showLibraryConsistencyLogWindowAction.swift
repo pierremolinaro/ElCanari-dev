@@ -13,11 +13,11 @@ import Cocoa
 extension Preferences {
   @objc func showLibraryConsistencyLogWindowAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let window : EBWindow
+    let window : CanariWindow
     if let w = self.mLibraryConsistencyLogWindow {
       window = w
     }else{
-      window = EBWindow (
+      window = CanariWindow (
         contentRect: NSRect (x: 0, y: 0, width: 500, height: 400),
         styleMask: [.closable, .resizable, .titled],
         backing: .buffered,

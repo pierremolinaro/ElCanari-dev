@@ -14,21 +14,21 @@ class Preferences_SuperClass : EBObjcBaseObject {
 
   //····················································································································
 
-  var mLibraryUpdateLogWindow : EBWindow? = nil
+  var mLibraryUpdateLogWindow : CanariWindow? = nil
   var mLibraryUpdateLogTextView : AutoLayoutStaticTextView? = nil
 
   //····················································································································
 
-  var mLibraryConsistencyLogWindow : EBWindow? = nil
+  var mLibraryConsistencyLogWindow : CanariWindow? = nil
   var mLibraryConsistencyLogTextView : AutoLayoutStaticTextView? = nil
 
   //····················································································································
 
-  final func setUpLibraryUpdateLogWindow () -> EBWindow {
+  final func setUpLibraryUpdateLogWindow () -> CanariWindow {
     if let window = self.mLibraryUpdateLogWindow {
       return window
     }else{
-      let window = EBWindow (
+      let window = CanariWindow (
         contentRect: NSRect (x: 0, y: 0, width: 500, height: 400),
         styleMask: [.closable, .resizable, .titled],
         backing: .buffered,
@@ -52,16 +52,16 @@ class Preferences_SuperClass : EBObjcBaseObject {
 
   //····················································································································
 
-  private var mCheckingForLibraryUpdateWindow : EBWindow? = nil
+  private var mCheckingForLibraryUpdateWindow : CanariWindow? = nil
 
   //····················································································································
 
   final func showCheckingForLibraryUpdateWindow () {
-    let window : EBWindow
+    let window : CanariWindow
     if let w = self.mCheckingForLibraryUpdateWindow {
       window = w
     }else{
-      window = EBWindow (
+      window = CanariWindow (
         contentRect: NSRect (x: 0, y: 0, width: 250, height: 100),
         styleMask: [.titled],
         backing: .buffered,

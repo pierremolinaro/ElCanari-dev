@@ -40,7 +40,7 @@ fileprivate final class LogFileOperation : EBObjcBaseObject { // SHOULD INHERIT 
   //  Properties
   //····················································································································
 
-  private var mWindow = EBWindow (
+  private var mWindow = CanariWindow (
     contentRect: NSRect (x: 50, y:50, width: 300, height: 300),
     styleMask: [.titled, .closable, .resizable],
     backing: .buffered,
