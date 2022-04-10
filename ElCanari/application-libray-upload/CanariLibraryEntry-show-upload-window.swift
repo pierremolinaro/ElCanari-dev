@@ -6,52 +6,179 @@ import Cocoa
 // https://developer.apple.com/documentation/security/certificate_key_and_trust_services/keys/storing_keys_in_the_keychain
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+class LibraryUploadDialog : EBSwiftBaseObject {
+
+  //····················································································································
+  //  Properties
+  //····················································································································
+
+  let mLibraryUploadWindow : NSPanel
+  let mSetLibraryRepositoryButton = AutoLayoutButton (title: "Repository…", size: .regular)
+  let mLibraryRepositoryTextField = AutoLayoutLabel (bold: false, size: .regular).expandableWidth ().set (alignment: .left)
+  let mSetUserAndPasswordButton = AutoLayoutButton (title: "User and Password…", size: .regular)
+  let mUserAndPasswordTextField = AutoLayoutLabel (bold: false, size: .regular).expandableWidth ().set (alignment: .left)
+
+  let mLibraryRepositoryLoadCurrentReleaseButton = AutoLayoutButton (title: "Current Release", size: .regular)
+  let mLibraryRepositoryCurrentReleaseTextField = AutoLayoutLabel (bold: false, size: .regular).expandableWidth ().set (alignment: .left)
+  let mLibraryRepositoryStatusButton = AutoLayoutButton (title: "Status", size: .regular)
+  let mLibraryRepositoryCommitButton = AutoLayoutButton (title: "Commit…", size: .regular)
+
+  let mLibraryRepositoryLogTextView = AutoLayoutStaticTextView (string: "")
+    .expandableWidth ()
+    .expandableHeight ()
+    .set (drawsBackground: true)
+    .setScroller (horizontal: false, vertical: true)
+
+  let mLibraryRepositoryCloseButton : AutoLayoutSheetDefaultOkButton
+
+  //····················································································································
+  //  init
+  //····················································································································
+
+  init (title inTitle : String,
+        userAndPassword inUserAndPassword : String,
+        repositoryURL inRepositoryURL : String) {
+  //--- User and Password
+    let title : String
+    if inUserAndPassword.isEmpty {
+      title = "— undefined —"
+    }else{
+      title = String (repeating: "•", count: inUserAndPassword.count)
+    }
+    self.mUserAndPasswordTextField.stringValue = title
+  //--- Repository URL
+    self.mLibraryRepositoryTextField.stringValue = (inRepositoryURL.isEmpty) ? "— undefined —" : inRepositoryURL
+  //--- Current release text field
+    self.mLibraryRepositoryCurrentReleaseTextField.stringValue = "— not loaded —"
+  //--- Build Panel
+    self.mLibraryUploadWindow = NSPanel (
+      contentRect: NSRect (x: 0, y: 0, width: 600, height: 400),
+      styleMask: [.titled, .resizable],
+      backing: .buffered,
+      defer: false
+    )
+    self.mLibraryUploadWindow.title = inTitle
+    self.mLibraryUploadWindow.hasShadow = true
+    self.mLibraryRepositoryCloseButton = AutoLayoutSheetDefaultOkButton (
+      title: "Close",
+      size: .regular,
+      sheet: self.mLibraryUploadWindow,
+      isInitialFirstResponder: true
+    )
+  //--- Main view
+    let mainView = AutoLayoutVerticalStackView ().set (margins: 20)
+  //--- Grid view
+    let gridView = AutoLayoutGridView2 ()
+      .addFirstBaseLineAligned (left: self.mSetLibraryRepositoryButton, right: self.mLibraryRepositoryTextField)
+      .addFirstBaseLineAligned (left: self.mSetUserAndPasswordButton, right: self.mUserAndPasswordTextField)
+      .addSeparator ()
+      .addFirstBaseLineAligned (left: self.mLibraryRepositoryLoadCurrentReleaseButton, right: self.mLibraryRepositoryCurrentReleaseTextField)
+      .addFirstBaseLineAligned (left: self.mLibraryRepositoryStatusButton, right: AutoLayoutHorizontalStackView.viewFollowedByFlexibleSpace (self.mLibraryRepositoryCommitButton))
+    mainView.appendView (gridView)
+  //--- Log Text View
+    mainView.appendView (self.mLibraryRepositoryLogTextView)
+  //--- Last line
+    let lastLine = AutoLayoutHorizontalStackView ()
+    lastLine.appendFlexibleSpace ()
+    lastLine.appendView (self.mLibraryRepositoryCloseButton)
+    mainView.appendView (lastLine)
+  //--- Set autolayout view to panel
+    self.mLibraryUploadWindow.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: AutoLayoutWindowContentView (view: mainView))
+  //--- Super init
+    super.init ()
+  }
+
+  //····················································································································
+
+  func runModal () {
+    _ = NSApp.runModal (for: self.mLibraryUploadWindow)
+    self.mLibraryUploadWindow.orderOut (nil)
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate var gLibraryUploadDialog : LibraryUploadDialog? = nil
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 extension CanariLibraryEntry {
 
   //····················································································································
 
   internal func showUploadDialog () {
-    if let window = g_Preferences?.mLibraryUploadWindow {
-      window.title = "Library Repository Management for " + self.mPath
-    //--- User and password
-      self.set (userAndPassword: self.mUserAndPasswordTag)
-    //--- Commit button
-      g_Preferences?.mLibraryRepositoryCommitButton?.target = self
-      g_Preferences?.mLibraryRepositoryCommitButton?.action = #selector (repositorPerformCommitAction (_:))
-    //--- Set repository action
-      g_Preferences?.mSetUserAndPasswordButton?.target = self
-      g_Preferences?.mSetUserAndPasswordButton?.action = #selector (showDefineUserAndPasswordDialogAction (_:))
-    //--- Repository name
-      self.set (repositoryURL: self.mLibraryRepositoryURL)
-    //--- Status button
-      g_Preferences?.mLibraryRepositoryStatusButton?.target = self
-      g_Preferences?.mLibraryRepositoryStatusButton?.action = #selector (showStatusAction (_:))
-    //--- Set repository action
-      g_Preferences?.mSetLibraryRepositoryButton?.target = self
-      g_Preferences?.mSetLibraryRepositoryButton?.action = #selector (showDefineRepositoryDialogAction (_:))
-    //--- Current release text field
-      g_Preferences?.mLibraryRepositoryCurrentReleaseTextField?.stringValue = "— not loaded —"
-    //--- Load current release action
-      g_Preferences?.mLibraryRepositoryLoadCurrentReleaseButton?.target = self
-      g_Preferences?.mLibraryRepositoryLoadCurrentReleaseButton?.action = #selector (loadRepositorCurrentCommitAction (_:))
-      self.updateLibraryRepositoryLoadCurrentReleaseButton ()
-    //--- Dialog
-      _ = NSApp.runModal (for: window)
-      window.orderOut (nil)
-    }
+  //--- Setup dialog
+    let dialog = LibraryUploadDialog (
+      title: "Library Repository Management for " + self.mPath,
+      userAndPassword: self.mUserAndPasswordTag,
+      repositoryURL: self.mLibraryRepositoryURL
+    )
+    gLibraryUploadDialog = dialog
+  //--- Set repository action
+    dialog.mSetUserAndPasswordButton.target = self
+    dialog.mSetUserAndPasswordButton.action = #selector (Self.showDefineUserAndPasswordDialogAction (_:))
+  //--- Commit button
+    dialog.mLibraryRepositoryCommitButton.target = self
+    dialog.mLibraryRepositoryCommitButton.action = #selector (Self.repositorPerformCommitAction (_:))
+  //--- Status button
+    dialog.mLibraryRepositoryStatusButton.target = self
+    dialog.mLibraryRepositoryStatusButton.action = #selector (Self.showStatusAction (_:))
+  //--- Set repository action
+    dialog.mSetLibraryRepositoryButton.target = self
+    dialog.mSetLibraryRepositoryButton.action = #selector (Self.showDefineRepositoryDialogAction (_:))
+  //--- Load current release action
+    dialog.mLibraryRepositoryLoadCurrentReleaseButton.target = self
+    dialog.mLibraryRepositoryLoadCurrentReleaseButton.action = #selector (Self.loadRepositorCurrentCommitAction (_:))
+    self.updateLibraryRepositoryLoadCurrentReleaseButton ()
+  //--- Dialog
+    dialog.runModal ()
+  //--- Free dialog
+    gLibraryUploadDialog = nil
+
+//    if let window = g_Preferences?.mLibraryUploadWindow {
+////      window.title = "Library Repository Management for " + self.mPath
+//    //--- User and password
+////      self.set (userAndPassword: self.mUserAndPasswordTag)
+//    //--- Commit button
+////      g_Preferences?.mLibraryRepositoryCommitButton?.target = self
+////      g_Preferences?.mLibraryRepositoryCommitButton?.action = #selector (repositorPerformCommitAction (_:))
+//    //--- Set repository action
+////      g_Preferences?.mSetUserAndPasswordButton?.target = self
+////      g_Preferences?.mSetUserAndPasswordButton?.action = #selector (showDefineUserAndPasswordDialogAction (_:))
+//    //--- Repository name
+////      self.set (repositoryURL: self.mLibraryRepositoryURL)
+//    //--- Status button
+////      g_Preferences?.mLibraryRepositoryStatusButton?.target = self
+////      g_Preferences?.mLibraryRepositoryStatusButton?.action = #selector (showStatusAction (_:))
+//    //--- Set repository action
+////      g_Preferences?.mSetLibraryRepositoryButton?.target = self
+////      g_Preferences?.mSetLibraryRepositoryButton?.action = #selector (showDefineRepositoryDialogAction (_:))
+//    //--- Current release text field
+////      g_Preferences?.mLibraryRepositoryCurrentReleaseTextField?.stringValue = "— not loaded —"
+//    //--- Load current release action
+//      g_Preferences?.mLibraryRepositoryLoadCurrentReleaseButton?.target = self
+//      g_Preferences?.mLibraryRepositoryLoadCurrentReleaseButton?.action = #selector (loadRepositorCurrentCommitAction (_:))
+//      self.updateLibraryRepositoryLoadCurrentReleaseButton ()
+//    //--- Dialog
+//      _ = NSApp.runModal (for: window)
+//      window.orderOut (nil)
+//    }
   }
 
   //····················································································································
 
   private func updateLibraryRepositoryLoadCurrentReleaseButton () {
     let enable = (self.mLibraryRepositoryURL != "") && (self.mUserAndPasswordTag != "")
-    g_Preferences?.mLibraryRepositoryLoadCurrentReleaseButton?.isEnabled = enable
+    gLibraryUploadDialog?.mLibraryRepositoryLoadCurrentReleaseButton.isEnabled = enable
   }
 
   //····················································································································
 
   @objc private func showStatusAction (_ inSender : Any?) {
-    if let logTextView = g_Preferences?.mLibraryRepositoryLogTextView {
+    if let logTextView = gLibraryUploadDialog?.mLibraryRepositoryLogTextView {
       _ = self.status (logTextView)
     }
   }
@@ -59,7 +186,7 @@ extension CanariLibraryEntry {
   //····················································································································
 
   @objc private func showDefineUserAndPasswordDialogAction (_ inSender : Any?) {
-    if let window = g_Preferences?.mLibraryUploadWindow {
+    if let window = gLibraryUploadDialog?.mLibraryUploadWindow {
       let alert = NSAlert ()
       alert.messageText = "User and password:"
       alert.addButton (withTitle: "Ok")
@@ -87,7 +214,7 @@ extension CanariLibraryEntry {
   //····················································································································
 
   @objc private func showDefineRepositoryDialogAction (_ inSender : Any?) {
-    if let window = g_Preferences?.mLibraryUploadWindow {
+    if let window = gLibraryUploadDialog?.mLibraryUploadWindow {
       let alert = NSAlert ()
       alert.messageText = "Repository URL:"
       alert.addButton (withTitle: "Ok")
@@ -114,9 +241,171 @@ extension CanariLibraryEntry {
 
   //····················································································································
 
+  @objc func repositorPerformCommitAction (_ inSender : Any?) {
+    if let logTextView = gLibraryUploadDialog?.mLibraryRepositoryLogTextView {
+      self.repositorPerformCommit (logTextView)
+    }
+  }
+
+  //····················································································································
+
+  func repositorPerformCommit (_ inLogTextView : AutoLayoutStaticTextView) {
+    let (possibleCurrentCommit, operations) = status (inLogTextView)
+    if let currentCommit = possibleCurrentCommit {
+      var needsToWriteCommitFile = false
+      for op in operations {
+        switch op.mOperation {
+        case .nop :
+          ()
+        case .remove, .upgrade, .upload :
+          needsToWriteCommitFile = true
+        }
+      }
+      var ok = false
+      var commitMessage = ""
+      if needsToWriteCommitFile {
+        let alert = NSAlert ()
+        alert.messageText = "Commit message:"
+        alert.addButton (withTitle: "Ok")
+        alert.addButton (withTitle: "Cancel")
+      //--- Textfield
+        let tf = NSTextField (frame: NSRect (x: 0.0, y: 0.0, width: 400.0, height: 22.0))
+        tf.isEnabled = true
+        tf.isEditable = true
+        tf.stringValue = ""
+        tf.drawsBackground = true
+        tf.isBordered = false
+        tf.bezelStyle = .squareBezel
+        alert.accessoryView = tf
+        let response = alert.runModal ()
+        if response == .alertFirstButtonReturn {
+          commitMessage = tf.stringValue
+          ok = true
+        }
+      }
+    //--- Upload files
+      if ok {
+        for op in operations {
+          switch op.mOperation {
+          case .remove :
+            inLogTextView.appendMessageString ("Remove \(op.mRelativePath)\n")
+          case .nop :
+            ()
+            // inLogTextView.appendMessageString ("No change for \(op.mRelativePath)\n")
+          case .upload :
+            inLogTextView.appendMessageString ("Upload \(op.mRelativePath) (\(op.mLength.stringWithSeparators) bytes)... ")
+            let localFullPath = self.mPath + "/" + op.mRelativePath
+            let remoteRelativePath = "files/\(op.mCommit)/" + op.mRelativePath
+            let r = writeRemoteFile (remoteRelativePath, url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag, localFullPath)
+            switch r {
+            case .error (let status) :
+              inLogTextView.appendErrorString ("error \(status)\n")
+              ok = false
+            case .ok (_) :
+              inLogTextView.appendSuccessString ("ok\n")
+            }
+          case .upgrade :
+            inLogTextView.appendMessageString ("Upgrade \(op.mRelativePath) (\(op.mLength.stringWithSeparators) bytes)... ")
+            let localFullPath = self.mPath + "/" + op.mRelativePath
+            let remoteRelativePath = "files/\(op.mCommit)/" + op.mRelativePath
+            let r = writeRemoteFile (remoteRelativePath, url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag, localFullPath)
+            switch r {
+            case .error (let status) :
+              inLogTextView.appendErrorString ("error \(status)\n")
+              ok = false
+            case .ok (_) :
+              inLogTextView.appendSuccessString ("ok\n")
+            }
+          }
+        }
+      }
+    //--- Write commit file
+      if ok {
+        var commitDictionaryArray = [[String : Any]] ()
+        var needsToWriteCommitFile = false
+        for op in operations {
+          switch op.mOperation {
+          case .nop :
+            commitDictionaryArray.append (op.dictionary ())
+          case .remove :
+            needsToWriteCommitFile = true
+          case .upgrade, .upload :
+            needsToWriteCommitFile = true
+            commitDictionaryArray.append (op.dictionary ())
+          }
+        }
+        if !needsToWriteCommitFile {
+          inLogTextView.appendMessageString ("Commit file is up to date\n")
+        }else{
+          inLogTextView.appendMessageString ("Upload commit contents... ")
+          if let data = try? PropertyListSerialization.data (fromPropertyList: commitDictionaryArray, format: .binary, options: 0) {
+            let remoteRelativePath = "contents/contents-\(currentCommit+1).plist"
+            let r = writeRemoteData (remoteRelativePath, url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag, data)
+            switch r {
+            case .error (let status) :
+              inLogTextView.appendErrorString ("error \(status)\n")
+              ok = false
+            case .ok (_) :
+              inLogTextView.appendSuccessString ("ok\n")
+            }
+          }else{
+            inLogTextView.appendErrorString ("internal error\n")
+            ok = false
+          }
+        //--- Write commit description file
+          if ok {
+            inLogTextView.appendMessageString ("Upload commit description... ")
+            let dictionary : [String : Any] = [
+              "message" : commitMessage,
+              "date" : Date ()
+            ]
+            if let data = try? PropertyListSerialization.data (fromPropertyList: dictionary, format: .binary, options: 0) {
+              let remoteRelativePath = "commits/commit-\(currentCommit+1).plist"
+              let r = writeRemoteData (remoteRelativePath, url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag, data)
+              switch r {
+              case .error (let status) :
+                inLogTextView.appendErrorString ("error \(status)\n")
+                ok = false
+              case .ok (_) :
+                inLogTextView.appendSuccessString ("ok\n")
+              }
+            }else{
+              inLogTextView.appendErrorString ("internal error\n")
+              ok = false
+            }
+          }
+        //--- Register commit
+          if ok {
+            inLogTextView.appendMessageString ("Register commit... ")
+            if let data = "\(currentCommit+1)".data (using: .ascii) {
+              let remoteRelativePath = "lastCommit.txt"
+              let r = writeRemoteData (remoteRelativePath, url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag, data)
+              switch r {
+              case .error (let status) :
+                inLogTextView.appendErrorString ("error \(status)\n")
+                ok = false
+              case .ok (_) :
+                inLogTextView.appendSuccessString ("ok\n")
+                gLibraryUploadDialog?.mLibraryRepositoryCurrentReleaseTextField.stringValue = "\(currentCommit+1)"
+              }
+            }else{
+              inLogTextView.appendErrorString ("internal error\n")
+              ok = false
+            }
+          }
+        }
+      }
+      if ok {
+        inLogTextView.appendSuccessString ("Done\n")
+      }
+    }
+  }
+
+  //····················································································································
+
   private func set (repositoryURL : String) {
     let title = (repositoryURL.isEmpty) ? "— undefined —" : repositoryURL
-    g_Preferences?.mLibraryRepositoryTextField?.stringValue = title
+    gLibraryUploadDialog?.mLibraryRepositoryTextField.stringValue = title
   }
 
   //····················································································································
@@ -128,7 +417,34 @@ extension CanariLibraryEntry {
     }else{
       title = String (repeating: "•", count: userAndPassword.count)
     }
-    g_Preferences?.mUserAndPasswordTextField?.stringValue = title
+    gLibraryUploadDialog?.mUserAndPasswordTextField.stringValue = title
+  }
+
+  //····················································································································
+
+  @objc func loadRepositorCurrentCommitAction (_ inSender : Any?) {
+    _ = self.loadRepositorCurrentCommit ()
+  }
+
+  //····················································································································
+
+  func loadRepositorCurrentCommit () -> Int? {
+    let response = readRemoteFile ("lastCommit.txt", url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag)
+    let result : Int?
+    switch response {
+    case .error (let status) :
+      gLibraryUploadDialog?.mLibraryRepositoryCurrentReleaseTextField.stringValue = "Error \(status)"
+      result = nil
+    case .ok (let data) :
+      if let s = String (data: data, encoding: .utf8), let currentCommit = Int (s) {
+        gLibraryUploadDialog?.mLibraryRepositoryCurrentReleaseTextField.stringValue = "\(currentCommit)"
+        result = currentCommit
+      }else{
+        gLibraryUploadDialog?.mLibraryRepositoryCurrentReleaseTextField.stringValue = "invalid value"
+        result = nil
+      }
+    }
+    return result
   }
 
   //····················································································································

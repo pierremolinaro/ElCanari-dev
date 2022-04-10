@@ -378,21 +378,11 @@ var g_Preferences : Preferences? = nil
   //    Outlets (EX)
   //····················································································································
 
-  @IBOutlet var mLibraryRepositoryCommitButton : NSButton? = nil
-  @IBOutlet var mLibraryRepositoryCurrentReleaseTextField : NSTextField? = nil
-  @IBOutlet var mLibraryRepositoryLoadCurrentReleaseButton : NSButton? = nil
-  @IBOutlet var mLibraryRepositoryLogTextView : NSTextView? = nil
-  @IBOutlet var mLibraryRepositoryStatusButton : NSButton? = nil
-  @IBOutlet var mLibraryRepositoryTextField : NSTextField? = nil
-  @IBOutlet var mLibraryUploadWindow : EBWindow? = nil
   @IBOutlet var mMenuRevealInFinder_artworks : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_devices : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_fonts : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_packages : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_symbols : CanariMenu? = nil
-  @IBOutlet var mSetLibraryRepositoryButton : NSButton? = nil
-  @IBOutlet var mSetUserAndPasswordButton : NSButton? = nil
-  @IBOutlet var mUserAndPasswordTextField : NSTextField? = nil
 
   //····················································································································
   //    Multiple bindings controllers
@@ -512,21 +502,11 @@ var g_Preferences : Preferences? = nil
   //····················································································································
 
   override func awakeFromNib () {
-    checkOutletConnection (self.mLibraryRepositoryCommitButton, "mLibraryRepositoryCommitButton", NSButton.self, #file, #line)
-    checkOutletConnection (self.mLibraryRepositoryCurrentReleaseTextField, "mLibraryRepositoryCurrentReleaseTextField", NSTextField.self, #file, #line)
-    checkOutletConnection (self.mLibraryRepositoryLoadCurrentReleaseButton, "mLibraryRepositoryLoadCurrentReleaseButton", NSButton.self, #file, #line)
-    checkOutletConnection (self.mLibraryRepositoryLogTextView, "mLibraryRepositoryLogTextView", NSTextView.self, #file, #line)
-    checkOutletConnection (self.mLibraryRepositoryStatusButton, "mLibraryRepositoryStatusButton", NSButton.self, #file, #line)
-    checkOutletConnection (self.mLibraryRepositoryTextField, "mLibraryRepositoryTextField", NSTextField.self, #file, #line)
-    checkOutletConnection (self.mLibraryUploadWindow, "mLibraryUploadWindow", EBWindow.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_artworks, "mMenuRevealInFinder_artworks", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_devices, "mMenuRevealInFinder_devices", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_fonts, "mMenuRevealInFinder_fonts", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_packages, "mMenuRevealInFinder_packages", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mMenuRevealInFinder_symbols, "mMenuRevealInFinder_symbols", CanariMenu.self, #file, #line)
-    checkOutletConnection (self.mSetLibraryRepositoryButton, "mSetLibraryRepositoryButton", NSButton.self, #file, #line)
-    checkOutletConnection (self.mSetUserAndPasswordButton, "mSetUserAndPasswordButton", NSButton.self, #file, #line)
-    checkOutletConnection (self.mUserAndPasswordTextField, "mUserAndPasswordTextField", NSTextField.self, #file, #line)
   //--------------------------- Install bindings
     mMenuRevealInFinder_symbols?.bind_populateSubmenus (preferences_mValueRevealInFinder_symbols_property)
     mMenuRevealInFinder_packages?.bind_populateSubmenus (preferences_mValueRevealInFinder_packages_property)

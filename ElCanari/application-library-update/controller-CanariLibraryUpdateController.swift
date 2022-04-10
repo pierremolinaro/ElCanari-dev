@@ -138,38 +138,6 @@ final class CanariLibraryUpdateController : EBObjcBaseObject, AutoLayoutTableVie
   }
 
   //····················································································································
-  //  Cocoa bindings
-  //····················································································································
-
-//  func bind () {
-//    if let tableView = g_Preferences?.mTableView {
-//      tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"))?.bind (
-//        NSBindingName.value,
-//        to: self.mArrayController,
-//        withKeyPath: "arrangedObjects.relativePath",
-//        options: nil
-//      )
-//      tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "action"))?.bind (
-//        NSBindingName.value,
-//        to: self.mArrayController,
-//        withKeyPath: "arrangedObjects.actionName",
-//        options: nil
-//      )
-//      self.mArrayController.content = self.mCurrentActionArray
-//    }
-//  }
-
-  //····················································································································
-
-//  func unbind () { //--- Remove bindings
-//    if let tableView = g_Preferences?.mTableView {
-//      tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"))?.unbind (NSBindingName.value)
-//      tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "action"))?.unbind (NSBindingName.value)
-//      mArrayController.content = nil
-//    }
-//  }
-
-  //····················································································································
   //  AutoLayoutTableViewDelegate methods
   //····················································································································
 

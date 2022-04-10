@@ -62,6 +62,13 @@ final class AutoLayoutStaticTextView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
+  final func set (drawsBackground inDrawsBackground : Bool) -> Self {
+    self.mTextView.drawsBackground = inDrawsBackground
+    return self
+  }
+
+  //····················································································································
+
   final func setScroller (horizontal inHorizontal : Bool, vertical inVertical : Bool) -> Self {
     self.hasHorizontalScroller = inHorizontal
     self.hasVerticalScroller = inVertical

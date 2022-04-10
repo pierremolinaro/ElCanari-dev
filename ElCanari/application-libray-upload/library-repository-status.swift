@@ -14,7 +14,7 @@ extension CanariLibraryEntry {
 
   //····················································································································
 
-  internal func status (_ inLogTextView : NSTextView) -> (Int?, [LibraryOperationDescriptor]) {
+  func status (_ inLogTextView : AutoLayoutStaticTextView) -> (Int?, [LibraryOperationDescriptor]) {
     inLogTextView.string = ""
   //--- Get current commit
     inLogTextView.appendMessageString ("Last commit: ")
@@ -112,7 +112,7 @@ extension CanariLibraryEntry {
   
   //····················································································································
 
-  private func getCurrentCommitDescription (_ possibleCurrentCommit : Int?, _ inLogTextView : NSTextView) -> [String : LibraryContentsDescriptor]? {
+  private func getCurrentCommitDescription (_ possibleCurrentCommit : Int?, _ inLogTextView : AutoLayoutStaticTextView) -> [String : LibraryContentsDescriptor]? {
     var possibleCurrentRepositoryContents : [String : LibraryContentsDescriptor]? = nil
     if let currentCommit = possibleCurrentCommit {
       possibleCurrentRepositoryContents = [String : LibraryContentsDescriptor] ()
@@ -142,7 +142,7 @@ extension CanariLibraryEntry {
 
   //····················································································································
 
-  private func getLocalFilesDescription (_ inLogTextView : NSTextView) -> [LibraryContentsDescriptor]? {
+  private func getLocalFilesDescription (_ inLogTextView : AutoLayoutStaticTextView) -> [LibraryContentsDescriptor]? {
     var possibleLocalFileDescriptors : [LibraryContentsDescriptor]? = nil
     let fm = FileManager ()
     if fm.fileExists (atPath: self.mPath) {
