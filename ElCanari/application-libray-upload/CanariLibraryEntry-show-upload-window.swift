@@ -23,11 +23,9 @@ class LibraryUploadDialog : EBSwiftBaseObject {
   let mLibraryRepositoryStatusButton = AutoLayoutButton (title: "Status", size: .regular)
   let mLibraryRepositoryCommitButton = AutoLayoutButton (title: "Commit…", size: .regular)
 
-  let mLibraryRepositoryLogTextView = AutoLayoutStaticTextView (string: "")
+  let mLibraryRepositoryLogTextView = AutoLayoutStaticTextView (drawsBackground: true, horizontalScroller: false, verticalScroller: true)
     .expandableWidth ()
     .expandableHeight ()
-    .set (drawsBackground: true)
-    .setScroller (horizontal: false, vertical: true)
 
   let mLibraryRepositoryCloseButton : AutoLayoutSheetDefaultOkButton
 

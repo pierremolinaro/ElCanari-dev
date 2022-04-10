@@ -18,7 +18,9 @@ final class AutoLayoutStaticTextView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init (string inString : String) {
+  init (drawsBackground inDrawsBackground : Bool,
+        horizontalScroller inHorizontalScroller : Bool,
+        verticalScroller inVerticalScroller : Bool) {
     super.init (frame: NSRect (x: 0, y: 0, width: 100, height: 100))
     noteObjectAllocation (self)
 //    self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
@@ -30,8 +32,8 @@ final class AutoLayoutStaticTextView : NSScrollView, EBUserClassNameProtocol {
     self.mTextView.isRichText = false
     self.mTextView.importsGraphics = false
     self.mTextView.allowsImageEditing = false
-    self.mTextView.drawsBackground = false
-    self.mTextView.string = inString
+    self.mTextView.drawsBackground = inDrawsBackground
+    self.mTextView.string = ""
 
     let MAX_SIZE : CGFloat = 1_000_000.0 // CGFloat.greatestFiniteMagnitude
     self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
@@ -43,8 +45,8 @@ final class AutoLayoutStaticTextView : NSScrollView, EBUserClassNameProtocol {
 
     self.drawsBackground = false
     self.documentView = self.mTextView
-    self.hasHorizontalScroller = false
-    self.hasVerticalScroller = false
+    self.hasHorizontalScroller = inHorizontalScroller
+    self.hasVerticalScroller = inVerticalScroller
     self.automaticallyAdjustsContentInsets = true
   }
 
@@ -62,18 +64,18 @@ final class AutoLayoutStaticTextView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func set (drawsBackground inDrawsBackground : Bool) -> Self {
-    self.mTextView.drawsBackground = inDrawsBackground
-    return self
-  }
+//  final func set (drawsBackground inDrawsBackground : Bool) -> Self {
+//    self.mTextView.drawsBackground = inDrawsBackground
+//    return self
+//  }
 
   //····················································································································
 
-  final func setScroller (horizontal inHorizontal : Bool, vertical inVertical : Bool) -> Self {
-    self.hasHorizontalScroller = inHorizontal
-    self.hasVerticalScroller = inVertical
-    return self
-  }
+//  final func setScroller (horizontal inHorizontal : Bool, vertical inVertical : Bool) -> Self {
+//    self.hasHorizontalScroller = inHorizontal
+//    self.hasVerticalScroller = inVertical
+//    return self
+//  }
 
   //····················································································································
 

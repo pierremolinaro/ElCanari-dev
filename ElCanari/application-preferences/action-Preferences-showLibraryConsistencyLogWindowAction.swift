@@ -27,14 +27,11 @@ extension Preferences {
       window.setFrameAutosaveName ("LibraryConsistencyLogWindowSettings")
       window.title = "Library Consistency Log"
       window.isReleasedWhenClosed = false
-      let textView = AutoLayoutStaticTextView (string: "")
+      let textView = AutoLayoutStaticTextView (drawsBackground: false, horizontalScroller: true, verticalScroller: true)
         .expandableWidth ()
         .expandableHeight ()
-        .setScroller (horizontal: true, vertical: true)
-
       self.mLibraryConsistencyLogTextView = textView
       window.contentView = textView
-//      window.contentView = AutoLayoutWindowContentView (view: textView)
     }
     window.makeKeyAndOrderFront (nil)
 //--- END OF USER ZONE 2

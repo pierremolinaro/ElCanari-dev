@@ -23,7 +23,8 @@ extension AutoLayoutMergerDocument {
     let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
     mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
     let rightColumn = AutoLayoutVerticalStackView ()
-    let text = AutoLayoutStaticTextView (string:
+    let text = AutoLayoutStaticTextView (drawsBackground: false, horizontalScroller: false, verticalScroller: false)
+    text.string =
       """
         For inserting a board model:
           • either drag and drop from the board model list on the board view;
@@ -31,7 +32,6 @@ extension AutoLayoutMergerDocument {
 
         The contextual click enables to insert an array of models.
       """
-    )
     rightColumn.appendViewPreceededByFlexibleSpace (text)
     let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: panel, isInitialFirstResponder: true)
     rightColumn.appendViewPreceededByFlexibleSpace (okButton)

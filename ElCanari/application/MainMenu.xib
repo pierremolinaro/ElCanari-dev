@@ -587,7 +587,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="CeW-ib-bzf">
                             <rect key="frame" x="1" y="1" width="287" height="438"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="wC3-uW-cDa" viewBased="YES" id="VFc-HM-9i9">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="413"/>
@@ -684,7 +684,7 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </searchFieldCell>
                     </searchField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="351" translatesAutoresizingMaskIntoConstraints="NO" id="jaK-Qw-uoc" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="351" translatesAutoresizingMaskIntoConstraints="NO" id="jaK-Qw-uoc">
                         <rect key="frame" x="325" y="330" width="355" height="29"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="No Selected Symbol" id="6D4-K2-T6V">
@@ -787,7 +787,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="h2f-n5-Zcp">
                             <rect key="frame" x="1" y="1" width="287" height="446"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="20" rowSizeStyle="automatic" headerView="n5O-Ot-DVM" viewBased="YES" id="mGI-u2-qq4">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="421"/>
@@ -884,7 +884,7 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </searchFieldCell>
                     </searchField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="351" translatesAutoresizingMaskIntoConstraints="NO" id="A5R-iJ-xsq" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="351" translatesAutoresizingMaskIntoConstraints="NO" id="A5R-iJ-xsq">
                         <rect key="frame" x="323" y="326" width="355" height="29"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="No Selected Package" id="SsN-rB-82x">
@@ -1183,7 +1183,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="0Yy-GT-BG7"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="351" translatesAutoresizingMaskIntoConstraints="NO" id="rZJ-dk-bzf" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="351" translatesAutoresizingMaskIntoConstraints="NO" id="rZJ-dk-bzf">
                         <rect key="frame" x="315" y="326" width="399" height="29"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="No Selected Font" id="akJ-Zu-KAb">
@@ -1197,7 +1197,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="Vok-sN-jvE">
                             <rect key="frame" x="1" y="1" width="287" height="446"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="19" rowSizeStyle="automatic" headerView="4da-4s-3fT" viewBased="YES" id="WO9-zq-Xme">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="421"/>
@@ -1370,7 +1370,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="kWd-t2-7Ab"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="351" translatesAutoresizingMaskIntoConstraints="NO" id="0YG-Tz-u8B" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="351" translatesAutoresizingMaskIntoConstraints="NO" id="0YG-Tz-u8B">
                         <rect key="frame" x="315" y="326" width="417" height="29"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="No Selected Device" id="FOX-si-3HH">
@@ -1384,7 +1384,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="pwA-oh-J3e">
                             <rect key="frame" x="1" y="1" width="287" height="446"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="20" rowSizeStyle="automatic" headerView="hFC-5x-jHz" viewBased="YES" id="Byv-bY-a6X">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="421"/>

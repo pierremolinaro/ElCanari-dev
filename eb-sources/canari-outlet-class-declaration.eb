@@ -2,13 +2,7 @@
 //   Canari Outlets
 //——————————————————————————————————————————————————————————————————————————————
 
-extern outlet class NSButton ;
-
-extern outlet class NSTextField : NSControl ;
-
 extern outlet class CanariMenu ;
 binding CanariMenu $populateSubmenus : transient StringArray ;
-
-extern outlet class NSTextView  : NSView ;
 
 //——————————————————————————————————————————————————————————————————————————————

@@ -38,14 +38,11 @@ class Preferences_SuperClass : EBObjcBaseObject {
       window.setFrameAutosaveName ("LibraryUpdateLogWindowSettings")
       window.title = "Library Update Log"
       window.isReleasedWhenClosed = false
-      let textView = AutoLayoutStaticTextView (string: "")
+      let textView = AutoLayoutStaticTextView (drawsBackground: false, horizontalScroller: true, verticalScroller: true)
         .expandableWidth ()
         .expandableHeight ()
-        .setScroller (horizontal: true, vertical: true)
-
       self.mLibraryUpdateLogTextView = textView
       window.contentView = textView
-//      window.contentView = AutoLayoutWindowContentView (view: textView)
       return window
     }
   }
