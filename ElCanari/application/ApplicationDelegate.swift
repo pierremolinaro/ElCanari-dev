@@ -33,8 +33,68 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
   //····················································································································
 
   override init () {
+  //--- Build Batch Window
+    self.mBatchWindow = NSWindow (
+      contentRect: NSRect (x: 0, y: 0, width: 600, height: 400),
+      styleMask: [.titled, .resizable],
+      backing: .buffered,
+      defer: false
+    )
+    self.mBatchWindow.title = "Batch Operations"
+    self.mBatchWindow.hasShadow = true
+  //--- Main view
+    let mainView = AutoLayoutHorizontalStackView ().set (margins: 20)
+  //--- First Column
+    let firstColumn = AutoLayoutVerticalStackView ()
+    firstColumn.appendView (AutoLayoutStaticLabel (title: "Open All…", bold: true, size: .regular).set (alignment: .left))
+    let openAllSymbolsInDirectory = AutoLayoutButton (title: "Symbols in directory…", size: .regular)
+    firstColumn.appendView (openAllSymbolsInDirectory)
+    let openAllPackagesInDirectory = AutoLayoutButton (title: "Packages in directory…", size: .regular)
+    firstColumn.appendView (openAllPackagesInDirectory)
+    let openAllDevicesInDirectory = AutoLayoutButton (title: "Devices in directory…", size: .regular)
+    firstColumn.appendView (openAllDevicesInDirectory)
+    let openAllFontsInDirectory = AutoLayoutButton (title: "Fonts in directory…", size: .regular)
+    firstColumn.appendView (openAllFontsInDirectory)
+//    let openAllProjectsInDirectory = AutoLayoutButton (title: "Projects in directory…", size: .regular)
+//    firstColumn.appendView (openAllProjectsInDirectory)
+    let openAllDocumentsInDirectory = AutoLayoutButton (title: "Documents in directory…", size: .regular)
+    firstColumn.appendView (openAllDocumentsInDirectory)
+    firstColumn.appendView (AutoLayoutStaticLabel (title: "Update All…", bold: true, size: .regular).set (alignment: .left))
+    let updateAllDevicesInDirectory = AutoLayoutButton (title: "Devices in directory…", size: .regular)
+    firstColumn.appendView (updateAllDevicesInDirectory)
+    let updateAllProjectsInDirectory = AutoLayoutButton (title: "Projects in directory…", size: .regular)
+    firstColumn.appendView (updateAllProjectsInDirectory)
+    firstColumn.appendView (AutoLayoutStaticLabel (title: "Convert to Textual Format…", bold: true, size: .regular).set (alignment: .left))
+    let convertToTextualDocumentsInDirectory = AutoLayoutButton (title: "Documents in directory…", size: .regular)
+    firstColumn.appendView (convertToTextualDocumentsInDirectory)
+    firstColumn.appendView (AutoLayoutStaticLabel (title: "Convert to Binary Format…", bold: true, size: .regular).set (alignment: .left))
+    let convertToBinaryDocumentsInDirectory = AutoLayoutButton (title: "Documents in directory…", size: .regular)
+    firstColumn.appendView (convertToBinaryDocumentsInDirectory)
+    mainView.appendView (firstColumn)
+  //--- Second Column
+    let secondColumn = AutoLayoutVerticalStackView ()
+    let logTitleLabel = AutoLayoutStaticLabel (title: "Log", bold: true, size: .regular).set (alignment: .center).expandableWidth ()
+    secondColumn.appendView (logTitleLabel)
+    self.mMaintenanceLogTextView = AutoLayoutStaticTextView (drawsBackground: true, horizontalScroller: false, verticalScroller: true)
+    secondColumn.appendView (self.mMaintenanceLogTextView)
+    self.mMaintenanceLogTextField = AutoLayoutLabel (bold: false, size: .regular).set (alignment: .left).expandableWidth ()
+    secondColumn.appendView (self.mMaintenanceLogTextField)
+    mainView.appendView (secondColumn)
+  //--- Set autolayout view to window
+    self.mBatchWindow.contentView = AutoLayoutWindowContentView (view: mainView)
+  //---
     super.init ()
     gApplicationDelegate = self
+  //---
+    _ = openAllSymbolsInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllSymbolsInDirectory (_:)))
+    _ = openAllPackagesInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllPackagesInDirectory (_:)))
+    _ = openAllDevicesInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllDevicesInDirectory (_:)))
+    _ = openAllFontsInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllFontsInDirectory (_:)))
+    _ = openAllDocumentsInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllDocumentsInDirectory (_:)))
+    _ = updateAllDevicesInDirectory.bind_run (target: self, selector: #selector (Self.updateAllDevicesInDirectory (_:)))
+    _ = updateAllProjectsInDirectory.bind_run (target: self, selector: #selector (Self.updateAllProjectsInDirectory (_:)))
+    _ = convertToTextualDocumentsInDirectory.bind_run (target: self, selector: #selector (Self.actionConvertToTextualFormatAllDocumentsInDirectory (_:)))
+    _ = convertToBinaryDocumentsInDirectory.bind_run (target: self, selector: #selector (Self.actionConvertToBinaryFormatAllDocumentsInDirectory (_:)))
   }
 
   //····················································································································
@@ -45,11 +105,12 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
   @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : NSMenuItem? = nil
 
   //····················································································································
-  //  Theses outlets are used in ApplicationDelegate-batch.swift
+  //  Batch Window
   //····················································································································
 
-  @IBOutlet var mMaintenanceLogTextView : NSTextView? = nil
-  @IBOutlet var mMaintenanceLogTextField : NSTextField? = nil
+  let mBatchWindow : NSWindow
+  let mMaintenanceLogTextView : AutoLayoutStaticTextView
+  let mMaintenanceLogTextField : AutoLayoutLabel
 
   var mCount = 0
   var mHandledFiles = [String] ()
@@ -75,7 +136,7 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
   //····················································································································
 
   func applicationDidFinishLaunching (_ notification : Notification) {
-    self.mMaintenanceLogTextField?.stringValue = ""
+    // self.mMaintenanceLogTextField.stringValue = ""
     self.checkForLibraryUpdateAtLaunch ()
     instanciateDebugMenuVisibilityObjectOnDidFinishLaunchingNotification ()
     self.addAutoLayoutUserInterfaceStyleObserver ()
@@ -119,6 +180,8 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
     }else if action == #selector (Self.actionNewArtworkDocument (_:)) {
       validate = true
     }else if action == #selector (Self.actionOpenArtworkInLibrary (_:)) {
+      validate = true
+    }else if action == #selector (Self.showBatchWindow (_:)) {
       validate = true
     }else{
       validate = false
