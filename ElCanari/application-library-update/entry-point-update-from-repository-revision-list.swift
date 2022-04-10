@@ -14,7 +14,7 @@ func startLibraryRevisionListOperation (_ inLogTextView : AutoLayoutStaticTextVi
   inLogTextView.appendMessageString ("Start getting library revision list\n", color: NSColor.blue)
 //--- Disable update buttons
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
-  g_Preferences?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
+  gApplicationDelegate?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
 //-------- Cleat log window
   inLogTextView.clear ()
 //-------- ⓪ Get system proxy

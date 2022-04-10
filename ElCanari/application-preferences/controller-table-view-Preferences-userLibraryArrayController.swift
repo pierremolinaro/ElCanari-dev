@@ -288,17 +288,9 @@ final class Controller_Preferences_userLibraryArrayController : EBObjcBaseObject
       }
     }
   }
-  //····················································································································
-
 
   //····················································································································
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
-  //····················································································································
-
-/*  final func rowCount () -> Int {
-    return self.sortedArray_property.propval.count
-  } */
-
   //····················································································································
 
   final func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {

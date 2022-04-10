@@ -392,7 +392,6 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mMenuRevealInFinder_symbols : CanariMenu? = nil
   @IBOutlet var mSetLibraryRepositoryButton : NSButton? = nil
   @IBOutlet var mSetUserAndPasswordButton : NSButton? = nil
-  @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : EBMenuItem? = nil
   @IBOutlet var mUserAndPasswordTextField : NSTextField? = nil
 
   //····················································································································
@@ -527,7 +526,6 @@ var g_Preferences : Preferences? = nil
     checkOutletConnection (self.mMenuRevealInFinder_symbols, "mMenuRevealInFinder_symbols", CanariMenu.self, #file, #line)
     checkOutletConnection (self.mSetLibraryRepositoryButton, "mSetLibraryRepositoryButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mSetUserAndPasswordButton, "mSetUserAndPasswordButton", NSButton.self, #file, #line)
-    checkOutletConnection (self.mUpDateLibraryMenuItemInCanariMenu, "mUpDateLibraryMenuItemInCanariMenu", EBMenuItem.self, #file, #line)
     checkOutletConnection (self.mUserAndPasswordTextField, "mUserAndPasswordTextField", NSTextField.self, #file, #line)
   //--------------------------- Install bindings
     mMenuRevealInFinder_symbols?.bind_populateSubmenus (preferences_mValueRevealInFinder_symbols_property)

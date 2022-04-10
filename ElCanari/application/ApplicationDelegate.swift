@@ -42,13 +42,13 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
   //····················································································································
 
   @IBOutlet var mCheckNowForUpdateMenuItem : NSMenuItem? = nil
+  @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : EBMenuItem? = nil
 
   //····················································································································
   //  Theses outlets are used in ApplicationDelegate-batch.swift
   //····················································································································
 
   @IBOutlet var mMaintenanceLogTextView : NSTextView? = nil
-
   @IBOutlet var mMaintenanceLogTextField : NSTextField? = nil
 
   var mCount = 0

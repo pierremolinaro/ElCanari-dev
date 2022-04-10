@@ -2,11 +2,7 @@
 //   Canari Outlets
 //——————————————————————————————————————————————————————————————————————————————
 
-extern outlet class NSTableView ;
-
 extern outlet class NSButton ;
-
-extern outlet class NSScrollView : NSView ;
 
 extern outlet class NSTextField : NSControl ;
 

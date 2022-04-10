@@ -329,17 +329,9 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
       }
     }
   }
-  //····················································································································
-
 
   //····················································································································
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
-  //····················································································································
-
-/*  final func rowCount () -> Int {
-    return self.sortedArray_property.propval.count
-  } */
-
   //····················································································································
 
   final func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {

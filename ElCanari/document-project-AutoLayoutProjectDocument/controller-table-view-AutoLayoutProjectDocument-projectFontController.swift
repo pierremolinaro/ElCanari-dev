@@ -363,17 +363,9 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : EBObjcB
       }
     }
   }
-  //····················································································································
-
 
   //····················································································································
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
-  //····················································································································
-
-/*  final func rowCount () -> Int {
-    return self.sortedArray_property.propval.count
-  } */
-
   //····················································································································
 
   final func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {

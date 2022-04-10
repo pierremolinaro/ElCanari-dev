@@ -262,17 +262,9 @@ final class Controller_AutoLayoutMergerDocument_mBoardModelController : EBObjcBa
       }
     }
   }
-  //····················································································································
-
 
   //····················································································································
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
-  //····················································································································
-
-/*  final func rowCount () -> Int {
-    return self.sortedArray_property.propval.count
-  } */
-
   //····················································································································
 
   final func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {

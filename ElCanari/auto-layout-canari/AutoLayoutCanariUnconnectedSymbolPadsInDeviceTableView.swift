@@ -101,12 +101,6 @@ final class AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView : AutoLayoutV
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
 
-//  func rowCount() -> Int {
-//    return self.mDataSource.count
-//  }
-
-  //····················································································································
-
   func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
   }
 

@@ -1,4 +1,23 @@
 //——————————————————————————————————————————————————————————————————————————————
+
+//! Library update
+
+prefs {
+//--- Dialog for library uploader
+  outlet EBWindow mLibraryUploadWindow ;
+  outlet NSButton mSetLibraryRepositoryButton ;
+  outlet NSTextField mLibraryRepositoryTextField ;
+  outlet NSButton mSetUserAndPasswordButton ;
+  outlet NSTextField mUserAndPasswordTextField ;
+
+  outlet NSButton mLibraryRepositoryStatusButton ;
+  outlet NSButton mLibraryRepositoryLoadCurrentReleaseButton ;
+  outlet NSButton mLibraryRepositoryCommitButton ;
+  outlet NSTextField mLibraryRepositoryCurrentReleaseTextField ;
+  outlet NSTextView mLibraryRepositoryLogTextView ;
+}
+
+//——————————————————————————————————————————————————————————————————————————————
 //! Main View
 
 prefs {
@@ -458,28 +477,6 @@ prefs {
 
 //--- Check Library button
   action checkLibraryAction ;
-}
-
-//——————————————————————————————————————————————————————————————————————————————
-
-//! Library update
-
-prefs {
-//--- Dialog for library updating
-  outlet EBMenuItem mUpDateLibraryMenuItemInCanariMenu ;
-
-//--- Dialog for library uploader
-  outlet EBWindow mLibraryUploadWindow ;
-  outlet NSButton mSetLibraryRepositoryButton ;
-  outlet NSTextField mLibraryRepositoryTextField ;
-  outlet NSButton mSetUserAndPasswordButton ;
-  outlet NSTextField mUserAndPasswordTextField ;
-
-  outlet NSButton mLibraryRepositoryStatusButton ;
-  outlet NSButton mLibraryRepositoryLoadCurrentReleaseButton ;
-  outlet NSButton mLibraryRepositoryCommitButton ;
-  outlet NSTextField mLibraryRepositoryCurrentReleaseTextField ;
-  outlet NSTextView mLibraryRepositoryLogTextView ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

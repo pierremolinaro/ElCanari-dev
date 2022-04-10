@@ -13,11 +13,10 @@ func startLibraryUpdateOperation (showProgressWindow inShowWindow : Bool, _ inLo
   inLogTextView.appendMessageString ("Start library update operation\n", color: NSColor.blue)
 //--- Disable update buttons
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
-  g_Preferences?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
+  gApplicationDelegate?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
 //-------- Cleat log window
   inLogTextView.clear ()
 //-------- Show "Check for update" window
- // inWindow?.makeKeyAndOrderFront (nil)
   if inShowWindow {
     g_Preferences?.showCheckingForLibraryUpdateWindow ()
   }
@@ -93,7 +92,7 @@ func startLibraryUpdateOperation (showProgressWindow inShowWindow : Bool, _ inLo
 
 func enableItemsAfterCompletion () {
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = true
-  g_Preferences?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
+  gApplicationDelegate?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
