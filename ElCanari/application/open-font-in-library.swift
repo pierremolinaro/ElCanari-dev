@@ -32,7 +32,7 @@ final class OpenFontInLibrary : OpenInLibrary {
   //   Dialog
   //····················································································································
 
-  @objc @IBAction func openFontInLibrary (_ inSender : Any?) {
+  @IBAction func openFontInLibrary (_ inSender : Any?) {
     super.openDocumentInLibrary (windowTitle: "Open Font in Library")
   }
 

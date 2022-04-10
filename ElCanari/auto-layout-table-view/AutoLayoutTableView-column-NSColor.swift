@@ -45,7 +45,7 @@ extension AutoLayoutTableView {
 // InternalColorTableColumn
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class InternalColorTableColumn : AutoLayoutTableColumn {
+fileprivate final class InternalColorTableColumn : AutoLayoutTableColumn {
 
   //····················································································································
 

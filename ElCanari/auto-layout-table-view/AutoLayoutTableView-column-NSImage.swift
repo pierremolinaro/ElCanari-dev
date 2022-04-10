@@ -45,7 +45,7 @@ extension AutoLayoutTableView {
 // InternalNSImageTableColumn
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class InternalNSImageTableColumn : AutoLayoutTableColumn {
+fileprivate final class InternalNSImageTableColumn : AutoLayoutTableColumn {
 
   //····················································································································
 

@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutVerticalSplitView : AutoLayoutBase_NSSplitView {
+final class AutoLayoutVerticalSplitView : AutoLayoutBase_NSSplitView {
 
   //····················································································································
 

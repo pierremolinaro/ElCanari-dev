@@ -170,7 +170,7 @@ fileprivate var gPanel : OpenPanelDelegateForUpdatingBoardModels? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class OpenPanelDelegateForUpdatingBoardModels : EBObjcBaseObject, NSOpenSavePanelDelegate {
+fileprivate final class OpenPanelDelegateForUpdatingBoardModels : EBObjcBaseObject, NSOpenSavePanelDelegate {
 
   //····················································································································
   //   PROPERTIES
@@ -183,7 +183,7 @@ fileprivate class OpenPanelDelegateForUpdatingBoardModels : EBObjcBaseObject, NS
   //····················································································································
 
   init (_ boardModelName : String) {
-    mBoardModelName = boardModelName
+    self.mBoardModelName = boardModelName
     super.init ()
   }
 

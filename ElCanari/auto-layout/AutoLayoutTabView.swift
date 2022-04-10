@@ -154,7 +154,7 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class MyTabDocumentView : AutoLayoutBase_NSView {
+fileprivate final class MyTabDocumentView : AutoLayoutBase_NSView {
 
   //····················································································································
 

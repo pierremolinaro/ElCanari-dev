@@ -46,7 +46,7 @@ extension AutoLayoutTableView {
 // InternalImageIntTableColumn
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class InternalImageIntTableColumn : AutoLayoutTableColumn {
+fileprivate final class InternalImageIntTableColumn : AutoLayoutTableColumn {
 
   //····················································································································
 

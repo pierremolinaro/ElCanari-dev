@@ -26,7 +26,7 @@ fileprivate var gOpenArtworkPanelInLibrary : OpenArtworkPanelInLibrary? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUserClassNameProtocol {
+fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -322,7 +322,7 @@ extension ApplicationDelegate {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class ArtworkDialogEntry : EBUserClassNameProtocol {
+fileprivate final class ArtworkDialogEntry : EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -331,7 +331,6 @@ fileprivate class ArtworkDialogEntry : EBUserClassNameProtocol {
   let mFullPath : String
   private var mPartStatus : MetadataStatus? = nil
   private var mArtworkRoot : ArtworkRoot? = nil
-//  private var mObjectImage : NSImage? = nil
 
   //····················································································································
 
@@ -462,17 +461,6 @@ fileprivate class ArtworkDialogEntry : EBUserClassNameProtocol {
  }
 
  //····················································································································
-
-//  var image : NSImage {
-//    if let image = self.mObjectImage {
-//      return image
-//    }else{
-//      let image = self.buildImage ()
-//      self.mObjectImage = image
-//      return image
-//    }
-//  }
-
 
 }
 

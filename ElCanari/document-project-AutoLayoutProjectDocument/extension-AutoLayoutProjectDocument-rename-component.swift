@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class RenameContext : EBSwiftBaseObject {
+fileprivate final class RenameContext : EBSwiftBaseObject {
 
   //····················································································································
 
@@ -72,7 +72,6 @@ fileprivate class RenameContext : EBSwiftBaseObject {
       if allLetters {
         self.mErrorLabel.stringValue = ""
         self.mComponentNewPrefix = newPrefix
-//        let selectedIndex = self.mIndexesPopUpButton.indexOfSelectedItem + 1
         self.populateIndexesPopupButton ()
       }else{
         self.mErrorLabel.stringValue = "Prefix should contain only ASCII letters"
@@ -144,17 +143,6 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-//  @objc @IBAction func renameComponentFromComponentSymbolAction (_ sender : NSObject?) {  // Targeted in IB
-//    let selectedObjects = self.schematicObjectsController.selectedArray_property.propval
-//    if selectedObjects.count == 1,
-//        let symbol = selectedObjects [0] as? ComponentSymbolInProject,
-//        let component = symbol.mComponent {
-//      self.renameComponentDialog (component)
-//    }
-//  }
-
-  //····················································································································
-
   internal func renameComponentDialog (_ inComponent : ComponentInProject) {
     if let window = self.windowForSheet {
       let panel = NSPanel (
@@ -182,10 +170,8 @@ extension AutoLayoutProjectDocument {
     //---
       do{
         let left = AutoLayoutStaticLabel (title: "New Prefix (only letters)", bold: false, size: .regular).set (alignment: .right)
-//        self.mRenameComponentPrefixComboxBox = renameContext.mComboBox
-        renameContext.populatePrefixComboBox (currentPrefixSet) //, self.mComponentCurrentPrefix)
+        renameContext.populatePrefixComboBox (currentPrefixSet)
         renameContext.mComboBox.mTextDidChange = { [weak renameContext] (_ inOutlet : AutoLayoutComboBox) in renameContext?.renameComponentComboBoxAction () }
-//        renameContext.mComboBox.isContinuous = true
         _ = gridView.addFirstBaseLineAligned (left: left, right: renameContext.mComboBox)
       }
     //---
@@ -193,7 +179,6 @@ extension AutoLayoutProjectDocument {
     //---
       do{
         let left = AutoLayoutStaticLabel (title: "New Index", bold: false, size: .regular).set (alignment: .right)
-//        self.mRenameComponentIndexesPopUpButton = popup
         renameContext.populateIndexesPopupButton ()
         renameContext.mIndexesPopUpButton.target = renameContext
         renameContext.mIndexesPopUpButton.action = #selector (RenameContext.renameComponentIndexPopUpButtonAction (_:))
@@ -207,8 +192,6 @@ extension AutoLayoutProjectDocument {
         hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
         hStack.appendFlexibleSpace ()
         hStack.appendView (renameContext.mOkButton)
-//        self.mRenameComponentValidationButton = button
-   //     renameContext.updateValidationButton ()
         layoutView.appendView (hStack)
       }
     //---
@@ -217,11 +200,6 @@ extension AutoLayoutProjectDocument {
         if inResponse == .stop {
           self.performRenameComponent (component: inComponent, renameContext: renameContext)
         }
-//        self.mRenameComponentPrefixComboxBox = nil
-//        self.mRenameComponentErrorMessageTextField = nil
-//        self.mRenameComponentIndexesPopUpButton = nil
-//        self.mRenameComponentValidationButton = nil
-//        self.mSelectedComponentForRenaming = nil
       }
     }
   }
@@ -265,7 +243,6 @@ extension AutoLayoutProjectDocument {
       inComponent.mNameIndex = inRenameContext.mComponentNewIndex * 2 - 1
       inComponent.mNamePrefix = inRenameContext.mComponentNewPrefix
     }
-//    self.mSelectedComponentForRenaming = nil
     self.performNormalizeComponentNames ()
   }
 

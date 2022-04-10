@@ -31,7 +31,7 @@ final class OpenDeviceInLibrary : OpenInLibrary {
   //   Dialog
   //····················································································································
 
-  @objc @IBAction func openDeviceInLibrary (_ inSender : Any?) {
+  @IBAction func openDeviceInLibrary (_ inSender : Any?) {
     self.openDocumentInLibrary (windowTitle: "Open Device in Library")
   }
 

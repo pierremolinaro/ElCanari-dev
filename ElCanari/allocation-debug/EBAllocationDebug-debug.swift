@@ -368,7 +368,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
   //    performSnapShotAction:
   //····················································································································
 
-  @IBAction func performSnapShotAction (_ : AnyObject) {
+  @objc private func performSnapShotAction (_ : AnyObject) {
     gSnapShotDictionary = gLiveObjectCountByClass
     self.installTimer ()
   }
@@ -377,7 +377,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
   //    refreshDisplay:
   //····················································································································
 
-  @objc func refreshDisplay (_ timer : Timer) {
+  @objc private func refreshDisplay (_ timer : Timer) {
     if let timer = self.mRefreshTimer {
       timer.invalidate ()
       self.mRefreshTimer = nil
@@ -428,12 +428,6 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
 
   //····················································································································
   //   IMPLEMENTATION OF AutoLayoutTableViewDelegate
-  //····················································································································
-
-//  func rowCount() -> Int {
-//    return self.mAllocationStatsDataSource.count
-//  }
-
   //····················································································································
 
   func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {

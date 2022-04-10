@@ -32,7 +32,7 @@ final class OpenSymbolInLibrary : OpenInLibrary {
   //   Dialog
   //····················································································································
 
-  @objc @IBAction func openSymbolInLibrary (_ inSender : Any?) {
+  @IBAction func openSymbolInLibrary (_ inSender : Any?) {
     super.openDocumentInLibrary (windowTitle: "Open Symbol in Library")
   }
 

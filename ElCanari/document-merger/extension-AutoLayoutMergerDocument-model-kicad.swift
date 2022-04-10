@@ -41,16 +41,16 @@ fileprivate struct TemporaryBoardModel {
         kicadFont inKicadFont : [UInt32 : BoardFontCharacter],
         leftMM inLeftMM: CGFloat,
         bottomMM inBottomMM : CGFloat) {
-    mBoardRect_mm = inBoardRect_mm
-    mKicadFont = inKicadFont
-    mLeftMM = inLeftMM
-    mBottomMM = inBottomMM
+    self.mBoardRect_mm = inBoardRect_mm
+    self.mKicadFont = inKicadFont
+    self.mLeftMM = inLeftMM
+    self.mBottomMM = inBottomMM
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class KicadNetClass {
+fileprivate struct KicadNetClass {
   let name : String
   let padDiameter : Int
   let drillDiameter : Int
@@ -62,19 +62,19 @@ fileprivate class KicadNetClass {
         padDiameter inPadDiameter : Int,
         drillDiameter inDrillDiameter : Int,
         netNames inNetNames : [String]) {
-    name = inName
-    padDiameter = inPadDiameter
-    drillDiameter = inDrillDiameter
-    netNames = inNetNames
+    self.name = inName
+    self.padDiameter = inPadDiameter
+    self.drillDiameter = inDrillDiameter
+    self.netNames = inNetNames
   }
 
   //····················································································································
 
   init () {
-    name = "???"
-    padDiameter = 0
-    drillDiameter = 0
-    netNames = []
+    self.name = "???"
+    self.padDiameter = 0
+    self.drillDiameter = 0
+    self.netNames = []
   }
 
   //····················································································································

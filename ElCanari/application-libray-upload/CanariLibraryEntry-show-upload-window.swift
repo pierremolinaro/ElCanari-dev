@@ -6,7 +6,7 @@ import Cocoa
 // https://developer.apple.com/documentation/security/certificate_key_and_trust_services/keys/storing_keys_in_the_keychain
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class LibraryUploadDialog : EBSwiftBaseObject {
+final class LibraryUploadDialog : EBSwiftBaseObject {
 
   //····················································································································
   //  Properties

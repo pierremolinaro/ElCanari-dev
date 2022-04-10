@@ -48,7 +48,7 @@ extension AutoLayoutTableView {
 // InternalBoolTableColumn
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class InternalBoolTableColumn : AutoLayoutTableColumn {
+fileprivate final class InternalBoolTableColumn : AutoLayoutTableColumn {
 
   //····················································································································
 

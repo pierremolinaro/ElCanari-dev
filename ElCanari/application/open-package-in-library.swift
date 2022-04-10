@@ -31,7 +31,7 @@ final class OpenPackageInLibrary : OpenInLibrary {
   //   Dialog
   //····················································································································
 
-  @objc @IBAction func openPackageInLibrary (_ inSender : Any?) {
+  @IBAction func openPackageInLibrary (_ inSender : Any?) {
     self.openDocumentInLibrary (windowTitle: "Open Package in Library")
   }
 
