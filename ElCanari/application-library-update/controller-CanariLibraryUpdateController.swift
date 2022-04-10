@@ -14,7 +14,7 @@ private let parallelDownloadCount = 4
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariLibraryUpdateController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
+final class CanariLibraryUpdateController : EBSwiftBaseObject, AutoLayoutTableViewDelegate {
 
   private var mCurrentActionArray : [LibraryOperationElement]
   private var mCurrentParallelActionCount = 0
@@ -189,7 +189,6 @@ final class CanariLibraryUpdateController : EBObjcBaseObject, AutoLayoutTableVie
     if let idx = self.mCurrentActionArray.firstIndex (of: inElement) {
       self.mCurrentActionArray.remove (at: idx)
       self.mTableView.sortAndReloadData ()
-//      DispatchQueue.main.async { self.mArrayController.content = self.mCurrentActionArray }
     }
   //--- Update progress indicator
     self.updateProgressIndicator ()
@@ -209,7 +208,6 @@ final class CanariLibraryUpdateController : EBObjcBaseObject, AutoLayoutTableVie
       DispatchQueue.main.async { action.beginAction (self) }
     }else if self.mCurrentParallelActionCount == 0 { // Last download did end
       DispatchQueue.main.async { commitAllActions (self.mActionArray, self.mNewRepositoryFileDictionary, self.mLogTextView) }
-    //  commitAllActions (self.mActionArray, self.mNewRepositoryFileDictionary, self.mLogTextView)
     }
   }
 

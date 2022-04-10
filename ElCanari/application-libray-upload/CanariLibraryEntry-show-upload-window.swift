@@ -135,35 +135,6 @@ extension CanariLibraryEntry {
     dialog.runModal ()
   //--- Free dialog
     gLibraryUploadDialog = nil
-
-//    if let window = g_Preferences?.mLibraryUploadWindow {
-////      window.title = "Library Repository Management for " + self.mPath
-//    //--- User and password
-////      self.set (userAndPassword: self.mUserAndPasswordTag)
-//    //--- Commit button
-////      g_Preferences?.mLibraryRepositoryCommitButton?.target = self
-////      g_Preferences?.mLibraryRepositoryCommitButton?.action = #selector (repositorPerformCommitAction (_:))
-//    //--- Set repository action
-////      g_Preferences?.mSetUserAndPasswordButton?.target = self
-////      g_Preferences?.mSetUserAndPasswordButton?.action = #selector (showDefineUserAndPasswordDialogAction (_:))
-//    //--- Repository name
-////      self.set (repositoryURL: self.mLibraryRepositoryURL)
-//    //--- Status button
-////      g_Preferences?.mLibraryRepositoryStatusButton?.target = self
-////      g_Preferences?.mLibraryRepositoryStatusButton?.action = #selector (showStatusAction (_:))
-//    //--- Set repository action
-////      g_Preferences?.mSetLibraryRepositoryButton?.target = self
-////      g_Preferences?.mSetLibraryRepositoryButton?.action = #selector (showDefineRepositoryDialogAction (_:))
-//    //--- Current release text field
-////      g_Preferences?.mLibraryRepositoryCurrentReleaseTextField?.stringValue = "— not loaded —"
-//    //--- Load current release action
-//      g_Preferences?.mLibraryRepositoryLoadCurrentReleaseButton?.target = self
-//      g_Preferences?.mLibraryRepositoryLoadCurrentReleaseButton?.action = #selector (loadRepositorCurrentCommitAction (_:))
-//      self.updateLibraryRepositoryLoadCurrentReleaseButton ()
-//    //--- Dialog
-//      _ = NSApp.runModal (for: window)
-//      window.orderOut (nil)
-//    }
   }
 
   //····················································································································

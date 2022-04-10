@@ -26,7 +26,15 @@ enum LibraryOperation {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class LibraryOperationElement : EBObjcBaseObject { // SHOULD INHERIT FROM NSObject
+final class LibraryOperationElement : EBSwiftBaseObject, Equatable {
+
+  //····················································································································
+  //   Equatable protocol
+  //····················································································································
+
+  static func == (lhs: LibraryOperationElement, rhs: LibraryOperationElement) -> Bool {
+    return ObjectIdentifier (lhs) == ObjectIdentifier (rhs)
+  }
 
   //····················································································································
   //   Properties
@@ -35,18 +43,11 @@ final class LibraryOperationElement : EBObjcBaseObject { // SHOULD INHERIT FROM 
   let mRelativePath : String
   let mCommit : Int
   let mSizeInRepository : Int
-  let mFileSHA : String
-  let mLogTextView : AutoLayoutStaticTextView
-  let mProxy : [String]
+  private let mFileSHA : String
+  private let mLogTextView : AutoLayoutStaticTextView
+  private let mProxy : [String]
 
-  var mOperation : LibraryOperation {
-    willSet {
-      self.willChangeValue (forKey: "actionName")
-    }
-    didSet {
-      self.didChangeValue (forKey: "actionName")
-    }
-  }
+  var mOperation : LibraryOperation
 
   //····················································································································
 
@@ -67,7 +68,6 @@ final class LibraryOperationElement : EBObjcBaseObject { // SHOULD INHERIT FROM 
     super.init ()
   }
 
-
   //····················································································································
   // Values for progress indicator
   //····················································································································
@@ -86,14 +86,8 @@ final class LibraryOperationElement : EBObjcBaseObject { // SHOULD INHERIT FROM 
   }
 
   //····················································································································
-  // Dynamic properties for Cocoa bindings
-  //····················································································································
 
-  @objc dynamic var relativePath : String { return self.mRelativePath }
-
-  //····················································································································
-
-  @objc dynamic var actionName : String {
+  var actionName : String {
     switch self.mOperation {
     case .download :
       return "Download (\(self.mSizeInRepository.stringWithSeparators) bytes)"
@@ -122,7 +116,7 @@ final class LibraryOperationElement : EBObjcBaseObject { // SHOULD INHERIT FROM 
       case .download, .update :
         self.mOperation = .downloading (0)
         let task = Process ()
-        let concurrentQueue = DispatchQueue (label: "Queue \(relativePath)", attributes: .concurrent)
+        let concurrentQueue = DispatchQueue (label: "Queue \(self.mRelativePath)", attributes: .concurrent)
         concurrentQueue.async {
           let arguments = [
             "-s", // Silent mode, do not show download progress
