@@ -26,7 +26,7 @@ extension AutoLayoutProjectDocument {
       scaleProvider: self.boardObjectsController
     )
     inOutlet.set (image: NSImage (named: "text-in-symbol"))
-    let menu = EBChoiceMenu ()
+    let menu = CanariChoiceMenu ()
     menu.addItem (withTitle: "Legend, Front Side", action: nil, keyEquivalent: "")
     menu.addItem (withTitle: "Layout, Front Side", action: nil, keyEquivalent: "")
     menu.addItem (withTitle: "Layout, Back Side",  action: nil, keyEquivalent: "")

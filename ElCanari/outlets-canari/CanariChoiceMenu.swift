@@ -1,22 +1,27 @@
+//
+//  CanariChoiceMenu.swift
+//  ElCanari
+//
+//  Created by Pierre Molinaro on 26/12/2021.
+//
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariEnumSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
+final class CanariChoiceMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
-  //  init
-  //····················································································································
 
-  required init? (coder : NSCoder) {
-    super.init (coder:coder)
-    noteObjectAllocation (self)
+  required init (coder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
 
-  override init (frame : NSRect) {
-    super.init (frame: frame)
+  init () {
+    super.init (title: "")
     noteObjectAllocation (self)
   }
 
@@ -27,37 +32,51 @@ final class CanariEnumSegmentedControl : NSSegmentedControl, EBUserClassNameProt
   }
 
   //····················································································································
-  //  sendAction
-  //····················································································································
 
-  override func sendAction (_ inAction : Selector?, to target : Any?) -> Bool {
-    self.mController?.updateModel (self)
-    return super.sendAction (inAction, to: target)
-  }
-
-  //····················································································································
-  //    binding
-  //····················································································································
-
-  fileprivate func updateSelectedSegment (_ object : EBReadObservableEnumProtocol) {
-    self.selectedSegment = object.rawValue () ?? 0
+  fileprivate func enableItems (_ inValue : Bool) {
+    for item in self.items {
+      item.isEnabled = inValue
+    }
   }
 
   //····················································································································
 
-  private var mController : Controller_CanariEnumSegmentedControl_selectedSegment? = nil
+  fileprivate func checkItemAtIndex (_ inIndex : Int) {
+    var idx = 0
+    for item in self.items {
+      item.state = (idx == inIndex) ? .on : .off
+      idx += 1
+    }
+  }
 
   //····················································································································
+  //  selectedIndex binding
+  //····················································································································
 
-  final func bind_selectedSegment (_ object : EBReadWriteObservableEnumProtocol) {
-    self.mController = Controller_CanariEnumSegmentedControl_selectedSegment (object: object, outlet: self)
+  fileprivate func updateOutletFromSelectedIndexController (_ inObject : EBReadWriteObservableEnumProtocol) {
+    if let v = inObject.rawValue () {
+      self.enableItems (true)
+      self.checkItemAtIndex (v)
+    }else{
+      self.enableItems (false)
+    }
   }
 
   //····················································································································
 
-  final func unbind_selectedSegment () {
-    self.mController?.unregister ()
-    self.mController = nil
+  private var mSelectedIndexController : Controller_CanariChoiceMenu_selectedIndex? = nil
+
+  //····················································································································
+
+  final func bind_selectedIndex (_ object : EBReadWriteObservableEnumProtocol) {
+    self.mSelectedIndexController = Controller_CanariChoiceMenu_selectedIndex (object: object, outlet: self)
+  }
+
+  //····················································································································
+
+  final func unbind_selectedIndex () {
+    self.mSelectedIndexController?.unregister ()
+    self.mSelectedIndexController = nil
   }
 
   //····················································································································
@@ -65,26 +84,33 @@ final class CanariEnumSegmentedControl : NSSegmentedControl, EBUserClassNameProt
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariEnumSegmentedControl_selectedSegment
+//   Controller_CanariChoiceMenu_selectedIndex
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariEnumSegmentedControl_selectedSegment : EBObservablePropertyController {
-
-  private let mObject : EBReadWriteObservableEnumProtocol
-  private let mOutlet : CanariEnumSegmentedControl
+final class Controller_CanariChoiceMenu_selectedIndex : EBObservablePropertyController {
 
   //····················································································································
 
-  init (object : EBReadWriteObservableEnumProtocol, outlet : CanariEnumSegmentedControl) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects:[object], callBack: { outlet.updateSelectedSegment (object) })
+  private let mObject : EBReadWriteObservableEnumProtocol
+
+  //····················································································································
+
+  init (object : EBReadWriteObservableEnumProtocol, outlet inOutlet : CanariChoiceMenu) {
+    self.mObject = object
+    super.init (observedObjects: [object], callBack: { [weak inOutlet] in inOutlet?.updateOutletFromSelectedIndexController (object) } )
+    var idx = 0
+    for item in inOutlet.items {
+      item.target = self
+      item.action = #selector (Self.updateModelAction (_:))
+      item.tag = idx
+      idx += 1
+    }
   }
 
   //····················································································································
 
-  func updateModel (_ sender : CanariEnumSegmentedControl) {
-    self.mObject.setFrom (rawValue: self.mOutlet.selectedSegment)
+  @objc fileprivate func updateModelAction (_ inSender : NSMenuItem) {
+    self.mObject.setFrom (rawValue: inSender.tag)
   }
 
   //····················································································································

@@ -28,7 +28,7 @@ final class CanariPDFWindow : EBWindow, NSToolbarDelegate {
   //····················································································································
 
   init (fileName : String, pdfData : Data) {
-    mData = pdfData
+    self.mData = pdfData
   //--- Create window
     super.init (
       contentRect: NSRect (x: 0.0, y: 0.0, width: 800.0, height: 600.0),

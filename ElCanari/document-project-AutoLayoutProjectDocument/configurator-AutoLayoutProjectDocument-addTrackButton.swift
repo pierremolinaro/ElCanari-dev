@@ -28,7 +28,7 @@ extension AutoLayoutProjectDocument {
     inOutlet.set (image: NSImage (named: "track-in-board"))
   //--- Left Menu
     do {
-      let menu = EBChoiceMenu ()
+      let menu = CanariChoiceMenu ()
       menu.addItem (withTitle: "Any Angle", action: nil, keyEquivalent: "")
       menu.addItem (withTitle: "Octolinear (45°)", action: nil, keyEquivalent: "")
       menu.addItem (withTitle: "Rectilinear (90°)",  action: nil, keyEquivalent: "")
@@ -36,7 +36,7 @@ extension AutoLayoutProjectDocument {
       inOutlet.set (leftContextualMenu: menu)
     }
   //--- Right Menu
-    let menu = EBChoiceMenu ()
+    let menu = CanariChoiceMenu ()
     menu.addItem (withTitle: "Front Layer", action: nil, keyEquivalent: "")
     menu.addItem (withTitle: "Back Layer", action: nil, keyEquivalent: "")
     menu.addItem (withTitle: "Inner 1 Layer",  action: nil, keyEquivalent: "")
