@@ -13,6 +13,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   //····················································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageBezier>,
+                                 
                                  addedSet inAddedSet : EBReferenceSet <PackageBezier>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

@@ -13,6 +13,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //····················································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <MergerBoardInstance>,
+                                 
                                  addedSet inAddedSet : EBReferenceSet <MergerBoardInstance>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

@@ -460,6 +460,7 @@ graphic entity PackageDimension : PackageObject {
 
   property @signature Int x1Unit default 2_286 ;
   property @signature Int y1Unit default 2_286 ;
+
   property @signature Int x2Unit default 2_286 ;
   property @signature Int y2Unit default 2_286 ;
   property @signature Int xDimensionUnit default 2_286 ;

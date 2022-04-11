@@ -13,6 +13,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   //····················································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageInDevice>,
+                                 
                                  addedSet inAddedSet : EBReferenceSet <PackageInDevice>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

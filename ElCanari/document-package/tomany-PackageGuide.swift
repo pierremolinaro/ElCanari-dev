@@ -13,6 +13,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
   //····················································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageGuide>,
+                                 
                                  addedSet inAddedSet : EBReferenceSet <PackageGuide>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

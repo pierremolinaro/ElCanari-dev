@@ -13,6 +13,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   //····················································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <CommentInSchematic>,
+                                 
                                  addedSet inAddedSet : EBReferenceSet <CommentInSchematic>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

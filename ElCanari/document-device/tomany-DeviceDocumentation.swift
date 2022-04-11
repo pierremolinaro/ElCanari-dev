@@ -13,6 +13,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   //····················································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <DeviceDocumentation>,
+                                 
                                  addedSet inAddedSet : EBReferenceSet <DeviceDocumentation>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

@@ -13,6 +13,7 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
   //····················································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolObject>,
+                                 
                                  addedSet inAddedSet : EBReferenceSet <SymbolObject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

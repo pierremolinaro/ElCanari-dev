@@ -13,6 +13,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //····················································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <CanariLibraryEntry>,
+                                 
                                  addedSet inAddedSet : EBReferenceSet <CanariLibraryEntry>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

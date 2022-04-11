@@ -13,6 +13,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //····················································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <DeviceInProject>,
+                                 
                                  addedSet inAddedSet : EBReferenceSet <DeviceInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

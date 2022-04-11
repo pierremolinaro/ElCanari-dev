@@ -13,6 +13,7 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
   //····················································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ForbiddenPadNumber>,
+                                 
                                  addedSet inAddedSet : EBReferenceSet <ForbiddenPadNumber>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

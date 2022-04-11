@@ -13,6 +13,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //····················································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardModel>,
+                                 
                                  addedSet inAddedSet : EBReferenceSet <BoardModel>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
