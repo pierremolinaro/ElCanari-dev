@@ -104,7 +104,7 @@ final class BoardModelVia : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
   //--- Unregister properties for handling signature
   }
@@ -176,7 +176,7 @@ final class BoardModelVia : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -185,7 +185,7 @@ final class BoardModelVia : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

@@ -67,7 +67,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final internal func updateXYHelperWindow (mouseLocationInView inLocationInView : NSPoint) {
+  final func updateXYHelperWindow (mouseLocationInView inLocationInView : NSPoint) {
     let commandKey = NSEvent.modifierFlags.contains (.command)
     if commandKey, let myWindow = self.window, self.visibleRect.contains (inLocationInView) {
       let xyWindow : NSWindow
@@ -111,7 +111,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final internal func removeXYHelperWindow () {
+  final func removeXYHelperWindow () {
     self.mXYwindow?.orderOut (nil)
     self.mXYwindow = nil
   }

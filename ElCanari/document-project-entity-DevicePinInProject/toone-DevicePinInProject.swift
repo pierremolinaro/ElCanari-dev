@@ -12,7 +12,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : DevicePinInProject?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : DevicePinInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

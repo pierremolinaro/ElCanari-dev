@@ -15,7 +15,7 @@ extension AutoLayoutMergerDocument {
 
   //····················································································································
 
-  final internal func checkLayerConfigurationAndGenerateProductFiles () {
+  final func checkLayerConfigurationAndGenerateProductFiles () {
   //--- Layout layer configuration
     var layerSet = Set <LayerConfiguration> ()
     var artworkLayerConfiguration : LayerConfiguration? = nil

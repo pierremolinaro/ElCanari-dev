@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolSegment>,
-                                          addedSet inAddedSet : EBReferenceSet <SymbolSegment>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolSegment>,
+                                 addedSet inAddedSet : EBReferenceSet <SymbolSegment>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

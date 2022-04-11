@@ -20,7 +20,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func mouseMovedOrFlagsChangedInSchematic (_ inUnalignedMouseLocation : NSPoint) {
+  func mouseMovedOrFlagsChangedInSchematic (_ inUnalignedMouseLocation : NSPoint) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       let canariUnalignedMouseDownLocation = inUnalignedMouseLocation.canariPoint
       let canariAlignedMouseDownLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
@@ -54,7 +54,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func mouseExitInSchematic () {
+  func mouseExitInSchematic () {
   //--- Connect
     self.mConnectSchematicHotKeyTextField?.textColor = .disabledControlTextColor
     self.mConnectAllSymbolPinsSchematicHotKeyTextField?.textColor = .disabledControlTextColor

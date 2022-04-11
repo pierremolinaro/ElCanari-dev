@@ -12,7 +12,7 @@ class ReadOnlyObject_SegmentForFontCharacter : ReadOnlyAbstractObjectProperty <S
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : SegmentForFontCharacter?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : SegmentForFontCharacter?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

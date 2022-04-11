@@ -68,7 +68,7 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func set (minWidth inWidth : Int) -> Self {
+  final func set (minWidth inWidth : Int) -> Self {
     self.mWidth = CGFloat (inWidth)
     return self
   }

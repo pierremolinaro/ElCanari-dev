@@ -12,7 +12,7 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceSlavePadInProject?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceSlavePadInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

@@ -12,7 +12,7 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardRestrictRectangle?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : BoardRestrictRectangle?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

@@ -61,7 +61,7 @@ class SymbolObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
   //--- Unregister properties for handling signature
   }
@@ -124,7 +124,7 @@ class SymbolObject : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -133,7 +133,7 @@ class SymbolObject : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

@@ -439,7 +439,7 @@ final class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mSymbolInstanceName_property.removeEBObserver (self.pinQualifiedName_property)
     // self.mPinName_property.removeEBObserver (self.pinQualifiedName_property)
@@ -640,7 +640,7 @@ final class DevicePinInProject : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -649,7 +649,7 @@ final class DevicePinInProject : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

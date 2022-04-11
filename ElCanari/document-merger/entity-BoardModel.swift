@@ -3140,7 +3140,7 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.layerConfiguration_property.removeEBObserver (self.layerConfigurationString_property)
     // self.frontLegendLines_property.removeEBObserverOf_x1 (self.frontLegendLinesSegments_property)
@@ -4254,7 +4254,7 @@ final class BoardModel : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.frontLegendLines.removeAll ()
     self.backLegendLines.removeAll ()
     self.frontLegendTexts.removeAll ()
@@ -4288,7 +4288,7 @@ final class BoardModel : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

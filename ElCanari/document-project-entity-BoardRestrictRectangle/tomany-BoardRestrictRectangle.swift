@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardRestrictRectangle>,
-                                          addedSet inAddedSet : EBReferenceSet <BoardRestrictRectangle>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardRestrictRectangle>,
+                                 addedSet inAddedSet : EBReferenceSet <BoardRestrictRectangle>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

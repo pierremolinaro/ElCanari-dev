@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardText>,
-                                          addedSet inAddedSet : EBReferenceSet <BoardText>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardText>,
+                                 addedSet inAddedSet : EBReferenceSet <BoardText>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

@@ -265,7 +265,7 @@ final class LabelInSchematic : SchematicObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mPoint_property.location_property.removeEBObserver (self.location_property)
     // self.mPoint_property.netName_property.removeEBObserver (self.netName_property)
@@ -379,7 +379,7 @@ final class LabelInSchematic : SchematicObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -388,7 +388,7 @@ final class LabelInSchematic : SchematicObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mPoint = nil
   //---
     super.cleanUpToOneRelationships ()

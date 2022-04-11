@@ -12,7 +12,7 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : SegmentEntity?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : SegmentEntity?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

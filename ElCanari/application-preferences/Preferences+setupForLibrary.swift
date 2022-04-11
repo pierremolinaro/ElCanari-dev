@@ -24,7 +24,7 @@ extension Preferences {
   
   //····················································································································
 
-  internal func setupForLibrary () {
+  final func setupForLibrary () {
     gPreferences = self
     self.updateForLibrary ()
   //--- Use an FSEvent for tracking Canari System Library changes

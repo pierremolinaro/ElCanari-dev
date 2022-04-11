@@ -169,7 +169,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mPadName_property.removeEBObserver (self.pinPadAssignment_property)
     // self.mPin_property.mSymbolInstanceName_property.removeEBObserver (self.pinPadAssignment_property)
@@ -250,7 +250,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -259,7 +259,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mPin = nil
   //---
     super.cleanUpToOneRelationships ()

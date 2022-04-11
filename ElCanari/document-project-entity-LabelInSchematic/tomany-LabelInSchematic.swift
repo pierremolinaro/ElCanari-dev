@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <LabelInSchematic>,
-                                          addedSet inAddedSet : EBReferenceSet <LabelInSchematic>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <LabelInSchematic>,
+                                 addedSet inAddedSet : EBReferenceSet <LabelInSchematic>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

@@ -12,7 +12,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageGuide?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : PackageGuide?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

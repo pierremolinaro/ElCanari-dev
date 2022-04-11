@@ -12,7 +12,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : BorderCurve?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : BorderCurve?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

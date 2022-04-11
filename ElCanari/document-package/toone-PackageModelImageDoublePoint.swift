@@ -12,7 +12,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageModelImageDoublePoint?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : PackageModelImageDoublePoint?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

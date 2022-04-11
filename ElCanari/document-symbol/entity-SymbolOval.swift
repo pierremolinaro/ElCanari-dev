@@ -258,7 +258,7 @@ final class SymbolOval : SymbolObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.x_property.removeEBObserver (self.strokeBezierPath_property)
     // self.y_property.removeEBObserver (self.strokeBezierPath_property)
@@ -395,7 +395,7 @@ final class SymbolOval : SymbolObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -404,7 +404,7 @@ final class SymbolOval : SymbolObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

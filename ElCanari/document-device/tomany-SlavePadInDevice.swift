@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SlavePadInDevice>,
-                                          addedSet inAddedSet : EBReferenceSet <SlavePadInDevice>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SlavePadInDevice>,
+                                 addedSet inAddedSet : EBReferenceSet <SlavePadInDevice>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

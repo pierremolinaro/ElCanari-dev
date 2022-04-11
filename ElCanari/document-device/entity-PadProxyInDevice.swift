@@ -228,7 +228,7 @@ final class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mIsNC_property.removeEBObserver (self.isConnected_property)
     // self.mPinInstance_property.removeEBObserver (self.isConnected_property)
@@ -332,7 +332,7 @@ final class PadProxyInDevice : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -341,7 +341,7 @@ final class PadProxyInDevice : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mPinInstance = nil
   //---
     super.cleanUpToOneRelationships ()

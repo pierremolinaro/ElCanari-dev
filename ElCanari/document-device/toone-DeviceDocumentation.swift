@@ -12,7 +12,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceDocumentation?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceDocumentation?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

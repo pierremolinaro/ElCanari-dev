@@ -143,7 +143,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final internal func indexOfFrontObject (at inLocation : NSPoint) -> (Int?, Int?){
+  final func indexOfFrontObject (at inLocation : NSPoint) -> (Int?, Int?){
     var possibleObjectIndex : Int? = nil
     var possibleKnobIndex : Int? = nil
     let selectedObjects = self.selectionShapes
@@ -175,7 +175,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final internal func knobIndex (ofSelectedObjectIndex inObjectIndex : Int, at inLocation : NSPoint) -> Int? {
+  final func knobIndex (ofSelectedObjectIndex inObjectIndex : Int, at inLocation : NSPoint) -> Int? {
     let selectedObjects = self.selectionShapes
     if inObjectIndex < selectedObjects.count {
       return selectedObjects [inObjectIndex].knobIndex (at: inLocation)
@@ -186,7 +186,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final internal func indexesOfObjects (intersecting inRect : NSRect) -> Set <Int> {
+  final func indexesOfObjects (intersecting inRect : NSRect) -> Set <Int> {
     var result = Set <Int> ()
     var idx = 0
     for object in self.objectDisplayArray {

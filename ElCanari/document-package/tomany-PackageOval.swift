@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageOval>,
-                                          addedSet inAddedSet : EBReferenceSet <PackageOval>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageOval>,
+                                 addedSet inAddedSet : EBReferenceSet <PackageOval>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

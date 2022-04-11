@@ -12,7 +12,7 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : CommentInSchematic?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : CommentInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

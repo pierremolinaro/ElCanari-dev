@@ -611,7 +611,7 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.layerConfiguration_property.removeEBObserver (self.hasInnerElements_property)
     // self.layerConfiguration_property.removeEBObserver (self.hasSixLayers_property)
@@ -859,7 +859,7 @@ final class ArtworkRoot : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.fileGenerationParameterArray.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
@@ -869,7 +869,7 @@ final class ArtworkRoot : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

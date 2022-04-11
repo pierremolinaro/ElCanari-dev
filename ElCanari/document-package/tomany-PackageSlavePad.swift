@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageSlavePad>,
-                                          addedSet inAddedSet : EBReferenceSet <PackageSlavePad>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageSlavePad>,
+                                 addedSet inAddedSet : EBReferenceSet <PackageSlavePad>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

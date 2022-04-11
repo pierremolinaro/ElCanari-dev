@@ -17,7 +17,7 @@ extension AutoLayoutDeviceDocument {
    for symbolType in self.rootObject.mSymbolTypes.values {
      currentSymbolNames.insert (symbolType.mTypeName)
    }
-   gOpenSymbolInLibrary?.loadDocumentFromLibrary (
+   gApplicationDelegate?.mOpenSymbolInLibrary.loadDocumentFromLibrary (
      windowForSheet: self.windowForSheet!,
      alreadyLoadedDocuments: currentSymbolNames,
      callBack: self.symbolTypeFromLoadSymbolDialog,

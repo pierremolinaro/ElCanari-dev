@@ -1665,7 +1665,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
   //--- Array controller property: componentAvailablePackagesController
     self.componentAvailablePackagesController.unbind_model ()
@@ -2259,7 +2259,7 @@ final class ComponentInProject : BoardObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mConnectors.removeAll ()
     self.mSymbols.removeAll ()
   //---
@@ -2270,7 +2270,7 @@ final class ComponentInProject : BoardObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mDevice = nil
     self.mSelectedPackage = nil
     self.mNameFont = nil

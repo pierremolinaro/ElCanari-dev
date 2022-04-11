@@ -141,7 +141,7 @@ class PackageObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mRoot_property.knobSizeMultpliedByTen_property.removeEBObserver (self.knobSize_property)
   //--- Unregister properties for handling signature
@@ -223,7 +223,7 @@ class PackageObject : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -232,7 +232,7 @@ class PackageObject : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mRoot = nil
   //---
     super.cleanUpToOneRelationships ()

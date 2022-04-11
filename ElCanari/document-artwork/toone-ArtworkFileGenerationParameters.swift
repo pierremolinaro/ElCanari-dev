@@ -12,7 +12,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : ArtworkFileGenerationParameters?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : ArtworkFileGenerationParameters?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

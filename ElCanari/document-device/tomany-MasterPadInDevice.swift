@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <MasterPadInDevice>,
-                                          addedSet inAddedSet : EBReferenceSet <MasterPadInDevice>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <MasterPadInDevice>,
+                                 addedSet inAddedSet : EBReferenceSet <MasterPadInDevice>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func populateContextualClickOnSchematics (_ inUnalignedMouseDownPoint : CanariPoint) -> NSMenu? {
+  func populateContextualClickOnSchematics (_ inUnalignedMouseDownPoint : CanariPoint) -> NSMenu? {
     let menu = NSMenu ()
     if let selectedSheet = self.rootObject.mSelectedSheet {
       let canariAlignedMouseDownLocation = inUnalignedMouseDownPoint.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
@@ -47,7 +47,7 @@ extension AutoLayoutProjectDocument {
   // Exchange symbol
   //····················································································································
 
-  internal func canExchangeSymbol (at inUnalignedMouseDownPoint : CanariPoint) -> ComponentSymbolInProject? {
+  func canExchangeSymbol (at inUnalignedMouseDownPoint : CanariPoint) -> ComponentSymbolInProject? {
     var result : ComponentSymbolInProject? = nil
     let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
     if symbolsUnderMouse.count == 1 {
@@ -91,7 +91,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func runExchangeDialog (forSymbol inSymbolUnderMouse : ComponentSymbolInProject) {
+  func runExchangeDialog (forSymbol inSymbolUnderMouse : ComponentSymbolInProject) {
     var candidateSymbols = [ComponentSymbolInProject] ()
     for component in self.rootObject.mComponents.values {
       for symbol in component.mSymbols.values {
@@ -159,7 +159,7 @@ extension AutoLayoutProjectDocument {
   // Add NC to all unconnected pins
   //····················································································································
 
-  internal func canAddNCToSymbolPins (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
+  func canAddNCToSymbolPins (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
     let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
     var connectableSymbols = [ComponentSymbolInProject] ()
     for symbol in symbolsUnderMouse {
@@ -198,7 +198,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func addNCToUnconnectedPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
+  func addNCToUnconnectedPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       for symbol in inSymbols {
         for point in symbol.mPoints.values {
@@ -212,7 +212,7 @@ extension AutoLayoutProjectDocument {
   // Disconnect all pins of symbols
   //····················································································································
 
-  internal func canDisconnectAllSymbolPins (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
+  func canDisconnectAllSymbolPins (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
     let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
     var disconnectableSymbols = [ComponentSymbolInProject] ()
     for symbol in symbolsUnderMouse {
@@ -251,7 +251,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func disconnectAllPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
+  func disconnectAllPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
     for symbol in inSymbols {
       for point in symbol.mPoints.values {
         self.disconnectInSchematic (points: [point])
@@ -264,7 +264,7 @@ extension AutoLayoutProjectDocument {
   // Connect all pins of symbols
   //····················································································································
 
-  internal func canConnectSymbolPins (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
+  func canConnectSymbolPins (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
     let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
     var connectableSymbols = [ComponentSymbolInProject] ()
     if let selectedSheet = self.rootObject.mSelectedSheet {
@@ -341,7 +341,7 @@ extension AutoLayoutProjectDocument {
   // Connect
   //····················································································································
 
-  internal func canConnect (points inPoints : [PointInSchematic], wires inWires : [WireInSchematic]) -> Bool {
+  func canConnect (points inPoints : [PointInSchematic], wires inWires : [WireInSchematic]) -> Bool {
     // Swift.print ("inPoints \(inPoints.count) inWires \(inWires.count)")
     var canConnect = false
     if inPoints.count > 1 {
@@ -401,7 +401,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func connectInSchematic (points inPoints : [PointInSchematic]) {
+  func connectInSchematic (points inPoints : [PointInSchematic]) {
     if let selectedSheet = self.rootObject.mSelectedSheet,
        let window = self.windowForSheet {
       selectedSheet.connect (
@@ -417,7 +417,7 @@ extension AutoLayoutProjectDocument {
   // Disconnect
   //····················································································································
 
-  internal func canDisconnect (points inPoints : [PointInSchematic]) -> Bool {
+  func canDisconnect (points inPoints : [PointInSchematic]) -> Bool {
     var canDisconnect = false
     for point in inPoints {
       if point.mNC != nil {
@@ -461,7 +461,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func disconnectInSchematic (points inPoints : [PointInSchematic]) {
+  func disconnectInSchematic (points inPoints : [PointInSchematic]) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       selectedSheet.disconnect (points: inPoints)
       self.updateSchematicPointsAndNets ()
@@ -472,7 +472,7 @@ extension AutoLayoutProjectDocument {
   // Remove Point From Wire
   //····················································································································
 
-  internal func canRemovePointFromWire (points inPoints : [PointInSchematic]) -> Bool {
+  func canRemovePointFromWire (points inPoints : [PointInSchematic]) -> Bool {
     var canRemove = false
     if inPoints.count == 1 {
       let point = inPoints [0]
@@ -507,7 +507,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func removePointFromWireInSchematic (points inPoints : [PointInSchematic]) {
+  func removePointFromWireInSchematic (points inPoints : [PointInSchematic]) {
     if let selectedSheet = self.rootObject.mSelectedSheet,
        let window = self.windowForSheet,
        inPoints.count == 1 {
@@ -520,7 +520,7 @@ extension AutoLayoutProjectDocument {
   // NC
   //····················································································································
 
-  internal func canCreateNC (points inPoints : [PointInSchematic]) -> Bool {
+  func canCreateNC (points inPoints : [PointInSchematic]) -> Bool {
     var canCreate = false
     if inPoints.count == 1 {
       let point = inPoints [0]
@@ -560,7 +560,7 @@ extension AutoLayoutProjectDocument {
   // Insert point into wire
   //····················································································································
 
-  internal func canCreateWirePoint (wires inWires : [WireInSchematic]) -> Bool {
+  func canCreateWirePoint (wires inWires : [WireInSchematic]) -> Bool {
     return inWires.count == 1
   }
 
@@ -590,7 +590,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func addPointToWireInSchematic (at inUnalignedLocation : CanariPoint) {
+  func addPointToWireInSchematic (at inUnalignedLocation : CanariPoint) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       _ = selectedSheet.addPointToWire (at: inUnalignedLocation)
     }
@@ -600,7 +600,7 @@ extension AutoLayoutProjectDocument {
   // Labels
   //····················································································································
 
-  internal func canCreateLabels (points inPoints : [PointInSchematic]) -> Bool {
+  func canCreateLabels (points inPoints : [PointInSchematic]) -> Bool {
   //--- Check points have no label
     var pointsHaveLabel = false
     for p in inPoints {
@@ -665,7 +665,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func addLabelInSchematic (at inLocation : CanariPoint, orientation inOrientation : QuadrantRotation) {
+  func addLabelInSchematic (at inLocation : CanariPoint, orientation inOrientation : QuadrantRotation) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
     //--- Aligned mouse down location
       let canariAlignedMouseDownLocation = inLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)

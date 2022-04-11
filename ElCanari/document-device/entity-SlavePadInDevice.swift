@@ -425,7 +425,7 @@ final class SlavePadInDevice : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mCenterX_property.removeEBObserver (self.frontSideFilledBezierPath_property)
     // self.mCenterY_property.removeEBObserver (self.frontSideFilledBezierPath_property)
@@ -615,7 +615,7 @@ final class SlavePadInDevice : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -624,7 +624,7 @@ final class SlavePadInDevice : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mMasterPad = nil
   //---
     super.cleanUpToOneRelationships ()

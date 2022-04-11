@@ -79,7 +79,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  internal final func deleteSelection () {
+  final func deleteSelection () {
     self.viewController?.deleteSelectedObjects ()
   }
 

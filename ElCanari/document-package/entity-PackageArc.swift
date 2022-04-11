@@ -518,7 +518,7 @@ final class PackageArc : PackageObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.xCenter_property.removeEBObserver (self.strokeBezierPath_property)
     // self.yCenter_property.removeEBObserver (self.strokeBezierPath_property)
@@ -771,7 +771,7 @@ final class PackageArc : PackageObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -780,7 +780,7 @@ final class PackageArc : PackageObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

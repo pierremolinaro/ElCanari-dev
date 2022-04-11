@@ -1052,7 +1052,7 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mComponentPadName_property.removeEBObserver (self.isConnectedToSomePad_property)
     // self.mComponent_property.componentPadDictionary_property.removeEBObserver (self.location_property)
@@ -1441,7 +1441,7 @@ final class BoardConnector : BoardObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mTracksP2.removeAll ()
     self.mTracksP1.removeAll ()
   //---
@@ -1452,7 +1452,7 @@ final class BoardConnector : BoardObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mComponent = nil
   //---
     super.cleanUpToOneRelationships ()

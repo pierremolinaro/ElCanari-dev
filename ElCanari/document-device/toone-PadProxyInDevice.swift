@@ -12,7 +12,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : PadProxyInDevice?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : PadProxyInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

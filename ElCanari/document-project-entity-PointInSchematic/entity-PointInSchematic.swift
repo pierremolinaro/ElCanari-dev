@@ -839,7 +839,7 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mX_property.removeEBObserver (self.location_property)
     // self.mY_property.removeEBObserver (self.location_property)
@@ -1106,7 +1106,7 @@ final class PointInSchematic : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mLabels.removeAll ()
     self.mWiresP2s.removeAll ()
     self.mWiresP1s.removeAll ()
@@ -1118,7 +1118,7 @@ final class PointInSchematic : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mSymbol = nil
     self.mNet = nil
     self.mNC = nil

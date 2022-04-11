@@ -722,7 +722,7 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
   //--- Atomic proxy property: componentValueProxy
     self.componentValueProxy_property.mReadModelFunction = nil
@@ -1006,7 +1006,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mPoints.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
@@ -1016,7 +1016,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mComponent = nil
   //---
     super.cleanUpToOneRelationships ()

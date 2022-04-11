@@ -396,7 +396,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mInstanceName_property.removeEBObserver (self.symbolQualifiedName_property)
     // self.mType_property.mTypeName_property.removeEBObserver (self.symbolQualifiedName_property)
@@ -562,7 +562,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mPinInstances.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
@@ -572,7 +572,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mType = nil
   //---
     super.cleanUpToOneRelationships ()

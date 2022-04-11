@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardConnector>,
-                                          addedSet inAddedSet : EBReferenceSet <BoardConnector>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardConnector>,
+                                 addedSet inAddedSet : EBReferenceSet <BoardConnector>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

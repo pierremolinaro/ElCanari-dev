@@ -12,7 +12,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : ProjectRoot?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : ProjectRoot?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

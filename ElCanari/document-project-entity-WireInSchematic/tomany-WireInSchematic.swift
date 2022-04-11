@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <WireInSchematic>,
-                                          addedSet inAddedSet : EBReferenceSet <WireInSchematic>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <WireInSchematic>,
+                                 addedSet inAddedSet : EBReferenceSet <WireInSchematic>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

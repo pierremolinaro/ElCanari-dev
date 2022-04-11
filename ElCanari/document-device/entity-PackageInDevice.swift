@@ -518,7 +518,7 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mVersion_property.removeEBObserver (self.versionString_property)
     // self.mFileData_property.removeEBObserver (self.documentSize_property)
@@ -735,7 +735,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mMasterPads.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
@@ -745,7 +745,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mRoot = nil
   //---
     super.cleanUpToOneRelationships ()

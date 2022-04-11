@@ -1708,7 +1708,7 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = nil
@@ -2202,7 +2202,7 @@ final class MergerRoot : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.boardModels.removeAll ()
     self.boardInstances.removeAll ()
   //---
@@ -2213,7 +2213,7 @@ final class MergerRoot : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mArtwork = nil
   //---
     super.cleanUpToOneRelationships ()

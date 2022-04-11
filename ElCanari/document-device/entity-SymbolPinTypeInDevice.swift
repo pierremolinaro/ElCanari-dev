@@ -373,7 +373,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mXName_property.removeEBObserver (self.nameShape_property)
     // self.mYName_property.removeEBObserver (self.nameShape_property)
@@ -555,7 +555,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mInstances.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
@@ -565,7 +565,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

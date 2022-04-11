@@ -12,7 +12,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : FontCharacter?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : FontCharacter?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolPinTypeInDevice>,
-                                          addedSet inAddedSet : EBReferenceSet <SymbolPinTypeInDevice>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolPinTypeInDevice>,
+                                 addedSet inAddedSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

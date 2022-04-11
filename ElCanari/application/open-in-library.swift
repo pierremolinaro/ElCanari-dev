@@ -10,89 +10,144 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
+class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
 
-  @IBOutlet private final var mDialog : NSWindow? = nil
-  @IBOutlet private final var mOpenButton : NSButton? = nil
-  @IBOutlet private final var mCancelButton : NSButton? = nil
-  @IBOutlet private final var mTableView : NSTableView? = nil
-  @IBOutlet private final var mFullPathTextField : NSTextField? = nil
-  @IBOutlet private final var mStatusTextField : NSTextField? = nil
-  @IBOutlet private final var mPartImage : NSImageView? = nil
-  @IBOutlet private final var mNoSelectedPartTextField : NSTextField? = nil
-  @IBOutlet private final var mSearchField : NSSearchField? = nil
+  private final let mDialog : NSPanel
+  private final let mOpenButton : AutoLayoutSheetDefaultOkButton
+  private final let mCancelButton : AutoLayoutSheetCancelButton
+  private final let mTableView = AutoLayoutTableView (size: .regular, addControlButtons: false)
+  private final let mStatusTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular).set (alignment: .left).expandableWidth ()
+  private final let mFullPathTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular).set (alignment: .left).expandableWidth ()
+  private final var mPartImage = AutoLayoutImageObserverView (size: .regular)
+  private final let mNoSelectedPartTextField = AutoLayoutStaticLabel (title: "", bold: true, size: .regular)
+  private final let mNoSelectedPartView = AutoLayoutVerticalStackView ()
+  private final let mSearchField = AutoLayoutSearchField (width: 300, size: .regular)
+
+  //····················································································································
+
+  private var mTableViewDataSource = [OpenInLibraryDialogItem] ()
+  private var mTableViewFilteredDataSource = [OpenInLibraryDialogItem] ()
+
+  //····················································································································
+
+  override init () {
+  //--- Dialog
+    self.mDialog = NSPanel (
+      contentRect: NSRect (x: 0, y: 0, width: 700, height: 600),
+      styleMask: [.titled],
+      backing: .buffered,
+      defer: false
+    )
+    let mainView = AutoLayoutVerticalStackView ().set (margins: 20)
+    let topView = AutoLayoutHorizontalStackView ()
+  //--- First column
+    let firstColumn = AutoLayoutVerticalStackView ()
+    firstColumn.appendView (self.mSearchField)
+    firstColumn.appendView (self.mTableView)
+    topView.appendView (firstColumn)
+ //--- Second Column
+    self.mNoSelectedPartView.appendFlexibleSpace ()
+    self.mNoSelectedPartView.appendViewSurroundedByFlexibleSpaces (self.mNoSelectedPartTextField)
+    self.mNoSelectedPartView.appendFlexibleSpace ()
+    topView.appendView (self.mNoSelectedPartView)
+  //---
+    topView.appendView (self.mPartImage)
+  //--- Add view
+    mainView.appendView (topView)
+  //--- Grid view: status and path
+    let gridView = AutoLayoutGridView2 ()
+      .addFirstBaseLineAligned (
+        left: AutoLayoutStaticLabel (title: "Status:", bold: false, size: .regular).notExpandableWidth (),
+        right: self.mStatusTextField
+      )
+      .addFirstBaseLineAligned (
+        left: AutoLayoutStaticLabel (title: "Path:", bold: false, size: .regular),
+        right: self.mFullPathTextField
+      )
+    mainView.appendView (gridView)
+  //--- Bottom view
+    let bottomView = AutoLayoutHorizontalStackView ()
+    self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: self.mDialog, isInitialFirstResponder: false)
+    bottomView.appendView (self.mCancelButton)
+    bottomView.appendFlexibleSpace ()
+    self.mOpenButton = AutoLayoutSheetDefaultOkButton (title: "Open", size: .regular, sheet: self.mDialog, isInitialFirstResponder: true)
+    bottomView.appendView (self.mOpenButton)
+    mainView.appendView (bottomView)
+  //--- Set content view
+    self.mDialog.contentView = mainView
+  //---
+    super.init ()
+  //---
+    _ = self.mSearchField.bind_run (target: self, selector: #selector (Self.searchFieldAction (_:)))
+  //--- Configure table view
+    self.mTableView.configure (
+      allowsEmptySelection: false,
+      allowsMultipleSelection: false,
+      rowCountCallBack: { [weak self] in self?.mTableViewFilteredDataSource.count ?? 0 },
+      delegate: self
+    )
+    self.mTableView.addColumn_NSImage (
+      valueGetterDelegate: { [weak self] in self?.mTableViewFilteredDataSource [$0].statusImage () },
+      valueSetterDelegate: nil,
+      sortDelegate: nil,
+      title: "Status",
+      minWidth: 50,
+      maxWidth: 50,
+      headerAlignment: .left,
+      contentAlignment: .center
+    )
+    self.mTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in self?.mTableViewFilteredDataSource [$0].mPartName },
+      valueSetterDelegate: nil,
+      sortDelegate: nil,
+      title: "Name",
+      minWidth: 250,
+      maxWidth: 2_000,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+  }
 
   //····················································································································
 
   private func configureWith (alreadyLoadedDocuments inNames : Set <String>) {
-    self.mFullPathTextField?.stringValue = ""
-    self.mStatusTextField?.stringValue = ""
-    self.mCancelButton?.target = self
-    self.mOpenButton?.target = self
-    self.mOpenButton?.isEnabled = false
-    self.mSearchField?.target = self
-    self.mSearchField?.action = #selector (self.searchFieldAction (_:))
-    self.mPartImage?.image = nil
-    self.mNoSelectedPartTextField?.isHidden = false
-    self.mTableView?.dataSource = self
-    self.mTableView?.delegate = self
+    self.mNoSelectedPartTextField.stringValue = self.noPartMessage ()
+    self.mOpenButton.isEnabled = false
+    self.mPartImage.image = nil
+    self.mPartImage.isHidden = true
+    self.mNoSelectedPartView.isHidden = false
     self.buildDataSource (alreadyLoadedDocuments: inNames)
-    self.mTableView?.reloadData ()
-  //--- Set sort descriptors
-    if let column = self.mTableView?.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
-      let sd = NSSortDescriptor (key: "name", ascending: true)
-      column.sortDescriptorPrototype = sd
-      self.mTableView?.sortDescriptors = [sd]
-    }
+    self.mTableView.sortAndReloadData ()
   }
 
   //····················································································································
   //   Load document, displayed as sheet
   //····················································································································
 
-  internal final func loadDocumentFromLibrary (windowForSheet inWindow : NSWindow,
-                                               alreadyLoadedDocuments inNames : Set <String>,
-                                               callBack : @escaping (_ inData : Data, _ inName : String) -> Bool,
-                                               postAction : Optional <() -> Void>) {
+  final func loadDocumentFromLibrary (windowForSheet inWindow : NSWindow,
+                                      alreadyLoadedDocuments inNames : Set <String>,
+                                      callBack : @escaping (_ inData : Data, _ inName : String) -> Bool,
+                                      postAction : Optional <() -> Void>) {
   //--- Configure
     self.configureWith (alreadyLoadedDocuments: inNames)
-    self.mOpenButton?.action = #selector (self.stopSheetAction)
-    self.mCancelButton?.action = #selector (self.abortSheetAction)
   //--- Dialog
-    if let dialog = self.mDialog {
-      inWindow.beginSheet (dialog) { (_ inModalResponse : NSApplication.ModalResponse) in
-        if inModalResponse == .stop, let selectedRow = self.mTableView?.selectedRow, selectedRow >= 0 {
-          let selectedItem = self.mTableViewFilteredDataSource [selectedRow]
-          if selectedItem.mFullPath != "" {
-            let fm = FileManager ()
-            if let data = fm.contents (atPath: selectedItem.mFullPath) {
-              let ok = callBack (data, selectedItem.mFullPath.lastPathComponent.deletingPathExtension)
-              if ok {
-                postAction? ()
-              }
+    inWindow.beginSheet (self.mDialog) { (_ inModalResponse : NSApplication.ModalResponse) in
+      let selectedRow = self.mTableView.selectedRow
+      if inModalResponse == .stop, selectedRow >= 0 {
+        let selectedItem = self.mTableViewFilteredDataSource [selectedRow]
+        if selectedItem.mFullPath != "" {
+          let fm = FileManager ()
+          if let data = fm.contents (atPath: selectedItem.mFullPath) {
+            let ok = callBack (data, selectedItem.mFullPath.lastPathComponent.deletingPathExtension)
+            if ok {
+              postAction? ()
             }
           }
         }
-        self.removeAllEntries ()
       }
-    }
-  }
-
-  //····················································································································
-
-  @objc private func abortSheetAction (_ inSender : Any?) {
-    if let dialog = self.mDialog, let parent = dialog.sheetParent {
-      parent.endSheet (dialog, returnCode: .abort)
-    }
-  }
-
-  //····················································································································
-
-  @objc private func stopSheetAction (_ inSender : Any?) {
-    if let dialog = self.mDialog, let parent = dialog.sheetParent {
-      parent.endSheet (dialog, returnCode: .stop)
+      self.removeAllEntries ()
     }
   }
 
@@ -100,40 +155,30 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
   //   Open document in library, displayed as dialog window
   //····················································································································
 
-  internal final func openDocumentInLibrary (windowTitle inTitle : String) {
+  final func openDocumentInLibrary (windowTitle inTitle : String) {
   //--- Configure
-    self.mDialog?.title = inTitle
+    self.mDialog.title = inTitle
     self.configureWith (alreadyLoadedDocuments: [])
-    self.mOpenButton?.action = #selector (self.stopModalAndOpenDocumentAction (_:))
-    self.mCancelButton?.action = #selector (self.abortModalAction (_:))
+    _ = self.mOpenButton.bind_run (target: self, selector: #selector (Self.stopModalAndOpenDocumentAction (_:)))
   //--- Dialog
-    if let dialog = self.mDialog {
-      _ = NSApp.runModal (for: dialog)
-    }
+    _ = NSApp.runModal (for: self.mDialog)
   }
 
   //····················································································································
 
-  @objc private func removeAllEntries () {
+  private func removeAllEntries () {
     self.mTableViewDataSource = []
     self.mTableViewFilteredDataSource = []
-    self.mTableView?.reloadData ()
-  }
-
-  //····················································································································
-
-  @objc private func abortModalAction (_ inSender : Any?) {
-    NSApp.abortModal ()
-    self.mDialog?.orderOut (nil)
-    self.removeAllEntries ()
+    self.mTableView.sortAndReloadData ()
   }
 
   //····················································································································
 
   @objc private func stopModalAndOpenDocumentAction (_ inSender : Any?) {
     NSApp.stopModal ()
-    self.mDialog?.orderOut (nil)
-    if let selectedRow = self.mTableView?.selectedRow, selectedRow >= 0 {
+    self.mDialog.orderOut (nil)
+    let selectedRow = self.mTableView.selectedRow
+    if selectedRow >= 0 {
       let selectedItem = self.mTableViewFilteredDataSource [selectedRow]
       if selectedItem.mFullPath != "" {
         let dc = NSDocumentController.shared
@@ -146,20 +191,26 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
-  internal func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) { // Abstract method
+  func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) { // Abstract method
   }
 
   //····················································································································
 
-  internal func partLibraryPathForPath (_ inPath : String) -> String {
+  func noPartMessage () -> String { // Abstract method
+    return "?"
+  }
+
+  //····················································································································
+
+  func partLibraryPathForPath (_ inPath : String) -> String {  // Abstract method
     return inPath
   }
 
   //····················································································································
 
-  internal final func buildTableViewDataSource (extension inFileExtension : String,
-                                                alreadyLoadedDocuments inNames : Set <String>,
-                                                _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
+  final func buildTableViewDataSource (extension inFileExtension : String,
+                                       alreadyLoadedDocuments inNames : Set <String>,
+                                       _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
     do{
       let fm = FileManager ()
     //--- Build part dictionary
@@ -204,68 +255,53 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
   }
 
   //····················································································································
-  //   NSTableViewDataSource methods
+  //   AutoLayoutTableViewDelegate protocol methods
   //····················································································································
 
-  private var mTableViewDataSource = [OpenInLibraryDialogItem] ()
-  private var mTableViewFilteredDataSource = [OpenInLibraryDialogItem] ()
-
-  //····················································································································
-
-  func tableView (_ tableView : NSTableView,
-                  viewFor inTableColumn : NSTableColumn?,
-                  row inRowIndex : Int) -> NSView? {
-    var view: NSTableCellView? = nil
-    let item = self.mTableViewFilteredDataSource [inRowIndex]
-    if let tableColumn = inTableColumn {
-      if tableColumn.identifier.rawValue == "name" {
-        view = tableView.makeView (withIdentifier: tableColumn.identifier, owner: self) as? NSTableCellView
-        if let textField = view?.textField {
-          textField.stringValue = item.mPartName
-        }
-      }else if tableColumn.identifier.rawValue == "status" {
-        view = tableView.makeView (withIdentifier: tableColumn.identifier, owner: self) as? NSTableCellView
-        if let imageView = view?.imageView {
-          imageView.image = item.statusImage ()
-        }
-      }
-    }
-    return view
-  }
-
-  //····················································································································
-
-  func numberOfRows (in tableView: NSTableView) -> Int {
-    return self.mTableViewFilteredDataSource.count
-  }
-
-  //····················································································································
-
-  func tableViewSelectionDidChange (_ notification : Notification) {
-    if let selectedRow = self.mTableView?.selectedRow, selectedRow >= 0 {
-      let selectedItem = self.mTableViewFilteredDataSource [selectedRow]
-      self.mFullPathTextField?.stringValue = selectedItem.mFullPath
-      self.mStatusTextField?.stringValue = selectedItem.statusString ()
-      self.mOpenButton?.isEnabled =
-        (selectedItem.mFullPath != "")
-        && !selectedItem.mIsAlreadyLoaded
-        && selectedItem.partStatusOk ()
-      self.mNoSelectedPartTextField?.isHidden = selectedItem.mFullPath != ""
-      self.mPartImage?.image = selectedItem.image
+  final func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
+    let selectedRow = self.mTableView.selectedRow
+    if selectedRow >= 0 {
+      let selectedPart = self.mTableViewFilteredDataSource [selectedRow]
+      self.mStatusTextField.stringValue = selectedPart.statusString ()
+      self.mFullPathTextField.stringValue = selectedPart.mFullPath
+      self.mOpenButton.isEnabled = true
+      self.mPartImage.image = selectedPart.image
+      self.mPartImage.isHidden = false
+      self.mNoSelectedPartView.isHidden = true
     }else{
-      self.mFullPathTextField?.stringValue = ""
-      self.mStatusTextField?.stringValue = ""
-      self.mOpenButton?.isEnabled = false
-      self.mPartImage?.image = nil
+      self.mStatusTextField.stringValue = "—"
+      self.mFullPathTextField.stringValue = "—"
+      self.mOpenButton.isEnabled = false
+      self.mPartImage.image = nil
+      self.mPartImage.isHidden = true
+      self.mNoSelectedPartView.isHidden = false
     }
   }
 
   //····················································································································
-  //    T A B L E V I E W    S O U R C E : tableView:sortDescriptorsDidChange:
+
+  final func indexesOfSelectedObjects () -> IndexSet {
+    return .init ()
+  }
+
   //····················································································································
 
-  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
-    self.searchFieldAction (nil)
+  final func addEntry () {
+  }
+
+  //····················································································································
+
+  final func removeSelectedEntries () {
+  }
+
+  //····················································································································
+
+  final func beginSorting () {
+  }
+
+  //····················································································································
+
+  final func endSorting () {
   }
 
   //····················································································································
@@ -273,14 +309,7 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
   //····················································································································
 
   @objc private func searchFieldAction (_ inUnusedSender : Any?) {
-    let filter = self.mSearchField!.stringValue.uppercased ()
-  //--- Save selected item information
-    let optionalSelectedItem : OpenInLibraryDialogItem?
-    if let selectedRow = self.mTableView?.selectedRow, selectedRow >= 0 {
-      optionalSelectedItem = self.mTableViewFilteredDataSource [selectedRow]
-    }else{
-      optionalSelectedItem = nil
-    }
+    let filter = self.mSearchField.stringValue.uppercased ()
   //--- Table view
     if filter.isEmpty {
       self.mTableViewFilteredDataSource = self.mTableViewDataSource
@@ -293,35 +322,7 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
       }
     }
     self.mTableViewFilteredDataSource.sort { $0.mPartName < $1.mPartName }
-    if let sortDescriptors = self.mTableView?.sortDescriptors {
-      for sortDescriptor in sortDescriptors {
-        if (sortDescriptor.key == "name") && !sortDescriptor.ascending {
-          self.mTableViewFilteredDataSource.reverse ()
-        }
-      }
-    }
-    self.mTableView?.reloadData ()
-  //--- Restore table view selection
-    var hasSelection = false
-    if let selectedItem = optionalSelectedItem {
-      var rowIndex = 0
-      for entry in self.mTableViewFilteredDataSource {
-        if entry === selectedItem {
-          self.mTableView?.selectRowIndexes (IndexSet (integer: rowIndex), byExtendingSelection: false)
-          self.mTableView?.scrollRowToVisible (rowIndex)
-          hasSelection = true
-          break
-        }
-        rowIndex += 1
-      }
-    }
-    if !hasSelection {
-      self.mTableView?.deselectAll (nil)
-      self.mFullPathTextField?.stringValue = ""
-      self.mStatusTextField?.stringValue = ""
-      self.mOpenButton?.isEnabled = false
-      self.mPartImage?.image = nil
-    }
+    self.mTableView.sortAndReloadData ()
   }
 
   //····················································································································

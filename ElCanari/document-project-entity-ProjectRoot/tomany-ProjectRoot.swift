@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ProjectRoot>,
-                                          addedSet inAddedSet : EBReferenceSet <ProjectRoot>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ProjectRoot>,
+                                 addedSet inAddedSet : EBReferenceSet <ProjectRoot>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

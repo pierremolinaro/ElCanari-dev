@@ -12,7 +12,7 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : CanariLibraryEntry?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : CanariLibraryEntry?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

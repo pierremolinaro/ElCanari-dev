@@ -992,7 +992,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mArtwork_property.layerConfiguration_property.removeEBObserver (self.hasNoData_property)
     // self.drawBoardLimits_property.removeEBObserver (self.hasNoData_property)
@@ -1429,7 +1429,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1438,7 +1438,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mArtwork = nil
   //---
     super.cleanUpToOneRelationships ()

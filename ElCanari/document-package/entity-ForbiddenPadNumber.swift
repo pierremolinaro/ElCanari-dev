@@ -51,7 +51,7 @@ final class ForbiddenPadNumber : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
   //--- Unregister properties for handling signature
     self.padNumber_property.setSignatureObserver (observer: nil)
@@ -102,7 +102,7 @@ final class ForbiddenPadNumber : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -111,7 +111,7 @@ final class ForbiddenPadNumber : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

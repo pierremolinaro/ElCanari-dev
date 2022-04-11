@@ -12,7 +12,7 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : ForbiddenPadNumber?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : ForbiddenPadNumber?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

@@ -485,7 +485,7 @@ final class BoardText : BoardObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mX_property.removeEBObserver (self.objectDisplay_property)
     // self.mY_property.removeEBObserver (self.objectDisplay_property)
@@ -723,7 +723,7 @@ final class BoardText : BoardObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -732,7 +732,7 @@ final class BoardText : BoardObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mFont = nil
   //---
     super.cleanUpToOneRelationships ()

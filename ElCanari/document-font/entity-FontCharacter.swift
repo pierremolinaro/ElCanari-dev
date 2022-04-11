@@ -320,7 +320,7 @@ final class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.segments_property.removeEBObserverOf_x1 (self.segmentArrayForDrawing_property)
     // self.segments_property.removeEBObserverOf_y1 (self.segmentArrayForDrawing_property)
@@ -460,7 +460,7 @@ final class FontCharacter : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.segments.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
@@ -470,7 +470,7 @@ final class FontCharacter : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

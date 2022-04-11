@@ -12,7 +12,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackagePad?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : PackagePad?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

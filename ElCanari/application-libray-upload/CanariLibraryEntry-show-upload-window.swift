@@ -107,7 +107,7 @@ extension CanariLibraryEntry {
 
   //····················································································································
 
-  internal func showUploadDialog () {
+  final func showUploadDialog () {
   //--- Setup dialog
     let dialog = LibraryUploadDialog (
       title: "Library Repository Management for " + self.mPath,

@@ -205,7 +205,7 @@ class SchematicObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mSheet_property.sheetDescriptor_property.removeEBObserver (self.sheetDescriptor_property)
     // self.mSheet_property.removeEBObserver (self.isPlacedInSchematic_property)
@@ -304,7 +304,7 @@ class SchematicObject : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -313,7 +313,7 @@ class SchematicObject : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mSheet = nil
   //---
     super.cleanUpToOneRelationships ()

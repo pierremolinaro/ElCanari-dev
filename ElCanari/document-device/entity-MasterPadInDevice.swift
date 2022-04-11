@@ -441,7 +441,7 @@ final class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mCenterX_property.removeEBObserver (self.padNumberDisplay_property)
     // self.mCenterY_property.removeEBObserver (self.padNumberDisplay_property)
@@ -645,7 +645,7 @@ final class MasterPadInDevice : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mSlavePads.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
@@ -655,7 +655,7 @@ final class MasterPadInDevice : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

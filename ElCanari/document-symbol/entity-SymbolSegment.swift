@@ -258,7 +258,7 @@ final class SymbolSegment : SymbolObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.x1_property.removeEBObserver (self.strokeBezierPath_property)
     // self.y1_property.removeEBObserver (self.strokeBezierPath_property)
@@ -395,7 +395,7 @@ final class SymbolSegment : SymbolObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -404,7 +404,7 @@ final class SymbolSegment : SymbolObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

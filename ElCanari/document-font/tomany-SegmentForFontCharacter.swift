@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SegmentForFontCharacter>,
-                                          addedSet inAddedSet : EBReferenceSet <SegmentForFontCharacter>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SegmentForFontCharacter>,
+                                 addedSet inAddedSet : EBReferenceSet <SegmentForFontCharacter>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

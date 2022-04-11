@@ -142,7 +142,7 @@ final class NCInSchematic : SchematicObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mPoint_property.location_property.removeEBObserver (self.objectDisplay_property)
     // self.mOrientation_property.removeEBObserver (self.objectDisplay_property)
@@ -226,7 +226,7 @@ final class NCInSchematic : SchematicObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -235,7 +235,7 @@ final class NCInSchematic : SchematicObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mPoint = nil
   //---
     super.cleanUpToOneRelationships ()

@@ -134,7 +134,7 @@ final class DevicePackageInProject : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mMasterPads_property.removeEBObserverOf_descriptor (self.packagePadDictionary_property)
   //--- Unregister properties for handling signature
@@ -213,7 +213,7 @@ final class DevicePackageInProject : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mMasterPads.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
@@ -223,7 +223,7 @@ final class DevicePackageInProject : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

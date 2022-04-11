@@ -98,10 +98,10 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mZoomDidChangeCallback : Optional < (_ inZoom : Int) -> Void > = nil
+  final var mZoomDidChangeCallback : Optional < (_ inZoom : Int) -> Void > = nil
   final var mHelperStringForOptionModifier : String? = nil
-  final internal var mHelperStringDidChangeCallback : Optional < (_ inString : String) -> Void > = nil
-  final internal var mXYwindow : NSWindow? = nil
+  final var mHelperStringDidChangeCallback : Optional < (_ inString : String) -> Void > = nil
+  final var mXYwindow : NSWindow? = nil
 
   //····················································································································
 
@@ -119,11 +119,11 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mTrackingArea : NSTrackingArea? = nil
+  final var mTrackingArea : NSTrackingArea? = nil
 
   //····················································································································
 
-  final internal var mZoomPropertyCache = 0 { // Used in EBGraphicView-magnify-and-zoom.swift
+  final var mZoomPropertyCache = 0 { // Used in EBGraphicView-magnify-and-zoom.swift
     didSet {
       if self.mZoomPropertyCache != oldValue {
         _ = self.mZoomController?.updateModel (withCandidateValue: self.mZoomPropertyCache, windowForSheet: self.window)
@@ -152,17 +152,17 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   // MARK: -
   //····················································································································
 
-  final internal var mMouseDownBehaviour = DefaultBehaviourOnMouseDown ()
+  final var mMouseDownBehaviour = DefaultBehaviourOnMouseDown ()
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  final internal var mStartOptionMouseDownCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
-  final internal var mContinueOptionMouseDraggedCallback : Optional < (_ inUnalignedMouseLocation : NSPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> Void > = nil
-  final internal var mAbortOptionMouseOperationCallback : Optional < () -> Void > = nil
-  final internal var mHelperStringOptionMouseOperationCallback : Optional < (_ inModifierFlags : NSEvent.ModifierFlags) -> String? > = nil
-  final internal var mStopOptionMouseUpCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Bool > = nil
+  final var mStartOptionMouseDownCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
+  final var mContinueOptionMouseDraggedCallback : Optional < (_ inUnalignedMouseLocation : NSPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> Void > = nil
+  final var mAbortOptionMouseOperationCallback : Optional < () -> Void > = nil
+  final var mHelperStringOptionMouseOperationCallback : Optional < (_ inModifierFlags : NSEvent.ModifierFlags) -> String? > = nil
+  final var mStopOptionMouseUpCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Bool > = nil
 
   //····················································································································
 
@@ -182,7 +182,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   // MARK: -
   //····················································································································
 
-  final internal var mMouseMovedOrFlagsChangedCallback : Optional < (_ inMouseUnalignedLocation : NSPoint) -> Void> = nil
+  final var mMouseMovedOrFlagsChangedCallback : Optional < (_ inMouseUnalignedLocation : NSPoint) -> Void> = nil
 
   //····················································································································
 
@@ -194,7 +194,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   // MARK: -
   //····················································································································
 
-  final internal var mOptionalFrontShape : EBShape? = nil {
+  final var mOptionalFrontShape : EBShape? = nil {
     didSet {
       if self.mOptionalFrontShape != oldValue {
         if let oldBox = oldValue?.boundingBox {
@@ -211,7 +211,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   // MARK: -
   //····················································································································
 
-  final internal var mMouseExitCallback : Optional < () -> Void> = nil
+  final var mMouseExitCallback : Optional < () -> Void> = nil
 
   //····················································································································
 
@@ -223,7 +223,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   // MARK: -
   //····················································································································
 
-  final internal var mKeyDownCallback : Optional < (_ inMouseLocation : NSPoint, _ inKey : UnicodeScalar) -> Void> = nil
+  final var mKeyDownCallback : Optional < (_ inMouseLocation : NSPoint, _ inKey : UnicodeScalar) -> Void> = nil
 
   //····················································································································
 
@@ -257,7 +257,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   // MARK: -
   //····················································································································
 
-  final internal var mSelectionRectangle : NSRect? = nil {
+  final var mSelectionRectangle : NSRect? = nil {
     didSet {
       if let oldSelectionRectangle = oldValue {
         self.setNeedsDisplay (oldSelectionRectangle.insetBy (dx: -1.0, dy: -1.0))
@@ -283,7 +283,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mUnderObjectsDisplayController : EBObservablePropertyController?
+  final var mUnderObjectsDisplayController : EBObservablePropertyController?
 
   //····················································································································
   // MARK: -
@@ -300,13 +300,13 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mOverObjectsDisplayController : EBObservablePropertyController? = nil
+  final var mOverObjectsDisplayController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  final internal var mGuideBezierPath : NSBezierPath? = nil {
+  final var mGuideBezierPath : NSBezierPath? = nil {
     willSet {
       self.invalidateGuideBezierPath ()
     }
@@ -333,7 +333,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mArrowKeyMagnitudeController : EBObservablePropertyController? = nil
+  final var mArrowKeyMagnitudeController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -353,7 +353,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
  //····················································································································
 
-  final internal var mShiftArrowKeyMagnitudeController : EBObservablePropertyController? = nil
+  final var mShiftArrowKeyMagnitudeController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -370,7 +370,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mBackColorController : EBObservablePropertyController? = nil
+  final var mBackColorController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -446,7 +446,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mMouseGridController : EBObservablePropertyController? = nil
+  final var mMouseGridController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -550,7 +550,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   // MARK: -
   //····················································································································
 
-  final internal var mXPlacardUnit = 2286 // mils
+  final var mXPlacardUnit = 2286 // mils
 
   //····················································································································
 
@@ -560,13 +560,13 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mXPlacardUnitController : EBObservablePropertyController? = nil
+  final var mXPlacardUnitController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  final internal var mYPlacardUnit = 2286 // mils
+  final var mYPlacardUnit = 2286 // mils
 
   //····················································································································
 
@@ -576,26 +576,26 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mYPlacardUnitController : EBObservablePropertyController? = nil
+  final var mYPlacardUnitController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  final internal var mIssueBezierPathes = [EBBezierPath] ()
-  final internal var mIssueKind : CanariIssueKind = .error // Any value, not used if mIssueBezierPath is nil
+  final var mIssueBezierPathes = [EBBezierPath] ()
+  final var mIssueKind : CanariIssueKind = .error // Any value, not used if mIssueBezierPath is nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  final internal var mZoomController : EBGenericReadWritePropertyController <Int>? = nil
+  final var mZoomController : EBGenericReadWritePropertyController <Int>? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  final internal var mControlKeyHiliteDiameterController : EBObservablePropertyController? = nil
+  final var mControlKeyHiliteDiameterController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -642,11 +642,11 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mHorizontalFlipController : EBObservablePropertyController? = nil
+  final var mHorizontalFlipController : EBObservablePropertyController? = nil
 
   //····················································································································
 
-  final internal var mVerticalFlipController : EBObservablePropertyController? = nil
+  final var mVerticalFlipController : EBObservablePropertyController? = nil
 
   //····················································································································
   // Grid Style
@@ -663,7 +663,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mGridStyleController : EBObservablePropertyController? = nil
+  final var mGridStyleController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -679,7 +679,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mGridStepController : EBObservablePropertyController? = nil
+  final var mGridStepController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -695,7 +695,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mGridDisplayFactorController : EBObservablePropertyController? = nil
+  final var mGridDisplayFactorController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -711,7 +711,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mGridLineColorController : EBObservablePropertyController? = nil
+  final var mGridLineColorController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -
@@ -727,7 +727,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final internal var mGridCrossColorController : EBObservablePropertyController? = nil
+  final var mGridCrossColorController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -

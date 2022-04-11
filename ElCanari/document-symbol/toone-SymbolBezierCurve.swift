@@ -12,7 +12,7 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolBezierCurve?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolBezierCurve?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

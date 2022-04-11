@@ -678,7 +678,7 @@ final class PackageZone : PackageObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.x_property.removeEBObserver (self.objectDisplay_property)
     // self.y_property.removeEBObserver (self.objectDisplay_property)
@@ -989,7 +989,7 @@ final class PackageZone : PackageObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.forbiddenPadNumbers.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
@@ -999,7 +999,7 @@ final class PackageZone : PackageObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

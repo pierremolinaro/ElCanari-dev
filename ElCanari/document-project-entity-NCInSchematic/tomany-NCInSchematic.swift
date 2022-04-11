@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_NCInSchematic : ReadOnlyAbstractArrayProperty <NCInSchemat
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <NCInSchematic>,
-                                          addedSet inAddedSet : EBReferenceSet <NCInSchematic>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <NCInSchematic>,
+                                 addedSet inAddedSet : EBReferenceSet <NCInSchematic>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

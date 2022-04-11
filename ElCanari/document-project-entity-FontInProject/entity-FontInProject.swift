@@ -488,7 +488,7 @@ final class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mFontVersion_property.removeEBObserver (self.versionString_property)
     // self.mDescriptiveString_property.removeEBObserver (self.sizeString_property)
@@ -663,7 +663,7 @@ final class FontInProject : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mTexts.removeAll ()
     self.mComponentNames.removeAll ()
     self.mComponentValues.removeAll ()
@@ -675,7 +675,7 @@ final class FontInProject : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

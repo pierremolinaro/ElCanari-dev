@@ -17,7 +17,7 @@ extension AutoLayoutDeviceDocument {
    for package in self.rootObject.mPackages.values {
      currentPackageNames.insert (package.mName)
    }
-   gOpenPackageInLibrary?.loadDocumentFromLibrary (
+   gApplicationDelegate?.mOpenPackageInLibrary.loadDocumentFromLibrary (
      windowForSheet: self.windowForSheet!,
      alreadyLoadedDocuments: currentPackageNames,
      callBack: self.packageFromLoadPackageDialog,

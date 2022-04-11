@@ -248,7 +248,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mSymbolInstanceName_property.removeEBObserver (self.symbolAndTypeName_property)
     // self.mSymbolType_property.mSymbolTypeName_property.removeEBObserver (self.symbolAndTypeName_property)
@@ -346,7 +346,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -355,7 +355,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mSymbolType = nil
   //---
     super.cleanUpToOneRelationships ()

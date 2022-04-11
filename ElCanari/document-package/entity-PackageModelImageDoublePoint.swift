@@ -282,7 +282,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mFirstX_property.removeEBObserver (self.objectDisplay_property)
     // self.mFirstY_property.removeEBObserver (self.objectDisplay_property)
@@ -426,7 +426,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -435,7 +435,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mRoot = nil
   //---
     super.cleanUpToOneRelationships ()

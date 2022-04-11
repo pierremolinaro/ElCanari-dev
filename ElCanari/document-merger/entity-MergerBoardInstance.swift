@@ -359,7 +359,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.x_property.removeEBObserver (self.instanceRect_property)
     // self.y_property.removeEBObserver (self.instanceRect_property)
@@ -505,7 +505,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -514,7 +514,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.myModel = nil
     self.myRoot = nil
   //---

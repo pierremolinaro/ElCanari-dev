@@ -377,7 +377,7 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
   //   Select a single object
   //····················································································································
 
-  func select (object inObject: NetClassInProject) {
+  final func select (object inObject: NetClassInProject) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
@@ -425,10 +425,6 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
             newSelectionIndex = index + 1
           }
         }
-      /*  var newSelectedObject : NetClassInProject? = nil
-        if (newSelectionIndex >= 0) && (newSelectionIndex < model_prop.count) {
-          newSelectedObject = model_prop [newSelectionIndex]
-        } */
       //----------------------------------------- Remove selected object
       //--- Dictionary of object absolute indexes
         var objectDictionary = EBReferenceDictionary <NetClassInProject, Int> ()
@@ -450,12 +446,6 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
         for index in selectedObjectIndexArray {
           newObjectArray.remove (at: index)
         }
-      //----------------------------------------- Set new selection
- /*       var newSelectionSet = EBReferenceSet <NetClassInProject> ()
-        if let object = newSelectedObject {
-          newSelectionSet.insert (object)
-        }
-        self.selectedSet = newSelectionSet */
       //----------------------------------------- Set new object array
         model.setProp (newObjectArray)
       }
@@ -588,13 +578,13 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
 
   //····················································································································
 
-  func beginSorting () {
+  final func beginSorting () {
     self.mSortDescriptorArray.removeAll ()
   }
 
   //····················································································································
 
-  func endSorting () {
+  final func endSorting () {
     self.sortedArray_property.notifyModelDidChange ()
   }
 

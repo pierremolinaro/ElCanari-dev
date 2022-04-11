@@ -12,7 +12,7 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardObject?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : BoardObject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

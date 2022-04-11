@@ -27,7 +27,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final internal var issueBoundingBox : NSRect {
+  final var issueBoundingBox : NSRect {
     var box = NSRect.null
     for bp in self.mIssueBezierPathes {
       box = box.union (bp.bounds)

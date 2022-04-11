@@ -1253,7 +1253,7 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mNet_property.netClassTrackWidth_property.removeEBObserver (self.actualTrackWidth_property)
     // self.mUsesCustomTrackWidth_property.removeEBObserver (self.actualTrackWidth_property)
@@ -1648,7 +1648,7 @@ final class BoardTrack : BoardObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1657,7 +1657,7 @@ final class BoardTrack : BoardObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mConnectorP1 = nil
     self.mConnectorP2 = nil
     self.mNet = nil

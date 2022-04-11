@@ -271,7 +271,7 @@ final class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mComment_property.removeEBObserver (self.objectDisplay_property)
     // self.mColor_property.removeEBObserver (self.objectDisplay_property)
@@ -418,7 +418,7 @@ final class CommentInSchematic : SchematicObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -427,7 +427,7 @@ final class CommentInSchematic : SchematicObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

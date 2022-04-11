@@ -570,7 +570,7 @@ final class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mDeviceVersion_property.removeEBObserver (self.versionString_property)
     // self.mDeviceFileData_property.removeEBObserver (self.sizeString_property)
@@ -773,7 +773,7 @@ final class DeviceInProject : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mPackages.removeAll ()
     self.mSymbols.removeAll ()
     self.mComponents.removeAll ()
@@ -786,7 +786,7 @@ final class DeviceInProject : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

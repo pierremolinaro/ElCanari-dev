@@ -215,7 +215,7 @@ final class SymbolText : SymbolObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.x_property.removeEBObserver (self.objectDisplay_property)
     // self.y_property.removeEBObserver (self.objectDisplay_property)
@@ -340,7 +340,7 @@ final class SymbolText : SymbolObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -349,7 +349,7 @@ final class SymbolText : SymbolObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

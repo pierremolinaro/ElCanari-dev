@@ -12,7 +12,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : NetClassInProject?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : NetClassInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

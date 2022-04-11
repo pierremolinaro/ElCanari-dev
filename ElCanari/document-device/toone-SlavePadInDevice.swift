@@ -12,7 +12,7 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : SlavePadInDevice?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : SlavePadInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

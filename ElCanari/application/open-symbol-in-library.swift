@@ -10,29 +10,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-var gOpenSymbolInLibrary : OpenSymbolInLibrary? = nil
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// This class is instancied as object in MainMenu.xib
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 final class OpenSymbolInLibrary : OpenInLibrary {
-
-  //····················································································································
-  //   INIT
-  //····················································································································
-
-  override init () {
-    super.init ()
-    gOpenSymbolInLibrary = self
-  }
-
 
   //····················································································································
   //   Dialog
   //····················································································································
 
-  @IBAction func openSymbolInLibrary (_ inSender : Any?) {
+  @objc func openSymbolInLibrary (_ inSender : Any?) {
     super.openDocumentInLibrary (windowTitle: "Open Symbol in Library")
   }
 
@@ -52,6 +36,12 @@ final class OpenSymbolInLibrary : OpenInLibrary {
       let box = partShape.boundingBox
       return box.isEmpty ? nil : buildPDFimage (frame: box, shape: partShape, backgroundColor: preferences_symbolBackgroundColor)
     }
+  }
+
+  //····················································································································
+
+  override func noPartMessage () -> String {
+    return "No selected symbol"
   }
 
   //····················································································································

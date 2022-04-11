@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardModelVia>,
-                                          addedSet inAddedSet : EBReferenceSet <BoardModelVia>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardModelVia>,
+                                 addedSet inAddedSet : EBReferenceSet <BoardModelVia>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

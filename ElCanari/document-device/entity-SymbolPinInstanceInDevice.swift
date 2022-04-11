@@ -348,7 +348,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mType_property.mName_property.removeEBObserver (self.pinName_property)
     // self.mSymbolInstance_property.mInstanceName_property.removeEBObserver (self.symbolName_property)
@@ -467,7 +467,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -476,7 +476,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mSymbolInstance = nil
     self.mType = nil
     self.mPadProxy = nil

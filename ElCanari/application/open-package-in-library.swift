@@ -10,29 +10,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-var gOpenPackageInLibrary : OpenPackageInLibrary? = nil
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// This class is instancied as object in MainMenu.xib
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 final class OpenPackageInLibrary : OpenInLibrary {
-
-  //····················································································································
-  //   INIT
-  //····················································································································
-
-  override init () {
-    super.init ()
-    gOpenPackageInLibrary = self
-  }
 
   //····················································································································
   //   Dialog
   //····················································································································
 
-  @IBAction func openPackageInLibrary (_ inSender : Any?) {
-    self.openDocumentInLibrary (windowTitle: "Open Package in Library")
+  @objc func openPackageInLibrary (_ inSender : Any?) {
+    super.openDocumentInLibrary (windowTitle: "Open Package in Library")
   }
 
   //····················································································································
@@ -51,6 +36,12 @@ final class OpenPackageInLibrary : OpenInLibrary {
       let box = partShape.boundingBox
       return box.isEmpty ? nil : buildPDFimage (frame: box, shape: partShape, backgroundColor: preferences_packageBackgroundColor)
     }
+  }
+
+  //····················································································································
+
+  override func noPartMessage () -> String {
+    return "No selected package"
   }
 
   //····················································································································

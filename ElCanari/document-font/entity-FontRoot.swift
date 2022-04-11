@@ -472,7 +472,7 @@ final class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.currentCharacterCodePoint_property.removeEBObserver (self.currentCharacterCodePointString_property)
     // self.nominalSize_property.removeEBObserver (self.sampleStringBezierPath_property)
@@ -645,7 +645,7 @@ final class FontRoot : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.characters.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
@@ -655,7 +655,7 @@ final class FontRoot : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

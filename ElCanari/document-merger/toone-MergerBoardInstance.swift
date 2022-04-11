@@ -12,7 +12,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : MergerBoardInstance?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : MergerBoardInstance?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

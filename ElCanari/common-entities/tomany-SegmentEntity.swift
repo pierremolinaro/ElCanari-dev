@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SegmentEntity>,
-                                          addedSet inAddedSet : EBReferenceSet <SegmentEntity>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SegmentEntity>,
+                                 addedSet inAddedSet : EBReferenceSet <SegmentEntity>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

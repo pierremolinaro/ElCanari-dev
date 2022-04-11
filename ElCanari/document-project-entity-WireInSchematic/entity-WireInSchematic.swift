@@ -275,7 +275,7 @@ final class WireInSchematic : SchematicObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mP1_property.wireColor_property.removeEBObserver (self.objectDisplay_property)
     // preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.removeEBObserver (self.objectDisplay_property)
@@ -385,7 +385,7 @@ final class WireInSchematic : SchematicObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -394,7 +394,7 @@ final class WireInSchematic : SchematicObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mP1 = nil
     self.mP2 = nil
   //---

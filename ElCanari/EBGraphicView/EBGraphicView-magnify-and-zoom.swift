@@ -72,7 +72,7 @@ extension EBGraphicView {
   // https://stackoverflow.com/questions/34124676/magnify-nsscrollview-at-cursor-location
   //····················································································································
 
-  final internal func addEndLiveMagnificationObserver () {
+  final func addEndLiveMagnificationObserver () {
  //   NSLog ("addEndLiveMagnificationObserver \(self.enclosingScrollView)")
     if let scrollView = self.enclosingScrollView {
       let nc = NotificationCenter.default
@@ -87,7 +87,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  @objc final private func didEndLiveMagnification (_ inNotification : Notification) {
+  @objc final func didEndLiveMagnification (_ inNotification : Notification) {
     let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
 //    NSLog ("didEndLiveMagnification \(newZoom)")
     _ = self.mZoomController?.updateModel (withCandidateValue: newZoom, windowForSheet: self.window)
@@ -98,7 +98,7 @@ extension EBGraphicView {
   //  Appelé quand l'utilisateur redimensionne la vue graphique, via la fonction tile de la scrollView
   //····················································································································
 
-  final internal func scrollViewIsLiveResizing () {
+  final func scrollViewIsLiveResizing () {
       self.applyZoom ()
   }
 

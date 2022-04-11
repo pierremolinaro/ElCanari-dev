@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BorderCurve>,
-                                          addedSet inAddedSet : EBReferenceSet <BorderCurve>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BorderCurve>,
+                                 addedSet inAddedSet : EBReferenceSet <BorderCurve>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

@@ -481,7 +481,7 @@ final class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.xPin_property.removeEBObserver (self.filledBezierPath_property)
     // self.yPin_property.removeEBObserver (self.filledBezierPath_property)
@@ -714,7 +714,7 @@ final class SymbolPin : SymbolObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -723,7 +723,7 @@ final class SymbolPin : SymbolObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

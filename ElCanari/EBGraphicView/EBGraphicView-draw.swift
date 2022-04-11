@@ -166,7 +166,7 @@ extension EBGraphicView {
   // MARK: -
   //····················································································································
 
-  final internal func noteInvalidRectangles (old inOldShape : EBShape, new inNewShape : EBShape) {
+  final func noteInvalidRectangles (old inOldShape : EBShape, new inNewShape : EBShape) {
     if inOldShape != inNewShape {
       self.setNeedsDisplay (inNewShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
       self.setNeedsDisplay (inOldShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
@@ -175,7 +175,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final internal func noteInvalidRectangles (old inOldShapes : [EBShape], new inNewShapes : [EBShape]) {
+  final func noteInvalidRectangles (old inOldShapes : [EBShape], new inNewShapes : [EBShape]) {
     let minCount = min (inOldShapes.count, inNewShapes.count)
     var idx = 0
     while idx < minCount {

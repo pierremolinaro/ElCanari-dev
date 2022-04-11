@@ -12,7 +12,7 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageOval?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : PackageOval?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

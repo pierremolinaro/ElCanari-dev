@@ -12,7 +12,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : MasterPadInDevice?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : MasterPadInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

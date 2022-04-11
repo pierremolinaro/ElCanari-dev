@@ -581,7 +581,7 @@ extension AutoLayoutPackageDocument {
 
   //····················································································································
 
-  internal func clearError () {
+  final func clearError () {
     self.mProgramErrorTextField?.stringValue = ""
     if let textStorage = self.mProgramTextView?.textStorage {
       let r = NSRange (location: 0, length: textStorage.length)
@@ -609,7 +609,7 @@ extension AutoLayoutPackageDocument {
 
   //····················································································································
 
-  internal func runProgram () {
+  final func runProgram () {
     let text = self.mProgramTextView?.string ?? ""
     if text.isEmpty {
       self.raiseError (0, "Empty Program", #line)

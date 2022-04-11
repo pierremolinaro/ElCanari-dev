@@ -12,7 +12,7 @@ class ReadOnlyObject_PackageSegment : ReadOnlyAbstractObjectProperty <PackageSeg
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageSegment?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : PackageSegment?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

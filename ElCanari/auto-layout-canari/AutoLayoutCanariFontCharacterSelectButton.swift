@@ -33,7 +33,7 @@ final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton 
 
   //····················································································································
 
-  internal func setDefinedCharacterSet (_ inSet : Set <Int>) {
+  final func setDefinedCharacterSet (_ inSet : Set <Int>) {
     self.mDefinedCharacterSet = inSet
     self.isEnabled = inSet.count > 0
   }

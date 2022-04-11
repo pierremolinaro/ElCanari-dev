@@ -13,7 +13,7 @@ extension AutoLayoutDeviceDocument {
 
   //····················································································································
 
-  internal func symbolTypeFromLoadSymbolDialog (_ inData : Data, _ inName : String) -> Bool {
+  final func symbolTypeFromLoadSymbolDialog (_ inData : Data, _ inName : String) -> Bool {
     var ok = false
     if let documentData = try? loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: nil),
        let version = documentData.documentMetadataDictionary [PMSymbolVersion] as? Int,
@@ -60,7 +60,7 @@ extension AutoLayoutDeviceDocument {
 
   //····················································································································
 
-  internal func resetSymbolsVersion () {
+  final func resetSymbolsVersion () {
     for symbolType in self.rootObject.mSymbolTypes.values {
       symbolType.mVersion = 0
     }
@@ -68,8 +68,8 @@ extension AutoLayoutDeviceDocument {
 
   //····················································································································
 
-  internal func performSymbolsUpdate (_ ioOkMessages : inout [String],
-                                      _ ioErrorMessages : inout [String]) {
+  final func performSymbolsUpdate (_ ioOkMessages : inout [String],
+                                   _ ioErrorMessages : inout [String]) {
     let fm = FileManager ()
     for symbolType in self.rootObject.mSymbolTypes.values {
       let pathes = symbolFilePathInLibraries (symbolType.mTypeName)
@@ -143,7 +143,7 @@ extension AutoLayoutDeviceDocument {
 
   //····················································································································
 
-  internal func packageFromLoadPackageDialog (_ inData : Data, _ inName : String) -> Bool {
+  final func packageFromLoadPackageDialog (_ inData : Data, _ inName : String) -> Bool {
     var ok = false
     if let documentData = try? loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: nil),
        let version = documentData.documentMetadataDictionary [PMPackageVersion] as? Int,
@@ -180,7 +180,7 @@ extension AutoLayoutDeviceDocument {
 
   //····················································································································
 
-  internal func resetPackagesVersion () {
+  final func resetPackagesVersion () {
     for package in self.rootObject.mPackages.values {
       package.mVersion = 0
     }
@@ -188,9 +188,9 @@ extension AutoLayoutDeviceDocument {
 
   //····················································································································
 
-  internal func performPackagesUpdate (_ inPackages : EBReferenceArray <PackageInDevice>,
-                                       _ ioOkMessages : inout [String],
-                                       _ ioErrorMessages : inout [String]) {
+  final func performPackagesUpdate (_ inPackages : EBReferenceArray <PackageInDevice>,
+                                    _ ioOkMessages : inout [String],
+                                    _ ioErrorMessages : inout [String]) {
 //--- START OF USER ZONE 2
     let fm = FileManager ()
     for package in inPackages.values {

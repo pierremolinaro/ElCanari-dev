@@ -187,7 +187,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.x1_property.removeEBObserver (self.selectionDisplay_property)
     // self.y1_property.removeEBObserver (self.selectionDisplay_property)
@@ -298,7 +298,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -307,7 +307,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

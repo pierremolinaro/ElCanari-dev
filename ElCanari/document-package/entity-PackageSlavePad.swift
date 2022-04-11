@@ -819,7 +819,7 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.xCenter_property.removeEBObserver (self.objectDisplay_property)
     // self.yCenter_property.removeEBObserver (self.objectDisplay_property)
@@ -1156,7 +1156,7 @@ final class PackageSlavePad : PackageObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1165,7 +1165,7 @@ final class PackageSlavePad : PackageObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.master = nil
   //---
     super.cleanUpToOneRelationships ()

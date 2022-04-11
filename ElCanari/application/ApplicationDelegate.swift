@@ -119,10 +119,24 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
   var mStartDate = Date ()
 
   //····················································································································
-  // Sparkle 2.x
+  //   Sparkle 2.x
   //····················································································································
 
   let mUpdaterController = Sparkle.SPUStandardUpdaterController (updaterDelegate: nil, userDriverDelegate: nil)
+
+  //····················································································································
+  //   Open xxx in library
+  //····················································································································
+
+  @IBOutlet var mOpenSymbolInLibraryMenuItem : NSMenuItem? = nil
+  @IBOutlet var mOpenPackageInLibraryMenuItem : NSMenuItem? = nil
+  @IBOutlet var mOpenDeviceInLibraryMenuItem : NSMenuItem? = nil
+  @IBOutlet var mOpenFontInLibraryMenuItem : NSMenuItem? = nil
+
+  let mOpenSymbolInLibrary = OpenSymbolInLibrary ()
+  let mOpenPackageInLibrary = OpenPackageInLibrary ()
+  let mOpenDeviceInLibrary = OpenDeviceInLibrary ()
+  let mOpenFontInLibrary = OpenFontInLibrary ()
 
   //····················································································································
   //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH
@@ -136,7 +150,15 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
   //····················································································································
 
   func applicationDidFinishLaunching (_ notification : Notification) {
-    // self.mMaintenanceLogTextField.stringValue = ""
+    self.mOpenSymbolInLibraryMenuItem?.target = self.mOpenSymbolInLibrary
+    self.mOpenSymbolInLibraryMenuItem?.action = #selector (OpenSymbolInLibrary.openSymbolInLibrary (_:))
+    self.mOpenPackageInLibraryMenuItem?.target = self.mOpenPackageInLibrary
+    self.mOpenPackageInLibraryMenuItem?.action = #selector (OpenPackageInLibrary.openPackageInLibrary (_:))
+    self.mOpenDeviceInLibraryMenuItem?.target = self.mOpenDeviceInLibrary
+    self.mOpenDeviceInLibraryMenuItem?.action = #selector (OpenDeviceInLibrary.openDeviceInLibrary (_:))
+    self.mOpenFontInLibraryMenuItem?.target = self.mOpenFontInLibrary
+    self.mOpenFontInLibraryMenuItem?.action = #selector (OpenFontInLibrary.openFontInLibrary (_:))
+  //---
     self.checkForLibraryUpdateAtLaunch ()
     instanciateDebugMenuVisibilityObjectOnDidFinishLaunchingNotification ()
     self.addAutoLayoutUserInterfaceStyleObserver ()

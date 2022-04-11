@@ -342,7 +342,7 @@ final class SheetInProject : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mPoints_property.removeEBObserverOf_status (self.issues_property)
     // preferences_connectionColorForSchematic_property.removeEBObserver (self.connectedPoints_property)
@@ -467,7 +467,7 @@ final class SheetInProject : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mObjects.removeAll ()
     self.mPoints.removeAll ()
   //---
@@ -478,7 +478,7 @@ final class SheetInProject : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mRoot = nil
   //---
     super.cleanUpToOneRelationships ()

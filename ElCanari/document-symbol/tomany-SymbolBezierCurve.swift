@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolBezierCurve>,
-                                          addedSet inAddedSet : EBReferenceSet <SymbolBezierCurve>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolBezierCurve>,
+                                 addedSet inAddedSet : EBReferenceSet <SymbolBezierCurve>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

@@ -12,7 +12,7 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardTrack?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : BoardTrack?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

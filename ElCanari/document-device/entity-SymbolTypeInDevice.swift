@@ -366,7 +366,7 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mVersion_property.removeEBObserver (self.versionString_property)
     // self.mInstances_property.removeEBObserver (self.instanceCount_property)
@@ -520,7 +520,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mInstances.removeAll ()
     self.mPinTypes.removeAll ()
   //---
@@ -531,7 +531,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

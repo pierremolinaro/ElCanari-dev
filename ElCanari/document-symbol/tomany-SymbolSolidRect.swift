@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolSolidRect>,
-                                          addedSet inAddedSet : EBReferenceSet <SymbolSolidRect>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolSolidRect>,
+                                 addedSet inAddedSet : EBReferenceSet <SymbolSolidRect>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

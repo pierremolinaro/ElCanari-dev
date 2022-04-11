@@ -1980,7 +1980,7 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
   //--- To many property: packagePads
     self.packageObjects_property.removeEBObserver (self.packagePads_property)
@@ -2664,7 +2664,7 @@ final class PackageRoot : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mModelImageObjects.removeAll ()
     self.packageObjects.removeAll ()
   //---
@@ -2675,7 +2675,7 @@ final class PackageRoot : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mModelImageDoublePoint = nil
   //---
     super.cleanUpToOneRelationships ()

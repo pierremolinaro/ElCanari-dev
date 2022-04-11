@@ -379,7 +379,7 @@ final class BoardLine : BoardObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mX1_property.removeEBObserver (self.objectDisplay_property)
     // self.mY1_property.removeEBObserver (self.objectDisplay_property)
@@ -570,7 +570,7 @@ final class BoardLine : BoardObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -579,7 +579,7 @@ final class BoardLine : BoardObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

@@ -371,7 +371,7 @@ final class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
   //--- To many property: symbolPins
     self.symbolObjects_property.removeEBObserver (self.symbolPins_property)
@@ -549,7 +549,7 @@ final class SymbolRoot : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.symbolObjects.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
@@ -559,7 +559,7 @@ final class SymbolRoot : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

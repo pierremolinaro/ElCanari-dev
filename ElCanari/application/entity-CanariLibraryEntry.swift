@@ -172,7 +172,7 @@ final class CanariLibraryEntry : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mPath_property.removeEBObserver (self.mStatusImage_property)
   //--- Unregister properties for handling signature
@@ -265,7 +265,7 @@ final class CanariLibraryEntry : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -274,7 +274,7 @@ final class CanariLibraryEntry : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

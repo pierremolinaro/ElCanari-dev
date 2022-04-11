@@ -11,22 +11,22 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func addFont (postAction: Optional <() -> Void>) {
+  final func addFont (postAction inPostAction : Optional <() -> Void>) {
      var currentFontNames = Set <String> ()
      for font in self.rootObject.mFonts.values {
         currentFontNames.insert (font.mFontName)
      }
-     gOpenFontInLibrary?.loadDocumentFromLibrary (
+     gApplicationDelegate?.mOpenFontInLibrary.loadDocumentFromLibrary (
        windowForSheet: self.windowForSheet!,
        alreadyLoadedDocuments: currentFontNames,
        callBack: self.addFontFromLoadFontDialog,
-       postAction: postAction
+       postAction: inPostAction
      )
   }
 
   //····················································································································
 
-  internal func addFontFromLoadFontDialog (_ inData : Data, _ inName : String) -> Bool {
+  final func addFontFromLoadFontDialog (_ inData : Data, _ inName : String) -> Bool {
     var ok = false
     if let documentData : EBDocumentData = try? loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: nil),
        let version = documentData.documentMetadataDictionary [PMFontVersion] as? Int {
@@ -54,7 +54,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func updateFonts (_ inFonts : EBReferenceArray <FontInProject>, _ ioMessages : inout [String]) {
+  final func updateFonts (_ inFonts : EBReferenceArray <FontInProject>, _ ioMessages : inout [String]) {
     for font in inFonts.values {
       let pathes = fontFilePathInLibraries (font.mFontName)
       if pathes.count == 0 {

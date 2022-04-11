@@ -12,7 +12,7 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : WireInSchematic?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : WireInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

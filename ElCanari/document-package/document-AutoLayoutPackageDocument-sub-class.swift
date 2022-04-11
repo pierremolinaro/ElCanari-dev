@@ -319,7 +319,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
   //····················································································································
 
-  internal func addPadNumberingObservers () {
+  final func addPadNumberingObservers () {
     self.mPadNumberingObserver.mEventCallBack = { [weak self] in self?.handlePadNumbering () }
     self.rootObject.packagePads_property.addEBObserverOf_xCenter (self.mPadNumberingObserver)
     self.rootObject.packagePads_property.addEBObserverOf_yCenter (self.mPadNumberingObserver)

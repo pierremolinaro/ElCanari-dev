@@ -325,7 +325,7 @@ class BoardObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mRoot_property.removeEBObserver (self.isPlacedInBoard_property)
     // self.mRoot_property.mErrorOrWarningIssueSize_property.removeEBObserver (self.errorOrWarningIssueSize_property)
@@ -464,7 +464,7 @@ class BoardObject : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -473,7 +473,7 @@ class BoardObject : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mRoot = nil
   //---
     super.cleanUpToOneRelationships ()

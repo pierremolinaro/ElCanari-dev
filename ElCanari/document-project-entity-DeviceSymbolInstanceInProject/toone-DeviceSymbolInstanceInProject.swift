@@ -12,7 +12,7 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceSymbolInstanceInProject?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceSymbolInstanceInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

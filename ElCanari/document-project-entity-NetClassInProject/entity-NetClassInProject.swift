@@ -954,7 +954,7 @@ final class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mTrackWidth_property.removeEBObserver (self.trackWidthString_property)
     // self.mTrackWidthUnit_property.removeEBObserver (self.trackWidthString_property)
@@ -1281,7 +1281,7 @@ final class NetClassInProject : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mNets.removeAll ()
   //---
     super.cleanUpToManyRelationships ()
@@ -1291,7 +1291,7 @@ final class NetClassInProject : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

@@ -5269,7 +5269,7 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = nil
@@ -6865,7 +6865,7 @@ final class ProjectRoot : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mSheets.removeAll ()
     self.mFonts.removeAll ()
     self.mDevices.removeAll ()
@@ -6881,7 +6881,7 @@ final class ProjectRoot : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mArtwork = nil
     self.mSelectedSheet = nil
   //---

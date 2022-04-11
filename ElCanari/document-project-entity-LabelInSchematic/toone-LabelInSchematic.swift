@@ -12,7 +12,7 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : LabelInSchematic?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : LabelInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

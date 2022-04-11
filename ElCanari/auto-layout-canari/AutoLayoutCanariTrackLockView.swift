@@ -120,7 +120,7 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
   //   TRACKING AREA
   //····················································································································
 
-  final internal var mTrackingArea : NSTrackingArea? = nil
+  final var mTrackingArea : NSTrackingArea? = nil
 
   //····················································································································
 

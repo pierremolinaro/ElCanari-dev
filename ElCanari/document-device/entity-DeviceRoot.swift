@@ -946,7 +946,7 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mImageData_property.removeEBObserver (self.imageIsValid_property)
     // self.mSymbolInstances_property.removeEBObserverOf_unconnectedPins (self.unconnectedPins_property)
@@ -1310,7 +1310,7 @@ final class DeviceRoot : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
     self.mDocs.removeAll ()
     self.mSymbolInstances.removeAll ()
     self.mPackages.removeAll ()
@@ -1324,7 +1324,7 @@ final class DeviceRoot : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

@@ -12,7 +12,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolPinTypeInDevice?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolPinTypeInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {

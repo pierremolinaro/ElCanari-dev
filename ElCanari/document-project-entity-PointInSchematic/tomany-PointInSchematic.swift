@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PointInSchematic>,
-                                          addedSet inAddedSet : EBReferenceSet <PointInSchematic>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PointInSchematic>,
+                                 addedSet inAddedSet : EBReferenceSet <PointInSchematic>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

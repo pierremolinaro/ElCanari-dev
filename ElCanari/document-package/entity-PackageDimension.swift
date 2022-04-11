@@ -553,7 +553,7 @@ final class PackageDimension : PackageObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
     // self.x1_property.removeEBObserver (self.distanceInCanariUnit_property)
     // self.y1_property.removeEBObserver (self.distanceInCanariUnit_property)
@@ -825,7 +825,7 @@ final class PackageDimension : PackageObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -834,7 +834,7 @@ final class PackageDimension : PackageObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }

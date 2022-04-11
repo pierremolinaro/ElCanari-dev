@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <NetInProject>,
-                                          addedSet inAddedSet : EBReferenceSet <NetInProject>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <NetInProject>,
+                                 addedSet inAddedSet : EBReferenceSet <NetInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ComponentSymbolInProject>,
-                                          addedSet inAddedSet : EBReferenceSet <ComponentSymbolInProject>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ComponentSymbolInProject>,
+                                 addedSet inAddedSet : EBReferenceSet <ComponentSymbolInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func startWireCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) {
+  func startWireCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) {
      if let selectedSheet = self.rootObject.mSelectedSheet {
        _ = selectedSheet.addPointToWire (at: inUnalignedMousePoint.canariPoint)
        let p = inUnalignedMousePoint.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
@@ -54,8 +54,8 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func continueWireCreationOnOptionMouseDragged (at inUnalignedMousePoint : NSPoint,
-                                                          _ inModifierFlags : NSEvent.ModifierFlags) {
+  func continueWireCreationOnOptionMouseDragged (at inUnalignedMousePoint : NSPoint,
+                                                 _ inModifierFlags : NSEvent.ModifierFlags) {
     if let p2 = self.mWireCreatedByOptionClick?.mP2 {
       var alignedMouseLocation = inUnalignedMousePoint.canariPoint.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
       if inModifierFlags.contains (.shift), let p1 = self.mWireCreatedByOptionClick?.mP1 {
@@ -68,13 +68,13 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func helperStringForWireCreation (_ inModifierFlags : NSEvent.ModifierFlags) -> String {
+  func helperStringForWireCreation (_ inModifierFlags : NSEvent.ModifierFlags) -> String {
     return "Dragging defines new wire; SHIFT constraints octolinear direction"
   }
 
   //····················································································································
 
-  internal func abortWireCreationOnOptionMouseUp () {
+  func abortWireCreationOnOptionMouseUp () {
     self.mWireCreatedByOptionClick = nil
   }
 

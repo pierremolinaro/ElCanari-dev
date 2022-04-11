@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ArtworkRoot>,
-                                          addedSet inAddedSet : EBReferenceSet <ArtworkRoot>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ArtworkRoot>,
+                                 addedSet inAddedSet : EBReferenceSet <ArtworkRoot>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

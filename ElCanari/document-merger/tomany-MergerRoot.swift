@@ -12,8 +12,8 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : EBReferenceSet <MergerRoot>,
-                                          addedSet inAddedSet : EBReferenceSet <MergerRoot>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <MergerRoot>,
+                                 addedSet inAddedSet : EBReferenceSet <MergerRoot>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     if !inRemovedSet.isEmpty {

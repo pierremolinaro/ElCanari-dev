@@ -682,7 +682,7 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  override internal func removeAllObservers () {
+  override func removeAllObservers () {
     super.removeAllObservers ()
   //--- Atomic proxy property: mNextX
     self.mNextX_property.mReadModelFunction = nil
@@ -928,7 +928,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override internal func cleanUpToManyRelationships () {
+  override func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -937,7 +937,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override internal func cleanUpToOneRelationships () {
+  override func cleanUpToOneRelationships () {
     self.mRoot = nil
     self.mNext = nil
     self.mPrevious = nil
