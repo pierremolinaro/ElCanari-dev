@@ -16,7 +16,7 @@ extension ProjectRoot {
   //  Find a new unique name
   //····················································································································
 
-  internal func findUniqueNetName () -> String {
+  func findUniqueNetName () -> String {
     var newNetName = ""
     var idx = 1
     while newNetName.isEmpty {
@@ -43,7 +43,7 @@ extension ProjectRoot {
   // Create a new net with automatic name
   //····················································································································
 
-  internal func createNetWithAutomaticName () -> NetInProject {
+  func createNetWithAutomaticName () -> NetInProject {
   //--- Find a new net name
     let newNetName = self.findUniqueNetName ()
   //--- Find net class

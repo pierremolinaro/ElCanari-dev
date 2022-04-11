@@ -114,14 +114,14 @@ func flushOutletEvents () {
 //    A P P E N D    T O    T R A N S I E N T    E V E N T    L O G
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  func logEvents () -> Bool {
-    #if BUILD_OBJECT_EXPLORER
-      let theApp = NSApp as! EBApplication
-      return theApp.logEvents ()
-    #else
-      return false
-    #endif
-  }
+func logEvents () -> Bool {
+  #if BUILD_OBJECT_EXPLORER
+    let theApp = NSApp as! EBApplication
+    return theApp.logEvents ()
+  #else
+    return false
+  #endif
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

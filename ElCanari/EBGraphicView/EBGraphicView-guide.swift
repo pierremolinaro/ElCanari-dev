@@ -67,7 +67,7 @@ extension EBGraphicView {
 
   //····················································································································  //····················································································································
 
-  final internal func guideFor (possibleObjectIndex inPossibleIndex : Int?) {
+  final func guideFor (possibleObjectIndex inPossibleIndex : Int?) {
     if let idx = inPossibleIndex {
       self.guideFor (objectIndexes: [idx])
     }else{

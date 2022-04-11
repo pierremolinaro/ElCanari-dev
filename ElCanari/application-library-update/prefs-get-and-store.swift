@@ -80,7 +80,6 @@ func storeRepositoryCommitSHA (_ inSHA : String) {
 
 func storeRepositoryCommitSHA_removeETAG (_ inSHA : String) {
   UserDefaults ().set (inSHA, forKey: LIBRARY_REPOSITORY_COMMIT_SHA_KEY)
-//  UserDefaults ().set (nil, forKey: LIBRARY_REPOSITORY_TAG_KEY)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

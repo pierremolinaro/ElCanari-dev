@@ -22,8 +22,8 @@ func transient_AutoLayoutProjectDocument_overDisplay (
         for issue in root_boardIssues {
           let color : NSColor
           switch issue.kind {
-          case .warning : color = .myOrange
-          case .error   : color = .red
+          case .warning : color = .systemOrange
+          case .error   : color = .systemRed
           }
           shape.add (filled: issue.pathes, color)
         }

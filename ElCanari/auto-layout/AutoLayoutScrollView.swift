@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutScrollView : NSScrollView, EBUserClassNameProtocol {
+final class AutoLayoutScrollView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -40,27 +40,6 @@ class AutoLayoutScrollView : NSScrollView, EBUserClassNameProtocol {
   override var intrinsicContentSize : NSSize {
     return NSSize (width: 100, height: 100)
   }
-
-  //····················································································································
-
-//  func clipViewOrigin () -> NSPoint? {
-//    if let clipView = self.contentView () {
-//      return clipView.convert (clipView.frame.origin, to: self)
-//    }else{
-//      return nil
-//    }
-//  }
-
-  //····················································································································
-
-//  func setClipViewOrigin (_ inCurrentClipViewOrigin : NSPoint?) {
-//    if let currentClipViewOrigin = inCurrentClipViewOrigin, let clipView = self.contentView () as? NSClipView {
-//      self.scroll (clipView, to: NSPoint (x: currentClipViewOrigin.x, y: -currentClipViewOrigin.y))
-////      var f = clipView.frame
-////      f.origin = currentClipViewOrigin
-////      clipView.frame = f
-//    }
-//  }
 
   //····················································································································
 

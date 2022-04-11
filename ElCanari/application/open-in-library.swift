@@ -27,8 +27,8 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
 
-  private var mTableViewDataSource = [OpenInLibraryDialogItem] ()
-  private var mTableViewFilteredDataSource = [OpenInLibraryDialogItem] ()
+  private final var mTableViewDataSource = [OpenInLibraryDialogItem] ()
+  private final var mTableViewFilteredDataSource = [OpenInLibraryDialogItem] ()
 
   //····················································································································
 
@@ -112,7 +112,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
 
-  private func configureWith (alreadyLoadedDocuments inNames : Set <String>) {
+  private final func configureWith (alreadyLoadedDocuments inNames : Set <String>) {
     self.mNoSelectedPartTextField.stringValue = self.noPartMessage ()
     self.mOpenButton.isEnabled = false
     self.mPartImage.image = nil
@@ -166,7 +166,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
 
-  private func removeAllEntries () {
+  private final func removeAllEntries () {
     self.mTableViewDataSource = []
     self.mTableViewFilteredDataSource = []
     self.mTableView.sortAndReloadData ()

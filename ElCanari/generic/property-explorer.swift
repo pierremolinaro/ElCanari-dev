@@ -50,28 +50,6 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//private let explorerLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L",
-//                               "M", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-//
-//func explorerIndexString (_ idx : Int) -> String {
-//  var result = String (idx % 10)
-//  var n = idx / 10
-//  result += "\(n % 10)"
-//  n /= 10
-//  result += explorerLetters [n % explorerLetters.count]
-//  n /= explorerLetters.count
-//  result += explorerLetters [n % explorerLetters.count]
-//  n /= explorerLetters.count
-//  result += explorerLetters [n % explorerLetters.count]
-//  n /= explorerLetters.count
-//  if n > 0 {
-//    result += "\(n)"
-//  }
-//  return result
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 #if BUILD_OBJECT_EXPLORER
   func createEntryForPropertyNamed (_ attributeName : String,
                                     object : ObjectIndexProtocol,

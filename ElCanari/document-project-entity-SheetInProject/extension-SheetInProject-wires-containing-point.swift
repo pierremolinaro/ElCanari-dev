@@ -14,7 +14,7 @@ extension SheetInProject {
 
   //····················································································································
 
-  internal func wiresStrictlyContaining (point inPoint : CanariPoint) -> [WireInSchematic] {
+  func wiresStrictlyContaining (point inPoint : CanariPoint) -> [WireInSchematic] {
     let canariAlignedPoint = inPoint.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
     let width = cocoaToCanariUnit (CGFloat (preferences_symbolDrawingWidthMultipliedByTen) / 2.5)
     var result = [WireInSchematic]  ()

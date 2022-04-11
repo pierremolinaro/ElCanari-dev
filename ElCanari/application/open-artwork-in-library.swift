@@ -232,12 +232,6 @@ fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate,
   // AutoLayoutTableViewDelegate delegate implementation
   //····················································································································
 
-//  func rowCount() -> Int {
-//    return self.mFilteredTableViewSource.count
-//  }
-
-  //····················································································································
-
   func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
     if let entryIndex = inSelectedRows.first, inSelectedRows.count == 1 {
       let selectedEntry = self.mFilteredTableViewSource [entryIndex]

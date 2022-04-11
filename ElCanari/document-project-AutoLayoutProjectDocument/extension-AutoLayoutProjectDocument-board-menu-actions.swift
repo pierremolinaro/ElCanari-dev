@@ -22,7 +22,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func removeAllViasAndTracks () {
+  func removeAllViasAndTracks () {
   //--- Remove all tracks
     var conservedObjects = EBReferenceArray <BoardObject> ()
     for object in self.rootObject.mBoardObjects.values {

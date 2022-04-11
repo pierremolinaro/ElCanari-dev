@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func writeGerberDrillFile (atPath inPath : String, _ inProductData : ProductData) throws {
+  func writeGerberDrillFile (atPath inPath : String, _ inProductData : ProductData) throws {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
     var s = "M48\n"
     s += "INCH\n"
@@ -53,10 +53,10 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func writeGerberProductFile (atPath inPath : String,
-                                        _ inDescriptor : ArtworkFileGenerationParameters,
-                                        _ inLayerConfiguration : LayerConfiguration,
-                                        _ inProductData : ProductData) throws {
+  func writeGerberProductFile (atPath inPath : String,
+                               _ inDescriptor : ArtworkFileGenerationParameters,
+                               _ inLayerConfiguration : LayerConfiguration,
+                               _ inProductData : ProductData) throws {
     let path = inPath + inDescriptor.fileExtension
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
     var af = AffineTransform ()

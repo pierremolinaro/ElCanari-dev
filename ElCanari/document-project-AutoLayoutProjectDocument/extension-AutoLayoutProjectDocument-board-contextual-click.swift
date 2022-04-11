@@ -76,7 +76,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func tryToConnect (_ inConnectors : [BoardConnector]) {
+  func tryToConnect (_ inConnectors : [BoardConnector]) {
     let nets = self.findAllNetsConnectedToPad (inConnectors)
     if nets.count <= 1 {
     //--- How many connectors connected to a pad ?
@@ -139,7 +139,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func findAllNetsConnectedToPad (_ inConnectors : [BoardConnector]) -> EBReferenceSet <NetInProject> {
+  func findAllNetsConnectedToPad (_ inConnectors : [BoardConnector]) -> EBReferenceSet <NetInProject> {
     var netNameSet = Set <String>  ()
     var connectorsToExplore = inConnectors
     var exploredConnectors = EBReferenceSet (inConnectors)

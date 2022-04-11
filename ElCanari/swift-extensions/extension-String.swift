@@ -88,11 +88,6 @@ extension String {
     let glyphRange : NSRange = myLayout.glyphRange (for: textContainer)
     var cgGlyphArray = [CGGlyph] (repeating: CGGlyph (), count:glyphRange.length)
     _ = myLayout.getGlyphs (in: glyphRange, glyphs: &cgGlyphArray, properties: nil, characterIndexes: nil, bidiLevels: nil)
-  //--- Transform in NSGlyph array
-//    var nsGlyphArray = [NSGlyph] ()
-//    for cgGlyph in cgGlyphArray {
-//      nsGlyphArray.append (NSGlyph (cgGlyph))
-//    }
   //--- Enter in Bezier path
     let bezier = NSBezierPath ()
     bezier.move (to: NSPoint (x: inOrigin.x, y: inOrigin.y - 2.0 * font.descender))

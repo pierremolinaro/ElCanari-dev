@@ -38,7 +38,7 @@ extension AutoLayoutProjectDocumentSubClass {
 
   //····················································································································
 
-  internal func handleSESFileContents (_ inFileContents : String) {
+  func handleSESFileContents (_ inFileContents : String) {
   //--- Build Panel
     let panel = NSPanel (
       contentRect: NSRect (x: 0, y: 0, width: 250, height: 100),

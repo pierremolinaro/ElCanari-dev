@@ -24,7 +24,7 @@ class ReadOnlyAbstractObjectProperty <T : AnyObject> : ReadOnlyAbstractGenericRe
   //  Internal value
   //····················································································································
 
-  internal final var mInternalValue : T? = nil {
+  final var mInternalValue : T? = nil {
     didSet {
       if self.mInternalValue !== oldValue {
         if (self.mInternalValue == nil) != (oldValue == nil) {
@@ -39,7 +39,7 @@ class ReadOnlyAbstractObjectProperty <T : AnyObject> : ReadOnlyAbstractGenericRe
 
   //····················································································································
 
-  internal func notifyModelDidChangeFrom (oldValue inOldValue : T?) {
+  func notifyModelDidChangeFrom (oldValue inOldValue : T?) {
   }
 
   //····················································································································

@@ -14,7 +14,7 @@ extension SheetInProject {
 
   //····················································································································
 
-  internal func disconnect (points inPoints : [PointInSchematic]) {
+  func disconnect (points inPoints : [PointInSchematic]) {
   //--- Perform disconnection
     let pointSet = self.performDisconnection (points: inPoints)
   //--- Update connections
@@ -23,7 +23,7 @@ extension SheetInProject {
 
   //····················································································································
 
-  internal func updateConnections (pointSet inPointSet : EBReferenceSet <PointInSchematic>) {
+  func updateConnections (pointSet inPointSet : EBReferenceSet <PointInSchematic>) {
     if let root = self.mRoot {
     //--- Find subnets
       let subnets : [EBReferenceSet <PointInSchematic>] = self.buildSubnetsFrom (inPointSet)

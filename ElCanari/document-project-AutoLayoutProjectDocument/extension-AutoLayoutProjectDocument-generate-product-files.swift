@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func generateProductFiles () {
+  func generateProductFiles () {
     if self.fileURL != nil {
       self.testERCandGenerateProductFiles ()
     }else{

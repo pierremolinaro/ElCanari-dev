@@ -73,7 +73,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   //····················································································································
 
   fileprivate func buildScrollView (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) -> EBScrollView {
-    let scrollView = EBScrollView (frame: .zero)
+    let scrollView = EBScrollView ()
     scrollView.minMagnification = CGFloat (inMinZoom) / 100.0
     scrollView.maxMagnification = CGFloat (inMaxZoom) / 100.0
     scrollView.allowsMagnification = true

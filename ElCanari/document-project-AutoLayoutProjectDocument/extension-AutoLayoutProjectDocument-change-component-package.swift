@@ -11,7 +11,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func changePackageOfSelectedComponents () {
+  func changePackageOfSelectedComponents () {
     var possiblePackages = StringArray ()
     var componentNames = [String] ()
     var currentSelectedPackageSet = Set <String> ()
@@ -118,7 +118,7 @@ extension ComponentInProject {
 
   //····················································································································
 
-  internal func set (package inPackage : DevicePackageInProject) {
+  func set (package inPackage : DevicePackageInProject) {
     if self.isPlacedInBoard! {
     //--- Check the corresponding pad does exist in new package
       for currentConnector in self.mConnectors.values {

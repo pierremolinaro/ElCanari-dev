@@ -11,7 +11,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func appendDevice (_ inData : Data, _ inName : String) -> DeviceInProject? {
+  func appendDevice (_ inData : Data, _ inName : String) -> DeviceInProject? {
     var device : DeviceInProject? = nil
     if let documentData = try? loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: nil),
       let deviceRoot = documentData.documentRootObject as? DeviceRoot,
@@ -31,7 +31,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func updateDevices (_ inDevices : EBReferenceArray <DeviceInProject>, _ ioMessages : inout [String]) {
+  func updateDevices (_ inDevices : EBReferenceArray <DeviceInProject>, _ ioMessages : inout [String]) {
     for deviceInProject in inDevices.values {
       let pathes = deviceFilePathInLibraries (deviceInProject.mDeviceName)
       if pathes.count == 0 {
@@ -62,7 +62,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func updateDeviceAction () {
+  func updateDeviceAction () {
     var messages = [String] ()
     let selectedDevices = self.projectDeviceController.selectedArray
     self.updateDevices (selectedDevices, &messages)
@@ -76,10 +76,10 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func testAndUpdateDevice (_ inCurrentDeviceInProject : DeviceInProject,
-                                     from inCandidateDeviceRoot : DeviceRoot,
-                                     _ inVersion : Int,
-                                     _ inData : Data) -> String { // Return "" if new device is compatible
+  func testAndUpdateDevice (_ inCurrentDeviceInProject : DeviceInProject,
+                            from inCandidateDeviceRoot : DeviceRoot,
+                            _ inVersion : Int,
+                            _ inData : Data) -> String { // Return "" if new device is compatible
    var errorMessage = self.checkCandidateDevicePads (inCurrentDeviceInProject, inCandidateDeviceRoot)
    errorMessage += self.checkCandidateDeviceSymbolTypes (inCurrentDeviceInProject, inCandidateDeviceRoot)
    errorMessage += self.checkCandidateDeviceSymbolInstances (inCurrentDeviceInProject, inCandidateDeviceRoot)
@@ -239,10 +239,10 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func performUpdateDevice (_ inCurrentDeviceInProject : DeviceInProject,
-                                     from inCandidateDeviceRoot : DeviceRoot,
-                                     _ inVersion : Int,
-                                     _ inData : Data) {
+  func performUpdateDevice (_ inCurrentDeviceInProject : DeviceInProject,
+                            from inCandidateDeviceRoot : DeviceRoot,
+                            _ inVersion : Int,
+                            _ inData : Data) {
     inCurrentDeviceInProject.mDeviceVersion = inVersion
     inCurrentDeviceInProject.mDeviceFileData = inData
     inCurrentDeviceInProject.mPrefix = inCandidateDeviceRoot.mPrefix

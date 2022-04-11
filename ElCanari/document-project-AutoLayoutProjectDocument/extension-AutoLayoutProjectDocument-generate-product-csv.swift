@@ -43,7 +43,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func writeCSVFile (atPath inPath : String) throws {
+  func writeCSVFile (atPath inPath : String) throws {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
   //--- Iterate on components
     var dictionary = [CSVKey : [String]] ()

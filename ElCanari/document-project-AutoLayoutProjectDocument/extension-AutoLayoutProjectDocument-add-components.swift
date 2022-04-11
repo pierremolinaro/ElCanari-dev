@@ -11,7 +11,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func addComponentDialog () {
+  func addComponentDialog () {
     var currentDeviceNames = Set <String> ()
     for device in self.rootObject.mDevices_property.propval.values {
       currentDeviceNames.insert (device.mDeviceName)
@@ -26,7 +26,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func addComponent (_ inData : Data, _ inName : String) -> Bool {
+  func addComponent (_ inData : Data, _ inName : String) -> Bool {
   //--- Append device
     let possibleNewDeviceInProject = self.appendDevice (inData, inName)
     let optionalAddedComponent = self.addComponent (fromPossibleDevice: possibleNewDeviceInProject, prefix: nil)
@@ -49,7 +49,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func duplicate (component inComponent : ComponentInProject) -> ComponentInProject? {
+  func duplicate (component inComponent : ComponentInProject) -> ComponentInProject? {
     let optionalNewComponent = self.addComponent (fromPossibleDevice: inComponent.mDevice, prefix: inComponent.mNamePrefix)
     optionalNewComponent?.mComponentValue = inComponent.mComponentValue
     optionalNewComponent?.mNameIsVisibleInBoard = inComponent.mNameIsVisibleInBoard
@@ -60,8 +60,8 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func addComponent (fromPossibleDevice inPossibleDevice : DeviceInProject?,
-                              prefix inPossiblePrefix : String?) -> ComponentInProject? {
+  func addComponent (fromPossibleDevice inPossibleDevice : DeviceInProject?,
+                     prefix inPossiblePrefix : String?) -> ComponentInProject? {
     var optionalNewComponent : ComponentInProject? = nil
   //--- Append component
     if let deviceInProject = inPossibleDevice {

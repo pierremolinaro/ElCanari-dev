@@ -62,7 +62,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func startTrackCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) {
+  func startTrackCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) {
     let side = self.rootObject.mBoardSideForNewTrack
     let p1 = inUnalignedMousePoint.canariPoint
     let connectorsAtP1 = self.rootObject.connectors (at: p1, trackSide: side)
@@ -94,7 +94,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func helperStringForTrackCreation (_ inModifierFlags : NSEvent.ModifierFlags) -> String {
+  func helperStringForTrackCreation (_ inModifierFlags : NSEvent.ModifierFlags) -> String {
     let side = self.rootObject.mBoardSideForNewTrack
     var s : String
     switch (side) {
@@ -110,8 +110,8 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func continueTrackCreationOnOptionMouseDragged (at inUnalignedMouseLocation : NSPoint,
-                                                           _ inModifierFlags : NSEvent.ModifierFlags) {
+  func continueTrackCreationOnOptionMouseDragged (at inUnalignedMouseLocation : NSPoint,
+                                                  _ inModifierFlags : NSEvent.ModifierFlags) {
     if let connector2 = self.mTrackCreatedByOptionClick?.mConnectorP2, let p1 = self.mTrackCreatedByOptionClick?.mConnectorP1?.location {
       var canariUnalignedMouseLocation = inUnalignedMouseLocation.canariPoint
       switch self.rootObject.mDirectionForNewTrack {

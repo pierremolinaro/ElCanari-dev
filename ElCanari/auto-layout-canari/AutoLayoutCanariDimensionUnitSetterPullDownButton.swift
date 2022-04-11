@@ -130,13 +130,6 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : AutoLayoutBase_N
 
   //····················································································································
 
-//  override func updateAutoLayoutUserInterfaceStyle () {
-//    super.updateAutoLayoutUserInterfaceStyle ()
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

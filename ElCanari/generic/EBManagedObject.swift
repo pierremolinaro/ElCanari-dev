@@ -166,14 +166,14 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
   //   accessibleObjects
   //····················································································································
 
-  internal func accessibleObjects (objects : inout [EBManagedObject]) {
+  func accessibleObjects (objects : inout [EBManagedObject]) {
   }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  internal func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+  func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
   }
 
   //····················································································································
@@ -193,21 +193,21 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
   //   cleanUpToManyRelationships
   //····················································································································
 
-  internal func cleanUpToManyRelationships () {
+  func cleanUpToManyRelationships () {
   }
 
   //····················································································································
   //   cleanUpToOneRelationships
   //····················································································································
 
-  internal func cleanUpToOneRelationships () {
+  func cleanUpToOneRelationships () {
   }
 
   //····················································································································
   //   removeAllObservers
   //····················································································································
 
-  internal func removeAllObservers () {
+  func removeAllObservers () {
   }
 
   //····················································································································

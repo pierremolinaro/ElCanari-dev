@@ -6,26 +6,6 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//fileprivate func update <T : Hashable> (currentSet ioCurrentSet : inout Set <T>,
-//                                        fromNewArray inNewArray : [T],
-//                                        oldArray inOldArray : [T]) -> (Bool, Set <T>, Set <T>) {
-//  let equalModels = inNewArray == inOldArray
-//  var addedSet = Set <T> ()
-//  var removedSet = Set <T> ()
-//  if !equalModels {
-//    let newSet = Set (inNewArray)
-//    if ioCurrentSet != newSet {
-//      let oldSet = ioCurrentSet
-//      ioCurrentSet = newSet
-//      removedSet = oldSet.subtracting (newSet)
-//      addedSet = newSet.subtracting (oldSet)
-//    }
-//  }
-//  return (equalModels, addedSet, removedSet)
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 fileprivate func update <T : AnyObject> (currentSet ioCurrentSet : inout EBReferenceSet <T>,
                                          fromNewArray inNewArray : EBReferenceArray <T>,
                                          oldArray inOldArray : EBReferenceArray <T>) -> (Bool, EBReferenceSet <T>, EBReferenceSet <T>) {
@@ -86,7 +66,7 @@ class ReadOnlyAbstractArrayProperty <T : AnyObject> : ReadOnlyAbstractGenericRel
 
   private final var mInternalSetValue = EBReferenceSet <T> () // Requires T to be hashable
 
-  internal final var mInternalArrayValue = EBReferenceArray <T> () {
+  final var mInternalArrayValue = EBReferenceArray <T> () {
     didSet {
       let (equalModels, addedSet, removedSet) = update (currentSet: &self.mInternalSetValue, fromNewArray: self.mInternalArrayValue, oldArray: oldValue)
       if !equalModels {
@@ -105,12 +85,12 @@ class ReadOnlyAbstractArrayProperty <T : AnyObject> : ReadOnlyAbstractGenericRel
 
   //····················································································································
 
-  internal func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <T>) {
+  func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <T>) {
   }
 
   //····················································································································
 
-  internal func updateObservers (removedSet inRemovedSet : EBReferenceSet <T>, addedSet inAddedSet : EBReferenceSet <T>) {
+  func updateObservers (removedSet inRemovedSet : EBReferenceSet <T>, addedSet inAddedSet : EBReferenceSet <T>) {
   }
 
   //····················································································································

@@ -143,7 +143,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func renameComponentDialog (_ inComponent : ComponentInProject) {
+  func renameComponentDialog (_ inComponent : ComponentInProject) {
     if let window = self.windowForSheet {
       let panel = NSPanel (
         contentRect: NSRect (x: 0, y: 0, width: 450, height: 250),

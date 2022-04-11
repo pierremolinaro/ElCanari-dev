@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func writeBoardArchiveFile (atPath inPath : String, _ inProductData : ProductData) throws {
+  func writeBoardArchiveFile (atPath inPath : String, _ inProductData : ProductData) throws {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
     var boardArchive = [String : Any] ()
   //--- Add artwork name

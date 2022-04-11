@@ -15,7 +15,6 @@ extension ApplicationDelegate {
   //····················································································································
 
   func checkForLibraryUpdateAtLaunch () {
-//    self.mMaintenanceLogTextField.stringValue = ""
     if preferences_checkForSystemLibraryAtStartUp {
       _ = g_Preferences?.setUpLibraryUpdateLogWindow ()
       if let logTextView = g_Preferences?.mLibraryUpdateLogTextView {

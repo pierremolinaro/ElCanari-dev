@@ -130,7 +130,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
   // Remove unused nets
   //····················································································································
 
-  internal func removeUnusedNets () {
+  func removeUnusedNets () {
     for netClass in self.rootObject.mNetClasses.values {
       for net in netClass.mNets.values {
         var suppressNet = true
@@ -162,7 +162,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
   // Update Selected Net for Rasnet net display
   //····················································································································
 
-  internal func updateSelectedNetForRastnetDisplay () {
+  func updateSelectedNetForRastnetDisplay () {
     var netNameSet = Set <String> ()
     for netClass in self.rootObject.mNetClasses.values {
       for net in netClass.mNets.values {
@@ -180,7 +180,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
   //  Rename net dialog
   //····················································································································
 
-  internal func dialogForRenamingNet (named inNetName : String) {
+  func dialogForRenamingNet (named inNetName : String) {
 //    NSLog ("inNetName \(inNetName)")
   //--- Find net from its name
     var possibleNetForRenamingOperation : NetInProject? = nil
@@ -199,7 +199,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
 
   //····················································································································
 
-  internal func dialogForRenaming (net inNet : NetInProject) {
+  func dialogForRenaming (net inNet : NetInProject) {
     if let window = self.windowForSheet {
       let panel = NSPanel (
         contentRect: NSRect (x: 0, y: 0, width: 500, height: 200),
@@ -261,7 +261,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
 
   //····················································································································
 
-  @objc internal func newNameDidChange (_ inSender : NSTextField) {
+  @objc func newNameDidChange (_ inSender : NSTextField) {
     if let sender = inSender as? AutoLayoutTextField,
        let (netForRenamingOperation, errorLabel, okButton) = sender.mTextFieldUserInfo as? (NetInProject, AutoLayoutStaticLabel, AutoLayoutSheetDefaultOkButton) {
       let newNetName = sender.stringValue
@@ -289,7 +289,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
   //   DIALOG FOR MERGING SUBNET
   //····················································································································
 
-  internal func dialogForMergingSubnetFrom (point inPoint : PointInSchematic) {
+  func dialogForMergingSubnetFrom (point inPoint : PointInSchematic) {
     if let window = self.windowForSheet, let initialNetName = inPoint.mNet?.mNetName {
       let panel = NSPanel (
         contentRect: NSRect (x: 0, y: 0, width: 500, height: 200),

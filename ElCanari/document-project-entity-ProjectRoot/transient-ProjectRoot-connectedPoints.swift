@@ -31,10 +31,10 @@ func transient_ProjectRoot_connectedPoints (
           }
         }
         if !warningPathes.isEmpty {
-          shape.add (filled: warningPathes, NSColor.myOrange)
+          shape.add (filled: warningPathes, .systemOrange)
         }
         if !errorPathes.isEmpty {
-          shape.add (filled: errorPathes, .red)
+          shape.add (filled: errorPathes, .systemRed)
         }
       //--- Connected points
         if let connectedPointShape = self_mSelectedSheet_connectedPoints {

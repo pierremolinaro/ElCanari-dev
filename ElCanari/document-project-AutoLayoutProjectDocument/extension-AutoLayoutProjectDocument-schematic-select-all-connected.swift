@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func selectAllConnectedElementsInSchematics () -> (EBReferenceSet <SchematicObject>, EBReferenceSet <PointInSchematic>) {
+  func selectAllConnectedElementsInSchematics () -> (EBReferenceSet <SchematicObject>, EBReferenceSet <PointInSchematic>) {
     var objectExploreSet = EBReferenceSet (self.schematicObjectsController.selectedArray.values)
     var objectSet = EBReferenceSet <SchematicObject> ()
     var pointExploreSet = EBReferenceSet <PointInSchematic> ()

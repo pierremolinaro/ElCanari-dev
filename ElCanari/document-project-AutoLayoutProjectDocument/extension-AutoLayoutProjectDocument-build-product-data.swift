@@ -18,7 +18,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func buildProductData () -> ProductData {
+  func buildProductData () -> ProductData {
     let (frontPackageLegend, backPackageLegend) = self.buildPackageLegend ()
     let (frontComponentNames, backComponentNames) = self.buildComponentNamePathes ()
     let (frontComponentValues, backComponentValues) = self.buildComponentValuePathes ()

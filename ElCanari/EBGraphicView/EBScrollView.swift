@@ -13,15 +13,13 @@ final class EBScrollView : NSScrollView, EBUserClassNameProtocol {
   //····················································································································
 
   required init? (coder : NSCoder) {
-    super.init (coder: coder)
-    noteObjectAllocation (self)
-    self.wantsLayer = true
+    fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
 
-  override init (frame : NSRect) {
-    super.init (frame: frame)
+  init () {
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.wantsLayer = true
   }
@@ -47,17 +45,17 @@ final class EBScrollView : NSScrollView, EBUserClassNameProtocol {
   // MARK: -
   //····················································································································
 
-  fileprivate weak var mDocument : EBManagedDocument? = nil // For handling drag destination
+  fileprivate weak var mDocument : EBAutoLayoutManagedDocument? = nil // For handling drag destination
 
   //····················································································································
 
-  func register (document inDocument : EBManagedDocument) {
+  func register (document inDocument : EBAutoLayoutManagedDocument) {
     self.mDocument = inDocument
   }
 
   //····················································································································
 
-  func register (document inDocument : EBManagedDocument, draggedTypes : [NSPasteboard.PasteboardType]) {
+  func register (document inDocument : EBAutoLayoutManagedDocument, draggedTypes : [NSPasteboard.PasteboardType]) {
     self.mDocument = inDocument
     self.registerForDraggedTypes (draggedTypes)
   }

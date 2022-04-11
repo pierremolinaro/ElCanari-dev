@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func writePDFDrillFile (atPath inPath : String, _ inProductData : ProductData) throws {
+  func writePDFDrillFile (atPath inPath : String, _ inProductData : ProductData) throws {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
     var pathes = [EBBezierPath] ()
     for (holeDiameter, segmentList) in inProductData.holeDictionary {
@@ -35,10 +35,10 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func writePDFProductFile (atPath inPath : String,
-                                     _ inDescriptor : ArtworkFileGenerationParameters,
-                                     _ inLayerConfiguration : LayerConfiguration,
-                                     _ inProductData : ProductData) throws {
+  func writePDFProductFile (atPath inPath : String,
+                            _ inDescriptor : ArtworkFileGenerationParameters,
+                            _ inLayerConfiguration : LayerConfiguration,
+                            _ inProductData : ProductData) throws {
     let path = inPath + inDescriptor.fileExtension + ".pdf"
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
     var af = AffineTransform ()

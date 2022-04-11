@@ -14,7 +14,7 @@ extension ProjectRoot {
 
   //····················································································································
 
-  internal func connectors (at inLocation : CanariPoint, trackSide inSide : TrackSide) -> [BoardConnector] {
+  func connectors (at inLocation : CanariPoint, trackSide inSide : TrackSide) -> [BoardConnector] {
     let distance = Double (milsToCanariUnit (fromDouble: self.mControlKeyHiliteDiameter)) / 2.0
     let squareOfDistance = distance * distance
     var result = [BoardConnector] ()
@@ -49,7 +49,7 @@ extension ProjectRoot {
 
   //····················································································································
 
-  internal func connectors (at inLocation : CanariPoint, connectorSide inSide : ConnectorSide) -> [BoardConnector] {
+  func connectors (at inLocation : CanariPoint, connectorSide inSide : ConnectorSide) -> [BoardConnector] {
     let distance = Double (milsToCanariUnit (fromDouble: self.mControlKeyHiliteDiameter)) / 2.0
     let squareOfDistance = distance * distance
     var result = [BoardConnector] ()

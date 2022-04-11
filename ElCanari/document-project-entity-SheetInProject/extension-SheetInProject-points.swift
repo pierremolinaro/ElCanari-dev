@@ -14,7 +14,7 @@ extension SheetInProject {
 
   //····················································································································
 
-  internal func netSetFor (points : [PointInSchematic]) -> EBReferenceSet <NetInProject> {
+  func netSetFor (points : [PointInSchematic]) -> EBReferenceSet <NetInProject> {
     var netSet = EBReferenceSet <NetInProject> ()
     for p in points {
       if let net = p.mNet {
@@ -26,7 +26,7 @@ extension SheetInProject {
 
   //····················································································································
 
-  internal func removeUnusedSchematicsPoints (_ ioErrorList : inout [String]) {
+  func removeUnusedSchematicsPoints (_ ioErrorList : inout [String]) {
   //--- Remove unused points
     for point in self.mPoints.values {
       var used = (point.mLabels.count + point.mWiresP1s.count + point.mWiresP2s.count) > 0
@@ -111,7 +111,7 @@ extension SheetInProject {
 
   //····················································································································
 
-  internal func buildSubnet (from inPoint : PointInSchematic) -> EBReferenceSet <PointInSchematic> {
+  func buildSubnet (from inPoint : PointInSchematic) -> EBReferenceSet <PointInSchematic> {
     var exploreSet = EBReferenceSet (inPoint)
     var result = EBReferenceSet <PointInSchematic> ()
     while let point = exploreSet.first {
@@ -133,7 +133,7 @@ extension SheetInProject {
 
   //····················································································································
 
-  internal func buildSubnetsFrom (_ inPointSet : EBReferenceSet <PointInSchematic>) -> [EBReferenceSet <PointInSchematic>] {
+  func buildSubnetsFrom (_ inPointSet : EBReferenceSet <PointInSchematic>) -> [EBReferenceSet <PointInSchematic>] {
     var result = [EBReferenceSet <PointInSchematic>] ()
     var currentPointSet = inPointSet
     while let point = currentPointSet.first {
@@ -146,7 +146,7 @@ extension SheetInProject {
 
   //····················································································································
 
-  internal func buildLabelArrayFromSubnet (_ inSubnet : EBReferenceSet <PointInSchematic>) -> [LabelInSchematic] {
+  func buildLabelArrayFromSubnet (_ inSubnet : EBReferenceSet <PointInSchematic>) -> [LabelInSchematic] {
     var result = [LabelInSchematic] ()
     for point in inSubnet.values {
       for label in point.mLabels.values {
@@ -158,7 +158,7 @@ extension SheetInProject {
 
   //····················································································································
 
-  internal func buildSymbolArrayFromSubnet (_ inSubnet : EBReferenceSet <PointInSchematic>) -> [ComponentSymbolInProject] {
+  func buildSymbolArrayFromSubnet (_ inSubnet : EBReferenceSet <PointInSchematic>) -> [ComponentSymbolInProject] {
     var result = [ComponentSymbolInProject] ()
     for point in inSubnet.values {
       if let symbol = point.mSymbol {

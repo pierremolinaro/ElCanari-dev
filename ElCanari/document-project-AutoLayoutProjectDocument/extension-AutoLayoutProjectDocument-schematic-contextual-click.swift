@@ -322,7 +322,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func connectPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
+  func connectPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       for symbol in inSymbols {
         for point in symbol.mPoints.values {

@@ -27,7 +27,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  internal func performERCChecking () -> Bool {
+  func performERCChecking () -> Bool {
     self.mERCLogTextView?.clear ()
     var issues = [CanariIssue] ()
   //--- Remove tracks without connectors
