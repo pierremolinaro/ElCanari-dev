@@ -128,8 +128,8 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
 
   final func loadDocumentFromLibrary (windowForSheet inWindow : NSWindow,
                                       alreadyLoadedDocuments inNames : Set <String>,
-                                      callBack : @escaping (_ inData : Data, _ inName : String) -> Bool,
-                                      postAction : Optional <() -> Void>) {
+                                      callBack inCallBack : @escaping (_ inData : Data, _ inName : String) -> Bool,
+                                      postAction inPostAction : Optional <() -> Void>) {
   //--- Configure
     self.configureWith (alreadyLoadedDocuments: inNames)
     _ = self.mOpenButton.setDismissAction ()
@@ -141,9 +141,9 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
         if selectedItem.mFullPath != "" {
           let fm = FileManager ()
           if let data = fm.contents (atPath: selectedItem.mFullPath) {
-            let ok = callBack (data, selectedItem.mFullPath.lastPathComponent.deletingPathExtension)
+            let ok = inCallBack (data, selectedItem.mFullPath.lastPathComponent.deletingPathExtension)
             if ok {
-              postAction? ()
+              inPostAction? ()
             }
           }
         }

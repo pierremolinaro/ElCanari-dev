@@ -237,6 +237,7 @@ extern autolayout class DoubleField (minWidth: Int, size: EBControlSize) $enable
 }
 
 extern autolayout class ColorWell {
+  func expandableHeight ()
   $color property NSColor (sendContinously: Bool)
 }
 

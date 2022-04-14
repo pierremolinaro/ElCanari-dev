@@ -56,8 +56,10 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : AutoLayoutBase_
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-//    let orientation = QuadrantRotation (rawValue: self.selectedSegment)!
-//    _ = self.mAngleController?.updateModel (withCandidateValue: orientation, windowForSheet: self.window)
+    if self.selectedSegment >= 0 {
+      let orientation = self.selectedSegment * 90_000
+      _ = self.mAngleController?.updateModel (withCandidateValue: orientation, windowForSheet: self.window)
+    }
     return super.sendAction (action, to: to)
   }
 

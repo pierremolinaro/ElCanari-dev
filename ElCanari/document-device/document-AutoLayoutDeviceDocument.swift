@@ -684,6 +684,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_3_0 = AutoLayoutColorWell ()
+        .expandableHeight ()
         .bind_color (preferences_packageColor_property, sendContinously:false)
       view_3.appendView (view_3_0)
       let view_3_1 = AutoLayoutCheckbox (title: "Display Packages", size: .small)
@@ -697,6 +698,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_4_0 = AutoLayoutColorWell ()
+        .expandableHeight ()
         .bind_color (preferences_padNumberColor_property, sendContinously:false)
       view_4.appendView (view_4_0)
       let view_4_1 = AutoLayoutCheckbox (title: "Display Pad Numbers", size: .small)
@@ -710,6 +712,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_5_0 = AutoLayoutColorWell ()
+        .expandableHeight ()
         .bind_color (preferences_frontSidePadColor_property, sendContinously:false)
       view_5.appendView (view_5_0)
       let view_5_1 = AutoLayoutCheckbox (title: "Display Front Side Pads", size: .small)
@@ -723,6 +726,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_6_0 = AutoLayoutColorWell ()
+        .expandableHeight ()
         .bind_color (preferences_backSidePadColor_property, sendContinously:false)
       view_6.appendView (view_6_0)
       let view_6_1 = AutoLayoutCheckbox (title: "Display Back Side Pads", size: .small)

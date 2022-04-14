@@ -267,7 +267,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       )
       addCenterYAligned (
         left: StaticLabel (title: "Pad Number", bold: no, size: .small),
-        right: hStack { ColorWell { $color prefs.mPadNumberColorForDevice (sendContinously:no) } space }
+        right: hStack { ColorWell {  $color prefs.mPadNumberColorForDevice (sendContinously:no) } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Pad Number Font", bold: no, size: .small),
@@ -296,22 +296,22 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       space
     }
     hStack setCenterYAlignment () {
-      ColorWell { $color prefs.packageColor (sendContinously: no) }
+      ColorWell { expandableHeight () $color prefs.packageColor (sendContinously: no) }
       Checkbox (title: "Display Packages", size : .small) { $value root.mShowPackages }
       space
     }
     hStack setCenterYAlignment () {
-      ColorWell { $color prefs.padNumberColor (sendContinously: no) }
+      ColorWell { expandableHeight () $color prefs.padNumberColor (sendContinously: no) }
       Checkbox (title: "Display Pad Numbers", size : .small) { $value root.mShowPackagePadNumbers }
       space
     }
     hStack setCenterYAlignment () {
-      ColorWell { $color prefs.frontSidePadColor (sendContinously: no) }
+      ColorWell { expandableHeight () $color prefs.frontSidePadColor (sendContinously: no) }
       Checkbox (title: "Display Front Side Pads", size : .small) { $value root.mShowPackageFrontPads }
       space
     }
     hStack setCenterYAlignment () {
-      ColorWell { $color prefs.backSidePadColor (sendContinously: no) }
+      ColorWell { expandableHeight () $color prefs.backSidePadColor (sendContinously: no) }
       Checkbox (title: "Display Back Side Pads", size : .small) { $value root.mShowPackageBackPads }
       space
     }
