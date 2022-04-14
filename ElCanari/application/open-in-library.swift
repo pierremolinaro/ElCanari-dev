@@ -132,6 +132,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
                                       postAction : Optional <() -> Void>) {
   //--- Configure
     self.configureWith (alreadyLoadedDocuments: inNames)
+    _ = self.mOpenButton.setDismissAction ()
   //--- Dialog
     inWindow.beginSheet (self.mDialog) { (_ inModalResponse : NSApplication.ModalResponse) in
       let selectedRow = self.mTableView.selectedRow

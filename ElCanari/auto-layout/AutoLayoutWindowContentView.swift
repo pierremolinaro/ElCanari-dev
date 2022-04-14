@@ -21,6 +21,11 @@ final class AutoLayoutWindowContentView : NSView, EBUserClassNameProtocol {
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    self.setContentHuggingPriority (.defaultLow, for: .vertical)
+    self.setContentCompressionResistancePriority (.defaultLow, for: .horizontal)
+    self.setContentCompressionResistancePriority (.defaultLow, for: .vertical)
+
     do{
       self.addSubview (inView)
       let c0 = NSLayoutConstraint (item: self, attribute: .left,  relatedBy: .equal, toItem: inView, attribute: .left,  multiplier: 1.0, constant: 0.0)
@@ -29,6 +34,7 @@ final class AutoLayoutWindowContentView : NSView, EBUserClassNameProtocol {
       let c3 = NSLayoutConstraint (item: self, attribute: .bottom, relatedBy: .equal, toItem: inView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
       self.addConstraints ([c0, c1, c2, c3])
     }
+
     do{
       let view = HiliteView ()
       self.addSubview (view)
@@ -171,7 +177,9 @@ fileprivate final class HiliteView : NSView, EBUserClassNameProtocol {
       strokeBP.lineWidth = 1.0
       var optionalResponder = self.window?.initialFirstResponder
       var loop = true
+      // var n = 0
       while let responder = optionalResponder, loop {
+        // n += 1
         let r = responder.convert (responder.bounds, to: self)
         strokeBP.appendRect (r)
         let optionalNextResponder = responder.nextKeyView
@@ -185,6 +193,7 @@ fileprivate final class HiliteView : NSView, EBUserClassNameProtocol {
       }
       strokeBP.stroke ()
       filledBP.fill ()
+      // Swift.print ("SHOW \(n)")
     }
   }
 

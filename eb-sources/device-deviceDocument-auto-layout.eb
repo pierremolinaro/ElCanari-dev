@@ -202,7 +202,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 
   stackView mPackagesPage hStack {
     vStack set (width: 250) set (margins: 8) {
-      SegmentedControlWithPages (documentView: stackView mSymbolPageInspectorView, equalWidth: yes, size: .small)
+      SegmentedControlWithPages (documentView: stackView mPackagePageInspectorView, equalWidth: yes, size: .small)
         [configurator packageInspectorSegmentedControl] {
         expandableWidth ()
         addPage (title: "", tooltip: "", pageView: stackView mPackagePageOperationView)
@@ -210,7 +210,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
         $selectedPage root. mSelectedPackageInspectorIndex
       }
       vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
-        stackViewRef mSymbolPageInspectorView
+        stackViewRef mPackagePageInspectorView
       }
       space
     }
@@ -222,6 +222,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       $zoom root.mPackageDisplayZoom
       $backColor prefs.mPackageBackColorForDevice
     }
+  }
+
+  stackView mPackagePageInspectorView hStack {
   }
 
   stackView mPackageGridZoomInspectorView vStack {

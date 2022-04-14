@@ -112,6 +112,7 @@ extension ApplicationDelegate {
         dc.addDocument (newDocument)
         newDocument.makeWindowControllers ()
         newDocument.showWindows ()
+        // Swift.print ("Default type : \(dc.displayName (forType: "name.pcmolinaro.elcanari.project"))")
       }
     }catch let error {
       dc.presentError (error)

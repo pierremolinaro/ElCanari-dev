@@ -29,7 +29,12 @@ final class AutoLayoutFlexibleSpace : NSView, EBUserClassNameProtocol {
   deinit {
     noteObjectDeallocation (self)
   }
-  
+
+  //····················································································································
+
+//  override var acceptsFirstResponder : Bool { return false}
+//  override var canBecomeKeyView : Bool { return false}
+
   //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {

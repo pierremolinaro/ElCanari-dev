@@ -209,7 +209,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       )
     //---
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
-      let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel, isInitialFirstResponder: true)
+      let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel, isInitialFirstResponder: false)
       let gridView = AutoLayoutGridView2 ()
     //---
       layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Rename Net", bold: true, size: .regular))
@@ -399,6 +399,11 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       //---
         panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       //--- Dialog
+//        let response = NSApp.runModal (for: panel)
+//        if response == .stop, let netClass = popUpButton.selectedItem?.representedObject as? NetClassInProject {
+//          net.mNetClass = netClass
+//          NSSound.beep ()
+//        }
         window.beginSheet (panel) { inResponse in
           if inResponse == .stop, let netClass = popUpButton.selectedItem?.representedObject as? NetClassInProject {
             net.mNetClass = netClass

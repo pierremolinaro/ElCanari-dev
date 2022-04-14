@@ -65,7 +65,7 @@ fileprivate final class DebugAutoLayout : EBSwiftBaseObject {
 
   let responderKeyChainItem = NSMenuItem (
     title: "Show Responder Key Chain",
-    action: #selector (Self.toggleShowKeyResponserChain (_:)),
+    action: #selector (Self.toggleShowKeyResponderChain (_:)),
     keyEquivalent: ""
   )
 
@@ -94,7 +94,7 @@ fileprivate final class DebugAutoLayout : EBSwiftBaseObject {
   //····················································································································
   //····················································································································
 
-  @objc func toggleShowKeyResponserChain (_ inSender : Any?) {
+  @objc func toggleShowKeyResponderChain (_ inSender : Any?) {
     self.mShowKeyResponderChain.toggle ()
     self.responderKeyChainItem.state = self.mShowKeyResponderChain ? .on : .off
     for window in NSApp.windows {

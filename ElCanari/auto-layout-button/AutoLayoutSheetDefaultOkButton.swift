@@ -28,13 +28,12 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     if let buttonCell = self.cell as? NSButtonCell {
-      inPanel.defaultButtonCell = buttonCell
+      DispatchQueue.main.async { inPanel.defaultButtonCell = buttonCell }
     }
     if inInitialFirstResponder {
-      inPanel.initialFirstResponder = self
+      DispatchQueue.main.async { inPanel.initialFirstResponder = self }
     }
-    self.target = self
-    self.action = #selector (Self.dismissSheetAction (_:))
+    _ = self.setDismissAction ()
   }
 
   //····················································································································
@@ -47,6 +46,14 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
 
   deinit {
     noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  func setDismissAction () -> Self {
+    self.target = self
+    self.action = #selector (Self.dismissSheetAction (_:))
+    return self
   }
 
   //····················································································································

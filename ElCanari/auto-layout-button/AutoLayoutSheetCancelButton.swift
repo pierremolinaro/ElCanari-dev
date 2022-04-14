@@ -30,7 +30,7 @@ final class AutoLayoutSheetCancelButton : NSButton, EBUserClassNameProtocol {
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
 
     if inInitialFirstResponder {
-      inPanel.initialFirstResponder = self
+      DispatchQueue.main.async { inPanel.initialFirstResponder = self }
     }
 
     self.target = self

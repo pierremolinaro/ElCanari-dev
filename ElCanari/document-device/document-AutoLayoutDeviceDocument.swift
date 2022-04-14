@@ -576,7 +576,7 @@ import Cocoa
       .set (width: 250)
       .set (margins: 8)
     do{
-      let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mSymbolPageInspectorView, equalWidth: true, size: .small)
+      let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPackagePageInspectorView, equalWidth: true, size: .small)
         .expandableWidth ()
         .addPage (title: "", tooltip: "", pageView: self.mPackagePageOperationView)
         .addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: self.mPackageGridZoomInspectorView)
@@ -589,7 +589,7 @@ import Cocoa
         .set (bottomMargin: 20)
         .set (spacing: 12)
       do{
-        let view_0_1_0 = mSymbolPageInspectorView
+        let view_0_1_0 = mPackagePageInspectorView
         view_0_1.appendView (view_0_1_0)
       }
       view_0.appendView (view_0_1)
@@ -606,6 +606,15 @@ import Cocoa
       .bind_backColor (preferences_mPackageBackColorForDevice_property)
       .bind_graphic_controller (self.packageDisplayController)
     hStackView.appendView (view_2)
+    return hStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mPackagePageInspectorView
+  //····················································································································
+
+  lazy var mPackagePageInspectorView : AutoLayoutHorizontalStackView = {
+    let hStackView = AutoLayoutHorizontalStackView ()
     return hStackView
   } ()
 

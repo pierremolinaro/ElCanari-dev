@@ -14,12 +14,8 @@ extension AutoLayoutProjectDocument {
   @objc func renameNetAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     if let netInfo = self.mNetInfoTableView?.selectedNet {
-//      let idx = netInfoTableView.selectedRow
-//      if idx >= 0 {
-//        let netInfo = netInfoTableView.object (at: idx)
-        let netName = netInfo.netName
-        self.dialogForRenamingNet (named: netName)
-//      }
+      let netName = netInfo.netName
+      self.dialogForRenamingNet (named: netName)
     }
 //--- END OF USER ZONE 2
   }
