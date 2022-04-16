@@ -62,26 +62,30 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField, NSTextFieldDelegate
   }
 
   //····················································································································
-  //    NSTextFieldDelegate delegate function
-  //····················································································································
 
-  func controlTextDidChange (_ inUnusedNotification : Notification) {
+  override func textDidChange (_ inNotification : Notification) {
+    super.textDidChange (inNotification)
+  //  self.mTextDidChange? ()
     if self.isContinuous {
-      if let inputString = currentEditor()?.string {
-        // NSLog ("inputString %@", inputString)
-        let numberFormatter = self.formatter as! NumberFormatter
-        let number = numberFormatter.number (from: inputString)
-        if number == nil {
-          _ = control (
-            self,
-            didFailToFormatString: inputString,
-            errorDescription: "The “\(inputString)” value is invalid."
-          )
-        }else{
-          NSApp.sendAction (self.action!, to: self.target, from: self)
-        }
-      }
+      self.valueDidChangeAction (nil)
     }
+//    if self.isContinuous {
+//      NSSound.beep ()
+//      if let inputString = currentEditor()?.string {
+//        // NSLog ("inputString %@", inputString)
+//        let numberFormatter = self.formatter as! NumberFormatter
+//        let number = numberFormatter.number (from: inputString)
+//        if number == nil {
+//          _ = control (
+//            self,
+//            didFailToFormatString: inputString,
+//            errorDescription: "The “\(inputString)” value is invalid."
+//          )
+//        }else{
+//          NSApp.sendAction (self.action!, to: self.target, from: self)
+//        }
+//      }
+//    }
   }
 
   //····················································································································
@@ -127,7 +131,6 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField, NSTextFieldDelegate
   //····················································································································
 
   final func bind_value (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
-    self.cell?.sendsActionOnEndEditing = false
     self.isContinuous = sendContinously
     self.mValueController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,

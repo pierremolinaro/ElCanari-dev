@@ -119,6 +119,7 @@ extension AutoLayoutMergerDocumentSubClass {
         if inResponse == .stop, let boardModel = modelPopUpButton.selectedItem?.representedObject as? BoardModel {
           let xCount = self.mInsertArrayOfBoardsXCount.propval
           let yCount = self.mInsertArrayOfBoardsYCount.propval
+          // Swift.print ("xCount \(xCount), yCount \(yCount)")
           let boardModelWidth = boardModel.modelWidth
           let boardModelHeight = boardModel.modelHeight
           let overlapAmount = self.rootObject.overlapingArrangment ? boardModel.modelLimitWidth : 0
