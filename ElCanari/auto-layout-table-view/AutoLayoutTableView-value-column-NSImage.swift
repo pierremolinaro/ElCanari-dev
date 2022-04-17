@@ -1,8 +1,8 @@
 //
-//  AutoLayoutTableView-column-NSColor.swift
+//  AutoLayoutTableView-column-NSImage.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 01/01/2022.
+//  Created by Pierre Molinaro on 16/12/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -14,21 +14,21 @@ extension AutoLayoutTableView {
 
   //····················································································································
 
-  func addColumn_NSColor (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSColor?,
-                          valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : NSColor) -> Void >,
+  func addColumn_NSImage (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSImage?,
+                          valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : NSImage) -> Void >,
                           sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
                           title inTitle : String,
                           minWidth inMinWidth : Int,
                           maxWidth inMaxWidth : Int,
                           headerAlignment inHeaderAlignment : TextAlignment,
                           contentAlignment inContentAlignment : TextAlignment) {
-    let column = InternalColorTableColumn (
+    let column = InternalImageValueTableColumn (
       withIdentifierNamed: String (self.columnCount),
+      sortDelegate: inSortDelegate,
+      contentAlignment: inContentAlignment.cocoaAlignment,
       valueGetterDelegate: inGetterDelegate
     )
     column.title = inTitle
-    column.headerCell.controlSize = self.controlSize
-    column.headerCell.font = self.font
     column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
     column.minWidth = CGFloat (inMinWidth)
     column.maxWidth = CGFloat (inMaxWidth)
@@ -42,23 +42,25 @@ extension AutoLayoutTableView {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// InternalColorTableColumn
+// InternalImageValueTableColumn
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class InternalColorTableColumn : AutoLayoutTableColumn {
+fileprivate final class InternalImageValueTableColumn : AutoLayoutTableColumn {
 
   //····················································································································
 
-  private let mValueGetterDelegate : (_ inRow : Int) -> NSColor?
+  private let mValueGetterDelegate : (_ inRow : Int) -> NSImage?
 
   //····················································································································
   // INIT
   //····················································································································
 
   init (withIdentifierNamed inName : String,
-        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSColor?) {
+        sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+        contentAlignment inContentAlignment : NSTextAlignment,
+        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSImage?) {
     self.mValueGetterDelegate = inGetterDelegate
-    super.init (withIdentifierNamed: inName, sortDelegate: nil, contentAlignment: .center)
+    super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
     self.isEditable = false
   }
 
@@ -71,14 +73,16 @@ fileprivate final class InternalColorTableColumn : AutoLayoutTableColumn {
   //····················································································································
 
   override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
-    let view = AutoLayoutViewWithBackground ()
-    let color = self.mValueGetterDelegate (inRowIndex)
-    view.mBackGroundColor = color
-    return view
+    let imageView = NSImageView ()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+
+    imageView.tag = inRowIndex
+    imageView.isEditable = false
+    imageView.image = self.mValueGetterDelegate (inRowIndex)
+    return imageView
   }
-  
+
   //····················································································································
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

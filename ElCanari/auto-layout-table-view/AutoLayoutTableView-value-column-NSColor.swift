@@ -1,8 +1,8 @@
 //
-//  AutoLayoutTableView-column-NSImage_int.swift
+//  AutoLayoutTableView-column-NSColor.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 16/12/2021.
+//  Created by Pierre Molinaro on 01/01/2022.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -14,17 +14,16 @@ extension AutoLayoutTableView {
 
   //····················································································································
 
-  func addColumn_NSImage_Int (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> (Int?, NSImage?),
-                              sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-                              title inTitle : String,
-                              minWidth inMinWidth : Int,
-                              maxWidth inMaxWidth : Int,
-                              headerAlignment inHeaderAlignment : TextAlignment,
-                              contentAlignment inContentAlignment : TextAlignment) {
-    let column = InternalImageIntTableColumn (
+  func addColumn_NSColor (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSColor?,
+                          valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : NSColor) -> Void >,
+                          sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+                          title inTitle : String,
+                          minWidth inMinWidth : Int,
+                          maxWidth inMaxWidth : Int,
+                          headerAlignment inHeaderAlignment : TextAlignment,
+                          contentAlignment inContentAlignment : TextAlignment) {
+    let column = InternalColorValueTableColumn (
       withIdentifierNamed: String (self.columnCount),
-      sortDelegate: inSortDelegate,
-      contentAlignment: inContentAlignment.cocoaAlignment,
       valueGetterDelegate: inGetterDelegate
     )
     column.title = inTitle
@@ -43,34 +42,24 @@ extension AutoLayoutTableView {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// InternalImageIntTableColumn
+// InternalColorValueTableColumn
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class InternalImageIntTableColumn : AutoLayoutTableColumn {
+fileprivate final class InternalColorValueTableColumn : AutoLayoutTableColumn {
 
   //····················································································································
 
-  private let mValueGetterDelegate : (_ inRow : Int) -> (Int?, NSImage?)
-  private let mNumberFormatter = NumberFormatter ()
+  private let mValueGetterDelegate : (_ inRow : Int) -> NSColor?
 
   //····················································································································
   // INIT
   //····················································································································
 
   init (withIdentifierNamed inName : String,
-        sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-        contentAlignment inContentAlignment : NSTextAlignment,
-        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> (Int?, NSImage?) ) {
+        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSColor?) {
     self.mValueGetterDelegate = inGetterDelegate
-    super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
+    super.init (withIdentifierNamed: inName, sortDelegate: nil, contentAlignment: .center)
     self.isEditable = false
-  //--- Configure number formatter
-    self.mNumberFormatter.formatterBehavior = .behavior10_4
-    self.mNumberFormatter.numberStyle = .decimal
-    self.mNumberFormatter.localizesFormat = true
-    self.mNumberFormatter.minimumFractionDigits = 0
-    self.mNumberFormatter.maximumFractionDigits = 0
-    self.mNumberFormatter.isLenient = true
   }
 
   //····················································································································
@@ -82,38 +71,14 @@ fileprivate final class InternalImageIntTableColumn : AutoLayoutTableColumn {
   //····················································································································
 
   override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
-    let value : (Int?, NSImage?) = self.mValueGetterDelegate (inRowIndex)
-
-    let hStack = AutoLayoutHorizontalStackView ()
-
-    let imageView = AutoLayoutStaticImageView (image: value.1)
-    hStack.appendView (imageView)
-
-    let textField = NSTextField (frame: .zero)
-    textField.translatesAutoresizingMaskIntoConstraints = false
-    hStack.appendView (textField)
-
-    textField.isBezeled = false
-    textField.isBordered = false
-    textField.drawsBackground = false
-    textField.isEnabled = true
-    textField.isEditable = false
-//-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
-//    textField.controlSize = self.mTableView.controlSize
-//    textField.font = self.mTableView.font
-    textField.formatter = self.mNumberFormatter
-    textField.alignment = self.mContentAlignment
-    if let v = value.0 {
-      textField.integerValue = v
-    }
-
-    hStack.appendFlexibleSpace ()
-    return hStack
+    let view = AutoLayoutViewWithBackground ()
+    let color = self.mValueGetterDelegate (inRowIndex)
+    view.mBackGroundColor = color
+    return view
   }
-
+  
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-

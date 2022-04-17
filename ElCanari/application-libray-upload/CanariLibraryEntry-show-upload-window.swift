@@ -60,8 +60,7 @@ final class LibraryUploadDialog : EBSwiftBaseObject {
     self.mLibraryRepositoryCloseButton = AutoLayoutSheetDefaultOkButton (
       title: "Close",
       size: .regular,
-      sheet: self.mLibraryUploadWindow,
-      isInitialFirstResponder: true
+      sheet: self.mLibraryUploadWindow
     )
   //--- Main view
     let mainView = AutoLayoutVerticalStackView ().set (margins: 20)

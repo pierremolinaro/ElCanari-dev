@@ -10,7 +10,7 @@ import Cocoa
 //   AutoLayoutIntField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutIntField : AutoLayoutBase_NSTextField, NSTextFieldDelegate {
+final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
@@ -21,6 +21,8 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField, NSTextFieldDelegate
   init (minWidth inWidth : Int, size inSize : EBControlSize) {
     super.init (optionalWidth: inWidth, bold: true, size: inSize)
 
+  //--- Delegate
+    self.delegate = self
   //--- Target
     self.target = self
     self.action = #selector (Self.valueDidChangeAction (_:))

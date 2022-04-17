@@ -166,8 +166,8 @@ final class Controller_AutoLayoutMergerDocument_mBoardModelController : EBObjcBa
       title: "",
       minWidth: 100,
       maxWidth: 300,
-      headerAlignment: .center,
-      contentAlignment: .right
+      headerAlignment: .left,
+      contentAlignment: .left
     )
   //---
     self.mTableViewArray.append (inTableView)

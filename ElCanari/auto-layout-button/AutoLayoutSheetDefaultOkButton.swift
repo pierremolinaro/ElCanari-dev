@@ -16,8 +16,7 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
 
   init (title inTitle : String,
         size inSize : EBControlSize,
-        sheet inPanel : NSPanel,
-        isInitialFirstResponder inInitialFirstResponder : Bool) {
+        sheet inPanel : NSPanel) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -30,9 +29,12 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
     if let buttonCell = self.cell as? NSButtonCell {
       DispatchQueue.main.async { inPanel.defaultButtonCell = buttonCell }
     }
-    if inInitialFirstResponder {
-      DispatchQueue.main.async { inPanel.initialFirstResponder = self }
-    }
+//    if inInitialFirstResponder {
+//      DispatchQueue.main.async { inPanel.initialFirstResponder = self }
+//    }
+    self.keyEquivalent = "\u{0D}"
+    self.keyEquivalentModifierMask = .control
+
     _ = self.setDismissAction ()
   }
 
@@ -47,6 +49,10 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
   deinit {
     noteObjectDeallocation (self)
   }
+
+  //····················································································································
+
+//  override var acceptsFirstResponder : Bool { return true }
 
   //····················································································································
 

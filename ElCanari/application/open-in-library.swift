@@ -69,10 +69,10 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
     mainView.appendView (gridView)
   //--- Bottom view
     let bottomView = AutoLayoutHorizontalStackView ()
-    self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: self.mDialog, isInitialFirstResponder: false)
+    self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
     bottomView.appendView (self.mCancelButton)
     bottomView.appendFlexibleSpace ()
-    self.mOpenButton = AutoLayoutSheetDefaultOkButton (title: "Open", size: .regular, sheet: self.mDialog, isInitialFirstResponder: true)
+    self.mOpenButton = AutoLayoutSheetDefaultOkButton (title: "Open", size: .regular, sheet: self.mDialog)
     bottomView.appendView (self.mOpenButton)
     mainView.appendView (bottomView)
   //--- Set content view

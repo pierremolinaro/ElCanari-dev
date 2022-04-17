@@ -266,9 +266,9 @@ fileprivate final class LibraryCommitListController : EBSwiftBaseObject, AutoLay
   //--- Last line
     let lastLine = AutoLayoutHorizontalStackView ()
     lastLine.appendFlexibleSpace ()
-    let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false)
+    let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
     lastLine.appendView (cancelButton)
-    let upDateButton = AutoLayoutSheetDefaultOkButton (title: "Update", size: .regular, sheet: panel, isInitialFirstResponder: true)
+    let upDateButton = AutoLayoutSheetDefaultOkButton (title: "Update", size: .regular, sheet: panel)
     lastLine.appendView (upDateButton)
     mainView.appendView (lastLine)
   //--- Set autolayout view to panel

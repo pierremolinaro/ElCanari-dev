@@ -24,8 +24,7 @@ extension AutoLayoutFontDocument {
       let okButton = AutoLayoutSheetDefaultOkButton (
         title: "Ok",
         size: .regular,
-        sheet: panel,
-        isInitialFirstResponder : true
+        sheet: panel
       )
       let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
       let leftColumn = AutoLayoutVerticalStackView ()
@@ -42,7 +41,7 @@ extension AutoLayoutFontDocument {
       let newCharacterView = AutoLayoutCanariCharacterView (okButton: okButton)
       rightColumn.appendView (newCharacterView)
       let bottomItems = AutoLayoutHorizontalStackView ()
-      bottomItems.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+      bottomItems.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
       bottomItems.appendViewPreceededByFlexibleSpace (okButton)
       rightColumn.appendView (bottomItems)
       mainView.appendView (rightColumn)

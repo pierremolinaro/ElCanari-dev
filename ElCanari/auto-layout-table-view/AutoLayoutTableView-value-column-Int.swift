@@ -1,5 +1,5 @@
 //
-//  AutoLayoutTableView-column-NSImage_String.swift
+//  AutoLayoutTableView-column-Int.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 16/12/2021.
@@ -14,17 +14,19 @@ extension AutoLayoutTableView {
 
   //····················································································································
 
-  final func addColumn_NSImage_String (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> (String?, NSImage?),
-                                       sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-                                       title inTitle : String,
-                                       minWidth inMinWidth : Int,
-                                       maxWidth inMaxWidth : Int,
-                                       headerAlignment inHeaderAlignment : TextAlignment,
-                                       contentAlignment inContentAlignment : TextAlignment) {
-    let column = InternalImageStringTableColumn (
+  func addColumn_Int (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Int?,
+                      valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Int) -> Void >,
+                      sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+                      title inTitle : String,
+                      minWidth inMinWidth : Int,
+                      maxWidth inMaxWidth : Int,
+                      headerAlignment inHeaderAlignment : TextAlignment,
+                      contentAlignment inContentAlignment : TextAlignment) {
+    let column = InternalIntValueTableColumn (
       withIdentifierNamed: String (self.columnCount),
       sortDelegate: inSortDelegate,
       contentAlignment: inContentAlignment.cocoaAlignment,
+      valueSetterDelegate: inSetterDelegate,
       valueGetterDelegate: inGetterDelegate
     )
     column.title = inTitle
@@ -43,14 +45,15 @@ extension AutoLayoutTableView {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// InternalImageStringTableColumn
+// InternalIntValueTableColumn
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class InternalImageStringTableColumn : AutoLayoutTableColumn {
+fileprivate final class InternalIntValueTableColumn : AutoLayoutTableColumn {
 
   //····················································································································
 
-  private let mValueGetterDelegate : (_ inRow : Int) -> (String?, NSImage?)
+  private let mValueGetterDelegate : (_ inRow : Int) -> Int?
+  private let mValueSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Int) -> Void >
   private let mNumberFormatter = NumberFormatter ()
 
   //····················································································································
@@ -60,10 +63,12 @@ fileprivate final class InternalImageStringTableColumn : AutoLayoutTableColumn {
   init (withIdentifierNamed inName : String,
         sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
         contentAlignment inContentAlignment : NSTextAlignment,
-        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> (String?, NSImage?) ) {
+        valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Int) -> Void >,
+        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Int?) {
     self.mValueGetterDelegate = inGetterDelegate
+    self.mValueSetterDelegate = inSetterDelegate
     super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
-    self.isEditable = false
+    self.isEditable = inSetterDelegate != nil
   //--- Configure number formatter
     self.mNumberFormatter.formatterBehavior = .behavior10_4
     self.mNumberFormatter.numberStyle = .decimal
@@ -82,33 +87,41 @@ fileprivate final class InternalImageStringTableColumn : AutoLayoutTableColumn {
   //····················································································································
 
   override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
-    let value : (String?, NSImage?) = self.mValueGetterDelegate (inRowIndex)
-
-    let hStack = AutoLayoutHorizontalStackView ()
-
-    let imageView = AutoLayoutStaticImageView (image: value.1)
-    hStack.appendView (imageView)
-
     let textField = NSTextField (frame: .zero)
     textField.translatesAutoresizingMaskIntoConstraints = false
-    hStack.appendView (textField)
 
+    textField.tag = inRowIndex
     textField.isBezeled = false
     textField.isBordered = false
     textField.drawsBackground = false
     textField.isEnabled = true
-    textField.isEditable = false
 //-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
 //    textField.controlSize = self.mTableView.controlSize
 //    textField.font = self.mTableView.font
+
     textField.formatter = self.mNumberFormatter
     textField.alignment = self.mContentAlignment
-    if let v = value.0 {
-      textField.stringValue = v
-    }
+    textField.integerValue = self.mValueGetterDelegate (inRowIndex) ?? -1
 
-    hStack.appendFlexibleSpace ()
-    return hStack
+    let editable = self.mValueSetterDelegate != nil
+    textField.isEditable = editable
+    if editable {
+      textField.target = self
+      textField.action = #selector (Self.ebAction(_:))
+    }
+    return textField
+  }
+
+  //····················································································································
+
+  @objc func ebAction (_ inSender : Any?) {
+    if let textField = inSender as? NSTextField,
+       let formatter = textField.formatter as? NumberFormatter,
+       let outletValueNumber = formatter.number (from: textField.stringValue) {
+      let newValue = Int (outletValueNumber.doubleValue.rounded ())
+      let rowIndex = textField.tag
+      self.mValueSetterDelegate? (rowIndex, newValue)
+    }
   }
 
   //····················································································································

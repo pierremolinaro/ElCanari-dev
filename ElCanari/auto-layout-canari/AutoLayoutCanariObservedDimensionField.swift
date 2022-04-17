@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutCanariObservedDimensionField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariObservedDimensionField : AutoLayoutBase_NSTextField, NSTextFieldDelegate {
+final class AutoLayoutCanariObservedDimensionField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 

@@ -106,10 +106,10 @@ extension AutoLayoutMergerDocumentSubClass {
 
       rightColumn.appendFlexibleSpace ()
       let lastLine = AutoLayoutHorizontalStackView ()
-      let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false)
+      let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
       lastLine.appendView (cancelButton)
       lastLine.appendFlexibleSpace ()
-      let okButton = AutoLayoutSheetDefaultOkButton (title: "Insert", size: .regular, sheet: panel, isInitialFirstResponder: true)
+      let okButton = AutoLayoutSheetDefaultOkButton (title: "Insert", size: .regular, sheet: panel)
       lastLine.appendView (okButton)
       rightColumn.appendView (lastLine)
       mainView.appendViewPreceededByFlexibleSpace (rightColumn)

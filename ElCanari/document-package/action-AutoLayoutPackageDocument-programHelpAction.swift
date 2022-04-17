@@ -29,7 +29,7 @@ extension AutoLayoutPackageDocument {
       }
       vStack.appendView (textView)
     //--- Ok button
-      let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: sheet, isInitialFirstResponder: true)
+      let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: sheet)
       vStack.appendView (okButton)
     //---
       sheet.contentView = AutoLayoutWindowContentView (view: vStack)

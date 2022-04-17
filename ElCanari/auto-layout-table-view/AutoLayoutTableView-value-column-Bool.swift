@@ -1,8 +1,8 @@
 //
-//  AutoLayoutTableView-column-NSImage.swift
+//  AutoLayoutTableView-column-Bool.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 16/12/2021.
+//  Created by Pierre Molinaro on 13/01/2022.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -14,21 +14,24 @@ extension AutoLayoutTableView {
 
   //····················································································································
 
-  func addColumn_NSImage (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSImage?,
-                          valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : NSImage) -> Void >,
-                          sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-                          title inTitle : String,
-                          minWidth inMinWidth : Int,
-                          maxWidth inMaxWidth : Int,
-                          headerAlignment inHeaderAlignment : TextAlignment,
-                          contentAlignment inContentAlignment : TextAlignment) {
-    let column = InternalNSImageTableColumn (
+  func addColumn_Bool (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Bool?,
+                       valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Bool) -> Void >,
+                       sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+                       title inTitle : String,
+                       minWidth inMinWidth : Int,
+                       maxWidth inMaxWidth : Int,
+                       headerAlignment inHeaderAlignment : TextAlignment,
+                       contentAlignment inContentAlignment : TextAlignment) {
+    let column = InternalBoolValueTableColumn (
       withIdentifierNamed: String (self.columnCount),
       sortDelegate: inSortDelegate,
       contentAlignment: inContentAlignment.cocoaAlignment,
+      valueSetterDelegate: inSetterDelegate,
       valueGetterDelegate: inGetterDelegate
     )
     column.title = inTitle
+    column.headerCell.controlSize = self.controlSize
+    column.headerCell.font = self.font
     column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
     column.minWidth = CGFloat (inMinWidth)
     column.maxWidth = CGFloat (inMaxWidth)
@@ -42,14 +45,15 @@ extension AutoLayoutTableView {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// InternalNSImageTableColumn
+// InternalBoolValueTableColumn
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class InternalNSImageTableColumn : AutoLayoutTableColumn {
+fileprivate final class InternalBoolValueTableColumn : AutoLayoutTableColumn {
 
   //····················································································································
 
-  private let mValueGetterDelegate : (_ inRow : Int) -> NSImage?
+  private let mValueGetterDelegate : (_ inRow : Int) -> Bool?
+  private let mValueSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Bool) -> Void >
 
   //····················································································································
   // INIT
@@ -58,10 +62,12 @@ fileprivate final class InternalNSImageTableColumn : AutoLayoutTableColumn {
   init (withIdentifierNamed inName : String,
         sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
         contentAlignment inContentAlignment : NSTextAlignment,
-        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSImage?) {
+        valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Bool) -> Void >,
+        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Bool?) {
     self.mValueGetterDelegate = inGetterDelegate
+    self.mValueSetterDelegate = inSetterDelegate
     super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
-    self.isEditable = false
+    self.isEditable = inSetterDelegate != nil
   }
 
   //····················································································································
@@ -73,16 +79,39 @@ fileprivate final class InternalNSImageTableColumn : AutoLayoutTableColumn {
   //····················································································································
 
   override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
-    let imageView = NSImageView ()
-    imageView.translatesAutoresizingMaskIntoConstraints = false
+    let checkbox = AutoLayoutBase_NSButton (title: "", size: .small)
+    checkbox.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    checkbox.setContentHuggingPriority (.defaultLow, for: .vertical)
+    checkbox.setButtonType (.switch)
 
-    imageView.tag = inRowIndex
-    imageView.isEditable = false
-    imageView.image = self.mValueGetterDelegate (inRowIndex)
-    return imageView
+    let editable = self.mValueSetterDelegate != nil
+    if let value = self.mValueGetterDelegate (inRowIndex) {
+      checkbox.state = value ? .on : .off
+      checkbox.isEnabled = editable
+    }else{
+      checkbox.isEnabled = false
+    }
+    if editable {
+      checkbox.tag = inRowIndex
+      checkbox.target = self
+      checkbox.action = #selector (Self.ebAction(_:))
+    }
+    return checkbox
+  }
+
+  //····················································································································
+
+  @objc func ebAction (_ inSender : Any?) {
+    if let checkbox = inSender as? NSButton {
+      let newValue = checkbox.state == .on
+      let rowIndex = checkbox.tag
+      self.tableView?.selectRowIndexes (IndexSet (integer: rowIndex), byExtendingSelection: false)
+      self.mValueSetterDelegate? (rowIndex, newValue)
+    }
   }
 
   //····················································································································
 
 }
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -10,7 +10,7 @@ import Cocoa
 //   AutoLayoutDoubleField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField, NSTextFieldDelegate {
+final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
@@ -62,10 +62,9 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField, NSTextFieldDeleg
   }
 
   //····················································································································
-  //    NSTextFieldDelegate delegate function
-  //····················································································································
 
-  func controlTextDidChange (_ inUnusedNotification : Notification) {
+  override func textDidChange (_ inNotification : Notification) {
+    super.textDidChange (inNotification)
     if self.isContinuous {
       if let inputString = currentEditor()?.string {
         // NSLog ("inputString %@", inputString)

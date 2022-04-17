@@ -85,7 +85,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
       minWidth: 60,
       maxWidth: 60,
       headerAlignment: .left,
-      contentAlignment: .left
+      contentAlignment: .center
     )
     self.mTableView.addColumn_Bool (
       valueGetterDelegate: { [weak self] in
@@ -114,7 +114,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
       minWidth: 60,
       maxWidth: 100,
       headerAlignment: .left,
-      contentAlignment: .left
+      contentAlignment: .center
     )
     self.mTableView.addColumn_NSImage_Int (
       valueGetterDelegate: { [weak self] in

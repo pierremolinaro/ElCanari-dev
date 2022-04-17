@@ -41,7 +41,7 @@ fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate,
       backing: .buffered,
       defer: false
     )
-    self.mOkButton = AutoLayoutSheetDefaultOkButton (title: inValidationButtonTitle, size: .regular, sheet: panel, isInitialFirstResponder: true)
+    self.mOkButton = AutoLayoutSheetDefaultOkButton (title: inValidationButtonTitle, size: .regular, sheet: panel)
  //--- No selected artwork message
     self.mNoSelectedArtworkMessage = AutoLayoutVerticalStackView ()
     self.mNoSelectedArtworkMessage.appendFlexibleSpace ()
@@ -181,7 +181,7 @@ fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate,
     mainView.appendView (gridView)
   //--- Last line (Cancel, Ok)
     let lastLine = AutoLayoutHorizontalStackView ()
-    let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false)
+    let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
     lastLine.appendView (cancelButton)
     lastLine.appendFlexibleSpace ()
     lastLine.appendView (self.mOkButton)

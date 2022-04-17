@@ -38,7 +38,7 @@ extension AutoLayoutProjectDocument {
       )
     //---
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
-      let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel, isInitialFirstResponder: true)
+      let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel)
     //---
       layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Package", bold: true, size: .regular))
       layoutView.appendFlexibleSpace ()
@@ -76,7 +76,7 @@ extension AutoLayoutProjectDocument {
     //---
       do{
         let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
         hStack.appendFlexibleSpace ()
         hStack.appendView (okButton)
         layoutView.appendView (hStack)

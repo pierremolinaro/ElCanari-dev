@@ -33,7 +33,7 @@ extension AutoLayoutMergerDocument {
         The contextual click enables to insert an array of models.
       """
     rightColumn.appendViewPreceededByFlexibleSpace (text)
-    let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: panel, isInitialFirstResponder: true)
+    let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: panel)
     rightColumn.appendViewPreceededByFlexibleSpace (okButton)
     mainView.appendViewPreceededByFlexibleSpace (rightColumn)
     panel.contentView = AutoLayoutWindowContentView (view: mainView)

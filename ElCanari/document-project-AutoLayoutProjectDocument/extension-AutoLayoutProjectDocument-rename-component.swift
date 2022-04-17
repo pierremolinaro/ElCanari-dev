@@ -33,7 +33,7 @@ fileprivate final class RenameContext : EBSwiftBaseObject {
     self.mComponentNewIndex = inComponent.mNameIndex
     self.mComponentCurrentPrefix = inComponent.mNamePrefix
     self.mComponentNewPrefix = inComponent.mNamePrefix
-    self.mOkButton = AutoLayoutSheetDefaultOkButton (title: "Rename", size: .regular, sheet: inPanel, isInitialFirstResponder: true)
+    self.mOkButton = AutoLayoutSheetDefaultOkButton (title: "Rename", size: .regular, sheet: inPanel)
     self.mDocument = inDocument
     super.init ()
   }
@@ -189,7 +189,7 @@ extension AutoLayoutProjectDocument {
     //---
       do{
         let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
         hStack.appendFlexibleSpace ()
         hStack.appendView (renameContext.mOkButton)
         layoutView.appendView (hStack)

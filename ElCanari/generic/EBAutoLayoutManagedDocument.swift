@@ -328,7 +328,7 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
     self.addWindowController (windowController)
   //--- Build user interface
     if let textField = self.mSplashTextField {
-      textField.stringValue = "Build User Interface…"
+      textField.stringValue = "Configuring User Interface…"
       RunLoop.current.run (until: Date ())
     }
     self.ebBuildUserInterface ()

@@ -44,8 +44,8 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
     root.boardInstances.all.instanceRect, root.boardInstances.all.boardLimitWidth
   ;
   action showPrefsForSettingMergerDisplayAction ;
-  tableViewController #mBoardModelController (allowsEmptySelection:no, allowsMultipleSelection:no) root.boardModels {
-    column name (title: "", minWidth: 100, maxWidth: 300, headerAlignment: .center, contentAlignment: .right)
+  tableViewController #mBoardModelController (allowsEmptySelection: no, allowsMultipleSelection: no) root.boardModels {
+    column name (title: "", minWidth: 100, maxWidth: 300, headerAlignment: .left, contentAlignment: .left)
   }
 
   action dismissDisplaySettingView ;

@@ -52,10 +52,10 @@ extension AutoLayoutProjectDocument {
         //---
           layoutView.appendView (gridView)
           layoutView.appendFlexibleSpace ()
-          let okButton = AutoLayoutSheetDefaultOkButton (title: "Change Value", size: .regular, sheet: panel, isInitialFirstResponder: true)
+          let okButton = AutoLayoutSheetDefaultOkButton (title: "Change Value", size: .regular, sheet: panel)
           do{
             let hStack = AutoLayoutHorizontalStackView ()
-            hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false))
+            hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
             hStack.appendFlexibleSpace ()
             hStack.appendView (okButton)
             layoutView.appendView (hStack)

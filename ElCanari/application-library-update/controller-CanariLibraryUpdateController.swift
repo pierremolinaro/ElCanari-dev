@@ -75,7 +75,7 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject, AutoLayoutTableVi
     self.mProgressIndicator.isIndeterminate = false
     lastLine.appendView (self.mProgressIndicator)
     lastLine.appendFlexibleSpace ()
-    self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: self.mLibraryUpdatePanel, isInitialFirstResponder: false)
+    self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
     lastLine.appendView (self.mCancelButton)
     self.mUpDateButton = AutoLayoutButton (title: "Update All", size: .regular)
     lastLine.appendView (self.mUpDateButton)

@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutBase_NSTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
+class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate, NSControlTextEditingDelegate {
 
   //····················································································································
 
@@ -37,6 +37,8 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
 
     self.setContentCompressionResistancePriority (.required, for: .vertical)
 
+    self.delegate = self
+
     self.controlSize = inSize.cocoaControlSize
     let size = NSFont.systemFontSize (for: self.controlSize)
     self.font = inBold ? NSFont.boldSystemFont (ofSize:size) : NSFont.systemFont (ofSize: size)
@@ -56,8 +58,8 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
   }
 
   //····················································································································
-
-  final override var acceptsFirstResponder: Bool { return true }
+  // NE PAS DÉFINIR acceptsFirstResponder, SINON UN CHAMP SANS SÉLECTION RESTE ACTIF
+  //  final override var acceptsFirstResponder: Bool { return true }
 
   //····················································································································
 
@@ -114,6 +116,23 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol {
         s.width = w
       }
       return s
+    }
+  }
+
+  //····················································································································
+  //   NSControlTextEditingDelegate
+  //····················································································································
+
+  func control (_ control: NSControl,
+                textView: NSTextView,
+                doCommandBy inCommandSelector: Selector) -> Bool {
+    Swift.print ("commandSelector \(inCommandSelector)")
+    if inCommandSelector == #selector (Self.insertLineBreak(_:)) {
+      return true
+    }else if inCommandSelector == #selector (Self.insertNewlineIgnoringFieldEditor(_:)) {
+      return true
+    }else{
+      return false
     }
   }
 

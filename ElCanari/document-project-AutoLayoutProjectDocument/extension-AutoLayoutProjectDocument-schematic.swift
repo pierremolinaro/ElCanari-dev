@@ -44,8 +44,7 @@ extension AutoLayoutProjectDocument {
       let okButton = AutoLayoutSheetDefaultOkButton (
         title: "Perform Undo to restore consistent state",
         size: .regular,
-        sheet: panel,
-        isInitialFirstResponder : true
+        sheet: panel
       )
       rightColumn.appendViewPreceededByFlexibleSpace (okButton)
       mainView.appendView (rightColumn)
