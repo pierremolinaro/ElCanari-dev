@@ -14,6 +14,10 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
+  private var mEventMonitor : Any? = nil // For tracking option key change
+
+  //····················································································································
+
   init (title inTitle : String,
         size inSize : EBControlSize,
         sheet inPanel : NSPanel) {
@@ -29,13 +33,17 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
     if let buttonCell = self.cell as? NSButtonCell {
       DispatchQueue.main.async { inPanel.defaultButtonCell = buttonCell }
     }
-//    if inInitialFirstResponder {
-//      DispatchQueue.main.async { inPanel.initialFirstResponder = self }
-//    }
-    self.keyEquivalent = "\u{0D}"
-    self.keyEquivalentModifierMask = .control
+//    self.keyEquivalent = "\u{0D}"
+//    self.keyEquivalentModifierMask = .control
 
     _ = self.setDismissAction ()
+
+    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .keyDown) {  [weak self] inEvent in
+      if let me = self, let myWindow = me.window, myWindow.isVisible, let characters = inEvent.characters, characters.contains ("\u{0D}") {
+        DispatchQueue.main.async { if me.isEnabled { me.dismissSheetAction (nil) } }
+      }
+      return inEvent
+    }
   }
 
   //····················································································································
@@ -49,10 +57,6 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
   deinit {
     noteObjectDeallocation (self)
   }
-
-  //····················································································································
-
-//  override var acceptsFirstResponder : Bool { return true }
 
   //····················································································································
 

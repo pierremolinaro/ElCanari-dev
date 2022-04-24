@@ -687,9 +687,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabel (title: "Net Class", bold: no, size: .small)
       PopUpButton (size: .small) [configurator selectedWireNetPopUpButtonConfigurator] { expandableWidth () }
+      space
     }
     separator
-    Button (title: "Merge Subnet into an Existing Net…", size: .small) {
+    Button (title: "Merge Subnet into Existing Net…", size: .small) {
       expandableWidth ()
       set (commandKeyEquivalent: "m")
       $run mergeSubnetIntoAnExistingNetForSelectedWireAction
@@ -730,7 +731,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       $selectedSegment #schematicLabelSelectionController.mOrientation
     }
     hStack {
-      StaticLabel (title: "Net", bold: no, size: .small)
+      StaticLabel (title: "Net", bold: no, size: .small) { notExpandableWidth () }
       Label (bold: yes, size: .small) { expandableWidth () set (alignment: .left) $title #schematicLabelSelectionController.netName }
     }
     Button (title: "Rename Net…", size: .small) {
@@ -749,7 +750,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       PopUpButton (size: .small) [configurator selectedLabelNetPopUpButtonConfigurator] { expandableWidth () }
     }
     separator
-    Button (title: "Merge Subnet into an Existing Net…", size: .small) {
+    Button (title: "Merge Subnet into Existing Net…", size: .small) {
       expandableWidth ()
       set (commandKeyEquivalent: "m")
       $run mergeSubnetIntoAnExistingNetForSelectedLabelAction
@@ -820,7 +821,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     separator
     hStack {
-      StaticLabel (title: "Component Name", bold: no, size: .small)
+      StaticLabel (title: "Component Name", bold: no, size: .small) { notExpandableWidth () }
       Label (bold: yes, size: .small) { expandableWidth () set (alignment: .left) $title #componentSymbolSelectionController.componentName }
     }
     Button (title: "Rename Component…", size: .small) {

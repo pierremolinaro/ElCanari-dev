@@ -34,6 +34,9 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
 
   private var mWidth : CGFloat? = nil
   private var mHeight : CGFloat? = nil
+  private var mKeyEquivalentDisplayed = false
+  private var mSavedTitle = ""
+  private var mEventMonitor : Any? = nil // For tracking option key change
 
   //····················································································································
 
@@ -54,7 +57,20 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
   final func set (commandKeyEquivalent inKeyEquivalent : String) -> Self {
     self.keyEquivalent = inKeyEquivalent
     self.keyEquivalentModifierMask = .command
-    self.title += " [⌘\(inKeyEquivalent.uppercased ())]"
+    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) {  [weak self] inEvent in
+      if let me = self {
+        let modifierFlagsContainsCommand = inEvent.modifierFlags.contains (.command)
+        if modifierFlagsContainsCommand, !me.mKeyEquivalentDisplayed {
+          me.mSavedTitle = me.title
+          me.title = "⌘\(me.keyEquivalent.uppercased ())"
+          me.mKeyEquivalentDisplayed = true
+        }else if !modifierFlagsContainsCommand, me.mKeyEquivalentDisplayed {
+          me.title = me.mSavedTitle
+          me.mKeyEquivalentDisplayed = false
+        }
+      }
+      return inEvent
+    }
     return self
   }
 

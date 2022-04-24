@@ -1580,11 +1580,13 @@ import Cocoa
         .expandableWidth ()
       self.configure_selectedWireNetPopUpButtonConfigurator (view_4_1) // Configurator
       view_4.appendView (view_4_1)
+      let view_4_2 = AutoLayoutFlexibleSpace ()
+      view_4.appendView (view_4_2)
     }
     vStackView.appendView (view_4)
     let view_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     vStackView.appendView (view_5)
-    let view_6 = AutoLayoutButton (title: "Merge Subnet into an Existing Net…", size: .small)
+    let view_6 = AutoLayoutButton (title: "Merge Subnet into Existing Net…", size: .small)
       .expandableWidth ()
       .set (commandKeyEquivalent: "m")
       .bind_enabled (. boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
@@ -1636,6 +1638,7 @@ import Cocoa
     let view_2 = AutoLayoutHorizontalStackView ()
     do{
       let view_2_0 = AutoLayoutStaticLabel (title: "Net", bold: false, size: .small)
+        .notExpandableWidth ()
       view_2.appendView (view_2_0)
       let view_2_1 = AutoLayoutLabel (bold: true, size: .small)
         .expandableWidth ()
@@ -1673,7 +1676,7 @@ import Cocoa
     vStackView.appendView (view_5)
     let view_6 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     vStackView.appendView (view_6)
-    let view_7 = AutoLayoutButton (title: "Merge Subnet into an Existing Net…", size: .small)
+    let view_7 = AutoLayoutButton (title: "Merge Subnet into Existing Net…", size: .small)
       .expandableWidth ()
       .set (commandKeyEquivalent: "m")
       .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
@@ -1752,6 +1755,7 @@ import Cocoa
     let view_3 = AutoLayoutHorizontalStackView ()
     do{
       let view_3_0 = AutoLayoutStaticLabel (title: "Component Name", bold: false, size: .small)
+        .notExpandableWidth ()
       view_3.appendView (view_3_0)
       let view_3_1 = AutoLayoutLabel (bold: true, size: .small)
         .expandableWidth ()
