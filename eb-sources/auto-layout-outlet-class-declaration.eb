@@ -456,9 +456,9 @@ extern autolayout class CanariPreferredDirectionSegmentedControl $enabled {
   $angle property Int
 }
 
-extern autolayout class CanariDefaultNetClassPopUpButton {
-  $netClasses property String, transient StringArray // Net class names
-}
+//extern autolayout class CanariDefaultNetClassPopUpButton {
+//  $netClasses property String, transient StringArray // Net class names
+//}
 
 extern autolayout class EnumSegmentedControl (titles: StringArray, equalWidth: Bool, size: EBControlSize) {
   $selectedSegment property enum

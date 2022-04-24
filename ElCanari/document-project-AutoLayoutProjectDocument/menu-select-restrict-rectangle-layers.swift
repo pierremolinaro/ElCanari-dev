@@ -12,6 +12,7 @@ import Cocoa
 
 final class CanariSelectRestrictRectanglesMenu : NSMenu, EBUserClassNameProtocol {
 
+
   //····················································································································
 
   private var mValue = 0

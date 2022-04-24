@@ -1272,19 +1272,14 @@ import Cocoa
         view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutFlexibleSpace ()
         view_0_0.appendView (view_0_0_1)
-        let view_0_0_2 = AutoLayoutDragSourceButton (tooltip: "Add Comment")
+        let view_0_0_2 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Comment")
         self.configure_addCommentInSchematicsButton (view_0_0_2) // Configurator
         view_0_0.appendView (view_0_0_2)
         let view_0_0_3 = AutoLayoutFlexibleSpace ()
         view_0_0.appendView (view_0_0_3)
-        let view_0_0_4 = AutoLayoutDragSourceButton (tooltip: "Add Wire; hint: option click starts a new wire.")
+        let view_0_0_4 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.")
         self.configure_addWireInschematicsButton (view_0_0_4) // Configurator
         view_0_0.appendView (view_0_0_4)
-        let view_0_0_5 = AutoLayoutFlexibleSpace ()
-        view_0_0.appendView (view_0_0_5)
-        let view_0_0_6 = AutoLayoutCanariDefaultNetClassPopUpButton ()
-          .bind_netClasses (self.rootObject.mDefaultNetClassName_property, self.rootObject.allClassNames_property)
-        view_0_0.appendView (view_0_0_6)
       }
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()

@@ -18,7 +18,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  final func configure_addWireInschematicsButton (_ inOutlet : AutoLayoutDragSourceButton) {
+  final func configure_addWireInschematicsButton (_ inOutlet : AutoLayoutDragSourceButtonWithMenus) {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: kDragAndDropWire,
@@ -26,6 +26,10 @@ extension AutoLayoutProjectDocument {
       scaleProvider: self.schematicObjectsController
     )
     inOutlet.set (image: NSImage (named: "track-in-board"))
+
+    let menu = CanariSelectDefaultNetClassMenu (size: .small)
+    inOutlet.set (rightContextualMenu: menu)
+    _ = menu.bind_netClasses (self.rootObject.mDefaultNetClassName_property, self.rootObject.allClassNames_property)
 //--- END OF USER ZONE 2
   }
 }

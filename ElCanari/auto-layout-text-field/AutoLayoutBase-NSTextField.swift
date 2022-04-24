@@ -20,6 +20,7 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
 
   //····················································································································
   // https://www.generacodice.com/en/articolo/4221090/how-to-let-nstextfield-grow-with-the-text-in-auto-layout
+  //····················································································································
 
   private var mAutomaticallyAdjustHeight = false
 

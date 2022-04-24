@@ -401,11 +401,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           add (item: menuItem "Move Selected Elements to Sheet…" $run moveSelectedToSheetInSchematicsAction )
         }
         space
-        DragSourceButton (tooltip: "Add Comment") [configurator addCommentInSchematicsButton]
+        DragSourceButtonWithMenus (tooltip: "Add Comment") [configurator addCommentInSchematicsButton]
         space
-        DragSourceButton (tooltip: "Add Wire; hint: option click starts a new wire.") [configurator addWireInschematicsButton]
-        space
-        CanariDefaultNetClassPopUpButton { $netClasses root.mDefaultNetClassName, root.allClassNames }
+        DragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.") [configurator addWireInschematicsButton]
+//        space
+//        CanariDefaultNetClassPopUpButton { $netClasses root.mDefaultNetClassName, root.allClassNames }
       }
       vStack {
         hStack set (leftMargin: 8) set (rightMargin: 8) {

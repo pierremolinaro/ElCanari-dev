@@ -18,7 +18,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  final func configure_addCommentInSchematicsButton (_ inOutlet : AutoLayoutDragSourceButton) {
+  final func configure_addCommentInSchematicsButton (_ inOutlet : AutoLayoutDragSourceButtonWithMenus) {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: kDragAndDropComment,
