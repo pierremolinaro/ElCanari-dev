@@ -127,10 +127,10 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   func control (_ control: NSControl,
                 textView: NSTextView,
                 doCommandBy inCommandSelector: Selector) -> Bool {
-    Swift.print ("commandSelector \(inCommandSelector)")
-    if inCommandSelector == #selector (Self.insertLineBreak(_:)) {
+    //Swift.print ("commandSelector \(inCommandSelector)")
+    if inCommandSelector == #selector (Self.insertLineBreak (_:)) {
       return true
-    }else if inCommandSelector == #selector (Self.insertNewlineIgnoringFieldEditor(_:)) {
+    }else if inCommandSelector == #selector (Self.insertNewlineIgnoringFieldEditor (_:)) {
       return true
     }else{
       return false

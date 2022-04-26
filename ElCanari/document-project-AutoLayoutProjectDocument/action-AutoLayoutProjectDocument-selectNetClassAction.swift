@@ -14,12 +14,8 @@ extension AutoLayoutProjectDocument {
   @objc func selectNetClassAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     if let netInfo = self.mNetInfoTableView?.selectedNet {
-//      let netInfo = netInfoTableView.selectedNet
-//      if idx >= 0 {
-//        let netInfo = netInfoTableView.object (at: idx)
-        let netName = netInfo.netName
-        self.dialogForSelectingNetClassForNet (named: netName)
-//      }
+      let netName = netInfo.netName
+      self.dialogForSelectingNetClassForNet (named: netName)
     }
 //--- END OF USER ZONE 2
   }

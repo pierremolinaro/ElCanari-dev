@@ -396,16 +396,16 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   stackView mSchematicPage hStack {
     vStack set (width: 250) set (spacing: 0) {
       hStack set (spacing: 0) set (margins: 8) {
+        space
         PullDownButton (title: "", size: .small) [configurator schematicPullDownButtonConfigurator] {
           add (item: menuItem "Select all Connected Elements" $run selectAllConnectedElementsInSchematicsAction )
           add (item: menuItem "Move Selected Elements to Sheet…" $run moveSelectedToSheetInSchematicsAction )
         }
         space
+        DragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.") [configurator addWireInschematicsButton]
+        space
         DragSourceButtonWithMenus (tooltip: "Add Comment") [configurator addCommentInSchematicsButton]
         space
-        DragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.") [configurator addWireInschematicsButton]
-//        space
-//        CanariDefaultNetClassPopUpButton { $netClasses root.mDefaultNetClassName, root.allClassNames }
       }
       vStack {
         hStack set (leftMargin: 8) set (rightMargin: 8) {

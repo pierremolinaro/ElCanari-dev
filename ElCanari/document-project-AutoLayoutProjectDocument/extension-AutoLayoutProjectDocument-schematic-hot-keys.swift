@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  fileprivate func color (_ inEnabled : Bool) -> NSColor {
+  fileprivate func color (forEnabledState inEnabled : Bool) -> NSColor {
     return inEnabled ? .black : .disabledControlTextColor
   }
 
@@ -27,26 +27,26 @@ extension AutoLayoutProjectDocument {
       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
       let wires = selectedSheet.wiresStrictlyContaining (point: canariUnalignedMouseDownLocation)
     //--- Connect
-      self.mConnectSchematicHotKeyTextField?.textColor = self.color (self.canConnect (points: points, wires: wires))
-      self.mConnectAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (self.canConnectSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
+      self.mConnectSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canConnect (points: points, wires: wires))
+      self.mConnectAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canConnectSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
     //--- Disconnect
-      self.mDisconnectSchematicHotKeyTextField?.textColor = self.color (self.canDisconnect (points: points))
-      self.mDisconnectAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (self.canDisconnectAllSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
+      self.mDisconnectSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canDisconnect (points: points))
+      self.mDisconnectAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canDisconnectAllSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
     //--- Add Point to wire
-      self.mAddWirePointSchematicHotKeyTextField?.textColor = self.color (self.canCreateWirePoint (wires: wires))
+      self.mAddWirePointSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canCreateWirePoint (wires: wires))
     //--- Remove Point from wire
-      self.mRemoveWirePointSchematicHotKeyTextField?.textColor = self.color (self.canRemovePointFromWire (points: points))
+      self.mRemoveWirePointSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canRemovePointFromWire (points: points))
     //--- Create label
-      let createLabelTextColor = self.color (self.canCreateLabels (points: points))
+      let createLabelTextColor = self.color (forEnabledState: self.canCreateLabels (points: points))
       self.mAddLeftLabelSchematicHotKeyTextField?.textColor = createLabelTextColor
       self.mAddRightLabelSchematicHotKeyTextField?.textColor = createLabelTextColor
       self.mAddTopLabelSchematicHotKeyTextField?.textColor = createLabelTextColor
       self.mAddBottomSchematicHotKeyTextField?.textColor = createLabelTextColor
     //--- Create NC
-      self.mAddNCSchematicHotKeyTextField?.textColor = self.color (self.canCreateNC (points: points))
-      self.mAddNCToAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
+      self.mAddNCSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canCreateNC (points: points))
+      self.mAddNCToAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
     //--- Exchange symbol
-      self.mExchangeSymbolSchematicHotKeyTextField?.textColor = self.color (self.canExchangeSymbol (at: canariUnalignedMouseDownLocation) != nil)
+      self.mExchangeSymbolSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canExchangeSymbol (at: canariUnalignedMouseDownLocation) != nil)
     }
   //---
     self.mBoardView?.mGraphicView.mOptionalFrontShape = nil

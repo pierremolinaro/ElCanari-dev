@@ -1265,21 +1265,25 @@ import Cocoa
         .set (spacing: 0)
         .set (margins: 8)
       do{
-        let view_0_0_0 = AutoLayoutPullDownButton (title: "", size: .small)
+        let view_0_0_0 = AutoLayoutFlexibleSpace ()
+        view_0_0.appendView (view_0_0_0)
+        let view_0_0_1 = AutoLayoutPullDownButton (title: "", size: .small)
           .add (item: AutoLayoutMenuItemDescriptor (title: "Select all Connected Elements", target: self, selector: #selector (AutoLayoutProjectDocument.selectAllConnectedElementsInSchematicsAction (_:)), enableBinding: .alwaysTrue))
           .add (item: AutoLayoutMenuItemDescriptor (title: "Move Selected Elements to Sheet…", target: self, selector: #selector (AutoLayoutProjectDocument.moveSelectedToSheetInSchematicsAction (_:)), enableBinding: .alwaysTrue))
-        self.configure_schematicPullDownButtonConfigurator (view_0_0_0) // Configurator
-        view_0_0.appendView (view_0_0_0)
-        let view_0_0_1 = AutoLayoutFlexibleSpace ()
+        self.configure_schematicPullDownButtonConfigurator (view_0_0_1) // Configurator
         view_0_0.appendView (view_0_0_1)
-        let view_0_0_2 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Comment")
-        self.configure_addCommentInSchematicsButton (view_0_0_2) // Configurator
+        let view_0_0_2 = AutoLayoutFlexibleSpace ()
         view_0_0.appendView (view_0_0_2)
-        let view_0_0_3 = AutoLayoutFlexibleSpace ()
+        let view_0_0_3 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.")
+        self.configure_addWireInschematicsButton (view_0_0_3) // Configurator
         view_0_0.appendView (view_0_0_3)
-        let view_0_0_4 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.")
-        self.configure_addWireInschematicsButton (view_0_0_4) // Configurator
+        let view_0_0_4 = AutoLayoutFlexibleSpace ()
         view_0_0.appendView (view_0_0_4)
+        let view_0_0_5 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Comment")
+        self.configure_addCommentInSchematicsButton (view_0_0_5) // Configurator
+        view_0_0.appendView (view_0_0_5)
+        let view_0_0_6 = AutoLayoutFlexibleSpace ()
+        view_0_0.appendView (view_0_0_6)
       }
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
