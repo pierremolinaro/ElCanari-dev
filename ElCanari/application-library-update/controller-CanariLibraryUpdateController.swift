@@ -14,7 +14,7 @@ private let parallelDownloadCount = 4
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariLibraryUpdateController : EBSwiftBaseObject, AutoLayoutTableViewDelegate {
+final class CanariLibraryUpdateController : EBSwiftBaseObject { // , AutoLayoutTableViewDelegate {
 
   private var mCurrentActionArray : [LibraryOperationElement]
   private var mCurrentParallelActionCount = 0
@@ -89,7 +89,7 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject, AutoLayoutTableVi
       allowsEmptySelection: false,
       allowsMultipleSelection: false,
       rowCountCallBack: { [weak self] in self?.mCurrentActionArray.count ?? 0 },
-      delegate: self
+      delegate: nil
     )
     self.mTableView.addColumn_String (
       valueGetterDelegate: { [weak self] in self?.mCurrentActionArray [$0].mRelativePath },
@@ -141,24 +141,24 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject, AutoLayoutTableVi
   //  AutoLayoutTableViewDelegate methods
   //····················································································································
 
-  func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
-  }
-
-  func indexesOfSelectedObjects() -> IndexSet {
-    return IndexSet ()
-  }
-
-  func addEntry () {
-  }
-
-  func removeSelectedEntries () {
-  }
-
-  func beginSorting() {
-  }
-
-  func endSorting() {
-  }
+//  func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
+//  }
+//
+//  func indexesOfSelectedObjects() -> IndexSet {
+//    return IndexSet ()
+//  }
+//
+//  func addEntry () {
+//  }
+//
+//  func removeSelectedEntries () {
+//  }
+//
+//  func beginSorting() {
+//  }
+//
+//  func endSorting() {
+//  }
 
   //····················································································································
   //   launchElementDownload

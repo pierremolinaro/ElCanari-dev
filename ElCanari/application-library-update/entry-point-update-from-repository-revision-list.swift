@@ -163,7 +163,7 @@ final class LibraryRevisionDescriptor : EBSwiftBaseObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class LibraryCommitListController : EBSwiftBaseObject, AutoLayoutTableViewDelegate {
+fileprivate final class LibraryCommitListController : EBSwiftBaseObject { // , AutoLayoutTableViewDelegate {
 
   //····················································································································
   //   Properties
@@ -185,7 +185,7 @@ fileprivate final class LibraryCommitListController : EBSwiftBaseObject, AutoLay
       allowsEmptySelection: false,
       allowsMultipleSelection: false,
       rowCountCallBack: { [weak self] in self?.mRevisions.count ?? 0 },
-      delegate: self
+      delegate: nil
     )
     self.mTableView.addColumn_Int (
       valueGetterDelegate: { [weak self] in self?.mRevisions [$0].mCommitIndex },
@@ -224,24 +224,24 @@ fileprivate final class LibraryCommitListController : EBSwiftBaseObject, AutoLay
   //   AutoLayoutTableViewDelegate
   //····················································································································
 
-  func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
-  }
-
-  func indexesOfSelectedObjects() -> IndexSet {
-    return IndexSet ()
-  }
-
-  func addEntry () {
-  }
-
-  func removeSelectedEntries() {
-  }
-
-  func beginSorting() {
-  }
-
-  func endSorting () {
-  }
+//  func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
+//  }
+//
+//  func indexesOfSelectedObjects() -> IndexSet {
+//    return IndexSet ()
+//  }
+//
+//  func addEntry () {
+//  }
+//
+//  func removeSelectedEntries() {
+//  }
+//
+//  func beginSorting() {
+//  }
+//
+//  func endSorting () {
+//  }
 
   //····················································································································
 

@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutCanariProjectDevicePackageTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariProjectDevicePackageTableView : AutoLayoutTableView, AutoLayoutTableViewDelegate {
+final class AutoLayoutCanariProjectDevicePackageTableView : AutoLayoutTableView { // , AutoLayoutTableViewDelegate {
 
   //····················································································································
   // INIT
@@ -30,7 +30,7 @@ final class AutoLayoutCanariProjectDevicePackageTableView : AutoLayoutTableView,
       allowsEmptySelection: true,
       allowsMultipleSelection: false,
       rowCountCallBack: { [weak self] in self?.mModelArray.count ?? 0 },
-      delegate: self
+      delegate: nil
     )
     self.addColumn_String (
       valueGetterDelegate: { [weak self] (_ inRow : Int) in return self?.mModelArray [inRow] },
@@ -65,40 +65,34 @@ final class AutoLayoutCanariProjectDevicePackageTableView : AutoLayoutTableView,
   //  AutoLayoutTableViewDelegate functions
   //····················································································································
 
-//  func rowCount () -> Int {
-//    return self.mModelArray.count
+//  func tableViewSelectionDidChange(selectedRows inSelectedRows: IndexSet) {
 //  }
-
-  //····················································································································
-
-  func tableViewSelectionDidChange(selectedRows inSelectedRows: IndexSet) {
-  }
-
-  //····················································································································
-
-  func indexesOfSelectedObjects() -> IndexSet {
-    return IndexSet ()
-  }
-
-  //····················································································································
-
-  func addEntry() {
-  }
-
-  //····················································································································
-
-  func removeSelectedEntries() {
-  }
-
-  //····················································································································
-
-  func beginSorting() {
-  }
-
-  //····················································································································
-
-  func endSorting () {
-  }
+//
+//  //····················································································································
+//
+//  func indexesOfSelectedObjects() -> IndexSet {
+//    return IndexSet ()
+//  }
+//
+//  //····················································································································
+//
+//  func addEntry() {
+//  }
+//
+//  //····················································································································
+//
+//  func removeSelectedEntries() {
+//  }
+//
+//  //····················································································································
+//
+//  func beginSorting() {
+//  }
+//
+//  //····················································································································
+//
+//  func endSorting () {
+//  }
 
   //····················································································································
   //    $array binding

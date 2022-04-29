@@ -133,7 +133,7 @@ private var gDebugObject : EBAllocationDebug? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewDelegate {
+final class EBAllocationDebug : NSObject, NSWindowDelegate {
 
   //····················································································································
   //   Properties
@@ -207,7 +207,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
       allowsEmptySelection: false,
       allowsMultipleSelection: false,
       rowCountCallBack: { [weak self] in self?.mAllocationStatsDataSource.count ?? 0 },
-      delegate: self
+      delegate: nil
     )
     _ = self.mStatsTableView.setIntercellSpacing (horizontal: 0, vertical: 5)
     self.mStatsTableView.addColumn_String (
@@ -430,34 +430,34 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate, AutoLayoutTableViewD
   //   IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
 
-  func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
-  }
-
-  //····················································································································
-
-  func indexesOfSelectedObjects () -> IndexSet {
-    return .init ()
-  }
-
-  //····················································································································
-
-  func addEntry () {
-  }
-
-  //····················································································································
-
-  func removeSelectedEntries () {
-  }
-
-  //····················································································································
-
-  func beginSorting () {
-  }
-
-  //····················································································································
-
-  func endSorting () {
-  }
+//  func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
+//  }
+//
+//  //····················································································································
+//
+//  func indexesOfSelectedObjects () -> IndexSet {
+//    return .init ()
+//  }
+//
+//  //····················································································································
+//
+//  func addEntry () {
+//  }
+//
+//  //····················································································································
+//
+//  func removeSelectedEntries () {
+//  }
+//
+//  //····················································································································
+//
+//  func beginSorting () {
+//  }
+//
+//  //····················································································································
+//
+//  func endSorting () {
+//  }
 
   //····················································································································
 
