@@ -33,8 +33,8 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
   //····················································································································
 
   private var mWidth : CGFloat? = nil
+  private var mTemporaryWidthOnControlKey : CGFloat? = nil
   private var mHeight : CGFloat? = nil
-  private var mKeyEquivalentDisplayed = false
   private var mSavedTitle = ""
   private var mEventMonitor : Any? = nil // For tracking option key change
 
@@ -57,16 +57,16 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
   final func set (commandKeyEquivalent inKeyEquivalent : String) -> Self {
     self.keyEquivalent = inKeyEquivalent
     self.keyEquivalentModifierMask = .command
-    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) {  [weak self] inEvent in
+    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { [weak self] inEvent in
       if let me = self {
         let modifierFlagsContainsCommand = inEvent.modifierFlags.contains (.command)
-        if modifierFlagsContainsCommand, !me.mKeyEquivalentDisplayed {
+        if modifierFlagsContainsCommand, me.mTemporaryWidthOnControlKey == nil {
           me.mSavedTitle = me.title
+          me.mTemporaryWidthOnControlKey = me.alignmentRect (forFrame: me.frame).width
           me.title = "⌘\(me.keyEquivalent.uppercased ())"
-          me.mKeyEquivalentDisplayed = true
-        }else if !modifierFlagsContainsCommand, me.mKeyEquivalentDisplayed {
+        }else if !modifierFlagsContainsCommand, me.mTemporaryWidthOnControlKey != nil {
           me.title = me.mSavedTitle
-          me.mKeyEquivalentDisplayed = false
+          me.mTemporaryWidthOnControlKey = nil
         }
       }
       return inEvent
@@ -78,6 +78,9 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
 
   override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
+    if let w = self.mTemporaryWidthOnControlKey {
+      s.width = w
+    }
     if let w = self.mWidth {
       s.width = w
     }
