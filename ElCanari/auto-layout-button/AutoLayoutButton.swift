@@ -1,6 +1,6 @@
 //
 //  AutoLayoutButton.swift
-//  essai-custom-stack-view
+//  ElCanari
 //
 //  Created by Pierre Molinaro on 19/10/2019.
 //  Copyright © 2019 Pierre Molinaro. All rights reserved.
