@@ -56,7 +56,7 @@ extension SheetInProject {
         if point.mLabels.count > 0 { errorFlags |= 16 }
         if point.mNet != nil { errorFlags |= 32 }
         if errorFlags != 0 {
-          ioErrorList.append ("Error \(errorFlags) for NC point \(point.objectIdentifier)")
+          ioErrorList.append ("Error 0x\(String (errorFlags, radix: 16, uppercase: true)) for NC point 0x\(String (point.objectIdentifier, radix: 16, uppercase: true))")
         }
       }else{
         var errorFlags : UInt32 = 0
@@ -65,7 +65,7 @@ extension SheetInProject {
         if point.mSymbol != nil { connectionCount += 1 }
         if connectionCount == 0 { errorFlags |= 2 }
         if errorFlags != 0 {
-          ioErrorList.append ("Error \(errorFlags) for point \(point.objectIdentifier)")
+          ioErrorList.append ("Error 0x\(String (errorFlags, radix: 16, uppercase: true)) for point 0x\(String (point.objectIdentifier, radix: 16, uppercase: true))")
         }
         exploreSet.insert (point)
       }

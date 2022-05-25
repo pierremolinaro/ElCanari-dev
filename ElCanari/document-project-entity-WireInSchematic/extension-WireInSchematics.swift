@@ -173,13 +173,13 @@ extension WireInSchematic {
   //····················································································································
 
   func move_WireInSchematic (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+                             proposedDx inDx: Int,
+                             proposedDy inDy: Int,
+                             unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                             unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                             alignedMouseLocationX inAlignedMouseLocationX : Int,
+                             alignedMouseLocationY inAlignedMouseLocationY : Int,
+                             shift inShift : Bool) {
     if inKnobIndex == WIRE_CENTER_KNOB, let p1 = self.mP1, p1.mSymbol == nil, let p2 = self.mP2, p2.mSymbol == nil {
       p1.mX += inDx
       p1.mY += inDy
@@ -200,10 +200,14 @@ extension WireInSchematic {
 
   func operationBeforeRemoving_WireInSchematic () {
     var pointSet = EBReferenceSet <PointInSchematic> ()
-    pointSet.insert (self.mP1!)
-    pointSet.insert (self.mP2!)
-    self.mP1 = nil // Detach from point
-    self.mP2 = nil // Detach from point
+    if let p1 = self.mP1 {
+      pointSet.insert (p1)
+      self.mP1 = nil // Detach from point
+    }
+    if let p2 = self.mP2 {
+      pointSet.insert (p2)
+      self.mP2 = nil // Detach from point
+    }
     self.mSheet?.updateConnections (pointSet : pointSet)
   }
 
