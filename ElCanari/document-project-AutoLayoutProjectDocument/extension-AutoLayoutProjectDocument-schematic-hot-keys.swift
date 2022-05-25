@@ -44,7 +44,10 @@ extension AutoLayoutProjectDocument {
       self.mAddBottomSchematicHotKeyTextField?.textColor = createLabelTextColor
     //--- Create NC
       self.mAddNCSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canCreateNC (points: points))
+    //--- Create NC to all symbol pins
       self.mAddNCToAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
+    //--- Create Label to all symbol pins
+      self.mAddLabelToAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
     //--- Exchange symbol
       self.mExchangeSymbolSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canExchangeSymbol (at: canariUnalignedMouseDownLocation) != nil)
     }
@@ -110,15 +113,20 @@ extension AutoLayoutProjectDocument {
         if disconnectableSymbols.count > 0 {
           self.disconnectAllPins (ofSymbols: disconnectableSymbols)
         }
+      case UnicodeScalar ("F"), UnicodeScalar ("f") :
+        let symbolsForAddingNCorLabel = self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation)
+        if symbolsForAddingNCorLabel.count > 0 {
+          self.addLabelToUnconnectedPins (ofSymbols: symbolsForAddingNCorLabel)
+        }
       case UnicodeScalar ("L"), UnicodeScalar ("l") :
         let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
         if self.canCreateLabels (points: points) {
           self.addLabelInSchematic (at: canariAlignedMouseDownLocation, orientation: .rotation180)
         }
       case UnicodeScalar ("M"), UnicodeScalar ("m") :
-        let symbolsForAddingNS = self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation)
-        if symbolsForAddingNS.count > 0 {
-          self.addNCToUnconnectedPins (ofSymbols: symbolsForAddingNS)
+        let symbolsForAddingNCorLabel = self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation)
+        if symbolsForAddingNCorLabel.count > 0 {
+          self.addNCToUnconnectedPins (ofSymbols: symbolsForAddingNCorLabel)
         }
       case UnicodeScalar ("N"), UnicodeScalar ("n") :
         let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)

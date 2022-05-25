@@ -137,7 +137,7 @@ extension NCInSchematic {
     if let p = self.mPoint {
       self.mPoint = nil // Detach from point
     //--- L'affectation suivante est inutile si le graphe d'objets n'a pas d'erreur, normalement un
-    //    le point associé à NC n'a pas de net. En cas d'erreur, un net est affecté par erreur, le lien est défait
+    //    le point associé à NC n'a pas de net. En cas d'erreur, si un net est affecté par erreur, le lien est défait
       p.mNet = nil
     }
   }

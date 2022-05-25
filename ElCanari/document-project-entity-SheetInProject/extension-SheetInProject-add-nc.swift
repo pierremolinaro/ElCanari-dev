@@ -14,6 +14,23 @@ extension SheetInProject {
 
   //····················································································································
 
+  func addLabelToPin (toPoint inPoint : PointInSchematic,
+                      newNetCreator inNewNetCreator : () -> NetInProject) -> LabelInSchematic? {
+    let isConnected = inPoint.isConnected ?? true
+    if !isConnected {
+      let label = LabelInSchematic (self.ebUndoManager)
+      inPoint.mNet = inNewNetCreator ()
+      label.mPoint = inPoint
+      label.mOrientation = self.findPreferredNCOrientation (for: inPoint)
+      self.mObjects.append (label)
+      return label
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
   func addNCToPin (toPoint inPoint : PointInSchematic) -> NCInSchematic? {
     let isConnected = inPoint.isConnected ?? true
     if !isConnected {

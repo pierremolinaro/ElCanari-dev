@@ -154,9 +154,8 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-
   //····················································································································
-  // Add NC to all unconnected pins
+  // Add NC, Label to all unconnected pins
   //····················································································································
 
   func canAddNCToSymbolPins (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
@@ -181,7 +180,19 @@ extension AutoLayoutProjectDocument {
       if menu.numberOfItems > 0 {
         menu.addItem (.separator ())
       }
-      let menuItem = NSMenuItem (title: "Add NC to All Unconnected Pins", action: #selector (Self.addNCToUnconnectedSymbolPinsAction (_:)), keyEquivalent: "")
+      var menuItem = NSMenuItem (
+        title: "Add NC to All Unconnected Pins",
+        action: #selector (Self.addNCToUnconnectedSymbolPinsAction (_:)),
+        keyEquivalent: ""
+      )
+      menuItem.target = self
+      menuItem.representedObject = symbols
+      menu.addItem (menuItem)
+      menuItem = NSMenuItem (
+        title: "Add a Label to All Unconnected Pins",
+        action: #selector (Self.addLabelToUnconnectedSymbolPinsAction (_:)),
+        keyEquivalent: ""
+      )
       menuItem.target = self
       menuItem.representedObject = symbols
       menu.addItem (menuItem)
@@ -198,11 +209,31 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
+  @objc private func addLabelToUnconnectedSymbolPinsAction (_ inSender : NSMenuItem) {
+    if let symbols = inSender.representedObject as? [ComponentSymbolInProject] {
+      self.addLabelToUnconnectedPins (ofSymbols: symbols)
+    }
+  }
+
+  //····················································································································
+
   func addNCToUnconnectedPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       for symbol in inSymbols {
         for point in symbol.mPoints.values {
           _ = selectedSheet.addNCToPin (toPoint: point)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  func addLabelToUnconnectedPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
+    if let selectedSheet = self.rootObject.mSelectedSheet {
+      for symbol in inSymbols {
+        for point in symbol.mPoints.values {
+          _ = selectedSheet.addLabelToPin (toPoint: point, newNetCreator: self.rootObject.createNetWithAutomaticName)
         }
       }
     }

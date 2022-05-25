@@ -615,6 +615,7 @@ import Cocoa
   //····················································································································
 
   weak final var mAddBottomSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
+  weak final var mAddLabelToAllSymbolPinsSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
   weak final var mAddLeftLabelSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
   weak final var mAddNCSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
   weak final var mAddNCToAllSymbolPinsSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
@@ -1379,46 +1380,51 @@ import Cocoa
       .set (alignment: .left)
     self.mDisconnectAllSymbolPinsSchematicHotKeyTextField = view_5 // Outlet
     vStackView.appendView (view_5)
-    let view_6 = AutoLayoutStaticLabel (title: "[L] Add Left Label", bold: false, size: .small)
+    let view_6 = AutoLayoutStaticLabel (title: "[F] Set NC to Symbol Pins", bold: false, size: .small)
       .expandableWidth ()
       .set (alignment: .left)
-    self.mAddLeftLabelSchematicHotKeyTextField = view_6 // Outlet
+    self.mAddLabelToAllSymbolPinsSchematicHotKeyTextField = view_6 // Outlet
     vStackView.appendView (view_6)
-    let view_7 = AutoLayoutStaticLabel (title: "[M] Set NC to Symbol Pins", bold: false, size: .small)
+    let view_7 = AutoLayoutStaticLabel (title: "[L] Add Left Label", bold: false, size: .small)
       .expandableWidth ()
       .set (alignment: .left)
-    self.mAddNCToAllSymbolPinsSchematicHotKeyTextField = view_7 // Outlet
+    self.mAddLeftLabelSchematicHotKeyTextField = view_7 // Outlet
     vStackView.appendView (view_7)
-    let view_8 = AutoLayoutStaticLabel (title: "[N] Set NC", bold: false, size: .small)
+    let view_8 = AutoLayoutStaticLabel (title: "[M] Set NC to Symbol Pins", bold: false, size: .small)
       .expandableWidth ()
       .set (alignment: .left)
-    self.mAddNCSchematicHotKeyTextField = view_8 // Outlet
+    self.mAddNCToAllSymbolPinsSchematicHotKeyTextField = view_8 // Outlet
     vStackView.appendView (view_8)
-    let view_9 = AutoLayoutStaticLabel (title: "[P] Remove Wire Point", bold: false, size: .small)
+    let view_9 = AutoLayoutStaticLabel (title: "[N] Set NC", bold: false, size: .small)
       .expandableWidth ()
       .set (alignment: .left)
-    self.mRemoveWirePointSchematicHotKeyTextField = view_9 // Outlet
+    self.mAddNCSchematicHotKeyTextField = view_9 // Outlet
     vStackView.appendView (view_9)
-    let view_10 = AutoLayoutStaticLabel (title: "[R] Add Right Label", bold: false, size: .small)
+    let view_10 = AutoLayoutStaticLabel (title: "[P] Remove Wire Point", bold: false, size: .small)
       .expandableWidth ()
       .set (alignment: .left)
-    self.mAddRightLabelSchematicHotKeyTextField = view_10 // Outlet
+    self.mRemoveWirePointSchematicHotKeyTextField = view_10 // Outlet
     vStackView.appendView (view_10)
-    let view_11 = AutoLayoutStaticLabel (title: "[T] Add Top Label", bold: false, size: .small)
+    let view_11 = AutoLayoutStaticLabel (title: "[R] Add Right Label", bold: false, size: .small)
       .expandableWidth ()
       .set (alignment: .left)
-    self.mAddTopLabelSchematicHotKeyTextField = view_11 // Outlet
+    self.mAddRightLabelSchematicHotKeyTextField = view_11 // Outlet
     vStackView.appendView (view_11)
-    let view_12 = AutoLayoutStaticLabel (title: "[X] Exchange Symbol…", bold: false, size: .small)
+    let view_12 = AutoLayoutStaticLabel (title: "[T] Add Top Label", bold: false, size: .small)
       .expandableWidth ()
       .set (alignment: .left)
-    self.mExchangeSymbolSchematicHotKeyTextField = view_12 // Outlet
+    self.mAddTopLabelSchematicHotKeyTextField = view_12 // Outlet
     vStackView.appendView (view_12)
-    let view_13 = AutoLayoutStaticLabel (title: "[W] Insert Wire Point", bold: false, size: .small)
+    let view_13 = AutoLayoutStaticLabel (title: "[X] Exchange Symbol…", bold: false, size: .small)
       .expandableWidth ()
       .set (alignment: .left)
-    self.mAddWirePointSchematicHotKeyTextField = view_13 // Outlet
+    self.mExchangeSymbolSchematicHotKeyTextField = view_13 // Outlet
     vStackView.appendView (view_13)
+    let view_14 = AutoLayoutStaticLabel (title: "[W] Insert Wire Point", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
+    self.mAddWirePointSchematicHotKeyTextField = view_14 // Outlet
+    vStackView.appendView (view_14)
     return vStackView
   } ()
 
