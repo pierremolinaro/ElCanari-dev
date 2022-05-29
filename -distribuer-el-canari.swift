@@ -33,10 +33,10 @@ let MAC_OS_MINIMUM_VERSION = "10.13"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Correction lecture format texte"
 ]
 let CHANGES : [String] = [
-  "Utilisation de Sparkle 2.0.0"
+  "L'interface utilisateur de tous les documents est réalisé au moyen de l'Auto Layout",
+  "Utilisation de Sparkle 2.1.0"
 ]
 let NEWS : [String] = [
 ]
