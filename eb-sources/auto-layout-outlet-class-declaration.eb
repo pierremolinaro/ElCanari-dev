@@ -168,6 +168,8 @@ extern autolayout class Button (title: String, size: EBControlSize) $enabled $ru
   func expandableWidth ()
   func expandableHeight ()
   func set (commandKeyEquivalent: String)
+  func setEscapeKeyAsKeyEquivalent ()
+  func setDeleteKeyAsKeyEquivalent ()
   func set (width: Int)
   func set (height: Int)
 }

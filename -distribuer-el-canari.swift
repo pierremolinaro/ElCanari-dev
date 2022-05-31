@@ -28,17 +28,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.5.0"
+let VERSION_CANARI = "1.5.1"
 let MAC_OS_MINIMUM_VERSION = "10.13"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
-  "L'interface utilisateur de tous les documents est réalisé au moyen de l'Auto Layout",
-  "Utilisation de Sparkle 2.1.0"
 ]
 let NEWS : [String] = [
+  "Onglet « Components » : prise en compte de la touche DELETE pour retirer un composant"
 ]
 
 //--------------------------------------------------------------------------------------------------

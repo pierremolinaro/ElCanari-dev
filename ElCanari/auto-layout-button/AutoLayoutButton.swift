@@ -54,6 +54,20 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
 
   //····················································································································
 
+  final func setEscapeKeyAsKeyEquivalent () -> Self {
+    self.keyEquivalent = "\u{1b}"
+    return self
+  }
+
+  //····················································································································
+
+  final func setDeleteKeyAsKeyEquivalent () -> Self {
+    self.keyEquivalent = "\u{7F}"
+    return self
+  }
+
+  //····················································································································
+
   final func set (commandKeyEquivalent inKeyEquivalent : String) -> Self {
     self.keyEquivalent = inKeyEquivalent
     self.keyEquivalentModifierMask = .command

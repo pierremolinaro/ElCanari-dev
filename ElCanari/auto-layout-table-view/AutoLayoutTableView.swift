@@ -337,6 +337,8 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  // MARK: Drag
+  //····················································································································
 
   func set (draggedTypes inDraggedTypes : [NSPasteboard.PasteboardType],
             dragFilterCallBack inFilterCallBack : @escaping ([URL]) -> Bool,
@@ -346,8 +348,6 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
     self.mDragFilterCallBack = inFilterCallBack
   }
 
-  //····················································································································
-  // MARK: -
   //····················································································································
 
   override func draggingEntered (_ inSender : NSDraggingInfo) -> NSDragOperation {
@@ -391,7 +391,7 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //  $enabled binding
+  //MARK:  $enabled binding
   //····················································································································
 
   private var mEnabledBindingController : EnabledBindingController? = nil

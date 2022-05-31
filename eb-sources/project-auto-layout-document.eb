@@ -83,6 +83,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       Button (title: "Remove", size: .small) {
         expandableWidth ()
+        setDeleteKeyAsKeyEquivalent ()
         $run removeSelectedComponentsAction
         $enabled #componentController.selectedArray.count > 0
       }

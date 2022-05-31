@@ -898,6 +898,7 @@ import Cocoa
       view_0.appendView (view_0_8)
       let view_0_9 = AutoLayoutButton (title: "Remove", size: .small)
         .expandableWidth ()
+        .setDeleteKeyAsKeyEquivalent ()
         .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
