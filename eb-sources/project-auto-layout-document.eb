@@ -512,11 +512,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           )
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Cross Grid Color", bold: no, size : .small),
-            right: hStack { ColorWell { $color prefs.dotColorGridForSchematic (sendContinously:yes) } space }
+            right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.dotColorGridForSchematic (sendContinously:yes) } space }
           )
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Line Grid Color", bold: no, size : .small),
-            right: hStack { ColorWell { $color prefs.lineColorGridForSchematic (sendContinously:yes) } space }
+            right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForSchematic (sendContinously:yes) } space }
           )
         }
       )
@@ -525,11 +525,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           set (margins: 8)
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Symbols, unplaced Component", bold: no, size : .small),
-            right: ColorWell { $color prefs.symbolColorForUnplacedComponentsForSchematic (sendContinously:yes) } 
+            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColorForUnplacedComponentsForSchematic (sendContinously:yes) } 
           )
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Symbols, placed Component", bold: no, size : .small),
-            right: ColorWell { $color prefs.symbolColorForSchematic (sendContinously:yes) } 
+            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColorForSchematic (sendContinously:yes) } 
           )
           add (single:
             hStack {
@@ -548,40 +548,40 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           addSeparator ()
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Component Name", bold: no, size : .small),
-            right: ColorWell { $color prefs.componentNameColorForSchematic (sendContinously:yes) } 
+            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.componentNameColorForSchematic (sendContinously:yes) } 
           )
           add (single: FontButton (size: .small) { $fontValue prefs.componentNameFontForSchematic })
           addSeparator ()
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Component Value", bold: no, size : .small),
-            right: ColorWell { $color prefs.componentValueColorForSchematic (sendContinously:yes) } 
+            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.componentValueColorForSchematic (sendContinously:yes) } 
           )
           add (single: FontButton (size: .small) { $fontValue prefs.componentValueFontForSchematic })
           addSeparator ()
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Pin Name", bold: no, size : .small),
-            right: ColorWell { $color prefs.pinNameColorForSchematic (sendContinously:yes) } 
+            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.pinNameColorForSchematic (sendContinously:yes) } 
           )
           add (single: FontButton (size: .small) { $fontValue prefs.pinNameFontForSchematic })
           addSeparator ()
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Pin Number", bold: no, size : .small),
-            right: ColorWell { $color prefs.pinNumberColorForSchematic (sendContinously:yes) } 
+            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.pinNumberColorForSchematic (sendContinously:yes) } 
           )
           add (single: FontButton (size: .small) { $fontValue prefs.pinNumberFontForSchematic })
           addSeparator ()
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Connection", bold: no, size : .small),
-            right: ColorWell { $color prefs.connectionColorForSchematic (sendContinously:yes) } 
+            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.connectionColorForSchematic (sendContinously:yes) } 
           )
           addSeparator ()
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Background Color", bold: no, size : .small),
-            right: ColorWell { $color prefs.schematicBackColor (sendContinously:yes) }
+            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.schematicBackColor (sendContinously:yes) }
           )
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Frame Color", bold: no, size : .small),
-            right: ColorWell { $color prefs.schematicFrameColor (sendContinously:yes) }
+            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.schematicFrameColor (sendContinously:yes) }
           )
         }
       )
@@ -1209,7 +1209,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     VerticalScrollView (content:
       GridView2 {
         add (
-          single: hStack { StaticLabel (title: "Grid and Flip Inspector", bold: yes, size: .small) space}
+          single: hStack { StaticLabel (title: "Grid and Flip", bold: yes, size: .small) space}
         )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Grid Step", bold: no, size: .small),
@@ -1241,16 +1241,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Cross Grid", bold: no, size: .small),
-          right: hStack { ColorWell { $color prefs.crossColorGridForBoard (sendContinously:yes) } space }
+          right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.crossColorGridForBoard (sendContinously:yes) } space }
         )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Line Grid", bold: no, size: .small),
-          right: hStack { ColorWell { $color prefs.lineColorGridForBoard (sendContinously:yes) } space }
+          right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForBoard (sendContinously:yes) } space }
         )
-        addFirstBaseLineAligned (
-          left: hStack { StaticLabel (title: "Rastnet", bold: yes, size: .small) space},
-          right: EnumPopUpButton (titles: enum RastnetDisplay.popupTitles, size: .small) { $selectedIndex root.mRastnetDisplay }
-        )
+        add (single: StaticLabel (title: "Rastnet", bold: yes, size: .small) { expandableWidth () set (alignment: .left) } )
+        add (single: EnumPopUpButton (titles: enum RastnetDisplay.popupTitles, size: .small) { $selectedIndex root.mRastnetDisplay } )
         add (
           single: CanariSelectionPopUpButton (size: .small) {
             $selectedNameInArray root.mRastnetDisplayedNetName, root.netNamesArray
@@ -1275,110 +1273,105 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         add (
           single: LinearSlider (min: 10, max: 200, ticks: 10) { $doubleValue root.mControlKeyHiliteDiameter (sendContinously : yes) }
         )
-        add (
-          single: hStack { StaticLabel (title: "Display Inspector", bold: yes, size: .small) space}
-        )
-        addFirstBaseLineAligned (
-          left: StaticLabel (title: "Pad Number", bold: no, size: .small),
-          right: FontButton (size: .small) { $fontValue prefs.padNumberFontForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.frontSidePadColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Front Side Pads", size : .small)  { expandableHeight  () $value prefs.displayFrontPadsForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.backSidePadColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Back Side Pads", size : .small)  { expandableHeight  () $value prefs.displayBackPadsForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.padNumberColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Pad Numbers", size : .small)  { expandableHeight  () $value prefs.displayPadNumbersForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: StaticLabel (title: "Package Width", bold: no, size: .small),
-          right: TaggedPopUpButton (size: .small) {
+        add (single: StaticLabel (title: "Pad Number", bold: yes, size: .small) { expandableWidth () set (alignment: .left) } )
+        add (single: FontButton (size: .small) { $fontValue prefs.padNumberFontForBoard } )
+        add (single: StaticLabel (title: "Package Width", bold: yes, size: .small) { expandableWidth () set (alignment: .left) } )
+        add (single: TaggedPopUpButton (size: .small) {
             add (title: "0.5 Point",   withTag:  5)
             add (title: "1.0 Point",  withTag:  10)
             add (title: "1.5 Point",  withTag:  15)
             add (title: "2.0 Point",  withTag:  20)
             add (title: "2.5 Point",  withTag:  25)
-            $selectedTag prefs.packageDrawingWidthMultpliedByTenForBoard
+            $selectedTag root.packageDrawingWidthMultpliedByTenForBoard
           }
         )
+        add (single: StaticLabel (title: "Display", bold: yes, size: .small) { expandableWidth () set (alignment: .left)})
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.frontSideLegendColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Front Side Legend", size : .small)  { expandableHeight  () $value prefs.displayFrontLegendForBoard }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Front Side Pads", size : .small)  { expandableHeight  () $value root.displayFrontPadsForBoard }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.backSideLegendColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Back Side Legend", size : .small)  { expandableHeight  () $value prefs.displayFrontLegendForBoard }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Back Side Pads", size : .small)  { expandableHeight  () $value root.displayBackPadsForBoard }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.frontSideLayoutColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Front Side Layout", size : .small)  { expandableHeight  () $value prefs.displayFrontLayoutForBoard }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Pad Numbers", size : .small)  { expandableHeight  () $value root.displayPadNumbersForBoard }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.inner1LayoutColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Inner 1 Layout", size : .small)  { expandableHeight  () $value prefs.displayInner1LayoutForBoard }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLegendColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Front Side Legend", size : .small)  { expandableHeight  () $value root.displayFrontLegendForBoard }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.inner2LayoutColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Inner 2 Layout", size : .small)  { expandableHeight  () $value prefs.displayInner2LayoutForBoard }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLegendColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Back Side Legend", size : .small)  { expandableHeight  () $value root.displayFrontLegendForBoard }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.inner3LayoutColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Inner 3 Layout", size : .small)  { expandableHeight  () $value prefs.displayInner3LayoutForBoard }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLayoutColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Front Side Layout", size : .small)  { expandableHeight  () $value root.displayFrontLayoutForBoard }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.inner4LayoutColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Inner 4 Layout", size : .small)  { expandableHeight  () $value prefs.displayInner4LayoutForBoard }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner1LayoutColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Inner 1 Layout", size : .small)  { expandableHeight  () $value root.displayInner1LayoutForBoard }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.backSideLayoutColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Back Side Layout", size : .small)  { expandableHeight  () $value prefs.displayBackLayoutForBoard }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2LayoutColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Inner 2 Layout", size : .small)  { expandableHeight  () $value root.displayInner2LayoutForBoard }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.frontSideRestrictRectangleColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Front Layer Restrict Rect.", size : .small)  { expandableHeight  () $value prefs.displayFrontRestrictRectangles }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3LayoutColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Inner 3 Layout", size : .small)  { expandableHeight  () $value root.displayInner3LayoutForBoard }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.backSideRestrictRectangleColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Back Layer Restrict Rect.", size : .small)  { expandableHeight  () $value prefs.displayBackRestrictRectangles }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4LayoutColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Inner 4 Layout", size : .small)  { expandableHeight  () $value root.displayInner4LayoutForBoard }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.inner1SideRestrictRectangleColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Inner1 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value prefs.displayInner1RestrictRectangles }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLayoutColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Back Side Layout", size : .small)  { expandableHeight  () $value root.displayBackLayoutForBoard }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.inner2SideRestrictRectangleColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Inner2 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value prefs.displayInner2RestrictRectangles }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideRestrictRectangleColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Front Layer Restrict Rect.", size : .small)  { expandableHeight  () $value root.displayFrontRestrictRectangles }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.inner3SideRestrictRectangleColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Inner3 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value prefs.displayInner3RestrictRectangles }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideRestrictRectangleColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Back Layer Restrict Rect.", size : .small)  { expandableHeight  () $value root.displayBackRestrictRectangles }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.inner4SideRestrictRectangleColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Inner4 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value prefs.displayInner4RestrictRectangles }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner1SideRestrictRectangleColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Inner1 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value root.displayInner1RestrictRectangles }
+        )
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2SideRestrictRectangleColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Inner2 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value root.displayInner2RestrictRectangles }
+        )
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3SideRestrictRectangleColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Inner3 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value root.displayInner3RestrictRectangles }
+        )
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4SideRestrictRectangleColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Inner4 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value root.displayInner4RestrictRectangles }
         )
         addCenterYAligned (
-          left: hStack { space ColorWell { $color prefs.boardLimitsColorForBoard (sendContinously:yes) } },
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardLimitsColorForBoard (sendContinously:yes) } },
           right: hStack { StaticLabel (title: "Board Limits", bold: no, size : .small) space }
         )
         addCenterYAligned (
-          left: hStack { space ColorWell { $color prefs.boardClearanceColorForBoard (sendContinously:yes) } },
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardClearanceColorForBoard (sendContinously:yes) } },
           right: hStack { StaticLabel (title: "Board Clearance", bold: no, size : .small) space }
         )
         addCenterYAligned (
-          left: hStack { space ColorWell { $color prefs.boardBackgroundColorForBoard (sendContinously:yes) } },
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardBackgroundColorForBoard (sendContinously:yes) } },
           right: hStack { StaticLabel (title: "Background", bold: no, size : .small) space }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.errorBackgroundColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Error Background", size : .small)  { expandableHeight  () $value prefs.drawErrorBackgroundForBoard }
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.errorBackgroundColorForBoard (sendContinously:yes) } },
+          right: Checkbox (title: "Error Background", size : .small)  { expandableHeight  () $value root.drawErrorBackgroundForBoard }
         )
         addFirstBaseLineAligned (
-          left: hStack { space ColorWell { $color prefs.warningBackgroundColorForBoard (sendContinously:yes) } },
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.warningBackgroundColorForBoard (sendContinously:yes) } },
           right: Checkbox (title: "Warning Background", size : .small)  { expandableHeight  () $value prefs.drawWarningBackgroundForBoard }
         )
       }

@@ -24,16 +24,16 @@ func transient_ComponentInProject_objectDisplay (
        _ self_mDisplayLegend : Bool,             
        _ prefs_frontSideLegendColorForBoard : NSColor,
        _ prefs_backSideLegendColorForBoard : NSColor,
-       _ prefs_packageDrawingWidthMultpliedByTenForBoard : Int,
+       _ self_BoardObject_packageDrawingWidthMultpliedByTenForBoard : Int,
        _ prefs_frontSidePadColorForBoard : NSColor,
-       _ prefs_displayFrontPadsForBoard : Bool,  
+       _ self_BoardObject_displayFrontPadsForBoard : Bool,
        _ prefs_backSidePadColorForBoard : NSColor,
-       _ prefs_displayBackPadsForBoard : Bool,   
-       _ prefs_displayFrontLegendForBoard : Bool,
-       _ prefs_displayBackLegendForBoard : Bool, 
+       _ self_BoardObject_displayBackPadsForBoard : Bool,
+       _ self_BoardObject_displayFrontLegendForBoard : Bool,
+       _ self_BoardObject_displayBackLegendForBoard : Bool,
        _ prefs_padNumberFontForBoard : NSFont,   
        _ prefs_padNumberColorForBoard : NSColor, 
-       _ prefs_displayPadNumbersForBoard : Bool, 
+       _ self_BoardObject_displayPadNumbersForBoard : Bool,
        _ self_mNameIsVisibleInBoard : Bool,      
        _ self_mXName : Int,                      
        _ self_mYName : Int,                      
@@ -52,7 +52,7 @@ func transient_ComponentInProject_objectDisplay (
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let padDisplayAttributes : [NSAttributedString.Key : Any]?
-        if prefs_displayPadNumbersForBoard {
+        if self_BoardObject_displayPadNumbersForBoard {
           padDisplayAttributes = [
             NSAttributedString.Key.font : prefs_padNumberFontForBoard,
             NSAttributedString.Key.foregroundColor : prefs_padNumberColorForBoard
@@ -68,14 +68,14 @@ func transient_ComponentInProject_objectDisplay (
           switch self_mSide {
           case .front :
             color = prefs_frontSideLegendColorForBoard
-            display = prefs_displayFrontLegendForBoard
+            display = self_BoardObject_displayFrontLegendForBoard
           case .back  :
             color = prefs_backSideLegendColorForBoard
-            display = prefs_displayBackLegendForBoard
+            display = self_BoardObject_displayBackLegendForBoard
           }
           if display {
             var strokeBezierPath = self_strokeBezierPath
-            strokeBezierPath.lineWidth = CGFloat (prefs_packageDrawingWidthMultpliedByTenForBoard) / 10.0
+            strokeBezierPath.lineWidth = CGFloat (self_BoardObject_packageDrawingWidthMultpliedByTenForBoard) / 10.0
             strokeBezierPath.lineCapStyle = .round
             strokeBezierPath.lineJoinStyle = .round
             rotatedShape.add (stroke: [strokeBezierPath], color)
@@ -95,8 +95,8 @@ func transient_ComponentInProject_objectDisplay (
             side: self_mSide,
             padDisplayAttributes: padDisplayAttributes,
             padNumberAF: padNumberAffineTransform,
-            frontPadColor: prefs_displayFrontPadsForBoard ? prefs_frontSidePadColorForBoard : nil,
-            backPadColor: prefs_displayBackPadsForBoard ? prefs_backSidePadColorForBoard : nil,
+            frontPadColor: self_BoardObject_displayFrontPadsForBoard ? prefs_frontSidePadColorForBoard : nil,
+            backPadColor: self_BoardObject_displayBackPadsForBoard ? prefs_backSidePadColorForBoard : nil,
             padNetDictionary: self_padNetDictionary
           )
         }

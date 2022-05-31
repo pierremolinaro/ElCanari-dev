@@ -160,7 +160,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     GridView2 {
       addCenterYAligned (
         left: StaticLabel (title: "Background", bold: no, size: .small),
-        right: hStack { ColorWell { $color prefs.mSymbolBackColorForDevice (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mSymbolBackColorForDevice (sendContinously:no) } space }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Flip", bold: no, size: .small),
@@ -172,7 +172,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       )
       addCenterYAligned (
         left: StaticLabel (title: "Symbol Color", bold: no, size: .small),
-        right: hStack { ColorWell { $color prefs.mSymbolColorForDevice (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mSymbolColorForDevice (sendContinously:no) } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Symbol Width", bold: no, size: .small),
@@ -232,7 +232,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     GridView2 {
       addCenterYAligned (
         left: StaticLabel (title: "Background", bold: no, size: .small),
-        right: hStack { ColorWell { $color prefs.mPackageBackColorForDevice (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPackageBackColorForDevice (sendContinously:no) } space }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Flip", bold: no, size: .small),
@@ -244,7 +244,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       )
       addCenterYAligned (
         left: StaticLabel (title: "Package", bold: no, size: .small),
-        right: hStack { ColorWell { $color prefs.mPackageColorForDevice (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPackageColorForDevice (sendContinously:no) } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Package Width", bold: no, size: .small),
@@ -259,15 +259,15 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       )
       addCenterYAligned (
         left: StaticLabel (title: "Front Side Pad", bold: no, size: .small),
-        right: hStack { ColorWell { $color prefs.mFrontSidePadColorForDevice (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mFrontSidePadColorForDevice (sendContinously:no) } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Back Side Pad", bold: no, size: .small),
-        right: hStack { ColorWell { $color prefs.mBottomSidePadColorForDevice (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mBottomSidePadColorForDevice (sendContinously:no) } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Pad Number", bold: no, size: .small),
-        right: hStack { ColorWell {  $color prefs.mPadNumberColorForDevice (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPadNumberColorForDevice (sendContinously:no) } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Pad Number Font", bold: no, size: .small),
@@ -296,22 +296,22 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       space
     }
     hStack setCenterYAlignment () {
-      ColorWell { expandableHeight () $color prefs.packageColor (sendContinously: no) }
+      ColorWell { expandableHeight () set (toolTip: "Stored in Preferences") $color prefs.packageColor (sendContinously: no) }
       Checkbox (title: "Display Packages", size : .small) { $value root.mShowPackages }
       space
     }
     hStack setCenterYAlignment () {
-      ColorWell { expandableHeight () $color prefs.padNumberColor (sendContinously: no) }
+      ColorWell { expandableHeight () set (toolTip: "Stored in Preferences") $color prefs.padNumberColor (sendContinously: no) }
       Checkbox (title: "Display Pad Numbers", size : .small) { $value root.mShowPackagePadNumbers }
       space
     }
     hStack setCenterYAlignment () {
-      ColorWell { expandableHeight () $color prefs.frontSidePadColor (sendContinously: no) }
+      ColorWell { expandableHeight () set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColor (sendContinously: no) }
       Checkbox (title: "Display Front Side Pads", size : .small) { $value root.mShowPackageFrontPads }
       space
     }
     hStack setCenterYAlignment () {
-      ColorWell { expandableHeight () $color prefs.backSidePadColor (sendContinously: no) }
+      ColorWell { expandableHeight () set (toolTip: "Stored in Preferences") $color prefs.backSidePadColor (sendContinously: no) }
       Checkbox (title: "Display Back Side Pads", size : .small) { $value root.mShowPackageBackPads }
       space
     }

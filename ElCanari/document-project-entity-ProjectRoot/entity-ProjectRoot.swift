@@ -426,6 +426,120 @@ protocol ProjectRoot_mSchematicCustomHeightUnit : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_drawErrorBackgroundForBoard : AnyObject {
+  var drawErrorBackgroundForBoard : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayFrontRestrictRectangles : AnyObject {
+  var displayFrontRestrictRectangles : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayBackRestrictRectangles : AnyObject {
+  var displayBackRestrictRectangles : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayInner1RestrictRectangles : AnyObject {
+  var displayInner1RestrictRectangles : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayInner2RestrictRectangles : AnyObject {
+  var displayInner2RestrictRectangles : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayInner3RestrictRectangles : AnyObject {
+  var displayInner3RestrictRectangles : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayInner4RestrictRectangles : AnyObject {
+  var displayInner4RestrictRectangles : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayFrontLegendForBoard : AnyObject {
+  var displayFrontLegendForBoard : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayFrontLayoutForBoard : AnyObject {
+  var displayFrontLayoutForBoard : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayBackLayoutForBoard : AnyObject {
+  var displayBackLayoutForBoard : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayInner1LayoutForBoard : AnyObject {
+  var displayInner1LayoutForBoard : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayInner2LayoutForBoard : AnyObject {
+  var displayInner2LayoutForBoard : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayInner3LayoutForBoard : AnyObject {
+  var displayInner3LayoutForBoard : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayInner4LayoutForBoard : AnyObject {
+  var displayInner4LayoutForBoard : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayBackLegendForBoard : AnyObject {
+  var displayBackLegendForBoard : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayFrontPadsForBoard : AnyObject {
+  var displayFrontPadsForBoard : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayBackPadsForBoard : AnyObject {
+  var displayBackPadsForBoard : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_displayPadNumbersForBoard : AnyObject {
+  var displayPadNumbersForBoard : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_packageDrawingWidthMultpliedByTenForBoard : AnyObject {
+  var packageDrawingWidthMultpliedByTenForBoard : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mSchematicSheetOrientation : AnyObject {
   var mSchematicSheetOrientation : SchematicSheetOrientation { get }
 }
@@ -925,6 +1039,25 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicCustomWidthUnit,
          ProjectRoot_mSchematicCustomHeight,
          ProjectRoot_mSchematicCustomHeightUnit,
+         ProjectRoot_drawErrorBackgroundForBoard,
+         ProjectRoot_displayFrontRestrictRectangles,
+         ProjectRoot_displayBackRestrictRectangles,
+         ProjectRoot_displayInner1RestrictRectangles,
+         ProjectRoot_displayInner2RestrictRectangles,
+         ProjectRoot_displayInner3RestrictRectangles,
+         ProjectRoot_displayInner4RestrictRectangles,
+         ProjectRoot_displayFrontLegendForBoard,
+         ProjectRoot_displayFrontLayoutForBoard,
+         ProjectRoot_displayBackLayoutForBoard,
+         ProjectRoot_displayInner1LayoutForBoard,
+         ProjectRoot_displayInner2LayoutForBoard,
+         ProjectRoot_displayInner3LayoutForBoard,
+         ProjectRoot_displayInner4LayoutForBoard,
+         ProjectRoot_displayBackLegendForBoard,
+         ProjectRoot_displayFrontPadsForBoard,
+         ProjectRoot_displayBackPadsForBoard,
+         ProjectRoot_displayPadNumbersForBoard,
+         ProjectRoot_packageDrawingWidthMultpliedByTenForBoard,
          ProjectRoot_mSchematicSheetOrientation,
          ProjectRoot_mRastnetDisplay,
          ProjectRoot_mRastnetDisplayedNetName,
@@ -2340,6 +2473,367 @@ final class ProjectRoot : EBManagedObject,
   final var mSchematicCustomHeightUnit : Int {
     get { return self.mSchematicCustomHeightUnit_property.propval }
     set { self.mSchematicCustomHeightUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: drawErrorBackgroundForBoard
+  //····················································································································
+
+  final let drawErrorBackgroundForBoard_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_drawErrorBackgroundForBoard_toDefaultValue () {
+    self.drawErrorBackgroundForBoard = true
+  }
+
+  //····················································································································
+
+  final var drawErrorBackgroundForBoard : Bool {
+    get { return self.drawErrorBackgroundForBoard_property.propval }
+    set { self.drawErrorBackgroundForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayFrontRestrictRectangles
+  //····················································································································
+
+  final let displayFrontRestrictRectangles_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayFrontRestrictRectangles_toDefaultValue () {
+    self.displayFrontRestrictRectangles = true
+  }
+
+  //····················································································································
+
+  final var displayFrontRestrictRectangles : Bool {
+    get { return self.displayFrontRestrictRectangles_property.propval }
+    set { self.displayFrontRestrictRectangles_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayBackRestrictRectangles
+  //····················································································································
+
+  final let displayBackRestrictRectangles_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayBackRestrictRectangles_toDefaultValue () {
+    self.displayBackRestrictRectangles = true
+  }
+
+  //····················································································································
+
+  final var displayBackRestrictRectangles : Bool {
+    get { return self.displayBackRestrictRectangles_property.propval }
+    set { self.displayBackRestrictRectangles_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayInner1RestrictRectangles
+  //····················································································································
+
+  final let displayInner1RestrictRectangles_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayInner1RestrictRectangles_toDefaultValue () {
+    self.displayInner1RestrictRectangles = true
+  }
+
+  //····················································································································
+
+  final var displayInner1RestrictRectangles : Bool {
+    get { return self.displayInner1RestrictRectangles_property.propval }
+    set { self.displayInner1RestrictRectangles_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayInner2RestrictRectangles
+  //····················································································································
+
+  final let displayInner2RestrictRectangles_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayInner2RestrictRectangles_toDefaultValue () {
+    self.displayInner2RestrictRectangles = true
+  }
+
+  //····················································································································
+
+  final var displayInner2RestrictRectangles : Bool {
+    get { return self.displayInner2RestrictRectangles_property.propval }
+    set { self.displayInner2RestrictRectangles_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayInner3RestrictRectangles
+  //····················································································································
+
+  final let displayInner3RestrictRectangles_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayInner3RestrictRectangles_toDefaultValue () {
+    self.displayInner3RestrictRectangles = true
+  }
+
+  //····················································································································
+
+  final var displayInner3RestrictRectangles : Bool {
+    get { return self.displayInner3RestrictRectangles_property.propval }
+    set { self.displayInner3RestrictRectangles_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayInner4RestrictRectangles
+  //····················································································································
+
+  final let displayInner4RestrictRectangles_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayInner4RestrictRectangles_toDefaultValue () {
+    self.displayInner4RestrictRectangles = true
+  }
+
+  //····················································································································
+
+  final var displayInner4RestrictRectangles : Bool {
+    get { return self.displayInner4RestrictRectangles_property.propval }
+    set { self.displayInner4RestrictRectangles_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayFrontLegendForBoard
+  //····················································································································
+
+  final let displayFrontLegendForBoard_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayFrontLegendForBoard_toDefaultValue () {
+    self.displayFrontLegendForBoard = true
+  }
+
+  //····················································································································
+
+  final var displayFrontLegendForBoard : Bool {
+    get { return self.displayFrontLegendForBoard_property.propval }
+    set { self.displayFrontLegendForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayFrontLayoutForBoard
+  //····················································································································
+
+  final let displayFrontLayoutForBoard_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayFrontLayoutForBoard_toDefaultValue () {
+    self.displayFrontLayoutForBoard = true
+  }
+
+  //····················································································································
+
+  final var displayFrontLayoutForBoard : Bool {
+    get { return self.displayFrontLayoutForBoard_property.propval }
+    set { self.displayFrontLayoutForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayBackLayoutForBoard
+  //····················································································································
+
+  final let displayBackLayoutForBoard_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayBackLayoutForBoard_toDefaultValue () {
+    self.displayBackLayoutForBoard = true
+  }
+
+  //····················································································································
+
+  final var displayBackLayoutForBoard : Bool {
+    get { return self.displayBackLayoutForBoard_property.propval }
+    set { self.displayBackLayoutForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayInner1LayoutForBoard
+  //····················································································································
+
+  final let displayInner1LayoutForBoard_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayInner1LayoutForBoard_toDefaultValue () {
+    self.displayInner1LayoutForBoard = true
+  }
+
+  //····················································································································
+
+  final var displayInner1LayoutForBoard : Bool {
+    get { return self.displayInner1LayoutForBoard_property.propval }
+    set { self.displayInner1LayoutForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayInner2LayoutForBoard
+  //····················································································································
+
+  final let displayInner2LayoutForBoard_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayInner2LayoutForBoard_toDefaultValue () {
+    self.displayInner2LayoutForBoard = true
+  }
+
+  //····················································································································
+
+  final var displayInner2LayoutForBoard : Bool {
+    get { return self.displayInner2LayoutForBoard_property.propval }
+    set { self.displayInner2LayoutForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayInner3LayoutForBoard
+  //····················································································································
+
+  final let displayInner3LayoutForBoard_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayInner3LayoutForBoard_toDefaultValue () {
+    self.displayInner3LayoutForBoard = true
+  }
+
+  //····················································································································
+
+  final var displayInner3LayoutForBoard : Bool {
+    get { return self.displayInner3LayoutForBoard_property.propval }
+    set { self.displayInner3LayoutForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayInner4LayoutForBoard
+  //····················································································································
+
+  final let displayInner4LayoutForBoard_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayInner4LayoutForBoard_toDefaultValue () {
+    self.displayInner4LayoutForBoard = true
+  }
+
+  //····················································································································
+
+  final var displayInner4LayoutForBoard : Bool {
+    get { return self.displayInner4LayoutForBoard_property.propval }
+    set { self.displayInner4LayoutForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayBackLegendForBoard
+  //····················································································································
+
+  final let displayBackLegendForBoard_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayBackLegendForBoard_toDefaultValue () {
+    self.displayBackLegendForBoard = true
+  }
+
+  //····················································································································
+
+  final var displayBackLegendForBoard : Bool {
+    get { return self.displayBackLegendForBoard_property.propval }
+    set { self.displayBackLegendForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayFrontPadsForBoard
+  //····················································································································
+
+  final let displayFrontPadsForBoard_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayFrontPadsForBoard_toDefaultValue () {
+    self.displayFrontPadsForBoard = true
+  }
+
+  //····················································································································
+
+  final var displayFrontPadsForBoard : Bool {
+    get { return self.displayFrontPadsForBoard_property.propval }
+    set { self.displayFrontPadsForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayBackPadsForBoard
+  //····················································································································
+
+  final let displayBackPadsForBoard_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayBackPadsForBoard_toDefaultValue () {
+    self.displayBackPadsForBoard = true
+  }
+
+  //····················································································································
+
+  final var displayBackPadsForBoard : Bool {
+    get { return self.displayBackPadsForBoard_property.propval }
+    set { self.displayBackPadsForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: displayPadNumbersForBoard
+  //····················································································································
+
+  final let displayPadNumbersForBoard_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayPadNumbersForBoard_toDefaultValue () {
+    self.displayPadNumbersForBoard = true
+  }
+
+  //····················································································································
+
+  final var displayPadNumbersForBoard : Bool {
+    get { return self.displayPadNumbersForBoard_property.propval }
+    set { self.displayPadNumbersForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: packageDrawingWidthMultpliedByTenForBoard
+  //····················································································································
+
+  final let packageDrawingWidthMultpliedByTenForBoard_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_packageDrawingWidthMultpliedByTenForBoard_toDefaultValue () {
+    self.packageDrawingWidthMultpliedByTenForBoard = 5
+  }
+
+  //····················································································································
+
+  final var packageDrawingWidthMultpliedByTenForBoard : Int {
+    get { return self.packageDrawingWidthMultpliedByTenForBoard_property.propval }
+    set { self.packageDrawingWidthMultpliedByTenForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -3913,6 +4407,25 @@ final class ProjectRoot : EBManagedObject,
     self.mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     self.mSchematicCustomHeight_property = EBStoredProperty_Int (defaultValue: 27000000, undoManager: ebUndoManager)
     self.mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.drawErrorBackgroundForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayFrontRestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayBackRestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayInner1RestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayInner2RestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayInner3RestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayInner4RestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayFrontLegendForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayFrontLayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayBackLayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayInner1LayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayInner2LayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayInner3LayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayInner4LayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayBackLegendForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayFrontPadsForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayBackPadsForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayPadNumbersForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.packageDrawingWidthMultpliedByTenForBoard_property = EBStoredProperty_Int (defaultValue: 5, undoManager: ebUndoManager)
     self.mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.a4Horizontal, undoManager: ebUndoManager)
     self.mRastnetDisplay_property = EBStoredProperty_RastnetDisplay (defaultValue: RastnetDisplay.allNets, undoManager: ebUndoManager)
     self.mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
@@ -6032,6 +6545,158 @@ final class ProjectRoot : EBManagedObject,
         valueExplorer: &self.mSchematicCustomHeightUnit_property.mValueExplorer
       )
       createEntryForPropertyNamed (
+        "drawErrorBackgroundForBoard",
+        object: self.drawErrorBackgroundForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.drawErrorBackgroundForBoard_property.mObserverExplorer,
+        valueExplorer: &self.drawErrorBackgroundForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayFrontRestrictRectangles",
+        object: self.displayFrontRestrictRectangles_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayFrontRestrictRectangles_property.mObserverExplorer,
+        valueExplorer: &self.displayFrontRestrictRectangles_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayBackRestrictRectangles",
+        object: self.displayBackRestrictRectangles_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayBackRestrictRectangles_property.mObserverExplorer,
+        valueExplorer: &self.displayBackRestrictRectangles_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner1RestrictRectangles",
+        object: self.displayInner1RestrictRectangles_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner1RestrictRectangles_property.mObserverExplorer,
+        valueExplorer: &self.displayInner1RestrictRectangles_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner2RestrictRectangles",
+        object: self.displayInner2RestrictRectangles_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner2RestrictRectangles_property.mObserverExplorer,
+        valueExplorer: &self.displayInner2RestrictRectangles_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner3RestrictRectangles",
+        object: self.displayInner3RestrictRectangles_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner3RestrictRectangles_property.mObserverExplorer,
+        valueExplorer: &self.displayInner3RestrictRectangles_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner4RestrictRectangles",
+        object: self.displayInner4RestrictRectangles_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner4RestrictRectangles_property.mObserverExplorer,
+        valueExplorer: &self.displayInner4RestrictRectangles_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayFrontLegendForBoard",
+        object: self.displayFrontLegendForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayFrontLegendForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayFrontLegendForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayFrontLayoutForBoard",
+        object: self.displayFrontLayoutForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayFrontLayoutForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayFrontLayoutForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayBackLayoutForBoard",
+        object: self.displayBackLayoutForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayBackLayoutForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayBackLayoutForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner1LayoutForBoard",
+        object: self.displayInner1LayoutForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner1LayoutForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayInner1LayoutForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner2LayoutForBoard",
+        object: self.displayInner2LayoutForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner2LayoutForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayInner2LayoutForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner3LayoutForBoard",
+        object: self.displayInner3LayoutForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner3LayoutForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayInner3LayoutForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner4LayoutForBoard",
+        object: self.displayInner4LayoutForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner4LayoutForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayInner4LayoutForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayBackLegendForBoard",
+        object: self.displayBackLegendForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayBackLegendForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayBackLegendForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayFrontPadsForBoard",
+        object: self.displayFrontPadsForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayFrontPadsForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayFrontPadsForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayBackPadsForBoard",
+        object: self.displayBackPadsForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayBackPadsForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayBackPadsForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayPadNumbersForBoard",
+        object: self.displayPadNumbersForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayPadNumbersForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayPadNumbersForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "packageDrawingWidthMultpliedByTenForBoard",
+        object: self.packageDrawingWidthMultpliedByTenForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.packageDrawingWidthMultpliedByTenForBoard_property.mObserverExplorer,
+        valueExplorer: &self.packageDrawingWidthMultpliedByTenForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
         "mSchematicSheetOrientation",
         object: self.mSchematicSheetOrientation_property,
         y: &y,
@@ -6783,6 +7448,63 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: mSchematicCustomHeightUnit
     self.mSchematicCustomHeightUnit_property.mObserverExplorer = nil
     self.mSchematicCustomHeightUnit_property.mValueExplorer = nil
+  //--- Atomic property: drawErrorBackgroundForBoard
+    self.drawErrorBackgroundForBoard_property.mObserverExplorer = nil
+    self.drawErrorBackgroundForBoard_property.mValueExplorer = nil
+  //--- Atomic property: displayFrontRestrictRectangles
+    self.displayFrontRestrictRectangles_property.mObserverExplorer = nil
+    self.displayFrontRestrictRectangles_property.mValueExplorer = nil
+  //--- Atomic property: displayBackRestrictRectangles
+    self.displayBackRestrictRectangles_property.mObserverExplorer = nil
+    self.displayBackRestrictRectangles_property.mValueExplorer = nil
+  //--- Atomic property: displayInner1RestrictRectangles
+    self.displayInner1RestrictRectangles_property.mObserverExplorer = nil
+    self.displayInner1RestrictRectangles_property.mValueExplorer = nil
+  //--- Atomic property: displayInner2RestrictRectangles
+    self.displayInner2RestrictRectangles_property.mObserverExplorer = nil
+    self.displayInner2RestrictRectangles_property.mValueExplorer = nil
+  //--- Atomic property: displayInner3RestrictRectangles
+    self.displayInner3RestrictRectangles_property.mObserverExplorer = nil
+    self.displayInner3RestrictRectangles_property.mValueExplorer = nil
+  //--- Atomic property: displayInner4RestrictRectangles
+    self.displayInner4RestrictRectangles_property.mObserverExplorer = nil
+    self.displayInner4RestrictRectangles_property.mValueExplorer = nil
+  //--- Atomic property: displayFrontLegendForBoard
+    self.displayFrontLegendForBoard_property.mObserverExplorer = nil
+    self.displayFrontLegendForBoard_property.mValueExplorer = nil
+  //--- Atomic property: displayFrontLayoutForBoard
+    self.displayFrontLayoutForBoard_property.mObserverExplorer = nil
+    self.displayFrontLayoutForBoard_property.mValueExplorer = nil
+  //--- Atomic property: displayBackLayoutForBoard
+    self.displayBackLayoutForBoard_property.mObserverExplorer = nil
+    self.displayBackLayoutForBoard_property.mValueExplorer = nil
+  //--- Atomic property: displayInner1LayoutForBoard
+    self.displayInner1LayoutForBoard_property.mObserverExplorer = nil
+    self.displayInner1LayoutForBoard_property.mValueExplorer = nil
+  //--- Atomic property: displayInner2LayoutForBoard
+    self.displayInner2LayoutForBoard_property.mObserverExplorer = nil
+    self.displayInner2LayoutForBoard_property.mValueExplorer = nil
+  //--- Atomic property: displayInner3LayoutForBoard
+    self.displayInner3LayoutForBoard_property.mObserverExplorer = nil
+    self.displayInner3LayoutForBoard_property.mValueExplorer = nil
+  //--- Atomic property: displayInner4LayoutForBoard
+    self.displayInner4LayoutForBoard_property.mObserverExplorer = nil
+    self.displayInner4LayoutForBoard_property.mValueExplorer = nil
+  //--- Atomic property: displayBackLegendForBoard
+    self.displayBackLegendForBoard_property.mObserverExplorer = nil
+    self.displayBackLegendForBoard_property.mValueExplorer = nil
+  //--- Atomic property: displayFrontPadsForBoard
+    self.displayFrontPadsForBoard_property.mObserverExplorer = nil
+    self.displayFrontPadsForBoard_property.mValueExplorer = nil
+  //--- Atomic property: displayBackPadsForBoard
+    self.displayBackPadsForBoard_property.mObserverExplorer = nil
+    self.displayBackPadsForBoard_property.mValueExplorer = nil
+  //--- Atomic property: displayPadNumbersForBoard
+    self.displayPadNumbersForBoard_property.mObserverExplorer = nil
+    self.displayPadNumbersForBoard_property.mValueExplorer = nil
+  //--- Atomic property: packageDrawingWidthMultpliedByTenForBoard
+    self.packageDrawingWidthMultpliedByTenForBoard_property.mObserverExplorer = nil
+    self.packageDrawingWidthMultpliedByTenForBoard_property.mValueExplorer = nil
     //--- To many property: mFonts
       self.mFonts_property.mValueExplorer = nil
     //--- To many property: mDevices
@@ -7040,6 +7762,44 @@ final class ProjectRoot : EBManagedObject,
       self.mSchematicCustomHeight_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomHeight")
     //--- Atomic property: mSchematicCustomHeightUnit
       self.mSchematicCustomHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomHeightUnit")
+    //--- Atomic property: drawErrorBackgroundForBoard
+      self.drawErrorBackgroundForBoard_property.storeIn (dictionary: ioDictionary, forKey: "drawErrorBackgroundForBoard")
+    //--- Atomic property: displayFrontRestrictRectangles
+      self.displayFrontRestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey: "displayFrontRestrictRectangles")
+    //--- Atomic property: displayBackRestrictRectangles
+      self.displayBackRestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey: "displayBackRestrictRectangles")
+    //--- Atomic property: displayInner1RestrictRectangles
+      self.displayInner1RestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey: "displayInner1RestrictRectangles")
+    //--- Atomic property: displayInner2RestrictRectangles
+      self.displayInner2RestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey: "displayInner2RestrictRectangles")
+    //--- Atomic property: displayInner3RestrictRectangles
+      self.displayInner3RestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey: "displayInner3RestrictRectangles")
+    //--- Atomic property: displayInner4RestrictRectangles
+      self.displayInner4RestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey: "displayInner4RestrictRectangles")
+    //--- Atomic property: displayFrontLegendForBoard
+      self.displayFrontLegendForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayFrontLegendForBoard")
+    //--- Atomic property: displayFrontLayoutForBoard
+      self.displayFrontLayoutForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayFrontLayoutForBoard")
+    //--- Atomic property: displayBackLayoutForBoard
+      self.displayBackLayoutForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayBackLayoutForBoard")
+    //--- Atomic property: displayInner1LayoutForBoard
+      self.displayInner1LayoutForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayInner1LayoutForBoard")
+    //--- Atomic property: displayInner2LayoutForBoard
+      self.displayInner2LayoutForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayInner2LayoutForBoard")
+    //--- Atomic property: displayInner3LayoutForBoard
+      self.displayInner3LayoutForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayInner3LayoutForBoard")
+    //--- Atomic property: displayInner4LayoutForBoard
+      self.displayInner4LayoutForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayInner4LayoutForBoard")
+    //--- Atomic property: displayBackLegendForBoard
+      self.displayBackLegendForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayBackLegendForBoard")
+    //--- Atomic property: displayFrontPadsForBoard
+      self.displayFrontPadsForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayFrontPadsForBoard")
+    //--- Atomic property: displayBackPadsForBoard
+      self.displayBackPadsForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayBackPadsForBoard")
+    //--- Atomic property: displayPadNumbersForBoard
+      self.displayPadNumbersForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayPadNumbersForBoard")
+    //--- Atomic property: packageDrawingWidthMultpliedByTenForBoard
+      self.packageDrawingWidthMultpliedByTenForBoard_property.storeIn (dictionary: ioDictionary, forKey: "packageDrawingWidthMultpliedByTenForBoard")
   //--- To many property: mFonts
     self.store (
       managedObjectArray: self.mFonts_property.propval.values,
@@ -7369,6 +8129,44 @@ final class ProjectRoot : EBManagedObject,
     self.mSchematicCustomHeight_property.readFrom (dictionary: inDictionary, forKey: "mSchematicCustomHeight")
   //--- Atomic property: mSchematicCustomHeightUnit
     self.mSchematicCustomHeightUnit_property.readFrom (dictionary: inDictionary, forKey: "mSchematicCustomHeightUnit")
+  //--- Atomic property: drawErrorBackgroundForBoard
+    self.drawErrorBackgroundForBoard_property.readFrom (dictionary: inDictionary, forKey: "drawErrorBackgroundForBoard")
+  //--- Atomic property: displayFrontRestrictRectangles
+    self.displayFrontRestrictRectangles_property.readFrom (dictionary: inDictionary, forKey: "displayFrontRestrictRectangles")
+  //--- Atomic property: displayBackRestrictRectangles
+    self.displayBackRestrictRectangles_property.readFrom (dictionary: inDictionary, forKey: "displayBackRestrictRectangles")
+  //--- Atomic property: displayInner1RestrictRectangles
+    self.displayInner1RestrictRectangles_property.readFrom (dictionary: inDictionary, forKey: "displayInner1RestrictRectangles")
+  //--- Atomic property: displayInner2RestrictRectangles
+    self.displayInner2RestrictRectangles_property.readFrom (dictionary: inDictionary, forKey: "displayInner2RestrictRectangles")
+  //--- Atomic property: displayInner3RestrictRectangles
+    self.displayInner3RestrictRectangles_property.readFrom (dictionary: inDictionary, forKey: "displayInner3RestrictRectangles")
+  //--- Atomic property: displayInner4RestrictRectangles
+    self.displayInner4RestrictRectangles_property.readFrom (dictionary: inDictionary, forKey: "displayInner4RestrictRectangles")
+  //--- Atomic property: displayFrontLegendForBoard
+    self.displayFrontLegendForBoard_property.readFrom (dictionary: inDictionary, forKey: "displayFrontLegendForBoard")
+  //--- Atomic property: displayFrontLayoutForBoard
+    self.displayFrontLayoutForBoard_property.readFrom (dictionary: inDictionary, forKey: "displayFrontLayoutForBoard")
+  //--- Atomic property: displayBackLayoutForBoard
+    self.displayBackLayoutForBoard_property.readFrom (dictionary: inDictionary, forKey: "displayBackLayoutForBoard")
+  //--- Atomic property: displayInner1LayoutForBoard
+    self.displayInner1LayoutForBoard_property.readFrom (dictionary: inDictionary, forKey: "displayInner1LayoutForBoard")
+  //--- Atomic property: displayInner2LayoutForBoard
+    self.displayInner2LayoutForBoard_property.readFrom (dictionary: inDictionary, forKey: "displayInner2LayoutForBoard")
+  //--- Atomic property: displayInner3LayoutForBoard
+    self.displayInner3LayoutForBoard_property.readFrom (dictionary: inDictionary, forKey: "displayInner3LayoutForBoard")
+  //--- Atomic property: displayInner4LayoutForBoard
+    self.displayInner4LayoutForBoard_property.readFrom (dictionary: inDictionary, forKey: "displayInner4LayoutForBoard")
+  //--- Atomic property: displayBackLegendForBoard
+    self.displayBackLegendForBoard_property.readFrom (dictionary: inDictionary, forKey: "displayBackLegendForBoard")
+  //--- Atomic property: displayFrontPadsForBoard
+    self.displayFrontPadsForBoard_property.readFrom (dictionary: inDictionary, forKey: "displayFrontPadsForBoard")
+  //--- Atomic property: displayBackPadsForBoard
+    self.displayBackPadsForBoard_property.readFrom (dictionary: inDictionary, forKey: "displayBackPadsForBoard")
+  //--- Atomic property: displayPadNumbersForBoard
+    self.displayPadNumbersForBoard_property.readFrom (dictionary: inDictionary, forKey: "displayPadNumbersForBoard")
+  //--- Atomic property: packageDrawingWidthMultpliedByTenForBoard
+    self.packageDrawingWidthMultpliedByTenForBoard_property.readFrom (dictionary: inDictionary, forKey: "packageDrawingWidthMultpliedByTenForBoard")
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.readFrom (dictionary: inDictionary, forKey: "mSchematicSheetOrientation")
   //--- Atomic property: mRastnetDisplay
@@ -7457,6 +8255,25 @@ final class ProjectRoot : EBManagedObject,
     ioString += "mSchematicCustomWidthUnit\n"
     ioString += "mSchematicCustomHeight\n"
     ioString += "mSchematicCustomHeightUnit\n"
+    ioString += "drawErrorBackgroundForBoard\n"
+    ioString += "displayFrontRestrictRectangles\n"
+    ioString += "displayBackRestrictRectangles\n"
+    ioString += "displayInner1RestrictRectangles\n"
+    ioString += "displayInner2RestrictRectangles\n"
+    ioString += "displayInner3RestrictRectangles\n"
+    ioString += "displayInner4RestrictRectangles\n"
+    ioString += "displayFrontLegendForBoard\n"
+    ioString += "displayFrontLayoutForBoard\n"
+    ioString += "displayBackLayoutForBoard\n"
+    ioString += "displayInner1LayoutForBoard\n"
+    ioString += "displayInner2LayoutForBoard\n"
+    ioString += "displayInner3LayoutForBoard\n"
+    ioString += "displayInner4LayoutForBoard\n"
+    ioString += "displayBackLegendForBoard\n"
+    ioString += "displayFrontPadsForBoard\n"
+    ioString += "displayBackPadsForBoard\n"
+    ioString += "displayPadNumbersForBoard\n"
+    ioString += "packageDrawingWidthMultpliedByTenForBoard\n"
     ioString += "mSchematicSheetOrientation\n"
     ioString += "mRastnetDisplay\n"
     ioString += "mRastnetDisplayedNetName\n"
@@ -7620,6 +8437,44 @@ final class ProjectRoot : EBManagedObject,
     self.mSchematicCustomHeight.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mSchematicCustomHeightUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.drawErrorBackgroundForBoard.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayFrontRestrictRectangles.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayBackRestrictRectangles.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayInner1RestrictRectangles.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayInner2RestrictRectangles.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayInner3RestrictRectangles.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayInner4RestrictRectangles.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayFrontLegendForBoard.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayFrontLayoutForBoard.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayBackLayoutForBoard.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayInner1LayoutForBoard.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayInner2LayoutForBoard.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayInner3LayoutForBoard.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayInner4LayoutForBoard.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayBackLegendForBoard.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayFrontPadsForBoard.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayBackPadsForBoard.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayPadNumbersForBoard.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.packageDrawingWidthMultpliedByTenForBoard.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mSchematicSheetOrientation.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -8078,6 +8933,63 @@ final class ProjectRoot : EBManagedObject,
       }
       if let range = inDictionary ["mSchematicCustomHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mSchematicCustomHeightUnit = value
+      }
+      if let range = inDictionary ["drawErrorBackgroundForBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.drawErrorBackgroundForBoard = value
+      }
+      if let range = inDictionary ["displayFrontRestrictRectangles"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayFrontRestrictRectangles = value
+      }
+      if let range = inDictionary ["displayBackRestrictRectangles"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayBackRestrictRectangles = value
+      }
+      if let range = inDictionary ["displayInner1RestrictRectangles"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayInner1RestrictRectangles = value
+      }
+      if let range = inDictionary ["displayInner2RestrictRectangles"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayInner2RestrictRectangles = value
+      }
+      if let range = inDictionary ["displayInner3RestrictRectangles"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayInner3RestrictRectangles = value
+      }
+      if let range = inDictionary ["displayInner4RestrictRectangles"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayInner4RestrictRectangles = value
+      }
+      if let range = inDictionary ["displayFrontLegendForBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayFrontLegendForBoard = value
+      }
+      if let range = inDictionary ["displayFrontLayoutForBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayFrontLayoutForBoard = value
+      }
+      if let range = inDictionary ["displayBackLayoutForBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayBackLayoutForBoard = value
+      }
+      if let range = inDictionary ["displayInner1LayoutForBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayInner1LayoutForBoard = value
+      }
+      if let range = inDictionary ["displayInner2LayoutForBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayInner2LayoutForBoard = value
+      }
+      if let range = inDictionary ["displayInner3LayoutForBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayInner3LayoutForBoard = value
+      }
+      if let range = inDictionary ["displayInner4LayoutForBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayInner4LayoutForBoard = value
+      }
+      if let range = inDictionary ["displayBackLegendForBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayBackLegendForBoard = value
+      }
+      if let range = inDictionary ["displayFrontPadsForBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayFrontPadsForBoard = value
+      }
+      if let range = inDictionary ["displayBackPadsForBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayBackPadsForBoard = value
+      }
+      if let range = inDictionary ["displayPadNumbersForBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayPadNumbersForBoard = value
+      }
+      if let range = inDictionary ["packageDrawingWidthMultpliedByTenForBoard"], let value = Int.unarchiveFromDataRange (inData, range) {
+        self.packageDrawingWidthMultpliedByTenForBoard = value
       }
       if let range = inDictionary ["mSchematicSheetOrientation"], let value = SchematicSheetOrientation.unarchiveFromDataRange (inData, range) {
         self.mSchematicSheetOrientation = value

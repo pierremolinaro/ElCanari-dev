@@ -54,7 +54,14 @@ final class AutoLayoutColorWell : NSColorWell, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //  $enabled binding
+
+  func set (toolTip inToolTip : String) -> Self {
+    self.toolTip = inToolTip
+    return self
+  }
+
+  //····················································································································
+  //MARK:  $enabled binding
   //····················································································································
 
   private var mEnabledBindingController : EnabledBindingController? = nil

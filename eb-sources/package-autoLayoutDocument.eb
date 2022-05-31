@@ -947,20 +947,20 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
     GridView2 {
       addCenterYAligned (
         left: StaticLabel (title: "Background", bold: no, size : .small),
-        right: hStack { ColorWell { $color prefs.packageBackgroundColor (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageBackgroundColor (sendContinously:no) } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Cross Grid", bold: no, size : .small),
-        right: hStack { ColorWell { $color prefs.crossColorOfPackageGrid (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.crossColorOfPackageGrid (sendContinously:no) } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Line Grid", bold: no, size : .small),
-        right: hStack { ColorWell { $color prefs.lineColorOfPackageGrid (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorOfPackageGrid (sendContinously:no) } space }
       )
       addSeparator ()
       addCenterYAligned (
         left: StaticLabel (title: "Package", bold: no, size : .small),
-        right: hStack { ColorWell { $color prefs.packageColor (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageColor (sendContinously:no) } space }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Line Width", bold: no, size : .small),
@@ -977,7 +977,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       addCenterYAligned (
         left: StaticLabel (title: "Pad Numbering", bold: no, size : .small),
         right: hStack setCenterYAlignment () {
-          ColorWell { $color prefs.padNumberColor (sendContinously:no) }
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColor (sendContinously:no) }
           Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.showPadNumber }
           space
         }
@@ -989,7 +989,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       addCenterYAligned (
         left: StaticLabel (title: "Top Side Pads", bold: no, size : .small),
         right: hStack setCenterYAlignment () {
-          ColorWell { $color prefs.frontSidePadColor (sendContinously:no) }
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColor (sendContinously:no) }
           Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.displayPackageFrontSidePads }
           space
         }
@@ -997,7 +997,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       addCenterYAligned (
         left: StaticLabel (title: "Back Side Pads", bold: no, size : .small),
         right: hStack setCenterYAlignment () {
-          ColorWell { $color prefs.backSidePadColor (sendContinously:no) }
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColor (sendContinously:no) }
           Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.displayPackageBackSidePads }
           space
         }
@@ -1005,11 +1005,11 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       addSeparator ()
       addCenterYAligned (
         left: StaticLabel (title: "Guide Color", bold: no, size : .small),
-        right: hStack { ColorWell { $color prefs.packageGuideColor (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageGuideColor (sendContinously:no) } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Dimension Color", bold: no, size : .small),
-        right: hStack { ColorWell { $color prefs.packageDimensionColor (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageDimensionColor (sendContinously:no) } space }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Dimension Font", bold: no, size : .small),
@@ -1018,7 +1018,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       addSeparator ()
       addCenterYAligned (
         left: StaticLabel (title: "Zone Color", bold: no, size : .small),
-        right: hStack { ColorWell { $color prefs.padZoneColor (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padZoneColor (sendContinously:no) } space }
       )
     }
     space

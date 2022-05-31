@@ -23,6 +23,26 @@ abstract graphic entity BoardObject {
   
   abstract transient String componentName ;
 
+  transient Bool displayFrontLegendForBoard dependsFrom self.mRoot.one.displayFrontLegendForBoard ;
+  transient Bool displayBackLegendForBoard dependsFrom self.mRoot.one.displayBackLegendForBoard ;
+  transient Bool displayFrontLayoutForBoard dependsFrom self.mRoot.one.displayFrontLayoutForBoard ;
+  transient Bool displayBackLayoutForBoard dependsFrom self.mRoot.one.displayBackLayoutForBoard ;
+  transient Bool displayInner1LayoutForBoard dependsFrom self.mRoot.one.displayInner1LayoutForBoard ;
+  transient Bool displayInner2LayoutForBoard dependsFrom self.mRoot.one.displayInner2LayoutForBoard ;
+  transient Bool displayInner3LayoutForBoard dependsFrom self.mRoot.one.displayInner3LayoutForBoard ;
+  transient Bool displayInner4LayoutForBoard dependsFrom self.mRoot.one.displayInner4LayoutForBoard ;
+  transient Bool displayFrontPadsForBoard dependsFrom self.mRoot.one.displayFrontPadsForBoard ;
+  transient Bool displayBackPadsForBoard dependsFrom self.mRoot.one.displayBackPadsForBoard ;
+  transient Bool displayPadNumbersForBoard dependsFrom self.mRoot.one.displayPadNumbersForBoard ;
+
+  transient Bool displayFrontRestrictRectangles dependsFrom self.mRoot.one.displayFrontRestrictRectangles ;
+  transient Bool displayBackRestrictRectangles dependsFrom self.mRoot.one.displayBackRestrictRectangles ;
+  transient Bool displayInner1RestrictRectangles dependsFrom self.mRoot.one.displayInner1RestrictRectangles ;
+  transient Bool displayInner2RestrictRectangles dependsFrom self.mRoot.one.displayInner2RestrictRectangles ;
+  transient Bool displayInner3RestrictRectangles dependsFrom self.mRoot.one.displayInner3RestrictRectangles ;
+  transient Bool displayInner4RestrictRectangles dependsFrom self.mRoot.one.displayInner4RestrictRectangles ;
+
+  transient Int packageDrawingWidthMultpliedByTenForBoard dependsFrom self.mRoot.one.packageDrawingWidthMultpliedByTenForBoard ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

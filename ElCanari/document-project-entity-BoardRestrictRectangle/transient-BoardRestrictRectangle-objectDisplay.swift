@@ -24,12 +24,12 @@ func transient_BoardRestrictRectangle_objectDisplay (
        _ self_mIsInInner2Layer : Bool,               
        _ self_mIsInInner3Layer : Bool,               
        _ self_mIsInInner4Layer : Bool,               
-       _ prefs_displayFrontRestrictRectangles : Bool,
-       _ prefs_displayBackRestrictRectangles : Bool, 
-       _ prefs_displayInner1RestrictRectangles : Bool,
-       _ prefs_displayInner2RestrictRectangles : Bool,
-       _ prefs_displayInner3RestrictRectangles : Bool,
-       _ prefs_displayInner4RestrictRectangles : Bool,
+       _ self_BoardObject_displayFrontRestrictRectangles : Bool,
+       _ self_BoardObject_displayBackRestrictRectangles : Bool,
+       _ self_BoardObject_displayInner1RestrictRectangles : Bool,
+       _ self_BoardObject_displayInner2RestrictRectangles : Bool,
+       _ self_BoardObject_displayInner3RestrictRectangles : Bool,
+       _ self_BoardObject_displayInner4RestrictRectangles : Bool,
        _ prefs_frontSideRestrictRectangleColorForBoard : NSColor,
        _ prefs_inner1SideRestrictRectangleColorForBoard : NSColor,
        _ prefs_inner2SideRestrictRectangleColorForBoard : NSColor,
@@ -61,7 +61,7 @@ func transient_BoardRestrictRectangle_objectDisplay (
           return bp
         }
         var shape = EBShape ()
-        let display = (self_mIsInFrontLayer && prefs_displayFrontRestrictRectangles) || (self_mIsInBackLayer && prefs_displayBackRestrictRectangles)
+        let display = (self_mIsInFrontLayer && self_BoardObject_displayFrontRestrictRectangles) || (self_mIsInBackLayer && self_BoardObject_displayBackRestrictRectangles)
         if display {
 //          let count = (front ? 1 : 0) + (back ? 1 : 0) + (inner1 ? 1 : 0) + (inner2 ? 1 : 0) + (inner3 ? 1 : 0) + (inner4 ? 1 : 0)
           let cocoaRect = CanariRect (left: self_mX, bottom: self_mY, width: self_mWidth, height: self_mHeight).cocoaRect
@@ -69,32 +69,32 @@ func transient_BoardRestrictRectangle_objectDisplay (
         //--- Transparent background (for selection)
           shape.add (filled: [rectBP], nil)
         //--- Front layer
-          if self_mIsInFrontLayer && prefs_displayFrontRestrictRectangles {
+          if self_mIsInFrontLayer && self_BoardObject_displayFrontRestrictRectangles {
             let bp = buildLines (cocoaRect, 0.0)
             shape.add (stroke: [bp], prefs_frontSideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
         //--- Back layer
-          if self_mIsInBackLayer && prefs_displayBackRestrictRectangles {
+          if self_mIsInBackLayer && self_BoardObject_displayBackRestrictRectangles {
             let bp = buildLines (cocoaRect, 1.0)
             shape.add (stroke: [bp], prefs_backSideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
         //--- Inner1 layer
-          if self_mIsInInner1Layer && prefs_displayInner1RestrictRectangles {
+          if self_mIsInInner1Layer && self_BoardObject_displayInner1RestrictRectangles {
             let bp = buildLines (cocoaRect, 2.0)
             shape.add (stroke: [bp], prefs_inner1SideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
         //--- Inner2 layer
-          if self_mIsInInner2Layer && prefs_displayInner2RestrictRectangles {
+          if self_mIsInInner2Layer && self_BoardObject_displayInner2RestrictRectangles {
             let bp = buildLines (cocoaRect, 3.0)
             shape.add (stroke: [bp], prefs_inner2SideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
         //--- Inner3 layer
-          if self_mIsInInner3Layer && prefs_displayInner3RestrictRectangles {
+          if self_mIsInInner3Layer && self_BoardObject_displayInner3RestrictRectangles {
             let bp = buildLines (cocoaRect, 4.0)
             shape.add (stroke: [bp], prefs_inner3SideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
         //--- Inner4 layer
-          if self_mIsInInner4Layer && prefs_displayInner4RestrictRectangles {
+          if self_mIsInInner4Layer && self_BoardObject_displayInner4RestrictRectangles {
             let bp = buildLines (cocoaRect, 5.0)
             shape.add (stroke: [bp], prefs_inner4SideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }

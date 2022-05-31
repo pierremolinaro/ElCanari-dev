@@ -3231,6 +3231,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_packageBackgroundColor_property, sendContinously:false)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
@@ -3256,6 +3257,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_crossColorOfPackageGrid_property, sendContinously:false)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
@@ -3281,6 +3283,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_lineColorOfPackageGrid_property, sendContinously:false)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
@@ -3306,6 +3309,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_packageColor_property, sendContinously:false)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
@@ -3356,6 +3360,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_padNumberColor_property, sendContinously:false)
       view.appendView (view_0)
       let view_1 = AutoLayoutCheckbox (title: "Show", size: .small)
@@ -3405,6 +3410,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_frontSidePadColor_property, sendContinously:false)
       view.appendView (view_0)
       let view_1 = AutoLayoutCheckbox (title: "Show", size: .small)
@@ -3435,6 +3441,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_backSidePadColor_property, sendContinously:false)
       view.appendView (view_0)
       let view_1 = AutoLayoutCheckbox (title: "Show", size: .small)
@@ -3464,6 +3471,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_packageGuideColor_property, sendContinously:false)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
@@ -3489,6 +3497,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_packageDimensionColor_property, sendContinously:false)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
@@ -3533,6 +3542,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_padZoneColor_property, sendContinously:false)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()

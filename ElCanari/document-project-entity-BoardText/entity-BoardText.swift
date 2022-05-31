@@ -374,7 +374,7 @@ final class BoardText : BoardObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mText_property.selection, unwSelf.mFontSize_property.selection, unwSelf.mFont_property.descriptor_property.selection, unwSelf.mHorizontalAlignment_property.selection, unwSelf.mVerticalAlignment_property.selection, unwSelf.mLayer_property.selection, unwSelf.mRotation_property.selection, unwSelf.mWeight_property.selection, unwSelf.mOblique_property.selection, preferences_displayFrontLegendForBoard_property.selection, preferences_displayBackLegendForBoard_property.selection, preferences_displayFrontLayoutForBoard_property.selection, preferences_displayBackLayoutForBoard_property.selection, preferences_frontSideLegendColorForBoard_property.selection, preferences_frontSideLayoutColorForBoard_property.selection, preferences_backSideLayoutColorForBoard_property.selection, preferences_backSideLegendColorForBoard_property.selection) {
+        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mText_property.selection, unwSelf.mFontSize_property.selection, unwSelf.mFont_property.descriptor_property.selection, unwSelf.mHorizontalAlignment_property.selection, unwSelf.mVerticalAlignment_property.selection, unwSelf.mLayer_property.selection, unwSelf.mRotation_property.selection, unwSelf.mWeight_property.selection, unwSelf.mOblique_property.selection, unwSelf.displayFrontLegendForBoard_property.selection, unwSelf.displayBackLegendForBoard_property.selection, unwSelf.displayFrontLayoutForBoard_property.selection, unwSelf.displayBackLayoutForBoard_property.selection, preferences_frontSideLegendColorForBoard_property.selection, preferences_frontSideLayoutColorForBoard_property.selection, preferences_backSideLayoutColorForBoard_property.selection, preferences_backSideLegendColorForBoard_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18)) :
           return .single (transient_BoardText_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -397,10 +397,10 @@ final class BoardText : BoardObject,
     self.mRotation_property.addEBObserver (self.objectDisplay_property)
     self.mWeight_property.addEBObserver (self.objectDisplay_property)
     self.mOblique_property.addEBObserver (self.objectDisplay_property)
-    preferences_displayFrontLegendForBoard_property.addEBObserver (self.objectDisplay_property)
-    preferences_displayBackLegendForBoard_property.addEBObserver (self.objectDisplay_property)
-    preferences_displayFrontLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
-    preferences_displayBackLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
+    self.displayFrontLegendForBoard_property.addEBObserver (self.objectDisplay_property)
+    self.displayBackLegendForBoard_property.addEBObserver (self.objectDisplay_property)
+    self.displayFrontLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
+    self.displayBackLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
     preferences_frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
     preferences_frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
     preferences_backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
@@ -499,10 +499,10 @@ final class BoardText : BoardObject,
     // self.mRotation_property.removeEBObserver (self.objectDisplay_property)
     // self.mWeight_property.removeEBObserver (self.objectDisplay_property)
     // self.mOblique_property.removeEBObserver (self.objectDisplay_property)
-    // preferences_displayFrontLegendForBoard_property.removeEBObserver (self.objectDisplay_property)
-    // preferences_displayBackLegendForBoard_property.removeEBObserver (self.objectDisplay_property)
-    // preferences_displayFrontLayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
-    // preferences_displayBackLayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // self.displayFrontLegendForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // self.displayBackLegendForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // self.displayFrontLayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // self.displayBackLayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
     // preferences_frontSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     // preferences_frontSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     // preferences_backSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)

@@ -295,6 +295,28 @@ entity ProjectRoot {
   transient IntArray sheetIndexes dependsFrom self.mSheets ;
 
   transient Int netWarningCount dependsFrom self.mNetClasses.all.netWarningCount ;
+
+//--- Display objects in board
+  property Bool drawErrorBackgroundForBoard default yes ;
+  property Bool displayFrontRestrictRectangles default yes ;
+  property Bool displayBackRestrictRectangles default yes ;
+  property Bool displayInner1RestrictRectangles default yes ;
+  property Bool displayInner2RestrictRectangles default yes ;
+  property Bool displayInner3RestrictRectangles default yes ;
+  property Bool displayInner4RestrictRectangles default yes ;
+  property Bool displayFrontLegendForBoard default yes ;
+  property Bool displayFrontLayoutForBoard default yes ;
+  property Bool displayBackLayoutForBoard default yes ;
+  property Bool displayInner1LayoutForBoard default yes ;
+  property Bool displayInner2LayoutForBoard default yes ;
+  property Bool displayInner3LayoutForBoard default yes ;
+  property Bool displayInner4LayoutForBoard default yes ;
+  property Bool displayBackLegendForBoard default yes ;
+  property Bool displayFrontPadsForBoard default yes ;
+  property Bool displayBackPadsForBoard default yes ;
+  property Bool displayPadNumbersForBoard default yes ;
+//--- Package drawing width
+  property Int packageDrawingWidthMultpliedByTenForBoard default 5  ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

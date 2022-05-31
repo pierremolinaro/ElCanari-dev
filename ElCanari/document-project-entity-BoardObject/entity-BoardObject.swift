@@ -48,6 +48,114 @@ protocol BoardObject_componentName : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardObject_displayFrontLegendForBoard : AnyObject {
+  var displayFrontLegendForBoard : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayBackLegendForBoard : AnyObject {
+  var displayBackLegendForBoard : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayFrontLayoutForBoard : AnyObject {
+  var displayFrontLayoutForBoard : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayBackLayoutForBoard : AnyObject {
+  var displayBackLayoutForBoard : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayInner1LayoutForBoard : AnyObject {
+  var displayInner1LayoutForBoard : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayInner2LayoutForBoard : AnyObject {
+  var displayInner2LayoutForBoard : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayInner3LayoutForBoard : AnyObject {
+  var displayInner3LayoutForBoard : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayInner4LayoutForBoard : AnyObject {
+  var displayInner4LayoutForBoard : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayFrontPadsForBoard : AnyObject {
+  var displayFrontPadsForBoard : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayBackPadsForBoard : AnyObject {
+  var displayBackPadsForBoard : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayPadNumbersForBoard : AnyObject {
+  var displayPadNumbersForBoard : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayFrontRestrictRectangles : AnyObject {
+  var displayFrontRestrictRectangles : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayBackRestrictRectangles : AnyObject {
+  var displayBackRestrictRectangles : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayInner1RestrictRectangles : AnyObject {
+  var displayInner1RestrictRectangles : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayInner2RestrictRectangles : AnyObject {
+  var displayInner2RestrictRectangles : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayInner3RestrictRectangles : AnyObject {
+  var displayInner3RestrictRectangles : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayInner4RestrictRectangles : AnyObject {
+  var displayInner4RestrictRectangles : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_packageDrawingWidthMultpliedByTenForBoard : AnyObject {
+  var packageDrawingWidthMultpliedByTenForBoard : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardObject_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
@@ -82,6 +190,24 @@ class BoardObject : EBGraphicManagedObject,
          BoardObject_signatureForERCChecking,
          BoardObject_netNameAndPadLocation,
          BoardObject_componentName,
+         BoardObject_displayFrontLegendForBoard,
+         BoardObject_displayBackLegendForBoard,
+         BoardObject_displayFrontLayoutForBoard,
+         BoardObject_displayBackLayoutForBoard,
+         BoardObject_displayInner1LayoutForBoard,
+         BoardObject_displayInner2LayoutForBoard,
+         BoardObject_displayInner3LayoutForBoard,
+         BoardObject_displayInner4LayoutForBoard,
+         BoardObject_displayFrontPadsForBoard,
+         BoardObject_displayBackPadsForBoard,
+         BoardObject_displayPadNumbersForBoard,
+         BoardObject_displayFrontRestrictRectangles,
+         BoardObject_displayBackRestrictRectangles,
+         BoardObject_displayInner1RestrictRectangles,
+         BoardObject_displayInner2RestrictRectangles,
+         BoardObject_displayInner3RestrictRectangles,
+         BoardObject_displayInner4RestrictRectangles,
+         BoardObject_packageDrawingWidthMultpliedByTenForBoard,
          BoardObject_selectionDisplay,
          BoardObject_objectDisplay,
          BoardObject_errorOrWarningIssueSize,
@@ -233,6 +359,312 @@ class BoardObject : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: displayFrontLegendForBoard
+  //····················································································································
+
+  final let displayFrontLegendForBoard_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayFrontLegendForBoard : Bool? {
+    switch self.displayFrontLegendForBoard_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayBackLegendForBoard
+  //····················································································································
+
+  final let displayBackLegendForBoard_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayBackLegendForBoard : Bool? {
+    switch self.displayBackLegendForBoard_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayFrontLayoutForBoard
+  //····················································································································
+
+  final let displayFrontLayoutForBoard_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayFrontLayoutForBoard : Bool? {
+    switch self.displayFrontLayoutForBoard_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayBackLayoutForBoard
+  //····················································································································
+
+  final let displayBackLayoutForBoard_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayBackLayoutForBoard : Bool? {
+    switch self.displayBackLayoutForBoard_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayInner1LayoutForBoard
+  //····················································································································
+
+  final let displayInner1LayoutForBoard_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayInner1LayoutForBoard : Bool? {
+    switch self.displayInner1LayoutForBoard_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayInner2LayoutForBoard
+  //····················································································································
+
+  final let displayInner2LayoutForBoard_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayInner2LayoutForBoard : Bool? {
+    switch self.displayInner2LayoutForBoard_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayInner3LayoutForBoard
+  //····················································································································
+
+  final let displayInner3LayoutForBoard_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayInner3LayoutForBoard : Bool? {
+    switch self.displayInner3LayoutForBoard_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayInner4LayoutForBoard
+  //····················································································································
+
+  final let displayInner4LayoutForBoard_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayInner4LayoutForBoard : Bool? {
+    switch self.displayInner4LayoutForBoard_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayFrontPadsForBoard
+  //····················································································································
+
+  final let displayFrontPadsForBoard_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayFrontPadsForBoard : Bool? {
+    switch self.displayFrontPadsForBoard_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayBackPadsForBoard
+  //····················································································································
+
+  final let displayBackPadsForBoard_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayBackPadsForBoard : Bool? {
+    switch self.displayBackPadsForBoard_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayPadNumbersForBoard
+  //····················································································································
+
+  final let displayPadNumbersForBoard_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayPadNumbersForBoard : Bool? {
+    switch self.displayPadNumbersForBoard_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayFrontRestrictRectangles
+  //····················································································································
+
+  final let displayFrontRestrictRectangles_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayFrontRestrictRectangles : Bool? {
+    switch self.displayFrontRestrictRectangles_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayBackRestrictRectangles
+  //····················································································································
+
+  final let displayBackRestrictRectangles_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayBackRestrictRectangles : Bool? {
+    switch self.displayBackRestrictRectangles_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayInner1RestrictRectangles
+  //····················································································································
+
+  final let displayInner1RestrictRectangles_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayInner1RestrictRectangles : Bool? {
+    switch self.displayInner1RestrictRectangles_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayInner2RestrictRectangles
+  //····················································································································
+
+  final let displayInner2RestrictRectangles_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayInner2RestrictRectangles : Bool? {
+    switch self.displayInner2RestrictRectangles_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayInner3RestrictRectangles
+  //····················································································································
+
+  final let displayInner3RestrictRectangles_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayInner3RestrictRectangles : Bool? {
+    switch self.displayInner3RestrictRectangles_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayInner4RestrictRectangles
+  //····················································································································
+
+  final let displayInner4RestrictRectangles_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var displayInner4RestrictRectangles : Bool? {
+    switch self.displayInner4RestrictRectangles_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: packageDrawingWidthMultpliedByTenForBoard
+  //····················································································································
+
+  final let packageDrawingWidthMultpliedByTenForBoard_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var packageDrawingWidthMultpliedByTenForBoard : Int? {
+    switch self.packageDrawingWidthMultpliedByTenForBoard_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: errorOrWarningIssueSize
   //····················································································································
 
@@ -302,6 +734,294 @@ class BoardObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.isPlacedInBoard_property)
+  //--- Atomic property: displayFrontLegendForBoard
+    self.displayFrontLegendForBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayFrontLegendForBoard_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayFrontLegendForBoard (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayFrontLegendForBoard_property.addEBObserver (self.displayFrontLegendForBoard_property)
+  //--- Atomic property: displayBackLegendForBoard
+    self.displayBackLegendForBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayBackLegendForBoard_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayBackLegendForBoard (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayBackLegendForBoard_property.addEBObserver (self.displayBackLegendForBoard_property)
+  //--- Atomic property: displayFrontLayoutForBoard
+    self.displayFrontLayoutForBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayFrontLayoutForBoard_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayFrontLayoutForBoard (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayFrontLayoutForBoard_property.addEBObserver (self.displayFrontLayoutForBoard_property)
+  //--- Atomic property: displayBackLayoutForBoard
+    self.displayBackLayoutForBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayBackLayoutForBoard_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayBackLayoutForBoard (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayBackLayoutForBoard_property.addEBObserver (self.displayBackLayoutForBoard_property)
+  //--- Atomic property: displayInner1LayoutForBoard
+    self.displayInner1LayoutForBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayInner1LayoutForBoard_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayInner1LayoutForBoard (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayInner1LayoutForBoard_property.addEBObserver (self.displayInner1LayoutForBoard_property)
+  //--- Atomic property: displayInner2LayoutForBoard
+    self.displayInner2LayoutForBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayInner2LayoutForBoard_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayInner2LayoutForBoard (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayInner2LayoutForBoard_property.addEBObserver (self.displayInner2LayoutForBoard_property)
+  //--- Atomic property: displayInner3LayoutForBoard
+    self.displayInner3LayoutForBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayInner3LayoutForBoard_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayInner3LayoutForBoard (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayInner3LayoutForBoard_property.addEBObserver (self.displayInner3LayoutForBoard_property)
+  //--- Atomic property: displayInner4LayoutForBoard
+    self.displayInner4LayoutForBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayInner4LayoutForBoard_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayInner4LayoutForBoard (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayInner4LayoutForBoard_property.addEBObserver (self.displayInner4LayoutForBoard_property)
+  //--- Atomic property: displayFrontPadsForBoard
+    self.displayFrontPadsForBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayFrontPadsForBoard_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayFrontPadsForBoard (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayFrontPadsForBoard_property.addEBObserver (self.displayFrontPadsForBoard_property)
+  //--- Atomic property: displayBackPadsForBoard
+    self.displayBackPadsForBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayBackPadsForBoard_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayBackPadsForBoard (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayBackPadsForBoard_property.addEBObserver (self.displayBackPadsForBoard_property)
+  //--- Atomic property: displayPadNumbersForBoard
+    self.displayPadNumbersForBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayPadNumbersForBoard_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayPadNumbersForBoard (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayPadNumbersForBoard_property.addEBObserver (self.displayPadNumbersForBoard_property)
+  //--- Atomic property: displayFrontRestrictRectangles
+    self.displayFrontRestrictRectangles_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayFrontRestrictRectangles_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayFrontRestrictRectangles (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayFrontRestrictRectangles_property.addEBObserver (self.displayFrontRestrictRectangles_property)
+  //--- Atomic property: displayBackRestrictRectangles
+    self.displayBackRestrictRectangles_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayBackRestrictRectangles_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayBackRestrictRectangles (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayBackRestrictRectangles_property.addEBObserver (self.displayBackRestrictRectangles_property)
+  //--- Atomic property: displayInner1RestrictRectangles
+    self.displayInner1RestrictRectangles_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayInner1RestrictRectangles_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayInner1RestrictRectangles (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayInner1RestrictRectangles_property.addEBObserver (self.displayInner1RestrictRectangles_property)
+  //--- Atomic property: displayInner2RestrictRectangles
+    self.displayInner2RestrictRectangles_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayInner2RestrictRectangles_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayInner2RestrictRectangles (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayInner2RestrictRectangles_property.addEBObserver (self.displayInner2RestrictRectangles_property)
+  //--- Atomic property: displayInner3RestrictRectangles
+    self.displayInner3RestrictRectangles_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayInner3RestrictRectangles_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayInner3RestrictRectangles (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayInner3RestrictRectangles_property.addEBObserver (self.displayInner3RestrictRectangles_property)
+  //--- Atomic property: displayInner4RestrictRectangles
+    self.displayInner4RestrictRectangles_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.displayInner4RestrictRectangles_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_displayInner4RestrictRectangles (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.displayInner4RestrictRectangles_property.addEBObserver (self.displayInner4RestrictRectangles_property)
+  //--- Atomic property: packageDrawingWidthMultpliedByTenForBoard
+    self.packageDrawingWidthMultpliedByTenForBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mRoot_property.packageDrawingWidthMultpliedByTenForBoard_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_packageDrawingWidthMultpliedByTenForBoard (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.packageDrawingWidthMultpliedByTenForBoard_property.addEBObserver (self.packageDrawingWidthMultpliedByTenForBoard_property)
   //--- Atomic property: errorOrWarningIssueSize
     self.errorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -328,6 +1048,24 @@ class BoardObject : EBGraphicManagedObject,
   override func removeAllObservers () {
     super.removeAllObservers ()
     // self.mRoot_property.removeEBObserver (self.isPlacedInBoard_property)
+    // self.mRoot_property.displayFrontLegendForBoard_property.removeEBObserver (self.displayFrontLegendForBoard_property)
+    // self.mRoot_property.displayBackLegendForBoard_property.removeEBObserver (self.displayBackLegendForBoard_property)
+    // self.mRoot_property.displayFrontLayoutForBoard_property.removeEBObserver (self.displayFrontLayoutForBoard_property)
+    // self.mRoot_property.displayBackLayoutForBoard_property.removeEBObserver (self.displayBackLayoutForBoard_property)
+    // self.mRoot_property.displayInner1LayoutForBoard_property.removeEBObserver (self.displayInner1LayoutForBoard_property)
+    // self.mRoot_property.displayInner2LayoutForBoard_property.removeEBObserver (self.displayInner2LayoutForBoard_property)
+    // self.mRoot_property.displayInner3LayoutForBoard_property.removeEBObserver (self.displayInner3LayoutForBoard_property)
+    // self.mRoot_property.displayInner4LayoutForBoard_property.removeEBObserver (self.displayInner4LayoutForBoard_property)
+    // self.mRoot_property.displayFrontPadsForBoard_property.removeEBObserver (self.displayFrontPadsForBoard_property)
+    // self.mRoot_property.displayBackPadsForBoard_property.removeEBObserver (self.displayBackPadsForBoard_property)
+    // self.mRoot_property.displayPadNumbersForBoard_property.removeEBObserver (self.displayPadNumbersForBoard_property)
+    // self.mRoot_property.displayFrontRestrictRectangles_property.removeEBObserver (self.displayFrontRestrictRectangles_property)
+    // self.mRoot_property.displayBackRestrictRectangles_property.removeEBObserver (self.displayBackRestrictRectangles_property)
+    // self.mRoot_property.displayInner1RestrictRectangles_property.removeEBObserver (self.displayInner1RestrictRectangles_property)
+    // self.mRoot_property.displayInner2RestrictRectangles_property.removeEBObserver (self.displayInner2RestrictRectangles_property)
+    // self.mRoot_property.displayInner3RestrictRectangles_property.removeEBObserver (self.displayInner3RestrictRectangles_property)
+    // self.mRoot_property.displayInner4RestrictRectangles_property.removeEBObserver (self.displayInner4RestrictRectangles_property)
+    // self.mRoot_property.packageDrawingWidthMultpliedByTenForBoard_property.removeEBObserver (self.packageDrawingWidthMultpliedByTenForBoard_property)
     // self.mRoot_property.mErrorOrWarningIssueSize_property.removeEBObserver (self.errorOrWarningIssueSize_property)
   //--- Unregister properties for handling signature
   }
@@ -400,6 +1138,150 @@ class BoardObject : EBGraphicManagedObject,
         view: view,
         observerExplorer: &self.componentName_property.mObserverExplorer,
         valueExplorer: &self.componentName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayFrontLegendForBoard",
+        object: self.displayFrontLegendForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayFrontLegendForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayFrontLegendForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayBackLegendForBoard",
+        object: self.displayBackLegendForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayBackLegendForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayBackLegendForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayFrontLayoutForBoard",
+        object: self.displayFrontLayoutForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayFrontLayoutForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayFrontLayoutForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayBackLayoutForBoard",
+        object: self.displayBackLayoutForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayBackLayoutForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayBackLayoutForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner1LayoutForBoard",
+        object: self.displayInner1LayoutForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner1LayoutForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayInner1LayoutForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner2LayoutForBoard",
+        object: self.displayInner2LayoutForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner2LayoutForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayInner2LayoutForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner3LayoutForBoard",
+        object: self.displayInner3LayoutForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner3LayoutForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayInner3LayoutForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner4LayoutForBoard",
+        object: self.displayInner4LayoutForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner4LayoutForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayInner4LayoutForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayFrontPadsForBoard",
+        object: self.displayFrontPadsForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayFrontPadsForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayFrontPadsForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayBackPadsForBoard",
+        object: self.displayBackPadsForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayBackPadsForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayBackPadsForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayPadNumbersForBoard",
+        object: self.displayPadNumbersForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayPadNumbersForBoard_property.mObserverExplorer,
+        valueExplorer: &self.displayPadNumbersForBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayFrontRestrictRectangles",
+        object: self.displayFrontRestrictRectangles_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayFrontRestrictRectangles_property.mObserverExplorer,
+        valueExplorer: &self.displayFrontRestrictRectangles_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayBackRestrictRectangles",
+        object: self.displayBackRestrictRectangles_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayBackRestrictRectangles_property.mObserverExplorer,
+        valueExplorer: &self.displayBackRestrictRectangles_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner1RestrictRectangles",
+        object: self.displayInner1RestrictRectangles_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner1RestrictRectangles_property.mObserverExplorer,
+        valueExplorer: &self.displayInner1RestrictRectangles_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner2RestrictRectangles",
+        object: self.displayInner2RestrictRectangles_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner2RestrictRectangles_property.mObserverExplorer,
+        valueExplorer: &self.displayInner2RestrictRectangles_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner3RestrictRectangles",
+        object: self.displayInner3RestrictRectangles_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner3RestrictRectangles_property.mObserverExplorer,
+        valueExplorer: &self.displayInner3RestrictRectangles_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayInner4RestrictRectangles",
+        object: self.displayInner4RestrictRectangles_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayInner4RestrictRectangles_property.mObserverExplorer,
+        valueExplorer: &self.displayInner4RestrictRectangles_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "packageDrawingWidthMultpliedByTenForBoard",
+        object: self.packageDrawingWidthMultpliedByTenForBoard_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.packageDrawingWidthMultpliedByTenForBoard_property.mObserverExplorer,
+        valueExplorer: &self.packageDrawingWidthMultpliedByTenForBoard_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "selectionDisplay",

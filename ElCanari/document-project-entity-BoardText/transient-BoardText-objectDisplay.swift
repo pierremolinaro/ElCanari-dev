@@ -25,10 +25,10 @@ func transient_BoardText_objectDisplay (
        _ self_mRotation : Int,          
        _ self_mWeight : Double,         
        _ self_mOblique : Bool,          
-       _ prefs_displayFrontLegendForBoard : Bool,
-       _ prefs_displayBackLegendForBoard : Bool,
-       _ prefs_displayFrontLayoutForBoard : Bool,
-       _ prefs_displayBackLayoutForBoard : Bool,
+       _ self_BoardObject_displayFrontLegendForBoard : Bool,
+       _ self_BoardObject_displayBackLegendForBoard : Bool,
+       _ self_BoardObject_displayFrontLayoutForBoard : Bool,
+       _ self_BoardObject_displayBackLayoutForBoard : Bool,
        _ prefs_frontSideLegendColorForBoard : NSColor,
        _ prefs_frontSideLayoutColorForBoard : NSColor,
        _ prefs_backSideLayoutColorForBoard : NSColor,
@@ -54,16 +54,16 @@ func transient_BoardText_objectDisplay (
         switch self_mLayer {
         case .legendFront :
           textColor = prefs_frontSideLegendColorForBoard
-          display = prefs_displayFrontLegendForBoard
+          display = self_BoardObject_displayFrontLegendForBoard
         case .layoutFront :
           textColor = prefs_frontSideLayoutColorForBoard
-          display = prefs_displayFrontLayoutForBoard
+          display = self_BoardObject_displayFrontLayoutForBoard
         case .layoutBack :
           textColor = prefs_backSideLayoutColorForBoard
-          display = prefs_displayBackLayoutForBoard
+          display = self_BoardObject_displayBackLayoutForBoard
         case .legendBack :
           textColor = prefs_backSideLegendColorForBoard
-          display = prefs_displayBackLegendForBoard
+          display = self_BoardObject_displayBackLegendForBoard
         }
         var shape = EBShape ()
         if display {

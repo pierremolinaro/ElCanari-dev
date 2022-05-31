@@ -25,6 +25,24 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
       self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_componentName_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayFrontLegendForBoard_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayBackLegendForBoard_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayFrontLayoutForBoard_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayBackLayoutForBoard_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayInner1LayoutForBoard_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayInner2LayoutForBoard_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayInner3LayoutForBoard_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayInner4LayoutForBoard_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayFrontPadsForBoard_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayBackPadsForBoard_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayPadNumbersForBoard_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayFrontRestrictRectangles_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayBackRestrictRectangles_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayInner1RestrictRectangles_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayInner2RestrictRectangles_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayInner3RestrictRectangles_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_displayInner4RestrictRectangles_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_packageDrawingWidthMultpliedByTenForBoard_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_errorOrWarningIssueSize_fromElementsOfSet (inRemovedSet) // Transient property
@@ -39,6 +57,24 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
       self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_netNameAndPadLocation_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_componentName_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayFrontLegendForBoard_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayBackLegendForBoard_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayFrontLayoutForBoard_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayBackLayoutForBoard_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayInner1LayoutForBoard_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayInner2LayoutForBoard_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayInner3LayoutForBoard_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayInner4LayoutForBoard_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayFrontPadsForBoard_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayBackPadsForBoard_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayPadNumbersForBoard_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayFrontRestrictRectangles_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayBackRestrictRectangles_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayInner1RestrictRectangles_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayInner2RestrictRectangles_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayInner3RestrictRectangles_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_displayInner4RestrictRectangles_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_packageDrawingWidthMultpliedByTenForBoard_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_errorOrWarningIssueSize_toElementsOfSet (inAddedSet) // Transient property
@@ -434,6 +470,1014 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
     for managedObject in inSet.values {
       self.mObserversOf_componentName.apply { (_ observer : EBObserverProtocol) in
         managedObject.componentName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayFrontLegendForBoard' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayFrontLegendForBoard = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayFrontLegendForBoard (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayFrontLegendForBoard.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayFrontLegendForBoard_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayFrontLegendForBoard (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayFrontLegendForBoard.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayFrontLegendForBoard_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayFrontLegendForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayFrontLegendForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayFrontLegendForBoard_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayFrontLegendForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayFrontLegendForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayFrontLegendForBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayBackLegendForBoard' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayBackLegendForBoard = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayBackLegendForBoard (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayBackLegendForBoard.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayBackLegendForBoard_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayBackLegendForBoard (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayBackLegendForBoard.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayBackLegendForBoard_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayBackLegendForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayBackLegendForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayBackLegendForBoard_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayBackLegendForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayBackLegendForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayBackLegendForBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayFrontLayoutForBoard' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayFrontLayoutForBoard = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayFrontLayoutForBoard (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayFrontLayoutForBoard.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayFrontLayoutForBoard_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayFrontLayoutForBoard (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayFrontLayoutForBoard.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayFrontLayoutForBoard_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayFrontLayoutForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayFrontLayoutForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayFrontLayoutForBoard_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayFrontLayoutForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayFrontLayoutForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayFrontLayoutForBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayBackLayoutForBoard' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayBackLayoutForBoard = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayBackLayoutForBoard (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayBackLayoutForBoard.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayBackLayoutForBoard_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayBackLayoutForBoard (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayBackLayoutForBoard.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayBackLayoutForBoard_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayBackLayoutForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayBackLayoutForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayBackLayoutForBoard_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayBackLayoutForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayBackLayoutForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayBackLayoutForBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayInner1LayoutForBoard' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayInner1LayoutForBoard = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayInner1LayoutForBoard (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayInner1LayoutForBoard.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner1LayoutForBoard_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayInner1LayoutForBoard (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayInner1LayoutForBoard.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner1LayoutForBoard_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayInner1LayoutForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner1LayoutForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner1LayoutForBoard_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayInner1LayoutForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner1LayoutForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner1LayoutForBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayInner2LayoutForBoard' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayInner2LayoutForBoard = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayInner2LayoutForBoard (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayInner2LayoutForBoard.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner2LayoutForBoard_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayInner2LayoutForBoard (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayInner2LayoutForBoard.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner2LayoutForBoard_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayInner2LayoutForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner2LayoutForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner2LayoutForBoard_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayInner2LayoutForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner2LayoutForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner2LayoutForBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayInner3LayoutForBoard' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayInner3LayoutForBoard = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayInner3LayoutForBoard (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayInner3LayoutForBoard.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner3LayoutForBoard_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayInner3LayoutForBoard (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayInner3LayoutForBoard.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner3LayoutForBoard_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayInner3LayoutForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner3LayoutForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner3LayoutForBoard_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayInner3LayoutForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner3LayoutForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner3LayoutForBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayInner4LayoutForBoard' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayInner4LayoutForBoard = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayInner4LayoutForBoard (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayInner4LayoutForBoard.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner4LayoutForBoard_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayInner4LayoutForBoard (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayInner4LayoutForBoard.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner4LayoutForBoard_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayInner4LayoutForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner4LayoutForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner4LayoutForBoard_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayInner4LayoutForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner4LayoutForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner4LayoutForBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayFrontPadsForBoard' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayFrontPadsForBoard = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayFrontPadsForBoard (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayFrontPadsForBoard.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayFrontPadsForBoard_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayFrontPadsForBoard (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayFrontPadsForBoard.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayFrontPadsForBoard_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayFrontPadsForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayFrontPadsForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayFrontPadsForBoard_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayFrontPadsForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayFrontPadsForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayFrontPadsForBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayBackPadsForBoard' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayBackPadsForBoard = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayBackPadsForBoard (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayBackPadsForBoard.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayBackPadsForBoard_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayBackPadsForBoard (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayBackPadsForBoard.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayBackPadsForBoard_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayBackPadsForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayBackPadsForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayBackPadsForBoard_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayBackPadsForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayBackPadsForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayBackPadsForBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayPadNumbersForBoard' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayPadNumbersForBoard = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayPadNumbersForBoard (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayPadNumbersForBoard.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayPadNumbersForBoard_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayPadNumbersForBoard (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayPadNumbersForBoard.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayPadNumbersForBoard_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayPadNumbersForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayPadNumbersForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayPadNumbersForBoard_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayPadNumbersForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayPadNumbersForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayPadNumbersForBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayFrontRestrictRectangles' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayFrontRestrictRectangles = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayFrontRestrictRectangles (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayFrontRestrictRectangles.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayFrontRestrictRectangles_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayFrontRestrictRectangles (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayFrontRestrictRectangles.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayFrontRestrictRectangles_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayFrontRestrictRectangles_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayFrontRestrictRectangles.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayFrontRestrictRectangles_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayFrontRestrictRectangles_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayFrontRestrictRectangles.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayFrontRestrictRectangles_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayBackRestrictRectangles' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayBackRestrictRectangles = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayBackRestrictRectangles (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayBackRestrictRectangles.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayBackRestrictRectangles_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayBackRestrictRectangles (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayBackRestrictRectangles.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayBackRestrictRectangles_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayBackRestrictRectangles_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayBackRestrictRectangles.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayBackRestrictRectangles_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayBackRestrictRectangles_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayBackRestrictRectangles.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayBackRestrictRectangles_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayInner1RestrictRectangles' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayInner1RestrictRectangles = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayInner1RestrictRectangles (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayInner1RestrictRectangles.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner1RestrictRectangles_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayInner1RestrictRectangles (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayInner1RestrictRectangles.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner1RestrictRectangles_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayInner1RestrictRectangles_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner1RestrictRectangles.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner1RestrictRectangles_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayInner1RestrictRectangles_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner1RestrictRectangles.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner1RestrictRectangles_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayInner2RestrictRectangles' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayInner2RestrictRectangles = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayInner2RestrictRectangles (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayInner2RestrictRectangles.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner2RestrictRectangles_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayInner2RestrictRectangles (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayInner2RestrictRectangles.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner2RestrictRectangles_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayInner2RestrictRectangles_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner2RestrictRectangles.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner2RestrictRectangles_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayInner2RestrictRectangles_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner2RestrictRectangles.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner2RestrictRectangles_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayInner3RestrictRectangles' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayInner3RestrictRectangles = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayInner3RestrictRectangles (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayInner3RestrictRectangles.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner3RestrictRectangles_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayInner3RestrictRectangles (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayInner3RestrictRectangles.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner3RestrictRectangles_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayInner3RestrictRectangles_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner3RestrictRectangles.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner3RestrictRectangles_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayInner3RestrictRectangles_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner3RestrictRectangles.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner3RestrictRectangles_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayInner4RestrictRectangles' transient property
+  //····················································································································
+
+  private final var mObserversOf_displayInner4RestrictRectangles = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayInner4RestrictRectangles (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayInner4RestrictRectangles.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner4RestrictRectangles_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayInner4RestrictRectangles (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayInner4RestrictRectangles.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayInner4RestrictRectangles_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayInner4RestrictRectangles_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner4RestrictRectangles.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner4RestrictRectangles_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayInner4RestrictRectangles_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_displayInner4RestrictRectangles.apply { (_ observer : EBObserverProtocol) in
+        managedObject.displayInner4RestrictRectangles_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'packageDrawingWidthMultpliedByTenForBoard' transient property
+  //····················································································································
+
+  private final var mObserversOf_packageDrawingWidthMultpliedByTenForBoard = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_packageDrawingWidthMultpliedByTenForBoard (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.packageDrawingWidthMultpliedByTenForBoard_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_packageDrawingWidthMultpliedByTenForBoard (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.packageDrawingWidthMultpliedByTenForBoard_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_packageDrawingWidthMultpliedByTenForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.packageDrawingWidthMultpliedByTenForBoard_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_packageDrawingWidthMultpliedByTenForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
+    for managedObject in inSet.values {
+      self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard.apply { (_ observer : EBObserverProtocol) in
+        managedObject.packageDrawingWidthMultpliedByTenForBoard_property.removeEBObserver (observer)
       }
     }
   }

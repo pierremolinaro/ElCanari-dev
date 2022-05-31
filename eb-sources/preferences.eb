@@ -279,7 +279,6 @@ prefs {
   property NSColor boardBackgroundColorForBoard default black;
 //--- Board Error Background Color
   property NSColor errorBackgroundColorForBoard default red;
-  property Bool drawErrorBackgroundForBoard default yes ;
 //--- Board Warning Background Color
   property NSColor warningBackgroundColorForBoard default orange;
   property Bool drawWarningBackgroundForBoard default yes ;
@@ -288,60 +287,41 @@ prefs {
 //--- Clearance Color
   property NSColor boardClearanceColorForBoard default yellow;
 //--- Front Side Restrict Rectangle Color
-  property Bool displayFrontRestrictRectangles default yes ;
   property NSColor frontSideRestrictRectangleColorForBoard default blue;
 //--- Back Side Restrict Rectangle Color
-  property Bool displayBackRestrictRectangles default yes ;
   property NSColor backSideRestrictRectangleColorForBoard default green;
 //--- Inner 1 Restrict Rectangle Color
-  property Bool displayInner1RestrictRectangles default yes ;
   property NSColor inner1SideRestrictRectangleColorForBoard default yellow;
 //--- Inner 2 Restrict Rectangle Color
-  property Bool displayInner2RestrictRectangles default yes ;
   property NSColor inner2SideRestrictRectangleColorForBoard default orange;
 //--- Inner 3 Restrict Rectangle Color
-  property Bool displayInner3RestrictRectangles default yes ;
   property NSColor inner3SideRestrictRectangleColorForBoard default purple;
 //--- Inner 4 Restrict Rectangle Color
-  property Bool displayInner4RestrictRectangles default yes ;
   property NSColor inner4SideRestrictRectangleColorForBoard default magenta ;
 //--- Front Side Legend Color
-  property Bool displayFrontLegendForBoard default yes ;
   property NSColor frontSideLegendColorForBoard default brown;
 //--- Front Side Layout Color
-  property Bool displayFrontLayoutForBoard default yes ;
   property NSColor frontSideLayoutColorForBoard default blue;
 //--- Back Side Layout Color
-  property Bool displayBackLayoutForBoard default yes ;
   property NSColor backSideLayoutColorForBoard default green;
 //--- Inner 1 Layout Color
-  property Bool displayInner1LayoutForBoard default yes ;
   property NSColor inner1LayoutColorForBoard default green;
 //--- Inner 2 Layout Color
-  property Bool displayInner2LayoutForBoard default yes ;
   property NSColor inner2LayoutColorForBoard default green;
 //--- Inner 3 Layout Color
-  property Bool displayInner3LayoutForBoard default yes ;
   property NSColor inner3LayoutColorForBoard default green;
 //--- Inner 4 Layout Color
-  property Bool displayInner4LayoutForBoard default yes ;
   property NSColor inner4LayoutColorForBoard default green;
 //--- Back Side Legend Color
-  property Bool displayBackLegendForBoard default yes ;
   property NSColor backSideLegendColorForBoard default white;
 //--- Front Side Pad Color
-  property Bool displayFrontPadsForBoard default yes ;
   property NSColor frontSidePadColorForBoard default blue;
 //--- Back Side Pad Color
-  property Bool displayBackPadsForBoard default yes ;
   property NSColor backSidePadColorForBoard default green;
 //--- Pad Number Font
-  property Bool displayPadNumbersForBoard default yes ;
   property NSFont padNumberFontForBoard default 3 ; // toolTipsFontOfSize:3 ;
 //--- Pad Number Color
   property NSColor padNumberColorForBoard default red;
-//--- Package drawing width
-  property Int packageDrawingWidthMultpliedByTenForBoard default 5  ;
 //--- Show component rotation knob in board
   property Bool mShowComponentRotationKnobInBoard default yes ;
 //--- Show text rotation knob in board

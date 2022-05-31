@@ -3111,6 +3111,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_dotColorGridForSchematic_property, sendContinously:true)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
@@ -3136,6 +3137,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_lineColorGridForSchematic_property, sendContinously:true)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
@@ -3176,6 +3178,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_16 () -> NSView {
     let view = AutoLayoutColorWell ()
+      .set (toolTip: "Stored in Preferences")
       .bind_color (preferences_symbolColorForUnplacedComponentsForSchematic_property, sendContinously:true)
     return view
   }
@@ -3195,6 +3198,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_18 () -> NSView {
     let view = AutoLayoutColorWell ()
+      .set (toolTip: "Stored in Preferences")
       .bind_color (preferences_symbolColorForSchematic_property, sendContinously:true)
     return view
   }
@@ -3237,6 +3241,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_21 () -> NSView {
     let view = AutoLayoutColorWell ()
+      .set (toolTip: "Stored in Preferences")
       .bind_color (preferences_componentNameColorForSchematic_property, sendContinously:true)
     return view
   }
@@ -3266,6 +3271,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_24 () -> NSView {
     let view = AutoLayoutColorWell ()
+      .set (toolTip: "Stored in Preferences")
       .bind_color (preferences_componentValueColorForSchematic_property, sendContinously:true)
     return view
   }
@@ -3295,6 +3301,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_27 () -> NSView {
     let view = AutoLayoutColorWell ()
+      .set (toolTip: "Stored in Preferences")
       .bind_color (preferences_pinNameColorForSchematic_property, sendContinously:true)
     return view
   }
@@ -3324,6 +3331,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_30 () -> NSView {
     let view = AutoLayoutColorWell ()
+      .set (toolTip: "Stored in Preferences")
       .bind_color (preferences_pinNumberColorForSchematic_property, sendContinously:true)
     return view
   }
@@ -3353,6 +3361,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_33 () -> NSView {
     let view = AutoLayoutColorWell ()
+      .set (toolTip: "Stored in Preferences")
       .bind_color (preferences_connectionColorForSchematic_property, sendContinously:true)
     return view
   }
@@ -3372,6 +3381,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_35 () -> NSView {
     let view = AutoLayoutColorWell ()
+      .set (toolTip: "Stored in Preferences")
       .bind_color (preferences_schematicBackColor_property, sendContinously:true)
     return view
   }
@@ -3391,6 +3401,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_37 () -> NSView {
     let view = AutoLayoutColorWell ()
+      .set (toolTip: "Stored in Preferences")
       .bind_color (preferences_schematicFrameColor_property, sendContinously:true)
     return view
   }
@@ -4056,7 +4067,7 @@ import Cocoa
   fileprivate final func computeImplicitView_92 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
-      let view_0 = AutoLayoutStaticLabel (title: "Grid and Flip Inspector", bold: true, size: .small)
+      let view_0 = AutoLayoutStaticLabel (title: "Grid and Flip", bold: true, size: .small)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       view.appendView (view_1)
@@ -4182,6 +4193,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_crossColorGridForBoard_property, sendContinously:true)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
@@ -4207,6 +4219,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_lineColorGridForBoard_property, sendContinously:true)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
@@ -4220,13 +4233,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_107 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutStaticLabel (title: "Rastnet", bold: true, size: .small)
-      view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
-    }
+    let view = AutoLayoutStaticLabel (title: "Rastnet", bold: true, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
     return view
   }
 
@@ -4317,13 +4326,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_115 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutStaticLabel (title: "Display Inspector", bold: true, size: .small)
-      view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
-    }
+    let view = AutoLayoutStaticLabel (title: "Pad Number", bold: true, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
     return view
   }
 
@@ -4332,7 +4337,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_116 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Pad Number", bold: false, size: .small)
+    let view = AutoLayoutFontButton (size: .small)
+      .bind_fontValue (preferences_padNumberFontForBoard_property)
     return view
   }
 
@@ -4341,8 +4347,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_117 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
-      .bind_fontValue (preferences_padNumberFontForBoard_property)
+    let view = AutoLayoutStaticLabel (title: "Package Width", bold: true, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
     return view
   }
 
@@ -4351,14 +4358,13 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_118 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_0)
-      let view_1 = AutoLayoutColorWell ()
-        .bind_color (preferences_frontSidePadColorForBoard_property, sendContinously:true)
-      view.appendView (view_1)
-    }
+    let view = AutoLayoutTaggedPopUpButton (size: .small)
+      .add (title: "0.5 Point", withTag: 5)
+      .add (title: "1.0 Point", withTag: 10)
+      .add (title: "1.5 Point", withTag: 15)
+      .add (title: "2.0 Point", withTag: 20)
+      .add (title: "2.5 Point", withTag: 25)
+      .bind_selectedTag (self.rootObject.packageDrawingWidthMultpliedByTenForBoard_property)
     return view
   }
 
@@ -4367,9 +4373,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_119 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Front Side Pads", size: .small)
-      .expandableHeight ()
-      .bind_value (preferences_displayFrontPadsForBoard_property)
+    let view = AutoLayoutStaticLabel (title: "Display", bold: true, size: .small)
+      .expandableWidth ()
+      .set (alignment: .left)
     return view
   }
 
@@ -4383,7 +4389,8 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
-        .bind_color (preferences_backSidePadColorForBoard_property, sendContinously:true)
+        .set (toolTip: "Stored in Preferences")
+        .bind_color (preferences_frontSidePadColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
     return view
@@ -4394,9 +4401,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_121 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Back Side Pads", size: .small)
+    let view = AutoLayoutCheckbox (title: "Front Side Pads", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayBackPadsForBoard_property)
+      .bind_value (self.rootObject.displayFrontPadsForBoard_property)
     return view
   }
 
@@ -4410,7 +4417,8 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
-        .bind_color (preferences_padNumberColorForBoard_property, sendContinously:true)
+        .set (toolTip: "Stored in Preferences")
+        .bind_color (preferences_backSidePadColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
     return view
@@ -4421,9 +4429,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_123 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Pad Numbers", size: .small)
+    let view = AutoLayoutCheckbox (title: "Back Side Pads", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayPadNumbersForBoard_property)
+      .bind_value (self.rootObject.displayBackPadsForBoard_property)
     return view
   }
 
@@ -4432,7 +4440,15 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_124 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Package Width", bold: false, size: .small)
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
+        .bind_color (preferences_padNumberColorForBoard_property, sendContinously:true)
+      view.appendView (view_1)
+    }
     return view
   }
 
@@ -4441,13 +4457,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_125 () -> NSView {
-    let view = AutoLayoutTaggedPopUpButton (size: .small)
-      .add (title: "0.5 Point", withTag: 5)
-      .add (title: "1.0 Point", withTag: 10)
-      .add (title: "1.5 Point", withTag: 15)
-      .add (title: "2.0 Point", withTag: 20)
-      .add (title: "2.5 Point", withTag: 25)
-      .bind_selectedTag (preferences_packageDrawingWidthMultpliedByTenForBoard_property)
+    let view = AutoLayoutCheckbox (title: "Pad Numbers", size: .small)
+      .expandableHeight ()
+      .bind_value (self.rootObject.displayPadNumbersForBoard_property)
     return view
   }
 
@@ -4461,6 +4473,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_frontSideLegendColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4474,7 +4487,7 @@ import Cocoa
   fileprivate final func computeImplicitView_127 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Front Side Legend", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayFrontLegendForBoard_property)
+      .bind_value (self.rootObject.displayFrontLegendForBoard_property)
     return view
   }
 
@@ -4488,6 +4501,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_backSideLegendColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4501,7 +4515,7 @@ import Cocoa
   fileprivate final func computeImplicitView_129 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Back Side Legend", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayFrontLegendForBoard_property)
+      .bind_value (self.rootObject.displayFrontLegendForBoard_property)
     return view
   }
 
@@ -4515,6 +4529,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_frontSideLayoutColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4528,7 +4543,7 @@ import Cocoa
   fileprivate final func computeImplicitView_131 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Front Side Layout", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayFrontLayoutForBoard_property)
+      .bind_value (self.rootObject.displayFrontLayoutForBoard_property)
     return view
   }
 
@@ -4542,6 +4557,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_inner1LayoutColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4555,7 +4571,7 @@ import Cocoa
   fileprivate final func computeImplicitView_133 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 1 Layout", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayInner1LayoutForBoard_property)
+      .bind_value (self.rootObject.displayInner1LayoutForBoard_property)
     return view
   }
 
@@ -4569,6 +4585,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_inner2LayoutColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4582,7 +4599,7 @@ import Cocoa
   fileprivate final func computeImplicitView_135 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 2 Layout", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayInner2LayoutForBoard_property)
+      .bind_value (self.rootObject.displayInner2LayoutForBoard_property)
     return view
   }
 
@@ -4596,6 +4613,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_inner3LayoutColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4609,7 +4627,7 @@ import Cocoa
   fileprivate final func computeImplicitView_137 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 3 Layout", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayInner3LayoutForBoard_property)
+      .bind_value (self.rootObject.displayInner3LayoutForBoard_property)
     return view
   }
 
@@ -4623,6 +4641,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_inner4LayoutColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4636,7 +4655,7 @@ import Cocoa
   fileprivate final func computeImplicitView_139 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner 4 Layout", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayInner4LayoutForBoard_property)
+      .bind_value (self.rootObject.displayInner4LayoutForBoard_property)
     return view
   }
 
@@ -4650,6 +4669,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_backSideLayoutColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4663,7 +4683,7 @@ import Cocoa
   fileprivate final func computeImplicitView_141 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Back Side Layout", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayBackLayoutForBoard_property)
+      .bind_value (self.rootObject.displayBackLayoutForBoard_property)
     return view
   }
 
@@ -4677,6 +4697,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_frontSideRestrictRectangleColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4690,7 +4711,7 @@ import Cocoa
   fileprivate final func computeImplicitView_143 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Front Layer Restrict Rect.", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayFrontRestrictRectangles_property)
+      .bind_value (self.rootObject.displayFrontRestrictRectangles_property)
     return view
   }
 
@@ -4704,6 +4725,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_backSideRestrictRectangleColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4717,7 +4739,7 @@ import Cocoa
   fileprivate final func computeImplicitView_145 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Back Layer Restrict Rect.", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayBackRestrictRectangles_property)
+      .bind_value (self.rootObject.displayBackRestrictRectangles_property)
     return view
   }
 
@@ -4731,6 +4753,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_inner1SideRestrictRectangleColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4744,7 +4767,7 @@ import Cocoa
   fileprivate final func computeImplicitView_147 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner1 Layer Restrict Rect.", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayInner1RestrictRectangles_property)
+      .bind_value (self.rootObject.displayInner1RestrictRectangles_property)
     return view
   }
 
@@ -4758,6 +4781,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_inner2SideRestrictRectangleColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4771,7 +4795,7 @@ import Cocoa
   fileprivate final func computeImplicitView_149 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner2 Layer Restrict Rect.", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayInner2RestrictRectangles_property)
+      .bind_value (self.rootObject.displayInner2RestrictRectangles_property)
     return view
   }
 
@@ -4785,6 +4809,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_inner3SideRestrictRectangleColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4798,7 +4823,7 @@ import Cocoa
   fileprivate final func computeImplicitView_151 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner3 Layer Restrict Rect.", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayInner3RestrictRectangles_property)
+      .bind_value (self.rootObject.displayInner3RestrictRectangles_property)
     return view
   }
 
@@ -4812,6 +4837,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_inner4SideRestrictRectangleColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4825,7 +4851,7 @@ import Cocoa
   fileprivate final func computeImplicitView_153 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Inner4 Layer Restrict Rect.", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_displayInner4RestrictRectangles_property)
+      .bind_value (self.rootObject.displayInner4RestrictRectangles_property)
     return view
   }
 
@@ -4839,6 +4865,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_boardLimitsColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4870,6 +4897,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_boardClearanceColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4901,6 +4929,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_boardBackgroundColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4932,6 +4961,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_errorBackgroundColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4945,7 +4975,7 @@ import Cocoa
   fileprivate final func computeImplicitView_161 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Error Background", size: .small)
       .expandableHeight ()
-      .bind_value (preferences_drawErrorBackgroundForBoard_property)
+      .bind_value (self.rootObject.drawErrorBackgroundForBoard_property)
     return view
   }
 
@@ -4959,6 +4989,7 @@ import Cocoa
       let view_0 = AutoLayoutFlexibleSpace ()
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_warningBackgroundColorForBoard_property, sendContinously:true)
       view.appendView (view_1)
     }
@@ -4990,7 +5021,8 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_101 (), right: self.computeImplicitView_102 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_103 (), right: self.computeImplicitView_104 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_105 (), right: self.computeImplicitView_106 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_107 (), right: self.computeImplicitView_108 ())
+      .add (single: self.computeImplicitView_107 ())
+      .add (single: self.computeImplicitView_108 ())
       .add (single: self.computeImplicitView_109 ())
       .add (single: self.computeImplicitView_110 ())
       .add (single: self.computeImplicitView_111 ())
@@ -4998,8 +5030,10 @@ import Cocoa
       .add (single: self.computeImplicitView_113 ())
       .add (single: self.computeImplicitView_114 ())
       .add (single: self.computeImplicitView_115 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_116 (), right: self.computeImplicitView_117 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_118 (), right: self.computeImplicitView_119 ())
+      .add (single: self.computeImplicitView_116 ())
+      .add (single: self.computeImplicitView_117 ())
+      .add (single: self.computeImplicitView_118 ())
+      .add (single: self.computeImplicitView_119 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_120 (), right: self.computeImplicitView_121 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_122 (), right: self.computeImplicitView_123 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_124 (), right: self.computeImplicitView_125 ())

@@ -38,7 +38,8 @@ let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
   "Onglet « Components » : prise en compte de la touche DELETE pour retirer un composant",
-  "Inspecteur « Text in Booard » : ajout d'un switch pour contrôler l'affichage de la poignée de rotation"
+  "Inspecteur « Text in Board » : ajout d'un switch pour contrôler l'affichage de la poignée de rotation",
+  "Onglet « Components », inspecteur « Display » : divers arrangements"
 ]
 
 //--------------------------------------------------------------------------------------------------
