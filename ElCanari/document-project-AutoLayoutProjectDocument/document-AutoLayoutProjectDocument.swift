@@ -1381,7 +1381,7 @@ import Cocoa
       .set (alignment: .left)
     self.mDisconnectAllSymbolPinsSchematicHotKeyTextField = view_5 // Outlet
     vStackView.appendView (view_5)
-    let view_6 = AutoLayoutStaticLabel (title: "[F] Set NC to Symbol Pins", bold: false, size: .small)
+    let view_6 = AutoLayoutStaticLabel (title: "[F] Add Label to Symbol Pins", bold: false, size: .small)
       .expandableWidth ()
       .set (alignment: .left)
     self.mAddLabelToAllSymbolPinsSchematicHotKeyTextField = view_6 // Outlet

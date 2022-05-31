@@ -456,7 +456,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     StaticLabel (title: "[C] Connect", bold: no, size: .small) [outlet mConnectSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
     StaticLabel (title: "[D] Disconnect", bold: no, size: .small) [outlet mDisconnectSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
     StaticLabel (title: "[E] Disconnect All Symbol Pins", bold: no, size: .small) [outlet mDisconnectAllSymbolPinsSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }       
-    StaticLabel (title: "[F] Set NC to Symbol Pins", bold: no, size: .small) [outlet mAddLabelToAllSymbolPinsSchematicHotKeyTextField] { expandableWidth () set 
+    StaticLabel (title: "[F] Add Label to Symbol Pins", bold: no, size: .small) [outlet mAddLabelToAllSymbolPinsSchematicHotKeyTextField] { expandableWidth () set 
 (alignment: .left) }
     StaticLabel (title: "[L] Add Left Label", bold: no, size: .small) [outlet mAddLeftLabelSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }
     StaticLabel (title: "[M] Set NC to Symbol Pins", bold: no, size: .small) [outlet mAddNCToAllSymbolPinsSchematicHotKeyTextField] { expandableWidth () set (alignment: .left) }

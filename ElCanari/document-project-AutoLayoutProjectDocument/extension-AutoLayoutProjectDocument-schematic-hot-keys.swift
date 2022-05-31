@@ -76,6 +76,8 @@ extension AutoLayoutProjectDocument {
   //--- Create NC
     self.mAddNCSchematicHotKeyTextField?.textColor = .disabledControlTextColor
     self.mAddNCToAllSymbolPinsSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+  //--- Create Label to all symbol pins
+    self.mAddLabelToAllSymbolPinsSchematicHotKeyTextField?.textColor = .disabledControlTextColor
   //--- Exchange symbol
     self.mExchangeSymbolSchematicHotKeyTextField?.textColor = .disabledControlTextColor
   }
