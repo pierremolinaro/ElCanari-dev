@@ -20,7 +20,6 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
 
   init (minWidth inWidth : Int, size inSize : EBControlSize) {
     super.init (optionalWidth: inWidth, bold: true, size: inSize)
-
   //--- Target
     self.target = self
     self.action = #selector (Self.valueDidChangeAction (_:))
@@ -84,7 +83,7 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
   }
 
   //····················································································································
-  //    NSTextFieldDelegate delegate function
+  //MARK:    NSTextFieldDelegate delegate function
   //····················································································································
 
   func control (_ control : NSControl,
@@ -118,7 +117,7 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
   }
 
   //····················································································································
-  //  value binding
+  //MARK:  $value binding
   //····················································································································
 
   private var mValueController : EBGenericReadWritePropertyController <Double>? = nil
@@ -130,7 +129,7 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
     self.isContinuous = sendContinously
     self.mValueController = EBGenericReadWritePropertyController <Double> (
       observedObject: inObject,
-      callBack:  { [weak self] in self?.update (from: inObject) }
+      callBack: { [weak self] in self?.update (from: inObject) }
     )
     return self
   }
@@ -148,7 +147,7 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
       self.placeholderString = nil
       self.doubleValue = CGFloat (v)
     case .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController)
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
     }

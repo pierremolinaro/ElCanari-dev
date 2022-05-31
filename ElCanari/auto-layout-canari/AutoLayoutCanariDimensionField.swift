@@ -16,6 +16,9 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField {
 
   init (minWidth inWidth : Int, size inSize : EBControlSize) {
     super.init (optionalWidth: inWidth, bold: true, size: inSize)
+  //--- Target
+    self.target = self
+    self.action = #selector (Self.valueDidChangeAction (_:))
   }
 
   //····················································································································
@@ -26,29 +29,55 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  override func resignFirstResponder () -> Bool {
-    // Swift.print ("resignFirstResponder")
-    if let controller = self.mController {
-      let ok = controller.performValidation (self)
-      return ok
-    }else{
-      return super.resignFirstResponder ()
+  override func textDidChange (_ inNotification : Notification) {
+    super.textDidChange (inNotification)
+    if self.isContinuous {
+      if let inputString = currentEditor()?.string {
+        // NSLog ("inputString %@", inputString)
+        let numberFormatter = self.formatter as! NumberFormatter
+        let number = numberFormatter.number (from: inputString)
+        if number == nil {
+          _ = control (
+            self,
+            didFailToFormatString: inputString,
+            errorDescription: "The “\(inputString)” value is invalid."
+          )
+        }else{
+          NSApp.sendAction (self.action!, to: self.target, from: self)
+        }
+      }
     }
   }
 
   //····················································································································
+  //MARK:    NSTextFieldDelegate delegate function
+  //····················································································································
 
-  override func textShouldEndEditing (_ inTextObject : NSText) -> Bool {
-    // Swift.print ("textShouldEndEditing")
-    if let controller = self.mController {
-      let ok = controller.performValidation (self)
-      if !ok {
-        controller.updateOutlet () // Restore previous valid value
-      }
-      return ok
-    }else{
-      return super.textShouldEndEditing (inTextObject)
+  func control (_ control : NSControl,
+                didFailToFormatString string : String,
+                errorDescription error : String?) -> Bool {
+    let alert = NSAlert ()
+    if let window = control.window {
+      alert.messageText = error!
+      alert.informativeText = "Please provide a valid value."
+      alert.addButton (withTitle: "Ok")
+      alert.addButton (withTitle: "Discard Change")
+      alert.beginSheetModal (
+        for: window,
+        completionHandler: { (response : NSApplication.ModalResponse) -> Void in
+          if response == .alertSecondButtonReturn { // Discard Change
+ //         self.integerValue = self.myIntegerValue.0
+          }
+        }
+      )
     }
+    return false
+  }
+
+  //····················································································································
+
+  @objc fileprivate func valueDidChangeAction (_ inSender : Any?) {
+    _ = self.mController?.performValidation (self)
   }
 
   //····················································································································

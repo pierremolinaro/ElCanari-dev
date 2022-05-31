@@ -125,7 +125,7 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
   }
 
   //····················································································································
-  //  value binding
+  //MARK:  $value binding
   //····················································································································
 
   private var mValueController : EBGenericReadWritePropertyController <Int>? = nil

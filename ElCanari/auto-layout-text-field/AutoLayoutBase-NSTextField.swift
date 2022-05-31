@@ -61,7 +61,6 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   //····················································································································
   // NE PAS DÉFINIR acceptsFirstResponder, SINON UN CHAMP SANS SÉLECTION RESTE ACTIF
   //  final override var acceptsFirstResponder: Bool { return true }
-
   //····················································································································
 
   final func set (alignment inAlignment : TextAlignment) -> Self {
@@ -121,7 +120,7 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   }
 
   //····················································································································
-  //   NSControlTextEditingDelegate
+  //MARK:   NSControlTextEditingDelegate
   //····················································································································
 
   func control (_ control: NSControl,
@@ -138,7 +137,7 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   }
 
   //····················································································································
-  //  $enabled binding
+  //MARK:  $enabled binding
   //····················································································································
 
   private var mEnabledBindingController : EnabledBindingController? = nil
@@ -152,7 +151,7 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   }
 
   //····················································································································
-  //  $hidden binding
+  //MARK:  $hidden binding
   //····················································································································
 
   private var mHiddenBindingController : HiddenBindingController? = nil

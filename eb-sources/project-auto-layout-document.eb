@@ -1883,7 +1883,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         left: StaticLabel (title: "Size", bold: no, size: .small),
         right: DoubleField (minWidth: 64, size: .small) {
           $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no)
-          $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
+          // $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
         }
       )
       addFirstBaseLineAligned (

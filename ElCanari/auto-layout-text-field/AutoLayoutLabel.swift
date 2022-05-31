@@ -61,35 +61,7 @@ final class AutoLayoutLabel : AutoLayoutBase_NSTextField {
   }
 
   //····················································································································
-
-//  final func set (alignment inAlignment : TextAlignment) -> Self {
-//    self.alignment = inAlignment.cocoaAlignment
-//    return self
-//  }
-
-  //····················································································································
-
-//  private var mWidth : CGFloat? = nil
-
-  //····················································································································
-
-//  func set (width inWidth : Int) -> Self {
-//    self.mWidth = CGFloat (inWidth)
-//    return self
-//  }
-
-  //····················································································································
-
-//  final override var intrinsicContentSize : NSSize {
-//    var s = super.intrinsicContentSize
-//    if let w = self.mWidth {
-//      s.width = w
-//    }
-//    return s
-//  }
-
-  //····················································································································
-  //  $title binding
+  //MARK:  $title binding
   //····················································································································
 
   private var mTitleController : EBObservablePropertyController? = nil
@@ -109,11 +81,14 @@ final class AutoLayoutLabel : AutoLayoutBase_NSTextField {
   private func update (from model : EBReadOnlyProperty_String) {
     switch model.selection {
     case .empty :
-      self.stringValue = "—"
+      self.placeholderString = "No Selection"
+      self.stringValue = ""
     case .single (let v) :
+      self.placeholderString = nil
       self.stringValue = v
     case .multiple :
-      self.stringValue = "—"
+      self.placeholderString = "Multiple Selection"
+      self.stringValue = ""
     }
   }
 

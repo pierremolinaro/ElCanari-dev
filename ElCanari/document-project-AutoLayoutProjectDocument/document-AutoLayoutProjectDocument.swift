@@ -6336,7 +6336,6 @@ import Cocoa
   fileprivate final func computeImplicitView_275 () -> NSView {
     let view = AutoLayoutDoubleField (minWidth: 64, size: .small)
       .bind_value (self.componentInBoardSelectionController.mNameFontSize_property, sendContinously:false)
-      .bind_enabled (.prop (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property))
     return view
   }
 

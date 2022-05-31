@@ -32,11 +32,6 @@ final class AutoLayoutFlexibleSpace : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-//  override var acceptsFirstResponder : Bool { return false}
-//  override var canBecomeKeyView : Bool { return false}
-
-  //····················································································································
-
   override func draw (_ inDirtyRect : NSRect) {
     if debugAutoLayout () {
       DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
