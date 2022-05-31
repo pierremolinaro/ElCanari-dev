@@ -654,7 +654,8 @@ let Preferences_displayPadNumbersForBoard = "Preferences:displayPadNumbersForBoa
 let Preferences_padNumberFontForBoard = "Preferences:padNumberFontForBoard"
 let Preferences_padNumberColorForBoard = "Preferences:padNumberColorForBoard"
 let Preferences_packageDrawingWidthMultpliedByTenForBoard = "Preferences:packageDrawingWidthMultpliedByTenForBoard"
-let Preferences_mShowRotationKnobInBoard = "Preferences:mShowRotationKnobInBoard"
+let Preferences_mShowComponentRotationKnobInBoard = "Preferences:mShowComponentRotationKnobInBoard"
+let Preferences_mShowTextRotationKnobInBoard = "Preferences:mShowTextRotationKnobInBoard"
 let Preferences_sampleString = "Preferences:sampleString"
 let Preferences_showGerberDrawingFlow = "Preferences:showGerberDrawingFlow"
 let Preferences_showGerberDrawingIndexes = "Preferences:showGerberDrawingIndexes"
@@ -2091,16 +2092,29 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
 //····················································································································
-//   Atomic property: mShowRotationKnobInBoard
+//   Atomic property: mShowComponentRotationKnobInBoard
 //····················································································································
 
-  let preferences_mShowRotationKnobInBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mShowRotationKnobInBoard)
+  let preferences_mShowComponentRotationKnobInBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mShowComponentRotationKnobInBoard)
 
 //····················································································································
 
-  var preferences_mShowRotationKnobInBoard : Bool {
-    get { return preferences_mShowRotationKnobInBoard_property.propval }
-    set { preferences_mShowRotationKnobInBoard_property.setProp (newValue) }
+  var preferences_mShowComponentRotationKnobInBoard : Bool {
+    get { return preferences_mShowComponentRotationKnobInBoard_property.propval }
+    set { preferences_mShowComponentRotationKnobInBoard_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: mShowTextRotationKnobInBoard
+//····················································································································
+
+  let preferences_mShowTextRotationKnobInBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mShowTextRotationKnobInBoard)
+
+//····················································································································
+
+  var preferences_mShowTextRotationKnobInBoard : Bool {
+    get { return preferences_mShowTextRotationKnobInBoard_property.propval }
+    set { preferences_mShowTextRotationKnobInBoard_property.setProp (newValue) }
   }
 
 //····················································································································

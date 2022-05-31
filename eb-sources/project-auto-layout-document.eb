@@ -1861,6 +1861,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         left: StaticLabel (title: "Side", bold: no, size: .small),
         right: EnumPopUpButton (titles: enum BoardTextLayer.popupTitles, size: .small) { $selectedIndex #boardTextSelectionController.mLayer } 
       )
+      add (single: Checkbox (title: "Show Rotation Knob", size: .small) {
+        set (toolTip: "Common to all texts, stored in Preferences")
+        $value prefs.mShowTextRotationKnobInBoard }
+      )
     }
   }
 
@@ -1913,7 +1917,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addSeparator ()
       add (single: StaticLabel (title: "Package", bold: yes, size: .small) { set (alignment: .left) })
       add (single: CanariBoardComponentPackagePopUpButton [configurator componentPackagePopUpButtonConfigurator])
-      add (single: Checkbox (title: "Show Rotation Knob", size: .small) { $value prefs.mShowRotationKnobInBoard })
+      add (single: Checkbox (title: "Show Rotation Knob", size: .small) {
+        set (toolTip: "Common to all packages, stored in Preferences")
+        $value prefs.mShowComponentRotationKnobInBoard
+      })
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Rotation", bold: no, size: .small),
         right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mRotation }

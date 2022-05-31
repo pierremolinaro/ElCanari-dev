@@ -29,7 +29,8 @@ func transient_BoardText_selectionDisplay (
        _ prefs_frontSideLayoutColorForBoard : NSColor,
        _ prefs_backSideLayoutColorForBoard : NSColor,
        _ prefs_backSideLegendColorForBoard : NSColor,
-       _ prefs_hiliteWidthMultipliedByTen : Int
+       _ prefs_hiliteWidthMultipliedByTen : Int,
+       _ prefs_mShowTextRotationKnobInBoard : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let (textBP, frameBP, origin, rotationKnob, _) = boardText_displayInfos (
@@ -63,14 +64,16 @@ func transient_BoardText_selectionDisplay (
         shape.add (stroke: [frameBP], .cyan)
         shape.add (stroke: [textBP], textColor)
       //--- Rotation knob
-        var knobLine = EBBezierPath ()
-        knobLine.move (to : origin)
-        knobLine.line (to : rotationKnob)
-        knobLine.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
-        knobLine.lineCapStyle = .round
-        knobLine.lineJoinStyle = .round
-        shape.add (stroke: [knobLine], .cyan)
-        shape.add (knobAt:  rotationKnob, knobIndex: BOARD_TEXT_ROTATION_KNOB, .circ, 2.0)
+        if prefs_mShowTextRotationKnobInBoard {
+          var knobLine = EBBezierPath ()
+          knobLine.move (to : origin)
+          knobLine.line (to : rotationKnob)
+          knobLine.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
+          knobLine.lineCapStyle = .round
+          knobLine.lineJoinStyle = .round
+          shape.add (stroke: [knobLine], .cyan)
+          shape.add (knobAt:  rotationKnob, knobIndex: BOARD_TEXT_ROTATION_KNOB, .circ, 2.0)
+        }
       //--- Knob
         shape.add (knobAt:  origin, knobIndex: BOARD_TEXT_ORIGIN_KNOB, .rect, 2.0)
       //---

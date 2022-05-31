@@ -46,6 +46,13 @@ final class AutoLayoutCheckbox : AutoLayoutBase_NSButton {
 
   //····················································································································
 
+  func set (toolTip inToolTip : String) -> Self {
+    self.toolTip = inToolTip
+    return self
+  }
+
+  //····················································································································
+
   override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
     if let w = self.mWidth {

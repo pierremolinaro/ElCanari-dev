@@ -38,7 +38,8 @@ graphic entity BoardText : BoardObject {
     prefs.frontSideLayoutColorForBoard,
     prefs.backSideLayoutColorForBoard,
     prefs.backSideLegendColorForBoard,
-    prefs.hiliteWidthMultipliedByTen
+    prefs.hiliteWidthMultipliedByTen,
+    prefs.mShowTextRotationKnobInBoard
   ;
   
   transient String fontName dependsFrom self.mFont.one.mFontName ;

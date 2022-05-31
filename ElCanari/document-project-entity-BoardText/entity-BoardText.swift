@@ -408,10 +408,10 @@ final class BoardText : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mText_property.selection, unwSelf.mFontSize_property.selection, unwSelf.mFont_property.descriptor_property.selection, unwSelf.mHorizontalAlignment_property.selection, unwSelf.mVerticalAlignment_property.selection, unwSelf.mLayer_property.selection, unwSelf.mRotation_property.selection, unwSelf.mWeight_property.selection, unwSelf.mOblique_property.selection, preferences_frontSideLegendColorForBoard_property.selection, preferences_frontSideLayoutColorForBoard_property.selection, preferences_backSideLayoutColorForBoard_property.selection, preferences_backSideLegendColorForBoard_property.selection, preferences_hiliteWidthMultipliedByTen_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15)) :
-          return .single (transient_BoardText_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mText_property.selection, unwSelf.mFontSize_property.selection, unwSelf.mFont_property.descriptor_property.selection, unwSelf.mHorizontalAlignment_property.selection, unwSelf.mVerticalAlignment_property.selection, unwSelf.mLayer_property.selection, unwSelf.mRotation_property.selection, unwSelf.mWeight_property.selection, unwSelf.mOblique_property.selection, preferences_frontSideLegendColorForBoard_property.selection, preferences_frontSideLayoutColorForBoard_property.selection, preferences_backSideLayoutColorForBoard_property.selection, preferences_backSideLegendColorForBoard_property.selection, preferences_hiliteWidthMultipliedByTen_property.selection, preferences_mShowTextRotationKnobInBoard_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16)) :
+          return .single (transient_BoardText_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -436,6 +436,7 @@ final class BoardText : BoardObject,
     preferences_backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     preferences_backSideLegendColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     preferences_hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
+    preferences_mShowTextRotationKnobInBoard_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: fontName
     self.fontName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -522,6 +523,7 @@ final class BoardText : BoardObject,
     // preferences_backSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     // preferences_backSideLegendColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     // preferences_hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
+    // preferences_mShowTextRotationKnobInBoard_property.removeEBObserver (self.selectionDisplay_property)
     // self.mFont_property.mFontName_property.removeEBObserver (self.fontName_property)
     // self.mLayer_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mX_property.removeEBObserver (self.signatureForERCChecking_property)

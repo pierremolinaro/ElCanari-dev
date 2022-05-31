@@ -97,7 +97,7 @@ graphic entity ComponentInProject : BoardObject {
     self.mValueIsVisibleInBoard, self.mXValue, self.mYValue, self.mValueFont.one.descriptor, self.mValueFontSize,
     self.mValueRotation, self.mComponentValue,
     prefs.hiliteWidthMultipliedByTen,
-    prefs.mShowRotationKnobInBoard
+    prefs.mShowComponentRotationKnobInBoard
   ;
 
   transient Bool hasSlavePads dependsFrom self.packagePadDictionary ;

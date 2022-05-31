@@ -155,6 +155,7 @@ extern autolayout class CanariObservedDimensionAndPopUp (size: EBControlSize) $h
 extern autolayout class Checkbox (title: String, size: EBControlSize) $enabled $hidden {
   func expandableHeight ()
   func set (width: Int, multiline: Bool)
+  func set (toolTip : String)
   $value property Bool
 }
 

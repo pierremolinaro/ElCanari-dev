@@ -342,8 +342,10 @@ prefs {
   property NSColor padNumberColorForBoard default red;
 //--- Package drawing width
   property Int packageDrawingWidthMultpliedByTenForBoard default 5  ;
-//--- Show rotation knob in board
-  property Bool mShowRotationKnobInBoard default yes ;
+//--- Show component rotation knob in board
+  property Bool mShowComponentRotationKnobInBoard default yes ;
+//--- Show text rotation knob in board
+  property Bool mShowTextRotationKnobInBoard default yes ;
 //--- Freerouter "gui_default.par" file contents
   property String mFreeRouterGuiDefaultFileContents default "" ;
 }
