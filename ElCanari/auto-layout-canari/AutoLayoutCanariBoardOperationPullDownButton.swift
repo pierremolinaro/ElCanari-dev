@@ -52,9 +52,15 @@ final class AutoLayoutCanariBoardOperationPullDownButton : AutoLayoutBase_NSPopU
     self.addItem (withTitle: "Select all Tracks")
     self.lastItem?.target = inDocument
     self.lastItem?.action = #selector (AutoLayoutProjectDocument.selectAllTracksAction (_:))
+//    self.lastItem?.keyEquivalent = "t"
+//    self.lastItem?.keyEquivalentModifierMask = [.option, .command]
+  //--- Select Tracks from Selected Track Net
+    self.addItem (withTitle: "Select Tracks from Selected Track Nets")
+    self.lastItem?.target = inDocument
+    self.lastItem?.action = #selector (AutoLayoutProjectDocument.selectAllTracksOfSelectedTracksNetsAction (_:))
     self.lastItem?.keyEquivalent = "t"
     self.lastItem?.keyEquivalentModifierMask = [.option, .command]
-  //--- Rename Tracks of Net
+  //--- Select Tracks of Net
     self.addItem (withTitle: "Select Tracks of Net")
     self.lastItem?.submenu = self.mSelectNetTrackSubMenu
   //--- Select All Vias
