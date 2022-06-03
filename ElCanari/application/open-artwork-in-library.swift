@@ -69,7 +69,7 @@ fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate,
         if fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
           let files = try? fm.subpathsOfDirectory (atPath: baseDirectory)
           for f in files ?? [] {
-            if f.pathExtension == "ElCanariArtwork" {
+            if f.pathExtension.lowercased() == "elcanariartwork" {
               let baseName = f.lastPathComponent.deletingPathExtension
               partCountDictionary [baseName] = partCountDictionary [baseName, default: 0] + 1
             }
@@ -85,7 +85,7 @@ fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate,
       if fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
         let files = try? fm.subpathsOfDirectory (atPath: baseDirectory)
         for f in files ?? [] {
-          if f.pathExtension == "ElCanariArtwork" {
+          if f.pathExtension.lowercased() == "elcanariartwork" {
             let fullpath = baseDirectory + "/" + f
             let baseName = f.lastPathComponent.deletingPathExtension
             let isDuplicated : Bool = partCountDictionary [baseName, default: 0] > 1

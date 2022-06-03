@@ -21,32 +21,32 @@ extension ApplicationDelegate {
   //····················································································································
 
   @objc func actionOpenAllDocumentsInDirectory (_ inSender : AnyObject) {
-    let fileExtensions = Set (["ElCanariSymbol", "ElCanariPackage", "ElCanariDevice", "ElCanariFont", "ElCanariProject"])
-    self.actionOpenAllDocumentsInDirectory (fileExtensions, "document", inSender)
+    let extensions = Set (["elcanarisymbol", "elcanaripackage", "elcanaridevice", "elcanarifont", "elcanariartwork", "elcanariproject", "elcanarimerger"])
+    self.actionOpenAllDocumentsInDirectory (extensions, "document", inSender)
   }
 
   //····················································································································
 
   @objc func actionOpenAllSymbolsInDirectory (_ inSender : Any?) {
-    self.actionOpenAllDocumentsInDirectory (["ElCanariSymbol"], "symbol", inSender)
+    self.actionOpenAllDocumentsInDirectory (["elcanarisymbol"], "symbol", inSender)
   }
 
   //····················································································································
 
   @objc func actionOpenAllPackagesInDirectory (_ inSender : Any?) {
-    self.actionOpenAllDocumentsInDirectory (["ElCanariPackage"], "package", inSender)
+    self.actionOpenAllDocumentsInDirectory (["elcanaripackage"], "package", inSender)
   }
 
   //····················································································································
 
   @objc func actionOpenAllDevicesInDirectory (_ inSender : Any?) {
-    self.actionOpenAllDocumentsInDirectory (["ElCanariDevice"], "device", inSender)
+    self.actionOpenAllDocumentsInDirectory (["elcanaridevice"], "device", inSender)
   }
 
   //····················································································································
 
   @objc func actionOpenAllFontsInDirectory (_ inSender : Any?) {
-    self.actionOpenAllDocumentsInDirectory (["ElCanariFont"], "font", inSender)
+    self.actionOpenAllDocumentsInDirectory (["elcanarifont"], "font", inSender)
   }
 
   //····················································································································
@@ -70,7 +70,7 @@ extension ApplicationDelegate {
             for f in files {
               if f.first! != "." {
                 let fullPath = baseDirectory + "/" + f
-                if extensions.contains (fullPath.pathExtension) {
+                if extensions.contains (fullPath.pathExtension.lowercased ()) {
                   retainedFiles.append (fullPath)
                 }
               }
@@ -122,7 +122,7 @@ extension ApplicationDelegate {
       self.mMaintenanceLogTextView.string = ""
       self.mMaintenanceLogTextField.stringValue = ""
       self.mCount = 0
-      let fileExtension = "ElCanariProject"
+      let fileExtension = "elcanariproject"
       let op = NSOpenPanel ()
       op.allowsMultipleSelection = false
       op.canChooseDirectories = true
@@ -138,7 +138,7 @@ extension ApplicationDelegate {
             for f in filesInCurrentDirectory {
               if f.first! != "." { // No hidden file
                 let fullPath = baseDirectory + "/" + f
-                if fullPath.pathExtension == fileExtension {
+                if fullPath.pathExtension.lowercased() == fileExtension {
                   retainedFiles.append (fullPath)
                 }
               }
@@ -198,7 +198,7 @@ extension ApplicationDelegate {
       self.mMaintenanceLogTextView.string = ""
       self.mMaintenanceLogTextField.stringValue = ""
       self.mCount = 0
-      let fileExtension = "ElCanariDevice"
+      let fileExtension = "elcanaridevice"
       let op = NSOpenPanel ()
       op.allowsMultipleSelection = false
       op.canChooseDirectories = true
@@ -214,7 +214,7 @@ extension ApplicationDelegate {
             for f in subPathes {
               if f.first! != "." {
                 let fullpath = baseDirectory + "/" + f
-                if fullpath.pathExtension == fileExtension {
+                if fullpath.pathExtension.lowercased() == fileExtension {
                   retainedFiles.append (fullpath)
                 }
               }
@@ -271,14 +271,14 @@ extension ApplicationDelegate {
   //····················································································································
 
   @objc func actionConvertToTextualFormatAllDocumentsInDirectory (_ inSender : AnyObject) {
-    let extensions = Set (["ElCanariSymbol", "ElCanariPackage", "ElCanariDevice", "ElCanariFont", "ElCanariProject", "ElCanariMerger"])
+    let extensions = Set (["elcanarisymbol", "elcanaripackage", "elcanaridevice", "elcanarifont", "elcanariproject", "elcanarimerger"])
     self.convertFiles (withExtensions: extensions, toFormat: .textual, sender: inSender)
   }
 
   //····················································································································
 
   @objc func actionConvertToBinaryFormatAllDocumentsInDirectory (_ inSender : AnyObject) {
-    let extensions = Set (["ElCanariSymbol", "ElCanariPackage", "ElCanariDevice", "ElCanariFont", "ElCanariProject", "ElCanariMerger"])
+    let extensions = Set (["elcanarisymbol", "elcanaripackage", "elcanaridevice", "elcanarifont", "elcanariproject", "elcanarimerger"])
     self.convertFiles (withExtensions: extensions, toFormat: .binary, sender: inSender)
   }
 
@@ -305,7 +305,7 @@ extension ApplicationDelegate {
             for f in subPathes {
               if f.first! != "." {
                 let fullpath = baseDirectory + "/" + f
-                if inExtensionSet.contains (fullpath.pathExtension) {
+                if inExtensionSet.contains (fullpath.pathExtension.lowercased ()) {
                   retainedFiles.append (fullpath)
                 }
               }

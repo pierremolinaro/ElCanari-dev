@@ -24,7 +24,7 @@ final class OpenFontInLibrary : OpenInLibrary {
   //····················································································································
 
   override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
-    self.buildTableViewDataSource (extension: "ElCanariFont", alreadyLoadedDocuments: inNames, {
+    self.buildTableViewDataSource (extension: "elcanarifont", alreadyLoadedDocuments: inNames, {
       (_ inRootObject : EBManagedObject?) -> NSImage? in
       return nil // NSImage (named: okStatusImageName)
     })

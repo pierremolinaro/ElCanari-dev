@@ -16,9 +16,9 @@ extension AutoLayoutDeviceDocument {
     let selectedSymbolTypes = self.symbolTypeController.selectedArray
     for symbolType in selectedSymbolTypes.values {
       let savePanel = NSSavePanel ()
-      savePanel.allowedFileTypes = ["ElCanariSymbol"]
+      savePanel.allowedFileTypes = ["elcanarisymbol"]
       savePanel.allowsOtherFileTypes = false
-      savePanel.nameFieldStringValue = symbolType.mTypeName + ".ElCanariSymbol"
+      savePanel.nameFieldStringValue = symbolType.mTypeName + ".elcanarisymbol"
       savePanel.beginSheetModal (for: self.windowForSheet!) { inResponse in
         if inResponse == .OK, let url = savePanel.url {
           try? symbolType.mFileData.write (to: url)

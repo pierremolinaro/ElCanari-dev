@@ -222,7 +222,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
         if fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
           let files = try fm.subpathsOfDirectory (atPath: baseDirectory)
           for f in files {
-            if f.pathExtension == inFileExtension {
+            if f.pathExtension.lowercased() == inFileExtension {
               let baseName = f.lastPathComponent.deletingPathExtension
               partCountDictionary [baseName] = partCountDictionary [baseName, default: 0] + 1
             }
@@ -237,7 +237,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
         if fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
           let files = try fm.subpathsOfDirectory (atPath: baseDirectory)
           for f in files {
-            if f.pathExtension == inFileExtension {
+            if f.pathExtension.lowercased() == inFileExtension {
               let fullpath = baseDirectory + "/" + f
               let baseName = f.lastPathComponent.deletingPathExtension
               let isDuplicated : Bool = (partCountDictionary [baseName] ?? 0) > 1

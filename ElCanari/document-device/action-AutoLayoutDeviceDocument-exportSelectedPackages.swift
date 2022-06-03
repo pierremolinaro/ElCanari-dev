@@ -16,9 +16,9 @@ extension AutoLayoutDeviceDocument {
     let selectedPackages = self.packageController.selectedArray
     for package in selectedPackages.values {
       let savePanel = NSSavePanel ()
-      savePanel.allowedFileTypes = ["ElCanariPackage"]
+      savePanel.allowedFileTypes = ["elcanaripackage"]
       savePanel.allowsOtherFileTypes = false
-      savePanel.nameFieldStringValue = package.mName + ".ElCanariPackage"
+      savePanel.nameFieldStringValue = package.mName + ".elcanaripackage"
       savePanel.beginSheetModal (for: self.windowForSheet!) { inResponse in
         if inResponse == .OK, let url = savePanel.url {
           try? package.mFileData.write (to: url)
