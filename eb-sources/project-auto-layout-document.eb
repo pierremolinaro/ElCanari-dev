@@ -141,7 +141,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   stackView mLibraryPage vStack set (margins: 8) {
     hStack {
       Button (title: "Remove Embedded Devices", size: .regular) {
-//        expandableWidth ()
+        setDeleteKeyAsKeyEquivalent ()
         $run removeEmbeddedDevicesAction
         $enabled root.mDevices.count > 0
       }
@@ -181,6 +181,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         $enabled #projectDeviceController.selectedArray.count > 0
       }
       Button (title: "Remove Selected Device", size: .regular) {
+        setDeleteKeyAsKeyEquivalent ()
         $run removeSelectedDeviceAction
         $enabled self.canRemoveSelectedDevices
       }
@@ -242,6 +243,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         $enabled #projectFontController.selectedArray.count > 0
       }
       Button (title: "Remove Selected Font", size: .regular) {
+        setDeleteKeyAsKeyEquivalent ()
         $run removeFontAction
         $enabled #projectFontController.selectedArray.count > 0 & self.canRemoveSelectedFonts
       }
@@ -313,6 +315,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         $enabled #netClassController.selectedArray.count == 1
       }
       Button (title: "Remove Selected Net Class", size: .regular) {
+        setDeleteKeyAsKeyEquivalent ()
         $run removeNetClassAction
         $enabled self.canRemoveNetClasses
       }

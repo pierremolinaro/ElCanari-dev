@@ -39,7 +39,9 @@ let CHANGES : [String] = [
 let NEWS : [String] = [
   "Onglet « Components » : prise en compte de la touche DELETE pour retirer un composant",
   "Inspecteur « Text in Board » : ajout d'un switch pour contrôler l'affichage de la poignée de rotation",
-  "Onglet « Components », inspecteur « Display » : divers arrangements"
+  "Onglet « Components », inspecteur « Display » : divers arrangements",
+  "Onglet « Board Contents » : ajout item menu « Select Tracks from Selected Track Nets » oublié",
+  "Prise en compte indépendante de la casse des extensions"
 ]
 
 //--------------------------------------------------------------------------------------------------

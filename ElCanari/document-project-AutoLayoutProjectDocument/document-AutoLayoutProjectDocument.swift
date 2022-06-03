@@ -951,6 +951,7 @@ import Cocoa
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Remove Embedded Devices", size: .regular)
+        .setDeleteKeyAsKeyEquivalent ()
         .bind_enabled (.intcmp (.prop (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
@@ -1025,6 +1026,7 @@ import Cocoa
         )
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutButton (title: "Remove Selected Device", size: .regular)
+        .setDeleteKeyAsKeyEquivalent ()
         .bind_enabled (.prop (self.canRemoveSelectedDevices_property))
         .bind_run (
           target: self,
@@ -1136,6 +1138,7 @@ import Cocoa
         )
       view_0.appendView (view_0_3)
       let view_0_4 = AutoLayoutButton (title: "Remove Selected Font", size: .regular)
+        .setDeleteKeyAsKeyEquivalent ()
         .bind_enabled (. boolcmp (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .prop (self.canRemoveSelectedFonts_property)))
         .bind_run (
           target: self,
@@ -1175,6 +1178,7 @@ import Cocoa
         )
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutButton (title: "Remove Selected Net Class", size: .regular)
+        .setDeleteKeyAsKeyEquivalent ()
         .bind_enabled (.prop (self.canRemoveNetClasses_property))
         .bind_run (
           target: self,
