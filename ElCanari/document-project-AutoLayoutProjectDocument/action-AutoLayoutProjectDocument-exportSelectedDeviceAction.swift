@@ -18,9 +18,9 @@ extension AutoLayoutProjectDocument {
         for device in selectedDevices.values {
           if device.mDeviceFileData.count > 0 {
             let savePanel = NSSavePanel ()
-            savePanel.allowedFileTypes = ["elcanaridevice"]
+            savePanel.allowedFileTypes = [ElCanariDevice_EXTENSION]
             savePanel.allowsOtherFileTypes = false
-            savePanel.nameFieldStringValue = device.mDeviceName + ".elcanaridevice"
+            savePanel.nameFieldStringValue = device.mDeviceName + "." + ElCanariDevice_EXTENSION
             savePanel.beginSheetModal (for: self.windowForSheet!) { (_ inResponse : NSApplication.ModalResponse) in
               if inResponse == .OK, let url = savePanel.url {
                 try? device.mDeviceFileData.write (to: url)

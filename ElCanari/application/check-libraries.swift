@@ -208,7 +208,7 @@ private func performDeviceLibraryEnumerationAtPath (_ inPackageLibraryPath : Str
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inPackageLibraryPath) {
     for path in unwSubpaths {
-      if path.pathExtension.lowercased() == "elcanaridevice" {
+      if path.pathExtension.lowercased() == ElCanariDevice_EXTENSION {
         let fullsubpath = inPackageLibraryPath.appendingPathComponent (path)
         try checkDeviceLibraryCheckAtPath (fullsubpath, logView: logView, deviceDict:&deviceDict)
       }
@@ -394,7 +394,7 @@ private func performSymbolLibraryEnumerationAtPath (_ inSymbolLibraryPath : Stri
   if let unwSubpaths = fm.subpaths (atPath: inSymbolLibraryPath) {
   //  print ("unwSubpaths \(unwSubpaths)")
     for path in unwSubpaths {
-      if path.pathExtension.lowercased () == "elcanarisymbol" {
+      if path.pathExtension.lowercased () == ElCanariSymbol_EXTENSION {
         let fullsubpath = inSymbolLibraryPath.appendingPathComponent (path)
         try checkSymbolLibraryCheckAtPath (fullsubpath, logView: logView, symbolDict: &symbolDict)
       }
@@ -525,7 +525,7 @@ private func performPackageLibraryEnumerationAtPath (_ inPackageLibraryPath : St
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inPackageLibraryPath) {
     for path in unwSubpaths {
-      if path.pathExtension.lowercased() == "elcanaripackage" {
+      if path.pathExtension.lowercased() == ElCanariPackage_EXTENSION {
         let fullsubpath = inPackageLibraryPath.appendingPathComponent (path)
         try checkPackageLibraryCheckAtPath (fullsubpath, logView: logView, packageDict: &packageDict)
       }
@@ -657,7 +657,7 @@ private func performFontLibraryEnumerationAtPath (_ inFontLibraryPath : String,
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inFontLibraryPath) {
     for path in unwSubpaths {
-      if path.pathExtension.lowercased () == "elcanarifont" {
+      if path.pathExtension.lowercased () == ElCanariFont_EXTENSION {
         let fullsubpath = inFontLibraryPath.appendingPathComponent (path)
         try checkFontLibraryCheckAtPath (fullsubpath, logView: logView, fontDict: &fontDict)
       }
@@ -778,7 +778,7 @@ private func performArtworkLibraryEnumerationAtPath (_ inPackageLibraryPath : St
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inPackageLibraryPath) {
     for path in unwSubpaths {
-      if path.pathExtension.lowercased () == "elcanariartwork" {
+      if path.pathExtension.lowercased () == ElCanariArtwork_EXTENSION {
         let fullsubpath = inPackageLibraryPath.appendingPathComponent (path)
         try checkArtworkLibraryCheckAtPath (fullsubpath, logView: logView, artworkDict: &artworkDict)
       }

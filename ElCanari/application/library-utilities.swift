@@ -154,7 +154,7 @@ func symbolFilePathInLibraries (_ inSymbolNameWithoutExtension : String) -> [Str
       for candidateSymbolPath in allSymbols {
         let pathExtension = candidateSymbolPath.lastPathComponent.pathExtension
         let baseName = candidateSymbolPath.lastPathComponent.deletingPathExtension
-        if (baseName == inSymbolNameWithoutExtension) && (pathExtension.lowercased() == "elcanarisymbol") {
+        if (baseName == inSymbolNameWithoutExtension) && (pathExtension.lowercased() == ElCanariSymbol_EXTENSION) {
           pathes.append (symbolLibraryDir + "/" + candidateSymbolPath)
         }
       }
@@ -174,7 +174,7 @@ func packageFilePathInLibraries (_ inPackageNameWithoutExtension : String) -> [S
       for candidatePackagePath in allPackages {
         let pathExtension = candidatePackagePath.lastPathComponent.pathExtension
         let baseName = candidatePackagePath.lastPathComponent.deletingPathExtension
-        if (baseName == inPackageNameWithoutExtension) && (pathExtension.lowercased() == "elcanaripackage") {
+        if (baseName == inPackageNameWithoutExtension) && (pathExtension.lowercased() == ElCanariPackage_EXTENSION) {
           pathes.append (packageLibraryDir + "/" + candidatePackagePath)
         }
       }
@@ -194,7 +194,7 @@ func deviceFilePathInLibraries (_ inDeviceNameWithoutExtension : String) -> [Str
       for candidateDevicePath in allDevices {
         let pathExtension = candidateDevicePath.lastPathComponent.pathExtension
         let baseName = candidateDevicePath.lastPathComponent.deletingPathExtension
-        if (baseName == inDeviceNameWithoutExtension) && (pathExtension.lowercased() == "elcanaridevice") {
+        if (baseName == inDeviceNameWithoutExtension) && (pathExtension.lowercased() == ElCanariDevice_EXTENSION) {
           pathes.append (deviceLibraryDir + "/" + candidateDevicePath)
         }
       }
@@ -214,7 +214,7 @@ func fontFilePathInLibraries (_ inFontNameWithoutExtension : String) -> [String]
       for candidateFontPath in allFonts {
         let pathExtension = candidateFontPath.lastPathComponent.pathExtension
         let baseName = candidateFontPath.lastPathComponent.deletingPathExtension
-        if (baseName == inFontNameWithoutExtension) && (pathExtension.lowercased() == "elcanarifont") {
+        if (baseName == inFontNameWithoutExtension) && (pathExtension.lowercased() == ElCanariFont_EXTENSION) {
           pathes.append (fontLibraryDir + "/" + candidateFontPath)
         }
       }

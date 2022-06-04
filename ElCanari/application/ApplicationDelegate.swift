@@ -11,6 +11,28 @@ import Sparkle
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let ElCanariSymbol_EXTENSION  = "elcanarisymbol"
+let ElCanariPackage_EXTENSION = "elcanaripackage"
+let ElCanariDevice_EXTENSION  = "elcanaridevice"
+let ElCanariFont_EXTENSION    = "elcanarifont"
+let ElCanariArtwork_EXTENSION = "elcanariartwork"
+let ElCanariProject_EXTENSION = "elcanariproject"
+let ElCanariMerger_EXTENSION  = "elcanarimerger"
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
+  ElCanariSymbol_EXTENSION,
+  ElCanariPackage_EXTENSION,
+  ElCanariDevice_EXTENSION,
+  ElCanariFont_EXTENSION,
+  ElCanariArtwork_EXTENSION,
+  ElCanariProject_EXTENSION,
+  ElCanariMerger_EXTENSION
+])
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 enum DocumentFormat {
   case binary
   case textual

@@ -21,32 +21,31 @@ extension ApplicationDelegate {
   //····················································································································
 
   @objc func actionOpenAllDocumentsInDirectory (_ inSender : AnyObject) {
-    let extensions = Set (["elcanarisymbol", "elcanaripackage", "elcanaridevice", "elcanarifont", "elcanariartwork", "elcanariproject", "elcanarimerger"])
-    self.actionOpenAllDocumentsInDirectory (extensions, "document", inSender)
+    self.actionOpenAllDocumentsInDirectory (ALL_ELCANARI_DOCUMENT_EXTENSIONS, "document", inSender)
   }
 
   //····················································································································
 
   @objc func actionOpenAllSymbolsInDirectory (_ inSender : Any?) {
-    self.actionOpenAllDocumentsInDirectory (["elcanarisymbol"], "symbol", inSender)
+    self.actionOpenAllDocumentsInDirectory ([ElCanariSymbol_EXTENSION], "symbol", inSender)
   }
 
   //····················································································································
 
   @objc func actionOpenAllPackagesInDirectory (_ inSender : Any?) {
-    self.actionOpenAllDocumentsInDirectory (["elcanaripackage"], "package", inSender)
+    self.actionOpenAllDocumentsInDirectory ([ElCanariPackage_EXTENSION], "package", inSender)
   }
 
   //····················································································································
 
   @objc func actionOpenAllDevicesInDirectory (_ inSender : Any?) {
-    self.actionOpenAllDocumentsInDirectory (["elcanaridevice"], "device", inSender)
+    self.actionOpenAllDocumentsInDirectory ([ElCanariDevice_EXTENSION], "device", inSender)
   }
 
   //····················································································································
 
   @objc func actionOpenAllFontsInDirectory (_ inSender : Any?) {
-    self.actionOpenAllDocumentsInDirectory (["elcanarifont"], "font", inSender)
+    self.actionOpenAllDocumentsInDirectory ([ElCanariFont_EXTENSION], "font", inSender)
   }
 
   //····················································································································
@@ -122,7 +121,7 @@ extension ApplicationDelegate {
       self.mMaintenanceLogTextView.string = ""
       self.mMaintenanceLogTextField.stringValue = ""
       self.mCount = 0
-      let fileExtension = "elcanariproject"
+      let fileExtension = ElCanariProject_EXTENSION
       let op = NSOpenPanel ()
       op.allowsMultipleSelection = false
       op.canChooseDirectories = true
@@ -198,7 +197,6 @@ extension ApplicationDelegate {
       self.mMaintenanceLogTextView.string = ""
       self.mMaintenanceLogTextField.stringValue = ""
       self.mCount = 0
-      let fileExtension = "elcanaridevice"
       let op = NSOpenPanel ()
       op.allowsMultipleSelection = false
       op.canChooseDirectories = true
@@ -214,7 +212,7 @@ extension ApplicationDelegate {
             for f in subPathes {
               if f.first! != "." {
                 let fullpath = baseDirectory + "/" + f
-                if fullpath.pathExtension.lowercased() == fileExtension {
+                if fullpath.pathExtension.lowercased() == ElCanariDevice_EXTENSION {
                   retainedFiles.append (fullpath)
                 }
               }
@@ -271,15 +269,13 @@ extension ApplicationDelegate {
   //····················································································································
 
   @objc func actionConvertToTextualFormatAllDocumentsInDirectory (_ inSender : AnyObject) {
-    let extensions = Set (["elcanarisymbol", "elcanaripackage", "elcanaridevice", "elcanarifont", "elcanariproject", "elcanarimerger"])
-    self.convertFiles (withExtensions: extensions, toFormat: .textual, sender: inSender)
+    self.convertFiles (withExtensions: ALL_ELCANARI_DOCUMENT_EXTENSIONS, toFormat: .textual, sender: inSender)
   }
 
   //····················································································································
 
   @objc func actionConvertToBinaryFormatAllDocumentsInDirectory (_ inSender : AnyObject) {
-    let extensions = Set (["elcanarisymbol", "elcanaripackage", "elcanaridevice", "elcanarifont", "elcanariproject", "elcanarimerger"])
-    self.convertFiles (withExtensions: extensions, toFormat: .binary, sender: inSender)
+    self.convertFiles (withExtensions: ALL_ELCANARI_DOCUMENT_EXTENSIONS, toFormat: .binary, sender: inSender)
   }
 
   //····················································································································
