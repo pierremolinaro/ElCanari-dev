@@ -12,6 +12,7 @@ vStack func set (width: Int) ;
 vStack func set (minWidth: Int) ;
 vStack func equalHeight () ;
 vStack func setCenterAlignment () ;
+vStack func expandableWidth () ;
  
 hStack func set (spacing: Int) ;
 hStack func equalWidth () ;
@@ -315,9 +316,11 @@ extern autolayout class StaticImageView (name: String) {
 }
 
 extern autolayout class TableView (size: EBControlSize, addControlButtons: Bool) $tableValue {
+  func set (minimumWidth: Int)
   func set (width: Int)
   func set (height: Int)
   func noHeaderView ()
+  func expandableWidth ()
 }
 
 extern autolayout class CanariAddSymbolInstancePullDownButton $enabled {
@@ -383,25 +386,26 @@ extern autolayout class CanariDragSourceTableView {
 }
 
 extern autolayout class CanariProjectPinPadAssignmentTableView (size: EBControlSize) {
-  func set (width: Int)
+  func set (minimumWidth: Int)
   func set (height: Int)
   $array transient ThreeStringArray
 }
 
 extern autolayout class CanariProjectDeviceSymbolTypeAndNameTableView (size: EBControlSize) {
-  func set (width: Int)
+  func set (minimumWidth: Int)
   func set (height: Int)
   $array transient TwoStringArray
 }
 
 extern autolayout class CanariProjectDevicePackageTableView (size: EBControlSize) {
-  func set (width: Int)
+//  func set (width: Int)
+  func expandableWidth ()
   func set (height: Int)
   $array transient StringArray
 }
 
 extern autolayout class CanariProjectDeviceTableView (size: EBControlSize) {
-  func set (width: Int)
+  func set (minimumWidth: Int)
   func set (height: Int)
   $array transient StringArray
 }

@@ -28,6 +28,10 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   init (size inSize : EBControlSize, addControlButtons inAddControlButtons : Bool) {
     self.mTableView = InternalAutoLayoutTableView (size: inSize)
     super.init ()
+
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    self.mTableView.setContentHuggingPriority (.defaultLow, for: .horizontal)
+
   //--- Configure table view
     self.mTableView.controlSize = inSize.cocoaControlSize
     self.mTableView.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.mTableView.controlSize))
@@ -283,8 +287,8 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
 
   private var mDragConcludeCallBack : Optional < ([URL]) -> Void > = nil
   private var mDragFilterCallBack : Optional < ([URL]) -> Bool > = nil
-  private var mWidth : CGFloat? = nil
-  private var mHeight : CGFloat? = nil
+//  private var mWidth : CGFloat? = nil
+//  private var mHeight : CGFloat? = nil
 
   //····················································································································
   // INIT
@@ -313,28 +317,28 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func set (width inWidth : Int) {
-    self.mWidth = CGFloat (inWidth)
-  }
+//  func set (width inWidth : Int) {
+//    self.mWidth = CGFloat (inWidth)
+//  }
 
   //····················································································································
 
-  func set (height inHeight : Int) {
-    self.mHeight = CGFloat (inHeight)
-  }
+//  func set (height inHeight : Int) {
+//    self.mHeight = CGFloat (inHeight)
+//  }
 
   //····················································································································
 
-  override var intrinsicContentSize : NSSize {
-    var s = super.intrinsicContentSize
-    if let w = self.mWidth {
-      s.width = w
-    }
-    if let h = self.mHeight {
-      s.height = h
-    }
-    return s
-  }
+//  override var intrinsicContentSize : NSSize {
+//    var s = super.intrinsicContentSize
+//    if let w = self.mWidth {
+//      s.width = w
+//    }
+//    if let h = self.mHeight {
+//      s.height = h
+//    }
+//    return s
+//  }
 
   //····················································································································
   // MARK: Drag

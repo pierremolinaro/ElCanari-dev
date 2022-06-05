@@ -18,7 +18,7 @@ class AutoLayoutVerticalStackView : AutoLayoutBase_NSStackView {
     self.setHuggingPriority (.required, for: .horizontal)
 //    self.setHuggingPriority (.required, for: .vertical)
 //    self.setHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
-    self.setHuggingPriority (.init (rawValue: 1.0), for: .vertical)
+    self.setHuggingPriority (.defaultLow, for: .vertical)
   }
 
   //····················································································································
@@ -95,7 +95,23 @@ class AutoLayoutVerticalStackView : AutoLayoutBase_NSStackView {
       constant: CGFloat (inWidth)
     )
     self.addConstraint (c)
-//    self.needsUpdateConstraints = true
+    return self
+  }
+
+  //····················································································································
+
+  final func set (minimumWidth inWidth : Int) -> Self {
+    self.mWidth = CGFloat (inWidth)
+    let c = NSLayoutConstraint (
+      item: self,
+      attribute: .width,
+      relatedBy: .greaterThanOrEqual,
+      toItem: nil,
+      attribute: .notAnAttribute,
+      multiplier: 1.0,
+      constant: CGFloat (inWidth)
+    )
+    self.addConstraint (c)
     return self
   }
 

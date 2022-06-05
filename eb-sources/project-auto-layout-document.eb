@@ -170,7 +170,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   
   stackView mLibraryContentView vStack { }
   
-  stackView mDevicesInLibraryPage vStack set (margins: 8) {
+  stackView mDevicesInLibraryPage vStack set (margins: 8) expandableWidth () {
      hStack {
       Button (title: "Edit Selected Device", size: .regular) {
         $run editSelectedDeviceAction
@@ -197,29 +197,30 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     hSplit {
       TableView (size : .regular, addControlButtons: no) {
-        set (width: 400)
+        set (minimumWidth: 400)
         $tableValue #projectDeviceController
       }
       vStack {
         hStack { space StaticLabel (title: "Selected Device", bold: no, size: .regular) space }
         hSplit {
           CanariProjectDeviceTableView (size : .regular) {
-            set (width: 150)
+            set (minimumWidth: 150)
             $array self.selectedDeviceNames
           }
           vSplit {
             CanariProjectDeviceSymbolTypeAndNameTableView (size : .regular) {
-              set (width: 250)
+              set (minimumWidth: 250)
               set (height: 200)
               $array self.selectedDeviceSymbolNames
             }
             CanariProjectDevicePackageTableView (size : .regular) {
               set (height: 200)
+              expandableWidth ()
               $array self.selectedDevicePackageNames
             }
           }
           CanariProjectPinPadAssignmentTableView (size : .regular) {
-            set (width: 200)
+            set (minimumWidth: 200)
             $array self.pinPadAssignments
           }
         }

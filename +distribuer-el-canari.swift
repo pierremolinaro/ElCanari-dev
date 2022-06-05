@@ -28,20 +28,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.5.1"
+let VERSION_CANARI = "1.5.2"
 let MAC_OS_MINIMUM_VERSION = "10.13"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Projet : passer à l'onglet « Library » ne redimensionne plus la fenêtre"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Onglet « Components » : prise en compte de la touche DELETE pour retirer un composant",
-  "Inspecteur « Text in Board » : ajout d'un switch pour contrôler l'affichage de la poignée de rotation",
-  "Onglet « Components », inspecteur « Display » : divers arrangements",
-  "Onglet « Board Contents » : ajout item menu « Select Tracks from Selected Track Nets » oublié",
-  "Prise en compte indépendante de la casse des extensions"
 ]
 
 //--------------------------------------------------------------------------------------------------

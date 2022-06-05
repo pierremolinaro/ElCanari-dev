@@ -1009,6 +1009,7 @@ import Cocoa
   lazy var mDevicesInLibraryPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
+      .expandableWidth ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Edit Selected Device", size: .regular)
@@ -1054,7 +1055,7 @@ import Cocoa
     let view_1 = AutoLayoutHorizontalSplitView ()
     do{
       let view_1_0 = AutoLayoutTableView (size: .regular, addControlButtons: false)
-        .set (width: 400)
+        .set (minimumWidth: 400)
       self.projectDeviceController.bind_tableView (view_1_0)
       view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutVerticalStackView ()
@@ -1072,24 +1073,25 @@ import Cocoa
         let view_1_1_1 = AutoLayoutHorizontalSplitView ()
         do{
           let view_1_1_1_0 = AutoLayoutCanariProjectDeviceTableView (size: .regular)
-            .set (width: 150)
+            .set (minimumWidth: 150)
             .bind_array (self.selectedDeviceNames_property)
           view_1_1_1.appendView (view_1_1_1_0)
           let view_1_1_1_1 = AutoLayoutVerticalSplitView ()
           do{
             let view_1_1_1_1_0 = AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView (size: .regular)
-              .set (width: 250)
+              .set (minimumWidth: 250)
               .set (height: 200)
               .bind_array (self.selectedDeviceSymbolNames_property)
             view_1_1_1_1.appendView (view_1_1_1_1_0)
             let view_1_1_1_1_1 = AutoLayoutCanariProjectDevicePackageTableView (size: .regular)
               .set (height: 200)
+              .expandableWidth ()
               .bind_array (self.selectedDevicePackageNames_property)
             view_1_1_1_1.appendView (view_1_1_1_1_1)
           }
           view_1_1_1.appendView (view_1_1_1_1)
           let view_1_1_1_2 = AutoLayoutCanariProjectPinPadAssignmentTableView (size: .regular)
-            .set (width: 200)
+            .set (minimumWidth: 200)
             .bind_array (self.pinPadAssignments_property)
           view_1_1_1.appendView (view_1_1_1_2)
         }

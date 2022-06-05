@@ -18,7 +18,7 @@ final class AutoLayoutHorizontalSplitView : AutoLayoutBase_NSSplitView {
     super.init (dividersAreVertical: true)
 
     self.setContentHuggingPriority (.required, for: .vertical)
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
   }
 
   //····················································································································
