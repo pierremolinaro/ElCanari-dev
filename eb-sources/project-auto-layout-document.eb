@@ -2100,8 +2100,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   //············································································
 
-  stackView mArtworkDataPage vStack set (spacing: 0) {
+  stackView mArtworkDataPage vStack set (margins: 20) {
     hStack set (margins: 8) {
+      space
       hStack setFirstBaselineAlignment ()  {
         StaticLabel (title: "Drill File Extension", bold: no, size : .small)
         TextField (minWidth: 56, size : .small) { $value root.drillDataFileExtension (sendContinously: yes) }
@@ -2110,6 +2111,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       space
     }
     hStack set (leftMargin: 8) set (rightMargin: 8) {
+      space
       vStack set (topMargin: 8) {
         Label (bold: yes, size : .small) { $title self.generatedFileCountString }
         TableView (size : .small, addControlButtons: yes) { $tableValue #mDataController }
@@ -2124,8 +2126,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           ImageObserverView (size: .small) { $image #mDataSelection.emptyFileExtensionImage }
          space
          StaticLabel (title: "Empty Data File", bold: yes, size : .small) { setOrangeTextColor () $hidden !#mDataSelection.hasNoData}
-       }
-        space
+        }
         hStack { StaticLabel (title: "Front Side Elements", bold: yes, size : .small) space }
         hStack {
           GridView2 {
@@ -2202,13 +2203,16 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
         hStack set (leftMargin: 20) setFirstBaselineAlignment () {
           Checkbox (title: "Pad Holes in PDF file, with diameter", size : .small) { $value #mDataSelection.drawPadHolesInPDF }
-          CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF $enabled #mDataSelection.drawPadHolesInPDF }
-          space
+          CanariDimensionAndPopUp (size : .small) {
+            $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF
+            $enabled #mDataSelection.drawPadHolesInPDF
+          }
         }
         hStack { StaticLabel (title: "Option", bold: yes, size : .small) space }
         hStack set (leftMargin: 20) { Checkbox (title: "Horizontal Mirror", size : .small) { $value #mDataSelection.horizontalMirror } space }
         space
       }
+      space
     }
   }
 
@@ -2224,8 +2228,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   //············································································
 
-  stackView mArtworkMinimaPage vStack {
-    space
+  stackView mArtworkMinimaPage vStack set (margins: 20) {
     hStack {
       space
       vStack {
@@ -2239,11 +2242,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         StaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
         space
       }
-      space
       StaticImageView (name: "artwork")
       space
     }
-    space
     hStack {
       space
       GridView2 {
@@ -2262,7 +2263,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular),
-          right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit }
+          right: CanariObservedDimensionAndPopUp (size : .small) {
+            $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
+          }
         )
       }
       space
@@ -2284,7 +2287,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   //············································································
 
-  stackView mGenerationLogPage vStack {
+  stackView mGenerationLogPage vStack set (margins: 20) {
     TextObserverView () [outlet mProductFileGenerationLogTextView]
   }
 
