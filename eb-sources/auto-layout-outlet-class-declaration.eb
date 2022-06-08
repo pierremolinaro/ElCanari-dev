@@ -398,7 +398,6 @@ extern autolayout class CanariProjectDeviceSymbolTypeAndNameTableView (size: EBC
 }
 
 extern autolayout class CanariProjectDevicePackageTableView (size: EBControlSize) {
-//  func set (width: Int)
   func expandableWidth ()
   func set (height: Int)
   $array transient StringArray

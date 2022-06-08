@@ -57,7 +57,8 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     self.mScrollView = scrollView
 
     self.mGraphicView.mZoomDidChangeCallback = {
-      [weak self] (_ inZoom : Int) in self?.mZoomPopUpButton?.menu?.item (at:0)?.title = "\(inZoom) %"
+      [weak self] (_ inZoom : Int) in
+       self?.mZoomPopUpButton?.menu?.item (at:0)?.title = "\(inZoom) %"
     }
     self.mGraphicView.mHelperStringDidChangeCallback = {
       [weak self] (_ inString : String) in self?.mHelperTextField?.stringValue = inString
@@ -116,7 +117,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   //····················································································································
 
   fileprivate func buildZoomPopUpButton (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) -> AutoLayoutBase_NSPopUpButton {
-    let zoomPopUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: true, size: .small)
+    let zoomPopUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: true, size: .small).set (width: 75)
     zoomPopUpButton.menu?.addItem (
       withTitle:"\(Int (self.mGraphicView.actualScale * 100.0)) %",
       action:nil,

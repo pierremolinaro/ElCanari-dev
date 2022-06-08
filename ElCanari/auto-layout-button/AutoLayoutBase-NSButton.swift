@@ -27,7 +27,7 @@ class AutoLayoutBase_NSButton : NSButton, EBUserClassNameProtocol {
     self.setContentCompressionResistancePriority (.required, for: .vertical)
     self.setContentHuggingPriority (.required, for: .vertical)
     self.setContentCompressionResistancePriority (.required, for: .horizontal)
-    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    self.setContentHuggingPriority (.defaultHigh, for: .horizontal)
   }
 
   //····················································································································

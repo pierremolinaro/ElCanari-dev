@@ -35,9 +35,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   //····················································································································
 
   private final func configureGraphicView () {
- //   NSLog ("configureGraphicView \(self)")
-  //  super.awakeFromNib ()
-    self.wantsLayer = true
+//    self.wantsLayer = true
     self.postsFrameChangedNotifications = true
     NotificationCenter.default.addObserver (
       self,
@@ -45,9 +43,9 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
       name: NSView.frameDidChangeNotification,
       object: self
     )
-    if !self.wantsLayer {
-      presentErrorWindow (#file, #line, "EBGraphicView requires layer")
-    }
+//    if !self.wantsLayer {
+//      presentErrorWindow (#file, #line, "EBGraphicView requires layer")
+//    }
     self.installLiveScrollingNotification ()
     self.addEndLiveMagnificationObserver ()
     self.setNeedsDisplayAndUpdateViewBounds ()
@@ -378,6 +376,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   //····················································································································
 
   final var contentsBoundingBox : NSRect {
+ //   Swift.print ("contentsBoundingBox")
     var r = NSRect () // For including (0, 0)
     r = r.union (self.objectDisplayBounds)
     r = r.union (self.issueBoundingBox)
@@ -394,6 +393,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
       let bp = self.mForegroundImageAffineTransform.transform (NSBezierPath (rect: rImage))
       r = r.union (bp.bounds)
     }
+//    Swift.print ("  \(r)")
     return r
   }
 
@@ -484,21 +484,23 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   //····················································································································
 
   final private var mDeferredUpdateViewFrameAndBoundsRegistered = false
-  final var mReferenceBounds : NSRect? = nil
+ // final var mReferenceBounds : NSRect? = nil
 
   final func setNeedsDisplayAndUpdateViewBounds () {
+    // Swift.print ("setNeedsDisplayAndUpdateViewBounds")
     self.needsDisplay = true
-    let candidateBounds = self.contentsBoundingBox
-    if let referenceBounds = self.mReferenceBounds, referenceBounds == candidateBounds {
-    }else if self.enclosingScrollView != nil, !self.mDeferredUpdateViewFrameAndBoundsRegistered {
+//    let candidateBounds = self.contentsBoundingBox
+//    if let referenceBounds = self.mReferenceBounds, referenceBounds == candidateBounds {
+//    }else if self.enclosingScrollView != nil, !self.mDeferredUpdateViewFrameAndBoundsRegistered {
       self.mDeferredUpdateViewFrameAndBoundsRegistered = true
       self.deferredApplyZoom ()
-    }
+//    }
   }
 
   //····················································································································
 
   private func deferredApplyZoom () {
+    // Swift.print ("deferredApplyZoom")
     if NSEvent.pressedMouseButtons == 0 { // No pressed button
       self.mDeferredUpdateViewFrameAndBoundsRegistered = false
       self.applyZoom ()

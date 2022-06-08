@@ -28,12 +28,12 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.5.2"
+let VERSION_CANARI = "1.5.3"
 let MAC_OS_MINIMUM_VERSION = "10.13"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Projet : passer à l'onglet « Library » ne redimensionne plus la fenêtre"
+  "Vues graphiques : correction boucle infinie du calcul du zoom automatique"
 ]
 let CHANGES : [String] = [
 ]

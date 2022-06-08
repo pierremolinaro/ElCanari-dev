@@ -18,20 +18,15 @@ final class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
   //   INIT
   //····················································································································
 
-  override init () {
-    super.init ()
-
-//    self.setHuggingPriority (.required, for: .horizontal)
-//    self.setHuggingPriority (.required, for: .vertical)
-//    self.setHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
-//    self.setHuggingPriority (.init (rawValue: 1.0), for: .vertical)
-  }
+//  override init () {
+//    super.init ()
+//  }
 
   //····················································································································
 
-  required init? (coder inCoder : NSCoder) {
-    fatalError ("init(coder:) has not been implemented")
-  }
+//  required init? (coder inCoder : NSCoder) {
+//    fatalError ("init(coder:) has not been implemented")
+//  }
 
   //····················································································································
 

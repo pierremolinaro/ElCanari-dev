@@ -44,7 +44,7 @@ extension EBGraphicView {
       if visibleRect.maxY > newBounds.maxY {
         newBounds.size.height = visibleRect.maxY - newBounds.origin.y
       }
-      self.mReferenceBounds = newBounds
+//      self.mReferenceBounds = newBounds
       self.frame.size = newBounds.size
       self.bounds = newBounds
       let selectionBounds = self.selectionShapeBoundingBox
@@ -56,7 +56,7 @@ extension EBGraphicView {
           self.scrollToVisible (objectBounds)
         }
       }
-      self.needsDisplay = true
+//      self.needsDisplay = true
       let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
       self.mZoomDidChangeCallback? (newZoom)
     }
@@ -99,7 +99,7 @@ extension EBGraphicView {
   //····················································································································
 
   final func scrollViewIsLiveResizing () {
-      self.applyZoom ()
+    self.applyZoom ()
   }
 
   //····················································································································

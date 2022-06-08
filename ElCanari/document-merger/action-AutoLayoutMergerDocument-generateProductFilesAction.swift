@@ -28,19 +28,11 @@ extension AutoLayoutMergerDocument {
         alert.beginSheetModal (
           for: self.windowForSheet!,
           completionHandler: {(response : NSApplication.ModalResponse) in
-//            NSLog ("response  \(response.rawValue)")
-//            NSLog ("alertFirstButtonReturn  \(NSApplication.ModalResponse.alertFirstButtonReturn.rawValue)")
-//            NSLog ("alertSecondButtonReturn \(NSApplication.ModalResponse.alertSecondButtonReturn.rawValue)")
             if response == .alertSecondButtonReturn { // Proceed anyway
               self.checkLayerConfigurationAndGenerateProductFiles ()
             }else if response == .alertThirdButtonReturn { // Show issues
             //--- Select board page
               self.rootObject.selectedPageIndex = 1
-            //--- Remove display setting wiew
-//              if displaySettingView.window != nil {  // Remove from window
-//                displaySettingView.resignFirstResponder ()
-//                displaySettingView.removeFromSuperview ()
-//              }
             //--- Select issue in tabview
               self.mBoardInspectorSegmentedControl?.setSelectedSegment (atIndex: 1)
             //--- Select first issue

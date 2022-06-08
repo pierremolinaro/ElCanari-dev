@@ -198,12 +198,12 @@ extension EBGraphicView {
   //····················································································································
 
   final func scrollToVisibleObjectsOrToZero () {
-    let box = self.contentsBoundingBox
-    if box.isEmpty {
-      self.scroll (NSPoint ())
-    }else{
-      _ = self.scrollToVisible (box)
-    }
+//    let box = self.contentsBoundingBox
+//    if box.isEmpty {
+//      self.scroll (NSPoint ())
+//    }else{
+//      _ = self.scrollToVisible (box)
+//    }
   }
 
   //····················································································································

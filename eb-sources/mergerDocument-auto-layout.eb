@@ -671,33 +671,29 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   //············································································
 
   stackView mBoardSettingsPage vStack {
+    hStack {
+      vStack {
+        StaticLabel (title: "Add Model", bold: yes, size : .small) { expandableWidth () set (alignment: .left) }
+        HelpButton (size : .small) { $run showBoardHelpAction }
+        EnumPopUpButton (titles: enum QuadrantRotation.degreesTitles, size: .small) {
+          expandableWidth ()
+          $selectedIndex root.modelInsertionRotation
+        }
+      }
+      CanariDragSourceTableView
+        [outlet mModelDragSourceTableView configurator boardModelDragSourceTableView]
+        { $models root.modelNames }
+    }
+    StaticLabel (title: "Board", bold: yes, size : .small) { expandableWidth () set (alignment: .left) }
+    hStack {
+      Checkbox (title: "Automatic Size", size: .small) { $value root.automaticBoardSize }
+      space
+      Checkbox (title: "Limits Overlap", size: .small) {
+        $enabled root.boardInstances.count > 0
+        $value root.overlapingArrangment
+      }
+    }
     GridView2 {
-      add (single: 
-        hStack {
-          vStack {
-            StaticLabel (title: "Add Model", bold: yes, size : .small) { expandableWidth () set (alignment: .left) }
-            HelpButton (size : .small) { $run showBoardHelpAction }
-            EnumPopUpButton (titles: enum QuadrantRotation.degreesTitles, size: .small) {
-              expandableWidth ()
-              $selectedIndex root.modelInsertionRotation
-            }
-          }
-          CanariDragSourceTableView
-            [outlet mModelDragSourceTableView configurator boardModelDragSourceTableView]
-            { $models root.modelNames }
-        }
-      )
-      add (single: StaticLabel (title: "Board", bold: yes, size : .small) { expandableWidth () set (alignment: .left) } )
-      add (single: 
-        hStack {
-          Checkbox (title: "Automatic Size", size: .small) { $value root.automaticBoardSize }
-          space
-          Checkbox (title: "Limits Overlap", size: .small) {
-            $enabled root.boardInstances.count > 0
-            $value root.overlapingArrangment
-          }
-        }
-      )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Width", bold: no, size : .small),
         right: vStack {
@@ -773,40 +769,34 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
       add (single: StaticLabel (title: "Move Selection", bold: yes, size : .small)
         { expandableWidth () set (alignment: .left) }
       )
-      add (single: 
-        hStack {
-          space
-          vStack {
-            hStack {
-              space
-              Button (title: "Up", size : .small) {
-                $enabled #mBoardInstanceController.selectedArray.count > 0
-                $run moveUpAction 
-              }
-              space
-            }
-            hStack {
-              Button (title: "Left", size : .small) {
-                $enabled #mBoardInstanceController.selectedArray.count > 0
-                $run moveLeftAction 
-              }
-              Button (title: "Right", size : .small) {
-                $enabled #mBoardInstanceController.selectedArray.count > 0
-                $run moveRightAction 
-              }
-            }
-            hStack {
-              space
-              Button (title: "Down", size : .small) {
-                $enabled #mBoardInstanceController.selectedArray.count > 0
-                $run moveDownAction 
-              }
-              space
-            }
-          }
-          space
-        }
-      )
+    }
+    hStack {
+      space
+      Button (title: "Up", size : .small) {
+        $enabled #mBoardInstanceController.selectedArray.count > 0
+        $run moveUpAction 
+      }
+      space
+    }
+    hStack {
+      space
+      Button (title: "Left", size : .small) {
+        $enabled #mBoardInstanceController.selectedArray.count > 0
+        $run moveLeftAction 
+      }
+      Button (title: "Right", size : .small) {
+        $enabled #mBoardInstanceController.selectedArray.count > 0
+        $run moveRightAction 
+      }
+      space
+    }
+    hStack {
+      space
+      Button (title: "Down", size : .small) {
+        $enabled #mBoardInstanceController.selectedArray.count > 0
+        $run moveDownAction 
+      }
+      space
     }
     space
   }
