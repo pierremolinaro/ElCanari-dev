@@ -67,23 +67,12 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
 
   override func textDidChange (_ inNotification : Notification) {
     super.textDidChange (inNotification)
-    if self.isContinuous {
-      self.valueDidChangeAction (nil)
-    }
-    if self.isContinuous {
-      if let inputString = currentEditor()?.string,
-         let numberFormatter = self.formatter as? NumberFormatter {
-        let number = numberFormatter.number (from: inputString)
-        if number == nil {
-//          _ = control (
-//            self,
-//            didFailToFormatString: inputString,
-//            errorDescription: "The “\(inputString)” value is invalid."
-//          )
-        }else{
-          NSApp.sendAction (self.action!, to: self.target, from: self)
-        }
-      }
+    if self.isContinuous,
+        let inputString = currentEditor()?.string,
+        let numberFormatter = self.formatter as? NumberFormatter,
+        let number = numberFormatter.number (from: inputString) {
+      let value = Int (number.doubleValue.rounded ())
+      _ = self.mValueController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
     }
   }
 
@@ -143,19 +132,21 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
   //····················································································································
 
   private func update (from model : EBReadOnlyProperty_Int) {
-    switch model.selection {
-    case .empty :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
-      self.placeholderString = "No Selection"
-      self.stringValue = ""
-    case .single (let v) :
-      self.enable (fromValueBinding: true, self.enabledBindingController)
-      self.placeholderString = nil
-      self.intValue = Int32 (v)
-    case .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
-      self.placeholderString = "Multiple Selection"
-      self.stringValue = ""
+    if self.currentEditor() == nil {
+      switch model.selection {
+      case .empty :
+        self.enable (fromValueBinding: false, self.enabledBindingController)
+        self.placeholderString = "No Selection"
+        self.stringValue = ""
+      case .single (let v) :
+        self.enable (fromValueBinding: true, self.enabledBindingController)
+        self.placeholderString = nil
+        self.intValue = Int32 (v)
+      case .multiple :
+        self.enable (fromValueBinding: false, self.enabledBindingController)
+        self.placeholderString = "Multiple Selection"
+        self.stringValue = ""
+      }
     }
   }
 

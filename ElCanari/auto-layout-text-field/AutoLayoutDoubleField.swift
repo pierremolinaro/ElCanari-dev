@@ -68,20 +68,12 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
 
   override func textDidChange (_ inNotification : Notification) {
     super.textDidChange (inNotification)
-    if self.isContinuous {
-      if let inputString = currentEditor()?.string,
-        let numberFormatter = self.formatter as? NumberFormatter {
-        let number = numberFormatter.number (from: inputString)
-        if number == nil {
-//          _ = control (
-//            self,
-//            didFailToFormatString: inputString,
-//            errorDescription: "The “\(inputString)” value is invalid."
-//          )
-        }else{
-          NSApp.sendAction (self.action!, to: self.target, from: self)
-        }
-      }
+    if self.isContinuous,
+       let inputString = currentEditor()?.string,
+       let numberFormatter = self.formatter as? NumberFormatter,
+       let number = numberFormatter.number (from: inputString) {
+      let value = number.doubleValue
+      _ = self.mValueController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
     }
   }
 
@@ -116,7 +108,8 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
   //····················································································································
 
   @objc fileprivate func valueDidChangeAction (_ inSender : AutoLayoutDoubleField) {
-    if let formatter = self.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.stringValue) {
+    if let formatter = self.formatter as? NumberFormatter,
+       let outletValueNumber = formatter.number (from: self.stringValue) {
       let value = outletValueNumber.doubleValue
       _ = self.mValueController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
     }else if let v = self.mValueController?.value {
@@ -144,19 +137,21 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
   //····················································································································
 
   private func update (from model : EBReadWriteProperty_Double) {
-    switch model.selection {
-    case .empty :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
-      self.placeholderString = "No Selection"
-      self.stringValue = ""
-    case .single (let v) :
-      self.enable (fromValueBinding: true, self.enabledBindingController)
-      self.placeholderString = nil
-      self.doubleValue = CGFloat (v)
-    case .multiple :
-      self.enable (fromValueBinding: true, self.enabledBindingController)
-      self.placeholderString = "Multiple Selection"
-      self.stringValue = ""
+    if self.currentEditor() == nil {
+      switch model.selection {
+      case .empty :
+        self.enable (fromValueBinding: false, self.enabledBindingController)
+        self.placeholderString = "No Selection"
+        self.stringValue = ""
+      case .single (let v) :
+        self.enable (fromValueBinding: true, self.enabledBindingController)
+        self.placeholderString = nil
+        self.doubleValue = CGFloat (v)
+      case .multiple :
+        self.enable (fromValueBinding: true, self.enabledBindingController)
+        self.placeholderString = "Multiple Selection"
+        self.stringValue = ""
+      }
     }
   }
 
