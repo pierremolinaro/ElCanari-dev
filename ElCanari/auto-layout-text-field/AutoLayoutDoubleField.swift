@@ -18,6 +18,16 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
+  private var mInputIsValid = true {
+    didSet {
+      if self.mInputIsValid != oldValue {
+        self.needsDisplay = true
+      }
+    }
+  }
+
+  //····················································································································
+
   init (minWidth inWidth : Int, size inSize : EBControlSize) {
     super.init (optionalWidth: inWidth, bold: true, size: inSize)
   //--- Number formatter
@@ -31,10 +41,6 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
   //--- Target
     self.target = self
     self.action = #selector (Self.valueDidChangeAction (_:))
-//    Swift.print ("\(self.cell?.sendsActionOnEndEditing)")
-//    self.cell?.sendsActionOnEndEditing = true // Send an action when focus is lost
-//    self.cell?.target = self
-//    self.cell?.action = #selector (Self.valueDidChangeAction (_:))
   }
 
   //····················································································································
@@ -68,41 +74,24 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
 
   override func textDidChange (_ inNotification : Notification) {
     super.textDidChange (inNotification)
-    if self.isContinuous,
-       let inputString = currentEditor()?.string,
-       let numberFormatter = self.formatter as? NumberFormatter,
-       let number = numberFormatter.number (from: inputString) {
-      let value = number.doubleValue
-      _ = self.mValueController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
+    if let inputString = currentEditor()?.string, let numberFormatter = self.formatter as? NumberFormatter {
+      let optionalNumber = numberFormatter.number (from: inputString)
+      if let number = optionalNumber, self.isContinuous {
+        let value = number.doubleValue
+        _ = self.mValueController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
+      }
+      self.mInputIsValid = optionalNumber != nil
     }
   }
 
   //····················································································································
-  //MARK:    NSTextFieldDelegate delegate function
-  //····················································································································
 
-  func control (_ control : NSControl,
-                didFailToFormatString string : String,
-                errorDescription error : String?) -> Bool {
-//    let alert = NSAlert ()
-//    if let window = control.window {
-//      alert.messageText = error!
-//      alert.informativeText = "Please provide a valid value."
-//      alert.addButton (withTitle: "Ok")
-//      alert.addButton (withTitle: "Discard Change")
-//      alert.beginSheetModal (
-//        for: window,
-//        completionHandler: { (response : NSApplication.ModalResponse) -> Void in
-//          if response == .alertSecondButtonReturn, let v = self.mValueController?.value {
-//            self.doubleValue = v  // Discard Change
-//          }
-//        }
-//      )
-//    }
-//    if let v = self.mValueController?.value {
-//      self.doubleValue = v  // Discard Change
-//    }
-    return false
+  override func draw (_ inDirtyRect : NSRect) {
+    super.draw (inDirtyRect)
+    if !self.mInputIsValid {
+      NSColor.systemRed.withAlphaComponent (0.25).setFill ()
+      NSBezierPath.fill (self.bounds)
+    }
   }
 
   //····················································································································
@@ -113,6 +102,7 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
       let value = outletValueNumber.doubleValue
       _ = self.mValueController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
     }else if let v = self.mValueController?.value {
+      self.mInputIsValid = true
       self.doubleValue = v
     }
   }
@@ -138,6 +128,7 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
 
   private func update (from model : EBReadWriteProperty_Double) {
     if self.currentEditor() == nil {
+      self.mInputIsValid = true
       switch model.selection {
       case .empty :
         self.enable (fromValueBinding: false, self.enabledBindingController)

@@ -127,6 +127,16 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   }
 
   //····················································································································
+  //MARK:    NSTextFieldDelegate delegate function
+  //····················································································································
+
+  func control (_ control : NSControl,
+                didFailToFormatString string : String,
+                errorDescription error : String?) -> Bool {
+    return true
+  }
+
+  //····················································································································
   //MARK:   NSControlTextEditingDelegate
   //····················································································································
 

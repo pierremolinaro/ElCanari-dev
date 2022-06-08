@@ -14,6 +14,16 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
+  fileprivate var mInputIsValid = true {
+    didSet {
+      if self.mInputIsValid != oldValue {
+        self.needsDisplay = true
+      }
+    }
+  }
+
+  //····················································································································
+
   init (size inSize : EBControlSize) {
     super.init (optionalWidth: 72, bold: true, size: inSize)
   //--- Target
@@ -31,52 +41,32 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField {
 
   override func textDidChange (_ inNotification : Notification) {
     super.textDidChange (inNotification)
-    if self.isContinuous {
-      if let inputString = currentEditor()?.string,
-         let numberFormatter = self.formatter as? NumberFormatter {
-        let number = numberFormatter.number (from: inputString)
-        if number == nil {
-          _ = control (
-            self,
-            didFailToFormatString: inputString,
-            errorDescription: "The “\(inputString)” value is invalid."
-          )
-        }else{
-          NSApp.sendAction (self.action!, to: self.target, from: self)
-        }
+    if let inputString = currentEditor()?.string, let numberFormatter = self.formatter as? NumberFormatter {
+      let optionalNumber = numberFormatter.number (from: inputString)
+      if optionalNumber != nil, self.isContinuous {
+         _ = self.mValueController?.performValidation (inputString)
       }
+      self.mInputIsValid = optionalNumber != nil
     }
-  }
-
-  //····················································································································
-  //MARK:    NSTextFieldDelegate delegate function
-  //····················································································································
-
-  func control (_ control : NSControl,
-                didFailToFormatString string : String,
-                errorDescription error : String?) -> Bool {
-    let alert = NSAlert ()
-    if let window = control.window {
-      alert.messageText = error!
-      alert.informativeText = "Please provide a valid value."
-      alert.addButton (withTitle: "Ok")
-      alert.addButton (withTitle: "Discard Change")
-      alert.beginSheetModal (
-        for: window,
-        completionHandler: { (response : NSApplication.ModalResponse) -> Void in
-          if response == .alertSecondButtonReturn { // Discard Change
-            _ = self.mValueController?.updateOutlet ()
-          }
-        }
-      )
-    }
-    return false
   }
 
   //····················································································································
 
   @objc fileprivate func valueDidChangeAction (_ inSender : Any?) {
-    _ = self.mValueController?.performValidation ()
+    let ok = self.mValueController?.performValidation (self.stringValue) ?? true
+    if !ok {
+      self.mValueController?.updateOutlet ()
+    }
+  }
+
+  //····················································································································
+
+  override func draw (_ inDirtyRect : NSRect) {
+    super.draw (inDirtyRect)
+    if !self.mInputIsValid {
+      NSColor.systemRed.withAlphaComponent (0.25).setFill ()
+      NSBezierPath.fill (self.bounds)
+    }
   }
 
   //····················································································································
@@ -125,9 +115,6 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
       observedObjects: [dimension, unit],
       callBack: { [weak inOutlet] in inOutlet?.updateOutlet () }
     )
-  //--- Target, action
-    inOutlet.target = self
-    inOutlet.action = #selector (Self.textFieldAction(_:))
   //--- Number formatter
     let numberFormatter = NumberFormatter ()
     numberFormatter.formatterBehavior = .behavior10_4
@@ -151,6 +138,7 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
 
   fileprivate func updateOutlet () {
     if let outlet = self.mOutlet {
+      outlet.mInputIsValid = true
       switch combine (self.mDimension.selection, unit: self.mUnit.selection) {
       case .empty :
         outlet.placeholderString = "No Selection"
@@ -170,28 +158,20 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
 
   //····················································································································
 
-  fileprivate func performValidation () -> Bool {
+  fileprivate func performValidation (_ inOptionalInputString : String?) -> Bool {
     switch self.mUnit.selection {
     case .empty, .multiple :
       return false
     case .single (let unit) :
       if let formatter = self.mOutlet?.formatter as? NumberFormatter,
-         let inInputString = self.mOutlet?.stringValue,
+         let inInputString = inOptionalInputString,
          let outletValueNumber = formatter.number (from: inInputString) {
         let value = Int ((outletValueNumber.doubleValue * Double (unit)).rounded ())
         return self.mDimension.validateAndSetProp (value, windowForSheet: self.mOutlet?.window)
       }else{
-        self.updateOutlet ()
-        NSSound.beep ()
         return false
       }
     }
-  }
-
-  //····················································································································
-
-  @objc func textFieldAction (_ inSender : AutoLayoutCanariDimensionField) {
-    _ = self.performValidation ()
   }
 
   //····················································································································

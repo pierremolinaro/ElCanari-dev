@@ -740,39 +740,6 @@ fileprivate final class EBShapeElement {
   }
 
   //····················································································································
-  // Hashable
-  //····················································································································
-
-//   func hash (into hasher: inout Hasher) {
-//    self.mKind.hash (into: &hasher)
-//    self.mColor?.hash (into: &hasher)
-//    self.mKnobIndex?.hash (into: &hasher)
-//    self.mClipRule.hash (into: &hasher)
-//    self.mPathes.hash (into: &hasher)
-//  }
-
-  //····················································································································
-  // Equatable
-  //····················································································································
-
-//  static func == (lhs: EBShapeElement, rhs: EBShapeElement) -> Bool {
-//    var result = lhs.mKind == rhs.mKind
-//    if result {
-//      result = lhs.mColor == rhs.mColor
-//    }
-//    if result {
-//      result = lhs.mKnobIndex == rhs.mKnobIndex
-//    }
-//    if result {
-//      result = lhs.mClipRule == rhs.mClipRule
-//    }
-//    if result {
-//      result = lhs.mPathes == rhs.mPathes
-//    }
-//    return result
-//  }
-
-  //····················································································································
   //  Draw Rect
   //····················································································································
 

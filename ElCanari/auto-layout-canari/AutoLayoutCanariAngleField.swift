@@ -7,10 +7,21 @@ import Cocoa
 final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField {
 
   //····················································································································
-  // Property
+  // Properties
   //····················································································································
 
   private let mNumberFormatter = NumberFormatter ()
+
+  //····················································································································
+
+  fileprivate var mInputIsValid = true {
+    didSet {
+      if self.mInputIsValid != oldValue {
+        self.needsDisplay = true
+      }
+    }
+  }
+
 
   //····················································································································
   // INIT
@@ -21,7 +32,7 @@ final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField {
 
     self.delegate = self
     self.target = self
-    self.action = #selector (Self.action (_:))
+    self.action = #selector (Self.valueDidChangeAction (_:))
   //--- Number formatter
     self.mNumberFormatter.formatterBehavior = .behavior10_4
     self.mNumberFormatter.numberStyle = .decimal
@@ -43,8 +54,6 @@ final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField {
 
   override func draw (_ inDirtyRect : NSRect) {
     if debugAutoLayout () {
-//      DEBUG_FILL_COLOR.setFill ()
-//      NSBezierPath.fill (inDirtyRect)
       let bp = NSBezierPath (rect: self.bounds)
       bp.lineWidth = 1.0
       bp.lineJoinStyle = .round
@@ -52,6 +61,36 @@ final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField {
       bp.stroke ()
     }
     super.draw (inDirtyRect)
+    if !self.mInputIsValid {
+      NSColor.systemRed.withAlphaComponent (0.25).setFill ()
+      NSBezierPath.fill (self.bounds)
+    }
+  }
+
+  //····················································································································
+
+  override func textDidChange (_ inNotification : Notification) {
+    super.textDidChange (inNotification)
+    if let inputString = currentEditor()?.string, let numberFormatter = self.formatter as? NumberFormatter {
+      let optionalNumber = numberFormatter.number (from: inputString)
+      if let number = optionalNumber, self.isContinuous {
+        let value = Int ((number.doubleValue * 1000.0).rounded ())
+        _ = self.mAngleController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
+      }
+      self.mInputIsValid = optionalNumber != nil
+    }
+  }
+
+  //····················································································································
+
+  @objc func valueDidChangeAction (_ sender : Any?) {
+    if let outletValueNumber = self.mNumberFormatter.number (from: self.stringValue) {
+      let value = Int ((outletValueNumber.doubleValue * 1000.0).rounded ())
+      _ = self.mAngleController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
+    }else if let v = self.mAngleController?.value {
+      self.mInputIsValid = true
+      self.doubleValue = Double (v) / 1000.0
+    }
   }
 
   //····················································································································
@@ -73,6 +112,7 @@ final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField {
   //····················································································································
 
   private func update (from model : EBReadWriteProperty_Int) {
+    self.mInputIsValid = true
     switch model.selection {
     case .empty :
       self.enable (fromValueBinding: false, self.enabledBindingController)
@@ -86,65 +126,6 @@ final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField {
       self.enable (fromValueBinding: false, self.enabledBindingController)
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
-    }
-  }
-
-  //····················································································································
-  //    NSTextFieldDelegate delegate function
-  //····················································································································
-
-  func controlTextDidChange (_ inUnusedNotification : Notification) {
-    if self.isContinuous {
-      if let inputString = currentEditor()?.string {
-        // NSLog ("inputString %@", inputString)
-        let numberFormatter = self.formatter as! NumberFormatter
-        let number = numberFormatter.number (from: inputString)
-        if number == nil {
-          _ = control (
-            self,
-            didFailToFormatString: inputString,
-            errorDescription: "The “\(inputString)” value is invalid."
-          )
-        }else{
-          NSApp.sendAction (self.action!, to: self.target, from: self)
-        }
-      }
-    }
-  }
-
-  //····················································································································
-  //    NSTextFieldDelegate delegate function
-  //····················································································································
-
-  func control (_ control : NSControl,
-                didFailToFormatString string : String,
-                errorDescription error : String?) -> Bool {
-    let alert = NSAlert ()
-    if let window = control.window {
-      alert.messageText = error!
-      alert.informativeText = "Please provide a valid value."
-      alert.addButton (withTitle: "Ok")
-      alert.addButton (withTitle: "Discard Change")
-      alert.beginSheetModal (
-        for: window,
-        completionHandler: { (response : NSApplication.ModalResponse) -> Void in
-          if response == NSApplication.ModalResponse.alertSecondButtonReturn, let v = self.mAngleController?.value {
-            self.doubleValue = Double (v) / 1000.0  // Discard Change
-          }
-        }
-      )
-    }
-    return false
-  }
-
-  //····················································································································
-
-  @objc func action (_ sender : Any?) {
-    if let outletValueNumber = self.mNumberFormatter.number (from: self.stringValue) {
-      let value = Int ((outletValueNumber.doubleValue * 1000.0).rounded ())
-      _ = self.mAngleController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
-    }else{
-      NSSound.beep ()
     }
   }
 
