@@ -127,6 +127,7 @@ extern autolayout class EnumPopUpButton (titles: StringArray, size: EBControlSiz
 extern autolayout class TaggedPopUpButton (size: EBControlSize) {
   $selectedTag property Int
   func add (title: String, withTag: Int)
+  func expandableWidth ()
 }
 
 extern autolayout class BoolPopUpButton (title0: String, title1: String) $enabled {
@@ -141,7 +142,7 @@ extern autolayout class CanariUnitPopUpButton (size: EBControlSize) $hidden {
   $unit property Int
 }
 
-extern autolayout class CanariDimensionField (minWidth: Int, size: EBControlSize) $hidden {
+extern autolayout class CanariDimensionField (size: EBControlSize) $hidden {
   $dimensionAndUnit property Int, property Int
 }
 
@@ -154,6 +155,7 @@ extern autolayout class CanariObservedDimensionAndPopUp (size: EBControlSize) $h
 }
 
 extern autolayout class Checkbox (title: String, size: EBControlSize) $enabled $hidden {
+  func expandableWidth ()
   func expandableHeight ()
   func set (width: Int, multiline: Bool)
   func set (toolTip : String)

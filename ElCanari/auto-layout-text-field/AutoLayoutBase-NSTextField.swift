@@ -44,6 +44,8 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
     let size = NSFont.systemFontSize (for: self.controlSize)
     self.font = inBold ? NSFont.boldSystemFont (ofSize:size) : NSFont.systemFont (ofSize: size)
     self.alignment = .center
+
+    self.cell?.sendsActionOnEndEditing = true // Send an action when focus is lost
   }
 
   //····················································································································
@@ -71,7 +73,16 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   //····················································································································
 
   final func set (minWidth inWidth : Int) -> Self {
-    self.mWidth = CGFloat (inWidth)
+    let c = NSLayoutConstraint (
+      item: self,
+      attribute: .width,
+      relatedBy: .greaterThanOrEqual,
+      toItem: nil,
+      attribute: .notAnAttribute,
+      multiplier: 1.0,
+      constant: CGFloat (inWidth)
+    )
+    self.addConstraint (c)
     return self
   }
 
@@ -101,22 +112,18 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   //····················································································································
 
   override var intrinsicContentSize : NSSize {
+    var s = super.intrinsicContentSize
+    if let w = self.mWidth {
+      s.width = w
+    }
     if self.mAutomaticallyAdjustHeight, let cell = self.cell {
       var frame = self.frame
-      let width = self.mWidth ?? frame.size.width
-      // Make the frame very high, while keeping the width
+    //--- Make the frame very high, while keeping the width
       frame.size.height = CGFloat.greatestFiniteMagnitude;
-      // Calculate new height within the frame
-      // with practically infinite height.
-      let height = cell.cellSize (forBounds: frame).height
-      return NSSize (width: width, height: height)
-    }else{
-      var s = super.intrinsicContentSize
-      if let w = self.mWidth {
-        s.width = w
-      }
-      return s
+    //--- Calculate new height within the frame with practically infinite height.
+      s.height = cell.cellSize (forBounds: frame).height
     }
+    return s
   }
 
   //····················································································································

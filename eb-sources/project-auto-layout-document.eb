@@ -922,11 +922,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Display Grid", bold: no, size : .small),
-        right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.mBoardLimitsGridStyle }
+        right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { expandableWidth () $selectedIndex root.mBoardLimitsGridStyle }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Grid Display", bold: no, size : .small),
         right: TaggedPopUpButton (size: .small) {
+          expandableWidth ()
           add (title: "1 Step",   withTag:  1)
           add (title: "2 Steps",  withTag:  2)
           add (title: "4 Steps",  withTag:  4)
@@ -938,11 +939,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Flip", bold: no, size : .small),
-        right: Checkbox (title: "Horizontal", size : .small) { $value root.mBoardLimitsHorizontalFlip }
+        right: Checkbox (title: "Horizontal", size : .small) { expandableWidth () $value root.mBoardLimitsHorizontalFlip }
       )
       addFirstBaseLineAligned (
         left: FlexibleSpace,
-        right: Checkbox (title: "Vertical", size : .small) { $value root.mBoardLimitsVerticalFlip }
+        right: Checkbox (title: "Vertical", size : .small) { expandableWidth () $value root.mBoardLimitsVerticalFlip }
       )
     }
     space
@@ -1040,13 +1041,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addFirstBaseLineAligned (
         left: hStack setFirstBaselineAlignment () {
           StaticLabel (title: "X", bold: no, size : .small) { expandableWidth () }
-          CanariDimensionField (minWidth: 80, size: .small) {
+          CanariDimensionField (size: .small) {
             $dimensionAndUnit #boardCurveSelectionController.mX, root.mBoardSelectedCurveDisplayUnit
           }
         },
         right: hStack setFirstBaselineAlignment () {
           StaticLabel (title: "Y", bold: no, size : .small) { expandableWidth () }
-          CanariDimensionField (minWidth: 80, size: .small) {
+          CanariDimensionField (size: .small) {
             $dimensionAndUnit #boardCurveSelectionController.mY, root.mBoardSelectedCurveDisplayUnit
           }
         }
@@ -1083,7 +1084,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             expandableWidth ()
             $hidden #boardCurveSelectionController.isLine
           }
-          CanariDimensionField (minWidth: 80, size: .small) {
+          CanariDimensionField (size: .small) {
             $hidden #boardCurveSelectionController.isLine
             $dimensionAndUnit #boardCurveSelectionController.mCPX1, root.mBoardLimitControlPointsDisplayUnit
           }
@@ -1093,7 +1094,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             expandableWidth ()
             $hidden #boardCurveSelectionController.isLine
           }
-          CanariDimensionField (minWidth: 80, size: .small) {
+          CanariDimensionField (size: .small) {
             $hidden #boardCurveSelectionController.isLine
             $dimensionAndUnit #boardCurveSelectionController.mCPY1, root.mBoardLimitControlPointsDisplayUnit
           }
@@ -1105,7 +1106,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             expandableWidth ()
             $hidden #boardCurveSelectionController.isLine
           }
-          CanariDimensionField (minWidth: 80, size: .small) {
+          CanariDimensionField (size: .small) {
             $hidden #boardCurveSelectionController.isLine
             $dimensionAndUnit #boardCurveSelectionController.mCPX2, root.mBoardLimitControlPointsDisplayUnit
           }
@@ -1115,7 +1116,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             expandableWidth ()
             $hidden #boardCurveSelectionController.isLine
           }
-          CanariDimensionField (minWidth: 80, size: .small) {
+          CanariDimensionField (size: .small) {
             $hidden #boardCurveSelectionController.isLine
             $dimensionAndUnit #boardCurveSelectionController.mCPY2, root.mBoardLimitControlPointsDisplayUnit
           }

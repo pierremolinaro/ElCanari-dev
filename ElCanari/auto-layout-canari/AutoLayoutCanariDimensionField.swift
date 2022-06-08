@@ -14,8 +14,8 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  init (minWidth inWidth : Int, size inSize : EBControlSize) {
-    super.init (optionalWidth: inWidth, bold: true, size: inSize)
+  init (size inSize : EBControlSize) {
+    super.init (optionalWidth: 72, bold: true, size: inSize)
   //--- Target
     self.target = self
     self.action = #selector (Self.valueDidChangeAction (_:))
@@ -32,9 +32,8 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField {
   override func textDidChange (_ inNotification : Notification) {
     super.textDidChange (inNotification)
     if self.isContinuous {
-      if let inputString = currentEditor()?.string {
-        // NSLog ("inputString %@", inputString)
-        let numberFormatter = self.formatter as! NumberFormatter
+      if let inputString = currentEditor()?.string,
+         let numberFormatter = self.formatter as? NumberFormatter {
         let number = numberFormatter.number (from: inputString)
         if number == nil {
           _ = control (
@@ -66,7 +65,7 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField {
         for: window,
         completionHandler: { (response : NSApplication.ModalResponse) -> Void in
           if response == .alertSecondButtonReturn { // Discard Change
- //         self.integerValue = self.myIntegerValue.0
+            _ = self.mValueController?.updateOutlet ()
           }
         }
       )
@@ -77,7 +76,7 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField {
   //····················································································································
 
   @objc fileprivate func valueDidChangeAction (_ inSender : Any?) {
-    _ = self.mController?.performValidation (self)
+    _ = self.mValueController?.performValidation ()
   }
 
   //····················································································································
@@ -85,18 +84,18 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField {
   //····················································································································
 
   fileprivate func updateOutlet () {
-    self.mController?.updateOutlet ()
+    self.mValueController?.updateOutlet ()
   }
 
   //····················································································································
 
-  private var mController : Controller_AutoLayoutCanariDimensionField_dimensionAndUnit? = nil
+  private var mValueController : Controller_AutoLayoutCanariDimensionField_dimensionAndUnit? = nil
 
   //····················································································································
 
   final func bind_dimensionAndUnit (_ object : EBReadWriteProperty_Int,
                                     _ unit : EBReadOnlyProperty_Int) -> Self {
-    self.mController = Controller_AutoLayoutCanariDimensionField_dimensionAndUnit (dimension: object, unit: unit, outlet: self)
+    self.mValueController = Controller_AutoLayoutCanariDimensionField_dimensionAndUnit (dimension: object, unit: unit, outlet: self)
     return self
   }
 
@@ -126,7 +125,7 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
       observedObjects: [dimension, unit],
       callBack: { [weak inOutlet] in inOutlet?.updateOutlet () }
     )
-  //--- Target
+  //--- Target, action
     inOutlet.target = self
     inOutlet.action = #selector (Self.textFieldAction(_:))
   //--- Number formatter
@@ -171,17 +170,18 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
 
   //····················································································································
 
-  fileprivate func performValidation (_ inSender : AutoLayoutCanariDimensionField) -> Bool {
+  fileprivate func performValidation () -> Bool {
     switch self.mUnit.selection {
     case .empty, .multiple :
       return false
     case .single (let unit) :
       if let formatter = self.mOutlet?.formatter as? NumberFormatter,
-         let stringValue = self.mOutlet?.stringValue,
-         let outletValueNumber = formatter.number (from: stringValue) {
+         let inInputString = self.mOutlet?.stringValue,
+         let outletValueNumber = formatter.number (from: inInputString) {
         let value = Int ((outletValueNumber.doubleValue * Double (unit)).rounded ())
-        return self.mDimension.validateAndSetProp (value, windowForSheet: inSender.window)
+        return self.mDimension.validateAndSetProp (value, windowForSheet: self.mOutlet?.window)
       }else{
+        self.updateOutlet ()
         NSSound.beep ()
         return false
       }
@@ -191,7 +191,7 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
   //····················································································································
 
   @objc func textFieldAction (_ inSender : AutoLayoutCanariDimensionField) {
-    _ = self.performValidation (inSender)
+    _ = self.performValidation ()
   }
 
   //····················································································································

@@ -36,7 +36,8 @@ let BUGFIXES : [String] = [
   "Vues graphiques : correction boucle infinie du calcul du zoom automatique"
 ]
 let CHANGES : [String] = [
-  "Document « Project » : amélioration présentation artwork"
+  "Document « Project » : amélioration présentation artwork",
+  "Amélioration de la validation de la saisie des champs entiers et flottants"
 ]
 let NEWS : [String] = [
 ]

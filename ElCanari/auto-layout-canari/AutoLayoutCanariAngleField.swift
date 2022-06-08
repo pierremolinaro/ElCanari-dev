@@ -128,8 +128,8 @@ final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField {
       alert.beginSheetModal (
         for: window,
         completionHandler: { (response : NSApplication.ModalResponse) -> Void in
-          if response == NSApplication.ModalResponse.alertSecondButtonReturn { // Discard Change
- //         self.integerValue = self.myIntegerValue.0
+          if response == NSApplication.ModalResponse.alertSecondButtonReturn, let v = self.mAngleController?.value {
+            self.doubleValue = Double (v) / 1000.0  // Discard Change
           }
         }
       )

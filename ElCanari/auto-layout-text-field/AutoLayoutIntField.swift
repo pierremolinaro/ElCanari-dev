@@ -67,27 +67,24 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
 
   override func textDidChange (_ inNotification : Notification) {
     super.textDidChange (inNotification)
-  //  self.mTextDidChange? ()
     if self.isContinuous {
       self.valueDidChangeAction (nil)
     }
-//    if self.isContinuous {
-//      NSSound.beep ()
-//      if let inputString = currentEditor()?.string {
-//        // NSLog ("inputString %@", inputString)
-//        let numberFormatter = self.formatter as! NumberFormatter
-//        let number = numberFormatter.number (from: inputString)
-//        if number == nil {
+    if self.isContinuous {
+      if let inputString = currentEditor()?.string,
+         let numberFormatter = self.formatter as? NumberFormatter {
+        let number = numberFormatter.number (from: inputString)
+        if number == nil {
 //          _ = control (
 //            self,
 //            didFailToFormatString: inputString,
 //            errorDescription: "The “\(inputString)” value is invalid."
 //          )
-//        }else{
-//          NSApp.sendAction (self.action!, to: self.target, from: self)
-//        }
-//      }
-//    }
+        }else{
+          NSApp.sendAction (self.action!, to: self.target, from: self)
+        }
+      }
+    }
   }
 
   //····················································································································
@@ -97,21 +94,21 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
   func control (_ control : NSControl,
                 didFailToFormatString string : String,
                 errorDescription error : String?) -> Bool {
-    let alert = NSAlert ()
-    if let window = control.window {
-      alert.messageText = error!
-      alert.informativeText = "Please provide a valid value."
-      alert.addButton (withTitle: "Ok")
-      alert.addButton (withTitle: "Discard Change")
-      alert.beginSheetModal (
-        for: window,
-        completionHandler: { (response : NSApplication.ModalResponse) -> Void in
-          if response == .alertSecondButtonReturn { // Discard Change
- //         self.integerValue = self.myIntegerValue.0
-          }
-        }
-      )
-    }
+//    let alert = NSAlert ()
+//    if let window = control.window {
+//      alert.messageText = error!
+//      alert.informativeText = "Please provide a valid value."
+//      alert.addButton (withTitle: "Ok")
+//      alert.addButton (withTitle: "Discard Change")
+//      alert.beginSheetModal (
+//        for: window,
+//        completionHandler: { (response : NSApplication.ModalResponse) -> Void in
+//          if response == .alertSecondButtonReturn, let v = self.mValueController?.value {
+//            self.integerValue = v  // Discard Change
+//          }
+//        }
+//      )
+//    }
     return false
   }
 
@@ -121,6 +118,8 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
     if let formatter = self.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.stringValue) {
       let value = Int (outletValueNumber.doubleValue.rounded ())
       _ = self.mValueController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
+    }else if let v = self.mValueController?.value {
+      self.integerValue = v
     }
   }
 

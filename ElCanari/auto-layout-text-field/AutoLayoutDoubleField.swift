@@ -20,9 +20,6 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
 
   init (minWidth inWidth : Int, size inSize : EBControlSize) {
     super.init (optionalWidth: inWidth, bold: true, size: inSize)
-  //--- Target
-    self.target = self
-    self.action = #selector (Self.valueDidChangeAction (_:))
   //--- Number formatter
     self.mNumberFormatter.formatterBehavior = .behavior10_4
     self.mNumberFormatter.numberStyle = .decimal
@@ -31,6 +28,13 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
     self.mNumberFormatter.maximumFractionDigits = 2
     self.mNumberFormatter.isLenient = true
     self.formatter = self.mNumberFormatter
+  //--- Target
+    self.target = self
+    self.action = #selector (Self.valueDidChangeAction (_:))
+//    Swift.print ("\(self.cell?.sendsActionOnEndEditing)")
+//    self.cell?.sendsActionOnEndEditing = true // Send an action when focus is lost
+//    self.cell?.target = self
+//    self.cell?.action = #selector (Self.valueDidChangeAction (_:))
   }
 
   //····················································································································
@@ -65,16 +69,15 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
   override func textDidChange (_ inNotification : Notification) {
     super.textDidChange (inNotification)
     if self.isContinuous {
-      if let inputString = currentEditor()?.string {
-        // NSLog ("inputString %@", inputString)
-        let numberFormatter = self.formatter as! NumberFormatter
+      if let inputString = currentEditor()?.string,
+        let numberFormatter = self.formatter as? NumberFormatter {
         let number = numberFormatter.number (from: inputString)
         if number == nil {
-          _ = control (
-            self,
-            didFailToFormatString: inputString,
-            errorDescription: "The “\(inputString)” value is invalid."
-          )
+//          _ = control (
+//            self,
+//            didFailToFormatString: inputString,
+//            errorDescription: "The “\(inputString)” value is invalid."
+//          )
         }else{
           NSApp.sendAction (self.action!, to: self.target, from: self)
         }
@@ -89,30 +92,35 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
   func control (_ control : NSControl,
                 didFailToFormatString string : String,
                 errorDescription error : String?) -> Bool {
-    let alert = NSAlert ()
-    if let window = control.window {
-      alert.messageText = error!
-      alert.informativeText = "Please provide a valid value."
-      alert.addButton (withTitle: "Ok")
-      alert.addButton (withTitle: "Discard Change")
-      alert.beginSheetModal (
-        for: window,
-        completionHandler: { (response : NSApplication.ModalResponse) -> Void in
-          if response == .alertSecondButtonReturn { // Discard Change
- //         self.integerValue = self.myIntegerValue.0
-          }
-        }
-      )
-    }
+//    let alert = NSAlert ()
+//    if let window = control.window {
+//      alert.messageText = error!
+//      alert.informativeText = "Please provide a valid value."
+//      alert.addButton (withTitle: "Ok")
+//      alert.addButton (withTitle: "Discard Change")
+//      alert.beginSheetModal (
+//        for: window,
+//        completionHandler: { (response : NSApplication.ModalResponse) -> Void in
+//          if response == .alertSecondButtonReturn, let v = self.mValueController?.value {
+//            self.doubleValue = v  // Discard Change
+//          }
+//        }
+//      )
+//    }
+//    if let v = self.mValueController?.value {
+//      self.doubleValue = v  // Discard Change
+//    }
     return false
   }
 
   //····················································································································
 
-  @objc fileprivate func valueDidChangeAction (_ inSender : Any?) {
+  @objc fileprivate func valueDidChangeAction (_ inSender : AutoLayoutDoubleField) {
     if let formatter = self.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.stringValue) {
       let value = outletValueNumber.doubleValue
       _ = self.mValueController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
+    }else if let v = self.mValueController?.value {
+      self.doubleValue = v
     }
   }
 
@@ -125,7 +133,6 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
   //····················································································································
 
   final func bind_value (_ inObject : EBReadWriteProperty_Double, sendContinously : Bool) -> Self {
-    self.cell?.sendsActionOnEndEditing = false
     self.isContinuous = sendContinously
     self.mValueController = EBGenericReadWritePropertyController <Double> (
       observedObject: inObject,

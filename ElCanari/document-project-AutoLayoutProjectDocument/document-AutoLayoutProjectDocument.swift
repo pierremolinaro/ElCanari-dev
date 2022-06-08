@@ -3686,6 +3686,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_62 () -> NSView {
     let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
+      .expandableWidth ()
       .bind_selectedIndex (self.rootObject.mBoardLimitsGridStyle_property)
     return view
   }
@@ -3705,6 +3706,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_64 () -> NSView {
     let view = AutoLayoutTaggedPopUpButton (size: .small)
+      .expandableWidth ()
       .add (title: "1 Step", withTag: 1)
       .add (title: "2 Steps", withTag: 2)
       .add (title: "4 Steps", withTag: 4)
@@ -3730,6 +3732,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_66 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
+      .expandableWidth ()
       .bind_value (self.rootObject.mBoardLimitsHorizontalFlip_property)
     return view
   }
@@ -3749,6 +3752,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_68 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
+      .expandableWidth ()
       .bind_value (self.rootObject.mBoardLimitsVerticalFlip_property)
     return view
   }
@@ -3897,7 +3901,7 @@ import Cocoa
       let view_0 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small)
         .expandableWidth ()
       view.appendView (view_0)
-      let view_1 = AutoLayoutCanariDimensionField (minWidth: 80, size: .small)
+      let view_1 = AutoLayoutCanariDimensionField (size: .small)
         .bind_dimensionAndUnit (self.boardCurveSelectionController.mX_property, self.rootObject.mBoardSelectedCurveDisplayUnit_property)
       view.appendView (view_1)
     }
@@ -3915,7 +3919,7 @@ import Cocoa
       let view_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small)
         .expandableWidth ()
       view.appendView (view_0)
-      let view_1 = AutoLayoutCanariDimensionField (minWidth: 80, size: .small)
+      let view_1 = AutoLayoutCanariDimensionField (size: .small)
         .bind_dimensionAndUnit (self.boardCurveSelectionController.mY_property, self.rootObject.mBoardSelectedCurveDisplayUnit_property)
       view.appendView (view_1)
     }
@@ -3996,7 +4000,7 @@ import Cocoa
         .expandableWidth ()
         .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_0)
-      let view_1 = AutoLayoutCanariDimensionField (minWidth: 80, size: .small)
+      let view_1 = AutoLayoutCanariDimensionField (size: .small)
         .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPX1_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
         .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_1)
@@ -4016,7 +4020,7 @@ import Cocoa
         .expandableWidth ()
         .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_0)
-      let view_1 = AutoLayoutCanariDimensionField (minWidth: 80, size: .small)
+      let view_1 = AutoLayoutCanariDimensionField (size: .small)
         .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPY1_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
         .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_1)
@@ -4036,7 +4040,7 @@ import Cocoa
         .expandableWidth ()
         .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_0)
-      let view_1 = AutoLayoutCanariDimensionField (minWidth: 80, size: .small)
+      let view_1 = AutoLayoutCanariDimensionField (size: .small)
         .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPX2_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
         .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_1)
@@ -4056,7 +4060,7 @@ import Cocoa
         .expandableWidth ()
         .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_0)
-      let view_1 = AutoLayoutCanariDimensionField (minWidth: 80, size: .small)
+      let view_1 = AutoLayoutCanariDimensionField (size: .small)
         .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPY2_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
         .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       view.appendView (view_1)

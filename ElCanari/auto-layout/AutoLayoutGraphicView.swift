@@ -42,7 +42,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     hStack.appendView (zoomToFitButton)
     self.mZoomToFitButton = zoomToFitButton
   //--- Build helper text
-    let helperTextField = buildHelperTextField ()
+    let helperTextField = AutoLayoutLabel (bold: false, size: .small).set (minWidth: 200)
     hStack.appendView (helperTextField)
     self.mHelperTextField = helperTextField
     hStack.appendView (AutoLayoutFlexibleSpace ())
@@ -91,19 +91,19 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  fileprivate func buildHelperTextField () -> NSTextField {
-    let tf = NSTextField (frame: .zero)
-    tf.isBezeled = false
-    tf.isBordered = false
-    tf.drawsBackground = false
-    tf.textColor = .black
-    tf.isEnabled = true
-    tf.isEditable = false
-    tf.alignment = .left
-    tf.controlSize = .small
-    tf.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: tf.controlSize))
-    return tf
-  }
+//  fileprivate func buildHelperTextField () -> NSTextField {
+//    let tf = AutoLayoutLabel (bold: false, size: .small).set (minWidth: 200)
+////    tf.isBezeled = false
+////    tf.isBordered = false
+////    tf.drawsBackground = false
+////    tf.textColor = .black
+////    tf.isEnabled = true
+////    tf.isEditable = false
+////    tf.alignment = .left
+////    tf.controlSize = .small
+////    tf.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: tf.controlSize))
+//    return tf
+//  }
 
   //····················································································································
 
