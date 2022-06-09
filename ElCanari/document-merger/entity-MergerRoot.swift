@@ -198,12 +198,6 @@ protocol MergerRoot_boardRect : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_boardDisplayRect : AnyObject {
-  var boardDisplayRect : CanariRect? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol MergerRoot_boardWidth : AnyObject {
   var boardWidth : Int? { get }
 }
@@ -293,7 +287,6 @@ final class MergerRoot : EBManagedObject,
          MergerRoot_drillDataFileExtension,
          MergerRoot_modelNames,
          MergerRoot_boardRect,
-         MergerRoot_boardDisplayRect,
          MergerRoot_boardWidth,
          MergerRoot_boardHeight,
          MergerRoot_comments,
@@ -1008,23 +1001,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: boardDisplayRect
-  //····················································································································
-
-  final let boardDisplayRect_property = EBTransientProperty_CanariRect ()
-
-  //····················································································································
-
-  final var boardDisplayRect : CanariRect? {
-    switch self.boardDisplayRect_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: boardWidth
   //····················································································································
 
@@ -1486,10 +1462,10 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: boardRect
     self.boardRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.automaticBoardSize_property.selection, unwSelf.boardManualWidth_property.selection, unwSelf.boardManualHeight_property.selection, unwSelf.boardInstances_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-          return .single (transient_MergerRoot_boardRect (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        switch (unwSelf.automaticBoardSize_property.selection, unwSelf.boardLimitWidth_property.selection, unwSelf.boardManualWidth_property.selection, unwSelf.boardManualHeight_property.selection, unwSelf.boardInstances_property.selection, unwSelf.boardInstances_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+          return .single (transient_MergerRoot_boardRect (v0, v1, v2, v3, v4, v5))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -1499,27 +1475,11 @@ final class MergerRoot : EBManagedObject,
       }
     }
     self.automaticBoardSize_property.addEBObserver (self.boardRect_property)
+    self.boardLimitWidth_property.addEBObserver (self.boardRect_property)
     self.boardManualWidth_property.addEBObserver (self.boardRect_property)
     self.boardManualHeight_property.addEBObserver (self.boardRect_property)
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
-  //--- Atomic property: boardDisplayRect
-    self.boardDisplayRect_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.boardManualWidth_property.selection, unwSelf.boardManualHeight_property.selection, unwSelf.boardInstances_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
-          return .single (transient_MergerRoot_boardDisplayRect (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.boardManualWidth_property.addEBObserver (self.boardDisplayRect_property)
-    self.boardManualHeight_property.addEBObserver (self.boardDisplayRect_property)
-    self.boardInstances_property.addEBObserverOf_instanceRect (self.boardDisplayRect_property)
+    self.boardInstances_property.addEBObserverOf_boardLimitWidth (self.boardRect_property)
   //--- Atomic property: boardWidth
     self.boardWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1726,12 +1686,11 @@ final class MergerRoot : EBManagedObject,
     // self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
     // self.boardModels_property.removeEBObserver (self.modelNames_property)
     // self.automaticBoardSize_property.removeEBObserver (self.boardRect_property)
+    // self.boardLimitWidth_property.removeEBObserver (self.boardRect_property)
     // self.boardManualWidth_property.removeEBObserver (self.boardRect_property)
     // self.boardManualHeight_property.removeEBObserver (self.boardRect_property)
     // self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardRect_property)
-    // self.boardManualWidth_property.removeEBObserver (self.boardDisplayRect_property)
-    // self.boardManualHeight_property.removeEBObserver (self.boardDisplayRect_property)
-    // self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardDisplayRect_property)
+    // self.boardInstances_property.removeEBObserverOf_boardLimitWidth (self.boardRect_property)
     // self.boardRect_property.removeEBObserver (self.boardWidth_property)
     // self.boardRect_property.removeEBObserver (self.boardHeight_property)
     // self.mArtwork_property.comments_property.removeEBObserver (self.comments_property)
@@ -1944,14 +1903,6 @@ final class MergerRoot : EBManagedObject,
         view: view,
         observerExplorer: &self.boardRect_property.mObserverExplorer,
         valueExplorer: &self.boardRect_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "boardDisplayRect",
-        object: self.boardDisplayRect_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.boardDisplayRect_property.mObserverExplorer,
-        valueExplorer: &self.boardDisplayRect_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "boardWidth",

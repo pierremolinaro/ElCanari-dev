@@ -468,6 +468,8 @@ import Cocoa
       .bind_horizontalFlip (preferences_mergerModelViewHorizontalFlip_property)
       .bind_verticalFlip (preferences_mergerModelViewVerticalFlip_property)
       .bind_overObjectsDisplay (self.mBoardModelSelection.imageForModel_property)
+      .bind_xPlacardUnit (self.mBoardModelSelection.modelWidthUnit_property)
+      .bind_yPlacardUnit (self.mBoardModelSelection.modelHeightUnit_property)
       .bind_hidden (.intcmp (.prop (self.rootObject.boardModels_property.count_property), .eq, .literalInt (0)))
     hStackView.appendView (view_3)
     let view_4 = AutoLayoutVerticalStackView ()
@@ -557,6 +559,8 @@ import Cocoa
       .bind_overObjectsDisplay (self.rootObject.boardOutlineRectDisplay_property)
       .bind_arrowKeyMagnitude (self.rootObject.arrowMagnitude_property)
       .bind_shiftArrowKeyMagnitude (self.rootObject.shiftArrowMagnitude_property)
+      .bind_xPlacardUnit (self.rootObject.boardWidthUnit_property)
+      .bind_yPlacardUnit (self.rootObject.boardHeightUnit_property)
       .bind_graphic_controller (self.mBoardInstanceController)
     self.mComposedBoardGraphicView = view_3 // Outlet
     self.configure_boardGraphicView (view_3) // Configurator
@@ -626,62 +630,143 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_156 (), right: self.computeImplicitView_157 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_158 (), right: self.computeImplicitView_159 ())
       .add (single: self.computeImplicitView_160 ())
-      .add (single: self.computeImplicitView_161 ())
     vStackView.appendView (view_3)
     let view_4 = AutoLayoutHorizontalStackView ()
+      .set (margins: 0)
+      .equalWidth ()
     do{
-      let view_4_0 = AutoLayoutFlexibleSpace ()
+      let view_4_0 = AutoLayoutVerticalStackView ()
+        .set (margins: 0)
+      do{
+        let view_4_0_0 = AutoLayoutStaticLabel (title: "Move Selection", bold: true, size: .small)
+          .expandableWidth ()
+        view_4_0.appendView (view_4_0_0)
+        let view_4_0_1 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_4_0_1_0 = AutoLayoutFlexibleSpace ()
+          view_4_0_1.appendView (view_4_0_1_0)
+          let view_4_0_1_1 = AutoLayoutButton (title: "Up", size: .small)
+            .setTitleAsUpArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.moveSelectionUpAction (_:))
+            )
+          view_4_0_1.appendView (view_4_0_1_1)
+          let view_4_0_1_2 = AutoLayoutFlexibleSpace ()
+          view_4_0_1.appendView (view_4_0_1_2)
+        }
+        view_4_0.appendView (view_4_0_1)
+        let view_4_0_2 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_4_0_2_0 = AutoLayoutFlexibleSpace ()
+          view_4_0_2.appendView (view_4_0_2_0)
+          let view_4_0_2_1 = AutoLayoutButton (title: "Left", size: .small)
+            .setTitleAsLeftArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.moveSelectionLeftAction (_:))
+            )
+          view_4_0_2.appendView (view_4_0_2_1)
+          let view_4_0_2_2 = AutoLayoutButton (title: "Right", size: .small)
+            .setTitleAsRightArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.moveSelectionRightAction (_:))
+            )
+          view_4_0_2.appendView (view_4_0_2_2)
+          let view_4_0_2_3 = AutoLayoutFlexibleSpace ()
+          view_4_0_2.appendView (view_4_0_2_3)
+        }
+        view_4_0.appendView (view_4_0_2)
+        let view_4_0_3 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_4_0_3_0 = AutoLayoutFlexibleSpace ()
+          view_4_0_3.appendView (view_4_0_3_0)
+          let view_4_0_3_1 = AutoLayoutButton (title: "Down", size: .small)
+            .setTitleAsDownArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.moveSelectionDownAction (_:))
+            )
+          view_4_0_3.appendView (view_4_0_3_1)
+          let view_4_0_3_2 = AutoLayoutFlexibleSpace ()
+          view_4_0_3.appendView (view_4_0_3_2)
+        }
+        view_4_0.appendView (view_4_0_3)
+      }
       view_4.appendView (view_4_0)
-      let view_4_1 = AutoLayoutButton (title: "Up", size: .small)
-        .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutMergerDocument.moveUpAction (_:))
-        )
+      let view_4_1 = AutoLayoutVerticalStackView ()
+        .set (margins: 0)
+      do{
+        let view_4_1_0 = AutoLayoutStaticLabel (title: "Stack Selection", bold: true, size: .small)
+          .expandableWidth ()
+        view_4_1.appendView (view_4_1_0)
+        let view_4_1_1 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_4_1_1_0 = AutoLayoutFlexibleSpace ()
+          view_4_1_1.appendView (view_4_1_1_0)
+          let view_4_1_1_1 = AutoLayoutButton (title: "Up", size: .small)
+            .setTitleAsUpArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.stackSelectionUpAction (_:))
+            )
+          view_4_1_1.appendView (view_4_1_1_1)
+          let view_4_1_1_2 = AutoLayoutFlexibleSpace ()
+          view_4_1_1.appendView (view_4_1_1_2)
+        }
+        view_4_1.appendView (view_4_1_1)
+        let view_4_1_2 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_4_1_2_0 = AutoLayoutFlexibleSpace ()
+          view_4_1_2.appendView (view_4_1_2_0)
+          let view_4_1_2_1 = AutoLayoutButton (title: "Left", size: .small)
+            .setTitleAsLeftArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.stackSelectionLeftAction (_:))
+            )
+          view_4_1_2.appendView (view_4_1_2_1)
+          let view_4_1_2_2 = AutoLayoutButton (title: "Right", size: .small)
+            .setTitleAsRightArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.stackSelectionRightAction (_:))
+            )
+          view_4_1_2.appendView (view_4_1_2_2)
+          let view_4_1_2_3 = AutoLayoutFlexibleSpace ()
+          view_4_1_2.appendView (view_4_1_2_3)
+        }
+        view_4_1.appendView (view_4_1_2)
+        let view_4_1_3 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_4_1_3_0 = AutoLayoutFlexibleSpace ()
+          view_4_1_3.appendView (view_4_1_3_0)
+          let view_4_1_3_1 = AutoLayoutButton (title: "Down", size: .small)
+            .setTitleAsDownArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.stackSelectionDownAction (_:))
+            )
+          view_4_1_3.appendView (view_4_1_3_1)
+          let view_4_1_3_2 = AutoLayoutFlexibleSpace ()
+          view_4_1_3.appendView (view_4_1_3_2)
+        }
+        view_4_1.appendView (view_4_1_3)
+      }
       view_4.appendView (view_4_1)
-      let view_4_2 = AutoLayoutFlexibleSpace ()
-      view_4.appendView (view_4_2)
     }
     vStackView.appendView (view_4)
-    let view_5 = AutoLayoutHorizontalStackView ()
-    do{
-      let view_5_0 = AutoLayoutFlexibleSpace ()
-      view_5.appendView (view_5_0)
-      let view_5_1 = AutoLayoutButton (title: "Left", size: .small)
-        .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutMergerDocument.moveLeftAction (_:))
-        )
-      view_5.appendView (view_5_1)
-      let view_5_2 = AutoLayoutButton (title: "Right", size: .small)
-        .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutMergerDocument.moveRightAction (_:))
-        )
-      view_5.appendView (view_5_2)
-      let view_5_3 = AutoLayoutFlexibleSpace ()
-      view_5.appendView (view_5_3)
-    }
+    let view_5 = AutoLayoutFlexibleSpace ()
     vStackView.appendView (view_5)
-    let view_6 = AutoLayoutHorizontalStackView ()
-    do{
-      let view_6_0 = AutoLayoutFlexibleSpace ()
-      view_6.appendView (view_6_0)
-      let view_6_1 = AutoLayoutButton (title: "Down", size: .small)
-        .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutMergerDocument.moveDownAction (_:))
-        )
-      view_6.appendView (view_6_1)
-      let view_6_2 = AutoLayoutFlexibleSpace ()
-      view_6.appendView (view_6_2)
-    }
-    vStackView.appendView (view_6)
-    let view_7 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_7)
     return vStackView
   } ()
 
@@ -826,9 +911,9 @@ import Cocoa
   lazy var mArtworkDescriptionPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_162 (), right: self.computeImplicitView_163 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_164 (), right: self.computeImplicitView_165 ())
-      .addCenterYAligned (left: self.computeImplicitView_166 (), right: self.computeImplicitView_167 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_161 (), right: self.computeImplicitView_162 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_163 (), right: self.computeImplicitView_164 ())
+      .addCenterYAligned (left: self.computeImplicitView_165 (), right: self.computeImplicitView_166 ())
     vStackView.appendView (view_0)
     return vStackView
   } ()
@@ -917,8 +1002,8 @@ import Cocoa
         do{
           let view_1_2_3_0 = AutoLayoutGridView2 ()
             .set (leftMargin: 20)
-            .addFirstBaseLineAligned (left: self.computeImplicitView_168 (), right: self.computeImplicitView_169 ())
-            .addFirstBaseLineAligned (left: self.computeImplicitView_170 (), right: self.computeImplicitView_171 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_167 (), right: self.computeImplicitView_168 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_169 (), right: self.computeImplicitView_170 ())
           view_1_2_3.appendView (view_1_2_3_0)
           let view_1_2_3_1 = AutoLayoutFlexibleSpace ()
           view_1_2_3.appendView (view_1_2_3_1)
@@ -966,12 +1051,12 @@ import Cocoa
         do{
           let view_1_2_8_0 = AutoLayoutGridView2 ()
             .set (leftMargin: 20)
-            .addFirstBaseLineAligned (left: self.computeImplicitView_172 (), right: self.computeImplicitView_173 ())
-            .addFirstBaseLineAligned (left: self.computeImplicitView_174 (), right: self.computeImplicitView_175 ())
-            .addFirstBaseLineAligned (left: self.computeImplicitView_176 (), right: self.computeImplicitView_177 ())
-            .addFirstBaseLineAligned (left: self.computeImplicitView_178 (), right: self.computeImplicitView_179 ())
-            .addFirstBaseLineAligned (left: self.computeImplicitView_180 (), right: self.computeImplicitView_181 ())
-            .addFirstBaseLineAligned (left: self.computeImplicitView_182 (), right: self.computeImplicitView_183 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_171 (), right: self.computeImplicitView_172 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_173 (), right: self.computeImplicitView_174 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_175 (), right: self.computeImplicitView_176 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_177 (), right: self.computeImplicitView_178 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_179 (), right: self.computeImplicitView_180 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_181 (), right: self.computeImplicitView_182 ())
           view_1_2_8.appendView (view_1_2_8_0)
           let view_1_2_8_1 = AutoLayoutFlexibleSpace ()
           view_1_2_8.appendView (view_1_2_8_1)
@@ -989,8 +1074,8 @@ import Cocoa
         do{
           let view_1_2_10_0 = AutoLayoutGridView2 ()
             .set (leftMargin: 20)
-            .addFirstBaseLineAligned (left: self.computeImplicitView_184 (), right: self.computeImplicitView_185 ())
-            .addFirstBaseLineAligned (left: self.computeImplicitView_186 (), right: self.computeImplicitView_187 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_183 (), right: self.computeImplicitView_184 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_185 (), right: self.computeImplicitView_186 ())
           view_1_2_10.appendView (view_1_2_10_0)
           let view_1_2_10_1 = AutoLayoutFlexibleSpace ()
           view_1_2_10.appendView (view_1_2_10_1)
@@ -1158,10 +1243,10 @@ import Cocoa
         .set (leftMargin: 20)
         .set (rightMargin: 20)
         .set (topMargin: 8)
-        .addFirstBaseLineAligned (left: self.computeImplicitView_188 (), right: self.computeImplicitView_189 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_190 (), right: self.computeImplicitView_191 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_192 (), right: self.computeImplicitView_193 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_194 (), right: self.computeImplicitView_195 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_187 (), right: self.computeImplicitView_188 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_189 (), right: self.computeImplicitView_190 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_191 (), right: self.computeImplicitView_192 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_193 (), right: self.computeImplicitView_194 ())
       view_3.appendView (view_3_1)
       let view_3_2 = AutoLayoutFlexibleSpace ()
       view_3.appendView (view_3_2)
@@ -1302,6 +1387,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayHoles_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1309,6 +1395,7 @@ import Cocoa
         .bind_color (preferences_mergerColorHoles_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayHoles_property)
       view.appendView (view_2)
     }
@@ -1333,6 +1420,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayVias_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1340,6 +1428,7 @@ import Cocoa
         .bind_color (preferences_mergerColorVias_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayVias_property)
       view.appendView (view_2)
     }
@@ -1364,6 +1453,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBoardLimits_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1371,6 +1461,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBoardLimits_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBoardLimits_property)
       view.appendView (view_2)
     }
@@ -1395,6 +1486,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInternalBoardsLimits_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1402,6 +1494,7 @@ import Cocoa
         .bind_color (preferences_mergerColorInternalBoardsLimits_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInternalBoardsLimits_property)
       view.appendView (view_2)
     }
@@ -1479,6 +1572,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontPads_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1486,6 +1580,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontPads_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontPads_property)
       view.appendView (view_2)
     }
@@ -1510,6 +1605,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontComponentNames_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1517,6 +1613,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontComponentNames_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontComponentNames_property)
       view.appendView (view_2)
     }
@@ -1541,6 +1638,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontComponentValues_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1548,6 +1646,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontComponentValues_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontComponentValues_property)
       view.appendView (view_2)
     }
@@ -1572,6 +1671,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontPackages_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1579,6 +1679,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontPackages_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontPackages_property)
       view.appendView (view_2)
     }
@@ -1603,6 +1704,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontLegendTexts_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1610,6 +1712,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontLegendTexts_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontLegendTexts_property)
       view.appendView (view_2)
     }
@@ -1634,6 +1737,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontLegendLines_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1641,6 +1745,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontLegendLines_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontLegendLines_property)
       view.appendView (view_2)
     }
@@ -1665,6 +1770,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontLayoutTexts_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1672,6 +1778,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontLayoutTexts_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontLayoutTexts_property)
       view.appendView (view_2)
     }
@@ -1696,6 +1803,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontTracks_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1703,6 +1811,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontTracks_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontTracks_property)
       view.appendView (view_2)
     }
@@ -1751,6 +1860,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayTraversingPads_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1758,6 +1868,7 @@ import Cocoa
         .bind_color (preferences_mergerColorTraversingPads_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayTraversingPads_property)
       view.appendView (view_2)
     }
@@ -1782,6 +1893,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner1Tracks_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1789,6 +1901,7 @@ import Cocoa
         .bind_color (preferences_mergerColorInner1Tracks_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner1Tracks_property)
       view.appendView (view_2)
     }
@@ -1813,6 +1926,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner2Tracks_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1820,6 +1934,7 @@ import Cocoa
         .bind_color (preferences_mergerColorInner2Tracks_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner2Tracks_property)
       view.appendView (view_2)
     }
@@ -1844,6 +1959,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner3Tracks_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1851,6 +1967,7 @@ import Cocoa
         .bind_color (preferences_mergerColorInner3Tracks_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner3Tracks_property)
       view.appendView (view_2)
     }
@@ -1875,6 +1992,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner4Tracks_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1882,6 +2000,7 @@ import Cocoa
         .bind_color (preferences_mergerColorInner4Tracks_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner4Tracks_property)
       view.appendView (view_2)
     }
@@ -1930,6 +2049,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackPads_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1937,6 +2057,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackPads_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackPads_property)
       view.appendView (view_2)
     }
@@ -1961,6 +2082,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackComponentNames_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1968,6 +2090,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackComponentNames_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackComponentNames_property)
       view.appendView (view_2)
     }
@@ -1992,6 +2115,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackComponentValues_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -1999,6 +2123,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackComponentValues_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackComponentValues_property)
       view.appendView (view_2)
     }
@@ -2023,6 +2148,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackPackages_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2030,6 +2156,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackPackages_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackPackages_property)
       view.appendView (view_2)
     }
@@ -2054,6 +2181,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackLegendTexts_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2061,6 +2189,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackLegendTexts_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackLegendTexts_property)
       view.appendView (view_2)
     }
@@ -2085,6 +2214,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackLegendLines_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2092,6 +2222,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackLegendLines_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackLegendLines_property)
       view.appendView (view_2)
     }
@@ -2116,6 +2247,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackLayoutTexts_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2123,6 +2255,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackLayoutTexts_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackLayoutTexts_property)
       view.appendView (view_2)
     }
@@ -2147,6 +2280,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackTracks_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2154,6 +2288,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackTracks_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackTracks_property)
       view.appendView (view_2)
     }
@@ -2409,6 +2544,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayHoles_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2416,6 +2552,7 @@ import Cocoa
         .bind_color (preferences_mergerColorHoles_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayHoles_property)
       view.appendView (view_2)
     }
@@ -2440,6 +2577,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayVias_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2447,6 +2585,7 @@ import Cocoa
         .bind_color (preferences_mergerColorVias_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayVias_property)
       view.appendView (view_2)
     }
@@ -2471,6 +2610,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBoardLimits_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2478,6 +2618,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBoardLimits_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBoardLimits_property)
       view.appendView (view_2)
     }
@@ -2502,6 +2643,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInternalBoardsLimits_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2509,6 +2651,7 @@ import Cocoa
         .bind_color (preferences_mergerColorInternalBoardsLimits_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInternalBoardsLimits_property)
       view.appendView (view_2)
     }
@@ -2586,6 +2729,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontPads_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2593,6 +2737,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontPads_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontPads_property)
       view.appendView (view_2)
     }
@@ -2617,6 +2762,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontComponentNames_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2624,6 +2770,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontComponentNames_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontComponentNames_property)
       view.appendView (view_2)
     }
@@ -2648,6 +2795,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontComponentValues_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2655,6 +2803,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontComponentValues_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontComponentValues_property)
       view.appendView (view_2)
     }
@@ -2679,6 +2828,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontPackages_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2686,6 +2836,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontPackages_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontPackages_property)
       view.appendView (view_2)
     }
@@ -2710,6 +2861,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontLegendTexts_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2717,6 +2869,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontLegendTexts_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontLegendTexts_property)
       view.appendView (view_2)
     }
@@ -2741,6 +2894,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontLegendLines_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2748,6 +2902,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontLegendLines_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontLegendLines_property)
       view.appendView (view_2)
     }
@@ -2772,6 +2927,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontLayoutTexts_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2779,6 +2935,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontLayoutTexts_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontLayoutTexts_property)
       view.appendView (view_2)
     }
@@ -2803,6 +2960,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontTracks_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2810,6 +2968,7 @@ import Cocoa
         .bind_color (preferences_mergerColorFrontTracks_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontTracks_property)
       view.appendView (view_2)
     }
@@ -2858,6 +3017,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayTraversingPads_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2865,6 +3025,7 @@ import Cocoa
         .bind_color (preferences_mergerColorTraversingPads_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayTraversingPads_property)
       view.appendView (view_2)
     }
@@ -2889,6 +3050,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner1Tracks_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2896,6 +3058,7 @@ import Cocoa
         .bind_color (preferences_mergerColorInner1Tracks_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner1Tracks_property)
       view.appendView (view_2)
     }
@@ -2920,6 +3083,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner2Tracks_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2927,6 +3091,7 @@ import Cocoa
         .bind_color (preferences_mergerColorInner2Tracks_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner2Tracks_property)
       view.appendView (view_2)
     }
@@ -2951,6 +3116,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner3Tracks_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2958,6 +3124,7 @@ import Cocoa
         .bind_color (preferences_mergerColorInner3Tracks_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner3Tracks_property)
       view.appendView (view_2)
     }
@@ -2982,6 +3149,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner4Tracks_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -2989,6 +3157,7 @@ import Cocoa
         .bind_color (preferences_mergerColorInner4Tracks_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner4Tracks_property)
       view.appendView (view_2)
     }
@@ -3037,6 +3206,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackPads_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -3044,6 +3214,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackPads_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackPads_property)
       view.appendView (view_2)
     }
@@ -3068,6 +3239,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackComponentNames_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -3075,6 +3247,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackComponentNames_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackComponentNames_property)
       view.appendView (view_2)
     }
@@ -3099,6 +3272,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackComponentValues_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -3106,6 +3280,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackComponentValues_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackComponentValues_property)
       view.appendView (view_2)
     }
@@ -3130,6 +3305,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackPackages_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -3137,6 +3313,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackPackages_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackPackages_property)
       view.appendView (view_2)
     }
@@ -3161,6 +3338,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackLegendTexts_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -3168,6 +3346,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackLegendTexts_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackLegendTexts_property)
       view.appendView (view_2)
     }
@@ -3192,6 +3371,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackLegendLines_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -3199,6 +3379,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackLegendLines_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackLegendLines_property)
       view.appendView (view_2)
     }
@@ -3223,6 +3404,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackLayoutTexts_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -3230,6 +3412,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackLayoutTexts_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackLayoutTexts_property)
       view.appendView (view_2)
     }
@@ -3254,6 +3437,7 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackTracks_property)
       view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
@@ -3261,6 +3445,7 @@ import Cocoa
         .bind_color (preferences_mergerColorBackTracks_property, sendContinously:false)
       view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
+        .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackTracks_property)
       view.appendView (view_2)
     }
@@ -3517,9 +3702,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_161 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Move Selection", bold: true, size: .small)
-      .expandableWidth ()
-      .set (alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Layer Description", bold: false, size: .regular)
     return view
   }
 
@@ -3528,15 +3711,6 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_162 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Layer Description", bold: false, size: .regular)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 163
-  //····················································································································
-
-  fileprivate final func computeImplicitView_163 () -> NSView {
     let view = AutoLayoutLabel (bold: true, size: .regular)
       .set (alignment: .left)
       .expandableWidth ()
@@ -3545,19 +3719,19 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 164
+  //    IMPLICIT VIEW 163
   //····················································································································
 
-  fileprivate final func computeImplicitView_164 () -> NSView {
+  fileprivate final func computeImplicitView_163 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Artwork Version", bold: false, size: .regular)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 165
+  //    IMPLICIT VIEW 164
   //····················································································································
 
-  fileprivate final func computeImplicitView_165 () -> NSView {
+  fileprivate final func computeImplicitView_164 () -> NSView {
     let view = AutoLayoutIntObserverField (bold: true, size: .regular)
       .set (alignment: .left)
       .expandableWidth ()
@@ -3566,10 +3740,10 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 166
+  //    IMPLICIT VIEW 165
   //····················································································································
 
-  fileprivate final func computeImplicitView_166 () -> NSView {
+  fileprivate final func computeImplicitView_165 () -> NSView {
     let view = AutoLayoutVerticalStackView ()
     do{
       let view_0 = AutoLayoutStaticLabel (title: "Comment", bold: false, size: .regular)
@@ -3581,13 +3755,23 @@ import Cocoa
   }
 
   //····················································································································
+  //    IMPLICIT VIEW 166
+  //····················································································································
+
+  fileprivate final func computeImplicitView_166 () -> NSView {
+    let view = AutoLayoutTextObserverView ()
+      .expandableWidth ()
+      .bind_observedValue (self.rootObject.comments_property)
+    return view
+  }
+
+  //····················································································································
   //    IMPLICIT VIEW 167
   //····················································································································
 
   fileprivate final func computeImplicitView_167 () -> NSView {
-    let view = AutoLayoutTextObserverView ()
-      .expandableWidth ()
-      .bind_observedValue (self.rootObject.comments_property)
+    let view = AutoLayoutCheckbox (title: "Legend Front Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLegendTopSide_property)
     return view
   }
 
@@ -3596,8 +3780,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_168 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Legend Front Side Texts", size: .small)
-      .bind_value (self.mDataSelection.drawTextsLegendTopSide_property)
+    let view = AutoLayoutCheckbox (title: "Layout Front Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLayoutTopSide_property)
     return view
   }
 
@@ -3606,8 +3790,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_169 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Layout Front Side Texts", size: .small)
-      .bind_value (self.mDataSelection.drawTextsLayoutTopSide_property)
+    let view = AutoLayoutCheckbox (title: "Front Side Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksTopSide_property)
     return view
   }
 
@@ -3616,8 +3800,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_170 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Front Side Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksTopSide_property)
+    let view = AutoLayoutCheckbox (title: "Front Side Pads", size: .small)
+      .bind_value (self.mDataSelection.drawPadsTopSide_property)
     return view
   }
 
@@ -3626,8 +3810,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_171 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Front Side Pads", size: .small)
-      .bind_value (self.mDataSelection.drawPadsTopSide_property)
+    let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
+      .bind_value (self.mDataSelection.drawTraversingPads_property)
+      .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -3636,9 +3821,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_172 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
-      .bind_value (self.mDataSelection.drawTraversingPads_property)
-      .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -3647,7 +3830,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_173 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
+    let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
+      .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -3656,9 +3841,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_174 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
-      .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
-      .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -3667,7 +3850,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_175 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
+    let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
+      .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -3676,8 +3861,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_176 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
+    let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
       .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
     return view
   }
@@ -3687,9 +3872,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_177 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
-      .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
+    let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
+      .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -3698,7 +3883,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_178 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
+    let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
       .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
       .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
     return view
@@ -3709,9 +3894,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_179 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
-      .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
-      .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
+    let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
+      .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
     return view
   }
 
@@ -3720,8 +3905,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_180 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
+    let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
       .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
     return view
   }
@@ -3731,9 +3916,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_181 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
-      .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
+    let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
+      .bind_enabled (.prop (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.prop (self.rootObject.hasSixLayers_property))
     return view
   }
 
@@ -3742,7 +3927,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_182 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
+    let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
       .bind_enabled (.prop (self.rootObject.hasSixLayers_property))
       .bind_hidden (.prop (self.rootObject.hasSixLayers_property))
     return view
@@ -3753,9 +3938,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_183 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
-      .bind_enabled (.prop (self.rootObject.hasSixLayers_property))
-      .bind_hidden (.prop (self.rootObject.hasSixLayers_property))
+    let view = AutoLayoutCheckbox (title: "Legend Back Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLegendBottomSide_property)
     return view
   }
 
@@ -3764,8 +3948,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_184 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Legend Back Side Texts", size: .small)
-      .bind_value (self.mDataSelection.drawTextsLegendBottomSide_property)
+    let view = AutoLayoutCheckbox (title: "Layout Back Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLayoutBottomSide_property)
     return view
   }
 
@@ -3774,8 +3958,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_185 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Layout Back Side Texts", size: .small)
-      .bind_value (self.mDataSelection.drawTextsLayoutBottomSide_property)
+    let view = AutoLayoutCheckbox (title: "Back Side Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksBottomSide_property)
     return view
   }
 
@@ -3784,8 +3968,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_186 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Back Side Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksBottomSide_property)
+    let view = AutoLayoutCheckbox (title: "Back Side Pads", size: .small)
+      .bind_value (self.mDataSelection.drawPadsBottomSide_property)
     return view
   }
 
@@ -3794,8 +3978,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_187 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Back Side Pads", size: .small)
-      .bind_value (self.mDataSelection.drawPadsBottomSide_property)
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: false, size: .regular)
     return view
   }
 
@@ -3804,7 +3987,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_188 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: false, size: .regular)
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property)
     return view
   }
 
@@ -3813,8 +3997,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_189 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property)
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for PHD", bold: false, size: .regular)
     return view
   }
 
@@ -3823,7 +4006,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_190 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for PHD", bold: false, size: .regular)
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property)
     return view
   }
 
@@ -3832,8 +4016,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_191 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property)
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for OAR", bold: false, size: .regular)
     return view
   }
 
@@ -3842,7 +4025,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_192 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for OAR", bold: false, size: .regular)
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property)
     return view
   }
 
@@ -3851,8 +4035,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_193 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property)
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for Board Limit Width", bold: false, size: .regular)
     return view
   }
 
@@ -3861,15 +4044,6 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_194 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for Board Limit Width", bold: false, size: .regular)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 195
-  //····················································································································
-
-  fileprivate final func computeImplicitView_195 () -> NSView {
     let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property)
     return view
@@ -3968,7 +4142,7 @@ import Cocoa
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.overlapingArrangment_property.selection, unwSelf.rootObject.boardRect_property.selection, unwSelf.rootObject.boardDisplayRect_property.selection, unwSelf.rootObject.boardInstances_property.selection, unwSelf.rootObject.boardInstances_property.selection) {
+        switch (unwSelf.rootObject.overlapingArrangment_property.selection, unwSelf.rootObject.boardRect_property.selection, unwSelf.rootObject.boardLimitWidth_property.selection, unwSelf.rootObject.boardInstances_property.selection, unwSelf.rootObject.boardInstances_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
           return .single (transient_AutoLayoutMergerDocument_issues (v0, v1, v2, v3, v4))
         case (.multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -3982,7 +4156,7 @@ import Cocoa
     }
     self.rootObject.overlapingArrangment_property.addEBObserver (self.issues_property)
     self.rootObject.boardRect_property.addEBObserver (self.issues_property)
-    self.rootObject.boardDisplayRect_property.addEBObserver (self.issues_property)
+    self.rootObject.boardLimitWidth_property.addEBObserver (self.issues_property)
     self.rootObject.boardInstances_property.addEBObserverOf_instanceRect (self.issues_property)
     self.rootObject.boardInstances_property.addEBObserverOf_boardLimitWidth (self.issues_property)
     if LOG_OPERATION_DURATION {
@@ -4201,7 +4375,7 @@ import Cocoa
     self.mDataSelection.unbind_selection ()
     // self.rootObject.overlapingArrangment_property.removeEBObserver (self.issues_property)
     // self.rootObject.boardRect_property.removeEBObserver (self.issues_property)
-    // self.rootObject.boardDisplayRect_property.removeEBObserver (self.issues_property)
+    // self.rootObject.boardLimitWidth_property.removeEBObserver (self.issues_property)
     // self.rootObject.boardInstances_property.removeEBObserverOf_instanceRect (self.issues_property)
     // self.rootObject.boardInstances_property.removeEBObserverOf_boardLimitWidth (self.issues_property)
     // self.issues_property.removeEBObserver (self.statusMessage_property)

@@ -37,19 +37,27 @@ entity MergerRoot {
 
 //--- Instance display
   transient EBShape boardOutlineRectDisplay  dependsFrom
-    self.boardRect, self.boardLimitWidth, prefs.mergerBoardViewDisplayBoardLimits, prefs.mergerColorBoardLimits ;
+    self.boardRect,
+    self.boardLimitWidth,
+    prefs.mergerBoardViewDisplayBoardLimits,
+    prefs.mergerColorBoardLimits ;
 
 
 //--- Board rect (rect from instances (automatic mode) or from manuel sizes)
   transient CanariRect boardRect dependsFrom
      self.automaticBoardSize,
-     self.boardManualWidth, self.boardManualHeight,
-     self.boardInstances.all.instanceRect ;
+     self.boardLimitWidth,
+     self.boardManualWidth,
+     self.boardManualHeight,
+     self.boardInstances.all.instanceRect,
+     self.boardInstances.all.boardLimitWidth ;
 
 //--- Display rect (includes manual size and or instances rect)
-  transient CanariRect boardDisplayRect dependsFrom
-     self.boardManualWidth, self.boardManualHeight,
-     self.boardInstances.all.instanceRect ;
+//  transient CanariRect boardDisplayRect dependsFrom
+//     self.boardManualWidth, self.boardManualHeight,
+//     self.boardLimitWidth,
+//     self.boardInstances.all.instanceRect,
+//     self.boardInstances.all.boardLimitWidth ;
 
   transient Int boardWidth dependsFrom self.boardRect ;
   transient Int boardHeight dependsFrom self.boardRect ;

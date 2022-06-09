@@ -52,7 +52,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
     if let documentView = destinationScrollView.documentView {
       let draggingLocationInWindow = sender.draggingLocation
       let draggingLocationInDestinationView = documentView.convert (draggingLocationInWindow, from:nil)
-      NSLog ("concludeDragOperation at \(draggingLocationInWindow), \(documentView) \(draggingLocationInDestinationView)")
+      // NSLog ("concludeDragOperation at \(draggingLocationInWindow), \(documentView) \(draggingLocationInDestinationView)")
       let pasteboard = sender.draggingPasteboard
       if let data = pasteboard.data (forType: kDragAndDropMergerModelType), let boardModelName = String (data: data, encoding: .ascii) {
         NSLog ("\(boardModelName)")

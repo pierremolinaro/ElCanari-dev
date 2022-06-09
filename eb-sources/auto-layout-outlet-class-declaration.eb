@@ -176,6 +176,10 @@ extern autolayout class Button (title: String, size: EBControlSize) $enabled $ru
   func setDeleteKeyAsKeyEquivalent ()
   func set (width: Int)
   func set (height: Int)
+  func setTitleAsUpArrow ()
+  func setTitleAsDownArrow ()
+  func setTitleAsLeftArrow ()
+  func setTitleAsRightArrow ()
 }
 
 extern autolayout class TextField (minWidth: Int, size: EBControlSize) $enabled {

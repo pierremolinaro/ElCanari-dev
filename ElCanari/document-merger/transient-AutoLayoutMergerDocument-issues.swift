@@ -16,7 +16,7 @@ import Cocoa
 func transient_AutoLayoutMergerDocument_issues (
        _ root_overlapingArrangment : Bool,      
        _ root_boardRect : CanariRect,           
-       _ root_boardDisplayRect : CanariRect,    
+       _ root_boardLimitWidth : Int,            
        _ root_boardInstances_instanceRect : [MergerBoardInstance_instanceRect],
        _ root_boardInstances_boardLimitWidth : [MergerBoardInstance_boardLimitWidth]
 ) -> CanariIssueArray {
@@ -45,21 +45,27 @@ func transient_AutoLayoutMergerDocument_issues (
         idx += 1
       }
     //-------------------- Check instances are within bounds
-      for instance in root_boardInstances_instanceRect {
-        let instanceRect = instance.instanceRect!
-        let r = root_boardRect.union (instanceRect)
-        if r != root_boardRect {
-          let intersectionEnlarged : NSRect = instanceRect.cocoaRect.insetBy (dx: -3.0, dy: -3.0)
-          var bp = EBBezierPath (rect: intersectionEnlarged)
+      let boardInteriorRect = root_boardRect.insetBy (dx: root_boardLimitWidth / 2, dy: root_boardLimitWidth / 2)
+      idx = 0
+      while idx < root_boardInstances_instanceRect.count {
+        let instanceRect = root_boardInstances_instanceRect [idx].instanceRect!
+        let instanceLimits = root_boardInstances_boardLimitWidth [idx].boardLimitWidth!
+        let boardInteriorRectExpandedByInstanceLimitWidth = boardInteriorRect.insetBy (dx: -instanceLimits, dy: -instanceLimits)
+        let r = boardInteriorRectExpandedByInstanceLimitWidth.union (instanceRect)
+        if r != boardInteriorRectExpandedByInstanceLimitWidth {
+          let intersectionEnlargedForErrorSignaling : NSRect = instanceRect.cocoaRect.insetBy (dx: -3.0, dy: -3.0)
+          var bp = EBBezierPath (rect: intersectionEnlargedForErrorSignaling)
           bp.lineWidth = 3.0
           let issue = CanariIssue (kind: .error, message: "Outside board", pathes: [bp])
           array.append (issue)
         }
+        idx += 1
       }
     //-------------------- Sort issues
     //  array.sort (by: CanariIssue.displaySortingCompare)
     //--------------------
-      return array//--- END OF USER ZONE 2
+      return array
+//--- END OF USER ZONE 2
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

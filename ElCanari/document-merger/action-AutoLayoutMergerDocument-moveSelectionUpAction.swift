@@ -11,9 +11,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutMergerDocument {
-  @objc func moveRightAction (_ sender : NSObject?) {
+  @objc func moveSelectionUpAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        self.moveRight (overlap: self.rootObject.overlapingArrangment)
+        self.moveUp (overlap: self.rootObject.overlapingArrangment, objectSet: self.mBoardInstanceController.selectedSet)
 //--- END OF USER ZONE 2
   }
 }

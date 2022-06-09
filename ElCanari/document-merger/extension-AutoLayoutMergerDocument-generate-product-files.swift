@@ -410,8 +410,9 @@ extension AutoLayoutMergerDocument {
         }
         if product.drawBoardLimits {
           let boardLineWidth = canariUnitToCocoa (self.rootObject.boardLimitWidth)
-          let r = cocoaBoardRect.insetBy (dx: boardLineWidth / 2.0, dy: boardLineWidth / 2.0)
-          var bp = EBBezierPath (rect:r)
+ // §         let r = cocoaBoardRect.insetBy (dx: boardLineWidth / 2.0, dy: boardLineWidth / 2.0)
+ //         var bp = EBBezierPath (rect:r)
+          var bp = EBBezierPath (rect: cocoaBoardRect)
           bp.lineWidth = boardLineWidth
           strokeBezierPaths.append (bp)
         }
@@ -742,10 +743,14 @@ extension AutoLayoutMergerDocument {
       }
       if product.drawBoardLimits {
         let boardLineWidth = self.rootObject.boardLimitWidth
-        let left = canariUnitToMilTenth (boardLineWidth / 2)
-        let right = canariUnitToMilTenth (boardWidth - boardLineWidth / 2)
-        let bottom = canariUnitToMilTenth (boardLineWidth / 2)
-        let top = canariUnitToMilTenth (self.rootObject.boardHeight! - boardLineWidth / 2)
+// §        let left = canariUnitToMilTenth (boardLineWidth / 2)
+// §       let right = canariUnitToMilTenth (boardWidth - boardLineWidth / 2)
+//        let bottom = canariUnitToMilTenth (boardLineWidth / 2)
+//        let top = canariUnitToMilTenth (self.rootObject.boardHeight! - boardLineWidth / 2)
+        let left = 0
+        let right = canariUnitToMilTenth (boardWidth)
+        let bottom = 0
+        let top = canariUnitToMilTenth (self.rootObject.boardHeight!)
         var drawings = [String] ()
         drawings.append ("X\( left)Y\(bottom)D02") // Move to
         drawings.append ("X\( left)Y\(   top)D01") // Line to

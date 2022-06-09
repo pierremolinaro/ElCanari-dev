@@ -335,11 +335,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
        sortkey mNetClassName
     column mNetClassColor (title: "Schematic Color", minWidth: 80, maxWidth: 100, headerAlignment: .left, contentAlignment: .left)
     column trackWidthString (title: "Width", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
-       sortkey trackWidthString // mTrackWidth
+       sortkey trackWidthString
     column viaHoleDiameter (title: "Via Hole Diameter", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
-       sortkey viaHoleDiameter // mViaHoleDiameter
+       sortkey viaHoleDiameter
     column viaPadDiameter (title: "Via Pad Diameter", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
-       sortkey viaPadDiameter // mViaPadDiameter
+       sortkey viaPadDiameter
     column allowTracksOnFrontSideString (title: "Front Tracks", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
        sortkey allowTracksOnFrontSideString
     column allowTracksOnBackSideString (title: "Back Tracks", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)

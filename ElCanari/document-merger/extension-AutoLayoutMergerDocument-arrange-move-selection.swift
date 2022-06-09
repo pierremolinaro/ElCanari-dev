@@ -16,67 +16,27 @@ extension AutoLayoutMergerDocument {
 
   //····················································································································
 
-  func moveUp (overlap inOverlap : Bool) {
+  func moveDown (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
     let boardHeight = self.rootObject.boardHeight!
-  //--- Selected set
-    let selectedSet = self.mBoardInstanceController.selectedSet
+    let boardLimitWidth = self.rootObject.boardLimitWidth
   //--- Non selected set
-    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (selectedSet)
-  //---
-    var deltaY = boardHeight
-    for selectedInstance in selectedSet.values {
-      let instanceRect = getInstanceRect (selectedInstance)
-      let instanceLimit = getInstanceLimit (selectedInstance)
-      var testRect = CanariRect (
-        left:instanceRect.left,
-        bottom:instanceRect.top,
-        width:instanceRect.width,
-        height:boardHeight - instanceRect.top
-      )
-      for nonSelectedInstance in nonSelectedSet.values {
-        let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
-        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
-        if !intersection.isEmpty {
-          testRect = CanariRect (left: testRect.left, bottom: testRect.bottom, width: testRect.width, height: intersection.bottom - testRect.bottom)
-        }
-      }
-      if testRect.isEmpty {
-        deltaY = 0
-      }else{
-        deltaY = min (deltaY, testRect.height)
-      }
-    }
-    if deltaY > 0 {
-      for selectedInstance in selectedSet.values {
-        selectedInstance.y += deltaY
-      }
-    }
-  }
-
-  //····················································································································
-
-  func moveDown (overlap inOverlap : Bool) {
-    let boardHeight = self.rootObject.boardHeight!
-  //--- Selected set
-    let selectedSet = self.mBoardInstanceController.selectedSet
-  //--- Non selected set
-    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (selectedSet)
+    let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
   //---
     var deltaY = -boardHeight
-    for selectedInstance in selectedSet.values {
-      let instanceRect = getInstanceRect (selectedInstance)
-      let instanceLimit = getInstanceLimit (selectedInstance)
-      var testRect = CanariRect (
-        left:instanceRect.left,
-        bottom:0,
-        width:instanceRect.width,
-        height:instanceRect.bottom
+    for selectedInstance in inMoveObjectSet.values {
+      let instanceRect = selectedInstance.instanceRect!
+      let instanceLimit = selectedInstance.boardLimitWidth!
+      var acceptableNewRect = CanariRect (
+        left: instanceRect.left,
+        bottom: boardLimitWidth - instanceLimit,
+        width: instanceRect.width,
+        height: instanceRect.bottom
       )
-      for nonSelectedInstance in nonSelectedSet.values {
-        let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
-        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
+      for otherInstance in otherObjectSet.values {
+        let inset = inOverlap ? min (instanceLimit, otherInstance.boardLimitWidth!) : 0
+        let intersection = acceptableNewRect.intersection (otherInstance.instanceRect!.insetBy (dx: inset, dy: inset))
         if !intersection.isEmpty {
-          testRect = CanariRect (
+          acceptableNewRect = CanariRect (
             left: instanceRect.left,
             bottom: intersection.top,
             width: instanceRect.width,
@@ -84,14 +44,14 @@ extension AutoLayoutMergerDocument {
           )
         }
       }
-      if testRect.isEmpty {
+      if acceptableNewRect.isEmpty {
         deltaY = 0
       }else{
-        deltaY = max (deltaY, -testRect.height)
+        deltaY = max (deltaY, acceptableNewRect.bottom - instanceRect.bottom)
       }
     }
     if deltaY < 0 {
-      for selectedInstance in selectedSet.values {
+      for selectedInstance in inMoveObjectSet.values {
         selectedInstance.y += deltaY
       }
     }
@@ -99,43 +59,86 @@ extension AutoLayoutMergerDocument {
 
   //····················································································································
 
-  func moveRight (overlap inOverlap : Bool) {
-    let boardWidth = self.rootObject.boardWidth!
-  //--- Selected set
-    let selectedSet = self.mBoardInstanceController.selectedSet
+  func moveUp (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
+    let boardHeight = self.rootObject.boardHeight!
+//    let boardLimitWidth = self.rootObject.boardLimitWidth
   //--- Non selected set
-    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (selectedSet)
+    let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
   //---
-    var deltaX = boardWidth
-    for selectedInstance in selectedSet.values {
-      let instanceRect = getInstanceRect (selectedInstance)
-      let instanceLimit = getInstanceLimit (selectedInstance)
-      var testRect = CanariRect (
-        left:instanceRect.right,
-        bottom:instanceRect.bottom,
-        width:boardWidth - instanceRect.right,
-        height:instanceRect.height
+    var deltaY = boardHeight
+    for selectedInstance in inMoveObjectSet.values {
+      let instanceRect = selectedInstance.instanceRect!
+      let instanceLimit = selectedInstance.boardLimitWidth!
+      var acceptableNewRect = CanariRect (
+        left: instanceRect.left,
+        bottom: instanceRect.bottom,
+        width: instanceRect.width,
+        height: boardHeight + instanceLimit - instanceRect.bottom
       )
-      for nonSelectedInstance in nonSelectedSet.values {
-        let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
-        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
+      for otherInstance in otherObjectSet.values {
+        let inset = inOverlap ? min (instanceLimit, otherInstance.boardLimitWidth!) : 0
+        let intersection = acceptableNewRect.intersection (otherInstance.instanceRect!.insetBy (dx: inset, dy: inset))
         if !intersection.isEmpty {
-          testRect = CanariRect (
-            left: testRect.left,
-            bottom: testRect.bottom,
-            width: intersection.left - testRect.left,
-            height: testRect.height
+          acceptableNewRect = CanariRect (
+            left: acceptableNewRect.left,
+            bottom: acceptableNewRect.bottom,
+            width: acceptableNewRect.width,
+            height: intersection.bottom - acceptableNewRect.bottom
           )
         }
       }
-      if testRect.isEmpty {
+      if acceptableNewRect.isEmpty {
+        deltaY = 0
+      }else{
+// §        deltaY = min (deltaY, acceptableNewRect.height)
+        deltaY = min (deltaY, acceptableNewRect.top - instanceRect.top)
+      }
+    }
+    if deltaY > 0 {
+      for selectedInstance in inMoveObjectSet.values {
+        selectedInstance.y += deltaY
+      }
+    }
+  }
+
+  //····················································································································
+
+  func moveRight (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
+    let boardWidth = self.rootObject.boardWidth!
+//    let boardLimitWidth = self.rootObject.boardLimitWidth
+  //--- Non selected set
+    let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
+  //---
+    var deltaX = boardWidth
+    for selectedInstance in inMoveObjectSet.values {
+      let instanceRect = selectedInstance.instanceRect!
+      let instanceLimit = selectedInstance.boardLimitWidth!
+      var acceptableNewRect = CanariRect (
+        left: instanceRect.left,
+        bottom: instanceRect.bottom,
+        width: boardWidth + instanceLimit - instanceRect.left,
+        height: instanceRect.height
+      )
+      for otherInstance in otherObjectSet.values {
+        let inset = inOverlap ? min (instanceLimit, otherInstance.boardLimitWidth!) : 0
+        let intersection = acceptableNewRect.intersection (otherInstance.instanceRect!.insetBy (dx: inset, dy: inset))
+        if !intersection.isEmpty {
+          acceptableNewRect = CanariRect (
+            left: acceptableNewRect.left,
+            bottom: acceptableNewRect.bottom,
+            width: intersection.left - acceptableNewRect.left,
+            height: acceptableNewRect.height
+          )
+        }
+      }
+      if acceptableNewRect.isEmpty {
         deltaX = 0
       }else{
-        deltaX = min (deltaX, testRect.width)
+        deltaX = min (deltaX, acceptableNewRect.right - instanceRect.right)
       }
     }
     if deltaX > 0 {
-      for selectedInstance in selectedSet.values {
+      for selectedInstance in inMoveObjectSet.values {
         selectedInstance.x += deltaX
       }
     }
@@ -143,28 +146,28 @@ extension AutoLayoutMergerDocument {
 
   //····················································································································
 
-  func moveLeft (overlap inOverlap : Bool) {
+  func moveLeft (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
     let boardWidth = self.rootObject.boardWidth!
-  //--- Selected set
-    let selectedSet = self.mBoardInstanceController.selectedSet
+    let boardLimitWidth = self.rootObject.boardLimitWidth
   //--- Non selected set
-    let nonSelectedSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (selectedSet)
+    let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
   //---
-    var deltaX = -boardWidth
-    for selectedInstance in selectedSet.values {
-      let instanceRect = getInstanceRect (selectedInstance)
-      let instanceLimit = getInstanceLimit (selectedInstance)
-      var testRect = CanariRect (
-        left:0,
-        bottom:instanceRect.bottom,
-        width:instanceRect.left,
-        height:instanceRect.height
+   var deltaX = -boardWidth
+ //   var deltaX = boardLimitWidth / 2 - boardWidth
+    for selectedInstance in inMoveObjectSet.values {
+      let instanceRect = selectedInstance.instanceRect!
+      let instanceLimit = selectedInstance.boardLimitWidth!
+      var acceptableNewRect = CanariRect (
+        left: boardLimitWidth - instanceLimit,
+        bottom: instanceRect.bottom,
+        width: instanceRect.left,
+        height: instanceRect.height
       )
-      for nonSelectedInstance in nonSelectedSet.values {
-        let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
-        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
+      for otherInstance in otherObjectSet.values {
+        let inset = inOverlap ? min (instanceLimit, otherInstance.boardLimitWidth!) : 0
+        let intersection = acceptableNewRect.intersection (otherInstance.instanceRect!.insetBy (dx:inset, dy: inset))
         if !intersection.isEmpty {
-          testRect = CanariRect (
+          acceptableNewRect = CanariRect (
             left: intersection.right,
             bottom: instanceRect.bottom,
             width: instanceRect.left - intersection.right,
@@ -172,14 +175,14 @@ extension AutoLayoutMergerDocument {
           )
         }
       }
-      if testRect.isEmpty {
+      if acceptableNewRect.isEmpty {
         deltaX = 0
       }else{
-        deltaX = max (deltaX, -testRect.width)
+        deltaX = max (deltaX, acceptableNewRect.left - instanceRect.left)
       }
     }
     if deltaX < 0 {
-      for selectedInstance in selectedSet.values {
+      for selectedInstance in inMoveObjectSet.values {
         selectedInstance.x += deltaX
       }
     }
@@ -187,20 +190,42 @@ extension AutoLayoutMergerDocument {
 
   //····················································································································
 
-}
+  func stackDown (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
+    let sortedArray = inMoveObjectSet.values.sorted (by: { return $0.y < $1.y })
+    for object in sortedArray {
+      moveDown (overlap: inOverlap, objectSet: EBReferenceSet (object))
+    }
+  }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   UTILITIES
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  //····················································································································
 
-fileprivate func getInstanceRect (_ board : MergerBoardInstance) -> CanariRect {
-  return board.instanceRect!
-}
+  func stackLeft (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
+    let sortedArray = inMoveObjectSet.values.sorted (by: { return $0.x < $1.x })
+    for object in sortedArray {
+      moveLeft (overlap: inOverlap, objectSet: EBReferenceSet (object))
+    }
+  }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  //····················································································································
 
-fileprivate func getInstanceLimit (_ board : MergerBoardInstance) -> Int {
-  return board.boardLimitWidth!
+  func stackUp (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
+    let sortedArray = inMoveObjectSet.values.sorted (by: { return $0.y > $1.y })
+    for object in sortedArray {
+      moveUp (overlap: inOverlap, objectSet: EBReferenceSet (object))
+    }
+  }
+
+  //····················································································································
+
+  func stackRight (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
+    let sortedArray = inMoveObjectSet.values.sorted (by: { return $0.x > $1.x })
+    for object in sortedArray {
+      moveRight (overlap: inOverlap, objectSet: EBReferenceSet (object))
+    }
+  }
+
+  //····················································································································
+
 }
 
 ////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

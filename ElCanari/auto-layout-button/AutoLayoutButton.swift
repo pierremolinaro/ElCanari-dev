@@ -63,6 +63,34 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
 
   //····················································································································
 
+  func setTitleAsDownArrow () -> Self {
+    self.title = "⬇︎"
+    return self
+  }
+
+  //····················································································································
+
+  func setTitleAsUpArrow () -> Self {
+    self.title = "⬆︎"
+    return self
+  }
+
+  //····················································································································
+
+  func setTitleAsRightArrow () -> Self {
+    self.title = "➡︎"
+    return self
+  }
+
+  //····················································································································
+
+  func setTitleAsLeftArrow () -> Self {
+    self.title = "⬅︎"
+    return self
+  }
+
+  //····················································································································
+
   final func set (commandKeyEquivalent inKeyEquivalent : String) -> Self {
     self.keyEquivalent = inKeyEquivalent
     self.keyEquivalentModifierMask = .command

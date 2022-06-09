@@ -39,7 +39,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       oldValue.mArtworkVersion_property.removeEBObserver (self.mArtworkVersion_property) // Stored property
       oldValue.modelNames_property.removeEBObserver (self.modelNames_property) // Transient property
       oldValue.boardRect_property.removeEBObserver (self.boardRect_property) // Transient property
-      oldValue.boardDisplayRect_property.removeEBObserver (self.boardDisplayRect_property) // Transient property
       oldValue.boardWidth_property.removeEBObserver (self.boardWidth_property) // Transient property
       oldValue.boardHeight_property.removeEBObserver (self.boardHeight_property) // Transient property
       oldValue.comments_property.removeEBObserver (self.comments_property) // Transient property
@@ -75,7 +74,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       newValue.mArtworkVersion_property.addEBObserver (self.mArtworkVersion_property) // Stored property
       newValue.modelNames_property.addEBObserver (self.modelNames_property) // Transient property
       newValue.boardRect_property.addEBObserver (self.boardRect_property) // Transient property
-      newValue.boardDisplayRect_property.addEBObserver (self.boardDisplayRect_property) // Transient property
       newValue.boardWidth_property.addEBObserver (self.boardWidth_property) // Transient property
       newValue.boardHeight_property.addEBObserver (self.boardHeight_property) // Transient property
       newValue.comments_property.addEBObserver (self.comments_property) // Transient property
@@ -225,12 +223,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let boardRect_property = EBGenericTransientProperty <CanariRect?> ()
-
-  //····················································································································
-  //   Observers of 'boardDisplayRect' transient property
-  //····················································································································
-
-  final let boardDisplayRect_property = EBGenericTransientProperty <CanariRect?> ()
 
   //····················································································································
   //   Observers of 'boardWidth' transient property
@@ -674,21 +666,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     self.boardRect_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.boardRect_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure boardDisplayRect transient property
-    self.boardDisplayRect_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.boardDisplayRect_property.selection {
         case .empty :
           return .empty
         case .multiple :
