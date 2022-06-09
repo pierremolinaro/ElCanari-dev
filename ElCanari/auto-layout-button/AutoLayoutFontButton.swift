@@ -53,7 +53,7 @@ final class AutoLayoutFontButton : AutoLayoutBase_NSButton {
   @objc private func changeFont (_ sender : Any?) {
     if let font = self.mFont, let fontManager = sender as? NSFontManager {
       let newFont = fontManager.convert (font)
-      _ = self.mValueController?.updateModel (withCandidateValue: newFont, windowForSheet: self.window)
+      self.mValueController?.updateModel (withValue: newFont)
     }
   }
 

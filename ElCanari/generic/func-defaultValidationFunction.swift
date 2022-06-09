@@ -8,8 +8,8 @@ import Cocoa
 //    defaultValidationFunction
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func defaultValidationFunction <T> (_ currentValue : T, proposedValue : T) -> EBValidationResult <T> {
-  return EBValidationResult.ok (proposedValue)
-}
+//func defaultValidationFunction <T> (_ currentValue : T, proposedValue : T) -> EBValidationResult <T> {
+//  return EBValidationResult.ok (proposedValue)
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

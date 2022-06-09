@@ -41,7 +41,7 @@ final class AutoLayoutBoolPopUpButton : AutoLayoutBase_NSPopUpButton {
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    _ = self.mValueController?.updateModel (withCandidateValue: self.indexOfSelectedItem > 0, windowForSheet: self.window)
+    self.mValueController?.updateModel (withValue: self.indexOfSelectedItem > 0)
     return super.sendAction (action, to: to)
   }
 

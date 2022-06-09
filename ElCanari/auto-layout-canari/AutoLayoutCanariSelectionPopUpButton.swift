@@ -112,7 +112,7 @@ final class Controller_ElCanariSelectionPopUpButton_selectedNameInArray : EBObse
   //····················································································································
 
   @objc func updateModelAction (_ inSender : NSMenuItem) {
-    _ = self.mSelectedName?.validateAndSetProp (inSender.title, windowForSheet: nil)
+    self.mSelectedName?.setProp (inSender.title)
   }
 
   //····················································································································

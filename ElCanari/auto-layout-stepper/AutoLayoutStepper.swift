@@ -39,7 +39,7 @@ final class AutoLayoutStepper : AutoLayoutBase_NSStepper {
 
   @objc func action (_ sender : AutoLayoutStepper) {
     let v = Int (self.doubleValue.rounded (.toNearestOrEven))
-    _ = self.mValueController?.updateModel (withCandidateValue: v, windowForSheet: self.window)
+    self.mValueController?.updateModel (withValue: v)
   }
 
 

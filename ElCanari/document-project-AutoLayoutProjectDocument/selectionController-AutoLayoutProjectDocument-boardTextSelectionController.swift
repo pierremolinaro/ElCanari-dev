@@ -125,52 +125,42 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
-    self.mX_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mX (self.mX_property)
   //--- mY
     self.mY_property.mReadModelFunction = nil 
     self.mY_property.mWriteModelFunction = nil 
-    self.mY_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mY (self.mY_property)
   //--- mFontSize
     self.mFontSize_property.mReadModelFunction = nil 
     self.mFontSize_property.mWriteModelFunction = nil 
-    self.mFontSize_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mFontSize (self.mFontSize_property)
   //--- mLayer
     self.mLayer_property.mReadModelFunction = nil 
     self.mLayer_property.mWriteModelFunction = nil 
-    self.mLayer_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mLayer (self.mLayer_property)
   //--- mText
     self.mText_property.mReadModelFunction = nil 
     self.mText_property.mWriteModelFunction = nil 
-    self.mText_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mText (self.mText_property)
   //--- mHorizontalAlignment
     self.mHorizontalAlignment_property.mReadModelFunction = nil 
     self.mHorizontalAlignment_property.mWriteModelFunction = nil 
-    self.mHorizontalAlignment_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mHorizontalAlignment (self.mHorizontalAlignment_property)
   //--- mVerticalAlignment
     self.mVerticalAlignment_property.mReadModelFunction = nil 
     self.mVerticalAlignment_property.mWriteModelFunction = nil 
-    self.mVerticalAlignment_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mVerticalAlignment (self.mVerticalAlignment_property)
   //--- mRotation
     self.mRotation_property.mReadModelFunction = nil 
     self.mRotation_property.mWriteModelFunction = nil 
-    self.mRotation_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mRotation (self.mRotation_property)
   //--- mWeight
     self.mWeight_property.mReadModelFunction = nil 
     self.mWeight_property.mWriteModelFunction = nil 
-    self.mWeight_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mWeight (self.mWeight_property)
   //--- mOblique
     self.mOblique_property.mReadModelFunction = nil 
     self.mOblique_property.mWriteModelFunction = nil 
-    self.mOblique_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mOblique (self.mOblique_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
@@ -416,24 +406,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
         }
       }
     }
-    self.mX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mX_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -483,24 +455,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
             object.mY_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -554,24 +508,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
         }
       }
     }
-    self.mFontSize_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Double, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mFontSize_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -621,24 +557,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
             object.mLayer_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mLayer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : BoardTextLayer, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mLayer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -692,24 +610,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
         }
       }
     }
-    self.mText_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mText_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -759,24 +659,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
             object.mHorizontalAlignment_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mHorizontalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -830,24 +712,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
         }
       }
     }
-    self.mVerticalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : BoardTextVerticalAlignment, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mVerticalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -897,24 +761,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
             object.mRotation_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mRotation_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mRotation_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -968,24 +814,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
         }
       }
     }
-    self.mWeight_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Double, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mWeight_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1035,24 +863,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
             object.mOblique_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mOblique_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mOblique_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

@@ -71,7 +71,7 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func ebTextDidChange () {
-    _ = self.mValueController?.updateModel (withCandidateValue: self.string, windowForSheet: self.window)
+    self.mValueController?.updateModel (withValue: self.string)
   }
 
   //····················································································································

@@ -100,7 +100,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   //--- instanceRotation
     self.instanceRotation_property.mReadModelFunction = nil 
     self.instanceRotation_property.mWriteModelFunction = nil 
-    self.instanceRotation_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_instanceRotation (self.instanceRotation_property)
   //--- modelName
     self.modelName_property.mReadModelFunction = nil 
@@ -114,12 +113,10 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   //--- x
     self.x_property.mReadModelFunction = nil 
     self.x_property.mWriteModelFunction = nil 
-    self.x_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_x (self.x_property)
   //--- y
     self.y_property.mReadModelFunction = nil 
     self.y_property.mWriteModelFunction = nil 
-    self.y_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_y (self.y_property)
   //---
     self.mModel = nil
@@ -377,24 +374,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
         }
       }
     }
-    self.instanceRotation_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : QuadrantRotation, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.instanceRotation_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -567,24 +546,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
         }
       }
     }
-    self.x_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -635,24 +596,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
             object.y_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.y_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.y_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

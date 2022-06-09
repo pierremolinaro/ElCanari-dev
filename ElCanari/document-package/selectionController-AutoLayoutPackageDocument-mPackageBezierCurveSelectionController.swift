@@ -161,82 +161,66 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
   //--- y1
     self.y1_property.mReadModelFunction = nil 
     self.y1_property.mWriteModelFunction = nil 
-    self.y1_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_y1 (self.y1_property)
   //--- x2
     self.x2_property.mReadModelFunction = nil 
     self.x2_property.mWriteModelFunction = nil 
-    self.x2_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_x2 (self.x2_property)
   //--- y2
     self.y2_property.mReadModelFunction = nil 
     self.y2_property.mWriteModelFunction = nil 
-    self.y2_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_y2 (self.y2_property)
   //--- cpx1
     self.cpx1_property.mReadModelFunction = nil 
     self.cpx1_property.mWriteModelFunction = nil 
-    self.cpx1_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_cpx1 (self.cpx1_property)
   //--- cpy1
     self.cpy1_property.mReadModelFunction = nil 
     self.cpy1_property.mWriteModelFunction = nil 
-    self.cpy1_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_cpy1 (self.cpy1_property)
   //--- cpx2
     self.cpx2_property.mReadModelFunction = nil 
     self.cpx2_property.mWriteModelFunction = nil 
-    self.cpx2_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_cpx2 (self.cpx2_property)
   //--- cpy2
     self.cpy2_property.mReadModelFunction = nil 
     self.cpy2_property.mWriteModelFunction = nil 
-    self.cpy2_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_cpy2 (self.cpy2_property)
   //--- x1Unit
     self.x1Unit_property.mReadModelFunction = nil 
     self.x1Unit_property.mWriteModelFunction = nil 
-    self.x1Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_x1Unit (self.x1Unit_property)
   //--- y1Unit
     self.y1Unit_property.mReadModelFunction = nil 
     self.y1Unit_property.mWriteModelFunction = nil 
-    self.y1Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_y1Unit (self.y1Unit_property)
   //--- x2Unit
     self.x2Unit_property.mReadModelFunction = nil 
     self.x2Unit_property.mWriteModelFunction = nil 
-    self.x2Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_x2Unit (self.x2Unit_property)
   //--- y2Unit
     self.y2Unit_property.mReadModelFunction = nil 
     self.y2Unit_property.mWriteModelFunction = nil 
-    self.y2Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_y2Unit (self.y2Unit_property)
   //--- cpx1Unit
     self.cpx1Unit_property.mReadModelFunction = nil 
     self.cpx1Unit_property.mWriteModelFunction = nil 
-    self.cpx1Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_cpx1Unit (self.cpx1Unit_property)
   //--- cpy1Unit
     self.cpy1Unit_property.mReadModelFunction = nil 
     self.cpy1Unit_property.mWriteModelFunction = nil 
-    self.cpy1Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_cpy1Unit (self.cpy1Unit_property)
   //--- cpx2Unit
     self.cpx2Unit_property.mReadModelFunction = nil 
     self.cpx2Unit_property.mWriteModelFunction = nil 
-    self.cpx2Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_cpx2Unit (self.cpx2Unit_property)
   //--- cpy2Unit
     self.cpy2Unit_property.mReadModelFunction = nil 
     self.cpy2Unit_property.mWriteModelFunction = nil 
-    self.cpy2Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_cpy2Unit (self.cpy2Unit_property)
   //--- x1
     self.x1_property.mReadModelFunction = nil 
     self.x1_property.mWriteModelFunction = nil 
-    self.x1_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_x1 (self.x1_property)
   //--- strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = nil 
@@ -530,24 +514,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
         }
       }
     }
-    self.y1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.y1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -597,24 +563,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
             object.x2_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.x2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -668,24 +616,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
         }
       }
     }
-    self.y2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.y2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -735,24 +665,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
             object.cpx1_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.cpx1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpx1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -806,24 +718,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
         }
       }
     }
-    self.cpy1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpy1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -873,24 +767,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
             object.cpx2_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.cpx2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpx2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -944,24 +820,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
         }
       }
     }
-    self.cpy2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpy2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1011,24 +869,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
             object.x1Unit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.x1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1082,24 +922,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
         }
       }
     }
-    self.y1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.y1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1149,24 +971,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
             object.x2Unit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.x2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x2Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1220,24 +1024,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
         }
       }
     }
-    self.y2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.y2Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1287,24 +1073,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
             object.cpx1Unit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.cpx1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpx1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1358,24 +1126,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
         }
       }
     }
-    self.cpy1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpy1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1425,24 +1175,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
             object.cpx2Unit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.cpx2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpx2Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1496,24 +1228,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
         }
       }
     }
-    self.cpy2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpy2Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1563,24 +1277,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
             object.x1_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.x1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

@@ -93,37 +93,30 @@ final class SelectionController_AutoLayoutProjectDocument_commentInSchematicSele
   //--- mColor
     self.mColor_property.mReadModelFunction = nil 
     self.mColor_property.mWriteModelFunction = nil 
-    self.mColor_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mColor (self.mColor_property)
   //--- mSize
     self.mSize_property.mReadModelFunction = nil 
     self.mSize_property.mWriteModelFunction = nil 
-    self.mSize_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mSize (self.mSize_property)
   //--- mHorizontalAlignment
     self.mHorizontalAlignment_property.mReadModelFunction = nil 
     self.mHorizontalAlignment_property.mWriteModelFunction = nil 
-    self.mHorizontalAlignment_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mHorizontalAlignment (self.mHorizontalAlignment_property)
   //--- mVerticalAlignment
     self.mVerticalAlignment_property.mReadModelFunction = nil 
     self.mVerticalAlignment_property.mWriteModelFunction = nil 
-    self.mVerticalAlignment_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mVerticalAlignment (self.mVerticalAlignment_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
-    self.mX_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mX (self.mX_property)
   //--- mY
     self.mY_property.mReadModelFunction = nil 
     self.mY_property.mWriteModelFunction = nil 
-    self.mY_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mY (self.mY_property)
   //--- mComment
     self.mComment_property.mReadModelFunction = nil 
     self.mComment_property.mWriteModelFunction = nil 
-    self.mComment_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mComment (self.mComment_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
@@ -339,24 +332,6 @@ final class SelectionController_AutoLayoutProjectDocument_commentInSchematicSele
         }
       }
     }
-    self.mColor_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : NSColor, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mColor_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -406,24 +381,6 @@ final class SelectionController_AutoLayoutProjectDocument_commentInSchematicSele
             object.mSize_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mSize_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Double, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mSize_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -477,24 +434,6 @@ final class SelectionController_AutoLayoutProjectDocument_commentInSchematicSele
         }
       }
     }
-    self.mHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mHorizontalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -544,24 +483,6 @@ final class SelectionController_AutoLayoutProjectDocument_commentInSchematicSele
             object.mVerticalAlignment_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mVerticalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : VerticalAlignment, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mVerticalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -615,24 +536,6 @@ final class SelectionController_AutoLayoutProjectDocument_commentInSchematicSele
         }
       }
     }
-    self.mX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mX_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -684,24 +587,6 @@ final class SelectionController_AutoLayoutProjectDocument_commentInSchematicSele
         }
       }
     }
-    self.mY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -751,24 +636,6 @@ final class SelectionController_AutoLayoutProjectDocument_commentInSchematicSele
             object.mComment_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mComment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mComment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

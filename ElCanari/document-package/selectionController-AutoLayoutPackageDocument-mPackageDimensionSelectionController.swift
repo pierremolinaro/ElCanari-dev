@@ -149,72 +149,58 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
   //--- y1
     self.y1_property.mReadModelFunction = nil 
     self.y1_property.mWriteModelFunction = nil 
-    self.y1_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_y1 (self.y1_property)
   //--- x2
     self.x2_property.mReadModelFunction = nil 
     self.x2_property.mWriteModelFunction = nil 
-    self.x2_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_x2 (self.x2_property)
   //--- y2
     self.y2_property.mReadModelFunction = nil 
     self.y2_property.mWriteModelFunction = nil 
-    self.y2_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_y2 (self.y2_property)
   //--- xDimension
     self.xDimension_property.mReadModelFunction = nil 
     self.xDimension_property.mWriteModelFunction = nil 
-    self.xDimension_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_xDimension (self.xDimension_property)
   //--- yDimension
     self.yDimension_property.mReadModelFunction = nil 
     self.yDimension_property.mWriteModelFunction = nil 
-    self.yDimension_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_yDimension (self.yDimension_property)
   //--- x1Unit
     self.x1Unit_property.mReadModelFunction = nil 
     self.x1Unit_property.mWriteModelFunction = nil 
-    self.x1Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_x1Unit (self.x1Unit_property)
   //--- y1Unit
     self.y1Unit_property.mReadModelFunction = nil 
     self.y1Unit_property.mWriteModelFunction = nil 
-    self.y1Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_y1Unit (self.y1Unit_property)
   //--- x2Unit
     self.x2Unit_property.mReadModelFunction = nil 
     self.x2Unit_property.mWriteModelFunction = nil 
-    self.x2Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_x2Unit (self.x2Unit_property)
   //--- y2Unit
     self.y2Unit_property.mReadModelFunction = nil 
     self.y2Unit_property.mWriteModelFunction = nil 
-    self.y2Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_y2Unit (self.y2Unit_property)
   //--- xDimensionUnit
     self.xDimensionUnit_property.mReadModelFunction = nil 
     self.xDimensionUnit_property.mWriteModelFunction = nil 
-    self.xDimensionUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_xDimensionUnit (self.xDimensionUnit_property)
   //--- yDimensionUnit
     self.yDimensionUnit_property.mReadModelFunction = nil 
     self.yDimensionUnit_property.mWriteModelFunction = nil 
-    self.yDimensionUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_yDimensionUnit (self.yDimensionUnit_property)
   //--- distanceUnit
     self.distanceUnit_property.mReadModelFunction = nil 
     self.distanceUnit_property.mWriteModelFunction = nil 
-    self.distanceUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_distanceUnit (self.distanceUnit_property)
   //--- drawDimensionBackground
     self.drawDimensionBackground_property.mReadModelFunction = nil 
     self.drawDimensionBackground_property.mWriteModelFunction = nil 
-    self.drawDimensionBackground_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_drawDimensionBackground (self.drawDimensionBackground_property)
   //--- x1
     self.x1_property.mReadModelFunction = nil 
     self.x1_property.mWriteModelFunction = nil 
-    self.x1_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_x1 (self.x1_property)
   //--- distanceInCanariUnit
     self.distanceInCanariUnit_property.mReadModelFunction = nil 
@@ -492,24 +478,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
         }
       }
     }
-    self.y1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.y1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -559,24 +527,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
             object.x2_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.x2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -630,24 +580,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
         }
       }
     }
-    self.y2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.y2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -697,24 +629,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
             object.xDimension_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.xDimension_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xDimension_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -768,24 +682,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
         }
       }
     }
-    self.yDimension_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.yDimension_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -835,24 +731,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
             object.x1Unit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.x1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -906,24 +784,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
         }
       }
     }
-    self.y1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.y1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -973,24 +833,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
             object.x2Unit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.x2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x2Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1044,24 +886,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
         }
       }
     }
-    self.y2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.y2Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1111,24 +935,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
             object.xDimensionUnit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.xDimensionUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xDimensionUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1182,24 +988,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
         }
       }
     }
-    self.yDimensionUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.yDimensionUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1249,24 +1037,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
             object.distanceUnit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.distanceUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.distanceUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1320,24 +1090,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
         }
       }
     }
-    self.drawDimensionBackground_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawDimensionBackground_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1387,24 +1139,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
             object.x1_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.x1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

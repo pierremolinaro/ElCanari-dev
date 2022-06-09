@@ -101,17 +101,14 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection
   //--- mInstanceName
     self.mInstanceName_property.mReadModelFunction = nil 
     self.mInstanceName_property.mWriteModelFunction = nil 
-    self.mInstanceName_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mInstanceName (self.mInstanceName_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
-    self.mX_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mX (self.mX_property)
   //--- mY
     self.mY_property.mReadModelFunction = nil 
     self.mY_property.mWriteModelFunction = nil 
-    self.mY_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mY (self.mY_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
@@ -307,24 +304,6 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection
         }
       }
     }
-    self.mInstanceName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mInstanceName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -377,24 +356,6 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection
         }
       }
     }
-    self.mX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mX_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -445,24 +406,6 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection
             object.mY_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

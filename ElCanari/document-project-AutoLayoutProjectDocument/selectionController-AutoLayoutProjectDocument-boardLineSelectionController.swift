@@ -117,57 +117,46 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //--- mWidthUnit
     self.mWidthUnit_property.mReadModelFunction = nil 
     self.mWidthUnit_property.mWriteModelFunction = nil 
-    self.mWidthUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mWidthUnit (self.mWidthUnit_property)
   //--- mX1
     self.mX1_property.mReadModelFunction = nil 
     self.mX1_property.mWriteModelFunction = nil 
-    self.mX1_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mX1 (self.mX1_property)
   //--- mX1Unit
     self.mX1Unit_property.mReadModelFunction = nil 
     self.mX1Unit_property.mWriteModelFunction = nil 
-    self.mX1Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mX1Unit (self.mX1Unit_property)
   //--- mY1
     self.mY1_property.mReadModelFunction = nil 
     self.mY1_property.mWriteModelFunction = nil 
-    self.mY1_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mY1 (self.mY1_property)
   //--- mY1Unit
     self.mY1Unit_property.mReadModelFunction = nil 
     self.mY1Unit_property.mWriteModelFunction = nil 
-    self.mY1Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mY1Unit (self.mY1Unit_property)
   //--- mX2
     self.mX2_property.mReadModelFunction = nil 
     self.mX2_property.mWriteModelFunction = nil 
-    self.mX2_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mX2 (self.mX2_property)
   //--- mX2Unit
     self.mX2Unit_property.mReadModelFunction = nil 
     self.mX2Unit_property.mWriteModelFunction = nil 
-    self.mX2Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mX2Unit (self.mX2Unit_property)
   //--- mY2
     self.mY2_property.mReadModelFunction = nil 
     self.mY2_property.mWriteModelFunction = nil 
-    self.mY2_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mY2 (self.mY2_property)
   //--- mY2Unit
     self.mY2Unit_property.mReadModelFunction = nil 
     self.mY2Unit_property.mWriteModelFunction = nil 
-    self.mY2Unit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mY2Unit (self.mY2Unit_property)
   //--- mLayer
     self.mLayer_property.mReadModelFunction = nil 
     self.mLayer_property.mWriteModelFunction = nil 
-    self.mLayer_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mLayer (self.mLayer_property)
   //--- mWidth
     self.mWidth_property.mReadModelFunction = nil 
     self.mWidth_property.mWriteModelFunction = nil 
-    self.mWidth_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mWidth (self.mWidth_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
@@ -415,24 +404,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
         }
       }
     }
-    self.mWidthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -482,24 +453,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
             object.mX1_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mX1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mX1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -553,24 +506,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
         }
       }
     }
-    self.mX1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mX1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -620,24 +555,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
             object.mY1_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mY1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mY1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -691,24 +608,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
         }
       }
     }
-    self.mY1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mY1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -758,24 +657,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
             object.mX2_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mX2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mX2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -829,24 +710,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
         }
       }
     }
-    self.mX2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mX2Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -896,24 +759,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
             object.mY2_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mY2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mY2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -967,24 +812,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
         }
       }
     }
-    self.mY2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mY2Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1036,24 +863,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
         }
       }
     }
-    self.mLayer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : BoardLineLayer, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mLayer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1103,24 +912,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
             object.mWidth_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mWidth_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

@@ -18,7 +18,7 @@ extension EBGraphicView {
        let newScale = min (horizontalScale, verticalScale) * self.actualScale
      //--- Set New Zoom
        let newZoom = Int ((newScale * 100.0).rounded (.toNearestOrEven))
-       _ = self.mZoomController?.updateModel (withCandidateValue: newZoom, windowForSheet: self.window)
+       self.mZoomController?.updateModel (withValue: newZoom)
      //---
        DispatchQueue.main.async { self.scrollToVisible (inRect) }
     }
@@ -90,7 +90,7 @@ extension EBGraphicView {
   @objc final func didEndLiveMagnification (_ inNotification : Notification) {
     let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
 //    NSLog ("didEndLiveMagnification \(newZoom)")
-    _ = self.mZoomController?.updateModel (withCandidateValue: newZoom, windowForSheet: self.window)
+    self.mZoomController?.updateModel (withValue: newZoom)
   }
 
   //····················································································································

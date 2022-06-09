@@ -43,7 +43,7 @@ final class AutoLayoutColorWell : NSColorWell, EBUserClassNameProtocol {
   //····················································································································
 
   @objc func action (_ sender : AutoLayoutColorWell) {
-    _ = self.mColorController?.updateModel(withCandidateValue: self.color, windowForSheet: self.window)
+    self.mColorController?.updateModel (withValue: self.color)
   }
 
 

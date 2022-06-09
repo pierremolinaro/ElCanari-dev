@@ -132,52 +132,42 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //--- yPin
     self.yPin_property.mReadModelFunction = nil 
     self.yPin_property.mWriteModelFunction = nil 
-    self.yPin_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_yPin (self.yPin_property)
   //--- xName
     self.xName_property.mReadModelFunction = nil 
     self.xName_property.mWriteModelFunction = nil 
-    self.xName_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_xName (self.xName_property)
   //--- yName
     self.yName_property.mReadModelFunction = nil 
     self.yName_property.mWriteModelFunction = nil 
-    self.yName_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_yName (self.yName_property)
   //--- xNumber
     self.xNumber_property.mReadModelFunction = nil 
     self.xNumber_property.mWriteModelFunction = nil 
-    self.xNumber_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_xNumber (self.xNumber_property)
   //--- yNumber
     self.yNumber_property.mReadModelFunction = nil 
     self.yNumber_property.mWriteModelFunction = nil 
-    self.yNumber_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_yNumber (self.yNumber_property)
   //--- name
     self.name_property.mReadModelFunction = nil 
     self.name_property.mWriteModelFunction = nil 
-    self.name_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_name (self.name_property)
   //--- nameHorizontalAlignment
     self.nameHorizontalAlignment_property.mReadModelFunction = nil 
     self.nameHorizontalAlignment_property.mWriteModelFunction = nil 
-    self.nameHorizontalAlignment_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_nameHorizontalAlignment (self.nameHorizontalAlignment_property)
   //--- numberHorizontalAlignment
     self.numberHorizontalAlignment_property.mReadModelFunction = nil 
     self.numberHorizontalAlignment_property.mWriteModelFunction = nil 
-    self.numberHorizontalAlignment_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_numberHorizontalAlignment (self.numberHorizontalAlignment_property)
   //--- pinNameIsDisplayedInSchematics
     self.pinNameIsDisplayedInSchematics_property.mReadModelFunction = nil 
     self.pinNameIsDisplayedInSchematics_property.mWriteModelFunction = nil 
-    self.pinNameIsDisplayedInSchematics_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_pinNameIsDisplayedInSchematics (self.pinNameIsDisplayedInSchematics_property)
   //--- xPin
     self.xPin_property.mReadModelFunction = nil 
     self.xPin_property.mWriteModelFunction = nil 
-    self.xPin_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_xPin (self.xPin_property)
   //--- filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = nil 
@@ -426,24 +416,6 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
         }
       }
     }
-    self.yPin_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.yPin_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -493,24 +465,6 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
             object.xName_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.xName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -564,24 +518,6 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
         }
       }
     }
-    self.yName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.yName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -631,24 +567,6 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
             object.xNumber_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.xNumber_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xNumber_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -702,24 +620,6 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
         }
       }
     }
-    self.yNumber_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.yNumber_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -769,24 +669,6 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
             object.name_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.name_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.name_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -840,24 +722,6 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
         }
       }
     }
-    self.nameHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.nameHorizontalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -907,24 +771,6 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
             object.numberHorizontalAlignment_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.numberHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.numberHorizontalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -978,24 +824,6 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
         }
       }
     }
-    self.pinNameIsDisplayedInSchematics_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.pinNameIsDisplayedInSchematics_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1045,24 +873,6 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
             object.xPin_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.xPin_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xPin_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

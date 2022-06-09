@@ -42,14 +42,8 @@ final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    _ = self.mDoubleValueController?.updateModel (
-      withCandidateValue: self.doubleValue,
-      windowForSheet: self.window
-    )
-    _ = self.mIntValueController?.updateModel (
-      withCandidateValue: Int (self.doubleValue.rounded ()),
-      windowForSheet: self.window
-    )
+    self.mDoubleValueController?.updateModel (withValue: self.doubleValue)
+    self.mIntValueController?.updateModel (withValue: Int (self.doubleValue.rounded ()))
     let r = super.sendAction (action, to: to)
     flushOutletEvents ()
     return r

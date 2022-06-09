@@ -76,7 +76,7 @@ final class AutoLayoutSearchField : NSSearchField, EBUserClassNameProtocol, NSSe
   //····················································································································
 
   @objc func ebAction (_ inUnusedSender : Any?) {
-    _ = self.mValueController?.updateModel (withCandidateValue: self.stringValue, windowForSheet: self.window)
+    self.mValueController?.updateModel (withValue: self.stringValue)
     self.mDelegate? (self.stringValue)
   }
 

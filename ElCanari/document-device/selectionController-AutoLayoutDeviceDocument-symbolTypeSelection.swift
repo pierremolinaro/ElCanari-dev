@@ -107,27 +107,22 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
   //--- mFileData
     self.mFileData_property.mReadModelFunction = nil 
     self.mFileData_property.mWriteModelFunction = nil 
-    self.mFileData_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mFileData (self.mFileData_property)
   //--- mFilledBezierPath
     self.mFilledBezierPath_property.mReadModelFunction = nil 
     self.mFilledBezierPath_property.mWriteModelFunction = nil 
-    self.mFilledBezierPath_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mFilledBezierPath (self.mFilledBezierPath_property)
   //--- mStrokeBezierPath
     self.mStrokeBezierPath_property.mReadModelFunction = nil 
     self.mStrokeBezierPath_property.mWriteModelFunction = nil 
-    self.mStrokeBezierPath_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mStrokeBezierPath (self.mStrokeBezierPath_property)
   //--- mTypeName
     self.mTypeName_property.mReadModelFunction = nil 
     self.mTypeName_property.mWriteModelFunction = nil 
-    self.mTypeName_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mTypeName (self.mTypeName_property)
   //--- mVersion
     self.mVersion_property.mReadModelFunction = nil 
     self.mVersion_property.mWriteModelFunction = nil 
-    self.mVersion_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mVersion (self.mVersion_property)
   //--- pinNameShape
     self.pinNameShape_property.mReadModelFunction = nil 
@@ -407,24 +402,6 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
         }
       }
     }
-    self.mFileData_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Data, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mFileData_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -475,24 +452,6 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
             object.mFilledBezierPath_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mFilledBezierPath_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : NSBezierPath, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mFilledBezierPath_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -547,24 +506,6 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
         }
       }
     }
-    self.mStrokeBezierPath_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : NSBezierPath, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mStrokeBezierPath_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -617,24 +558,6 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
         }
       }
     }
-    self.mTypeName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mTypeName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -685,24 +608,6 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
             object.mVersion_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mVersion_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mVersion_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

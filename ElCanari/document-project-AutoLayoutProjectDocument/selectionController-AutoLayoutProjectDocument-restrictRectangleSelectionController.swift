@@ -118,52 +118,42 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //--- mY
     self.mY_property.mReadModelFunction = nil 
     self.mY_property.mWriteModelFunction = nil 
-    self.mY_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mY (self.mY_property)
   //--- mWidth
     self.mWidth_property.mReadModelFunction = nil 
     self.mWidth_property.mWriteModelFunction = nil 
-    self.mWidth_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mWidth (self.mWidth_property)
   //--- mHeight
     self.mHeight_property.mReadModelFunction = nil 
     self.mHeight_property.mWriteModelFunction = nil 
-    self.mHeight_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mHeight (self.mHeight_property)
   //--- mIsInFrontLayer
     self.mIsInFrontLayer_property.mReadModelFunction = nil 
     self.mIsInFrontLayer_property.mWriteModelFunction = nil 
-    self.mIsInFrontLayer_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mIsInFrontLayer (self.mIsInFrontLayer_property)
   //--- mIsInBackLayer
     self.mIsInBackLayer_property.mReadModelFunction = nil 
     self.mIsInBackLayer_property.mWriteModelFunction = nil 
-    self.mIsInBackLayer_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mIsInBackLayer (self.mIsInBackLayer_property)
   //--- mIsInInner1Layer
     self.mIsInInner1Layer_property.mReadModelFunction = nil 
     self.mIsInInner1Layer_property.mWriteModelFunction = nil 
-    self.mIsInInner1Layer_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mIsInInner1Layer (self.mIsInInner1Layer_property)
   //--- mIsInInner2Layer
     self.mIsInInner2Layer_property.mReadModelFunction = nil 
     self.mIsInInner2Layer_property.mWriteModelFunction = nil 
-    self.mIsInInner2Layer_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mIsInInner2Layer (self.mIsInInner2Layer_property)
   //--- mIsInInner3Layer
     self.mIsInInner3Layer_property.mReadModelFunction = nil 
     self.mIsInInner3Layer_property.mWriteModelFunction = nil 
-    self.mIsInInner3Layer_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mIsInInner3Layer (self.mIsInInner3Layer_property)
   //--- mIsInInner4Layer
     self.mIsInInner4Layer_property.mReadModelFunction = nil 
     self.mIsInInner4Layer_property.mWriteModelFunction = nil 
-    self.mIsInInner4Layer_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mIsInInner4Layer (self.mIsInInner4Layer_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
-    self.mX_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mX (self.mX_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
@@ -406,24 +396,6 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
         }
       }
     }
-    self.mY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -473,24 +445,6 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
             object.mWidth_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mWidth_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -544,24 +498,6 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
         }
       }
     }
-    self.mHeight_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mHeight_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -611,24 +547,6 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
             object.mIsInFrontLayer_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mIsInFrontLayer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mIsInFrontLayer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -682,24 +600,6 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
         }
       }
     }
-    self.mIsInBackLayer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mIsInBackLayer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -749,24 +649,6 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
             object.mIsInInner1Layer_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mIsInInner1Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mIsInInner1Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -820,24 +702,6 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
         }
       }
     }
-    self.mIsInInner2Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mIsInInner2Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -887,24 +751,6 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
             object.mIsInInner3Layer_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mIsInInner3Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mIsInInner3Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -958,24 +804,6 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
         }
       }
     }
-    self.mIsInInner4Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mIsInInner4Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1025,24 +853,6 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
             object.mX_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mX_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

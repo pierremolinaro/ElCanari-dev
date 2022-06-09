@@ -262,67 +262,54 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //--- mSide
     self.mSide_property.mReadModelFunction = nil 
     self.mSide_property.mWriteModelFunction = nil 
-    self.mSide_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mSide (self.mSide_property)
   //--- mDefaultTrackWidthUnit
     self.mDefaultTrackWidthUnit_property.mReadModelFunction = nil 
     self.mDefaultTrackWidthUnit_property.mWriteModelFunction = nil 
-    self.mDefaultTrackWidthUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mDefaultTrackWidthUnit (self.mDefaultTrackWidthUnit_property)
   //--- mCustomTrackWidth
     self.mCustomTrackWidth_property.mReadModelFunction = nil 
     self.mCustomTrackWidth_property.mWriteModelFunction = nil 
-    self.mCustomTrackWidth_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mCustomTrackWidth (self.mCustomTrackWidth_property)
   //--- mCustomTrackWidthUnit
     self.mCustomTrackWidthUnit_property.mReadModelFunction = nil 
     self.mCustomTrackWidthUnit_property.mWriteModelFunction = nil 
-    self.mCustomTrackWidthUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mCustomTrackWidthUnit (self.mCustomTrackWidthUnit_property)
   //--- mUsesCustomTrackWidth
     self.mUsesCustomTrackWidth_property.mReadModelFunction = nil 
     self.mUsesCustomTrackWidth_property.mWriteModelFunction = nil 
-    self.mUsesCustomTrackWidth_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mUsesCustomTrackWidth (self.mUsesCustomTrackWidth_property)
   //--- mIsPreservedByAutoRouter
     self.mIsPreservedByAutoRouter_property.mReadModelFunction = nil 
     self.mIsPreservedByAutoRouter_property.mWriteModelFunction = nil 
-    self.mIsPreservedByAutoRouter_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mIsPreservedByAutoRouter (self.mIsPreservedByAutoRouter_property)
   //--- mP1XUnit
     self.mP1XUnit_property.mReadModelFunction = nil 
     self.mP1XUnit_property.mWriteModelFunction = nil 
-    self.mP1XUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mP1XUnit (self.mP1XUnit_property)
   //--- mP1YUnit
     self.mP1YUnit_property.mReadModelFunction = nil 
     self.mP1YUnit_property.mWriteModelFunction = nil 
-    self.mP1YUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mP1YUnit (self.mP1YUnit_property)
   //--- mP2XUnit
     self.mP2XUnit_property.mReadModelFunction = nil 
     self.mP2XUnit_property.mWriteModelFunction = nil 
-    self.mP2XUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mP2XUnit (self.mP2XUnit_property)
   //--- mP2YUnit
     self.mP2YUnit_property.mReadModelFunction = nil 
     self.mP2YUnit_property.mWriteModelFunction = nil 
-    self.mP2YUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mP2YUnit (self.mP2YUnit_property)
   //--- mManualLockP1
     self.mManualLockP1_property.mReadModelFunction = nil 
     self.mManualLockP1_property.mWriteModelFunction = nil 
-    self.mManualLockP1_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mManualLockP1 (self.mManualLockP1_property)
   //--- mManualLockP2
     self.mManualLockP2_property.mReadModelFunction = nil 
     self.mManualLockP2_property.mWriteModelFunction = nil 
-    self.mManualLockP2_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mManualLockP2 (self.mManualLockP2_property)
   //--- mDirectionLockOnKnobDragging
     self.mDirectionLockOnKnobDragging_property.mReadModelFunction = nil 
     self.mDirectionLockOnKnobDragging_property.mWriteModelFunction = nil 
-    self.mDirectionLockOnKnobDragging_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mDirectionLockOnKnobDragging (self.mDirectionLockOnKnobDragging_property)
   //--- actualTrackWidth
     self.actualTrackWidth_property.mReadModelFunction = nil 
@@ -354,7 +341,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //--- trackDirectionInDegrees
     self.trackDirectionInDegrees_property.mReadModelFunction = nil 
     self.trackDirectionInDegrees_property.mWriteModelFunction = nil 
-    self.trackDirectionInDegrees_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_trackDirectionInDegrees (self.trackDirectionInDegrees_property)
   //--- p1ConnectedToSomePad
     self.p1ConnectedToSomePad_property.mReadModelFunction = nil 
@@ -365,22 +351,18 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //--- computedP1X
     self.computedP1X_property.mReadModelFunction = nil 
     self.computedP1X_property.mWriteModelFunction = nil 
-    self.computedP1X_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_computedP1X (self.computedP1X_property)
   //--- computedP1Y
     self.computedP1Y_property.mReadModelFunction = nil 
     self.computedP1Y_property.mWriteModelFunction = nil 
-    self.computedP1Y_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_computedP1Y (self.computedP1Y_property)
   //--- computedP2X
     self.computedP2X_property.mReadModelFunction = nil 
     self.computedP2X_property.mWriteModelFunction = nil 
-    self.computedP2X_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_computedP2X (self.computedP2X_property)
   //--- computedP2Y
     self.computedP2Y_property.mReadModelFunction = nil 
     self.computedP2Y_property.mWriteModelFunction = nil 
-    self.computedP2Y_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_computedP2Y (self.computedP2Y_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
@@ -653,24 +635,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
         }
       }
     }
-    self.mSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : TrackSide, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -720,24 +684,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
             object.mDefaultTrackWidthUnit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mDefaultTrackWidthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mDefaultTrackWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -791,24 +737,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
         }
       }
     }
-    self.mCustomTrackWidth_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mCustomTrackWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -858,24 +786,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
             object.mCustomTrackWidthUnit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mCustomTrackWidthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mCustomTrackWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -929,24 +839,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
         }
       }
     }
-    self.mUsesCustomTrackWidth_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mUsesCustomTrackWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -996,24 +888,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
             object.mIsPreservedByAutoRouter_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mIsPreservedByAutoRouter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mIsPreservedByAutoRouter_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1067,24 +941,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
         }
       }
     }
-    self.mP1XUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mP1XUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1134,24 +990,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
             object.mP1YUnit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mP1YUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mP1YUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1205,24 +1043,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
         }
       }
     }
-    self.mP2XUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mP2XUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1272,24 +1092,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
             object.mP2YUnit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mP2YUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mP2YUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1343,24 +1145,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
         }
       }
     }
-    self.mManualLockP1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mManualLockP1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1412,24 +1196,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
         }
       }
     }
-    self.mManualLockP2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mManualLockP2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1479,24 +1245,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
             object.mDirectionLockOnKnobDragging_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mDirectionLockOnKnobDragging_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : TrackLockDirection, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mDirectionLockOnKnobDragging_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1901,24 +1649,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
         }
       }
     }
-    self.trackDirectionInDegrees_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.trackDirectionInDegrees_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -2048,24 +1778,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
         }
       }
     }
-    self.computedP1X_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.computedP1X_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -2115,24 +1827,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
             object.computedP1Y_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.computedP1Y_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.computedP1Y_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -2186,24 +1880,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
         }
       }
     }
-    self.computedP2X_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.computedP2X_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -2253,24 +1929,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
             object.computedP2Y_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.computedP2Y_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.computedP2Y_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

@@ -82,22 +82,18 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
   //--- y
     self.y_property.mReadModelFunction = nil 
     self.y_property.mWriteModelFunction = nil 
-    self.y_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_y (self.y_property)
   //--- text
     self.text_property.mReadModelFunction = nil 
     self.text_property.mWriteModelFunction = nil 
-    self.text_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_text (self.text_property)
   //--- horizontalAlignment
     self.horizontalAlignment_property.mReadModelFunction = nil 
     self.horizontalAlignment_property.mWriteModelFunction = nil 
-    self.horizontalAlignment_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_horizontalAlignment (self.horizontalAlignment_property)
   //--- x
     self.x_property.mReadModelFunction = nil 
     self.x_property.mWriteModelFunction = nil 
-    self.x_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_x (self.x_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
@@ -292,24 +288,6 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
         }
       }
     }
-    self.y_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.y_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -359,24 +337,6 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
             object.text_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.text_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.text_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -430,24 +390,6 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
         }
       }
     }
-    self.horizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.horizontalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -497,24 +439,6 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
             object.x_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.x_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

@@ -578,7 +578,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
   //--- artworkName
     self.artworkName_property.mReadModelFunction = nil 
     self.artworkName_property.mWriteModelFunction = nil 
-    self.artworkName_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_artworkName (self.artworkName_property)
   //--- backComponentNameSegments
     self.backComponentNameSegments_property.mReadModelFunction = nil 
@@ -730,7 +729,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
   //--- layerConfiguration
     self.layerConfiguration_property.mReadModelFunction = nil 
     self.layerConfiguration_property.mWriteModelFunction = nil 
-    self.layerConfiguration_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_layerConfiguration (self.layerConfiguration_property)
   //--- layerConfigurationString
     self.layerConfigurationString_property.mReadModelFunction = nil 
@@ -738,37 +736,30 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
   //--- modelHeight
     self.modelHeight_property.mReadModelFunction = nil 
     self.modelHeight_property.mWriteModelFunction = nil 
-    self.modelHeight_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_modelHeight (self.modelHeight_property)
   //--- modelHeightUnit
     self.modelHeightUnit_property.mReadModelFunction = nil 
     self.modelHeightUnit_property.mWriteModelFunction = nil 
-    self.modelHeightUnit_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_modelHeightUnit (self.modelHeightUnit_property)
   //--- modelLimitWidth
     self.modelLimitWidth_property.mReadModelFunction = nil 
     self.modelLimitWidth_property.mWriteModelFunction = nil 
-    self.modelLimitWidth_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_modelLimitWidth (self.modelLimitWidth_property)
   //--- modelLimitWidthUnit
     self.modelLimitWidthUnit_property.mReadModelFunction = nil 
     self.modelLimitWidthUnit_property.mWriteModelFunction = nil 
-    self.modelLimitWidthUnit_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_modelLimitWidthUnit (self.modelLimitWidthUnit_property)
   //--- modelWidth
     self.modelWidth_property.mReadModelFunction = nil 
     self.modelWidth_property.mWriteModelFunction = nil 
-    self.modelWidth_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_modelWidth (self.modelWidth_property)
   //--- modelWidthUnit
     self.modelWidthUnit_property.mReadModelFunction = nil 
     self.modelWidthUnit_property.mWriteModelFunction = nil 
-    self.modelWidthUnit_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_modelWidthUnit (self.modelWidthUnit_property)
   //--- name
     self.name_property.mReadModelFunction = nil 
     self.name_property.mWriteModelFunction = nil 
-    self.name_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_name (self.name_property)
   //--- traversingPadArray
     self.traversingPadArray_property.mReadModelFunction = nil 
@@ -785,7 +776,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
   //--- zoom
     self.zoom_property.mReadModelFunction = nil 
     self.zoom_property.mWriteModelFunction = nil 
-    self.zoom_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_zoom (self.zoom_property)
   //---
     self.mModel = nil
@@ -1017,24 +1007,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
             object.artworkName_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.artworkName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.artworkName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -3049,24 +3021,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
         }
       }
     }
-    self.layerConfiguration_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : LayerConfiguration, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.layerConfiguration_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -3159,24 +3113,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
         }
       }
     }
-    self.modelHeight_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.modelHeight_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -3227,24 +3163,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
             object.modelHeightUnit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.modelHeightUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.modelHeightUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -3299,24 +3217,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
         }
       }
     }
-    self.modelLimitWidth_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.modelLimitWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -3367,24 +3267,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
             object.modelLimitWidthUnit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.modelLimitWidthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.modelLimitWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -3439,24 +3321,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
         }
       }
     }
-    self.modelWidth_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.modelWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -3509,24 +3373,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
         }
       }
     }
-    self.modelWidthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.modelWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -3577,24 +3423,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
             object.name_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.name_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.name_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -3807,24 +3635,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
             object.zoom_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.zoom_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.zoom_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

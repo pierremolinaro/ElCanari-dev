@@ -82,7 +82,7 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
       let optionalNumber = numberFormatter.number (from: inputString)
       if let number = optionalNumber, self.isContinuous {
         let value = Int (number.doubleValue.rounded ())
-        _ = self.mValueController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
+        self.mValueController?.updateModel (withValue: value)
       }
       self.mInputIsValid = optionalNumber != nil
     }
@@ -103,7 +103,7 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
   @objc fileprivate func valueDidChangeAction (_ inSender : Any?) {
     if let formatter = self.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.stringValue) {
       let value = Int (outletValueNumber.doubleValue.rounded ())
-      _ = self.mValueController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
+      self.mValueController?.updateModel (withValue: value)
     }else if let v = self.mValueController?.value {
       self.mInputIsValid = true
       self.integerValue = v

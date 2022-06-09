@@ -159,57 +159,46 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
   //--- mCenterX
     self.mCenterX_property.mReadModelFunction = nil 
     self.mCenterX_property.mWriteModelFunction = nil 
-    self.mCenterX_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mCenterX (self.mCenterX_property)
   //--- mCenterY
     self.mCenterY_property.mReadModelFunction = nil 
     self.mCenterY_property.mWriteModelFunction = nil 
-    self.mCenterY_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mCenterY (self.mCenterY_property)
   //--- mRotation
     self.mRotation_property.mReadModelFunction = nil 
     self.mRotation_property.mWriteModelFunction = nil 
-    self.mRotation_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mRotation (self.mRotation_property)
   //--- mMirror
     self.mMirror_property.mReadModelFunction = nil 
     self.mMirror_property.mWriteModelFunction = nil 
-    self.mMirror_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mMirror (self.mMirror_property)
   //--- mSymbolInstanceName
     self.mSymbolInstanceName_property.mReadModelFunction = nil 
     self.mSymbolInstanceName_property.mWriteModelFunction = nil 
-    self.mSymbolInstanceName_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mSymbolInstanceName (self.mSymbolInstanceName_property)
   //--- mSymbolTypeName
     self.mSymbolTypeName_property.mReadModelFunction = nil 
     self.mSymbolTypeName_property.mWriteModelFunction = nil 
-    self.mSymbolTypeName_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mSymbolTypeName (self.mSymbolTypeName_property)
   //--- mDisplayComponentNameOffsetX
     self.mDisplayComponentNameOffsetX_property.mReadModelFunction = nil 
     self.mDisplayComponentNameOffsetX_property.mWriteModelFunction = nil 
-    self.mDisplayComponentNameOffsetX_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mDisplayComponentNameOffsetX (self.mDisplayComponentNameOffsetX_property)
   //--- mDisplayComponentNameOffsetY
     self.mDisplayComponentNameOffsetY_property.mReadModelFunction = nil 
     self.mDisplayComponentNameOffsetY_property.mWriteModelFunction = nil 
-    self.mDisplayComponentNameOffsetY_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mDisplayComponentNameOffsetY (self.mDisplayComponentNameOffsetY_property)
   //--- mDisplayComponentValue
     self.mDisplayComponentValue_property.mReadModelFunction = nil 
     self.mDisplayComponentValue_property.mWriteModelFunction = nil 
-    self.mDisplayComponentValue_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mDisplayComponentValue (self.mDisplayComponentValue_property)
   //--- mDisplayComponentValueOffsetX
     self.mDisplayComponentValueOffsetX_property.mReadModelFunction = nil 
     self.mDisplayComponentValueOffsetX_property.mWriteModelFunction = nil 
-    self.mDisplayComponentValueOffsetX_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mDisplayComponentValueOffsetX (self.mDisplayComponentValueOffsetX_property)
   //--- mDisplayComponentValueOffsetY
     self.mDisplayComponentValueOffsetY_property.mReadModelFunction = nil 
     self.mDisplayComponentValueOffsetY_property.mWriteModelFunction = nil 
-    self.mDisplayComponentValueOffsetY_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mDisplayComponentValueOffsetY (self.mDisplayComponentValueOffsetY_property)
   //--- componentName
     self.componentName_property.mReadModelFunction = nil 
@@ -472,24 +461,6 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
         }
       }
     }
-    self.mCenterX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mCenterX_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -539,24 +510,6 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
             object.mCenterY_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mCenterY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mCenterY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -610,24 +563,6 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
         }
       }
     }
-    self.mRotation_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : QuadrantRotation, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mRotation_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -677,24 +612,6 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
             object.mMirror_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mMirror_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mMirror_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -748,24 +665,6 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
         }
       }
     }
-    self.mSymbolInstanceName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mSymbolInstanceName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -815,24 +714,6 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
             object.mSymbolTypeName_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mSymbolTypeName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mSymbolTypeName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -886,24 +767,6 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
         }
       }
     }
-    self.mDisplayComponentNameOffsetX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mDisplayComponentNameOffsetX_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -953,24 +816,6 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
             object.mDisplayComponentNameOffsetY_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mDisplayComponentNameOffsetY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mDisplayComponentNameOffsetY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1024,24 +869,6 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
         }
       }
     }
-    self.mDisplayComponentValue_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mDisplayComponentValue_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1091,24 +918,6 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
             object.mDisplayComponentValueOffsetX_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mDisplayComponentValueOffsetX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mDisplayComponentValueOffsetX_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1162,24 +971,6 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
         }
       }
     }
-    self.mDisplayComponentValueOffsetY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mDisplayComponentValueOffsetY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1229,24 +1020,6 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
             object.componentValueProxy_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.componentValueProxy_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.componentValueProxy_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

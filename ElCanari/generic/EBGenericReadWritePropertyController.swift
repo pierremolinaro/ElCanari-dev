@@ -21,8 +21,8 @@ final class EBGenericReadWritePropertyController <T> : EBObservablePropertyContr
 
   //····················································································································
 
-  func updateModel (withCandidateValue inValue : T, windowForSheet inWindow : NSWindow?) -> Bool {
-    return self.mObject?.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+  func updateModel (withValue inValue : T) {
+    self.mObject?.setProp (inValue)
   }
 
   //····················································································································

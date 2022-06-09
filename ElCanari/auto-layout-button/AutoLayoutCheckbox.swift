@@ -64,7 +64,7 @@ final class AutoLayoutCheckbox : AutoLayoutBase_NSButton {
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    _ = self.mValueController?.updateModel (withCandidateValue: self.state == NSControl.StateValue.on, windowForSheet: self.window)
+    self.mValueController?.updateModel (withValue: self.state == NSControl.StateValue.on)
     return super.sendAction (action, to: to)
   }
 

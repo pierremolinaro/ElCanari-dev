@@ -153,47 +153,38 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //--- mCPX1
     self.mCPX1_property.mReadModelFunction = nil 
     self.mCPX1_property.mWriteModelFunction = nil 
-    self.mCPX1_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mCPX1 (self.mCPX1_property)
   //--- mCPX2
     self.mCPX2_property.mReadModelFunction = nil 
     self.mCPX2_property.mWriteModelFunction = nil 
-    self.mCPX2_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mCPX2 (self.mCPX2_property)
   //--- mCPY1
     self.mCPY1_property.mReadModelFunction = nil 
     self.mCPY1_property.mWriteModelFunction = nil 
-    self.mCPY1_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mCPY1 (self.mCPY1_property)
   //--- mCPY2
     self.mCPY2_property.mReadModelFunction = nil 
     self.mCPY2_property.mWriteModelFunction = nil 
-    self.mCPY2_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mCPY2 (self.mCPY2_property)
   //--- mNextX
     self.mNextX_property.mReadModelFunction = nil 
     self.mNextX_property.mWriteModelFunction = nil 
-    self.mNextX_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mNextX (self.mNextX_property)
   //--- mNextY
     self.mNextY_property.mReadModelFunction = nil 
     self.mNextY_property.mWriteModelFunction = nil 
-    self.mNextY_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mNextY (self.mNextY_property)
   //--- mShape
     self.mShape_property.mReadModelFunction = nil 
     self.mShape_property.mWriteModelFunction = nil 
-    self.mShape_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mShape (self.mShape_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
-    self.mX_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mX (self.mX_property)
   //--- mY
     self.mY_property.mReadModelFunction = nil 
     self.mY_property.mWriteModelFunction = nil 
-    self.mY_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mY (self.mY_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
@@ -511,24 +502,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
         }
       }
     }
-    self.mCPX1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mCPX1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -579,24 +552,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
             object.mCPX2_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mCPX2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mCPX2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -651,24 +606,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
         }
       }
     }
-    self.mCPY1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mCPY1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -719,24 +656,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
             object.mCPY2_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mCPY2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mCPY2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -791,24 +710,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
         }
       }
     }
-    self.mNextX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mNextX_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -859,24 +760,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
             object.mNextY_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mNextY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mNextY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -931,24 +814,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
         }
       }
     }
-    self.mShape_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : BorderCurveShape, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mShape_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -1001,24 +866,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
         }
       }
     }
-    self.mX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mX_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -1069,24 +916,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
             object.mY_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

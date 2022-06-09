@@ -58,7 +58,7 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : AutoLayoutBase_
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     if self.selectedSegment >= 0 {
       let orientation = self.selectedSegment * 90_000
-      _ = self.mAngleController?.updateModel (withCandidateValue: orientation, windowForSheet: self.window)
+      self.mAngleController?.updateModel (withValue: orientation)
     }
     return super.sendAction (action, to: to)
   }

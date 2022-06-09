@@ -93,7 +93,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   final var mZoomPropertyCache = 0 { // Used in EBGraphicView-magnify-and-zoom.swift
     didSet {
       if self.mZoomPropertyCache != oldValue {
-        _ = self.mZoomController?.updateModel (withCandidateValue: self.mZoomPropertyCache, windowForSheet: self.window)
+        self.mZoomController?.updateModel (withValue: self.mZoomPropertyCache)
         self.applyZoom ()
       }
     }

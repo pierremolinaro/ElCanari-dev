@@ -82,7 +82,7 @@ final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton 
       let selectedCharacterCode = selectionView.selectedCharacterCode ()
       if selectedCharacterCode != 0 {
         self.mSelectedCharacterCode = selectionView.selectedCharacterCode ()
-        _ = self.mCodePointController?.updateModel (withCandidateValue: self.mSelectedCharacterCode, windowForSheet: self.window)
+        self.mCodePointController?.updateModel (withValue: self.mSelectedCharacterCode)
       }
     }
     self.mCharacterSelectionPopover?.close ()

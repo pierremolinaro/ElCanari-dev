@@ -143,67 +143,54 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //--- yCenter
     self.yCenter_property.mReadModelFunction = nil 
     self.yCenter_property.mWriteModelFunction = nil 
-    self.yCenter_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_yCenter (self.yCenter_property)
   //--- radius
     self.radius_property.mReadModelFunction = nil 
     self.radius_property.mWriteModelFunction = nil 
-    self.radius_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_radius (self.radius_property)
   //--- startAngle
     self.startAngle_property.mReadModelFunction = nil 
     self.startAngle_property.mWriteModelFunction = nil 
-    self.startAngle_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_startAngle (self.startAngle_property)
   //--- arcAngle
     self.arcAngle_property.mReadModelFunction = nil 
     self.arcAngle_property.mWriteModelFunction = nil 
-    self.arcAngle_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_arcAngle (self.arcAngle_property)
   //--- startTangent
     self.startTangent_property.mReadModelFunction = nil 
     self.startTangent_property.mWriteModelFunction = nil 
-    self.startTangent_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_startTangent (self.startTangent_property)
   //--- endTangent
     self.endTangent_property.mReadModelFunction = nil 
     self.endTangent_property.mWriteModelFunction = nil 
-    self.endTangent_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_endTangent (self.endTangent_property)
   //--- pathIsClosed
     self.pathIsClosed_property.mReadModelFunction = nil 
     self.pathIsClosed_property.mWriteModelFunction = nil 
-    self.pathIsClosed_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_pathIsClosed (self.pathIsClosed_property)
   //--- xCenterUnit
     self.xCenterUnit_property.mReadModelFunction = nil 
     self.xCenterUnit_property.mWriteModelFunction = nil 
-    self.xCenterUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_xCenterUnit (self.xCenterUnit_property)
   //--- yCenterUnit
     self.yCenterUnit_property.mReadModelFunction = nil 
     self.yCenterUnit_property.mWriteModelFunction = nil 
-    self.yCenterUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_yCenterUnit (self.yCenterUnit_property)
   //--- radiusUnit
     self.radiusUnit_property.mReadModelFunction = nil 
     self.radiusUnit_property.mWriteModelFunction = nil 
-    self.radiusUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_radiusUnit (self.radiusUnit_property)
   //--- startTangentUnit
     self.startTangentUnit_property.mReadModelFunction = nil 
     self.startTangentUnit_property.mWriteModelFunction = nil 
-    self.startTangentUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_startTangentUnit (self.startTangentUnit_property)
   //--- endTangentUnit
     self.endTangentUnit_property.mReadModelFunction = nil 
     self.endTangentUnit_property.mWriteModelFunction = nil 
-    self.endTangentUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_endTangentUnit (self.endTangentUnit_property)
   //--- xCenter
     self.xCenter_property.mReadModelFunction = nil 
     self.xCenter_property.mWriteModelFunction = nil 
-    self.xCenter_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_xCenter (self.xCenter_property)
   //--- strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = nil 
@@ -473,24 +460,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
         }
       }
     }
-    self.yCenter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.yCenter_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -540,24 +509,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
             object.radius_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.radius_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.radius_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -611,24 +562,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
         }
       }
     }
-    self.startAngle_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.startAngle_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -678,24 +611,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
             object.arcAngle_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.arcAngle_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.arcAngle_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -749,24 +664,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
         }
       }
     }
-    self.startTangent_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.startTangent_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -816,24 +713,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
             object.endTangent_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.endTangent_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.endTangent_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -887,24 +766,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
         }
       }
     }
-    self.pathIsClosed_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.pathIsClosed_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -954,24 +815,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
             object.xCenterUnit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.xCenterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xCenterUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1025,24 +868,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
         }
       }
     }
-    self.yCenterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.yCenterUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1092,24 +917,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
             object.radiusUnit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.radiusUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.radiusUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1163,24 +970,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
         }
       }
     }
-    self.startTangentUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.startTangentUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1232,24 +1021,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
         }
       }
     }
-    self.endTangentUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.endTangentUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1299,24 +1070,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
             object.xCenter_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.xCenter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xCenter_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

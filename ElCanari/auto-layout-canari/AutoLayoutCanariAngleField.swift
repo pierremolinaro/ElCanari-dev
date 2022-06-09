@@ -75,7 +75,7 @@ final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField {
       let optionalNumber = numberFormatter.number (from: inputString)
       if let number = optionalNumber, self.isContinuous {
         let value = Int ((number.doubleValue * 1000.0).rounded ())
-        _ = self.mAngleController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
+        self.mAngleController?.updateModel (withValue: value)
       }
       self.mInputIsValid = optionalNumber != nil
     }
@@ -86,7 +86,7 @@ final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField {
   @objc func valueDidChangeAction (_ sender : Any?) {
     if let outletValueNumber = self.mNumberFormatter.number (from: self.stringValue) {
       let value = Int ((outletValueNumber.doubleValue * 1000.0).rounded ())
-      _ = self.mAngleController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
+      self.mAngleController?.updateModel (withValue: value)
     }else if let v = self.mAngleController?.value {
       self.mInputIsValid = true
       self.doubleValue = Double (v) / 1000.0

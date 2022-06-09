@@ -78,42 +78,6 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  var validationFunction : (T, T) -> EBValidationResult <T> = defaultValidationFunction
-
-  //····················································································································
-
-  override func validateAndSetProp (_ candidateValue : T,
-                                    windowForSheet inWindow:NSWindow?) -> Bool {
-    var result = true
-    let validationResult = validationFunction (propval, candidateValue)
-    switch validationResult {
-    case .ok (let validatedValue) :
-      setProp (validatedValue)
-    case .rejectWithBeep :
-      result = false
-      __NSBeep ()
-    case .rejectWithAlert (let informativeText) :
-      result = false
-      let alert = NSAlert ()
-      alert.messageText = "The value " + String (describing: candidateValue) + " is invalid."
-      alert.informativeText = informativeText
-      alert.addButton (withTitle: "Ok")
-      alert.addButton (withTitle: "Discard Change")
-      if let window = inWindow {
-        alert.beginSheetModal (for:window) { (response : NSApplication.ModalResponse) in
-          if response == .alertSecondButtonReturn { // Discard Change
-            self.observedObjectDidChange ()
-          }
-        }
-      }else{
-        alert.runModal ()
-      }
-    }
-    return result
-  }
-
-  //····················································································································
-
   func storeIn (dictionary : NSMutableDictionary, forKey inKey : String) {
     dictionary.setValue (mValue.convertToNSObject (), forKey:inKey)
   }

@@ -61,14 +61,14 @@ final class EBGenericComputedProperty <T> : EBObservableMutableProperty <T>, EBO
 
    //····················································································································
 
-  override func validateAndSetProp (_ inCandidateValue : T,
-                                    windowForSheet inWindow : NSWindow?) -> Bool {
-    var result = true
-    if let storeFunction = self.mStoreFunction {
-      result = storeFunction (inCandidateValue, inWindow)
-    }
-    return result
-  }
+//  override func validateAndSetProp (_ inCandidateValue : T,
+//                                    windowForSheet inWindow : NSWindow?) -> Bool {
+//    var result = true
+//    if let storeFunction = self.mStoreFunction {
+//      result = storeFunction (inCandidateValue, inWindow)
+//    }
+//    return result
+//  }
 
   //····················································································································
 }

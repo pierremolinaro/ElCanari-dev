@@ -40,10 +40,7 @@ final class AutoLayoutAngleCircularSlider : AutoLayoutBase_NSSlider {
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     let value = (450_000 - Int ((self.doubleValue * 100.0).rounded ())) % 360_000
-    _ = self.mAngleController?.updateModel (
-      withCandidateValue: value,
-      windowForSheet: self.window
-    )
+    self.mAngleController?.updateModel (withValue: value)
     let r = super.sendAction (action, to: to)
     flushOutletEvents ()
     return r

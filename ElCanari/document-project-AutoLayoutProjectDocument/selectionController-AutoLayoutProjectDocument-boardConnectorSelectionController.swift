@@ -228,62 +228,50 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //--- mComponentPadName
     self.mComponentPadName_property.mReadModelFunction = nil 
     self.mComponentPadName_property.mWriteModelFunction = nil 
-    self.mComponentPadName_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mComponentPadName (self.mComponentPadName_property)
   //--- mPadIndex
     self.mPadIndex_property.mReadModelFunction = nil 
     self.mPadIndex_property.mWriteModelFunction = nil 
-    self.mPadIndex_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mPadIndex (self.mPadIndex_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
-    self.mX_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mX (self.mX_property)
   //--- mY
     self.mY_property.mReadModelFunction = nil 
     self.mY_property.mWriteModelFunction = nil 
-    self.mY_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mY (self.mY_property)
   //--- mDefaultHoleDiameterUnit
     self.mDefaultHoleDiameterUnit_property.mReadModelFunction = nil 
     self.mDefaultHoleDiameterUnit_property.mWriteModelFunction = nil 
-    self.mDefaultHoleDiameterUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mDefaultHoleDiameterUnit (self.mDefaultHoleDiameterUnit_property)
   //--- mCustomHoleDiameter
     self.mCustomHoleDiameter_property.mReadModelFunction = nil 
     self.mCustomHoleDiameter_property.mWriteModelFunction = nil 
-    self.mCustomHoleDiameter_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mCustomHoleDiameter (self.mCustomHoleDiameter_property)
   //--- mCustomHoleDiameterUnit
     self.mCustomHoleDiameterUnit_property.mReadModelFunction = nil 
     self.mCustomHoleDiameterUnit_property.mWriteModelFunction = nil 
-    self.mCustomHoleDiameterUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mCustomHoleDiameterUnit (self.mCustomHoleDiameterUnit_property)
   //--- mUsesCustomHoleDiameter
     self.mUsesCustomHoleDiameter_property.mReadModelFunction = nil 
     self.mUsesCustomHoleDiameter_property.mWriteModelFunction = nil 
-    self.mUsesCustomHoleDiameter_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mUsesCustomHoleDiameter (self.mUsesCustomHoleDiameter_property)
   //--- mDefaultPadDiameterUnit
     self.mDefaultPadDiameterUnit_property.mReadModelFunction = nil 
     self.mDefaultPadDiameterUnit_property.mWriteModelFunction = nil 
-    self.mDefaultPadDiameterUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mDefaultPadDiameterUnit (self.mDefaultPadDiameterUnit_property)
   //--- mCustomPadDiameter
     self.mCustomPadDiameter_property.mReadModelFunction = nil 
     self.mCustomPadDiameter_property.mWriteModelFunction = nil 
-    self.mCustomPadDiameter_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mCustomPadDiameter (self.mCustomPadDiameter_property)
   //--- mCustomPadDiameterUnit
     self.mCustomPadDiameterUnit_property.mReadModelFunction = nil 
     self.mCustomPadDiameterUnit_property.mWriteModelFunction = nil 
-    self.mCustomPadDiameterUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mCustomPadDiameterUnit (self.mCustomPadDiameterUnit_property)
   //--- mUsesCustomPadDiameter
     self.mUsesCustomPadDiameter_property.mReadModelFunction = nil 
     self.mUsesCustomPadDiameter_property.mWriteModelFunction = nil 
-    self.mUsesCustomPadDiameter_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mUsesCustomPadDiameter (self.mUsesCustomPadDiameter_property)
   //--- isConnectedToSomePad
     self.isConnectedToSomePad_property.mReadModelFunction = nil 
@@ -584,24 +572,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
         }
       }
     }
-    self.mComponentPadName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mComponentPadName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -651,24 +621,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
             object.mPadIndex_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mPadIndex_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mPadIndex_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -722,24 +674,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
         }
       }
     }
-    self.mX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mX_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -789,24 +723,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
             object.mY_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -860,24 +776,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
         }
       }
     }
-    self.mDefaultHoleDiameterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mDefaultHoleDiameterUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -927,24 +825,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
             object.mCustomHoleDiameter_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mCustomHoleDiameter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mCustomHoleDiameter_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -998,24 +878,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
         }
       }
     }
-    self.mCustomHoleDiameterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mCustomHoleDiameterUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1065,24 +927,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
             object.mUsesCustomHoleDiameter_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mUsesCustomHoleDiameter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mUsesCustomHoleDiameter_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1136,24 +980,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
         }
       }
     }
-    self.mDefaultPadDiameterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mDefaultPadDiameterUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1203,24 +1029,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
             object.mCustomPadDiameter_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mCustomPadDiameter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mCustomPadDiameter_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1274,24 +1082,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
         }
       }
     }
-    self.mCustomPadDiameterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mCustomPadDiameterUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1341,24 +1131,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
             object.mUsesCustomPadDiameter_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mUsesCustomPadDiameter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mUsesCustomPadDiameter_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

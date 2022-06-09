@@ -525,24 +525,24 @@ final class SelectionController_AutoLayoutProjectDocument_mDeviceSelectionContro
         }
       }
     }
-    self.mDeviceFileData_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Data, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mDeviceFileData_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
+//    self.mDeviceFileData_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Data, windowForSheet : NSWindow?) in
+//      if let model = self?.mModel {
+//        switch model.selection {
+//        case .empty, .multiple :
+//          return false
+//        case .single (let v) :
+//          for object in v {
+//            let result = object.mDeviceFileData_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+//            if !result {
+//              return false
+//            }
+//          }
+//          return true
+//        }
+//      }else{
+//        return false
+//      }
+//    }
   }
 
   //···················································································································*
@@ -595,24 +595,24 @@ final class SelectionController_AutoLayoutProjectDocument_mDeviceSelectionContro
         }
       }
     }
-    self.mDeviceName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mDeviceName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
+//    self.mDeviceName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
+//      if let model = self?.mModel {
+//        switch model.selection {
+//        case .empty, .multiple :
+//          return false
+//        case .single (let v) :
+//          for object in v {
+//            let result = object.mDeviceName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+//            if !result {
+//              return false
+//            }
+//          }
+//          return true
+//        }
+//      }else{
+//        return false
+//      }
+//    }
   }
 
   //···················································································································*
@@ -665,24 +665,24 @@ final class SelectionController_AutoLayoutProjectDocument_mDeviceSelectionContro
         }
       }
     }
-    self.mDeviceVersion_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mDeviceVersion_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
+//    self.mDeviceVersion_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+//      if let model = self?.mModel {
+//        switch model.selection {
+//        case .empty, .multiple :
+//          return false
+//        case .single (let v) :
+//          for object in v {
+//            let result = object.mDeviceVersion_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+//            if !result {
+//              return false
+//            }
+//          }
+//          return true
+//        }
+//      }else{
+//        return false
+//      }
+//    }
   }
 
   //···················································································································*
@@ -735,24 +735,24 @@ final class SelectionController_AutoLayoutProjectDocument_mDeviceSelectionContro
         }
       }
     }
-    self.mPrefix_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mPrefix_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
+//    self.mPrefix_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
+//      if let model = self?.mModel {
+//        switch model.selection {
+//        case .empty, .multiple :
+//          return false
+//        case .single (let v) :
+//          for object in v {
+//            let result = object.mPrefix_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+//            if !result {
+//              return false
+//            }
+//          }
+//          return true
+//        }
+//      }else{
+//        return false
+//      }
+//    }
   }
 
   //···················································································································*

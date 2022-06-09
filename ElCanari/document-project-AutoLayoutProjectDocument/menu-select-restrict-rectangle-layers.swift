@@ -72,7 +72,7 @@ final class CanariSelectRestrictRectanglesMenu : NSMenu, EBUserClassNameProtocol
 
   @objc private func menuItemAction (_ inSender : NSMenuItem) {
     let value = self.mValue ^ (1 << inSender.tag)
-    _ = self.mLayersController?.updateModel (withCandidateValue: value, windowForSheet: nil)
+    self.mLayersController?.updateModel (withValue: value)
   }
 
   //····················································································································

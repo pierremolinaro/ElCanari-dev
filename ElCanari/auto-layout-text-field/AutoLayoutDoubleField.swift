@@ -78,7 +78,7 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
       let optionalNumber = numberFormatter.number (from: inputString)
       if let number = optionalNumber, self.isContinuous {
         let value = number.doubleValue
-        _ = self.mValueController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
+        self.mValueController?.updateModel (withValue: value)
       }
       self.mInputIsValid = optionalNumber != nil
     }
@@ -100,7 +100,7 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
     if let formatter = self.formatter as? NumberFormatter,
        let outletValueNumber = formatter.number (from: self.stringValue) {
       let value = outletValueNumber.doubleValue
-      _ = self.mValueController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
+      self.mValueController?.updateModel (withValue: value)
     }else if let v = self.mValueController?.value {
       self.mInputIsValid = true
       self.doubleValue = v

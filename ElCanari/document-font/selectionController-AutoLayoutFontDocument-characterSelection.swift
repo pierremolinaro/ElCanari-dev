@@ -90,12 +90,10 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //--- advance
     self.advance_property.mReadModelFunction = nil 
     self.advance_property.mWriteModelFunction = nil 
-    self.advance_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_advance (self.advance_property)
   //--- codePoint
     self.codePoint_property.mReadModelFunction = nil 
     self.codePoint_property.mWriteModelFunction = nil 
-    self.codePoint_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_codePoint (self.codePoint_property)
   //--- gerberCode
     self.gerberCode_property.mReadModelFunction = nil 
@@ -109,12 +107,10 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //--- mWarnsWhenAdvanceIsZero
     self.mWarnsWhenAdvanceIsZero_property.mReadModelFunction = nil 
     self.mWarnsWhenAdvanceIsZero_property.mWriteModelFunction = nil 
-    self.mWarnsWhenAdvanceIsZero_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mWarnsWhenAdvanceIsZero (self.mWarnsWhenAdvanceIsZero_property)
   //--- mWarnsWhenNoSegment
     self.mWarnsWhenNoSegment_property.mReadModelFunction = nil 
     self.mWarnsWhenNoSegment_property.mWriteModelFunction = nil 
-    self.mWarnsWhenNoSegment_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mWarnsWhenNoSegment (self.mWarnsWhenNoSegment_property)
   //--- segmentArrayForDrawing
     self.segmentArrayForDrawing_property.mReadModelFunction = nil 
@@ -303,24 +299,6 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
         }
       }
     }
-    self.advance_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.advance_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -371,24 +349,6 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
             object.codePoint_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.codePoint_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.codePoint_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -563,24 +523,6 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
         }
       }
     }
-    self.mWarnsWhenAdvanceIsZero_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mWarnsWhenAdvanceIsZero_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -631,24 +573,6 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
             object.mWarnsWhenNoSegment_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mWarnsWhenNoSegment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mWarnsWhenNoSegment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

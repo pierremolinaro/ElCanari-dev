@@ -1669,9 +1669,6 @@ final class PackageRoot : EBManagedObject,
     self.mModelImageFirstPointX_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mModelImageDoublePoint?.mFirstX = inValue
     }
-    self.mModelImageFirstPointX_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mModelImageDoublePoint?.mFirstX_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mModelImageDoublePoint_property.mFirstX_property.addEBObserver (self.mModelImageFirstPointX_property)
   //--- Atomic proxy property: mModelImageFirstPointY
     self.mModelImageFirstPointY_property.mReadModelFunction = { [weak self] in
@@ -1694,9 +1691,6 @@ final class PackageRoot : EBManagedObject,
     }
     self.mModelImageFirstPointY_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mModelImageDoublePoint?.mFirstY = inValue
-    }
-    self.mModelImageFirstPointY_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mModelImageDoublePoint?.mFirstY_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mModelImageDoublePoint_property.mFirstY_property.addEBObserver (self.mModelImageFirstPointY_property)
   //--- Atomic proxy property: mModelImageSecondPointDx
@@ -1721,9 +1715,6 @@ final class PackageRoot : EBManagedObject,
     self.mModelImageSecondPointDx_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mModelImageDoublePoint?.mSecondDx = inValue
     }
-    self.mModelImageSecondPointDx_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mModelImageDoublePoint?.mSecondDx_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mModelImageDoublePoint_property.mSecondDx_property.addEBObserver (self.mModelImageSecondPointDx_property)
   //--- Atomic proxy property: mModelImageSecondPointDy
     self.mModelImageSecondPointDy_property.mReadModelFunction = { [weak self] in
@@ -1746,9 +1737,6 @@ final class PackageRoot : EBManagedObject,
     }
     self.mModelImageSecondPointDy_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mModelImageDoublePoint?.mSecondDy = inValue
-    }
-    self.mModelImageSecondPointDy_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mModelImageDoublePoint?.mSecondDy_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mModelImageDoublePoint_property.mSecondDy_property.addEBObserver (self.mModelImageSecondPointDy_property)
   //--- Atomic property: freePadNumbering
@@ -1991,22 +1979,18 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic proxy property: mModelImageFirstPointX
     self.mModelImageFirstPointX_property.mReadModelFunction = nil
     self.mModelImageFirstPointX_property.mWriteModelFunction = nil
-    self.mModelImageFirstPointX_property.mValidateAndWriteModelFunction = nil
     self.mModelImageDoublePoint_property.mFirstX_property.removeEBObserver (self.mModelImageFirstPointX_property)
   //--- Atomic proxy property: mModelImageFirstPointY
     self.mModelImageFirstPointY_property.mReadModelFunction = nil
     self.mModelImageFirstPointY_property.mWriteModelFunction = nil
-    self.mModelImageFirstPointY_property.mValidateAndWriteModelFunction = nil
     self.mModelImageDoublePoint_property.mFirstY_property.removeEBObserver (self.mModelImageFirstPointY_property)
   //--- Atomic proxy property: mModelImageSecondPointDx
     self.mModelImageSecondPointDx_property.mReadModelFunction = nil
     self.mModelImageSecondPointDx_property.mWriteModelFunction = nil
-    self.mModelImageSecondPointDx_property.mValidateAndWriteModelFunction = nil
     self.mModelImageDoublePoint_property.mSecondDx_property.removeEBObserver (self.mModelImageSecondPointDx_property)
   //--- Atomic proxy property: mModelImageSecondPointDy
     self.mModelImageSecondPointDy_property.mReadModelFunction = nil
     self.mModelImageSecondPointDy_property.mWriteModelFunction = nil
-    self.mModelImageSecondPointDy_property.mValidateAndWriteModelFunction = nil
     self.mModelImageDoublePoint_property.mSecondDy_property.removeEBObserver (self.mModelImageSecondPointDy_property)
     // self.padNumbering_property.removeEBObserver (self.freePadNumbering_property)
     // self.padNumbering_property.removeEBObserver (self.counterClockNumbering_property)

@@ -167,7 +167,8 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
          let inInputString = inOptionalInputString,
          let outletValueNumber = formatter.number (from: inInputString) {
         let value = Int ((outletValueNumber.doubleValue * Double (unit)).rounded ())
-        return self.mDimension.validateAndSetProp (value, windowForSheet: self.mOutlet?.window)
+        self.mDimension.setProp (value)
+        return true
       }else{
         return false
       }

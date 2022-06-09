@@ -190,77 +190,62 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //--- xCenter
     self.xCenter_property.mReadModelFunction = nil 
     self.xCenter_property.mWriteModelFunction = nil 
-    self.xCenter_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_xCenter (self.xCenter_property)
   //--- yCenter
     self.yCenter_property.mReadModelFunction = nil 
     self.yCenter_property.mWriteModelFunction = nil 
-    self.yCenter_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_yCenter (self.yCenter_property)
   //--- width
     self.width_property.mReadModelFunction = nil 
     self.width_property.mWriteModelFunction = nil 
-    self.width_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_width (self.width_property)
   //--- height
     self.height_property.mReadModelFunction = nil 
     self.height_property.mWriteModelFunction = nil 
-    self.height_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_height (self.height_property)
   //--- holeWidth
     self.holeWidth_property.mReadModelFunction = nil 
     self.holeWidth_property.mWriteModelFunction = nil 
-    self.holeWidth_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_holeWidth (self.holeWidth_property)
   //--- holeHeight
     self.holeHeight_property.mReadModelFunction = nil 
     self.holeHeight_property.mWriteModelFunction = nil 
-    self.holeHeight_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_holeHeight (self.holeHeight_property)
   //--- padShape
     self.padShape_property.mReadModelFunction = nil 
     self.padShape_property.mWriteModelFunction = nil 
-    self.padShape_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_padShape (self.padShape_property)
   //--- padStyle
     self.padStyle_property.mReadModelFunction = nil 
     self.padStyle_property.mWriteModelFunction = nil 
-    self.padStyle_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_padStyle (self.padStyle_property)
   //--- xCenterUnit
     self.xCenterUnit_property.mReadModelFunction = nil 
     self.xCenterUnit_property.mWriteModelFunction = nil 
-    self.xCenterUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_xCenterUnit (self.xCenterUnit_property)
   //--- yCenterUnit
     self.yCenterUnit_property.mReadModelFunction = nil 
     self.yCenterUnit_property.mWriteModelFunction = nil 
-    self.yCenterUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_yCenterUnit (self.yCenterUnit_property)
   //--- widthUnit
     self.widthUnit_property.mReadModelFunction = nil 
     self.widthUnit_property.mWriteModelFunction = nil 
-    self.widthUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_widthUnit (self.widthUnit_property)
   //--- heightUnit
     self.heightUnit_property.mReadModelFunction = nil 
     self.heightUnit_property.mWriteModelFunction = nil 
-    self.heightUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_heightUnit (self.heightUnit_property)
   //--- holeWidthUnit
     self.holeWidthUnit_property.mReadModelFunction = nil 
     self.holeWidthUnit_property.mWriteModelFunction = nil 
-    self.holeWidthUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_holeWidthUnit (self.holeWidthUnit_property)
   //--- holeHeightUnit
     self.holeHeightUnit_property.mReadModelFunction = nil 
     self.holeHeightUnit_property.mWriteModelFunction = nil 
-    self.holeHeightUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_holeHeightUnit (self.holeHeightUnit_property)
   //--- annularRingUnit
     self.annularRingUnit_property.mReadModelFunction = nil 
     self.annularRingUnit_property.mWriteModelFunction = nil 
-    self.annularRingUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_annularRingUnit (self.annularRingUnit_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
@@ -561,24 +546,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
         }
       }
     }
-    self.xCenter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xCenter_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -628,24 +595,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
             object.yCenter_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.yCenter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.yCenter_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -699,24 +648,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
         }
       }
     }
-    self.width_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.width_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -766,24 +697,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
             object.height_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.height_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.height_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -837,24 +750,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
         }
       }
     }
-    self.holeWidth_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.holeWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -904,24 +799,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
             object.holeHeight_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.holeHeight_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.holeHeight_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -975,24 +852,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
         }
       }
     }
-    self.padShape_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : PadShape, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.padShape_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1042,24 +901,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
             object.padStyle_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.padStyle_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : SlavePadStyle, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.padStyle_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1113,24 +954,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
         }
       }
     }
-    self.xCenterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xCenterUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1180,24 +1003,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
             object.yCenterUnit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.yCenterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.yCenterUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1251,24 +1056,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
         }
       }
     }
-    self.widthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.widthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1318,24 +1105,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
             object.heightUnit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.heightUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.heightUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1389,24 +1158,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
         }
       }
     }
-    self.holeWidthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.holeWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1458,24 +1209,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
         }
       }
     }
-    self.holeHeightUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.holeHeightUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
   //····················································································································
 
@@ -1525,24 +1258,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
             object.annularRingUnit_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.annularRingUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.annularRingUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

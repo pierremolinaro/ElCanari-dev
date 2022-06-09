@@ -261,10 +261,10 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
   override func mouseUp (with inEvent : NSEvent) {
     self.mMouseIsDown = false
     if self.mMouseInP1 && !self.mSomePadConnectedToP1 {
-      _ = self.mManualLockP1Controller?.updateModel (withCandidateValue: !self.mManualLockForP1, windowForSheet: self.window)
+      self.mManualLockP1Controller?.updateModel (withValue: !self.mManualLockForP1)
     }
     if self.mMouseInP2 && !self.mSomePadConnectedToP2 {
-      _ = self.mManualLockP2Controller?.updateModel (withCandidateValue: !self.mManualLockForP2, windowForSheet: self.window)
+      self.mManualLockP2Controller?.updateModel (withValue: !self.mManualLockForP2)
     }
   }
 

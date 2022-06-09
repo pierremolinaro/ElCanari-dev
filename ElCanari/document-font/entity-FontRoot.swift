@@ -190,12 +190,6 @@ final class FontRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final func currentCharacterCodePoint_validateAndSetProp (_ inCandidateValue : Int, windowForSheet inWindow : NSWindow?) -> Bool {
-    return self.currentCharacterCodePoint_property.validateAndSetProp (inCandidateValue, windowForSheet: inWindow)
-  }
-
-  //····················································································································
   //   To many property: characters
   //····················································································································
 
@@ -340,10 +334,6 @@ final class FontRoot : EBManagedObject,
     self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-  //--- Atomic property: currentCharacterCodePoint
-    self.currentCharacterCodePoint_property.validationFunction = { [weak self] in
-      return self?.validate_currentCharacterCodePoint (currentValue: $0, proposedValue: $1) ?? .rejectWithBeep
-    }
   //--- To many property: characters (no option)
     self.characters_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: currentCharacterCodePointString

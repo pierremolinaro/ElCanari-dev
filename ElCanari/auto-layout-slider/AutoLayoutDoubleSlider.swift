@@ -21,9 +21,6 @@ final class AutoLayoutDoubleSlider : AutoLayoutBase_NSSlider {
     if inWidth < 0 {
       _ = self.expandableWidth ()
     }
-//    self.minValue = Double (inMin)
-//    self.maxValue = Double (inMax)
-//    self.numberOfTickMarks = inTickCount
     self.allowsTickMarkValuesOnly = true
   }
 
@@ -36,7 +33,7 @@ final class AutoLayoutDoubleSlider : AutoLayoutBase_NSSlider {
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    _ = self.mValueController?.updateModel (withCandidateValue: self.doubleValue, windowForSheet: self.window)
+    self.mValueController?.updateModel (withValue: self.doubleValue)
     let r = super.sendAction (action, to: to)
     flushOutletEvents ()
     return r

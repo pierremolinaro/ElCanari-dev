@@ -251,117 +251,94 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
   //--- drawBoardLimits
     self.drawBoardLimits_property.mReadModelFunction = nil 
     self.drawBoardLimits_property.mWriteModelFunction = nil 
-    self.drawBoardLimits_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawBoardLimits (self.drawBoardLimits_property)
   //--- drawComponentNamesBottomSide
     self.drawComponentNamesBottomSide_property.mReadModelFunction = nil 
     self.drawComponentNamesBottomSide_property.mWriteModelFunction = nil 
-    self.drawComponentNamesBottomSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawComponentNamesBottomSide (self.drawComponentNamesBottomSide_property)
   //--- drawComponentNamesTopSide
     self.drawComponentNamesTopSide_property.mReadModelFunction = nil 
     self.drawComponentNamesTopSide_property.mWriteModelFunction = nil 
-    self.drawComponentNamesTopSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawComponentNamesTopSide (self.drawComponentNamesTopSide_property)
   //--- drawComponentValuesBottomSide
     self.drawComponentValuesBottomSide_property.mReadModelFunction = nil 
     self.drawComponentValuesBottomSide_property.mWriteModelFunction = nil 
-    self.drawComponentValuesBottomSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawComponentValuesBottomSide (self.drawComponentValuesBottomSide_property)
   //--- drawComponentValuesTopSide
     self.drawComponentValuesTopSide_property.mReadModelFunction = nil 
     self.drawComponentValuesTopSide_property.mWriteModelFunction = nil 
-    self.drawComponentValuesTopSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawComponentValuesTopSide (self.drawComponentValuesTopSide_property)
   //--- drawInternalBoardLimits
     self.drawInternalBoardLimits_property.mReadModelFunction = nil 
     self.drawInternalBoardLimits_property.mWriteModelFunction = nil 
-    self.drawInternalBoardLimits_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawInternalBoardLimits (self.drawInternalBoardLimits_property)
   //--- drawPackageLegendBottomSide
     self.drawPackageLegendBottomSide_property.mReadModelFunction = nil 
     self.drawPackageLegendBottomSide_property.mWriteModelFunction = nil 
-    self.drawPackageLegendBottomSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawPackageLegendBottomSide (self.drawPackageLegendBottomSide_property)
   //--- drawPackageLegendTopSide
     self.drawPackageLegendTopSide_property.mReadModelFunction = nil 
     self.drawPackageLegendTopSide_property.mWriteModelFunction = nil 
-    self.drawPackageLegendTopSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawPackageLegendTopSide (self.drawPackageLegendTopSide_property)
   //--- drawPadHolesInPDF
     self.drawPadHolesInPDF_property.mReadModelFunction = nil 
     self.drawPadHolesInPDF_property.mWriteModelFunction = nil 
-    self.drawPadHolesInPDF_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawPadHolesInPDF (self.drawPadHolesInPDF_property)
   //--- drawPadsBottomSide
     self.drawPadsBottomSide_property.mReadModelFunction = nil 
     self.drawPadsBottomSide_property.mWriteModelFunction = nil 
-    self.drawPadsBottomSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawPadsBottomSide (self.drawPadsBottomSide_property)
   //--- drawPadsTopSide
     self.drawPadsTopSide_property.mReadModelFunction = nil 
     self.drawPadsTopSide_property.mWriteModelFunction = nil 
-    self.drawPadsTopSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawPadsTopSide (self.drawPadsTopSide_property)
   //--- drawTextsLayoutBottomSide
     self.drawTextsLayoutBottomSide_property.mReadModelFunction = nil 
     self.drawTextsLayoutBottomSide_property.mWriteModelFunction = nil 
-    self.drawTextsLayoutBottomSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawTextsLayoutBottomSide (self.drawTextsLayoutBottomSide_property)
   //--- drawTextsLayoutTopSide
     self.drawTextsLayoutTopSide_property.mReadModelFunction = nil 
     self.drawTextsLayoutTopSide_property.mWriteModelFunction = nil 
-    self.drawTextsLayoutTopSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawTextsLayoutTopSide (self.drawTextsLayoutTopSide_property)
   //--- drawTextsLegendBottomSide
     self.drawTextsLegendBottomSide_property.mReadModelFunction = nil 
     self.drawTextsLegendBottomSide_property.mWriteModelFunction = nil 
-    self.drawTextsLegendBottomSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawTextsLegendBottomSide (self.drawTextsLegendBottomSide_property)
   //--- drawTextsLegendTopSide
     self.drawTextsLegendTopSide_property.mReadModelFunction = nil 
     self.drawTextsLegendTopSide_property.mWriteModelFunction = nil 
-    self.drawTextsLegendTopSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawTextsLegendTopSide (self.drawTextsLegendTopSide_property)
   //--- drawTracksBottomSide
     self.drawTracksBottomSide_property.mReadModelFunction = nil 
     self.drawTracksBottomSide_property.mWriteModelFunction = nil 
-    self.drawTracksBottomSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawTracksBottomSide (self.drawTracksBottomSide_property)
   //--- drawTracksInner1Layer
     self.drawTracksInner1Layer_property.mReadModelFunction = nil 
     self.drawTracksInner1Layer_property.mWriteModelFunction = nil 
-    self.drawTracksInner1Layer_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawTracksInner1Layer (self.drawTracksInner1Layer_property)
   //--- drawTracksInner2Layer
     self.drawTracksInner2Layer_property.mReadModelFunction = nil 
     self.drawTracksInner2Layer_property.mWriteModelFunction = nil 
-    self.drawTracksInner2Layer_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawTracksInner2Layer (self.drawTracksInner2Layer_property)
   //--- drawTracksInner3Layer
     self.drawTracksInner3Layer_property.mReadModelFunction = nil 
     self.drawTracksInner3Layer_property.mWriteModelFunction = nil 
-    self.drawTracksInner3Layer_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawTracksInner3Layer (self.drawTracksInner3Layer_property)
   //--- drawTracksInner4Layer
     self.drawTracksInner4Layer_property.mReadModelFunction = nil 
     self.drawTracksInner4Layer_property.mWriteModelFunction = nil 
-    self.drawTracksInner4Layer_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawTracksInner4Layer (self.drawTracksInner4Layer_property)
   //--- drawTracksTopSide
     self.drawTracksTopSide_property.mReadModelFunction = nil 
     self.drawTracksTopSide_property.mWriteModelFunction = nil 
-    self.drawTracksTopSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawTracksTopSide (self.drawTracksTopSide_property)
   //--- drawTraversingPads
     self.drawTraversingPads_property.mReadModelFunction = nil 
     self.drawTraversingPads_property.mWriteModelFunction = nil 
-    self.drawTraversingPads_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawTraversingPads (self.drawTraversingPads_property)
   //--- drawVias
     self.drawVias_property.mReadModelFunction = nil 
     self.drawVias_property.mWriteModelFunction = nil 
-    self.drawVias_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawVias (self.drawVias_property)
   //--- emptyFileExtensionImage
     self.emptyFileExtensionImage_property.mReadModelFunction = nil 
@@ -369,7 +346,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
   //--- fileExtension
     self.fileExtension_property.mReadModelFunction = nil 
     self.fileExtension_property.mWriteModelFunction = nil 
-    self.fileExtension_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_fileExtension (self.fileExtension_property)
   //--- hasNoData
     self.hasNoData_property.mReadModelFunction = nil 
@@ -377,22 +353,18 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
   //--- horizontalMirror
     self.horizontalMirror_property.mReadModelFunction = nil 
     self.horizontalMirror_property.mWriteModelFunction = nil 
-    self.horizontalMirror_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_horizontalMirror (self.horizontalMirror_property)
   //--- measurementUnitForPadHoleInPDF
     self.measurementUnitForPadHoleInPDF_property.mReadModelFunction = nil 
     self.measurementUnitForPadHoleInPDF_property.mWriteModelFunction = nil 
-    self.measurementUnitForPadHoleInPDF_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_measurementUnitForPadHoleInPDF (self.measurementUnitForPadHoleInPDF_property)
   //--- name
     self.name_property.mReadModelFunction = nil 
     self.name_property.mWriteModelFunction = nil 
-    self.name_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_name (self.name_property)
   //--- padHoleDiameterInPDF
     self.padHoleDiameterInPDF_property.mReadModelFunction = nil 
     self.padHoleDiameterInPDF_property.mWriteModelFunction = nil 
-    self.padHoleDiameterInPDF_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_padHoleDiameterInPDF (self.padHoleDiameterInPDF_property)
   //--- parameterStatusImage
     self.parameterStatusImage_property.mReadModelFunction = nil 
@@ -773,24 +745,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.drawBoardLimits_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawBoardLimits_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -841,24 +795,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
             object.drawComponentNamesBottomSide_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.drawComponentNamesBottomSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawComponentNamesBottomSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -913,24 +849,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.drawComponentNamesTopSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawComponentNamesTopSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -981,24 +899,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
             object.drawComponentValuesBottomSide_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.drawComponentValuesBottomSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawComponentValuesBottomSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1053,24 +953,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.drawComponentValuesTopSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawComponentValuesTopSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -1121,24 +1003,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
             object.drawInternalBoardLimits_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.drawInternalBoardLimits_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawInternalBoardLimits_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1193,24 +1057,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.drawPackageLegendBottomSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawPackageLegendBottomSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -1261,24 +1107,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
             object.drawPackageLegendTopSide_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.drawPackageLegendTopSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawPackageLegendTopSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1333,24 +1161,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.drawPadHolesInPDF_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawPadHolesInPDF_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -1401,24 +1211,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
             object.drawPadsBottomSide_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.drawPadsBottomSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawPadsBottomSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1473,24 +1265,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.drawPadsTopSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawPadsTopSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -1541,24 +1315,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
             object.drawTextsLayoutBottomSide_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.drawTextsLayoutBottomSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawTextsLayoutBottomSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1613,24 +1369,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.drawTextsLayoutTopSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawTextsLayoutTopSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -1681,24 +1419,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
             object.drawTextsLegendBottomSide_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.drawTextsLegendBottomSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawTextsLegendBottomSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1753,24 +1473,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.drawTextsLegendTopSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawTextsLegendTopSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -1821,24 +1523,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
             object.drawTracksBottomSide_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.drawTracksBottomSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawTracksBottomSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -1893,24 +1577,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.drawTracksInner1Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawTracksInner1Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -1961,24 +1627,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
             object.drawTracksInner2Layer_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.drawTracksInner2Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawTracksInner2Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -2033,24 +1681,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.drawTracksInner3Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawTracksInner3Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -2101,24 +1731,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
             object.drawTracksInner4Layer_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.drawTracksInner4Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawTracksInner4Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -2173,24 +1785,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.drawTracksTopSide_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawTracksTopSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -2243,24 +1837,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.drawTraversingPads_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawTraversingPads_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -2311,24 +1887,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
             object.drawVias_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.drawVias_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.drawVias_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -2423,24 +1981,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.fileExtension_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.fileExtension_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -2533,24 +2073,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.horizontalMirror_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.horizontalMirror_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -2601,24 +2123,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
             object.measurementUnitForPadHoleInPDF_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.measurementUnitForPadHoleInPDF_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.measurementUnitForPadHoleInPDF_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -2673,24 +2177,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
         }
       }
     }
-    self.name_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.name_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
   }
 
   //···················································································································*
@@ -2741,24 +2227,6 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
             object.padHoleDiameterInPDF_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.padHoleDiameterInPDF_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.padHoleDiameterInPDF_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

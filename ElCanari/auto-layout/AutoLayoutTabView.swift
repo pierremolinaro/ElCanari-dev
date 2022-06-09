@@ -113,7 +113,7 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
   @objc func selectedItemDidChange (_ inSender : Any?) {
     let idx = self.mPopUpButton.indexOfSelectedItem
     if let controller = self.mSelectedTabIndexController {
-      _ = controller.updateModel (withCandidateValue: idx, windowForSheet: self.window)
+      controller.updateModel (withValue: idx)
     }else{
       self.setSelectedSegment (atIndex: idx)
     }

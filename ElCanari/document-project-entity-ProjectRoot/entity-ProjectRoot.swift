@@ -4495,9 +4495,6 @@ final class ProjectRoot : EBManagedObject,
     self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minPPTPTTTWdisplayUnit = inValue
     }
-    self.minPPTPTTTWdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minPPTPTTTWdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mArtwork_property.minPPTPTTTWdisplayUnit_property.addEBObserver (self.minPPTPTTTWdisplayUnit_property)
   //--- Atomic proxy property: minPPTPTTTW
     self.minPPTPTTTW_property.mReadModelFunction = { [weak self] in
@@ -4520,9 +4517,6 @@ final class ProjectRoot : EBManagedObject,
     }
     self.minPPTPTTTW_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minPPTPTTTW = inValue
-    }
-    self.minPPTPTTTW_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minPPTPTTTW_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mArtwork_property.minPPTPTTTW_property.addEBObserver (self.minPPTPTTTW_property)
   //--- Atomic proxy property: minValueForOARdisplayUnit
@@ -4547,9 +4541,6 @@ final class ProjectRoot : EBManagedObject,
     self.minValueForOARdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForOARdisplayUnit = inValue
     }
-    self.minValueForOARdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minValueForOARdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mArtwork_property.minValueForOARdisplayUnit_property.addEBObserver (self.minValueForOARdisplayUnit_property)
   //--- Atomic proxy property: minValueForOARinEBUnit
     self.minValueForOARinEBUnit_property.mReadModelFunction = { [weak self] in
@@ -4572,9 +4563,6 @@ final class ProjectRoot : EBManagedObject,
     }
     self.minValueForOARinEBUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForOARinEBUnit = inValue
-    }
-    self.minValueForOARinEBUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minValueForOARinEBUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mArtwork_property.minValueForOARinEBUnit_property.addEBObserver (self.minValueForOARinEBUnit_property)
   //--- Atomic proxy property: minValueForPHDdisplayUnit
@@ -4599,9 +4587,6 @@ final class ProjectRoot : EBManagedObject,
     self.minValueForPHDdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForPHDdisplayUnit = inValue
     }
-    self.minValueForPHDdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minValueForPHDdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mArtwork_property.minValueForPHDdisplayUnit_property.addEBObserver (self.minValueForPHDdisplayUnit_property)
   //--- Atomic proxy property: minValueForPHDinEBUnit
     self.minValueForPHDinEBUnit_property.mReadModelFunction = { [weak self] in
@@ -4624,9 +4609,6 @@ final class ProjectRoot : EBManagedObject,
     }
     self.minValueForPHDinEBUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForPHDinEBUnit = inValue
-    }
-    self.minValueForPHDinEBUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minValueForPHDinEBUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mArtwork_property.minValueForPHDinEBUnit_property.addEBObserver (self.minValueForPHDinEBUnit_property)
   //--- Atomic proxy property: minValueForBoardLimitWidth
@@ -4651,9 +4633,6 @@ final class ProjectRoot : EBManagedObject,
     self.minValueForBoardLimitWidth_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForBoardLimitWidth = inValue
     }
-    self.minValueForBoardLimitWidth_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minValueForBoardLimitWidth_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mArtwork_property.minValueForBoardLimitWidth_property.addEBObserver (self.minValueForBoardLimitWidth_property)
   //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
     self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = { [weak self] in
@@ -4676,9 +4655,6 @@ final class ProjectRoot : EBManagedObject,
     }
     self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit = inValue
-    }
-    self.minValueForBoardLimitWidthDisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property)
   //--- Atomic proxy property: artworkComments
@@ -4703,9 +4679,6 @@ final class ProjectRoot : EBManagedObject,
     self.artworkComments_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
       self?.mArtwork?.comments = inValue
     }
-    self.artworkComments_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.comments_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mArtwork_property.comments_property.addEBObserver (self.artworkComments_property)
   //--- Atomic proxy property: artworkLayerConfiguration
     self.artworkLayerConfiguration_property.mReadModelFunction = { [weak self] in
@@ -4728,9 +4701,6 @@ final class ProjectRoot : EBManagedObject,
     }
     self.artworkLayerConfiguration_property.mWriteModelFunction = { [weak self] (_ inValue : LayerConfiguration) in
       self?.mArtwork?.layerConfiguration = inValue
-    }
-    self.artworkLayerConfiguration_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : LayerConfiguration, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.layerConfiguration_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mArtwork_property.layerConfiguration_property.addEBObserver (self.artworkLayerConfiguration_property)
   //--- Atomic proxy property: artworkTitle
@@ -4755,9 +4725,6 @@ final class ProjectRoot : EBManagedObject,
     self.artworkTitle_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
       self?.mArtwork?.title = inValue
     }
-    self.artworkTitle_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.title_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mArtwork_property.title_property.addEBObserver (self.artworkTitle_property)
   //--- Atomic proxy property: selectedSheetTitle
     self.selectedSheetTitle_property.mReadModelFunction = { [weak self] in
@@ -4780,9 +4747,6 @@ final class ProjectRoot : EBManagedObject,
     }
     self.selectedSheetTitle_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
       self?.mSelectedSheet?.mSheetTitle = inValue
-    }
-    self.selectedSheetTitle_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
-      return self?.mSelectedSheet?.mSheetTitle_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mSelectedSheet_property.mSheetTitle_property.addEBObserver (self.selectedSheetTitle_property)
   //--- ToMany proxy: selectedSheetObjects
@@ -4819,9 +4783,6 @@ final class ProjectRoot : EBManagedObject,
     }
     self.drillDataFileExtension_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
       self?.mArtwork?.drillDataFileExtension = inValue
-    }
-    self.drillDataFileExtension_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.drillDataFileExtension_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mArtwork_property.drillDataFileExtension_property.addEBObserver (self.drillDataFileExtension_property)
   //--- ToMany proxy: fileGenerationParameterArray
@@ -5787,62 +5748,50 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = nil
     self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = nil
-    self.minPPTPTTTWdisplayUnit_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minPPTPTTTWdisplayUnit_property.removeEBObserver (self.minPPTPTTTWdisplayUnit_property)
   //--- Atomic proxy property: minPPTPTTTW
     self.minPPTPTTTW_property.mReadModelFunction = nil
     self.minPPTPTTTW_property.mWriteModelFunction = nil
-    self.minPPTPTTTW_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minPPTPTTTW_property.removeEBObserver (self.minPPTPTTTW_property)
   //--- Atomic proxy property: minValueForOARdisplayUnit
     self.minValueForOARdisplayUnit_property.mReadModelFunction = nil
     self.minValueForOARdisplayUnit_property.mWriteModelFunction = nil
-    self.minValueForOARdisplayUnit_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minValueForOARdisplayUnit_property.removeEBObserver (self.minValueForOARdisplayUnit_property)
   //--- Atomic proxy property: minValueForOARinEBUnit
     self.minValueForOARinEBUnit_property.mReadModelFunction = nil
     self.minValueForOARinEBUnit_property.mWriteModelFunction = nil
-    self.minValueForOARinEBUnit_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minValueForOARinEBUnit_property.removeEBObserver (self.minValueForOARinEBUnit_property)
   //--- Atomic proxy property: minValueForPHDdisplayUnit
     self.minValueForPHDdisplayUnit_property.mReadModelFunction = nil
     self.minValueForPHDdisplayUnit_property.mWriteModelFunction = nil
-    self.minValueForPHDdisplayUnit_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minValueForPHDdisplayUnit_property.removeEBObserver (self.minValueForPHDdisplayUnit_property)
   //--- Atomic proxy property: minValueForPHDinEBUnit
     self.minValueForPHDinEBUnit_property.mReadModelFunction = nil
     self.minValueForPHDinEBUnit_property.mWriteModelFunction = nil
-    self.minValueForPHDinEBUnit_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minValueForPHDinEBUnit_property.removeEBObserver (self.minValueForPHDinEBUnit_property)
   //--- Atomic proxy property: minValueForBoardLimitWidth
     self.minValueForBoardLimitWidth_property.mReadModelFunction = nil
     self.minValueForBoardLimitWidth_property.mWriteModelFunction = nil
-    self.minValueForBoardLimitWidth_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minValueForBoardLimitWidth_property.removeEBObserver (self.minValueForBoardLimitWidth_property)
   //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
     self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = nil
     self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = nil
-    self.minValueForBoardLimitWidthDisplayUnit_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property)
   //--- Atomic proxy property: artworkComments
     self.artworkComments_property.mReadModelFunction = nil
     self.artworkComments_property.mWriteModelFunction = nil
-    self.artworkComments_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.comments_property.removeEBObserver (self.artworkComments_property)
   //--- Atomic proxy property: artworkLayerConfiguration
     self.artworkLayerConfiguration_property.mReadModelFunction = nil
     self.artworkLayerConfiguration_property.mWriteModelFunction = nil
-    self.artworkLayerConfiguration_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.layerConfiguration_property.removeEBObserver (self.artworkLayerConfiguration_property)
   //--- Atomic proxy property: artworkTitle
     self.artworkTitle_property.mReadModelFunction = nil
     self.artworkTitle_property.mWriteModelFunction = nil
-    self.artworkTitle_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.title_property.removeEBObserver (self.artworkTitle_property)
   //--- Atomic proxy property: selectedSheetTitle
     self.selectedSheetTitle_property.mReadModelFunction = nil
     self.selectedSheetTitle_property.mWriteModelFunction = nil
-    self.selectedSheetTitle_property.mValidateAndWriteModelFunction = nil
     self.mSelectedSheet_property.mSheetTitle_property.removeEBObserver (self.selectedSheetTitle_property)
   //--- ToMany proxy: selectedSheetObjects
     self.selectedSheetObjects_property.setModel (nil)
@@ -5851,7 +5800,6 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic proxy property: drillDataFileExtension
     self.drillDataFileExtension_property.mReadModelFunction = nil
     self.drillDataFileExtension_property.mWriteModelFunction = nil
-    self.drillDataFileExtension_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.drillDataFileExtension_property.removeEBObserver (self.drillDataFileExtension_property)
   //--- ToMany proxy: fileGenerationParameterArray
     self.fileGenerationParameterArray_property.setModel (nil)

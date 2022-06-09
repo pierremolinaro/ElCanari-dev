@@ -501,9 +501,6 @@ final class BorderCurve : EBGraphicManagedObject,
     self.mNextX_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mNext?.mX = inValue
     }
-    self.mNextX_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mNext?.mX_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mNext_property.mX_property.addEBObserver (self.mNextX_property)
   //--- Atomic proxy property: mNextY
     self.mNextY_property.mReadModelFunction = { [weak self] in
@@ -526,9 +523,6 @@ final class BorderCurve : EBGraphicManagedObject,
     }
     self.mNextY_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mNext?.mY = inValue
-    }
-    self.mNextY_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mNext?.mY_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mNext_property.mY_property.addEBObserver (self.mNextY_property)
   //--- To one property: mRoot (has opposite to many relationship: mBorderCurves)
@@ -687,12 +681,10 @@ final class BorderCurve : EBGraphicManagedObject,
   //--- Atomic proxy property: mNextX
     self.mNextX_property.mReadModelFunction = nil
     self.mNextX_property.mWriteModelFunction = nil
-    self.mNextX_property.mValidateAndWriteModelFunction = nil
     self.mNext_property.mX_property.removeEBObserver (self.mNextX_property)
   //--- Atomic proxy property: mNextY
     self.mNextY_property.mReadModelFunction = nil
     self.mNextY_property.mWriteModelFunction = nil
-    self.mNextY_property.mValidateAndWriteModelFunction = nil
     self.mNext_property.mY_property.removeEBObserver (self.mNextY_property)
     // self.mNext_property.mX_property.removeEBObserver (self.p2Xstring_property)
     // self.mRoot_property.mBoardSelectedCurveDisplayUnit_property.removeEBObserver (self.p2Xstring_property)

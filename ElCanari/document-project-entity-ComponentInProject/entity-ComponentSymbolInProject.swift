@@ -555,9 +555,6 @@ final class ComponentSymbolInProject : SchematicObject,
     self.componentValueProxy_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
       self?.mComponent?.mComponentValue = inValue
     }
-    self.componentValueProxy_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
-      return self?.mComponent?.mComponentValue_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mComponent_property.mComponentValue_property.addEBObserver (self.componentValueProxy_property)
   //--- To one property: mComponent (has opposite to many relationship: mSymbols)
     self.mComponent_property.ebUndoManager = self.ebUndoManager
@@ -727,7 +724,6 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic proxy property: componentValueProxy
     self.componentValueProxy_property.mReadModelFunction = nil
     self.componentValueProxy_property.mWriteModelFunction = nil
-    self.componentValueProxy_property.mValidateAndWriteModelFunction = nil
     self.mComponent_property.mComponentValue_property.removeEBObserver (self.componentValueProxy_property)
     // self.mComponent_property.componentName_property.removeEBObserver (self.componentName_property)
     // self.mComponent_property.deviceName_property.removeEBObserver (self.deviceName_property)

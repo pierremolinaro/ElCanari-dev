@@ -78,7 +78,6 @@ final class SelectionController_AutoLayoutProjectDocument_schematicLabelSelectio
   //--- mOrientation
     self.mOrientation_property.mReadModelFunction = nil 
     self.mOrientation_property.mWriteModelFunction = nil 
-    self.mOrientation_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mOrientation (self.mOrientation_property)
   //--- location
     self.location_property.mReadModelFunction = nil 
@@ -253,24 +252,6 @@ final class SelectionController_AutoLayoutProjectDocument_schematicLabelSelectio
             object.mOrientation_property.setProp (inValue)
           }
         }
-      }
-    }
-    self.mOrientation_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : QuadrantRotation, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mOrientation_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }

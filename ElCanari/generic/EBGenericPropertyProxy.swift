@@ -77,14 +77,14 @@ final class EBGenericPropertyProxy <T> : EBObservableMutableProperty <T>, EBObse
 
   //····················································································································
 
-  override func validateAndSetProp (_ candidateValue : T,
-                                    windowForSheet inWindow : NSWindow?) -> Bool {
-    var result = false
-    if let unwValidateAndWriteModelFunction = self.mValidateAndWriteModelFunction {
-      result = unwValidateAndWriteModelFunction (candidateValue, inWindow)
-    }
-    return result
-  }
+//  override func validateAndSetProp (_ candidateValue : T,
+//                                    windowForSheet inWindow : NSWindow?) -> Bool {
+//    var result = false
+//    if let unwValidateAndWriteModelFunction = self.mValidateAndWriteModelFunction {
+//      result = unwValidateAndWriteModelFunction (candidateValue, inWindow)
+//    }
+//    return result
+//  }
 
   //····················································································································
 

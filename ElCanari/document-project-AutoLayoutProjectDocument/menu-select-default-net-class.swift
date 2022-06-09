@@ -150,7 +150,7 @@ fileprivate final class Controller_CanariDefaultNetClassMenu : EBObservablePrope
  //····················································································································
 
   @objc private func nameSelectionAction (_ inSender : NSMenuItem) {
-    _ = self.mObject.validateAndSetProp (inSender.title, windowForSheet: nil)
+    self.mObject.setProp (inSender.title)
   }
 
   //····················································································································

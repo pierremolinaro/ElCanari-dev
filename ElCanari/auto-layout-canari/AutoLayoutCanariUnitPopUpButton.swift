@@ -59,7 +59,7 @@ final class AutoLayoutCanariUnitPopUpButton : AutoLayoutBase_NSPopUpButton {
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    _ = self.mSelectedUnitController?.updateModel (withCandidateValue: self.selectedTag (), windowForSheet: self.window)
+    self.mSelectedUnitController?.updateModel (withValue: self.selectedTag ())
     return super.sendAction (action, to: to)
   }
 

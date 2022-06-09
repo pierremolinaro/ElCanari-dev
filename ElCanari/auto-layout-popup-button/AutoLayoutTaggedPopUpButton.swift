@@ -43,7 +43,7 @@ final class AutoLayoutTaggedPopUpButton : AutoLayoutBase_NSPopUpButton {
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    _ = self.mSelectedTagController?.updateModel (withCandidateValue: self.selectedTag (), windowForSheet: self.window)
+    self.mSelectedTagController?.updateModel (withValue: self.selectedTag ())
     return super.sendAction (action, to: to)
   }
 

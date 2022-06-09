@@ -50,7 +50,7 @@ final class AutoLayoutTextField : AutoLayoutBase_NSTextField {
   //····················································································································
 
   @objc func ebAction (_ inUnusedSender : Any?) {
-    _ = self.mValueController?.updateModel (withCandidateValue: self.stringValue, windowForSheet: self.window)
+    self.mValueController?.updateModel (withValue: self.stringValue)
   }
 
   //····················································································································

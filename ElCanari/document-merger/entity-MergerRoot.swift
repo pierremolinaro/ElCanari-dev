@@ -1268,9 +1268,6 @@ final class MergerRoot : EBManagedObject,
     self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minPPTPTTTWdisplayUnit = inValue
     }
-    self.minPPTPTTTWdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minPPTPTTTWdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mArtwork_property.minPPTPTTTWdisplayUnit_property.addEBObserver (self.minPPTPTTTWdisplayUnit_property)
   //--- Atomic proxy property: minPPTPTTTW
     self.minPPTPTTTW_property.mReadModelFunction = { [weak self] in
@@ -1293,9 +1290,6 @@ final class MergerRoot : EBManagedObject,
     }
     self.minPPTPTTTW_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minPPTPTTTW = inValue
-    }
-    self.minPPTPTTTW_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minPPTPTTTW_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mArtwork_property.minPPTPTTTW_property.addEBObserver (self.minPPTPTTTW_property)
   //--- Atomic proxy property: minValueForOARdisplayUnit
@@ -1320,9 +1314,6 @@ final class MergerRoot : EBManagedObject,
     self.minValueForOARdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForOARdisplayUnit = inValue
     }
-    self.minValueForOARdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minValueForOARdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mArtwork_property.minValueForOARdisplayUnit_property.addEBObserver (self.minValueForOARdisplayUnit_property)
   //--- Atomic proxy property: minValueForOARinEBUnit
     self.minValueForOARinEBUnit_property.mReadModelFunction = { [weak self] in
@@ -1345,9 +1336,6 @@ final class MergerRoot : EBManagedObject,
     }
     self.minValueForOARinEBUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForOARinEBUnit = inValue
-    }
-    self.minValueForOARinEBUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minValueForOARinEBUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mArtwork_property.minValueForOARinEBUnit_property.addEBObserver (self.minValueForOARinEBUnit_property)
   //--- Atomic proxy property: minValueForPHDdisplayUnit
@@ -1372,9 +1360,6 @@ final class MergerRoot : EBManagedObject,
     self.minValueForPHDdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForPHDdisplayUnit = inValue
     }
-    self.minValueForPHDdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minValueForPHDdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mArtwork_property.minValueForPHDdisplayUnit_property.addEBObserver (self.minValueForPHDdisplayUnit_property)
   //--- Atomic proxy property: minValueForPHDinEBUnit
     self.minValueForPHDinEBUnit_property.mReadModelFunction = { [weak self] in
@@ -1397,9 +1382,6 @@ final class MergerRoot : EBManagedObject,
     }
     self.minValueForPHDinEBUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForPHDinEBUnit = inValue
-    }
-    self.minValueForPHDinEBUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minValueForPHDinEBUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mArtwork_property.minValueForPHDinEBUnit_property.addEBObserver (self.minValueForPHDinEBUnit_property)
   //--- Atomic proxy property: minValueForBoardLimitWidth
@@ -1424,9 +1406,6 @@ final class MergerRoot : EBManagedObject,
     self.minValueForBoardLimitWidth_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForBoardLimitWidth = inValue
     }
-    self.minValueForBoardLimitWidth_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minValueForBoardLimitWidth_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mArtwork_property.minValueForBoardLimitWidth_property.addEBObserver (self.minValueForBoardLimitWidth_property)
   //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
     self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = { [weak self] in
@@ -1450,9 +1429,6 @@ final class MergerRoot : EBManagedObject,
     self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit = inValue
     }
-    self.minValueForBoardLimitWidthDisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
-    }
     self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property)
   //--- Atomic proxy property: drillDataFileExtension
     self.drillDataFileExtension_property.mReadModelFunction = { [weak self] in
@@ -1475,9 +1451,6 @@ final class MergerRoot : EBManagedObject,
     }
     self.drillDataFileExtension_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
       self?.mArtwork?.drillDataFileExtension = inValue
-    }
-    self.drillDataFileExtension_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
-      return self?.mArtwork?.drillDataFileExtension_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mArtwork_property.drillDataFileExtension_property.addEBObserver (self.drillDataFileExtension_property)
   //--- ToMany proxy: fileGenerationParameterArray
@@ -1713,47 +1686,38 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = nil
     self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = nil
-    self.minPPTPTTTWdisplayUnit_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minPPTPTTTWdisplayUnit_property.removeEBObserver (self.minPPTPTTTWdisplayUnit_property)
   //--- Atomic proxy property: minPPTPTTTW
     self.minPPTPTTTW_property.mReadModelFunction = nil
     self.minPPTPTTTW_property.mWriteModelFunction = nil
-    self.minPPTPTTTW_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minPPTPTTTW_property.removeEBObserver (self.minPPTPTTTW_property)
   //--- Atomic proxy property: minValueForOARdisplayUnit
     self.minValueForOARdisplayUnit_property.mReadModelFunction = nil
     self.minValueForOARdisplayUnit_property.mWriteModelFunction = nil
-    self.minValueForOARdisplayUnit_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minValueForOARdisplayUnit_property.removeEBObserver (self.minValueForOARdisplayUnit_property)
   //--- Atomic proxy property: minValueForOARinEBUnit
     self.minValueForOARinEBUnit_property.mReadModelFunction = nil
     self.minValueForOARinEBUnit_property.mWriteModelFunction = nil
-    self.minValueForOARinEBUnit_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minValueForOARinEBUnit_property.removeEBObserver (self.minValueForOARinEBUnit_property)
   //--- Atomic proxy property: minValueForPHDdisplayUnit
     self.minValueForPHDdisplayUnit_property.mReadModelFunction = nil
     self.minValueForPHDdisplayUnit_property.mWriteModelFunction = nil
-    self.minValueForPHDdisplayUnit_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minValueForPHDdisplayUnit_property.removeEBObserver (self.minValueForPHDdisplayUnit_property)
   //--- Atomic proxy property: minValueForPHDinEBUnit
     self.minValueForPHDinEBUnit_property.mReadModelFunction = nil
     self.minValueForPHDinEBUnit_property.mWriteModelFunction = nil
-    self.minValueForPHDinEBUnit_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minValueForPHDinEBUnit_property.removeEBObserver (self.minValueForPHDinEBUnit_property)
   //--- Atomic proxy property: minValueForBoardLimitWidth
     self.minValueForBoardLimitWidth_property.mReadModelFunction = nil
     self.minValueForBoardLimitWidth_property.mWriteModelFunction = nil
-    self.minValueForBoardLimitWidth_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minValueForBoardLimitWidth_property.removeEBObserver (self.minValueForBoardLimitWidth_property)
   //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
     self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = nil
     self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = nil
-    self.minValueForBoardLimitWidthDisplayUnit_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property)
   //--- Atomic proxy property: drillDataFileExtension
     self.drillDataFileExtension_property.mReadModelFunction = nil
     self.drillDataFileExtension_property.mWriteModelFunction = nil
-    self.drillDataFileExtension_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.drillDataFileExtension_property.removeEBObserver (self.drillDataFileExtension_property)
   //--- ToMany proxy: fileGenerationParameterArray
     self.fileGenerationParameterArray_property.setModel (nil)

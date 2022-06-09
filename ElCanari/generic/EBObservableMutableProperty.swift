@@ -16,9 +16,9 @@ class EBObservableMutableProperty <T> : EBObservableProperty <T> {
 
   //····················································································································
 
-  func validateAndSetProp (_ inCandidateValue : T, windowForSheet inWindow : NSWindow?) -> Bool {
-    return false
-  } // Abstract method
+//  func validateAndSetProp (_ inCandidateValue : T, windowForSheet inWindow : NSWindow?) -> Bool {
+//    return false
+//  } // Abstract method
 
   //····················································································································
 }
