@@ -740,13 +740,6 @@ typealias EBReadOnlyProperty_MergerSegmentArray    = EBObservableProperty <Merge
 typealias EBTransientProperty_MergerSegmentArray   = EBGenericTransientProperty <MergerSegmentArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Scalar property MergerBoardLimits
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_MergerBoardLimits    = EBObservableProperty <MergerBoardLimits>
-typealias EBTransientProperty_MergerBoardLimits   = EBGenericTransientProperty <MergerBoardLimits>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property MergerPadArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

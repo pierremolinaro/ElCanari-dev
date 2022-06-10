@@ -139,28 +139,28 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
   //  $segmentImage binding
   //····················································································································
 
-  private var mSegmentImageController : EBObservablePropertyController? = nil
-  private var mSegmentImageIndex = 0
+  private var mSegmentImageController = [Int : EBObservablePropertyController] ()
+ // private var mSegmentImageIndex = 0
 
   //····················································································································
 
   final func bind_segmentImage (_ inObject : EBObservableProperty <NSImage>, segmentIndex inSegmentIndex : Int) -> Self {
-    self.mSegmentImageIndex = inSegmentIndex
-    self.mSegmentImageController = EBObservablePropertyController (
+//    self.mSegmentImageIndex = inSegmentIndex
+    self.mSegmentImageController [inSegmentIndex] = EBObservablePropertyController (
       observedObjects: [inObject],
-      callBack: { [weak self] in self?.updateImage (from: inObject) }
+      callBack: { [weak self] in self?.updateImage (from: inObject, segmentIndex: inSegmentIndex) }
     )
     return self
   }
 
   //····················································································································
 
-  fileprivate func updateImage (from inObject : EBObservableProperty <NSImage>) {
+  fileprivate func updateImage (from inObject : EBObservableProperty <NSImage>, segmentIndex inSegmentIndex : Int) {
     switch inObject.selection {
     case .empty, .multiple :
-      self.setImage (nil, forSegment: self.mSegmentImageIndex)
+      self.setImage (nil, forSegment: inSegmentIndex)
     case .single (let v) :
-      self.setImage (v.isValid ? v : nil, forSegment: self.mSegmentImageIndex)
+      self.setImage (v.isValid ? v : nil, forSegment: inSegmentIndex)
     }
   }
 
@@ -168,28 +168,26 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
   //  $segmentTitle binding
   //····················································································································
 
-  private var mSegmentTitleController : EBObservablePropertyController? = nil
-  private var mSegmentTitleIndex = 0
+  private var mSegmentTitleController = [Int : EBObservablePropertyController] ()
 
   //····················································································································
 
   final func bind_segmentTitle (_ inObject : EBObservableProperty <String>, segmentIndex inSegmentIndex : Int) -> Self {
-    self.mSegmentTitleIndex = inSegmentIndex
-    self.mSegmentTitleController = EBObservablePropertyController (
+    self.mSegmentTitleController [inSegmentIndex] = EBObservablePropertyController (
       observedObjects: [inObject],
-      callBack: { [weak self] in self?.updateTitle (from: inObject) }
+      callBack: { [weak self] in self?.updateTitle (from: inObject, segmentIndex: inSegmentIndex) }
     )
     return self
   }
 
   //····················································································································
 
-  fileprivate func updateTitle (from inObject : EBObservableProperty <String>) {
+  fileprivate func updateTitle (from inObject : EBObservableProperty <String>, segmentIndex inSegmentIndex : Int) {
     switch inObject.selection {
     case .empty, .multiple :
-      self.setLabel ("", forSegment: self.mSegmentTitleIndex)
+      self.setLabel ("", forSegment: inSegmentIndex)
     case .single (let v) :
-      self.setLabel (v, forSegment: self.mSegmentTitleIndex)
+      self.setLabel (v, forSegment: inSegmentIndex)
     }
   }
 

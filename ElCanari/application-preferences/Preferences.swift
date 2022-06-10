@@ -648,8 +648,7 @@ let Preferences_mergerModelViewVerticalFlip = "Preferences:mergerModelViewVertic
 let Preferences_mergerModelViewDisplayHoles = "Preferences:mergerModelViewDisplayHoles"
 let Preferences_mergerModelViewDisplayVias = "Preferences:mergerModelViewDisplayVias"
 let Preferences_mergerModelViewDisplayFrontPads = "Preferences:mergerModelViewDisplayFrontPads"
-let Preferences_mergerModelViewDisplayInternalBoardsLimits = "Preferences:mergerModelViewDisplayInternalBoardsLimits"
-let Preferences_mergerModelViewDisplayBoardLimits = "Preferences:mergerModelViewDisplayBoardLimits"
+let Preferences_mergerModelViewDisplayModelBoardLimits = "Preferences:mergerModelViewDisplayModelBoardLimits"
 let Preferences_mergerModelViewDisplayFrontComponentNames = "Preferences:mergerModelViewDisplayFrontComponentNames"
 let Preferences_mergerModelViewDisplayFrontComponentValues = "Preferences:mergerModelViewDisplayFrontComponentValues"
 let Preferences_mergerModelViewDisplayFrontPackages = "Preferences:mergerModelViewDisplayFrontPackages"
@@ -676,7 +675,7 @@ let Preferences_mergerBoardViewDisplayHoles = "Preferences:mergerBoardViewDispla
 let Preferences_mergerBoardViewDisplayVias = "Preferences:mergerBoardViewDisplayVias"
 let Preferences_mergerBoardViewDisplayFrontPads = "Preferences:mergerBoardViewDisplayFrontPads"
 let Preferences_mergerBoardViewDisplayTraversingPads = "Preferences:mergerBoardViewDisplayTraversingPads"
-let Preferences_mergerBoardViewDisplayInternalBoardsLimits = "Preferences:mergerBoardViewDisplayInternalBoardsLimits"
+let Preferences_mergerBoardViewDisplayModelBoardsLimits = "Preferences:mergerBoardViewDisplayModelBoardsLimits"
 let Preferences_mergerBoardViewDisplayBoardLimits = "Preferences:mergerBoardViewDisplayBoardLimits"
 let Preferences_mergerBoardViewDisplayFrontComponentNames = "Preferences:mergerBoardViewDisplayFrontComponentNames"
 let Preferences_mergerBoardViewDisplayFrontComponentValues = "Preferences:mergerBoardViewDisplayFrontComponentValues"
@@ -1995,29 +1994,16 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
 //····················································································································
-//   Atomic property: mergerModelViewDisplayInternalBoardsLimits
+//   Atomic property: mergerModelViewDisplayModelBoardLimits
 //····················································································································
 
-  let preferences_mergerModelViewDisplayInternalBoardsLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayInternalBoardsLimits)
-
-//····················································································································
-
-  var preferences_mergerModelViewDisplayInternalBoardsLimits : Bool {
-    get { return preferences_mergerModelViewDisplayInternalBoardsLimits_property.propval }
-    set { preferences_mergerModelViewDisplayInternalBoardsLimits_property.setProp (newValue) }
-  }
-
-//····················································································································
-//   Atomic property: mergerModelViewDisplayBoardLimits
-//····················································································································
-
-  let preferences_mergerModelViewDisplayBoardLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayBoardLimits)
+  let preferences_mergerModelViewDisplayModelBoardLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayModelBoardLimits)
 
 //····················································································································
 
-  var preferences_mergerModelViewDisplayBoardLimits : Bool {
-    get { return preferences_mergerModelViewDisplayBoardLimits_property.propval }
-    set { preferences_mergerModelViewDisplayBoardLimits_property.setProp (newValue) }
+  var preferences_mergerModelViewDisplayModelBoardLimits : Bool {
+    get { return preferences_mergerModelViewDisplayModelBoardLimits_property.propval }
+    set { preferences_mergerModelViewDisplayModelBoardLimits_property.setProp (newValue) }
   }
 
 //····················································································································
@@ -2359,16 +2345,16 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
 //····················································································································
-//   Atomic property: mergerBoardViewDisplayInternalBoardsLimits
+//   Atomic property: mergerBoardViewDisplayModelBoardsLimits
 //····················································································································
 
-  let preferences_mergerBoardViewDisplayInternalBoardsLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayInternalBoardsLimits)
+  let preferences_mergerBoardViewDisplayModelBoardsLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayModelBoardsLimits)
 
 //····················································································································
 
-  var preferences_mergerBoardViewDisplayInternalBoardsLimits : Bool {
-    get { return preferences_mergerBoardViewDisplayInternalBoardsLimits_property.propval }
-    set { preferences_mergerBoardViewDisplayInternalBoardsLimits_property.setProp (newValue) }
+  var preferences_mergerBoardViewDisplayModelBoardsLimits : Bool {
+    get { return preferences_mergerBoardViewDisplayModelBoardsLimits_property.propval }
+    set { preferences_mergerBoardViewDisplayModelBoardsLimits_property.setProp (newValue) }
   }
 
 //····················································································································

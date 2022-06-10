@@ -145,12 +145,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
   var backTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
-  //   Selection observable property: boardLimits
-  //····················································································································
-
-  var boardLimits_property = EBTransientProperty_MergerBoardLimits ()
-
-  //····················································································································
   //   Selection observable property: boardLimitsBezierPaths
   //····················································································································
 
@@ -521,7 +515,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
     self.bind_property_backPadsBezierPaths (model: model)
     self.bind_property_backTrackSegments (model: model)
     self.bind_property_backTracksBezierPaths (model: model)
-    self.bind_property_boardLimits (model: model)
     self.bind_property_boardLimitsBezierPaths (model: model)
     self.bind_property_drillSegments (model: model)
     self.bind_property_frontComponentNameSegments (model: model)
@@ -627,9 +620,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
   //--- backTracksBezierPaths
     self.backTracksBezierPaths_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_backTracksBezierPaths (self.backTracksBezierPaths_property)
-  //--- boardLimits
-    self.boardLimits_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_boardLimits (self.boardLimits_property)
   //--- boardLimitsBezierPaths
     self.boardLimitsBezierPaths_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_boardLimitsBezierPaths (self.boardLimitsBezierPaths_property)
@@ -1627,46 +1617,6 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
           var isMultipleSelection = false
           for object in v {
             switch object.backTracksBezierPaths_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_boardLimits (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_boardLimits (self.boardLimits_property)
-    self.boardLimits_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerBoardLimits> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.boardLimits_property.selection {
             case .empty :
               return .empty
             case .multiple :

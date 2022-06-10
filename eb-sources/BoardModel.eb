@@ -144,10 +144,6 @@ entity BoardModel {
   property Int modelLimitWidth default 0 ;
   property Int modelLimitWidthUnit default 0 ;
 
-  transient MergerBoardLimits boardLimits
-    dependsFrom self.modelWidth, self.modelHeight, self.modelLimitWidth, prefs.mergerModelViewDisplayBoardLimits
-  ;
-
   transient BezierPathArray boardLimitsBezierPaths dependsFrom self.modelWidth, self.modelHeight, self.modelLimitWidth ;
 
 //--- Back component names
@@ -288,14 +284,11 @@ entity BoardModel {
     prefs.mergerColorBackground,
     self.modelWidth,
     self.modelHeight,
-// Board limits
+// Model Board limits
     self.boardLimitsBezierPaths,
-    prefs.mergerModelViewDisplayBoardLimits,
-    prefs.mergerColorBoardLimits,
-// Internal Board limits
-    self.internalBoardsLimitsBezierPaths,
-    prefs.mergerModelViewDisplayInternalBoardsLimits,
+    prefs.mergerModelViewDisplayModelBoardLimits,
     prefs.mergerColorInternalBoardsLimits,
+    self.internalBoardsLimitsBezierPaths,
 // Front tracks
     self.frontTracksBezierPaths,
     prefs.mergerModelViewDisplayFrontTracks,
@@ -419,10 +412,10 @@ entity BoardModel {
     self.backTracksBezierPaths,
     prefs.mergerBoardViewDisplayBackTracks,
     prefs.mergerColorBackTracks,
-// Internal Board limits
+// Model Board limits
     self.internalBoardsLimitsBezierPaths,
     self.boardLimitsBezierPaths,
-    prefs.mergerBoardViewDisplayInternalBoardsLimits,
+    prefs.mergerBoardViewDisplayModelBoardsLimits,
     prefs.mergerColorInternalBoardsLimits,
 // Front pads
     self.frontPadsBezierPaths,

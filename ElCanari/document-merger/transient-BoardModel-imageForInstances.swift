@@ -37,7 +37,7 @@ func transient_BoardModel_imageForInstances (
        _ prefs_mergerColorBackTracks : NSColor,
        _ self_internalBoardsLimitsBezierPaths : BezierPathArray,
        _ self_boardLimitsBezierPaths : BezierPathArray,
-       _ prefs_mergerBoardViewDisplayInternalBoardsLimits : Bool,
+       _ prefs_mergerBoardViewDisplayModelBoardsLimits : Bool,
        _ prefs_mergerColorInternalBoardsLimits : NSColor,
        _ self_frontPadsBezierPaths : BezierPathArray,
        _ prefs_mergerBoardViewDisplayFrontPads : Bool,
@@ -94,8 +94,8 @@ func transient_BoardModel_imageForInstances (
 //--- START OF USER ZONE 2
   var shapes = EBShape ()
 //--- Background
-  let backRect = NSRect (x:0.0, y:0.0, width: canariUnitToCocoa(self_modelWidth), height: canariUnitToCocoa(self_modelHeight))
-  shapes.add (filled: [EBBezierPath (rect:backRect)], prefs_mergerColorBackground)
+  let backRect = NSRect (x: 0.0, y: 0.0, width: canariUnitToCocoa (self_modelWidth), height: canariUnitToCocoa (self_modelHeight))
+  shapes.add (filled: [EBBezierPath (rect: backRect)], prefs_mergerColorBackground)
 //--- Back Legend Lines
   if (prefs_mergerBoardViewDisplayBackLegendLines) {
     shapes.add (stroke: self_backLegendLinesBezierPaths.array, prefs_mergerColorBackLegendLines)
@@ -185,9 +185,10 @@ func transient_BoardModel_imageForInstances (
     shapes.add (filled: self_viasBezierPaths.array, prefs_mergerColorVias)
   }
 //--- Board limits tracks
-  if prefs_mergerBoardViewDisplayInternalBoardsLimits {
-    shapes.add (stroke: self_internalBoardsLimitsBezierPaths.array, prefs_mergerColorInternalBoardsLimits)
-    shapes.add (stroke: self_boardLimitsBezierPaths.array, prefs_mergerColorInternalBoardsLimits)
+  do{
+    let color = prefs_mergerBoardViewDisplayModelBoardsLimits ? prefs_mergerColorInternalBoardsLimits : .clear
+    shapes.add (stroke: self_internalBoardsLimitsBezierPaths.array, color)
+    shapes.add (stroke: self_boardLimitsBezierPaths.array, color)
   }
 //--- Holes
   if (prefs_mergerBoardViewDisplayHoles) {

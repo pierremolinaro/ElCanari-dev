@@ -70,11 +70,12 @@ extension AutoLayoutMergerDocument {
     boardModel.modelLimitWidth = int (fromDict: inBoardArchiveDict, key: "BOARD-LINE-WIDTH", &errorArray)
     boardModel.modelLimitWidthUnit = int (fromDict: inBoardArchiveDict, key: "BOARD-LINE-WIDTH-UNIT", &errorArray)
     let boardRect_mm = NSRect (
-      x: 0.0,
-      y: 0.0,
+      x: 0.0, // canariUnitToMillimeter (boardModel.modelLimitWidth / 2),
+      y: 0.0, // canariUnitToMillimeter (boardModel.modelLimitWidth / 2),
       width: canariUnitToMillimeter (boardModel.modelWidth),
       height: canariUnitToMillimeter (boardModel.modelHeight)
     )
+//    Swift.print ("\(canariUnitToMillimeter (boardModel.modelWidth)) \(canariUnitToMillimeter (boardModel.modelHeight))")
   //--- Internal boards limits
     do{
       var internalBoardsLimitsEntities = EBReferenceArray <SegmentEntity> ()

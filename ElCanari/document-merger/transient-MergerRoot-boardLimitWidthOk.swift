@@ -13,15 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutMergerDocument_statusTitle (
-       _ self_issues : CanariIssueArray
-) -> String {
+func transient_MergerRoot_boardLimitWidthOk (
+       _ self_boardLimitWidthErrorMessage : String
+) -> Bool {
 //--- START OF USER ZONE 2
-        if self_issues.isEmpty {
-          return ""
-        }else{
-          return "— \(self_issues.count)"
-        }
+       return self_boardLimitWidthErrorMessage.isEmpty
 //--- END OF USER ZONE 2
 }
 

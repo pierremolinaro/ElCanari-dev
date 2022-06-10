@@ -14,27 +14,31 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_AutoLayoutMergerDocument_statusMessage (
-       _ self_issues : CanariIssueArray
+       _ self_issues : CanariIssueArray,               
+       _ root_boardLimitWidthErrorMessage : String
 ) -> String {
 //--- START OF USER ZONE 2
         var s = "No error, no warning"
+        if !root_boardLimitWidthErrorMessage.isEmpty {
+          s = root_boardLimitWidthErrorMessage + "\n"
+        }
         if self_issues.count > 0 {
           let errorCount = self_issues.errorCount
           let warningCount = self_issues.warningCount
           if errorCount == 0 {
-            s = "No error"
+            s = "No board disposition error"
           }else if errorCount == 1 {
-            s = "1 error"
+            s = "1 board disposition error"
           }else {
-            s = "\(errorCount) errors"
+            s = "\(errorCount) board disposition errors"
           }
           s += ", "
           if warningCount == 0 {
-            s += "no warning"
+            s += "no board disposition warning"
           }else if warningCount == 1 {
-            s += "1 warning"
+            s += "1 board disposition warning"
           }else {
-            s += "\(warningCount) warnings"
+            s += "\(warningCount) board disposition warnings"
           }
           s += "."
         }

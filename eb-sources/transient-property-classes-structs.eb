@@ -41,7 +41,6 @@ transient property struct PinQualifiedNameStruct ;
 
 transient property struct MergerViaShapeArray ;
 transient property struct MergerSegmentArray ;
-transient property struct MergerBoardLimits ;
 transient property struct MergerPadArray ;
 
 transient property struct CanariIssueArray ;

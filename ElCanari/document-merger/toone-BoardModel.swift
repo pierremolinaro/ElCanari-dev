@@ -50,7 +50,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       oldValue.backPadsBezierPaths_property.removeEBObserver (self.backPadsBezierPaths_property) // Transient property
       oldValue.traversingPadArray_property.removeEBObserver (self.traversingPadArray_property) // Transient property
       oldValue.traversingPadsBezierPaths_property.removeEBObserver (self.traversingPadsBezierPaths_property) // Transient property
-      oldValue.boardLimits_property.removeEBObserver (self.boardLimits_property) // Transient property
       oldValue.boardLimitsBezierPaths_property.removeEBObserver (self.boardLimitsBezierPaths_property) // Transient property
       oldValue.backComponentNameSegments_property.removeEBObserver (self.backComponentNameSegments_property) // Transient property
       oldValue.backComponentNamesBezierPaths_property.removeEBObserver (self.backComponentNamesBezierPaths_property) // Transient property
@@ -117,7 +116,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       newValue.backPadsBezierPaths_property.addEBObserver (self.backPadsBezierPaths_property) // Transient property
       newValue.traversingPadArray_property.addEBObserver (self.traversingPadArray_property) // Transient property
       newValue.traversingPadsBezierPaths_property.addEBObserver (self.traversingPadsBezierPaths_property) // Transient property
-      newValue.boardLimits_property.addEBObserver (self.boardLimits_property) // Transient property
       newValue.boardLimitsBezierPaths_property.addEBObserver (self.boardLimitsBezierPaths_property) // Transient property
       newValue.backComponentNameSegments_property.addEBObserver (self.backComponentNameSegments_property) // Transient property
       newValue.backComponentNamesBezierPaths_property.addEBObserver (self.backComponentNamesBezierPaths_property) // Transient property
@@ -353,12 +351,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let traversingPadsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-
-  //····················································································································
-  //   Observers of 'boardLimits' transient property
-  //····················································································································
-
-  final let boardLimits_property = EBGenericTransientProperty <MergerBoardLimits?> ()
 
   //····················································································································
   //   Observers of 'boardLimitsBezierPaths' transient property
@@ -1639,21 +1631,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     self.traversingPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.traversingPadsBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure boardLimits transient property
-    self.boardLimits_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.boardLimits_property.selection {
         case .empty :
           return .empty
         case .multiple :

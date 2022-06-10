@@ -28,6 +28,7 @@ final class AutoLayoutCanariObservedDimensionAndPopUp : AutoLayoutHorizontalStac
 
     super.init ()
     self.alignment = .firstBaseline
+    _ = self.equalWidth ()
     self.appendView (self.mDimensionField)
     self.appendView (self.mUnitPopUpButton)
   }

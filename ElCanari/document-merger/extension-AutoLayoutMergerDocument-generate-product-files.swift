@@ -152,8 +152,8 @@ extension AutoLayoutMergerDocument {
     var traversingPads = [[String : Any]] ()
     var backPads = [[String : Any]] ()
     var drills = [String] ()
-    for board in self.rootObject.boardInstances_property.propval.values {
-      let myModel : BoardModel? = board.myModel_property.propval
+    for board in self.rootObject.boardInstances.values {
+      let myModel : BoardModel? = board.myModel
       let modelWidth  = myModel?.modelWidth  ?? 0
       let modelHeight = myModel?.modelHeight ?? 0
       let instanceRotation = board.instanceRotation
@@ -410,8 +410,6 @@ extension AutoLayoutMergerDocument {
         }
         if product.drawBoardLimits {
           let boardLineWidth = canariUnitToCocoa (self.rootObject.boardLimitWidth)
- // §         let r = cocoaBoardRect.insetBy (dx: boardLineWidth / 2.0, dy: boardLineWidth / 2.0)
- //         var bp = EBBezierPath (rect:r)
           var bp = EBBezierPath (rect: cocoaBoardRect)
           bp.lineWidth = boardLineWidth
           strokeBezierPaths.append (bp)
@@ -723,10 +721,10 @@ extension AutoLayoutMergerDocument {
         for board in self.rootObject.boardInstances_property.propval.values {
           let lineWidth : Int = board.myModel_property.propval!.modelLimitWidth
           let r : CanariRect = board.instanceRect!
-          let left  = canariUnitToMilTenth (r.left + lineWidth / 2)
-          let right = canariUnitToMilTenth (r.left + r.width - lineWidth / 2)
-          let bottom = canariUnitToMilTenth (r.bottom + lineWidth / 2)
-          let top = canariUnitToMilTenth (r.bottom + r.height - lineWidth / 2)
+          let left  = canariUnitToMilTenth (r.left)
+          let right = canariUnitToMilTenth (r.left + r.width)
+          let bottom = canariUnitToMilTenth (r.bottom)
+          let top = canariUnitToMilTenth (r.bottom + r.height)
           var drawings = [String] ()
           drawings.append ("X\( left)Y\(bottom)D02") // Move to
           drawings.append ("X\( left)Y\(   top)D01") // Line to
@@ -743,14 +741,10 @@ extension AutoLayoutMergerDocument {
       }
       if product.drawBoardLimits {
         let boardLineWidth = self.rootObject.boardLimitWidth
-// §        let left = canariUnitToMilTenth (boardLineWidth / 2)
-// §       let right = canariUnitToMilTenth (boardWidth - boardLineWidth / 2)
-//        let bottom = canariUnitToMilTenth (boardLineWidth / 2)
-//        let top = canariUnitToMilTenth (self.rootObject.boardHeight! - boardLineWidth / 2)
-        let left = 0
-        let right = canariUnitToMilTenth (boardWidth)
-        let bottom = 0
-        let top = canariUnitToMilTenth (self.rootObject.boardHeight!)
+        let left = canariUnitToMilTenth (boardLineWidth / 2)
+        let right = canariUnitToMilTenth (boardWidth + boardLineWidth / 2)
+        let bottom = canariUnitToMilTenth (boardLineWidth / 2)
+        let top = canariUnitToMilTenth (self.rootObject.boardHeight! + boardLineWidth / 2)
         var drawings = [String] ()
         drawings.append ("X\( left)Y\(bottom)D02") // Move to
         drawings.append ("X\( left)Y\(   top)D01") // Line to

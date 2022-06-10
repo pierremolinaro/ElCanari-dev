@@ -13,52 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_boardRect (
-       _ self_automaticBoardSize : Bool,
-       _ self_boardLimitWidth : Int, 
-       _ self_boardManualWidth : Int,
-       _ self_boardManualHeight : Int,
-       _ self_boardInstances_instanceRect : [MergerBoardInstance_instanceRect],
-       _ self_boardInstances_boardLimitWidth : [MergerBoardInstance_boardLimitWidth]
-) -> CanariRect {
+func transient_AutoLayoutMergerDocument_boardLimitWidthStatusImage (
+       _ root_boardLimitWidthOk : Bool
+) -> NSImage {
 //--- START OF USER ZONE 2
-    if self_automaticBoardSize {
-      var r = CanariRect () // Empty rect
-      var idx = 0
-      while idx < self_boardInstances_instanceRect.count {
-        if let rect = self_boardInstances_instanceRect [idx].instanceRect,
-           let boardLimitWidth = self_boardInstances_boardLimitWidth [idx].boardLimitWidth {
-          let inset = min (0, boardLimitWidth - self_boardLimitWidth)
-          r = r.union (rect.insetBy (dx: inset, dy: inset))
-        }
-        idx += 1
-      }
-//      return CanariRect (
-//        left: self_boardLimitWidth / 2,
-//        bottom: self_boardLimitWidth / 2,
-//        width: r.right - self_boardLimitWidth,
-//        height: r.top  - self_boardLimitWidth
-//      )
-      return CanariRect (
-        left: 0,
-        bottom: 0,
-        width: r.maxX,
-        height: r.maxY
-      )
-    }else{
-//      return CanariRect (
-//        left: self_boardLimitWidth / 2,
-//        bottom: self_boardLimitWidth / 2,
-//        width: self_boardManualWidth - self_boardLimitWidth,
-//        height: self_boardManualHeight - self_boardLimitWidth
-//      )
-      return CanariRect (
-        left: 0,
-        bottom: 0,
-        width: self_boardManualWidth,
-        height: self_boardManualHeight
-      )
-    }
+       return root_boardLimitWidthOk ? NSImage () : NSImage (named: errorStatusImageName)!
 //--- END OF USER ZONE 2
 }
 

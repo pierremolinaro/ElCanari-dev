@@ -52,7 +52,6 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
       self.removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_traversingPadArray_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_traversingPadsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_boardLimits_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_backComponentNamesBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
@@ -119,7 +118,6 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
       self.addEBObserversOf_backPadsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_traversingPadArray_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_traversingPadsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_boardLimits_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_backComponentNameSegments_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_backComponentNamesBezierPaths_toElementsOfSet (inAddedSet) // Transient property
@@ -2082,62 +2080,6 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
     for managedObject in inSet.values {
       self.mObserversOf_traversingPadsBezierPaths.apply { (_ observer : EBObserverProtocol) in
         managedObject.traversingPadsBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'boardLimits' transient property
-  //····················································································································
-
-  private final var mObserversOf_boardLimits = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardLimits (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_boardLimits.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.boardLimits_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_boardLimits (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_boardLimits.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.boardLimits_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardLimits_toElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
-    for managedObject in inSet.values {
-      self.mObserversOf_boardLimits.apply { (_ observer : EBObserverProtocol) in
-        managedObject.boardLimits_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardLimits_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModel>) {
-    for managedObject in inSet.values {
-      self.mObserversOf_boardLimits.apply { (_ observer : EBObserverProtocol) in
-        managedObject.boardLimits_property.removeEBObserver (observer)
       }
     }
   }

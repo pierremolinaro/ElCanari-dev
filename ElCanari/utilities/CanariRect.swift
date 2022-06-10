@@ -102,10 +102,12 @@ struct CanariRect : Equatable, Hashable {
 
   var left    : Int { return self.origin.x }
   var midX    : Int { return self.origin.x + self.size.width / 2 }
+  var maxX    : Int { return self.origin.x + self.size.width }
   var right   : Int { return self.origin.x + self.size.width }
 
   var bottom  : Int { return self.origin.y }
   var midY    : Int { return self.origin.y + self.size.height / 2 }
+  var maxY    : Int { return self.origin.y + self.size.height }
   var top     : Int { return self.origin.y + self.size.height }
 
   var height  : Int { return self.size.height }

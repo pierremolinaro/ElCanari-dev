@@ -18,11 +18,9 @@ func transient_BoardModel_imageForModel (
        _ self_modelWidth : Int,          
        _ self_modelHeight : Int,         
        _ self_boardLimitsBezierPaths : BezierPathArray,
-       _ prefs_mergerModelViewDisplayBoardLimits : Bool,
-       _ prefs_mergerColorBoardLimits : NSColor,
-       _ self_internalBoardsLimitsBezierPaths : BezierPathArray,
-       _ prefs_mergerModelViewDisplayInternalBoardsLimits : Bool,
+       _ prefs_mergerModelViewDisplayModelBoardLimits : Bool,
        _ prefs_mergerColorInternalBoardsLimits : NSColor,
+       _ self_internalBoardsLimitsBezierPaths : BezierPathArray,
        _ self_frontTracksBezierPaths : BezierPathArray,
        _ prefs_mergerModelViewDisplayFrontTracks : Bool,
        _ prefs_mergerColorFrontTracks : NSColor,
@@ -182,13 +180,11 @@ func transient_BoardModel_imageForModel (
   if (prefs_mergerModelViewDisplayFrontPads) {
     shapes.add (filled: self_frontPadsBezierPaths.array, prefs_mergerColorFrontPads)
   }
-//--- Internal Board limits
-  if prefs_mergerModelViewDisplayInternalBoardsLimits {
-    shapes.add (stroke: self_internalBoardsLimitsBezierPaths.array, prefs_mergerColorInternalBoardsLimits)
-  }
-//--- Board limits
-  if prefs_mergerModelViewDisplayBoardLimits {
-    shapes.add (stroke: self_boardLimitsBezierPaths.array, prefs_mergerColorBoardLimits)
+//--- Model Board limits
+  do{
+    let color = prefs_mergerModelViewDisplayModelBoardLimits ? prefs_mergerColorInternalBoardsLimits : .clear
+    shapes.add (stroke: self_internalBoardsLimitsBezierPaths.array, color)
+    shapes.add (stroke: self_boardLimitsBezierPaths.array, color)
   }
 //--- Vias
   if (prefs_mergerModelViewDisplayVias) {

@@ -14,12 +14,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_AutoLayoutMergerDocument_statusImage (
-       _ self_issues : CanariIssueArray
+       _ self_issues : CanariIssueArray,             
+       _ root_boardLimitWidthOk : Bool
 ) -> NSImage {
 //--- START OF USER ZONE 2
-          if self_issues.count == 0 {
+          if (self_issues.count == 0) && root_boardLimitWidthOk {
             return NSImage (named: okStatusImageName)!
-          }else if self_issues.errorCount != 0 {
+          }else if (self_issues.errorCount != 0) || !root_boardLimitWidthOk {
             return NSImage (named: errorStatusImageName)!
           }else{
             return NSImage (named: warningStatusImageName)!

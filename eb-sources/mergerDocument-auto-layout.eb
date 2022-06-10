@@ -36,9 +36,10 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
     stackViewRef mPageMasterView
   }
 
-  transient NSImage statusImage dependsFrom self.issues ;
-  transient String statusMessage dependsFrom self.issues ;
-  transient String statusTitle dependsFrom self.issues ;
+  transient NSImage statusImage dependsFrom self.issues, root.boardLimitWidthOk ;
+  transient NSImage boardLimitWidthStatusImage dependsFrom root.boardLimitWidthOk ;
+  transient String statusMessage dependsFrom self.issues, root.boardLimitWidthErrorMessage ;
+  transient String boardDispositionStatusTitle dependsFrom self.issues ;
   transient CanariIssueArray issues dependsFrom
     root.overlapingArrangment, root.boardRect, root.boardLimitWidth, // root.boardDisplayRect,
     root.boardInstances.all.instanceRect, root.boardInstances.all.boardLimitWidth
@@ -98,17 +99,17 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
           addCenterYAligned (
             left: StaticLabel (title: "Board Limits", bold: no, size: .small),
             right: hStack setCenterYAlignment () {
-              Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBoardLimits }
+              space
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBoardLimits (sendContinously: no) }
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayBoardLimits }
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Internal Board Limits", bold: no, size: .small),
+            left: StaticLabel (title: "Model Board Limits", bold: no, size: .small),
             right: hStack setCenterYAlignment () {
-              Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayInternalBoardsLimits }
+              Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayModelBoardLimits }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInternalBoardsLimits (sendContinously: no) }
-              Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayInternalBoardsLimits }
+              Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayModelBoardsLimits }
             }
           )
           addCenterYAligned (
@@ -328,30 +329,36 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
       GridView2 {
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Artwork Name", bold: no, size : .small),
-          right: Label (bold: yes, size: .small) { $title #mBoardModelSelection.artworkName  }
+          right: Label (bold: yes, size: .small) { set (alignment: .right) $title #mBoardModelSelection.artworkName  }
         )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Layout", bold: no, size : .small),
-          right: Label (bold: yes, size: .small) { $title #mBoardModelSelection.layerConfigurationString }
+          right: Label (bold: yes, size: .small) { set (alignment: .right) $title #mBoardModelSelection.layerConfigurationString }
         )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Model Width", bold: no, size : .small),
-          right: CanariDimensionAndPopUp (size: .small) {
+          right: CanariObservedDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #mBoardModelSelection.modelWidth, #mBoardModelSelection.modelWidthUnit
           }
         )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Model Height", bold: no, size : .small),
-          right: CanariDimensionAndPopUp (size: .small) {
+          right: CanariObservedDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #mBoardModelSelection.modelHeight, #mBoardModelSelection.modelHeightUnit
           }
         )        
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Limit Width", bold: no, size : .small),
-          right: CanariDimensionAndPopUp (size: .small) {
+          right: CanariObservedDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #mBoardModelSelection.modelLimitWidth, #mBoardModelSelection.modelLimitWidthUnit
           }
-        )        
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Clearance", bold: no, size : .small),
+          right: CanariObservedDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit #mBoardModelSelection.modelLimitWidth, #mBoardModelSelection.modelLimitWidthUnit
+          }
+        )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Board Count", bold: no, size : .small),
           right: IntObserverField (bold: yes, size: .small) {
@@ -360,6 +367,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
           }
         )
       }
+      space
     }
     separator
     GraphicView (minZoom: 10, maxZoom: 4000) {
@@ -436,17 +444,17 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
           addCenterYAligned (
             left: StaticLabel (title: "Board Limits", bold: no, size: .small),
             right: hStack setCenterYAlignment () {
-              Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBoardLimits }
+              space
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBoardLimits (sendContinously: no) }
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayBoardLimits }
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Internal Board Limits", bold: no, size: .small),
+            left: StaticLabel (title: "Model Board Limits", bold: no, size: .small),
             right: hStack setCenterYAlignment () {
-              Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayInternalBoardsLimits }
+              Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayModelBoardLimits }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInternalBoardsLimits (sendContinously: no) }
-              Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayInternalBoardsLimits }
+              Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayModelBoardsLimits }
             }
           )
           addCenterYAligned (
@@ -648,8 +656,9 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         expandableWidth ()
         addPage (title: "", tooltip: "Model Description", pageView: stackView mBoardSettingsPage)
         addPage (title: "", tooltip: "Issue Inspector", pageView: stackView mBoardIssuesPage)
+        $segmentImage self.boardLimitWidthStatusImage (segmentIndex : 0)
         $segmentImage self.statusImage (segmentIndex : 1)
-        $segmentTitle self.statusTitle (segmentIndex : 1)
+        $segmentTitle self.boardDispositionStatusTitle (segmentIndex : 1)
       }
       stackViewRef mBoardBaseInspectorView
     }
@@ -730,6 +739,13 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
           $dimensionAndUnit root.boardLimitWidth, root.boardLimitWidthUnit
         }
       )
+      add (single:
+        Label (bold: yes, size : .small) {
+          setRedTextColor ()
+          $title root.boardLimitWidthErrorMessage
+          $hidden root.boardLimitWidthOk
+        }
+      )      
       add (single: StaticLabel (title: "Arrow Key Magnitude", bold: yes, size : .small)
         { expandableWidth () set (alignment: .left) }
       )
@@ -865,7 +881,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   //············································································
 
   stackView mBoardIssuesPage vStack {
-    Label (bold: no, size: .regular) { expandableWidth () set (alignment: .center) $title self.statusMessage }
+    Label (bold: yes, size: .small) { expandableWidth () $title self.statusMessage }
     CanariIssueTableView (hasHideIssueButton: yes) [outlet mBoardIssueTableView] { $issues self.issues }
   }
 

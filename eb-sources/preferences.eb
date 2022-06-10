@@ -452,8 +452,7 @@ prefs {
   property Bool mergerModelViewDisplayHoles default yes ;
   property Bool mergerModelViewDisplayVias default yes ;
   property Bool mergerModelViewDisplayFrontPads default yes ;
-  property Bool mergerModelViewDisplayInternalBoardsLimits default yes ;
-  property Bool mergerModelViewDisplayBoardLimits default yes ;
+  property Bool mergerModelViewDisplayModelBoardLimits default yes ;
   property Bool mergerModelViewDisplayFrontComponentNames default no ;
   property Bool mergerModelViewDisplayFrontComponentValues default no ;
   property Bool mergerModelViewDisplayFrontPackages default no ;
@@ -481,7 +480,7 @@ prefs {
   property Bool mergerBoardViewDisplayVias default yes ;
   property Bool mergerBoardViewDisplayFrontPads default yes ;
   property Bool mergerBoardViewDisplayTraversingPads default yes ;
-  property Bool mergerBoardViewDisplayInternalBoardsLimits default yes ;
+  property Bool mergerBoardViewDisplayModelBoardsLimits default yes ;
   property Bool mergerBoardViewDisplayBoardLimits default yes ;
   property Bool mergerBoardViewDisplayFrontComponentNames default no ;
   property Bool mergerBoardViewDisplayFrontComponentValues default no ;

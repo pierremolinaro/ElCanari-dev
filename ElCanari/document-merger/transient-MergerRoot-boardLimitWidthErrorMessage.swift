@@ -13,18 +13,24 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_boardLimits (
-       _ self_modelWidth : Int,        
-       _ self_modelHeight : Int,       
-       _ self_modelLimitWidth : Int,   
-       _ prefs_mergerModelViewDisplayBoardLimits : Bool
-) -> MergerBoardLimits {
+func transient_MergerRoot_boardLimitWidthErrorMessage (
+       _ self_boardLimitWidth : Int,                   
+       _ self_boardModels_modelLimitWidth : [BoardModel_modelLimitWidth]
+) -> String {
 //--- START OF USER ZONE 2
-  return MergerBoardLimits (
-    boardWidth: self_modelWidth,
-    boardHeight: self_modelHeight,
-    lineWidth: prefs_mergerModelViewDisplayBoardLimits ? self_modelLimitWidth : 0
-  )
+    if self_boardModels_modelLimitWidth.isEmpty {
+      return ""
+    }else{
+      var maxOfModelLimitWidth = 0
+      for model in self_boardModels_modelLimitWidth {
+        maxOfModelLimitWidth = max (maxOfModelLimitWidth, model.modelLimitWidth)
+      }
+      if maxOfModelLimitWidth <= self_boardLimitWidth {
+        return ""
+      }else{
+        return "Board width should be greater of equal to model limit widths"
+      }
+    }
 //--- END OF USER ZONE 2
 }
 

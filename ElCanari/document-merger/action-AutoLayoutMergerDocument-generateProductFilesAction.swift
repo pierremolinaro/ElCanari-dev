@@ -17,9 +17,9 @@ extension AutoLayoutMergerDocument {
     case .multiple, .empty :
       break
     case .single (let issues) :
-      if issues.count == 0 {
+      if issues.count == 0, let ok = self.rootObject.boardLimitWidthOk, ok {
         self.checkLayerConfigurationAndGenerateProductFiles ()
-      }else{ // if let displaySettingView = self.mDisplaySettingView {
+      }else{
         let alert = NSAlert ()
         alert.messageText = "The board contains errors and / or warnings"
         alert.addButton (withTitle: "Cancel")
