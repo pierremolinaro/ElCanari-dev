@@ -519,7 +519,7 @@ final class ComponentSymbolInProject : SchematicObject,
     self.mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mComponent_none.mReadModelFunction = { [weak self] in // §
+    self.mComponent_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mComponent_property.propval == nil)
       }else{

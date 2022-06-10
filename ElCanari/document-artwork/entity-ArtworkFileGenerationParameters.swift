@@ -870,7 +870,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.measurementUnitForPadHoleInPDF_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     self.padHoleDiameterInPDF_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mArtwork_none.mReadModelFunction = { [weak self] in // §
+    self.mArtwork_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mArtwork_property.propval == nil)
       }else{

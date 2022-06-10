@@ -1627,7 +1627,7 @@ final class PackageRoot : EBManagedObject,
     self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mModelImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mModelImageDoublePoint_none.mReadModelFunction = { [weak self] in // §
+    self.mModelImageDoublePoint_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mModelImageDoublePoint_property.propval == nil)
       }else{

@@ -117,7 +117,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mPin_none.mReadModelFunction = { [weak self] in // §
+    self.mPin_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mPin_property.propval == nil)
       }else{

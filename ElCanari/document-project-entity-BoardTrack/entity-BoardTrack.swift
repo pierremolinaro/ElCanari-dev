@@ -829,7 +829,7 @@ final class BoardTrack : BoardObject,
     self.mManualLockP2_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mDirectionLockOnKnobDragging_property = EBStoredProperty_TrackLockDirection (defaultValue: TrackLockDirection.unlocked, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mConnectorP1_none.mReadModelFunction = { [weak self] in // §
+    self.mConnectorP1_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mConnectorP1_property.propval == nil)
       }else{
@@ -837,7 +837,7 @@ final class BoardTrack : BoardObject,
       }
     }
     self.mConnectorP1_property.addEBObserver (self.mConnectorP1_none)
-    self.mConnectorP2_none.mReadModelFunction = { [weak self] in // §
+    self.mConnectorP2_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mConnectorP2_property.propval == nil)
       }else{
@@ -845,7 +845,7 @@ final class BoardTrack : BoardObject,
       }
     }
     self.mConnectorP2_property.addEBObserver (self.mConnectorP2_none)
-    self.mNet_none.mReadModelFunction = { [weak self] in // §
+    self.mNet_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mNet_property.propval == nil)
       }else{

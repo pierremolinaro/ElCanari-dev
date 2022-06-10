@@ -61,7 +61,7 @@ extension NSBezierPath : EBStoredPropertyProtocol {
   //····················································································································
 
   static func unarchiveFromData (data : Data) -> NSObject? {
-//    return NSKeyedUnarchiver.unarchiveObject (with: data) as? NSBezierPath // §
+//    return NSKeyedUnarchiver.unarchiveObject (with: data) as? NSBezierPath
     return try? NSKeyedUnarchiver.unarchivedObject (ofClass: NSBezierPath.self, from: data)
   }
 

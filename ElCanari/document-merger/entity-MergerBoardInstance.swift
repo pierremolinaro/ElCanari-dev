@@ -235,7 +235,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
     self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.instanceRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.myModel_none.mReadModelFunction = { [weak self] in // §
+    self.myModel_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.myModel_property.propval == nil)
       }else{
@@ -243,7 +243,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       }
     }
     self.myModel_property.addEBObserver (self.myModel_none)
-    self.myRoot_none.mReadModelFunction = { [weak self] in // §
+    self.myRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.myRoot_property.propval == nil)
       }else{

@@ -357,7 +357,7 @@ final class BoardText : BoardObject,
     self.mWeight_property = EBStoredProperty_Double (defaultValue: 1, undoManager: ebUndoManager)
     self.mOblique_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mFont_none.mReadModelFunction = { [weak self] in // §
+    self.mFont_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mFont_property.propval == nil)
       }else{

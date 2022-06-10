@@ -214,7 +214,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    self.mSymbolInstance_none.mReadModelFunction = { [weak self] in // §
+    self.mSymbolInstance_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mSymbolInstance_property.propval == nil)
       }else{
@@ -222,7 +222,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       }
     }
     self.mSymbolInstance_property.addEBObserver (self.mSymbolInstance_none)
-    self.mType_none.mReadModelFunction = { [weak self] in // §
+    self.mType_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mType_property.propval == nil)
       }else{
@@ -230,7 +230,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       }
     }
     self.mType_property.addEBObserver (self.mType_none)
-    self.mPadProxy_none.mReadModelFunction = { [weak self] in // §
+    self.mPadProxy_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mPadProxy_property.propval == nil)
       }else{

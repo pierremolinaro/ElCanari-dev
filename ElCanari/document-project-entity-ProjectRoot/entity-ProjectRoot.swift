@@ -4431,7 +4431,7 @@ final class ProjectRoot : EBManagedObject,
     self.mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mArtwork_none.mReadModelFunction = { [weak self] in // §
+    self.mArtwork_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mArtwork_property.propval == nil)
       }else{
@@ -4439,7 +4439,7 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mArtwork_property.addEBObserver (self.mArtwork_none)
-    self.mSelectedSheet_none.mReadModelFunction = { [weak self] in // §
+    self.mSelectedSheet_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mSelectedSheet_property.propval == nil)
       }else{

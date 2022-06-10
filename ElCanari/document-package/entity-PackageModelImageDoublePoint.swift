@@ -218,7 +218,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
     self.mSecondDy_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: ebUndoManager)
     self.mSecondColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mRoot_none.mReadModelFunction = { [weak self] in // §
+    self.mRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mRoot_property.propval == nil)
       }else{

@@ -1254,7 +1254,7 @@ final class MergerRoot : EBManagedObject,
     self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mArtwork_none.mReadModelFunction = { [weak self] in // §
+    self.mArtwork_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mArtwork_property.propval == nil)
       }else{

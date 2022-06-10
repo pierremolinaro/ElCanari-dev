@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias CustomizedDeviceDocument = AutoLayoutDeviceDocument // TEMPORARY §§§
+typealias CustomizedDeviceDocument = AutoLayoutDeviceDocument
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

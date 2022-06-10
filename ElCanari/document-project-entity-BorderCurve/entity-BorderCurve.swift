@@ -455,7 +455,7 @@ final class BorderCurve : EBGraphicManagedObject,
     self.mCPY2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mShape_property = EBStoredProperty_BorderCurveShape (defaultValue: BorderCurveShape.line, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mRoot_none.mReadModelFunction = { [weak self] in // §
+    self.mRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mRoot_property.propval == nil)
       }else{
@@ -463,7 +463,7 @@ final class BorderCurve : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.mRoot_none)
-    self.mNext_none.mReadModelFunction = { [weak self] in // §
+    self.mNext_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mNext_property.propval == nil)
       }else{
@@ -471,7 +471,7 @@ final class BorderCurve : EBGraphicManagedObject,
       }
     }
     self.mNext_property.addEBObserver (self.mNext_none)
-    self.mPrevious_none.mReadModelFunction = { [weak self] in // §
+    self.mPrevious_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mPrevious_property.propval == nil)
       }else{

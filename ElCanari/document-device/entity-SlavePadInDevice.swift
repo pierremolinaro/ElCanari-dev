@@ -330,7 +330,7 @@ final class SlavePadInDevice : EBManagedObject,
     self.mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: ebUndoManager)
     self.mStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mMasterPad_none.mReadModelFunction = { [weak self] in // §
+    self.mMasterPad_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mMasterPad_property.propval == nil)
       }else{

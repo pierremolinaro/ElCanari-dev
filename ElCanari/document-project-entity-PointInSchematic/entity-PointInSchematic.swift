@@ -534,7 +534,7 @@ final class PointInSchematic : EBManagedObject,
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mSymbol_none.mReadModelFunction = { [weak self] in // §
+    self.mSymbol_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mSymbol_property.propval == nil)
       }else{
@@ -542,7 +542,7 @@ final class PointInSchematic : EBManagedObject,
       }
     }
     self.mSymbol_property.addEBObserver (self.mSymbol_none)
-    self.mNet_none.mReadModelFunction = { [weak self] in // §
+    self.mNet_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mNet_property.propval == nil)
       }else{
@@ -550,7 +550,7 @@ final class PointInSchematic : EBManagedObject,
       }
     }
     self.mNet_property.addEBObserver (self.mNet_none)
-    self.mNC_none.mReadModelFunction = { [weak self] in // §
+    self.mNC_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mNC_property.propval == nil)
       }else{
@@ -558,7 +558,7 @@ final class PointInSchematic : EBManagedObject,
       }
     }
     self.mNC_property.addEBObserver (self.mNC_none)
-    self.mSheet_none.mReadModelFunction = { [weak self] in // §
+    self.mSheet_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mSheet_property.propval == nil)
       }else{

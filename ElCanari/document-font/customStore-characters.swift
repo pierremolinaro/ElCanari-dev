@@ -157,8 +157,6 @@ extension Scanner {
   //··················································································································
 
   func myCheckString (_ inString : String, _ ioOk : inout Bool) {
-//    let b = self.scanString (inString, into: nil) // §
-//    ioOk = ioOk && b
     let s = self.scanString (inString)
     ioOk = ioOk && (s != nil)
   }
@@ -167,7 +165,6 @@ extension Scanner {
 
   func myTestString (_ inString : String) -> Bool {
     return self.scanString (inString) != nil
-//    return self.scanString (inString, into: nil)
   }
 
   //··················································································································

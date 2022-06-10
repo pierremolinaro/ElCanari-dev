@@ -155,7 +155,7 @@ final class LabelInSchematic : SchematicObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mOrientation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mPoint_none.mReadModelFunction = { [weak self] in // §
+    self.mPoint_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mPoint_property.propval == nil)
       }else{

@@ -797,7 +797,7 @@ final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol 
     }
     let data = try! NSKeyedArchiver.archivedData (withRootObject: segmentArray, requiringSecureCoding: true)
  //   let data = NSKeyedArchiver.archivedData (withRootObject: segmentArray) // Deprecated 10.14
-//    let data = NSArchiver.archivedData (withRootObject: segmentArray) // § Deprecated 10.13
+ //    let data = NSArchiver.archivedData (withRootObject: segmentArray) // Deprecated 10.13
     pb.setData (data, forType: FONT_SEGMENTS_PASTEBOARD_TYPE)
   }
 

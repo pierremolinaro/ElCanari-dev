@@ -294,7 +294,7 @@ final class NetInProject : EBManagedObject,
     self.mNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mWarnsExactlyOneLabel_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mNetClass_none.mReadModelFunction = { [weak self] in // §
+    self.mNetClass_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mNetClass_property.propval == nil)
       }else{
