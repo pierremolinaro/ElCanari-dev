@@ -28,16 +28,14 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.5.3"
+let VERSION_CANARI = "1.5.4"
 let MAC_OS_MINIMUM_VERSION = "10.13"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Vues graphiques : correction boucle infinie du calcul du zoom automatique"
+  "Document « Merger » : rétablissement de la cohérence de la disposition des cartes"
 ]
 let CHANGES : [String] = [
-  "Document « Project » : amélioration présentation artwork",
-  "Amélioration de la validation de la saisie des champs entiers et flottants"
 ]
 let NEWS : [String] = [
 ]
