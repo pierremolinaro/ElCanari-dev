@@ -1275,7 +1275,7 @@ import Cocoa
       do{
         let view_0_0_0 = AutoLayoutFlexibleSpace ()
         view_0_0.appendView (view_0_0_0)
-        let view_0_0_1 = AutoLayoutPullDownButton (title: "", size: .small)
+        let view_0_0_1 = AutoLayoutPullDownButton (title: "", size: .regular)
           .add (item: AutoLayoutMenuItemDescriptor (title: "Select all Connected Elements", target: self, selector: #selector (AutoLayoutProjectDocument.selectAllConnectedElementsInSchematicsAction (_:)), enableBinding: .alwaysTrue))
           .add (item: AutoLayoutMenuItemDescriptor (title: "Move Selected Elements to Sheet…", target: self, selector: #selector (AutoLayoutProjectDocument.moveSelectedToSheetInSchematicsAction (_:)), enableBinding: .alwaysTrue))
         self.configure_schematicPullDownButtonConfigurator (view_0_0_1) // Configurator
@@ -2873,14 +2873,14 @@ import Cocoa
           view_1_3_17.appendView (view_1_3_17_1)
         }
         view_1_3.appendView (view_1_3_17)
-        let view_1_3_18 = AutoLayoutFlexibleSpace ()
-        view_1_3.appendView (view_1_3_18)
       }
       view_1.appendView (view_1_3)
       let view_1_4 = AutoLayoutFlexibleSpace ()
       view_1.appendView (view_1_4)
     }
     vStackView.appendView (view_1)
+    let view_2 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_2)
     return vStackView
   } ()
 

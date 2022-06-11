@@ -241,7 +241,7 @@ do{
   let jsonData = try encoder.encode (versionDescriptor)
   let nomJSON = DISTRIBUTION_DIR + "/" + PRODUCT_NAME + "-" + VERSION_CANARI + ".json"
   try jsonData.write (to: URL (fileURLWithPath: nomJSON), options: .atomic)
-//--- Vérififer l'existennce de certificats
+//--- Vérififer l'existence de certificats
 //  runCommand ("security", ["find-identity", "-p", "basic", "-v"])
 //--- Vérifier la signature
   let argumentsSignatureCode = [
