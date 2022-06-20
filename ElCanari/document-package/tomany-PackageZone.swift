@@ -28,6 +28,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
       self.removeEBObserversOf_heightUnit_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_zoneName_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_displayZoneName_fromElementsOfSet (inRemovedSet) // Stored property
+      self.removeEBObserversOf_displayZoneNameWithPadNumbers_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_xName_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_yName_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_xNameUnit_fromElementsOfSet (inRemovedSet) // Stored property
@@ -52,6 +53,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
       self.addEBObserversOf_heightUnit_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_zoneName_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_displayZoneName_toElementsOfSet (inAddedSet) // Stored property
+      self.addEBObserversOf_displayZoneNameWithPadNumbers_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_xName_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_yName_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_xNameUnit_toElementsOfSet (inAddedSet) // Stored property
@@ -652,6 +654,65 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
       observer.observedObjectDidChange ()
       for managedObject in inSet.values {
         managedObject.displayZoneName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayZoneNameWithPadNumbers' stored property
+  //····················································································································
+
+  private final var mObserversOf_displayZoneNameWithPadNumbers = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayZoneNameWithPadNumbers (_ inObserver : EBObserverProtocol) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayZoneNameWithPadNumbers.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayZoneNameWithPadNumbers_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayZoneNameWithPadNumbers (_ inObserver : EBObserverProtocol) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayZoneNameWithPadNumbers.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayZoneNameWithPadNumbers_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayZoneNameWithPadNumbers_toElementsOfSet (_ inSet : EBReferenceSet <PackageZone>) {
+    if !self.mObserversOf_displayZoneNameWithPadNumbers.isEmpty {
+      for managedObject in inSet.values {
+        self.mObserversOf_displayZoneNameWithPadNumbers.apply { (_ observer : EBObserverProtocol) in
+          managedObject.displayZoneNameWithPadNumbers_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayZoneNameWithPadNumbers_fromElementsOfSet (_ inSet : EBReferenceSet <PackageZone>) {
+    self.mObserversOf_displayZoneNameWithPadNumbers.apply { (_ observer : EBObserverProtocol) in
+      observer.observedObjectDidChange ()
+      for managedObject in inSet.values {
+        managedObject.displayZoneNameWithPadNumbers_property.removeEBObserver (observer)
       }
     }
   }
@@ -1877,6 +1938,7 @@ final class PreferencesArrayOf_PackageZone : StoredArrayOf_PackageZone {
     self.addEBObserverOf_heightUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_zoneName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_displayZoneName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_displayZoneNameWithPadNumbers (self.mObserverForWritingPreferences)
     self.addEBObserverOf_xName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_yName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_xNameUnit (self.mObserverForWritingPreferences)

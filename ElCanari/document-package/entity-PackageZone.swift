@@ -66,6 +66,12 @@ protocol PackageZone_displayZoneName : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageZone_displayZoneNameWithPadNumbers : AnyObject {
+  var displayZoneNameWithPadNumbers : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageZone_xName : AnyObject {
   var xName : Int { get }
 }
@@ -145,6 +151,7 @@ final class PackageZone : PackageObject,
          PackageZone_heightUnit,
          PackageZone_zoneName,
          PackageZone_displayZoneName,
+         PackageZone_displayZoneNameWithPadNumbers,
          PackageZone_xName,
          PackageZone_yName,
          PackageZone_xNameUnit,
@@ -348,6 +355,25 @@ final class PackageZone : PackageObject,
   }
 
   //····················································································································
+  //   Atomic property: displayZoneNameWithPadNumbers
+  //····················································································································
+
+  final let displayZoneNameWithPadNumbers_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_displayZoneNameWithPadNumbers_toDefaultValue () {
+    self.displayZoneNameWithPadNumbers = true
+  }
+
+  //····················································································································
+
+  final var displayZoneNameWithPadNumbers : Bool {
+    get { return self.displayZoneNameWithPadNumbers_property.propval }
+    set { self.displayZoneNameWithPadNumbers_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: xName
   //····················································································································
 
@@ -523,6 +549,7 @@ final class PackageZone : PackageObject,
     self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.zoneName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.displayZoneName_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.displayZoneNameWithPadNumbers_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.xName_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: ebUndoManager)
     self.yName_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: ebUndoManager)
     self.xNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
@@ -826,6 +853,14 @@ final class PackageZone : PackageObject,
         valueExplorer: &self.displayZoneName_property.mValueExplorer
       )
       createEntryForPropertyNamed (
+        "displayZoneNameWithPadNumbers",
+        object: self.displayZoneNameWithPadNumbers_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayZoneNameWithPadNumbers_property.mObserverExplorer,
+        valueExplorer: &self.displayZoneNameWithPadNumbers_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
         "xName",
         object: self.xName_property,
         y: &y,
@@ -963,6 +998,9 @@ final class PackageZone : PackageObject,
   //--- Atomic property: displayZoneName
     self.displayZoneName_property.mObserverExplorer = nil
     self.displayZoneName_property.mValueExplorer = nil
+  //--- Atomic property: displayZoneNameWithPadNumbers
+    self.displayZoneNameWithPadNumbers_property.mObserverExplorer = nil
+    self.displayZoneNameWithPadNumbers_property.mValueExplorer = nil
   //--- Atomic property: xName
     self.xName_property.mObserverExplorer = nil
     self.xName_property.mValueExplorer = nil
@@ -1030,6 +1068,8 @@ final class PackageZone : PackageObject,
       self.zoneName_property.storeIn (dictionary: ioDictionary, forKey: "zoneName")
     //--- Atomic property: displayZoneName
       self.displayZoneName_property.storeIn (dictionary: ioDictionary, forKey: "displayZoneName")
+    //--- Atomic property: displayZoneNameWithPadNumbers
+      self.displayZoneNameWithPadNumbers_property.storeIn (dictionary: ioDictionary, forKey: "displayZoneNameWithPadNumbers")
     //--- Atomic property: xName
       self.xName_property.storeIn (dictionary: ioDictionary, forKey: "xName")
     //--- Atomic property: yName
@@ -1097,6 +1137,8 @@ final class PackageZone : PackageObject,
     self.zoneName_property.readFrom (dictionary: inDictionary, forKey: "zoneName")
   //--- Atomic property: displayZoneName
     self.displayZoneName_property.readFrom (dictionary: inDictionary, forKey: "displayZoneName")
+  //--- Atomic property: displayZoneNameWithPadNumbers
+    self.displayZoneNameWithPadNumbers_property.readFrom (dictionary: inDictionary, forKey: "displayZoneNameWithPadNumbers")
   //--- Atomic property: xName
     self.xName_property.readFrom (dictionary: inDictionary, forKey: "xName")
   //--- Atomic property: yName
@@ -1127,6 +1169,7 @@ final class PackageZone : PackageObject,
     ioString += "heightUnit\n"
     ioString += "zoneName\n"
     ioString += "displayZoneName\n"
+    ioString += "displayZoneNameWithPadNumbers\n"
     ioString += "xName\n"
     ioString += "yName\n"
     ioString += "xNameUnit\n"
@@ -1163,6 +1206,8 @@ final class PackageZone : PackageObject,
     self.zoneName.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.displayZoneName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayZoneNameWithPadNumbers.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.xName.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -1249,6 +1294,9 @@ final class PackageZone : PackageObject,
       }
       if let range = inDictionary ["displayZoneName"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.displayZoneName = value
+      }
+      if let range = inDictionary ["displayZoneNameWithPadNumbers"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.displayZoneNameWithPadNumbers = value
       }
       if let range = inDictionary ["xName"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.xName = value

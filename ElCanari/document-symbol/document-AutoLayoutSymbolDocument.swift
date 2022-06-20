@@ -788,6 +788,9 @@ import Cocoa
 
   fileprivate final func computeImplicitView_4 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Value", bold: false, size: .small)
+      .set (alignment: .right)
+      .expandableWidth ()
+      .expandableHeight ()
     return view
   }
 
@@ -797,7 +800,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_5 () -> NSView {
     let view = AutoLayoutTextField (minWidth: 56, size: .small)
-      .expandableWidth ()
+      .automaticallyAdjustHeight (maxWidth: 100)
       .bind_value (self.mSymbolPinSelectionController.name_property, sendContinously:true)
     return view
   }
@@ -808,6 +811,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_6 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Name Alignment", bold: false, size: .small)
+      .expandableWidth ()
+      .set (alignment: .right)
     return view
   }
 
@@ -828,6 +833,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_8 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Number Alignment", bold: false, size: .small)
+      .set (alignment: .right)
     return view
   }
 

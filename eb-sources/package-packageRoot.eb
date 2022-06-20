@@ -357,7 +357,7 @@ graphic entity PackagePad : PackageObject {
 
   transient String padNameForDisplay dependsFrom
      self.padNumber,
-     self.zone.one.zoneName, self.zone.one.displayZoneName ;
+     self.zone.one.zoneName, self.zone.one.displayZoneNameWithPadNumbers ;
 
   transient String zoneName dependsFrom self.zone.one.zoneName ;
 
@@ -510,6 +510,7 @@ graphic entity PackageZone : PackageObject {
 
   property @signature String zoneName default "" ;
   property Bool displayZoneName default yes ;
+  property Bool displayZoneNameWithPadNumbers default yes ;
   toMany @signature ForbiddenPadNumber forbiddenPadNumbers ;
   property @signature Int xName default 2_286_00 ;
   property @signature Int yName default 2_286_00 ;

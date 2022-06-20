@@ -816,7 +816,7 @@ final class PackagePad : PackageObject,
   //--- Atomic property: padNameForDisplay
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.padNumber_property.selection, unwSelf.zone_property.zoneName_property.selection, unwSelf.zone_property.displayZoneName_property.selection) {
+        switch (unwSelf.padNumber_property.selection, unwSelf.zone_property.zoneName_property.selection, unwSelf.zone_property.displayZoneNameWithPadNumbers_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_PackagePad_padNameForDisplay (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :
@@ -830,7 +830,7 @@ final class PackagePad : PackageObject,
     }
     self.padNumber_property.addEBObserver (self.padNameForDisplay_property)
     self.zone_property.zoneName_property.addEBObserver (self.padNameForDisplay_property)
-    self.zone_property.displayZoneName_property.addEBObserver (self.padNameForDisplay_property)
+    self.zone_property.displayZoneNameWithPadNumbers_property.addEBObserver (self.padNameForDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1052,7 +1052,7 @@ final class PackagePad : PackageObject,
     // self.padShape_property.removeEBObserver (self.selectionDisplay_property)
     // self.padNumber_property.removeEBObserver (self.padNameForDisplay_property)
     // self.zone_property.zoneName_property.removeEBObserver (self.padNameForDisplay_property)
-    // self.zone_property.displayZoneName_property.removeEBObserver (self.padNameForDisplay_property)
+    // self.zone_property.displayZoneNameWithPadNumbers_property.removeEBObserver (self.padNameForDisplay_property)
     // self.xCenter_property.removeEBObserver (self.issues_property)
     // self.yCenter_property.removeEBObserver (self.issues_property)
     // self.width_property.removeEBObserver (self.issues_property)

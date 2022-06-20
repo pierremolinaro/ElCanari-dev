@@ -37,6 +37,7 @@ func transient_PackagePad_objectDisplay (
     )
     switch self_padStyle {
     case .traversing :
+      var shape = EBShape (filled: [bp], .clear)
       let xCenter = canariUnitToCocoa (self_xCenter)
       let yCenter = canariUnitToCocoa (self_yCenter)
       let holeWidth = canariUnitToCocoa (self_holeWidth)
@@ -45,9 +46,11 @@ func transient_PackagePad_objectDisplay (
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
       if prefs_displayPackageFrontSidePads {
-        return EBShape (filled: [bp], prefs_frontSidePadColor)
+        shape.add (filled: [bp], prefs_frontSidePadColor)
+        return shape
       }else if prefs_displayPackageBackSidePads {
-        return EBShape (filled: [bp], prefs_backSidePadColor)
+        shape.add (filled: [bp], prefs_backSidePadColor)
+        return shape
       }else{
         return EBShape ()
       }

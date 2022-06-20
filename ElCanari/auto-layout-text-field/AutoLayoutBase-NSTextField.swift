@@ -106,6 +106,19 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   }
 
   //····················································································································
+
+//  override var stringValue : String {
+//    get { return super.stringValue }
+//    set {
+//      Swift.print ("SetStringValue \(newValue)")
+//      super.stringValue = newValue
+////      if self.mAutomaticallyAdjustHeight {
+//        self.invalidateIntrinsicContentSize ()
+////      }
+//    }
+//  }
+
+  //····················································································································
   //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible
   //  So we need to define intrinsicContentSize.width explicitly
   //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-

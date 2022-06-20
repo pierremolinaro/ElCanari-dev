@@ -38,7 +38,7 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
       minWidth: 60,
       maxWidth: 250,
       headerAlignment: .center,
-      contentAlignment: .center
+      contentAlignment: .left
     )
     self.mTableView.addColumn_String (
       valueGetterDelegate: { [weak self] in return self?.mDataSource [$0].pinName ?? "" },
@@ -50,7 +50,7 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
       minWidth: 60,
       maxWidth: 250,
       headerAlignment: .center,
-      contentAlignment: .center
+      contentAlignment: .left
     )
     self.appendView (self.mTableView)
   }

@@ -90,11 +90,17 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Flip", bold: no, size : .small),
-          right: Checkbox (title: "Horizontal", size : .small) { $value root.mModelImagePageHorizontalFlip }
+          right: Checkbox (title: "Horizontal", size : .small) {
+            expandableWidth ()
+            $value root.mModelImagePageHorizontalFlip
+          }
         )
         addFirstBaseLineAligned (
           left: FlexibleSpace,
-          right: Checkbox (title: "Vertical", size : .small) { $value root.mModelImagePageVerticalFlip }
+          right: Checkbox (title: "Vertical", size : .small) {
+            expandableWidth () 
+            $value root.mModelImagePageVerticalFlip
+          }
         )
       }
       separator
@@ -105,7 +111,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
           right: CanariUnitPopUpButton (size : .small) { $unit root.mModelImagePageXPlacardUnit }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Y", bold: no, size : .small),
+          left: StaticLabel (title: "Y", bold: no, size : .small) { set (alignment: .right) },
           right: CanariUnitPopUpButton (size : .small) { $unit root.mModelImagePageYPlacardUnit }
         )
       }
@@ -163,8 +169,8 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
             ImageObserverView (size : .small) { $hidden !root.hasModelImage $image root.lockImageView }
           }
         )
-        flexibleSpace ()
       }
+      space
     }
     separator
     GraphicView (minZoom: 10, maxZoom: 12_000) {
@@ -681,9 +687,15 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         }
       )
       add (
-        single: hStack {
-          Checkbox (title: "Show Zone Name", size : .small) { $value #mPackageZoneSelectionController.displayZoneName }
-          space
+        single: Checkbox (title: "Show Zone Name", size : .small) {
+          expandableWidth ()
+          $value #mPackageZoneSelectionController.displayZoneName
+        }
+      )
+      add (
+        single: Checkbox (title: "Show Zone Name with Pad Numbers", size : .small) {
+          expandableWidth ()
+          $value #mPackageZoneSelectionController.displayZoneNameWithPadNumbers
         }
       )
       addSeparator ()
@@ -916,23 +928,24 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Flip", bold: no, size : .small),
-        right: Checkbox (title: "Horizontal", size : .small) { $value root.horizontalFlip }
+        right: Checkbox (title: "Horizontal", size : .small) { expandableWidth ()  $value root.horizontalFlip }
       )
       addFirstBaseLineAligned (
         left: FlexibleSpace,
-        right: Checkbox (title: "Vertical", size : .small) { $value root.verticalFlip }
+        right: Checkbox (title: "Vertical", size : .small) { expandableWidth ()  $value root.verticalFlip }
       )
       addFirstBaseLineAligned (
         left: StaticLabels (left: "Placard", right: "X", bold: no, size : .small),
         right: CanariUnitPopUpButton (size : .small) { $unit root.xPlacardUnit }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, size : .small),
+        left: StaticLabel (title: "Y", bold: no, size : .small) { set (alignment: .right) },
         right: CanariUnitPopUpButton(size : .small) { $unit root.yPlacardUnit }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Knob Size", bold: no, size : .small),
         right: LinearSlider (min:7, max:41, ticks: 18) {
+          expandableWidth ()
           $intValue root.knobSizeMultpliedByTen (sendContinously : yes)
         }
       )
@@ -982,10 +995,8 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
           space
         }
       )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Pad Font", bold: no, size : .small),
-        right: FontButton (size : .small) {$fontValue prefs.padNumberFont}
-      )
+      add (single: StaticLabel (title: "Pad Font", bold: no, size : .small) { set (alignment: .left) } )
+      add (single: FontButton (size : .small) { $fontValue prefs.padNumberFont } )
       addCenterYAligned (
         left: StaticLabel (title: "Top Side Pads", bold: no, size : .small),
         right: hStack setCenterYAlignment () {
@@ -1011,14 +1022,15 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         left: StaticLabel (title: "Dimension Color", bold: no, size : .small),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageDimensionColor (sendContinously:no) } space }
       )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Dimension Font", bold: no, size : .small),
-        right: FontButton (size : .small) {$fontValue prefs.dimensionFont}
-      )
+      add (single: StaticLabel (title: "Dimension Font", bold: no, size : .small) { set (alignment: .left) } )
+      add (single: FontButton (size : .small) {$fontValue prefs.dimensionFont})
       addSeparator ()
       addCenterYAligned (
         left: StaticLabel (title: "Zone Color", bold: no, size : .small),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padZoneColor (sendContinously:no) } space }
+        right: hStack {
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padZoneColor (sendContinously:no) }
+          space
+        }
       )
     }
     space

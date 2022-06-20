@@ -151,17 +151,44 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
   stackView mSymbolPinInspectorView vStack {
     hStack { space StaticLabel (title: "Pin Inspector", bold: yes, size: .small) space }
     GridView2 {
+//      add (single:
+//        StaticLabel (title: "Value", bold: no, size: .small) {
+//          set (alignment: .left)
+//          expandableWidth ()
+//        }
+//      )
+//      add (single:
+//        TextField (minWidth: 56, size: .small) {
+//          automaticallyAdjustHeight (maxWidth: 200)
+//          $value #mSymbolPinSelectionController.name (sendContinously : yes)
+//        }
+//      )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Value", bold: no, size: .small),
-        right: TextField (minWidth: 56, size: .small) { expandableWidth () $value #mSymbolPinSelectionController.name (sendContinously : yes) }
+        left: StaticLabel (title: "Value", bold: no, size: .small) {
+          set (alignment: .right)
+          expandableWidth ()
+          expandableHeight ()
+        },
+        right: TextField (minWidth: 56, size: .small) {
+          automaticallyAdjustHeight (maxWidth: 100)
+          $value #mSymbolPinSelectionController.name (sendContinously : yes)
+        }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Name Alignment", bold: no, size: .small),
-        right: CanariHorizontalAlignmentSegmentedControl (size: .small) { expandableWidth () $alignment #mSymbolPinSelectionController.nameHorizontalAlignment}
+        left: StaticLabel (title: "Name Alignment", bold: no, size: .small)  {
+          expandableWidth ()
+          set (alignment: .right)
+        },
+        right: CanariHorizontalAlignmentSegmentedControl (size: .small) {
+          expandableWidth ()
+          $alignment #mSymbolPinSelectionController.nameHorizontalAlignment
+        }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Number Alignment", bold: no, size: .small),
-        right: CanariHorizontalAlignmentSegmentedControl (size: .small) { expandableWidth () $alignment #mSymbolPinSelectionController.numberHorizontalAlignment}
+        left: StaticLabel (title: "Number Alignment", bold: no, size: .small) { set (alignment: .right) },
+        right: CanariHorizontalAlignmentSegmentedControl (size: .small) {
+          expandableWidth () $alignment #mSymbolPinSelectionController.numberHorizontalAlignment
+        }
       )
       add (single: hStack {
         Checkbox (title : "Pin is visible in schematics", size: .small) { $value #mSymbolPinSelectionController.pinNameIsDisplayedInSchematics}

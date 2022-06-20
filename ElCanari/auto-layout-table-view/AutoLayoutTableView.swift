@@ -173,8 +173,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     // Swift.print ("AutoLayoutTableView reloads data")
   //--- Current selected row
     let currentSelectedRow = self.mTableView.selectedRow // < 0 if no selected row
-//    let currentClipViewOrigin : NSPoint? = self.mScrollView.clipViewOrigin ()
-//    Swift.print ("currentSelectedRow \(currentSelectedRow), currentClipViewOrigin \(currentClipViewOrigin)")
+    // Swift.print ("currentSelectedRow \(currentSelectedRow)")
   //--- Reload; reloading change selection, so we temporary disable transmitting selection change to delegate
     self.mTransmitSelectionChangeToDelegate = false
     self.mDelegate?.beginSorting ()
@@ -194,6 +193,8 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
       if selectedObjectIndexes.isEmpty {
         self.mDelegate?.tableViewSelectionDidChange (selectedRows: IndexSet ())
       }
+    }else{
+      self.mTableView.selectRowIndexes (IndexSet (), byExtendingSelection: false)
     }
   //--- Ensure selection non empty ?
     if self.mTableView.selectedRow < 0, !self.mTableView.allowsEmptySelection, let rowCount = self.mRowCountCallBack? (), rowCount > 0 {
@@ -208,14 +209,9 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
       }
     }
   //--- Scroll to make selection visible
-//    DispatchQueue.main.async {
-      if self.mTableView.selectedRow >= 0 {
-        self.mTableView.scrollRowToVisible (self.mTableView.selectedRow)
-//      }else{
-//        self.mScrollView.setClipViewOrigin (currentClipViewOrigin)
-      }
-//      self.mScrollView.setClipViewOrigin (currentClipViewOrigin)
-//    }
+    if self.mTableView.selectedRow >= 0 {
+      self.mTableView.scrollRowToVisible (self.mTableView.selectedRow)
+    }
   }
 
   //····················································································································

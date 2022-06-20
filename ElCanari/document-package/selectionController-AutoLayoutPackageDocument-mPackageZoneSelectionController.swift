@@ -61,6 +61,11 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
 
   let displayZoneName_property = EBPropertyProxy_Bool ()
   //····················································································································
+  //   Selection observable property: displayZoneNameWithPadNumbers
+  //····················································································································
+
+  let displayZoneNameWithPadNumbers_property = EBPropertyProxy_Bool ()
+  //····················································································································
   //   Selection observable property: xName
   //····················································································································
 
@@ -147,6 +152,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
     self.bind_property_heightUnit ()
     self.bind_property_zoneName ()
     self.bind_property_displayZoneName ()
+    self.bind_property_displayZoneNameWithPadNumbers ()
     self.bind_property_xName ()
     self.bind_property_yName ()
     self.bind_property_xNameUnit ()
@@ -206,6 +212,10 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
     self.displayZoneName_property.mReadModelFunction = nil 
     self.displayZoneName_property.mWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_displayZoneName (self.displayZoneName_property)
+  //--- displayZoneNameWithPadNumbers
+    self.displayZoneNameWithPadNumbers_property.mReadModelFunction = nil 
+    self.displayZoneNameWithPadNumbers_property.mWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_displayZoneNameWithPadNumbers (self.displayZoneNameWithPadNumbers_property)
   //--- xName
     self.xName_property.mReadModelFunction = nil 
     self.xName_property.mWriteModelFunction = nil 
@@ -366,6 +376,14 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
         view: view,
         observerExplorer: &self.displayZoneName_property.mObserverExplorer,
         valueExplorer: &self.displayZoneName_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "displayZoneNameWithPadNumbers",
+        object: self.displayZoneNameWithPadNumbers_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.displayZoneNameWithPadNumbers_property.mObserverExplorer,
+        valueExplorer: &self.displayZoneNameWithPadNumbers_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "xName",
@@ -971,6 +989,57 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
         case .single (let v) :
           for object in v {
             object.displayZoneName_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_displayZoneNameWithPadNumbers () {
+    self.selectedArray_property.addEBObserverOf_displayZoneNameWithPadNumbers (self.displayZoneNameWithPadNumbers_property)
+    self.displayZoneNameWithPadNumbers_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.displayZoneNameWithPadNumbers_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.displayZoneNameWithPadNumbers_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.displayZoneNameWithPadNumbers_property.setProp (inValue)
           }
         }
       }

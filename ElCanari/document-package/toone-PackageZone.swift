@@ -26,6 +26,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
       oldValue.heightUnit_property.removeEBObserver (self.heightUnit_property) // Stored property
       oldValue.zoneName_property.removeEBObserver (self.zoneName_property) // Stored property
       oldValue.displayZoneName_property.removeEBObserver (self.displayZoneName_property) // Stored property
+      oldValue.displayZoneNameWithPadNumbers_property.removeEBObserver (self.displayZoneNameWithPadNumbers_property) // Stored property
       oldValue.xName_property.removeEBObserver (self.xName_property) // Stored property
       oldValue.yName_property.removeEBObserver (self.yName_property) // Stored property
       oldValue.xNameUnit_property.removeEBObserver (self.xNameUnit_property) // Stored property
@@ -50,6 +51,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
       newValue.heightUnit_property.addEBObserver (self.heightUnit_property) // Stored property
       newValue.zoneName_property.addEBObserver (self.zoneName_property) // Stored property
       newValue.displayZoneName_property.addEBObserver (self.displayZoneName_property) // Stored property
+      newValue.displayZoneNameWithPadNumbers_property.addEBObserver (self.displayZoneNameWithPadNumbers_property) // Stored property
       newValue.xName_property.addEBObserver (self.xName_property) // Stored property
       newValue.yName_property.addEBObserver (self.yName_property) // Stored property
       newValue.xNameUnit_property.addEBObserver (self.xNameUnit_property) // Stored property
@@ -123,6 +125,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //····················································································································
 
   final let displayZoneName_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'displayZoneNameWithPadNumbers' stored property
+  //····················································································································
+
+  final let displayZoneNameWithPadNumbers_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'xName' stored property
@@ -359,6 +367,21 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
     self.displayZoneName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.displayZoneName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure displayZoneNameWithPadNumbers simple stored property
+    self.displayZoneNameWithPadNumbers_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.displayZoneNameWithPadNumbers_property.selection {
         case .empty :
           return .empty
         case .multiple :

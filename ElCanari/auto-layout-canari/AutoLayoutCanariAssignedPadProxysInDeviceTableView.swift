@@ -50,7 +50,7 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
       minWidth: 60,
       maxWidth: 250,
       headerAlignment: .center,
-      contentAlignment: .center
+      contentAlignment: .left
     )
     self.mTableView.addColumn_String (
       valueGetterDelegate: { [weak self] in return self?.mDataSource [$0].pinName ?? "" },
@@ -62,7 +62,7 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
       minWidth: 60,
       maxWidth: 250,
       headerAlignment: .center,
-      contentAlignment: .center
+      contentAlignment: .left
     )
     self.appendView (self.mTableView)
   }
