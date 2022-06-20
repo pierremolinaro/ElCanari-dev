@@ -13,6 +13,7 @@ import Cocoa
 extension Preferences {
   @objc func checkLibraryAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
+    _ = self.buildLibraryConsistencyLogWindow ()
     if let button = sender as? NSButton,
        let myWindow = button.window,
        let logView = self.mLibraryConsistencyLogTextView {
