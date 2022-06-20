@@ -204,7 +204,7 @@ entity ProjectRoot {
   property proxy String selectedSheetTitle : mSelectedSheet.mSheetTitle ;
   toMany proxy SchematicObject selectedSheetObjects : mSelectedSheet.mObjects ;
   transient CanariIssueArray selectedSheetIssues dependsFrom self.mSelectedSheet.one.issues ;
-  transient EBShape connectedPoints dependsFrom
+  transient EBShape schematicOverDisplay dependsFrom
     self.mSelectedSheet.one.connectedPoints,
     self.selectedSheetIssues
   ; 

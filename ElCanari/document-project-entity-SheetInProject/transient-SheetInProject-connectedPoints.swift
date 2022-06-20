@@ -23,7 +23,12 @@ func transient_SheetInProject_connectedPoints (
           if let a = object.connectedPoints {
             for point in a {
               let p = point.cocoaPoint
-              let r = NSRect (x: p.x - CONNECTED_POINT_DIAMETER / 2.0, y: p.y - CONNECTED_POINT_DIAMETER / 2.0, width: CONNECTED_POINT_DIAMETER, height: CONNECTED_POINT_DIAMETER)
+              let r = NSRect (
+                x: p.x - SCHEMATIC_CONNECTION_POINT_DIAMETER / 2.0,
+                y: p.y - SCHEMATIC_CONNECTION_POINT_DIAMETER / 2.0,
+                width: SCHEMATIC_CONNECTION_POINT_DIAMETER,
+                height: SCHEMATIC_CONNECTION_POINT_DIAMETER
+              )
               bp.appendOval (in: r)
             }
           }

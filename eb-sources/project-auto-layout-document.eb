@@ -433,7 +433,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     separator
     GraphicView (minZoom: 50, maxZoom: 1_000) [outlet mSchematicsView configurator schematicView] {
       $underObjectsDisplay root.schematicBackgroundDisplay
-      $overObjectsDisplay root.connectedPoints
+      $overObjectsDisplay root.schematicOverDisplay
       $horizontalFlip root.mSchematicHorizontalFlip
       $verticalFlip root.mSchematicVerticalFlip
       $graphicController #schematicObjectsController
@@ -1129,7 +1129,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //----------------- Board Contents tab
 
   arrayController #boardObjectsController : root.mBoardObjects ;  
-  transient EBShape overDisplay dependsFrom self.rastnetShape, root.boardIssues ;
+  transient EBShape boardOutlineOverDisplay dependsFrom self.rastnetShape, root.boardIssues ;
   transient EBShape rastnetShape dependsFrom
     root.mRastnetDisplay,
     root.mRastnetDisplayedNetName,
@@ -1174,7 +1174,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     separator
     GraphicView (minZoom: 10, maxZoom: 20_000) [outlet mBoardView configurator boardView] {
       $underObjectsDisplay root.borderOutlineBackground
-      $overObjectsDisplay self.overDisplay
+      $overObjectsDisplay self.boardOutlineOverDisplay
       $horizontalFlip root.mBoardHorizontalFlip
       $verticalFlip root.mBoardVerticalFlip
       $graphicController #boardObjectsController

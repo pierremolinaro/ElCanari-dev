@@ -509,15 +509,15 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: overDisplay
+  //   Transient property: boardOutlineOverDisplay
   //····················································································································
 
-  final let overDisplay_property = EBTransientProperty_EBShape ()
+  final let boardOutlineOverDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  final var overDisplay : EBShape? {
-    switch self.overDisplay_property.selection {
+  final var boardOutlineOverDisplay : EBShape? {
+    switch self.boardOutlineOverDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1325,7 +1325,7 @@ import Cocoa
     hStackView.appendView (view_1)
     let view_2 = AutoLayoutGraphicView (minZoom: 50, maxZoom: 1000)
       .bind_underObjectsDisplay (self.rootObject.schematicBackgroundDisplay_property)
-      .bind_overObjectsDisplay (self.rootObject.connectedPoints_property)
+      .bind_overObjectsDisplay (self.rootObject.schematicOverDisplay_property)
       .bind_horizontalFlip (self.rootObject.mSchematicHorizontalFlip_property)
       .bind_verticalFlip (self.rootObject.mSchematicVerticalFlip_property)
       .bind_gridStyle (self.rootObject.mSchematicGridStyle_property)
@@ -2121,7 +2121,7 @@ import Cocoa
     hStackView.appendView (view_1)
     let view_2 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 20000)
       .bind_underObjectsDisplay (self.rootObject.borderOutlineBackground_property)
-      .bind_overObjectsDisplay (self.overDisplay_property)
+      .bind_overObjectsDisplay (self.boardOutlineOverDisplay_property)
       .bind_horizontalFlip (self.rootObject.mBoardHorizontalFlip_property)
       .bind_verticalFlip (self.rootObject.mBoardVerticalFlip_property)
       .bind_gridStyle (self.rootObject.mBoardGridStyle_property)
@@ -7650,12 +7650,12 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: overDisplay
-    self.overDisplay_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: boardOutlineOverDisplay
+    self.boardOutlineOverDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch (unwSelf.rastnetShape_property.selection, unwSelf.rootObject.boardIssues_property.selection) {
         case (.single (let v0), .single (let v1)) :
-          return .single (transient_AutoLayoutProjectDocument_overDisplay (v0, v1))
+          return .single (transient_AutoLayoutProjectDocument_boardOutlineOverDisplay (v0, v1))
         case (.multiple, .multiple) :
           return .multiple
         default :
@@ -7665,8 +7665,8 @@ import Cocoa
         return .empty
       }
     }
-    self.rastnetShape_property.addEBObserver (self.overDisplay_property)
-    self.rootObject.boardIssues_property.addEBObserver (self.overDisplay_property)
+    self.rastnetShape_property.addEBObserver (self.boardOutlineOverDisplay_property)
+    self.rootObject.boardIssues_property.addEBObserver (self.boardOutlineOverDisplay_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -7853,8 +7853,8 @@ import Cocoa
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     // self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
     // self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
-    // self.rastnetShape_property.removeEBObserver (self.overDisplay_property)
-    // self.rootObject.boardIssues_property.removeEBObserver (self.overDisplay_property)
+    // self.rastnetShape_property.removeEBObserver (self.boardOutlineOverDisplay_property)
+    // self.rootObject.boardIssues_property.removeEBObserver (self.boardOutlineOverDisplay_property)
     // self.rootObject.unplacedPackages_property.removeEBObserver (self.unplacedPackageCount_property)
     // self.unplacedPackageCount_property.removeEBObserver (self.unplacedPackagesCountString_property)
     // self.unplacedPackageCount_property.removeEBObserver (self.unplacedPackagesMessageString_property)

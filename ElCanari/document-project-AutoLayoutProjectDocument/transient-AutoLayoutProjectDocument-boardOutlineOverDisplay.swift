@@ -13,32 +13,19 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_connectedPoints (
-       _ self_mSelectedSheet_connectedPoints : EBShape?,
-       _ self_selectedSheetIssues : CanariIssueArray
+func transient_AutoLayoutProjectDocument_boardOutlineOverDisplay (
+       _ self_rastnetShape : EBShape,                             
+       _ root_boardIssues : CanariIssueArray
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        var shape = EBShape ()
-      //--- Issues
-        var warningPathes = [EBBezierPath] ()
-        var errorPathes = [EBBezierPath] ()
-        for issue in self_selectedSheetIssues {
+        var shape = self_rastnetShape
+        for issue in root_boardIssues {
+          let color : NSColor
           switch issue.kind {
-          case .warning :
-            warningPathes += issue.pathes
-          case .error :
-            errorPathes += issue.pathes
+          case .warning : color = .systemOrange
+          case .error   : color = .systemRed
           }
-        }
-        if !warningPathes.isEmpty {
-          shape.add (filled: warningPathes, .systemOrange)
-        }
-        if !errorPathes.isEmpty {
-          shape.add (filled: errorPathes, .systemRed)
-        }
-      //--- Connected points
-        if let connectedPointShape = self_mSelectedSheet_connectedPoints {
-          shape.add (connectedPointShape)
+          shape.add (filled: issue.pathes, color)
         }
         return shape
 //--- END OF USER ZONE 2

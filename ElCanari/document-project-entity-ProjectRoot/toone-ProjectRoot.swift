@@ -115,7 +115,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.boardLimitsGridStepMultipliedByDisplayFactor_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
       oldValue.boardShapeIsRectangular_property.removeEBObserver (self.boardShapeIsRectangular_property) // Transient property
       oldValue.selectedSheetIssues_property.removeEBObserver (self.selectedSheetIssues_property) // Transient property
-      oldValue.connectedPoints_property.removeEBObserver (self.connectedPoints_property) // Transient property
+      oldValue.schematicOverDisplay_property.removeEBObserver (self.schematicOverDisplay_property) // Transient property
       oldValue.connexionWarningString_property.removeEBObserver (self.connexionWarningString_property) // Transient property
       oldValue.connexionErrorString_property.removeEBObserver (self.connexionErrorString_property) // Transient property
       oldValue.sheetIndexes_property.removeEBObserver (self.sheetIndexes_property) // Transient property
@@ -265,7 +265,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.boardLimitsGridStepMultipliedByDisplayFactor_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
       newValue.boardShapeIsRectangular_property.addEBObserver (self.boardShapeIsRectangular_property) // Transient property
       newValue.selectedSheetIssues_property.addEBObserver (self.selectedSheetIssues_property) // Transient property
-      newValue.connectedPoints_property.addEBObserver (self.connectedPoints_property) // Transient property
+      newValue.schematicOverDisplay_property.addEBObserver (self.schematicOverDisplay_property) // Transient property
       newValue.connexionWarningString_property.addEBObserver (self.connexionWarningString_property) // Transient property
       newValue.connexionErrorString_property.addEBObserver (self.connexionErrorString_property) // Transient property
       newValue.sheetIndexes_property.addEBObserver (self.sheetIndexes_property) // Transient property
@@ -911,10 +911,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   final let selectedSheetIssues_property = EBGenericTransientProperty <CanariIssueArray?> ()
 
   //····················································································································
-  //   Observers of 'connectedPoints' transient property
+  //   Observers of 'schematicOverDisplay' transient property
   //····················································································································
 
-  final let connectedPoints_property = EBGenericTransientProperty <EBShape?> ()
+  final let schematicOverDisplay_property = EBGenericTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'connexionWarningString' transient property
@@ -2857,10 +2857,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-  //--- Configure connectedPoints transient property
-    self.connectedPoints_property.mReadModelFunction = { [weak self] in
+  //--- Configure schematicOverDisplay transient property
+    self.schematicOverDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
-        switch model.connectedPoints_property.selection {
+        switch model.schematicOverDisplay_property.selection {
         case .empty :
           return .empty
         case .multiple :

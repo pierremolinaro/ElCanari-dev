@@ -678,8 +678,8 @@ protocol ProjectRoot_selectedSheetIssues : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_connectedPoints : AnyObject {
-  var connectedPoints : EBShape? { get }
+protocol ProjectRoot_schematicOverDisplay : AnyObject {
+  var schematicOverDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1081,7 +1081,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor,
          ProjectRoot_boardShapeIsRectangular,
          ProjectRoot_selectedSheetIssues,
-         ProjectRoot_connectedPoints,
+         ProjectRoot_schematicOverDisplay,
          ProjectRoot_connexionWarningString,
          ProjectRoot_connexionErrorString,
          ProjectRoot_sheetIndexes,
@@ -3517,15 +3517,15 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: connectedPoints
+  //   Transient property: schematicOverDisplay
   //····················································································································
 
-  final let connectedPoints_property = EBTransientProperty_EBShape ()
+  final let schematicOverDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  final var connectedPoints : EBShape? {
-    switch self.connectedPoints_property.selection {
+  final var schematicOverDisplay : EBShape? {
+    switch self.schematicOverDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -4900,12 +4900,12 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mSelectedSheet_property.issues_property.addEBObserver (self.selectedSheetIssues_property)
-  //--- Atomic property: connectedPoints
-    self.connectedPoints_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: schematicOverDisplay
+    self.schematicOverDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch (unwSelf.mSelectedSheet_property.connectedPoints_property.selection, unwSelf.selectedSheetIssues_property.selection) {
         case (.single (let v0), .single (let v1)) :
-          return .single (transient_ProjectRoot_connectedPoints (v0, v1))
+          return .single (transient_ProjectRoot_schematicOverDisplay (v0, v1))
         case (.multiple, .multiple) :
           return .multiple
         default :
@@ -4915,8 +4915,8 @@ final class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSelectedSheet_property.connectedPoints_property.addEBObserver (self.connectedPoints_property)
-    self.selectedSheetIssues_property.addEBObserver (self.connectedPoints_property)
+    self.mSelectedSheet_property.connectedPoints_property.addEBObserver (self.schematicOverDisplay_property)
+    self.selectedSheetIssues_property.addEBObserver (self.schematicOverDisplay_property)
   //--- Atomic property: connexionWarningString
     self.connexionWarningString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5813,8 +5813,8 @@ final class ProjectRoot : EBManagedObject,
     // self.mBoardLimitsGridDisplayFactor_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
     // self.mBoardShape_property.removeEBObserver (self.boardShapeIsRectangular_property)
     // self.mSelectedSheet_property.issues_property.removeEBObserver (self.selectedSheetIssues_property)
-    // self.mSelectedSheet_property.connectedPoints_property.removeEBObserver (self.connectedPoints_property)
-    // self.selectedSheetIssues_property.removeEBObserver (self.connectedPoints_property)
+    // self.mSelectedSheet_property.connectedPoints_property.removeEBObserver (self.schematicOverDisplay_property)
+    // self.selectedSheetIssues_property.removeEBObserver (self.schematicOverDisplay_property)
     // self.mSheets_property.removeEBObserverOf_connexionWarnings (self.connexionWarningString_property)
     // self.mSheets_property.removeEBObserverOf_connexionErrors (self.connexionErrorString_property)
     // self.mSheets_property.removeEBObserver (self.sheetIndexes_property)
@@ -6726,12 +6726,12 @@ final class ProjectRoot : EBManagedObject,
         valueExplorer: &self.selectedSheetIssues_property.mValueExplorer
       )
       createEntryForPropertyNamed (
-        "connectedPoints",
-        object: self.connectedPoints_property,
+        "schematicOverDisplay",
+        object: self.schematicOverDisplay_property,
         y: &y,
         view: view,
-        observerExplorer: &self.connectedPoints_property.mObserverExplorer,
-        valueExplorer: &self.connectedPoints_property.mValueExplorer
+        observerExplorer: &self.schematicOverDisplay_property.mObserverExplorer,
+        valueExplorer: &self.schematicOverDisplay_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "connexionWarningString",
