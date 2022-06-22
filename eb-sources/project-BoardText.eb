@@ -3,6 +3,8 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic entity BoardText : BoardObject {
+//  graphic canCopyAndPaste ;
+
   toOne FontInProject mFont inverse toMany mTexts ;
 
   property Int mX default 0 ;
